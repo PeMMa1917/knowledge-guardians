@@ -1,4 +1,5 @@
 import {courierEffects,type CourierCommand} from './courierLift';
+import {elbowEffects,type ElbowCommand} from './giantSleeve';
 import {wagerEffects,type WagerCommand} from './petalWager';
 import {gearEffects,type GearCommand} from './petalGears';
 import {petalEffects,type PetalCommand} from './petalWindow';
@@ -96,7 +97,7 @@ import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand
 
 export type Command =
   | ChestCommand | BeatCommand | MouldCommand | PerchCommand | WelcomeCommand | BakeryCommand
-  | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | CourierCommand | BillCommand | FerryCommand
+  | ElbowCommand | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | CourierCommand | BillCommand | FerryCommand
   | ShadowCommand
   | FieldLoanCommand
   | BirdCommand
@@ -639,6 +640,8 @@ export class Engine {
           break;
         case 'WorkCourierLift':
           s = apply(courierEffects(s, cmd), s, out); break;
+        case 'WorkGiantSleeve':
+          s=apply(elbowEffects(s,cmd),s,out);break;
         case 'DrawPetalRibbon':
           s=apply(wagerEffects(s,cmd),s,out);break;
         case 'WindPetalGear':

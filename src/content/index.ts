@@ -1,4 +1,5 @@
 import {installCourierLift} from './courierLift';
+import {giantContent,duchamp} from './giantSleeve';
 import {petalContent} from './petalGlasshouse';
 import { homecomingDialogue } from './originHomecomings';
 import { installOriginTours } from './originTours';
@@ -235,7 +236,7 @@ const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'mission
 
 export function buildPack(): ContentPack {
   const pack: any = { id: 'chapter-1', contentVersion: CONTENT_VERSION };
-  const collectionRooms = [petalContent, pictureFerryContent, bakeryContent(), mothReturnContent(), plumContent, supperContent, clearanceContent, beaterProof, datePegContent, relayContent, joinedCloth, asiaLabelContent, specimenWorkContent, polarStore, fernRecordContent,
+  const collectionRooms = [giantContent, petalContent, pictureFerryContent, bakeryContent(), mothReturnContent(), plumContent, supperContent, clearanceContent, beaterProof, datePegContent, relayContent, joinedCloth, asiaLabelContent, specimenWorkContent, polarStore, fernRecordContent,
     lanternWeaveContent, dateRegisterContent, passageContent, windowShop, readingWorksContent, storyArchiveContent, copyImprintContent,
     referenceProofs, parcelLedgerContent, numberLeafContent, surveyDepotContent, referenceLineContent, islandProofRackContent, turningTableContent, coastCopyContent, makerRoomContent, makerExactContent,
     timbuktuManuscriptContent, objectUseContent, leavittPlateContent, referenceStation, callboardContent, cueWorkshopContent,
@@ -258,6 +259,8 @@ export function buildPack(): ContentPack {
   }));
   const articles = new Map(encyclopedia.people.flatMap((article) => article.characters.map((id) => [id, article.title] as const)));
   installInkPost(content, articles);
+  const loftArtist=content.characters.find(c=>c.id===duchamp);
+  if(loftArtist)loftArtist.localGreeting={...loftArtist.localGreeting,'stage.giants-elbow':'elbow.artist'};
   installLamplight(content, articles);
   installNightCollection(content);
   ferryLocalGreetings(content);

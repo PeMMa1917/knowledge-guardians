@@ -594,3 +594,7 @@ Bew closes his book with a thumb inside it. It is the only way he can look someb
 ### Pella, caller at the theatre door
 
 Pella can project a whisper across a foyer and lose the next line when a child asks who taught it to her. She learned her cues from Nemi and kept Nemi’s pauses even when she took her place. Her use of the freight bell let an actor finish a difficult entrance and put an unexplained charge in Bew’s book. Give her something to do with her hands while somebody else speaks. With the second cord she can hear her sister again. With the repaid fees she gives the cue silently.
+
+### Pip and Vee Fenner in the puppet loft
+
+Pip built a giant and taught her sister how to work it. From her chair she can still give the smallest cue on stage. She wants to watch Vee take the bow and fears the audience will forget who made its hands. Vee repairs the cuff with her left hand, practises her ice recipe on a curtain rod and already knows where her future shop would stand. The sisters can tell the story of the same entrance differently. Pip acknowledges a small moon or remembers a shared eraser depending on the stage rig the Guardian actually chose. A visiting Marcel Duchamp lends the earned Stoppages a further use in shadow theatre. The visitor’s lines are original fictional dialogue. [The loft and its callbacks](../src/content/giantSleeve.ts)

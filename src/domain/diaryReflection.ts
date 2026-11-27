@@ -53,6 +53,15 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
     if(key.startsWith('origin-work:workshop'))return {lens:'Which other comparison could change my account of the curled edge?'};
     return {lens:'What could a listener hear about the fourth verse that the singer did not say aloud?'};
   }
+  if (key.startsWith('giant-elbow:')) {
+    const act = key.slice('giant-elbow:'.length).split('.')[0];
+    if (act === 'hinge') return {chain:'Which measurement predicted what happened at the chain?',ribbon:'How did Vee change what a missed catch could mean to the audience?'};
+    if (act === 'hang' || act === 'fit' || act === 'patch' || act === 'cast') return {
+      arm: 'Whose little hand was hardest to fit under my pattern?', number: 'What stayed hidden when Pip told me only the average reach?'};
+    if (act === 'pledge' || act === 'stamp' || act === 'sheet' || act === 'print') return {
+      draw: 'Which part of the result depended on the direction I pinned before looking?', hinge: 'What mattered to the puppeteer that the count of rare draws could not tell her?'};
+    return {credit:'Whose contribution could an audience member recognise from the face of the cuff I showed?', sister:'How might Pip and Vee remember the same entrance differently?'};
+  }
   if(key.startsWith('tally-tray:')) return {doors:'Which tray could I take to six separate doors?',measure:'What stays equal when I switch between two untouched trays?'};
   if (key.startsWith('moth-perch:home:')) return {
     place: 'What made me move our resting place or keep it here?',

@@ -1,4 +1,5 @@
 import {courierArt,largeCourierArt} from './courierLiftArt';
+import {elbowArt} from './giantSleeveArt';
 import { hearingPictures } from './hearingPictures';
 import { UNDERPAN_ART } from './underpanArt';
 import { SPARE_MOON_ART } from './spareMoonArt';
@@ -3085,7 +3086,7 @@ DRAW['big.drawer-cases'] = [40, 28, (g) => {
 }];
 
 /** Map exhibit art keys (small) to large inspection pictures. */
-Object.assign(DRAW, POLAR_ART, WINDOW_ART, READING_WORKS_ART, STORY_ARCHIVE_ART, NUMBER_LEAF_ART, DEPOT_ART, REFERENCE_STATION_ART,
+Object.assign(DRAW, elbowArt, POLAR_ART, WINDOW_ART, READING_WORKS_ART, STORY_ARCHIVE_ART, NUMBER_LEAF_ART, DEPOT_ART, REFERENCE_STATION_ART,
   MODEL_RECORD_ART, SECOND_READING_ART, SHORE_REPLY_ART, JIG_SHOP_ART, MEMORY_CART_ART, PRICE_DRAWERS_ART);
 Object.assign(DRAW, REFERENCE_PROOF_ART, PASSAGE_DOCUMENTARY_ART);
 Object.assign(DRAW, MAKER_ROOM_ART);

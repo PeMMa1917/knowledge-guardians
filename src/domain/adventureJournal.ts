@@ -1,4 +1,5 @@
 import {courierDiary,courierTopics,courierCases} from './courierLift';
+import {elbowDiary,elbowWeave} from './giantSleeve';
 import {wagerDiary} from './petalWager';
 import {gearDiary} from './petalGears';
 import {petalDiary, flowerWeave} from './petalWindow';
@@ -158,6 +159,7 @@ function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignS
   if (cmd.type==='DrawOrchardStylus') return mouldDiary(cmd);
   if (cmd.type === 'HangFerryPrint' || cmd.type === 'OpenFerryBill' || cmd.type === 'HearFerryBill') return billDiary(previous, next, cmd);
   if (cmd.type === 'WorkCourierLift') return courierDiary(next,cmd);
+  if(cmd.type==='WorkGiantSleeve')return elbowDiary(next,cmd);
   if(cmd.type==='DrawPetalRibbon')return wagerDiary(next,cmd);
   if(cmd.type==='WindPetalGear')return gearDiary(next,cmd);
   if (cmd.type === 'WorkPetalWindow') return petalDiary(previous,next,cmd);
@@ -568,6 +570,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
       const landing = event.key.split('.')[2];
       if (record) return diaryTopics(courierTopics(record, landing === 'market' || landing === 'theatre' ? landing : undefined));
     }
+    if (family === 'giant-elbow') return diaryTopics(objectivesById.get(event.ref)?.objective.weave ?? elbowWeave);
     if (family === 'petal-window'||family === 'petal-gear'||family === 'petal-ribbon') return diaryTopics(flowerWeave);
     if (family === 'picture-ferry') return diaryTopics(ferryWeave);
     if (family === 'plum') {

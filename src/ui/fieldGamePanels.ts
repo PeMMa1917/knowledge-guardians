@@ -1,3 +1,4 @@
+import {giantPanel} from './giantSleeve';
 import {petalRibbons} from './petalRibbons';
 import {petalGears} from './petalGears';
 import {petalWindow,petalLedge,petalStage,petalAudience} from './petalWindow';
@@ -70,6 +71,9 @@ interface Panel<T> {
 }
 
 export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
+  ['giant-fitting',{title:'The giant who borrowed my elbow',open:(c,sound)=>giantPanel(c,sound,'fitting')}],
+  ['giant-lottery',{title:'The fitter’s two sealed packets',open:(c,sound)=>giantPanel(c,sound,'lottery')}],
+  ['giant-curtain',{title:'The hand inside the curtain',open:(c,sound)=>giantPanel(c,sound,'curtain')}],
   ...stops.map((stop):[string,Panel<GamePanel>]=>["field-loan."+stop,{title:loanStops[stop].title,open:(c,sound)=>fieldLoanPanel(c,stop,sound)}]),
   ["orchard-mould", { title: "Fen’s two practice tabs", open: orchardMould }],
   ["petal-ribbons",{title:"Two unopened watches",open:petalRibbons}],

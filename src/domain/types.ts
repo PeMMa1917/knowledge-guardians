@@ -125,6 +125,7 @@ export interface SourceRecord {
     author?: string;          // filed surname first, as it appears in the entry
     workDate?: string;        // original creation date of an artwork
     repository?: string;      // physical collection when the online container is separate
+    publication?: { volume:string; issue:string; year:string; pages:string };
     showAccessDate?: boolean;
   };
 }

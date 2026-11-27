@@ -1322,3 +1322,9 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .courier-marks button { white-space: normal; }
 .courier-marks button[aria-pressed="true"] { outline: 2px solid currentColor; outline-offset: -4px; }
 .courier-panel [role="status"] { min-height: 1.4em; }
+.giant-sleeve canvas{display:block;width:min(100%,32rem);height:auto;image-rendering:pixelated;border:2px solid #937166;border-radius:4px}
+.giant-cast{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.3rem 1.3rem;padding-inline-start:1.4rem}
+.giant-strips{display:flex;align-items:flex-end;gap:clamp(.3rem,2vw,1rem);min-height:6rem;padding:.5rem;max-width:32rem;background:#25283b;color:#f7e2bd}
+.giant-strip{display:grid;align-content:end;min-width:1.7rem;padding:.2rem;text-align:center;border-top:var(--lift) solid #92bec5;background:#414560}
+.giant-strip.clipped{border-top-color:#db987c;outline:2px dashed #f4ca73}
+.giant-strip small{font-size:.8rem}.giant-sleeve button[aria-pressed=true]{text-decoration:underline}

@@ -803,3 +803,5 @@ The collection room uses the existing sources and original earning quests for th
 | Zimbabwe’s 100-trillion-dollar banknote AA2986931 at the Smithsonian | National Museum of American History, Smithsonian Institution | [2015.0071.1](https://americanhistory.si.edu/collections/object/nmah_1694052) |
 
 The Garjját drawing indicates the paper mount and inventory slip. The binak drawing describes basket form. The vessel drawing follows the museum display. The public catalogue supplies the named makers and dates. The original diagrams omit protected clan designs and artists’ compositions.
+
+Wasserstein, Ronald L., and Nicole A. Lazar. “The ASA Statement on p-Values: Context, Process, and Purpose.” *The American Statistician*, vol. 70, no. 2, 2016, pp. 129–33. The two puppet-hinge packets use original measurements, a stated randomization procedure and an explicit catch height. The statement supports the distinction between an analysis decision, a small p-value and a useful effect. [Journal article](https://doi.org/10.1080/00031305.2016.1154108)

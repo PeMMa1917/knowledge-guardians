@@ -1,0 +1,119 @@
+[
+  {
+    "number": 1106,
+    "name": "Distinguish a controlled experiment from an artistic trial",
+    "uses": [
+      {
+        "objective": "elbow.lottery",
+        "action": "Peg the expected direction and move exactly three treatment clips between six measured strips. At the rehearsal repeat the same gesture for an audience whose response the lottery never measured.",
+        "styles": [
+          "maker",
+          "challenger"
+        ],
+        "modes": [
+          "physical",
+          "analytical"
+        ],
+        "game": 69,
+        "story": 119
+      }
+    ]
+  },
+  {
+    "number": 1109,
+    "name": "Distinguish statistical significance from human importance",
+    "uses": [
+      {
+        "objective": "elbow.lottery",
+        "action": "Unseal both packets, exchange the three clips, and compare equally rare measured lifts against the two physical catches. One set clears its catch three times and the other never does.",
+        "styles": [
+          "strategist",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "analytical"
+        ],
+        "game": 69,
+        "story": 119
+      },
+      {
+        "objective": "elbow.curtain",
+        "action": "Carry the signed readings down to the sisters and try the selected sleeve on the staged arm. The two packets support the same tail count and give different advice about a usable cue.",
+        "styles": [
+          "performer",
+          "helper"
+        ],
+        "modes": [
+          "physical",
+          "social"
+        ],
+        "game": 22,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 1110,
+    "name": "Distinguish a numerical value from an ethical or aesthetic value",
+    "uses": [
+      {
+        "objective": "elbow.curtain",
+        "action": "Inspect the old cast instruction and the repairs Vee made after Pip began working from a chair. Choose which sister gives the entrance and which evidence the audience sees. Neither audience value is settled by the measurements.",
+        "styles": [
+          "performer",
+          "companion"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "reflective"
+        ],
+        "game": 271,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 1116,
+    "name": "Ask what normal means to the speaker",
+    "uses": [
+      {
+        "objective": "elbow.fitting",
+        "action": "Pull the same twenty-centimetre sleeve over the winter and summer troupes. Put the two movable joints where a performer needs them and inspect the uncovered hands before sending the pattern on.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "physical",
+          "spatial",
+          "analytical"
+        ],
+        "game": 195,
+        "story": 25
+      }
+    ]
+  },
+  {
+    "number": 1118,
+    "name": "Compare a written text with other readable cultural forms",
+    "uses": [
+      {
+        "objective": "elbow.curtain",
+        "action": "Turn the old printed sleeve and the darned cuff before facing one toward the audience. Return to the sisters and hear how the chosen entrance changes their account of the same bow.",
+        "styles": [
+          "explorer",
+          "performer"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "social"
+        ],
+        "game": 194,
+        "story": 112
+      }
+    ]
+  }
+]
