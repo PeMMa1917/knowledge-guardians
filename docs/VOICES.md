@@ -633,9 +633,32 @@ Bo punches things when he cannot put his feeling into words. He offers the Guard
 
 William Bland can lend the Guardian a copy edge or help trace the surviving stone. Alfred Lucas offers both his crossed-out verbs and a clear reading. Louis Braille works alongside Rix on the street’s own locator strip. William Wyatt Gill has a named place on the collecting slip, while the concert printer has to keep the unknown maker’s line separate. The guest remembers the printing block that actually reached the reading hall. [Historical voices and the receiving-room scene](../src/content/almanacPrinters.ts)
 
-### The first cup
+## The first cup
 
-- **Cen Aster** makes a living from lettering signs and selling cocoa. The grooves left from a price she cut as a girl keep affecting who approaches her cart. She notices feet, hands, lettering depth and the parts of faces she can see across the counter. She wants an honest living and misses people who leave before speaking. When her former prompter taps for help, Cen remembers the return cue.
-- **Kit Oriel** can hear a loose wheel nut through the shop floor. Once a theatre prompter, she knows the cost of an audience missing an entrance. A worn step puts her last night at the theatre in a different light. She uses jokes to keep a crew moving and checks a physical reference when her instruments disagree.
-- **Amos Tversky** handles the individual folds and keeps their writers’ permission attached. His questions take shape in the way he sets spoons on a fulcrum or unties a bundle. He lends the Guardian two individual accounts which complicate the average for one crew.
-- **Daniel Kahneman** brings his ferry-ticket interest in framing to a four-scoop kitchen. He will put his own second ticket back in the draw, move his chair, or sit with a stranger long enough to let her explain her interest in a cup.
+### Cen Aster (`cup-cen`)
+
+- **Believes** A price on the board should let a stranger decide whether to join the line.
+- **Worries** The grooves from a price she cut as a girl are still turning people away before she can ask them why.
+- **Speaks** Reads hands, feet and the bits of faces visible across her counter. She knows the difference between a shallow cut and a letter that will keep catching the light.
+- **Why** Cocoa and sign lettering pay her rent. A former prompter taught her the cue for returning to the stage. Cen still answers it.
+
+### Kit Oriel (`cup-kit`)
+
+- **Believes** A good piece of stagecraft lets the person who missed the first cue make the next entrance.
+- **Worries** The cocoa cart will roll away while someone is still standing on the sunken step.
+- **Speaks** Can hear a loose wheel nut through the floor. She makes a joke while she gets her hands underneath the cart, then checks a physical reference.
+- **Why** Her final night as a theatre prompter ended on a worn step. An audience that misses an entrance cannot tell who was ready to come on.
+
+### Amos Tversky (`cup-tversky`)
+
+- **Believes** An unusual offer is worth keeping beside the group’s average.
+- **Worries** Unfolding someone’s note for an audience will detach their reason and their permission from the number.
+- **Speaks** Sets two spoons on a fulcrum or leaves a bundle tied long enough for the player to see the consequences.
+- **Why** His work on judgement gives this encounter its subject. In the cart story, two individuals have let him bring their reasons to another street.
+
+### Daniel Kahneman (`lantern-q233950`)
+
+- **Believes** Where a person first encounters a price can change the question they think they have been asked.
+- **Worries** His own place in the line may alter the comparison before the cart leaves the kitchen.
+- **Speaks** Offers his chair, returns a second ticket to the draw or listens while someone explains what a cup means to her.
+- **Why** His research on judgement and framing connects the earlier ferry-ticket instrument with the kitchen. Each stop gives him another chance to notice who is missing.
