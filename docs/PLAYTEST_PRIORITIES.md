@@ -22,6 +22,21 @@ Record the build, operating system, browser engine and version, input method, an
 Use the platform evidence to prepare the requested persona review after the game reaches readiness. Give every role its own observations, concerns, proposed changes and a replayable stress scenario. Keep proposed hidden humor optional and link it to a believable scene. Keep common fixes and disagreements visible, and identify the source of evidence for each view. Leave testimony from a specific community, institution or participant attributed to the people who actually supplied it.
 
 
+## Where the shorter visits lose breadth
+
+The story route has seven gaps under the 20-minute rule. The puzzler route has four under the 30-minute rule. The ranges below give the modeled minute at the **end** of a rolling window. Adjacent gaps are grouped by place. A classroom observer can use the landmarks even when a learner plays at a different pace.
+
+| Route and window end | What drops below target | What to watch in play |
+| --- | --- | --- |
+| Story, minutes 74–83, from the Weigh-House to Oskar’s maps | An optional theme throughout and the concept count from minute 76 to 78 | Let the player decide who gets the dry frame. Watch whether they notice whose route disappears when Oskar changes the map’s audience. |
+| Story, minutes 103–112, leaving Elsbet’s study | Concept and optional-theme breadth, with framework breadth also low from minute 108 | Ask the player to show another person how a keepsake changed their reading of the letter. Check whether they can distinguish the words Elsbet left from what the Guardian inferred. |
+| Story, minutes 132–134 and 137–139, and puzzler, minutes 207–212, after the Nile packet | The earlier story interval and the puzzler interval lack an optional theme. The later story interval is short of concepts. | Watch which slip a learner puts first and what Ise does with it. Ask who would need the second slip before acting on that first account. |
+| Puzzler, minutes 103–116, from the bell stair and easel to the lintel | An optional theme | Have one player leave Nell’s whole scene with a seller and another display it behind Bram’s crop. Later, ask each to identify who got to change what visitors saw. |
+| Puzzler, minutes 166–177, around the cellar letter | An optional theme | After the ballad and trade encounters, watch which source the player voluntarily takes back to the letter and whether it changes their reading. |
+| Puzzler, minutes 273–274, at the headland gauge | An optional theme | Return after the next bell. Ask the player to distinguish the instrument reading from the claim the quay can print about it. |
+
+These are proposed participant observations. The automated intervals can be reproduced with `node tools/audit-tok-floor.mjs --json`. [Timing rules](../tools/tok-floor.ts)
+
 ## Choices to watch in the next classroom playtest
 
 - Hand the same student the runner’s chart a week after they play the river story. Ask what else they would need before telling a family its warning was heard. Observe whether the student spontaneously distinguishes arrival of a signal from someone hearing it.
