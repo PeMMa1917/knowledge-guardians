@@ -96,3 +96,16 @@ it("today's challenge is one deal per day; the ghost replays your fastest run", 
   expect(ghostPairs(g, 10)).toBe(2);
   expect(decodeGhost(undefined)).toEqual([]);
 });
+
+describe('optional calendar streaks', () => {
+  it('counts active Monday weeks through New Year and ignores future activity', () => {
+    const a = days([['2026-12-27', 300, 0], ['2026-12-31', 0, 5], ['2027-01-01', 240, 0], ['2027-01-11', 0, 1]]);
+    expect(ledgerSums(a, at('2027-01-04')).weekStreak).toBe(2);
+    expect(ledgerSums(a, at('2027-01-11')).weekStreak).toBe(1);
+  });
+  it('gives an unfinished month time to be played and never counts two days twice', () => {
+    const a = days([['2026-11-04', 0, 1], ['2026-11-30', 300, 0], ['2026-12-31', 0, 1]]);
+    expect(ledgerSums(a, at('2027-01-31')).monthStreak).toBe(2);
+    expect(ledgerSums(a, at('2027-02-01')).monthStreak).toBe(0);
+  });
+});

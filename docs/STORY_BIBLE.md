@@ -423,6 +423,12 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 
 **Gaps to fill next:** Seal agents who remember the player in chapters 6 and 7, a weather or creature crossing in chapter 15, and a technology crossing that uses the Civic Machine itself.
 
+### The folded-wing post across Chapters 1–15
+
+Someone has pressed a bird’s footprint into Ise’s wax. Unfolding one wing allows a historical voice to ask for help. The playable moment belongs to the person who has to act. A child waits under Gārgī’s loose ceiling. A water user working between shifts needs another keeper to vouch for her when Elinor Ostrom’s repair seals arrive. A player can change the first fold before a receiving keeper handles it. At the receiving post the keeper can reconsider how they share what arrived. At home the reply and the other half of the watermark stay discoverable.
+
+The post links people through the Archive. Its pairings cross historical periods as part of the fantasy. For example, the lamp can make a tree appear inside Ibn al-Haytham's room and make the light disappear for one of Wang Zhenyi's observers. Keeping the separate testimonies unlocks their shared watermark. A narrow, sourced factual note is accessible under each seal, including on later visits. The historical conversations and their proposed meetings belong to the fictional plot. [Cases](../src/content/ink-post-letters.json) · [Pairs](../src/content/ink-post-watermarks.json)
+
 ## 16. The 150 story elements
 
 Mika's list of 150 story elements is adapted to this game in [STORY_ELEMENTS.md](STORY_ELEMENTS.md), with a mark for each (in the game, partly, planned). Check it when you plan new content.

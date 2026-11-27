@@ -1,3 +1,4 @@
+import { mlaCitation } from './mla';
 import research from '../content/encyclopedia.json';
 import { historicalEncounters, isHistoricalBiography } from './historicalEncounters';
 import type { CampaignState, CharacterRecord, ContentPack, EvidenceCard, ExhibitRecord } from './types';
@@ -128,4 +129,10 @@ export function isEncyclopediaURL(url: string, kind: EncyclopediaLink['kind']): 
     return path.startsWith('/wiki/') && path.length > '/wiki/'.length && !address.search
       && !/^\/wiki\/(?:Special|File|Category|Template|Talk|User|Help):/i.test(path);
   } catch { return false; }
+}
+
+/** Article leads for people the player met or read about. A search page supplies no article citation. */
+export function personArticleCitation(link: EncyclopediaLink) {
+  if (link.kind !== 'article' || link.entity !== 'person' || !isEncyclopediaURL(link.url, link.kind)) return;
+  return mlaCitation({ url: link.url, mla: { kind: 'page', title: link.title, container: 'Wikipedia' } });
 }

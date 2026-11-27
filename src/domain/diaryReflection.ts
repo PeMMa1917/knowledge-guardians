@@ -1,3 +1,4 @@
+import { inkDiaryQuestions } from './inkPost';
 import authored from '../content/journal-reflections.json';
 import type { AdventureDiary, DiaryEntry, DiaryNoteKind } from './types';
 
@@ -23,6 +24,8 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
+  const ink = inkDiaryQuestions(key);
+  if (ink) return ink;
   if (Object.hasOwn(questionsByEntry, key)) {
     const questions = questionsByEntry[key];
     // A student may already have answered the earlier general question on this quest.

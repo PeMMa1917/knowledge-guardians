@@ -46,6 +46,7 @@ import { FERRY_PACKING_ROOM } from './ferryPacking';
 import { WORK_SCHEDULE_MAPS } from './workSchedule';
 import { BEARING_ROOM, BEARING_RETURN_ROOM } from './bearingBay';
 import { JIG_SHOP_MAP } from './jigShop';
+import { inkPostAt } from './inkPost';
 import { earlierViewingAt } from './earlierViewing';
 import { publicationReturnsAt } from './publicationReturns';
 import { blueTailAt } from './blueTail';
@@ -195,6 +196,6 @@ const campaignMaps: Record<string, MapDef> = {
 };
 
 export const MAPS: Record<string, MapDef> = Object.fromEntries(Object.values(campaignMaps).map((map) => {
-  const returns = [...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id)];
+  const returns = [...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id), ...inkPostAt(map.id)];
   return [map.id, returns.length ? { ...map, interactables: [...map.interactables, ...returns] } : map];
 }));

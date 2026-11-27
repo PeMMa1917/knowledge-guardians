@@ -14,6 +14,7 @@ Play, engagement and enjoyable learning stay the main goal. Other views can stil
 
 | File | What it holds |
 | --- | --- |
+| [FOLDED_WING.md](FOLDED_WING.md) | Follow-up review of 140 historical correspondents, with 73 modeled perspectives, tested decisions and remaining concerns. |
 | [PERSONAS.md](PERSONAS.md) | Every persona: who they are, what they value, and their game-wide likes, concerns and solutions. |
 | [chapters/](chapters/) | One file per chapter. Each encounter has the persona notes that are specific to it, then the agreed fixes and the open disagreements. |
 | [CONSENSUS.md](CONSENSUS.md) | The agreed fixes, numbered `C-###`, with their status and where they are in the code. |

@@ -10,6 +10,8 @@ The script reads the whole content pack (`buildPack()`), so it also counts missi
 
 Measured on 26 November 2026, branch `claude/project-thread-xnvpyf` (from `feat/tok-gameplay-weave` at `dbc2aab`). 2,263 tests passed before the audit.
 
+The 27 November follow-up tested the added historical letters, both keeper responses, three browser engines and student writing in the Word and print paths. Its chapter table counts the new optional decisions available at each post. [Folded-wing review](FOLDED_WING.md)
+
 ## Play shape and reading load per chapter
 
 "Standard loop" means a mission whose steps both compare two things and leave a result for someone. "Play" means a step that names a game action (play, roll, race, dig, guess, rounds, music). A mission can count in more than one column.

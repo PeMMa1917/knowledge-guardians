@@ -101,3 +101,5 @@ Many games grew from TOK lessons in Mika's lesson folder (decision X-017 in [doc
 ## Historical sources
 
 The historical sources for the real objects in the game are in [docs/SOURCES.md](docs/SOURCES.md) and in the chapter content. The game uses original pixel drawings and transforms collection images released under verified open licences. The Polar Store’s exact accession illustrations are original drawings based on catalogue descriptions. Per-image rights, catalogue and download links are in [the asset manifest](public/assets/credits.json).
+
+The sealed paper bird, open reply and four small instrument diagrams are original pixel illustrations drawn in code for this project. The four-beat bench plays synthesized notes through the existing instrument. [Folded-wing sprites](src/ui/illustrations.ts) · [Playable diagrams](src/ui/inkTrialDiagram.ts)

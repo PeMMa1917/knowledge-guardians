@@ -9,7 +9,7 @@ export interface CitationPart {
 const MONTHS = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'];
 
 /** Format the MLA entries used by the press for a catalogue page or online artwork. */
-export function mlaCitation(source: SourceRecord): CitationPart[] {
+export function mlaCitation(source: Pick<SourceRecord, 'url' | 'mla'> & { accessed?: string }): CitationPart[] {
   const work = source.mla;
   if (!work) return [];
   const parts: CitationPart[] = [];
@@ -20,7 +20,7 @@ export function mlaCitation(source: SourceRecord): CitationPart[] {
   if (work.repository) parts.push({ text: `${work.repository.trimEnd().replace(/\.$/, '')}. ` });
   parts.push({ text: work.container, cite: true }, { text: ', ' },
     { text: source.url.replace(/^https:\/\//, ''), href: source.url }, { text: '.' });
-  if (work.showAccessDate) {
+  if (work.showAccessDate && source.accessed) {
     const [year, month, day] = source.accessed.split('-').map(Number);
     parts.push({ text: ` Accessed ${day} ${MONTHS[month - 1]} ${year}.` });
   }

@@ -258,7 +258,65 @@
    "id": "thinker.khaldun.after",
    "speaker": "ibn-khaldun",
    "historicalLabel": "reconstruction",
-   "text": "When a report surprises you, do not ask first who wrote it. Ask whether it fits the world it describes."
+   "text": "When a report surprises you, do not ask first who wrote it. Ask whether it fits the world it describes.",
+   "options": [
+    {
+     "text": "Help me weigh the baker’s headcount",
+     "if": {
+      "not": {
+       "flagSet": "ink.q9294.fold"
+      }
+     },
+     "next": "ink.q9294"
+    },
+    {
+     "text": "Show what came home in the paper wing",
+     "if": {
+      "all": [
+       {
+        "flag": "ink.q9294.kept",
+        "eq": true
+       },
+       {
+        "flag": "ink.q9294.fold",
+        "eq": "first"
+       }
+      ]
+     },
+     "next": "thinker.khaldun.wing.first"
+    },
+    {
+     "text": "Show what came home in the paper wing",
+     "if": {
+      "all": [
+       {
+        "flag": "ink.q9294.kept",
+        "eq": true
+       },
+       {
+        "flag": "ink.q9294.fold",
+        "eq": "second"
+       }
+      ]
+     },
+     "next": "thinker.khaldun.wing.second"
+    },
+    {
+     "text": "Leave the scholar to the work."
+    }
+   ]
+  },
+  {
+   "id": "thinker.khaldun.wing.first",
+   "speaker": "ibn-khaldun",
+   "historicalLabel": "reconstruction",
+   "text": "Your stack of loaves filled our storeroom. The baker has given me the width of the road as well. I can now say which cart would have to pass through which wall for this count to hold."
+  },
+  {
+   "id": "thinker.khaldun.wing.second",
+   "speaker": "ibn-khaldun",
+   "historicalLabel": "reconstruction",
+   "text": "Five slips and the same cramped numeral! The baker has set one stool at the table for their common source. I am leaving the other four stools free for people who saw the carts."
   }
  ],
  "missions": [

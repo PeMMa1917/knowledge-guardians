@@ -199,6 +199,8 @@ import threadBend from './thread-bend.json';
 import sillBridge from './sill-bridge.json';
 import { underpanContent } from './underpan';
 import { firstClapContent } from './firstClap';
+import { installInkPost } from '../domain/inkPost';
+import encyclopedia from './encyclopedia.json';
 import { neighbourDialogues } from '../domain/neighbours';
 import { spareMoonContent } from './spareMoon';
 import publicVoices from './nexus-public-voices.json';
@@ -232,6 +234,7 @@ export function buildPack(): ContentPack {
       return questionWays ? { ...objective, questionWays } : objective;
     }),
   }));
+  installInkPost(content, new Map(encyclopedia.people.flatMap((article) => article.characters.map((id) => [id, article.title] as const))));
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);
