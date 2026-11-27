@@ -199,6 +199,38 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/content/two-replies.json`.
 
+### Chapter 11: replies with named views (X-008, X-012)
+
+**What.** After the drought choice, Omi argues from consequences and Sena from duty, and each names the view.
+
+**Why.** The chapter 11 audit ([CH11.md](chapters/CH11.md)), and Mika's decision that characters argue from each view and say its name.
+
+**Where.** `src/content/two-replies.json`.
+
+### Chapter 12: replies (X-008)
+
+**What.** Ade and Lin now disagree after the mobile-library window rule (follow the count, reserve a window in each district, or split evenly).
+
+**Why.** The chapter 12 audit ([CH12.md](chapters/CH12.md)).
+
+**Where.** `src/content/two-replies.json`.
+
+### Chapter 13: replies (X-008)
+
+**What.** Wren and Eren now disagree after the sign wording on the walk and after the choice of where the approved excerpt goes.
+
+**Why.** The chapter 13 audit ([CH13.md](chapters/CH13.md)).
+
+**Where.** `src/content/two-replies.json`.
+
+### Chapters 14 and 15: replies (X-008)
+
+**What.** Ivo and Joss now disagree after the route choice for the eight crates. Hale and Essi disagree after the choice between a rail comparison every shift and a dated repair record.
+
+**Why.** The audits of chapters 14 and 15 ([CH14.md](chapters/CH14.md), [CH15.md](chapters/CH15.md)). Every chapter now has two-reply moments.
+
+**Where.** `src/content/two-replies.json`.
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.
@@ -209,5 +241,5 @@ These decisions need more content work. They will be done chapter by chapter, wi
 | X-006 Indigenous knowledge | Weave knowledge from separate Indigenous peoples into the chapters, from sources made by the peoples themselves. |
 | X-012, X-015 Thinkers in the world | Add thinkers as people the student meets in the chapters, each with a quest. The advisor call and the Views tab are ready for them. |
 | X-007 More trials | Add more restartable trial sections in later chapters, each with its own idea. |
-| X-008 More replies | Add two-reply moments in chapters 2 to 15. |
+| X-008 More replies | Every chapter now has two-reply moments (59 in all). Add more where a chapter has other key choices. |
 | X-001 Leaderboard in the hosted build | Connect the opt-in leaderboard to the hosted build when accounts exist. |

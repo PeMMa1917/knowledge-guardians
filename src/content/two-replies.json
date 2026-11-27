@@ -786,6 +786,276 @@
      "text": "Honest, and slow. The first person at the next bell waits at the scale, and the person behind them leaves. Every check has a cost, and the queue pays it."
     }
    ]
+  },
+  {
+   "id": "water.response.fields",
+   "after": {
+    "flag": "water.response",
+    "eq": "fields"
+   },
+   "heading": "Two views on seven buckets for the rows",
+   "replies": [
+    {
+     "speaker": "water-keeper",
+     "text": "The rows feed the most people for the longest time. Seven there and three below does the most good with ten buckets. Call it a consequences view if you like: I count what each bucket does."
+    },
+    {
+     "speaker": "water-scribe",
+     "text": "The lower crew agreed to the drought plan on a promise of a fair share. Three is not fair, whatever it grows. I keep to duty here: a promise made in the agreement holds even when breaking it would do more good."
+    }
+   ]
+  },
+  {
+   "id": "water.response.split",
+   "after": {
+    "flag": "water.response",
+    "eq": "split"
+   },
+   "heading": "Two views on five and five",
+   "replies": [
+    {
+     "speaker": "water-scribe",
+     "text": "An even split keeps the agreement's spirit: both crews carry the drought together, and both can see that they did. People keep a rule they can see is fair."
+    },
+    {
+     "speaker": "water-keeper",
+     "text": "Even is not the same as fair. The rows need six to stay alive; at five, a bucket of field work dies and the crew loses the whole round. A split that looks fair can waste water both sides needed."
+    }
+   ]
+  },
+  {
+   "id": "water.response.channel",
+   "after": {
+    "flag": "water.response",
+    "eq": "channel"
+   },
+   "heading": "Two views on a reserve in the lower channel",
+   "replies": [
+    {
+     "speaker": "water-keeper",
+     "text": "A reserve of two is care for the next bell: if the intake slips, someone still has water. The weir should never run at the edge."
+    },
+    {
+     "speaker": "water-scribe",
+     "text": "A reserve kept below is water the rows do not get today, decided by the people closest to the channel. A reserve is a choice about who waits. The register should say whose fields paid for it."
+    }
+   ]
+  },
+  {
+   "id": "civic.response.rank",
+   "after": {
+    "flag": "civic.response",
+    "eq": "rank"
+   },
+   "heading": "Two views on following the larger queue",
+   "replies": [
+    {
+     "speaker": "civic-clerk",
+     "text": "Sixteen people waited at Canal Walk, fifteen at North Steps. A rule that follows the count is a rule anyone can check. Nobody has to trust my judgement, only the tally."
+    },
+    {
+     "speaker": "civic-operator",
+     "text": "Sixteen against fifteen, and North Steps gets nothing. The count only holds people who could reach a desk in the workday. A rule can be easy to check and still shut out the people the count never saw."
+    }
+   ]
+  },
+  {
+   "id": "civic.response.reserve",
+   "after": {
+    "flag": "civic.response",
+    "eq": "reserve"
+   },
+   "heading": "Two views on a window in each district",
+   "replies": [
+    {
+     "speaker": "civic-operator",
+     "text": "One window each means every street is on the first schedule. Then the count decides the rest. Access first, numbers second."
+    },
+    {
+     "speaker": "civic-clerk",
+     "text": "A reserved window is a judgement we made, not one the count made. Next year another district asks for one, and we have no rule to say no, only how we felt this time."
+    }
+   ]
+  },
+  {
+   "id": "civic.response.even",
+   "after": {
+    "flag": "civic.response",
+    "eq": "even"
+   },
+   "heading": "Two views on two windows each",
+   "replies": [
+    {
+     "speaker": "civic-clerk",
+     "text": "Two and two is simple and the same for everyone. A rule people can predict is a rule people can plan around."
+    },
+    {
+     "speaker": "civic-operator",
+     "text": "The same for everyone is not the same as fair to everyone. North Steps has a stair and no ramp, and two windows there serve fewer people than two windows on the flat. Equal shares of a service are not equal access to it."
+    }
+   ]
+  },
+  {
+   "id": "voices.response.paired",
+   "after": {
+    "flag": "voices.response",
+    "eq": "paired"
+   },
+   "heading": "Two views on the carriers' wording",
+   "replies": [
+    {
+     "speaker": "voices-steward",
+     "text": "The crews' words carry how they remember the walk. Put them beside a plain direction, and a newcomer learns the way and the people who made it."
+    },
+    {
+     "speaker": "voices-clerk",
+     "text": "Two lines on one sign, and a carrier with full hands reads neither. A remembered walk is precious. It still belongs in the archive with its date, not on a sign people must act on in a hurry."
+    }
+   ]
+  },
+  {
+   "id": "voices.response.guide",
+   "after": {
+    "flag": "voices.response",
+    "eq": "guide"
+   },
+   "heading": "Two views on the short route guide",
+   "replies": [
+    {
+     "speaker": "voices-clerk",
+     "text": "A short line gets a carrier to the lamp. The full account stays in the archive, dated and signed, for anyone who wants it."
+    },
+    {
+     "speaker": "voices-steward",
+     "text": "A short line in the archive's voice, and the crews' words disappear from the walk they made. In ten years, people will think the archive named the path."
+    }
+   ]
+  },
+  {
+   "id": "voices.quote.queue",
+   "after": {
+    "flag": "voices.quote.layout",
+    "eq": "queue"
+   },
+   "heading": "Two views on the excerpt by the queue",
+   "replies": [
+    {
+     "speaker": "voices-steward",
+     "text": "People wait at the desk with nothing to do. An excerpt there meets them where they are, and some will come back to hear the whole account."
+    },
+    {
+     "speaker": "voices-clerk",
+     "text": "An excerpt away from its record is a quote without its permission and its date. Read in a queue, it becomes the whole story for most people."
+    }
+   ]
+  },
+  {
+   "id": "voices.quote.desk",
+   "after": {
+    "flag": "voices.quote.layout",
+    "eq": "desk"
+   },
+   "heading": "Two views on the excerpt at the reading slot",
+   "replies": [
+    {
+     "speaker": "voices-clerk",
+     "text": "At the slot, the excerpt sits with its record and its permission. Anyone who reads it can check where it came from."
+    },
+    {
+     "speaker": "voices-steward",
+     "text": "And only the people who reach the slot will read it. A voice kept safely where few people go is safe, and mostly unheard."
+    }
+   ]
+  },
+  {
+   "id": "council.response.rail",
+   "after": {
+    "flag": "council.response",
+    "eq": "rail"
+   },
+   "heading": "Two views on a rail comparison every shift",
+   "replies": [
+    {
+     "speaker": "council-reader",
+     "text": "Check the watch against the rail at the start of every shift, and nobody has to trust a seal they did not see made. Each crew knows for itself."
+    },
+    {
+     "speaker": "council-keeper",
+     "text": "Every shift, someone stands at the rail before loading, and the carriers wait. A test that must be repeated by everyone, every time, stops being a test people share. Knowledge we cannot pass on is knowledge we keep relearning."
+    }
+   ]
+  },
+  {
+   "id": "council.response.record",
+   "after": {
+    "flag": "council.response",
+    "eq": "record"
+   },
+   "heading": "Two views on the dated repair record",
+   "replies": [
+    {
+     "speaker": "council-keeper",
+     "text": "A dated seal lets one crew rely on a test another crew carried out, as long as it says when it runs out. That is how most knowledge works: we trust a check we did not make, with its limits written on it."
+    },
+    {
+     "speaker": "council-reader",
+     "text": "A seal is only as good as the people who read the date. By the third shift, nobody looks. A watch that only agrees with its own record is the problem this hall was built to fix."
+    }
+   ]
+  },
+  {
+   "id": "island.response.ridge",
+   "after": {
+    "flag": "island.response",
+    "eq": "ridge"
+   },
+   "heading": "Two views on the ridge cart",
+   "replies": [
+    {
+     "speaker": "island-planner",
+     "text": "The trial gave us a last arrival and a crossing count for the ridge. It is the route we measured, so it is the route we can plan on."
+    },
+    {
+     "speaker": "island-dockhand",
+     "text": "We measured one dry trial with a fresh crew. A loaded cart on the ridge in the afternoon is a different route with the same name. A plan built on one run is a hope with numbers on it."
+    }
+   ]
+  },
+  {
+   "id": "island.response.ferry",
+   "after": {
+    "flag": "island.response",
+    "eq": "ferry"
+   },
+   "heading": "Two views on the ferry from the upper landing",
+   "replies": [
+    {
+     "speaker": "island-dockhand",
+     "text": "The ferry carries all eight crates at once, and my crew knows that water. When a route has worked for years, that is evidence too."
+    },
+    {
+     "speaker": "island-planner",
+     "text": "Years of good crossings, and none of them with eight crates on a fair day. Experience is evidence for the conditions it came from. The trial is the only number we have for this load."
+    }
+   ]
+  },
+  {
+   "id": "island.response.marsh",
+   "after": {
+    "flag": "island.response",
+    "eq": "marsh"
+   },
+   "heading": "Two views on the marsh path",
+   "replies": [
+    {
+     "speaker": "island-planner",
+     "text": "The first pair reaches the rail crew soonest by the marsh, so the rail crew can start. Getting work moving early buys time for every later problem."
+    },
+    {
+     "speaker": "island-dockhand",
+     "text": "Soonest for the first pair. The marsh path was never in the trial. If it floods at the turn of the tide, the first pair arrives wet and late, and the plan has nothing to say about it."
+    }
+   ]
   }
  ]
 }

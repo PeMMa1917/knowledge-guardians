@@ -12,10 +12,10 @@ Each item has the decision, then **How to build it**: notes that keep the decisi
 | X-002 | Exam practice | A "training gym" outside the story. No exam practice in the story. | done |
 | X-003 | Timers | Optional timed replay of a field game after the first play. | done |
 | X-004 | Romance | No romance. | rule |
-| X-005 | Difficult real history | Include, as objects, testimony and serious play, with content notes and links to reliable sources. | planned, chapter by chapter |
+| X-005 | Difficult real history | Include, as objects, testimony and serious play, with content notes and links to reliable sources. | started (content note before human remains in chapter 3) |
 | X-006 | Indigenous knowledge | Include and weave through. Verify with reliable sources. | planned, chapter by chapter |
 | X-007 | Failure states | Story consequences, trial sections that restart, and fail-and-retry in mini-games. | started (Proving Floor, Corvan's trust) |
-| X-008 | Model answers | After a choice, two characters who disagree each give a strong reply. | started (8 moments in chapter 1) |
+| X-008 | Model answers | After a choice, two characters who disagree each give a strong reply. | done (59 moments, in every chapter) |
 | X-009 | Translations | English only for now. | rule |
 | X-010 | Volume | Keep all missions. No single main path that leads to a win. | rule |
 | X-011 | Lumen when stuck | A setting, on by default. Lumen offers, the student clicks to hear it. | done |

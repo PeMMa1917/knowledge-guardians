@@ -46,7 +46,11 @@ Play, engagement and enjoyable learning stay the main goal. Other views can stil
 | 8 The Cartographers’ Sea | [CH08](chapters/CH08.md) | 4 two-reply moments; Tupaia's chart planned |
 | 9 The House of Performance | [CH09](chapters/CH09.md) | 4 two-reply moments |
 | 10 The Market of Measures | [CH10](chapters/CH10.md) | 4 two-reply moments |
-| 11 to 15 | next | next |
+| 11 The Water Commons | [CH11](chapters/CH11.md) | 3 two-reply moments with named ethical views |
+| 12 The Civic Machine | [CH12](chapters/CH12.md) | 3 two-reply moments |
+| 13 The Archive of Voices | [CH13](chapters/CH13.md) | 4 two-reply moments |
+| 14 The Island of Models | [CH14](chapters/CH14.md) | 3 two-reply moments |
+| 15 The Council of Inquiry | [CH15](chapters/CH15.md) | 2 two-reply moments |
 
 ## How to use this audit (for developers)
 
