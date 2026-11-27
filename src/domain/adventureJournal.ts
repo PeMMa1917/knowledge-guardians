@@ -1,6 +1,8 @@
 import { bakeryDiary } from './bakeryTrays';
 import { mothPerchDiary } from './mothPerches';
+import { billDiary, billWeave } from './ferryBill';
 import { mouldDiary } from './orchardMould';
+import { ferryDiary, ferryWeave } from './pictureFerry';
 import { chestDiary, beatDiary, chestWeave, performanceWeave, craftWeave } from './plumChest';
 import { shadowDiary, supperWeave } from './supperShadow';
 import {loanWeave} from './fieldLoan';
@@ -148,6 +150,8 @@ function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignS
   if (cmd.type === 'MoveBakeryTray') return bakeryDiary(next, cmd);
   if (cmd.type==='TryMothPerch') return mothPerchDiary(cmd);
   if (cmd.type==='DrawOrchardStylus') return mouldDiary(cmd);
+  if (cmd.type === 'HangFerryPrint' || cmd.type === 'OpenFerryBill' || cmd.type === 'HearFerryBill') return billDiary(previous, next, cmd);
+  if (cmd.type === 'TurnPictureFerry') return ferryDiary(previous, next, cmd);
   if (cmd.type==='WorkPlumChest') return chestDiary(previous,cmd);
   if (cmd.type==='StrikeOrchardBeat') return beatDiary(previous,cmd);
   if (cmd.type==='CastSupperShadow') return shadowDiary(cmd);
@@ -547,6 +551,8 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if(family==='field-loan'){const stop=loanStops.find(id=>event.key.startsWith('field-loan:'+id+':')); if(stop)return diaryTopics(loanWeave(stop));}
     if (family === 'tally-tray') { const objective=objectivesById.get('emberford.tally.weigh')?.objective; if(objective?.weave) return diaryTopics(objective.weave); }
     if (family==='moth-perch') { const moth=pack.lorelings.find(r=>r.id==='glimmermoth'); if(moth)return diaryTopics(moth.weave); }
+    if (family === 'picture-bill') return diaryTopics(billWeave);
+    if (family === 'picture-ferry') return diaryTopics(ferryWeave);
     if (family === 'plum') {
       if (event.ref === 'plum.drum') return diaryTopics(performanceWeave);
       if (event.ref === 'plum.mould') return diaryTopics(craftWeave);

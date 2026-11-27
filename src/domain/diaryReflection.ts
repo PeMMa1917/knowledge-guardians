@@ -37,6 +37,11 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
     companion: 'What might my companion notice in a room I have already visited?',
   };
   if(key.startsWith('moth-perch:'))return {watch:'Which part of the moth’s visit did I actually see?',next:'Which one thing could I change at this same perch to check my hunch?'};
+  if (key.startsWith('picture-bill:')) return {part:'What did each object let the audience discover that the other two could not?', order:'How did the first image or question affect the way I understood the final act?'};
+  if (key.startsWith('picture-ferry:')) return {
+    window: 'What could a passenger at the other window see that I missed?',
+    record: 'Which part of my account could I check against the print or its collection ticket?',
+  };
   if (key.startsWith('plum:mould:')) return {join:'Which notch let me tell a pair from a ridge on this draw?',hand:'What changed when I adjusted my hand and kept the wood the same?'};
   if (key.startsWith('plum:bar:')) return {room:'Which player could feel my last bar, and who could hear it?',wait:'What might I miss if I decided in advance how long an answer should take?'};
   if (key.startsWith('plum:press:') || key.startsWith('plum:slide:')) return {contact:'What could I learn from the part that moved or sprang back?',neighbour:'Which neighbouring face would I trace next?'};

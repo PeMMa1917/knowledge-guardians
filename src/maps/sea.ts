@@ -1,3 +1,4 @@
+import { pictureFerryDoor, ferryShoreBench } from './pictureFerry';
 import { SHORE_REPLY_DOOR } from './shoreReply';
 /** Fictional island charts, drawn for the Seagrass Steps and Shoal Shelf surveys. */
 import type { Condition } from '../domain/types';
@@ -50,6 +51,7 @@ export const SEA_HARBOUR: MapDef = {
     { stamp: 'flowers-small', x: 8, y: 3 }, { stamp: 'flowers-white', x: 24, y: 3 },
   ],
   interactables: [
+    pictureFerryDoor, ferryShoreBench,
     { id: 'field-fog', kind: 'fieldgame', game: 'fog', x: 16, y: 3, w: 1, h: 1, label: 'Renna’s fog chart (The Fog Chart)', art: 'old-sign' },
     ...SEA_PAPER_LANDING,
     ...THREAD_BEND_HARBOUR,

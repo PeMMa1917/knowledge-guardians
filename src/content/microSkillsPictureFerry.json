@@ -1,0 +1,44 @@
+[
+  {
+    "number": 114,
+    "name": "Trace how access to the same account changes with a person’s position",
+    "uses": [
+      {
+        "objective": "picture-ferry.crossed",
+        "action": "Keep one paper sleeve in the lamp. Look from the rail and the low bunk. Reverse the sleeve and return to both windows before you decide who has time to see the folded leaf.",
+        "styles": ["explorer", "performer"],
+        "modes": ["spatial", "social", "reflective"],
+        "game": 209,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 176,
+    "name": "Put a particular object to work in the sharing of knowledge",
+    "uses": [
+      {
+        "objective": "picture-ferry.returned",
+        "action": "Fit a named museum print, send its visible detail, collection record or limit across the quay, and meet the passenger. You can open the unseen leaf with them or hear the account the first two windows made possible.",
+        "styles": ["helper", "maker"],
+        "modes": ["visual", "reading", "social"],
+        "game": 22,
+        "story": 119
+      }
+    ]
+  },
+  {
+    "number": 179,
+    "name": "Give three different objects complementary jobs in a single exhibition",
+    "uses": [
+      {
+        "objective": "picture-ferry.encore",
+        "action": "Rehearse prints at the picture, source and afterword pegs. Move or replace a leaf to make three distinct contributions, send an order to the gallery and hear how all three parts work together.",
+        "styles": ["collector", "performer"],
+        "modes": ["spatial", "linguistic", "analytical"],
+        "game": 144,
+        "story": 144
+      }
+    ]
+  }
+]

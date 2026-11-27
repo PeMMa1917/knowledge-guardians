@@ -1,3 +1,5 @@
+import { ferryBillLine, ferryBillAudience } from './ferryBill';
+import { printWheel, printPassenger } from './pictureFerry';
 import { orchardMould } from './orchardMould';
 import { plumChest, plumDrum } from './plumChest';
 import { supperShadow } from './supperShadow';
@@ -67,6 +69,10 @@ interface Panel<T> {
 export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
   ...stops.map((stop):[string,Panel<GamePanel>]=>["field-loan."+stop,{title:loanStops[stop].title,open:(c,sound)=>fieldLoanPanel(c,stop,sound)}]),
   ["orchard-mould", { title: "Fen’s two practice tabs", open: orchardMould }],
+  ["picture-ferry-bill", { title: "Three pegs for the evening show", open: ferryBillLine }],
+  ["picture-ferry-gallery", { title: "The evening house", open: ferryBillAudience }],
+  ["picture-ferry-wheel", { title: "The two-window lamp", open: printWheel }],
+  ["picture-ferry-passenger", { title: "The returning passenger", open: printPassenger }],
   ["plum-chest", { title: "The orchard chest", open: plumChest }],
   ["plum-drum", { title: "The youngest drummer", open: plumDrum }],
   ["supper-shadow", { title: "Supper for a Shadow", open: supperShadow }],

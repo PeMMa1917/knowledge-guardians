@@ -1,4 +1,5 @@
 import { mothVisit } from './mothPerchReturns';
+import { ferryPlaybills } from './pictureFerry';
 import { plumStair, roadPerformance } from './plumLoft';
 import { FIRST_CLAP_GALLERY, FIRST_CLAP_REHEARSAL } from './firstClap';
 /** Fictional theatre with separate backstage and audience sightlines. */
@@ -184,6 +185,7 @@ export const STAGE_GALLERY = room({
     { stamp: 'plant-tall', x: 3, y: 14 }, { stamp: 'plant-tall', x: 23, y: 14 },
   ],
   interactables: [
+    ...ferryPlaybills,
     ...FIRST_CLAP_GALLERY,
     ...SCRIPT_RAIL_GALLERY,
     ...STAGE_GALLERY_BACKBILL,

@@ -1,6 +1,8 @@
 import { changeTray, type BakeryCommand } from './bakeryTrays';
 import { tryMothPerch, inviteMoth, type PerchCommand, type WelcomeCommand } from './mothPerches';
+import { billEffects, type BillCommand } from './ferryBill';
 import { mouldEffects, type MouldCommand } from './orchardMould';
+import { ferryEffects, type FerryCommand } from './pictureFerry';
 import { chestEffects, beatEffects, type ChestCommand, type BeatCommand } from './plumChest';
 import { shadowEffects, type ShadowCommand } from './supperShadow';
 import {workFieldLoan,type FieldLoanCommand} from './fieldLoan';
@@ -89,6 +91,7 @@ import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand
 
 export type Command =
   | ChestCommand | BeatCommand | MouldCommand | PerchCommand | WelcomeCommand | BakeryCommand
+  | BillCommand | FerryCommand
   | ShadowCommand
   | FieldLoanCommand
   | BirdCommand
@@ -625,6 +628,12 @@ export class Engine {
         }
         case 'WorkFieldLoan':
           s=apply(workFieldLoan(this.pack,s,cmd),s,out);break;
+        case 'HangFerryPrint': case 'OpenFerryBill': case 'HearFerryBill':
+          s=apply(billEffects(s,cmd),s,out);
+          break;
+        case 'TurnPictureFerry':
+          s = apply(ferryEffects(s, cmd), s, out);
+          break;
         case 'WorkPlumChest':
           s = apply(chestEffects(s, cmd), s, out); break;
         case 'DrawOrchardStylus':

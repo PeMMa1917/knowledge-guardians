@@ -173,6 +173,27 @@ const proofRows = [
     dimensions:['micro:90','area:HUM','concept:evidence','concept:truth','framework:scope','framework:ethics','subject:psychology'],elements:['game:267','story:114'],
   },
   {
+    objective:'picture-ferry.crossed',map:'sea.picture-ferry',target:'picture-ferry-lamp',
+    source:'tests/picture-ferry.test.ts',anchor:'requires both windows at the chosen setting',
+    action:'Turn and reverse the three-sided sleeve, stand at both windows and decide whether the boat sails before a passenger can come aboard for the third leaf.',
+    reasoning:[{mode:'causal',basis:'With the rail face fixed, reversing the sleeve exchanges the unlit face and the bunk view. It changes what a passenger there can report.'}],
+    dimensions:['micro:114','concept:perspective','concept:power','framework:perspectives','area:ART'],elements:['game:209','story:95'],
+  },
+  {
+    objective:'picture-ferry.returned',map:'sea.harbour',target:'picture-ferry-passenger',
+    source:'tests/picture-ferry.test.ts',anchor:'takes every signed print ashore',
+    action:'Bring the particular print to the passenger. Open the folded leaf to supply the part they missed or listen to what they took from the lit window. The medical collection case separates an inscribed identity from an account of a person’s character.',
+    reasoning:[{mode:'pragmatic',basis:'Sharing the folded leaf can help a passenger trace a source. Listening first retains their view of the original crossing.'}],
+    dimensions:['micro:176','area:HIS','area:ART','concept:responsibility','framework:ethics'],elements:['game:22','story:119'],
+  },
+  {
+    objective:'picture-ferry.encore',map:'stage.gallery',target:'picture-ferry-evening-show',
+    source:'tests/picture-ferry.test.ts',anchor:'resumes halfway through the performance',
+    action:'Use a picture, source ticket and open question from three particular objects. Hear the three pages at the gallery in the order sent by the Guardian. Giving the opening to the bunk makes a question frame the following picture and credit.',
+    reasoning:[{mode:'analogical',basis:'Different objects can illuminate the same exhibition question by contributing a visible detail, a documented context or a limit, while the signed sheets keep their separate sources.'}],
+    dimensions:['micro:179','area:ART','concept:interpretation','framework:methods-and-tools','subject:theatre'],elements:['game:144','story:144'],
+  },
+  {
     objective:'plum.hand',map:'stage.plum-loft',target:'plum-mould',
     source:'tests/plum-orchard.test.ts',anchor:"expect(d.done('plum.hand')).toBe(true)",
     action:'Draw Fen’s seven-notch stylus across the pair and ridge. A working grip masks the middle hollow on worn wood. Change only the pressure and find the hollow with a light draw. A heavy draw crosses it even on fresh wood.',
