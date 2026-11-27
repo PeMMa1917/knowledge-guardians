@@ -1503,6 +1503,24 @@
      "text": "The ferry crew's ten years are worth more than one of our soundings. A chart that leaves out what people know by living it is not more careful. It is just smaller."
     }
    ]
+  },
+  {
+   "id": "water.festival",
+   "after": {
+    "flag": "field.festival.done",
+    "eq": true
+   },
+   "heading": "Two views on Tess's question",
+   "replies": [
+    {
+     "speaker": "water-keeper",
+     "text": "Odette is the only one nothing moved. On a council, I want one Odette. Someone has to say the rule out loud, or the rest of us bend it a little every year."
+    },
+    {
+     "speaker": "water-scribe",
+     "text": "One Odette, yes. But Lio was the only one who asked what Tess and Maren would be to each other next week. A council that forgets that writes rules nobody keeps."
+    }
+   ]
   }
  ]
 }

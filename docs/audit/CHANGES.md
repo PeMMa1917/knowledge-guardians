@@ -389,6 +389,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/fogChart.ts`, `src/content/fog-chart.json`, `src/ui/fogPanel.ts`, `src/maps/sea.ts`, `tests/fog-chart.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
+### The Festival Dilemma, chapter 11's second game (C-004, X-012)
+
+**What.** On the lantern wall by the Lower Channel, Tess asks for help: she saw her cousin Maren loosen a rival's boat line before a race that Maren won, and Maren's family needs the prize. Four friends give four pieces of advice. Tess has three new facts (the rival says a cracked oar cost him the race; Maren's family will have to sell their boat; Maren asks Tess to keep quiet). The player tries each fact on each friend, and a small table shows whose advice changes and whose holds. A friend who has heard every fact says what moves them. After hearing out two friends, the player advises Tess, in a friend's way or in their own words. Omi and Sena then disagree (X-008) about what a council needs.
+
+**Why.** The second lesson folder pairs the ranking story with friends who each argue one ethical view. The facts are built so that no two friends are moved by the same facts, so the player can find each way of judging by testing it, not by being told. The friends never name their views; the journal does (consequences, duty, virtue, care), as decision X-012 asks. No advice is marked right (OPEN-001).
+
+**Where.** `src/domain/festivalDilemma.ts`, `src/content/festival-dilemma.json`, `src/ui/festivalPanel.ts`, `src/maps/water.ts`, `tests/festival-dilemma.test.ts` (it checks that the facts tell the friends apart), credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
 ### The 30-minute audit and the new games
 
 **What.** The audit test (`tests/learning.test.ts`) measures minutes of play in which a 30-minute window lacks some TOK concept or framework part. The new optional games add minutes inside windows that were already open, so the measure grew with each game. The test now checks the original bound on the path without the new games, and allows each new game to lengthen the gaps by at most three times its own minutes.

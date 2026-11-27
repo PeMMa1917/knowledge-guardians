@@ -1,0 +1,122 @@
+{
+ "problem": "Festival night on the Lower Channel. Your friend Tess finds you by the lanterns. 'My cousin Maren won the boat race today. Before the start, I saw her loosen the line on Arlo's boat. He started late and came fourth. The prize is a year of free mill time, and Maren's family needs it badly. The judges have not asked me anything. What do I do?' Four of Tess's friends are sitting on the wall, and every one of them has an opinion.",
+ "friends": [
+  {
+   "id": "fen",
+   "name": "Fen",
+   "advice": "'Think about what happens next. If you tell, Maren's family loses the mill time and Arlo gets it. If you don't, Arlo loses out and nobody knows. Weigh who is hurt, and how much.'"
+  },
+  {
+   "id": "odette",
+   "name": "Odette",
+   "advice": "'The race has rules, and every boat agreed to them. You saw her break one. You don't get to decide that this rule doesn't count because you like her.'"
+  },
+  {
+   "id": "tobin",
+   "name": "Tobin",
+   "advice": "'Forget the rules for a moment. What kind of person do you want to be when you look back on tonight? Brave, honest, kind? Do the thing that person would do.'"
+  },
+  {
+   "id": "lio",
+   "name": "Lio",
+   "advice": "'She's your cousin. Talk to her first, tonight, before anyone else. You two have to live with each other long after the judges go home.'"
+  }
+ ],
+ "facts": [
+  {
+   "id": "unharmed",
+   "text": "Arlo says he came fourth because his oar cracked, not because of the line."
+  },
+  {
+   "id": "mill",
+   "text": "Without the mill time, Maren's family will have to sell their boat."
+  },
+  {
+   "id": "secret",
+   "text": "Maren finds Tess and asks her to promise to say nothing."
+  }
+ ],
+ "responses": {
+  "fen.unharmed": {
+   "moves": true,
+   "line": "Fen sits up. 'That changes a lot. If the line cost Arlo nothing, the harm of telling is bigger than the harm she did.'"
+  },
+  "fen.mill": {
+   "moves": true,
+   "line": "Fen winces. 'A whole family losing their boat is heavy. I would weigh that against one race, and it weighs more.'"
+  },
+  "fen.secret": {
+   "moves": false,
+   "line": "Fen shrugs. 'A promise she asked for does not change who gets hurt. I still count the same things.'"
+  },
+  "odette.unharmed": {
+   "moves": false,
+   "line": "Odette shakes her head. 'Maybe the line did not cost him the race. She still broke the rule when she touched it.'"
+  },
+  "odette.mill": {
+   "moves": false,
+   "line": "'I am sorry for them. Truly. But a rule that bends for people who need to win is not a rule.'"
+  },
+  "odette.secret": {
+   "moves": false,
+   "line": "'Now she is asking Tess to break a rule too. That makes it worse, not better.'"
+  },
+  "tobin.unharmed": {
+   "moves": false,
+   "line": "Tobin thinks. 'It matters less than you would think. The question is still who Tess wants to be.'"
+  },
+  "tobin.mill": {
+   "moves": false,
+   "line": "Tobin is quiet a moment. 'That is sad, and Tess should help them if she can. But a kind person is still an honest one. It does not change the question.'"
+  },
+  "tobin.secret": {
+   "moves": true,
+   "line": "Tobin frowns. 'That is the real test. Keeping a cheating secret for someone, again and again, changes you. I would say no to that promise.'"
+  },
+  "lio.unharmed": {
+   "moves": false,
+   "line": "Lio waves a hand. 'Arlo's oar is not the point. The point is what this does between Tess and Maren.'"
+  },
+  "lio.mill": {
+   "moves": true,
+   "line": "'Then Maren is scared, not greedy. Tess should go to her as family first, and maybe they tell the judges together.'"
+  },
+  "lio.secret": {
+   "moves": true,
+   "line": "Lio is quiet. 'If Maren asks Tess to carry this alone, she is not treating her like family. That changes what Tess owes her.'"
+  }
+ },
+ "summaries": {
+  "fen": "Fen: 'I keep asking who gets hurt and how much. Change that, and you change my mind.'",
+  "odette": "Odette: 'Nothing you told me changed what she did. That is the point. Some things are wrong even when they turn out fine.'",
+  "tobin": "Tobin: 'What moves me is what each choice would make of Tess. Not the result, not the rule.'",
+  "lio": "Lio: 'I listen for what it does between the two of them. People first, then rules.'"
+ },
+ "choices": [
+  {
+   "id": "fen",
+   "text": "Tell Tess to weigh who gets hurt",
+   "reply": "Tess nods slowly. 'So I need to know more first. Who to ask about the oar, and about the mill.' She looks tired. 'Fen makes it sound like sums.'"
+  },
+  {
+   "id": "odette",
+   "text": "Tell Tess to go to the judges",
+   "reply": "Tess takes a breath. 'Clear. Hard, but clear.' Then, quieter: 'Odette will not be the one at Maren's table on Sunday.'"
+  },
+  {
+   "id": "tobin",
+   "text": "Tell Tess to do what the person she wants to be would do",
+   "reply": "Tess laughs, a little helplessly. 'That is the right question. It is also the one I cannot answer tonight.'"
+  },
+  {
+   "id": "lio",
+   "text": "Tell Tess to talk to Maren first",
+   "reply": "Tess looks over at the lanterns, where Maren is sitting. 'Yes. I can do that one first, whatever comes after.'"
+  },
+  {
+   "id": "mix",
+   "text": "Tell Tess what you would do, in your own words",
+   "reply": "Tess listens to all of it. 'You took a bit from each of them,' she says. 'Fen, Odette, Tobin, Lio. Maybe that is what everyone really does.'"
+  }
+ ]
+}
