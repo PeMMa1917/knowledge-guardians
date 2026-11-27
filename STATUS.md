@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 27 November • A birthday with four dates
+
+Rix Pottle promised the street an anniversary parade. Jori remembers her workshop by more than the day it closed. Four earned holdings can open a music room and bring a historical visitor to the composing desk. A six-beat invitation can reach a listener on the stair, a watcher through glass, both or neither. A guest who returns to the City of Copies remembers the block that actually went to press, even if the Guardian changed the desk after dispatch. [The musicians’ instruments](src/domain/streetAlmanac.ts) · [The four source records](docs/SOURCES.md#the-street-musicians-invitations)
+
 ## 27 November • The ring below the floorboards
 
 The Harvard Brooks and Michigan Bertrand volumes, two individually catalogued papyri and nine further holdings can travel from their original quests to the market and theatre. The address can travel ahead while the Guardian keeps the object. Bew and Pella sign the exact mark that arrived. A second receiving room opens the family stair where three freight charges turn out to have more than one cause. The source record, the reader’s contribution and the public consequences travel into the diary. [Playtest scope](docs/audit/NIGHT_REGISTER.md#the-counterweight-room)

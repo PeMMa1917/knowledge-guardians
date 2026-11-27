@@ -1,5 +1,8 @@
 {
   "people": [
+    {"wikidata":"Q7636853","title":"William Bland","characters":["almanac-bland"],"biographies":[]},
+    {"wikidata":"Q2835292","title":"Alfred Lucas (chemist)","characters":["almanac-lucas"],"biographies":[]},
+    {"wikidata":"Q1505647","title":"William Wyatt Gill","characters":["almanac-gill"],"biographies":[]},
     {"wikidata":"Q62530","title":"Maria Sibylla Merian","characters":["petal-merian"],"biographies":[]},
     {
       "wikidata": "Q93182",

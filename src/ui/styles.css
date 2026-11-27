@@ -1334,3 +1334,19 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .trail-choices[hidden] { display:none; }
 .trail-choices label { display:grid; gap:.2rem; }
 .trail-choices select { min-width:0; max-width:100%; }
+.street-almanac .street-content { display: grid; gap: .7rem; min-width: 0; }
+.street-almanac p, .street-almanac blockquote { margin: 0; }
+.street-almanac figure { display: flex; align-items: center; gap: .8rem; margin: 0; }
+.street-almanac img { width: min(6rem, 24%); height: auto; image-rendering: pixelated; }
+.street-score { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr)); gap: .5rem; }
+.street-score > div { display: grid; gap: .25rem; }
+.street-score select { max-width: 100%; }
+.street-almanac [aria-pressed="true"] { outline: 2px solid currentColor; outline-offset: -4px; }
+.street-playhead:not(:empty) { padding-block: .5rem; font-weight: bold; }
+.street-notation { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:.22rem; padding:0; margin:.3rem 0; list-style:none; }
+.street-notation li { display:grid; grid-template-rows:1rem .8rem 1.2rem; gap:.22rem; justify-items:center; padding:.35rem 0; background:#302c3d; border:1px solid #797380; border-radius:.25rem; }
+.street-notation li[aria-current] { outline:3px solid #f3dab2; outline-offset:-2px; }
+.street-lamp { width:.55rem; height:.7rem; border:2px solid #9c9192; border-top:3px solid #9c9192; }
+.street-lamp.lit { background:#f0d583; border-color:#f0d583; }
+.street-drum { width:1rem; height:.38rem; border:1px dotted #b9a298; align-self:end; }
+.street-drum.struck { background:#b98063; border-style:solid; box-shadow:0 -.14rem #e4c197; }

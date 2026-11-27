@@ -35,6 +35,20 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
   if(key.startsWith('trail-thread:')) return key.endsWith(':voice')
     ? {voice:'Whose account do I want to hear on my return, and what might they have missed?'}
     : {object:'Which detail would I look for next time, and what might it help me reconsider?'};
+  if (key.startsWith('street-almanac:')) {
+    const [, object, act] = key.split(':');
+    if (act === 'turn') {
+      const gap: Record<string,string> = {
+        stone:'What could someone have checked before the slab broke that I can only ask about now?',
+        report:'Whose action can I date from the handwriting on this card?',
+        volume:'Which part of a reading experience can travel in a scan?',
+        shell:'Whose name can be traced on the gift receipt, and whose name would I still need to ask about?'
+      };
+      return {holding:gap[object] ?? 'What event does the date on this leaf belong to?'};
+    }
+    if(act==='send'||act==='perform') return {date:'Whose anniversary did my caption make public?',access:'What could someone at the far window change about the next performance?'};
+    return {cue:'Which beats reached just one listener?',revision:'If I moved one cue, who would notice?'};
+  }
   if (key.startsWith('courier:')) {
     const [shape, action, place, , opening] = key.slice('courier:'.length).split('.');
     const record = courierCases.find(c => c.shape === shape);

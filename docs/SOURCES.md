@@ -805,3 +805,13 @@ The collection room uses the existing sources and original earning quests for th
 The Garjját drawing indicates the paper mount and inventory slip. The binak drawing describes basket form. The vessel drawing follows the museum display. The public catalogue supplies the named makers and dates. The original diagrams omit protected clan designs and artists’ compositions.
 
 Wasserstein, Ronald L., and Nicole A. Lazar. “The ASA Statement on p-Values: Context, Process, and Purpose.” *The American Statistician*, vol. 70, no. 2, 2016, pp. 129–33. The two puppet-hinge packets use original measurements, a stated randomization procedure and an explicit catch height. The statement supports the distinction between an analysis decision, a small p-value and a useful effect. [Journal article](https://doi.org/10.1080/00031305.2016.1154108)
+
+### The street musicians’ invitations
+
+The National Museum identifies the surviving Singapore Stone as a gallery highlight. The paper linked from the existing Nile story distinguishes the 1843 destruction, Bland’s attempt at a facsimile and the fragment’s return in 1919. Neither the early drawing nor the present fragment supplies missing characters. [National Museum of Singapore](https://www.nationalmuseum.nhb.gov.sg/whats-on/exhibition/singapore-history-gallery) · [Yap, Jiao, and Perono Cacciafoco](https://www.mdpi.com/2409-9252/3/3/19)
+
+The first page of Alfred Lucas’s report bears revisions and asks which process produced disorder in the tomb. The date of the card belongs to the report. February 1923 is separate from the ancient disturbance. [Griffith Institute, TAA i.1.memo.3](https://tutankhamun.griffith.ox.ac.uk/miscellaneous/notes-robberies-taa-i1memo1-15verso/taa-i1memo3)
+
+The M. C. Migel Library facsimile of Braille’s 1829 work carries call number HV1669 .B73 1829. The digitisation metadata gives 5 March 2020 for the scan and describes a photocopied volume. The game’s raised practice marker belongs to the musicians. [Library copy](https://archive.org/details/procdpourcrirele00loui) · [Digitisation metadata](https://archive.org/metadata/procdpourcrirele00loui)
+
+The British Museum records a triton-shell trumpet from Mangaia, collected by William Wyatt Gill and given by Augustus Wollaston Franks as part of a group on 18 November 1876. The source for the instrument’s use is a collector’s account. The makers of the invitation compose their own street music and leave the unrecorded maker unnamed. [British Museum, Oc.9941](https://www.britishmuseum.org/collection/object/E_Oc-9941)

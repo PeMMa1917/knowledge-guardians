@@ -1,3 +1,4 @@
+import {installStreetAlmanac} from './streetAlmanac';
 import {installCourierLift} from './courierLift';
 import {giantContent,duchamp} from './giantSleeve';
 import {petalContent} from './petalGlasshouse';
@@ -277,6 +278,7 @@ export function buildPack(): ContentPack {
   addSeaBirdWatch(content);
   addCanoeProjection(content);
   installCourierLift(content);
+  installStreetAlmanac(content);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);

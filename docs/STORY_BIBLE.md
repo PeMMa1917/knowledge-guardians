@@ -508,3 +508,7 @@ The company can pull its own handcart or take the old harness apart for seats. O
 
 
 On Tova’s picture ferry two moons belong to two family memories. Neris can hold a connection for the person already travelling or make room for the one left standing. The cook knows how the deck looked. Bo knows the bunk ceiling. The actual sleeve keeps the part the other window saw, even when the first passenger has already gone ashore. [The night we had two moons](../src/content/pictureFerry.ts)
+
+### The date above the door
+
+Rix can afford one heading for the parade. Jori remembers the newspaper dating her workshop by the day it closed. At the collection room the Guardian can make the street an invitation with a drum, a lantern, both or six beats of silence. One neighbour hears from the stair. Another sees through a window. The invitation changes who starts the music and which piece of a holding’s history the street agrees to remember. Four historical visitors bring editorial choices of their own. The block on the composing desk can change while its first impression is already in another person’s hands. [Composition and receiving rooms](../src/maps/streetAlmanac.ts)

@@ -1,5 +1,6 @@
 /** Audit documented intersections of one authored action, one learning dimension and one RPG element. */
 import { originActions } from './origin-action-evidence.mjs';
+import {almanacProofs} from './street-almanac-evidence.mjs';
 import { elbowProofs } from './giant-sleeve-evidence.mjs';
 import { coatProofs } from './coat-action-evidence.mjs';
 import { readFile } from 'node:fs/promises';
@@ -145,6 +146,7 @@ const copiesEvidenceInvestigations = [
 const proofRows = [
   ...originActions,
   ...elbowProofs,
+  ...almanacProofs,
   {
     objective:'petal.windows',map:'forest.petal-house',target:'petal-window',source:'tests/petal-window.test.ts',
     anchor:'separates the two identical daylight crops, the UV detector and the animal’s own landing',

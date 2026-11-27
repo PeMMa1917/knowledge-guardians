@@ -614,3 +614,21 @@ Bo punches things when he cannot put his feeling into words. He offers the Guard
 - **Worries** Wanting the bow might sound like wanting her sister to disappear. She has already picked a street for an ice shop and has told almost nobody.
 - **Speaks** She offers a taste from the edge of the plum-ice bucket before she explains herself. Look at the left-handed repairs on the cuff to see an account she has kept with a needle.
 - **Why** The ribbon she tied below the catch lets a short lift spill a dozen paper moons. Either sister can give the cue. The visiting Marcel Duchamp also offers a new gesture to a player carrying the earned Stoppages. [The loft and its callbacks](../src/content/giantSleeve.ts)
+
+## People at the striped awning
+
+### Rix Pottle (`almanac-rix`)
+
+- **Believes** A procession can get a housebound neighbour into the street for an evening.
+- **Worries** Someone will ask which anniversary he printed before he knows whose date it was.
+- **Speaks** Folds and taps while he talks. He can print four different invitations if someone will let him hear the reason for each.
+- **Why** The invitation business pays for a second pair of hands in the band. His own hands shake in front of an audience. Holding the glass steady for Jori gives him another part he can play.
+
+### Jori Wicks (`almanac-jori`)
+
+- **Believes** The person behind a closed window gets a say in how a street celebration starts.
+- **Worries** The last day at her glazier’s shop will become the only day anyone remembers.
+- **Speaks** Points out what a lamp looks like from the other side of a pane. Uses her hands to make room for someone else to lead.
+- **Why** People outside can see the blue street dancer she made. Until Rix takes the frame, the maker has only seen the burn on the back.
+
+William Bland can lend the Guardian a copy edge or help trace the surviving stone. Alfred Lucas offers both his crossed-out verbs and a clear reading. Louis Braille works alongside Rix on the street’s own locator strip. William Wyatt Gill has a named place on the collecting slip, while the concert printer has to keep the unknown maker’s line separate. The guest remembers the printing block that actually reached the reading hall. [Historical voices and the receiving-room scene](../src/content/almanacPrinters.ts)

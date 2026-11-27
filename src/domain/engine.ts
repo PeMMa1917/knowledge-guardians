@@ -1,4 +1,5 @@
 import {threadKey,threadFaceKey,trailMarkers,type ThreadCommand} from './trailThread';
+import {almanacEffects,type AlmanacCommand} from './streetAlmanac';
 import {courierEffects,type CourierCommand} from './courierLift';
 import {elbowEffects,type ElbowCommand} from './giantSleeve';
 import {wagerEffects,type WagerCommand} from './petalWager';
@@ -98,7 +99,7 @@ import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand
 
 export type Command =
   | ChestCommand | BeatCommand | MouldCommand | PerchCommand | WelcomeCommand | BakeryCommand
-  | ElbowCommand | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | CourierCommand | BillCommand | FerryCommand
+  | ElbowCommand | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | AlmanacCommand | CourierCommand | BillCommand | FerryCommand
   | ShadowCommand
   | FieldLoanCommand
   | BirdCommand
@@ -652,6 +653,8 @@ export class Engine {
         case 'HangFerryPrint': case 'OpenFerryBill': case 'HearFerryBill':
           s=apply(billEffects(s,cmd),s,out);
           break;
+        case 'ArrangeStreetAlmanac':
+          s = apply(almanacEffects(s, cmd), s, out); break;
         case 'WorkCourierLift':
           s = apply(courierEffects(s, cmd), s, out); break;
         case 'WorkGiantSleeve':

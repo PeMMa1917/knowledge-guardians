@@ -1,3 +1,4 @@
+import {streetAlmanacPanel} from './streetAlmanac';
 import {giantPanel} from './giantSleeve';
 import {petalRibbons} from './petalRibbons';
 import {petalGears} from './petalGears';
@@ -71,6 +72,8 @@ interface Panel<T> {
 }
 
 export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
+  ['street-compose',{title:'A birthday with four dates',open:(c,sound)=>streetAlmanacPanel(c,sound,false)}],
+  ['street-evening',{title:'The parade at the window',open:(c,sound)=>streetAlmanacPanel(c,sound,true)}],
   ['giant-fitting',{title:'The giant who borrowed my elbow',open:(c,sound)=>giantPanel(c,sound,'fitting')}],
   ['giant-lottery',{title:'The fitter’s two sealed packets',open:(c,sound)=>giantPanel(c,sound,'lottery')}],
   ['giant-curtain',{title:'The hand inside the curtain',open:(c,sound)=>giantPanel(c,sound,'curtain')}],
