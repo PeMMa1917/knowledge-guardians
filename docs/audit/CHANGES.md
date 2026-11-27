@@ -291,6 +291,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/content/thinker-khaldun.json`, `src/content/thinkers.json`, `src/maps/nile.ts`, `src/content/two-replies.json`, `tests/thinker-quests.test.ts`.
 
+### The Sketch Relay, chapter 7's signature game (C-004)
+
+**What.** At the first signal tower on the Lending Hall Landing, Printer Lark asks the player to send "A storm is coming from the west. Bring the boats in." down the river by drawings only. The player chooses five marks. Two copyists each leave out the least bold mark, and the harbour reads what is left. With no key, the bold arrow is read the wrong way ("Go east!") and two crews sail into the storm. Lending Keeper Mina then offers keys to paint on every tower (what an arrow means, a bold rope sign, or lightning as "bring the boats in"). With one key, part of the message still fails. With two keys, including the arrow key, all of it can get through. At the end the player says what carried the meaning, and Lark or Mina replies. Lark and Mina then disagree about keys (X-008): a key helps the people who learned it and makes an outside for everyone else.
+
+**Why.** The second lesson folder has a "draw a concept for others to guess" activity. The audit moved this game to the City of Copies, where it fits the chapter's question of what a copy keeps and loses. The game shows that bold is not the same as clear, and that meaning depends on a shared agreement that no copy shows.
+
+**Where.** `src/domain/sketchRelay.ts`, `src/content/sketch-relay.json`, `src/ui/relayPanel.ts`, `src/maps/copies.ts`, `tests/sketch-relay.test.ts` (it checks that no single key is enough, and that two keys can be), credits in `src/domain/ideaCredits.ts` and CREDITS.md. The 30-minute audit bound for the puzzler and cozy paths grows by the measured minutes of the two new optional games.
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.

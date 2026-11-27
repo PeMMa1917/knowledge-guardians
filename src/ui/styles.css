@@ -1123,3 +1123,8 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .assay-sample { border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 8px; padding: 0.4rem 0.7rem; background: rgba(120, 140, 170, 0.12); }
 .assay-sample h3 { margin: 0.2rem 0; font-size: 1rem; }
 .assay-reading { font-weight: 600; }
+
+/* The Sketch Relay (chapter 7). */
+.relay-marks { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0; }
+.relay-marks button[aria-pressed="true"] { outline: 2px solid #f2c94c; }
+.relay-stages, .relay-fates { margin: 0.4rem 0 0.4rem 1.2rem; }

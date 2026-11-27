@@ -1251,6 +1251,24 @@
      "text": "I copy for a living, and I tell you: the copyist who added that stroke may have been told to. A bigger army pleased someone. Ask who wanted the number, not only whether it fits."
     }
    ]
+  },
+  {
+   "id": "copies.relay",
+   "after": {
+    "flag": "field.relay.done",
+    "eq": true
+   },
+   "heading": "Two views on the tower keys",
+   "replies": [
+    {
+     "speaker": "copies-presskeeper",
+     "text": "Keys on the wall are a press's oldest trick. Agree the marks once, then copy freely. The towers will read the same storm the same way for a hundred years."
+    },
+    {
+     "speaker": "copies-lendingkeeper",
+     "text": "For a hundred years, to the people who learned the key. A traveller from upriver will see an arrow and read it their own way. Every key makes an inside and an outside."
+    }
+   ]
   }
  ]
 }
