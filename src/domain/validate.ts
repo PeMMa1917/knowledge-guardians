@@ -1,3 +1,4 @@
+import { touringInstrument } from '../content/originTours';
 import {isHistoricalBiography} from './historicalEncounters';
 /**
  * Runtime validation of content packs and saved campaign state.
@@ -519,7 +520,7 @@ export function validateContent(pack: ContentPack): string[] {
   function openable(o: string | undefined, where: string): void {
     if (!o) return;
     const [kind, id] = o.split(':');
-    const ok = kind === 'forge' || kind === 'assay'
+    const ok = (kind === 'fieldgame' && !!touringInstrument(id)) || kind === 'forge' || kind === 'assay'
       || (kind === 'showdown' && pack.showdowns.some((x) => x.id === id))
       || (kind === 'label' && kits.has(id))
       || (kind === 'lock' && pack.locks.some((x) => x.id === id))

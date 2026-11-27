@@ -1,3 +1,4 @@
+import tourUses from './origin-tour-skill-uses.json';
 import newGuests from './lamplight-voices.json';
 import instruments from './lamplight-instruments.json';
 import lampSkills from './lamplight-skills.json';
@@ -23,7 +24,7 @@ export type MicroSkillUse = {
 export type MicroSkillEvidence = { number: number; name: string; uses: MicroSkillUse[] };
 
 const sources = import.meta.glob<MicroSkillEvidence[]>('./microSkills*.json', { eager: true, import: 'default' });
-const postUses = new Map<number, MicroSkillUse[]>();
+const postUses = new Map<number, MicroSkillUse[]>((tourUses as { number: number; uses: MicroSkillUse[] }[]).map(row => [row.number, row.uses.slice()]));
 for (const letter of letters) {
   const uses = postUses.get(letter.practice) ?? [];
   uses.push({ objective: 'ink.' + letter.id + '.landed', action: letter.title + ' · '

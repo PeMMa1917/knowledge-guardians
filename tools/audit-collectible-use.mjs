@@ -401,7 +401,7 @@ try {
         'No mapped use in this scan: ' + gaps.map((row) => row.id).join(', '),
       );
   }
-  if (process.argv.includes('--require-all') && gaps.length)
+  if (process.argv.includes('--require-all') && (gaps.length || unknown.length || sameRoom.length))
     process.exitCode = 1;
 } finally {
   await server.close();

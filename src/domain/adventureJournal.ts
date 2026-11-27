@@ -1,6 +1,7 @@
 import {wagerDiary} from './petalWager';
 import {gearDiary} from './petalGears';
 import {petalDiary, flowerWeave} from './petalWindow';
+import { originInstrumentDiary, originWeave, origins } from './originInstruments';
 import { bakeryDiary } from './bakeryTrays';
 import { mothPerchDiary } from './mothPerches';
 import { billDiary, billWeave } from './ferryBill';
@@ -150,6 +151,7 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
+  if (cmd.type === 'WorkOriginInstrument') return originInstrumentDiary(next, cmd);
   if (cmd.type === 'MoveBakeryTray') return bakeryDiary(next, cmd);
   if (cmd.type==='TryMothPerch') return mothPerchDiary(cmd);
   if (cmd.type==='DrawOrchardStylus') return mouldDiary(cmd);
@@ -557,6 +559,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if(family==='field-loan'){const stop=loanStops.find(id=>event.key.startsWith('field-loan:'+id+':')); if(stop)return diaryTopics(loanWeave(stop));}
     if (family === 'tally-tray') { const objective=objectivesById.get('emberford.tally.weigh')?.objective; if(objective?.weave) return diaryTopics(objective.weave); }
     if (family==='moth-perch') { const moth=pack.lorelings.find(r=>r.id==='glimmermoth'); if(moth)return diaryTopics(moth.weave); }
+    if (family === 'origin-work') { const o = origins.find(x => x === event.ref); if (o) return diaryTopics(originWeave[o]); }
     if (family === 'picture-bill') return diaryTopics(billWeave);
     if (family === 'petal-window'||family === 'petal-gear'||family === 'petal-ribbon') return diaryTopics(flowerWeave);
     if (family === 'picture-ferry') return diaryTopics(ferryWeave);

@@ -170,7 +170,12 @@
     "flagSet": "sd.corvan.outcome"
    },
    "where": "Emberford: the Showdown.",
-   "use": "Corvan may want to talk about his old sign."
+   "use": "Corvan remembers the old sign. Teodora can fit the splinter over the claim on her fourth stool in the theatre foyer.",
+   "equip": {
+    "method": "Hold an old public claim beside its new wording.",
+    "hint": "Bring the splinter to the singer setting out the fourth stool in the theatre foyer.",
+    "art": "old-sign"
+   }
   },
   {
    "id": "rumour-shard",

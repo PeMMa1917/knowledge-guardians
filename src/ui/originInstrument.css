@@ -1,0 +1,70 @@
+.origin-instrument {
+  display: grid;
+  gap: 0.55rem;
+  min-width: 0;
+}
+.origin-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+  gap: 0.5rem;
+}
+.origin-controls fieldset {
+  min-inline-size: 0;
+  border: 1px solid currentColor;
+  border-radius: 0.4rem;
+  padding: 0.45rem;
+}
+.origin-controls button {
+  margin: 0.2rem;
+  white-space: normal;
+}
+.origin-instrument button[aria-pressed='true'] {
+  outline: 2px solid currentColor;
+  outline-offset: -3px;
+  font-weight: bold;
+}
+.origin-result {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.origin-result li {
+  padding: 0.35rem 0.6rem;
+  border: 1px solid currentColor;
+  overflow-wrap: anywhere;
+}
+.origin-archive .origin-result li {
+  border-top: 0.4rem double currentColor;
+}
+.origin-traveller .origin-result li {
+  border-inline-start: 0.4rem solid currentColor;
+}
+.origin-harbour .origin-result li {
+  border-radius: 0.8rem 0.8rem 1.3rem 1.3rem;
+}
+.origin-workshop .origin-result li {
+  border-bottom: 0.4rem double currentColor;
+  font-variant-numeric: tabular-nums;
+}
+.origin-singer .origin-result {
+  counter-reset: beat;
+}
+.origin-singer .origin-result li {
+  counter-increment: beat;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.origin-singer .origin-result li::before {
+  content: counter(beat) ' · ';
+  font-weight: bold;
+}
+
+.origin-pixel-stage {
+  width: min(100%, 32rem);
+  height: auto;
+  image-rendering: pixelated;
+  border: 1px solid currentColor;
+  justify-self: center;
+}

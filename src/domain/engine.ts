@@ -1,6 +1,7 @@
 import {wagerEffects,type WagerCommand} from './petalWager';
 import {gearEffects,type GearCommand} from './petalGears';
 import {petalEffects,type PetalCommand} from './petalWindow';
+import { instrumentEffects, type InstrumentCommand } from './originInstruments';
 import { changeTray, type BakeryCommand } from './bakeryTrays';
 import { tryMothPerch, inviteMoth, type PerchCommand, type WelcomeCommand } from './mothPerches';
 import { billEffects, type BillCommand } from './ferryBill';
@@ -94,7 +95,7 @@ import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand
 
 export type Command =
   | ChestCommand | BeatCommand | MouldCommand | PerchCommand | WelcomeCommand | BakeryCommand
-  | WagerCommand | GearCommand | PetalCommand | BillCommand | FerryCommand
+  | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | BillCommand | FerryCommand
   | ShadowCommand
   | FieldLoanCommand
   | BirdCommand
@@ -640,6 +641,8 @@ export class Engine {
           s=apply(gearEffects(s,cmd),s,out);break;
         case 'WorkPetalWindow':
           s=apply(petalEffects(s,cmd),s,out);break;
+        case 'WorkOriginInstrument':
+          s = apply(instrumentEffects(s, cmd), s, out); break;
         case 'TurnPictureFerry':
           s = apply(ferryEffects(s, cmd), s, out);
           break;

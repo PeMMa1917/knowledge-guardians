@@ -31,6 +31,14 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
+  if(key.startsWith('origin-work:')){
+    if(key.includes('.send.')||key.includes('.return.'))return {who:'Who gained a place in the work because of my choice?',cost:'Who still had to ask or wait?'};
+    if(key.startsWith('origin-work:archive'))return {lens:'What did an empty drawer tell the visitor? What did it leave open?'};
+    if(key.startsWith('origin-work:traveller'))return {lens:'Which person did my cord select, and at what moment?'};
+    if(key.startsWith('origin-work:harbour'))return {lens:'Which missing detail mattered most to the person at the far end?'};
+    if(key.startsWith('origin-work:workshop'))return {lens:'Which other comparison could change my account of the curled edge?'};
+    return {lens:'What could a listener hear about the fourth verse that the singer did not say aloud?'};
+  }
   if(key.startsWith('tally-tray:')) return {doors:'Which tray could I take to six separate doors?',measure:'What stays equal when I switch between two untouched trays?'};
   if (key.startsWith('moth-perch:home:')) return {
     place: 'What made me move our resting place or keep it here?',

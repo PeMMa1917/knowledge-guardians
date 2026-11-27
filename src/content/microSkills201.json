@@ -1952,6 +1952,20 @@
     "name": "Test what one service word allows different crews to do",
     "uses": [
       {
+        "objective": "origin-tour.traveller.pack",
+        "action": "Try two distinct readings of first at different clock stops. Specify who led the music, who left first and who returned before either of them.",
+        "styles": [
+          "strategist",
+          "explorer"
+        ],
+        "modes": [
+          "linguistic",
+          "spatial"
+        ],
+        "game": 206,
+        "story": 119
+      },
+      {
         "objective": "coast.clear.share",
         "action": "Check the menders’ tagged row and the lookout’s gauge before putting both uses of clear where the relevant crews can find them.",
         "styles": [

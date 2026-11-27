@@ -1,4 +1,6 @@
 import {petalContent} from './petalGlasshouse';
+import { homecomingDialogue } from './originHomecomings';
+import { installOriginTours } from './originTours';
 import { bakeryContent } from './bakeryTrays';
 import { mothReturnContent } from './mothPerchReturns';
 import { pictureFerryContent, ferryLocalGreetings } from './pictureFerry';
@@ -260,6 +262,8 @@ export function buildPack(): ContentPack {
   ferryLocalGreetings(content);
   const glasshouseNaturalist = content.characters.find(c=>c.id==='forest-naturalist');
   if(glasshouseNaturalist) glasshouseNaturalist.localGreeting={...glasshouseNaturalist.localGreeting,'forest.petal-house':'petal.elian'};
+  installOriginTours(content);
+  homecomingDialogue(content);
   addCoatMissions(content);
   addMakerMissions(content);
   addMillMissions(content);

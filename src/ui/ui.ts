@@ -1,3 +1,6 @@
+import { touringInstrument } from '../content/originTours';
+import { scores as originScores } from '../domain/originInstruments';
+import { originInstrument } from './originInstrument';
 import { mothReturns } from '../content/mothPerchReturns';
 import { bakeryPanel } from './bakeryTrays';
 import { mothPerchPanel } from './mothPerches';
@@ -1423,6 +1426,7 @@ export class UI implements UIApi {
     else if (kind === 'forge') this.openForge();
     else if (kind === 'assay') this.openAssay('AE-ASSAY');
     else if (kind === 'lock') this.openLock(id);
+    else if (kind === 'fieldgame') this.openFieldGame(id);
     if (this.modal === previous) this.closeModal(false);
   }
 
@@ -3592,6 +3596,13 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    const tour = touringInstrument(id);
+    if (tour) {
+      const view = originInstrument(ctx.controller, tour.o, tour.away, key => this.sfx(key), () => ctx.settings.sfxVolume);
+      this.openModal('bench-panel wide', originScores[tour.o].title, this.closeBtn(), view.panel);
+      this.releasePanelActivity = view.dispose;
+      return;
+    }
     this.openingFieldGame = id;
     try { this.mountFieldGame(id); } finally { this.openingFieldGame = undefined; }
   }

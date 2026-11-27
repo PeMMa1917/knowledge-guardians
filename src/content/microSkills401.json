@@ -903,6 +903,21 @@
     "name": "Change a performance without rewriting its line",
     "uses": [
       {
+        "objective": "origin-tour.singer.tour",
+        "action": "Return to the foyer with the four-stool score. Lead with the late singer or one shared beat of quiet. The next audience hears a different entrance from the same remembered material.",
+        "styles": [
+          "performer",
+          "helper"
+        ],
+        "modes": [
+          "auditory",
+          "reflective",
+          "social"
+        ],
+        "game": 247,
+        "story": 144
+      },
+      {
         "objective": "nexus.facing.compare",
         "action": "Hold the four beats and the spoken direction steady while turning the performer. Follow the landing mark that changes.",
         "styles": [

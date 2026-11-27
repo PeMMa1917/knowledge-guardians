@@ -1,4 +1,5 @@
 import {petalHouse} from './petalHouse';
+import { withOriginVisitor } from './originTours';
 import { pictureFerryRoom } from './pictureFerry';
 import { plumLoft } from './plumLoft';
 import { SUPPER_MAP } from './supperRoom';
@@ -217,5 +218,6 @@ for (const room of nightRooms) {
 
 export const MAPS: Record<string, MapDef> = Object.fromEntries(Object.values(campaignMaps).map((map) => {
   const returns = [...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id), ...inkPostAt(map.id), ...nightDoor(map.id), ...foldingFlockAt(map.id), ...fieldLoansAt(map.id)];
-  return [map.id, withTownHearing(withWhistleWatch(returns.length ? { ...map, interactables: [...map.interactables, ...returns] } : map))];
+  const room = returns.length ? { ...map, interactables: [...map.interactables, ...returns] } : map;
+  return [map.id, withOriginVisitor(withTownHearing(withWhistleWatch(room)))];
 }));
