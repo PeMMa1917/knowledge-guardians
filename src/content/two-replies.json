@@ -1091,6 +1091,23 @@
      "text": "The tests are good, but look who wrote the ledgers. Keepers. The crews who lost their water never wrote a line in them. A test of the past is only as wide as the people the past let speak."
     }
    ]
+  },
+  {
+   "id": "coast.haytham.judged",
+   "after": {
+    "flagSet": "thinker.haytham.judged"
+   },
+   "heading": "Two views on changing the station manual",
+   "replies": [
+    {
+     "speaker": "coast-forecaster",
+     "text": "Then the manual gets a note in the margin today, with the ring readings beside it. A wrong line that stays in print teaches every new lookout the same mistake."
+    },
+    {
+     "speaker": "coast-signalkeeper",
+     "text": "Slowly. Lookouts trust that book because it does not change every week. Change one line and they will wonder about every page. Tell them why it changed, in their own log, before you touch the print."
+    }
+   ]
   }
  ]
 }

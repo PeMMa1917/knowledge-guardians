@@ -1,0 +1,611 @@
+{
+ "characters": [
+  {
+   "id": "ibn-al-haytham",
+   "name": "Ibn al-Haytham",
+   "role": "A scholar of light and sight from Basra and Cairo (about 965 to 1040), as the Nexus reconstructs him",
+   "sprite": "villager-2",
+   "mode": "historical",
+   "talk": [
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "thinker.haytham.quest",
+        "eq": true
+       },
+       {
+        "flag": "thinker.haytham.test.ring",
+        "eq": true
+       },
+       {
+        "flag": "thinker.haytham.test.tube",
+        "eq": true
+       },
+       {
+        "flag": "thinker.haytham.test.book",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "thinker.haytham.judged"
+        }
+       }
+      ]
+     },
+     "node": "thinker.haytham.judge"
+    },
+    {
+     "if": {
+      "flagSet": "thinker.haytham.judged"
+     },
+     "node": "thinker.haytham.after"
+    },
+    {
+     "if": {
+      "flag": "thinker.haytham.quest",
+      "eq": true
+     },
+     "node": "thinker.haytham.wait"
+    },
+    {
+     "node": "thinker.haytham.intro"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "thinker.haytham.intro",
+   "speaker": "lumen",
+   "historicalLabel": "fictional-world",
+   "claimKind": "interpretation",
+   "text": "Lumen's light dims to a candle. 'This is the Nexus's reconstruction of Ibn al-Haytham, who studied light and sight about a thousand years ago, in Basra and Cairo. His words here are written for the game. His real work is in his Book of Optics, and the journal names where to read about him.'",
+   "options": [
+    {
+     "text": "Listen to Ibn al-Haytham.",
+     "next": "thinker.haytham.ask"
+    },
+    {
+     "text": "Come back later."
+    }
+   ]
+  },
+  {
+   "id": "thinker.haytham.ask",
+   "speaker": "ibn-al-haytham",
+   "historicalLabel": "reconstruction",
+   "claimKind": "interpretation",
+   "text": "Your station manual is a fine book. Its founder wrote that the moon is bigger at the roof line because it is nearer to us when it rises. Everyone here repeats it. When I read the great books of my own time, I did not ask how famous the writer was. I asked whether the claim agrees with what can be tested. And I watched myself too, because my eyes and my wishes can mislead me. Will you test this line in your manual?",
+   "options": [
+    {
+     "text": "Test the manual's line about the rising moon.",
+     "next": "thinker.haytham.go",
+     "if": {
+      "not": {
+       "flag": "thinker.haytham.quest",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "thinker.ibn-al-haytham.met",
+       "value": true
+      },
+      {
+       "setFlag": "view.correspondence.met",
+       "value": true
+      },
+      {
+       "setFlag": "thinker.haytham.quest",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Not now."
+    }
+   ]
+  },
+  {
+   "id": "thinker.haytham.go",
+   "speaker": "ibn-al-haytham",
+   "historicalLabel": "reconstruction",
+   "text": "Three places will help. The brass sighting ring on the west wall measures. The chart tube by the north rail lets you look at the moon without the roof line. And the founder's own notebook is on the shelf by the tower. Come back when you have all three."
+  },
+  {
+   "id": "thinker.haytham.wait",
+   "speaker": "ibn-al-haytham",
+   "historicalLabel": "reconstruction",
+   "text": "The sighting ring, the chart tube, the founder's notebook. A book tells you what someone believed. A test tells you whether the world agrees."
+  },
+  {
+   "id": "thinker.haytham.judge",
+   "speaker": "ibn-al-haytham",
+   "historicalLabel": "reconstruction",
+   "claimKind": "interpretation",
+   "text": "Well? Is the rising moon nearer, as the manual says?",
+   "options": [
+    {
+     "text": "No. The moon fills the same notch high and low. The eye judges its size from the roof line in front of it.",
+     "next": "thinker.haytham.reply.eye",
+     "if": {
+      "all": [
+       {
+        "flag": "thinker.haytham.quest",
+        "eq": true
+       },
+       {
+        "flag": "thinker.haytham.test.ring",
+        "eq": true
+       },
+       {
+        "flag": "thinker.haytham.test.tube",
+        "eq": true
+       },
+       {
+        "flag": "thinker.haytham.test.book",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "thinker.haytham.judged"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "thinker.haytham.judged",
+       "value": "eye"
+      }
+     ]
+    },
+    {
+     "text": "The manual is wrong here. But keep trusting it on the tides, where the founder measured.",
+     "next": "thinker.haytham.reply.book",
+     "if": {
+      "all": [
+       {
+        "flag": "thinker.haytham.quest",
+        "eq": true
+       },
+       {
+        "flag": "thinker.haytham.test.ring",
+        "eq": true
+       },
+       {
+        "flag": "thinker.haytham.test.tube",
+        "eq": true
+       },
+       {
+        "flag": "thinker.haytham.test.book",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "thinker.haytham.judged"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "thinker.haytham.judged",
+       "value": "book"
+      }
+     ]
+    },
+    {
+     "text": "The ring is rough. It may miss a small change. We need a finer test before we change the manual.",
+     "next": "thinker.haytham.reply.finer",
+     "if": {
+      "all": [
+       {
+        "flag": "thinker.haytham.quest",
+        "eq": true
+       },
+       {
+        "flag": "thinker.haytham.test.ring",
+        "eq": true
+       },
+       {
+        "flag": "thinker.haytham.test.tube",
+        "eq": true
+       },
+       {
+        "flag": "thinker.haytham.test.book",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "thinker.haytham.judged"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "thinker.haytham.judged",
+       "value": "finer"
+      }
+     ]
+    },
+    {
+     "text": "I need to think about it first."
+    }
+   ]
+  },
+  {
+   "id": "thinker.haytham.reply.eye",
+   "speaker": "ibn-al-haytham",
+   "historicalLabel": "reconstruction",
+   "text": "That is my own view, and you reached it with your own tests. But keep one doubt for yourself: one ring on two nights is not every moon. Write how you measured beside what you found, so the next keeper can check you."
+  },
+  {
+   "id": "thinker.haytham.reply.book",
+   "speaker": "ibn-al-haytham",
+   "historicalLabel": "reconstruction",
+   "text": "A fair judgement. A book is not right or wrong as a whole. Each claim in it carries its own test. Mark the line about the moon, and leave the tide tables in place until someone tests them too."
+  },
+  {
+   "id": "thinker.haytham.reply.finer",
+   "speaker": "ibn-al-haytham",
+   "historicalLabel": "reconstruction",
+   "text": "Good. You doubted your own instrument, not only the book. But a finer test is work for someone. Who will make it, and what will the manual say until then?"
+  },
+  {
+   "id": "thinker.haytham.after",
+   "speaker": "ibn-al-haytham",
+   "historicalLabel": "reconstruction",
+   "text": "Do not trust a line because it is old, or because it is new, or because it is yours. Test it, and say how you tested it."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH4-T01",
+   "world": "WORLD-05",
+   "title": "The Moon on the Roof Line",
+   "knowledgeQuestion": "When should a respected book give way to a test anyone can repeat?",
+   "stake": "New lookouts learn from the station manual. If a line in it is wrong, they will copy the mistake into every night log.",
+   "available": {
+    "flagSet": "coast.notice"
+   },
+   "objectives": [
+    {
+     "id": "thinker.haytham.meet",
+     "title": "Hear what Ibn al-Haytham asks about the station manual.",
+     "essential": false,
+     "done": {
+      "flag": "thinker.haytham.quest",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "justification",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "HIS"
+      ],
+      "subjects": [
+       "physics",
+       "history"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "understand",
+       "fink": "application",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "thinker.haytham.ring",
+     "title": "Measure the moon with the sighting ring.",
+     "essential": false,
+     "done": {
+      "flag": "thinker.haytham.test.ring",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT"
+      ],
+      "subjects": [
+       "physics",
+       "math-ai"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "objective": "thinker.haytham.meet"
+     }
+    },
+    {
+     "id": "thinker.haytham.tube",
+     "title": "Look at the rising moon without the roof line.",
+     "essential": false,
+     "done": {
+      "flag": "thinker.haytham.test.tube",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "explanation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "HUM"
+      ],
+      "subjects": [
+       "physics",
+       "psychology"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "objective": "thinker.haytham.meet"
+     }
+    },
+    {
+     "id": "thinker.haytham.book",
+     "title": "Read where the manual's line came from.",
+     "essential": false,
+     "done": {
+      "flag": "thinker.haytham.test.book",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "justification",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT"
+      ],
+      "subjects": [
+       "history",
+       "physics"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "objective": "thinker.haytham.meet"
+     }
+    },
+    {
+     "id": "thinker.haytham.judge",
+     "title": "Tell Ibn al-Haytham what the tests show.",
+     "essential": false,
+     "done": {
+      "flagSet": "thinker.haytham.judged"
+     },
+     "weave": {
+      "concepts": [
+       "justification",
+       "certainty",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "HIS"
+      ],
+      "subjects": [
+       "physics",
+       "history"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "objective": "thinker.haytham.meet"
+     },
+     "onComplete": [
+      {
+       "journal": "j.thinker.haytham"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "hint.thinker.haytham.meet.1",
+   "objective": "thinker.haytham.meet",
+   "depth": 1,
+   "text": "A visitor waits by the bench after the notice is sent."
+  },
+  {
+   "id": "hint.thinker.haytham.meet.2",
+   "objective": "thinker.haytham.meet",
+   "depth": 2,
+   "text": "He asks about a line in the station manual."
+  },
+  {
+   "id": "hint.thinker.haytham.meet.3",
+   "objective": "thinker.haytham.meet",
+   "depth": 3,
+   "text": "The line is about the moon when it rises."
+  },
+  {
+   "id": "hint.thinker.haytham.meet.4",
+   "objective": "thinker.haytham.meet",
+   "depth": 4,
+   "text": "Talk to Ibn al-Haytham and choose to test the manual's line."
+  },
+  {
+   "id": "hint.thinker.haytham.ring.1",
+   "objective": "thinker.haytham.ring",
+   "depth": 1,
+   "text": "A measurement does not care how big something looks."
+  },
+  {
+   "id": "hint.thinker.haytham.ring.2",
+   "objective": "thinker.haytham.ring",
+   "depth": 2,
+   "text": "There is a brass ring the lookouts use."
+  },
+  {
+   "id": "hint.thinker.haytham.ring.3",
+   "objective": "thinker.haytham.ring",
+   "depth": 3,
+   "text": "It hangs near the west wall, above the bench."
+  },
+  {
+   "id": "hint.thinker.haytham.ring.4",
+   "objective": "thinker.haytham.ring",
+   "depth": 4,
+   "text": "Read the sighting ring log. Compare the notches low and high."
+  },
+  {
+   "id": "hint.thinker.haytham.tube.1",
+   "objective": "thinker.haytham.tube",
+   "depth": 1,
+   "text": "What is in front of the moon when it rises?"
+  },
+  {
+   "id": "hint.thinker.haytham.tube.2",
+   "objective": "thinker.haytham.tube",
+   "depth": 2,
+   "text": "A tube can hide everything except the moon."
+  },
+  {
+   "id": "hint.thinker.haytham.tube.3",
+   "objective": "thinker.haytham.tube",
+   "depth": 3,
+   "text": "The chart tube is by the north rail."
+  },
+  {
+   "id": "hint.thinker.haytham.tube.4",
+   "objective": "thinker.haytham.tube",
+   "depth": 4,
+   "text": "Read the note in the chart tube."
+  },
+  {
+   "id": "hint.thinker.haytham.book.1",
+   "objective": "thinker.haytham.book",
+   "depth": 1,
+   "text": "Where did the founder get the claim?"
+  },
+  {
+   "id": "hint.thinker.haytham.book.2",
+   "objective": "thinker.haytham.book",
+   "depth": 2,
+   "text": "The founder kept a notebook as well as the manual."
+  },
+  {
+   "id": "hint.thinker.haytham.book.3",
+   "objective": "thinker.haytham.book",
+   "depth": 3,
+   "text": "It is on the shelf by the tower."
+  },
+  {
+   "id": "hint.thinker.haytham.book.4",
+   "objective": "thinker.haytham.book",
+   "depth": 4,
+   "text": "Read the founder's notebook. Compare the moon line with the tide pages."
+  },
+  {
+   "id": "hint.thinker.haytham.judge.1",
+   "objective": "thinker.haytham.judge",
+   "depth": 1,
+   "text": "Go back to Ibn al-Haytham when all three tests have spoken."
+  },
+  {
+   "id": "hint.thinker.haytham.judge.2",
+   "objective": "thinker.haytham.judge",
+   "depth": 2,
+   "text": "There is no single right answer. Each one gets a reply."
+  },
+  {
+   "id": "hint.thinker.haytham.judge.3",
+   "objective": "thinker.haytham.judge",
+   "depth": 3,
+   "text": "Think about what the manual should say now."
+  },
+  {
+   "id": "hint.thinker.haytham.judge.4",
+   "objective": "thinker.haytham.judge",
+   "depth": 4,
+   "text": "Talk to Ibn al-Haytham and choose what the tests show."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.thinker.haytham",
+   "kind": "quest",
+   "title": "The Moon on the Roof Line",
+   "text": "I met the Nexus's reconstruction of Ibn al-Haytham. He tested the claims of famous books against what could be measured, and he doubted his own eyes too. I tested a line in the station manual and decided what it can still say. To read about his real work: the Biographical Encyclopedia of Astronomers entry on Ibn al-Haytham (islamsci.mcgill.ca/RASI/BEA/Ibn_al-Haytham_BEA.htm)."
+  }
+ ]
+}

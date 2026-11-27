@@ -245,7 +245,15 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Why.** Mika asked that students meet real thinkers as people who give quests (X-015), and that the views have names (X-012). The three Mohist tests are a clear, old method of testing a claim. The quest shows that a claim many people repeat can be tested, and that the test can narrow it ("it holds when nobody watches the channel") instead of only keeping or dropping it. The source is the Stanford Encyclopedia of Philosophy entry on Mohism.
 
-**Where.** `src/content/thinker-mozi.json`, `src/maps/water.ts`, a new entry in `src/content/two-replies.json`, `tests/thinker-mozi.test.ts`.
+**Where.** `src/content/thinker-mozi.json`, `src/maps/water.ts`, a new entry in `src/content/two-replies.json`, `tests/thinker-quests.test.ts`.
+
+### Ibn al-Haytham at Headland Station (X-012, X-015)
+
+**What.** After the notice is sent (chapter 4), Ibn al-Haytham waits at Headland Station. Lumen says he is the Nexus's reconstruction. He asks the player to test a line in the station manual: "the moon is bigger at the roof line because it is nearer then". The player uses three tests: the brass sighting ring (the moon fills three notches high and low), the chart tube (with the roof line hidden, the rising moon looks small), and the founder's notebook (careful tide measurements, but no measurement for the moon, only "as all the old books say"). There are three answers, and each gets its own reply. Neri and Ruan then disagree about how fast to change a trusted book (X-008). Meeting him adds the correspondence view to the journal.
+
+**Why.** Ibn al-Haytham (about 965 to 1040) tested the claims of famous books with experiments anyone could repeat, and he also doubted his own judgement. He gave an explanation of the moon illusion based on how the eye judges distance. The audit asked for him in the chapter 4 optics pathway (X-015). He is now the 13th thinker. Source: Biographical Encyclopedia of Astronomers, https://islamsci.mcgill.ca/RASI/BEA/Ibn_al-Haytham_BEA.htm
+
+**Where.** `src/content/thinker-haytham.json`, `src/content/thinkers.json`, `src/maps/observatory.ts`, `src/content/two-replies.json`, `tests/thinker-quests.test.ts` (one test file for every thinker quest).
 
 ## Not done yet
 
@@ -255,7 +263,7 @@ These decisions need more content work. They will be done chapter by chapter, wi
 | --- | --- |
 | X-005 Difficult real history | Plan each case (for example the Nanking massacre, Nat Turner's revolt, the Lewis and Clark expedition and the Blackfeet, Columbus) with content notes, documented testimony and reliable sources. |
 | X-006 Indigenous knowledge | Weave knowledge from separate Indigenous peoples into the chapters, from sources made by the peoples themselves. |
-| X-012, X-015 Thinkers in the world | Mozi is the first (chapter 11). Add more thinkers as people the student meets, each with a quest. |
+| X-012, X-015 Thinkers in the world | Mozi (chapter 11) and Ibn al-Haytham (chapter 4) are in. Add more thinkers as people the student meets, each with a quest. |
 | X-007 More trials | Add more restartable trial sections in later chapters, each with its own idea. |
 | X-008 More replies | Every chapter now has two-reply moments (59 in all). Add more where a chapter has other key choices. |
 | X-001 Leaderboard in the hosted build | Connect the opt-in leaderboard to the hosted build when accounts exist. |
