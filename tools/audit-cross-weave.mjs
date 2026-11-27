@@ -143,6 +143,30 @@ const copiesEvidenceInvestigations = [
 const proofRows = [
   ...coatProofs,
   {
+    objective:'whistle.fern.sent',map:'forest.station',target:'whistle.fern.table',
+    source:'tests/whistle-watch.test.ts',anchor:'keeps two signatures with their own impressions',
+    action:'Overlay the bank tracing and the turned heel. Each person can sign only the impression their own work establishes. The local hands may retain both slips or invite a visitor to compare them at the original tray.',
+    reasoning:[{mode:'abductive',basis:'The turned heel fits the square interruption in the fan. Two overlapping impressions explain the apparent extra foot, without identifying the unseen animal or the time of passage.'}],
+    dimensions:['micro:15','concept:evidence','framework:scope','subject:biology','area:NAT'],elements:['game:267','story:29'],
+  },
+  {
+    objective:'whistle.stage.sent',map:'stage.rehearsal',target:'whistle.stage.table',
+    source:'tests/whistle-watch.test.ts',anchor:'tests open, listener-covered and both-names-covered reports',
+    action:'Return reviews under all three name covers. At a fixed cover listen from both seats. The back panel changes the audible result while the review arrangement changes who can ask whom about it.',
+    comparison:{concepts:['objectivity','perspective'],framework:['methods-and-tools','perspectives'],
+      areas:[{id:'ART',method:'Keep the two-note warning fixed and listen to the front and back of the rehearsal room. Read the heard timing back to the performer.',limit:'A prompt book establishes the two intended attacks. It cannot tell a performer whether the back row could hear the second.'},
+        {id:'HUM',method:'Vary which participant identities are shown on the reviewing slip. Retain each listener’s seat so accounts under different arrangements can be interpreted.',limit:'Hiding a written name changes access to provenance but can still identify the sole occupant of a particular seat. Two listeners cannot measure the prevalence of bias.'}],
+      connection:'A published review can protect a name while explaining the acoustic difference. Keeping the seat can help a repair technician and can also make the listener recognisable.'},
+    dimensions:['micro:544','concept:objectivity','concept:perspective','framework:methods-and-tools','framework:perspectives','area:ART','area:HUM','subject:music','subject:psychology'],elements:['game:234'],
+  },
+  {
+    objective:'whistle.island.recalled',map:'island.workshop',target:'whistle.island.table',
+    source:'tests/whistle-watch.test.ts',anchor:'recalls a printed ferry route',
+    action:'Fold the local nesting record under the public ferry sheet and test both frames. When the community withdraws the circulating route, sound the recall. The ferry shortcut closes and an in-person route remains.',
+    reasoning:[{mode:'pragmatic',basis:'A visitor can still reach a custodian after a copy is withdrawn. The two audience arrangements solve different access problems without assuming permission travels with cartographic precision.'}],
+    dimensions:['micro:825','concept:responsibility','framework:ethics','subject:geography','theme:IND'],elements:['game:234','story:15'],
+  },
+  {
     objective:'vault-work.twogates.left',map:'aethelgard.undercroft',target:'seal-twogates',
     source:'tests/vault-work.test.ts',anchor:'leaves any of eight arrangements',
     action:'Record both states of the shared chain. Lift its link, move one shutter independently, and entrust the actual resulting admission arrangement to a visitor or the porter.',

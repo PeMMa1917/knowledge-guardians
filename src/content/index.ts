@@ -1,3 +1,4 @@
+import {addWhistleWatch} from './whistleWatch';
 import {addVaultMissions} from './vaultMissions';
 import {reviewChapterPractices} from './chapterPractice';
 import {addMillMissions} from './millMissions';
@@ -250,6 +251,7 @@ export function buildPack(): ContentPack {
   addMakerMissions(content);
   addMillMissions(content);
   addVaultMissions(content);
+  addWhistleWatch(content);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);

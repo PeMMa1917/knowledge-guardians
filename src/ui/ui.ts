@@ -1,3 +1,5 @@
+import {whistlePanel} from './whistleWatch';
+import {whistlePlaces} from '../content/whistleWatch';
 import {weirLampPanel} from './weirLamp';
 import {vaultIndex,vaultPanel} from './vaultWork';
 import {vaultPhaseStation} from '../domain/vaultWork';
@@ -3576,6 +3578,11 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    if(id==='whistle-watch'){
+      const site=whistlePlaces.find(p=>p.map===ctx.controller.state.mapId);if(!site)return;
+      const view=whistlePanel(ctx.controller,site.id,()=>ctx.settings.sfxVolume,()=>ctx.world?.refreshWorld());
+      this.openModal('bench-panel wide',site.title,this.closeBtn(),view.root);this.releasePanelActivity=view.dispose;return;
+    }
     if(id==='weir-lamp'){
       this.openModal('bench-panel wide','The red line on the flood sheet',this.closeBtn(),weirLampPanel(ctx.controller,()=>this.sfx('sfx.page')));return;
     }

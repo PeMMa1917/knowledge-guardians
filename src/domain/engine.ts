@@ -1,3 +1,4 @@
+import {workWhistle,type WhistleCommand} from './whistleWatch';
 import {useWeirLamp,type WeirLampCommand} from './weirLamp';
 import { workVault,openedVaultSeal,advancedVaultPhase,type VaultCommand } from './vaultWork';
 import { millEffects, type MillCommand } from './millShift';
@@ -80,6 +81,7 @@ const DIALOGUE_FALLBACK = 999;
 import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand, type LanternPairCommand } from './lamplight';
 
 export type Command =
+  | WhistleCommand
   | MakerCommand | FieldCommand
   | MillCommand
   | PocketCommand
@@ -606,6 +608,8 @@ export class Engine {
           }
           break;
         }
+        case 'WorkWhistle':
+          s=apply(workWhistle(s,cmd),s,out);break;
         case 'UseWeirLamp':
           s=apply(useWeirLamp(s,cmd),s,out);
           break;

@@ -45,20 +45,16 @@ ui.showTitle();
 // A reload can fire pagehide before or after visibilitychange. Save once for
 // either order, and start a new cycle if the player returns to the page.
 let handledExitSave = false;
-function saveOnExit(includeAdventure: boolean): void {
+function saveOnExit(): void {
   if (handledExitSave || !ctx.world || !ctx.controller.state) return;
   const label = 'Auto-save when leaving';
-  if (flushJournalWriting(ctx.controller, label) !== null) handledExitSave = true;
-  else if (includeAdventure) {
-    handledExitSave = true;
-    ctx.controller.suspend(label);
-  }
+  handledExitSave = flushJournalWriting(ctx.controller, label) ?? ctx.controller.suspend(label);
 }
 document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'hidden') { saveOnExit(true); void classroom?.sync(true); }
+  if (document.visibilityState === 'hidden') { saveOnExit(); void classroom?.sync(true); }
   else handledExitSave = false;
 });
-window.addEventListener('pagehide', () => { saveOnExit(false); void classroom?.sync(true); });
+window.addEventListener('pagehide', () => { saveOnExit(); void classroom?.sync(true); });
 window.addEventListener('pageshow', () => { handledExitSave = false; });
 
 // The Guardian's Ledger: count active play time (input in the last 2 minutes, tab visible, in the world).

@@ -90,9 +90,54 @@ export async function playGuestChapters({
     oldReceipt = stamp.receipt;
   }
   // Exercise ordinary cross-session recovery with the same fictional save and the same guest.
+  // Store only map IDs and save revisions for diagnosing browser lifecycle differences.
+  await page.evaluate(() => {
+    const record = (type) => {
+      const pair = kg.controller.pair;
+      const history = JSON.parse(
+        sessionStorage.getItem("guest-route-exit") || "[]",
+      );
+      history.push({
+        type,
+        world: kg.world?.map?.id,
+        revision: pair.revision,
+        location: pair.continue?.state?.mapId,
+      });
+      sessionStorage.setItem("guest-route-exit", JSON.stringify(history));
+    };
+    sessionStorage.removeItem("guest-route-exit");
+    document.addEventListener("visibilitychange", () =>
+      record(document.visibilityState),
+    );
+    window.addEventListener("pagehide", () => record("pagehide"));
+    record("before-reload");
+  });
   await page.reload({ waitUntil: "domcontentloaded" });
   await button("Continue");
-  await waitMap(previous.map);
+  try {
+    await waitMap(previous.map);
+  } catch (err) {
+    const where = await page.evaluate(() => ({
+      map: window.kg?.world?.map.id,
+      state: window.kg?.controller?.state?.mapId,
+      saved: window.kg?.controller?.pair?.continue?.location,
+      heading: document.querySelector('[role="dialog"] h2')?.textContent,
+      exit: sessionStorage.getItem("guest-route-exit"),
+      saves: Object.keys(localStorage).map((k) => [
+        k,
+        localStorage.getItem(k)?.length,
+      ]),
+    }));
+    throw new Error(
+      "Restoring " +
+        guest.name +
+        " expected " +
+        previous.map +
+        "; " +
+        JSON.stringify(where),
+      { cause: err },
+    );
+  }
   const restored = await page.evaluate(
     ({ ids, who }) =>
       ids.map(

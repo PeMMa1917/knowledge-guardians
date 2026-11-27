@@ -1,3 +1,4 @@
+import {withWhistleWatch} from './whistleWatch';
 import { nightDoor, nightRooms } from './nightRegister';
 import type { MapDef } from './types';
 import { HINGED_PLANK } from './hingedPlank';
@@ -205,5 +206,5 @@ for (const room of nightRooms) {
 
 export const MAPS: Record<string, MapDef> = Object.fromEntries(Object.values(campaignMaps).map((map) => {
   const returns = [...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id), ...inkPostAt(map.id), ...nightDoor(map.id)];
-  return [map.id, returns.length ? { ...map, interactables: [...map.interactables, ...returns] } : map];
+  return [map.id, withWhistleWatch(returns.length ? { ...map, interactables: [...map.interactables, ...returns] } : map)];
 }));

@@ -1,3 +1,5 @@
+import {playWhistleWatch} from './whistle-watch-journey.mjs';
+import { playExitSave } from './exit-save-journey.mjs';
 import { playGuestChapters } from './guest-chapters-journey.mjs';
 import { playVaultWatch } from './vault-watch-journey.mjs';
 import { playMillShift } from './mill-shift-journey.mjs';
@@ -76,7 +78,7 @@ const split = ['chromium', 'firefox', 'webkit'].indexOf(engine);
 try {
   await page.goto(process.argv[3], { timeout: 90000, waitUntil: 'domcontentloaded' });
   await button('New game');
-  await button('Begin');
+  await page.getByRole('button', {name: 'Begin', exact: true}).click({timeout: 90000});
   await page
     .getByRole('dialog')
     .getByText(/brass fish/)
@@ -92,7 +94,11 @@ try {
   const millOnly = process.argv.includes('--mill-shift');
   const vaultOnly=process.argv.includes('--vault-watch');
   const guestIndex=process.argv.indexOf('--guest-route');
-  if(guestIndex!==-1){
+  const exitOnly=process.argv.includes('--exit-save');
+  const whistleOnly=process.argv.includes('--whistle-watch');
+  if(whistleOnly) await playWhistleWatch({page,engine,button,use,close,waitMap});
+  else if(exitOnly) await playExitSave({page,waitMap,button});
+  else if(guestIndex!==-1){
     const index=Number(process.argv[guestIndex+1]),guest=people[index];
     assert.ok(Number.isInteger(index)&&guest,'Pass a historical guest index from 0 to '+(people.length-1));
     await playGuestChapters({page,engine,guest,index,posts,sites,button,use,close,waitMap});
@@ -156,7 +162,7 @@ try {
     faults.filter((s) => !s.includes('favicon')),
     [],
   );
-  console.log(engine, browser.version(), guestIndex!==-1 ? 'passed both encounters in all 15 chapters and restored the guest’s work' : vaultOnly ? 'passed the six vault instruments, weir and council handover' : millOnly ? 'passed the six-counter mill and both earned passages' : makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
+  console.log(engine, browser.version(), whistleOnly ? 'passed Liri’s three watches, travelling sheet and recall' : exitOnly ? 'passed all four exit signal orders, retry and reload' : guestIndex!==-1 ? 'passed both encounters in all 15 chapters and restored the guest’s work' : vaultOnly ? 'passed the six vault instruments, weir and council handover' : millOnly ? 'passed the six-counter mill and both earned passages' : makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
 } finally {
   await browser.close();
 }

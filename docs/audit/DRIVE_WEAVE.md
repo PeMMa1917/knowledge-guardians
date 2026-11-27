@@ -102,3 +102,7 @@ Henly’s First/Last activity and transitions model supplied two writing practic
 
 
 The History on Trial cards’ contrast between structural and intentional accounts now reaches a working press. At the mill, players can give credit to an apprentice’s change to the wheel, to the rota that let a porter supply it, or to both. The letters bring the Guardian’s test strip and wage settlement back to the crew. This uses original work records and dialogue. [The three registers](../../src/content/millShift.ts) · [Return journey](../../tools/mill-shift-journey.mjs)
+
+## Choosing who evaluates a record
+
+In *Assessing and Certifying Indigenous Tracking Expertise and Skills*, Liebenberg and colleagues describe local trackers nominating evaluators and deciding whether to call an outside evaluator. The Fern Station draws on that distinction. The people who examined each impression choose what they can sign. The player may invite a visitor to compare the strips at their tray. Liri, her colleagues, the animal print and the later ferry arrangement belong to the game world. [Report](https://unesdoc.unesco.org/ark:/48223/pf0000382276) · [Play evidence](../../tests/whistle-watch.test.ts)

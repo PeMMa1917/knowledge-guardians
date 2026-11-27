@@ -1,3 +1,4 @@
+import {whistlePlaces,whistleStories} from '../content/whistleWatch';
 import {vaultStations,vaultWork} from '../content/vaultNight';
 import { pocketStories } from '../content/pocketStories';
 import { nightQuestions } from './nightRegister';
@@ -30,6 +31,7 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
+  if(key.startsWith('whistle:')){const site=whistlePlaces.find(p=>key.startsWith('whistle:'+p.id+':'));if(site){const [basis,visitor]=whistleStories[site.id].questions;return {basis,visitor};}}
   if(key.startsWith('weir-lamp:')) return {before:'Who could have read the first sheet at the time?',after:'Which part of the later account depends on knowing how high the water rose?'};
   if(key.startsWith('vault:')){const who=vaultStations.find(id=>key.startsWith('vault:'+id+':')); if(who){const [trace,after]=vaultWork[who].reflections;return {trace,after};}}
   if (key.startsWith('mill:lamplight.nile.')) return {rule:'Who could make an entry in each book?',pay:'Which kind of work would somebody miss if they saw only the settlement?'};
