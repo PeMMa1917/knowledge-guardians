@@ -2,6 +2,8 @@
 
 The review build includes opt-in class adventures, cross-device recovery and the assigned teacher’s writing dashboard. The game and the teacher page still run on a static host for local play. The service uses a same-origin Cloudflare Worker with D1. The reviewed configuration targets a separate preview database. Production enrolment and release require a later rollout.
 
+Students and families can reach the short reading-audiences guide from the game title and the teacher page. It opens as a static page, including on local-only installations. [School and family guide](../public/schools.html)
+
 ## 1. The decision
 
 - **Hosting:** Cloudflare. One Worker serves the game files (static assets), the teacher page and a small JSON API. One D1 database holds accounts, classes and saves. Above about 30,000 students, save files move to R2 storage.

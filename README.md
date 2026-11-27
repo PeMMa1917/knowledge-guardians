@@ -20,7 +20,7 @@ The playable opening begins in the Nexus and continues across fifteen chapters:
 14. **Chapter 14, The Eight Crates.** Route an order through a ridge, a ferry or a marsh. Balance a delivery deadline against repeated trips through quiet strips, then revise your plan when the landing changes.
 15. **Chapter 15, When the Hand Moves.** Test three watches showing the same time. Compare their readings with an independent reference and choose what a delivery crew needs to check before the shutter closes.
 
-Along the way: random events from a fair, seeded deck (calm mode can delay them), learner-profile moments in the journal, a private portfolio, and misconception reflections. A separate **teacher view** (`teacher.html`) builds a class dashboard and student reports from progress files that students choose to share.
+Along the way: random events from a fair, seeded deck (calm mode can delay them), learner-profile moments in the journal, a private portfolio, and misconception reflections. A separate **teacher view** (`teacher.html`) builds a class dashboard and student reports from progress files that students choose to share. The chapter map offers a printable way to find an action by its subject, TOK focus and thinking demands before class. The family guide explains the audiences for local and class writing. [School and family guide](public/schools.html) · [Optional class hosting](docs/ACCOUNTS_AND_HOSTING.md)
 
 The browser game supports local play and optional school sign-in. School hosting adds cross-device recovery and an assigned-teacher writing dashboard. All gameplay runs without runtime AI.
 

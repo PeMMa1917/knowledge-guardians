@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 27 November • A chapter map before class
+
+The teacher dashboard opens a printable map of all 15 chapters. Each chapter has a main-route decision, a consequence to look for and a discussion question. Additional activities can be filtered by subject, concept, area or theme, framework, DOK, Bloom, Fink and SOLO. Combined filters apply to one action. The map uses public game records and opens without signing in or loading student writing. Both titles link to a school and family guide to device saves, class recovery, diary audiences and separate portfolio sharing. [Chapter map](src/teacher/chapterMap.ts) · [School guide](public/schools.html)
+
 ## 27 November • Six counters for three workers
 
 In the Nile pay room, the porter who kept the boards dry can finish the same shift with three counters or an empty bowl. At the Metalworks, the Guardian can try all four bells with the apprentice’s tooth and the porter’s help. In the City of Copies, the workers get to read what the Guardian put in print. Opening a public proof at the wheel uncovers the workers’ stair. Opening a folded letter in the pay room uncovers the letter chute. Each worker keeps the edition they opened, even if Bayette prints a different one tomorrow. [Three registers](src/content/millShift.ts) · [Playable routes](tests/mill-shift.test.ts)

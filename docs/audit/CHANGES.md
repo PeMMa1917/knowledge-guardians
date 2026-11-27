@@ -483,3 +483,7 @@ These decisions need more content work. They will be done chapter by chapter, wi
 | X-007 More trials | Add more restartable trial sections in later chapters, each with its own idea. |
 | X-008 More replies | Every chapter now has two-reply moments (59 in all). Add more where a chapter has other key choices. |
 | X-001 Leaderboard in the hosted build | Connect the opt-in leaderboard to the hosted build when accounts exist. |
+
+## School and classroom review • 27 November
+
+C-007, C-008, C-012 and C-015 now have public entry points and regression checks. Each of the 15 chapters has an essential, subject-linked action with a before-and-after story and an original discussion question. A teacher can search other activities by combining nine filters on the same action, then print the visible selection. Opening the planner requests public files only. The family guide is reachable from the school and player pages. The browser checks covered keyboard focus after clearing and paging, a narrow viewport, print layout and the correct page after following each family link. [Chapter cases](../../src/content/chapterPractice.ts) · [Three-engine journey](../../tools/smoke-chapter-map.mjs)

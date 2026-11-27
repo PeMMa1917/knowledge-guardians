@@ -894,6 +894,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openCredits() }, h('strong', {}, 'Credits and sources'), h('small', {}, 'Who made the art, music and sounds, and the historical sources')),
       ),
       h('p', { class: 'fine' }, classroom ? classroom.who.display + ' · ' + classroom.who.className + ' · ' + classroom.status : 'Local adventure. Progress is saved in this browser. Class sign-in is optional.'),
+      h('a', { class:'school-link', href:'./schools.html' }, 'For schools and families'),
     );
     this.root.append(box);
     setTimeout(() => box.querySelector<HTMLElement>('[data-autofocus]')?.focus(), 0);

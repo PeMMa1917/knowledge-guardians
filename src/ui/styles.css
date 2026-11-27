@@ -1241,3 +1241,5 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .mill-work [aria-pressed="true"] { outline: 2px solid var(--gold); }
 .mill-work button:focus-visible { outline: 3px solid var(--cyan); }
 .mill-status:empty { margin: 0; }
+
+.title-screen .school-link { color: inherit; font-size: .9em; text-underline-offset: .2em; }

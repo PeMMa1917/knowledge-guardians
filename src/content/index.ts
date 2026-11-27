@@ -1,3 +1,4 @@
+import {reviewChapterPractices} from './chapterPractice';
 import {addMillMissions} from './millMissions';
 import { addMakerMissions } from './makerMissions';
 import { addCoatMissions } from './coatMissions';
@@ -251,6 +252,7 @@ export function buildPack(): ContentPack {
   installEarlierViews(content);
   addPublicationReturns(content);
   specimenEquipment(content);
+  reviewChapterPractices(content);
   addMicroSkills(content);
   return content;
 }
