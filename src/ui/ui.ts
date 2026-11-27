@@ -81,6 +81,16 @@ import { approvalOf, approvalRank } from '../domain/approval';
 import { ROLES, fitsRole, roleOf } from '../domain/roles';
 import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
 import { FIELD_GAMES } from '../domain/fieldgames';
+import { OFFER_LINE, shouldOfferHelp } from '../domain/lumenOffer';
+import { IDEA_CREDITS } from '../domain/ideaCredits';
+import { gymPanel } from './gymPanel';
+import { ladderPanel } from './ladderPanel';
+import { contentNoteFor, noteSeenFlag } from '../domain/contentNotes';
+import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
+import { flushResearch, recordResearch } from '../app/research';
+import { ROWS, SECTIONS, startTrial, step, tileWords, type Tile } from '../domain/provingFloor';
+import { THINKERS, VIEWS as TOK_VIEWS, adviceLabel, meetFlags, thinkerFlag, thinkersFor, viewsMet } from '../domain/thinkers';
+import { bestFlag, canTimedReplay, clockText, elapsedSeconds, resultText, timedResult } from '../domain/timedReplay';
 import { routingBoard } from './routingBoards';
 import { counterReplayBoard } from './counterReplayBoard';
 import { islandSkiffPanel } from './islandSkiff';
@@ -539,6 +549,7 @@ export class UI implements UIApi {
     }
     const wrap = h('div', { class: 'modal-wrap', onclick: (e: MouseEvent) => { if (e.target === wrap && !cls.includes('dialogue')) this.closeModal(); } }, box);
     this.modal = wrap;
+    if (this.timedRun) wrap.append(this.timedRun.clock);
     this.root.append(wrap);
     this.isolateModalBackground();
     this.releaseTrap = trapFocus(box);
@@ -591,6 +602,7 @@ export class UI implements UIApi {
     this.modal.remove();
     this.modal = null;
     if (replacing) { this.refreshHud(); return; }
+    this.stopTimedReplay();
     this.releaseModalBackground?.();
     const opener = this.titleModalOpener;
     this.titleModalOpener = null;
@@ -611,12 +623,34 @@ export class UI implements UIApi {
     }
     this.refreshHud();
     if (this.pendingChapterEnd) { this.pendingChapterEnd = false; this.chapterEnd(); return; }
+    if (this.showTwoReplies()) return;
     if (this.queue.length) {
       setTimeout(() => {
         // A dialogue can replace its panel before this callback runs.
         if (!this.modal) this.queue.shift()?.();
       }, 0);
     }
+  }
+
+  /** Decision X-008: after a key choice, two characters who disagree each reply. Returns true if a panel opened. */
+  private showTwoReplies(): boolean {
+    const c = ctx.controller;
+    if (!c.state || this.modal) return false;
+    const entry = pendingTwoReplies(c.state.flags, (cond) => c.check(cond));
+    if (!entry) return false;
+    c.dispatch({ type: 'SetFlag', flag: seenFlag(entry.id), value: true });
+    const voice = (r: { speaker: string; text: string }) => {
+      const who = c.pack.characters.find((x) => x.id === r.speaker);
+      return h('div', { class: 'two-reply' },
+        h('span', { class: 'portrait', style: { backgroundImage: `url(assets/art/generated/characters/${who?.sprite}.png)` }, 'aria-hidden': 'true' }),
+        h('div', {}, h('strong', {}, who?.name ?? r.speaker), h('p', {}, r.text)));
+    };
+    this.openModal('two-replies', entry.heading, this.closeBtn(), h('h2', {}, entry.heading),
+      h('div', { class: 'two-replies-row' }, voice(entry.replies[0]), voice(entry.replies[1])),
+      h('p', { class: 'fine' }, 'Two people, two good reasons. Neither one is the answer. Which reasons do you find stronger, and why?'),
+      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep walking')));
+    this.sfx('sfx.page');
+    return true;
   }
 
   /** Run now if nothing is open; otherwise run when the open panel closes. */
@@ -1041,7 +1075,7 @@ export class UI implements UIApi {
     const bar = h('nav', { class: 'hud-buttons', 'aria-label': 'Game menu' },
       h('span', { class: 'marks', title: 'Marks (campaign money)' }, h('img', { src: artURL('icon.card'), alt: '' }), ` ${s.marks} marks`),
       s.flags['title.worn'] ? h('span', { class: 'marks worn-title', title: 'Your title (choose in Journal, Awards)' }, `${s.player.name}, ${s.flags['title.worn']}`) : '',
-      h('button', { onclick: () => this.askLumen(), title: `Ask Lumen for a hint (${km.hint})` }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '' }), ' Hint ', h('kbd', {}, km.hint)),
+      h('button', { class: this.helpOffered ? 'lumen-offer' : '', onclick: () => this.askLumen(), title: this.helpOffered ? `Lumen has an idea for this step (${km.hint})` : `Ask Lumen for a hint (${km.hint})` }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '' }), ' Hint ', h('kbd', {}, km.hint)),
       h('button', { onclick: () => this.openJournal(), title: `Journal (${km.journal})` }, 'Journal ', h('kbd', {}, km.journal)),
       h('button', { onclick: () => this.openJournal('portfolio'), title: `Portfolio (${km.portfolio})` }, 'Portfolio ', h('kbd', {}, km.portfolio)),
       h('button', { onclick: () => this.openBag(), title: `Bag (${km.bag})` }, 'Bag ', h('kbd', {}, km.bag)),
@@ -1053,6 +1087,11 @@ export class UI implements UIApi {
     this.hud.prepend(tracker);
     this.hudDock.querySelector('.hud-buttons')?.remove();
     this.hudDock.append(bar);
+    // Progress resets the "stuck" clock for Lumen's offer (decision X-011).
+    const doneCount = objs.filter((o) => o.complete).length;
+    if (doneCount !== this.progressCount) { this.progressCount = doneCount; this.lastProgress = Date.now(); this.helpOffered = false; this.offerSpent = false; }
+    this.offerTimer ??= window.setInterval(() => { this.checkHelpOffer(); }, 10_000);
+    this.researchTimer ??= window.setInterval(() => { void flushResearch(); }, 120_000);
     // New objectives: Lumen mentions them once if the player allows prompts (GUIDE-001).
     for (const o of objs) {
       if (!this.seenObjectives.has(o.id)) {
@@ -1060,6 +1099,28 @@ export class UI implements UIApi {
         if (!o.complete && ctx.settings.guidePrompts) this.lumenSay(`New step: ${o.title}`);
       }
     }
+  }
+
+  private progressCount = -1;
+  private lastProgress = Date.now();
+  private helpOffered = false;
+  private offerSpent = false;
+  private offerTimer: number | null = null;
+  private researchTimer: number | null = null;
+
+  /** Decision X-011: after a long time with no progress, the lantern glows and Lumen offers. No hint until a click. */
+  private checkHelpOffer(): void {
+    const c = ctx.controller;
+    if (!c.state) return;
+    const offer = shouldOfferHelp({
+      enabled: ctx.settings.lumenOffers !== false, lastProgress: this.lastProgress, now: Date.now(),
+      busy: !!this.modal, offered: this.offerSpent, hasStep: !!c.engine.currentObjective(c.state),
+    });
+    if (!offer) return;
+    this.offerSpent = true;
+    this.helpOffered = true;
+    this.lumenSay(OFFER_LINE);
+    this.refreshHud();
   }
 
   private lumenSay(text: string): void {
@@ -1072,6 +1133,7 @@ export class UI implements UIApi {
   }
 
   private askLumen(): void {
+    if (this.helpOffered) { this.helpOffered = false; this.refreshHud(); }
     const c = ctx.controller;
     const cur = c.engine.currentObjective(c.state);
     if (!cur) { this.lumenSay('Nothing urgent. Explore, read your journal, or talk to people again.'); return; }
@@ -1086,10 +1148,31 @@ export class UI implements UIApi {
       h('p', { class: 'hint-text' }, hint.hint.text),
       ...(roleOf(c.state.flags) ? [h('p', { class: 'fine' }, h('strong', {}, `As a ${roleOf(c.state.flags)!.name}, ask: `), roleOf(c.state.flags)!.ask, ' ', h('em', {}, `Watch your blind spot: ${roleOf(c.state.flags)!.blind}`))] : []),
       h('p', { class: 'fine' }, 'Asking for help never lowers your XP or blocks an award.'),
+      this.thinkerAdvisor(),
       h('div', { class: 'row' },
         hint.hint.depth < 4 ? h('button', { onclick: () => this.askLumen() }, 'More help') : null,
         h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Thanks')));
     void box;
+  }
+
+  /** Decision X-015: Lumen can call a thinker as an advisor. Their view is then tracked in the journal (X-012). */
+  private thinkerAdvisor(): HTMLElement {
+    const c = ctx.controller;
+    const out = h('div', { class: 'advisor-out', 'aria-live': 'polite' });
+    const pick = h('select', { 'aria-label': 'Choose a thinker' },
+      h('option', { value: '' }, 'Choose a thinker…'),
+      ...THINKERS.map((t) => h('option', { value: t.id }, `${t.name} (${t.views.map((v) => TOK_VIEWS.find((x) => x.id === v)?.name).join('; ')})`)));
+    pick.addEventListener('change', () => {
+      const t = THINKERS.find((x) => x.id === pick.value);
+      clear(out);
+      if (!t) return;
+      for (const flag of meetFlags(t)) c.dispatch({ type: 'SetFlag', flag, value: true });
+      this.sfx('sfx.page');
+      out.append(...t.views.map((v) => h('p', {}, h('strong', {}, `${TOK_VIEWS.find((x) => x.id === v)?.name}: `), t.advice[v])),
+        h('p', { class: 'fine' }, adviceLabel(t)));
+    });
+    return h('details', { class: 'advisor' }, h('summary', {}, 'Ask a thinker'),
+      h('p', { class: 'fine' }, 'Lumen can ask a thinker from history how they would look at this step. Each one has a named view.'), pick, out);
   }
 
   // ------------------------------------------------------------ events
@@ -1107,6 +1190,10 @@ export class UI implements UIApi {
       this.toast(kind === 'keepsake' ? `${many.length} new keepsakes. See My quarters.` : `${many.length} lamps are lit on the Lamp Wall.`, 'award');
     }
     for (const e of events) {
+      // Research data (decision X-018): play events only, and only when the school has turned it on.
+      if (e.kind === 'objective') recordResearch('objective-done', e.id);
+      else if (e.kind === 'hint') recordResearch('hint', e.hint.objective, e.hint.depth);
+      else if (e.kind === 'fieldgame') recordResearch('field-game', e.game);
       switch (e.kind) {
         case 'card': { const card = c.pack.cards.find((x) => x.id === e.id); this.toast(`New evidence card: ${card?.title}`, 'card'); this.sfx('sfx.page'); break; }
         case 'item': { const it = c.pack.items.find((x) => x.id === e.id); this.toast(`${e.qty > 0 ? 'Received' : 'Gave'}: ${it?.name ?? e.id}`, 'item'); this.sfx('sfx.pickup'); break; }
@@ -2762,11 +2849,26 @@ export class UI implements UIApi {
     this.sfx('sfx.book');
     if (tab === 'letters') this.deliverCommunityLetters(false);
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { diary: 'Diary', notes: 'My notes', 'open-quests': 'Open quests', story: 'Story so far', conversations: 'Conversations', entries: 'Entries', cards: 'Evidence cards', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', crossings: 'Crossings', ...(s.flags['ending.council'] ? { afterwards: 'Afterwards' } : {}), glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { diary: 'Diary', notes: 'My notes', 'open-quests': 'Open quests', story: 'Story so far', conversations: 'Conversations', entries: 'Entries', cards: 'Evidence cards', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', crossings: 'Crossings', ...(s.flags['ending.council'] ? { afterwards: 'Afterwards' } : {}), glossary: 'Glossary', views: 'Views', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
     if (tab === 'diary' || tab === 'notes' || tab === 'open-quests') {
       body.append(adventureJournalTab(tab, c, (page) => this.openJournal(page)));
+    } else if (tab === 'views') {
+      // Decision X-012: named views of truth and of ethics, and the thinkers the student has heard.
+      const met = viewsMet(s.flags);
+      body.append(h('p', { class: 'fine' }, met.length
+        ? `${met.length} of ${TOK_VIEWS.length} views met. Ask a thinker from Lumen's hint panel to meet more.`
+        : 'No views yet. When you are stuck, open Lumen\'s hint and choose "Ask a thinker".'),
+      ...(['truth', 'ethics'] as const).map((family) => h('section', {}, h('h3', {}, family === 'truth' ? 'Views of truth' : 'Views of ethics'),
+        ...TOK_VIEWS.filter((v) => v.family === family).map((v) => {
+          const known = met.includes(v);
+          const heard = thinkersFor(v.id).filter((x) => s.flags[thinkerFlag(x.id)] === true);
+          return h('div', { class: `lore-entry ${known ? '' : 'locked'}` }, h('h4', {}, known ? v.name : `${v.name} (not met yet)`),
+            known ? h('p', {}, v.plain) : '',
+            ...heard.map((x) => h('p', { class: 'fine' }, h('strong', {}, `${x.name}, ${x.life}, ${x.place}. `), x.summary, ' ',
+              x.source.url ? h('a', { href: x.source.url, target: '_blank', rel: 'noopener' }, x.source.title) : h('cite', {}, x.source.title))));
+        }))));
     } else if (tab === 'crossings') {
       // Conflicts met in the world, and how the player met them.
       const met = CROSSINGS.filter((x) => crossingWay(s.flags, x.id));
@@ -3046,6 +3148,12 @@ export class UI implements UIApi {
     (window as any).kgToTitle?.();
   }
 
+  /** The training gym (decision X-002): practice outside the story. */
+  private openGym(): void {
+    this.openModal('gym-panel wide', 'Training gym', this.closeBtn(), h('h2', {}, 'Training gym'),
+      gymPanel(ctx.controller, (key) => this.sfx(key)));
+  }
+
   private openMenu(): void {
     const c = ctx.controller;
     this.openModal('menu-panel', 'Menu', this.closeBtn(), h('h2', {}, 'Menu'),
@@ -3063,6 +3171,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openTalents() }, 'Insight tree'),
         h('button', { onclick: () => this.openRoles() }, 'Knower role'),
         h('button', { onclick: () => this.openLedger() }, "The Guardian's Ledger (progress)"),
+        h('button', { onclick: () => this.openGym(), title: 'Practice outside the story: word cards, exhibition practice, practice titles' }, 'Training gym (practice)'),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
         h('button', { onclick: () => this.openLeaderboard() }, 'Leaderboard'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
@@ -3204,7 +3313,7 @@ export class UI implements UIApi {
     box.append(this.closeBtn(), h('h2', {}, "The Guardian's Ledger"),
       h('p', { class: 'fine' }, 'Your own record, kept on this device. It is not a grade, and nobody ranks it. Time counts only while you are really playing.'),
       h('div', { class: 'ledger-tiles' }, tile('Today', L.today), tile('Last 7 days', L.week), tile('This month', L.month), tile('All time', L.total)),
-      h('div', { class: 'ledger-streak' },
+      ctx.settings.showStreak === false ? h('p', { class: 'fine' }, 'Your streak is hidden (Menu, Settings). It is still kept.') : h('div', { class: 'ledger-streak' },
         h('span', { class: 'flame-big', 'aria-hidden': 'true' }),
         h('span', {}, h('strong', {}, `${L.streak}-day streak`), ` · best ${L.bestStreak} · `,
           h('span', { title: 'Every 7 active days in a row earn a shield. A missed day uses a shield, so a rest day keeps your streak.' }, `${'🛡'.repeat(L.shields)}${'·'.repeat(MAX_SHIELDS - L.shields)} freeze shields`)),
@@ -3603,6 +3712,7 @@ export class UI implements UIApi {
       const title = id === 'relief-routing' ? 'The weir’s relief bench' : 'The library’s lane board';
       this.openModal('bench-panel wide', title, this.closeBtn(), routingBoard(id, ctx.controller, (key) => this.sfx(key)));
     }
+    else if (id === 'proving') this.openProving();
     else if (id === 'doors') this.openDoors();
     else if (id === 'guests') this.openGuestBook();
     else if (id === 'slate') this.openSlate();
@@ -3615,6 +3725,8 @@ export class UI implements UIApi {
     else if (id === 'stars') this.openStars();
     else if (id === 'dig') this.openDig();
     else if (id === 'trade') this.openTrade();
+    else if (id === 'ladder') this.openModal('bench-panel wide', "The Copyists' Ladder", this.closeBtn(),
+      ladderPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('ladder'), () => this.closeModal()));
   }
 
   /** Star Pictures: draw your own picture, see two traditions, measure, then choose what the chart says. */
@@ -3835,13 +3947,68 @@ export class UI implements UIApi {
     render();
   }
 
+  /** A timed replay in progress (decision X-003): the game id, its start time and the clock element. */
+  private timedRun: { id: string; start: number; clock: HTMLElement; tick: number } | null = null;
+
+  /** Start a field game again with a clock that counts up. Offered only after the first untimed play. */
+  private startTimedReplay(id: string): void {
+    if (!canTimedReplay(ctx.controller.state.flags, id)) return;
+    this.stopTimedReplay();
+    this.openFieldGame(id);
+    const clock = h('div', { class: 'timed-clock', role: 'timer', 'aria-label': 'Timed replay clock' }, '⏱ 0 s');
+    const start = Date.now();
+    const tick = window.setInterval(() => { clock.textContent = `⏱ ${clockText(elapsedSeconds(start, Date.now()))}`; }, 1000);
+    this.timedRun = { id, start, clock, tick };
+    this.modal?.append(clock);
+  }
+
+  private stopTimedReplay(): void {
+    if (this.timedRun) window.clearInterval(this.timedRun.tick);
+    this.timedRun?.clock.remove();
+    this.timedRun = null;
+  }
+
+  /** A content note before a room with hard real history (C-014, X-005). Shows once; stepping back costs nothing. */
+  showContentNote(mapId: string): void {
+    const c = ctx.controller;
+    const note = contentNoteFor(mapId, c.state.flags);
+    if (!note) return;
+    c.dispatch({ type: 'SetFlag', flag: noteSeenFlag(note.id), value: true });
+    const back = MAPS[note.stepBack.map];
+    this.openModal('bench-panel content-note', note.heading, this.closeBtn(),
+      h('h2', {}, note.heading),
+      h('p', {}, note.text),
+      h('p', { class: 'fine' }, 'To read more: ', ...note.sources.flatMap((src, i) => [i ? '; ' : '',
+        h('a', { href: src.url, target: '_blank', rel: 'noopener noreferrer' }, src.title)]), '.'),
+      h('div', { class: 'row' },
+        h('button', { type: 'button', class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Go in'),
+        back ? h('button', { type: 'button', onclick: () => {
+          this.closeModal();
+          ctx.world?.changeMap(back.id, back.spawn.x, back.spawn.y, { route: { id: 'content-note', label: note.stepBack.label } });
+        } }, `Step back to ${note.stepBack.label}`) : ''));
+  }
+
   /** Close a field game: first time gives marks and the idea in the Lore codex. */
   private finishField(id: string): HTMLElement {
     const g = FIELD_GAMES.find((x) => x.id === id)!;
-    const ev = ctx.controller.dispatch({ type: 'FinishFieldGame', game: id });
+    const c = ctx.controller;
+    const ev = c.dispatch({ type: 'FinishFieldGame', game: id });
     const first = ev.some((e) => e.kind === 'fieldgame' && e.first);
     if (first) this.sfx('sfx.award');
-    return h('p', { class: 'clue-view fresh', role: 'status' }, h('strong', {}, 'The idea: '), g.idea, first ? ' (+3 marks; it is in your Lore codex.)' : '');
+    let timed: HTMLElement | string = '';
+    if (this.timedRun?.id === id) {
+      const r = timedResult(c.state.flags, id, elapsedSeconds(this.timedRun.start, Date.now()));
+      if (r.isBest) c.dispatch({ type: 'SetFlag', flag: bestFlag(id), value: r.best });
+      recordResearch('timed-replay', id, r.seconds);
+      this.stopTimedReplay();
+      timed = h('p', { class: 'fine', role: 'status' }, resultText(r));
+    }
+    const replay = canTimedReplay(c.state.flags, id)
+      ? h('button', { type: 'button', class: 'mini', onclick: () => this.startTimedReplay(id),
+        title: 'Play this game again with a clock. There is no time limit and no fail.' }, 'Timed replay')
+      : '';
+    return h('div', {}, h('p', { class: 'clue-view fresh', role: 'status' }, h('strong', {}, 'The idea: '), g.idea, first ? ' (+3 marks; it is in your Lore codex.)' : ''),
+      timed, replay);
   }
 
   private barPair(rows: { label: string; n: number; of: number }[]): HTMLElement {
@@ -3849,6 +4016,49 @@ export class UI implements UIApi {
       h('span', {}, r.label),
       h('span', { class: 'track', role: 'img', 'aria-label': `${r.label}: ${r.n} of ${r.of}` }, h('span', { class: 'fill', style: `width:${r.of ? Math.round((100 * r.n) / r.of) : 0}%` })),
       h('span', { class: 'fine' }, `${r.n} of ${r.of} (${r.of ? Math.round((100 * r.n) / r.of) : 0}%)`))));
+  }
+
+  /** The Proving Floor (decision X-007): a trial where a wrong step restarts the section. Rules in provingFloor.ts. */
+  openProving(): void {
+    const c = ctx.controller;
+    const runs = Number(c.state.flags['field.proving.runs'] ?? 0);
+    c.dispatch({ type: 'SetFlag', flag: 'field.proving.runs', value: runs + 1 });
+    const seed = 41 + runs * 7;
+    let trial = startTrial(seed);
+    let note = '';
+    const box = this.openModal('bench-panel wide', 'The Proving Floor');
+    this.sfx('sfx.page');
+    const mark = { circle: '●', square: '■', triangle: '▲' } as const;
+    const tileView = (tile: Tile, onStep?: () => void) => h(onStep ? 'button' : 'span', {
+      type: onStep ? 'button' : undefined, class: `proving-tile ${tile.colour}`, 'aria-label': tileWords(tile), onclick: onStep,
+    }, h('span', { 'aria-hidden': 'true' }, mark[tile.shape].repeat(tile.count)), h('small', {}, tile.colour));
+    const render = () => {
+      const section = SECTIONS[trial.section];
+      if (!section) {
+        box.replaceChildren(this.closeBtn(), h('h2', {}, 'The Proving Floor'),
+          h('p', {}, `Orrin lifts his lamp. 'Across. ${trial.cracks ? `${trial.cracks} cracked tiles on the way, and that is how the floor teaches.` : 'Not one crack.'} The old guild tested every apprentice here.'`),
+          this.finishField('proving'),
+          h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+        return;
+      }
+      box.replaceChildren(this.closeBtn(), h('h2', {}, `The Proving Floor: ${section.title}`),
+        trial.section === 0 && trial.row === 0 && !trial.cracks
+          ? h('p', { class: 'fine' }, "Guildmaster Orrin: 'The old guild built this floor to test apprentices. Each span has a rule. The tiles by each door follow it. Step wrong, and the span resets. Nobody gets hurt, and nothing is lost but the walk.'") : '',
+        h('p', {}, section.intro),
+        h('div', { class: 'proving-examples', 'aria-label': 'Example tiles' }, ...section.examples.map((t) => tileView(t))),
+        note ? h('p', { class: 'clue-view', role: 'status' }, note) : '',
+        h('p', { class: 'fine' }, `Row ${trial.row + 1} of ${ROWS}. Section ${trial.section + 1} of ${SECTIONS.length}.`),
+        h('div', { class: 'proving-row', role: 'group', 'aria-label': `Row ${trial.row + 1}` },
+          ...trial.floor[trial.row].map((tile, i) => tileView(tile, () => {
+            const out = step(trial, i, seed);
+            trial = out.state;
+            if (out.result === 'cracked') recordResearch('trial-crack', `proving.${section.id}`, trial.cracks);
+            note = out.result === 'cracked' ? section.crack : out.result === 'crossed' ? section.crossed : out.result === 'finished' ? section.crossed : '';
+            this.sfx(out.result === 'cracked' ? 'sfx.page' : out.result === 'held' ? 'sfx.click' : 'sfx.sparkle');
+            render();
+          }))));
+    };
+    render();
   }
 
   /** Dov's Three Doors: play by feel, then let the counting frame run 300 rounds, then change one assumption. */
@@ -5628,6 +5838,8 @@ export class UI implements UIApi {
       check('highContrast', 'High-contrast interface'),
       check('dyslexiaSpacing', 'Wider letter and line spacing'),
       check('guidePrompts', 'Lumen may show short prompts without being asked'),
+      check('lumenOffers', 'When you seem stuck, the lantern glows and Lumen offers help. The hint shows only when you click'),
+      check('showStreak', 'Show my day streak in the Ledger'),
       check('calmMode', 'Calm mode: surprise events warn first, and you can choose "Later"'),
       check('zenMode', 'Zen mode: no turn limit in Showdowns (the crowd waits), surprise events always ask first, and nothing can be failed'),
       check('glossary', 'Smart glossary: underline key words in conversations, so you can tap them for an explanation'),
@@ -5657,6 +5869,9 @@ export class UI implements UIApi {
         h('li', {}, 'Sound effects: Kenney, "51 UI sound effects" (CC0); rubberduck, "80 CC0 RPG SFX" (CC0); wobbleboxx, "Level up, power up, Coin get" (CC0); HaelDB, "Completion sound" (CC0). All from OpenGameArt.org.'),
         h('li', {}, 'Font: Lexend (SIL Open Font License), via @fontsource/lexend.'),
         h('li', {}, 'Game engine: Phaser 3 (MIT licence).')),
+      h('section', {}, h('h3', {}, 'Ideas behind the games'),
+        h('p', { class: 'fine' }, 'Many games grew from TOK lessons. Each one is retold for this world, not copied.'),
+        h('ul', {}, ...IDEA_CREDITS.map((credit) => h('li', {}, h('strong', {}, credit.game), `: ${credit.idea}. ${credit.source}`)))),
       s?.flags['ending.council'] ? this.collectionBibliography(specimenReferences(c.pack), 'Works cited for the collection') : '');
   }
 

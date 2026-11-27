@@ -32,7 +32,7 @@
       "available": { "all": [{ "objective": "nile.routes" }, { "item": "item.annex-register" }] },
       "objectives": [
         {
-          "id": "shelf.nile.finish", "title": "Fit the revision peg to Marek’s separate route records and verify the path you leave.", "essential": false,
+          "id": "shelf.nile.finish", "title": "Fit the new peg to Marek’s route records, then walk the path you set out to check it works.", "essential": false,
           "done": { "flagSet": "shelf.nile.checked" },
           "onComplete": [{ "journal": "j.shelf.nile" }],
           "weave": { "concepts": ["evidence", "certainty", "interpretation", "explanation", "responsibility", "values"], "framework": ["scope", "perspectives", "methods-and-tools", "ethics"], "thinking": { "dok": 3, "bloom": "evaluate", "fink": "learning-to-learn", "solo": "relational" }, "atl": ["communication", "self-management", "thinking"], "aoks": ["HIS", "TEC", "HUM"], "subjects": ["geography", "design-tech", "history"], "minutes": 4 }

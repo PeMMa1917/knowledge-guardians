@@ -24,6 +24,10 @@ Last update 27 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 Mika chose Cloudflare (Workers + D1) with our own login. Students use a username only, with no email. Teachers reset student passwords. Nothing is built yet. Read [docs/ACCOUNTS_AND_HOSTING.md](docs/ACCOUNTS_AND_HOSTING.md) before you add any login, online save or class feature.
 
+## Multi-persona audit (in progress)
+
+A critique of the whole game from more than seventy points of view is in [docs/audit/](docs/audit/README.md). Read the chapter file before you change an encounter. Agreed fixes are in [CONSENSUS.md](docs/audit/CONSENSUS.md). Items for Mika to decide are in [CONTESTED.md](docs/audit/CONTESTED.md); do not decide them yourself. Chapter 1 is done. Mika's decisions on the contested list are in [DECISIONS.md](docs/audit/DECISIONS.md), and what was built from them, with reasons, is in [CHANGES.md](docs/audit/CHANGES.md): the training gym, Lumen's help offer, timed replays, two replies after key choices, thinkers and named views, the Proving Floor trial, trust that returns, idea credits and research data (off by default). Chapters 2 to 15 are next. Run `node tools/audit-personas.mjs --md` after content changes.
+
 ## Playtest build
 
 The Guardian’s diary now records which guide or viewing aid actually reached its reader in The Third Landmark and Where the Two Sights Meet. Both the first installation and its later return remember the chosen outcome across 40 dated maps and 41 artworks. Players carry the named object from the satchel. A practice rubbing, copy of a chart or comparison strip has its own identity when the story uses one. [Map choices](tests/map-alignment.test.ts) · [Sightline choices](tests/bearing-bay.test.ts)

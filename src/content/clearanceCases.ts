@@ -18,7 +18,7 @@ export type ClearanceCase = (typeof CLEARANCE_CASES)[number];
 
 const objectives: Objective[] = CLEARANCE_CASES.map((record) => ({
   id: record.objective,
-  title: `Check the viewing reply for ${record.accession}.`,
+  title: `Hear what a viewer says about “${record.catalogueTitle}”.`,
   visible: { card: record.card },
   essential: false,
   done: { all: [

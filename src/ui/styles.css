@@ -1061,6 +1061,49 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .catchment-floats { min-block-size: 1em; display: flex; align-items: center; gap: 0.25em; flex-wrap: wrap; }
 .catchment-floats i { width: 0.45em; height: 0.45em; background: var(--gold); border: 1px solid var(--ink); }
 
+/* Timed replay clock (decision X-003): counts up, never down. */
+.timed-clock { position: fixed; top: 0.6rem; right: 0.6rem; z-index: 60; padding: 0.3rem 0.7rem; border-radius: 0.6rem;
+  background: var(--panel, #241a3a); color: var(--ink, #fff4d6); border: 2px solid var(--gold, #e8c46a); font-variant-numeric: tabular-nums; }
+
+/* Lumen's offer (decision X-011): the lantern glows; the hint shows only after a click. */
+.hud-buttons button.lumen-offer { box-shadow: 0 0 0 2px var(--gold), 0 0 14px var(--gold); }
+@media (prefers-reduced-motion: no-preference) { .hud-buttons button.lumen-offer { animation: lumen-offer 2s ease-in-out infinite; } }
+@keyframes lumen-offer { 50% { box-shadow: 0 0 0 2px var(--gold), 0 0 4px var(--gold); } }
+
+/* Training gym (decision X-002): practice outside the story. */
+.gym-note { border-left: 3px solid var(--gold); padding-left: 0.6rem; }
+.gym-tabs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0; }
+.gym-tabs [aria-selected="true"] { outline: 2px solid var(--gold); }
+.gym-card { min-height: 7rem; padding: 1rem; border-radius: var(--radius, 0.6rem); background: var(--panel); border: 2px solid var(--gold-dim); margin: 0.6rem 0; }
+.gym-term { font-size: 1.6rem; font-weight: 700; color: var(--gold); margin: 0 0 0.4rem; }
+.gym-objects { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; padding: 0; }
+.gym-objects [aria-pressed="true"] { outline: 2px solid var(--gold); }
+.gym-field { display: block; margin: 0.4rem 0; }
+.gym-field textarea { display: block; width: 100%; box-sizing: border-box; font: inherit; }
+.gym-room select { max-width: 100%; font: inherit; }
+.gym-bench-object { border-top: 1px solid var(--gold-dim); margin-top: 0.6rem; padding-top: 0.4rem; }
+
+/* Two replies after a key choice (decision X-008). */
+.two-replies-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.8rem; }
+.two-reply { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.6rem; border: 1px solid var(--gold-dim); border-radius: var(--radius, 0.6rem); }
+.two-reply .portrait { flex: none; }
+
+/* The Proving Floor (decision X-007). Each tile also shows its colour in words, so colour never carries meaning alone. */
+.proving-examples, .proving-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.6rem 0; }
+.proving-tile { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; min-width: 5.5rem; min-height: 4.5rem;
+  border: 2px solid var(--gold-dim); border-radius: 0.5rem; background: rgba(255,255,255,0.05); font-size: 1.3rem; padding: 0.3rem; }
+.proving-tile small { font-size: 0.75rem; color: var(--ink-dim); }
+.proving-tile.gold > span { color: #f2c94c; } .proving-tile.blue > span { color: #6fb7ff; } .proving-tile.red > span { color: #ff7a6b; }
+button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var(--gold); }
+
+/* The Copyists' Ladder (src/ui/ladderPanel.ts) */
+.ladder-rungs { list-style: none; padding: 0; margin: 0.4rem 0; display: flex; flex-wrap: wrap; gap: 0.3rem; font-family: ui-monospace, monospace; }
+.ladder-rungs li { border: 1px solid var(--line, #5a4a2a); border-radius: 4px; padding: 0.15rem 0.45rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.ladder-rungs.broken li { opacity: 0.7; border-style: dashed; }
+.ladder-table { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.6rem; }
+.ladder-table h4, .ladder-fifth h4 { margin: 0.2rem 0; }
+.ladder input[type=text] { width: 6rem; text-transform: uppercase; letter-spacing: 0.1em; font-size: 1.05rem; }
+
 .moon-beats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .4rem; list-style: none; padding: 0; }
 .moon-beats li { padding: .45rem .15rem; text-align: center; border: 1px solid currentColor; border-radius: .35rem; }
 .moon-music .actions { display: flex; flex-wrap: wrap; gap: .4rem; }

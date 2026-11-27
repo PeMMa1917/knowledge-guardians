@@ -1143,10 +1143,32 @@
    ]
   },
   {
+   "id": "corvan.mend",
+   "speaker": "merchant-corvan",
+   "text": "He looks at you for a long moment. 'You broke my sign in front of half the town. Now you want to write the new one?' He rubs the empty board. 'Fine. Something a buyer can check. Pattern-welded, Lyle workshop, this season. Short. If it does not sell, I will tell everyone whose idea it was.' For the first time since the market, he almost smiles.",
+   "effects": [
+    { "relation": "merchant-corvan", "by": 2 },
+    { "setFlag": "corvan.trust.mended", "value": true }
+   ],
+   "options": [
+    { "text": "Leave the stall.", "next": null }
+   ]
+  },
+  {
    "id": "corvan.after.down",
    "speaker": "merchant-corvan",
    "text": "No sign today. I need time to think about what I write next. You were right about the steel. You did not have to be so loud about it.",
    "options": [
+    {
+     "text": "Offer to help him write a sign that is true and still sells.",
+     "if": {
+      "all": [
+       { "trust": "merchant-corvan", "lte": -1 },
+       { "not": { "flagSet": "corvan.trust.mended" } }
+      ]
+     },
+     "next": "corvan.mend"
+    },
     {
      "text": "Ask whether anyone left with the old sign’s words.",
      "if": {

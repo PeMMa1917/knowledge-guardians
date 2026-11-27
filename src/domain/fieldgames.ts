@@ -17,6 +17,9 @@ export interface FieldGame {
 }
 
 export const FIELD_GAMES: FieldGame[] = [
+  // A trial section: a wrong step restarts the section (decision X-007). Rules in provingFloor.ts.
+  { id: 'proving', name: 'The Proving Floor', host: 'Guildmaster Orrin, at the old proving floor under the bell tower in Emberford', concept: 'evidence',
+    idea: 'Guessing a rule from a few examples is induction. The guess has to survive new cases. More than one rule can fit the same examples, and only a new case can tell them apart.' },
   { id: 'doors', name: "Dov's Three Doors", host: 'Dov, at the lantern stall in Emberford', concept: 'certainty',
     idea: 'A strong gut feeling can be wrong, and the answer can change when one assumption changes (does the host know?). Many careful runs can correct an intuition; an argument can explain why.' },
   { id: 'guests', name: 'The Ferry Guest Book', host: 'Tova, at the old ferry landing', concept: 'certainty',
@@ -35,6 +38,8 @@ export const FIELD_GAMES: FieldGame[] = [
     idea: 'A tool decides what you can find and what you damage. A find without notes about where it lay loses most of its value as evidence. A site can only be dug once, so digging is also a choice about what later people can know.' },
   { id: 'stars', name: 'Star Pictures', host: 'Night-keeper Anwen, on the Observatory Coast', concept: 'interpretation',
     idea: 'The stars and their measured positions are the same for everyone. The pictures people draw between them differ, and each picture carries real knowledge: when to fish, how to walk home. Measurement and interpretation answer different questions.' },
+  { id: 'ladder', name: "The Copyists' Ladder", host: 'Nasir, at his copy desk in the Royal Records Room of the Nile archive', concept: 'certainty',
+    idea: 'A pattern seen in many examples can still break on the next one. A proof from the rules of the game holds for every case, even cases nobody has made yet. But a proof covers only what it states: the part it does not state is still a guess.' },
 ];
 
 export const fieldDone = (flags: Record<string, unknown>, id: string): boolean => flags[`field.${id}.done`] === true;

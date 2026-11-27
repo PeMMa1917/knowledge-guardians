@@ -134,7 +134,7 @@ const kinds: Record<string, Pick<Weave, 'concepts' | 'aoks' | 'subjects'>> = {
 };
 
 const objectives: Objective[] = REFERENCE_CASES.map((entry) => ({
-  id: entry.objective, title: `Use a workshop model for ${entry.accession}.`, essential: false, visible: { card: entry.card },
+  id: entry.objective, title: `Use a workshop model for “${entry.title}”.`, essential: false, visible: { card: entry.card },
   done: { all: [{ card: entry.card }, referenceMounted(entry), { any: [
     referenceProcessed(entry, 'compact'), { all: [referenceProcessed(entry, 'paired'), referenceMatched(entry)] },
   ] }] },

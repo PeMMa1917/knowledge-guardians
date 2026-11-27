@@ -103,12 +103,12 @@
       "available": { "objective": "m01.o6.label" },
       "objectives": [
         {
-          "id": "fold.access.compare", "title": "Read the two books, then follow the porch view and permission slip.", "essential": false,
+          "id": "fold.access.compare", "title": "Read the two books, then follow the porch view and the permission slip.", "essential": false,
           "done": { "all": [{ "card": "card.fold.century" }, { "card": "card.fold.green" }, { "flagSet": "fold.access.porch" }, { "flagSet": "fold.access.receipt" }] },
           "weave": { "concepts": ["evidence", "culture", "perspective", "interpretation", "power"], "framework": ["scope", "perspectives", "methods-and-tools"], "thinking": { "dok": 2, "bloom": "analyse", "fink": "integration", "solo": "multistructural" }, "atl": ["research", "thinking"], "aoks": ["HIS", "HUM", "POL", "LAN"], "subjects": ["history", "global-politics", "lang-lit", "anthropology"], "minutes": 4 }
         },
         {
-          "id": "fold.access.finish", "title": "Set out one layout and go to the side where a visitor can try it.", "essential": false,
+          "id": "fold.access.finish", "title": "Choose one way in, then stand where a visitor tries it.", "essential": false,
           "done": { "flagSet": "fold.access.checked" },
           "onComplete": [{ "giveItem": "item.door-fold" }, { "journal": "j.fold.nexus" }],
           "weave": { "concepts": ["responsibility", "values", "explanation", "justification", "truth", "objectivity", "certainty"], "framework": ["scope", "perspectives", "methods-and-tools", "ethics"], "thinking": { "dok": 3, "bloom": "create", "fink": "human", "solo": "relational" }, "atl": ["communication", "social"], "aoks": ["HIS", "HUM", "POL", "ART"], "subjects": ["global-politics", "design-tech", "visual-arts"], "minutes": 4 }
@@ -122,7 +122,7 @@
       "available": { "all": [{ "item": "item.door-fold" }, { "objective": "m02.o1.arrive" }] },
       "objectives": [
         {
-          "id": "fold.ember.finish", "title": "Give the lamp carriers an arrangement and visit the handover that actually follows.", "essential": false,
+          "id": "fold.ember.finish", "title": "Choose how Iven’s lamp crate is called for, then follow the crate to see who gets it.", "essential": false,
           "done": { "flagSet": "fold.ember.checked" },
           "onComplete": [{ "journal": "j.fold.ember" }],
           "weave": { "concepts": ["evidence", "certainty", "responsibility", "power", "values"], "framework": ["scope", "perspectives", "methods-and-tools", "ethics"], "thinking": { "dok": 3, "bloom": "evaluate", "fink": "application", "solo": "relational" }, "atl": ["communication", "social", "self-management"], "aoks": ["HUM", "TEC", "POL"], "subjects": ["global-politics", "design-tech", "business"], "minutes": 4 }

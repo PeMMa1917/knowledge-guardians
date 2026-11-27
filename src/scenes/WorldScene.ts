@@ -143,6 +143,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.checkZones(true);
     this.refreshWorld();
     ctx.ui.refreshHud();
+    ctx.ui.showContentNote(this.map.id);
   }
 
   // ------------------------------------------------------------------ build

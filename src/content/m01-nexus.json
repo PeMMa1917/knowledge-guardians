@@ -1400,7 +1400,7 @@
   {
    "id": "ise.start4",
    "speaker": "lumen",
-   "text": "Hello! I'm Lumen. I help when you ask. Press H, or the lantern button, for a hint. I will not give you the 'right' opinion. I don't have one.",
+   "text": "Hello! I'm Lumen. I help when you ask. Press H, or the lantern button, for a hint. I can help you check facts. Judgements are yours, and I will not make one for you.",
    "next": "ise.start5"
   },
   {

@@ -6,6 +6,8 @@ import type { GameController } from './controller';
 import type { Settings } from './settings';
 
 export interface UIApi {
+  /** Show a content note before a room with hard real history, once (C-014). */
+  showContentNote(mapId: string): void;
   isModalOpen(): boolean;
   setCompass(deg: number | null, label: string): void;
   openDialogue(characterId: string): void;

@@ -96,7 +96,7 @@
     },
     {
      "id": "well.o3.act",
-     "title": "Optional: read the knotted ropes at the east well and the west well.",
+     "title": "Optional: read the notched depth sticks at the east well and the west well.",
      "essential": false,
      "visible": {
       "objective": "well.o2.plan"
@@ -345,14 +345,14 @@
   {
    "id": "well.plan.ok",
    "speaker": "well-keeper",
-   "text": "Agreed. Both are fair: they change one thing and watch. Start with the marks on the wells. There's a rope with knots at each well. Read the knots at the east well by me, and at the west well beyond the smithy.",
+   "text": "Agreed. Both are fair: they change one thing and watch. Start with the marks on the wells. There's a notched stick at each well. Read the notches at the east well by me, and at the west well beyond the smithy.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "well.reflect",
    "speaker": "well-keeper",
-   "text": "Both wells are low, by the same number of knots. So it's most likely the season, not the forge. What will you take from this?",
+   "text": "Both wells are low, by the same number of notches. So it's most likely the season, not the forge. What will you take from this?",
    "claimKind": "interpretation",
    "historicalLabel": "fictional-world",
    "options": [
@@ -401,7 +401,7 @@
   {
    "id": "well.show",
    "speaker": "well-keeper",
-   "text": "Now tell the guildmaster, so the whole street hears the same thing, with the knots to show. And Guardian: this was a good way to help, but a game is not real service. Real projects happen with real people.",
+   "text": "Now tell the guildmaster, so the whole street hears the same thing, with the notches to show. And Guardian: this was a good way to help, but a game is not real service. Real projects happen with real people.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world"
   },
@@ -441,7 +441,7 @@
   {
    "id": "well.orrin",
    "speaker": "guildmaster-orrin",
-   "text": "The wells? Tell me, and show me. ...Same knots on both ropes. Then it's the season. I'll post a notice: share the west well, and no more blaming the forge. Thank you for bringing the street together, not apart.",
+   "text": "The wells? Tell me, and show me. ...Same notches on both sticks. Then it's the season. I'll post a notice: share the west well, and no more blaming the forge. Thank you for bringing the street together, not apart.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world",
    "effects": [
@@ -512,31 +512,31 @@
    "id": "h.well.o3.act.1",
    "objective": "well.o3.act",
    "depth": 1,
-   "text": "Each well has a knotted rope."
+   "text": "Each well has a notched depth stick."
   },
   {
    "id": "h.well.o3.act.2",
    "objective": "well.o3.act",
    "depth": 2,
-   "text": "One rope is by Efua. The other is west, beyond the smithy."
+   "text": "One stick is by Efua. The other is west, beyond the smithy."
   },
   {
    "id": "h.well.o3.act.3",
    "objective": "well.o3.act",
    "depth": 3,
-   "text": "Read the rope at the east well, then walk west past the forge to the west well."
+   "text": "Read the stick at the east well, then walk west past the forge to the west well."
   },
   {
    "id": "h.well.o3.act.4",
    "objective": "well.o3.act",
    "depth": 4,
-   "text": "Use the east well rope next to Efua, and the west well rope south-west of the forge."
+   "text": "Use the east well stick next to Efua, and the west well stick south-west of the forge."
   },
   {
    "id": "h.well.o4.reflect.1",
    "objective": "well.o4.reflect",
    "depth": 1,
-   "text": "What did the ropes show?"
+   "text": "What did the sticks show?"
   },
   {
    "id": "h.well.o4.reflect.2",

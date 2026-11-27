@@ -149,7 +149,7 @@ function benchScene(route: Route, first: boolean): DialogueNode {
 }
 
 const objectives: Objective[] = FIELD_STORE_CASES.map((entry) => ({
-  id: entry.objective, title: `Finish a practice comparison for ${entry.accession}.`,
+  id: entry.objective, title: `Finish a practice comparison for “${entry.title}”.`,
   visible: { card: entry.card }, essential: false,
   done: { all: [{ card: entry.card }, fieldFirst(entry), { any: FIELD_ROUTES.map((route) => fieldRead(entry, route)) }] },
   weave: { ...exercises[entry.kind].weave, atl: ['thinking', 'research', 'communication'],

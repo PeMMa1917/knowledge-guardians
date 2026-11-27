@@ -16,7 +16,7 @@ export type LanternRoute = typeof DISPLAY_ROUTES[number];
 
 const objectives: Objective[] = LANTERN_LEAVES.map((record) => ({
   id: record.objective,
-  title: `Set a viewing copy of ${record.accession} where a reader can use it.`,
+  title: `Set a viewing copy of “${record.title}” where a reader can use it.`,
   visible: { card: record.card }, essential: false,
   done: { all: [{ card: record.card }, ...SIDES.map((side) => ({ flag: `${record.flag}.read.${side}`, eq: true })),
     { any: DISPLAY_ROUTES.map((route) => ({ all: [

@@ -49,7 +49,7 @@ function viewingObjective(record: EarlierView): Objective {
 
 export const earlierViewsContent = {
   missions: earlierViews.map((record) => ({ id: record.prop, world: record.world, title: record.title,
-    knowledgeQuestion: record.method, stake: record.request, objectives: [viewingObjective(record)] })),
+    knowledgeQuestion: record.question, stake: record.request, objectives: [viewingObjective(record)] })),
   journal: earlierViews.map((record) => ({ id: `j.${record.flag}`, text: record.journal, claimKind: 'observation' })),
   hints: earlierViews.flatMap((record) => [`Bring the equipped object. ${record.firstHint}`, record.method,
     record.thirdHint, record.placements.map(({ label }) => label).join(' · '),

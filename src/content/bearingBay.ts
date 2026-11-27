@@ -17,14 +17,14 @@ export type BearingCase = (typeof BEARING_CASES)[number];
 
 const goals = BEARING_CASES.flatMap((record): Objective[] => {
   const key = bearingKey(record.slug);
-  return [{ id: record.objective, title: `Trace two same-bell sights and fit a route aid beside the record of ${record.name}.`, essential: false, visible: { card: record.card },
+  return [{ id: record.objective, title: `Take two sights at the same bell and find where they cross on ${record.name}.`, essential: false, visible: { card: record.card },
     done: { all: [{ card: record.card }, ...BEARING_POSTS.map((post) => ({ flag: `${key}.${post}`, eq: true })),
       { any: BEARING_ROUTES.map((route) => ({ all: [{ flag: `${key}.route`, eq: route }, { flag: `${key}.received`, eq: route }] })) }] },
     weave: { concepts: ['evidence', 'perspective', 'interpretation', 'explanation', 'objectivity', 'responsibility'],
       framework: ['scope', 'perspectives', 'methods-and-tools', 'ethics'], atl: ['thinking', 'communication'], aoks: ['MAT', 'ART', 'HIS'],
       subjects: ['geography', 'design-tech', 'math-aa'], thinking: { dok: 3, bloom: 'analyse', fink: 'integration', solo: 'relational' }, minutes: 4 },
     onComplete: [{ journal: `j.${record.objective}` }],
-  }, { id: record.returnObjective, title: `Recheck a changed viewing condition with ${record.name}.`, essential: false, visible: { item: `item.specimen.${record.key}` },
+  }, { id: record.returnObjective, title: `Look again at ${record.name} when the light or weather has changed.`, essential: false, visible: { item: `item.specimen.${record.key}` },
     done: { all: [{ objective: record.objective }, { flag: `${key}.old`, eq: true }, ...BEARING_FIXES.map((fix) => ({ flag: `${key}.${fix}`, eq: true })),
       { flag: `${key}.fitted`, in: [...BEARING_FIXES] }] },
     weave: { concepts: ['evidence', 'certainty', 'justification', 'perspective', 'responsibility'], framework: ['scope', 'perspectives', 'methods-and-tools', 'ethics'],

@@ -1213,6 +1213,227 @@
      "text": "Two markers may rise together because each takes its reading from one float."
     }
    ]
+  },
+  {
+   "id": "slip",
+   "term": "Slip",
+   "match": [
+    "slip",
+    "slips"
+   ],
+   "text": "A small piece of paper with a short note on it, such as an order, a receipt or a reading. In this game a slip often carries a claim from one person to the next.",
+   "history": {"note": "The paper sense of slip may come from Middle Dutch or Middle Low German slippe, a strip or slit cut from something.", "url": "https://www.merriam-webster.com/dictionary/slip"},
+   "examples": [
+    {
+     "if": {
+      "objective": "corner.compare"
+     },
+     "text": "At the Fourth Corner you matched the order slip to the hanging. The slip dated a repair. It did not date the first weaving."
+    },
+    {
+     "if": {
+      "objective": "copy.o.trace"
+     },
+     "text": "In the square you read the guild entry, the workshop slip and Sefa’s packet side by side before you chose who should carry the correction."
+    },
+    {
+     "text": "Ask who wrote a slip, and for whom, before you trust what it says."
+    }
+   ]
+  },
+  {
+   "id": "docket",
+   "term": "Docket",
+   "match": [
+    "docket",
+    "dockets"
+   ],
+   "text": "A short document that lists what is in a delivery, or what happened to it on the way.",
+   "history": {"note": "Middle English had doggette, a short note that summed up a longer document. Where the word came from before that is not certain.", "url": "https://www.merriam-webster.com/dictionary/docket"},
+   "examples": [
+    {
+     "if": {
+      "objective": "metal.docket"
+     },
+     "text": "In the Trade Hall the transfer docket joined the crates for one cart trip. It did not join their earlier histories."
+    },
+    {
+     "if": {
+      "objective": "nile.handoff.send"
+     },
+     "text": "Before the Nile dispatch left, you checked the docket that said what travelled with it."
+    },
+    {
+     "text": "A docket tells you what someone packed. It does not tell you what is true about each thing in the box."
+    }
+   ]
+  },
+  {
+   "id": "tally",
+   "term": "Tally",
+   "match": [
+    "tally",
+    "tallies"
+   ],
+   "text": "A running count, often made with marks, of things someone saw or did.",
+   "history": {"note": "Anglo-French tallie came from Latin talea, a twig or cutting. People once cut notches in a stick to keep a count.", "url": "https://www.merriam-webster.com/dictionary/tally"},
+   "examples": [
+    {
+     "if": {
+      "objective": "forest.moss.survey"
+     },
+     "text": "In the Living Forest you borrowed the bridge crew’s tally. It counted what the crew saw on their path, not every square."
+    },
+    {
+     "if": {
+      "objective": "civic.rules"
+     },
+     "text": "At the Civic Machine, one joined tally of requests gave different results under two dispatch rules."
+    },
+    {
+     "if": {
+      "flagSet": "well.east.read"
+     },
+     "text": "At the east well in Emberford, a tally stick had a notch for every hand of depth. Efua used the notches to compare two wells."
+    },
+    {
+     "text": "Before you use a tally, ask who counted, where they stood and what they left out."
+    }
+   ]
+  },
+  {
+   "id": "ledger",
+   "term": "Ledger",
+   "match": [
+    "ledger",
+    "ledgers"
+   ],
+   "text": "A book of records kept over time, often of money, goods or work.",
+   "history": {"note": "Middle English legger probably comes from leggen, to lay. A ledger was a large book that lay in one place.", "url": "https://www.merriam-webster.com/dictionary/ledger"},
+   "examples": [
+    {
+     "if": {
+      "objective": "m02.o3.thread"
+     },
+     "text": "The guild ledger showed the sale of Corvan’s blade. It recorded a sale, not the age of the steel."
+    },
+    {
+     "if": {
+      "objective": "scout.o.compare"
+     },
+     "text": "With the two scouts’ ledgers side by side, you could see how each report had been made."
+    },
+    {
+     "text": "A ledger is strong evidence of what its keeper wrote down. It can still miss what the keeper did not see."
+    }
+   ]
+  },
+  {
+   "id": "custody",
+   "term": "Custody",
+   "match": [
+    "custody"
+   ],
+   "text": "Who held an object or a record, and when. A chain of custody lets later people check that a thing was not changed or swapped.",
+   "history": {"note": "Latin custodia meant guarding. It comes from custos, a guard or keeper.", "url": "https://www.merriam-webster.com/dictionary/custody"},
+   "examples": [
+    {
+     "if": {
+      "objective": "preserved.royal"
+     },
+     "text": "In the Cold Store the royal catalogue had a gap in its custody. You repaired the heading without hiding the gap."
+    },
+    {
+     "if": {
+      "objective": "tail.cold"
+     },
+     "text": "You kept the custody sleeve apart from the leaf it held. The sleeve said who had held the leaf, not what the leaf said."
+    },
+    {
+     "text": "A gap in custody is not proof that something went wrong. It is a place where a check cannot reach."
+    }
+   ]
+  },
+  {
+   "id": "testimony",
+   "term": "Testimony",
+   "match": [
+    "testimony",
+    "testimonies"
+   ],
+   "text": "What a person says they saw, heard or did. It can be strong evidence, and it can be checked against other evidence.",
+   "history": {"note": "Latin testimonium comes from testis, a witness. Testimony is what a witness says.", "url": "https://www.merriam-webster.com/dictionary/testimony"},
+   "examples": [
+    {
+     "if": {
+      "objective": "last-turn.publish"
+     },
+     "text": "You made room for Derva’s own account of her gesture beside what other people saw."
+    },
+    {
+     "if": {
+      "objective": "copies.wordclip.gather"
+     },
+     "text": "In the City of Copies you kept a limited testimony beside two dated forms, so a reader could see what each one supported."
+    },
+    {
+     "text": "Ask what the witness could see from where they stood, and what they had reason to say."
+    }
+   ]
+  },
+  {
+   "id": "attribution",
+   "term": "Attribution",
+   "match": [
+    "attribution",
+    "attributions"
+   ],
+   "text": "A statement of who made something, or where or when it was made. An attribution can be certain, probable or disputed.",
+   "history": {"note": "Latin attribuere meant to assign or give to someone. Its parts are ad, to, and tribuere, to allot.", "url": "https://www.merriam-webster.com/dictionary/attribute"},
+   "examples": [
+    {
+     "if": {
+      "objective": "material.store.granulated-earring.received"
+     },
+     "text": "In the Material Stores one earring carried two attributions. You kept both in view for the next reader."
+    },
+    {
+     "if": {
+      "objective": "material.store.ethiopian-gold-ring.received"
+     },
+     "text": "A ring had a place attribution and a gift stamp. They answered different questions about it."
+    },
+    {
+     "text": "Words such as ‘probably’ or ‘attributed to’ are part of the claim. Keep them."
+    }
+   ]
+  },
+  {
+   "id": "accession",
+   "term": "Accession",
+   "match": [
+    "accession",
+    "accessions"
+   ],
+   "text": "An object’s entry in a museum’s register. The accession number is its catalogue number, so anyone can find the same object again.",
+   "history": {"note": "Latin accessio was an addition. Its verb accedere meant to come near or to be added.", "url": "https://www.merriam-webster.com/dictionary/accession"},
+   "examples": [
+    {
+     "if": {
+      "objective": "material.store.moroccan-pendants.received"
+     },
+     "text": "Two pendants shared one accession. One number did not mean one object."
+    },
+    {
+     "if": {
+      "objective": "island.proof-rack.paired-views.checked"
+     },
+     "text": "On Ivo’s proof rack, a shared accession changed how many slots the same three cards needed."
+    },
+    {
+     "text": "An accession number lets another person check the exact object you used."
+    }
+   ]
   }
- ]
+]
 }

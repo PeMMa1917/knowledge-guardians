@@ -12,7 +12,7 @@
    "objectives": [
     {
      "id": "nexus.rest.checked",
-     "title": "Put the rests in use and keep the remaining request in view.",
+     "title": "Place the two reading rests, and keep the group still waiting in view of tomorrow’s clerk.",
      "essential": false,
      "done": {
       "flag": "nexus.rest.used",

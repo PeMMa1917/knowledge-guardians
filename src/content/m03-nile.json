@@ -6073,7 +6073,7 @@
    "objectives": [
     {
      "id": "nile.workers.proof",
-     "title": "Try both openings with Leila, then leave a proof visitors can check.",
+     "title": "Try both first lines with Leila, then leave a copy that visitors can check.",
      "done": {
       "flagSet": "nile.workers.window"
      },
@@ -6453,7 +6453,7 @@
     },
     {
      "id": "nile.lamp.file",
-     "title": "Put the light readings and the purpose of the marks where a reader can use them.",
+     "title": "Leave the light readings, and what the marks were for, where a reader can use them.",
      "done": {
       "flagSet": "nile.lamp.placement"
      },
@@ -6714,7 +6714,7 @@
     },
     {
      "id": "nile.handoff.send",
-     "title": "Settle what travels and inspect the docket before leaving.",
+     "title": "Decide what goes with the runner, and check the delivery note before it leaves.",
      "done": {
       "all": [
        {
@@ -6841,7 +6841,7 @@
     },
     {
      "id": "nile.witness.publish",
-     "title": "Set out the loose guide and check where the next reader finds it.",
+     "title": "Set out the loose guide, then see where the next reader finds it.",
      "done": {
       "all": [
        {
