@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 27 November • Sora’s spare key
+
+At Seagrass Steps a learner’s recollection and a voyage history can each correct the other kind of account. The Guardian tests which end of a bird’s flight suggests land at two different hours, then takes Hōkūleʻa into the field. In the audience gallery, the same shadow can stand for two canoes. At the Two-Tide Dock the learner’s view from the lower pier changes the guide, opens one of two passages and changes Sora’s answer back home. The catalogue now identifies 2,039 real specimens. [The four itineraries](tests/folding-flock.test.ts)
+
 ## 27 November • Music at the workbench
 
 A rehearsal leaves room for the whistle. Three notes mark a bench at work and two mark a hearing. Either ruling has the same handover bell. Players can follow captions and set music and effects separately. The field-game registry opens 18 individual games and 14 families of workstations across the map. Long-running saves can open an earlier conversation without rebuilding the whole scene catalogue.

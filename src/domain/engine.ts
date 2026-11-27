@@ -1,3 +1,4 @@
+import {pinBirds,type BirdCommand} from './birdSide';
 import {workWhistle,type WhistleCommand} from './whistleWatch';
 import {useWeirLamp,type WeirLampCommand} from './weirLamp';
 import { workVault,openedVaultSeal,advancedVaultPhase,type VaultCommand } from './vaultWork';
@@ -81,6 +82,7 @@ const DIALOGUE_FALLBACK = 999;
 import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand, type LanternPairCommand } from './lamplight';
 
 export type Command =
+  | BirdCommand
   | WhistleCommand
   | MakerCommand | FieldCommand
   | MillCommand
@@ -612,6 +614,8 @@ export class Engine {
           }
           break;
         }
+        case 'PinBirdWatch':
+          s=apply(pinBirds(s,cmd),s,out);break;
         case 'WorkWhistle':
           s=apply(workWhistle(s,cmd),s,out);break;
         case 'UseWeirLamp':
@@ -714,6 +718,7 @@ export class Engine {
           // Remember seen lines, so the world can mark people with something new to say.
           if (!s.flags[`node.${n.id}`]) s = apply([{ setFlag: `node.${n.id}`, value: true }], s, out);
           s = apply(n.effects, s, out);
+          if (n.biographyCard) s = apply([{addCard:n.biographyCard},{setFlag:biographyReadFlag(n.biographyCard),value:true}],s,out);
           break;
         }
         case 'ChooseDialogueOption': {

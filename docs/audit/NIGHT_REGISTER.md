@@ -203,3 +203,16 @@ A student at Liri’s rehearsal needs to hear a single whistle. Opening the rehe
 Thirty-two kinds of workbench now open through the same panel registry. The original panels still own their tools, feedback and help. A browser journey follows their map placements across three engines. The audio lifecycle check exercises a suspended context, resumption while a bench is open, a volume change, a silent listening task and leaving the scene.
 
 Opening a conversation used to rebuild a lookup of all 7,743 dialogue scenes to show the last five heard. The play controller now keeps one lookup, and the conversation stops once five earlier lines are found. The diary still offers the complete list. A local benchmark of 100 openings with 600 heard scenes went from 431 ms to 11 ms. With 4,500 heard scenes it went from 2,595 ms to 245 ms. These timings cover the history lookup on this test computer.
+
+## Sora’s spare key
+
+| Review perspective | Action and consequence | Limit or trade-off |
+| --- | --- | --- |
+| Learner acquiring English | Keep the lookout’s peg on the same ledge. Flip from morning to evening and watch what changes while the westward arrow stays fixed. | The opposing readings share a direction. Each has a distinct time label, bird scene and text description. |
+| History teacher and TOK examiner | Try a voyage date against Renna’s claim about writing. Turn to the named learner for that question. Try a memory about a lesson to settle who sailed and then check the voyage record. | Fixing one claim does not earn the other repair. Each source has a separate place in the diary. |
+| Pacific history and source reviewers | Read the Society’s voyage history and Thompson’s first-person account. Open the launch record for a particular canoe. | Satawal, Hawaiʻi and Raʻiātea have separate accounts. The folding cloth is a model of invented harbour observations. A community consultation remains a separate undertaking. |
+| Players who prefer making things and theatre | Earn Hōkūleʻa and expose one of two dated views in the gallery. Either can replace the generic silhouette. | The launch record establishes identity. The two voyage records establish roles at different times. Neither identifies every teacher of navigation. |
+| Accessibility and family reviewers | Activate each watch, peg and public reply with a button. The two receiving routes ask who can actually use the board from below. | Waiting keeps a second person at the rail. Walking the piers changes what each can see and uses time from another job. |
+| School support and engineering | Read a real account, then check who appears in the diary. Reopen the save with the earned canoe and try a second path. | Only an opened account or inspected object supplies its encyclopedia link. Source citations for an earned object travel in the appropriate export. |
+
+[Rules and saved outcomes](../../tests/folding-flock.test.ts) · [Browser journey](../../tools/folding-flock-journey.mjs)

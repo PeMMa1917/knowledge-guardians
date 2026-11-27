@@ -32,7 +32,8 @@ export async function playTaskScore({ page, engine, waitMap, close, button }) {
             title: (fixed ?? family).title,
           });
       }
-    assert.equal(sites.size, 32);
+    for (const id of fieldGamePanels.keys()) assert.ok(sites.has(id), "Missing field game on a map: " + id);
+    assert.equal(sites.size - fieldGamePanels.size, 14);
   } finally {
     await server.close();
   }

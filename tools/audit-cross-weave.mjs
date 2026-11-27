@@ -142,6 +142,49 @@ const copiesEvidenceInvestigations = [
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
   {
+    objective:'birdside.cloth',map:'sea.harbour',target:'birdside.cloth',
+    source:'tests/folding-flock.test.ts',anchor:'holds the observation side fixed across the two hours',
+    action:'Pin the same ledge for the same westward arrow at first and last light on separate watches. Unfold the rain strip and see how a peg still fixes a position when the observations cannot locate a roost.',
+    reasoning:[{mode:'deductive',basis:'Given the model’s stipulated departure at dawn and return at dusk, a westward path places its land endpoint on opposite sides at the two hours.'},{mode:'abductive',basis:'An unrecognised flight in rain provides several possible accounts. The peg records the proposed position without settling which account fits.'}],
+    comparison:{concepts:['evidence','certainty'],framework:['scope','methods-and-tools'],areas:[
+      {id:'MAT',method:'Hold the arrow and peg fixed, then reverse which endpoint counts as the start of the directed route.',limit:'The geometric relation can identify an endpoint only after the direction and the rule are specified.'},
+      {id:'NAT',method:'Check a particular flock at a stated hour. Compare its visible behaviour with the expected outbound or returning pattern.',limit:'The rain watch gives neither species identification nor a coherent direction. An abstract arrow cannot restore that missing observation.'}],
+      connection:'The same direction can support different claims about land. A mathematical implication in the paper model requires an observational premise to say anything about the actual birds.'},
+    dimensions:['area:NAT','area:MAT','concept:evidence','concept:certainty','framework:scope','framework:methods-and-tools','subject:biology','subject:math-ai'],elements:['game:121','game:234'],
+  },
+  {
+    objective:'birdside.paper',map:'sea.harbour',target:'birdside.folder',
+    source:'tests/folding-flock.test.ts',anchor:'checks a printed caption with the learner’s account',
+    action:'Try two public voyage dates against Renna’s claim about learning without writing. The dates leave it unresolved. Use Thompson’s account of his pencil to reset the caption.',
+    reasoning:[{mode:'deductive',basis:'If a general caption excludes all writing in this lesson, one described use of a pencil in this lesson contradicts it. A voyage date alone cannot answer the claim.'}],
+    dimensions:['area:HIS','theme:IND','concept:evidence','concept:culture','framework:scope','framework:perspectives'],elements:['game:108','story:112'],
+  },
+  {
+    objective:'birdside.projection.image',map:'stage.gallery',target:'birdside.projector',
+    source:'tests/folding-flock.test.ts',anchor:'opens each of four handovers only with the earned canoe',
+    action:'Try a second cutout with the same shadow. Expose the launch place and date or two dated voyages of the same identified canoe, and inspect the particular slide now standing beside the projection.',
+    reasoning:[{mode:'analogical',basis:'Two props can agree in silhouette. Matching their visible outlines does not carry the name or the chronology of one object to the other.'}],
+    comparison:{concepts:['interpretation','evidence'],framework:['scope','methods-and-tools'],areas:[
+      {id:'ART',method:'Frame a silhouette on glass and test a different cutout against the shadow. Choose the details a viewer can take away.',limit:'The silhouette can represent a kind of canoe while leaving the individual hulls indistinguishable.'},
+      {id:'HIS',method:'Attach a named launch at a specific place and date or compare two voyage entries for the same vessel.',limit:'The public launch does not identify the navigator in a later year. The voyage record cannot identify every teaching exchange.'}],
+      connection:'A spectator can recognise the form while misidentifying the historical vessel. A dated frame makes that particular identification open to checking.'},
+    dimensions:['micro:172','area:ART','area:HIS','concept:evidence','concept:interpretation','framework:scope','framework:methods-and-tools','subject:film','subject:history'],elements:['game:108','story:112'],
+  },
+  {
+    objective:'birdside.projection.range',map:'stage.gallery',target:'birdside.projector',
+    source:'tests/folding-flock.test.ts',anchor:'opens each of four handovers only with the earned canoe',
+    action:'Try the sweeping caption on two different learning histories. Leave the named learner in the programme or leave room for another historian to check a second crew’s teaching roles.',
+    reasoning:[{mode:'inductive',basis:'A named teaching case suggests another record worth comparing. It supplies no prevalence estimate for how navigators or their teachers learned.'}],
+    dimensions:['micro:136','area:HIS','theme:IND','framework:scope','concept:justification'],elements:['game:22','story:119'],
+  },
+  {
+    objective:'birdside.returned',map:'island.dock',target:'birdside.return',
+    source:'tests/folding-flock.test.ts',anchor:'opens each of four handovers only with the earned canoe',
+    action:'Equip the named canoe and try the earlier board or lamp from a lower pier. Waiting with a second person opens the Quiet Margin. Trading the lead opens the chalk walk and changes Sora’s account back home.',
+    reasoning:[{mode:'pragmatic',basis:'Either handover can make an instruction usable. Test who can reach the cord or read the upper row and who has to wait for the next boat.'}],
+    dimensions:['area:HUM','theme:POL','concept:responsibility','concept:values','framework:ethics','subject:design-tech'],elements:['game:22','story:119'],
+  },
+  {
     objective:'hearing.empty-chair.amended',map:'preserved.archive',target:'agate-vale',
     source:'tests/town-hearings.test.ts',anchor:'retains the two source editions in all eight repairs',
     action:'Bring a market token decision to the family door. Offer a return hook or a witness bell and see how a visitor can enter a place but still have no opportunity to speak.',

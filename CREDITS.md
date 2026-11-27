@@ -130,3 +130,5 @@ The measuring cup, plumb plate and reed-nib reference slips at Hesper’s bench 
 
 
 The pay bowls, punch wheel and type case in the mill registers are original in-game pixel drawings. The scene uses fictional shift records. Historical reading for Ostrom, Pearl and Trouillot appears with their encounters in the journal. [Object drawings](src/ui/illustrations.ts) · [Register windows](src/content/millShift.ts)
+
+The small and enlarged Hōkūleʻa, the folding flock and its three stitched waterscapes are original Knowledge Guardians pixel illustrations drawn in code. The Society’s launch record informs the identification. [Graphics](src/ui/illustrations.ts) · [Polynesian Voyaging Society](https://hokulea.com/hokulea-44th/)

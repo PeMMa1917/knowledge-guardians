@@ -768,3 +768,7 @@ A receipt records how the fictional keeper used the reading. It does not documen
 ## Field assessment at Fern Station
 
 Liebenberg, Louis, et al. *Assessing and Certifying Indigenous Tracking Expertise and Skills*. Indigenous Peoples of Africa Coordinating Committee, prepared for UNESCO Local and Indigenous Knowledge Systems, Sept. 2021, p. 12. The Fern Station’s separate signatures and its invitation to an outside observer adapt the report’s distinction between locally chosen and invited evaluators. [UNESCO record](https://unesdoc.unesco.org/ark:/48223/pf0000382276)
+
+### Hōkūleʻa at the folding flock
+
+The Polynesian Voyaging Society dates Hōkūleʻa’s launch at Kualoa/Hakipuʻu on Oʻahu to 8 March 1975. Its history names Mau Piailug of Satawal and Nainoa Thompson of Hawaiʻi and distinguishes their roles in the 1976 and 1980 voyages. Thompson recounts how Piailug adapted his teaching. The navigators’ stated communities remain separate from each other and from Tupaia of Raʻiātea in the Lantern House. The paper flock and the theatre projection are original play models. [Launch](https://hokulea.com/hokulea-44th/) · [Voyages](https://hokulea.com/history/) · [Thompson’s account](https://archive.hokulea.com/rapanui/mau.html) · [Observing birds](https://archive.hokulea.com/navigate/land.html)

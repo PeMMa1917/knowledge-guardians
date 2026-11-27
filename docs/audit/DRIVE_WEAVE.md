@@ -110,3 +110,7 @@ In *Assessing and Certifying Indigenous Tracking Expertise and Skills*, Liebenbe
 ## Setting the subject back in the sentence
 
 The supplied title-unpacking materials invite learners to change a term and follow what happens to the claim. Lark lets a Guardian move the grammatical subject in a metal chase. Assigning collection to the lending desk also assigns the counting to it. Mina’s two coat pockets keep the readers’ independent replies, so the audience can challenge a statement about the wording or one about what the readers understood. Putting this beside the wheel crew’s two delivery tags can change the next collection run. [Source activity](https://docs.google.com/presentation/d/1OXm6BzxsBjXB2yrqh5LLAQ7FCOMyPtN5/edit) · [The press and its two readers](../../src/content/hearings/copies.ts)
+
+### The folding flock
+
+The supplied lesson on Indigenous knowledge and history asks how to handle competing accounts and how to assess an oral and a written source. At Seagrass Steps, Nainoa Thompson’s first-person account changes a printed caption. A published voyage history corrects a harbourkeeper’s inference about who sailed. The child who takes home the theatre programme needs a particular canoe and a claim the evidence can support. These scenes paraphrase public sources and keep each speaker and community named. [The harbour records](../../src/content/seaBirdWatch.ts) · [The gallery](../../src/content/canoeProjection.ts)

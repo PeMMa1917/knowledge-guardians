@@ -83,8 +83,12 @@ export function encyclopediaForDiaryEvent(pack: ContentPack, event?: Encyclopedi
     if (character) return encyclopediaForCharacter(character);
   }
   if (event.kind === 'conversation' && event.key === `conversation:${event.ref}`) {
-    const speaker = pack.dialogue.find(({ id }) => id === event.ref)?.speaker;
-    const character = pack.characters.find(({ id }) => id === speaker);
+    const node = pack.dialogue.find(({ id }) => id === event.ref);
+    if (node?.biographyCard) {
+      const card = pack.cards.find(({ id }) => id === node.biographyCard);
+      if (card) return encyclopediaForBiography(card);
+    }
+    const character = pack.characters.find(({ id }) => id === node?.speaker);
     return character ? encyclopediaForCharacter(character) : undefined;
   }
   if (event.kind === 'inspection' && event.key === `biography:${event.ref}`) {

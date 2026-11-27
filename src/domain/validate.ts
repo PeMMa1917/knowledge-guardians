@@ -1,3 +1,4 @@
+import {isHistoricalBiography} from './historicalEncounters';
 /**
  * Runtime validation of content packs and saved campaign state.
  *
@@ -200,6 +201,7 @@ export function validateContent(pack: ContentPack): string[] {
 
   pack.dialogue.forEach((n) => {
     dup('node', n.id); text(`node ${n.id}`, n.text);
+    if (n.biographyCard && !pack.cards.some(card => card.id === n.biographyCard && isHistoricalBiography(card))) p.push(`node ${n.id}: missing historical account ${n.biographyCard}`);
     if (n.citationSource && !citationSources.has(n.citationSource)) p.push(`node ${n.id}: unknown MLA source ${n.citationSource}`);
     if (n.motif !== undefined && !STORY_MOTIFS.includes(n.motif)) p.push(`node ${n.id}: unknown story motif ${n.motif}`);
     if (n.speaker !== 'narrator' && n.speaker !== 'player' && n.speaker !== 'lumen' && !n.speaker.startsWith('mentor:') && !chars.has(n.speaker)) p.push(`node ${n.id}: unknown speaker ${n.speaker}`);

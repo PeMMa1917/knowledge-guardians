@@ -1,3 +1,4 @@
+import { foldingFlock } from './foldingFlock';
 import type { GameController } from "../app/controller";
 import { ladderPanel } from "./ladderPanel";
 import { labyrinthPanel } from "./labyrinthPanel";
@@ -59,6 +60,7 @@ interface Panel<T> {
 }
 
 export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
+  ["birdside-watch", { title: "The folding flock", open: foldingFlock }],
   ["ladder", { title: "The Copyists' Ladder", open: ladderPanel }],
   ["maze", { title: "The Labyrinth Lens", open: labyrinthPanel }],
   ["survey", { title: "The Survey Bell", open: surveyPanel }],

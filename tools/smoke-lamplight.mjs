@@ -1,3 +1,4 @@
+import {playFoldingFlock} from './folding-flock-journey.mjs';
 import { playTaskScore } from './task-score-journey.mjs';
 import { playTownHearings } from './town-hearings-journey.mjs';
 import {playChapterLights} from './chapter-lights-journey.mjs';
@@ -113,8 +114,10 @@ try {
   const shelvesOnly = process.argv.includes('--diary-shelves');
   const lightsOnly = process.argv.includes('--chapter-lights');
   const hearingsOnly = process.argv.includes('--town-hearings');
+  const birdOnly = process.argv.includes('--folding-flock');
   const scoreOnly = process.argv.includes('--task-score');
-  if(scoreOnly) await playTaskScore({page,engine,button,close,waitMap});
+  if(birdOnly) await playFoldingFlock({page,engine,waitMap,use,close,button});
+  else if(scoreOnly) await playTaskScore({page,engine,button,close,waitMap});
   else if(hearingsOnly) await playTownHearings({page,engine,button,use,waitMap});
   else if(lightsOnly) await playChapterLights({page,engine,posts,waitMap});
   else if(shelvesOnly) await playDiaryShelves({page,waitMap,use,close});
@@ -184,7 +187,7 @@ try {
     faults.filter((s) => !s.includes('favicon')),
     [],
   );
-  console.log(engine, browser.version(), scoreOnly ? 'passed registered panels, task music, feedback and mute' : hearingsOnly ? 'passed four town hearings, two witnesses in each and four cross-town amendments' : lightsOnly ? 'passed all sixteen world grades, high contrast and reduced effects' : shelvesOnly ? 'passed four diary shelves, word histories and earned cross-area memories' : whistleOnly ? 'passed Liri’s three watches, travelling sheet and recall' : exitOnly ? 'passed all four exit signal orders, retry and reload' : guestIndex!==-1 ? 'passed both encounters in all 15 chapters and restored the guest’s work' : vaultOnly ? 'passed the six vault instruments, weir and council handover' : millOnly ? 'passed the six-counter mill and both earned passages' : makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
+  console.log(engine, browser.version(), birdOnly ? 'passed the folding flock, gallery, Two-Tide Dock and Sora’s returned key' : scoreOnly ? 'passed registered panels, task music, feedback and mute' : hearingsOnly ? 'passed four town hearings, two witnesses in each and four cross-town amendments' : lightsOnly ? 'passed all sixteen world grades, high contrast and reduced effects' : shelvesOnly ? 'passed four diary shelves, word histories and earned cross-area memories' : whistleOnly ? 'passed Liri’s three watches, travelling sheet and recall' : exitOnly ? 'passed all four exit signal orders, retry and reload' : guestIndex!==-1 ? 'passed both encounters in all 15 chapters and restored the guest’s work' : vaultOnly ? 'passed the six vault instruments, weir and council handover' : millOnly ? 'passed the six-counter mill and both earned passages' : makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
 } finally {
   await browser.close();
 }

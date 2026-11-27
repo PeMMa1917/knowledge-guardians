@@ -1,3 +1,5 @@
+import {addCanoeProjection} from './canoeProjection';
+import {addSeaBirdWatch} from './seaBirdWatch';
 import { addTownHearings } from './hearings';
 import {addWhistleWatch} from './whistleWatch';
 import {addVaultMissions} from './vaultMissions';
@@ -254,6 +256,8 @@ export function buildPack(): ContentPack {
   addVaultMissions(content);
   addWhistleWatch(content);
   addTownHearings(content);
+  addSeaBirdWatch(content);
+  addCanoeProjection(content);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);

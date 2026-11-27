@@ -1,5 +1,6 @@
 import {whistleDiary} from './whistleWatch';
 import {whistlePlaces,whistleWeave} from '../content/whistleWatch';
+import {birdDiary,birdWeave} from './birdSide';
 import {weirLampDiary} from './weirLamp';
 import {vaultDiary} from './vaultWork';
 import {vaultWeave,vaultStations,weirLampWeave} from '../content/vaultNight';
@@ -137,6 +138,7 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
+  if(cmd.type==='PinBirdWatch') return birdDiary(cmd);
   if(cmd.type==='WorkWhistle') return whistleDiary(next,cmd);
   if(cmd.type==='UseWeirLamp') return weirLampDiary(next,cmd);
   if (cmd.type === 'WorkVault') return vaultDiary(next,cmd);
@@ -525,6 +527,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
       if (site) return diaryTopics(millWeave(site));
     }
     if(family==='whistle'){const site=whistlePlaces.find(p=>event.ref==='whistle.'+p.id);if(site)return diaryTopics(whistleWeave(site.id));}
+    if(family==='birdside') return diaryTopics(birdWeave);
     if(family==='weir-lamp') return diaryTopics(weirLampWeave);
     if(family==='vault') { const station=vaultStations.find(id=>event.ref==='vault.'+id); if(station) return diaryTopics(vaultWeave(station)); }
     if (family === 'maker-trial' || family === 'maker-field') {

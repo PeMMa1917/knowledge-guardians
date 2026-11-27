@@ -636,6 +636,75 @@ for (const [id, blocks] of Object.entries(hearingPictures)) {
   }];
 }
 // Agate's beech chair, with a wool repair over the tall right-hand joint.
+DRAW['birdside.canoe'] = [16,24,g=>{
+  R(g,'#4d342b',3,15,11,2); R(g,'#ad7652',2,14,12); R(g,'#664231',1,17,12,2); R(g,'#f3b887',1,16,11);
+  R(g,'#c3a46f',4,15,1,3); R(g,'#c3a46f',11,15,1,3);
+  for(const [x,b] of [[4,13],[10,12]]) {
+    R(g,'#5a463c',x,5,1,10);
+    for(let i=0;i<6;i++) R(g,'#f7dfaf',x+1,b-i,1+Math.floor(i/2),1);
+    R(g,'#fff1cf',x+4,b-6,1,2);
+  }
+}];
+DRAW['big.birdside.canoe'] = [48,32,g=>{
+  const outline='#4c322b', wood='#ad6845', cord='#c9ab83', cloth='#f1d2a2';
+  for(const [x,y] of [[5,23],[1,27]]) {
+    R(g,outline,x,y,2,2); R(g,outline,x+2,y+1,2,2); R(g,outline,x+4,y+2,33,2);
+    R(g,outline,x+37,y+1,4,2); R(g,outline,x+40,y-1,2,2);
+    R(g,wood,x+3,y+1,32,1); R(g,'#d49a68',x+9,y+1,24);
+  }
+  for(const x of [10,19,29,37]) {R(g,cord,x,24,2,4);R(g,'#66493a',x,27,2);}
+  R(g,'#b78759',12,22,20,3); R(g,'#654333',14,22,16);
+  for(const [x,y,rows] of [[12,20,13],[29,19,11]]) {
+    R(g,outline,x,y-rows-3,1,rows+6);
+    for(let i=0;i<rows;i++) {
+      const width=Math.min(7,1+Math.floor(i*.66));
+      R(g,cloth,x+1,y-i,width);
+      if(i>3)R(g,'#c89f72',x+width,y-i);
+    }
+    R(g,'#fff0cb',x+6,y-rows,2,2);
+  }
+}];
+// A stitched model of two ledges. Every watch keeps west on the left and the same buoy in the middle.
+for (const watch of ['dawn','dusk','squall'] as const) {
+  DRAW['birdside.'+watch] = [112,32,g=>{
+    const rain=watch==='squall', dusk=watch==='dusk';
+    const sky=rain?'#879697':dusk?'#bc99b2':'#e3ba8a';
+    const light=rain?'#afbcba':dusk?'#e5b499':'#fbe2a4';
+    const water=rain?'#536d77':dusk?'#555f80':'#558695';
+    R(g,sky,0,0,112,17); R(g,light,0,14,112,4); R(g,water,0,18,112,14);
+    if(!rain) {
+      const x=dusk?16:86;
+      R(g,light,x,7,7,5); R(g,light,x+1,6,5,7);
+      R(g,dusk?'#88748d':'#cea889',32,6,12,2); R(g,dusk?'#88748d':'#cea889',35,4,6,2);
+    }
+    for(let row=0;row<8;row++) {
+      const n=10-row;
+      R(g,'#53565e',0,15+row,n+4); R(g,'#474e58',112-n-5,15+row,n+5);
+      if(row<3){R(g,'#83856d',0,14+row,9-row);R(g,'#798675',103+row,14+row,9-row);}
+    }
+    for(let y=21;y<32;y+=4)for(let x=(y*3)%13;x<108;x+=17)R(g,light,x,y,4);
+    R(g,'#4d3940',55,15,2,7);R(g,'#f2cc7c',54,18,4,2); R(g,'#514651',53,21,6);
+    if(!rain) {
+      for(const [x,y] of [[31,10],[45,7],[63,10],[75,6]]) {
+        R(g,'#403b48',x,y,2);R(g,'#f5e7ce',x+1,y-1,3);
+        R(g,'#403b48',x+3,y,2);R(g,'#faf0d9',x+5,y-2,1,2);R(g,'#403b48',x+6,y-3,2);
+      }
+    } else {
+      for(let x=3;x<111;x+=9)for(let y=1;y<23;y+=7) {
+        R(g,'#a8b7b8',x+(y%3),y,1,2);R(g,'#a8b7b8',x+(y%3)-1,y+2);
+      }
+      R(g,'#354753',30,11,3);R(g,'#354753',33,10,2);R(g,'#354753',72,9,2);R(g,'#354753',70,8,2);
+    }
+    for(let x=1;x<112;x+=5){R(g,'#d9c3a3',x,0,3);R(g,'#d9c3a3',x,31,3);}
+  }];
+}
+
+DRAW['birdside.cloth'] = [16,24,g=>{
+  R(g,'#483c34',1,14,14,5); R(g,'#b5885c',2,18,2,5); R(g,'#b5885c',12,18,2,5);
+  R(g,'#e1c397',1,11,14,5); R(g,'#548596',1,14,14,2); R(g,'#6b5362',8,11,1,5);
+  for(const x of [2,9]) {R(g,'#473c47',x,11,2);R(g,'#473c47',x+2,12,2);R(g,'#473c47',x+4,11);}
+}];
+
 DRAW['hearing-chair'] = [16,24,(g)=>{
   R(g,'#553321',3,3,2,19); R(g,'#553321',11,2,2,19);
   R(g,'#a66a39',3,3,10,2); R(g,'#cf9654',4,5,8,1);
@@ -3059,6 +3128,7 @@ DRAW['big.correspondence.crowther-book'] = [96, 64, (g) => {
 }];
 
 export const BIG_ART: Record<string, string> = {
+  'birdside.canoe': 'big.birdside.canoe',
   'correspondence.crowther-book': 'big.correspondence.crowther-book',
   'callboard.gage-mount': 'big.callboard.gage-mount',
   'maker-exact-jiahu': 'maker-exact-jiahu', 'maker-exact-disk': 'maker-exact-disk',

@@ -484,3 +484,7 @@ Liri Pell wants her newly cut tooth to earn a place beside the master’s mark. 
 ## A note from Liri’s sister
 
 The apprentice who cut the mill tooth wants the night ferry job. She brings a three-footed animal to her first watch and discovers an animal track crossed by a boot. Either signatory can turn the slip around rather than sign for what someone else saw. Four chapters later the same dread of being judged comes back when Liri gives the warning call. The loose panel at the rear has swallowed a beat. When a friend steadies the shift, a fiddle player can catch the last boat. On the island Liri’s sister is the first passenger to use the route she mapped. Now Liri has to tell her that the walkers have recalled it. A friend who keeps the visitors’ bench receives a chipped cup of ferry tea. [Watch scenes](../src/content/whistleWatch.ts)
+
+## Sora’s spare key
+
+Sora wants her apprentice to take the watch. She praises the figure at the helm until the apprentice hears something else: asking for company might disqualify her. Renna’s problem is personal too. She types a sweeping sentence about learning from memory, then remembers the figures her father kept on his cuff. A pencil, a voyage roster and two watches at one buoy each mend a different part of the story. On the lower pier the apprentice gets to correct an experienced harbourkeeper. A second hook or the chalk on Sora’s shoes tells the Guardian how that conversation ended.

@@ -1270,3 +1270,8 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .journal-shelves { display: flex; flex-wrap: wrap; gap: .35rem; padding-block-end: .5rem; margin-block-end: .5rem; border-bottom: 1px solid currentColor; }
 .journal-shelves [aria-pressed="true"] { text-decoration: underline; text-underline-offset: .2em; font-weight: bold; }
 .journal-shelves button, .journal nav .tabs button { min-height: 2.75rem; }
+
+.flock-table .flock-strip{display:flex;align-items:end;justify-content:space-between;gap:.3rem;width:min(100%,31rem);box-sizing:border-box;aspect-ratio:112/38;min-height:5.4rem;border:2px solid currentColor;border-radius:.2rem;padding:.35rem;background:#526e79 center / 100% 100% no-repeat;image-rendering:pixelated;color:#172d3a}
+.flock-pier{font-weight:700;border:2px solid #172d3a;background:#e2cba4;padding:.1rem .5rem}
+.flock-pier.pinned{border-top:.55rem solid #172d3a}
+.flock-birds{font-size:2.2rem;font-weight:700;align-self:center;background:#f9ebcf;line-height:1;padding:0 .2rem}

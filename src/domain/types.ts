@@ -185,6 +185,8 @@ export interface DialogueNode {
   id: string;
   speaker: string;            // character id, "narrator", "lumen" or "mentor:<name>"
   text: string;
+  /** The player actually reads this person's documented account on entering the scene. */
+  biographyCard?: string;
   citationSource?: string;    // a SourceRecord with an MLA entry to print below this line
   claimKind?: ClaimKind;
   historicalLabel?: HistoricalLabel;

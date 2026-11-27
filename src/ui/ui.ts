@@ -1474,7 +1474,8 @@ export class UI implements UIApi {
     const source = n.citationSource ? c.pack.sources.find((entry) => entry.id === n.citationSource) : undefined;
     const citation = source ? mlaCitation(source) : [];
     const spoken = `${speaker?.name ? `${speaker.name}: ` : ''}${n.text}${citation.length ? ` ${citation.map((part) => part.text).join('')}` : ''}`;
-    const encyclopedia = speaker && 'mode' in speaker ? encyclopediaForCharacter(speaker) : undefined;
+    const account = n.biographyCard && c.pack.cards.find(card => card.id === n.biographyCard);
+    const encyclopedia = account ? encyclopediaForBiography(account) : speaker && 'mode' in speaker ? encyclopediaForCharacter(speaker) : undefined;
     this.openModal('dialogue', speaker?.name ? `Conversation with ${speaker.name}` : 'Scene',
       speaker?.name ? h('div', { class: 'speaker' }, portrait, h('div', {}, h('strong', {}, speaker.name), h('small', {}, speaker.role ?? ''))) : '',
       this.glossLine(n.text),

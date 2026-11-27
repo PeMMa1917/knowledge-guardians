@@ -2148,7 +2148,9 @@
         "lantern-q17581477"
       ],
       "biographies": []
-    }
+    },
+    {"wikidata": "Q3878402", "title": "Nainoa Thompson", "characters": [], "biographies": ["card.birdside.memory"]},
+    {"wikidata": "Q6792168", "title": "Mau Piailug", "characters": [], "biographies": ["card.birdside.voyage"]}
   ],
   "exhibits": [
     {
@@ -3425,6 +3427,7 @@
     {"id": "OBJ-NIGHT-52161", "title": "Tcatesikya moe piluda ke Étretat (trutca ke Boudin)", "kind": "article", "wikidata": "Q20190455", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "avk"},
     {"id": "OBJ-NIGHT-74", "title": "Porträtt av en äldre kvinna", "kind": "article", "wikidata": "Q17859670", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "sv"},
     {"id": "OBJ-NIGHT-88615", "title": "A Szent Bertalan-templom szigete és hídjai", "kind": "article", "wikidata": "Q20185097", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "hu"},
-    {"id": "OBJ-NIGHT-97", "title": "Le Château de cartes (Chardin, Washington)", "kind": "article", "wikidata": "Q12859917", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "fr"}
+    {"id": "OBJ-NIGHT-97", "title": "Le Château de cartes (Chardin, Washington)", "kind": "article", "wikidata": "Q12859917", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "fr"},
+    {"id": "OBJ-HOKULEA-1975", "kind": "article", "title": "Hōkūleʻa", "wikidata": "Q2728219", "basis": "This article describes the Polynesian Voyaging Society’s double-hulled canoe launched on Oʻahu in March 1975."}
   ]
 }
