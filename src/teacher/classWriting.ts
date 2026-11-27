@@ -1,3 +1,5 @@
+import '../ui/conceptMarkup.css';
+import {conceptTextNodes} from '../ui/conceptMarkup';
 import { signIn } from '../classroom/forms';
 import { request } from '../classroom/request';
 import { clear, h } from '../ui/dom';
@@ -17,7 +19,7 @@ const labels: Record<string, string> = {
   'draft-reflection': 'Draft · reflection',
 };
 export function classWriting() {
-  const panel = h('section', { class: 'panel wide' }, h('h2', {}, 'Class writing'));
+  const panel = h('section', { class: 'panel wide class-writing no-print', 'data-concept-paper':true }, h('h2', {}, 'Class writing'));
   const view = h('div', {});
   panel.append(view);
   let refresh: (() => Promise<void>) | undefined;
@@ -63,8 +65,8 @@ export function classWriting() {
                       'article',
                       {},
                       h('strong', {}, labels[e.kind]),
-                      e.title ? h('p', {}, e.title) : null,
-                      h('p', {}, e.text),
+                      e.title ? h('p', {}, ...conceptTextNodes(e.title)) : null,
+                      h('p', {}, ...conceptTextNodes(e.text)),
                     ),
                   ),
                   row.entries.length ? null : h('p', {}, 'No synced writing yet.'),

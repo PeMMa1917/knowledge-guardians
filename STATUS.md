@@ -1,5 +1,11 @@
 # Status and next steps
 
+## 27 November • Class writing and the returning lights
+
+The draft adds an optional class adventure. Before writing, students see their class and the assigned teacher who can read their diary. They can recover notes, in-progress reflections and scene drafts on another device. The dashboard labels saved work and drafts separately. Separate portfolio entries still require the existing Share choice and progress-file handoff. The local adventure and device photo album have their own storage. [Hosting and review instructions](docs/ACCOUNTS_AND_HOSTING.md)
+
+All 250 supplied historical guests can meet the player at the post and receiving lamp in each of the 15 chapters. Each has their own three pieces of evidence, two choices and a home commission. Fifteen paired-guest stories and the two night watches add consequences for local people. The current review accounts for all 1,200 supplied skill definitions and records 1,099 reachable links for 485 distinct skills. A further 715 need evidence. The four learning taxonomies and ten-per-world target still have gaps. [School and game review](docs/audit/LAMPLIGHT_AND_CLASS_WRITING.md) · [Skill evidence](docs/TOK_MICRO_SKILLS.md)
+
 ## 27 November • The folded-wing post
 
 The Archive Hall paper bird beside Warden Ise opens a correspondence between 140 historical people and 15 chapter keepers. Each voice has two first decisions with different consequences in another chapter. The receiving keeper chooses what to do with the letter with the Guardian’s help. Seventy pairs of returned replies reveal a shared watermark. Try following Gārgī’s loose thread to the Nile, or find the two optics letters at the coast. [Chapter posts](src/content/ink-post-stations.json) · [Individual stories](src/content/ink-post-letters.json)
@@ -28,9 +34,9 @@ This file is for the next developer, human or AI. Read [AGENTS.md](AGENTS.md) fi
 
 Last update 27 November 2026 on `feat/tok-gameplay-weave`. The private master specification is version 3, expanded from version 2.10. See [the design summary](docs/DESIGN_SUMMARY.md).
 
-## Accounts and hosting (planned, 26 November 2026)
+## Accounts and hosting decision of 26 November 2026
 
-Mika chose Cloudflare (Workers + D1) with our own login. Students use a username only, with no email. Teachers reset student passwords. Nothing is built yet. Read [docs/ACCOUNTS_AND_HOSTING.md](docs/ACCOUNTS_AND_HOSTING.md) before you add any login, online save or class feature.
+Mika chose Cloudflare (Workers + D1) with our own login. Students use a username only, with no email. Teacher-managed password recovery remains planned. The draft now implements provisioned accounts, approved class membership, class saves and the teacher writing dashboard. Read [docs/ACCOUNTS_AND_HOSTING.md](docs/ACCOUNTS_AND_HOSTING.md) before you add any login, online save or class feature.
 
 ## Multi-persona audit (in progress)
 

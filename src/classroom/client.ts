@@ -187,24 +187,29 @@ export class ClassSave implements KeyValueStore {
   private retry = () => {
     void this.sync();
   };
-  async sync() {
+  async sync(onExit = false) {
     if (this.running) return this.running;
     if (this.stopped || this.paused) return;
-    this.running = this.upload().finally(() => {
+    this.running = this.upload(onExit).finally(() => {
       this.running = undefined;
     });
     return this.running;
   }
-  private async upload() {
+  private async upload(onExit: boolean) {
     try {
       for (;;) {
         const local = this.read();
         if (!local.dirty || !local.data || this.stopped) return;
-        const result = await request<{ revision: number }>(this.path, 'PUT', {
-          revision: local.revision,
-          package: local.data,
-          writing: teacherWriting(unpack(local.data)),
-        });
+        const result = await request<{ revision: number }>(
+          this.path,
+          'PUT',
+          {
+            revision: local.revision,
+            package: local.data,
+            writing: teacherWriting(unpack(local.data)),
+          },
+          onExit,
+        );
         const next = this.read();
         if (next.revision !== local.revision) continue;
         this.write({ ...next, revision: result.revision, dirty: next.data !== local.data });

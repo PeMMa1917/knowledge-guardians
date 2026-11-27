@@ -25,6 +25,9 @@ export function signIn<T>(role: 'student' | 'teacher', success: (identity: T) =>
     button.disabled = true;
     status.textContent = 'Signing in…';
     try {
+      const service = await request<{ service: string; version: number }>('capabilities');
+      if (service.service !== 'kg-classroom' || service.version !== 1)
+        throw new Error('This host supports local play. Use your school’s class address to sign in.');
       const who = await request<T>(role + '/login', 'POST', { login: login.value, password: password.value });
       password.value = '';
       if (form.isConnected) await success(who);

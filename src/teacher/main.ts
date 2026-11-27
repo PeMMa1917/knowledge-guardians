@@ -2,7 +2,7 @@ import {classWriting} from './classWriting';
 /**
  * Teacher view (teacher.html): a class dashboard and printable student
  * reports, built from progress files that students choose to share
- * (spec 94). No server and no account: files are read in this tab only.
+ * (spec 94). Progress files are read in this tab. The separate assigned-class panel authenticates to the Worker.
  */
 import '@fontsource/lexend/300.css';
 import '@fontsource/lexend/400.css';
@@ -67,7 +67,6 @@ function skillPanel(data: Record<string, Partial<Record<SkillStage, number>>>, n
 
 function dashboard(): void {
   clear(root);
-  root.append(connectedWriting);
   const s = summarise(files, pack, dismissed);
   const input = h('input', { type: 'file', accept: '.json,application/json', multiple: true, id: 'files' }) as HTMLInputElement;
   input.addEventListener('change', async () => {
@@ -89,6 +88,7 @@ function dashboard(): void {
         files.length ? h('button', { onclick: () => download('subject-links.csv', subjectCsv(files), 'text/csv') }, 'Subject links (CSV)') : ''),
       h('p', { class: 'note no-print' }, 'Students save a progress file in the game (Menu, "Share with my teacher") and give it to you. The files stay in this browser tab. Nothing is uploaded or stored. Close the tab to remove them.'),
       problems.length ? h('ul', { class: 'problems', role: 'alert' }, ...problems.map((p) => h('li', {}, p))) : ''),
+    connectedWriting,
     guide(),
     leaderboard,
   );

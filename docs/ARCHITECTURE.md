@@ -111,7 +111,7 @@ Both slots are written in one `localStorage` key (`kg.slots`) in one write, with
 
 ## Teacher view
 
-`teacher.html` is a second Vite entry (see `vite.config.ts`). It has no server.
+`teacher.html` is a second Vite entry (see `vite.config.ts`). Its progress-file view works locally. The class writing panel uses the same-origin Worker and D1. Teachers read a projection of diary writing scoped to their currently assigned class. A student’s personal recovery package, photo album and portfolio sharing follow the storage rules in the [hosting plan](ACCOUNTS_AND_HOSTING.md).
 
 1. In the game, the student opens Menu, "Share with my teacher". The game makes a progress JSON file: objectives, awards, XP, moments, met concepts, ATL, subjects and areas of knowledge, open misconception signals, and **only** the portfolio entries that the student shared. Notes and the journal are not in the file.
 2. The teacher opens `teacher.html` and adds the files. `src/teacher/report.ts` (pure, tested in `tests/teacher.test.ts`) checks each file, keeps the latest file per student, and makes the class summary.

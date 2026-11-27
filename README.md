@@ -22,7 +22,7 @@ The playable opening begins in the Nexus and continues across fifteen chapters:
 
 Along the way: random events from a fair, seeded deck (calm mode can delay them), learner-profile moments in the journal, a private portfolio, and misconception reflections. A separate **teacher view** (`teacher.html`) builds a class dashboard and student reports from progress files that students choose to share.
 
-The game runs in a web browser. It has no server and no runtime AI.
+The browser game supports local play and optional school sign-in. School hosting adds cross-device recovery and an assigned-teacher writing dashboard. All gameplay runs without runtime AI.
 
 ## Quick start
 
@@ -47,7 +47,7 @@ Other commands:
 | `npx vitest run tests/learning.test.ts --mode tok-report` | List the 30-minute gaps on the five play-style paths (see docs/LEARNING_DESIGN.md). |
 | `npm run assets:variants` | Make the character sprite sheets again from the source sheet (needs Python 3 and Pillow). |
 
-The build in `dist/` is static. You can put it on any static web host (for example GitHub Pages). It uses relative paths.
+For device-only play the build in `dist/` is static. You can put it on any static web host (for example GitHub Pages). It uses relative paths.
 
 ## Controls
 
@@ -88,7 +88,7 @@ Settings include calm mode (delay random events), text size, reduced motion, red
 - [docs/DESIGN_SUMMARY.md](docs/DESIGN_SUMMARY.md): a short paraphrase of the design.
 - [CREDITS.md](CREDITS.md): every asset with its source, author and licence.
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): how the code fits together.
-- [docs/ACCOUNTS_AND_HOSTING.md](docs/ACCOUNTS_AND_HOSTING.md): the approved plan for student login, classes, online saves and hosting (not built yet).
+- [docs/ACCOUNTS_AND_HOSTING.md](docs/ACCOUNTS_AND_HOSTING.md): school hosting, audience disclosure, save recovery, and fictional-account testing.
 - [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md): how to add missions, dialogue, exhibits and maps.
 - [docs/ASSETS.md](docs/ASSETS.md): how to find, add and credit art and audio.
 - [docs/SOURCES.md](docs/SOURCES.md): the historical objects and the sources for each claim.
@@ -96,8 +96,8 @@ Settings include calm mode (delay random events), text size, reduced motion, red
 
 ## Status and limits
 
-- This is a classroom demo, not for commercial use. Saves are in the browser (`localStorage`). There are no accounts and no server.
-- The teacher view reads progress files in the browser tab only. Nothing is uploaded.
+- Classroom use only. Local adventures save in the browser. Class adventures save locally first and sync to the school service.
+- The teacher view reads voluntary progress files in the browser. Its separate class writing view requires the assigned teacher’s sign-in. Drafts are labelled. Photos stay on the device.
 - The downloadable build contains the playable opening and the early arcs described above. See [STATUS.md](STATUS.md) for current coverage and what still needs playtesting.
 - The design spec (`Knowledge_Guardians_spec_v2.10.md`) is not in this public repository. Ask the project owner for a copy. [docs/DESIGN_SUMMARY.md](docs/DESIGN_SUMMARY.md) is a paraphrase, and AGENTS.md lists the rules.
 

@@ -92,10 +92,10 @@ function saveOnExit(includeAdventure: boolean): void {
   }
 }
 document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'hidden') saveOnExit(true);
+  if (document.visibilityState === 'hidden') { saveOnExit(true); void classroom?.sync(true); }
   else handledExitSave = false;
 });
-window.addEventListener('pagehide', () => saveOnExit(false));
+window.addEventListener('pagehide', () => { saveOnExit(false); void classroom?.sync(true); });
 window.addEventListener('pageshow', () => { handledExitSave = false; });
 
 // The Guardian's Ledger: count active play time (input in the last 2 minutes, tab visible, in the world).

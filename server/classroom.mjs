@@ -76,6 +76,8 @@ function cleanWriting(rows) {
   });
 }
 async function route(req, db, url) {
+  if (req.method === 'GET' && url.pathname === '/api/classroom/capabilities')
+    return reply(200, { service: 'kg-classroom', version: 1 });
   const [, , , role, action] = url.pathname.split('/');
   if (!['student', 'teacher'].includes(role)) return deny();
   const read = req.method === 'GET',

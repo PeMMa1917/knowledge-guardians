@@ -1535,7 +1535,7 @@ export class UI implements UIApi {
         } }, 'Keep it in my journal'));
     };
     input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.isComposing && e.keyCode !== 229) ask(); });
-    return h('div', { class: 'free' }, h('p', { class: 'fine' }, 'Sefa can answer prepared topics: wootz, crucible steel, ingots and the museum example. Other questions are kept in your journal. Nothing you type is sent anywhere.'),
+    return h('div', { class: 'free' }, h('p', { class: 'fine' }, 'Sefa can answer questions about the museum example, wootz, crucible steel and ingots. You can keep another question in your journal.'),
       writingNotice(), h('div', { class: 'row' }, conceptEditor(input), h('button', { onclick: ask }, 'Ask')), out);
   }
 
@@ -2870,7 +2870,7 @@ export class UI implements UIApi {
     };
     const shared = (data.portfolio as unknown[]).length;
     this.openModal('share wide', 'Share with my teacher', this.closeBtn(), h('h2', {}, 'Share with my teacher'),
-      h('p', {}, 'This makes a file on this device. Nothing is sent anywhere. You choose whether to give it to your teacher.'),
+      h('p', {}, 'Downloading a progress file creates a copy on this device. You choose whether to give that file to your teacher.'),
       h('ul', {},
         h('li', {}, 'In the file: your Guardian name, the steps and awards you finished, your concept XP, your learner-profile moments, which concepts, ATL skills and subjects you met, and any pattern that Lumen noticed.'),
         h('li', {}, `Portfolio entries you chose to share: ${shared}. Change this in the Portfolio tab.`),
