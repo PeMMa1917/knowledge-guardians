@@ -1,3 +1,4 @@
+import { SUPPER_MAP } from './supperRoom';
 import {fieldLoansAt} from './fieldLoans';
 import {foldingFlockAt} from './foldingFlock';
 import { withTownHearing } from './hearings';
@@ -153,6 +154,7 @@ const campaignMaps: Record<string, MapDef> = {
   [COPIES_PROOF_ROOM.id]: COPIES_PROOF_ROOM,
   [COPIES_PRESS.id]: COPIES_PRESS,
   [COPIES_LANDING.id]: COPIES_LANDING,
+  [SUPPER_MAP.id]: SUPPER_MAP,
   [SEA_HARBOUR.id]: SEA_HARBOUR,
   [SEA_CHARTROOM.id]: SEA_CHARTROOM,
   [DATE_PEG_ROOM.id]: DATE_PEG_ROOM,

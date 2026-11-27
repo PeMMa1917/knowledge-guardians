@@ -95,6 +95,21 @@
         ],
         "game": 267,
         "story": 72
+      },
+      {
+        "objective": "supper.thursday",
+        "action": "Move the bar to make the two hypotheses predict different edge positions. Ask Otla whether Thursday’s drawing records the rail setting needed to use this experiment in the historical case.",
+        "styles": [
+          "explorer",
+          "challenger"
+        ],
+        "modes": [
+          "spatial",
+          "analytical",
+          "reflective"
+        ],
+        "game": 188,
+        "story": 69
       }
     ]
   },

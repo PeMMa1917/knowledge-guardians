@@ -1,3 +1,4 @@
+import { SUPPER_HATCH, SUPPER_LANDING, SUPPER_KITCHEN, SUPPER_BOOTH } from './supperRoom';
 import { LANDING_PIGMENT_WINDOW } from './pigmentWindow';
 import { LANDING_BEND_BOARD } from './stripBend';
 /** A fictional city where the archive, press and landing share written notices. */
@@ -87,6 +88,7 @@ export const COPIES_ARCHIVE = interior({
     ...COPIES_ARCHIVE_BACKBILL,
     ...DATE_REGISTER_RETURNS,
     ...COPIES_ARCHIVE_CITATION_RAIL,
+    SUPPER_BOOTH,
     READING_WORKS_DOOR,
     CORRESPONDENCE_DOOR,
     ...READING_WORKS_PERKINS,
@@ -132,6 +134,7 @@ export const COPIES_PRESS = interior({
     ...TWO_CALLS_PRESS,
     alignmentReceiver('pair', 9, 9),
     ...COPIES_PRESS_CITATION_RAIL,
+    SUPPER_KITCHEN,
     ...PRESS_SAME_RED,
     PRESS_LANTERN_WEAVE,
     IMPRINT_PATH,
@@ -198,6 +201,7 @@ export const COPIES_LANDING: MapDef = {
   interactables: [
     { id: 'field-relay', kind: 'fieldgame', game: 'relay', x: 23, y: 2, w: 1, h: 1, label: 'the first signal tower (The Sketch Relay)', art: 'old-sign' },
     ...COPIES_WELCOME,
+    SUPPER_HATCH, SUPPER_LANDING,
     ...WITNESS_CLIP_LANDING,
     ...TWO_CALLS_LANDING,
     alignmentReceiver('strip', 7, 12),

@@ -930,6 +930,21 @@
         ],
         "game": 171,
         "story": 77
+      },
+      {
+        "objective": "supper.counter",
+        "action": "Set up one spoon behind the two silhouettes that the rhyme says always indicate two spoons. An arbitrarily long run of confirming trials with the pair cannot remove this counterexample.",
+        "styles": [
+          "explorer",
+          "challenger"
+        ],
+        "modes": [
+          "spatial",
+          "analytical",
+          "reflective"
+        ],
+        "game": 188,
+        "story": 77
       }
     ]
   },
@@ -1084,6 +1099,21 @@
           "analytical"
         ],
         "game": 198,
+        "story": 77
+      },
+      {
+        "objective": "supper.moved",
+        "action": "Hold the bar position fixed to obtain the same two chalk positions in different ways. Slide the bar and repeat both arrangements to find a reading that distinguishes them.",
+        "styles": [
+          "explorer",
+          "challenger"
+        ],
+        "modes": [
+          "spatial",
+          "analytical",
+          "reflective"
+        ],
+        "game": 188,
         "story": 77
       }
     ]

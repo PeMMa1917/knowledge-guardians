@@ -1,5 +1,13 @@
 # Status and next steps
 
+## 27 November • Supper for a Shadow
+
+In the City of Copies, a skipping rhyme has cost Otla’s brother his place at supper. A child drew two outlines and Otla added the word *people*. The Guardian can work the spoons, move the lamps and slide the bar to a second stop. Two arrangements fit the chalk at the first stop. The second stop separates them, but nobody recorded where Thursday’s bar was. What a visitor does with that uncertainty changes where the family eats, who hears the song and what Corvan puts on his shutter back in Emberford. Eight things already in the game have jobs here. A cup of tea can go to Kip or the porter. [Kitchen and witnesses](src/content/supperShadow.ts) · [Light and shadow](src/domain/supperShadow.ts) · [Branch and recovery tests](tests/supper-shadow.test.ts)
+
+The skill audit identifies 576 of 1,200 definitions across 1,281 authored links. Of those skills, 355 have links in multiple worlds. Otla’s Thursday account brings the number of reviewed comparisons of disciplinary methods to 30. Two world, learning-dimension and RPG-element intersections have ten reviewed actions, and 1,004 have one to nine. [Skill evidence](docs/TOK_MICRO_SKILLS.md) · [Comparison audit](docs/CROSS_WEAVE_AUDIT.md)
+
+The collectible audit now traces all 140 ordinary items and 32 keepsakes to named map actions. It records the place and action for each use. The separate specimen audit checks later uses for 2,039 identified real objects. [Ordinary items and keepsakes](tools/audit-collectible-use.mjs) · [Museum specimens](tools/audit-specimens.mjs)
+
 ## 27 November • A print at the Taku forts
 
 A student can leave a historical record closed, read its description or open its illustration. Each stand remembers its own setting, including the separate Dhuwa and Yirritja bark petitions from Yirrkala. Reading the Taku photograph by text lets the Guardian crop the actual scene, compare it with the whole print and trace the claim about prisoners back to the catalogue title. The setting follows the earned photograph into the satchel and collection room. Backing out of an invitation to a room keeps that invitation for the next visit. [Five collection records](src/content/exhibit-notes.json) · [Reading choices](tests/content-notes.test.ts) · [Browser journey](tools/record-note-journey.mjs)
@@ -47,7 +55,7 @@ The teacher dashboard opens a printable map of all 15 chapters. Each chapter has
 
 In the Nile pay room, the porter who kept the boards dry can finish the same shift with three counters or an empty bowl. At the Metalworks, the Guardian can try all four bells with the apprentice’s tooth and the porter’s help. In the City of Copies, the workers get to read what the Guardian put in print. Opening a public proof at the wheel uncovers the workers’ stair. Opening a folded letter in the pay room uncovers the letter chute. Each worker keeps the edition they opened, even if Bayette prints a different one tomorrow. [Three registers](src/content/millShift.ts) · [Playable routes](tests/mill-shift.test.ts)
 
-The current skill review has 567 of 1,200 definitions linked to 1,262 authored actions or uses, including 352 skills in multiple worlds. The cross-world audit found 26 explicit comparisons of how two areas establish and limit the same claim. Of the 10,729,248 world, learning dimension and RPG element intersections, two meet the ten-action target and 840 have one to nine documented actions. [Skill evidence](docs/TOK_MICRO_SKILLS.md) · [Coverage audit](docs/CROSS_WEAVE_AUDIT.md)
+The skill review at the time of the mill release had 567 of 1,200 definitions linked to 1,262 authored actions or uses, including 352 skills in multiple worlds. The cross-world audit found 26 explicit comparisons of how two areas establish and limit the same claim. Of the 10,729,248 world, learning dimension and RPG element intersections, two meet the ten-action target and 840 have one to nine documented actions. [Skill evidence](docs/TOK_MICRO_SKILLS.md) · [Coverage audit](docs/CROSS_WEAVE_AUDIT.md)
 
 ## 27 November • Opening the game on the school connection
 

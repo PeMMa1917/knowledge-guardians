@@ -142,6 +142,30 @@ const copiesEvidenceInvestigations = [
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
   {
+    objective:'supper.trace',map:'copies.supper-room',target:'supper-lamps',
+    source:'tests/supper-shadow.test.ts',anchor:'retains the lighting evidence discarded by chalk',
+    action:'Change the spoon count and change which lamps burn. One spoon with both side lamps and a pair with the centre lamp each leaves an edge four spaces to either side. The rival casts fit the original tracing.',
+    reasoning:[{mode:'abductive',basis:'Two different arrangements explain the same edge marks. The trace alone supplies no grounds for selecting one.'}],
+    dimensions:['micro:25','area:NAT','area:MAT','concept:evidence','concept:explanation','framework:methods-and-tools','subject:physics'],elements:['game:188','story:77'],
+  },
+  {
+    objective:'supper.light',map:'copies.supper-room',target:'supper-lamps',
+    source:'tests/supper-shadow.test.ts',anchor:"expect(d.done('supper.light')).toBe(true)",
+    action:'Switch from chalk to the live cloth while repeating the two arrangements. One arrangement lets some light reach either outline while the other blocks its sole source.',
+    reasoning:[{mode:'causal',basis:'Holding the bar and viewpoint fixed lets the player isolate the light the other wick contributes to each shadow.'}],
+    dimensions:['micro:50','area:NAT','concept:interpretation','framework:methods-and-tools','subject:physics'],elements:['game:188','story:69'],
+  },
+  {
+    objective:'supper.thursday',map:'copies.supper-room',target:'supper-curtain',
+    source:'tests/supper-shadow.test.ts',anchor:'requires independent traces at both bar stops before the Thursday caveat is available',
+    action:'Move the bar near the cloth and try both arrangements that gave the old outline. The two pairs now fall in different places. Take those readings to Otla and look for the original rail setting on the Thursday cloth.',
+    comparison:{concepts:['evidence'],framework:['scope'],areas:[
+      {id:'NAT',method:'Change the separation of the spoons and screen, then repeat both lamp arrangements.',limit:'The different edges distinguish the arrangements under the conditions of this new experiment.'},
+      {id:'HIS',method:'Check the surviving Thursday tracing and the cook’s account for the recorded position of the rail.',limit:'The earlier edge marks omit the rail setting and cannot identify a second diner.'}],
+      connection:'A repeatable way to distinguish two present setups gives Otla a precise question to ask of Thursday’s record. The missing setting leaves the historical inference open.'},
+    dimensions:['area:HIS','area:NAT','framework:scope','concept:evidence','concept:justification','subject:history','subject:physics'],elements:['game:188','story:77'],
+  },
+  {
     objective:'field-loan.press.compared',map:'copies.landing',target:'field-loan.press.bench',
     source:'tests/field-loans.test.ts',anchor:'keeps the %s loan attached to this object, position and receipt',
     action:'Move a particular title, accession, or qualified date up to the left stop. Compare the characters that survive a narrow impression with the whole wording on a folded slip. Moving the type requires another matched pair.',

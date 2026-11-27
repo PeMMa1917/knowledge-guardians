@@ -488,3 +488,9 @@ The apprentice who cut the mill tooth wants the night ferry job. She brings a th
 ## Sora’s spare key
 
 Sora wants her apprentice to take the watch. She praises the figure at the helm until the apprentice hears something else: asking for company might disqualify her. Renna’s problem is personal too. She types a sweeping sentence about learning from memory, then remembers the figures her father kept on his cuff. A pencil, a voyage roster and two watches at one buoy each mend a different part of the story. On the lower pier the apprentice gets to correct an experienced harbourkeeper. A second hook or the chalk on Sora’s shoes tells the Guardian how that conversation ended.
+
+## Supper for a Shadow
+
+On Thursday Kip wrote “two.” Otla supplied the noun. By Friday the new word was in a skipping rhyme and her brother had taken his bowl outside. Everyone who saw two shadows told the truth about the cloth. Otla was stirring the bottom of the pot when the shadows crossed it. She has to decide whose place in the story she can sign for.
+
+The child at the public demonstration beats time with a spoon. The porter brings a stool to the private booth so a shorter visitor can reach the shutters. Behind the kitchen door, the brother invites the boy who heard him laugh. He can lend his spoon and keep the meal to himself. In Emberford, Corvan once made money from the rhyme. His shutter, envelope or stall changes after the Guardian brings back word from one of those visitors. [Scenes and returns](../src/content/supperShadow.ts)

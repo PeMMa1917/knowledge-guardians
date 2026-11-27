@@ -45,7 +45,7 @@
   {
    "id": "item.tea",
    "name": "Ember tea",
-   "description": "A warm drink from the market. It does nothing except make the walk pleasant.",
+   "description": "A lidded cup from Emberford market. It keeps its heat on the walk. There is room for two on the bench by the supper hatch.",
    "historicalLabel": "fictional-world",
    "art": "icon.tea"
   }

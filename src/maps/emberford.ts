@@ -1,3 +1,4 @@
+import { SUPPER_MARKET } from './supperRoom';
 import { MOON_EMBERFORD_CARRIER, MOON_ROAD_SONG } from './spareMoon';
 import { sefaDispatchDesk } from './sefaDispatch';
 import { EMBERFORD_PIGMENT_WINDOW } from './pigmentWindow';
@@ -184,6 +185,7 @@ export const EMBERFORD: MapDef = {
     { id: 'singer-teodora', x: 16, y: 15, facing: 'down', visibleIf: { origin: 'singer' } },
   ],
   interactables: [
+    SUPPER_MARKET,
     MOON_ROAD_SONG,
     ...EMBERFORD_FIELD_ORDER,
     ...starStations('chronicler', [17, 20], [18, 20]),

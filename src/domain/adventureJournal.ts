@@ -1,3 +1,4 @@
+import { shadowDiary, supperWeave } from './supperShadow';
 import {loanWeave} from './fieldLoan';
 import {stops as loanStops} from '../content/loanCrews';
 import {whistleDiary} from './whistleWatch';
@@ -140,6 +141,7 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
+  if (cmd.type==='CastSupperShadow') return shadowDiary(cmd);
   if(cmd.type==='PinBirdWatch') return birdDiary(cmd);
   if(cmd.type==='WorkWhistle') return whistleDiary(next,cmd);
   if(cmd.type==='UseWeirLamp') return weirLampDiary(next,cmd);
@@ -530,6 +532,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     }
     if(family==='whistle'){const site=whistlePlaces.find(p=>event.ref==='whistle.'+p.id);if(site)return diaryTopics(whistleWeave(site.id));}
     if(family==='field-loan'){const stop=loanStops.find(id=>event.key.startsWith('field-loan:'+id+':')); if(stop)return diaryTopics(loanWeave(stop));}
+    if(family==='supper') return diaryTopics(supperWeave);
     if(family==='birdside') return diaryTopics(birdWeave);
     if(family==='weir-lamp') return diaryTopics(weirLampWeave);
     if(family==='vault') { const station=vaultStations.find(id=>event.ref==='vault.'+id); if(station) return diaryTopics(vaultWeave(station)); }

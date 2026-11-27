@@ -503,3 +503,9 @@ The mark on its face identifies who kept the box. It has taken that duty as its 
 - **Worries** about Pev, her father. A family fed from his soup pot for eleven winters. He still has no box to tick on the bedside register. Agate ruled the column herself.
 - **Speaks** in the language of chair repairs, wet labels and receipts. Give her a joint to mend while she talks. When a thing she took for granted fails, she can name who taught her to look again.
 - **Why** the Gilded Seal pays her to set up public hearings. A porter, a runner and a buyer can each put an account in her repair book. Whether she can use what they sent depends on what the next town does with its own chair.
+
+### Otla Rusk (`otla-rusk`)
+
+Otla cooks behind a curtain that doubles as a puppet stage. She wants people to take her brother seriously again. Her first instinct is to ring the public bell and set the whole street straight. Her brother would like to finish his supper. She has to learn that he gets to say who sits with him.
+
+When she is sure of something she puts her hand on it. Under pressure she quotes a line as she remembers hearing it, including the word she supplied herself. Her jokes come back while she washes up. If the player has kept the kitchen quiet, she can take a question about mustard as an invitation. [Otla’s kitchen](../src/content/supperShadow.ts)
