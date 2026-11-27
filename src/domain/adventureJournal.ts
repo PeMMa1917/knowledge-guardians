@@ -1,3 +1,6 @@
+import { coatDiary } from './pocketCoat';
+import { coatWeave } from '../content/coatMissions';
+import { pocketStories } from '../content/pocketStories';
 import { nightDiary, nightSites } from './nightRegister';
 import { registerWeave } from '../content/nightCollection';
 import {lastBellDiary} from './lastBell';
@@ -124,6 +127,7 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
+  if (cmd.type === 'WorkCoatPocket') return coatDiary(cmd, previous, next);
   if (cmd.type === 'WorkNightRegister') return nightDiary(cmd, previous, next);
   if (cmd.type === 'WorkLastBell') return lastBellDiary(cmd, previous, next);
   if (cmd.type === 'WorkNightWatch') {
@@ -500,6 +504,10 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if (!event) return undefined;
     const [family] = event.key.split(':', 1);
     const specimen = family === 'specimen' ? exhibits.get(event.ref)?.specimen : undefined;
+    if (family === 'coat') {
+      const site = event.key.split(':')[1];
+      if (Object.hasOwn(pocketStories,site)) return diaryTopics(coatWeave(site));
+    }
     if (nightSites.some(site => site.room === event.ref)) return diaryTopics(registerWeave);
     const watch = event.ref === 'night-watch.gate' || event.ref === 'night-watch.dispatch';
     const objective = objectivesById.get(watch ? event.ref + '.handover' : event.ref)

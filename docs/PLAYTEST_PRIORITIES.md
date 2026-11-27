@@ -2,7 +2,7 @@
 
 Knowledge Guardians has fifteen playable chapters and a post-Council return. The next round should measure what students encounter, what they can carry into a new setting, and which story choices they want to pursue. [Browser checks](BROWSER_CHECKS.md) · [Learning design](LEARNING_DESIGN.md)
 
-Across 60 executable chapter routes, 41 reach six concepts, two framework parts, an area of knowledge and an optional theme in the first estimated 30 minutes. Twenty-four sustain that floor in every 30-minute window. In the 20-minute test, the counts are 29 and six. The current micro-skill audit records 1,157 links between playable actions and 509 of the 1,200 supplied skills. For 136 skills the highest available stage is Practised. Six can reach Confident. Time real sessions on the routes with gaps and ask students to use the same method on an unfamiliar object. [Learning audit](LEARNING_DESIGN.md#the-20--and-30-minute-opportunity-floor) · [Micro-skills audit](TOK_MICRO_SKILLS.md)
+Across 60 executable chapter routes, 41 reach six concepts, two framework parts, an area of knowledge and an optional theme in the first estimated 30 minutes. Twenty-four sustain that floor in every 30-minute window. In the 20-minute test, the counts are 29 and six. The current micro-skill audit records 1,241 links between playable actions and 551 of the 1,200 supplied skills. For 136 skills the highest available stage is Practised. Six can reach Confident. Time real sessions on the routes with gaps and ask students to use the same method on an unfamiliar object. [Learning audit](LEARNING_DESIGN.md#the-20--and-30-minute-opportunity-floor) · [Micro-skills audit](TOK_MICRO_SKILLS.md)
 
 | Priority | Work to do | How to check the improvement |
 | --- | --- | --- |
@@ -39,6 +39,7 @@ These are proposed participant observations. The automated intervals can be repr
 
 ## Choices to watch in the next classroom playtest
 
+- Give one player Ostel's queue and another Wren's interview slips. At a different keeper's worktable, see whether they can tell which feature they changed, which reading stayed on the paper, and who would care about that difference. Observe whether the return feels worth travelling for.
 - Hand the same student the runner’s chart a week after they play the river story. Ask what else they would need before telling a family its warning was heard. Observe whether the student spontaneously distinguishes arrival of a signal from someone hearing it.
 - In a new chapter, let a returning player find a guest unaided, retrieve their own tracing and decide whether the omitted piece changes their reading. Observe the search, the decision and whether they choose another visit.
 

@@ -1,3 +1,4 @@
+import { coatEffects, type PocketCommand } from './pocketCoat';
 import { nightByExhibit, nightEffects, type NightCommand } from './nightRegister';
 import {lastBellEffects, type LastBellCommand} from './lastBell';
 import {watchEffects,type BellAction} from './watchBell';
@@ -75,6 +76,7 @@ const DIALOGUE_FALLBACK = 999;
 import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand, type LanternPairCommand } from './lamplight';
 
 export type Command =
+  | PocketCommand
   | NightCommand
   | LastBellCommand
   | BellAction
@@ -439,6 +441,9 @@ export class Engine {
             s = apply([{ setFlag: MOON_TUNE, value: cmd.tune }, { setFlag: performed, value: true }], s, out);
           break;
         }
+        case 'WorkCoatPocket':
+          s = apply(coatEffects(cmd, s), s, out);
+          break;
         case 'WorkNightRegister':
           s = apply(nightEffects(cmd, s), s, out);
           break;

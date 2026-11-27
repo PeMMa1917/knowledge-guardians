@@ -446,6 +446,7 @@ export function nightDesk(c: GameController, site: NightSite, refresh: () => voi
     body.replaceChildren(
       heading(site.title),
       drawer,
+      h('p', {}, 'A blue shift coat hangs on the peg to the left of the creature perch. Something moves inside its lining.'),
       h('p', {}, site.work),
       posted
         ? h(

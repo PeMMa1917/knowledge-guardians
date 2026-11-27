@@ -1,4 +1,5 @@
 /** Audit documented intersections of one authored action, one learning dimension and one RPG element. */
+import { coatProofs } from './coat-action-evidence.mjs';
 import { readFile } from 'node:fs/promises';
 import { once } from 'node:events';
 import { resolve } from 'node:path';
@@ -140,6 +141,7 @@ const copiesEvidenceInvestigations = [
 // Each row identifies a complete action and the intersection its trace actually supports.
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
+  ...coatProofs,
   {
     objective: 'night-register.archive.caption', map: 'night-register.archive', target: 'night-case-26807',
     source: 'tests/night-register.test.ts', anchor: 'expect(missingCaption(d.s, w.site)).toBe(w)',

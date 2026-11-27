@@ -90,6 +90,10 @@ function room(site: NightSite): MapDef {
     interactables: [
       ...exhibits,
       {
+        id: site.room + '.coat', kind: 'fieldgame', game: 'shift-coat', x: 12, y: 23, w: 1, h: 1,
+        art: 'coat.peg', label: 'the blue shift coat on its peg',
+      },
+      {
         id: site.room + '.perch',
         kind: 'fieldgame',
         game: 'night-perch',

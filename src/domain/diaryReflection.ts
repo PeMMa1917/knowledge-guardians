@@ -1,3 +1,4 @@
+import { pocketStories } from '../content/pocketStories';
 import { nightQuestions } from './nightRegister';
 import {lastBellScenes, type LastBellSite} from '../content/lastBell';
 import { watches, type WatchSite } from './watchBell';
@@ -28,6 +29,12 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
+  if (key.startsWith('coat:')) {
+    const [, site, action] = key.split(':');
+    if (Object.hasOwn(pocketStories,site)) return action === 'pull' || action === 'recheck'
+      ? { fitting: pocketStories[site].question, trial: 'Which detail stayed the same when you changed the fitting?' }
+      : { reader: pocketStories[site].question };
+  }
   const register = nightQuestions(key);
   if (register) return register;
   const watch = /^night-watch\.(gate|dispatch):/.exec(key);

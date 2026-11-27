@@ -110,3 +110,18 @@ The review does not establish presentation on physical iOS, Android or managed C
 ## Trying a companion's own trail
 
 Button's frames are in the Archive and at the Old Weir. A courier can still recall its earlier delivery while a scout can look for an unread frame. Both may open the travelling comparison after helping at their two particular cases. The action test visits each of the 240 pairs in both orders. Each pair compares different makers and media within one museum classification. The comparisons preserve the original two readings if someone later changes a display. [Pairs and source IDs](../../src/content/night-trails.json) · [Companion test](../../tests/night-register.test.ts)
+
+
+## The Blue Shift Coat
+
+This follow-up revisits the role-based concerns above. The observations come from the production-build journeys and domain checks. The learner and school roles are modeled perspectives. [Playable QA journey](../../tools/pocket-coat-journey.mjs)
+
+| Concern and affected players | Change exercised | Remaining field question |
+| --- | --- | --- |
+| A reporter, student or examiner can mistake a polished claim for a warranted one. | Wren's interview keeps the first dated slip available. Change only the order of the two tellers, then compare their later agreement. Maro's instrument keeps the denominator beside the attractive percentage. | Give a learner a fresh account a week later. Observe which source and denominator they ask to see. |
+| A cautious student may fear losing credit for revising a decision. A completionist may simply press a button twice. | All 240 combinations of home desk, configuration, changed fitting and seam reached the receiving desk. Repeating one impression or changing both fittings together did not complete a controlled comparison. A corrected handover retained the first witness. | Observe where a first-time player asks for one of the four hints, and whether they follow the return thread voluntarily. |
+| EAL learners, keyboard players and listeners need control of the evidence. | Each reading has a persistent text copy. The score and vibration cues also have a written sequence. Native controls restore focus after changing a fitting. A high-contrast paper panel gives each concept its ink treatment. Three engine journeys used chapter doors, pegs and the on-screen controls. | Hear an actual screen reader traverse a long impression rack, and try native selects on a physical school tablet. |
+| Designers, writers and social players want a person at the other end of the journey. | Every receiver has a different reply to each of two seams. Three witnesses open the lining. Either a communal coat or separate pockets can carry the work onward. Signing preserves the specific numbers each keeper received. | Ask players whose shift they remembered and which later choice they wanted to revisit. |
+| Privacy, teaching and accessibility reviewers want access to the play without compelled personal disclosure. | The puzzles work in local play. Each recorded action has optional reflection prompts. No response is needed to advance, earn the same credit or change the ending. The class diary and portfolio continue to use their existing access rules. | Observe the writing notice and export choice on school-managed devices before wider rollout. |
+
+The full suite passed 2,606 tests in 314 files. The skill ledger has 1,241 links for 551 definitions, with 649 definitions still requiring an authored and tested opportunity. Nine reviewed comparisons exercise all six reasoning modes. The 58 additional action records are counted once per relevant intersection. [Action cap and replay checks](../../tests/pocket-coat.test.ts) · [Cross-area evidence](../../tools/coat-action-evidence.mjs)

@@ -1,3 +1,4 @@
+import { addCoatMissions } from './coatMissions';
 /**
  * Builds the content pack for the first chapter from the JSON files in this
  * folder. To add content, edit the JSON and run `npm test`: the content tests
@@ -241,6 +242,7 @@ export function buildPack(): ContentPack {
   installInkPost(content, articles);
   installLamplight(content, articles);
   installNightCollection(content);
+  addCoatMissions(content);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);

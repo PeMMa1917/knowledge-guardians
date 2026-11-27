@@ -1,3 +1,4 @@
+import { coatPanel } from './coatPocket';
 import { nightByExhibit, nightSites } from '../domain/nightRegister';
 import { nightCase, nightDesk, nightPerch } from './nightRegister';
 import { GameController as ClassroomController } from '../app/controller';
@@ -3532,6 +3533,14 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    if (id === 'shift-coat') {
+      const site = nightSites.find(s => s.room === ctx.controller.state.mapId);
+      if (!site) return;
+      const coat = coatPanel(ctx.controller, site.site, () => ctx.settings.sfxVolume, () => ctx.world?.refreshWorld());
+      this.openModal('bench-panel wide', coat.title, this.closeBtn(), coat.panel);
+      this.releasePanelActivity = coat.dispose;
+      return;
+    }
     if (id === 'night-perch' || id === 'night-desk') {
       const c = ctx.controller;
       const site = nightSites.find(site => site.room === c.state.mapId);
