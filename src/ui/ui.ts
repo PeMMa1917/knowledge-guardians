@@ -81,6 +81,7 @@ import { OFFER_LINE, shouldOfferHelp } from '../domain/lumenOffer';
 import { IDEA_CREDITS } from '../domain/ideaCredits';
 import { gymPanel } from './gymPanel';
 import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
+import { flushResearch, recordResearch } from '../app/research';
 import { ROWS, SECTIONS, startTrial, step, tileWords, type Tile } from '../domain/provingFloor';
 import { THINKERS, VIEWS as TOK_VIEWS, adviceLabel, meetFlags, thinkerFlag, thinkersFor, viewsMet } from '../domain/thinkers';
 import { bestFlag, canTimedReplay, clockText, elapsedSeconds, resultText, timedResult } from '../domain/timedReplay';
@@ -1083,7 +1084,8 @@ export class UI implements UIApi {
     // Progress resets the "stuck" clock for Lumen's offer (decision X-011).
     const doneCount = objs.filter((o) => o.complete).length;
     if (doneCount !== this.progressCount) { this.progressCount = doneCount; this.lastProgress = Date.now(); this.helpOffered = false; this.offerSpent = false; }
-    this.offerTimer ??= window.setInterval(() => this.checkHelpOffer(), 10_000);
+    this.offerTimer ??= window.setInterval(() => { this.checkHelpOffer(); }, 10_000);
+    this.researchTimer ??= window.setInterval(() => { void flushResearch(); }, 120_000);
     // New objectives: Lumen mentions them once if the player allows prompts (GUIDE-001).
     for (const o of objs) {
       if (!this.seenObjectives.has(o.id)) {
@@ -1098,6 +1100,7 @@ export class UI implements UIApi {
   private helpOffered = false;
   private offerSpent = false;
   private offerTimer: number | null = null;
+  private researchTimer: number | null = null;
 
   /** Decision X-011: after a long time with no progress, the lantern glows and Lumen offers. No hint until a click. */
   private checkHelpOffer(): void {
@@ -1181,6 +1184,10 @@ export class UI implements UIApi {
       this.toast(kind === 'keepsake' ? `${many.length} new keepsakes. See My quarters.` : `${many.length} lamps are lit on the Lamp Wall.`, 'award');
     }
     for (const e of events) {
+      // Research data (decision X-018): play events only, and only when the school has turned it on.
+      if (e.kind === 'objective') recordResearch('objective-done', e.id);
+      else if (e.kind === 'hint') recordResearch('hint', e.hint.objective, e.hint.depth);
+      else if (e.kind === 'fieldgame') recordResearch('field-game', e.game);
       switch (e.kind) {
         case 'card': { const card = c.pack.cards.find((x) => x.id === e.id); this.toast(`New evidence card: ${card?.title}`, 'card'); this.sfx('sfx.page'); break; }
         case 'item': { const it = c.pack.items.find((x) => x.id === e.id); this.toast(`${e.qty > 0 ? 'Received' : 'Gave'}: ${it?.name ?? e.id}`, 'item'); this.sfx('sfx.pickup'); break; }
@@ -3942,6 +3949,7 @@ export class UI implements UIApi {
     if (this.timedRun?.id === id) {
       const r = timedResult(c.state.flags, id, elapsedSeconds(this.timedRun.start, Date.now()));
       if (r.isBest) c.dispatch({ type: 'SetFlag', flag: bestFlag(id), value: r.best });
+      recordResearch('timed-replay', id, r.seconds);
       this.stopTimedReplay();
       timed = h('p', { class: 'fine', role: 'status' }, resultText(r));
     }
@@ -3994,6 +4002,7 @@ export class UI implements UIApi {
           ...trial.floor[trial.row].map((tile, i) => tileView(tile, () => {
             const out = step(trial, i, seed);
             trial = out.state;
+            if (out.result === 'cracked') recordResearch('trial-crack', `proving.${section.id}`, trial.cracks);
             note = out.result === 'cracked' ? section.crack : out.result === 'crossed' ? section.crossed : out.result === 'finished' ? section.crossed : '';
             this.sfx(out.result === 'cracked' ? 'sfx.page' : out.result === 'held' ? 'sfx.click' : 'sfx.sparkle');
             render();
