@@ -192,7 +192,9 @@ import { facingCueContent } from './facingCue';
 import witnessClip from './witness-clip.json';
 import threadBend from './thread-bend.json';
 import sillBridge from './sill-bridge.json';
+import { underpanContent } from './underpan';
 import { firstClapContent } from './firstClap';
+import { neighbourDialogues } from '../domain/neighbours';
 import { spareMoonContent } from './spareMoon';
 import publicVoices from './nexus-public-voices.json';
 
@@ -213,7 +215,7 @@ export function buildPack(): ContentPack {
     ferryPackingContent, workScheduleContent, bearingBayContent, jigShopContent, earlierViewsContent, curtainContent,
     coastDetector, coastBreeze, bridgeProof, memoryCart, dispatchStatsContent, prismViewerContent, priceDrawersContent, warmRoomContent,
     mapAlignmentContent, scriptRailContent, pigmentWindow, pigmentSample, correspondenceRoomContent, porterPace, leafFrame, forestNarrators, spareSeat, lastTurn, twoCalls, twoShutters, openPlace, catchmentContent, facingCueContent, witnessClip, stripBend, sillBridge,
-    threadBend, circularReport, publicVoices, publicationReturnContent, spareMoonContent, firstClapContent];
+    threadBend, circularReport, publicVoices, publicationReturnContent, spareMoonContent, firstClapContent, underpanContent, { dialogue: neighbourDialogues() }];
   for (const k of keys) pack[k] = [...parts, ...collectionRooms].flatMap((p) => p[k] ?? []);
   const content = pack as ContentPack;
   content.questions.push(...QUESTION_ROUTES.map(({ question }) => question));

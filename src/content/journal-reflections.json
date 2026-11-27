@@ -1,4 +1,109 @@
 {
+  "quest:underpan.account": {
+    "cost": "Who could ask for their flour back after Fen’s choice? Who might have gone home?"
+  },
+  "quest:underpan.separate": {
+    "wall": "Which of the three shadows could you explain by moving the light, and what question remained open?"
+  },
+  "conversation:underpan.fold": {
+    "touch": "What could you learn by touch without opening a family’s receipt?"
+  },
+  "conversation:neighbour.nile-iman": {
+    "resident": "What part of the cat’s life could an address settle? What did it leave up to the cat?"
+  },
+  "conversation:neighbour.nile-nasir": {
+    "resident": "Who made the paw print, and who made it something worth keeping?"
+  },
+  "conversation:neighbour.nile-leila": {
+    "resident": "Whose way of reaching or moving the chair would show whether the repair helped?"
+  },
+  "conversation:neighbour.nile-marek": {
+    "resident": "If you straightened the wheel, which of Marek’s observations would still hold?"
+  },
+  "conversation:neighbour.preserved-registrar": {
+    "resident": "Which trace of Aster’s father could a painted portrait carry that his certificates could not?"
+  },
+  "conversation:neighbour.preserved-royal-keeper": {
+    "resident": "What changed about the portrait when the person being painted could look back?"
+  },
+  "conversation:neighbour.preserved-coast-keeper": {
+    "resident": "After the corks fell out, what part of the present could Luz still stand behind?"
+  },
+  "conversation:neighbour.preserved-inquiry-keeper": {
+    "resident": "Which part of the child’s question could the basin answer?"
+  },
+  "conversation:neighbour.coast-signalkeeper": {
+    "resident": "How could the same sleeve be a goodbye for one person and a warning for another?"
+  },
+  "conversation:neighbour.coast-forecaster": {
+    "resident": "What could a stranger bring to a dawn watch even before they knew the instruments?"
+  },
+  "conversation:neighbour.forest-naturalist": {
+    "resident": "If the boot and the bird sound alike, what would let you tell them apart on another walk?"
+  },
+  "conversation:neighbour.forest-steward": {
+    "resident": "How might the listening place itself change which birds a crew hears?"
+  },
+  "conversation:neighbour.metal-inspector": {
+    "resident": "What would someone looking only at the spoon’s outline miss about the hand that used it?"
+  },
+  "conversation:neighbour.metal-steward": {
+    "resident": "Who would read “faulty” differently after using the hook?"
+  },
+  "conversation:neighbour.copies-presskeeper": {
+    "resident": "Whose story about that stain would you hear if the pear reached you without its paper?"
+  },
+  "conversation:neighbour.copies-lendingkeeper": {
+    "resident": "What could a public fare do for the next reader that visiting Ama could do only for her?"
+  },
+  "conversation:neighbour.sea-cartographer": {
+    "resident": "Who needs to see the shoal? Who gets to decide whether they also see the fish?"
+  },
+  "conversation:neighbour.sea-harbourkeeper": {
+    "resident": "Which part of the turn could a chart convey? Which part did a pilot learn with Sora?"
+  },
+  "conversation:neighbour.stage-director": {
+    "resident": "What does a new understudy inherit from a coat that neither its owners nor its reviews can settle?"
+  },
+  "conversation:neighbour.stage-host": {
+    "resident": "Who would know whose hands held the door if they saw only the row of stars?"
+  },
+  "conversation:neighbour.market-assayer": {
+    "resident": "What did moving the pan let a witness see? What would still take a receipt or a conversation?"
+  },
+  "conversation:neighbour.market-clerk": {
+    "resident": "If two shoppers paid the same price, what would you need to know before calling the arrangement fair?"
+  },
+  "conversation:neighbour.water-keeper": {
+    "resident": "The eighth knock mattered to Omi. What made it safe or unsafe to act on it at the gate?"
+  },
+  "conversation:neighbour.water-scribe": {
+    "resident": "How would the people affected recognise themselves in the order if their names stayed private?"
+  },
+  "conversation:neighbour.civic-operator": {
+    "resident": "What could a row of returned letters tell you about the route that one birthday card could only suggest?"
+  },
+  "conversation:neighbour.civic-clerk": {
+    "resident": "How could a working lamp tell the truth about an open door and mislead someone waiting for a cart?"
+  },
+  "conversation:neighbour.voices-steward": {
+    "resident": "How would a listener’s understanding of Elsbet change if Wren’s laugh were left in?"
+  },
+  "conversation:neighbour.voices-clerk": {
+    "resident": "When was Eren’s stray light a mistake, and when did it show exactly what they meant?"
+  },
+  "conversation:neighbour.island-planner": {
+    "resident": "What could a gap in the tide sheet establish about the crossing? Who could tell you more?"
+  },
+  "conversation:neighbour.island-dockhand": {
+    "resident": "What does a ferry planner need to know about a postbag, and what belongs to the senders?"
+  },
+  "conversation:neighbour.council-keeper": {
+    "resident": "What would a clock repairer and a friend each want the certificate to remember?"
+  },
+  "conversation:neighbour.council-reader": {
+    "resident": "What counted as finishing the tune for the people who were actually in the room?"
+  },
   "quest:first-clap.curtain": {
     "audience": "Whose part in the bow became visible? Who preferred to stay in the dark?"
   },

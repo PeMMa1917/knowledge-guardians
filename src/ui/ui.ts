@@ -1,3 +1,4 @@
+import { neighbourInvitation } from '../domain/neighbours';
 import { MOON_INSTRUMENT } from '../domain/spareMoonMusic';
 import { spareMoonMusicPanel } from './spareMoonMusic';
 import type { GlossaryEntry } from '../domain/types';
@@ -1249,10 +1250,10 @@ export class UI implements UIApi {
     const node = c.engine.talkEntry(characterId, c.state);
     if (!node) return;
     this.sfx('sfx.open');
-    this.showNode(node);
+    this.showNode(node, true, characterId);
   }
 
-  private showNode(id: string, enter = true): void {
+  private showNode(id: string, enter = true, visiting?: string): void {
     const c = ctx.controller;
     const firstHearing = enter && c.state.flags[`node.${id}`] !== true;
     if (enter) {
@@ -1286,6 +1287,8 @@ export class UI implements UIApi {
     } else {
       optionList.append(h('button', { 'data-autofocus': true, onclick: () => { this.sfx('sfx.click'); if (n.next) this.showNode(n.next); else this.endDialogue(n.open); } }, n.next ? 'Continue ▸' : 'Close'));
     }
+    const visit = visiting && neighbourInvitation(visiting, c.state.flags);
+    if (visit) optionList.append(h('button', { onclick: () => this.showNode(visit.node) }, visit.text));
     const cornerObjective = id.startsWith('corner.') && c.state.flags['corner.found'] && !c.state.objectivesDone.includes('corner.receive')
       ? c.state.objectivesDone.includes('corner.compare') ? 'corner.receive' : 'corner.compare'
       : undefined;

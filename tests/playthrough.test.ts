@@ -23,6 +23,8 @@ const recruitment = pack.missions.find((m) => m.id === 'KG-CH1-M01')!;
 const emberford = pack.missions.find((m) => m.id === 'KG-CH1-M02')!;
 
 import { Driver } from './driver';
+import neighbourhoods from '../src/content/neighbours.json';
+import { neighbourInvitation } from '../src/domain/neighbours';
 
 type LabelRoute = 'patent' | 'practical' | 'model' | 'three';
 const LABELS: Record<LabelRoute, { subject: string; criterion: string; limit: string }> = {
@@ -487,6 +489,21 @@ describe('dialogue graph', () => {
       }
       return [];
     }));
+    // An invitation is on the ordinary visit to an on-map character. Play the
+    // other person's actual choices to discover the two return entry points.
+    const actors = new Set(Object.values(MAPS).flatMap((map) => map.npcs.map((npc) => npc.id)));
+    for (const { people } of neighbourhoods) for (const [index, person] of people.entries()) {
+      const neighbour = people[1 - index];
+      if (!actors.has(person.id) || !actors.has(neighbour.id)) continue;
+      const opening = neighbourInvitation(person.id, {});
+      if (!opening) continue;
+      entries.push(opening.node);
+      for (const choice of neighbour.choices) {
+        const d = new Driver();
+        d.walk(neighbourInvitation(neighbour.id, d.s.flags)!.node, [choice.action]);
+        entries.push(neighbourInvitation(person.id, d.s.flags)!.node);
+      }
+    }
     const stack = [...pack.characters.flatMap((c) => c.talk.map((t) => t.node)), ...pack.events.map((e) => e.node),
       ...(pack.keepsakeTalks ?? []).map((t) => t.node), ...entries, ...propScenes];
     while (stack.length) {

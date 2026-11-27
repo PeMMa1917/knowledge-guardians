@@ -2,7 +2,11 @@
 
 ## 27 November playtest
 
+Thirty-two residents now have personal stories in sixteen pairs across Chapters 2–15. Visit either neighbour first, take either action, then call on the other to hear what made it across the street. Visiting later or leaving a conversation open keeps the ordinary chapter work available. The diary preserves the part of the exchange the player heard. In the Market of Measures these conversations also open the Underpan. Following the coin on the square opens a third way in. Fen can take her lamp upstairs or run a private reading room below. [Neighbour stories](src/content/neighbours.json) · [Underpan routes](tests/underpan.test.ts)
+
 The brass fish beside the starting tile opens the Bell Loft. Players can trace a creature, test the cords or play their own four beats. Ket’s overnight decision and the Wick siblings’ futures are independent. Noll takes a kitchen shift when the Guardian reaches Emberford. A guest reprises the tune after any Council ending. At the House of Performance, Edda and Hari remember a single clap differently. Either curtain call can become a place to play the tune. The original chapter gates and central endings still work. [The Spare Moon](tests/spare-moon.test.ts) · [The Seat That Clapped First](tests/first-clap.test.ts)
+
+The release suite passed 2,340 tests in 272 files. Desktop Chromium and Firefox and phone-sized Linux WebKit exercised all sixteen households between them and both outcomes of the Underpan. The Chromium navigation stress test checked 128 maps and 71,877 tiles, including an accelerated hour against the Archive wall. Physical device testing and facilitated student play remain open. The curriculum audit records 657 authored links across 352 of the 803 supplied numbered skill definitions. [Neighbour route permutations](tests/neighbours.test.ts) · [Coverage evidence](docs/CROSS_WEAVE_AUDIT.md)
 
 The inn’s paper lantern can be bought and hung in the Guardian’s room. Collected objects can change cases across display pages. A Guardian carrying three objects can exchange one at the case, with the outgoing object taking the exhibited object’s place. When only one Nile prerequisite has been earned, the doorframe gives a location for the other. [Collection routes](tests/specimen-gear.test.ts)
 

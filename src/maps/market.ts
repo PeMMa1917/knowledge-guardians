@@ -1,3 +1,4 @@
+import { UNDERPAN_SQUARE, UNDERPAN_SQUARE_FEN } from './underpan';
 import { PRICE_DRAWERS_DOOR } from './priceDrawers';
 /** A fictional market square, with different jobs on the same set of lanes. */
 import type { Condition } from '../domain/types';
@@ -32,6 +33,7 @@ export const MARKET_SQUARE: MapDef = {
   width, height, music: 'music.town', ambience: 'town', background: 0x2e4149,
   floor, spawn: { x: 17, y: 19 }, blocks: [], zones: [],
   npcs: [
+    UNDERPAN_SQUARE_FEN,
     { id: 'market-assayer', x: 15, y: 6, facing: 'down' },
     { id: 'market-clerk', x: 20, y: 8, facing: 'down' },
     // Rook Tamsin, the Sceptic (spec 15.9), joins here (docs/STORY_BIBLE.md, chapter 10).
@@ -51,6 +53,7 @@ export const MARKET_SQUARE: MapDef = {
   ],
   interactables: [
     ...MARKET_BASKET,
+    ...UNDERPAN_SQUARE,
     PRICE_DRAWERS_DOOR,
     ...MARKET_WELCOME,
     ...MARKET_ACCESSIONS,

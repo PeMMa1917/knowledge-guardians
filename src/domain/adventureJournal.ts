@@ -1,3 +1,4 @@
+import { neighbourJournalTopics } from './neighbours';
 import { moonBeatNames, moonPerformance } from './spareMoonMusic';
 import { crossingOf, crossingWay } from './crossings';
 import { PARCEL_REPLY } from './parcelLedger';
@@ -431,6 +432,8 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     const completed = event.completedObjective ? objectivesById.get(event.completedObjective) : undefined;
     const weave = objective?.objective.weave ?? taggedTools.get(`${family}:${event.ref}`) ?? completed?.objective.weave;
     if (weave) return diaryTopics(weave);
+    const neighbourhood = neighbourJournalTopics(event.ref);
+    if (neighbourhood) return neighbourhood;
     const fieldConcept = family === 'field' ? FIELD_GAMES.find(({ id }) => id === event.ref)?.concept : undefined;
     const concept = CONCEPTS.find((id) => id === fieldConcept);
     return concept ? { concepts: [concept] } : undefined;

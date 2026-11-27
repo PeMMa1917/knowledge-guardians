@@ -1,3 +1,4 @@
+import { UNDERPAN_ART } from './underpanArt';
 import { SPARE_MOON_ART } from './spareMoonArt';
 import { FOURTH_CORNER_ART } from './fourthCornerArt';
 import { BLUE_TAIL_ART } from './blueTailArt';
@@ -51,6 +52,7 @@ function pedestal(g: Ctx, x: number, y: number, w: number) {
 
 const DRAW: Record<string, [number, number, (g: Ctx) => void]> = {
   ...SPARE_MOON_ART,
+  ...UNDERPAN_ART,
   ...FOURTH_CORNER_ART,
   ...BLUE_TAIL_ART,
   'collection-stand': [16, 24, (g) => {

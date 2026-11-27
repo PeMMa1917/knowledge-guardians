@@ -123,6 +123,14 @@
     "name": "Separate a pattern from a causal account",
     "uses": [
       {
+        "objective": "underpan.separate",
+        "action": "Turn the lamp, walk to the plaster and mark the different sources of the fingers. A change in the silhouette explains its appearance while the question of who set the flour price remains open.",
+        "styles": ["explorer", "challenger"],
+        "modes": ["visual", "spatial"],
+        "game": 218,
+        "story": 77
+      },
+      {
         "objective": "catchment.compare",
         "action": "Release the same six floats in both runs. Compare the unchanged upper count with the lower count and find the missing floats in the changed pocket.",
         "styles": ["explorer", "challenger", "strategist"],
