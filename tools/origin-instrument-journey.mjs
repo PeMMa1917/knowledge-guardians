@@ -9,8 +9,9 @@ export const originLabels = {
 };
 const jobs = {
   archive: {
-    memory: "A maker sketched the seam on the back. The school name is still inside.",
-    trace: "Find out where Mina’s envelope went.",
+    memory:
+      'A maker sketched the seam on the back. The school name is still inside.',
+    trace: 'Find out where Mina’s envelope went.',
     who: 'cataloguer-bela',
     other: 'curator-dace',
     home: 'nexus.archive',
@@ -23,8 +24,8 @@ const jobs = {
     then: 'Give a model maker the first turn',
   },
   traveller: {
-    memory: "The departure caller has pinned a small brass clock to its case.",
-    trace: "See whose hands have marked the baton.",
+    memory: 'The departure caller has pinned a small brass clock to its case.',
+    trace: 'See whose hands have marked the baton.',
     who: 'translator-lio',
     other: 'clerk-venn',
     home: 'nexus.archive',
@@ -42,8 +43,9 @@ const jobs = {
     then: 'Raise the traveller’s departure pennant',
   },
   harbour: {
-    memory: "The child learned to read a blank peg hole beside the signed receipt.",
-    trace: "Turn the little boat over once more.",
+    memory:
+      'The child learned to read a blank peg hole beside the signed receipt.',
+    trace: 'Turn the little boat over once more.',
     who: 'runner-tamar',
     other: 'fruit-seller',
     home: 'aethelgard.emberford',
@@ -56,8 +58,9 @@ const jobs = {
     then: 'Give the dock child a turn as reader',
   },
   workshop: {
-    memory: "The later sheet showed a different curl. Ren copied both batch names onto the envelope.",
-    trace: "Look for the ticket Hesper carried home.",
+    memory:
+      'The later sheet showed a different curl. Ren copied both batch names onto the envelope.',
+    trace: 'Look for the ticket Hesper carried home.',
     who: 'apprentice-ren',
     other: 'smith-hesper',
     home: 'aethelgard.emberford',
@@ -70,8 +73,9 @@ const jobs = {
     then: 'Use the spare ticket to test another sheet',
   },
   singer: {
-    memory: "The shared quiet in the foyer left room for one more person to hum.",
-    trace: "Look under the stool for news of the traveller.",
+    memory:
+      'The shared quiet in the foyer left room for one more person to hum.',
+    trace: 'Look under the stool for news of the traveller.',
     who: 'singer-teodora',
     other: 'scholar-sefa',
     home: 'aethelgard.emberford',
@@ -194,5 +198,51 @@ export async function playOriginTour({
     'origin-tour.' + origin + '.tour',
     'origin-tour.' + origin + '.homecoming',
   ]);
+  if (origin === 'singer') {
+    // Start this extra route with the old Showdown completed. Equip and use its reward in the normal interface.
+    await page.evaluate(() => {
+      kg.controller.state.flags['sd.corvan.outcome'] = 'narrowed';
+      kg.controller.dispatch({
+        type: 'VisitPlace',
+        name: 'Corvan’s old board',
+      });
+    });
+    await page.keyboard.press('i');
+    await hit('Use A splinter of an old sign');
+    await close();
+    for (const [map, rail, label, choice, memory] of [
+      [
+        'stage.foyer',
+        'origin-splinter-foyer-notch',
+        'Put Sefa’s name in the gap.',
+        'name',
+        'foyer',
+      ],
+      [
+        'council.gallery',
+        'origin-splinter-council-notch',
+        'Put a pencil where the label would go.',
+        'pencil',
+        'gallery',
+      ],
+    ]) {
+      await go(map);
+      await use(rail);
+      await hit(label);
+      assert.equal(
+        await page.evaluate(
+          (k) => kg.controller.state.flags['origin-splinter.' + k],
+          memory,
+        ),
+        choice,
+      );
+      await close();
+    }
+    console.log(
+      'SPLINTER',
+      engine,
+      'two equipped rails and two public decisions',
+    );
+  }
   console.log('ORIGIN-TOUR', engine, origin, j.away, record, goals.join(', '));
 }

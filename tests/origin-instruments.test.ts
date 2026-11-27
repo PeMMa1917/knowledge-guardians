@@ -160,51 +160,76 @@ describe('the five instruments at the beginning of an old friendship', () => {
         expect(starts.size).toBe(4);
       },
     );
-    it(o + ' follows the actual receiver to both Council endings and carries their trace back to the first room', () => {
-      const {d} = start(o, 0);
-      const [home, away, who] = originPlaces[o];
-      const keeper = MAPS[homecomingMap].npcs.find(n => n.id === who)!;
-      expect(check(keeper.visibleIf, d.s)).toBe(false);
-      const initial = positions(d.s, o);
-      take(d, o, initial);
-      for (let i = 0; i < scores[o].controls.length; i++) {
-        const next = [...initial];
-        next[i] = (initial[i] + 1) % scores[o].controls[i].positions.length;
-        take(d, o, next);
-      }
-      d.run({type:'WorkOriginInstrument',origin:o,action:'send',side:1});
-      d.s.mapId = away;
-      expect(check(keeper.visibleIf, d.s)).toBe(false);
-      for (const side of [0,1] as const) {
+    it(
+      o +
+        ' follows the actual receiver to both Council endings and carries their trace back to the first room',
+      () => {
+        const { d } = start(o, 0);
+        const [home, away, who] = originPlaces[o];
+        const keeper = MAPS[homecomingMap].npcs.find((n) => n.id === who)!;
+        expect(check(keeper.visibleIf, d.s)).toBe(false);
+        const initial = positions(d.s, o);
+        take(d, o, initial);
+        for (let i = 0; i < scores[o].controls.length; i++) {
+          const next = [...initial];
+          next[i] = (initial[i] + 1) % scores[o].controls[i].positions.length;
+          take(d, o, next);
+        }
+        d.run({
+          type: 'WorkOriginInstrument',
+          origin: o,
+          action: 'send',
+          side: 1,
+        });
         d.s.mapId = away;
-        d.run({type:'WorkOriginInstrument',origin:o,action:'return',side});
-        const answered = d.s.flags[originFlag(o, 'replyEdition')];
-        d.s.mapId = home;
-        d.run({type:'WorkOriginInstrument',origin:o,action:'send',side:0});
-        expect(d.s.flags[originFlag(o, 'replyEdition')]).toBe(answered);
-        d.s.mapId = homecomingMap;
-        const entry = d.e.talkEntry(who, d.s)!;
-        const visible = d.e.visibleOptions(entry, d.s);
-        expect(visible.map(v => v.index)).toEqual([side]);
-        expect(check(keeper.visibleIf, d.s)).toBe(true);
-        const offer = d.e.node('origin-final.' + o + '.offer');
-        const replies = offer.options!;
-        for (const [index, choice] of replies.entries()) {
+        expect(check(keeper.visibleIf, d.s)).toBe(false);
+        for (const side of [0, 1] as const) {
+          d.s.mapId = away;
+          d.run({
+            type: 'WorkOriginInstrument',
+            origin: o,
+            action: 'return',
+            side,
+          });
+          const answered = d.s.flags[originFlag(o, 'replyEdition')];
+          d.s.mapId = home;
+          d.run({
+            type: 'WorkOriginInstrument',
+            origin: o,
+            action: 'send',
+            side: 0,
+          });
+          expect(d.s.flags[originFlag(o, 'replyEdition')]).toBe(answered);
           d.s.mapId = homecomingMap;
-          d.talk(who, visible[0].option.text, choice.text);
-          expect(d.s.flags[originFlag(o, 'homecoming')]).toBe(index ? 'given' : 'kept');
-          expect(d.done('origin-tour.' + o + '.homecoming')).toBe(true);
-          d.s = JSON.parse(JSON.stringify(d.s));
-          for (const room of [home, away]) {
-            d.s.mapId = room;
-            const n = d.e.talkEntry(who, d.s)!;
-            const echo = d.e.visibleOptions(n, d.s).filter(v => v.option.next?.startsWith('origin-final.'));
-            expect(echo.map(v => v.option.next)).toEqual(['origin-final.' + o + '.home.' + index]);
-            d.talk(who, echo[0].option.text);
+          const entry = d.e.talkEntry(who, d.s)!;
+          const visible = d.e.visibleOptions(entry, d.s);
+          expect(visible.map((v) => v.index)).toEqual([side]);
+          expect(check(keeper.visibleIf, d.s)).toBe(true);
+          const offer = d.e.node('origin-final.' + o + '.offer');
+          const replies = offer.options!;
+          for (const [index, choice] of replies.entries()) {
+            d.s.mapId = homecomingMap;
+            d.talk(who, visible[0].option.text, choice.text);
+            expect(d.s.flags[originFlag(o, 'homecoming')]).toBe(
+              index ? 'given' : 'kept',
+            );
+            expect(d.done('origin-tour.' + o + '.homecoming')).toBe(true);
+            d.s = JSON.parse(JSON.stringify(d.s));
+            for (const room of [home, away]) {
+              d.s.mapId = room;
+              const n = d.e.talkEntry(who, d.s)!;
+              const echo = d.e
+                .visibleOptions(n, d.s)
+                .filter((v) => v.option.next?.startsWith('origin-final.'));
+              expect(echo.map((v) => v.option.next)).toEqual([
+                'origin-final.' + o + '.home.' + index,
+              ]);
+              d.talk(who, echo[0].option.text);
+            }
           }
         }
-      }
-    });
+      },
+    );
     it(
       o +
         ' also welcomes the other four backgrounds with their own earned object',
@@ -221,8 +246,7 @@ describe('the five instruments at the beginning of an old friendship', () => {
               d.run({ type: 'EquipPerspective', keepsake: k.item });
             } else d.s.inventory[k.item] = 1;
             expect(
-              check(itemNeeded(k.item), d.s) &&
-                check(dest(o).visibleIf, d.s),
+              check(itemNeeded(k.item), d.s) && check(dest(o).visibleIf, d.s),
             ).toBe(true);
             const who = originPlaces[o][2],
               node = d.e.talkEntry(who, d.s)!;
@@ -239,6 +263,26 @@ describe('the five instruments at the beginning of an old friendship', () => {
       },
     );
   }
+  it('fits the old wood into two separate rails, with four recoverable public consequences', () => {
+    const d = new Driver();
+    d.s.flags['sd.corvan.outcome'] = 'narrowed';
+    d.run({ type: 'VisitPlace', name: 'The old board' });
+    for (const [map, id, route] of [
+      ['stage.foyer', 'origin-splinter-foyer-notch', 'foyer'],
+      ['council.gallery', 'origin-splinter-council-notch', 'gallery'],
+    ]) {
+      d.s.mapId = map;
+      const prop = MAPS[map].interactables.find((p) => p.id === id)!;
+      d.run({ type: 'EquipPerspective', keepsake: 'sign-splinter' });
+      expect(check(prop.visibleIf, d.s)).toBe(true);
+      for (const option of d.e.node(prop.node!).options!) {
+        d.walk(prop.node!, [option.text]);
+        expect(d.s.flags['origin-splinter.' + route]).toBe(
+          option.next?.split('.').at(-1),
+        );
+      }
+    }
+  });
   it('carries a single original, preserves the missing price, and distinguishes paired from confounded runs', () => {
     expect(impression('archive', [1, 3, 2]).line).toContain('single slip');
     expect(impression('harbour', [0, 1, 1]).line).toContain(

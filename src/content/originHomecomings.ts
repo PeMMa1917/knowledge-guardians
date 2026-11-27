@@ -22,11 +22,13 @@ type LastNight = {
 };
 const lastNights: Record<Origin, LastNight> = {
   archive: {
-    task: "Follow Bela’s empty envelope to the Council gallery.",
-    note: "I found a place for the envelope from the school that closed. The address someone put on it may outlast the drawer.",
-    meeting: "Bela tastes the glue on the flap. “Mina made me promise somebody could find it. She never said it had to stay here.”",
-    direction: "Bela is taking a schoolchild’s empty envelope to the Council gallery.",
-    trace: "Find out where Mina’s envelope went.",
+    task: 'Follow Bela’s empty envelope to the Council gallery.',
+    note: 'I found a place for the envelope from the school that closed. The address someone put on it may outlast the drawer.',
+    meeting:
+      'Bela tastes the glue on the flap. “Mina made me promise somebody could find it. She never said it had to stay here.”',
+    direction:
+      'Bela is taking a schoolchild’s empty envelope to the Council gallery.',
+    trace: 'Find out where Mina’s envelope went.',
     gift: 'Bela has carried an envelope with nothing in it all the way to Council. The old school is closing. A pupil asked her to carry the absence of their model into the new catalogue.',
     from: [
       'The reader who started with the school’s name has written the address on it.',
@@ -46,11 +48,13 @@ const lastNights: Record<Origin, LastNight> = {
     ],
   },
   traveller: {
-    task: "Carry a band cue back to Lio’s sister in the Council gallery.",
-    note: "I saw Lio’s sister lift her baton from the back. For once we could all see whose hand gave the last beat.",
-    meeting: "Lio turns the baton over. Their sister scratched a tiny arrow on its handle, pointing back at whoever holds it. The players start tuning.",
-    direction: "Lio’s sister wants her baton at the Council gallery before the band begins.",
-    trace: "See whose hands have marked the baton.",
+    task: 'Carry a band cue back to Lio’s sister in the Council gallery.',
+    note: 'I saw Lio’s sister lift her baton from the back. For once we could all see whose hand gave the last beat.',
+    meeting:
+      'Lio turns the baton over. Their sister scratched a tiny arrow on its handle, pointing back at whoever holds it. The players start tuning.',
+    direction:
+      'Lio’s sister wants her baton at the Council gallery before the band begins.',
+    trace: 'See whose hands have marked the baton.',
     gift: 'Lio’s sister has sent her old baton to the gallery. It comes with a request. “I would like to play from the back again. I would also like somebody to hear me finish.”',
     from: [
       'The departure caller has pinned a small brass clock to its case.',
@@ -70,11 +74,13 @@ const lastNights: Record<Origin, LastNight> = {
     ],
   },
   harbour: {
-    task: "Look under Tamar’s boat at the Council arrivals board.",
-    note: "The arrivals clerk showed me who got to sign the line. I turned the little hull over to see who had carried it there.",
-    meeting: "Tamar almost rubs the signature off with a thumb. “I taught them to keep their name off public boards.” The child holds out the chalk anyway.",
-    direction: "Tamar is saving the bottom of the tin boat for someone at the Council arrivals board.",
-    trace: "Turn the little boat over once more.",
+    task: 'Look under Tamar’s boat at the Council arrivals board.',
+    note: 'The arrivals clerk showed me who got to sign the line. I turned the little hull over to see who had carried it there.',
+    meeting:
+      'Tamar almost rubs the signature off with a thumb. “I taught them to keep their name off public boards.” The child holds out the chalk anyway.',
+    direction:
+      'Tamar is saving the bottom of the tin boat for someone at the Council arrivals board.',
+    trace: 'Turn the little boat over once more.',
     gift: 'Tamar turns the little tin boat upside down. Underneath, in the dock child’s writing, somebody has scratched “I brought it.” The Council has room for one more name on the arrivals board.',
     from: [
       'The child learned to read a blank peg hole beside the signed receipt.',
@@ -94,11 +100,13 @@ const lastNights: Record<Origin, LastNight> = {
     ],
   },
   workshop: {
-    task: "Save Hesper a place at the opening in the Council gallery.",
-    note: "Ren and I found Hesper at the opening. I had seen that curled corner measured in millimetres. Tonight it could mark a place for a person.",
-    meeting: "Hesper arrives with a spare brass button in her hand. “Somebody said my ticket was ruined.” Ren has kept the little clip in a coat pocket all this time.",
-    direction: "Hesper has asked for the last ticket at the Council gallery. Ren is holding it for her.",
-    trace: "Look for the ticket Hesper carried home.",
+    task: 'Save Hesper a place at the opening in the Council gallery.',
+    note: 'Ren and I found Hesper at the opening. I had seen that curled corner measured in millimetres. Tonight it could mark a place for a person.',
+    meeting:
+      'Hesper arrives with a spare brass button in her hand. “Somebody said my ticket was ruined.” Ren has kept the little clip in a coat pocket all this time.',
+    direction:
+      'Hesper has asked for the last ticket at the Council gallery. Ren is holding it for her.',
+    trace: 'Look for the ticket Hesper carried home.',
     gift: 'Hesper wants the very last ticket. Ren has two pieces left, one with a curl and one with the crossed-out word ALWAYS. Neither has a seat number. “She did come,” Ren says.',
     from: [
       'The later sheet showed a different curl. Ren copied both batch names onto the envelope.',
@@ -118,11 +126,13 @@ const lastNights: Record<Origin, LastNight> = {
     ],
   },
   singer: {
-    task: "Meet the traveller beside Teodora’s fourth stool at Council.",
-    note: "I heard one word Teodora recognised in a stranger’s verse. We could give the traveller a place and leave a space for the family’s line.",
-    meeting: "The traveller folds a coat over the stool. “My aunt always sang while she put things away. She would have hated me standing up to do this.” Teodora sits down first.",
-    direction: "A traveller with a different fourth verse is waiting beside Teodora’s stool in the Council gallery.",
-    trace: "Look under the stool for news of the traveller.",
+    task: 'Meet the traveller beside Teodora’s fourth stool at Council.',
+    note: 'I heard one word Teodora recognised in a stranger’s verse. We could give the traveller a place and leave a space for the family’s line.',
+    meeting:
+      'The traveller folds a coat over the stool. “My aunt always sang while she put things away. She would have hated me standing up to do this.” Teodora sits down first.',
+    direction:
+      'A traveller with a different fourth verse is waiting beside Teodora’s stool in the Council gallery.',
+    trace: 'Look under the stool for news of the traveller.',
     gift: 'The fourth stool has arrived at Council folded into the third. A stranger knows a verse their aunt sang. Teodora recognises one word. The stranger is leaving on the dawn boat.',
     from: [
       'A late singer had the first entrance in the foyer. This traveller heard the song through the door.',
@@ -147,19 +157,109 @@ export const originReturned = (o: Origin) => ({
   all: [{ origin: o }, { objective: 'origin-tour.' + o + '.tour' }],
 });
 export function homecomingDialogue(pack: ContentPack) {
+  const stage = 'origin-splinter.foyer',
+    council = 'origin-splinter.gallery';
+  const scene = (
+    id: string,
+    speaker: string,
+    text: string,
+    options: DialogueNode['options'] = [],
+  ): DialogueNode => ({
+    id,
+    speaker,
+    text,
+    options,
+    historicalLabel: 'fictional-world',
+  });
+  const match = (route: string, key: string, text: string, next: string) => ({
+    text,
+    next,
+    effects: [{ setFlag: 'origin-splinter.' + route, value: key }],
+  });
+  pack.dialogue.push(
+    scene(
+      stage,
+      'singer-teodora',
+      'Corvan’s splinter fits the missing corner of a prop at the theatre door. There is a long scrape through the word ORIGINAL. Teodora holds it level while you decide which part the next singer will see.',
+      [
+        match('foyer', 'name', 'Put Sefa’s name in the gap.', stage + '.name'),
+        match(
+          'foyer',
+          'space',
+          'Frame the space where a family line is missing.',
+          stage + '.space',
+        ),
+      ],
+    ),
+    scene(
+      stage + '.name',
+      'singer-teodora',
+      'Sefa can be introduced before the hill line begins. The handwritten note about the lost words goes on the back of the prop.',
+    ),
+    scene(
+      stage + '.space',
+      'singer-teodora',
+      'A walker sees the scrape first. Sefa has time to step out and tell the audience how a line travelled from the hills.',
+    ),
+    scene(
+      council,
+      'narrator',
+      'The same grain in Corvan’s board fits a notch in the Council display rail. A clerk wants to fill it with the word ORIGINAL before the choir goes on. Someone has already worn the wood smooth. A named singer and an unfinished search need different spaces.',
+      [
+        match(
+          'gallery',
+          'turn',
+          'Let the clerk turn the sign toward its source.',
+          council + '.turn',
+        ),
+        match(
+          'gallery',
+          'pencil',
+          'Put a pencil where the label would go.',
+          council + '.pencil',
+        ),
+      ],
+    ),
+    scene(
+      council + '.turn',
+      'narrator',
+      'The clerk copies the name of the person who brought the verse. The line for who first sang it stays open.',
+    ),
+    scene(
+      council + '.pencil',
+      'narrator',
+      'A listener writes where they heard it. A second leaves a different place name beneath the first. The clerk ties the pencil to the rail.',
+    ),
+  );
   for (const o of origins) {
     const [, away, who] = originPlaces[o],
       h = lastNights[o],
       k = 'origin-final.' + o;
     const goal = 'origin-tour.' + o + '.homecoming';
-    pack.missions.find((m) => m.id === 'KG-CH1-O-' + o)!.objectives.push({
-      id: goal, title: h.task, essential: false, visible: originReturned(o),
-      done: { flagSet: originFlag(o, 'homecoming') }, weave: originWeave[o],
-      onComplete: [{ journal: 'j.' + goal }],
+    pack.missions
+      .find((m) => m.id === 'KG-CH1-O-' + o)!
+      .objectives.push({
+        id: goal,
+        title: h.task,
+        essential: false,
+        visible: originReturned(o),
+        done: { flagSet: originFlag(o, 'homecoming') },
+        weave: originWeave[o],
+        onComplete: [{ journal: 'j.' + goal }],
+      });
+    pack.journal.push({
+      id: 'j.' + goal,
+      text: h.note,
+      claimKind: 'interpretation',
     });
-    pack.journal.push({ id: 'j.' + goal, text: h.note, claimKind: 'interpretation' });
     [h.direction, h.gift, h.meeting, h.use.join(' / ')].forEach((text, i) =>
-      pack.hints.push({id:'h.' + goal + '.' + i, depth:(i+1) as Hint['depth'],objective:goal,text}));
+      pack.hints.push({
+        id: 'h.' + goal + '.' + i,
+        depth: (i + 1) as Hint['depth'],
+        objective: goal,
+        text,
+      }),
+    );
     const say = (
       id: string,
       text: string,

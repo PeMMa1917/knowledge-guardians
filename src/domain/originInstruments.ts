@@ -20,7 +20,7 @@ export const originWeave: Record<Origin, Weave> = {
   archive: {
     concepts: ['power', 'evidence', 'values', 'interpretation'],
     framework: ['methods-and-tools', 'perspectives'],
-    aoks: ['HIS', 'HUM'],
+    aoks: ['HIS', 'HUM', 'TEC'],
     subjects: ['history', 'digital-society', 'anthropology'],
     atl: ['research', 'communication'],
     thinking: {
@@ -33,7 +33,7 @@ export const originWeave: Record<Origin, Weave> = {
   traveller: {
     concepts: ['perspective', 'culture', 'objectivity', 'interpretation'],
     framework: ['scope', 'perspectives'],
-    aoks: ['HUM', 'MAT', 'ART'],
+    aoks: ['HUM', 'MAT', 'ART', 'LAN'],
     subjects: ['lang-b', 'math-ai', 'theatre'],
     atl: ['communication', 'thinking'],
     thinking: { dok: 3, bloom: 'evaluate', fink: 'human', solo: 'relational' },
@@ -41,7 +41,7 @@ export const originWeave: Record<Origin, Weave> = {
   harbour: {
     concepts: ['responsibility', 'justification', 'power', 'truth'],
     framework: ['ethics', 'methods-and-tools'],
-    aoks: ['HUM', 'HIS'],
+    aoks: ['HUM', 'HIS', 'LAN'],
     subjects: ['lang-langlit', 'economics', 'history'],
     atl: ['social', 'communication'],
     thinking: {
@@ -54,7 +54,7 @@ export const originWeave: Record<Origin, Weave> = {
   workshop: {
     concepts: ['certainty', 'evidence', 'explanation', 'objectivity'],
     framework: ['methods-and-tools', 'scope'],
-    aoks: ['NAT', 'MAT', 'ART'],
+    aoks: ['NAT', 'MAT', 'ART', 'TEC'],
     subjects: ['physics', 'design-tech', 'visual-arts'],
     atl: ['thinking', 'research'],
     thinking: {
@@ -67,7 +67,7 @@ export const originWeave: Record<Origin, Weave> = {
   singer: {
     concepts: ['culture', 'perspective', 'interpretation', 'responsibility'],
     framework: ['ethics', 'perspectives', 'methods-and-tools'],
-    aoks: ['ART', 'HIS'],
+    aoks: ['ART', 'HIS', 'LAN'],
     subjects: ['music', 'history', 'lit-perf'],
     atl: ['social', 'communication'],
     thinking: { dok: 3, bloom: 'create', fink: 'caring', solo: 'relational' },
@@ -527,13 +527,25 @@ export function instrumentEffects(
   const place = originPlaces[o][cmd.action === 'return' ? 1 : 0];
   if (s.mapId !== place)
     throw Error('Find the keeper at the working instrument.');
-  if ((cmd.action === 'return' || cmd.action === 'send') && cmd.side !== 0 && cmd.side !== 1)
+  if (
+    (cmd.action === 'return' || cmd.action === 'send') &&
+    cmd.side !== 0 &&
+    cmd.side !== 1
+  )
     throw Error('Choose a receiver on this instrument.');
   if (cmd.action === 'return') {
     if (!s.flags[originFlag(o, 'sent')])
       throw Error('Send the instrument on its first journey.');
-    return [mark(o, 'returned', cmd.side === 0 ? 'first' : 'second'),
-      mark(o, 'replyEdition', String(s.flags[originFlag(o, 'sent')]) + ':' + String(s.flags[originFlag(o, 'edition')]))];
+    return [
+      mark(o, 'returned', cmd.side === 0 ? 'first' : 'second'),
+      mark(
+        o,
+        'replyEdition',
+        String(s.flags[originFlag(o, 'sent')]) +
+          ':' +
+          String(s.flags[originFlag(o, 'edition')]),
+      ),
+    ];
   }
   if (cmd.action === 'send') {
     if (!readyToSend(s, o)) throw Error(invitation[o]);
@@ -569,37 +581,67 @@ export function originInstrumentDiary(
     q = scores[o],
     v = positions(s, o),
     result = impression(o, v);
-  if (cmd.action === 'set')
+  if (cmd.action === 'set') {
+    const arrangements: Record<Origin, string[]> = {
+      archive: [
+        'I filed the school slip under ',
+        'I left a pointer at ',
+        'I handed the drawer key to ',
+      ],
+      traveller: ['I moved the gate clock to ', 'I tied the cord to '],
+      harbour: [
+        'I put a peg in the bow for ',
+        'I reserved the stern for ',
+        'I turned the boat toward ',
+      ],
+      workshop: [
+        'I took my first three tickets from a packet marked ',
+        'I set the mounting edge to ',
+      ],
+      singer: [
+        'I marked the fourth stool in my score with ',
+        'For the entrance after it I pencilled in ',
+      ],
+    };
     return diaryEvent(
       'origin-work:' + o + '.set.' + cmd.control + '.' + cmd.value,
       'tool',
       o,
       q.controls[cmd.control].label,
-      'I set ' +
-        q.controls[cmd.control].label.toLowerCase() +
-        ' to ' +
+      arrangements[o][cmd.control] +
         q.controls[cmd.control].positions[cmd.value] +
         '.',
       {},
       { fixedToolPrefix: 'origin-work:' + o + '.set.' },
     );
-  if (cmd.action === 'try')
+  }
+  if (cmd.action === 'try') {
+    const tried: Record<Origin, string> = {
+      archive: 'I opened the model cabinet with its next visitor. ',
+      traveller: 'I rang the bell at the paper gate. ',
+      harbour: 'I watched the pegs go across to the other bank. ',
+      workshop: 'I eased three tickets from their clips. ',
+      singer: 'I gave the room a fourth beat. ',
+    };
     return diaryEvent(
       'origin-work:' + o + '.try.' + v.join('.'),
       'tool',
       o,
       q.title,
-      'I worked the instrument. ' + result.line,
+      tried[o] + result.line,
       {},
       { fixedToolPrefix: 'origin-work:' + o + '.try.' },
     );
+  }
   const away = cmd.action === 'return';
   return diaryEvent(
     'origin-work:' + o + '.' + cmd.action + '.' + cmd.side,
     'choice',
     o,
     away ? q.returnLabels[cmd.side] : q.send[cmd.side],
-    'I chose where the next person would begin. ' +
+    'In my own hand I marked “' +
+      (away ? q.returnLabels[cmd.side] : q.send[cmd.side]) +
+      '”. ' +
       (away ? q.returnLines[cmd.side] : q.arrives[cmd.side]),
     {},
     'after-break',

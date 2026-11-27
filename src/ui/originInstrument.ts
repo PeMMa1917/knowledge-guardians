@@ -160,9 +160,13 @@ export function originInstrument(
         instruction.textContent += ' ' + q.arrives[already === 'first' ? 0 : 1];
     } else {
       const reply = s.flags[originFlag(o, 'replyEdition')];
-      const remembered = reply === String(s.flags[originFlag(o, 'sent')]) + ':' + String(raw) && s.flags[originFlag(o, 'returned')];
+      const remembered =
+        reply === String(s.flags[originFlag(o, 'sent')]) + ':' + String(raw) &&
+        s.flags[originFlag(o, 'returned')];
       instruction.textContent = remembered
-        ? q.returnLines[remembered === 'first' ? 0 : 1] + ' ' + councilDirection(o)
+        ? q.returnLines[remembered === 'first' ? 0 : 1] +
+          ' ' +
+          councilDirection(o)
         : 'The next performance belongs to someone in this room.';
     }
   }

@@ -1,4 +1,5 @@
 /** Audit documented intersections of one authored action, one learning dimension and one RPG element. */
+import { originActions } from './origin-action-evidence.mjs';
 import { coatProofs } from './coat-action-evidence.mjs';
 import { readFile } from 'node:fs/promises';
 import { once } from 'node:events';
@@ -141,6 +142,7 @@ const copiesEvidenceInvestigations = [
 // Each row identifies a complete action and the intersection its trace actually supports.
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
+  ...originActions,
   {
     objective:'petal.windows',map:'forest.petal-house',target:'petal-window',source:'tests/petal-window.test.ts',
     anchor:'separates the two identical daylight crops, the UV detector and the animal’s own landing',

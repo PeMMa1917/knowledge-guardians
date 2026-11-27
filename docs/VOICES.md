@@ -17,6 +17,43 @@ Two keepers in one chapter must disagree for good reasons (decision X-008). Thei
 
 A test (`tests/voices.test.ts`) checks that every character with more than 20 lines of dialogue has a sheet here. Put the character id in backticks in the heading, as below.
 
+## Neighbours who come back for you
+
+### Bela (`cataloguer-bela`)
+
+- **Believes** A child who gave something away should still know how to find it.
+- **Worries** Her brother can make a cabinet so well that a visitor will blame themself for opening the wrong drawer.
+- **Speaks** Names a person first and the label they expect to see second. Keeps a pencil ready even after promising to listen.
+- **Why** Mina grew up beside the drawer where her school left a gift. Now the school is closing and Bela has been asked to file an empty envelope.
+
+### Lio (`translator-lio`)
+
+- **Believes** You can lead a procession from its last rank.
+- **Worries** A passenger will miss their boat while the band is still arguing about who came first.
+- **Speaks** Uses a clock, a crooked knee or a baton to let the listener point before choosing a word.
+- **Why** Lio used to watch their sister play at the back. Working as an arrivals caller makes departure times matter to them too.
+
+### Tamar (`runner-tamar`)
+
+- **Believes** A notice has to reach the people who risk paying for it.
+- **Worries** An adult will use a child's delivery signature to settle what was in a crate.
+- **Speaks** Counts practical things aloud and stops when the next detail would be a guess. Pays the next runner with their own apple.
+- **Why** On market day the useful facts sit at different ends of the quay. The hand that signs for a boat sometimes belongs to its smallest carrier.
+
+### Ren (`apprentice-ren`)
+
+- **Believes** A bad batch is worth a drawer at the Trade Hall.
+- **Worries** A notice Ren signed in a hurry will cost Hesper a seat near the door.
+- **Speaks** Tries out large words in public and makes smaller, careful corrections on the actual ticket. Measures a curl in millimetres.
+- **Why** Hesper saved pieces someone else would have swept up. Ren does the same for a stranger at the next concert.
+
+### Teodora (`singer-teodora`)
+
+- **Believes** A borrowed line can carry a room if someone remembers who taught it.
+- **Worries** A beautiful ending will make the family stop listening for their own missing verse.
+- **Speaks** Sets a stool down, taps a heel or takes a breath before entering. Will quietly wait through a silence others rush to fill.
+- **Why** Sefa brought a hill verse to a family song with a gap. A traveller later recognises one word. Neither can promise where the fourth stool belongs next.
+
 ## The Nexus
 
 ### Warden Ise Marrow (`warden-ise`)

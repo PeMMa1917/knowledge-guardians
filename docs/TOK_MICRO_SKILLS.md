@@ -63,3 +63,7 @@ The fifteen coats add 84 actionable links for 42 previously unlinked skills. Nin
 
 
 The mill earns four distinct practices. Holding the punch strip fixed across four rigs separates changes that suffice from changes that work only together (93). Putting a person and a guild rule in different leads tests accounts of intention and structure (293). Publishing yesterday’s missed possibility and tomorrow’s open one gives both verb forms a reader (689). An old wheel with an extra worker distinguishes two estimates that fit all four dated tickets (1127). Only a run, comparison or delivered edition earns the associated use. [Skill actions](../src/content/microSkillsMill.json) · [Behavior checks](../tests/mill-shift.test.ts)
+
+### Five travelling instruments
+
+Bela’s catalogue forces the player to try different claims on one pen. Lio pulls the departure cord and the music cord at different moments. Tamar keeps a missing price visible on a tally with two rows. Ren releases three numbered tickets at a time and tests another packet. Teodora can preserve a lost line by leaving a beat for someone else to sing. Each receiver gets the actual edition that travelled. Eight additional links bring the register to 1,304 uses for 589 distinct supplied skills. A further 611 still await reachable evidence. [Skill links](../src/content/origin-tour-skill-uses.json) · [Instruments](../src/domain/originInstruments.ts)

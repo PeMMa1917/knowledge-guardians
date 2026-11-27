@@ -5,7 +5,7 @@ import {
   origins,
   type Origin,
 } from '../domain/originInstruments';
-import type { MapDef } from './types';
+import type { MapDef, Interactable } from './types';
 
 const benches: Record<Origin, [number, number]> = {
   archive: [19, 11],
@@ -15,6 +15,27 @@ const benches: Record<Origin, [number, number]> = {
   singer: [16, 5],
 };
 export function withOriginVisitor(map: MapDef): MapDef {
+  if (map.id === homecomingMap || map.id === 'stage.foyer') {
+    const atCouncil = map.id === homecomingMap;
+    const notch: Interactable = {
+      id: atCouncil
+        ? 'origin-splinter-council-notch'
+        : 'origin-splinter-foyer-notch',
+      kind: 'scene',
+      x: 19,
+      y: atCouncil ? 16 : 5,
+      w: 1,
+      h: 1,
+      walkThrough: true,
+      label: atCouncil
+        ? 'the notch in the Council display rail'
+        : 'the scrape through the theatre sign',
+      art: 'old-sign',
+      node: atCouncil ? 'origin-splinter.gallery' : 'origin-splinter.foyer',
+      visibleIf: { flag: 'perspective.active', eq: 'sign-splinter' },
+    };
+    map = { ...map, interactables: [...map.interactables, notch] };
+  }
   if (map.id === homecomingMap) {
     const spots: Record<Origin, [number, number]> = {
       archive: [10, 6],

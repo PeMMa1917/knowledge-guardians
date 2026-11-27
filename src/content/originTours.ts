@@ -245,32 +245,45 @@ const sources: Record<string, [string, string]> = {
   dates: ['HIS-APH-YIRRKALA-CAPTION', 'HIS-YIRRKALA-BUKU-HISTORY'],
   welcome: ['REL-WELCOME-03', 'REL-WELCOME-01'],
 };
-const milestones: Record<Origin, { decision: string; first: string; second: string }> = {
-  "archive": {
-    "decision": "Ask Bela where a child would look first.",
-    "first": "I watched Mina open a drawer by the name of her school. The little pen model had one home. A pointer could take another reader there.",
-    "second": "I wheeled the cabinet into the Cold Store. Bela watched the first hand on its handle to see which name that reader would need."
+const milestones: Record<
+  Origin,
+  { decision: string; first: string; second: string }
+> = {
+  archive: {
+    decision: 'Ask Bela where a child would look first.',
+    first:
+      'I watched Mina open a drawer by the name of her school. The little pen model had one home. A pointer could take another reader there.',
+    second:
+      'I wheeled the cabinet into the Cold Store. Bela watched the first hand on its handle to see which name that reader would need.',
   },
-  "traveller": {
-    "decision": "Tell Lio which traveller the word describes.",
-    "first": "I rang the paper gate for a runner, a musician and a porter. I could give each one a first place by changing what the cord measured.",
-    "second": "At the island workshop I hung a cue for someone who needed it. Watching from the last seat gave me a different view of the procession."
+  traveller: {
+    decision: 'Tell Lio which traveller the word describes.',
+    first:
+      'I rang the paper gate for a runner, a musician and a porter. I could give each one a first place by changing what the cord measured.',
+    second:
+      'At the island workshop I hung a cue for someone who needed it. Watching from the last seat gave me a different view of the procession.',
   },
-  "harbour": {
-    "decision": "Bring the fruit seller’s promise within earshot of Tamar.",
-    "first": "I sent three facts toward the quay on a boat with two peg holes. The carrier could tell me which promise had missed the crossing.",
-    "second": "At Seagrass Steps I decided who could ask what the receipt left open. The boat came back to my hand with a different job."
+  harbour: {
+    decision: 'Bring the fruit seller’s promise within earshot of Tamar.',
+    first:
+      'I sent three facts toward the quay on a boat with two peg holes. The carrier could tell me which promise had missed the crossing.',
+    second:
+      'At Seagrass Steps I decided who could ask what the receipt left open. The boat came back to my hand with a different job.',
   },
-  "workshop": {
-    "decision": "Bring Hesper’s flat ticket back to the clips.",
-    "first": "Ren let me open packets from one sheet. When I held an edge setting still, I could see how much the other change lifted the paper.",
-    "second": "I took the first measurements to the Trade Hall. Ren let another person decide what a single surviving ticket could tell them."
+  workshop: {
+    decision: 'Bring Hesper’s flat ticket back to the clips.',
+    first:
+      'Ren let me open packets from one sheet. When I held an edge setting still, I could see how much the other change lifted the paper.',
+    second:
+      'I took the first measurements to the Trade Hall. Ren let another person decide what a single surviving ticket could tell them.',
   },
-  "singer": {
-    "decision": "Take the hill singer’s line back to the empty stool.",
-    "first": "I played three remembered verses and decided how the fourth beat should sound. Somebody else could hear an entrance in the space I left.",
-    "second": "Teodora and I set a stool at the theatre. Sefa could name her line and the family could still listen for the one they had lost."
-  }
+  singer: {
+    decision: 'Take the hill singer’s line back to the empty stool.',
+    first:
+      'I played three remembered verses and decided how the fourth beat should sound. Somebody else could hear an entrance in the space I left.',
+    second:
+      'Teodora and I set a stool at the theatre. Sefa could name her line and the family could still listen for the one they had lost.',
+  },
 };
 export function installOriginTours(pack: ContentPack) {
   // buildPack may assemble several independent campaigns in the same process.
@@ -314,6 +327,16 @@ export function installOriginTours(pack: ContentPack) {
       q = scores[o];
     const option = { text: q.test + '.', open: 'fieldgame:' + workDoors(o) };
     const exit = { text: 'Fold it away for now.' };
+    const oldDrawer = {
+      text: {
+        archive: 'Ask what Bela keeps beside her hinges.',
+        traveller: 'Listen to the bearer’s bent knee.',
+        harbour: 'Look at the bright edge on Tamar’s boat.',
+        workshop: 'Lift the brass button on the ticket pile.',
+        singer: 'Look beneath the fourth stool.',
+      }[o],
+      next: old + '.done',
+    };
     const reflect = pack.dialogue.find((n) => n.id === old + '.reflect')!;
     for (const pick of reflect.options ?? []) {
       const e = pick.effects?.find(
@@ -323,7 +346,11 @@ export function installOriginTours(pack: ContentPack) {
       if (!e) continue;
       pick.next = key + '.choice.' + e.value;
       pack.dialogue.push(
-        node(pick.next, who, m.scenes[String(e.value)], [option, exit]),
+        node(pick.next, who, m.scenes[String(e.value)], [
+          option,
+          oldDrawer,
+          exit,
+        ]),
       );
     }
     // Older saves can still return to the original dialogue ids and use the new instrument.

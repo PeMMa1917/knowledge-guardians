@@ -1,5 +1,11 @@
 # Status and next steps
 
+## 27 November • A ticket Hesper can read by touch
+
+A concert ticket that curls in Ren’s workshop can later help Hesper find a seat. Bela, Lio, Tamar and Teodora also have travelling instruments. The person at the receiving end changes what the two neighbours bring to the Council. Returning home reveals where the envelope, baton, ledger line, ticket or stool went. Each route has a third person whose next move depends on the Guardian’s choice. [Five homecomings](src/content/originHomecomings.ts) · [Chapter review](docs/audit/chapters/CH01.md#9-origin-side-quests)
+
+All 140 ordinary items and 32 keepsakes now have an action outside the rooms where they can be earned. The evidence register lists 1,304 playable uses for 589 of the 1,200 supplied micro-skills and 37 reviewed comparisons between areas of knowledge. [Collection check](tools/audit-collectible-use.mjs) · [Action evidence](tools/origin-action-evidence.mjs)
+
 ## 27 November • The yellow dress with twenty-seven fingers
 
 Viri makes wire bees dance with the gestures she learned from her mother. A poster promises that live bees follow her painted arrows. The Guardian can print two flower crops through different panes, hit the detector’s ceiling, recover lost detail and compare two dated watches. A silk show gives a dancer control. An open garden lets visitors decide whether to appear. The next audience can check a prediction it pinned before a watch opened and use the same surprise to change a dance. The Cleveland Museum of Art’s 1771 *Poivre d’inde* impression brings Maria Sibylla Merian to two working benches. [The working glasshouse](src/maps/petalHouse.ts) · [The later watches](src/domain/petalWager.ts)

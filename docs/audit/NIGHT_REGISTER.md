@@ -1,5 +1,11 @@
 # The Night Register release review
 
+## Five instruments for the journey home
+
+Chromium 156, Firefox 146 and WebKit 26 each played all five origins. Each journey opened the instrument through the neighbour’s conversation, made two readings, issued one, reloaded the save, unpacked the same edition with its receiver, took a choice at the Council and read the trace at home. The test staged travel to the locations and used the field interaction key and keyboard controls at each stop. The domain tests cover the other ending, earlier origin saves, revised editions and alternate welcomes for the four backgrounds outside each origin. All three browsers also fitted the equipped sign splinter into the two new rails. The full suite passed 2,721 tests across 332 files. [Browser route](../../tools/origin-instrument-journey.mjs) · [Branch tests](../../tests/origin-instruments.test.ts)
+
+In the historical guest recovery sweep, Firefox 146 completed all 250 distinct guests on the Liri build. Each guest made and opened a tracing in all 15 chapters. The run recovered all 15 receipts for that guest from the local Continue slot. That is 3,750 guest–chapter visits. The route seeds location access and exercises the actual desks and tools. These receipts establish mechanical reachability and persistence. They leave the quality of each conversation and its effect on a student to a separate play review. [Reproducible route](../../tools/guest-chapters-journey.mjs) · [Liri build](https://github.com/PeMMa1917/knowledge-guardians/commit/6cb74ac)
+
 ## The glasshouse • A dancer, a detector and a later watch
 
 Two fictional, sixteen-square crops look identical in daylight. In ultraviolet at unit gain, four squares on Hem and twelve on Cuff fall in the low band. Driving the printer to its upper stop hides differences. The player can recover both crops, read all row values by keyboard and use the earlier shutter pin to change the false-colour convention. A later field watch moves both the hour and the flowers. It can support a new prediction, with room for a later exception. An unopened sleeve fixes what the Guardian predicted before the audience saw the landing. [Instrument tests](../../tests/petal-window.test.ts)
