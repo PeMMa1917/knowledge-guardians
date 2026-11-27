@@ -159,6 +159,7 @@ export const WATER_COUNCIL: MapDef = {
   ],
   interactables: [
     FIELD_STORE_DOOR,
+    { id: 'field-river', kind: 'fieldgame', game: 'river', x: 3, y: 13, w: 1, h: 1, label: 'Omi’s ford log bench (The River Crossing Inquiry)', art: 'old-sign' },
     ...PORTER_COUNCIL,
     ...MATERIAL_YARD_PROPS,
     ...COUNCIL_BOUNDARY,

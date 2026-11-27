@@ -1135,6 +1135,11 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .lens-cards { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.4rem 0; align-items: center; }
 .lens-cards h3 { width: 100%; margin: 0.2rem 0; font-size: 1rem; }
 .lens-cards button[aria-pressed="true"] { outline: 2px solid #f2c94c; }
+.river-story { margin: 0.3rem 0; padding-left: 0.6rem; border-left: 3px solid rgba(120, 180, 220, 0.5); }
+.river-people { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.4rem 0; }
+.river-people button[aria-pressed="true"] { outline: 2px solid #f2c94c; }
+.river-rank { margin: 0.4rem 0 0.4rem 1.4rem; }
+.river-rule { font-style: italic; background: rgba(159, 232, 255, 0.12); padding: 0.4em 0.7em; border-radius: 6px; }
 .lens-account { margin: 0.4rem 0 0.4rem 1.2rem; }
 
 /* The Value Fair (chapter 10). */

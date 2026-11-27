@@ -1431,6 +1431,24 @@
      "text": "The plan is what the island was meant to be. My paths are what it is. When they disagree, ask the people who walk it, not the people who drew it."
     }
    ]
+  },
+  {
+   "id": "water.river",
+   "after": {
+    "flag": "field.river.done",
+    "eq": true
+   },
+   "heading": "Two views on the flood night at Reed Ford",
+   "replies": [
+    {
+     "speaker": "water-keeper",
+     "text": "I wanted the village to agree on one order. It never did. Now I think the arguing was the useful part: every reason someone gave went into the new rule."
+    },
+    {
+     "speaker": "water-scribe",
+     "text": "The arguing was useful because the log was honest. If Ravel's line about the keel had been lost, half the village would still be blaming the wrong person for the wrong reason."
+    }
+   ]
   }
  ]
 }

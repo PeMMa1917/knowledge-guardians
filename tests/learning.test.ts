@@ -48,7 +48,7 @@ describe('the 30-minute design audit along play-style paths', () => {
   // Signature field games added after this baseline (audit fix C-004, 2026-11-27). The baseline is checked on
   // the path without them, so the core campaign keeps its guard. With them, each game may lengthen an open
   // window by up to three times its own minutes (it can sit inside a window that already lacks something).
-  const LATER_GAMES = new Set(['field:assay', 'field:relay', 'field:lens', 'field:fair', 'field:bats', 'field:mirror', 'field:survey', 'field:maze']);
+  const LATER_GAMES = new Set(['field:assay', 'field:relay', 'field:lens', 'field:fair', 'field:bats', 'field:mirror', 'field:survey', 'field:maze', 'field:river']);
   // The original checkpoint measured 1,582 modeled explorer minutes. New
   // optional room time can extend the upper bound by its own duration. The
   // report still shows every gap and requires a complete first window.

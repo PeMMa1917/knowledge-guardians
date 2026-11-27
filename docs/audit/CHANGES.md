@@ -357,6 +357,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/labyrinthLens.ts`, `src/content/labyrinth-lens.json`, `src/ui/labyrinthPanel.ts`, `src/maps/island.ts`, `tests/labyrinth-lens.test.ts` (it checks that no one or two lenses are enough), credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
+### The River Crossing Inquiry, chapter 11's signature game (C-004)
+
+**What.** At the ford log bench in the Council Yard, Weirkeeper Omi shows an original village story: a flood night at Reed Ford, a sick child on the far bank, and five people (Tamsin, Orrin the ferryman, Ravel the fisher, Tamsin's friend Pell, and the council that made the flood rule). The player ranks who acted worst. A villager who put the same person first speaks for that way of judging. Omi and Sena show their own, different orders. Then the log gives one more fact (Ravel knew his boat's keel was cracked), and the player can rank again or keep the order. Each outcome gets a reply. Omi and Sena then disagree (X-008) about what the argument was good for.
+
+**Why.** The second lesson folder has a ranking story for ethics. The story was fully rewritten, with no sexual content, as the plan in DRIVE_WEAVE.md says. Each first place matches one way of judging (duty, character, care, consequences, justice). The game does not name them; the journal does (X-012). A new fact moves some judgements and not others, which shows that people who agree on the facts can still disagree for reasons they can say. No order is marked right (OPEN-001).
+
+**Where.** `src/domain/riverCrossing.ts`, `src/content/river-crossing.json`, `src/ui/riverPanel.ts`, `src/maps/water.ts`, `tests/river-crossing.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
 ### The 30-minute audit and the new games
 
 **What.** The audit test (`tests/learning.test.ts`) measures minutes of play in which a 30-minute window lacks some TOK concept or framework part. The new optional games add minutes inside windows that were already open, so the measure grew with each game. The test now checks the original bound on the path without the new games, and allows each new game to lengthen the gaps by at most three times its own minutes.
