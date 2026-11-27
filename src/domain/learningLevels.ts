@@ -81,6 +81,8 @@ export const LEARN: Record<string, LearnTag> = {
   'field:dig': t(['evidence', 'responsibility', 'values', 'certainty'], [M, E], 3, 'apply', 'caring', 'relational', 7),
   // Make a ladder, test three patterns (two break), build a proof from the rules, then say what it covers.
   'field:ladder': { ...t(['certainty', 'justification', 'evidence'], [M], 3, 'analyse', 'application', 'relational', 8), aoks: ['MAT'] },
+  // Choose a triangle in a grove (a line is refused), see other shapes, say where the shape came from, then pace a side.
+  'field:trees': { ...t(['interpretation', 'objectivity', 'perspective'], [M], 2, 'evaluate', 'integration', 'relational', 6), aoks: ['MAT', 'NAT'] },
   'field:trade': t(['values', 'justification', 'perspective'], [P, S], 2, 'analyse', 'human', 'multistructural', 6),
   // Loyalty missions (src/domain/loyalty.ts)
   'loyalty:sefa': t(['culture', 'truth', 'values'], [P, E], 4, 'evaluate', 'caring', 'extended', 10),

@@ -1056,6 +1056,24 @@
      "text": "Soonest for the first pair. The marsh path was never in the trial. If it floods at the turn of the tide, the first pair arrives wet and late, and the plan has nothing to say about it."
     }
    ]
+  },
+  {
+   "id": "forest.trees",
+   "after": {
+    "flag": "field.trees.done",
+    "eq": true
+   },
+   "heading": "Two views on the grove's triangle",
+   "replies": [
+    {
+     "speaker": "forest-naturalist",
+     "text": "I came to the grove sure the triangle was simply there. Now I think the grove gave us the distances and we brought the triangle. A count is the same: the birds are real, but what counts as one crossing is ours."
+    },
+    {
+     "speaker": "forest-steward",
+     "text": "My mother's triangle is still my triangle. Choosing it did not make it less true. People who meet under the same three trees for fifty years have found something, even if someone else could have chosen other trees."
+    }
+   ]
   }
  ]
 }

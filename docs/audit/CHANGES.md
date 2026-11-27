@@ -231,6 +231,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/content/two-replies.json`.
 
+### The Three Trees, chapter 5's signature game (C-004)
+
+**What.** At the old grove on the Listening Trail, Elian asks the player to show "the triangle everyone sees". Three trees in a straight line are refused: the grove pushes back. Then Ayla shows her family's triangle and Elian shows a four-sided field in the same grove. The player says where the triangle came from (found, made, or both); each answer gets a reply and none is marked right. Last, Ayla and Elian pace one side from opposite ends and get the same number. Two replies follow (X-008).
+
+**Why.** The second lesson folder has a lesson on whether mathematics is invented or discovered, built on a "triangle of trees". The game keeps both sides: the shape is chosen, the distances and the rule that three points in a line make no triangle are not.
+
+**Where.** `src/domain/threeTrees.ts`, `src/content/three-trees.json`, `src/ui/treesPanel.ts`, `src/maps/forest.ts`, `tests/three-trees.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.

@@ -1,0 +1,26 @@
+{
+ "_note": "The Three Trees (chapter 5, Living Forest). Idea from a TOK mathematics lesson in Mika's lesson folder (is mathematics invented or discovered: a 'triangle of trees' is a shape the viewer chooses). Paraphrased and rebuilt for the world. Positions are in paces on a 12 by 9 grid.",
+ "trees": [
+  { "id": "oak", "name": "the split oak", "x": 2, "y": 2 },
+  { "id": "ash", "name": "the tall ash", "x": 6, "y": 1 },
+  { "id": "yew", "name": "the dark yew", "x": 10, "y": 2 },
+  { "id": "birch", "name": "the white birch", "x": 1, "y": 6 },
+  { "id": "alder", "name": "the leaning alder", "x": 4, "y": 4 },
+  { "id": "rowan", "name": "the rowan with berries", "x": 6, "y": 6 },
+  { "id": "elm", "name": "the hollow elm", "x": 8, "y": 6 },
+  { "id": "pine", "name": "the young pine", "x": 3, "y": 8 },
+  { "id": "lime", "name": "the old lime", "x": 9, "y": 8 }
+ ],
+ "others": [
+  { "who": "Steward Ayla", "speaker": "forest-steward", "trees": ["birch", "ash", "elm"], "line": "Ayla laughs and points. 'That is not the triangle. This is: the birch, the ash and the elm. My mother showed it to me. We meet under it.'" },
+  { "who": "Naturalist Elian", "speaker": "forest-naturalist", "trees": ["oak", "yew", "lime", "pine"], "line": "Elian walks the edge of the grove. 'I see a four-sided field: oak, yew, lime, pine. That is how I map it for the lookout count. No triangle at all.'" }
+ ],
+ "views": [
+  { "id": "found", "text": "The triangle was in the grove before anyone chose it.",
+    "reply": "Elian nods slowly. 'Something was there before us: the distances, and the fact that three trees not in a line always make a triangle. Nobody voted on that. But which triangle? The grove holds dozens. You picked one.'" },
+  { "id": "made", "text": "The triangle came from my choosing. The grove only has trees.",
+    "reply": "Ayla nods. 'The word, the shape, which trees count: all ours. But try to choose three trees in a straight line and call it a triangle. The grove says no. Your choosing has rules you did not make.'" },
+  { "id": "both", "text": "Both: I chose which trees, but the grove decides which choices work.",
+    "reply": "Elian and Ayla look at each other. 'That is the argument people have been having for two thousand years,' Elian says. 'You have just said it more plainly than most of them.'" }
+ ]
+}

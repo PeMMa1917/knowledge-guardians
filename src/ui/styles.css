@@ -1107,3 +1107,13 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .moon-beats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .4rem; list-style: none; padding: 0; }
 .moon-beats li { padding: .45rem .15rem; text-align: center; border: 1px solid currentColor; border-radius: .35rem; }
 .moon-music .actions { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+/* The Three Trees (src/ui/treesPanel.ts) */
+.trees-map { width: 100%; max-width: 26rem; display: block; margin: 0.5rem auto; background: rgba(60, 110, 60, 0.18); border-radius: 8px; }
+.trees-tree { fill: #3f7d4a; stroke: #cfe8c0; stroke-width: 2; }
+.trees-tree.on { fill: #f2c94c; stroke: #fff; }
+.trees-shape { fill: none; stroke-width: 3; }
+.trees-shape.mine { stroke: #f2c94c; fill: rgba(242, 201, 76, 0.15); }
+.trees-shape.other0 { stroke: #6fb7ff; stroke-dasharray: 6 4; }
+.trees-shape.other1 { stroke: #7fd18b; stroke-dasharray: 2 4; }
+.trees-buttons { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0.4rem 0; }

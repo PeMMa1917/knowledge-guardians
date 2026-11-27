@@ -85,6 +85,7 @@ import { OFFER_LINE, shouldOfferHelp } from '../domain/lumenOffer';
 import { IDEA_CREDITS } from '../domain/ideaCredits';
 import { gymPanel } from './gymPanel';
 import { ladderPanel } from './ladderPanel';
+import { treesPanel } from './treesPanel';
 import { contentNoteFor, noteSeenFlag } from '../domain/contentNotes';
 import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
 import { flushResearch, recordResearch } from '../app/research';
@@ -3727,6 +3728,8 @@ export class UI implements UIApi {
     else if (id === 'trade') this.openTrade();
     else if (id === 'ladder') this.openModal('bench-panel wide', "The Copyists' Ladder", this.closeBtn(),
       ladderPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('ladder'), () => this.closeModal()));
+    else if (id === 'trees') this.openModal('bench-panel wide', 'The Three Trees', this.closeBtn(),
+      treesPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('trees'), () => this.closeModal()));
   }
 
   /** Star Pictures: draw your own picture, see two traditions, measure, then choose what the chart says. */

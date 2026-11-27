@@ -40,6 +40,8 @@ export const FIELD_GAMES: FieldGame[] = [
     idea: 'The stars and their measured positions are the same for everyone. The pictures people draw between them differ, and each picture carries real knowledge: when to fish, how to walk home. Measurement and interpretation answer different questions.' },
   { id: 'ladder', name: "The Copyists' Ladder", host: 'Nasir, at his copy desk in the Royal Records Room of the Nile archive', concept: 'certainty',
     idea: 'A pattern seen in many examples can still break on the next one. A proof from the rules of the game holds for every case, even cases nobody has made yet. But a proof covers only what it states: the part it does not state is still a guess.' },
+  { id: 'trees', name: 'The Three Trees', host: 'Naturalist Elian and Steward Ayla, at the old grove on the Listening Trail', concept: 'interpretation',
+    idea: 'The shape is chosen: one grove holds many triangles, and the word "triangle" is ours. The distances are not chosen: two people pacing from opposite ends get the same number, and three trees in a line will not make a triangle however much we want one. Mathematics may be partly made and partly found.' },
 ];
 
 export const fieldDone = (flags: Record<string, unknown>, id: string): boolean => flags[`field.${id}.done`] === true;

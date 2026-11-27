@@ -94,6 +94,7 @@ Many games grew from TOK lessons in Mika's lesson folder (decision X-017 in [doc
 | The Careful Dig | Excavation as a choice about what later people can know | Mika's TOK lesson folder |
 | Star Pictures | Measured star positions and the different pictures people draw between them | Mika's TOK lesson folder |
 | The Copyists' Ladder | A word ladder that shows the difference between a pattern and a proof | Mika's TOK lesson folder; the lesson credits an activity shared by Ric Sims. Word ladders ("doublets") were invented by Lewis Carroll in 1877. |
+| The Three Trees | A "triangle of trees" as a shape the viewer chooses (is mathematics invented or discovered?) | Mika's TOK lesson folder |
 
 ## Historical sources
 
