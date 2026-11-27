@@ -8,6 +8,8 @@ The collection now has 2,038 individually identified objects. The 1,020 addition
 
 The supplied skill ledger records 1,157 playable links across 509 of the 1,200 definitions. Two new practices ask the player to recover an image's caption and compare three memories after a delivery. A separate test exercises 57,120 combinations of object, first recipient, receiving chapter and local use. The 73-perspective review records remaining concerns about curriculum coverage, cultural scope, managed devices and classroom transfer. [Review and disagreements](docs/audit/NIGHT_REGISTER.md) · [Evidence tests](tests/night-register.test.ts)
 
+The final build passed 2,601 tests in 313 files. Three browser engines completed Button's trail and the fictional two-device classroom journey. Movement checks covered 145 maps and 1,735 sampled paths. The production review records the versions, viewports, limitations and outcomes. Physical-device, classroom and community review remain outstanding. [QA results](docs/audit/NIGHT_REGISTER.md#what-the-production-build-exercised) · [Hosting design](docs/ACCOUNTS_AND_HOSTING.md)
+
 ## 27 November • Who heard the bell?
 
 The bell mystery now runs from Maro’s tide steps to the Council in five chapters. Cut or restore a witness’s recording, try two runner routes in fog, walk Joss’s hinged footbridge in both directions and amend the chart. Let the families call a meeting or send the crew out at dawn. Either decision can open a second hearing. Students who enter the Council first can use clearly identified loan records. [Story and routes](docs/STORY_BIBLE.md#the-kitchen-bell-and-the-missing-houses-chapters-1115) · [Playable checks](tests/last-bell.test.ts)

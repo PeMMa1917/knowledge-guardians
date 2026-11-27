@@ -4,14 +4,14 @@ This tracker maps each numbered item in the supplied *Ultimate Universal RPG Com
 
 | Status | Meaning | Numbered items |
 | --- | --- | ---: |
-| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 106 |
+| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 107 |
 | ◐ Partial | A reachable analogue covers part of the idea, or operates in a narrower setting. The gap is stated. | 111 |
-| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 44 |
+| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 43 |
 | ✗ Excluded | The classroom, privacy or nonviolent game rules exclude the original system. | 27 |
 
 The marks reflect inspection of authored maps, dialogue, interfaces and tests. A mark does not measure how often players find the activity, how long they spend, or what they learn. Each numbered row refers to the attachment’s item number. Source links point to playable evidence or the existing feature nearest to a planned adaptation.
 
-Contests use arguments, tests and investigation. Records, chance tools and school-friendly cooperation support play without wagering, grades, violence or student publishing. Progress stays on the device unless voluntarily shared. The [story tracker](STORY_ELEMENTS.md), [learning design](LEARNING_DESIGN.md) and [repository rules](../AGENTS.md) govern adaptations.
+Contests use arguments, tests and investigation. Records, chance tools and school-friendly cooperation support play without wagering, grades, violence or student publishing. In local play, progress stays on the device unless the player shares it. In a class adventure, the assigned teacher can read synced diary writing and drafts. The [story tracker](STORY_ELEMENTS.md), [learning design](LEARNING_DESIGN.md) and [repository rules](../AGENTS.md) govern adaptations.
 
 ## I. Exploration and navigation
 
@@ -50,7 +50,7 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | 26 | Loyalty and mentorship | ✓ | Four companion investigations test trust through evidence and costly acts of care. | [loyalty.ts](../src/domain/loyalty.ts), [loyalty.test.ts](../tests/loyalty.test.ts) |
 | 27 | Ending branches | ✓ | The Council resolution sets one of four endings and changes letters, memory and the Afterwards account. | [vesper.json](../src/content/vesper.json), [epilogue.ts](../src/domain/epilogue.ts), [letters.test.ts](../tests/letters.test.ts) |
 | 28 | Hearth conversations and food | ◐ | Hearth discussions let companions exchange views or take a breath. The ferry service has preparation effects. Shared preparation at the companion hearth remains open. | [hearth.ts](../src/domain/hearth.ts), [ferry-kettle.test.ts](../tests/ferry-kettle.test.ts) |
-| 29 | Configurable companion help | ○ | A future helper could offer a chosen task, such as keeping a second source in view. No programmable helper system is live. | [loyalty.ts](../src/domain/loyalty.ts) |
+| 29 | Configurable companion help | ✓ | Train a companion as a scout to locate an unread frame or as a courier to preserve an edition. At its home perch it can learn the other job. Each can keep two observations open once its own trail is complete. | [Companion controls](../src/ui/nightRegister.ts), [Job and trail checks](../tests/night-register.test.ts) |
 | 30 | Lending companions online | ✗ | The campaign is offline and has no shared accounts or lending. NPC companionship is the local alternative. | [loyalty.ts](../src/domain/loyalty.ts), [DESIGN_SUMMARY.md](DESIGN_SUMMARY.md) |
 | 31 | Recall a returning person | ◐ | Use the conversation recall while talking or open the Journal history. A short profile card dedicated to returning people remains open. | [conversationHistory.ts](../src/domain/conversationHistory.ts), [ui.ts](../src/ui/ui.ts) |
 

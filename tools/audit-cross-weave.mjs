@@ -140,6 +140,26 @@ const copiesEvidenceInvestigations = [
 // Each row identifies a complete action and the intersection its trace actually supports.
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
+  {
+    objective: 'night-register.archive.caption', map: 'night-register.archive', target: 'night-case-26807',
+    source: 'tests/night-register.test.ts', anchor: 'expect(missingCaption(d.s, w.site)).toBe(w)',
+    action: 'Follow the pencil marks to the mount of Ruth M. Barnes’s Needle Book. A neighbouring case does not fit. Match the accession before deciding whether the label travels on the sleeve or stays where another reader can find it.',
+    dimensions: ['micro:1003', 'concept:evidence', 'framework:methods-and-tools'], elements: ['game:267', 'story:48'],
+  },
+  {
+    objective: 'night-register.nile.memory-folders', map: 'night-register.nile', target: 'night-register.nile.desk',
+    source: 'tests/night-register.test.ts', anchor: "expect(traceMemory(d.s, dest, 'home')).toContain(a.replies[1])",
+    action: 'Hear what Imani did with a reading, unseal the edition Button carried, then consult the revised desk in the Archive. Dates, witnesses and recipients explain how the original handover and the later account can both be accurate.',
+    dimensions: ['micro:1115', 'concept:interpretation', 'framework:perspectives'], elements: ['game:158', 'story:15'],
+    reasoning: [{ mode: 'abductive', basis: 'The courier version still records the low reading frame after the Archive starts sending copies upstairs. A later change at the desk explains the discrepancy while preserving what the two witnesses actually received.' }],
+  },
+  {
+    objective: 'night.work.20806', map: 'night-register.gate', target: 'night-case-20806',
+    source: 'tools/night-register-journey.mjs', anchor: "panel.getByText('Both frames open together here.'",
+    action: 'Bring Button to Dana Bartlett’s Water Barrel or Runlet. Use the same edge tool as for the Needle Book and leave a reading. Open the pair together at the perch to examine what the shared classification leaves out about materials and makers.',
+    dimensions: ['concept:interpretation', 'framework:methods-and-tools', 'subject:visual-arts'], elements: ['game:20', 'story:31'],
+    reasoning: [{ mode: 'analogical', basis: 'Apply the same crop to a second drawing in the shared classification. Compare each with its own whole frame and medium before carrying a claim from one drawing to the other.' }],
+  },
   ...nexusEvidenceInvestigations,
   ...emberfordEvidenceInvestigations,
   ...copiesEvidenceInvestigations,

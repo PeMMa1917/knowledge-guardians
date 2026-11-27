@@ -4,6 +4,20 @@ A player can meet Ise at a second location, adopt Button, recover the museum cap
 
 The 1,020 new accessions support 57,120 combinations of two first recipients, fourteen other chapters and two receiving uses. The domain test plays all of these. They share sixteen field tools and fifteen chapter stories. The figure measures routing and state integrity. Each room also offers a keeper's personal favour and two different mornings. [Collection and stories](../../src/content/nightKeepers.ts)
 
+## What the production build exercised
+
+| Build check | Observed result |
+| --- | --- |
+| Chapter entrances, cases and return doors | Chromium 156.0.8078.79 at 1280 × 800, Firefox 146.0.1 at 820 × 1080 and WebKit 26.0 at 390 × 844 covered all fifteen rooms between them. Each completed Button’s two-work trail and returned to a perch to display both images. Chapter travel was staged. Doors, cases, receipts and keeper conversations used the player controls. |
+| Changing an account after it travels | In all three engines, the keeper could open the travelling copy and the latest home reading after the player reassigned the frame. Three receiving signatures survived the hearing. The state tests also exercised a second ending and restored the earlier list of signatories. |
+| Companion histories | The state tests exercised all 240 companions in both training roles and completed each individual trail in both orders. All 480 works used for these pairs have distinct accessions. Each completed comparison retains the two editions the companion saw. |
+| Sources and images | The specimen audit accepted 2,038 individual records. The new 1,020 works each have their own accession and pixel image. The asset check accepted 1,880 files with source and licence information. Forty-eight legacy exhibits have yet to be identified as exact objects and are counted separately. |
+| Map movement | Chromium checked 86,540 tiles on 145 maps, including 23,078 solid tiles. It sampled 1,735 routes, probed 387 boundaries and 40 diagonal corners, rejected 384 unreachable pointer targets and simulated one hour pushing into the Archive wall. |
+| Classroom recovery and access | Fictional students on two independent browser profiles recovered saved notes, unfinished writing and exports. The assigned teacher saw labelled drafts. The other class’s teacher could not read them. The suite also exercised local-only writing, a device-only photo, separate portfolio sharing, sign-out and recovery of an offline edit. Chromium, Firefox and WebKit all passed. The access and revision checks also passed against local SQLite and the Cloudflare Worker/D1 emulator. |
+| Full automated suite | All 2,601 tests in 313 files passed, as did the production build. The main JavaScript bundle measures 2.52 MB compressed. Cold startup on a managed school network still needs measurement. |
+
+The QA runs led to changes at four chapter entrances where older story interactions were too close, a safer return tile at the Metalworks, and dialogue layering that keeps reward notices behind an open reading. [Register browser journey](../../tools/night-register-journey.mjs) · [Movement checks](../../tools/smoke-navigation.mjs) · [Fictional classroom journey](../../tools/smoke-classroom.mjs)
+
 ## Persona review
 
 These are modeled review perspectives. The suggested observations need people from the relevant groups. The existing chapter audit covers the wider campaign. [Chapter audit and earlier disagreements](LAMPLIGHT_AND_CLASS_WRITING.md)
