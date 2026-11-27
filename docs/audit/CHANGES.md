@@ -381,6 +381,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/tokenDrawer.ts`, `src/content/token-drawer.json` (with sources), `src/ui/tokenPanel.ts`, `src/maps/preserved.ts`, `tests/token-drawer.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
+### The Fog Chart, chapter 8's signature game (C-004)
+
+**What.** On the Seagrass Steps, Cartographer Renna unrolls a fogged chart of a bay, six squares by six, with four hidden features: a reef, a deep channel, an old wreck and a moving sandbar. The player has sixteen soundings. A hit names the feature; sounding all of it shows the claim and what holds it up, and each rests on a different kind of support (a measurement today, ten years of ferry crossings, one diver's report, three old charts that disagree). Harbourkeeper Sora first gives three sailors' reports, and one of them, from a captain who was sure, is wrong. When the soundings run out or all four are found, the player decides how to print what was not sounded. Renna and Sora then disagree (X-008) about practice knowledge on a chart.
+
+**Why.** The first lesson folder has a battleship grid of knowledge claims. The plan asked for two players; this version puts the player against the fog, with the keepers' reports as the second side, so it works alone and in class mode. Running out of soundings is an ending with its own text, not a failure screen (X-007). No print choice is marked right (OPEN-001).
+
+**Where.** `src/domain/fogChart.ts`, `src/content/fog-chart.json`, `src/ui/fogPanel.ts`, `src/maps/sea.ts`, `tests/fog-chart.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
 ### The 30-minute audit and the new games
 
 **What.** The audit test (`tests/learning.test.ts`) measures minutes of play in which a 30-minute window lacks some TOK concept or framework part. The new optional games add minutes inside windows that were already open, so the measure grew with each game. The test now checks the original bound on the path without the new games, and allows each new game to lengthen the gaps by at most three times its own minutes.

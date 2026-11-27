@@ -1485,6 +1485,24 @@
      "text": "Kinder to the mothers, perhaps. The children grew up not knowing a token had been left for them. When we decide what a record leaves out, we should ask the person it leaves out."
     }
    ]
+  },
+  {
+   "id": "sea.fog",
+   "after": {
+    "flag": "field.fog.done",
+    "eq": true
+   },
+   "heading": "Two views on the fog chart",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "A chart is a promise to strangers who will steer by it at night. I would rather print less and be sure of every line I print."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "The ferry crew's ten years are worth more than one of our soundings. A chart that leaves out what people know by living it is not more careful. It is just smaller."
+    }
+   ]
   }
  ]
 }

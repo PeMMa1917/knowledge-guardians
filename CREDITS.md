@@ -94,6 +94,7 @@ Many games grew from TOK lessons in Mika's lesson folder (decision X-017 in [doc
 | The Careful Dig | Excavation as a choice about what later people can know | Mika's TOK lesson folder |
 | Star Pictures | Measured star positions and the different pictures people draw between them | Mika's TOK lesson folder |
 | The Copyists' Ladder | A word ladder that shows the difference between a pattern and a proof | Mika's TOK lesson folder; the lesson credits an activity shared by Ric Sims. Word ladders ("doublets") were invented by Lewis Carroll in 1877. |
+| The Fog Chart | A battleship grid of knowledge claims, where each hit reveals a claim and its support | Mika's TOK lesson folder |
 | The Token Drawer | Who gets remembered: tokens left with children at the Foundling Hospital in London | Mika's TOK lesson folder |
 | The Collage Wall | Can a picture tell the truth: a collage, an 1819 parliamentary debate about child chimney sweeps, and poems of the time, read together | Mika's TOK lesson folder |
 | The River Crossing Inquiry | A story where people rank who acted worst and each ranking shows a way of judging (the story is fully rewritten as a flood night, with no sexual content) | Mika's TOK lesson folder |

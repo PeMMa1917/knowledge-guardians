@@ -30,7 +30,7 @@ Status: **in game** (already woven), **planned** (has a place), **idea** (needs 
 | Drawing a concept for others to guess | **Sketch Relay**: a signal tower crew passes a concept by drawings only | Ch 6 coast | Shows how meaning is lost and kept (in game, chapter 7) |
 | Highlighting evidence in a text | **Lamp-Glass Hunt**: a coloured glass shows marks in an old letter, each colour for a kind of claim | Ch 5 archive | Close reading as play |
 | Taboo with concept words | **Unsaid Words**: a market crier must sell an idea without the usual words | Ch 3 market | Concepts without jargon |
-| Battleship grid of knowledge claims | **Fog Chart**: a two-player sea chart where each hit reveals a claim and its support | Ch 7 harbour | Search and inference |
+| Battleship grid of knowledge claims | **Fog Chart**: a two-player sea chart where each hit reveals a claim and its support | Ch 7 harbour | Search and inference (in game, chapter 8) |
 | Auction of beliefs | **The Value Fair**: tokens (never money) bid on which claims to defend in a town meeting | Ch 10 town meeting (with C-006) | What we value shapes what we accept (in game, chapter 10) |
 | Crime board with paper strings | **The Lost-Property Board**: a hall where strings join notes about a missing object; much of the evidence is noise, some is retracted, some conflicts | Ch 8 | Noise, retraction, conflict, from the History Mystery lesson, without a crime |
 | Historical lenses card game (lens, event, question, object, wildcard cards) | **The Lens Table**: a historians' guild game where each card changes how an event looks | Ch 9 signature game | Many perspectives on one event (in game, chapter 9) |
