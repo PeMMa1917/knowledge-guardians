@@ -6,6 +6,24 @@ import { clear, h } from '../ui/dom';
 export function classPanel(switchSave: (store?: ClassSave) => void) {
   const box = h('section', { class: 'class-connection' });
   const status = h('p', { role: 'status' });
+  const compare = async (local: string, online: string) => {
+    const choice = await choices<'local' | 'online' | 'cancel'>(
+      box,
+      'Both devices have changes. Choose which adventure to continue. The other version may contain different writing.',
+      [
+        ['local', 'Use this device · ' + local],
+        ['online', 'Use online copy · ' + online],
+        ['cancel', 'Decide later'],
+      ],
+    );
+    clear(box);
+    box.append(status);
+    status.textContent =
+      choice === 'cancel'
+        ? 'Keeping the two copies available.'
+        : 'Checking the selected edition with your class…';
+    return choice;
+  };
   const update = async (who: Identity) => {
     const next = new ClassSave(who);
     const decision = await choices(box, notice(who), [
@@ -21,30 +39,25 @@ export function classPanel(switchSave: (store?: ClassSave) => void) {
     box.append(status);
     status.textContent = 'Opening class save…';
     try {
-      if (
-        await next.open((local, online) =>
-          choices(
-            box,
-            'Both devices have changes. Choose which adventure to continue. The other version may contain different writing.',
-            [
-              ['local', 'Use this device · ' + local],
-              ['online', 'Use online copy · ' + online],
-              ['cancel', 'Decide later'],
-            ],
-          ),
-        )
-      ) {
+      if (await next.open(compare)) {
         if (!box.isConnected) return;
         next.activate();
         switchSave(next);
       } else {
         clear(box);
-        box.append(h('p', {}, 'Both copies are available. Sign in again when you are ready.'));
+        box.append(
+          h(
+            'p',
+            {},
+            'Both copies are available. Sign in again when you are ready.',
+          ),
+        );
       }
     } catch (e) {
       clear(box);
       box.append(status);
-      status.textContent = e instanceof Error ? e.message : 'Unable to open class save.';
+      status.textContent =
+        e instanceof Error ? e.message : 'Unable to open class save.';
     }
   };
   if (classroom) {
@@ -52,6 +65,31 @@ export function classPanel(switchSave: (store?: ClassSave) => void) {
     box.append(
       h('p', {}, notice()),
       h('p', { 'data-class-status': '', role: 'status' }, active.status),
+      active.needsComparison
+        ? h(
+            'button',
+            {
+              type: 'button',
+              onclick: async () => {
+                clear(box);
+                box.append(status);
+                status.textContent = 'Opening the two copies…';
+                try {
+                  await active.open(compare);
+                  if (box.isConnected) switchSave(active);
+                } catch (error) {
+                  clear(box);
+                  box.append(status);
+                  status.textContent =
+                    error instanceof Error
+                      ? error.message
+                      : 'The class could not be reached. Your local copy is available.';
+                }
+              },
+            },
+            'Review the two copies',
+          )
+        : '',
       h('button', { onclick: () => active.sync() }, 'Retry class sync'),
       h(
         'button',
@@ -71,7 +109,11 @@ export function classPanel(switchSave: (store?: ClassSave) => void) {
     );
   } else
     box.append(
-      h('p', {}, 'School accounts have a separate adventure. Your local adventure stays here.'),
+      h(
+        'p',
+        {},
+        'School accounts have a separate adventure. Your local adventure stays here.',
+      ),
       signIn<Identity>('student', update),
     );
   return box;
@@ -81,11 +123,17 @@ export function writingNotice() {
     'div',
     { class: 'fine class-writing-notice' },
     h('p', {}, notice()),
-    classroom ? h('p', { 'data-class-status': '', role: 'status' }, classroom.status) : null,
+    classroom
+      ? h('p', { 'data-class-status': '', role: 'status' }, classroom.status)
+      : null,
   );
 }
 
-export function sceneEditor(field: HTMLInputElement | HTMLTextAreaElement, id: string, title: string) {
+export function sceneEditor(
+  field: HTMLInputElement | HTMLTextAreaElement,
+  id: string,
+  title: string,
+) {
   const store = classroom;
   if (!store) return () => {};
   field.value = store.sceneDraft(id);
@@ -94,7 +142,9 @@ export function sceneEditor(field: HTMLInputElement | HTMLTextAreaElement, id: s
     try {
       store.storeScene(id, title, field.value, ctx.controller.state?.mapId);
     } catch {
-      field.setCustomValidity('This device could not save this draft. Keep a copy of your writing.');
+      field.setCustomValidity(
+        'This device could not save this draft. Keep a copy of your writing.',
+      );
       field.reportValidity();
     }
   };
