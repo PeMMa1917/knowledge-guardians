@@ -1,5 +1,5 @@
 import {classroom} from '../classroom/client';
-import {writingNotice} from '../classroom/student';
+import {writingNotice,sceneEditor} from '../classroom/student';
 import type { GameController } from '../app/controller';
 import { adventureJournalView, type AdventureJournalView, type JournalNote, type JournalReflection } from '../domain/adventureJournal';
 import { CONCEPTS, type DiaryNoteKind } from '../domain/types';
@@ -29,7 +29,12 @@ function entryDetails(kind: string, at: string | null, mapId: string | null): HT
 }
 
 function journalView(controller: GameController): AdventureJournalView {
-  return adventureJournalView(controller.pack, controller.state, controller.engine.visibleObjectives(controller.state));
+  const view=adventureJournalView(controller.pack, controller.state, controller.engine.visibleObjectives(controller.state));
+  const drafts=Object.values(classroom?.drafts() ?? {});
+  for (const [i,draft] of drafts.entries()) view.notes.push({
+    index:-(i+2),kind:'note',resolved:false,draft:true,at:draft.at ?? null,mapId:draft.mapId ?? null,text:draft.title+'\n'+draft.text,
+  });
+  return view;
 }
 
 const frameworkNames: Record<FrameworkPart, string> = {
@@ -237,6 +242,24 @@ function questionButton(note: JournalNote, controller: GameController, refresh: 
   } }, note.resolved ? 'Reopen question' : 'Mark question resolved');
 }
 
+function sceneDraftEditors(controller:GameController, refresh:()=>void) {
+  const drafts=Object.entries(classroom?.drafts() ?? {});
+  if(!drafts.length) return null;
+  return h('section',{},h('h4',{},'Unfinished writing from the road'),...drafts.map(([id,draft])=>{
+    const field=h('textarea',{rows:3,'aria-label':'Draft · '+draft.title});
+    const finish=sceneEditor(field,id,draft.title);
+    const status=h('p',{role:'status'});
+    return h('details',{},h('summary',{},'Draft · '+draft.title),writingNotice(),conceptEditor(field),
+      h('button',{type:'button',onclick:()=>{
+        if(!field.value.trim()) {refresh();return;}
+        const error=controller.dispatch({type:'AddNote',kind:'note',text:draft.title+'\n'+field.value}).find(e=>e.kind==='error');
+        if(error){status.textContent=error.message;return;}
+        queueJournalWriting(controller,status);
+        if(flushJournalWriting(controller)){finish();refresh();}
+      }},'Keep as a journal note'),status);
+  }));
+}
+
 function diaryNotes(view: AdventureJournalView, controller: GameController, refresh: () => void): HTMLElement {
   const kind = h('select', { id: 'diary-note-kind' }, ...Object.entries(noteLabels).map(([value, label]) => h('option', { value }, label)));
   const text = h('textarea', { id: 'diary-note-text', rows: 4, required: true });
@@ -268,7 +291,7 @@ function diaryNotes(view: AdventureJournalView, controller: GameController, refr
     h('label', { for: 'diary-note-text' }, 'Your note'), conceptEditor(text),
     h('button', { type: 'submit' }, 'Save note'), status);
   return h('section', { class: 'adventure-journal' }, h('h3', {}, 'My notes, reflections, and questions'),
-    writingNotice(), form,
+    writingNotice(), form, sceneDraftEditors(controller,refresh),
     notes.length ? h('ol', { class: 'diary-feed diary-notes' }, ...[...notes].reverse().map((note) => h('li', {},
       entryDetails(note.kind === 'question' ? (note.resolved ? 'Resolved question' : 'Open question') : noteLabels[note.kind], note.at, note.mapId),
       h('p', {}, note.text), questionButton(note, controller, refresh),

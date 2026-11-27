@@ -6,6 +6,7 @@ export const AUDIT_AXES = ['player', 'mode', 'game', 'story', 'dok', 'fink', 'so
 export type AuditAxis = (typeof AUDIT_AXES)[number];
 
 /** The HTML supplies the full first block. Six numbered blocks have been received. */
+export const NEW_SKILL_NAMES = newSkills.map(({number,name})=>({number,name}));
 export const SUPPLIED_SKILL_IDS = [...Array.from({ length: 1000 }, (_, i) => i + 1), ...newSkills.map(s => s.number)];
 
 export function microSkillRows(pack: ContentPack, evidence: readonly MicroSkillEvidence[]) {

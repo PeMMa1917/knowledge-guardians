@@ -1,49 +1,224 @@
-import {createRequire} from 'node:module';
+import { createRequire } from 'node:module';
 import assert from 'node:assert/strict';
-import {preview} from './classroom-preview.mjs';
-const require=createRequire(process.env.KG_PLAYWRIGHT_PACKAGE || import.meta.url);
-const pw=require('playwright'), engine=process.argv[2]||'chromium';
-const service=await preview(0,true), browser=await pw[engine].launch(engine==='chromium'?{executablePath:process.env.KG_CHROMIUM || undefined,args:['--no-sandbox','--disable-gpu','--disable-dev-shm-usage']}:{});
-const pass='Lantern-Fiction-42', errors=[];
-async function device(path='') {const ctx=await browser.newContext({ignoreHTTPSErrors:true,viewport:engine==='webkit'?{width:390,height:844}:{width:1220,height:890}});const p=await ctx.newPage();p.setDefaultTimeout(40000);p.on('pageerror',e=>errors.push(e.message));await p.goto(service.url+'/'+path,{waitUntil:'domcontentloaded',timeout:90000});return p;}
-const button=(p,label)=>p.getByRole('button',{name:label,exact:false}).first().click();
-async function login(p,name,role='student') {
- if(role==='student') await button(p,'Class sign-in');
- await p.getByLabel(role==='student'?'Guardian username':'Teacher email').fill(name);
- await p.getByLabel('Password',{exact:true}).fill(pass);await button(p,'Sign in');
+import { inflateSync } from 'node:zlib';
+import { setTimeout as delay } from 'node:timers/promises';
+import { preview } from './classroom-preview.mjs';
+const require = createRequire(process.env.KG_PLAYWRIGHT_PACKAGE || import.meta.url);
+const pw = require('playwright'),
+  engine = process.argv[2] || 'chromium';
+const service = await preview(0, true),
+  browser = await pw[engine].launch(
+    engine === 'chromium'
+      ? {
+          executablePath: process.env.KG_CHROMIUM || undefined,
+          args: ['--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage'],
+        }
+      : {},
+  );
+const pass = 'Lantern-Fiction-42',
+  errors = [];
+async function device(path = '') {
+  const ctx = await browser.newContext({
+    ignoreHTTPSErrors: true,
+    viewport: engine === 'webkit' ? { width: 390, height: 844 } : { width: 1220, height: 890 },
+  });
+  const p = await ctx.newPage();
+  p.setDefaultTimeout(40000);
+  p.on('pageerror', (e) => errors.push(e.message));
+  await p.goto(service.url + '/' + path, { waitUntil: 'domcontentloaded', timeout: 90000 });
+  return p;
 }
-async function open(p) {await login(p,'ash-moth');await p.getByText(/You and Keeper North, the assigned teacher for North Lanterns/).waitFor();await button(p,'Open my class adventure');await p.getByRole('dialog',{name:'Class adventure'}).waitFor({state:'hidden'});}
-async function journal(p) {await p.evaluate(()=>kg.ui.openJournal('notes'));await p.locator('#diary-note-text').waitFor();}
-const remote=p=>p.evaluate(async()=>{const r=await fetch('/api/classroom/student/save?account=a&class=north&teacher=ta');return await r.json();});
+const button = (p, label) => p.getByRole('button', { name: label, exact: false }).first().click();
+async function login(p, name, role = 'student') {
+  if (role === 'student') await button(p, 'Class sign-in');
+  await p.getByLabel(role === 'student' ? 'Guardian username' : 'Teacher email').fill(name);
+  await p.getByLabel('Password', { exact: true }).fill(pass);
+  await button(p, 'Sign in');
+}
+async function open(p) {
+  await login(p, 'ash-moth');
+  await p.getByText(/You and Keeper North, the assigned teacher for North Lanterns/).waitFor();
+  await button(p, 'Open my class adventure');
+  await p.getByRole('dialog', { name: 'Class adventure' }).waitFor({ state: 'hidden' });
+}
+async function journal(p) {
+  await p.evaluate(() => kg.ui.openJournal('notes'));
+  await p.locator('#diary-note-text').waitFor();
+}
+const remote = (p) =>
+  p.evaluate(async () => {
+    const r = await fetch('/api/classroom/student/save?account=a&class=north&teacher=ta');
+    return await r.json();
+  });
+async function waitForDraft(page, expected) {
+  const until = Date.now() + 45000;
+  let last;
+  while (Date.now() < until) {
+    const online = await remote(page);
+    if (online.package) {
+      const { slots } = JSON.parse(inflateSync(Buffer.from(online.package, 'base64')));
+      last = JSON.parse(JSON.parse(slots).body).continue?.state?.adventureDiary?.noteDraft?.text;
+      if (last === expected) return;
+    }
+    await delay(150);
+  }
+  throw new Error(
+    'Expected a synced fictional draft ' +
+      expected +
+      '; last received ' +
+      last +
+      '; ' +
+      (await page.locator('[data-class-status]').first().textContent()),
+  );
+}
 try {
- const local=await device(); let calls=0; local.on('request',r=>{if(r.url().includes('/api/classroom/'))calls++});
- await button(local,'New game');await button(local,'Begin');await local.waitForFunction(()=>!!window.kg?.controller?.state);
- await local.evaluate(()=>{kg.controller.dispatch({type:'AddNote',text:'Old local-only note'});kg.controller.suspend();});assert.equal(calls,0);await local.context().close();
- const a=await device();await open(a);await button(a,'New game');await button(a,'Begin');await a.waitForFunction(()=>!!window.kg?.world);
- await a.getByRole('dialog').getByText(/brass fish/).first().waitFor();await a.keyboard.press('Escape');
- await journal(a); console.log('opened student diary');await a.getByText(/You and Keeper North/).first().waitFor();
- const n=a.locator('#diary-note-text');await n.fill('The bell cast two shadows.');await button(a,'Save note');await n.fill('Who stood behind the lamp');
- await a.waitForTimeout(1450);
- await a.evaluate(()=>{
-  const c=kg.controller;c.permanent.portfolio.push({id:'fixture-private',title:'Personal sketch',reflection:'private portfolio canary',text:'private page',kind:'ledger',at:new Date().toISOString(),world:'nexus',shared:false,weave:{}});
-  c.permanent.portfolio.push({...c.permanent.portfolio.at(-1),id:'fixture-selected',title:'Selected for file export',shared:true,text:'progress file only canary'});
-  c.saves.savePermanent(c.permanent);
-  localStorage.setItem('kg.class.v1.a/north/ta.album',JSON.stringify([{thumb:'photo-only-canary'}]));
- });await a.waitForTimeout(1450);
- assert.ok((await remote(a)).revision>=1);
- console.log('device A synced');const b=await device();await open(b);await button(b,'Continue');await button(b,'Continue playing');await journal(b);assert.equal(await b.locator('#diary-note-text').inputValue(),'Who stood behind the lamp');
- await b.getByText('The bell cast two shadows.',{exact:true}).first().waitFor();
- assert.equal(await b.evaluate(()=>kg.controller.permanent.portfolio.find(x=>x.id==='fixture-private').reflection),'private portfolio canary');
- assert.equal(await b.evaluate(()=>Object.keys(localStorage).some(k=>k.endsWith('album'))),false);
- console.log('device B recovered');const t=await device('teacher.html');await login(t,'north@example.invalid','teacher');await t.getByText('Draft · note',{exact:true}).waitFor();
- await t.getByText('Who stood behind the lamp',{exact:true}).waitFor();await t.getByText('Saved note',{exact:true}).waitFor();
- const teacherText=await t.locator('body').innerText();for(const s of ['private portfolio canary','photo-only-canary','Old local-only note','progress file only canary'])assert.ok(!teacherText.includes(s));
- const t2=await device('teacher.html');await login(t2,'south@example.invalid','teacher');await t2.getByText('Moss Wren',{exact:true}).waitFor();assert.ok(!(await t2.locator('body').innerText()).includes('Who stood behind'));
- assert.equal(await t2.evaluate(async()=> (await fetch('/api/classroom/teacher/writing?account=tb&class=north')).status),403);
- await b.context().setOffline(true);await b.locator('#diary-note-text').fill('Offline continuation');await b.waitForTimeout(1350);
- await a.locator('#diary-note-text').fill('Alternate device continuation');await a.waitForTimeout(1350);
- await b.context().setOffline(false);await b.getByText(/Two devices have changes/).first().waitFor();
- await button(t,'Refresh writing');await t.getByText('Alternate device continuation',{exact:true}).waitFor();
- await button(t,'Sign out');assert.equal(await t.evaluate(async()=> (await fetch('/api/classroom/teacher/writing?account=ta&class=north')).status),401);
- assert.deepEqual(errors,[]);console.log(engine,browser.version(),'PASS local play, class disclosure, cross-device note/draft and private portfolio recovery, device-only photo, assigned and unrelated teachers, offline edit conflict, sign-out');
-} finally{await browser.close();await service.close();}
+  const local = await device();
+  let calls = 0;
+  local.on('request', (r) => {
+    if (r.url().includes('/api/classroom/')) calls++;
+  });
+  await button(local, 'New game');
+  await button(local, 'Begin');
+  await local.waitForFunction(() => !!window.kg?.controller?.state);
+  await local.evaluate(() => {
+    kg.controller.dispatch({ type: 'AddNote', text: 'Old local-only note' });
+    kg.controller.suspend();
+  });
+  assert.equal(calls, 0);
+  await local.context().close();
+  const a = await device();
+  await open(a);
+  await button(a, 'New game');
+  await button(a, 'Begin');
+  await a.waitForFunction(() => !!window.kg?.world);
+  await a
+    .getByRole('dialog')
+    .getByText(/brass fish/)
+    .first()
+    .waitFor();
+  await a.keyboard.press('Escape');
+  await journal(a);
+  console.log('opened student diary');
+  await a
+    .getByText(/You and Keeper North/)
+    .first()
+    .waitFor();
+  const n = a.locator('#diary-note-text');
+  await n.fill('The bell cast two shadows.');
+  await button(a, 'Save note');
+  const reflection = a.locator('.diary-notes .diary-reflections').first();
+  await reflection.locator('summary').click();
+  await reflection.locator('textarea').first().fill('I heard only the second witness.');
+  await n.focus();
+  await n.fill('Who stood behind the lamp');
+  await a.waitForTimeout(1450);
+  await a.evaluate(() => {
+    const c = kg.controller;
+    c.permanent.portfolio.push({
+      id: 'fixture-private',
+      title: 'Personal sketch',
+      reflection: 'private portfolio canary',
+      text: 'private page',
+      kind: 'ledger',
+      at: new Date().toISOString(),
+      world: 'nexus',
+      shared: false,
+      weave: {},
+    });
+    c.permanent.portfolio.push({
+      ...c.permanent.portfolio.at(-1),
+      id: 'fixture-selected',
+      title: 'Selected for file export',
+      shared: true,
+      text: 'progress file only canary',
+    });
+    c.saves.savePermanent(c.permanent);
+    localStorage.setItem('kg.class.v1.a/north/ta.album', JSON.stringify([{ thumb: 'photo-only-canary' }]));
+  });
+  await waitForDraft(a, 'Who stood behind the lamp');
+  assert.ok((await remote(a)).revision >= 1);
+  console.log('device A synced');
+  const b = await device();
+  await open(b);
+  await button(b, 'Continue');
+  await button(b, 'Continue playing');
+  await journal(b);
+  assert.equal(await b.locator('#diary-note-text').inputValue(), 'Who stood behind the lamp');
+  await b.getByText('The bell cast two shadows.', { exact: true }).first().waitFor();
+  assert.equal(
+    await b.evaluate(
+      () => kg.controller.permanent.portfolio.find((x) => x.id === 'fixture-private').reflection,
+    ),
+    'private portfolio canary',
+  );
+  assert.equal(await b.evaluate(() => Object.keys(localStorage).some((k) => k.endsWith('album'))), false);
+  console.log('device B recovered');
+  const t = await device('teacher.html');
+  await login(t, 'north@example.invalid', 'teacher');
+  await t.getByText('Draft · note', { exact: true }).waitFor();
+  await t.getByText('Who stood behind the lamp', { exact: true }).waitFor();
+  await t.getByText('Saved note', { exact: true }).waitFor();
+  await t.getByText('Draft · reflection', { exact: true }).waitFor();
+  await t.getByText('I heard only the second witness.', { exact: true }).waitFor();
+  const teacherText = await t.locator('body').innerText();
+  for (const s of [
+    'private portfolio canary',
+    'photo-only-canary',
+    'Old local-only note',
+    'progress file only canary',
+  ])
+    assert.ok(!teacherText.includes(s));
+  const t2 = await device('teacher.html');
+  await login(t2, 'south@example.invalid', 'teacher');
+  await t2.getByText('Moss Wren', { exact: true }).waitFor();
+  assert.ok(!(await t2.locator('body').innerText()).includes('Who stood behind'));
+  assert.equal(
+    await t2.evaluate(
+      async () => (await fetch('/api/classroom/teacher/writing?account=tb&class=north')).status,
+    ),
+    403,
+  );
+  await b.context().setOffline(true);
+  await b.locator('#diary-note-text').fill('Offline continuation');
+  await b.waitForTimeout(1350);
+  await a.locator('#diary-note-text').fill('Alternate device continuation');
+  await waitForDraft(a, 'Alternate device continuation');
+  await b.context().setOffline(false);
+  await b
+    .getByText(/Two devices have changes/)
+    .first()
+    .waitFor();
+  await button(t, 'Refresh writing');
+  await t.getByText('Alternate device continuation', { exact: true }).waitFor();
+  await b.keyboard.press('Escape');
+  await b.keyboard.press('Escape');
+  await button(b, 'Save and leave');
+  await button(b, 'Manage class adventure');
+  await button(b, 'Leave class adventure');
+  await login(b, 'ash-moth');
+  await button(b, 'Open my class adventure');
+  await button(b, 'Use this device');
+  await button(b, 'Continue');
+  await button(b, 'Continue playing');
+  await journal(b);
+  assert.equal(await b.locator('#diary-note-text').inputValue(), 'Offline continuation');
+  await waitForDraft(b, 'Offline continuation');
+  await button(t, 'Refresh writing');
+  await t.getByText('Offline continuation', { exact: true }).waitFor();
+  await button(t, 'Sign out');
+  assert.equal(
+    await t.evaluate(
+      async () => (await fetch('/api/classroom/teacher/writing?account=ta&class=north')).status,
+    ),
+    401,
+  );
+  assert.deepEqual(errors, []);
+  console.log(
+    engine,
+    browser.version(),
+    'PASS local play, class disclosure, cross-device note/draft and private portfolio recovery, device-only photo, assigned and unrelated teachers, offline edit conflict, sign-out',
+  );
+} finally {
+  await browser.close();
+  await service.close();
+}

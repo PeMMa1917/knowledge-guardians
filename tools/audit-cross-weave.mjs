@@ -589,6 +589,20 @@ const proofRows = [
     elements: ['game:271'],
   },
   {
+    objective:'night-watch.gate.handover', map:'water.gatehouse', target:'lamplight.gate.bench',
+    source:'tests/lamplight.test.ts', anchor:'3 dry-night calls and 0 missed',
+    action:'Move the bell clip across the same six nights and weigh missed floods against unnecessary calls before choosing who bears the cost of tonight’s watch.',
+    dimensions:['micro:1061','micro:1083','concept:evidence','concept:responsibility','framework:ethics','area:MAT'],
+    elements:['game:234'], reasoning:[{mode:'pragmatic',basis:'Each threshold changes who loses sleep and who must watch the steps. The decision uses these costs.'}],
+  },
+  {
+    objective:'night-watch.dispatch.handover', map:'civic.dispatch', target:'lamplight.dispatch.bench',
+    source:'tests/lamplight.test.ts', anchor:'4 of 6 households',
+    action:'Stretch the cord across the four replies and again across all six addresses. Decide who goes to the two unconfirmed doors.',
+    dimensions:['micro:1092','concept:certainty','concept:evidence','framework:scope','area:MAT'],
+    elements:['game:234'], reasoning:[{mode:'deductive',basis:'Four responses establish at most four confirmed households. Two households remain unconfirmed under either staffing choice.'}],
+  },
+  {
     objective: 'council.publish', map: 'council.gallery', target: 'council-reader',
     source: 'tests/council-story.test.ts', anchor: 'checks the two readings and keeps the $policy docket',
     action: 'Check the working and stopped watches against the drum at two marks. Check the signed repair seal before choosing a repeated shift check or a dated record with a fallback.',
@@ -857,7 +871,7 @@ async function loadAudit() {
   });
   try {
     const [{ buildPack }, { MAPS }, curriculum, levels, topics, { QUESTION_ROUTES }, { MICRO_SKILLS, microSkillId },
-      { SUPPLIED_SKILL_IDS }, game, story, titleSources] =
+      { SUPPLIED_SKILL_IDS, NEW_SKILL_NAMES }, game, story, titleSources] =
       await Promise.all([
         server.ssrLoadModule('/src/content/index.ts'), server.ssrLoadModule('/src/maps/index.ts'),
         server.ssrLoadModule('/src/domain/curriculum.ts'), server.ssrLoadModule('/src/domain/learningLevels.ts'),
@@ -874,7 +888,7 @@ async function loadAudit() {
     }));
     const elements = [...parseCatalogue(game, 'game', 288), ...parseCatalogue(story, 'story', 150)];
     const dimensions = makeDimensions({ pack, curriculum, levels, topics, exhibition: QUESTION_ROUTES,
-      micro: MICRO_SKILLS, suppliedMicro: SUPPLIED_SKILL_IDS, microSkillId, titleSources });
+      micro: [...NEW_SKILL_NAMES, ...MICRO_SKILLS], suppliedMicro: SUPPLIED_SKILL_IDS, microSkillId, titleSources });
     if (new Set(dimensions.map(({ id }) => id)).size !== dimensions.length) throw Error('Duplicate learning dimension IDs.');
     const sourceText = new Map(await Promise.all(distinct(proofRows.map(({ source }) => source)).map(async (file) =>
       [file, await readFile(resolve(root, file), 'utf8')])));

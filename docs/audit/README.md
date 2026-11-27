@@ -1,5 +1,7 @@
 # Multi-persona audit
 
+The latest follow-up reviews the historical guest workshops, the night watches and class writing across 73 perspectives. [Review and chapter cases](LAMPLIGHT_AND_CLASS_WRITING.md)
+
 Mika asked on 26 November 2026 for a full critique of Knowledge Guardians from more than seventy points of view: students of many kinds, teachers, school leaders, the IB and its examiners, universities, philosophers, game makers and critics, players of every type, historians, Indigenous communities, accessibility and inclusion specialists, learning scientists, and others. The main focus is TOK. The other DP subjects help students see how areas of knowledge connect and differ, and give them concrete examples from subjects they know.
 
 The audit has three steps:
