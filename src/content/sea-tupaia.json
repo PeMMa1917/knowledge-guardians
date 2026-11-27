@@ -1,0 +1,600 @@
+{
+ "sources": [
+  {
+   "id": "HIS-TUPAIA-ANU",
+   "title": "Pacific Islander Biography (Australian National University): Tupaia, by Ben Finney",
+   "url": "https://pib.anu.edu.au/biography/tupaia-15981",
+   "locator": "Whole entry",
+   "supports": "Tupaia, a high-born priest and navigator from Ra'iātea, joined Cook's Endeavour in 1769, described Tahitian navigation, and died in Batavia (Jakarta). The entry says Cook drew the chart from Tupaia's list of islands and bearings.",
+   "accessed": "2026-11-27"
+  },
+  {
+   "id": "HIS-TUPAIA-NHM",
+   "title": "Natural History Museum, London: On tour with Tupaia (interview with Anne Salmond)",
+   "url": "https://www.nhm.ac.uk/discover/on-tour-with-tupaia.html",
+   "locator": "Whole article",
+   "supports": "Tupaia was born about 1725 on Ra'iātea, was a priest of 'Oro and a keeper of navigation knowledge, and died in Batavia on 11 November 1770. Navigators learned star paths and also read winds, currents, clouds and birds.",
+   "accessed": "2026-11-27"
+  },
+  {
+   "id": "HIS-TUPAIA-POT",
+   "title": "University of Potsdam: Tupaia's Map (research project by Lars Eckstein and Anja Schwarz)",
+   "url": "https://www.uni-potsdam.de/en/iaa-alc/tupaias-map",
+   "locator": "Project description and reading of the chart",
+   "supports": "The chart was made in stages in 1769 and 1770. European readers found far islands placed side by side and southern islands in the north. Eckstein and Schwarz (2019) read 'avatea' (noon) at the centre as north, and read the islands as voyaging routes. Later critics are named.",
+   "accessed": "2026-11-27"
+  },
+  {
+   "id": "HIS-TUPAIA-KNOW",
+   "title": "Knowable Magazine: Reading a Pacific navigator's mysterious map (2021)",
+   "url": "https://knowablemagazine.org/article/society/2021/reading-pacific-navigators-mysterious-map",
+   "locator": "Whole article",
+   "supports": "The original chart is lost and copies survive. The 2019 reading is debated: Anne Di Piazza and Erik Pearthree read it as many sets of sailing directions, and Anne Salmond says the certainty is overstated. Navigators from Tahiti and Ra'ivavae say work with Indigenous experts is essential.",
+   "accessed": "2026-11-27"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.sea.tupaia.navigator",
+   "title": "Tupaia of Ra'iātea",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-TUPAIA-ANU",
+    "HIS-TUPAIA-NHM"
+   ],
+   "text": "Tupaia was born about 1725 on Ra'iātea, in the Society Islands. He was a priest and a keeper of navigation knowledge. After warriors from Bora Bora took his island, he lived on Tahiti. In 1769 he joined James Cook's ship Endeavour, guided it through the islands, and explained to the crew how his people found their way at sea. He died in Batavia (now Jakarta) in 1770.",
+   "limits": "Almost everything written about Tupaia in his lifetime was written by Europeans on the ship. His own words reach us only through their notes."
+  },
+  {
+   "id": "card.sea.tupaia.chart",
+   "title": "The chart and its first readers",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-TUPAIA-POT",
+    "HIS-TUPAIA-KNOW",
+    "HIS-TUPAIA-ANU"
+   ],
+   "text": "In 1769 and 1770, a chart of more than seventy Pacific islands was made with Tupaia. The original is lost; copies survive. European readers found islands thousands of kilometres apart drawn side by side, and southern islands drawn in the north. One of the ship's scientists suggested Tupaia had invented islands. In the twentieth century, the chart was used to argue that Polynesians could not have sailed on purpose.",
+   "limits": "The sources do not agree on who drew the lines: some say Tupaia, some say Cook drew from Tupaia's list of islands and directions. Some island names were written down by people who did not speak Tahitian well."
+  },
+  {
+   "id": "card.sea.tupaia.reading",
+   "title": "A new reading, and a debate",
+   "claimKind": "interpretation",
+   "historicalLabel": "scholarly-interpretation",
+   "sources": [
+    "HIS-TUPAIA-POT",
+    "HIS-TUPAIA-KNOW"
+   ],
+   "text": "In 2019 Lars Eckstein and Anja Schwarz proposed a new way to read the chart. At its centre is the Tahitian word for noon. At noon in the southern Pacific the sun is to the north, so they read the centre as 'north', seen from a canoe, not from above. They read the islands as routes: from each island, face the noon sun and read the direction to the next island on the route. Other researchers disagree. Some read the chart as many separate sets of sailing directions. Anne Salmond says the new reading is more certain than the evidence allows. Navigators from Tahiti and Ra'ivavae say the chart cannot be read well without Pacific experts.",
+   "limits": "This is a scholarly proposal, not a settled fact. No reading can ask Tupaia what he meant."
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "sea.tupaia.navigator",
+   "speaker": "narrator",
+   "historicalLabel": "documented",
+   "claimKind": "observation",
+   "text": "A portrait shelf holds a short record about a navigator from Ra'iātea who sailed with a British ship in 1769, and a drawing of a canoe made on that voyage.",
+   "options": [
+    {
+     "text": "Keep this record.",
+     "next": "sea.tupaia.navigator.kept",
+     "if": {
+      "not": {
+       "flag": "sea.tupaia.navigator",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "sea.tupaia.navigator",
+       "value": true
+      },
+      {
+       "addCard": "card.sea.tupaia.navigator"
+      }
+     ]
+    },
+    {
+     "text": "Leave it on the shelf."
+    }
+   ]
+  },
+  {
+   "id": "sea.tupaia.navigator.kept",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The record goes into your folder, with its sources."
+  },
+  {
+   "id": "sea.tupaia.chart",
+   "speaker": "narrator",
+   "historicalLabel": "documented",
+   "claimKind": "observation",
+   "text": "Under glass: a copy of a chart of Pacific islands, with the names written in an English hand. Islands that are far apart sit close together. A note pinned beside it says the first people to read it thought it was wrong.",
+   "options": [
+    {
+     "text": "Keep this record.",
+     "next": "sea.tupaia.chart.kept",
+     "if": {
+      "not": {
+       "flag": "sea.tupaia.chart",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "sea.tupaia.chart",
+       "value": true
+      },
+      {
+       "addCard": "card.sea.tupaia.chart"
+      }
+     ]
+    },
+    {
+     "text": "Leave it on the shelf."
+    }
+   ]
+  },
+  {
+   "id": "sea.tupaia.chart.kept",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The record goes into your folder, with its sources."
+  },
+  {
+   "id": "sea.tupaia.reading",
+   "speaker": "narrator",
+   "historicalLabel": "documented",
+   "claimKind": "observation",
+   "text": "Two printed papers lie open on the table. One proposes a way to read the chart. The other answers it, line by line, and disagrees.",
+   "options": [
+    {
+     "text": "Keep this record.",
+     "next": "sea.tupaia.reading.kept",
+     "if": {
+      "not": {
+       "flag": "sea.tupaia.reading",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "sea.tupaia.reading",
+       "value": true
+      },
+      {
+       "addCard": "card.sea.tupaia.reading"
+      }
+     ]
+    },
+    {
+     "text": "Leave it on the shelf."
+    }
+   ]
+  },
+  {
+   "id": "sea.tupaia.reading.kept",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The record goes into your folder, with its sources."
+  },
+  {
+   "id": "sea.tupaia.desk",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "interpretation",
+   "text": "Renna wants the chart in the new display, next to the stick chart. 'For two hundred years people said this chart was wrong. What do we say beside it now?'",
+   "options": [
+    {
+     "text": "Show the 2019 reading as one proposal, with the people who disagree beside it.",
+     "next": "sea.tupaia.desk.proposal",
+     "if": {
+      "all": [
+       {
+        "flag": "sea.tupaia.navigator",
+        "eq": true
+       },
+       {
+        "flag": "sea.tupaia.chart",
+        "eq": true
+       },
+       {
+        "flag": "sea.tupaia.reading",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "sea.tupaia.label"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "sea.tupaia.label",
+       "value": "proposal"
+      }
+     ]
+    },
+    {
+     "text": "Show the chart without any reading. Say that its first readers misread it, and that it follows rules we may not know.",
+     "next": "sea.tupaia.desk.unread",
+     "if": {
+      "all": [
+       {
+        "flag": "sea.tupaia.navigator",
+        "eq": true
+       },
+       {
+        "flag": "sea.tupaia.chart",
+        "eq": true
+       },
+       {
+        "flag": "sea.tupaia.reading",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "sea.tupaia.label"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "sea.tupaia.label",
+       "value": "unread"
+      }
+     ]
+    },
+    {
+     "text": "Leave the label to Pacific navigators. Write only who made the chart and where its sources are.",
+     "next": "sea.tupaia.desk.voyagers",
+     "if": {
+      "all": [
+       {
+        "flag": "sea.tupaia.navigator",
+        "eq": true
+       },
+       {
+        "flag": "sea.tupaia.chart",
+        "eq": true
+       },
+       {
+        "flag": "sea.tupaia.reading",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "sea.tupaia.label"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "sea.tupaia.label",
+       "value": "voyagers"
+      }
+     ]
+    },
+    {
+     "text": "Leave the label for now."
+    }
+   ]
+  },
+  {
+   "id": "sea.tupaia.desk.proposal",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You write the label and pin it under the chart. Renna and Sora both stop to read it."
+  },
+  {
+   "id": "sea.tupaia.desk.unread",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You write the label and pin it under the chart. Renna and Sora both stop to read it."
+  },
+  {
+   "id": "sea.tupaia.desk.voyagers",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You write the label and pin it under the chart. Renna and Sora both stop to read it."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH8-I02",
+   "world": "WORLD-09",
+   "title": "The Chart Read Upside Down",
+   "knowledgeQuestion": "When a map follows rules we do not know, how can we tell a misreading from a mistake?",
+   "stake": "For two hundred years this chart was used to say that Pacific navigators could not sail on purpose. A label in the Lantern House will be read by every visitor.",
+   "available": {
+    "flagSet": "sea.response"
+   },
+   "objectives": [
+    {
+     "id": "sea.tupaia.navigator",
+     "title": "Read about Tupaia, the navigator.",
+     "essential": false,
+     "done": {
+      "flag": "sea.tupaia.navigator",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "culture",
+       "evidence"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "IND",
+       "HIS",
+       "MAT"
+      ],
+      "subjects": [
+       "geography",
+       "history",
+       "anthropology"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "understand",
+       "fink": "human",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "sea.tupaia.chart",
+     "title": "Read about the chart and its first readers.",
+     "essential": false,
+     "done": {
+      "flag": "sea.tupaia.chart",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "evidence",
+       "power"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "IND",
+       "HIS",
+       "MAT"
+      ],
+      "subjects": [
+       "geography",
+       "history",
+       "anthropology"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "human",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "sea.tupaia.reading",
+     "title": "Read the new reading, and the answer to it.",
+     "essential": false,
+     "done": {
+      "flag": "sea.tupaia.reading",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "certainty",
+       "perspective"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "IND",
+       "HIS",
+       "MAT"
+      ],
+      "subjects": [
+       "geography",
+       "history",
+       "anthropology"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "human",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "sea.tupaia.label",
+     "title": "Write the label for Tupaia's chart.",
+     "essential": false,
+     "done": {
+      "flagSet": "sea.tupaia.label"
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "responsibility",
+       "interpretation",
+       "justification"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "IND",
+       "HIS",
+       "MAT"
+      ],
+      "subjects": [
+       "geography",
+       "history",
+       "anthropology"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "human",
+       "solo": "relational"
+      }
+     },
+     "onComplete": [
+      {
+       "journal": "j.sea.tupaia"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "hint.sea.tupaia.navigator.1",
+   "objective": "sea.tupaia.navigator",
+   "depth": 1,
+   "text": "A new shelf in the Lantern House is about a navigator."
+  },
+  {
+   "id": "hint.sea.tupaia.navigator.2",
+   "objective": "sea.tupaia.navigator",
+   "depth": 2,
+   "text": "He sailed with a British ship in 1769."
+  },
+  {
+   "id": "hint.sea.tupaia.navigator.3",
+   "objective": "sea.tupaia.navigator",
+   "depth": 3,
+   "text": "The portrait shelf is near the top of the room, in the middle."
+  },
+  {
+   "id": "hint.sea.tupaia.navigator.4",
+   "objective": "sea.tupaia.navigator",
+   "depth": 4,
+   "text": "Read the portrait shelf and keep the record."
+  },
+  {
+   "id": "hint.sea.tupaia.chart.1",
+   "objective": "sea.tupaia.chart",
+   "depth": 1,
+   "text": "The chart is under glass."
+  },
+  {
+   "id": "hint.sea.tupaia.chart.2",
+   "objective": "sea.tupaia.chart",
+   "depth": 2,
+   "text": "Its first readers thought it was wrong."
+  },
+  {
+   "id": "hint.sea.tupaia.chart.3",
+   "objective": "sea.tupaia.chart",
+   "depth": 3,
+   "text": "The glass case is at the top of the room, right of the portrait shelf."
+  },
+  {
+   "id": "hint.sea.tupaia.chart.4",
+   "objective": "sea.tupaia.chart",
+   "depth": 4,
+   "text": "Read the chart case and keep the record."
+  },
+  {
+   "id": "hint.sea.tupaia.reading.1",
+   "objective": "sea.tupaia.reading",
+   "depth": 1,
+   "text": "Two papers disagree about how to read the chart."
+  },
+  {
+   "id": "hint.sea.tupaia.reading.2",
+   "objective": "sea.tupaia.reading",
+   "depth": 2,
+   "text": "They are on the table on the east side."
+  },
+  {
+   "id": "hint.sea.tupaia.reading.3",
+   "objective": "sea.tupaia.reading",
+   "depth": 3,
+   "text": "Read both before you decide anything."
+  },
+  {
+   "id": "hint.sea.tupaia.reading.4",
+   "objective": "sea.tupaia.reading",
+   "depth": 4,
+   "text": "Read the two papers and keep the record."
+  },
+  {
+   "id": "hint.sea.tupaia.label.1",
+   "objective": "sea.tupaia.label",
+   "depth": 1,
+   "text": "The label is still blank."
+  },
+  {
+   "id": "hint.sea.tupaia.label.2",
+   "objective": "sea.tupaia.label",
+   "depth": 2,
+   "text": "It is on the small table near the lower right of the room."
+  },
+  {
+   "id": "hint.sea.tupaia.label.3",
+   "objective": "sea.tupaia.label",
+   "depth": 3,
+   "text": "Each label is honest about something different."
+  },
+  {
+   "id": "hint.sea.tupaia.label.4",
+   "objective": "sea.tupaia.label",
+   "depth": 4,
+   "text": "Use the table when you have read all three records."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.sea.tupaia",
+   "kind": "quest",
+   "title": "The Chart Read Upside Down",
+   "text": "I read about Tupaia of Ra'iātea and the chart made with him in 1769. Its first readers called it wrong, because it did not follow their rules. A new reading says its centre means noon, and north, seen from a canoe. Others disagree. I wrote a label that says what we know and what we do not."
+  }
+ ]
+}

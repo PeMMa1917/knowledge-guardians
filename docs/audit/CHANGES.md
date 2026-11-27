@@ -299,6 +299,16 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/sketchRelay.ts`, `src/content/sketch-relay.json`, `src/ui/relayPanel.ts`, `src/maps/copies.ts`, `tests/sketch-relay.test.ts` (it checks that no single key is enough, and that two keys can be), credits in `src/domain/ideaCredits.ts` and CREDITS.md. The 30-minute audit bound for the puzzler and cozy paths grows by the measured minutes of the two new optional games.
 
+### Tupaia's chart in the Lantern House (X-006)
+
+**What.** Next to the stick chart, the Lantern House shows a copy of the chart made with Tupaia of Ra'iātea in 1769 and 1770. The player reads three records and keeps each as a card: who Tupaia was; how the chart's first readers called it wrong (and how it was later used to argue that Polynesians could not sail on purpose); and the 2019 reading by Eckstein and Schwarz (the centre word means noon, which is north, seen from a canoe), together with the scholars and Pacific navigators who disagree or ask to be part of the reading. Then the player writes the label: the 2019 reading with its critics, the chart unread with a note on its misreading, or a label left to Pacific navigators. Each gets two replies from Renna and Sora (X-008).
+
+**Why.** The audit asked for Tupaia's chart in chapter 8, with Pacific sources (X-006). It is a strong TOK case: a map that follows rules its readers do not know looks like a mistake. The new reading is marked as a scholarly interpretation, not a fact, because the debate is open. Where sources differ (who drew the lines; how many islands), the cards say so.
+
+**Sources.** Pacific Islander Biography (ANU), the Natural History Museum (London), the University of Potsdam project page, and Knowable Magazine. None of these is written by Pacific authors; Knowable Magazine quotes navigators from Tahiti and Ra'ivavae. A source from Tupaia's own people is still needed, and is listed below.
+
+**Where.** `src/content/sea-tupaia.json`, `src/maps/sea.ts`, three entries in `src/content/two-replies.json`, `tests/sea-stick-charts.test.ts`.
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.
@@ -306,7 +316,7 @@ These decisions need more content work. They will be done chapter by chapter, wi
 | Decision | What is still to do |
 | --- | --- |
 | X-005 Difficult real history | Plan each case (for example the Nanking massacre, Nat Turner's revolt, the Lewis and Clark expedition and the Blackfeet, Columbus) with content notes, documented testimony and reliable sources. |
-| X-006 Indigenous knowledge | Weave knowledge from separate Indigenous peoples into the chapters, from sources made by the peoples themselves. |
+| X-006 Indigenous knowledge | Chapter 8 has the stick charts and Tupaia's chart. Still needed: a source from Ra'iātea or Tahiti for Tupaia's chart, Shawnee sources for chapter 13, Yolŋu and Luba sources for chapter 3, and a Chinchorro custodian voice (C-023). |
 | X-012, X-015 Thinkers in the world | Mozi (chapter 11), Ibn al-Haytham (chapter 4) and Ibn Khaldun (chapter 2) are in. Add more thinkers as people the student meets, each with a quest. |
 | X-007 More trials | Add more restartable trial sections in later chapters, each with its own idea. |
 | X-008 More replies | Every chapter now has two-reply moments (59 in all). Add more where a chapter has other key choices. |

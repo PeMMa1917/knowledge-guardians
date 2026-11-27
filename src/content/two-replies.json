@@ -1269,6 +1269,60 @@
      "text": "For a hundred years, to the people who learned the key. A traveller from upriver will see an arrow and read it their own way. Every key makes an inside and an outside."
     }
    ]
+  },
+  {
+   "id": "sea.tupaia.proposal",
+   "after": {
+    "flag": "sea.tupaia.label",
+    "eq": "proposal"
+   },
+   "heading": "Two views on the label for Tupaia's chart",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "Good. A chart reading is a claim like any other. Show it with its critics and let the visitor see the argument."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "But visitors will remember the clever reading and forget the critics. For two hundred years people remembered the wrong reading. Will the same thing happen again?"
+    }
+   ]
+  },
+  {
+   "id": "sea.tupaia.unread",
+   "after": {
+    "flag": "sea.tupaia.label",
+    "eq": "unread"
+   },
+   "heading": "Two views on the label for Tupaia's chart",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "An honest label. I have read charts with rules I did not know, and I called them wrong too. The mistake was mine."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "Unread is safe for us. But it leaves the old story standing: that the chart makes no sense. Someone will fill that silence."
+    }
+   ]
+  },
+  {
+   "id": "sea.tupaia.voyagers",
+   "after": {
+    "flag": "sea.tupaia.label",
+    "eq": "voyagers"
+   },
+   "heading": "Two views on the label for Tupaia's chart",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "They know the sea. We know the copies. That seems the right way round."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "Then we must ask them, and pay them, and wait for an answer. A label that says 'Pacific navigators will write this' is a promise. Keep it."
+    }
+   ]
   }
  ]
 }

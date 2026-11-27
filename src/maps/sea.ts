@@ -167,6 +167,18 @@ export const SEA_CHARTROOM: MapDef = {
     chartNote('sea-edge-correction', 15, 8, 'the checked draft heading', 'preserved.slip',
       'WATER CHECKED IN ONE STRIP. The survey line stops before the page edge. The unmarked part stays open.',
       { visibleIf: { objective: 'sea.compare' } }),
+    // Tupaia's chart (KG-CH8-I02, X-006). Content and sources: src/content/sea-tupaia.json.
+    { id: 'sea-tupaia-navigator', kind: 'scene', node: 'sea.tupaia.navigator', x: 12, y: 4, w: 1, h: 1, walkThrough: true,
+      label: 'the shelf about Tupaia of Ra’iātea', art: 'preserved.folder', visibleIf: { flagSet: 'sea.response' } },
+    { id: 'sea-tupaia-chart', kind: 'scene', node: 'sea.tupaia.chart', x: 15, y: 4, w: 1, h: 1, walkThrough: true,
+      label: 'the copy of Tupaia’s chart under glass', art: 'sea.shore-chart', visibleIf: { flagSet: 'sea.response' } },
+    { id: 'sea-tupaia-reading', kind: 'scene', node: 'sea.tupaia.reading', x: 22, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'two papers that disagree about the chart', art: 'preserved.display-paired', visibleIf: { flagSet: 'sea.response' } },
+    { id: 'sea-tupaia-desk', kind: 'scene', node: 'sea.tupaia.desk', x: 17, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'the blank label for Tupaia’s chart', art: 'sea.margin', visibleIf: { all: [{ flagSet: 'sea.response' }, { not: { flagSet: 'sea.tupaia.label' } }] } },
+    chartNote('sea-tupaia-card', 17, 10, 'the label for Tupaia’s chart', 'sea.margin',
+      'The label under Tupaia’s chart names him, says where its sources come from, and says how its first readers misread it.',
+      { visibleIf: { flagSet: 'sea.tupaia.label' } }),
     // Marshall Islands stick charts (KG-CH8-I01, X-006). Content and sources: src/content/sea-stick-charts.json.
     { id: 'sea-stick-kinds', kind: 'scene', node: 'sea.stick.kinds', x: 5, y: 4, w: 1, h: 1, walkThrough: true,
       label: 'the stick chart shelf', art: 'sea.margin', visibleIf: { flagSet: 'sea.response' } },
