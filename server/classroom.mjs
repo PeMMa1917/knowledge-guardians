@@ -1,3 +1,4 @@
+import { classScores } from './classScores.mjs';
 const enc = new TextEncoder();
 const hex = (buf) => Array.from(new Uint8Array(buf), (n) => n.toString(16).padStart(2, '0')).join('');
 export async function verifier(password, salt) {
@@ -143,6 +144,7 @@ async function route(req, db, url) {
   }
   if (user.id !== url.searchParams.get('account')) return deny();
   const cls = url.searchParams.get('class');
+  if (action === 'scores') return classScores({db,req,url,role,account:user.id,cls,body,reply,deny});
   if (role === 'teacher' && read && action === 'classes') {
     const result = await db
       .prepare('SELECT id,title FROM classes WHERE teacher=? ORDER BY title')

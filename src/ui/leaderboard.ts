@@ -1,3 +1,4 @@
+import {classScoreBoard,type BoardAudience} from '../classroom/scoreBoard';
 import type { GameController } from '../app/controller';
 import {
   leaderboardFile, leaderboardPeriodRange, leaderboardWithdrawal, LEADERBOARD_METRICS, LEADERBOARD_PERIODS,
@@ -55,18 +56,33 @@ function localScoreFile(file: LeaderboardFile, name: string): void {
   window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-/** The owner keeps the board's imported files in this tab's memory. */
-export function leaderboardPanel(files: LeaderboardFile[], player?: GameController): HTMLElement {
-  const period = h('select', {}, ...LEADERBOARD_PERIODS.map(id => h('option', { value: id }, PERIOD_LABELS[id])));
-  const metrics = h('select', {}, ...METRIC_GROUPS.map(([prefix, label]) => {
+function scoreSelectors() {
+  const period = h('select', {'aria-label':'Period'}, ...LEADERBOARD_PERIODS.map(id => h('option', { value: id }, PERIOD_LABELS[id])));
+  const metrics = h('select', {'aria-label':'Activity'}, ...METRIC_GROUPS.map(([prefix, label]) => {
     const members = LEADERBOARD_METRICS.filter(metric => prefix ? metric.id.startsWith(prefix) : !metric.id.includes(':'));
     return members.length ? h('optgroup', { label }, ...members.map(metric => h('option', { value: metric.id }, metric.label))) : null;
   }));
   const selected = () => period.value as LeaderboardPeriod;
   const activity = () => LEADERBOARD_METRICS.find(({ id }) => id === metrics.value) ?? LEADERBOARD_METRICS[0];
+  const filters = h('div', { class: 'leaderboard-filters' }, h('label', {}, 'Period', period), h('label', {}, 'Activity', metrics));
+  return {period,metrics,selected,activity,filters};
+}
+
+export function teacherScoreBoard(audience: BoardAudience) {
+  const {period,metrics,selected,activity,filters}=scoreSelectors();
+  const hosted=classScoreBoard(audience,()=>({period:selected(),periodLabel:PERIOD_LABELS[selected()],metric:activity(),value:null}),scoreText);
+  hosted.section.querySelector('summary')!.after(filters);
+  period.addEventListener('change',hosted.refresh);
+  metrics.addEventListener('change',hosted.refresh);
+  return hosted.section;
+}
+
+/** The owner keeps the board's imported files in this tab's memory. */
+export function leaderboardPanel(files: LeaderboardFile[], player?: GameController, audience?: BoardAudience): HTMLElement {
+  const {period,metrics,selected,activity,filters}=scoreSelectors();
   const dates = h('p', { class: 'leaderboard-caption' });
   const explanation = h('p', { class: 'leaderboard-caption' });
-  const filters = h('div', { class: 'leaderboard-filters' }, h('label', {}, 'Period', period), h('label', {}, 'Activity', metrics));
+
   const local = h('section', { class: 'leaderboard-local' }, h('h3', {}, 'Your practice'));
   const personal = h('p', { role: 'status' });
   const interval = h('p', { class: 'leaderboard-caption' });
@@ -161,12 +177,21 @@ export function leaderboardPanel(files: LeaderboardFile[], player?: GameControll
   metrics.addEventListener('change', render);
 
   const panel = h('div', { class: 'leaderboard' },
-    h('p', {}, 'Compare activity recorded during play. The board reads the files you choose on this device.'),
+    h('p', {}, audience ? 'Choose an activity and period to see your practice or open your class leaderboard.' : 'Compare activity recorded during play. The board reads the files you choose on this device.'),
     filters, dates, explanation, player ? local : null, compare);
   if (player) {
     const sharing = scoreSharing(player, selected, activity, render);
     refreshSharing = sharing.refresh;
     local.after(sharing.section);
+  }
+  if (player && audience) {
+    const hosted=classScoreBoard(audience,()=>{
+      const metric=activity(),period=selected();
+      return {period,metric,periodLabel:PERIOD_LABELS[period],value:periodHistory(player.permanent,period).values[metric.id]};
+    },scoreText);
+    local.after(hosted.section);
+    period.addEventListener('change',hosted.refresh);
+    metrics.addEventListener('change',hosted.refresh);
   }
   render();
   return panel;

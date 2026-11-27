@@ -482,7 +482,7 @@ These decisions need more content work. They will be done chapter by chapter, wi
 | X-012, X-015 Thinkers in the world | Mozi (chapter 11), Ibn al-Haytham (chapter 4) and Ibn Khaldun (chapter 2) are in. Add more thinkers as people the student meets, each with a quest. |
 | X-007 More trials | Add more restartable trial sections in later chapters, each with its own idea. |
 | X-008 More replies | Every chapter now has two-reply moments (59 in all). Add more where a chapter has other key choices. |
-| X-001 Leaderboard in the hosted build | Connect the opt-in leaderboard to the hosted build when accounts exist. |
+| X-001 Leaderboard in the hosted build | The draft class board supports explicit posting and withdrawal across 31 activities and four periods. Student and teacher views both use the current class assignment. Physical-device and classroom observation remain open. |
 
 ## School and classroom review • 27 November
 

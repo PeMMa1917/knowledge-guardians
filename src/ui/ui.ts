@@ -3355,7 +3355,7 @@ export class UI implements UIApi {
 
   private openLeaderboard(): void {
     this.openModal('leaderboard-panel wide', 'Leaderboard', this.closeBtn(),
-      h('h2', {}, 'Leaderboard'), leaderboardPanel(this.leaderboardFiles, ctx.controller));
+      h('h2', {}, 'Leaderboard'), leaderboardPanel(this.leaderboardFiles, ctx.controller, classroom ? {role:'student',account:classroom.who.id,classId:classroom.who.classId,className:classroom.who.className,teacher:classroom.who.teacherId}:undefined));
   }
 
   // ---------------------------------------------------------- photo mode

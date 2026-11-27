@@ -1,3 +1,4 @@
+import {teacherScoreBoard} from '../ui/leaderboard';
 import '../ui/conceptMarkup.css';
 import {conceptTextNodes} from '../ui/conceptMarkup';
 import { signIn } from '../classroom/forms';
@@ -38,6 +39,11 @@ export function classWriting() {
           ...groups.map((g) => h('option', { value: g.id }, g.title)),
         );
         const entries = h('div', { 'aria-live': 'polite' });
+        const board = h('div',{});
+        const showBoard=()=>{
+          const chosen=groups.find(g=>g.id===list.value);
+          board.replaceChildren(...(chosen?[teacherScoreBoard({role:'teacher',account:teacher.id,classId:chosen.id,className:chosen.title})]:[]));
+        };
         let version = 0;
         const load = async () => {
           const seq = ++version;
@@ -79,7 +85,8 @@ export function classWriting() {
           }
         };
         refresh = load;
-        list.onchange = load;
+        list.onchange = ()=>{showBoard();void load();};
+        showBoard();
         view.append(
           h('p', {}, 'Signed in as ' + teacher.display + '. Drafts are still in progress.'),
           list,
@@ -99,7 +106,7 @@ export function classWriting() {
             },
             'Sign out',
           ),
-          entries,
+          entries,board,
         );
         await load();
       }),

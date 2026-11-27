@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import worker from '../server/classroom.mjs';
+import { scoreActivities } from '../server/classScores.mjs';
 import { fixture } from './classroom-preview.mjs';
 
 async function harness() {
@@ -17,18 +19,20 @@ async function harness() {
   const { Miniflare } = createRequire(process.env.KG_MINIFLARE_PACKAGE)('miniflare');
   const edge = new Miniflare({
     modules: true,
-    script: await readFile(new URL('../server/classroom.mjs', import.meta.url), 'utf8'),
+    scriptPath: fileURLToPath(new URL('../server/classroom.mjs', import.meta.url)),
+    modulesRoot: fileURLToPath(new URL('../', import.meta.url)),
+    modulesRules: [{ type: 'ESModule', include: ['**/*.mjs'] }],
     compatibilityDate: '2026-01-01',
     d1Databases: ['DB'],
     cf: false,
   });
   try {
     const DB = await edge.getD1Database('DB');
-    const ddl = await readFile(
-      new URL('../server/migrations/0001_class_writing.sql', import.meta.url),
-      'utf8',
-    );
-    for (const stmt of ddl.trim().split(/;\s*(?=CREATE|PRAGMA)/)) await DB.prepare(stmt).run();
+    const migrations = new URL('../server/migrations/', import.meta.url);
+    for (const name of (await readdir(migrations)).filter((n) => n.endsWith('.sql')).sort()) {
+      const ddl = await readFile(new URL(name, migrations), 'utf8');
+      for (const stmt of ddl.trim().split(/;\s*(?=CREATE|PRAGMA)/)) await DB.prepare(stmt).run();
+    }
     for (const table of ['accounts', 'classes', 'memberships']) {
       for (const row of sql.prepare('SELECT * FROM ' + table).all()) {
         const values = Object.values(row);
@@ -118,6 +122,135 @@ test('fictional classroom recovery, revision history, current membership and tea
     assert.deepEqual(await (await call(dashboard, { cookie: ta })).json(), []);
     assert.equal((await call('teacher/logout', { cookie: ta, method: 'POST' })).status, 200);
     assert.equal((await call(dashboard, { cookie: ta })).status, 401);
+  } finally {
+    await close();
+  }
+});
+
+test('class score snapshots use fictional aliases, explicit publication and current membership', async () => {
+  const { DB, dispatch, password, close } = await harness();
+  const origin = 'https://school.example',
+    day = new Date().toISOString().slice(0, 10);
+  async function call(path, cookie = '', method = 'GET', value) {
+    const response = await dispatch(
+      new Request(origin + '/api/classroom/' + path, {
+        method,
+        headers: { Origin: origin, Cookie: cookie, 'Content-Type': 'application/json' },
+        body: value === undefined ? undefined : JSON.stringify(value),
+      }),
+    );
+    return {
+      status: response.status,
+      data: await response.json(),
+      cookie: response.headers.get('set-cookie')?.split(';')[0],
+    };
+  }
+  async function sign(role, login) {
+    const { status, cookie } = await call(role + '/login', '', 'POST', { login, password });
+    assert.equal(status, 200);
+    return cookie;
+  }
+  const board = (role, account, cls, teacher, activity = 'xp', period = 'daily', date = day) =>
+    role + '/scores?' + new URLSearchParams({ account, class: cls, teacher, activity, period, day: date });
+  try {
+    await DB.prepare("UPDATE memberships SET approved=1 WHERE student='p'").bind().run();
+    const [ash, rook, moss, north, south] = await Promise.all([
+      sign('student', 'ash-moth'),
+      sign('student', 'pending-rook'),
+      sign('student', 'moss-wren'),
+      sign('teacher', 'north@example.invalid'),
+      sign('teacher', 'south@example.invalid'),
+    ]);
+    const own = board('student', 'a', 'north', 'ta'),
+      peer = board('student', 'p', 'north', 'ta'),
+      watched = board('teacher', 'ta', 'north', 'ta');
+    assert.deepEqual((await call(own, ash)).data, { rows: [], own: { alias: null, revision: 0 } });
+    assert.equal(
+      (await call(own, ash, 'PUT', { alias: '  Tern  Kite  ', value: 0, revision: 0 })).status,
+      200,
+    );
+    const visible = [{ alias: 'Tern Kite', value: 0, through: day }];
+    assert.deepEqual((await call(peer, rook)).data.rows, visible);
+    assert.deepEqual((await call(watched, north)).data, { rows: visible });
+    assert.equal((await call(watched, north, 'PUT', { alias: 'Horn', value: 10, revision: 0 })).status, 403);
+    assert.equal((await call(board('student', 'b', 'north', 'ta'), moss)).status, 403);
+    assert.equal((await call(board('teacher', 'tb', 'north', 'tb'), south)).status, 403);
+    assert.equal((await call(peer, ash)).status, 403);
+    assert.deepEqual((await call(board('student', 'b', 'south', 'tb'), moss)).data.rows, []);
+    assert.equal((await call(own)).status, 401);
+    assert.equal((await call(board('student', 'a', 'north', 'ta', 'journal'), ash)).status, 400);
+    const offClock = board('student', 'a', 'north', 'ta', 'xp', 'daily', '1900-01-01');
+    assert.deepEqual((await call(offClock, ash)).data, {
+      rows: [],
+      clockMismatch: true,
+      own: { alias: 'Tern Kite', revision: 1 },
+    });
+    assert.equal(
+      (await call(offClock, ash, 'PUT', { alias: 'Yesterday', value: 10, revision: 1 })).status,
+      400,
+    );
+    for (const bad of [
+      { alias: '××', value: 1 },
+      { alias: 'Otter', value: -1 },
+      { alias: 'Otter', value: '5' },
+    ])
+      assert.equal((await call(own, ash, 'PUT', { revision: 1, ...bad })).status, 400);
+    assert.equal(
+      (
+        await call(board('student', 'a', 'north', 'ta', 'map-discovery'), ash, 'PUT', {
+          revision: 1,
+          alias: 'Tern Kite',
+          value: 101,
+        })
+      ).status,
+      400,
+    );
+    const second = await sign('student', 'ash-moth');
+    assert.deepEqual((await call(own, second)).data.own, { alias: 'Tern Kite', revision: 1 });
+    let revision = 1;
+    for (const activity of scoreActivities)
+      for (const period of ['daily', 'weekly', 'monthly', 'ytd']) {
+        const path = board('student', 'a', 'north', 'ta', activity, period);
+        const value = activity === 'game:forecast-brier' ? 0.25 : 2;
+        assert.equal(
+          (await call(path, ash, 'PUT', { alias: 'Lake Finch', value, revision: revision++ })).status,
+          200,
+        );
+        assert.deepEqual(
+          (await call(board('student', 'p', 'north', 'ta', activity, period), rook)).data.rows,
+          [{ alias: 'Lake Finch', value, through: day }],
+        );
+      }
+    assert.equal((await call(offClock, second, 'DELETE', { revision })).status, 200);
+    assert.equal((await call(own, ash, 'PUT', { alias: 'Stale Tab', value: 15, revision })).status, 409);
+    assert.deepEqual((await call(watched, north)).data.rows, []);
+    assert.deepEqual(
+      (await call(board('student', 'p', 'north', 'ta', 'concept:evidence', 'monthly'), rook)).data.rows,
+      [],
+    );
+    assert.equal(
+      (await call(own, ash, 'PUT', { revision: ++revision, alias: 'Night Finch', value: 15 })).status,
+      200,
+    );
+    await DB.prepare("UPDATE memberships SET class='south' WHERE student='a'").bind().run();
+    assert.equal((await call(own, ash)).status, 403);
+    assert.deepEqual((await call(watched, north)).data.rows, []);
+    assert.deepEqual((await call(board('student', 'a', 'south', 'tb'), ash)).data, {
+      rows: [],
+      own: { alias: null, revision: 0 },
+    });
+    await DB.prepare("UPDATE memberships SET class='north' WHERE student='a'").bind().run();
+    assert.deepEqual((await call(peer, rook)).data.rows, []);
+    let mine = (await call(own, ash)).data.own;
+    assert.equal(
+      (await call(own, ash, 'PUT', { revision: mine.revision, alias: 'Finch', value: 7 })).status,
+      200,
+    );
+    await DB.prepare("UPDATE classes SET teacher='tb' WHERE id='north'").bind().run();
+    assert.equal((await call(own, ash)).status, 403);
+    assert.deepEqual((await call(board('teacher', 'tb', 'north', 'tb'), south)).data.rows, []);
+    await DB.prepare("UPDATE classes SET teacher='ta' WHERE id='north'").bind().run();
+    assert.deepEqual((await call(peer, rook)).data.rows, []);
   } finally {
     await close();
   }

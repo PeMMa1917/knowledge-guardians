@@ -1,7 +1,7 @@
 // Loopback-only preview of the Worker routes with disposable fictional accounts.
 import { DatabaseSync } from 'node:sqlite';
 import { createServer } from 'node:http';
-import { readFile, mkdtemp, rm } from 'node:fs/promises';
+import { readFile, mkdtemp, rm, readdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { createServer as createSecureServer } from 'node:https';
@@ -11,7 +11,8 @@ import worker, { verifier } from '../server/classroom.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 export async function fixture() {
   const sql = new DatabaseSync(':memory:');
-  sql.exec(await readFile(resolve(root, 'server/migrations/0001_class_writing.sql'), 'utf8'));
+  for (const name of (await readdir(resolve(root, 'server/migrations'))).filter(n => n.endsWith('.sql')).sort())
+    sql.exec(await readFile(resolve(root, 'server/migrations', name), 'utf8'));
   const insert = sql.prepare('INSERT INTO accounts VALUES (?,?,?,?,?,?)');
   const password = 'Lantern-Fiction-42';
   for (const [id, login, label, role] of [
