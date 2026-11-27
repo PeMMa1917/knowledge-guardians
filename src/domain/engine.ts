@@ -83,7 +83,7 @@ import { canClaimSpecimen, carriedSpecimenCount, carryFlag, hasSpecimen, ownsSpe
 import { playMove, startShowdown, type ShowdownMove } from './showdown';
 import { tryLock, type LockResult } from './lock';
 import { compareWithBlade, forgeStep, newForge, type ForgeAction } from './forge';
-import { addPortfolio, addSignal, checkMoments, recordWeave, tickEvents } from './learning';
+import { addPortfolio, addSignal, checkMoments, deferEvent, recordWeave, tickEvents } from './learning';
 import { diaryDialogueChoice, diaryNoteKind, newAdventureDiary, recordAdventure, setDiaryReflection } from './adventureJournal';
 import { isDiaryNoteKind } from './diaryReflection';
 import { setDiaryPortfolioWriting } from './adventureWriting';
@@ -448,6 +448,7 @@ export class Engine {
       switch (cmd.type) {
         case 'VisitPlace':
           if (!cmd.name.trim()) throw new Error('This place has no name');
+          if (s.events.pending && !this.pack.events.find(e=>e.id===s.events.pending)?.maps.includes(s.mapId)) s=deferEvent(s);
           if (s.flags[`visited.map.${s.mapId}`] !== true) s = apply([{ setFlag: `visited.map.${s.mapId}`, value: true }], s, out);
           break;
         case 'HearWorldMemory': {
@@ -1112,9 +1113,7 @@ export class Engine {
           break;
         }
         case 'DelayEvent': {
-          if (!s.events.pending) break;
-          s = structuredClone(s);
-          s.events.pending = null; s.events.clock = 0; s.events.next = 240; // ask again in about four minutes
+          s = deferEvent(s);
           break;
         }
         case 'ResolveEvent': {

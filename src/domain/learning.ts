@@ -113,6 +113,11 @@ export function tickEvents(pack: ContentPack, s0: CampaignState, seconds: number
   return s;
 }
 
+/** A deferred encounter is still eligible when its people and setting are encountered again. */
+export function deferEvent(s: CampaignState): CampaignState {
+  return s.events.pending ? {...s, events:{...s.events, pending:null, clock:0, next:240}} : s;
+}
+
 export function eligibleEvents(pack: ContentPack, s: CampaignState): EventRecord[] {
   return pack.events.filter((e) => e.maps.includes(s.mapId) && !s.events.seen.includes(e.id) && check(e.when, s));
 }

@@ -1125,7 +1125,7 @@ export class UI implements UIApi {
       if (pending) {
         const event = pc.pack.events.find(({ id }) => id === pending);
         if (event?.maps.includes(pc.state.mapId) && !pc.state.events.seen.includes(pending)) {
-          this.whenFree(() => this.showEvent(pending));
+          this.offerEvent(pending);
         } else {
           pc.dispatch({ type: 'DelayEvent' });
         }
@@ -1147,6 +1147,12 @@ export class UI implements UIApi {
 
   private buildHud(): void {
     this.hud = h('div', { class: 'hud' });
+    // Field controls use native button activation. Phaser also observes Enter and Space on the window.
+    const nativeButton = (event: KeyboardEvent) => {
+      if ((event.key === 'Enter' || event.key === ' ') && event.target instanceof HTMLElement && event.target.closest('button')) event.stopPropagation();
+    };
+    this.hud.addEventListener('keydown', nativeButton);
+    this.hud.addEventListener('keyup', nativeButton);
     this.promptEl = h('button', { class: 'prompt', hidden: true, onclick: () => (ctx.world as any)?.tryInteract?.() });
     this.lumenBubble = h('div', { class: 'lumen-bubble', hidden: true, role: 'status', 'aria-live': 'polite' });
     this.hudDock = h('div', { class: 'hud-dock' }, this.lumenBubble, this.promptEl);
@@ -1169,10 +1175,14 @@ export class UI implements UIApi {
         h('ul', {}, ...objs.filter((o) => o.mission === m).map((o) => h('li', { class: o.complete ? 'done' : '' }, h('span', { 'aria-hidden': 'true' }, o.complete ? '✓ ' : '◇ '), h('span', { class: 'sr' }, o.complete ? 'Done: ' : 'To do: '), o.title))))),
       objs.length && objs.every((o) => o.complete) ? h('div', {}, h('h2', {}, 'Chapter complete'), h('p', {}, 'Explore freely, or open the menu.')) : null);
     const km = ctx.settings.keys;
+    const focused = this.hud.querySelector<HTMLButtonElement>('.hud-buttons button:focus');
+    const pending = s.events.pending && !this.activeEvent && (ctx.settings.calmMode || ctx.settings.zenMode)
+      ? c.pack.events.find(ev=>ev.id===s.events.pending && ev.maps.includes(s.mapId)) : undefined;
     const bar = h('nav', { class: 'hud-buttons', 'aria-label': 'Game menu' },
       h('span', { class: 'marks', title: 'Marks (campaign money)' }, h('img', { src: artURL('icon.card'), alt: '' }), ` ${s.marks} marks`),
       s.flags['title.worn'] ? h('span', { class: 'marks worn-title', title: 'Your title (choose in Journal, Awards)' }, `${s.player.name}, ${s.flags['title.worn']}`) : '',
       h('button', { class: this.helpOffered ? 'lumen-offer' : '', onclick: () => this.askLumen(), title: this.helpOffered ? `Lumen has an idea for this step (${km.hint})` : `Ask Lumen for a hint (${km.hint})` }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '' }), ' Hint ', h('kbd', {}, km.hint)),
+      pending ? h('button', {class:'field-invitation',type:'button',title:pending.title,onclick:()=>this.showEvent(pending.id)}, 'Invitation') : null,
       h('button', { onclick: () => this.openJournal(), title: `Journal (${km.journal})` }, 'Journal ', h('kbd', {}, km.journal)),
       h('button', { onclick: () => this.openJournal('portfolio'), title: `Portfolio (${km.portfolio})` }, 'Portfolio ', h('kbd', {}, km.portfolio)),
       h('button', { onclick: () => this.openBag(), title: `Bag (${km.bag})` }, 'Bag ', h('kbd', {}, km.bag)),
@@ -1184,6 +1194,10 @@ export class UI implements UIApi {
     this.hud.prepend(tracker);
     this.hudDock.querySelector('.hud-buttons')?.remove();
     this.hudDock.append(bar);
+    if(focused && document.activeElement===document.body && !this.modal) {
+      const controls=[...bar.querySelectorAll('button')];
+      (controls.find(b=>b.textContent===focused.textContent && b.title===focused.title) ?? controls[0])?.focus({preventScroll:true});
+    }
     // Progress resets the "stuck" clock for Lumen's offer (decision X-011).
     const doneCount = objs.filter((o) => o.complete).length;
     if (doneCount !== this.progressCount) { this.progressCount = doneCount; this.lastProgress = Date.now(); this.helpOffered = false; this.offerSpent = false; }
@@ -1332,7 +1346,7 @@ export class UI implements UIApi {
         case 'portfolio': this.toast(`Added to your portfolio: ${e.title}`, 'info'); break;
         case 'fray': this.toast(`New in your Fray Bestiary: ${e.name} (${e.error.toLowerCase()}). See Journal, Fray Bestiary.`, 'info'); break;
         case 'reflection': { const m = e.misconception; this.whenFree(() => this.offerReflection(m.title, m.reflection)); break; }
-        case 'event-due': { const id = e.event; this.whenFree(() => this.showEvent(id)); break; }
+        case 'event-due': this.offerEvent(e.event); break;
         case 'trust': this.toast(`Trust grows. ${e.name}: you are now ${e.rank}. See Menu, Communities of Emberford.`, 'award'); this.sfx('sfx.award'); break;
         case 'approval': {
           const nm = (ctx.controller.pack.characters.find((x) => x.id === e.who)?.name ?? 'Your companion').split(' ')[0];
@@ -1368,6 +1382,14 @@ export class UI implements UIApi {
   }
 
   // ------------------------------------------------- events and reflection
+
+  private offerEvent(id: string) {
+    if (ctx.settings.calmMode || ctx.settings.zenMode) {
+      const event=ctx.controller.pack.events.find(e=>e.id===id);
+      if (event) this.toast('Invitation · ' + event.title + '. Open it from the game menu when you like.', 'info');
+      this.refreshHud();
+    } else this.whenFree(() => this.showEvent(id));
+  }
 
   /** An event from the deck (spec 93). Calm mode warns first and lets the player delay it. */
   private showEvent(id: string): void {
@@ -5972,8 +5994,8 @@ export class UI implements UIApi {
       check('showStreak', 'Show my daily streak in the Ledger'),
       check('showWeekStreak', 'Show my weekly streak in the Ledger'),
       check('showMonthStreak', 'Show my monthly streak in the Ledger'),
-      check('calmMode', 'Calm mode: surprise events warn first, and you can choose "Later"'),
-      check('zenMode', 'Zen mode: no turn limit in Showdowns (the crowd waits), surprise events always ask first, and nothing can be failed'),
+      check('calmMode', 'Calm mode: field invitations wait in the game menu until you open them'),
+      check('zenMode', 'Zen mode: no turn limit in Showdowns (the crowd waits), field invitations wait for you, and nothing can be failed'),
       check('glossary', 'Smart glossary: underline key words in conversations, so you can tap them for an explanation'),
       check('talkSounds', 'Talk sounds: short voice sounds while characters speak'),
       check('captions', 'Sound captions: a short text line for each sound (for example [Forge hammer rings])'),
