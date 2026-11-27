@@ -1,3 +1,4 @@
+import { playRegisterDrawers } from './register-drawers-journey.mjs';
 import { playSupperShadow } from './supper-shadow-journey.mjs';
 import {playRecordNotes} from './record-note-journey.mjs';
 import {playFieldLoans} from './field-loan-journey.mjs';
@@ -111,6 +112,7 @@ try {
   const makerOnly = process.argv.includes('--maker-tools');
   const millOnly = process.argv.includes('--mill-shift');
   const vaultOnly=process.argv.includes('--vault-watch');
+  const drawerIndex=process.argv.indexOf('--register-drawers');
   const guestIndex=process.argv.indexOf('--guest-route');
   const exitOnly=process.argv.includes('--exit-save');
   const whistleOnly=process.argv.includes('--whistle-watch');
@@ -141,6 +143,7 @@ try {
   else if(millOnly) await playMillShift({page,engine,waitMap,use,close});
   else if (makerOnly) await playMakerField({page,engine,waitMap,use,close});
   else if (coatOnly) await playPocketCoat({page,engine,posts,sites,people,waitMap,use,close,button});
+  else if(drawerIndex!==-1) await playRegisterDrawers({page,engine,start:Number(process.argv[drawerIndex+1]),count:Number(process.argv[drawerIndex+2]),posts,works:load('night-register.json'),waitMap,use,button,close});
   else if (registerOnly) await playNightRegister({page,engine,waitMap,use,close,button,posts,works:load('night-register.json'),trails:load('night-trails.json')});
   else if (shiftOnly) await playEmberfordShift({page,engine,waitMap,use,close,button,puzzles:load('puzzles.json').puzzles});
   else if (bellOnly) await playLastBell({page,engine,waitMap,use,close,button,sites,posts});
@@ -196,7 +199,7 @@ try {
     faults.filter((s) => !s.includes('favicon')),
     [],
   );
-  console.log(engine, browser.version(), supperOnly ? 'Supper for a Shadow' : notesOnly ? 'passed record invitations, photo cover and text-only participation' : loanOnly ? 'passed four receiving benches, two carried replies and four reader routes' : birdOnly ? 'passed the folding flock, gallery, Two-Tide Dock and Sora’s returned key' : scoreOnly ? 'passed registered panels, task music, feedback and mute' : hearingsOnly ? 'passed four town hearings, two witnesses in each and four cross-town amendments' : lightsOnly ? 'passed all sixteen world grades, high contrast and reduced effects' : shelvesOnly ? 'passed four diary shelves, word histories and earned cross-area memories' : whistleOnly ? 'passed Liri’s three watches, travelling sheet and recall' : exitOnly ? 'passed all four exit signal orders, retry and reload' : guestIndex!==-1 ? 'passed both encounters in all 15 chapters and restored the guest’s work' : vaultOnly ? 'passed the six vault instruments, weir and council handover' : millOnly ? 'passed the six-counter mill and both earned passages' : makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
+  console.log(engine, browser.version(), drawerIndex!==-1 ? 'passed drawer collection and recovery' : supperOnly ? 'Supper for a Shadow' : notesOnly ? 'passed record invitations, photo cover and text-only participation' : loanOnly ? 'passed four receiving benches, two carried replies and four reader routes' : birdOnly ? 'passed the folding flock, gallery, Two-Tide Dock and Sora’s returned key' : scoreOnly ? 'passed registered panels, task music, feedback and mute' : hearingsOnly ? 'passed four town hearings, two witnesses in each and four cross-town amendments' : lightsOnly ? 'passed all sixteen world grades, high contrast and reduced effects' : shelvesOnly ? 'passed four diary shelves, word histories and earned cross-area memories' : whistleOnly ? 'passed Liri’s three watches, travelling sheet and recall' : exitOnly ? 'passed all four exit signal orders, retry and reload' : guestIndex!==-1 ? 'passed both encounters in all 15 chapters and restored the guest’s work' : vaultOnly ? 'passed the six vault instruments, weir and council handover' : millOnly ? 'passed the six-counter mill and both earned passages' : makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
 } finally {
   await browser.close();
 }
