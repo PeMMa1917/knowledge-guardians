@@ -200,6 +200,7 @@ import threadBend from './thread-bend.json';
 import sillBridge from './sill-bridge.json';
 import { underpanContent } from './underpan';
 import { firstClapContent } from './firstClap';
+import { installLamplight } from '../domain/lamplight';
 import { installInkPost } from '../domain/inkPost';
 import encyclopedia from './encyclopedia.json';
 import { neighbourDialogues } from '../domain/neighbours';
@@ -235,7 +236,9 @@ export function buildPack(): ContentPack {
       return questionWays ? { ...objective, questionWays } : objective;
     }),
   }));
-  installInkPost(content, new Map(encyclopedia.people.flatMap((article) => article.characters.map((id) => [id, article.title] as const))));
+  const articles = new Map(encyclopedia.people.flatMap((article) => article.characters.map((id) => [id, article.title] as const)));
+  installInkPost(content, articles);
+  installLamplight(content, articles);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);

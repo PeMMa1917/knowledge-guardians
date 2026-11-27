@@ -1151,3 +1151,12 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .mirror-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.6rem; margin: 0.5rem 0; }
 .mirror-pair > div { border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 8px; padding: 0.4rem 0.7rem; background: rgba(170, 190, 220, 0.1); }
 .mirror-pair h3 { margin: 0.2rem 0; font-size: 1rem; }
+.guest-instrument { min-inline-size: 0; margin-block: .7rem; padding: .65rem; border: 1px solid currentColor; }
+.lantern-rack { list-style: none; display: flex; gap: .45rem; padding: 0; margin: .5rem 0; }
+.lantern-rack li { flex: 1 1 0; padding: .45rem; border: 2px solid currentColor; }
+.lantern-rack li.empty { border-style: dashed; }
+.lantern-rack small, .lantern-rack strong { display: block; }
+.lantern-controls { display: flex; gap: .35rem; flex-wrap: wrap; }
+.lantern-controls button[aria-pressed="true"] { outline: 2px solid currentColor; outline-offset: -4px; }
+.lantern-observations { margin-block: .45rem; }
+.lamplight input[type=search] { max-width: 100%; }

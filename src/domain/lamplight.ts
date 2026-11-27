@@ -1,0 +1,163 @@
+import { guestInstrument, isPiece, pinPiece, readPieces, type Piece } from './lanternInstruments';
+import letters from '../content/ink-post-letters.json';
+import roosts from '../content/ink-post-stations.json';
+import people from '../content/lamplight-voices.json';
+import workshops from '../content/lamplight-stations.json';
+import { diaryTopics } from './diarySelection';
+import { frameworkFromConcepts } from './learningLevels';
+import type { CampaignState, ContentPack, Effect, Hint, Weave } from './types';
+
+export const LANTERN_PEOPLE = [...letters, ...people];
+export type LanternPerson = (typeof LANTERN_PEOPLE)[number];
+export const LANTERN_SITES = workshops.map((site) => {
+  const roost = roosts.find(({ id }) => id === site.id)!;
+  return { ...site, world: roost.world, map: roost.map, place: roost.place, host: roost.host, postAt: roost.at };
+});
+export type LanternSite = (typeof LANTERN_SITES)[number];
+const guests = new Map(LANTERN_PEOPLE.map((person) => [person.id, person]));
+const sites = new Map(LANTERN_SITES.map((site) => [site.id, site]));
+type State = Pick<CampaignState, 'mapId' | 'flags'>;
+export type LanternCommand = { type: 'WorkWithLantern'; site: string; person: string } & (
+  { stage: 'meet' } | { stage: 'pin'; piece: Piece } | { stage: 'trace' | 'use'; option: 0 | 1 }
+);
+export function lanternRef(site: string, person: string) { return 'lamplight.' + site + '.' + person; }
+
+export function lanternCase(ref: string) {
+  const [family, room, id, ...more] = ref.split('.');
+  if (family !== 'lamplight' || more.length) return;
+  const site = sites.get(room), person = guests.get(id);
+  if (site && person) return { site, person, ref };
+}
+
+export function lanternRead(state: State, site: LanternSite, person: LanternPerson) {
+  const ref = lanternRef(site.id, person.id);
+  const trace = state.flags[ref + '.trace'];
+  const use = state.flags[ref + '.use'];
+  return { pieces: readPieces(state.flags[ref + '.pieces']), met: state.flags[ref + '.met'] === true, trace: trace === 0 || trace === 1 ? trace : undefined,
+    use: use === 0 || use === 1 ? use : undefined } as const;
+}
+
+export function lanternEffects(cmd: LanternCommand, state: State): Effect[] {
+  const ref = lanternRef(cmd.site, cmd.person);
+  const pair = lanternCase(ref);
+  if (!pair || state.mapId !== pair.site.map) throw new Error('Look for the lantern in this chapter.');
+  const { met, trace, use, pieces } = lanternRead(state, pair.site, pair.person);
+  const flag = (key: string, value: string | boolean | number): Effect => ({ setFlag: key, value });
+  if (cmd.stage === 'meet') return met ? [] : [flag(ref + '.met', true), flag('lamplight.met.' + pair.person.character, true)];
+  if (!met) throw new Error('Call the guest at the folded-wing post first.');
+  if (cmd.stage === 'pin') {
+    if (!isPiece(cmd.piece) || !guestInstrument(cmd.person)) throw new Error('That instrument has no such setting.');
+    const order = pinPiece(pieces, cmd.piece);
+    if (order === pieces.join('')) return [];
+    return [flag(ref + '.pieces', order), flag(ref + '.trace', false), flag(ref + '.use', false)];
+  }
+  if (pieces.length !== 2) throw new Error('Try two different settings on the guest’s instrument.');
+  if ((cmd.option !== 0 && cmd.option !== 1)) throw new Error('Call the guest at the folded-wing post first.');
+  if (cmd.stage === 'trace') {
+    if (trace === cmd.option) return [];
+    return [flag(ref + '.trace', cmd.option), flag(ref + '.use', false)];
+  }
+  if (cmd.stage !== 'use' || trace === undefined) throw new Error('Make a tracing together before taking it to the lamp.');
+  const last = 'lamplight.' + cmd.site + '.shown';
+  // The mounted copy survives later revisions on the worktable until another copy replaces it.
+  const display = [cmd.person, trace, cmd.option, pieces.join('')].join('.');
+  if (use === cmd.option && state.flags[last] === display) return [];
+  return [flag(ref + '.use', cmd.option), flag(last, display), flag('lamplight.' + cmd.site + '.lit', true)];
+}
+
+export function lanternDisplay(state: State, site: LanternSite) {
+  const mounted = state.flags['lamplight.' + site.id + '.shown'];
+  if (typeof mounted !== 'string') return;
+  const [id, trace, use, order] = mounted.split('.');
+  const person = guests.get(id);
+  if (person && /^[01]$/.test(trace) && /^[01]$/.test(use)) {
+    return { person, pieces: readPieces(order), trace: person.folds[Number(trace)], use: site.uses[Number(use)] };
+  }
+}
+
+export function lanternMemory(state: State, site: LanternSite, person: LanternPerson) {
+  const other = LANTERN_SITES.find((s) => s.id !== site.id && lanternRead(state, s, person).use !== undefined);
+  if (!other) return;
+  const { trace, use } = lanternRead(state, other, person);
+  if (trace !== undefined && use !== undefined) return 'At ' + other.place + ' we tried “' + person.folds[trace].action +
+    '” together. You chose “' + other.uses[use].action + '”. ' + other.uses[use].reply;
+}
+
+export function lanternTopics(ref: string) {
+  const pair = lanternCase(ref);
+  if (!pair) return;
+  const concepts = pair.person.weave.concepts as Weave['concepts'];
+  return diaryTopics({ concepts, atl: ['thinking', 'communication'], framework: frameworkFromConcepts(concepts), aoks: pair.person.weave.aoks as Weave['aoks'] });
+}
+
+export function lanternQuestions(key: string) {
+  const [category, ref, stage] = key.split(':');
+  if (category === 'lantern-pair' && sites.has(ref)) return { guest: sites.get(ref)!.pair.question };
+  const pair = category === 'lantern' && ref ? lanternCase(ref) : undefined;
+  if (pair) {
+    const questions: Record<string, string> = { guest: pair.person.question };
+    if (stage === 'use') questions.keeper = pair.site.question;
+    return questions;
+  }
+}
+
+export function installLamplight(pack: ContentPack, articles: ReadonlyMap<string, string>) {
+  for (const site of LANTERN_SITES) {
+    for (const stage of ['post', 'bench']) pack.dialogue.push({ id: 'lamplight.' + site.id + '.' + stage,
+      speaker: site.host, historicalLabel: 'fictional-world', text: stage === 'post' ? site.hook : 'The keeper turns the lamp slowly. A voice comes back through the glass.' });
+  }
+  // One discoverable home commission per guest. Roaming returns stay available in every chapter.
+  // The 3,750 pairs of stations and guests are resolved on demand, outside the objective scan.
+  for (const guest of LANTERN_PEOPLE) {
+    const kit = guestInstrument(guest.id)!;
+    const site = sites.get(kit.home)!;
+    const ref = lanternRef(site.id, guest.id);
+    const objective = ref + '.received';
+    const concepts = guest.weave.concepts as Weave['concepts'];
+    const action = 'Choose and compare two parts of ' + guest.title + ' with ' + guest.name + ', then use the finding at ' + site.bench + '.';
+    pack.missions.push({ id: 'KG-CH' + String(Math.max(1, Number(site.world.slice(6)) - 1)).padStart(2, '0') + '-' + ref,
+      world: site.world, title: guest.title + ' at ' + site.place, stake: guest.opening, knowledgeQuestion: guest.question,
+      objectives: [{ id: objective, title: action, essential: false, visible: { flag: ref + '.met', eq: true },
+        done: { flag: ref + '.use', in: [0, 1] }, questionWays: [{ id: 'KQ-ROUTE-' + String(kit.questionRoute).padStart(2, '0'), action }],
+        weave: { concepts, atl: ['thinking', 'communication'], framework: frameworkFromConcepts(concepts), aoks: guest.weave.aoks as Weave['aoks'],
+          subjects: guest.weave.subjects, minutes: 3, thinking: { dok: 2, bloom: 'apply', fink: 'application', solo: 'multistructural' } } }] });
+    const steps = [site.hook, 'Call ' + guest.name + ' at the folded-wing post in ' + site.place + '.',
+      'Choose two settings on the instrument. ' + kit.pieces[0].label + ' and ' + kit.pieces[1].label + ' are one possible pair.',
+      'Choose how to prepare the tracing. Find ' + site.bench + ', call ' + guest.name + ' again and choose who can use the result.'];
+    steps.forEach((text, i) => pack.hints.push({ id: 'h.' + objective + '.' + (i + 1), objective, depth: (i + 1) as Hint['depth'], text }));
+  }
+  const known = new Set(pack.characters.map(({ id }) => id));
+  for (const person of people) {
+    const id = 'lamplight-guest.' + person.id, title = articles.get(person.character)!;
+    if (!known.has(person.character)) {
+      pack.characters.push({ id: person.character, name: person.name, role: 'Guest at the lamplight workshop', mode: 'historical',
+        sprite: 'villager-1', talk: [{ node: id }] });
+      known.add(person.character);
+    }
+    pack.dialogue.push({ id, speaker: person.character, text: person.opening, historicalLabel: 'imagined-alternate' });
+    pack.sources.push({ id: 'HIS-LAMPLIGHT-' + person.id, title, locator: 'Biographical article', supports: person.context,
+      url: 'https://en.wikipedia.org/wiki/' + encodeURIComponent(title.replaceAll(' ', '_')), accessed: '2026-11-27',
+      mla: { kind: 'page', title, container: 'Wikipedia', showAccessDate: true } });
+  }
+}
+
+export type LanternPairCommand = { type: 'TurnLanternGlass'; site: string } & (
+  { stage: 'look'; aperture: Piece } | { stage: 'mount'; choice: 0 | 1 }
+);
+
+export function pairReady(state: State, site: LanternSite) {
+  return site.pair.guests.every((id) => lanternRead(state, site, guests.get(id)!).use !== undefined);
+}
+
+export function pairEffects(cmd: LanternPairCommand, state: State): Effect[] {
+  const site = sites.get(cmd.site);
+  if (!site || site.map !== state.mapId || !pairReady(state, site)) throw new Error('Bring both guests’ finished tracings to this lamp.');
+  const base = 'lamplight-pair.' + site.id;
+  if (cmd.stage === 'look' && isPiece(cmd.aperture)) {
+    const flag = base + '.seen.' + cmd.aperture;
+    return state.flags[flag] === true ? [] : [{ setFlag: flag, value: true }];
+  }
+  if (cmd.stage !== 'mount' || (cmd.choice !== 0 && cmd.choice !== 1) ||
+      ![0, 1, 2].every((i) => state.flags[base + '.seen.' + i] === true)) throw new Error('Turn the wheel through both single views and their overlap.');
+  return state.flags[base + '.mounted'] === cmd.choice ? [] : [{ setFlag: base + '.mounted', value: cmd.choice }];
+}

@@ -1,3 +1,4 @@
+import { lanternCase } from './lamplight';
 import { mlaCitation } from './mla';
 import research from '../content/encyclopedia.json';
 import { historicalEncounters, isHistoricalBiography } from './historicalEncounters';
@@ -76,6 +77,11 @@ export interface EncyclopediaDiaryEvent {
 
 export function encyclopediaForDiaryEvent(pack: ContentPack, event?: EncyclopediaDiaryEvent): EncyclopediaLink | undefined {
   if (!event) return undefined;
+  if (event.key.startsWith('lantern:' + event.ref + ':')) {
+    const guest = lanternCase(event.ref)?.person;
+    const character = guest && pack.characters.find(({ id }) => id === guest.character);
+    if (character) return encyclopediaForCharacter(character);
+  }
   if (event.kind === 'conversation' && event.key === `conversation:${event.ref}`) {
     const speaker = pack.dialogue.find(({ id }) => id === event.ref)?.speaker;
     const character = pack.characters.find(({ id }) => id === speaker);

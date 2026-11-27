@@ -1,3 +1,5 @@
+import { guestInstrument, materialLine } from './lanternInstruments';
+import { LANTERN_SITES, lanternCase, lanternRead, lanternRef, lanternTopics } from './lamplight';
 import { inkDiaryTopics } from './inkPost';
 import { neighbourJournalTopics } from './neighbours';
 import { moonBeatNames, moonPerformance } from './spareMoonMusic';
@@ -113,6 +115,40 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
+  if (cmd.type === 'TurnLanternGlass') {
+    const site = LANTERN_SITES.find((s) => s.id === cmd.site);
+    if (!site) return;
+    const ref = 'lamplight-pair.' + site.id;
+    const flag = cmd.stage === 'look' ? ref + '.seen.' + cmd.aperture : ref + '.mounted';
+    if (previous.flags[flag] === next.flags[flag]) return;
+    return cmd.stage === 'look'
+      ? diaryEvent('lantern-pair:' + site.id + ':look:' + cmd.aperture, 'tool', ref, site.pair.title,
+        'I turned the glass at ' + site.bench + '. ' + site.pair.sights[cmd.aperture])
+      : diaryEvent('lantern-pair:' + site.id + ':mount:' + cmd.choice, 'choice', ref, site.pair.title,
+        'I chose “' + site.pair.choices[cmd.choice].action + '”. ' + site.pair.choices[cmd.choice].reply);
+  }
+  if (cmd.type === 'WorkWithLantern') {
+    const ref = lanternRef(cmd.site, cmd.person), pair = lanternCase(ref);
+    if (!pair) return;
+    const { site, person } = pair, now = lanternRead(next, site, person), then = lanternRead(previous, site, person);
+    const key = 'lantern:' + ref + ':' + cmd.stage;
+    if (cmd.stage === 'meet' && now.met && !then.met) return diaryEvent(key, 'conversation', ref, person.title,
+      'I called ' + person.name + ' to the post at ' + site.place + '. ' + person.name + ' said, “' + person.opening + '”');
+    if (cmd.stage === 'pin' && now.pieces.join('') !== then.pieces.join('')) {
+      const piece = guestInstrument(person.id)!.pieces[cmd.piece];
+      return diaryEvent(key + ':' + now.pieces.join(''), 'tool', ref, person.title,
+        'I tried the ' + piece.label + ' with ' + person.name + '. ' + piece.reading);
+    }
+    if (cmd.stage === 'trace' && now.trace !== undefined && now.trace !== then.trace) return diaryEvent(key + ':' + now.trace, 'tool', ref, person.title,
+      'With ' + person.name + ', I tried “' + person.folds[now.trace].action + '”. I carried our tracing towards ' + site.bench + '.');
+    if (cmd.stage === 'use' && now.trace !== undefined && now.use !== undefined &&
+        (now.use !== then.use || next.flags['lamplight.' + site.id + '.shown'] !== previous.flags['lamplight.' + site.id + '.shown'])) {
+      return diaryEvent(key + ':' + now.trace + ':' + now.use, 'choice', ref, site.title,
+        'I met ' + person.name + ' again at ' + site.bench + '. “' + person.folds[now.trace].arrival + '” I chose “' +
+        site.uses[now.use].action + '”. ' + site.uses[now.use].reply + ' In our tracing: ' + materialLine(person.id, now.pieces));
+    }
+    return;
+  }
   if (cmd.type === 'PlayMoonTune') {
     const site = moonPerformance(next);
     if (!site || next === previous) return;
@@ -433,7 +469,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     const completed = event.completedObjective ? objectivesById.get(event.completedObjective) : undefined;
     const weave = objective?.objective.weave ?? taggedTools.get(`${family}:${event.ref}`) ?? completed?.objective.weave;
     if (weave) return diaryTopics(weave);
-    const neighbourhood = neighbourJournalTopics(event.ref) ?? inkDiaryTopics(event.ref);
+    const neighbourhood = neighbourJournalTopics(event.ref) ?? inkDiaryTopics(event.ref) ?? lanternTopics(event.ref);
     if (neighbourhood) return neighbourhood;
     const fieldConcept = family === 'field' ? FIELD_GAMES.find(({ id }) => id === event.ref)?.concept : undefined;
     const concept = CONCEPTS.find((id) => id === fieldConcept);

@@ -1,3 +1,4 @@
+import { lanternQuestions } from './lamplight';
 import { inkDiaryQuestions } from './inkPost';
 import authored from '../content/journal-reflections.json';
 import type { AdventureDiary, DiaryEntry, DiaryNoteKind } from './types';
@@ -24,7 +25,7 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
-  const ink = inkDiaryQuestions(key);
+  const ink = lanternQuestions(key) ?? inkDiaryQuestions(key);
   if (ink) return ink;
   if (Object.hasOwn(questionsByEntry, key)) {
     const questions = questionsByEntry[key];

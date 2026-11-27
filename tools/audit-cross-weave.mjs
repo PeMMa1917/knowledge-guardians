@@ -892,7 +892,7 @@ const limitations = [
   'Vocabulary and etymology use the current glossary IDs as a bounded inventory. Each needs an explicit action proof. The glossary does not define all TOK vocabulary.',
   'Seven past essay sets have verified source metadata. These 42 title ordinals establish access to those sources. Any gameplay adaptation needs its own reviewed action proof. Extended Essay and CAS are practice opportunities only.',
   'The 35 exhibition question families are a labeled subset of the knowledge-question IDs and enter the denominator once.',
-  'The 197 unsupplied micro-skill numbers are reported as source-unavailable. Their descriptions and action links are unknown.',
+  'All 1,000 numbered micro-skill definitions were supplied. A source definition counts toward the inventory; only reviewed, reachable actions count toward the target.',
   'Thinking taxonomies and player or encounter preferences have their own separate semantics and reports. They do not multiply this intersection census.',
   'A reasoning or cross-area entry describes the action available to players. It does not assert their reasoning, or infer an area comparison from co-occurring tags.',
 ];

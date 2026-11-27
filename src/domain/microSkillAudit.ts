@@ -4,8 +4,8 @@ import type { MicroSkillEvidence } from '../content/microSkillEvidence';
 export const AUDIT_AXES = ['player', 'mode', 'game', 'story', 'dok', 'fink', 'solo', 'bloom'] as const;
 export type AuditAxis = (typeof AUDIT_AXES)[number];
 
-/** IDs supplied in the five source files. Their text lives outside the release. */
-export const SUPPLIED_SKILL_IDS = [78, 79, 80, ...Array.from({ length: 800 }, (_, i) => i + 201)];
+/** The complete 1–200 HTML source and four later tables supply all 1,000 numbered definitions. */
+export const SUPPLIED_SKILL_IDS = Array.from({ length: 1000 }, (_, i) => i + 1);
 
 export function microSkillRows(pack: ContentPack, evidence: readonly MicroSkillEvidence[]) {
   const context = new Map(pack.missions.flatMap((mission) =>

@@ -1,3 +1,4 @@
+import { lamplightPanel } from './lamplightPanel';
 import { inkInvitation } from '../domain/inkPost';
 import { inkTrialDiagram } from './inkTrialDiagram';
 import { neighbourInvitation } from '../domain/neighbours';
@@ -1396,7 +1397,8 @@ export class UI implements UIApi {
     const guideObjective = guidedCase
       ? c.engine.visibleObjectives(c.state).find((step) => !step.complete && step.id.startsWith(guidedCase))?.id
       : id === 'stage.call.stand' ? 'stage.call.audience' : cornerObjective;
-    const extra = id === 'sefa.free' ? this.freeQuestion() : inkTrialDiagram(id, ctx.settings.sfxVolume);
+    const extra = id === 'sefa.free' ? this.freeQuestion() : lamplightPanel(id, c, () => ctx.world?.refreshWorld(), (line) => this.speak(line), ctx.settings.sfxVolume)
+      ?? inkTrialDiagram(id, ctx.settings.sfxVolume);
     const earlier = conversationHistory(c.pack.dialogue, c.state.flags).filter((line) => line.id !== id).slice(0, 5);
     const source = n.citationSource ? c.pack.sources.find((entry) => entry.id === n.citationSource) : undefined;
     const citation = source ? mlaCitation(source) : [];

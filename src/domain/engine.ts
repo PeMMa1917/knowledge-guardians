@@ -69,7 +69,11 @@ import { biographyReadFlag, isHistoricalBiography } from './historicalEncounters
 
 const DIALOGUE_FALLBACK = 999;
 
+import { lanternEffects, pairEffects, type LanternCommand, type LanternPairCommand } from './lamplight';
+
 export type Command =
+  | LanternPairCommand
+  | LanternCommand
   | { type: 'PlayMoonTune'; tune: string }
   | IncentiveAction
   | BendAction
@@ -426,6 +430,12 @@ export class Engine {
             s = apply([{ setFlag: MOON_TUNE, value: cmd.tune }, { setFlag: performed, value: true }], s, out);
           break;
         }
+        case 'TurnLanternGlass':
+          s = apply(pairEffects(cmd, s), s, out);
+          break;
+        case 'WorkWithLantern':
+          s = apply(lanternEffects(cmd, s), s, out);
+          break;
         case 'SetFlag':
           s = apply([{ setFlag: cmd.flag, value: cmd.value }], s, out);
           break;

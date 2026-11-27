@@ -1,0 +1,318 @@
+[
+  {
+    "number": 1,
+    "name": "Tell a witnessed change from a claim about it"
+  },
+  {
+    "number": 3,
+    "name": "Try the operation that a written description promises"
+  },
+  {
+    "number": 4,
+    "name": "Find what changes when a person walks the route themselves"
+  },
+  {
+    "number": 6,
+    "name": "Check a mapped feature against a place or working model"
+  },
+  {
+    "number": 7,
+    "name": "Keep a person's own account visible in a shared record"
+  },
+  {
+    "number": 8,
+    "name": "Find who can check a decision inside a working community"
+  },
+  {
+    "number": 9,
+    "name": "Hand an apprentice enough control to try a move independently"
+  },
+  {
+    "number": 12,
+    "name": "Organise separate readings so a visitor can use them"
+  },
+  {
+    "number": 13,
+    "name": "Leave a finding open to a later check"
+  },
+  {
+    "number": 14,
+    "name": "Keep two supported interpretations in play"
+  },
+  {
+    "number": 17,
+    "name": "Tell an unanswered question from one this instrument cannot settle"
+  },
+  {
+    "number": 18,
+    "name": "Trace a maker's decision that a label leaves out"
+  },
+  {
+    "number": 19,
+    "name": "Trace a change from a person's contribution into the shared result"
+  },
+  {
+    "number": 24,
+    "name": "Try a disputed term against what a person needs to do"
+  },
+  {
+    "number": 33,
+    "name": "Follow a word when its meaning changes between working settings"
+  },
+  {
+    "number": 41,
+    "name": "Match the kind of evidence to the question being asked"
+  },
+  {
+    "number": 42,
+    "name": "Identify the step a worked example still has to establish"
+  },
+  {
+    "number": 43,
+    "name": "Compare a confident first impression with its physical support"
+  },
+  {
+    "number": 44,
+    "name": "Calibrate confidence against a changing range of evidence"
+  },
+  {
+    "number": 47,
+    "name": "Test what a finding allows a person to do"
+  },
+  {
+    "number": 48,
+    "name": "Separate the support for a claim from whether it happens to be true"
+  },
+  {
+    "number": 49,
+    "name": "Change the reading by rearranging the same material"
+  },
+  {
+    "number": 51,
+    "name": "Identify who controls access to a finding"
+  },
+  {
+    "number": 52,
+    "name": "Expose a voice or experience a recording process leaves out"
+  },
+  {
+    "number": 53,
+    "name": "Compare ways of supporting a claim for different audiences"
+  },
+  {
+    "number": 54,
+    "name": "Look for a mechanism behind a description of events"
+  },
+  {
+    "number": 56,
+    "name": "Keep a repeatable check independent of the first observer"
+  },
+  {
+    "number": 58,
+    "name": "Move the viewer and track what the change in position reveals"
+  },
+  {
+    "number": 59,
+    "name": "Trace a local practice that an outside category obscures"
+  },
+  {
+    "number": 60,
+    "name": "Identify what someone values in setting a threshold or making a choice"
+  },
+  {
+    "number": 61,
+    "name": "Follow a finding to someone who has to act on it"
+  },
+  {
+    "number": 66,
+    "name": "Mark where an available method stops answering the question"
+  },
+  {
+    "number": 70,
+    "name": "Use a second reading to locate a possible error"
+  },
+  {
+    "number": 71,
+    "name": "Vary a tool or its position to reveal a limit on what it records"
+  },
+  {
+    "number": 73,
+    "name": "Surface an unstated convention about acceptable participation"
+  },
+  {
+    "number": 74,
+    "name": "Find an assumption the working procedure depends on"
+  },
+  {
+    "number": 75,
+    "name": "Let the people involved set a boundary on collecting knowledge"
+  },
+  {
+    "number": 76,
+    "name": "Make a decision about responsibility for sharing a record"
+  },
+  {
+    "number": 81,
+    "name": "Compare the simplification in a working model with its real subject"
+  },
+  {
+    "number": 82,
+    "name": "Try different levels of detail and see what each one costs"
+  },
+  {
+    "number": 84,
+    "name": "Test what an expert's position contributes to a claim"
+  },
+  {
+    "number": 87,
+    "name": "Check which move follows from the chosen starting rule"
+  },
+  {
+    "number": 88,
+    "name": "Distinguish following the rules from establishing their starting assumptions"
+  },
+  {
+    "number": 89,
+    "name": "Check how far a pattern from several examples can travel"
+  },
+  {
+    "number": 91,
+    "name": "Try an alternative explanation against a distinguishing trace"
+  },
+  {
+    "number": 92,
+    "name": "Make an assumption visible in a chain of reasons"
+  },
+  {
+    "number": 94,
+    "name": "Separate events that travel together from a test of their cause"
+  },
+  {
+    "number": 99,
+    "name": "Examine a reason independently of the name attached to it"
+  },
+  {
+    "number": 101,
+    "name": "Look deliberately for something the preferred reading left outside the frame"
+  },
+  {
+    "number": 105,
+    "name": "Try an example that could break an attractive rule"
+  },
+  {
+    "number": 106,
+    "name": "Qualify a claim where the record stops"
+  },
+  {
+    "number": 108,
+    "name": "Identify a mismatch between an example and the thing it is meant to establish"
+  },
+  {
+    "number": 109,
+    "name": "Hold the evidence fixed while changing its persuasive presentation"
+  },
+  {
+    "number": 118,
+    "name": "Locate a source of bias in a particular decision"
+  },
+  {
+    "number": 119,
+    "name": "Keep distinct perspectives accountable to the same encounter"
+  },
+  {
+    "number": 120,
+    "name": "Show how a dominant account can hide alternatives"
+  },
+  {
+    "number": 121,
+    "name": "Respect the authority and boundaries of particular knowledge holders"
+  },
+  {
+    "number": 122,
+    "name": "Read a claim in light of the writer's practical interests"
+  },
+  {
+    "number": 126,
+    "name": "Compare accounts across the moment when a practice changed"
+  },
+  {
+    "number": 128,
+    "name": "Find where a proposed comparison stops travelling"
+  },
+  {
+    "number": 129,
+    "name": "Find a common observation under two competing explanations"
+  },
+  {
+    "number": 137,
+    "name": "Keep an exceptional observation visible alongside more usual cases"
+  },
+  {
+    "number": 139,
+    "name": "Verify a detail against a trace with known provenance"
+  },
+  {
+    "number": 140,
+    "name": "Follow a source to its maker, audience or incentive"
+  },
+  {
+    "number": 141,
+    "name": "Interrogate the choices that shaped a written or visual record"
+  },
+  {
+    "number": 146,
+    "name": "Set one person's experience within a wider series of observations"
+  },
+  {
+    "number": 147,
+    "name": "Use the context of a particular object to support a claim"
+  },
+  {
+    "number": 151,
+    "name": "Separate a geometric construction from the mathematical justification"
+  },
+  {
+    "number": 152,
+    "name": "Investigate a pattern whose properties outlast the choice of notation"
+  },
+  {
+    "number": 153,
+    "name": "Set up an observation that can distinguish scientific accounts"
+  },
+  {
+    "number": 155,
+    "name": "Look at a social action through a count and a situated account"
+  },
+  {
+    "number": 156,
+    "name": "Change the conditions of observing people and attend to their response"
+  },
+  {
+    "number": 157,
+    "name": "Read surviving material and documents against one another"
+  },
+  {
+    "number": 158,
+    "name": "Compare a community's recollection with how an archive was made"
+  },
+  {
+    "number": 159,
+    "name": "Use arrangement, sound or gesture to convey something a label misses"
+  },
+  {
+    "number": 160,
+    "name": "Change the relationship between a work, its audience and its display"
+  },
+  {
+    "number": 165,
+    "name": "Put unlike practices together and test the limit of their resemblance"
+  },
+  {
+    "number": 167,
+    "name": "Transfer an instrument to another field and check what travels"
+  },
+  {
+    "number": 170,
+    "name": "Change the wording, timing or audience of a message and follow its meaning"
+  }
+]

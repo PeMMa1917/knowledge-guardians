@@ -1,3 +1,6 @@
+import newGuests from './lamplight-voices.json';
+import instruments from './lamplight-instruments.json';
+import lampSkills from './lamplight-skills.json';
 import letters from './ink-post-letters.json';
 import postSkills from './ink-post-skills.json';
 import type { ContentPack } from '../domain/types';
@@ -26,7 +29,19 @@ for (const letter of letters) {
     styles: ['explorer', 'helper'], modes: ['reading', 'linguistic'], game: 21, story: 114 });
   postUses.set(letter.practice, uses);
 }
-export const MICRO_SKILLS: MicroSkillEvidence[] = [...Object.values(sources).flat(), ...postSkills.map((s) => ({ ...s, uses: [] }))]
+const guests = new Map([...letters, ...newGuests].map((guest) => [guest.id, guest]));
+for (const [id, kit] of Object.entries(instruments)) {
+  const guest = guests.get(id)!;
+  const uses = postUses.get(kit.practice) ?? [];
+  const modes: MicroSkillUse['modes'] = ['reading', 'analytical'];
+  if (kit.kind === 'score') modes.push('auditory');
+  if (['route', 'frame', 'layers', 'scale'].includes(kit.kind)) modes.push('spatial');
+  uses.push({ objective: 'lamplight.' + kit.home + '.' + id + '.received', action: guest.title + ' · '
+    + kit.pieces.map((p) => p.label).join(', ') + '. Compare two settings and carry the selected reading to a second person. ' + guest.question,
+    styles: ['explorer', 'maker'], modes, game: kit.kind === 'route' ? 13 : 234, story: 29 });
+  postUses.set(kit.practice, uses);
+}
+export const MICRO_SKILLS: MicroSkillEvidence[] = [...Object.values(sources).flat(), ...[...postSkills, ...lampSkills].map((s) => ({ ...s, uses: [] }))]
   .map((s) => ({ ...s, uses: [...s.uses, ...(postUses.get(s.number) ?? [])] })).sort((a, b) => a.number - b.number);
 
 /** Identifier stays stable as an illustrative use gains new approaches. */
