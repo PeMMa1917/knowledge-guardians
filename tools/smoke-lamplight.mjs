@@ -1,3 +1,4 @@
+import { playMillShift } from './mill-shift-journey.mjs';
 import { playMakerField } from './maker-field-journey.mjs';
 import { playPocketCoat } from './pocket-coat-journey.mjs';
 import { createRequire } from 'node:module';
@@ -86,7 +87,9 @@ try {
   const registerOnly = process.argv.includes('--night-register');
   const coatOnly = process.argv.includes('--shift-coat');
   const makerOnly = process.argv.includes('--maker-tools');
-  if (makerOnly) await playMakerField({page,engine,waitMap,use,close});
+  const millOnly = process.argv.includes('--mill-shift');
+  if(millOnly) await playMillShift({page,engine,waitMap,use,close});
+  else if (makerOnly) await playMakerField({page,engine,waitMap,use,close});
   else if (coatOnly) await playPocketCoat({page,engine,posts,sites,people,waitMap,use,close,button});
   else if (registerOnly) await playNightRegister({page,engine,waitMap,use,close,button,posts,works:load('night-register.json'),trails:load('night-trails.json')});
   else if (shiftOnly) await playEmberfordShift({page,engine,waitMap,use,close,button,puzzles:load('puzzles.json').puzzles});
@@ -143,7 +146,7 @@ try {
     faults.filter((s) => !s.includes('favicon')),
     [],
   );
-  console.log(engine, browser.version(), makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
+  console.log(engine, browser.version(), millOnly ? 'passed the six-counter mill and both earned passages' : makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
 } finally {
   await browser.close();
 }

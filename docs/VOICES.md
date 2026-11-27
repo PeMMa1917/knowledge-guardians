@@ -466,3 +466,10 @@ A test (`tests/voices.test.ts`) checks that every character with more than 20 li
 | Hale | He has kept everybody else's minutes. When invited to take his turn, he still gets to choose where to sit. |
 
 Each person's morning can change after the Guardian has heard the consequences of a delivery. [Dialogue and branches](../src/content/nightKeepers.ts)
+
+
+### Liri Pell, Tessel Fen and Aven Dorr
+
+Liri, the apprentice who cut the second tooth, is proud enough to sign her spare and embarrassed when the notice gives her everybody’s work. She puts the slow tooth in a visitor’s hand. Tessel counts a shift in meals and crossings. He can wear an empty bowl as a hat while worrying about the cost of breakfast. Aven wants Liri recognised and the boards accepted before the boats leave. Having signed for work she helped teach, she prefers moving the pay desk up to the rack to asking anybody to take her word. [Wages and replies](../src/domain/millShift.ts)
+
+At these registers Ostrom asks who was able to enter a mark in each book. Pearl asks a keeper to leave the four holes where they are while the crew and wheel change. Trouillot follows Tessel’s name from the first slip to the line of type. Each has a different job for the Guardian and a different reason to care about what reaches the press. [Register dialogue](../src/content/millShift.ts)

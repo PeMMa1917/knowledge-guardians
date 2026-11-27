@@ -127,3 +127,6 @@ The sixteen field-creature silhouettes and fifteen coat palettes are original pi
 The Blue Shift Coat uses a hand-drawn pixel peg and coat, original instrument diagrams, and score and vibration cues synthesized by the game's instrument. The night keepers, their cases and readings are fictional. [Coat sprite](src/ui/illustrations.ts) · [Worktable and audio](src/ui/coatPocket.ts)
 
 The measuring cup, plumb plate and reed-nib reference slips at Hesper’s bench use original pixel diagrams drawn in code for Knowledge Guardians. [Instrument drawings](src/ui/makerIllustration.ts)
+
+
+The pay bowls, punch wheel and type case in the mill registers are original in-game pixel drawings. The scene uses fictional shift records. Historical reading for Ostrom, Pearl and Trouillot appears with their encounters in the journal. [Object drawings](src/ui/illustrations.ts) · [Register windows](src/content/millShift.ts)

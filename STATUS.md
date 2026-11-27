@@ -1,5 +1,11 @@
 # Status and next steps
 
+## 27 November • Six counters for three workers
+
+In the Nile pay room, the porter who kept the boards dry can finish the same shift with three counters or an empty bowl. At the Metalworks, the Guardian can try all four bells with the apprentice’s tooth and the porter’s help. In the City of Copies, the workers get to read what the Guardian put in print. Opening a public proof at the wheel uncovers the workers’ stair. Opening a folded letter in the pay room uncovers the letter chute. Each worker keeps the edition they opened, even if Bayette prints a different one tomorrow. [Three registers](src/content/millShift.ts) · [Playable routes](tests/mill-shift.test.ts)
+
+The current skill review has 556 of 1,200 definitions linked to 1,247 authored actions or uses, including 350 skills in multiple worlds. The cross-world audit found 20 explicit comparisons of how two areas establish and limit the same claim. Of the 10,729,248 world, learning dimension and RPG element intersections, two meet the ten-action target and 737 have one to nine documented actions. [Skill evidence](docs/TOK_MICRO_SKILLS.md) · [Coverage audit](docs/CROSS_WEAVE_AUDIT.md)
+
 ## 27 November • Opening the game on the school connection
 
 A readable title appears while the game menu downloads. Students can open Settings or class sign-in before the map renderer loads. Interrupting a required map download offers a retry and preserves the Guardian name already entered. On the simulated mobile connection the median interactive-menu time fell by 2.84 seconds in three cold runs per build. [Measured conditions and recovery tests](docs/audit/NIGHT_REGISTER.md#first-visit-on-a-slow-connection)

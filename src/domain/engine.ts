@@ -1,3 +1,4 @@
+import { millEffects, type MillCommand } from './millShift';
 import { makerEffects, type MakerCommand, type FieldCommand } from './makerField';
 import { coatEffects, type PocketCommand } from './pocketCoat';
 import { nightByExhibit, nightEffects, type NightCommand } from './nightRegister';
@@ -78,6 +79,7 @@ import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand
 
 export type Command =
   | MakerCommand | FieldCommand
+  | MillCommand
   | PocketCommand
   | NightCommand
   | LastBellCommand
@@ -445,6 +447,9 @@ export class Engine {
         }
         case 'WorkMakerInstrument': case 'WorkTownReading':
           s = apply(makerEffects(s, cmd), s, out);
+          break;
+        case 'WorkMillShift':
+          s = apply(millEffects(s,cmd),s,out);
           break;
         case 'WorkCoatPocket':
           s = apply(coatEffects(cmd, s), s, out);

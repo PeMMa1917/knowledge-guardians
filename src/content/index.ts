@@ -1,3 +1,4 @@
+import {addMillMissions} from './millMissions';
 import { addMakerMissions } from './makerMissions';
 import { addCoatMissions } from './coatMissions';
 /**
@@ -245,6 +246,7 @@ export function buildPack(): ContentPack {
   installNightCollection(content);
   addCoatMissions(content);
   addMakerMissions(content);
+  addMillMissions(content);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);

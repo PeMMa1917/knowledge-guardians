@@ -1,3 +1,4 @@
+import {millSites,millAccounts} from '../content/millShift';
 import { nightSites, nightWorks, type NightSite } from '../domain/nightRegister';
 import type { Interactable, MapDef } from './types';
 
@@ -89,6 +90,15 @@ function room(site: NightSite): MapDef {
     ],
     interactables: [
       ...exhibits,
+      ...(site.site==='press'?[
+        {id:'mill-shift.workers-stair',x:25,y:23,art:'preserved.door',label:'the workers’ stair to the Metalworks mill',
+          visibleIf:{flag:'mill-shift.press.stair',eq:true},to:{map:'night-register.yard',x:9,y:24}},
+        {id:'mill-shift.letter-chute',x:29,y:23,art:'preserved.door',label:'the folded-letter chute to the Nile pay chest',
+          visibleIf:{flag:'mill-shift.press.wharf',eq:true},to:{map:'night-register.nile',x:9,y:24}},
+      ].map((exit):Interactable=>({...exit,kind:'door',w:1,h:1})):[]),
+      ...millSites.filter(key=>key===site.site).map((key):Interactable=>({
+        id:'mill-shift.'+key, x:9,y:23,w:1,h:1,kind:'fieldgame',game:'mill-shift',art:'mill-shift.'+key,label:millAccounts[key].title,
+      })),
       {
         id: site.room + '.coat', kind: 'fieldgame', game: 'shift-coat', x: 12, y: 23, w: 1, h: 1,
         art: 'coat.peg', label: 'the blue shift coat on its peg',

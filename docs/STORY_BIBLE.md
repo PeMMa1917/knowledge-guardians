@@ -475,3 +475,8 @@ A tracing earned at the chapter lamp also fits the coat loop. Sew one part on to
 ### The button in the plaster • Emberford
 
 Maren’s grandmother left a button beside the old tower measurement. Her granddaughter can keep the morning bell open without promising the whole building is safe. A stoneworker can take the rubbing instead and go somewhere the Guardian’s line never reached. At the bridge, the tea seller wants to know whether to bring the breakfast cups down. Noa’s water records give her neighbour grounds for a small decision and the bridge crew grounds to send a runner. A third dispute belongs to Venn. His father did record a flood. Only his son supplies the link to this particular post. His signed memory can travel on its own slip beside the visible marks. All three threads have a return at the Lamp Wall. [Field voices and returns](../src/content/makerTrials.ts)
+
+
+### The line that ate a worker • Nile, Metalworks and Copies
+
+Liri Pell wants her newly cut tooth to earn a place beside the master’s mark. Tessel Fen’s long path up from the boats kept her blanks dry. Foreperson Aven Dorr stamped three boards in her own name because the guild would otherwise reject them. None of them can correct the account alone. Elinor Ostrom opens the pay books with Imani. Judea Pearl keeps four bells fixed for Hesper’s rehearsal. Michel-Rolph Trouillot sits with Bayette while the Guardian lays the type. The public proof can bring strangers to the old wheel. The private edition lets the workers read their own wages before anyone else does. What appears at the workbench depends on the actual account returned there. [The three shifts](../src/content/millShift.ts) · [Printed consequences](../src/domain/millShift.ts)

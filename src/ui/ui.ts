@@ -1,3 +1,5 @@
+import { millPanel } from './millShift';
+import { millSite } from '../domain/millShift';
 import { reloadGame } from '../app/reloadGame';
 import { coatPanel } from './coatPocket';
 import { nightByExhibit, nightSites } from '../domain/nightRegister';
@@ -3568,6 +3570,11 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    if (id === 'mill-shift') {
+      const site=millSite(ctx.controller.state);
+      if(site)this.openModal('bench-panel wide','The old mill shift',this.closeBtn(),millPanel(ctx.controller,site,()=>this.sfx(site==='yard'?'sfx.metal':'sfx.page')));
+      return;
+    }
     if (id === 'shift-coat') {
       const site = nightSites.find(s => s.room === ctx.controller.state.mapId);
       if (!site) return;

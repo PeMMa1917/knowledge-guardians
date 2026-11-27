@@ -143,6 +143,42 @@ const copiesEvidenceInvestigations = [
 const proofRows = [
   ...coatProofs,
   {
+    objective: 'mill-shift.nile.compared', map: 'night-register.nile', target: 'mill-shift.nile',
+    source: 'tests/mill-shift.test.ts', anchor: 'reaches every conserved division of six counters',
+    action: 'Refill the same three bowls from the gate book and the signed piece book. The porter worked three bells and carries no stamp.',
+    reasoning: [{mode:'pragmatic',basis:'Giving time or stamped output standing affects who can pay for breakfast. Each split still spends the same six counters.'}],
+    dimensions: ['concept:power','concept:values','concept:evidence','framework:perspectives','framework:ethics','area:HUM','area:HIS'],
+    elements:['game:234','story:72'],
+  },
+  {
+    objective:'mill-shift.yard.joint',map:'night-register.yard',target:'mill-shift.yard',
+    source:'tests/mill-shift.test.ts',anchor:'keeps all sixteen punch strips independent under all four rigs',
+    action:'Keep four moves on the strip. Try each wheel alone and with a porter. On feed, turn, turn, turn, the notches rise from three to six only if both settings change.',
+    reasoning:[{mode:'deductive',basis:'A lone worker starts the three turns with three blanks. The single tooth can cut at most one per turn. Six cuts therefore require both extra feed and two teeth for this four-bell strip.'}],
+    dimensions:['micro:93','concept:explanation','concept:evidence','framework:methods-and-tools','area:MAT','subject:design-tech'],
+    elements:['game:234','story:91'],
+  },
+  {
+    objective:'mill-shift.press.estimate',map:'night-register.press',target:'mill-shift.press',
+    source:'tests/mill-shift.test.ts',anchor:'puts two equally fitting estimates beside a held-out reconstruction',
+    action:'Tie the four dated tickets by wheel, then rota. Compare the two estimates for a configuration absent from both sets of shifts against a personally tested four-bell strip.',
+    reasoning:[{mode:'inductive',basis:'The old group means are three and six. Their agreement on the observed shifts permits competing estimates for the unobserved crew and tool pairing.'},
+      {mode:'causal',basis:'The guild admitted a porter on the same date that an apprentice fitted the second tooth. Changing the pair in the working model tests separate effects under its rules.'}],
+    comparison:{
+      concepts:['interpretation','justification'], framework:['scope','methods-and-tools'],
+      areas:[{id:'HUM',method:'Use the observed output of the four paid shifts to estimate output for two new staffing and technology combinations.',limit:'Both grouping rules recover the same old averages. Neither supplies an independent historical change in staffing.'},
+        {id:'HIS',method:'Read the dated guild decision and the apprentice’s fitting beside the pay register to establish when the changes were admitted.',limit:'The signed papers date both changes together. They supply neither the unrun shift nor all the people whose work was unstamped.'}],
+      connection:'Publish a dated statement, a conditional reconstruction or a future proposal. The printed copy distinguishes the counted history from the Guardian’s newly made strip.'},
+    dimensions:['micro:1127','concept:interpretation','concept:justification','area:HIS','area:HUM','framework:scope','framework:methods-and-tools','subject:economics','subject:history'],
+    elements:['game:234','story:91'],
+  },
+  {
+    objective:'mill-shift.press.edited-moods',map:'night-register.press',target:'mill-shift.press',
+    source:'tests/mill-shift.test.ts',anchor:'puts two equally fitting estimates beside a held-out reconstruction',
+    action:'Print a missed possibility and an open future in separate editions. The workers keep the version they opened before a later edition is sent.',
+    dimensions:['micro:689','subject:lang-langlit','concept:interpretation','framework:scope'],elements:['game:234','story:15'],
+  },
+  {
     objective: 'maker.rain-gauge.compared-bounds', map: 'aethelgard.emberford', target: 'reading-rain',
     source: 'tests/maker-field.test.ts', anchor: 'puts two independent edges on the same field slip',
     action: 'Shade the catch and the calibration ring separately. Retain both margins on the slip for the bridge watch and reopen the one-limit edition.',

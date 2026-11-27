@@ -99,3 +99,6 @@ A fresh index on 27 November found 931 files in 55 folders of the supplied publi
 ## Opening and closing evidence
 
 Henly’s First/Last activity and transitions model supplied two writing practices. At Wren’s listening hood, moving the two stops lets the Guardian hear how a quotation loses the object of the word “it.” Reinstating the last sentence changes what the crew can publish. In Time Hall, moving a different record into the first place changes who gets to speak and what the next person can challenge. A witness can limit a model’s claim, or the same model can suggest how to reach her. The dialogue and records are original to the river story. [Six hearing orders and six cylinder cuts](../../tests/last-bell.test.ts)
+
+
+The History on Trial cards’ contrast between structural and intentional accounts now reaches a working press. At the mill, players can give credit to an apprentice’s change to the wheel, to the rota that let a porter supply it, or to both. The letters bring the Guardian’s test strip and wage settlement back to the crew. This uses original work records and dialogue. [The three registers](../../src/content/millShift.ts) · [Return journey](../../tools/mill-shift-journey.mjs)

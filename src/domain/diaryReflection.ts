@@ -29,6 +29,9 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
+  if (key.startsWith('mill:lamplight.nile.')) return {rule:'Who could make an entry in each book?',pay:'Which kind of work would somebody miss if they saw only the settlement?'};
+  if (key.startsWith('mill:lamplight.yard.')) return {trial:'What changed when the same four movements were tried by another shift?',limit:'Which part of the old morning can the model never witness?'};
+  if (key.startsWith('mill:lamplight.press.')) return {voice:'Which hand is easiest to hear in this edition?',repair:'What could another worker bring you that would change the next edition?'};
   if (key.startsWith('maker-trial:')) return {reference:'Which mark belonged to the reference, and which one came from your tool?', hand:'What would another worker need to repeat your reading?'};
   if (key.startsWith('maker-field:')) {
     const [,field]=key.split(':');

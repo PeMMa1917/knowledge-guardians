@@ -1228,3 +1228,16 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
   margin-block: .35em;
   min-height: 2.75em;
 }
+
+.mill-bowls, .mill-beats { display: grid; gap: .65rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); }
+.mill-bowls section, .mill-beats li, .mill-proof { padding: .7rem; border: 1px solid var(--gold-dim); border-radius: .4rem; }
+.mill-bowls button { display: block; margin: .25rem 0; }
+.mill-coins { display: flex; gap: 3px; height: 1.4rem; align-items: end; border-bottom: 3px solid var(--gold-dim); }
+.mill-coins i { width: 12px; height: 9px; background: #ebc267; box-shadow: inset 2px 2px #fff0a8, inset -2px -2px #865638; }
+.mill-beats { padding: 0; list-style: none; }
+.mill-beats li { display: grid; border-style: dashed; }
+.mill-beats [data-stroke="f"] { border-style: solid; border-inline-start: 5px solid var(--gold); }
+.mill-beats [data-stroke="t"] { border-style: solid; border-inline-start: 5px solid var(--cyan); }
+.mill-work [aria-pressed="true"] { outline: 2px solid var(--gold); }
+.mill-work button:focus-visible { outline: 3px solid var(--cyan); }
+.mill-status:empty { margin: 0; }
