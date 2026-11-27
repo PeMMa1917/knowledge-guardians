@@ -81,7 +81,7 @@ export function gymPanel(c: GameController, sfx: (key: string) => void): HTMLEle
     return [
       h('p', {}, 'Choose a practice prompt, then put three objects you found on the bench. For each one, say what it shows and what it does not show.'),
       pick, h('p', { class: 'fine' }, p.nudge),
-      h('p', { class: 'fine', role: 'status' }, benchStatus(g, prompt)),
+      mine.length ? h('p', { class: 'fine', role: 'status' }, benchStatus(g, prompt)) : '',
       mine.length
         ? h('ul', { class: 'gym-objects' }, ...mine.map((id) => {
           const card = c.pack.cards.find((x) => x.id === id)!;

@@ -17,6 +17,7 @@ Play, engagement and enjoyable learning stay the main goal. Other views can stil
 | [PERSONAS.md](PERSONAS.md) | Every persona: who they are, what they value, and their game-wide likes, concerns and solutions. |
 | [chapters/](chapters/) | One file per chapter. Each encounter has the persona notes that are specific to it, then the agreed fixes and the open disagreements. |
 | [CONSENSUS.md](CONSENSUS.md) | The agreed fixes, numbered `C-###`, with their status and where they are in the code. |
+| [CHANGES.md](CHANGES.md) | Each change the audit caused: what changed, why, and where it is in the code. |
 | [DECISIONS.md](DECISIONS.md) | Mika's decisions on the contested list. These are rules for all developers. |
 | [CONTESTED.md](CONTESTED.md) | The disagreements, numbered `X-###`, with who wants what, why, the options, and a recommendation for Mika. |
 | [DRIVE_WEAVE.md](DRIVE_WEAVE.md) | Ideas from Mika's lesson folder and where they go in the story. Ideas only: no handout wording (the repository is public). |

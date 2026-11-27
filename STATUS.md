@@ -6,7 +6,7 @@ Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master sp
 
 ## Multi-persona audit (in progress)
 
-A critique of the whole game from more than seventy points of view is in [docs/audit/](docs/audit/README.md). Read the chapter file before you change an encounter. Agreed fixes are in [CONSENSUS.md](docs/audit/CONSENSUS.md). Items for Mika to decide are in [CONTESTED.md](docs/audit/CONTESTED.md); do not decide them yourself. Chapter 1 is done. Chapters 2 to 15 are next. Run `node tools/audit-personas.mjs --md` after content changes.
+A critique of the whole game from more than seventy points of view is in [docs/audit/](docs/audit/README.md). Read the chapter file before you change an encounter. Agreed fixes are in [CONSENSUS.md](docs/audit/CONSENSUS.md). Items for Mika to decide are in [CONTESTED.md](docs/audit/CONTESTED.md); do not decide them yourself. Chapter 1 is done. Mika's decisions on the contested list are in [DECISIONS.md](docs/audit/DECISIONS.md), and what was built from them, with reasons, is in [CHANGES.md](docs/audit/CHANGES.md): the training gym, Lumen's help offer, timed replays, two replies after key choices, thinkers and named views, the Proving Floor trial, trust that returns, idea credits and research data (off by default). Chapters 2 to 15 are next. Run `node tools/audit-personas.mjs --md` after content changes.
 
 ## Playtest build
 

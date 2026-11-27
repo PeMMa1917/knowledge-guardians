@@ -2,28 +2,30 @@
 
 Mika answered the contested list on 27 November 2026. These decisions are rules for every developer, human or AI. They replace the recommendations in [CONTESTED.md](CONTESTED.md). Where a decision changes an older rule in [AGENTS.md](../../AGENTS.md), AGENTS.md now says so.
 
+What was built, and why, is in [CHANGES.md](CHANGES.md).
+
 Each item has the decision, then **How to build it**: notes that keep the decision inside the other project rules. A note is not a new decision. If a note seems to go against Mika's words, Mika's words win and you ask Mika.
 
 | ID | Topic | Decision | Status |
 | --- | --- | --- | --- |
-| X-001 | Leaderboards and streaks | Keep. Each student can choose not to show on a leaderboard and to hide the streak. | to build |
-| X-002 | Exam practice | A "training gym" outside the story. No exam practice in the story. | to build |
-| X-003 | Timers | Optional timed replay of a field game after the first play. | to build |
+| X-001 | Leaderboards and streaks | Keep. Each student can choose not to show on a leaderboard and to hide the streak. | done (streak can be hidden; leaderboard sharing is opt-in); hosted leaderboard later |
+| X-002 | Exam practice | A "training gym" outside the story. No exam practice in the story. | done |
+| X-003 | Timers | Optional timed replay of a field game after the first play. | done |
 | X-004 | Romance | No romance. | rule |
-| X-005 | Difficult real history | Include, as objects, testimony and serious play, with content notes and links to reliable sources. | to build |
-| X-006 | Indigenous knowledge | Include and weave through. Verify with reliable sources. | to build |
-| X-007 | Failure states | Story consequences, trial sections that restart, and fail-and-retry in mini-games. | to build |
-| X-008 | Model answers | After a choice, two characters who disagree each give a strong reply. | to build |
+| X-005 | Difficult real history | Include, as objects, testimony and serious play, with content notes and links to reliable sources. | planned, chapter by chapter |
+| X-006 | Indigenous knowledge | Include and weave through. Verify with reliable sources. | planned, chapter by chapter |
+| X-007 | Failure states | Story consequences, trial sections that restart, and fail-and-retry in mini-games. | started (Proving Floor, Corvan's trust) |
+| X-008 | Model answers | After a choice, two characters who disagree each give a strong reply. | started (8 moments in chapter 1) |
 | X-009 | Translations | English only for now. | rule |
 | X-010 | Volume | Keep all missions. No single main path that leads to a win. | rule |
-| X-011 | Lumen when stuck | A setting, on by default. Lumen offers, the student clicks to hear it. | to build |
-| X-012 | Ethics and truth theories | Characters argue from each view and say its name. The journal names and tracks each view. Students meet the thinkers who held each view and get quests from them. | to build |
+| X-011 | Lumen when stuck | A setting, on by default. Lumen offers, the student clicks to hear it. | done |
+| X-012 | Ethics and truth theories | Characters argue from each view and say its name. The journal names and tracks each view. Students meet the thinkers who held each view and get quests from them. | started (views, advisor call, journal tab) |
 | X-013 | "EE practice" in titles | In-world titles. EE shows only in the teacher map and the journal. | done |
 | X-014 | Knotted ropes at the East Well | Change to notched tally sticks. | done |
-| X-015 | Real philosophers | In dialogue and as people to meet. Lumen can call one as an advisor when the student is stuck. | to build |
+| X-015 | Real philosophers | In dialogue and as people to meet. Lumen can call one as an advisor when the student is stuck. | started (12 thinkers as advisors) |
 | X-016 | Code licence | No licence, as now. | rule |
-| X-017 | Credit lesson authors | A credits page names where each idea came from, without its wording. Everything is paraphrased and adapted to the world. | to build |
-| X-018 | Research data | Yes: real data shows what works. | to build |
+| X-017 | Credit lesson authors | A credits page names where each idea came from, without its wording. Everything is paraphrased and adapted to the world. | done |
+| X-018 | Research data | Yes: real data shows what works. | done (off until the hosted build and school consent) |
 | X-019 | Class "same seed" mode | No mode that suggests one correct path to a goal. | rule |
 
 ---
