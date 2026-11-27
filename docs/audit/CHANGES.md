@@ -273,6 +273,16 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/content/sea-stick-charts.json`, `src/maps/sea.ts`, three entries in `src/content/two-replies.json`, `tests/sea-stick-charts.test.ts`.
 
+### The study at Tuskegee, in the Quiet Records Room (X-005, C-014)
+
+**What.** After the chapter 12 choice, a new room opens off Library Dispatch. A content note shows first, with sources and a way to step back. The room holds three documented records, each kept as a card with sources: what the men were told and promised; the cure (penicillin) that was not given for about 25 years, and how the study ended in 1972; and what came after (the 1974 settlement, health benefits, the 1997 apology, and the descendants' foundation that keeps the men's names). Then the player writes the Civic Machine's first rule for records of studies on people. There are three rules to choose from (consent, names, who can stop a study), and each gets two replies from Keeper Ade and Route Clerk Lin (X-008). There are no points, marks or timers in this room.
+
+**Why.** Mika decided that difficult real history is included, with content notes and reliable sources (X-005). Chapter 12 is about how a system's records shape what it does. This case shows that a record can be accurate in its numbers and still hide the most important thing. Where the sources differ (600 men in the government count, 625 in the descendants' list; 1943, 1945 or 1947 for penicillin), the cards say so and name who keeps each version.
+
+**Sources.** The CDC's pages on the study and its timeline, and the Voices for Our Fathers Legacy Foundation, formed by the men's descendants. They are listed in `src/content/civic-tuskegee.json`.
+
+**Where.** `src/content/civic-tuskegee.json`, `src/maps/quietRecords.ts`, `src/maps/civic.ts`, `src/content/content-notes.json`, three entries in `src/content/two-replies.json`, `tests/civic-tuskegee.test.ts`.
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.

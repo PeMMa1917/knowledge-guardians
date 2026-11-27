@@ -30,6 +30,7 @@ import { NILE_MAKERS_ROOM } from './makerRoom';
 import { OBJECT_USE_WORKSHOPS } from './objectUse';
 import { REFERENCE_STATION } from './referenceStation';
 import { CIVIC_CALLBOARD } from './civicCallboard';
+import { QUIET_RECORDS } from './quietRecords';
 import { CUE_WORKSHOP } from './cueWorkshop';
 import { MODEL_RECORD_ROOM } from './modelRecords';
 import { SECOND_READING_STORE } from './secondReading';
@@ -171,6 +172,7 @@ const campaignMaps: Record<string, MapDef> = {
   [WATER_SERVICE_LANE.id]: WATER_SERVICE_LANE,
   [CIVIC_DISPATCH.id]: CIVIC_DISPATCH,
   [CIVIC_CALLBOARD.id]: CIVIC_CALLBOARD,
+  [QUIET_RECORDS.id]: QUIET_RECORDS,
   [CIVIC_STEPS.id]: CIVIC_STEPS,
   [CIVIC_CANAL.id]: CIVIC_CANAL,
   [VOICES_LISTENING.id]: VOICES_LISTENING,

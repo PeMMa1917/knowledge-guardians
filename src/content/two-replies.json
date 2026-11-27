@@ -1180,6 +1180,60 @@
      "text": "I like it, but a space can look like we lost something. Name the canoe school in Majuro beside it, so people know the knowledge is alive and who holds it."
     }
    ]
+  },
+  {
+   "id": "civic.tuskegee.consent",
+   "after": {
+    "flag": "civic.tuskegee.rule",
+    "eq": "consent"
+   },
+   "heading": "Two views on the first rule for study records",
+   "replies": [
+    {
+     "speaker": "civic-operator",
+     "text": "Consent first. If those men had been told, and asked, nothing else in the folders could have happened the way it did."
+    },
+    {
+     "speaker": "civic-clerk",
+     "text": "A signature can be got by a promise of a hot meal. The rule needs to say what they were told, in words they used, not only that a form was signed."
+    }
+   ]
+  },
+  {
+   "id": "civic.tuskegee.names",
+   "after": {
+    "flag": "civic.tuskegee.rule",
+    "eq": "names"
+   },
+   "heading": "Two views on the first rule for study records",
+   "replies": [
+    {
+     "speaker": "civic-operator",
+     "text": "The names, yes. The folders turned men into patient numbers. A rule that keeps names keeps people in the record."
+    },
+    {
+     "speaker": "civic-clerk",
+     "text": "And the two counts side by side will worry some readers. Good. A record that shows where it disagrees with the families is more honest than one that hides it."
+    }
+   ]
+  },
+  {
+   "id": "civic.tuskegee.stop",
+   "after": {
+    "flag": "civic.tuskegee.rule",
+    "eq": "stop"
+   },
+   "heading": "Two views on the first rule for study records",
+   "replies": [
+    {
+     "speaker": "civic-operator",
+     "text": "This is the one that would have mattered most after 1943. Someone needed to have the duty to stop it, written down."
+    },
+    {
+     "speaker": "civic-clerk",
+     "text": "The people who could stop it were the people running it. The rule has to name someone outside the study, or it changes nothing."
+    }
+   ]
   }
  ]
 }

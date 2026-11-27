@@ -12,7 +12,7 @@ Each item has the decision, then **How to build it**: notes that keep the decisi
 | X-002 | Exam practice | A "training gym" outside the story. No exam practice in the story. | done |
 | X-003 | Timers | Optional timed replay of a field game after the first play. | done |
 | X-004 | Romance | No romance. | rule |
-| X-005 | Difficult real history | Include, as objects, testimony and serious play, with content notes and links to reliable sources. | started (content note before human remains in chapter 3) |
+| X-005 | Difficult real history | Include, as objects, testimony and serious play, with content notes and links to reliable sources. | started (content note before human remains in chapter 3; the study at Tuskegee in chapter 12) |
 | X-006 | Indigenous knowledge | Include and weave through. Verify with reliable sources. | started (chapter 8: Marshall Islands stick charts) |
 | X-007 | Failure states | Story consequences, trial sections that restart, and fail-and-retry in mini-games. | started (Proving Floor, Corvan's trust) |
 | X-008 | Model answers | After a choice, two characters who disagree each give a strong reply. | done (59 moments, in every chapter) |
