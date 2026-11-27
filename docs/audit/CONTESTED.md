@@ -1,6 +1,6 @@
 # Contested changes
 
-**Mika decided these items on 27 November 2026. Follow [DECISIONS.md](DECISIONS.md), not the recommendations below.** Only X-016 (code licence) is still open.
+**Mika decided these items on 27 November 2026. Follow [DECISIONS.md](DECISIONS.md), not the recommendations below.** All items are decided, including X-016 (no code licence, as now).
 
 These are changes that one persona wants and another persona thinks are wrong. Developers do not decide these. Mika decides.
 

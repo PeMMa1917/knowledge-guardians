@@ -21,7 +21,7 @@ Each item has the decision, then **How to build it**: notes that keep the decisi
 | X-013 | "EE practice" in titles | In-world titles. EE shows only in the teacher map and the journal. | done |
 | X-014 | Knotted ropes at the East Well | Change to notched tally sticks. | done |
 | X-015 | Real philosophers | In dialogue and as people to meet. Lumen can call one as an advisor when the student is stuck. | to build |
-| X-016 | Code licence | Not decided. See the recommendation below. | open |
+| X-016 | Code licence | No licence, as now. | rule |
 | X-017 | Credit lesson authors | A credits page names where each idea came from, without its wording. Everything is paraphrased and adapted to the world. | to build |
 | X-018 | Research data | Yes: real data shows what works. | to build |
 | X-019 | Class "same seed" mode | No mode that suggests one correct path to a goal. | rule |
@@ -146,9 +146,9 @@ Each item has the decision, then **How to build it**: notes that keep the decisi
 
 **How to build it.** All lines are written in advance (no runtime AI). An advisor gives a hint in the thinker's own way of thinking, at Lumen's four hint depths. See also X-012.
 
-## X-016 Code licence (open)
+## X-016 Code licence
 
-Mika has not decided. The project is for classroom use, not commercial. See the recommendation in the reply to Mika and in [CONTESTED.md](CONTESTED.md#x-016-code-licence). Until Mika decides, the code has no licence.
+**Decision (27 November 2026).** No licence, as now. Do not add a LICENSE file or a licence field for the code. Use stays classroom only, not commercial. Assets keep their own licences in CREDITS.md.
 
 ## X-017 Credits for lesson ideas
 
