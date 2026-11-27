@@ -53,15 +53,20 @@ export interface UIApi {
   followThread(thread: string, node: string): void;
   openWaystone(place: string): void;
   playScene(node: string): void;
-  showSign(title: string, text: string): void;
+  showSign(title: string, text: string, propId?: string): void;
   setPrompt(text: string | null): void;
   toast(text: string, kind?: string): void;
   refreshHud(): void;
   chapterEnd(): void;
 }
 
+export interface WorldTransition {
+  throughZone?: boolean;
+  route?: { id: string; label: string };
+}
+
 export interface WorldApi {
-  changeMap(mapId: string, x: number, y: number): void;
+  changeMap(mapId: string, x: number, y: number, transition?: WorldTransition): void;
   lumenBurst(): void;
   setPaused(p: boolean): void;
   applySettings(): void;

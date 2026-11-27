@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { check } from '../src/domain/rules';
+import { migrateCampaign } from '../src/domain/saves';
 import { MAPS } from '../src/maps';
 import { Driver } from './driver';
 
@@ -9,6 +10,7 @@ const landing = 'copies.landing';
 const printer = 'copies-presskeeper';
 const keeper = 'copies-lendingkeeper';
 const responseProps = ['copies-response-reprint', 'copies-response-strip'];
+const alignments = ['copies-alignment-editions', 'copies-alignment-lines'];
 
 function enter() {
   const d = new Driver();
@@ -41,6 +43,9 @@ describe('The Missing Tuesday', () => {
     sign(d, 'copies-route-book');
     d.s.mapId = press;
     d.run({ type: 'CompareCopy', edition: 'press' });
+    expect(d.done('copies.check.press')).toBe(true);
+    expect(d.done('copies.check.landing')).toBe(false);
+    expect(visible(d, alignments)).toEqual([]);
     expect(d.e.talkEntry(printer, d.s)).toBe('copies.press.welcome');
     d.s.mapId = landing;
     expect(visible(d, ['copies-reader-note'])).toEqual([]);
@@ -48,12 +53,34 @@ describe('The Missing Tuesday', () => {
     expect(d.done('copies.trace')).toBe(true);
     expect(d.e.talkEntry(keeper, d.s)).toBe('copies.lending.trace.wait');
     d.run({ type: 'CompareCopy', edition: 'landing' });
+    expect(d.done('copies.check.landing')).toBe(true);
     expect(d.done('copies.compare')).toBe(false);
     expect(d.e.talkEntry(printer, d.s)).toBe('copies.press.compare');
     d.s.mapId = press;
     d.talk(printer, 'Pin the missing time');
     expect(d.done('copies.compare')).toBe(true);
     expect(d.e.talkEntry(keeper, d.s)).toBe('copies.lending.decide');
+  });
+
+  it('keeps both dated receipts distinct and restores existing comparison flags once', () => {
+    const d = enter();
+    for (const edition of ['landing', 'press'] as const) {
+      d.s.mapId = edition === 'press' ? press : landing;
+      d.run({ type: 'CompareCopy', edition });
+      d.run({ type: 'CompareCopy', edition });
+      expect(d.events.filter((event) => event.kind === 'objective' && event.id === `copies.check.${edition}`)).toHaveLength(1);
+    }
+    d.talk(printer, 'Keep the three sheets');
+    const legacy = { ...d.s, objectivesDone: d.s.objectivesDone.filter((id) => !id.startsWith('copies.check.')) };
+    const resumed = new Driver();
+    resumed.s = migrateCampaign(legacy).state;
+    expect(visible(resumed, alignments)).toEqual(['copies-alignment-editions']);
+    resumed.run({ type: 'CompareCopy', edition: 'press' });
+    expect(resumed.done('copies.check.press')).toBe(true);
+    expect(resumed.done('copies.check.landing')).toBe(true);
+    expect(resumed.done('copies.compare')).toBe(true);
+    expect(resumed.s.flags['copies.alignment']).toBe('editions');
+    expect(resumed.p.credit).toEqual({});
   });
 
   it.each([
@@ -68,6 +95,10 @@ describe('The Missing Tuesday', () => {
     d.s.mapId = press;
     d.run({ type: 'CompareCopy', edition: 'press' });
     d.talk(printer, align);
+    const label = response === 'reprint' ? 'copies-alignment-editions' : 'copies-alignment-lines';
+    expect(visible(d, alignments)).toEqual([label]);
+    expect(MAPS[press].interactables.find((prop) => prop.id === label)?.text).toContain(
+      response === 'reprint' ? 'where each line first disappeared' : 'The Tuesday clause is pinned');
     d.s.mapId = landing;
     d.talk(keeper, trace);
     expect(visible(d, responseProps)).toEqual([]);

@@ -16,6 +16,8 @@ node tools/smoke-worlds.mjs http://127.0.0.1:4173/
 
 The script starts a fresh game in a disposable Chromium profile. It uses the checkout’s map registry and the game’s debug entry to start each scene at its registered spawn, then checks for a rendered floor, a non-blank frame, registered prop art and a short walk through the real pathfinder. With a separate built checkout, pass its directory as the second argument. Pass `maps` or `access` as a third argument to run either group by itself. [Smoke runner](../tools/smoke-worlds.mjs)
 
+On a shared test machine, record an initial timeout and the last observed scene state. If the player or fade was still moving, rerun with `KG_BROWSER_WAIT_SCALE=4` to give each wait four times its ordinary deadline. The runner reports the chosen factor. The elapsed hour in `soak`, game speed and pass conditions use their ordinary settings.
+
 Use `stress` to compare the live scene against the map registry and to exercise solid edges, diagonal corners and pointer targets. It includes an accelerated hour at the Nexus wall and a live Ferry tab switch. Use `portal` to replay the held-key return from Emberford with the two prerequisites staged, or `focus` for the Ferry tab switch on its own. Use `soak` for a full hour of actual Chromium input with one continuously held key. The soak samples position, collision, animation and footstep calls while the browser advances, then checks that movement resumes after releasing the key. `KG_SOAK_MINUTES` allows a shorter run. The `guidance` mode checks the local four-clue sequence at mobile size and continues the same workbench trial. [Stress runner](../tools/smoke-navigation.mjs) · [Guidance runner](../tools/smoke-guidance.mjs)
 
 ## Integrated preview
@@ -339,3 +341,20 @@ The Chromium navigation sweep covered 125 maps, 71,149 tiles, 1,497 sampled rout
 ### Startup with delayed sound
 
 Fresh headless Firefox ESR 153.5.1 reached the opening text on the previous and five-investigation builds, then waited on audio decoding through a 60-second observation. In a diagnostic build, all 37 files finished downloading and the 14 sound effects were still processing. The startup path now builds the world from the art and continues loading effects in the background. [Startup scene](../src/scenes/BootScene.ts)
+
+### Repair evidence, thread and the next reader
+
+From a fresh Nexus save, Chromium turned the two trial inserts, cancelled an input during rotation, kept the first fit across a page reload and checked the separate dated repair order. Play reached the cutter's repeat pattern or the repairer's open seam and used all four Lumen clues in each phase. At the Sea, after staging the earlier chapter gate, players kept an inner tray run that stopped, retied the cord and checked the outer turn. The two guides reached their own harbour receivers. [Corner tests](../tests/fourth-corner.test.ts) · [Thread tests](../tests/thread-bend.test.ts)
+
+At Emberford, the player checked the blue-light rumour with the porter and ferry account. The public book got a sightline map. Reopening the slip and sending it to Tova took that map out of the public book and offered a near-bank walk at the landing. Both handovers appeared in the diary after a page reload. The fixture used adjacent-tile positioning and staged travel to both places. The tests exercise all five reports, both destinations, legacy completions and equal credit. [Rumour handoffs](../tests/rumour-handoffs.test.ts)
+
+### Crate results and the ferry marker
+
+Use `fieldgames` to replay the revealed crates and Tova’s twenty-boat graph at 320 and 390 CSS pixels with 175% text. The smoke opens the two field games through the game UI, chooses a crate, and compares an unmarked voyage with a high prediction entered by keyboard. It checks the actual title, Close control, words inside each crate, bar positions and SVG label bounds. The movement and story-gate checks run separately. [Field game smoke](../tools/smoke-fieldgames.mjs)
+
+The earlier integrated build clipped the words on two empty crates after the reveal. Its ferry graph also placed the player’s high prediction at the height of the largest observed boat, with the label beyond the graph’s top edge. The revised crates give their words room to wrap. The graph gives the prediction and every observed boat the same passenger scale. [Field game rules](../src/domain/fieldgames.ts)
+
+
+### A reader changes desks during the same visit
+
+Run `node tools/smoke-worlds.mjs URL CHECKOUT cast` against a production build. The test supplies the signed maize folio and queues an approach to Neris. It files the folio through the Civic Callboard dialogue, checks both collision footprints and the abandoned click, and repeats with the Guardian on the new arrival tile. It also checks the authored order of two nearby Emberford characters. The stress mode includes this case. [Cast and movement checks](../tools/smoke-navigation.mjs)

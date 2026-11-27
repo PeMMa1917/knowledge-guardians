@@ -1,0 +1,50 @@
+kg-concept-editor {
+  display: block;
+  position: relative;
+  min-width: 0;
+  border-radius: 8px;
+}
+
+kg-concept-editor[hidden] { display: none; }
+.free kg-concept-editor { flex: 1; min-width: min(12rem, 100%); }
+.free kg-concept-editor > input { min-width: 0; }
+
+.concept-editor-control {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.concept-editor-control, .concept-editor-ink {
+  font-kerning: none;
+  font-variant-ligatures: none;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+}
+
+.concept-editor-ink {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* A stroke thickens the matched letters while keeping their advances aligned with the native caret. */
+.concept-editor-ink .concept-term {
+  font-weight: inherit;
+  -webkit-text-stroke: .028em currentColor;
+  paint-order: stroke fill;
+}
+
+kg-concept-editor.is-marked { background: var(--panel-2); }
+.is-marked > .concept-editor-control {
+  background: transparent;
+  color: transparent;
+  caret-color: var(--ink);
+}
+
+.is-marked > .concept-editor-control::selection { color: HighlightText; background: Highlight; }
+
+@media (forced-colors: active) {
+  .concept-editor-ink { visibility: hidden; }
+  .is-marked > .concept-editor-control { color: CanvasText; background: Canvas; caret-color: auto; }
+}

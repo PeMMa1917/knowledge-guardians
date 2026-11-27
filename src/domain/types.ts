@@ -123,6 +123,7 @@ export interface SourceRecord {
     container: string;
     author?: string;          // filed surname first, as it appears in the entry
     workDate?: string;        // original creation date of an artwork
+    repository?: string;      // physical collection when the online container is separate
     showAccessDate?: boolean;
   };
 }
@@ -388,7 +389,9 @@ export interface GlossaryEntry {
   match: string[];
   /** Plain explanation in our own words (no copied course wording). */
   text: string;
-  /** Examples from play: the first whose condition holds is shown. {flag:name} shows a flag's value. */
+  /** A sourced word history, available on demand. */
+  history?: { note: string; url: string };
+  /** Examples from play in display order. An unconditional example is a fallback for a new player. */
   examples: { if?: Condition; text: string }[];
 }
 
@@ -590,7 +593,7 @@ export type PuzzleRecord = {
    * shown, never graded: only the reflection has a fair answer.
    */
   | { type: 'forecast'; choices: number[]; notes: string[]; days: ForecastDay[]; reflect: { text: string; honest: boolean; why: string }[] }
-  | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string }[] }
+  | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string; delivery?: string }[] }
 );
 
 export interface ForecastDay { baro: 'falling' | 'steady' | 'rising'; clouds: 'low' | 'high' | 'none'; birds: 'low' | 'high'; rain: boolean; almanac: number }
@@ -769,8 +772,8 @@ export interface ContentPack {
 // State
 // ---------------------------------------------------------------------------
 
-export const CAMPAIGN_SCHEMA = 5;
-export const PERMANENT_SCHEMA = 4;
+export const CAMPAIGN_SCHEMA = 7;
+export const PERMANENT_SCHEMA = 5;
 
 export interface ShowdownLogLine { who: 'player' | 'opponent' | 'crowd' | 'witness'; text: string; why?: string }
 
@@ -814,6 +817,21 @@ export interface ForgeState {
 
 export type DiaryEntryKind = 'quest' | 'choice' | 'experience';
 
+export const DIARY_EVENT_KINDS = ['arrival', 'route', 'conversation', 'sign', 'inspection', 'choice', 'tool', 'finding', 'correction', 'quest'] as const;
+export type DiaryEventKind = typeof DIARY_EVENT_KINDS[number];
+export const DIARY_EVENT_OUTCOMES = ['tried', 'checked', 'changed', 'blocked'] as const;
+
+/** Reference to what happened in play. The key identifies the action across repeat entries. */
+export interface DiaryEvent {
+  kind: DiaryEventKind;
+  key: string;
+  ref: string;
+  /** Single quest step completed by the command that recorded this action. */
+  completedObjective?: string;
+  sourceIds?: string[];
+  outcome?: typeof DIARY_EVENT_OUTCOMES[number];
+}
+
 export interface DiaryEntry {
   id: string;
   kind: DiaryEntryKind;
@@ -821,6 +839,8 @@ export interface DiaryEntry {
   text: string;
   at: string;
   mapId: string;
+  /** Entries imported from before encounter tracking may have no event metadata. */
+  event?: DiaryEvent;
 }
 
 export type DiaryNoteKind = 'note' | 'reflection' | 'question';
@@ -833,9 +853,20 @@ export interface DiaryNoteDetails {
   resolved: boolean;
 }
 
+export interface DiaryPortfolioWriting {
+  title: string;
+  text: string;
+  at: string;
+  mapId: string;
+  draft?: true;
+}
+
 export interface AdventureDiary {
   entries: DiaryEntry[];
   noteDetails: DiaryNoteDetails[];
+  reflectionResponses: Record<string, Record<string, string>>;
+  noteDraft: { kind: DiaryNoteKind; text: string; at?: string; mapId?: string } | null;
+  portfolioWriting: Record<string, DiaryPortfolioWriting>;
 }
 
 /** Everything that rolls back together when a checkpoint loads (spec 24.2). */
@@ -900,4 +931,6 @@ export interface PermanentRecord {
   skills: Record<string, string[]>;
   /** The Guardian's Ledger: active seconds and XP per day, on this device (optional; no schema change). */
   activity?: import('./ledger').Activity;
+  /** Dated local play measures and optional nickname sharing, separate from teacher progress files. */
+  leaderboard?: import('./leaderboard').LeaderboardRecord;
 }

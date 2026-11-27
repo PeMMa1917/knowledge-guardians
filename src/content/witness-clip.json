@@ -4,22 +4,77 @@
       "id": "version",
       "term": "Version",
       "match": ["version"],
+      "history": {"note": "Latin vertere meant to turn. Medieval Latin versio named a turning or change, and the word passed through French.", "url": "https://www.merriam-webster.com/dictionary/version"},
       "text": "One form a record takes. Its date or a change to its markings can distinguish it from another form.",
-      "examples": [{ "text": "The binder uses two punches and a bell time to fetch a version from the right slot." }]
+      "examples": [
+        {
+          "if": {
+            "flag": "copies.wordclip.version",
+            "eq": true
+          },
+          "text": "One punch on the early wrapper, two and a blue pocket on the later one. You clipped the marks to their dates so the binder could tell the two forms apart."
+        },
+        {
+          "if": {
+            "objective": "coast.revise"
+          },
+          "text": "At the Coast the next bell brought a headland reading the earlier notice could never have contained. The time on the correction lets a reader tell which forecast they saw."
+        },
+        {
+          "text": "The binder uses two punches and a bell time to fetch a version from the right slot."
+        }
+      ]
     },
     {
       "id": "gloss",
       "term": "Gloss",
       "match": ["gloss"],
+      "history": {"note": "The gloss at the edge of a page traces back to Greek glossa. That word could mean a tongue, a language or a word that needed explaining.", "url": "https://www.merriam-webster.com/dictionary/gloss#h3"},
       "text": "A small note that explains a word or part of a text.",
-      "examples": [{ "text": "A gloss on the wrapper tells the landing reader where the first written page begins." }]
+      "examples": [
+        {
+          "if": {
+            "flag": "copies.wordclip.gloss",
+            "eq": true
+          },
+          "text": "You folded back the guard leaf. The little explanation under the binder’s words showed where the writing began, and left the shop’s own wording available."
+        },
+        {
+          "if": {
+            "objective": "coast.clear.share"
+          },
+          "text": "At the Coast you gave “clear” two local explanations. The menders meant the tested row. The lookout meant the tower could be seen at that bell."
+        },
+        {
+          "text": "A gloss on the wrapper tells the landing reader where the first written page begins."
+        }
+      ]
     },
     {
       "id": "witness",
       "term": "Witness",
       "match": ["witness"],
+      "history": {"note": "Old English witnes could mean knowledge or testimony. It gives us the modern word for someone who can speak from experience.", "url": "https://www.merriam-webster.com/dictionary/witness"},
       "text": "A person with direct knowledge of an event, or the act of attesting to something seen.",
-      "examples": [{ "text": "The signed arrival slip says what the witness saw and leaves the contents of the parcel open." }]
+      "examples": [
+        {
+          "if": {
+            "flag": "copies.wordclip.witness",
+            "eq": true
+          },
+          "text": "The signer saw the blue pocket arrive at the second bell. You clipped the signature beside that observation and kept the line for the contents empty."
+        },
+        {
+          "if": {
+            "flag": "ember.circle.witness",
+            "eq": true
+          },
+          "text": "Standing where Havra watched, you could see the upper landing and the wall in front of the lower one. Her signed sighting carried as far as the view from that spot."
+        },
+        {
+          "text": "The signed arrival slip says what the witness saw and leaves the contents of the parcel open."
+        }
+      ]
     }
   ],
   "sources": [

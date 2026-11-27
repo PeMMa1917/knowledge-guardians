@@ -10,10 +10,13 @@ import './teacher.css';
 import { teacherContent as pack } from 'virtual:kg-teacher-content';
 import { AOK_NAMES, ATL_NAMES, CONCEPT_NAMES, PROFILE_NAMES, SUBJECTS } from '../domain/curriculum';
 import { clear, h } from '../ui/dom';
+import { leaderboardPanel } from '../ui/leaderboard';
 import { STAGE_LABEL, type SkillStage } from '../domain/skills';
 import { latestPerStudent, readProgress, subjectCsv, summarise, type ProgressFile } from './report';
 
 const root = document.getElementById('teacher')!;
+const leaderboard = h('details', { class: 'leaderboard-teacher panel no-print' },
+  h('summary', {}, h('strong', {}, 'Leaderboard (optional score files)')), leaderboardPanel([]));
 let files: ProgressFile[] = [];
 const problems: string[] = [];
 let dismissed: string[] = [];
@@ -84,6 +87,7 @@ function dashboard(): void {
       h('p', { class: 'note no-print' }, 'Students save a progress file in the game (Menu, "Share with my teacher") and give it to you. The files stay in this browser tab. Nothing is uploaded or stored. Close the tab to remove them.'),
       problems.length ? h('ul', { class: 'problems', role: 'alert' }, ...problems.map((p) => h('li', {}, p))) : ''),
     guide(),
+    leaderboard,
   );
   if (!students.length) { root.append(h('p', {}, 'No progress files yet.'), activities([])); return; }
 

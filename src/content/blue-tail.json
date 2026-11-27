@@ -1,0 +1,3108 @@
+{
+ "items": [
+  {
+   "id": "item.blue-tail",
+   "name": "Blue-tail dispatch strip",
+   "historicalLabel": "fictional-world",
+   "art": "blue-tail.strip",
+   "description": "A narrow return strip caught on the Nexus stair. The loose blue thread passes through two holes. Keep the original for the press proof and the dispatch counterfoil."
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "tail.stair",
+   "historicalLabel": "fictional-world",
+   "text": "A cord ticks against the stair rail. A folded warning hangs by one torn hole. A hand reaches through the rail from below, then lets go when you crouch. The stair above you is dark.",
+   "speaker": "narrator",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Catch the strip before it falls.",
+     "if": {
+      "not": {
+       "flagSet": "tail.started"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "tail.started",
+       "value": true
+      },
+      {
+       "giveItem": "item.blue-tail"
+      }
+     ],
+     "next": "tail.find"
+    },
+    {
+     "text": "Leave the strip caught on the rail."
+    }
+   ],
+   "motif": "first-light"
+  },
+  {
+   "id": "tail.find",
+   "historicalLabel": "fictional-world",
+   "text": "Oh, good. I had a whole speech for the drain. The porter borrowed an old warning from the archive for tonight. Now she’s off looking for our runner. Can you see which end the knot was tied on?",
+   "speaker": "kip-arden",
+   "options": [
+    {
+     "text": "Turn it over. Show Kip the two holes.",
+     "if": {
+      "item": "item.blue-tail"
+     },
+     "effects": [
+      {
+       "setFlag": "tail.turned",
+       "value": true
+      }
+     ],
+     "next": "tail.inside"
+    },
+    {
+     "text": "Bring it up to the landing first."
+    }
+   ]
+  },
+  {
+   "id": "tail.inside",
+   "historicalLabel": "fictional-world",
+   "text": "One hole is torn open. Two stitches still hold the other margin shut. Below them are four words: “East stair unsafe at dusk.” A little square for a return mark lies empty.",
+   "speaker": "narrator",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Keep the tear and the stitching separate.",
+     "if": {
+      "item": "item.blue-tail"
+     },
+     "next": "tail.interpret"
+    },
+    {
+     "text": "Fold it away for later."
+    }
+   ]
+  },
+  {
+   "id": "tail.interpret",
+   "historicalLabel": "fictional-world",
+   "text": "So a copy lost the bottom line. Or someone folded a name inside the stitching. Both would leave the square empty. I hate when two things do that.",
+   "speaker": "kip-arden",
+   "claimKind": "interpretation",
+   "options": [
+    {
+     "text": "Track a lost line at the presses.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "flag": "tail.turned",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.hunch",
+       "value": "cut"
+      }
+     ],
+     "next": "tail.plan"
+    },
+    {
+     "text": "Track a held name at the desks.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "flag": "tail.turned",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.hunch",
+       "value": "held"
+      }
+     ],
+     "next": "tail.plan"
+    },
+    {
+     "text": "Keep both open while we get help.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "flag": "tail.turned",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.hunch",
+       "value": "both"
+      }
+     ],
+     "next": "tail.plan"
+    }
+   ]
+  },
+  {
+   "id": "tail.plan",
+   "historicalLabel": "fictional-world",
+   "text": "The runner may be late. Ise can meet them at the desk, or I can stay at the stair with a warning anybody can use. If I stay, I miss the runner on the other side. The desk shuts when she leaves.",
+   "speaker": "kip-arden",
+   "claimKind": "value",
+   "options": [
+    {
+     "text": "Pin the warning here, with the time and no names.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "flagSet": "tail.hunch"
+       },
+       {
+        "not": {
+         "flagSet": "tail.start-route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.start-route",
+       "value": "rail"
+      },
+      {
+       "journal": "j.tail.begin.rail"
+      }
+     ],
+     "next": "tail.pinned"
+    },
+    {
+     "text": "Leave the whole strip with Ise and ask for a hand-off.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "flagSet": "tail.hunch"
+       },
+       {
+        "not": {
+         "flagSet": "tail.start-route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.start-route",
+       "value": "desk"
+      },
+      {
+       "journal": "j.tail.begin.desk"
+      }
+     ],
+     "next": "tail.held"
+    },
+    {
+     "text": "Keep the stair as it is for now."
+    }
+   ]
+  },
+  {
+   "id": "tail.pinned",
+   "historicalLabel": "fictional-world",
+   "text": "The rail gets a clean warning. Kip follows its line around the landing. “Good. I can point without telling them whose hand this was.” He puts the original back in your hand.",
+   "speaker": "kip-arden"
+  },
+  {
+   "id": "tail.held",
+   "historicalLabel": "fictional-world",
+   "text": "I can receive a runner for one bell. Set a plain arrow to the desk. I am giving the original back to you. I keep the desk number, where the next keeper can find it.",
+   "speaker": "warden-ise"
+  },
+  {
+   "id": "tail.bench",
+   "historicalLabel": "fictional-world",
+   "text": "Kip has left the folding board open for you. The strip still has one torn hole and one stitched margin.",
+   "speaker": "kip-arden",
+   "options": [
+    {
+     "text": "Turn the strip over and show Kip the old tear.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.start-route"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.turned",
+       "value": true
+      }
+     ],
+     "next": "tail.inside"
+    },
+    {
+     "text": "Return to the stair later."
+    }
+   ]
+  },
+  {
+   "id": "tail.early.rail",
+   "historicalLabel": "fictional-world",
+   "text": "A porter reads the warning and takes the lit passage around the stairs. “That’s a time I can work with.” Kip sees an empty hook where the one runner should have checked in.",
+   "speaker": "kip-arden",
+   "options": [
+    {
+     "text": "Move the warning down to a carrier’s eye level.",
+     "if": {
+      "not": {
+       "flagSet": "tail.first-reader"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "tail.first-reader",
+       "value": "rail"
+      }
+     ],
+     "next": "tail.early.rail.receipt"
+    },
+    {
+     "text": "Leave the notice where it is."
+    }
+   ]
+  },
+  {
+   "id": "tail.early.rail.receipt",
+   "historicalLabel": "fictional-world",
+   "text": "From behind the box, only the lower half shows. The time and the lit passage are both in that half now. The empty return hook is still behind you.",
+   "speaker": "kip-arden"
+  },
+  {
+   "id": "tail.early.desk",
+   "historicalLabel": "fictional-world",
+   "text": "The runner finds Ise and marks a safe arrival on the inside of her fold. A porter calls from the far stair. She can reach one of them before the bell.",
+   "speaker": "warden-ise",
+   "options": [
+    {
+     "text": "Take the porter the desk number without opening the fold.",
+     "if": {
+      "not": {
+       "flagSet": "tail.first-reader"
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "tail.first-reader",
+       "value": "desk"
+      }
+     ],
+     "next": "tail.early.desk.receipt"
+    },
+    {
+     "text": "Leave the folded receipt with Ise."
+    }
+   ]
+  },
+  {
+   "id": "tail.early.desk.receipt",
+   "historicalLabel": "fictional-world",
+   "text": "The runner’s mark stays in the fold. The porter repeats the desk number back to you. You hear the next bell while the rail is still bare.",
+   "speaker": "warden-ise"
+  },
+  {
+   "id": "tail.nile",
+   "historicalLabel": "fictional-world",
+   "text": "Look at the mark on this fold, then look at yours. A loop on the outside means “send”. The inside loop means somebody opened it here. The marks look the same on a flat copy.",
+   "speaker": "nile-leila",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Turn the receiving fold and mark which loop is on the inside.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.nile"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.nile",
+       "value": true
+      },
+      {
+       "journal": "j.tail.nile"
+      }
+     ],
+     "next": "tail.nile.heard"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "tail.nile.heard",
+   "historicalLabel": "fictional-world",
+   "text": "Your strip has the sending loop. If someone arrived, there is another trace somewhere. I can teach a runner the knot without asking who sent you.",
+   "speaker": "nile-leila"
+  },
+  {
+   "id": "tail.cold",
+   "historicalLabel": "fictional-world",
+   "text": "This sleeve came from a closed drawer. The red line on the sleeve records when the drawer moved. The two uncut thread ends hold a leaf here. I can show you the sleeve. The leaf stays closed.",
+   "speaker": "nima-fenner",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Check the thread ends and copy just the sleeve’s movement mark.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.cold"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.cold",
+       "value": true
+      },
+      {
+       "journal": "j.tail.cold"
+      }
+     ],
+     "next": "tail.cold.heard"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "tail.cold.heard",
+   "historicalLabel": "fictional-world",
+   "text": "The leaf is still here. The drawer moved when the red line says, and its contents can stay private. My late shift can follow the drawer if they need to.",
+   "speaker": "nima-fenner"
+  },
+  {
+   "id": "tail.coast",
+   "historicalLabel": "fictional-world",
+   "text": "One slate says dusk. One says first bell. See the two pinholes for the seaward watch? The dusk slate was hung on shore before the boat line slipped. First bell is when the crew could look again.",
+   "speaker": "coast-signalkeeper",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Hang each slate back on its own watch pin.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.coast"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.coast",
+       "value": true
+      },
+      {
+       "journal": "j.tail.coast"
+      }
+     ],
+     "next": "tail.coast.heard"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "tail.coast.heard",
+   "historicalLabel": "fictional-world",
+   "text": "I can tell the night crew when to check. Between those times I have a loose rope and no sighting. A weather slate won’t tell you what happened off the watch.",
+   "speaker": "coast-signalkeeper"
+  },
+  {
+   "id": "tail.forest.bend",
+   "historicalLabel": "fictional-world",
+   "text": "From the bend, the white post stays in view. Reed tips hide the low shelf. In the book, the walker drew a line through the whole row.",
+   "speaker": "narrator",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Mark the post visible and the low shelf screened.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.forest.bend"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.forest.bend",
+       "value": true
+      }
+     ],
+     "next": "tail.forest.bend.done"
+    },
+    {
+     "text": "Walk on without changing the book."
+    }
+   ]
+  },
+  {
+   "id": "tail.forest.bend.done",
+   "historicalLabel": "fictional-world",
+   "text": "The new mark leaves a gap at the shelf. You can try the other line through the reeds.",
+   "speaker": "narrator"
+  },
+  {
+   "id": "tail.forest",
+   "historicalLabel": "fictional-world",
+   "text": "This side sees the low shelf. Roots hide the white post. At the bend you could see the post. If a watcher at either spot leaves a whole row blank, it tells me who had the book. The gap still needs an eye.",
+   "speaker": "forest-naturalist",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Join the two sight marks and keep the only unchecked interval open.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.forest"
+        }
+       },
+       {
+        "flag": "tail.forest.bend",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.forest",
+       "value": true
+      },
+      {
+       "journal": "j.tail.forest"
+      }
+     ],
+     "next": "tail.forest.heard"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "tail.forest.heard",
+   "historicalLabel": "fictional-world",
+   "text": "I’ll put the next watcher where both stations can hand over. A dry boot or a wet boot still gives us no time of arrival.",
+   "speaker": "forest-naturalist"
+  },
+  {
+   "id": "tail.metal",
+   "historicalLabel": "fictional-world",
+   "text": "Here is a shallow slot. Here is a deeper one next to it. I use the same blank in both. At full pull the shallow slot catches the doubled seam. It can lift a page without taking its lower line.",
+   "speaker": "metal-inspector",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Pull the same practice strip through both slots.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.metal"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.metal",
+       "value": true
+      },
+      {
+       "journal": "j.tail.metal"
+      }
+     ],
+     "next": "tail.metal.heard"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "tail.metal.heard",
+   "historicalLabel": "fictional-world",
+   "text": "One comes out whole. One leaves a tear along the fold. Your original has a tear too. That matches something the slot can do. It doesn’t tell me which bench anyone used on yours.",
+   "speaker": "metal-inspector"
+  },
+  {
+   "id": "tail.copies.proof",
+   "historicalLabel": "fictional-world",
+   "text": "The press proof ends before the ruled foot. The same small split on the letter E appears on a runner’s copy. The runner’s margin is sewn through two intact holes. Its clock mark is later.",
+   "speaker": "copies-presskeeper",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Use the blue tail to align the torn edge with the press proof.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.copies.cut"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.copies.cut",
+       "value": true
+      }
+     ],
+     "next": "tail.copies.cut"
+    },
+    {
+     "text": "Leave the two sheets loose."
+    }
+   ]
+  },
+  {
+   "id": "tail.copies.cut",
+   "historicalLabel": "fictional-world",
+   "text": "That split E passes down with the copy. The press frame can explain the missing edge. It can’t explain the stitches on the runner’s later fold. Those went in after someone withdrew the sheet.",
+   "speaker": "copies-presskeeper"
+  },
+  {
+   "id": "tail.copies",
+   "historicalLabel": "fictional-world",
+   "text": "You matched the torn edge. Here’s the runner’s crease under it. There’s room for a heading below the cut in one. There’s a whole line inside the other. The stitches pass through the paper where the public copy is already dry.",
+   "speaker": "copies-presskeeper",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Clip the press and runner proofs in date order, with the folds closed.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.copies"
+        }
+       },
+       {
+        "flag": "tail.copies.cut",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.copies",
+       "value": true
+      },
+      {
+       "journal": "j.tail.copies"
+      }
+     ],
+     "next": "tail.copies.heard"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "tail.copies.heard",
+   "historicalLabel": "fictional-world",
+   "text": "Two records can lack the same line for different reasons. I can sign the order you saw. I can’t sign who held the runner’s copy. Ask a desk that keeps both dispatch and return marks.",
+   "speaker": "copies-presskeeper"
+  },
+  {
+   "id": "tail.sea",
+   "historicalLabel": "fictional-world",
+   "text": "The main chart has open water here. The crew call this skinny turn Needle’s Lee. I can lead you from the east rope to the dry peg before a quick boat gets here. We disagree about whose name to put by it.",
+   "speaker": "sea-harbourkeeper",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Follow the crew’s two landmarks and mark the known part on a liftable card.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.sea"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.sea",
+       "value": true
+      },
+      {
+       "journal": "j.tail.sea"
+      }
+     ],
+     "next": "tail.sea.heard"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "tail.sea.heard",
+   "historicalLabel": "fictional-world",
+   "text": "We found both. Write their local name on my liftable card. Our dry peg is enough for this turn. Send a larger boat along the surveyed route.",
+   "speaker": "sea-harbourkeeper"
+  },
+  {
+   "id": "tail.stage.rear",
+   "historicalLabel": "fictional-world",
+   "text": "The wings block you from seeing the cue. You hear “returned” just as a white card goes up across the stage. Someone behind you calls it a return receipt.",
+   "speaker": "narrator",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Repeat the words as heard from this end of the gallery.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.stage.words"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.stage.words",
+       "value": true
+      }
+     ],
+     "next": "tail.stage.echo"
+    },
+    {
+     "text": "Keep the programme folded."
+    }
+   ]
+  },
+  {
+   "id": "tail.stage.echo",
+   "historicalLabel": "fictional-world",
+   "text": "“Returned to the stand,” the host calls back from the other side. You had missed the last three words. Follow the cue to the front rail.",
+   "speaker": "narrator"
+  },
+  {
+   "id": "tail.stage",
+   "historicalLabel": "fictional-world",
+   "text": "That’s a cue card. It turns an actor. These people in the back can’t see the turn. I’ll give the caller a line that reaches their seats. No one wants a second bell just to explain the first one.",
+   "speaker": "stage-host",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Give the caller the words “Prop returned to the stand”.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.stage"
+        }
+       },
+       {
+        "flag": "tail.stage.words",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.stage",
+       "value": true
+      },
+      {
+       "journal": "j.tail.stage"
+      }
+     ],
+     "next": "tail.stage.heard"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "tail.stage.heard",
+   "historicalLabel": "fictional-world",
+   "text": "The person behind the wings stops looking for their runner. The play goes on. I suppose the prop will have to disappoint them by singing in the next act.",
+   "speaker": "stage-host"
+  },
+  {
+   "id": "tail.market",
+   "historicalLabel": "fictional-world",
+   "text": "A closed tail means “send the warning out, hold the voice inside.” I enforced that rule. I watched helpers learn to file the whole packet away instead. That would keep your public rail empty for years. I can sign what I did. I won’t claim I handled this strip.",
+   "speaker": "rook-tamsin",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Accept Rook’s signed account and leave a space for the counterfoil.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.market"
+        }
+       },
+       {
+        "flag": "rook.joined",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.market",
+       "value": true
+      },
+      {
+       "journal": "j.tail.market"
+      }
+     ],
+     "next": "tail.market.heard"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "tail.market.heard",
+   "historicalLabel": "fictional-world",
+   "text": "Fine. Put my part in ink. Put the rest in pencil if you must. If I told you the name here, they would send me the apology to deliver, too.",
+   "speaker": "rook-tamsin"
+  },
+  {
+   "id": "tail.water",
+   "historicalLabel": "fictional-world",
+   "text": "The Harrowmere order is on its own shelf. This is a different record, from the night the east stair closed. Fit the torn edge to counterfoil B17. Both cuts share that fork. The inside reads “Warn at dusk. Return name to keeper.” The dispatch mark has no matching arrival below it.",
+   "speaker": "water-keeper",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Join B17 at the tear and copy only its public instruction.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.water"
+        }
+       },
+       {
+        "flag": "harrowmere.found",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.water",
+       "value": true
+      },
+      {
+       "journal": "j.tail.water"
+      }
+     ],
+     "next": "tail.water.heard"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "tail.water.heard",
+   "historicalLabel": "fictional-world",
+   "text": "It is the same strip. We can now say what the keeper was asked to hold. Nobody can tell from this whether that runner arrived. There’s a second issue: a closed warning can protect a name and still leave a neighbour on the stairs.",
+   "speaker": "water-keeper"
+  },
+  {
+   "id": "tail.civic",
+   "historicalLabel": "fictional-world",
+   "text": "The outgoing line was checked, so the desk crossed out the whole request. Here is the queue copy: one person still needed to know how to reach the stair. When I fold this line over, it drops them from the walk-up sheet.",
+   "speaker": "civic-clerk",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Separate the marked dispatch from the open walk-up request.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.civic"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.civic",
+       "value": true
+      },
+      {
+       "journal": "j.tail.civic"
+      }
+     ],
+     "next": "tail.civic.heard"
+    },
+    {
+     "text": "Leave it for now."
+    }
+   ]
+  },
+  {
+   "id": "tail.civic.heard",
+   "historicalLabel": "fictional-world",
+   "text": "The outbound line stays checked. Tonight the person at the window can still find the walk-up request. A raised hand reaches my worker before a signature arrives.",
+   "speaker": "civic-clerk"
+  },
+  {
+   "id": "tail.voices",
+   "historicalLabel": "fictional-world",
+   "text": "I can play the part she allowed people to hear. She helped carry the warning when the stair closed. After that, strangers waited outside her work for names. She’ll give us the warning again if the house stays out of it.",
+   "speaker": "voices-steward",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Ask what the witness permits us to repeat.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.voices"
+        }
+       }
+      ]
+     },
+     "next": "tail.voices.offer"
+    },
+    {
+     "text": "Keep the playback shutter closed."
+    }
+   ]
+  },
+  {
+   "id": "tail.voices.offer",
+   "historicalLabel": "fictional-world",
+   "text": "“The light is on in the west passage at dusk. Ask the keeper if you need hands.” She approved those words. The steward leaves the name sleeve tied. You can keep the instruction to speak those words with it.",
+   "speaker": "voices-steward",
+   "claimKind": "value",
+   "options": [
+    {
+     "text": "Take the approved line and leave the tied name sleeve here.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.voices"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.voices",
+       "value": true
+      },
+      {
+       "journal": "j.tail.voices"
+      }
+     ],
+     "next": "tail.voices.heard"
+    },
+    {
+     "text": "Leave both at the listening desk."
+    }
+   ]
+  },
+  {
+   "id": "tail.voices.heard",
+   "historicalLabel": "fictional-world",
+   "text": "You can give someone a way round without asking them to take the risk she did. Take the approved line to the Council if you go. She wants the next porter to find the light.",
+   "speaker": "voices-steward"
+  },
+  {
+   "id": "tail.island",
+   "historicalLabel": "fictional-world",
+   "text": "Use the two wooden feet on this board. One has no burden. One carries what the next porter has to bring. The first fits under the practice gate at dusk. Both weights can use the later gate when there’s a hand at the catch.",
+   "speaker": "island-planner",
+   "claimKind": "simulation",
+   "options": [
+    {
+     "text": "Run both wooden feet on the dusk gate and later gate.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "not": {
+         "flagSet": "tail.island.tested"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.island.tested",
+       "value": true
+      }
+     ],
+     "next": "tail.island.model"
+    },
+    {
+     "text": "Return to the keeper’s position.",
+     "if": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "flag": "tail.island.tested",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "tail.island"
+        }
+       }
+      ]
+     },
+     "next": "tail.island.model"
+    },
+    {
+     "text": "Leave both wooden markers where they are."
+    }
+   ]
+  },
+  {
+   "id": "tail.island.model",
+   "historicalLabel": "fictional-world",
+   "text": "The loaded foot stopped at dusk. The model answers a clearance question under this one layout. It cannot tell us who will come. Move the little keeper to the catch if you want the second opening to work.",
+   "speaker": "island-planner",
+   "claimKind": "simulation",
+   "options": [
+    {
+     "text": "Move the practice keeper and leave the dusk limitation on the scale.",
+     "if": {
+      "all": [
+       {
+        "flag": "tail.island.tested",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "tail.island"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.island",
+       "value": true
+      },
+      {
+       "journal": "j.tail.island"
+      }
+     ],
+     "next": "tail.island.heard"
+    },
+    {
+     "text": "Leave the markers here and come back."
+    }
+   ]
+  },
+  {
+   "id": "tail.island.heard",
+   "historicalLabel": "fictional-world",
+   "text": "I can staff the catch myself for one tide. I’ll swap with someone after. Better than giving the long route to everyone with a load just because our little board worked once.",
+   "speaker": "island-planner"
+  },
+  {
+   "id": "tail.council.missing",
+   "historicalLabel": "fictional-world",
+   "text": "Set the original on the first rail. I’ll check three places for you. The Water keeper may have its counterfoil. A printer or Rook can put the omission in context. We’ll use only any warning words the listening desk gives you.",
+   "speaker": "council-reader",
+   "options": [
+    {
+     "text": "Keep the Council rail open until the source trail is ready."
+    }
+   ]
+  },
+  {
+   "id": "tail.council",
+   "historicalLabel": "fictional-world",
+   "text": "We can follow the forked tear to B17. The old shelf field gives us a dispatch and a held name. This blank doesn’t give us an arrival. I have the warning she agreed we could repeat. The next runner is coming before dusk.",
+   "speaker": "council-reader",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Put the matched edges on one rail and the approved words on the other.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "item": "item.blue-tail"
+           },
+           {
+            "flag": "tail.water",
+            "eq": true
+           },
+           {
+            "flag": "tail.voices",
+            "eq": true
+           },
+           {
+            "any": [
+             {
+              "flag": "tail.copies",
+              "eq": true
+             },
+             {
+              "flag": "tail.market",
+              "eq": true
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "not": {
+           "flagSet": "tail.decision"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "tail.hunch",
+        "eq": "cut"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.council.tested",
+       "value": true
+      }
+     ],
+     "next": "tail.council.context.cut"
+    },
+    {
+     "text": "Put the matched edges on one rail and the approved words on the other.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "item": "item.blue-tail"
+           },
+           {
+            "flag": "tail.water",
+            "eq": true
+           },
+           {
+            "flag": "tail.voices",
+            "eq": true
+           },
+           {
+            "any": [
+             {
+              "flag": "tail.copies",
+              "eq": true
+             },
+             {
+              "flag": "tail.market",
+              "eq": true
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "not": {
+           "flagSet": "tail.decision"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "tail.hunch",
+        "eq": "held"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.council.tested",
+       "value": true
+      }
+     ],
+     "next": "tail.council.context.held"
+    },
+    {
+     "text": "Put the matched edges on one rail and the approved words on the other.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "item": "item.blue-tail"
+           },
+           {
+            "flag": "tail.water",
+            "eq": true
+           },
+           {
+            "flag": "tail.voices",
+            "eq": true
+           },
+           {
+            "any": [
+             {
+              "flag": "tail.copies",
+              "eq": true
+             },
+             {
+              "flag": "tail.market",
+              "eq": true
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "not": {
+           "flagSet": "tail.decision"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "tail.hunch",
+        "eq": "both"
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.council.tested",
+       "value": true
+      }
+     ],
+     "next": "tail.council.context.both"
+    },
+    {
+     "text": "Put the matched edges on one rail and the approved words on the other.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "item": "item.blue-tail"
+           },
+           {
+            "flag": "tail.water",
+            "eq": true
+           },
+           {
+            "flag": "tail.voices",
+            "eq": true
+           },
+           {
+            "any": [
+             {
+              "flag": "tail.copies",
+              "eq": true
+             },
+             {
+              "flag": "tail.market",
+              "eq": true
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "not": {
+           "flagSet": "tail.decision"
+          }
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "tail.hunch"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.council.tested",
+       "value": true
+      }
+     ],
+     "next": "tail.council.compare"
+    },
+    {
+     "text": "Leave the evidence on the rail until later."
+    }
+   ]
+  },
+  {
+   "id": "tail.council.compare",
+   "historicalLabel": "fictional-world",
+   "text": "The press can lose a line. A desk can hold a name. Your matched fold tells us the second happened to this strip. The record still can’t say why the runner never signed. Will you keep a public route open tonight, or staff the hand-off for the person who cannot read it?",
+   "speaker": "council-reader",
+   "claimKind": "value",
+   "options": [
+    {
+     "text": "Pin the approved dusk warning and keep the return box empty.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "item": "item.blue-tail"
+         },
+         {
+          "flag": "tail.water",
+          "eq": true
+         },
+         {
+          "flag": "tail.voices",
+          "eq": true
+         },
+         {
+          "any": [
+           {
+            "flag": "tail.copies",
+            "eq": true
+           },
+           {
+            "flag": "tail.market",
+            "eq": true
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "flag": "tail.council.tested",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "tail.decision"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.decision",
+       "value": "rail"
+      },
+      {
+       "journal": "j.tail.final.rail"
+      }
+     ],
+     "next": "tail.council.rail"
+    },
+    {
+     "text": "Open a staffed hand-off with the approved words and a paired return stub.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "item": "item.blue-tail"
+         },
+         {
+          "flag": "tail.water",
+          "eq": true
+         },
+         {
+          "flag": "tail.voices",
+          "eq": true
+         },
+         {
+          "any": [
+           {
+            "flag": "tail.copies",
+            "eq": true
+           },
+           {
+            "flag": "tail.market",
+            "eq": true
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "flag": "tail.council.tested",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "tail.decision"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "tail.decision",
+       "value": "desk"
+      },
+      {
+       "journal": "j.tail.final.desk"
+      }
+     ],
+     "next": "tail.council.desk"
+    },
+    {
+     "text": "Leave both receivers ready and decide later."
+    }
+   ]
+  },
+  {
+   "id": "tail.council.rail",
+   "historicalLabel": "fictional-world",
+   "text": "I can leave the warning on the low rail after my shift. The next keeper will see the blank return space exactly as we found it. Meet our porter at the other end. The direction she can use is bigger than the empty box.",
+   "speaker": "council-reader"
+  },
+  {
+   "id": "tail.council.desk",
+   "historicalLabel": "fictional-world",
+   "text": "I can put a person beside the stub. The next reader can ask them to repeat the route. After I leave, the stub will say when the desk opens. Meet the runner at the desk and check where the copy goes.",
+   "speaker": "council-reader"
+  },
+  {
+   "id": "tail.council.resume",
+   "historicalLabel": "fictional-world",
+   "text": "The reports are in place and the two receivers stay open for your decision.",
+   "speaker": "council-reader",
+   "options": [
+    {
+     "text": "Return to the receiver choice.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "item": "item.blue-tail"
+         },
+         {
+          "flag": "tail.water",
+          "eq": true
+         },
+         {
+          "flag": "tail.voices",
+          "eq": true
+         },
+         {
+          "any": [
+           {
+            "flag": "tail.copies",
+            "eq": true
+           },
+           {
+            "flag": "tail.market",
+            "eq": true
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "flag": "tail.council.tested",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "tail.decision"
+        }
+       }
+      ]
+     },
+     "next": "tail.council.compare"
+    },
+    {
+     "text": "Leave both receivers open."
+    }
+   ]
+  },
+  {
+   "id": "tail.end.rail",
+   "historicalLabel": "fictional-world",
+   "text": "A porter reads the time from under a bundle. She checks the arrow and heads around the stair. She points to the empty return box. “Leave that for whoever can actually mark it.” The other route still has no one to hear a reply.",
+   "speaker": "council-reader",
+   "options": [
+    {
+     "text": "Check the arrow once more from under the porter’s bundle.",
+     "if": {
+      "flag": "tail.decision",
+      "eq": "rail"
+     },
+     "effects": [
+      {
+       "setFlag": "tail.finished",
+       "value": "rail"
+      }
+     ],
+     "next": "tail.end.rail.done"
+    },
+    {
+     "text": "Leave the notice as posted."
+    }
+   ]
+  },
+  {
+   "id": "tail.end.rail.done",
+   "historicalLabel": "fictional-world",
+   "text": "The carrier can see the mark. The return box stays free for another hand.",
+   "speaker": "council-reader"
+  },
+  {
+   "id": "tail.end.desk",
+   "historicalLabel": "fictional-world",
+   "text": "The runner folds over a new arrival tab and repeats the public instruction. The listener checks that the tab names only the desk. On the far rail the next visitor still has to wait for someone to come out.",
+   "speaker": "council-reader",
+   "options": [
+    {
+     "text": "Hand the next keeper the new stub with its own bell marked.",
+     "if": {
+      "flag": "tail.decision",
+      "eq": "desk"
+     },
+     "effects": [
+      {
+       "setFlag": "tail.finished",
+       "value": "desk"
+      }
+     ],
+     "next": "tail.end.desk.done"
+    },
+    {
+     "text": "Leave the paired stub with the runner."
+    }
+   ]
+  },
+  {
+   "id": "tail.end.desk.done",
+   "historicalLabel": "fictional-world",
+   "text": "The new mark stays beside the old blank. They now belong to different journeys.",
+   "speaker": "council-reader"
+  },
+  {
+   "id": "tail.nexus.rail",
+   "historicalLabel": "fictional-world",
+   "text": "Kip set the Council line low enough for a porter with a box. Ise kept the historic blank. There’s still a tiny space for a new return mark. “We have plenty of room if we stop pretending blanks take up none,” says Kip.",
+   "speaker": "kip-arden",
+   "motif": "in-the-open"
+  },
+  {
+   "id": "tail.nexus.desk",
+   "historicalLabel": "fictional-world",
+   "text": "Ise keeps a copy of the old blank strip beside tonight’s matching stub. The original stays with you. She has set two bell times for people who need a person to speak to. The low rail carries those hours and a direction to her desk.",
+   "speaker": "warden-ise",
+   "motif": "in-the-open"
+  },
+  {
+   "id": "tail.council.context.cut",
+   "historicalLabel": "fictional-world",
+   "text": "“You asked the presses first,” says Kip. “Good call about the tear. Now I see the second seam. I would have thrown that fold away to make the edges fit.”",
+   "speaker": "narrator",
+   "next": "tail.council.compare"
+  },
+  {
+   "id": "tail.council.context.held",
+   "historicalLabel": "fictional-world",
+   "text": "“You wanted a keeper’s box,” says Ise. “I understand why. See the separate press edge there? One kind of blank taught us to trust the other too easily.”",
+   "speaker": "narrator",
+   "next": "tail.council.compare"
+  },
+  {
+   "id": "tail.council.context.both",
+   "historicalLabel": "fictional-world",
+   "text": "“You left two places on your folding board,” says Kip. “The press went in one. The matched strip went in the other. I brought a third box for my ego.”",
+   "speaker": "narrator",
+   "next": "tail.council.compare"
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.tail.begin.rail",
+   "text": "The same blank fits a lost line or a held name. I put the dusk warning where anybody could use it. The return hook is still empty."
+  },
+  {
+   "id": "j.tail.begin.desk",
+   "text": "The same blank fits a lost line or a held name. I gave Ise a quiet way to meet the runner. The public rail stayed empty."
+  },
+  {
+   "id": "j.tail.nile",
+   "text": "Leila called the same shape by two jobs. I kept the strip’s dispatch loop separate from her receiving loop."
+  },
+  {
+   "id": "j.tail.cold",
+   "text": "Nima showed me that a recorded move and permission to read its contents are different. I copied only the movement mark."
+  },
+  {
+   "id": "j.tail.coast",
+   "text": "I put the timed reports back on the watches that produced them. The time between looks is still open."
+  },
+  {
+   "id": "j.tail.forest",
+   "text": "I used two real viewing positions to mark what each watcher could see and kept the gap open for another round."
+  },
+  {
+   "id": "j.tail.metal",
+   "text": "I held the strip and pull fixed and changed the slot. The shallow slot could leave a similar tear."
+  },
+  {
+   "id": "j.tail.copies",
+   "text": "I clipped the press tear and the later sewn fold in order. The later stitching survives separately from the missing line on the same-source print."
+  },
+  {
+   "id": "j.tail.sea",
+   "text": "I followed the crew’s named approach and kept its known route within the two landmarks and the tested boat size."
+  },
+  {
+   "id": "j.tail.stage",
+   "text": "I heard what the rear seats missed and changed the caller’s line. A prop returning in the play need not mean a messenger checked in."
+  },
+  {
+   "id": "j.tail.market",
+   "text": "Rook signed the rule they applied and left the origin of my particular strip open. I kept a place for its dispatch counterfoil."
+  },
+  {
+   "id": "j.tail.water",
+   "text": "Counterfoil B17 fits the original tear. It identifies this dispatch and the keeper’s instruction. The return box remains empty."
+  },
+  {
+   "id": "j.tail.civic",
+   "text": "I separated a checked dispatch from the open request at the window. The outgoing count stayed the same and the next walk-up reader remained visible."
+  },
+  {
+   "id": "j.tail.voices",
+   "text": "The witness permitted a route instruction. She kept her house and name sleeve private, and I left them with the steward."
+  },
+  {
+   "id": "j.tail.island",
+   "text": "I kept the model’s two loads separate. The later gate needed a keeper and I left the result limited to that layout."
+  },
+  {
+   "id": "j.tail.final.rail",
+   "text": "I hung the witness’s approved dusk warning and kept the unknown arrival available to check."
+  },
+  {
+   "id": "j.tail.final.desk",
+   "text": "I staffed a checkable hand-off for a new journey. The new return stub and the old blank stay separate."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH1-BLUE-TAIL",
+   "world": "WORLD-01",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "flagSet": "tail.started"
+   },
+   "objectives": [
+    {
+     "id": "tail.opening",
+     "title": "Get Kip’s warning where someone can use it.",
+     "essential": false,
+     "done": {
+      "flagSet": "tail.start-route"
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "perspective",
+       "responsibility"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "perspectives",
+       "ethics"
+      ],
+      "atl": [
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "anthropology"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "tail.early",
+     "title": "Help the next reader use the chosen warning.",
+     "essential": false,
+     "done": {
+      "flagSet": "tail.first-reader"
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "values",
+       "power"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "anthropology"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     },
+     "visible": {
+      "flagSet": "tail.start-route"
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH2-BLUE-TAIL",
+   "world": "WORLD-03",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "all": [
+     {
+      "item": "item.blue-tail"
+     },
+     {
+      "flagSet": "visited.map.nile.hall"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "tail.nile",
+     "title": "Match the knots to their sides on a receiving fold.",
+     "essential": false,
+     "done": {
+      "flag": "tail.nile",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "culture",
+       "interpretation"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "perspectives"
+      ],
+      "atl": [
+       "research",
+       "communication"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "anthropology"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH3-BLUE-TAIL",
+   "world": "WORLD-04",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "all": [
+     {
+      "item": "item.blue-tail"
+     },
+     {
+      "flagSet": "visited.map.preserved.archive"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "tail.cold",
+     "title": "Separate the custody sleeve from the held leaf.",
+     "essential": false,
+     "done": {
+      "flag": "tail.cold",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "responsibility",
+       "power"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "ethics"
+      ],
+      "atl": [
+       "research",
+       "self-management"
+      ],
+      "aoks": [
+       "HIS"
+      ],
+      "subjects": [
+       "history"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH4-BLUE-TAIL",
+   "world": "WORLD-05",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "all": [
+     {
+      "item": "item.blue-tail"
+     },
+     {
+      "flagSet": "visited.map.observatory.harbour"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "tail.coast",
+     "title": "Keep the sending and shore watches at their own times.",
+     "essential": false,
+     "done": {
+      "flag": "tail.coast",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "certainty",
+       "evidence",
+       "objectivity"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "thinking"
+      ],
+      "aoks": [
+       "NAT"
+      ],
+      "subjects": [
+       "physics"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH5-BLUE-TAIL",
+   "world": "WORLD-06",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "all": [
+     {
+      "item": "item.blue-tail"
+     },
+     {
+      "flagSet": "visited.map.forest.trail"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "tail.forest",
+     "title": "Check both positions before keeping the return gap.",
+     "essential": false,
+     "done": {
+      "flag": "tail.forest",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "explanation",
+       "certainty",
+       "perspective"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "perspectives"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "NAT"
+      ],
+      "subjects": [
+       "biology"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     },
+     "visible": {
+      "flag": "tail.forest.bend",
+      "eq": true
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH6-BLUE-TAIL",
+   "world": "WORLD-07",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "all": [
+     {
+      "item": "item.blue-tail"
+     },
+     {
+      "flagSet": "visited.map.metalworks.yard"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "tail.metal",
+     "title": "Try the same slot with a neat copy and the doubled original.",
+     "essential": false,
+     "done": {
+      "flag": "tail.metal",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "explanation",
+       "justification",
+       "objectivity"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "NAT"
+      ],
+      "subjects": [
+       "physics",
+       "design-tech"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH7-BLUE-TAIL",
+   "world": "WORLD-08",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "all": [
+     {
+      "item": "item.blue-tail"
+     },
+     {
+      "flagSet": "visited.map.copies.press"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "tail.copies",
+     "title": "Separate what the press lost from what the runner held.",
+     "essential": false,
+     "done": {
+      "flag": "tail.copies",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "explanation",
+       "interpretation",
+       "evidence",
+       "justification",
+       "certainty"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "ART"
+      ],
+      "subjects": [
+       "history",
+       "visual-arts"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "flag": "tail.copies.cut",
+      "eq": true
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH8-BLUE-TAIL",
+   "world": "WORLD-09",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "all": [
+     {
+      "item": "item.blue-tail"
+     },
+     {
+      "flagSet": "visited.map.sea.harbour"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "tail.sea",
+     "title": "Mark the lee path on the crew’s temporary card.",
+     "essential": false,
+     "done": {
+      "flag": "tail.sea",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "culture",
+       "perspective",
+       "responsibility"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "ethics"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "geography",
+       "anthropology"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH9-BLUE-TAIL",
+   "world": "WORLD-10",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "all": [
+     {
+      "item": "item.blue-tail"
+     },
+     {
+      "flagSet": "visited.map.stage.gallery"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "tail.stage",
+     "title": "Use both positions to keep an acted cue from passing as an arrival.",
+     "essential": false,
+     "done": {
+      "flag": "tail.stage",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "interpretation",
+       "perspective",
+       "responsibility",
+       "evidence"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "ART"
+      ],
+      "subjects": [
+       "lit-perf",
+       "theatre"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     },
+     "visible": {
+      "flag": "tail.stage.words",
+      "eq": true
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH10-BLUE-TAIL",
+   "world": "WORLD-11",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "all": [
+     {
+      "item": "item.blue-tail"
+     },
+     {
+      "flagSet": "visited.map.market.square"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "tail.market",
+     "title": "Take Rook’s signed account of the closed hand-off rule.",
+     "essential": false,
+     "done": {
+      "flag": "tail.market",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "power",
+       "certainty",
+       "responsibility"
+      ],
+      "framework": [
+       "ethics",
+       "scope",
+       "perspectives"
+      ],
+      "atl": [
+       "research",
+       "communication"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "global-politics"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "human",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "flag": "rook.joined",
+      "eq": true
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH11-BLUE-TAIL",
+   "world": "WORLD-12",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "all": [
+     {
+      "item": "item.blue-tail"
+     },
+     {
+      "flagSet": "visited.map.water.gatehouse"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "tail.water",
+     "title": "Align the dispatch counterfoil with the original tear.",
+     "essential": false,
+     "done": {
+      "flag": "tail.water",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "truth",
+       "justification",
+       "responsibility"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS"
+      ],
+      "subjects": [
+       "history",
+       "global-politics"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "flag": "harrowmere.found",
+      "eq": true
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH12-BLUE-TAIL",
+   "world": "WORLD-13",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "all": [
+     {
+      "item": "item.blue-tail"
+     },
+     {
+      "flagSet": "visited.map.civic.steps"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "tail.civic",
+     "title": "Keep a walk-up request after closing a dispatch entry.",
+     "essential": false,
+     "done": {
+      "flag": "tail.civic",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "power",
+       "responsibility",
+       "perspective"
+      ],
+      "framework": [
+       "scope",
+       "ethics",
+       "perspectives"
+      ],
+      "atl": [
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "MAT",
+       "HUM"
+      ],
+      "subjects": [
+       "math-ai",
+       "economics"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH13-BLUE-TAIL",
+   "world": "WORLD-14",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "all": [
+     {
+      "item": "item.blue-tail"
+     },
+     {
+      "flagSet": "visited.map.voices.listening"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "tail.voices",
+     "title": "Carry the approved line without the witness’s identity.",
+     "essential": false,
+     "done": {
+      "flag": "tail.voices",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "power",
+       "perspective",
+       "values"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives"
+      ],
+      "atl": [
+       "social",
+       "communication"
+      ],
+      "aoks": [
+       "HUM",
+       "ART"
+      ],
+      "subjects": [
+       "anthropology",
+       "lit-perf"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH14-BLUE-TAIL",
+   "world": "WORLD-15",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "all": [
+     {
+      "item": "item.blue-tail"
+     },
+     {
+      "flagSet": "visited.map.island.workshop"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "tail.island",
+     "title": "Test both loads and keep the keeper with the later gate.",
+     "essential": false,
+     "done": {
+      "flag": "tail.island",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "objectivity",
+       "responsibility",
+       "explanation"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "atl": [
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "MAT",
+       "NAT"
+      ],
+      "subjects": [
+       "math-ai",
+       "design-tech"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 3,
+       "bloom": "apply",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH15-BLUE-TAIL",
+   "world": "WORLD-16",
+   "title": "The Blue Tail",
+   "knowledgeQuestion": "How can somebody else check this hand-off?",
+   "available": {
+    "all": [
+     {
+      "item": "item.blue-tail"
+     },
+     {
+      "flagSet": "visited.map.council.gallery"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "tail.decision",
+     "title": "Choose where the checked warning can do its work.",
+     "essential": false,
+     "done": {
+      "flagSet": "tail.decision"
+     },
+     "weave": {
+      "concepts": [
+       "truth",
+       "justification",
+       "power",
+       "responsibility",
+       "perspective"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "perspectives",
+       "ethics"
+      ],
+      "atl": [
+       "research",
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "global-politics"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "all": [
+       {
+        "item": "item.blue-tail"
+       },
+       {
+        "flag": "tail.water",
+        "eq": true
+       },
+       {
+        "flag": "tail.voices",
+        "eq": true
+       },
+       {
+        "any": [
+         {
+          "flag": "tail.copies",
+          "eq": true
+         },
+         {
+          "flag": "tail.market",
+          "eq": true
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "id": "tail.return",
+     "title": "Check what the chosen Council receiver can do.",
+     "essential": false,
+     "done": {
+      "flagSet": "tail.finished"
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "values",
+       "evidence",
+       "perspective"
+      ],
+      "framework": [
+       "ethics",
+       "perspectives"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "HUM"
+      ],
+      "subjects": [
+       "global-politics",
+       "anthropology"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "apply",
+       "fink": "application",
+       "solo": "multistructural"
+      }
+     },
+     "visible": {
+      "flagSet": "tail.decision"
+     }
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.tail.opening.1",
+   "objective": "tail.opening",
+   "depth": 1,
+   "text": "Something is tapping the inside of the Nexus stair rail."
+  },
+  {
+   "id": "h.tail.opening.2",
+   "objective": "tail.opening",
+   "depth": 2,
+   "text": "Separate a torn edge from something that was folded or stitched on purpose."
+  },
+  {
+   "id": "h.tail.opening.3",
+   "objective": "tail.opening",
+   "depth": 3,
+   "text": "Turn the blue-tail strip over with Kip. The blank square has more than one possible cause."
+  },
+  {
+   "id": "h.tail.opening.4",
+   "objective": "tail.opening",
+   "depth": 4,
+   "text": "Catch the strip at the stair and turn it over. Follow the stitching or look for a cut line, then choose a public warning or a staffed desk."
+  },
+  {
+   "id": "h.tail.early.1",
+   "objective": "tail.early",
+   "depth": 1,
+   "text": "Who got help from the route you set?"
+  },
+  {
+   "id": "h.tail.early.2",
+   "objective": "tail.early",
+   "depth": 2,
+   "text": "The warning is on the low rail, or Ise has it on the inside desk."
+  },
+  {
+   "id": "h.tail.early.3",
+   "objective": "tail.early",
+   "depth": 3,
+   "text": "A carrier has a different view from your standing position. A runner can use a staffed desk number."
+  },
+  {
+   "id": "h.tail.early.4",
+   "objective": "tail.early",
+   "depth": 4,
+   "text": "Follow up at the receiver for your route. Lower the rail warning for a carrier, or take Ise’s desk number to the porter."
+  },
+  {
+   "id": "h.tail.nile.1",
+   "objective": "tail.nile",
+   "depth": 1,
+   "text": "Find the practice fold by the Nile threshold."
+  },
+  {
+   "id": "h.tail.nile.2",
+   "objective": "tail.nile",
+   "depth": 2,
+   "text": "Try viewing the open face and the inside."
+  },
+  {
+   "id": "h.tail.nile.3",
+   "objective": "tail.nile",
+   "depth": 3,
+   "text": "Leila’s same-shaped loops mean two stages, depending on where the thread crosses."
+  },
+  {
+   "id": "h.tail.nile.4",
+   "objective": "tail.nile",
+   "depth": 4,
+   "text": "Turn Leila’s receiving fold and mark the inside loop. Your strip shows the sending position."
+  },
+  {
+   "id": "h.tail.cold.1",
+   "objective": "tail.cold",
+   "depth": 1,
+   "text": "A tag may travel on the outside of a closed drawer."
+  },
+  {
+   "id": "h.tail.cold.2",
+   "objective": "tail.cold",
+   "depth": 2,
+   "text": "Nima can show the sleeve, and the inside leaf stays held."
+  },
+  {
+   "id": "h.tail.cold.3",
+   "objective": "tail.cold",
+   "depth": 3,
+   "text": "Check whether the thread ends are intact before copying a trace of the move."
+  },
+  {
+   "id": "h.tail.cold.4",
+   "objective": "tail.cold",
+   "depth": 4,
+   "text": "At the drawer sleeve, copy only the outside movement mark. The closed leaf stays with Nima."
+  },
+  {
+   "id": "h.tail.coast.1",
+   "objective": "tail.coast",
+   "depth": 1,
+   "text": "Find the two short watch slates by the signal rail."
+  },
+  {
+   "id": "h.tail.coast.2",
+   "objective": "tail.coast",
+   "depth": 2,
+   "text": "The event that produced each time matters."
+  },
+  {
+   "id": "h.tail.coast.3",
+   "objective": "tail.coast",
+   "depth": 3,
+   "text": "The dusk slate is from shore. The first-bell slate is when the crew looked again."
+  },
+  {
+   "id": "h.tail.coast.4",
+   "objective": "tail.coast",
+   "depth": 4,
+   "text": "Hang each slate on its own watch pin. Keep the interval between observations open."
+  },
+  {
+   "id": "h.tail.forest.1",
+   "objective": "tail.forest",
+   "depth": 1,
+   "text": "One record line covers a bend that has two sightlines."
+  },
+  {
+   "id": "h.tail.forest.2",
+   "objective": "tail.forest",
+   "depth": 2,
+   "text": "Start at the white post sight mark on the trail."
+  },
+  {
+   "id": "h.tail.forest.3",
+   "objective": "tail.forest",
+   "depth": 3,
+   "text": "On the far side of the reeds the low shelf appears. The post disappears."
+  },
+  {
+   "id": "h.tail.forest.4",
+   "objective": "tail.forest",
+   "depth": 4,
+   "text": "At the bend mark what the shelf hides. Check the far-side reader and keep the unchecked time visible on the joined record."
+  },
+  {
+   "id": "h.tail.metal.1",
+   "objective": "tail.metal",
+   "depth": 1,
+   "text": "Two slots with different depths sit behind the Sample Yard scale."
+  },
+  {
+   "id": "h.tail.metal.2",
+   "objective": "tail.metal",
+   "depth": 2,
+   "text": "Try the same strip through both. Keep the pull the same."
+  },
+  {
+   "id": "h.tail.metal.3",
+   "objective": "tail.metal",
+   "depth": 3,
+   "text": "The doubled seam catches in the shallow slot."
+  },
+  {
+   "id": "h.tail.metal.4",
+   "objective": "tail.metal",
+   "depth": 4,
+   "text": "Pull the same practice strip through both slots at full pull. Use the result as a possible account of the tear."
+  },
+  {
+   "id": "h.tail.copies.1",
+   "objective": "tail.copies",
+   "depth": 1,
+   "text": "The print shop kept two things that can look like a blank line."
+  },
+  {
+   "id": "h.tail.copies.2",
+   "objective": "tail.copies",
+   "depth": 2,
+   "text": "Use the carried strip at the proof edge first."
+  },
+  {
+   "id": "h.tail.copies.3",
+   "objective": "tail.copies",
+   "depth": 3,
+   "text": "The same split letter shows common print descent. The later sewn fold carries an independent trace."
+  },
+  {
+   "id": "h.tail.copies.4",
+   "objective": "tail.copies",
+   "depth": 4,
+   "text": "Match the edge at the press, then clip the two proofs in order at the drying shelf. Keep the folded text closed."
+  },
+  {
+   "id": "h.tail.sea.1",
+   "objective": "tail.sea",
+   "depth": 1,
+   "text": "Find the local crew’s temporary card near the harbourkeeper."
+  },
+  {
+   "id": "h.tail.sea.2",
+   "objective": "tail.sea",
+   "depth": 2,
+   "text": "Compare the place the crew names with the blank part of the chart."
+  },
+  {
+   "id": "h.tail.sea.3",
+   "objective": "tail.sea",
+   "depth": 3,
+   "text": "The east rope and dry peg bound the part a quick boat can use."
+  },
+  {
+   "id": "h.tail.sea.4",
+   "objective": "tail.sea",
+   "depth": 4,
+   "text": "Trace both landmarks at the card and leave the larger boat on the surveyed route."
+  },
+  {
+   "id": "h.tail.stage.1",
+   "objective": "tail.stage",
+   "depth": 1,
+   "text": "A line called from the stage changes when part is hidden."
+  },
+  {
+   "id": "h.tail.stage.2",
+   "objective": "tail.stage",
+   "depth": 2,
+   "text": "Listen at the back of the gallery before you cross."
+  },
+  {
+   "id": "h.tail.stage.3",
+   "objective": "tail.stage",
+   "depth": 3,
+   "text": "At the front, use what the cue card actually asks the actor to do."
+  },
+  {
+   "id": "h.tail.stage.4",
+   "objective": "tail.stage",
+   "depth": 4,
+   "text": "Use the rear position, then give the host a complete line that reaches the people behind the wings."
+  },
+  {
+   "id": "h.tail.market.1",
+   "objective": "tail.market",
+   "depth": 1,
+   "text": "Rook needs you to hear a specific past action before asking for a name."
+  },
+  {
+   "id": "h.tail.market.2",
+   "objective": "tail.market",
+   "depth": 2,
+   "text": "The blue-tail guide beside the Market desk opens after Rook’s own conversation."
+  },
+  {
+   "id": "h.tail.market.3",
+   "objective": "tail.market",
+   "depth": 3,
+   "text": "Rook can supply the rule and its effect. The exact strip still needs a matching counterfoil."
+  },
+  {
+   "id": "h.tail.market.4",
+   "objective": "tail.market",
+   "depth": 4,
+   "text": "Join Rook in the Market, then take their signed account at the closed guide. Keep the open space for a separate record."
+  },
+  {
+   "id": "h.tail.water.1",
+   "objective": "tail.water",
+   "depth": 1,
+   "text": "The Harrowmere order opens this drawer. It is a separate record from the stair issue."
+  },
+  {
+   "id": "h.tail.water.2",
+   "objective": "tail.water",
+   "depth": 2,
+   "text": "Find counterfoil B17 at the gatehouse and bring the blue-tail strip."
+  },
+  {
+   "id": "h.tail.water.3",
+   "objective": "tail.water",
+   "depth": 3,
+   "text": "The forked tear can link your strip to the instruction. The return line is a different claim."
+  },
+  {
+   "id": "h.tail.water.4",
+   "objective": "tail.water",
+   "depth": 4,
+   "text": "After finding the Harrowmere order, fit B17 to your strip. Copy the instruction and leave the arrival box open."
+  },
+  {
+   "id": "h.tail.civic.1",
+   "objective": "tail.civic",
+   "depth": 1,
+   "text": "Look for the request still on the walk-up edge of the Civic desk."
+  },
+  {
+   "id": "h.tail.civic.2",
+   "objective": "tail.civic",
+   "depth": 2,
+   "text": "A check on the dispatch can change how the system counts the same request."
+  },
+  {
+   "id": "h.tail.civic.3",
+   "objective": "tail.civic",
+   "depth": 3,
+   "text": "The queue copy names an unmet need after the outgoing line closes."
+  },
+  {
+   "id": "h.tail.civic.4",
+   "objective": "tail.civic",
+   "depth": 4,
+   "text": "Fold the outgoing line down and leave the walk-up request available at the window."
+  },
+  {
+   "id": "h.tail.voices.1",
+   "objective": "tail.voices",
+   "depth": 1,
+   "text": "The listening desk holds a line meant for travellers."
+  },
+  {
+   "id": "h.tail.voices.2",
+   "objective": "tail.voices",
+   "depth": 2,
+   "text": "The witness granted different permission to the instruction and her identity."
+  },
+  {
+   "id": "h.tail.voices.3",
+   "objective": "tail.voices",
+   "depth": 3,
+   "text": "Ask the steward what you may repeat. The tied sleeve does not need opening."
+  },
+  {
+   "id": "h.tail.voices.4",
+   "objective": "tail.voices",
+   "depth": 4,
+   "text": "At the playback shutter, ask what the witness permits. Take only the approved line for the Council."
+  },
+  {
+   "id": "h.tail.island.1",
+   "objective": "tail.island",
+   "depth": 1,
+   "text": "The two practice feet show different burdens."
+  },
+  {
+   "id": "h.tail.island.2",
+   "objective": "tail.island",
+   "depth": 2,
+   "text": "Hold the route board fixed while trying an unloaded and a loaded marker."
+  },
+  {
+   "id": "h.tail.island.3",
+   "objective": "tail.island",
+   "depth": 3,
+   "text": "One gate needs a keeper at the catch after dusk. The model does not predict who will arrive."
+  },
+  {
+   "id": "h.tail.island.4",
+   "objective": "tail.island",
+   "depth": 4,
+   "text": "Test both feet at the board. Move the practice keeper and leave the dusk limit where the next reader sees it."
+  },
+  {
+   "id": "h.tail.decision.1",
+   "objective": "tail.decision",
+   "depth": 1,
+   "text": "The Hall needs a route warning and a careful account of where it came from."
+  },
+  {
+   "id": "h.tail.decision.2",
+   "objective": "tail.decision",
+   "depth": 2,
+   "text": "Check the actual dispatch against the keeper’s record. Seek an independent method or witness for the closed mark."
+  },
+  {
+   "id": "h.tail.decision.3",
+   "objective": "tail.decision",
+   "depth": 3,
+   "text": "Use words the Archive of Voices can let travel. A printed tear and a sewn fold may leave a similar blank."
+  },
+  {
+   "id": "h.tail.decision.4",
+   "objective": "tail.decision",
+   "depth": 4,
+   "text": "Bring B17 from Water Commons, the approved Voices line, and either the signed press comparison or Rook’s account. Set the two rails, then choose a public notice or a staffed hand-off."
+  },
+  {
+   "id": "h.tail.return.1",
+   "objective": "tail.return",
+   "depth": 1,
+   "text": "Someone at the Council has tried your instruction."
+  },
+  {
+   "id": "h.tail.return.2",
+   "objective": "tail.return",
+   "depth": 2,
+   "text": "Check the receiver you set. Look for the low rail or the paired desk stub."
+  },
+  {
+   "id": "h.tail.return.3",
+   "objective": "tail.return",
+   "depth": 3,
+   "text": "Check actual use before assuming someone had the same view or access you did."
+  },
+  {
+   "id": "h.tail.return.4",
+   "objective": "tail.return",
+   "depth": 4,
+   "text": "Read the carrier’s rail from under the bundle or give the next keeper the newly timed stub. The matching Nexus result stays available."
+  }
+ ]
+}

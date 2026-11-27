@@ -1112,13 +1112,13 @@
   {
    "id": "tull.busy",
    "speaker": "archivist-tull",
-   "text": "Not now, Guardian. Repair the old label first. Then come and see me: I have a lock that only opens for good questions.",
+   "text": "My hands are full. Can you steady the old label first? A visitor has brought me two names for one invention. I’d like you here when I open the drawer.",
    "claimKind": "observation"
   },
   {
    "id": "tull.start",
    "speaker": "archivist-tull",
-   "text": "You repaired the label. Good. Now: an essay is a long label with an argument. Want to practise? This lock is the first step. It only opens for a good research question: one that you could really research and argue.",
+   "text": "A visitor wants to know who got the credit for the pen. I have a patent bearing one name and a pen bearing another. My first research question was ‘Who came first?’ That left half her story in the drawer. Turn the brass rings. What shall we follow?",
    "claimKind": "interpretation",
    "options": [
     {
@@ -1168,7 +1168,7 @@
   {
    "id": "tull.lockagain",
    "speaker": "archivist-tull",
-   "text": "The lock is still waiting. Three rings: a question word, what made the difference, and one case with dates.",
+   "text": "The brass rings are where you left them. Give me a case I can date and a difference worth tracking. I’ll fetch the drawer.",
    "claimKind": "interpretation",
    "options": [
     {
@@ -1185,7 +1185,7 @@
   {
    "id": "tull.plan",
    "speaker": "archivist-tull",
-   "text": "The lock is open. Now plan the search. Where would you look first? Choose as many as you like. I'll tell you what this archive holds.",
+   "text": "You have the drawer open. Which trail do you want the visitor to be able to follow? Pull a slip and I’ll tell you what sits at the other end.",
    "claimKind": "interpretation",
    "options": [
     {
@@ -1357,7 +1357,7 @@
   {
    "id": "tull.weigh",
    "speaker": "archivist-tull",
-   "text": "Use the Date Lens on all three pen exhibits in the hall. For each one, ask: what does this source show, and what can it not show?",
+   "text": "The dates have slipped off my three case cards. Take the Lens down the row with you. A date that belongs on the patent could make the workshop pen look a hundred years too old.",
    "claimKind": "observation"
   },
   {
@@ -1389,7 +1389,7 @@
   {
    "id": "tull.cite",
    "speaker": "archivist-tull",
-   "text": "Now cite. Your argument says that Loud's patent was granted in 1888. Which record do you cite for that?",
+   "text": "I’ve pencilled “granted in 1888” on this strip. A visitor is waiting to turn it over and follow the record for herself. Which slip shall I tuck underneath?",
    "claimKind": "interpretation",
    "options": [
     {
@@ -1614,7 +1614,7 @@
   {
    "id": "tull.reflect",
    "speaker": "archivist-tull",
-   "text": "Last step, and the one people skip. What changed in your thinking on this trail? There is no wrong answer. I'll put it in your portfolio, and you can add your own words there.",
+   "text": "Before I tie the bundle, leave me a line about what moved. It can be a question you’re still carrying. There’s room in your portfolio to come back to it.",
    "claimKind": "interpretation",
    "options": [
     {
@@ -1694,7 +1694,7 @@
   {
    "id": "oduya.start",
    "speaker": "keeper-oduya",
-   "text": "You followed the blade to the guild ledger. Did you notice who wrote it, and why? Every record has a hand behind it. Want to practise asking about that? There is a lock here that opens only for a good question.",
+   "text": "I keep finding the same hand at the bottom of the guild slips. Sefa can sing a whole shift that hand left out. Will you help me work out how much one writer can carry? The wooden lock holds our first lead.",
    "claimKind": "interpretation",
    "options": [
     {
@@ -1745,7 +1745,7 @@
   {
    "id": "oduya.lockagain",
    "speaker": "keeper-oduya",
-   "text": "The lock is waiting. A question word, what shapes the record, and one case.",
+   "text": "Put the writer in view. Then turn the case ring. I want a question somebody with another record could come back and challenge.",
    "claimKind": "interpretation",
    "options": [
     {
@@ -1763,7 +1763,7 @@
   {
    "id": "oduya.plan",
    "speaker": "keeper-oduya",
-   "text": "Open. Now, where would you look? Choose as many as you like. I'll tell you what we hold, and what nobody holds.",
+   "text": "The drawer has room for more than one lead. Choose where to look. If the shelves here run out, I’ll tell you where my own trail went cold.",
    "claimKind": "interpretation",
    "options": [
     {
@@ -1945,7 +1945,7 @@
   {
    "id": "oduya.argue",
    "speaker": "keeper-oduya",
-   "text": "You have weighed two records with different authors. Now build the argument on my table: a claim, a counterclaim you answer, and support from your cards.",
+   "text": "I’ve put your two accounts on the table. Lay down the claim you’d carry through the door. Leave a place beside it for the person who has grounds to object.",
    "claimKind": "interpretation",
    "options": [
     {
@@ -1990,7 +1990,7 @@
   {
    "id": "oduya.cite.miss",
    "speaker": "keeper-oduya",
-   "text": "The ledger is about Emberford's trade. It says nothing about Bi Sheng. Cite the record that supports this exact claim.",
+   "text": "A reader who follows that slip comes back to our guild. The line on the table concerns Bi Sheng. Try a record that can take the reader that far.",
    "claimKind": "interpretation",
    "next": "oduya.cite"
   },
@@ -2004,7 +2004,7 @@
   {
    "id": "oduya.cite2",
    "speaker": "keeper-oduya",
-   "text": "Second claim: Shen Kuo's Dream Pool Essays survive in later printed editions. Which source?",
+   "text": "Now the printer wants a copy of Shen Kuo’s work she can actually trace. Pin the record for a surviving printed edition beside the line.",
    "claimKind": "interpretation",
    "options": [
     {
@@ -2030,7 +2030,7 @@
   {
    "id": "oduya.cite2.miss",
    "speaker": "keeper-oduya",
-   "text": "That article is about a mountain. It cannot support a claim about a book.",
+   "text": "The printer still has no edition she can follow. Look for the record of a particular copy of the book. The other slips can stay on the table.",
    "claimKind": "interpretation",
    "next": "oduya.cite2"
   },
@@ -2175,7 +2175,7 @@
   {
    "id": "oduya.reflect",
    "speaker": "keeper-oduya",
-   "text": "Last step. What changed in your thinking about records on this trail? Any honest answer counts.",
+   "text": "The next keeper will have the same shelves. What would you want them to notice on their first morning? You can leave a line or keep the question open.",
    "claimKind": "interpretation",
    "options": [
     {
@@ -2601,22 +2601,22 @@
  "journal": [
   {
    "id": "j.ee1.lock",
-   "text": "EE practice: the Title Lock opened. A good research question is focused, has one case with dates, and leaves room to argue.",
+   "text": "I turned the brass rings until I had a question about a pen, a period and the records somebody could find. The drawer opened. I still had to decide which slip to pull first.",
    "claimKind": "observation"
   },
   {
    "id": "j.ee1.done",
-   "text": "EE practice trail finished: question, search plan, weighing, argument with counterclaim, citations, integrity check, reflection. Practice only. My real essay is my own work.",
+   "text": "I left Tull a trail from the grant date to the patent and another from the surviving pen to its museum record. A visitor could follow both slips. I left room for a receipt that could show who got paid.",
    "claimKind": "observation"
   },
   {
    "id": "j.ee2.lock",
-   "text": "EE practice: the wooden Title Lock opened. A question about a record needs one case, one record and a writer to ask about.",
+   "text": "The wooden rings put a writer beside the case I chose. I caught myself wondering who else might have described the same event if their pages had survived.",
    "claimKind": "observation"
   },
   {
    "id": "j.ee2.done",
-   "text": "Second EE practice trail finished: who held the pen. Practice only. My real essay is my own work.",
+   "text": "I heard Sefa’s song and read the guild’s line. I kept track of whose voice reached me through each. Which account would a reader trust first if the other disappeared?",
    "claimKind": "observation"
   }
  ]

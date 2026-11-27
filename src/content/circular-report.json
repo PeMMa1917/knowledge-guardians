@@ -1,0 +1,632 @@
+{
+  "items": [
+    {
+      "id": "item.ember.circle-packet",
+      "name": "The return-copy packet",
+      "description": "A trail of dated notices and an independent signed upper-landing sighting. Its front is arranged for the chosen reader.",
+      "historicalLabel": "fictional-world",
+      "art": "preserved.folder"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-R98",
+      "world": "WORLD-02",
+      "title": "The Copy That Came Back",
+      "available": {
+        "objective": "m02.o1.arrive"
+      },
+      "stake": "Kip is waiting with a parcel. The stall uses the tea notice to say both landings are closed.",
+      "knowledgeQuestion": "How can a report gain the appearance of a second source as it travels back to its starting point?",
+      "objectives": [
+        {
+          "id": "ember.circle.trace",
+          "title": "Trace the two notices back through the issue book and check the separate lookout.",
+          "essential": false,
+          "visible": {
+            "flag": "ember.circle.stall",
+            "eq": true
+          },
+          "done": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "ember.circle.stall",
+                    "eq": true
+                  },
+                  {
+                    "flag": "ember.circle.tea",
+                    "eq": true
+                  }
+                ]
+              },
+              {
+                "flag": "ember.circle.ledger",
+                "eq": true
+              },
+              {
+                "flag": "ember.circle.witness",
+                "eq": true
+              }
+            ]
+          },
+          "weave": {
+            "concepts": [
+              "evidence",
+              "truth",
+              "justification",
+              "certainty",
+              "perspective"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "aoks": [
+              "HUM",
+              "LAN"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "subjects": [
+              "lang-langlit",
+              "global-politics"
+            ],
+            "minutes": 6
+          }
+        },
+        {
+          "id": "ember.circle.prepare",
+          "title": "Prepare a bounded runner note or a trace for the clerk.",
+          "essential": false,
+          "visible": {
+            "objective": "ember.circle.trace"
+          },
+          "done": {
+            "all": [
+              {
+                "objective": "ember.circle.trace"
+              },
+              {
+                "flagSet": "ember.circle.choice"
+              }
+            ]
+          },
+          "onComplete": [
+            {
+              "giveItem": "item.ember.circle-packet"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "responsibility",
+              "values",
+              "explanation",
+              "power"
+            ],
+            "framework": [
+              "ethics",
+              "scope",
+              "perspectives"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "aoks": [
+              "HUM",
+              "LAN"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "subjects": [
+              "lang-langlit",
+              "global-politics"
+            ],
+            "minutes": 2
+          }
+        },
+        {
+          "id": "ember.circle.deliver",
+          "title": "Take the packet to the person who can act on it.",
+          "essential": false,
+          "visible": {
+            "objective": "ember.circle.prepare"
+          },
+          "done": {
+            "all": [
+              {
+                "objective": "ember.circle.prepare"
+              },
+              {
+                "any": [
+                  {
+                    "all": [
+                      {
+                        "flag": "ember.circle.choice",
+                        "eq": "runner"
+                      },
+                      {
+                        "flag": "ember.circle.placed",
+                        "eq": "runner"
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "ember.circle.choice",
+                        "eq": "record"
+                      },
+                      {
+                        "flag": "ember.circle.placed",
+                        "eq": "record"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "onComplete": [
+            {
+              "journal": "j.ember.circle"
+            }
+          ],
+          "weave": {
+            "concepts": [
+              "responsibility",
+              "objectivity",
+              "interpretation",
+              "culture"
+            ],
+            "framework": [
+              "ethics",
+              "methods-and-tools",
+              "perspectives"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "application",
+              "solo": "relational"
+            },
+            "aoks": [
+              "HUM",
+              "LAN"
+            ],
+            "atl": [
+              "thinking",
+              "research",
+              "communication"
+            ],
+            "subjects": [
+              "lang-langlit",
+              "global-politics"
+            ],
+            "minutes": 3
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "ember.circle.stall",
+      "speaker": "narrator",
+      "text": "The stall board reads “Both landings closed today. Confirmed by the tea notice.” Its dry lower corner has a missing stroke on the C in closed. A corner of yesterday’s backing sticks out beneath it.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Lift the corner and clip the stall’s wording.",
+          "next": "ember.circle.stall.kept",
+          "if": {
+            "all": [
+              {
+                "objective": "m02.o1.arrive"
+              },
+              {
+                "not": {
+                  "flagSet": "ember.circle.stall"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "ember.circle.stall",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the poster on the board."
+        }
+      ]
+    },
+    {
+      "id": "ember.circle.stall.kept",
+      "speaker": "narrator",
+      "text": "The press date is third bell. You keep that mark and the broken C. The stall points to the tea table for its other source.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "ember.circle.tea",
+      "speaker": "narrator",
+      "text": "The tea slip has the same broken C and the third-bell mark. Its small source line reads “From the stall’s first notice.” This slip never names a person who visited the landings.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Keep the tea slip with its source line.",
+          "next": "ember.circle.tea.kept",
+          "if": {
+            "all": [
+              {
+                "flag": "ember.circle.stall",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "ember.circle.tea"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "ember.circle.tea",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the tea slip beside the cups."
+        }
+      ]
+    },
+    {
+      "id": "ember.circle.tea.kept",
+      "speaker": "narrator",
+      "text": "Both sheets look related. The printer’s issue book can show which note reached the press first.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "ember.circle.ledger",
+      "speaker": "narrator",
+      "text": "The issue book keeps a loose first note, a line for the tea copy and a line for the replacement at the stall. Set both clipped sheets against the three dated lines.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Lay both slips against the three issue lines.",
+          "next": "ember.circle.ledger.kept",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "ember.circle.stall",
+                    "eq": true
+                  },
+                  {
+                    "flag": "ember.circle.tea",
+                    "eq": true
+                  }
+                ]
+              },
+              {
+                "not": {
+                  "flagSet": "ember.circle.ledger"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "ember.circle.ledger",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the issue book open."
+        }
+      ]
+    },
+    {
+      "id": "ember.circle.ledger.kept",
+      "speaker": "narrator",
+      "text": "The first stall notice gave no observer. The tea slip copied it. The replacement stall notice cited that tea slip as its check. The date and broken print led you here. The issue book shows the report came back to the stall without a new observation.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "ember.circle.witness",
+      "speaker": "narrator",
+      "text": "Havra Belden left a signed slip at her lookout. She saw a porter with an empty basket cross the upper landing during the second bell. Stand beside her mark. The retaining wall hides the lower landing.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Set the signed sightline slip against the lookout mark.",
+          "next": "ember.circle.witness.kept",
+          "if": {
+            "all": [
+              {
+                "flag": "ember.circle.stall",
+                "eq": true
+              },
+              {
+                "not": {
+                  "flagSet": "ember.circle.witness"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "ember.circle.witness",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave the signed slip on the lookout."
+        }
+      ]
+    },
+    {
+      "id": "ember.circle.witness.kept",
+      "speaker": "narrator",
+      "text": "The upper landing was in use during that bell. Havra could only see the upper landing and the people who passed while she was there.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "ember.circle.prepare",
+      "speaker": "narrator",
+      "text": "One claim came back to the stall in fresh ink. Havra supplies a separate view for one landing at one bell. Kip is waiting to carry a parcel. Venn wants the paper trail so the next printer can correct the old notice. Who needs the packet first?",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Clip Havra’s bounded sighting first for the runner.",
+          "next": "ember.circle.prepare.runner",
+          "if": {
+            "all": [
+              {
+                "objective": "ember.circle.trace"
+              },
+              {
+                "not": {
+                  "flagSet": "ember.circle.choice"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "ember.circle.choice",
+              "value": "runner"
+            }
+          ]
+        },
+        {
+          "text": "Bind the original, its copy and the return citation for the clerk.",
+          "next": "ember.circle.prepare.record",
+          "if": {
+            "all": [
+              {
+                "objective": "ember.circle.trace"
+              },
+              {
+                "not": {
+                  "flagSet": "ember.circle.choice"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "ember.circle.choice",
+              "value": "record"
+            }
+          ]
+        },
+        {
+          "text": "Keep the pieces together on the table for now."
+        }
+      ]
+    },
+    {
+      "id": "ember.circle.prepare.runner",
+      "speaker": "narrator",
+      "text": "The runner slip names the upper landing and the second bell. It points back to the issue lines. Take it to Kip’s parcel hook by the bridge.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "ember.circle.prepare.record",
+      "speaker": "narrator",
+      "text": "The old note and the two references stay in dated order. Havra’s own signed slip goes in a separate pocket. Take the packet to Venn’s record bench near the west side of the square.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "ember.circle.receive.runner",
+      "speaker": "kip-arden",
+      "text": "I can stage the parcel at the upper hook and ask who has just crossed. I’ll keep it here while I wait for a fresh report from below. Leave Havra’s bell mark so the next runner knows when her sighting ends.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Hang the upper-landing note on the parcel hook.",
+          "next": "ember.circle.delivered.runner",
+          "if": {
+            "all": [
+              {
+                "item": "item.ember.circle-packet"
+              },
+              {
+                "flag": "ember.circle.choice",
+                "eq": "runner"
+              },
+              {
+                "not": {
+                  "flagSet": "ember.circle.placed"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "ember.circle.placed",
+              "value": "runner"
+            }
+          ]
+        },
+        {
+          "text": "Leave the parcel on the bench for now."
+        }
+      ]
+    },
+    {
+      "id": "ember.circle.delivered.runner",
+      "speaker": "narrator",
+      "text": "Kip moves one parcel to the upper hook. The packet stays closed until a lookout checks the next crossing. The lower parcel stays on the bench.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "ember.circle.receive.record",
+      "speaker": "clerk-venn",
+      "text": "Today’s printer needs to see which sheet had no witness. I can file the trail, mark one original report and send a separate runner to look at the lower landing. Havra’s upper-landing sighting has its own line.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Set the source trail in the clerk’s dated rack.",
+          "next": "ember.circle.delivered.record",
+          "if": {
+            "all": [
+              {
+                "item": "item.ember.circle-packet"
+              },
+              {
+                "flag": "ember.circle.choice",
+                "eq": "record"
+              },
+              {
+                "not": {
+                  "flagSet": "ember.circle.placed"
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "ember.circle.placed",
+              "value": "record"
+            }
+          ]
+        },
+        {
+          "text": "Keep the dated rack empty for now."
+        }
+      ]
+    },
+    {
+      "id": "ember.circle.delivered.record",
+      "speaker": "narrator",
+      "text": "The clerk leaves a blank line for a fresh check below. The rack preserves the first note, the tea copy and its return to the stall. The printer can find where the claim began.",
+      "historicalLabel": "fictional-world"
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.ember.circle.trace.1",
+      "objective": "ember.circle.trace",
+      "depth": 1,
+      "text": "Start with the paper on the stall board. Look under its corner."
+    },
+    {
+      "id": "h.ember.circle.trace.2",
+      "objective": "ember.circle.trace",
+      "depth": 2,
+      "text": "The tea table keeps another sheet. Check its source line with the date and print mark."
+    },
+    {
+      "id": "h.ember.circle.trace.3",
+      "objective": "ember.circle.trace",
+      "depth": 3,
+      "text": "Match both sheets to the dated lines in the printer’s issue book near the guild side of the square."
+    },
+    {
+      "id": "h.ember.circle.trace.4",
+      "objective": "ember.circle.trace",
+      "depth": 4,
+      "text": "Keep Havra’s signed lookout separate. Walk to the bridge post and check which landing the wall hides."
+    },
+    {
+      "id": "h.ember.circle.prepare.1",
+      "objective": "ember.circle.prepare",
+      "depth": 1,
+      "text": "Return to the sorting table beside the tea bench after opening the issue book and checking the lookout."
+    },
+    {
+      "id": "h.ember.circle.prepare.2",
+      "objective": "ember.circle.prepare",
+      "depth": 2,
+      "text": "The tea slip came from the first stall notice. The replacement points back to the tea slip."
+    },
+    {
+      "id": "h.ember.circle.prepare.3",
+      "objective": "ember.circle.prepare",
+      "depth": 3,
+      "text": "Havra saw the upper landing only during the second bell. Kip needs that limit to stage his parcel."
+    },
+    {
+      "id": "h.ember.circle.prepare.4",
+      "objective": "ember.circle.prepare",
+      "depth": 4,
+      "text": "Clip the timed note for Kip or keep the trace in dated order for Venn’s printer."
+    },
+    {
+      "id": "h.ember.circle.deliver.1",
+      "objective": "ember.circle.deliver",
+      "depth": 1,
+      "text": "Open the carried packet at its selected stop."
+    },
+    {
+      "id": "h.ember.circle.deliver.2",
+      "objective": "ember.circle.deliver",
+      "depth": 2,
+      "text": "Kip’s hook is beside the bridge. Venn’s dated bench is on the west side of the square."
+    },
+    {
+      "id": "h.ember.circle.deliver.3",
+      "objective": "ember.circle.deliver",
+      "depth": 3,
+      "text": "The runner checks the named landing and time. The clerk checks where each notice came from."
+    },
+    {
+      "id": "h.ember.circle.deliver.4",
+      "objective": "ember.circle.deliver",
+      "depth": 4,
+      "text": "Hang the runner’s note with the parcel or file the dated trail beside the clerk’s blank line for a fresh observation."
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.ember.circle",
+      "claimKind": "observation",
+      "text": "The stall cited a tea copy of its own older notice. Havra’s independent sighting covered one landing at one bell. I sent the evidence to the person who could use it."
+    }
+  ]
+}

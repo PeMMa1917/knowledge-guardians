@@ -27,17 +27,17 @@ export const FERRY_KETTLE: Interactable[] = [
 const unplaced: Condition = { not: { flagSet: 'market.kettle.layout' } };
 
 export const MARKET_KETTLE: Interactable[] = [
-  { id: 'market-kettle-card', kind: 'scene', node: 'market.kettle.source', x: 5, y: 12, w: 1, h: 1, walkThrough: true,
+  { id: 'market-kettle-card', kind: 'scene', node: 'market.kettle.source', x: 6, y: 12, w: 1, h: 1, walkThrough: true,
     label: 'the covered table and its four-cup carrier', art: 'ledger',
     visibleIf: { all: [card, { not: { objective: 'market.kettle.compare' } }] } },
-  { id: 'market-kettle-plan', kind: 'scene', node: 'market.kettle.place', x: 5, y: 12, w: 1, h: 1, walkThrough: true,
+  { id: 'market-kettle-plan', kind: 'scene', node: 'market.kettle.place', x: 6, y: 12, w: 1, h: 1, walkThrough: true,
     label: 'the forked tally atop the covered table', art: 'preserved.display-paired',
     visibleIf: { all: [{ objective: 'market.kettle.compare' }, unplaced] } },
   { id: 'market-kettle-fold', kind: 'sign', x: 9, y: 11, w: 1, h: 1, walkThrough: true,
     label: 'the carrier’s returned fold with two counts', art: 'preserved.folder',
     text: 'Ready: six. Received: four. A second carrier cannot see the count until this fold returns, but the first brings a signed entry for what was actually received.',
     flag: 'market.kettle.readback', visibleIf: { flag: 'market.kettle.layout', eq: 'fold' } },
-  { id: 'market-kettle-table', kind: 'sign', x: 5, y: 12, w: 1, h: 1, walkThrough: true,
+  { id: 'market-kettle-table', kind: 'sign', x: 6, y: 12, w: 1, h: 1, walkThrough: true,
     label: 'the two marked spaces at the covered table', art: 'preserved.display-paired',
     text: 'Six cups began on this table. Four went with the first carrier. The two still here have their own marks. A second carrier can find them while the first is on the lane.',
     flag: 'market.kettle.readback', visibleIf: { flag: 'market.kettle.layout', eq: 'table' } },

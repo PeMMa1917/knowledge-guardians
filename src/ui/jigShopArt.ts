@@ -23,7 +23,70 @@ function frame(draw: Art[2]): Art {
 
 const tint = ['#c5a77e', '#8fb2a6', '#bd9ba3', '#d1a282', '#b5b1ce', '#e4c59b', '#b0bec1'];
 
+// Original silhouettes of catalogue-visible forms. The other cases show practice diagrams.
+const catalogueForms: Partial<Record<string, Art[2]>> = {
+  'portslade-anvil': (g) => {
+    box(g, iron, 6, 8, 13, 3);
+    box(g, iron, 18, 10, 9, 1);
+    box(g, '#5c767d', 8, 11, 16, 1);
+    box(g, '#5c767d', 10, 12, 9, 2);
+    box(g, '#5c767d', 11, 14, 6, 2);
+    box(g, iron, 9, 16, 10, 2);
+  },
+  'hirata-workholder': (g) => {
+    box(g, '#6899b8', 6, 12, 9, 2);
+    box(g, '#6899b8', 7, 13, 1, 5);
+    box(g, '#6899b8', 13, 13, 1, 5);
+    box(g, iron, 12, 8, 2, 4);
+    box(g, '#e4bd53', 7, 7, 8, 2);
+    box(g, '#e4bd53', 17, 10, 4, 8);
+    box(g, '#e4bd53', 23, 10, 4, 8);
+    box(g, shine, 17, 10, 4);
+    box(g, shine, 23, 10, 4);
+  },
+  'garrett-guard-model': (g) => {
+    box(g, iron, 6, 11, 20, 3);
+    box(g, '#5c767d', 8, 14, 2, 4);
+    box(g, '#5c767d', 22, 14, 2, 4);
+    box(g, iron, 13, 8, 7, 3);
+    box(g, shine, 14, 7, 5);
+    box(g, '#5c767d', 13, 14, 7, 2);
+    box(g, '#5c767d', 15, 16, 3);
+  },
+  'jarboe-plate-vise': (g) => {
+    // Exterior only, from Jarboe’s patent plate. Its finish is illustrative.
+    box(g, '#a77750', 6, 14, 21, 3);
+    box(g, brass, 7, 14, 19);
+    box(g, '#a77750', 14, 11, 3, 3);
+    box(g, '#a77750', 23, 11, 3, 3);
+    box(g, iron, 12, 10, 1, 4);
+    box(g, iron, 11, 8, 3, 2);
+  },
+  'concave-plane': (g) => {
+    box(g, '#a77750', 7, 12, 18, 3);
+    box(g, '#a77750', 8, 15, 16, 1);
+    box(g, brass, 10, 16, 12, 1);
+    box(g, '#cba372', 8, 11, 4, 2);
+    box(g, '#cba372', 12, 9, 2, 4);
+    box(g, iron, 11, 7, 2, 3);
+  },
+  'angell-loom-temple': (g) => {
+    box(g, '#5c767d', 7, 12, 20, 4);
+    box(g, '#5c767d', 10, 11, 17, 1);
+    box(g, '#5c767d', 7, 16, 16, 1);
+    box(g, brass, 10, 14, 3);
+    box(g, brass, 22, 12, 3);
+    box(g, iron, 16, 11, 4, 4);
+    box(g, shine, 17, 11, 2);
+  },
+};
+
 const diagrams = Object.fromEntries(JIG_CASES.map((entry, i): [string, Art] => [entry.art, frame((g) => {
+  const catalogueForm = catalogueForms[entry.slug];
+  if (catalogueForm) {
+    catalogueForm(g);
+    return;
+  }
   const color = tint[i % tint.length];
   const shift = i % 6;
   if (entry.family === 'hold') {

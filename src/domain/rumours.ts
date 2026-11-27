@@ -1,3 +1,5 @@
+import type { Condition } from './types';
+
 /**
  * The rumour mill (Mika 2026-11-25: radiant side quests; rumours traced to a source). At the tea
  * table in the market the player overhears one rumour at a time. To trace it, the player checks
@@ -10,6 +12,9 @@
 export const VERDICTS = ['Supported', 'Partly supported', 'Not supported', 'Cannot tell yet'] as const;
 export const MIN_SOURCES = 2;
 
+export const RUMOUR_DESKS = ['ledger', 'ferry'] as const;
+export type RumourDesk = typeof RUMOUR_DESKS[number];
+
 export interface Rumour {
   id: string;
   /** Who is overheard, and where. */
@@ -18,6 +23,8 @@ export interface Rumour {
   sources: { label: string; text: string }[];
   /** Indexes of the sources named or relied on in the feedback. */
   requiredSources: readonly number[];
+  title: string;
+  handoffs: Record<RumourDesk, { action: string; reply: string }>;
   /** The index in VERDICTS that the evidence best supports. */
   best: number;
   /** One explanation for each verdict, in the order of VERDICTS. */
@@ -29,7 +36,12 @@ export interface Rumour {
 }
 
 export const RUMOURS: Rumour[] = [
-  { id: 'clever-well', heard: 'Two carters at the tea table', line: "'Drink from the east well and you get clever. Everyone knows that.'",
+  { id: 'clever-well', title: "The east well",
+    handoffs: {
+      ledger: { action: "File the two mineral readings together", reply: "Noa clips the two readings to one page. A visitor can check the minerals measured that spring. The page has no learning measures." },
+      ferry: { action: "Send Efua’s school route to the landing", reply: "Tova lays the old school route next to the well on her ferry map. A family finds why pupils gathered there. The mineral book is still in town." },
+    },
+    heard: 'Two carters at the tea table', line: "'Drink from the east well and you get clever. Everyone knows that.'",
     sources: [
       { label: 'Ask the carters who told them', text: "'My gran said it. Her gran said it too.' They both smile: it is an old saying." },
       { label: 'Ask Efua, the well-keeper', text: "Efua laughs. 'The east well is next to the old school. For a hundred years, the pupils drank there before lessons.'" },
@@ -44,7 +56,12 @@ export const RUMOURS: Rumour[] = [
       'What the water might do is still open. These records give no support for the rumour’s claim that it made the pupils clever.',
     ],
     idea: 'Two things that go together (correlation) do not show that one causes the other.', fray: 'shadow-twins' },
-  { id: 'greedy-prices', heard: 'A shopper by the fountain', line: "'Corvan puts his prices up every market day. Pure greed.'",
+  { id: 'greedy-prices', title: "The market-day price",
+    handoffs: {
+      ledger: { action: "Pin the toll and prices in the guild ledger", reply: "A buyer follows the two dated prices to the bridge toll. The clerk leaves Corvan’s reason for charging extra open." },
+      ferry: { action: "Send Hana’s cart account to the landing", reply: "Hana waits beside the ferry cart to explain what the crossing costs her. A trader who arrives after she leaves will need the guild records." },
+    },
+    heard: 'A shopper by the fountain', line: "'Corvan puts his prices up every market day. Pure greed.'",
     sources: [
       { label: "Look at Corvan's price slate", text: 'On market days, each price is 2 marks higher.' },
       { label: 'Read the toll board at the bridge', text: 'On market days, the bridge toll for a loaded cart is twice the usual toll.' },
@@ -59,7 +76,12 @@ export const RUMOURS: Rumour[] = [
       'You have the slate, the toll board and another seller. That is enough to judge most of it.',
     ],
     idea: 'A rumour often joins a fact to an interpretation. Check each part on its own.' },
-  { id: 'bridge-lights', heard: 'A porter on the south road', line: "'There is a Fray at the bridge at night. I saw its blue light myself!'",
+  { id: 'bridge-lights', title: "The blue lights",
+    handoffs: {
+      ledger: { action: "File the porter’s sightline beside Tova’s route", reply: "The guild clerk sketches the stretch both accounts cover. A watchkeeper can locate the sighting. The farther bank stays blank." },
+      ferry: { action: "Ask the ferry crew to walk the lantern route", reply: "Tova takes a traveller to the near bank at the next slow-water crossing. From there the lantern passes behind a post. What the porter saw farther east stays open." },
+    },
+    heard: 'A porter on the south road', line: "'There is a Fray at the bridge at night. I saw its blue light myself!'",
     sources: [
       { label: 'Ask the porter what he saw', text: "'Blue lights, low down, moving slowly along the river, late at night. Then they went east.'" },
       { label: 'Ask Tova at the ferry landing', text: "'Our people walk the old road at night when the water is slow. We carry blue lanterns, so the fish are not scared.'" },
@@ -74,7 +96,12 @@ export const RUMOURS: Rumour[] = [
       'Tova gives a clear reason for the lights. You can judge it now.',
     ],
     idea: 'An observation (what you saw) and an inference (what you think it means) are different claims.' },
-  { id: 'market-closing', heard: 'A baker at the tea table', line: "'The guild is closing the market. For good!'",
+  { id: 'market-closing', title: "A month on the green",
+    handoffs: {
+      ledger: { action: "Date the draft in the public ledger", reply: "Orrin leaves a space for next week’s vote below the dated proposal. Traders can see which decision is still open. The early ferry has already left." },
+      ferry: { action: "Send the proposed month to the next ferry", reply: "Tova tells the arriving stallholders to keep both sites on their delivery slips until the vote. They have to carry supplies for two possible stops." },
+    },
+    heard: 'A baker at the tea table', line: "'The guild is closing the market. For good!'",
     sources: [
       { label: 'Ask Orrin at the guild hall', text: "'Closing it? No. The bridge needs repairs. The council may move the market to the west green for one month. We vote next week.'" },
       { label: "Read the Sign-Smith's notice board", text: "A draft notice: 'PROPOSAL: the market may move to the west green during the bridge works. Council vote: next week.'" },
@@ -89,7 +116,12 @@ export const RUMOURS: Rumour[] = [
       'The notice and Orrin agree, so you can say what the plan is.',
     ],
     idea: 'Retelling can change both the size of a claim and how certain it sounds.', fray: 'echo-moths' },
-  { id: 'everyone-reads', heard: 'A clerk at the guild steps', line: "'Everyone in Emberford can read now. Our survey proves it.'",
+  { id: 'everyone-reads', title: "Who read the notice",
+    handoffs: {
+      ledger: { action: "Post the noon tally with its place and time", reply: "The clerk binds the tally to its noon collection slip. The guild can plan help for that queue. The dawn row stays empty." },
+      ferry: { action: "Take a fresh tally sheet to the dawn ferry", reply: "Efua meets the farm crews at dawn. One asks for the notice aloud and another reads it to a friend. She records the requests separately from the noon count." },
+    },
+    heard: 'A clerk at the guild steps', line: "'Everyone in Emberford can read now. Our survey proves it.'",
     sources: [
       { label: "Look at Clerk Venn's survey", text: 'At noon in the plaza, 30 of 40 people read the notice aloud without help.' },
       { label: 'Ask Orrin who comes to town at noon', text: "'At noon? Traders and guild people. Farm families come at dawn and go home before ten.'" },
@@ -124,6 +156,14 @@ export const sourcesChecked = (f: Flags, r: Rumour): number[] => r.sources.map((
 
 export const missingRumourSources = (f: Flags, r: Rumour): number[] =>
   r.requiredSources.filter((i) => f[`mill.${r.id}.s${i}`] !== true);
+
+export function eastWellSlipAt(desk: RumourDesk): Condition {
+  const well = RUMOURS.find(({ id }) => id === 'clever-well')!;
+  return { all: [
+    { flag: `mill.${well.id}.desk`, eq: desk },
+    ...well.requiredSources.map((i) => ({ flag: `mill.${well.id}.s${i}`, eq: true as const })),
+  ] };
+}
 
 /** The rumour the player hears now: the first one not yet judged, in seeded order; null when all are done. */
 export function currentRumour(f: Flags, seed: number): Rumour | null {

@@ -3,6 +3,7 @@ import { MODEL_RECORDS } from '../src/content/modelRecords';
 import { flowModel, layThread, runMouse } from '../src/domain/modelRecords';
 import { check } from '../src/domain/rules';
 import { specimenToolId } from '../src/domain/specimenGear';
+import { specimenReferences } from '../src/domain/specimenReferences';
 import { MODEL_RECORD_ROOM, MODEL_RECORD_RETURNS } from '../src/maps/modelRecords';
 import { Driver } from './driver';
 
@@ -14,6 +15,22 @@ describe('What the Model Keeps', () => {
     expect(folded.at(-1)?.x).toBe(8);
     expect(flowModel(1, 3)).toEqual({ intake: 9, exchange: 2, reserve: 1 });
     expect(flowModel(1, 6)).toEqual({ intake: 6, exchange: 4, reserve: 2 });
+  });
+
+  it('keeps the inventor, maker and dates of the exact LSE MONIAC distinct', () => {
+    const { e: { pack } } = new Driver();
+    const record = pack.exhibits.find(({ specimen }) => specimen?.key === 'smg:1995-210')!;
+    expect(record.specimen).toMatchObject({ institution: 'Science Museum Group', accession: '1995-210', people: [
+      { name: 'Bill Phillips', role: 'Engineer, economist and inventor', source: 'HIS-MODEL-RECORD-moniac' },
+      { name: 'White Ellerton Limited', role: 'Maker', source: 'HIS-MODEL-RECORD-moniac' },
+    ] });
+    expect(record.dateKind).toContain('making date');
+    expect(record.dateText).toContain('May 1992');
+    expect(record.summary).toContain('White Ellerton Limited made it in London in 1949');
+    const reference = specimenReferences(pack).find(({ key }) => key === 'smg:1995-210')!;
+    expect(reference.url).toBe('https://collection.sciencemuseumgroup.org.uk/objects/co64127/phillips-economic-computer');
+    expect(reference.text).toContain('1949.');
+    expect(reference.text).not.toContain('1992');
   });
 
   it('reuses the saved turns with the same practice maze and mouse', () => {

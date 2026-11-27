@@ -1,0 +1,63 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH4-SECOND-LOOK-STEP",
+      "title": "A Second Look at the Step",
+      "world": "WORLD-05",
+      "available": { "objective": "coast.detector.received" },
+      "stake": "Neri can read the faint marks now. The step reading changes on the practice wheel, and the next observer needs to know when and where to set their stand.",
+      "knowledgeQuestion": "How can explaining what one reader misses give us a new question to try?",
+      "objectives": [
+        {
+          "id": "coast.breeze.first",
+          "title": "Sweep both marks from Neri’s practice peg in still air and at the first gust.",
+          "essential": false,
+          "done": { "all": [
+            { "flag": "coast.breeze.headland.trace.still", "eq": true }, { "flag": "coast.breeze.headland.trace.gust", "eq": true }
+          ] },
+          "weave": {
+            "concepts": ["evidence", "explanation", "interpretation", "certainty"],
+            "framework": ["scope", "methods-and-tools"], "atl": ["research", "thinking"],
+            "aoks": ["NAT"], "subjects": ["physics", "design-tech"],
+            "thinking": { "dok": 2, "bloom": "analyse", "fink": "application", "solo": "relational" }, "minutes": 3
+          },
+          "onComplete": [{ "journal": "j.coast.breeze.first" }]
+        },
+        {
+          "id": "coast.breeze.follow",
+          "title": "Carry a new observation back to Neri’s checked strip from either receiver.",
+          "visible": { "objective": "coast.breeze.first" },
+          "essential": false,
+          "done": { "all": [
+            { "objective": "coast.breeze.first" },
+            { "any": [
+              { "all": [{ "flag": "coast.breeze.archive.trace.gust", "eq": true }, { "flag": "coast.breeze.archive.receipt", "eq": true }] },
+              { "all": [{ "flag": "coast.breeze.harbour.trace.eased", "eq": true }, { "flag": "coast.breeze.harbour.trace.again", "eq": true }, { "flag": "coast.breeze.harbour.receipt", "eq": true }] }
+            ] }
+          ] },
+          "weave": {
+            "concepts": ["evidence", "objectivity", "perspective", "explanation", "justification"],
+            "framework": ["scope", "methods-and-tools", "perspectives"], "atl": ["communication", "research", "thinking"],
+            "aoks": ["NAT"], "subjects": ["physics", "design-tech"],
+            "thinking": { "dok": 3, "bloom": "apply", "fink": "integration", "solo": "relational" }, "minutes": 5
+          },
+          "onComplete": [{ "journal": "j.coast.breeze.follow" }]
+        }
+      ]
+    }
+  ],
+  "journal": [
+    { "id": "j.coast.breeze.first", "claimKind": "simulation", "text": "At the exposed practice peg, the rim stayed at one through the first gust and the step dropped from three to one. The open scale gave us two readable values. The new pattern gave Neri a reason to send the strip to a second observer." },
+    { "id": "j.coast.breeze.follow", "claimKind": "simulation", "text": "Neri’s strip now has a receiver’s practice readings. A matched gust at a different peg checks where the dip is seen. A replay at the same peg checks whether it returns. The two checks address different questions." }
+  ],
+  "hints": [
+    { "id": "h.coast.breeze.first.1", "objective": "coast.breeze.first", "depth": 1, "text": "Neri’s practice wind pointer is near the south edge of Headland Station." },
+    { "id": "h.coast.breeze.first.2", "objective": "coast.breeze.first", "depth": 2, "text": "Keep the same stand and watch the rim and the step together. The wind changes only when you turn the pointer." },
+    { "id": "h.coast.breeze.first.3", "objective": "coast.breeze.first", "depth": 3, "text": "Clip one strip in still air and another at the first gust. Rewind the pointer if you already went past either." },
+    { "id": "h.coast.breeze.first.4", "objective": "coast.breeze.first", "depth": 4, "text": "Select Sweep the two marks while the pointer says Still air. Advance once, then sweep again at First gust." },
+    { "id": "h.coast.breeze.follow.1", "objective": "coast.breeze.follow", "depth": 1, "text": "One receiver can check another place. One can watch another interval." },
+    { "id": "h.coast.breeze.follow.2", "objective": "coast.breeze.follow", "depth": 2, "text": "Choose at Neri’s pointer. Find Olwen’s stand in the east of the Bell Archive or Ruan’s at the west end of Slate Harbour." },
+    { "id": "h.coast.breeze.follow.3", "objective": "coast.breeze.follow", "depth": 3, "text": "At Olwen’s stand, match the first gust. At Ruan’s, watch what happens after the gust and in the next one. Rewind if you move too far." },
+    { "id": "h.coast.breeze.follow.4", "objective": "coast.breeze.follow", "depth": 4, "text": "Sweep at First gust under Olwen’s hood. Or sweep at Gust passed and Another gust at Ruan’s exposed stand. Then clip the readings to Neri’s strip." }
+  ]
+}

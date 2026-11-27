@@ -38,6 +38,14 @@ function paper(id: string, x: number, y: number, label: string, art: string, tex
   return { id, kind: 'sign', x, y, w: 1, h: 1, label, art, text, walkThrough: true, ...options };
 }
 
+const rimPlaced = (place: 'yard' | 'hall'): Condition => ({ flag: 'metal.rim.place', eq: place });
+const rimReceived: Condition = { objective: 'metal.rim.receive' };
+
+function rimScene(node: string, x: number, y: number, label: string, art: string, visibleIf: Condition): Interactable {
+  return { id: `metal-rim-${node}`, kind: 'scene', node: `metal.rim.${node}`, x, y, w: 1, h: 1,
+    label, art, visibleIf, walkThrough: true, sfx: 'sfx.metal' };
+}
+
 export const METALWORKS_YARD = workshop({
   id: 'metalworks.yard', name: 'Metalworks: Sample Yard', width: 26, height: 16,
   background: 0x342930, spawn: { x: 12, y: 12 },
@@ -66,6 +74,11 @@ export const METALWORKS_YARD = workshop({
       label: 'the Panel A test stand', art: 'metalworks.panel-a' },
     { id: 'metal-trial-panel-b', kind: 'metal-trial', node: 'panel-b', x: 17, y: 8, w: 1, h: 1,
       label: 'the Panel B test stand', art: 'metalworks.panel-b' },
+    { ...rimScene('rack', 10, 7, 'Corra’s chalk-line practice rack', 'board-stand', { objective: 'metal.arrival' }),
+      artBy: { flag: 'metal.rim.last', keys: { slip: 'metalworks.panel-b', peg: 'preserved.display-paired', sleeve: 'preserved.folder' } } },
+    rimScene('note', 10, 5, 'the reused caption on the shift docket', 'metalworks.receipt', { objective: 'metal.arrival' }),
+    { ...rimScene('yard', 15, 5, 'the yard’s low receiving peg', 'preserved.slip', rimPlaced('yard')),
+      artOpen: { key: 'preserved.display-paired', if: rimReceived } },
     paper('metal-yard-directory', 13, 11, 'the Sample Yard directory', 'metalworks.waypost',
       'Sample Yard. Panel A is west, Panel B east. The inspector works between them. The passage north leads to the trade hall.'),
     paper('metal-weight-tag', 14, 8, 'the seller’s matched-weight tag', 'metalworks.receipt',
@@ -135,6 +148,12 @@ export const METALWORKS_RECORDS = workshop({
     METAL_DEBATE_DOOR,
     REFERENCE_HALL_DOOR, WARM_ROOM_DOOR,
     door('metal-yard-return', 11, 14, 'the passage back to the Sample Yard', { map: 'metalworks.yard', x: 12, y: 5 }),
+    rimScene('compare', 10, 7, 'Bea’s receiving stand for the blue sample', 'board-stand',
+      { all: [{ objective: 'metal.rim.runs' }, { objective: 'metal.rim.record' }, { not: { objective: 'metal.rim.compare' } }] }),
+    rimScene('plan', 10, 7, 'Bea’s receiving stand for the blue sample', 'board-stand',
+      { all: [{ objective: 'metal.rim.compare' }, { not: rimReceived }] }),
+    { ...rimScene('hall', 13, 7, 'the hall’s staffed sleeve cradle', 'preserved.folder', rimPlaced('hall')),
+      artOpen: { key: 'preserved.display-paired', if: rimReceived } },
     { id: 'metal-exhibition-case', kind: 'exhibit', exhibit: 'OBJ-MET-ASTROLABE', x: 5, y: 8, w: 1, h: 1, walkThrough: true,
       label: 'the museum entry for Musa’s spherical astrolabe', art: 'preserved.catalogue' },
     paper('metal-custody-repair', 18, 10, 'the Box B repair slip', 'metalworks.receipt',
@@ -190,10 +209,10 @@ export const METALWORKS_RECORDS = workshop({
     paper('metal-exhibition-window-used', 17, 5, 'the checked base line at the window', 'preserved.display-paired',
       'Two views share a base line. A reader can compare the movement here and go to the yard to repeat it. The views remain a record of chosen placements.',
       { visibleIf: { all: [{ flag: 'metal.exhibit.layout', eq: 'window' }, { flagSet: 'metal.exhibit.learner' }] } }),
-    { id: 'metal-exhibition-packet', kind: 'scene', node: 'metal.exhibit.pack', x: 18, y: 13, w: 1, h: 1, walkThrough: true,
+    { id: 'metal-exhibition-packet', kind: 'scene', node: 'metal.exhibit.pack', x: 19, y: 13, w: 1, h: 1, walkThrough: true,
       label: 'the carrier’s two pocket docket', art: 'metalworks.receipt',
       visibleIf: { all: [{ flagSet: 'metal.exhibit.layout' }, { not: { flagSet: 'metal.exhibit.carrier' } }] } },
-    paper('metal-exhibition-packet-ready', 18, 13, 'the packet checked for the next learner', 'preserved.slip',
+    paper('metal-exhibition-packet-ready', 19, 13, 'the packet checked for the next learner', 'preserved.slip',
       'The outside pocket names the practice ring, base and clip. The inside pocket holds the source reference for Musa’s instrument and its date. The carrier has a packing count and the next reader can find the museum entry.',
       { visibleIf: { flagSet: 'metal.exhibit.carrier' } }),
   ],

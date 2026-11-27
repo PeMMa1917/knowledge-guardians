@@ -35,6 +35,13 @@ export const NUMBER_LEAF_ROOM: MapDef = {
   lights: [{ x: 6, y: 5, r: 61, color: 0xf3cc98 }, { x: 17, y: 7, r: 68, color: 0xb4d3e1 },
     { x: 11, y: 12, r: 58, color: 0xe4b88f, flicker: true }], zones: [],
   interactables: [
+    { id: 'parcel-ledger-rack', kind: 'fieldgame', game: 'parcel-ledger:rack', x: 3, y: 8, w: 1, h: 1,
+      walkThrough: true, art: 'board-stand', label: 'a brass seal caught in a drawer' },
+    { id: 'parcel-ledger-roll', kind: 'fieldgame', game: 'parcel-ledger:roll', x: 20, y: 8, w: 1, h: 1,
+      walkThrough: true, art: 'fold.paired', label: 'a torn queue roll with a thread through it' },
+    { id: 'parcel-ledger-slot', kind: 'fieldgame', game: 'parcel-ledger:slot', x: 15, y: 13, w: 1, h: 1,
+      walkThrough: true, art: 'preserved.folder', label: 'the parcel return slot',
+      artBy: { flag: 'parcel.reply', keys: { token: 'fold.paired', desk: 'board-stand' } } },
     ...NUMBER_LEAVES.flatMap((entry, i): Interactable[] => [
       { id: `number-leaf-case-${entry.slug}`, kind: 'exhibit', exhibit: entry.exhibit,
         x: 4 + 6 * i, y: 6, w: 1, h: 1, art: `${entry.art}.case`, label: entry.title },

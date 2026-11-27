@@ -1,7 +1,7 @@
 /** Fictional model parameters. They are neither ancient measurements nor modern route advice. */
 export const NILE_TRIALS = {
   ridge: { name: 'Narrow ridge', route: 'ridge', turns: 2, upright: false, line: 'The high crate tips where the ridge turns.' },
-  wash: { name: 'Wide wash', route: 'wash', turns: 4, upright: true, line: 'The wider track keeps the high crate upright.' },
+  wash: { name: 'Wide wash', route: 'wash', turns: 4, upright: true, line: 'The high crate finishes upright on the wide wash.' },
 } as const;
 export type NileRoad = keyof typeof NILE_TRIALS;
 export type NileDelivery = 'cast' | 'copy';

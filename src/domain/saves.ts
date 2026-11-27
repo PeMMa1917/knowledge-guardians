@@ -16,6 +16,7 @@ import { CAMPAIGN_SCHEMA } from './types';
 import { validateCampaign } from './validate';
 import { migratePermanent, NewerPermanentRecord, newPermanent } from './permanent';
 import { newAdventureDiary } from './adventureJournal';
+import { strFromU8, strToU8, unzlibSync, zlibSync } from 'fflate';
 
 export type SaveKind = 'checkpoint' | 'suspend';
 
@@ -128,6 +129,11 @@ export const MIGRATIONS: Record<number, (s: any) => any> = {
   // Old saves get they/them and no origin, and the player can change pronouns at any time.
   3: (s) => ({ ...s, schema: 4, player: { ...s.player, pronouns: { subject: 'they', object: 'them', possessive: 'their' }, origin: null } }),
   4: (s) => ({ ...s, schema: 5, adventureDiary: newAdventureDiary(Array.isArray(s.notes) ? s.notes : []) }),
+  5: (s) => ({ ...s, schema: 6, adventureDiary: {
+    ...newAdventureDiary(Array.isArray(s.notes) ? s.notes : []), ...s.adventureDiary,
+  } }),
+  // Earlier drafts retain their text and remain undated.
+  6: (s) => ({ ...s, schema: 7 }),
 };
 
 export function migrateCampaign(raw: any): { state: CampaignState; migrated: boolean } {
@@ -256,6 +262,15 @@ export class SaveService {
     }
   }
 
+  /** Refuse publication from a tab whose stored consent may have changed. */
+  permanentIsCurrent(): boolean {
+    try {
+      return !this.learningReadProblem && this.knownPermanent !== undefined && this.store.get(KEY_PERMANENT) === this.knownPermanent;
+    } catch {
+      return false;
+    }
+  }
+
   savePermanent(p: PermanentRecord): void {
     if (this.learningReadProblem) throw new PermanentSaveConflict(this.learningReadProblem);
     if (this.knownPermanent !== undefined && this.store.get(KEY_PERMANENT) !== this.knownPermanent) {
@@ -272,9 +287,32 @@ export function memoryStore(init: Record<string, string> = {}): KeyValueStore & 
   return { data, get: (k) => (k in data ? data[k] : null), set: (k, v) => { data[k] = v; } };
 }
 
+/** Keep the two-slot transaction atomic when a long journal exceeds the browser's text quota. */
 export function browserStore(): KeyValueStore {
+  const prefix = 'kg-slots-z1:';
+  let cache: { stored: string; decoded: string } | undefined;
   return {
-    get: (k) => window.localStorage.getItem(k),
-    set: (k, v) => { window.localStorage.setItem(k, v); },
+    get(key) {
+      const stored = window.localStorage.getItem(key);
+      if (key !== KEY_SLOTS || !stored?.startsWith(prefix)) return stored;
+      if (cache?.stored === stored) return cache.decoded;
+      const decoded = strFromU8(unzlibSync(strToU8(atob(stored.slice(prefix.length)), true)));
+      cache = { stored, decoded };
+      return decoded;
+    },
+    set(key, value) {
+      try {
+        window.localStorage.setItem(key, value);
+        if (key === KEY_SLOTS) cache = undefined;
+      } catch (error) {
+        // Keep permission and unavailable-storage errors visible to the existing save dialog.
+        const quota = error instanceof DOMException && ['QuotaExceededError', 'NS_ERROR_DOM_QUOTA_REACHED'].includes(error.name);
+        if (key !== KEY_SLOTS || !quota) throw error;
+        const stored = prefix + btoa(strFromU8(zlibSync(strToU8(value), { level: 1 }), true));
+        if (stored.length >= value.length) throw error;
+        window.localStorage.setItem(key, stored);
+        cache = { stored, decoded: value };
+      }
+    },
   };
 }

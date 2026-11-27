@@ -29,7 +29,7 @@
     {
       "id": "card.fold.century",
       "title": "The Capitol in Brooks’s 1894 civic book",
-      "text": "Elbridge S. Brooks published this illustrated book about United States government with the Century Company in 1894. The Harvard copy includes a chapter where its party of young readers visits the Capitol. The chapter shows how the building and the people in it were presented to this book’s audience.",
+      "text": "Elbridge S. Brooks wrote this illustrated book about United States government. The Century Company published it in 1894. The Harvard copy includes a chapter where its party of young readers visits the Capitol. The chapter shows how the building and the people in it were presented to this book’s audience.",
       "claimKind": "observation",
       "historicalLabel": "documented",
       "sources": ["HIS-DOOR-01"],
@@ -38,7 +38,7 @@
     {
       "id": "card.fold.green",
       "title": "A 1941 Green Book from the Smithsonian",
-      "text": "Victor Hugo Green’s Green Book helped Black travellers in the United States find businesses that served them under Jim Crow. This 1941 edition grouped its entries by state. The surviving cover names James A. Jackson, the person who presented this copy.",
+      "text": "Victor Hugo Green’s Green Book helped Black travellers in the United States find businesses that served them under Jim Crow. This 1941 edition grouped its entries by state. The surviving cover says this copy was presented with James A. Jackson’s compliments.",
       "claimKind": "observation",
       "historicalLabel": "documented",
       "sources": ["HIS-DOOR-02", "HIS-DOOR-03"],
@@ -53,7 +53,7 @@
       "historicalLabel": "documented",
       "dateText": "1894",
       "dateKind": "Year on this edition",
-      "summary": "Brooks uses a visit to introduce young readers to United States government. The original two-colour pixel drawing picks out the dome as a visual landmark. The Harvard copy also contains a view of the Capitol's east front.",
+      "summary": "Elbridge S. Brooks uses a visit to introduce young readers to United States government in this book published by the Century Company in 1894. The original two-colour pixel drawing picks out the dome as a visual landmark. The Harvard copy also contains a view of the Capitol's east front.",
       "altText": "Original pixel drawing of an open civic book with a dome and the steps below it.",
       "sources": ["HIS-DOOR-01"],
       "grantsCard": "card.fold.century"
@@ -65,7 +65,7 @@
       "historicalLabel": "documented",
       "dateText": "1941",
       "dateKind": "Publication year of this copy",
-      "summary": "Smithsonian record 2015.97.42 describes a compact printed guide by Victor Hugo Green. Its cover lists several kinds of service and carries James A. Jackson’s name. The original pixel drawing picks out the border and inner scroll described in the catalogue.",
+      "summary": "Smithsonian record 2015.97.42 describes a compact printed guide published by Victor Hugo Green. Its cover lists several kinds of service and says this copy was presented with James A. Jackson’s compliments. The original pixel drawing picks out the border and inner scroll described in the catalogue.",
       "altText": "Original pixel drawing of a folded guide with a dark outer border and a paper scroll at its centre.",
       "sources": ["HIS-DOOR-02", "HIS-DOOR-03"],
       "grantsCard": "card.fold.green",
@@ -74,7 +74,21 @@
         "institution": "Smithsonian National Museum of African American History and Culture",
         "accession": "2015.97.42",
         "source": "HIS-DOOR-02",
-        "objective": "fold.access.compare"
+        "objective": "fold.access.compare",
+        "people": [
+          {
+            "name": "Victor Hugo Green",
+            "role": "Publisher of this edition",
+            "detail": "The Smithsonian credits Green as publisher of the exact 1941 item.",
+            "source": "HIS-DOOR-02"
+          },
+          {
+            "name": "James A. Jackson",
+            "role": "Named on this copy’s cover",
+            "detail": "The presentation line associates Jackson with this copy and records his Esso affiliation.",
+            "source": "HIS-DOOR-02"
+          }
+        ]
       }
     }
   ],

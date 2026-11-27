@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { forestWatch } from '../src/domain/forestWatch';
 import { check } from '../src/domain/rules';
 import { MAPS } from '../src/maps';
 import { Driver } from './driver';
@@ -37,6 +38,7 @@ function readBook(d: Driver, phrasing: string) {
   d.run({ type: 'SetFlag', flag: book.flag!, value: true });
   d.talk(steward, phrasing);
   expect(d.done('forest.account')).toBe(true);
+  return book;
 }
 
 function visible(d: Driver, ids: string[]) {
@@ -68,13 +70,15 @@ describe('Where the Wings Go', () => {
   it.each([
     ['quiet', 'under the same watch', 'Keep the crews', 'Keep the creek stop', 'Add the return counts'],
     ['brief', 'early and late marks', 'Give heard and seen', 'Read both lookout notes', 'Brief the bridge readers'],
-  ])('%s displays its own response and awards the same credit after a correction',
+  ])('%s compares lookout counts and crew accounts before its correction, with the same credit',
   (response, organise, phrasing, send, revise) => {
     const d = begin();
     observe(d);
+    expect([forestWatch('creek', 'early'), forestWatch('ridge', 'early')]).toEqual([[0, 1, 0], [1, 2, 0]]);
+    expect([forestWatch('creek', 'late'), forestWatch('ridge', 'late')]).toEqual([[1, 0, 2], [0, 0, 1]]);
     d.s.mapId = station;
     d.talk(naturalist, organise);
-    readBook(d, phrasing);
+    expect(readBook(d, phrasing).text).toMatch(/early rounds.*hears wings behind the creek reeds.*later shifts hear them along the ridge/);
     expect(visible(d, responses)).toEqual([]);
     d.talk(steward, send);
     expect(d.s.flags['forest.response']).toBe(response);
@@ -86,10 +90,13 @@ describe('Where the Wings Go', () => {
     expect(d.done('forest.recheck')).toBe(false);
     d.run({ type: 'ObserveForest', site: 'ridge', window: 'return' });
     expect(d.done('forest.recheck')).toBe(true);
+    expect(forestWatch('creek', 'return')).toEqual([1, null, 1]);
+    expect(forestWatch('ridge', 'return')).toEqual([0, 1, 1]);
     d.s.mapId = community;
     d.talk(steward, revise);
     expect(d.done('forest.finish')).toBe(true);
     expect(visible(d, ['forest-followup-note'])).toEqual(['forest-followup-note']);
+    expect(MAPS[community].interactables.find((prop) => prop.id === 'forest-followup-note')?.text).toContain('two crossings from each lookout');
     expect(d.p.credit['credit.forest.publish']).toBe(8);
     expect(d.p.credit['credit.forest.finish']).toBe(8);
 

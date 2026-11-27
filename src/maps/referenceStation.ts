@@ -107,7 +107,7 @@ export const REFERENCE_STATION: MapDef = {
     sign('horn-checked', 23, 12, 'blank and both direction strips on tagged clips', 'repeat',
       'The excess remained in both directions. The three clips keep their direction and fixed interval. Another source could explain what persisted.', testedHorn),
 
-    scene('send', 17, 14, 'Cerin’s checked dispatch and two readers', 'local', all(ready, not(set('plan')))),
+    scene('send', 18, 14, 'Cerin’s checked dispatch and two readers', 'local', all(ready, not(set('plan')))),
     sign('sent-local', 17, 14, 'the first dated reading sent to the low rail', 'local',
       'The first figures go to the low rail at Headland Station. Read them with the watch crew. The second check retains its own space.', f('plan', 'local')),
     sign('sent-repeat', 17, 14, 'the separate upper reader request', 'repeat',

@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { buildPack } from '../src/content';
 import { judgeSight, sightBlock } from '../src/domain/puzzles';
 import { conceptXP } from '../src/domain/permanent';
+import { EMBERFORD } from '../src/maps/emberford';
+import { check } from '../src/domain/rules';
 import { Driver } from './driver';
 
 const pack = buildPack();
@@ -27,7 +29,7 @@ describe('The Tipped Cart (sightlines)', () => {
     expect(r.text).toMatch(/Look again/);
     expect(judgeSight(rec, 'hana', 1, false).text).toMatch(/one source/);
   });
-  it('the report opens only after every claim is sorted, and only the fair report finishes it', () => {
+  it('the report opens only after every claim is sorted, and an unsupported accusation can be repaired', () => {
     const d = new Driver();
     expect(() => d.run({ type: 'PuzzleReport', puzzle: P, index: 1 })).toThrow(/Sort every claim/);
     for (const w of rec.witnesses) w.claims.forEach((_, i) => d.run({ type: 'PuzzleSight', puzzle: P, witness: w.id, claim: i, saw: could(w.id, i) }));
@@ -39,4 +41,25 @@ describe('The Tipped Cart (sightlines)', () => {
     expect(conceptXP(d.p, pack).perspective).toBeGreaterThan(0);
     expect(d.s.journal).toContain('j.sight');
   });
+  it.each(['driver', 'lane'])('opens the %s receipt and lets the clerk change delivery without extra credit', (first) => {
+    const d = new Driver();
+    for (const w of rec.witnesses) w.claims.forEach((_, claim) =>
+      d.run({ type: 'PuzzleSight', puzzle: P, witness: w.id, claim, saw: could(w.id, claim) }));
+    const visible = (id: string) => check(EMBERFORD.interactables.find((o) => o.id === id)!.visibleIf!, d.s);
+    const send = (delivery: string) => d.run({ type: 'PuzzleReport', puzzle: P, index: rec.reports.findIndex((r) => r.delivery === delivery) });
+    expect(visible('cart-driver-receipt')).toBe(false);
+    expect(visible('cart-public-route')).toBe(false);
+    const other = first === 'driver' ? 'lane' : 'driver';
+    send(first);
+    const credit = { ...d.p.credit };
+    expect(visible('cart-driver-receipt')).toBe(first === 'driver');
+    expect(visible('cart-public-route')).toBe(first === 'lane');
+    send(other);
+    expect(visible('cart-driver-receipt')).toBe(other === 'driver');
+    expect(visible('cart-public-route')).toBe(other === 'lane');
+    expect(d.p.credit).toEqual(credit);
+    delete d.s.flags['puzzle.tipped-cart.delivery'];
+    expect(visible('cart-driver-receipt')).toBe(true);
+  });
+
 });

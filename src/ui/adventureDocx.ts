@@ -1,4 +1,5 @@
 import { strToU8, zipSync } from 'fflate';
+import { CONCEPT_COLOURS, splitConceptText } from '../domain/conceptText';
 import type { AdventureJournalView } from '../domain/adventureJournal';
 import { adventureExportSnapshot, type AdventureExportOptions } from './adventureExport';
 
@@ -15,8 +16,24 @@ function escapeXml(text: string): string {
 }
 
 function wordRun(text: string, properties = ''): string {
-  const lines = text.split(/\r\n|\n|\r/).map((line) => `<w:t xml:space="preserve">${escapeXml(line)}</w:t>`);
-  return `<w:r>${properties ? `<w:rPr>${properties}</w:rPr>` : ''}${lines.join('<w:br/>')}</w:r>`;
+  const content = text.split(/(\r\n|\r|\n|\t)/).map((part) => {
+    if (part === '\t') return '<w:tab/>';
+    if (/^[\r\n]+$/.test(part)) return '<w:br/>';
+    return part ? `<w:t xml:space="preserve">${escapeXml(part)}</w:t>` : '';
+  }).join('');
+  return `<w:r>${properties ? `<w:rPr>${properties}</w:rPr>` : ''}${content}</w:r>`;
+}
+
+function wordProse(text: string, style: { italic?: boolean; link?: boolean } = {}): string {
+  return splitConceptText(text).map(({ text, concept }) => {
+    const colour = concept ? CONCEPT_COLOURS[concept].onLight.slice(1).toUpperCase() : style.link ? '184E4B' : undefined;
+    return wordRun(text, [
+      concept ? '<w:b/>' : '',
+      style.italic ? '<w:i/>' : '',
+      colour ? `<w:color w:val="${colour}"/>` : '',
+      concept || style.link ? '<w:u w:val="single"/>' : '',
+    ].join(''));
+  }).join('');
 }
 
 function styledParagraph(runs: string, style: string): string {
@@ -24,7 +41,7 @@ function styledParagraph(runs: string, style: string): string {
 }
 
 function paragraph(text: string, style = 'Normal'): string {
-  return styledParagraph(wordRun(text), style);
+  return styledParagraph(wordProse(text), style);
 }
 
 const styles = `${xmlHeader}<w:styles xmlns:w="${WORD}">
@@ -39,22 +56,46 @@ const styles = `${xmlHeader}<w:styles xmlns:w="${WORD}">
 
 /** Pack a real Office Open XML document. The ZIP and document are made in memory. */
 export function adventureDocx(view: AdventureJournalView, options: AdventureExportOptions): Uint8Array<ArrayBuffer> {
-  const { title, entries, notes, quests, questions, references } = adventureExportSnapshot(view, options);
+  const { title, scoped, entries, notes, untaggedReflections, portfolio, quests, questions, references, encyclopedia } = adventureExportSnapshot(view, options);
   const links = new Map<string, string>();
+  const hyperlink = (text: string, url: string, italic?: boolean) => {
+    const id = links.get(url) ?? `rId${links.size + 2}`;
+    links.set(url, id);
+    return `<w:hyperlink r:id="${id}">${wordProse(text, { italic, link: true })}</w:hyperlink>`;
+  };
   const blocks = [paragraph(title, 'Title'), paragraph('Knowledge Guardians')];
+  const addReflections = (items?: readonly { prompt: string; response?: string }[]) => {
+    for (const { prompt, response } of items ?? []) {
+      blocks.push(paragraph('Reflection prompt', 'JournalDetails'), paragraph(prompt));
+      if (response !== undefined) blocks.push(paragraph('My response', 'JournalDetails'), paragraph(response));
+    }
+  };
   blocks.push(paragraph('Adventure diary', 'Heading1'));
-  if (!entries.length) blocks.push(paragraph('I have yet to make a diary entry on this adventure.'));
+  if (!entries.length) blocks.push(paragraph(scoped ? 'No diary entries match this selection.' : 'I have yet to make a diary entry on this adventure.'));
   for (const entry of entries) {
     blocks.push(paragraph(entry.title, 'Heading2'), paragraph(entry.details, 'JournalDetails'), paragraph(entry.text));
+    addReflections(entry.reflections);
   }
   if (notes.length) {
     blocks.push(paragraph('My notes and reflections', 'Heading1'));
     for (const note of notes) {
       blocks.push(paragraph(note.details, 'JournalDetails'), paragraph(note.text));
+      addReflections(note.reflections);
     }
   }
-  blocks.push(paragraph('Open quests and questions', 'Heading1'));
-  if (!quests.length && !questions.length) blocks.push(paragraph('There are no open quests or questions in this journal.'));
+  if (untaggedReflections.length) {
+    blocks.push(paragraph('My reflections on untagged encounters', 'Heading1'));
+    for (const entry of untaggedReflections) {
+      blocks.push(paragraph(entry.title, 'Heading2'), paragraph(entry.details, 'JournalDetails'));
+      addReflections(entry.reflections);
+    }
+  }
+  if (portfolio.length) {
+    blocks.push(paragraph('My Portfolio writing', 'Heading1'));
+    for (const entry of portfolio) blocks.push(paragraph(entry.title, 'Heading2'), paragraph(entry.details, 'JournalDetails'), paragraph(entry.text));
+  }
+  if (!scoped || quests.length || questions.length) blocks.push(paragraph('Open quests and questions', 'Heading1'));
+  if (!scoped && !quests.length && !questions.length) blocks.push(paragraph('There are no open quests or questions in this journal.'));
   for (const quest of quests) {
     blocks.push(paragraph(quest.title, 'Heading2'));
     if (quest.question) blocks.push(paragraph(quest.question));
@@ -67,13 +108,15 @@ export function adventureDocx(view: AdventureJournalView, options: AdventureExpo
   if (references.length) {
     blocks.push(paragraph('Works Cited', 'Heading1'));
     for (const reference of references) {
-      const runs = reference.runs.map((part) => {
-        if (!part.href) return wordRun(part.text, part.cite ? '<w:i/>' : '');
-        const id = links.get(part.href) ?? `rId${links.size + 2}`;
-        links.set(part.href, id);
-        return `<w:hyperlink r:id="${id}">${wordRun(part.text, '<w:color w:val="184E4B"/><w:u w:val="single"/>')}</w:hyperlink>`;
-      });
+      const runs = reference.runs.map((part) => part.href ? hyperlink(part.text, part.href, part.cite)
+        : wordProse(part.text, { italic: part.cite }));
       blocks.push(paragraph(reference.label, 'JournalDetails'), styledParagraph(runs.join(''), 'WorksCited'));
+    }
+  }
+  if (encyclopedia.length) {
+    blocks.push(paragraph('Wikipedia links from my adventure', 'Heading1'));
+    for (const link of encyclopedia) {
+      blocks.push(paragraph(link.label, 'JournalDetails'), styledParagraph(hyperlink(link.title, link.url), 'Normal'));
     }
   }
   const document = `${xmlHeader}<w:document xmlns:w="${WORD}" xmlns:r="${OFFICE_REL}"><w:body>${blocks.join('')}

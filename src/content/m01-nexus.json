@@ -1831,7 +1831,7 @@
   {
    "id": "dace.source",
    "speaker": "curator-dace",
-   "text": "Look at the museum record for the Biro pen. It names the makers and the dates. The record supports what the object is. Whether it is the 'first' is my judgement.",
+   "text": "Look at the museum record for the Biro pen. It names the makers and the dates. The record supports what the object is. Whether it is the 'first' is my judgement. Even a visitor who doubts my judgement can check the truth of the date.",
    "claimKind": "interpretation"
   },
   {
@@ -1952,7 +1952,7 @@
   {
    "id": "dace.how",
    "speaker": "curator-dace",
-   "text": "You put a claim on the board and place evidence under it. You can challenge the links in Venn's claim, narrow your own claim, or show that you two answer different questions. The crowd watches what holds up. Volume does not count.",
+   "text": "You put a claim on the board and place evidence under it. You can challenge the links in Venn's claim, narrow your own claim, or show that you two answer different questions. A concession can give Venn a fair point. You can reframe what ‘first’ asks. The crowd watches what holds up. Volume does not count.",
    "options": [
     {
      "text": "Let's begin.",
@@ -1968,7 +1968,7 @@
   {
    "id": "dace.label",
    "speaker": "curator-dace",
-   "text": "The visitors will carry whichever words you put on that stand. Name the people your record can name. Leave room for what it can't tell you. I'll listen to how the words travel.",
+   "text": "The visitors will carry whichever words you put on that stand. Name the people your record can name. Leave room for what it can't tell you. I'll listen to how the words travel. If someone finds an error, send them to me. This stand is my responsibility.",
    "options": [
     {
      "text": "Show me the label stand.",
@@ -2109,7 +2109,7 @@
   {
    "id": "venn.limits",
    "speaker": "clerk-venn",
-   "text": "A clerk could check the day a patent was granted. To show that it wrote well, we'd need a different record or a test. Even a good mark from our model would tell us about this bench and this model.",
+   "text": "I can check the day a patent was granted. To find out how a pen writes, I’d want to try it. Even a lovely mark from our simulation tells me about our model on this bench. May I see the slip with the surface on it?",
    "claimKind": "interpretation"
   },
   {

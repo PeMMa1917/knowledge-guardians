@@ -12,6 +12,7 @@ import { dateRegisterEntries } from '../src/content/dateRegisterCases';
 import { curtainCallEntries } from '../src/content/curtainCall';
 import { FACING_CUE_PREFIX, facingCueBeatNode, facingCueHouseReadNode, facingCuePlanNode } from '../src/content/facingCue';
 import { glassRackEntries } from '../src/content/glassRack';
+import { clearBayEntries } from '../src/domain/clearBay';
 import { FACINGS, FACING_SITES } from '../src/domain/facingCue';
 import { totalXP } from '../src/domain/permanent';
 import type { ShowdownMove } from '../src/domain/showdown';
@@ -481,7 +482,7 @@ describe('dialogue graph', () => {
         ] : [];
         return [
           ...datePegEntries(prop.game), ...dateRegisterEntries(prop.game), ...callboardEntries(prop.game),
-          ...glassRackEntries(prop.game), ...curtainCallEntries(prop.game), ...facing, ...press,
+          ...glassRackEntries(prop.game), ...curtainCallEntries(prop.game), ...clearBayEntries(prop.game), ...facing, ...press,
         ];
       }
       return [];

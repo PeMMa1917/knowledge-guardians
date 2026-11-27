@@ -1,0 +1,98 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH1-R-WELL-RECORDS", "world": "WORLD-02", "title": "Two Ways to the East Well",
+      "stake": "A visitor wants to know what the town can pass on about the east well.",
+      "knowledgeQuestion": "What can a record help the next person do, and what question does it leave open?",
+      "available": { "flagSet": "mill.clever-well.desk" },
+      "caseVisits": [["well.records.guild-read"], ["well.records.route-read"]],
+      "objectives": [
+        {
+          "id": "well.records.guild-read", "title": "Check what Noa’s paired records can tell a reader", "essential": false,
+          "visible": { "flag": "mill.clever-well.desk", "eq": "ledger" },
+          "done": { "flag": "well.records.guild", "eq": true },
+          "onComplete": [{ "journal": "j.well.records.guild" }],
+          "kq": { "id": "KQ-NEW-005", "action": "compare" },
+          "skills": ["SK-THK-14"],
+          "weave": { "concepts": ["evidence", "certainty", "objectivity"], "framework": ["scope", "methods-and-tools"], "atl": ["thinking", "communication"], "aoks": ["NAT"], "subjects": ["ess"], "thinking": { "dok": 2, "bloom": "analyse", "fink": "application", "solo": "relational" }, "minutes": 3 }
+        },
+        {
+          "id": "well.records.route-read", "title": "Take a family along Efua’s school route", "essential": false,
+          "visible": { "flag": "mill.clever-well.desk", "eq": "ferry" },
+          "done": { "flag": "well.records.ferry", "eq": true },
+          "onComplete": [{ "journal": "j.well.records.ferry" }],
+          "kq": { "id": "KQ-NEW-005", "action": "follow" },
+          "skills": ["SK-THK-14"],
+          "weave": { "concepts": ["evidence", "explanation", "perspective"], "framework": ["scope", "methods-and-tools", "perspectives"], "atl": ["thinking", "communication"], "aoks": ["HUM"], "subjects": ["geography"], "thinking": { "dok": 2, "bloom": "apply", "fink": "application", "solo": "relational" }, "minutes": 3 }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "well.records.guild", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "Noa leaves the two well leaves on the guild board. A visitor wants to compare them without losing which well each line came from.",
+      "options": [
+        { "text": "Clip the east-well leaf to the board.", "if": { "not": { "flag": "well.records.east", "eq": true } }, "effects": [{ "setFlag": "well.records.east", "value": true }], "next": "well.records.east" },
+        { "text": "Clip the west-well leaf to the board.", "if": { "not": { "flag": "well.records.west", "eq": true } }, "effects": [{ "setFlag": "well.records.west", "value": true }], "next": "well.records.west" },
+        { "text": "Line up the matching mineral headings for the visitor.", "if": { "all": [{ "flag": "well.records.east", "eq": true }, { "flag": "well.records.west", "eq": true }, { "not": { "flag": "well.records.guild", "eq": true } }] }, "effects": [{ "setFlag": "well.records.guild", "value": true }], "next": "well.records.guild-reply" },
+        { "text": "Show the visitor the paired record again.", "if": { "flag": "well.records.guild", "eq": true }, "next": "well.records.guild-reply" },
+        { "text": "Leave the leaves on the board for now." }
+      ]
+    },
+    {
+      "id": "well.records.east", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The east leaf is headed Last Spring. Its lines record minerals in the water. You leave the well’s name above them.",
+      "options": [{ "text": "Return to the board.", "next": "well.records.guild" }]
+    },
+    {
+      "id": "well.records.west", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The west leaf has the same season and the same mineral headings. Its well name remains visible on its own clip.",
+      "options": [{ "text": "Return to the board.", "next": "well.records.guild" }]
+    },
+    {
+      "id": "well.records.guild-reply", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The visitor follows the paired lines. Noa found nearly the same amounts of the same minerals last spring. When the visitor asks what drinking the water did for pupils, Noa points to the headings. There is no record of learning on either leaf."
+    },
+    {
+      "id": "well.records.ferry-start", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "Tova left a note on Efua’s route strip. Set its east-well peg here, then follow the strip to the school peg by the landing crates. A family at the landing wants to know why the pupils came this way.",
+      "options": [
+        { "text": "Set the east-well peg on Efua’s route strip.", "if": { "not": { "flag": "well.records.peg", "eq": true } }, "effects": [{ "setFlag": "well.records.peg", "value": true }], "next": "well.records.ferry-mark" },
+        { "text": "Read where the route goes next.", "if": { "flag": "well.records.peg", "eq": true }, "next": "well.records.ferry-mark" },
+        { "text": "Leave the peg for another visit." }
+      ]
+    },
+    {
+      "id": "well.records.ferry-mark", "speaker": "narrator", "historicalLabel": "fictional-world",
+      "text": "The first peg stands on the route board. The school peg is marked farther along the landing. Follow the strip between them."
+    },
+    {
+      "id": "well.records.ferry-end", "speaker": "ferry-tova", "historicalLabel": "fictional-world",
+      "text": "Here is the school peg. A pupil coming from the east well would only have a short walk left. Show the family the line Efua traced.",
+      "options": [
+        { "text": "Run Efua’s route strip from the well peg to the old school.", "if": { "not": { "flag": "well.records.ferry", "eq": true } }, "effects": [{ "setFlag": "well.records.ferry", "value": true }], "next": "well.records.ferry-reply" },
+        { "text": "Show the family the marked route again.", "if": { "flag": "well.records.ferry", "eq": true }, "next": "well.records.ferry-reply" },
+        { "text": "Leave the strip here for now." }
+      ]
+    },
+    {
+      "id": "well.records.ferry-reply", "speaker": "ferry-tova", "historicalLabel": "fictional-world",
+      "text": "The family follows your strip from the well to the school. Efua remembered pupils stopping for water on their way to lessons. The route gives them a reason to gather there. It does not show what the water did for anyone’s learning."
+    }
+  ],
+  "journal": [
+    { "id": "j.well.records.guild", "claimKind": "observation", "text": "I showed a guild visitor both names above Noa’s mineral lines. The water readings for last spring were close. The two leaves left the visitor’s question about learning open." },
+    { "id": "j.well.records.ferry", "claimKind": "observation", "text": "The family could follow Efua’s route from the east well to the school. The route helped them understand where pupils stopped for water. It left the pupils’ learning unexplained." }
+  ],
+  "hints": [
+    { "id": "h.well.records.guild.1", "objective": "well.records.guild-read", "depth": 1, "text": "Which record could tell a reader what was measured that spring?" },
+    { "id": "h.well.records.guild.2", "objective": "well.records.guild-read", "depth": 2, "text": "Look for the two leaves just beside the guild’s public book." },
+    { "id": "h.well.records.guild.3", "objective": "well.records.guild-read", "depth": 3, "text": "Bring each well’s leaf onto the board with its own name still visible." },
+    { "id": "h.well.records.guild.4", "objective": "well.records.guild-read", "depth": 4, "text": "Clip both leaves and line up the mineral headings. Read Noa’s reply. To try the school route later, move the traced slip at the tea table." },
+    { "id": "h.well.records.ferry.1", "objective": "well.records.route-read", "depth": 1, "text": "A family might recognise why pupils stopped once they can follow the route." },
+    { "id": "h.well.records.ferry.2", "objective": "well.records.route-read", "depth": 2, "text": "Find Efua’s first peg as you enter the old ferry landing." },
+    { "id": "h.well.records.ferry.3", "objective": "well.records.route-read", "depth": 3, "text": "Place the well peg to pick up the route. Look for its school peg by the landing crates." },
+    { "id": "h.well.records.ferry.4", "objective": "well.records.route-read", "depth": 4, "text": "Set the first peg, then walk to the school peg and run the route strip for Tova’s family. To try the water records later, move the traced slip at the tea table." }
+  ]
+}

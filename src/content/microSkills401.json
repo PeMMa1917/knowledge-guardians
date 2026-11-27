@@ -2139,6 +2139,20 @@
         ],
         "game": 218,
         "story": 77
+      },
+      {
+        "objective": "parcel.rack",
+        "action": "Pin a drawer, then run the same six placements through a sighted keeper and a blind spring. Keep the two early reveals in view when comparing the counts.",
+        "styles": [
+          "strategist",
+          "explorer"
+        ],
+        "modes": [
+          "physical",
+          "analytical"
+        ],
+        "game": 110,
+        "story": 77
       }
     ]
   },
@@ -2682,6 +2696,21 @@
           "visual"
         ],
         "game": 247,
+        "story": 95
+      },
+      {
+        "objective": "emberford.tally.o.readback",
+        "action": "Put loaf counts or tray weights first on two copies of the same tally. Follow the chosen heading until Della assigns the stalls or Idris ties a ferry load, then read their working slip.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "analytical",
+          "social"
+        ],
+        "game": 238,
         "story": 95
       }
     ]
@@ -3540,6 +3569,21 @@
         ],
         "game": 144,
         "story": 54
+      },
+      {
+        "objective": "forest.account-copy.readback",
+        "action": "Compare the lamp crew’s hearing place with the lookout’s visible passage. Carry the crew’s words to a listening keeper or separate heard and seen at the low rail, and see which entry the next reader can make.",
+        "styles": [
+          "explorer",
+          "companion"
+        ],
+        "modes": [
+          "reading",
+          "linguistic",
+          "spatial"
+        ],
+        "game": 179,
+        "story": 77
       }
     ]
   },

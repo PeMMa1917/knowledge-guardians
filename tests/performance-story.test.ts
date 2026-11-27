@@ -199,20 +199,23 @@ describe('The Same Door in Two Lights', () => {
     expect(d.s.flags['stage.rehearsal.move']).toBeUndefined();
   });
 
-  it.each([
-    ['shadow', 'Hang the side-lit relief', 'stage.relief-side'],
-    ['craft', 'Hang the front-lit relief', 'stage.relief-front'],
-  ])('hangs a bounded %s account with its corresponding light and neutral credit', (display, choice, art) => {
-    const d = enter();
-    const credit = { ...d.p.credit };
+  function finishBothReadings(d: Driver) {
     d.s.mapId = rehearsal;
     sign(d, 'stage-light-maker');
     use(d, 'stage-light-stand', 'Set the lamp to face');
     sign(d, 'stage-light-view-front');
     use(d, 'stage-light-stand', 'Lower the lamp');
     sign(d, 'stage-light-view-side');
-
     d.s.mapId = foyer;
+  }
+
+  it.each([
+    ['shadow', 'Hang the side-lit relief', 'stage.relief-side'],
+    ['craft', 'Hang the front-lit relief', 'stage.relief-front'],
+  ])('hangs a bounded %s account with its corresponding light and neutral credit', (display, choice, art) => {
+    const d = enter();
+    const credit = { ...d.p.credit };
+    finishBothReadings(d);
     use(d, 'stage-light-proof', choice);
     const copy = `stage-light-${display}-display`;
     expect(visible(d, displays)).toEqual([copy]);
@@ -223,4 +226,37 @@ describe('The Same Door in Two Lights', () => {
     expect(d.p.credit).toEqual(credit);
     expect(d.s.flags['stage.response']).toBeUndefined();
   });
+
+  it.each([
+    ['shadow', 'Hang the side-lit relief', 'side', 'front', 'Bring the light round', 'paper foot to rise', 'trying so hard to carry'],
+    ['craft', 'Hang the front-lit relief', 'front', 'side', 'Move the lamp into', 'hear what’s inside', 'feel the wait more'],
+  ] as const)('keeps the posted %s and lets both first-look arrangements change the scene in either order',
+    (display, hang, first, other, move, quietReply, shownReply) => {
+      for (const order of [['quiet', 'shown'], ['shown', 'quiet']] as const) {
+        const d = enter();
+        const credit = { ...d.p.credit };
+        expect(d.e.visibleOptions('stage.light.stand', d.s).some(({ option }) => option.text.includes('next visitor'))).toBe(false);
+        finishBothReadings(d);
+        use(d, 'stage-light-proof', hang);
+        d.s.mapId = rehearsal;
+        const bench = 'stage.light.stand';
+        expect(d.e.visibleOptions(bench, d.s).filter(({ option }) => option.text.includes('next visitor'))).toHaveLength(1);
+        d.walk(bench, ['Set a first look', 'Put the', 'Leave this first position']);
+        expect(visible(d, views)).toEqual([`stage-light-view-${first}`]);
+        expect(d.s.flags['stage.light.visitor']).toBeUndefined();
+        for (const mode of order) {
+          if (mode === 'quiet') d.walk(bench, ['Set a first look', 'quiet first look']);
+          else d.walk(bench, ['Set a first look', 'Put the', move]);
+          expect(visible(d, views)).toEqual([`stage-light-view-${mode === 'quiet' ? first : other}`]);
+          expect(d.s.flags['stage.light.visitor']).toBe(mode);
+          expect(d.s.journal).toContain(`j.stage.light.visitor.${mode}`);
+          const readback = d.e.node(`stage.light.visitor.${display}.${mode}`);
+          expect(readback.text).toContain(mode === 'quiet' ? quietReply : shownReply);
+        }
+        d.s.mapId = foyer;
+        expect(visible(d, displays)).toEqual([`stage-light-${display}-display`]);
+        expect(d.p.credit).toEqual(credit);
+        expect(d.s.flags['stage.response']).toBeUndefined();
+      }
+    });
 });

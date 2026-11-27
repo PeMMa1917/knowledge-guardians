@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { GLASS_RACK_CASES, glassRackEntries } from '../src/content/glassRack';
+import { GLASS_RACK_CASES, glassRackContent, glassRackEntries } from '../src/content/glassRack';
+import voices from '../src/content/glass-rack-lines.json';
 import { check } from '../src/domain/rules';
+import { diaryQuestions } from '../src/domain/diaryReflection';
 import { specimenItemId, specimenToolId } from '../src/domain/specimenGear';
 import { MAPS } from '../src/maps';
 import { Driver } from './driver';
@@ -25,6 +27,50 @@ describe('The Missing Face', () => {
     expect(room.interactables.filter(({ x, y }) => x === exit.to?.x && y === exit.to?.y)).toEqual([]);
     expect(new Set(GLASS_RACK_CASES.map(({ key }) => key)).size).toBe(40);
     expect(new Set(GLASS_RACK_CASES.flatMap(({ wholeAsset, otherAsset }) => [wholeAsset, otherAsset])).size).toBe(80);
+  });
+
+  it('gives each photo pair its own work, reader and physical return lines', () => {
+    expect(Object.keys(voices).sort()).toEqual(GLASS_RACK_CASES.map(({ slug }) => slug).sort());
+    const registry = new Map(glassRackContent.dialogue.map(node => [node.id, node]));
+    const fields = ['work', 'comparison', 'rail', 'railDone', 'pocket', 'pocketDone', 'revisit', 'boardDone', 'deskDone'] as const;
+    const unique = new Set<string>();
+    for (const record of GLASS_RACK_CASES) {
+      for (const field of fields) {
+        const line = record.story[field];
+        expect(line.trim().length, record.slug + ' ' + field).toBeGreaterThan(20);
+        expect(unique.has(line), record.slug + ' ' + field).toBe(false);
+        unique.add(line);
+      }
+      for (const field of ['work', 'rail', 'pocket', 'revisit'] as const) {
+        expect(registry.get(record.nodes[field])?.text).toBe(record.story[field]);
+      }
+    }
+    expect(unique.size).toBe(360);
+  });
+
+  it('offers a clue for each photograph and remembers what its reader could actually see', () => {
+    const clues = new Set<string>();
+    const diaryLines = new Set<string>();
+    const questions = new Set<string>();
+    for (const object of GLASS_RACK_CASES) {
+      for (const [objective, first] of [[object.earned, object.story.hintAtCase], [object.returned, object.story.hintAtReturn]]) {
+        const hints = glassRackContent.hints.filter((hint) => hint.objective === objective);
+        expect(hints.map(({ depth }) => depth)).toEqual([1, 2, 3, 4]);
+        expect(hints[0].text).toBe(first);
+        clues.add(first);
+      }
+      const note = glassRackContent.journal.find(({ id }) => id === `j.${object.earned}`)!;
+      expect(note.text).toMatch(/^(I|My|We|Our)\b/);
+      diaryLines.add(note.text);
+      const entry = { id: `quest:${object.earned}`, kind: 'quest' as const, title: 'The Missing Face' };
+      const question = diaryQuestions(entry)['mount-reading'];
+      expect(question).toMatch(/\?$/);
+      questions.add(question);
+      expect(diaryQuestions(entry, { quest: 'I followed the edge.' })).toHaveProperty('quest');
+    }
+    expect(clues.size).toBe(GLASS_RACK_CASES.length * 2);
+    expect(diaryLines.size).toBe(GLASS_RACK_CASES.length);
+    expect(questions.size).toBe(GLASS_RACK_CASES.length);
   });
 
   it.each(GLASS_RACK_CASES)('earns and equips $accession through either reading space, and mounts the chosen return view', (object) => {

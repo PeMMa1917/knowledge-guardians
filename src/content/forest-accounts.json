@@ -1,0 +1,478 @@
+{
+ "items": [
+  {
+   "id": "item.forest.account-copy.words",
+   "name": "The lamp crew’s quoted slip",
+   "description": "The dawn crew’s words and hearing place stay attached. Carry the folded copy to the keeper’s west peg in Bridge Clearing.",
+   "art": "preserved.slip",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "item.forest.account-copy.lines",
+   "name": "The heard-and-seen card",
+   "description": "Two short headings keep sound and visible passes in their own lines. Take it to the low public rail in Bridge Clearing.",
+   "art": "preserved.display-paired",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "forest.account-copy.start",
+   "speaker": "forest-steward",
+   "text": "Ayla lifts the cover of the route book. “I lent this page out once. It came back with a stroke beside the words ‘wings behind the reeds’. Before we send a copy, look at the loose slip and the lookout card.”",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Lift the lamp crew’s slip from its pocket.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "forest.account"
+         },
+         {
+          "flag": "forest.pathbook",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "not": {
+         "flagSet": "forest.account-copy.sent"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.account-copy.lamp",
+       "value": true
+      }
+     ],
+     "next": "forest.account-copy.lamp"
+    },
+    {
+     "text": "Leave the book on the stand."
+    }
+   ]
+  },
+  {
+   "id": "forest.account-copy.lamp",
+   "speaker": "narrator",
+   "text": "Early round, lamp crew. “Wings behind the creek reeds.” The crew wrote where the next lamp round should stop to listen. The ink ends at the place name. No lookout count appears on their slip.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Unfold the lookout’s card beside it.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "objective": "forest.account"
+           },
+           {
+            "flag": "forest.pathbook",
+            "eq": true
+           }
+          ]
+         },
+         {
+          "not": {
+           "flagSet": "forest.account-copy.sent"
+          }
+         }
+        ]
+       },
+       {
+        "flag": "forest.account-copy.lamp",
+        "eq": true
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.account-copy.compared",
+       "value": true
+      }
+     ],
+     "next": "forest.account-copy.compare"
+    },
+    {
+     "text": "Close the cover for now."
+    }
+   ]
+  },
+  {
+   "id": "forest.account-copy.compare",
+   "speaker": "forest-steward",
+   "text": "“A stroke on the lookout card means one passage someone saw across the opening. The crew’s words give the next keeper a listening place. Keep the dawn slip with either copy. The west peg has room for a folded note. The low rail takes a card a visitor can read alone.”",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Fold the crew’s own words for the keeper’s peg.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "all": [
+             {
+              "objective": "forest.account"
+             },
+             {
+              "flag": "forest.pathbook",
+              "eq": true
+             }
+            ]
+           },
+           {
+            "not": {
+             "flagSet": "forest.account-copy.sent"
+            }
+           }
+          ]
+         },
+         {
+          "flag": "forest.account-copy.lamp",
+          "eq": true
+         },
+         {
+          "flag": "forest.account-copy.compared",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "any": [
+         {
+          "flag": "forest.account.layout",
+          "eq": "words"
+         },
+         {
+          "not": {
+           "flagSet": "forest.account.layout"
+          }
+         }
+        ]
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.account-copy.sent",
+       "value": "words"
+      },
+      {
+       "giveItem": "item.forest.account-copy.words"
+      }
+     ],
+     "next": "forest.account-copy.sent.words"
+    },
+    {
+     "text": "Make separate heard and seen lines for the low rail.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "all": [
+           {
+            "all": [
+             {
+              "objective": "forest.account"
+             },
+             {
+              "flag": "forest.pathbook",
+              "eq": true
+             }
+            ]
+           },
+           {
+            "not": {
+             "flagSet": "forest.account-copy.sent"
+            }
+           }
+          ]
+         },
+         {
+          "flag": "forest.account-copy.lamp",
+          "eq": true
+         },
+         {
+          "flag": "forest.account-copy.compared",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "any": [
+         {
+          "flag": "forest.account.layout",
+          "eq": "lines"
+         },
+         {
+          "not": {
+           "flagSet": "forest.account.layout"
+          }
+         }
+        ]
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.account-copy.sent",
+       "value": "lines"
+      },
+      {
+       "giveItem": "item.forest.account-copy.lines"
+      }
+     ],
+     "next": "forest.account-copy.sent.lines"
+    },
+    {
+     "text": "Leave both records in their pockets."
+    }
+   ]
+  },
+  {
+   "id": "forest.account-copy.sent.words",
+   "speaker": "narrator",
+   "text": "The square fold keeps the crew’s phrase above its dawn time and bends around the original place mark. Take it to the west keeper’s peg by the path.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.account-copy.sent.lines",
+   "speaker": "narrator",
+   "text": "Two wide headings open outward. The lamp crew’s phrase stays below Heard, with its source attached. Take the card to the low rail.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.account-copy.receive.words",
+   "speaker": "narrator",
+   "text": "Ayla’s sister is setting out the dusk round. The west peg has two stops marked on it. She reaches for the folded copy.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang the fold and watch her set the next listening stop.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "forest.account"
+         },
+         {
+          "flag": "forest.pathbook",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "flag": "forest.account-copy.sent",
+        "eq": "words"
+       },
+       {
+        "item": "item.forest.account-copy.words"
+       },
+       {
+        "not": {
+         "flagSet": "forest.account-copy.used"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "takeItem": "item.forest.account-copy.words"
+      },
+      {
+       "setFlag": "forest.account-copy.used",
+       "value": "words"
+      }
+     ],
+     "next": "forest.account-copy.used.words"
+    },
+    {
+     "text": "Keep the fold in my satchel for now."
+    }
+   ]
+  },
+  {
+   "id": "forest.account-copy.receive.lines",
+   "speaker": "narrator",
+   "text": "A walker at the low rail has a lookout card with one stroke. They hold it next to the new copy and wait to see where its line belongs.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Fit the card and watch them mark the visible pass.",
+     "if": {
+      "all": [
+       {
+        "all": [
+         {
+          "objective": "forest.account"
+         },
+         {
+          "flag": "forest.pathbook",
+          "eq": true
+         }
+        ]
+       },
+       {
+        "flag": "forest.account-copy.sent",
+        "eq": "lines"
+       },
+       {
+        "item": "item.forest.account-copy.lines"
+       },
+       {
+        "not": {
+         "flagSet": "forest.account-copy.used"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "takeItem": "item.forest.account-copy.lines"
+      },
+      {
+       "setFlag": "forest.account-copy.used",
+       "value": "lines"
+      }
+     ],
+     "next": "forest.account-copy.used.lines"
+    },
+    {
+     "text": "Keep the card in my satchel for now."
+    }
+   ]
+  },
+  {
+   "id": "forest.account-copy.used.words",
+   "speaker": "narrator",
+   "text": "“Behind the creek reeds. That is where they put down the lamp.” Ayla’s sister hooks a listening stop onto the dusk strip. The dawn phrase stays in her crew’s words. The count line stays blank.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "forest.account-copy.used.lines",
+   "speaker": "narrator",
+   "text": "The walker puts the one mark under Seen and points to the lamp crew’s words below Heard. “I can carry those words to the guide. This stroke stays here.” They tuck a lead to the signed source into the rail.",
+   "historicalLabel": "fictional-world"
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH5-R09",
+   "world": "WORLD-06",
+   "title": "What the Wings Left",
+   "knowledgeQuestion": "How can wording carry a place to look while leaving the count open?",
+   "stake": "A mistaken stroke could turn a useful local lead into a crossing someone thinks was seen.",
+   "available": {
+    "all": [
+     {
+      "objective": "forest.account"
+     },
+     {
+      "flag": "forest.pathbook",
+      "eq": true
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "forest.account-copy.readback",
+     "title": "Keep both originals and watch a reader use the chosen copy.",
+     "done": {
+      "flag": "forest.account-copy.used",
+      "in": [
+       "words",
+       "lines"
+      ]
+     },
+     "essential": false,
+     "onComplete": [
+      {
+       "journal": "j.forest.account-copy.readback"
+      }
+     ],
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "perspective",
+       "responsibility"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "aoks": [
+       "NAT",
+       "LAN"
+      ],
+      "atl": [
+       "communication",
+       "thinking"
+      ],
+      "subjects": [
+       "lang-langlit",
+       "biology"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     },
+     "skills": [
+      "SK-KNO-05"
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.forest.account-copy.1",
+   "objective": "forest.account-copy.readback",
+   "depth": 1,
+   "text": "Look for Ayla’s loose copies beside the Bridge Clearing route book."
+  },
+  {
+   "id": "h.forest.account-copy.2",
+   "objective": "forest.account-copy.readback",
+   "depth": 2,
+   "text": "Lift the lamp crew’s slip and open the lookout card beside it. What can the next reader do with each one?"
+  },
+  {
+   "id": "h.forest.account-copy.3",
+   "objective": "forest.account-copy.readback",
+   "depth": 3,
+   "text": "The folded copy goes to the west keeper’s peg. The two-heading card fits the low rail."
+  },
+  {
+   "id": "h.forest.account-copy.4",
+   "objective": "forest.account-copy.readback",
+   "depth": 4,
+   "text": "While carrying your chosen copy, use its peg or rail and stay to see how the reader acts on it."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.forest.account-copy.readback",
+   "text": "I kept the lamp crew’s words with their source and saw someone use the copy. A place to listen stayed separate from a counted crossing.",
+   "claimKind": "observation"
+  }
+ ]
+}

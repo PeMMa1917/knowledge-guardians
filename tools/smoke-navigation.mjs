@@ -300,6 +300,48 @@ export async function smokeFerryFocus(browser, { until }) {
   }
 }
 
+export async function smokeInteractionEscape(browser, { until }) {
+  await browser.evaluate(() => {
+    const { controller, settings, world } = window.kg;
+    settings.reducedMotion = true;
+    controller.dispatch({ type: 'SetFlag', flag: 'rook.joined', value: true });
+    controller.dispatch({ type: 'SetFlag', flag: 'loyalty.rook', value: 'family' });
+    world.changeMap('water.lower-channel', 10, 11);
+  });
+  await until(() => browser.evaluate(() => window.kg.world.map.id === 'water.lower-channel' &&
+    !window.kg.world.transitioning), 'the completed Clean Well');
+
+  // One page task guarantees that Phaser sees every key before its next queue flush.
+  for (const [key, code, keyCode, journalOpen] of [
+    ['e', 'KeyE', 69, false], [' ', 'Space', 32, false], ['Enter', 'Enter', 13, false], ['e', 'KeyE', 69, true],
+  ]) {
+    const trial = await browser.evaluate(({ key, code, keyCode, journalOpen }) => {
+      const { ui, world } = window.kg;
+      world.player.facing = 'up';
+      world.updateTarget();
+      if (world.target?.obj?.id !== 'loyalty-rook') throw new Error('Expected to face the Clean Well');
+      if (journalOpen) ui.openJournal();
+      const dispatch = (type, key, code, keyCode) => {
+        const event = new KeyboardEvent(type, { bubbles: true, cancelable: true, key, code, keyCode });
+        Object.defineProperty(event, 'keyCode', { value: keyCode });
+        (document.activeElement ?? document.body).dispatchEvent(event);
+      };
+      const modal = () => document.querySelector('[role="dialog"]')?.getAttribute('aria-label') ?? null;
+      dispatch('keydown', key, code, keyCode);
+      dispatch('keyup', key, code, keyCode);
+      const opened = modal();
+      dispatch('keydown', 'Escape', 'Escape', 27);
+      dispatch('keyup', 'Escape', 'Escape', 27);
+      return { opened, remaining: modal(), frame: world.game.loop.frame };
+    }, { key, code, keyCode, journalOpen });
+    if (trial.opened !== (journalOpen ? 'Journal' : 'The Clean Well') || trial.remaining !== null) {
+      throw new Error('Escape replayed an interaction key: ' + JSON.stringify({ key, journalOpen, ...trial }));
+    }
+    await until(() => browser.evaluate((frame) => window.kg.world.game.loop.frame > frame, trial.frame), 'keyboard queue flush');
+  }
+  console.log('PASS same-frame Escape closes the result for E, Space and Enter, including an interaction first received in the Journal.');
+}
+
 async function holdAgainstEdge(browser, press, { x, y, direction }, mapId) {
   const labels = { LEFT: ['ArrowLeft', 37], UP: ['ArrowUp', 38], RIGHT: ['ArrowRight', 39], DOWN: ['ArrowDown', 40] };
   const [key, code] = labels[direction];
@@ -423,4 +465,70 @@ export async function smokeWallRealtime(browser, { until }) {
     await until(async () => (await sample()).x > before.x + 10, 'move away from wall after soak');
   } finally { await browser.send('Input.dispatchKeyEvent', { ...right, type: 'keyUp' }); }
   console.log(`PASS ${minutes} actual minutes of one continuous movement key against the archive wall, followed by normal movement away.`);
+}
+
+/** File the approved folio while the reader and both desks are on screen in one room. */
+export async function smokeCallboardReader(browser, { press, until }) {
+  await browser.evaluate(() => {
+    const { controller, world } = window.kg;
+    controller.state.objectivesDone.push('date-register.maize-bundle.civic');
+    controller.state.inventory['item.date-register.maize-bundle.folio'] = 1;
+    world.changeMap('civic.callboard', 19, 34);
+  });
+  await until(() => browser.evaluate(() => window.kg.world.map.id === 'civic.callboard' && !window.kg.world.transitioning), 'enter the reading room');
+  const position = () => browser.evaluate(() => {
+    const { world } = window.kg;
+    return {
+      readers: world.npcs.filter((a) => a.id === 'callboard-reader').map((a) => [Math.floor(a.sprite.x / 16), Math.floor(a.sprite.y / 16)]),
+      first: world.collides(7 * 16 + 8, 33 * 16 + 12), second: world.collides(33 * 16 + 8, 32 * 16 + 12),
+    };
+  });
+  const expectPlace = async (x, y, first, second) => {
+    const seen = await position();
+    const expected = x === null ? [] : [[x, y]];
+    if (JSON.stringify(seen.readers) !== JSON.stringify(expected) || seen.first !== first || seen.second !== second) {
+      throw new Error('Reading room actor and solid footprint disagree: ' + JSON.stringify(seen));
+    }
+  };
+  await expectPlace(7, 33, true, false);
+  await browser.evaluate(() => {
+    const { world } = window.kg;
+    const reader = world.npcs.find((actor) => actor.id === 'callboard-reader');
+    world.onPointer({ worldX: reader.sprite.x, worldY: reader.sprite.y - 6 });
+    if (!world.pendingInteract || !world.path.length) throw new Error('Reader click did not queue a walk across the room');
+    world.tryInteract({ kind: 'obj', obj: world.map.interactables.find((p) => p.id === 'callboard-seal-folio') });
+  });
+  await until(() => browser.evaluate(() => document.activeElement?.textContent.includes('File the signed folio')), 'signed folio choice is focused');
+  await press(browser, 'Enter');
+  await until(() => browser.evaluate(() => window.kg.controller.state.flags['callboard.shortcut'] === true), 'signed passage opens');
+  await expectPlace(33, 32, false, true);
+  const stillWalking = await browser.evaluate(() => Boolean(window.kg.world.pendingInteract || window.kg.world.path.length));
+  if (stillWalking) throw new Error('Queued approach still points to the bench the reader left');
+
+  // A staged boundary case puts the player's feet in the reader's future position.
+  await browser.evaluate(() => {
+    const { world, ui, controller } = window.kg;
+    ui.closeModal();
+    controller.state.flags['callboard.shortcut'] = false;
+    world.refreshWorld();
+    world.player.sprite.setPosition(33 * 16 + 8, 32 * 16 + 12);
+    controller.state.flags['callboard.shortcut'] = true;
+    world.refreshWorld();
+  });
+  await expectPlace(null, null, false, false);
+  await browser.evaluate(() => { window.kg.world.player.sprite.setPosition(32 * 16 + 8, 32 * 16 + 12); });
+  await until(async () => (await position()).second, 'reader takes the cleared space on a later animation frame');
+  await expectPlace(33, 32, false, true);
+  await browser.evaluate(() => {
+    const { world, controller } = window.kg;
+    controller.state.flags['memory-cart.first'] = 'wheel';
+    world.changeMap('aethelgard.emberford', 19, 16);
+  });
+  await until(() => browser.evaluate(() => window.kg.world.map.id === 'aethelgard.emberford' && !window.kg.world.transitioning), 'Emberford with Edrin present');
+  const priority = await browser.evaluate(() => {
+    const ids = window.kg.world.npcs.map((actor) => actor.id);
+    return ids.includes('memory-cart-edrin') && ids.indexOf('memory-cart-edrin') < ids.indexOf('scholar-sefa');
+  });
+  if (!priority) throw new Error('Edrin lost his authored priority where targets meet');
+  console.log('PASS signed-folio move, both footprints, abandoned pointer target, occupied destination and authored target order.');
 }

@@ -6,7 +6,7 @@
  * caller shows a recoverable error and never silently resets progress.
  */
 import type { Condition, ContentPack, Effect, Weave } from './types';
-import { ATLS, CONCEPTS, PROFILE } from './types';
+import { ATLS, CONCEPTS, DIARY_EVENT_KINDS, DIARY_EVENT_OUTCOMES, PROFILE } from './types';
 import { SUBJECTS } from './curriculum';
 import { dailyPrompts } from './dive';
 import { chordFigure, panes, runSorter, runSurvey, sightBlock, translateLine, judgeFrame, shepardParts, brier } from './puzzles';
@@ -36,12 +36,31 @@ export function validateCampaign(s: any): string[] {
   for (const k of ['journal', 'notes', 'cards', 'objectivesDone']) if (!Array.isArray(s[k])) p.push(`${k} must be a list`);
   const diary = s.adventureDiary;
   const isDate = (value: unknown) => typeof value === 'string' && Number.isFinite(Date.parse(value));
+  const isObject = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object' && !Array.isArray(value);
+  const noteKinds = ['note', 'reflection', 'question'];
   if (!Array.isArray(diary?.entries) || diary.entries.some((entry: any) =>
     !entry || !['quest', 'choice', 'experience'].includes(entry.kind) || !isDate(entry.at)
     || !['id', 'title', 'text', 'mapId'].every((key) => typeof entry[key] === 'string'))) p.push('adventure journal entries invalid');
+  else if (new Set(diary.entries.map((entry: any) => entry.id)).size !== diary.entries.length || diary.entries.some(({ event }: any) =>
+    event !== undefined && (!event || !DIARY_EVENT_KINDS.includes(event.kind) || typeof event.key !== 'string' || typeof event.ref !== 'string'
+      || (event.completedObjective !== undefined && typeof event.completedObjective !== 'string')
+      || (event.outcome !== undefined && !DIARY_EVENT_OUTCOMES.includes(event.outcome))
+      || (event.sourceIds !== undefined && (!Array.isArray(event.sourceIds) || event.sourceIds.some((id: unknown) => typeof id !== 'string'))))))
+    p.push('adventure journal event details invalid');
   if (!Array.isArray(diary?.noteDetails) || diary.noteDetails.length !== s.notes?.length || diary.noteDetails.some((note: any) =>
-    !note || !['note', 'reflection', 'question'].includes(note.kind) || (note.at !== null && !isDate(note.at))
+    !note || !noteKinds.includes(note.kind) || (note.at !== null && !isDate(note.at))
     || (note.mapId !== null && typeof note.mapId !== 'string') || typeof note.resolved !== 'boolean')) p.push('adventure journal note details invalid');
+  const responses = diary?.reflectionResponses;
+  if (!isObject(responses) || Object.values(responses).some((group) => !isObject(group)
+    || Object.values(group).some((text) => typeof text !== 'string'))) p.push('adventure journal responses invalid');
+  const draft = diary?.noteDraft;
+  if (draft !== null && (!isObject(draft) || typeof draft.kind !== 'string' || !noteKinds.includes(draft.kind)
+    || typeof draft.text !== 'string' || (draft.at !== undefined && !isDate(draft.at))
+    || (draft.mapId !== undefined && typeof draft.mapId !== 'string'))) p.push('adventure journal draft invalid');
+  const writing = diary?.portfolioWriting;
+  if (!isObject(writing) || Object.values(writing).some((entry) => !isObject(entry) || typeof entry.title !== 'string'
+    || typeof entry.text !== 'string' || typeof entry.mapId !== 'string' || !isDate(entry.at) || (entry.draft !== undefined && entry.draft !== true)))
+    p.push('adventure journal portfolio writing invalid');
   if (Array.isArray(s.notes) && s.notes.some((note: unknown) => typeof note !== 'string')) p.push('adventure journal notes invalid');
   if (s.inventory) for (const [id, q] of Object.entries(s.inventory)) if (!Number.isInteger(q) || (q as number) < 0 || (q as number) > 999) p.push(`bad quantity for ${id}`);
   if (typeof s.marks === 'number' && (s.marks < 0 || s.marks > 1_000_000)) p.push('marks out of range');
@@ -84,6 +103,7 @@ export function validateContent(pack: ContentPack): string[] {
     if (!s.mla) return;
     text(`source ${s.id} MLA title`, s.mla.title);
     text(`source ${s.id} MLA container`, s.mla.container);
+    if (s.mla.repository !== undefined) text(`source ${s.id} MLA repository`, s.mla.repository);
     if (!['page', 'artwork'].includes(s.mla.kind)) p.push(`source ${s.id}: unknown MLA source kind`);
     if (s.mla.kind === 'page' && s.mla.workDate) p.push(`source ${s.id}: an artwork date belongs to the artwork entry`);
     if (s.mla.showAccessDate && !/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(s.accessed)) {
@@ -346,7 +366,12 @@ export function validateContent(pack: ContentPack): string[] {
         if (could && c.heard) p.push(`puzzle ${z.id} ${w.id} claim ${i + 1}: can be seen, so remove 'heard'`);
       }));
       if (!seen || !unseen) p.push(`puzzle ${z.id}: needs claims that were seen and claims that were not`);
-      if (z.reports.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair report`);
+      const supported = z.reports.filter((report) => report.honest);
+      if (!supported.length) p.push(`puzzle ${z.id}: needs a supported report`);
+      if (supported.length > 1 && (supported.some((report) => !report.delivery)
+        || new Set(supported.map((report) => report.delivery)).size !== supported.length)) {
+        p.push(`puzzle ${z.id}: each supported report needs its own delivery`);
+      }
     }
     else if (z.type === 'balance') z.rounds.forEach((r, i) => {
       // Every round must balance with the trusted weights alone.

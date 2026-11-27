@@ -1,5 +1,6 @@
 /** Fictional Guardian archive. Its rooms contain documentary evidence and original schematic illustrations. */
 import type { Condition } from '../domain/types';
+import { COLD_CLEAR_BAY } from './clearBay';
 import { GLASS_RACK_DOOR } from './glassRack';
 import { COLD_LINTEL } from './lintelFold';
 import { WORKROOM_SEAM } from './seamWitness';
@@ -78,6 +79,7 @@ export const PRESERVED_ARCHIVE = room({
     { stamp: 'plant-tall', x: 2, y: 13 }, { stamp: 'plant-tall', x: 26, y: 13 },
   ],
   interactables: [
+    ...COLD_CLEAR_BAY,
     CLEARANCE_DOOR,
     ...BEATER_COLD_STORE,
     GLASS_RACK_DOOR,
@@ -191,6 +193,22 @@ export const PRESERVED_ROYAL = room({
     slip('preserved-royal', 'catalogue', 19, 9, 'the catalogue note', { flag: 'thread.preserved-royal.cache', eq: true }),
     { id: 'preserved-royal-label', kind: 'label', kit: 'preserved-name', x: 16, y: 7, w: 1, h: 1,
       label: 'the royal label stand', art: 'label-stand', walkThrough: true, visibleIf: { flag: 'thread.preserved-royal.catalogue', eq: true } },
+    { id: 'preserved-scale-board', kind: 'scene', node: 'preserved.scale.board', x: 3, y: 6, w: 1, h: 1, walkThrough: true,
+      label: 'Odile’s floor ruler and the custody copy', art: 'preserved.slip',
+      artBy: { flag: 'preserved.scale.open', keys: { true: 'preserved.display-paired' } },
+      visibleIf: { flag: 'thread.preserved-royal.catalogue', eq: true } },
+    { ...notice('preserved-scale-near', 5, 6, 'the brass practice peg', 'preserved.slip',
+      'The brass peg sits two paving strips east of Odile’s zero bracket. This is a reading from the practice floor.',
+      { flag: 'preserved.scale.open', eq: true }), flag: 'preserved.scale.near' },
+    { ...notice('preserved-scale-far', 9, 6, 'the blue practice peg', 'preserved.catalogue',
+      'Count again from the zero bracket. The blue peg sits six paving strips east. The two arrows on the paper copy had equal spaces.',
+      { flag: 'preserved.scale.open', eq: true }), flag: 'preserved.scale.far' },
+    { ...notice('preserved-scale-floor', 4, 11, 'the measured guide at the carrier’s bench', 'preserved.display-paired',
+      'The carrier matches the brass peg to two paving strips and loads the nearer parcel first. The blue peg is six from the bracket. Odile has put PRACTICE FLOOR along the top and kept the museum file on its own clip.',
+      { flag: 'preserved.scale.outcome', eq: 'floor' }), flag: 'preserved.scale.read' },
+    { ...notice('preserved-scale-file', 20, 12, 'the next recorded place at the eastern cabinet', 'preserved.catalogue',
+      'The reader slots KV 7 and Deir el-Bahari under “next recorded place” and leaves the distance blank. The carrier checks the desk for a floor guide before taking a parcel.',
+      { flag: 'preserved.scale.outcome', eq: 'file' }), flag: 'preserved.scale.read' },
     notice('preserved-royal-guide', 10, 12, 'the royal record guide', 'preserved.folder',
       'Read the custody file in the east case. The Provenance Thread can then follow its slips. Start with the burial note at the west end of the row.'),
     { id: 'preserved-binak-support', kind: 'scene', node: 'preserved.binak.test', x: 17, y: 10, w: 1, h: 1, walkThrough: true,

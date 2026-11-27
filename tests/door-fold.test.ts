@@ -20,6 +20,13 @@ describe('At the Door Before the Bell', () => {
     const travel = d.e.pack.exhibits.find(({ id }) => id === 'OBJ-DOOR-02')!;
     expect(century.sources).toEqual(['HIS-DOOR-01']);
     expect(travel.sources).toEqual(['HIS-DOOR-02', 'HIS-DOOR-03']);
+    expect(century.summary).toContain('Elbridge S. Brooks');
+    expect(century.summary).toContain('published by the Century Company');
+    expect(century.specimen).toBeUndefined();
+    expect(travel.specimen?.people).toMatchObject([
+      { name: 'Victor Hugo Green', role: 'Publisher of this edition', source: 'HIS-DOOR-02' },
+      { name: 'James A. Jackson', role: 'Named on this copy’s cover', source: 'HIS-DOOR-02' },
+    ]);
     expect(d.e.pack.cards.find(({ id }) => id === century.grantsCard)?.limits).toContain('other people');
     expect(d.e.pack.cards.find(({ id }) => id === travel.grantsCard)?.limits).toContain('arrived');
   });

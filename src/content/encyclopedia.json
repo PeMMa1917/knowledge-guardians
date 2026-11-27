@@ -1,0 +1,1432 @@
+{
+  "people": [
+    {
+      "wikidata": "Q313211",
+      "title": "Alberto Santos-Dumont",
+      "characters": [],
+      "biographies": [
+        "card.person.santos"
+      ]
+    },
+    {
+      "wikidata": "Q33528466",
+      "title": "Betty Shannon",
+      "characters": [
+        "model-record-maker-betty-shannon"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q200662",
+      "title": "Bi Sheng",
+      "characters": [],
+      "biographies": [
+        "card.person.bisheng"
+      ]
+    },
+    {
+      "wikidata": "Q1354377",
+      "title": "Bill Phillips (economist)",
+      "characters": [
+        "model-record-maker-moniac"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q4965499",
+      "title": "Britta Marakatt-Labba",
+      "characters": [],
+      "biographies": [
+        "card.seam.garjjat"
+      ]
+    },
+    {
+      "wikidata": "Q92760",
+      "title": "Claude Shannon",
+      "characters": [
+        "model-record-maker-theseus"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q43182",
+      "title": "Eratosthenes",
+      "characters": [],
+      "biographies": [
+        "card.person.eratosthenes"
+      ]
+    },
+    {
+      "wikidata": "Q2071033",
+      "title": "Frédéric Bruly Bouabré",
+      "characters": [],
+      "biographies": [
+        "card.plate.bete"
+      ]
+    },
+    {
+      "wikidata": "Q11104",
+      "title": "Ibn al-Haytham",
+      "characters": [],
+      "biographies": [
+        "card.person.haytham"
+      ]
+    },
+    {
+      "wikidata": "Q670091",
+      "title": "Ibrahim Njoya",
+      "characters": [],
+      "biographies": [
+        "card.plate.bamum"
+      ]
+    },
+    {
+      "wikidata": "Q184746",
+      "title": "Jane Goodall",
+      "characters": [],
+      "biographies": [
+        "card.forest.gombe"
+      ]
+    },
+    {
+      "wikidata": "Q455072",
+      "title": "Kate Sheppard",
+      "characters": [],
+      "biographies": [
+        "card.person.sheppard"
+      ]
+    },
+    {
+      "wikidata": "Q5912",
+      "title": "Marcel Duchamp",
+      "characters": [
+        "model-record-maker-stoppages"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q101638",
+      "title": "Mary Wollstonecraft",
+      "characters": [],
+      "biographies": [
+        "card.person.wollstonecraft"
+      ]
+    },
+    {
+      "wikidata": "Q6965290",
+      "title": "Naraina Pillai",
+      "characters": [],
+      "biographies": [
+        "card.lintel.temple"
+      ]
+    },
+    {
+      "wikidata": "Q4936450",
+      "title": "Pia Arke",
+      "characters": [],
+      "biographies": [
+        "card.seam.point"
+      ]
+    },
+    {
+      "wikidata": "Q983574",
+      "title": "Radhanath Sikdar",
+      "characters": [],
+      "biographies": [
+        "card.person.sikdar"
+      ]
+    },
+    {
+      "wikidata": "Q1523",
+      "title": "Ramesses II",
+      "characters": [],
+      "biographies": [
+        "card.nile.sallier",
+        "card.preserved.reign"
+      ]
+    },
+    {
+      "wikidata": "Q257808",
+      "title": "Tecumseh",
+      "characters": [],
+      "biographies": [
+        "card.record-edge.tecumseh"
+      ]
+    },
+    {
+      "wikidata": "Q1729807",
+      "title": "Tupaia (navigator)",
+      "characters": [],
+      "biographies": [
+        "card.departure.reading"
+      ]
+    },
+    {
+      "wikidata": "Q297588",
+      "title": "Ḫattušili III",
+      "characters": [],
+      "biographies": [
+        "card.nile.treaty"
+      ]
+    }
+  ],
+  "exhibits": [
+    {
+      "id": "OBJ-001-A",
+      "title": "Ballpoint pen",
+      "kind": "related",
+      "wikidata": "Q160137",
+      "basis": "The article discusses John J. Loud’s invention as part of the broader patent history."
+    },
+    {
+      "id": "OBJ-001-C",
+      "title": "Ballpoint pen",
+      "kind": "related",
+      "wikidata": "Q160137",
+      "basis": "The article covers the class and its makers. This particular Biro pen has its own museum accession."
+    },
+    {
+      "id": "OBJ-101",
+      "title": "Eratosthenes",
+      "kind": "related",
+      "wikidata": "Q43182",
+      "basis": "The article is about the person whose measurement the plaque discusses."
+    },
+    {
+      "id": "OBJ-102",
+      "title": "Book of Optics",
+      "kind": "related",
+      "wikidata": "Q264562",
+      "basis": "The article is about the original work discussed by the plaque."
+    },
+    {
+      "id": "OBJ-103",
+      "title": "Bi Sheng",
+      "kind": "related",
+      "wikidata": "Q200662",
+      "basis": "The plaque discusses the named inventor and movable type."
+    },
+    {
+      "id": "OBJ-104",
+      "title": "Radhanath Sikdar",
+      "kind": "related",
+      "wikidata": "Q983574",
+      "basis": "The plaque discusses the named surveyor."
+    },
+    {
+      "id": "OBJ-105",
+      "title": "Santos-Dumont 14-bis",
+      "kind": "related",
+      "wikidata": "Q647341",
+      "basis": "The plaque discusses the aircraft and testing history."
+    },
+    {
+      "id": "OBJ-106",
+      "title": "Women's suffrage in New Zealand",
+      "kind": "related",
+      "wikidata": "Q3447247",
+      "basis": "The article describes the movement discussed by the plaque."
+    },
+    {
+      "id": "OBJ-107",
+      "title": "A Vindication of the Rights of Woman",
+      "kind": "related",
+      "wikidata": "Q300646",
+      "basis": "The article treats Wollstonecraft’s work, rather than the plaque or an individual copy."
+    },
+    {
+      "id": "OBJ-ALIGN-cartagena-santa-marta",
+      "title": "Thomas Jefferys",
+      "kind": "related",
+      "wikidata": "Q3990658",
+      "basis": "The collection credits Thomas Jefferys with this role: Contributor. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-ALIGN-fort-royal",
+      "title": "Thomas Jefferys",
+      "kind": "related",
+      "wikidata": "Q3990658",
+      "basis": "The collection credits Thomas Jefferys with this role: Contributor. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-ALIGN-tobago-sheet",
+      "title": "Thomas Jefferys",
+      "kind": "related",
+      "wikidata": "Q3990658",
+      "basis": "The collection credits Thomas Jefferys with this role: Creator. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-ASTROLABE-EXACT",
+      "title": "Rasulid dynasty",
+      "kind": "related",
+      "wikidata": "Q2132267",
+      "basis": "The article concerns the dynasty of the inscription’s named maker. The particular instrument has its own catalogue."
+    },
+    {
+      "id": "OBJ-BEARING-avisavella-lear",
+      "title": "Edward Lear",
+      "kind": "related",
+      "wikidata": "Q309759",
+      "basis": "The collection credits Edward Lear with this role: Artist. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-BEARING-brittany-boudin",
+      "title": "Krimta ke Breiza (trutca ke Boudin)",
+      "language": "avk",
+      "kind": "article",
+      "wikidata": "Q20188726",
+      "basis": "The article links NGA object 61361 and identifies Boudin’s 1870 canvas with its catalogue dimensions, 47.3 by 66 centimetres. The NGA records accession 1983.1.11."
+    },
+    {
+      "id": "OBJ-BEARING-colliers-point",
+      "title": "Charles Meryon",
+      "kind": "related",
+      "wikidata": "Q247505",
+      "basis": "The collection credits Charles Meryon with this role: Printmaker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-BEARING-honfleur-seurat",
+      "title": "The Lighthouse at Honfleur",
+      "kind": "article",
+      "wikidata": "Q20189827",
+      "basis": "Wikidata P4683 61383 and the English sitelink for the exact catalogue record."
+    },
+    {
+      "id": "OBJ-BEARING-isabey-low-tide",
+      "title": "Eugène Isabey",
+      "kind": "related",
+      "wikidata": "Q714341",
+      "basis": "The collection credits Eugène Isabey with this role: Printmaker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-BEARING-isabey-refitting",
+      "title": "Eugène Isabey",
+      "kind": "related",
+      "wikidata": "Q714341",
+      "basis": "The collection credits Eugène Isabey with this role: Printmaker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-BEARING-kakegawa-akiha",
+      "title": "Hiroshige",
+      "kind": "related",
+      "wikidata": "Q200798",
+      "basis": "The collection credits Andō Hiroshige with this role: Printmaker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-BEARING-kinchinjunga-lear",
+      "title": "Edward Lear",
+      "kind": "related",
+      "wikidata": "Q309759",
+      "basis": "The collection credits Edward Lear with this role: Artist. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-BEARING-mount-desert-fog",
+      "title": "Sel koe Mount Desert (trutca ke Church)",
+      "language": "avk",
+      "kind": "article",
+      "wikidata": "Q20201660",
+      "basis": "The pictured painting matches the vessel, rocks and dated inscription in NGA object 126132. Its image record names accession 2025.89.2. Use the current NGA record for measurements and custody."
+    },
+    {
+      "id": "OBJ-BEARING-panama-moonlight",
+      "title": "Eadweard Muybridge",
+      "kind": "related",
+      "wikidata": "Q190568",
+      "basis": "The collection credits Eadweard Muybridge with this role: Photographer. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-BEARING-philae-rock",
+      "title": "Edward Lear",
+      "kind": "related",
+      "wikidata": "Q309759",
+      "basis": "The collection credits Edward Lear with this role: Artist. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-BEARING-salt-kettle",
+      "title": "Winslow Homer",
+      "kind": "related",
+      "wikidata": "Q344838",
+      "basis": "The collection credits Winslow Homer with this role: Artist. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-BEARING-santiago-cuba",
+      "title": "Winslow Homer",
+      "kind": "related",
+      "wikidata": "Q344838",
+      "basis": "The collection credits Winslow Homer with this role: Artist. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-BEARING-scheveningen-tide",
+      "title": "Eugène Boudin",
+      "kind": "related",
+      "wikidata": "Q212600",
+      "basis": "The collection credits Eugène Boudin with this role: Artist. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-BEARING-seal-point",
+      "title": "Carleton Watkins",
+      "kind": "related",
+      "wikidata": "Q2939083",
+      "basis": "The collection credits Carleton E. Watkins with this role: Photographer. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-BEARING-tautira-mouth",
+      "title": "John La Farge",
+      "kind": "related",
+      "wikidata": "Q3120087",
+      "basis": "The collection credits John La Farge with this role: Artist. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-BONE-EXACT",
+      "title": "Oracle bone",
+      "kind": "related",
+      "wikidata": "Q283127",
+      "basis": "The article concerns the material and historical practice, rather than Met accession 67.43.16."
+    },
+    {
+      "id": "OBJ-CALL-gage-mount",
+      "title": "Phineas Gage",
+      "kind": "related",
+      "wikidata": "Q316742",
+      "basis": "The article concerns the person and documented history. Warren 03106 has its own object record."
+    },
+    {
+      "id": "OBJ-CALL-quetzalecatzin",
+      "title": "Codex Quetzalecatzin",
+      "kind": "article",
+      "wikidata": "Q113638557",
+      "basis": "The German Wikipedia sitelink belongs to Q113638557. The Wikidata entity gives the exact Library of Congress resource g4701g.ct009133.",
+      "language": "de"
+    },
+    {
+      "id": "OBJ-CORRESPONDENCE-HOKUSAI-QUICK-DICTIONARY",
+      "title": "Hokusai",
+      "kind": "related",
+      "wikidata": "Q5586",
+      "basis": "The collection credits Katsushika Hokusai with this role: Creator credited by the Met. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-DEPART-TUPAIA",
+      "title": "Tupaia (navigator)",
+      "kind": "related",
+      "wikidata": "Q1729807",
+      "basis": "The navigator has a separate article. The physical chart copy and attributions have their own shelfmark."
+    },
+    {
+      "id": "OBJ-DOOR-01",
+      "title": "Elbridge Streeter Brooks",
+      "kind": "related",
+      "wikidata": "Q5353819",
+      "basis": "The article concerns the named author. The 1894 copy in the exhibit is the separately recorded Harvard copy."
+    },
+    {
+      "id": "OBJ-DOOR-02",
+      "title": "The Negro Motorist Green Book",
+      "kind": "related",
+      "wikidata": "Q17114195",
+      "basis": "The article covers the published guidebook series. The Smithsonian record identifies this particular 1941 edition."
+    },
+    {
+      "id": "OBJ-DRAWER-01",
+      "title": "Joseph Bertrand",
+      "kind": "related",
+      "wikidata": "Q315436",
+      "basis": "The article is about the author, not the 1889 book copy."
+    },
+    {
+      "id": "OBJ-EDGE-EASTERN",
+      "title": "Eastern Shawnee Tribe of Oklahoma",
+      "kind": "related",
+      "wikidata": "Q5330441",
+      "basis": "The article concerns the named sovereign community. The constitutional document has its own source."
+    },
+    {
+      "id": "OBJ-EDGE-FORT-WAYNE",
+      "title": "Treaty of Fort Wayne (1809)",
+      "kind": "related",
+      "wikidata": "Q7837065",
+      "basis": "The article names the historical agreement. The exhibit is tied to the separately published legal record."
+    },
+    {
+      "id": "OBJ-EDGE-TECUMSEH",
+      "title": "Tecumseh",
+      "kind": "related",
+      "wikidata": "Q257808",
+      "basis": "The article concerns the historical person discussed in both records."
+    },
+    {
+      "id": "OBJ-FERN-POST-LANDSCAPE",
+      "title": "منظر طبيعى برازيلى",
+      "language": "arz",
+      "kind": "article",
+      "wikidata": "Q19906272",
+      "basis": "The article identifies Frans Post’s 1650 painting in the Met. The displayed image is credited to Met object 437323 and accession 1981.318."
+    },
+    {
+      "id": "OBJ-FERRY-PACK-lukutin-lacquer",
+      "title": "House of Fabergé",
+      "kind": "related",
+      "wikidata": "Q2567352",
+      "basis": "The collection credits House of Fabergé with this role: Catalogued maker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-ALCATRAZ",
+      "title": "Carleton Watkins",
+      "kind": "related",
+      "wikidata": "Q2939083",
+      "basis": "The collection credits Carleton E. Watkins with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-AMARAPURA-BALCONY",
+      "title": "Linnaeus Tripe",
+      "kind": "related",
+      "wikidata": "Q6554574",
+      "basis": "The collection credits Linnaeus Tripe with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-AMARAPURA-BRIDGE",
+      "title": "Linnaeus Tripe",
+      "kind": "related",
+      "wikidata": "Q6554574",
+      "basis": "The collection credits Linnaeus Tripe with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-AMOY-ENTRY",
+      "title": "John Thomson (photographer)",
+      "kind": "related",
+      "wikidata": "Q736862",
+      "basis": "The collection credits Attributed to John Thomson with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-ARTS-ET-METIERS",
+      "title": "Charles Marville",
+      "kind": "related",
+      "wikidata": "Q329387",
+      "basis": "The collection credits Charles Marville with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-BEAS-CROSSING",
+      "title": "Samuel Bourne",
+      "kind": "related",
+      "wikidata": "Q337475",
+      "basis": "The collection credits Samuel Bourne with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-BEIRUT-OVERLOOK",
+      "title": "Maison Bonfils",
+      "kind": "related",
+      "wikidata": "Q55670092",
+      "basis": "The catalogue credits Félix Bonfils. The article concerns the family photography studio and its founder."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-BRIG-ON-WATER",
+      "title": "Gustave Le Gray",
+      "kind": "related",
+      "wikidata": "Q982549",
+      "basis": "The collection credits Gustave Le Gray with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-CAIRO-STREET",
+      "title": "Maison Bonfils",
+      "kind": "related",
+      "wikidata": "Q55670092",
+      "basis": "The catalogue credits Félix Bonfils. The article concerns the family photography studio and its founder."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-CANTON-DWELLING",
+      "title": "John Thomson (photographer)",
+      "kind": "related",
+      "wikidata": "Q736862",
+      "basis": "The collection credits John Thomson with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-CANTON-RIVER",
+      "title": "John Thomson (photographer)",
+      "kind": "related",
+      "wikidata": "Q736862",
+      "basis": "The collection credits Attributed to John Thomson with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-CHAT-QUI-PECHE",
+      "title": "Charles Marville",
+      "kind": "related",
+      "wikidata": "Q329387",
+      "basis": "The collection credits Charles Marville with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-CHERBOURG-FLEETS",
+      "title": "Gustave Le Gray",
+      "kind": "related",
+      "wikidata": "Q982549",
+      "basis": "The collection credits Gustave Le Gray with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-COLUMBIA-CASCADES",
+      "title": "Carleton Watkins",
+      "kind": "related",
+      "wikidata": "Q2939083",
+      "basis": "The collection credits Carleton E. Watkins with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-DENDUR-BEFORE-MOVE",
+      "title": "Maison Bonfils",
+      "kind": "related",
+      "wikidata": "Q55670092",
+      "basis": "The catalogue credits Félix Bonfils. The article concerns the family photography studio and its founder."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-FUZHOU-WALL",
+      "title": "Lai Afong",
+      "kind": "related",
+      "wikidata": "Q19361378",
+      "basis": "The collection credits Lai Afong with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-HAUT-PAVE",
+      "title": "Charles Marville",
+      "kind": "related",
+      "wikidata": "Q329387",
+      "basis": "The collection credits Charles Marville with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-JAFFA-GATE",
+      "title": "Maison Bonfils",
+      "kind": "related",
+      "wikidata": "Q55670092",
+      "basis": "The catalogue credits Félix Bonfils. The article concerns the family photography studio and its founder."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-JAFFA-PANORAMA",
+      "title": "Maison Bonfils",
+      "kind": "related",
+      "wikidata": "Q55670092",
+      "basis": "The catalogue credits Félix Bonfils. The article concerns the family photography studio and its founder."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-LLUGWY-FALLS",
+      "title": "Roger Fenton",
+      "kind": "related",
+      "wikidata": "Q345666",
+      "basis": "The collection credits Roger Fenton with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-LUXOR-WEST",
+      "title": "Antonio Beato",
+      "kind": "related",
+      "wikidata": "Q2742241",
+      "basis": "The collection credits Antonio Beato with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-MANIRUNG-PASS",
+      "title": "Samuel Bourne",
+      "kind": "related",
+      "wikidata": "Q337475",
+      "basis": "The collection credits Samuel Bourne with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-MEDINET-HABU-COURT",
+      "title": "Antonio Beato",
+      "kind": "related",
+      "wikidata": "Q2742241",
+      "basis": "The collection credits Antonio Beato with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-MIRROR-LAKE",
+      "title": "Eadweard Muybridge",
+      "kind": "related",
+      "wikidata": "Q190568",
+      "basis": "The collection credits Eadweard Muybridge with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-MOUNT-AGDE-COMPOSITE",
+      "title": "Gustave Le Gray",
+      "kind": "related",
+      "wikidata": "Q982549",
+      "basis": "The collection credits Gustave Le Gray with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-NARNI-BRIDGE",
+      "title": "Jane Martha St. John",
+      "kind": "related",
+      "wikidata": "Q16063175",
+      "basis": "The collection credits Possibly by Jane Martha St. John with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-NORTH-RIVER-ROAD",
+      "title": "John Thomson (photographer)",
+      "kind": "related",
+      "wikidata": "Q736862",
+      "basis": "The collection credits Attributed to John Thomson with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-PEKING-TEAHOUSE",
+      "title": "John Thomson (photographer)",
+      "kind": "related",
+      "wikidata": "Q736862",
+      "basis": "The collection credits Attributed to John Thomson with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-PINCIAN-GARDEN",
+      "title": "Jane Martha St. John",
+      "kind": "related",
+      "wikidata": "Q16063175",
+      "basis": "The collection credits Possibly by Jane Martha St. John with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-ROMAN-FORUM",
+      "title": "Jane Martha St. John",
+      "kind": "related",
+      "wikidata": "Q16063175",
+      "basis": "The collection credits Possibly by Jane Martha St. John with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-SAGAING-ROAD",
+      "title": "Linnaeus Tripe",
+      "kind": "related",
+      "wikidata": "Q6554574",
+      "basis": "The collection credits Linnaeus Tripe with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-SEINE-PARIS",
+      "title": "Gustave Le Gray",
+      "kind": "related",
+      "wikidata": "Q982549",
+      "basis": "The collection credits Gustave Le Gray with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-TOOTH-BRIDGE",
+      "title": "Carleton Watkins",
+      "kind": "related",
+      "wikidata": "Q2939083",
+      "basis": "The collection credits Carleton E. Watkins with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-TYNE-BRIDGE",
+      "title": "Roger Fenton",
+      "kind": "related",
+      "wikidata": "Q345666",
+      "basis": "The collection credits Roger Fenton with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-VAIGAI-CAUSEWAY",
+      "title": "Linnaeus Tripe",
+      "kind": "related",
+      "wikidata": "Q6554574",
+      "basis": "The collection credits Linnaeus Tripe with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-VALLEY-BRIDGES",
+      "title": "Maison Bonfils",
+      "kind": "related",
+      "wikidata": "Q55670092",
+      "basis": "The catalogue credits Félix Bonfils. The article concerns the family photography studio and its founder."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-YOSEMITE-FALLS",
+      "title": "Carleton Watkins",
+      "kind": "related",
+      "wikidata": "Q2939083",
+      "basis": "The collection credits Carleton E. Watkins with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FERRY-WINDOW-YUEN-FOO-ROAD",
+      "title": "Lai Afong",
+      "kind": "related",
+      "wikidata": "Q19361378",
+      "basis": "The collection credits Lai Afong with this role: Photographer credited by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-FOREST-GOMBE",
+      "title": "Jane Goodall",
+      "kind": "related",
+      "wikidata": "Q184746",
+      "basis": "The article concerns the researcher named in the institutional observation record."
+    },
+    {
+      "id": "OBJ-FOREST-GOMBE-CONTEXT",
+      "title": "Gombe National Park",
+      "kind": "related",
+      "wikidata": "Q856665",
+      "basis": "The article describes the place. The team’s account separately documents particular contributors."
+    },
+    {
+      "id": "OBJ-HARVARD-A02969",
+      "title": "Henrietta Swan Leavitt",
+      "kind": "related",
+      "wikidata": "Q110181",
+      "basis": "The article concerns the astronomer who analysed the plate. The Harvard inventory identifies the particular exposure."
+    },
+    {
+      "id": "OBJ-JEWEL-RAIN",
+      "title": "Jewel Changi Airport",
+      "kind": "related",
+      "wikidata": "Q28419359",
+      "basis": "The article treats the complex housing the Rain Vortex."
+    },
+    {
+      "id": "OBJ-JIKJI-EXACT",
+      "title": "Jikji",
+      "kind": "related",
+      "wikidata": "Q494611",
+      "basis": "The article concerns the work and its printing history. BnF Coréen 109 is the specified surviving volume."
+    },
+    {
+      "id": "OBJ-KUNIT-COAST-390A",
+      "title": "Ammassalik wooden maps",
+      "kind": "related",
+      "wikidata": "Q4747201",
+      "basis": "The article concerns multiple pieces and Kunit’s meeting with Holm. The exhibit identifies one piece."
+    },
+    {
+      "id": "OBJ-LINTEL-MARIAMMAN",
+      "title": "Sri Mariamman Temple, Singapore",
+      "kind": "article",
+      "wikidata": "Q2428845",
+      "basis": "The article identifies the temple at 244 South Bridge Road."
+    },
+    {
+      "id": "OBJ-LINTEL-SEJARAH",
+      "title": "Malay Annals",
+      "kind": "related",
+      "wikidata": "Q5254550",
+      "basis": "The article is about the overall literary work. The NLB document is an identified later edition."
+    },
+    {
+      "id": "OBJ-LOAD-akaroa-store",
+      "title": "Charles Meryon",
+      "kind": "related",
+      "wikidata": "Q247505",
+      "basis": "The collection credits Charles Meryon with this role: Printmaker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-LOAD-dieppe-boats",
+      "title": "Eugène Delacroix",
+      "kind": "related",
+      "wikidata": "Q33477",
+      "basis": "The collection credits Eugène Delacroix with this role: Artist. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-LOAD-mulgrave-print",
+      "title": "Charles Meryon",
+      "kind": "related",
+      "wikidata": "Q247505",
+      "basis": "The collection credits Charles Meryon with this role: Printmaker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-LOAD-onden-wheel",
+      "title": "Hokusai",
+      "kind": "related",
+      "wikidata": "Q5586",
+      "basis": "The collection credits Katsushika Hokusai with this role: Artist. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-LOAD-rokugo-ferry",
+      "title": "Hiroshige",
+      "kind": "related",
+      "wikidata": "Q200798",
+      "basis": "The collection credits Utagawa Hiroshige with this role: Printmaker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-LOAD-tonga-pilot",
+      "title": "Charles Meryon",
+      "kind": "related",
+      "wikidata": "Q247505",
+      "basis": "The collection credits Charles Meryon with this role: Printmaker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-LOAD-uvea-fishing",
+      "title": "Charles Meryon",
+      "kind": "related",
+      "wikidata": "Q247505",
+      "basis": "The collection credits Charles Meryon with this role: Printmaker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-LOAD-vaiala-canoe",
+      "title": "John La Farge",
+      "kind": "related",
+      "wikidata": "Q3120087",
+      "basis": "The collection credits John La Farge with this role: Artist. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-LOC-GUTENBERG-52002339",
+      "title": "Gutenberg Bible",
+      "kind": "related",
+      "wikidata": "Q158075",
+      "basis": "The article concerns the printing work and multiple surviving copies, including different institutions."
+    },
+    {
+      "id": "OBJ-MAKERS-EXACT-DISK",
+      "title": "Enheduanna",
+      "kind": "related",
+      "wikidata": "Q232505",
+      "basis": "The article concerns the person, with context for the disk. Penn B16665 is a collection object."
+    },
+    {
+      "id": "OBJ-MAKERS-EXACT-JIAHU",
+      "title": "Gudi (instrument)",
+      "kind": "related",
+      "wikidata": "Q5614607",
+      "basis": "The article concerns the broader class of Jiahu finds. Henan Museum identifies this separate 23.1 cm flute."
+    },
+    {
+      "id": "OBJ-MAKERS-EXACT-LAGUNA",
+      "title": "Laguna Copperplate Inscription",
+      "kind": "article",
+      "wikidata": "Q1463293",
+      "basis": "The article identifies the surviving dated acquittance held at the National Museum of the Philippines."
+    },
+    {
+      "id": "OBJ-MODEL-RECORD-moniac",
+      "title": "Phillips Machine",
+      "kind": "related",
+      "wikidata": "Q1161046",
+      "basis": "The article covers multiple machines. The Science Museum Group identifies the LSE teaching machine 1995-210."
+    },
+    {
+      "id": "OBJ-MODEL-RECORD-stoppages",
+      "title": "Marcel Duchamp",
+      "kind": "related",
+      "wikidata": "Q5912",
+      "basis": "The article concerns the artist. The Stoppages have their own MoMA accession."
+    },
+    {
+      "id": "OBJ-MODEL-RECORD-theseus",
+      "title": "Claude Shannon",
+      "kind": "related",
+      "wikidata": "Q92760",
+      "basis": "The article gives biographical context. The MIT Museum separately identifies the object and Betty Shannon’s work."
+    },
+    {
+      "id": "OBJ-NILE-BADANG",
+      "title": "Badang",
+      "kind": "related",
+      "wikidata": "Q4840590",
+      "basis": "The article is about the named figure in the traditional narrative, rather than a separate artefact."
+    },
+    {
+      "id": "OBJ-NILE-MINE",
+      "title": "Turin Papyrus Map",
+      "kind": "article",
+      "wikidata": "Q1889662",
+      "basis": "The article names the Turin papyrus and links the Museo Egizio document 9 record for its documented group of fragments."
+    },
+    {
+      "id": "OBJ-NILE-SALLIER",
+      "title": "Kadesh inscriptions",
+      "kind": "related",
+      "wikidata": "Q27628102",
+      "basis": "The article treats the wider inscription and poem tradition cited by the Sallier III record."
+    },
+    {
+      "id": "OBJ-NILE-STONE",
+      "title": "Singapore Stone",
+      "kind": "article",
+      "wikidata": "Q2661283",
+      "basis": "The article identifies the surviving National Museum of Singapore fragment."
+    },
+    {
+      "id": "OBJ-NILE-STRIKE",
+      "title": "Deir el-Medina",
+      "kind": "related",
+      "wikidata": "Q750212",
+      "basis": "The article discusses the workers’ village and strike documented by the papyrus."
+    },
+    {
+      "id": "OBJ-NILE-TREATY",
+      "title": "Egyptian–Hittite peace treaty",
+      "kind": "related",
+      "wikidata": "Q253155",
+      "basis": "The article covers the historical agreement rather than identifying the UN replica as a primary document."
+    },
+    {
+      "id": "OBJ-NUMBER-LEAF-bakhshali",
+      "title": "Bakhshali manuscript",
+      "kind": "article",
+      "wikidata": "Q115690",
+      "basis": "The article identifies the surviving manuscript at the Bodleian Libraries."
+    },
+    {
+      "id": "OBJ-NUMBER-LEAF-ishango",
+      "title": "Ishango bone",
+      "kind": "article",
+      "wikidata": "Q1077717",
+      "basis": "The find name, Lake Edward recovery and the Belgian holding institution identify the specific artefact."
+    },
+    {
+      "id": "OBJ-NUMBER-LEAF-plimpton",
+      "title": "Plimpton 322",
+      "kind": "article",
+      "wikidata": "Q1470425",
+      "basis": "The tablet’s title and Columbia collection identify this specific cuneiform object."
+    },
+    {
+      "id": "OBJ-PASSAGE-marshallese-chart",
+      "title": "Marshall Islands stick chart",
+      "kind": "related",
+      "wikidata": "Q2325507",
+      "basis": "The article concerns several examples and the navigation tradition. It leaves the Smithsonian accession separate."
+    },
+    {
+      "id": "OBJ-PASSAGE-yirrkala-dhuwa",
+      "title": "Yirrkala bark petitions",
+      "kind": "related",
+      "wikidata": "Q4260854",
+      "basis": "The article treats the group of petitions. The Dhuwa petition has its own presentation date and record."
+    },
+    {
+      "id": "OBJ-PASSAGE-yirrkala-yirritja",
+      "title": "Yirrkala bark petitions",
+      "kind": "related",
+      "wikidata": "Q4260854",
+      "basis": "The article treats the group of petitions. The Yirritja petition has its own presentation date and record."
+    },
+    {
+      "id": "OBJ-PLATE-BETE",
+      "title": "Frédéric Bruly Bouabré",
+      "kind": "related",
+      "wikidata": "Q2071033",
+      "basis": "The article is about the named creator. The alphabet work has its own MoMA record."
+    },
+    {
+      "id": "OBJ-PLATE-FOUMBAN",
+      "title": "Bamum script",
+      "kind": "related",
+      "wikidata": "Q806024",
+      "basis": "The article gives context on Njoya and the court’s script. The agreement is a separate object."
+    },
+    {
+      "id": "OBJ-PRES-CHIN-CONTEXT",
+      "title": "Chinchorro culture",
+      "kind": "related",
+      "wikidata": "Q775089",
+      "basis": "The article supplies wider context for the UNESCO site description."
+    },
+    {
+      "id": "OBJ-PRES-CHIN-SITES",
+      "title": "Chinchorro culture",
+      "kind": "related",
+      "wikidata": "Q775089",
+      "basis": "The article supplies contextual history for the named heritage property and its separate map."
+    },
+    {
+      "id": "OBJ-PRES-COPPER-FIND",
+      "title": "Ötzi",
+      "kind": "related",
+      "wikidata": "Q171291",
+      "basis": "The article concerns the person and discovery documented in the separate register."
+    },
+    {
+      "id": "OBJ-PRES-COPPER-ORE",
+      "title": "Ötzi",
+      "kind": "related",
+      "wikidata": "Q171291",
+      "basis": "The article discusses the equipment and its context. The copper-source report is separate."
+    },
+    {
+      "id": "OBJ-PRES-RAM-CUSTODY",
+      "title": "Ramesses II",
+      "kind": "related",
+      "wikidata": "Q1523",
+      "basis": "The article concerns the person in the archival custody case."
+    },
+    {
+      "id": "OBJ-PRES-RAMESSEUM",
+      "title": "Ramesseum",
+      "kind": "related",
+      "wikidata": "Q311581",
+      "basis": "The article covers the place described by the site record."
+    },
+    {
+      "id": "OBJ-PRES-TUT-JOURNAL",
+      "title": "Discovery of the tomb of Tutankhamun",
+      "kind": "related",
+      "wikidata": "Q2533735",
+      "basis": "The article concerns the event documented by the earlier written journal."
+    },
+    {
+      "id": "OBJ-PRES-TUT-NOTE",
+      "title": "Discovery of the tomb of Tutankhamun",
+      "kind": "related",
+      "wikidata": "Q2533735",
+      "basis": "The article concerns the event documented by the later note."
+    },
+    {
+      "id": "OBJ-PRES-TUT-WORKFORCE",
+      "title": "Discovery of the tomb of Tutankhamun",
+      "kind": "related",
+      "wikidata": "Q2533735",
+      "basis": "The article supplies context for the separate archival account of the excavation workforce."
+    },
+    {
+      "id": "OBJ-PRES-XIN-CONTEXT",
+      "title": "Mawangdui",
+      "kind": "related",
+      "wikidata": "Q1196056",
+      "basis": "The article concerns the archaeological site documented by the context file."
+    },
+    {
+      "id": "OBJ-PRES-XIN-METHOD",
+      "title": "Mawangdui",
+      "kind": "related",
+      "wikidata": "Q1196056",
+      "basis": "The article concerns the archaeological site connected to the methods report."
+    },
+    {
+      "id": "OBJ-PRICE-DRAWERS-BEUCKELAER-FISH-MARKET",
+      "title": "Fish Market (Joachim Beuckelaer)",
+      "kind": "article",
+      "wikidata": "Q19913672",
+      "basis": "Wikidata P3634 679844 and the English sitelink for the exact catalogue record."
+    },
+    {
+      "id": "OBJ-READING-WORKS-BRAILLE",
+      "title": "Louis Braille",
+      "kind": "related",
+      "wikidata": "Q93182",
+      "basis": "The article is about the author and system. The APH facsimile has its own digital record."
+    },
+    {
+      "id": "OBJ-READING-WORKS-IDRISI",
+      "title": "Tabula Rogeriana",
+      "kind": "related",
+      "wikidata": "Q1089336",
+      "basis": "The article covers the earlier geography and later manuscripts. The linked exhibit is the specified Bodleian copy and spread."
+    },
+    {
+      "id": "OBJ-READING-WORKS-MUYBRIDGE",
+      "title": "The Horse in Motion",
+      "kind": "related",
+      "wikidata": "Q3924909",
+      "basis": "The article concerns the series. The Library of Congress accession is one specific print record."
+    },
+    {
+      "id": "OBJ-READING-WORKS-NEXT",
+      "title": "History of the World Wide Web",
+      "kind": "related",
+      "wikidata": "Q1393866",
+      "basis": "The article concerns the historical project and early server. The Science Museum record identifies the exact machine."
+    },
+    {
+      "id": "OBJ-READING-WORKS-PERKINS-PROCEDE",
+      "title": "Louis Braille",
+      "kind": "related",
+      "wikidata": "Q93182",
+      "basis": "The article is about the author and system. The surviving Perkins first-edition copy has a separate record."
+    },
+    {
+      "id": "OBJ-REFERENCE-LINE-SURINAME-ENGRAVING",
+      "title": "Maria Sibylla Merian",
+      "kind": "related",
+      "wikidata": "Q62530",
+      "basis": "The collection credits Maria Sibylla Merian with this role: Artist credited for the published plate. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-REFSTATION-NHL-89002457",
+      "title": "Holmdel Horn Antenna",
+      "kind": "article",
+      "wikidata": "Q5883312",
+      "basis": "Wikidata P649 89002457 and the English sitelink for the exact catalogue record."
+    },
+    {
+      "id": "OBJ-REFSTATION-NMS-T1890330",
+      "title": "Celestial globe",
+      "kind": "related",
+      "wikidata": "Q1425895",
+      "basis": "The article concerns a type of instrument. National Museums Scotland identifies the specific 1663 globe."
+    },
+    {
+      "id": "OBJ-REFSTATION-SMG-1901-51",
+      "title": "Cathode ray tube",
+      "kind": "related",
+      "wikidata": "Q83913",
+      "basis": "The article concerns the broader instrument class. The Science Museum Group identifies the original Thomson apparatus."
+    },
+    {
+      "id": "OBJ-REG-dresden-fold",
+      "title": "Dresden Codex",
+      "kind": "article",
+      "wikidata": "Q200944",
+      "basis": "The article identifies the specific manuscript in the Saxon State and University Library Dresden."
+    },
+    {
+      "id": "OBJ-REG-khipu-mount",
+      "title": "Quipu",
+      "kind": "related",
+      "wikidata": "Q185292",
+      "basis": "The article concerns the object type. Brooklyn’s accession identifies one individual work."
+    },
+    {
+      "id": "OBJ-REG-searchlight-canvas",
+      "title": "Searchlight on Harbor Entrance, Santiago de Cuba",
+      "kind": "article",
+      "wikidata": "Q19924223",
+      "basis": "Wikidata P3634 11136 and the English sitelink for the exact catalogue record."
+    },
+    {
+      "id": "OBJ-SCRIPT-RAIL-BROWN-CORDELIA",
+      "title": "Ford Madox Brown",
+      "kind": "related",
+      "wikidata": "Q319843",
+      "basis": "The museum credits Ford Madox Brown as the maker of this drawing. The article is about the artist and his work."
+    },
+    {
+      "id": "OBJ-SCRIPT-RAIL-DANTE-THREE-CANTICHE",
+      "title": "Dante Alighieri",
+      "kind": "related",
+      "wikidata": "Q1067",
+      "basis": "The collection credits Dante Alighieri with this role: Author. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-SCRIPT-RAIL-DELACROIX-FAUST",
+      "title": "Eugène Delacroix",
+      "kind": "related",
+      "wikidata": "Q33477",
+      "basis": "The collection credits Eugène Delacroix with this role: Artist of the lithographs. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-SCRIPT-RAIL-GENJI-CLOUD",
+      "title": "The Tale of Genji",
+      "kind": "related",
+      "wikidata": "Q8269",
+      "basis": "The article concerns the underlying literary work. Cleveland 1933.455 is an identified portion of a single chapter."
+    },
+    {
+      "id": "OBJ-SCRIPT-RAIL-HAYLEY-BALLADS",
+      "title": "William Blake",
+      "kind": "related",
+      "wikidata": "Q41513",
+      "basis": "The collection credits William Blake with this role: Designer and engraver of the prints. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-SCRIPT-RAIL-HOKUSAI-TENCHI",
+      "title": "Hokusai",
+      "kind": "related",
+      "wikidata": "Q5586",
+      "basis": "The collection credits Katsushika Hokusai with this role: Print artist. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-SCRIPT-RAIL-NIZAMI-OWLS",
+      "title": "Nizami Ganjavi",
+      "kind": "related",
+      "wikidata": "Q234908",
+      "basis": "The collection credits Nizami Ganjavi with this role: Author of the source narrative. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-SCRIPT-RAIL-PREVOST-DRAWINGS",
+      "title": "Manon Lescaut",
+      "kind": "related",
+      "wikidata": "Q1141032",
+      "basis": "The article concerns the novel. The National Gallery identifies this separately accessioned illustrated volume."
+    },
+    {
+      "id": "OBJ-SCRIPT-RAIL-SCOTT-VOLUME",
+      "title": "William Blake",
+      "kind": "related",
+      "wikidata": "Q41513",
+      "basis": "The collection credits William Blake with this role: One of the engravers named by the museum. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-SCRIPT-RAIL-VENICE-COMEDIA",
+      "title": "Dante Alighieri",
+      "kind": "related",
+      "wikidata": "Q1067",
+      "basis": "The collection credits Dante Alighieri with this role: Author. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-SEAM-GARJJAT",
+      "title": "Britta Marakatt-Labba",
+      "kind": "related",
+      "wikidata": "Q4965499",
+      "basis": "The article is about the artist. The two works have separate materials and dates."
+    },
+    {
+      "id": "OBJ-SEAM-NUUGAARSUK",
+      "title": "Pia Arke",
+      "kind": "related",
+      "wikidata": "Q4936450",
+      "basis": "The article concerns the artist and her photographs. The particular set has a separate exhibition record."
+    },
+    {
+      "id": "OBJ-SECOND-READING-AMICI-DIPLEIDOSCOPE",
+      "title": "Giovanni Battista Amici",
+      "kind": "related",
+      "wikidata": "Q178412",
+      "basis": "The collection credits Giovanni Battista Amici with this role: designer and maker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-SECOND-READING-AMICI-MOUNT",
+      "title": "Giovanni Battista Amici",
+      "kind": "related",
+      "wikidata": "Q178412",
+      "basis": "The collection credits Giovanni Battista Amici with this role: maker and observer. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-SCRIPT-RAIL-HOGARTH-TROUPE",
+      "title": "Strolling Actresses Dressing in a Barn",
+      "kind": "related",
+      "wikidata": "Q7624318",
+      "basis": "Cleveland Museum of Art 1959.310 identifies a particular impression of Hogarth’s engraving. The article covers the original painting and the issued print design."
+    },
+    {
+      "id": "OBJ-SECOND-READING-APIANUS-BOOK",
+      "title": "Astronomicum Caesareum",
+      "kind": "related",
+      "wikidata": "Q20054562",
+      "basis": "Wikidata P3634 337061. The article covers the work and its printing history, rather than the Met copy."
+    },
+    {
+      "id": "OBJ-SECOND-READING-APOLLO17-DISC",
+      "title": "The Blue Marble",
+      "kind": "article",
+      "wikidata": "Q202014",
+      "basis": "The photograph and caption identify NASA frame AS17-148-22727."
+    },
+    {
+      "id": "OBJ-SECOND-READING-CAROLINE-SCOPE",
+      "title": "Caroline Herschel",
+      "kind": "related",
+      "wikidata": "Q76948",
+      "basis": "The Science Museum Group identifies Caroline Herschel as the observer. The article concerns her research and instruments."
+    },
+    {
+      "id": "OBJ-SECOND-READING-CASSINI-SHADOW",
+      "title": "The Day the Earth Smiled",
+      "kind": "article",
+      "wikidata": "Q16965810",
+      "basis": "The composite and source match the NASA panorama PIA17172."
+    },
+    {
+      "id": "OBJ-SECOND-READING-EARTHRISE-FRAME",
+      "title": "Earthrise",
+      "kind": "article",
+      "wikidata": "Q843864",
+      "basis": "The photograph and caption identify NASA frame AS08-14-2383."
+    },
+    {
+      "id": "OBJ-SECOND-READING-MARINER-CONTRAST",
+      "title": "Mariner 4",
+      "kind": "related",
+      "wikidata": "Q203805",
+      "basis": "The article concerns the mission. The exhibit is the later enhanced-contrast release."
+    },
+    {
+      "id": "OBJ-SECOND-READING-PHOBOS-EXPOSURES",
+      "title": "Phobos (moon)",
+      "kind": "related",
+      "wikidata": "Q7547",
+      "basis": "The article concerns the moon. The exhibit records a specific exposure sequence."
+    },
+    {
+      "id": "OBJ-SECOND-READING-VIKING-FIRST",
+      "title": "Viking 1",
+      "kind": "related",
+      "wikidata": "Q210199",
+      "basis": "The article concerns the mission. The first surface photograph has a separate NASA release."
+    },
+    {
+      "id": "OBJ-SECOND-READING-WATSON-SCOPE",
+      "title": "William Herschel",
+      "kind": "related",
+      "wikidata": "Q14277",
+      "basis": "The collection credits William Herschel with this role: maker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-SECOND-READING-WIRE-MICROMETER",
+      "title": "William Herschel",
+      "kind": "related",
+      "wikidata": "Q14277",
+      "basis": "The collection credits William Herschel with this role: maker and astronomer. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-STORY-FRAME-LUKASA",
+      "title": "Lukasa",
+      "kind": "related",
+      "wikidata": "Q17149319",
+      "basis": "The article concerns a form of Luba art. The Brooklyn board is one example with its own accession."
+    },
+    {
+      "id": "OBJ-STORY-FRAME-TRICYCLE",
+      "title": "Hiroshima Peace Memorial Museum",
+      "kind": "related",
+      "wikidata": "Q1200076",
+      "basis": "The museum’s article provides institutional context. The dedicated Peace Database identifies Shinichi’s tricycle."
+    },
+    {
+      "id": "OBJ-TIMBUKTU-SEASON-COPY",
+      "title": "Timbuktu Manuscripts",
+      "kind": "related",
+      "wikidata": "Q2209578",
+      "basis": "The article concerns many manuscripts. The Mamma Haidara copy is a specific Library of Congress record."
+    },
+    {
+      "id": "OBJ-TIME-kremlin-clock",
+      "title": "House of Fabergé",
+      "kind": "related",
+      "wikidata": "Q2567352",
+      "basis": "The collection credits House of Fabergé with this role: maker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-TIME-wigstrom-clock",
+      "title": "House of Fabergé",
+      "kind": "related",
+      "wikidata": "Q2567352",
+      "basis": "The collection credits House of Fabergé with this role: maker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-WARM-rueckert-water",
+      "title": "House of Fabergé",
+      "kind": "related",
+      "wikidata": "Q2567352",
+      "basis": "The collection credits House of Fabergé with this role: maker. The article provides background on that role."
+    },
+    {
+      "id": "OBJ-WINDOW-2427",
+      "title": "Refracting telescope",
+      "kind": "related",
+      "wikidata": "Q216778",
+      "basis": "The article treats the instrument class. The 1,273 mm Museo Galileo telescope is a specific example."
+    },
+    {
+      "id": "OBJ-WINDOW-2428",
+      "title": "Refracting telescope",
+      "kind": "related",
+      "wikidata": "Q216778",
+      "basis": "The article treats the instrument class. The 927 mm Museo Galileo telescope has a different eyepiece history."
+    },
+    {
+      "id": "OBJ-WINDOW-A19700102000",
+      "title": "Command module Columbia",
+      "kind": "article",
+      "wikidata": "Q85753536",
+      "basis": "The article identifies CM-107, the same Apollo 11 spacecraft as Smithsonian accession A19700102000."
+    },
+    {
+      "id": "OBJ-WINDOW-NH-95258",
+      "title": "Trieste (bathyscaphe)",
+      "kind": "related",
+      "wikidata": "Q850157",
+      "basis": "The article is about the vessel. NH 95258 identifies an archived drawing made later."
+    },
+    {
+      "id": "OBJ-WINDOW-TRIESTE",
+      "title": "Trieste (bathyscaphe)",
+      "kind": "article",
+      "wikidata": "Q850157",
+      "basis": "The article identifies the Project Nekton vessel used for the 1960 Piccard and Walsh dive."
+    },
+    {
+      "id": "OBJ-WINDOW-UM-1",
+      "title": "Antonie van Leeuwenhoek",
+      "kind": "related",
+      "wikidata": "Q43522",
+      "basis": "The article concerns the maker and multiple instruments. UM-1 is a single specimen."
+    },
+    {
+      "id": "OBJ-WORK-SCHEDULE-LAHORE-QUINTET",
+      "title": "Nizami Ganjavi",
+      "kind": "related",
+      "wikidata": "Q234908",
+      "basis": "The collection credits Nizami Ganjavi with this role: Author of the literary work. The article provides background on that role."
+    }
+  ]
+}

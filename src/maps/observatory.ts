@@ -2,6 +2,7 @@
 import type { Condition } from '../domain/types';
 import { SHORE_REPLY_RETURNS } from './shoreReply';
 import { COAST_DETECTOR, COAST_DETECTOR_RECEIPTS } from './coastDetector';
+import { BREEZE_ARCHIVE, BREEZE_HARBOUR, BREEZE_HEADLAND } from './coastBreeze';
 import { COAST_FILM_STANDS } from './filmCuts';
 import { WINDOW_HARBOUR_PROPS } from './windowShop';
 import { BEARING_DOOR, bearingReceiver } from './bearingBay';
@@ -78,6 +79,7 @@ export const OBSERVATORY_HARBOUR: MapDef = {
   interactables: [
     ...COAST_FILM_STANDS,
     ...COAST_DETECTOR_RECEIPTS,
+    BREEZE_HARBOUR,
     ...WINDOW_HARBOUR_PROPS,
     bearingReceiver('quay', 11, 16),
     ...DEPOT_HARBOUR_PROPS,
@@ -133,6 +135,10 @@ export const OBSERVATORY_HARBOUR: MapDef = {
     sign('coast-notice-revision', 15, 14, 'the dated correction slip', 'preserved.slip',
       'The second headland reading is lower. It sits beside the time of the first. The space for the second quay reading stays empty until a record arrives.',
       { visibleIf: { flag: 'coast.updated', eq: true } }),
+    { ...archiveScene('coast-correction-quay', 13, 13, 'the cutters’ correction hook', 'preserved.slip', 'coast.correction.quay',
+      { flag: 'coast.correction.catch', eq: 'quay' }), artOpen: { key: 'fold.paired', if: { flag: 'coast.correction.fitted', eq: 'quay' } } },
+    { ...archiveScene('coast-correction-steps', 11, 7, 'the basket crews’ correction hook', 'preserved.slip', 'coast.correction.steps',
+      { flag: 'coast.correction.catch', eq: 'steps' }), artOpen: { key: 'fold.paired', if: { flag: 'coast.correction.fitted', eq: 'steps' } } },
     sign('coast-notice-spare', 14, 7, 'the notice at the steps', 'coast.signal',
       'A spare notice carries both places and the time of the reading. The next crew can see what was measured even if they miss the first copy.',
       { visibleIf: { flag: 'coast.copy.present', eq: true } }),
@@ -182,6 +188,7 @@ export const OBSERVATORY_STATION: MapDef = {
   interactables: [
     ...LEAVITT_HEADLAND,
     COAST_DETECTOR,
+    BREEZE_HEADLAND,
     ...COAST_VESPER_TRUST,
     ...HEADLAND_REFERENCE,
     BEARING_DOOR,
@@ -319,6 +326,7 @@ export const OBSERVATORY_ARCHIVE: MapDef = {
   ],
   interactables: [
     ...LEAVITT_ARCHIVE,
+    BREEZE_ARCHIVE,
     ...ARCHIVE_WATER_LOOP,
     ...ARCHIVE_GLOBE_REVISIT,
     ...COAST_REFERENCE_PROOFS,

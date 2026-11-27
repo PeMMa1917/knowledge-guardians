@@ -1,0 +1,844 @@
+{
+ "missions": [
+  {
+   "id": "KG-CH5-R14",
+   "world": "WORLD-06",
+   "title": "Two Hands on the Sheet",
+   "knowledgeQuestion": "When can people who did different work share a single observation?",
+   "stake": "Ayla’s next watch needs a sheet a new recorder can use before the first bell. Elian wants the record to keep the work each person did.",
+   "available": {
+    "objective": "forest.arrival"
+   },
+   "objectives": [
+    {
+     "id": "forest.hands.first",
+     "title": "Check the first round from both places.",
+     "done": {
+      "all": [
+       {
+        "flag": "forest.hands.front",
+        "eq": true
+       },
+       {
+        "flag": "forest.hands.side",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "skills": [],
+     "weave": {
+      "concepts": [
+       "truth",
+       "evidence",
+       "certainty",
+       "objectivity",
+       "explanation",
+       "perspective"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "aoks": [
+       "NAT",
+       "TEC"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "biology",
+       "design-tech"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "forest.hands.retry",
+     "title": "Move the recorder and repeat the same three marks.",
+     "done": {
+      "flag": "forest.hands.recheck",
+      "eq": true
+     },
+     "essential": false,
+     "skills": [],
+     "visible": {
+      "objective": "forest.hands.first"
+     },
+     "weave": {
+      "concepts": [
+       "certainty",
+       "objectivity",
+       "explanation",
+       "interpretation",
+       "evidence"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "aoks": [
+       "NAT",
+       "TEC"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "biology",
+       "design-tech"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "forest.hands.context",
+     "title": "Keep both Gombe contributions with their original records.",
+     "done": {
+      "flag": "forest.hands.context",
+      "eq": true
+     },
+     "essential": false,
+     "skills": [],
+     "visible": {
+      "objective": "forest.hands.retry"
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "perspective",
+       "justification",
+       "responsibility"
+      ],
+      "framework": [
+       "scope",
+       "perspectives"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "subjects": [
+       "history",
+       "biology"
+      ],
+      "minutes": 1,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "forest.hands.kept",
+     "title": "Use the revised sheet with Ayla’s next-watch crew.",
+     "done": {
+      "flagSet": "forest.hands.layout"
+     },
+     "essential": false,
+     "skills": [],
+     "visible": {
+      "objective": "forest.hands.context"
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "responsibility",
+       "perspective",
+       "power",
+       "justification"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM",
+       "TEC"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "subjects": [
+       "history",
+       "biology",
+       "design-tech"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH9-R31",
+   "world": "WORLD-10",
+   "title": "The Caller and the Check",
+   "knowledgeQuestion": "What can the person giving a cue know about its result?",
+   "available": {
+    "all": [
+     {
+      "objective": "stage.arrival"
+     },
+     {
+      "objective": "forest.hands.kept"
+     },
+     {
+      "flag": "perspective.active",
+      "eq": "observer-notebook"
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "stage.hands.compare",
+     "title": "Check the call and the rise from their own positions.",
+     "done": {
+      "all": [
+       {
+        "flag": "stage.hands.prompt",
+        "eq": true
+       },
+       {
+        "flag": "stage.hands.floor",
+        "eq": true
+       }
+      ]
+     },
+     "essential": false,
+     "skills": [],
+     "weave": {
+      "concepts": [
+       "evidence",
+       "perspective",
+       "interpretation",
+       "objectivity",
+       "explanation"
+      ],
+      "framework": [
+       "scope",
+       "perspectives"
+      ],
+      "aoks": [
+       "ART",
+       "TEC"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "subjects": [
+       "theatre",
+       "design-tech"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "stage.hands.served",
+     "title": "Set the rehearsal handover and see who checks the rise.",
+     "done": {
+      "flagSet": "stage.hands.used"
+     },
+     "essential": false,
+     "skills": [],
+     "visible": {
+      "objective": "stage.hands.compare"
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "power",
+       "values",
+       "justification",
+       "perspective"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "atl": [
+       "thinking",
+       "communication"
+      ],
+      "subjects": [
+       "theatre",
+       "psychology"
+      ],
+      "minutes": 2,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "forest.hands.board",
+   "speaker": "forest-naturalist",
+   "text": "The crew wants one line before the bell. An old practice caption says BOTH WATCHERS SAW THREE. This is a wooden slide with three marks. Try what a watcher sees and what the side recorder can mark.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Run the three-mark practice slide.",
+     "next": "forest.hands.started",
+     "if": {
+      "not": {
+       "flag": "forest.hands.started",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hands.started",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Move the recorder to the open end for a second run.",
+     "next": "forest.hands.moved",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.hands.first"
+       },
+       {
+        "not": {
+         "flag": "forest.hands.move",
+         "eq": true
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hands.move",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Set the two dated Gombe cards on separate clips.",
+     "next": "forest.hands.sources",
+     "if": {
+      "all": [
+       {
+        "objective": "forest.hands.retry"
+       },
+       {
+        "all": [
+         {
+          "card": "card.forest.gombe"
+         },
+         {
+          "card": "card.forest.team"
+         }
+        ]
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hands.context",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the frame for now."
+    }
+   ]
+  },
+  {
+   "id": "forest.hands.started",
+   "speaker": "forest-naturalist",
+   "text": "The marks are ready. One place is open from the first move. At the other the recorder lifts a small cover after a bell. Stand by each slot before we use the old caption.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the frame for now."
+    }
+   ]
+  },
+  {
+   "id": "forest.hands.front",
+   "speaker": "narrator",
+   "text": "From the open end, all three marks appear in sequence, one in each beat. The keeper here sees the slide directly.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "options": [
+    {
+     "text": "Mark all three in this position.",
+     "next": "forest.hands.front.kept",
+     "effects": [
+      {
+       "setFlag": "forest.hands.front",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Step away from the open end."
+    }
+   ]
+  },
+  {
+   "id": "forest.hands.front.kept",
+   "speaker": "narrator",
+   "text": "The keeper’s strip has three marks and the open end drawn beside them.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the strip in its clip."
+    }
+   ]
+  },
+  {
+   "id": "forest.hands.side",
+   "speaker": "narrator",
+   "text": "A strip is waiting under the recorder’s pencil. The seat and cover together decide where this strip can begin.",
+   "historicalLabel": "fictional-world",
+   "claimKind": "simulation",
+   "options": [
+    {
+     "text": "Lift the side cover after the first bell.",
+     "next": "forest.hands.side.first",
+     "if": {
+      "not": {
+       "flag": "forest.hands.move",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hands.side",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Take the moved seat and mark from the first beat.",
+     "next": "forest.hands.side.repeat",
+     "if": {
+      "flag": "forest.hands.move",
+      "eq": true
+     },
+     "effects": [
+      {
+       "setFlag": "forest.hands.recheck",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the sliding bench."
+    }
+   ]
+  },
+  {
+   "id": "forest.hands.side.first",
+   "speaker": "narrator",
+   "text": "The recorder finds two new marks after the cover rises. The other line in the shared caption was copied from the open end. The recorder can honestly sign what happened at the side bench.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the two direct marks apart from the copied line."
+    }
+   ]
+  },
+  {
+   "id": "forest.hands.moved",
+   "speaker": "forest-naturalist",
+   "text": "Keep both first strips. The wooden slide and three marks stay the same. The recorder now sits where the first beat is visible. Try the recorder’s bench again.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the frame for now."
+    }
+   ]
+  },
+  {
+   "id": "forest.hands.side.repeat",
+   "speaker": "narrator",
+   "text": "From the moved seat the recorder can mark all three directly. The first note still shows the gap at the old seat. The report can give each person credit for the work they did.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip the new strip beside its seat mark."
+    }
+   ]
+  },
+  {
+   "id": "forest.hands.sources",
+   "speaker": "forest-naturalist",
+   "text": "The Institute dates Jane Goodall’s Gombe tool-use observation to 1960. The later team account credits Tanzanian field workers and names Baraka Daniel for work on a particular datasheet. Keep their different contributions with their own sources. Our practice slide belongs to this invented station.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep both source tabs for the crew."
+    }
+   ]
+  },
+  {
+   "id": "forest.hands.receiver",
+   "speaker": "forest-steward",
+   "text": "The next watcher is ready. I can leave the recorder at the side, with a separate line for what they directly saw. Or I can move the recorder to the open end before our first beat. Then the path by the side bench stays free for the bridge crew.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Clip a separate record at each working place.",
+     "next": "forest.hands.separate",
+     "effects": [
+      {
+       "setFlag": "forest.hands.layout",
+       "value": "separate"
+      }
+     ]
+    },
+    {
+     "text": "Move the recorder before the first beat.",
+     "next": "forest.hands.relay",
+     "effects": [
+      {
+       "setFlag": "forest.hands.layout",
+       "value": "relay"
+      }
+     ]
+    },
+    {
+     "text": "Leave the next-watch sheet for later."
+    }
+   ]
+  },
+  {
+   "id": "forest.hands.separate",
+   "speaker": "forest-steward",
+   "text": "The next recorder signs two direct marks at the side. The open-end keeper signs all three. I keep a small gap on the side strip so a passing reader sees exactly where another check belongs.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave both slips in their clips."
+    }
+   ]
+  },
+  {
+   "id": "forest.hands.relay",
+   "speaker": "forest-steward",
+   "text": "The recorder takes the early seat and signs all three practice marks. The open-end keeper can check their strip beside it. The bridge crew keeps the side path clear.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the early seat ready."
+    }
+   ]
+  },
+  {
+   "id": "stage.hands.prompt",
+   "speaker": "stage-director",
+   "text": "Try the next practice rise. From this gap you can give the two knocks. The partition hides the low pin when the curtain moves.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Give the two knocks and log the call.",
+     "next": "stage.hands.prompt.kept",
+     "effects": [
+      {
+       "setFlag": "stage.hands.prompt",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the prompt gap for now."
+    }
+   ]
+  },
+  {
+   "id": "stage.hands.prompt.kept",
+   "speaker": "stage-director",
+   "text": "You can sign the two knocks from the wing. There is a blank for whoever sees the marker rise.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep the call and result on separate lines."
+    }
+   ]
+  },
+  {
+   "id": "stage.hands.floor",
+   "speaker": "stage-host",
+   "text": "A low seat can see the pin beside the cloth. Hold that sight line while the call goes from the wing.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Follow the pin as the cloth rises.",
+     "next": "stage.hands.floor.kept",
+     "effects": [
+      {
+       "setFlag": "stage.hands.floor",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Leave the low seat."
+    }
+   ]
+  },
+  {
+   "id": "stage.hands.floor.kept",
+   "speaker": "stage-host",
+   "text": "The cloth rises past the pin. This seat sees the rise. It cannot tell who made the first knock behind the partition.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep the observed rise with this seat."
+    }
+   ]
+  },
+  {
+   "id": "stage.hands.plan",
+   "speaker": "stage-host",
+   "text": "Your notebook has a spot for a call and a spot for a result. I can leave the caller at the gap and ask the gallery helper to signal when they see the pin. Another option is to let the caller move to the clear end and delay the next call until they can see the result.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Let the gallery helper return the confirmation.",
+     "next": "stage.hands.helper",
+     "effects": [
+      {
+       "setFlag": "stage.hands.used",
+       "value": "helper"
+      }
+     ]
+    },
+    {
+     "text": "Have the caller wait at the clear end before the next cue.",
+     "next": "stage.hands.caller",
+     "effects": [
+      {
+       "setFlag": "stage.hands.used",
+       "value": "caller"
+      }
+     ]
+    },
+    {
+     "text": "Leave the rehearsal arrangement open."
+    }
+   ]
+  },
+  {
+   "id": "stage.hands.helper",
+   "speaker": "stage-host",
+   "text": "The caller stays by the gap. The gallery helper sees the pin and raises a hand. The next cue can go while the caller stays at their place. The helper’s sighting keeps its own line.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the two clips in place."
+    }
+   ]
+  },
+  {
+   "id": "stage.hands.caller",
+   "speaker": "stage-host",
+   "text": "The caller walks to the clear end after the knocks. There is a brief hold before the next cue. The sheet gives the call its wing place and the sighting its clear end.",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave room for the caller to cross."
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.forest.hands.first.1",
+   "objective": "forest.hands.first",
+   "depth": 1,
+   "text": "Elian’s little practice frame is by the centre path at Fern Station."
+  },
+  {
+   "id": "h.forest.hands.first.2",
+   "objective": "forest.hands.first",
+   "depth": 2,
+   "text": "The same three wooden marks pass both places. The recorder sees the strip only when the side cover lifts."
+  },
+  {
+   "id": "h.forest.hands.first.3",
+   "objective": "forest.hands.first",
+   "depth": 3,
+   "text": "Check the open end as well as the sliding recorder’s bench. Keep each note with its place."
+  },
+  {
+   "id": "h.forest.hands.first.4",
+   "objective": "forest.hands.first",
+   "depth": 4,
+   "text": "Start the three-mark trial at Elian’s frame. Visit the open end and the recorder’s bench and record each reading."
+  },
+  {
+   "id": "h.forest.hands.retry.1",
+   "objective": "forest.hands.retry",
+   "depth": 1,
+   "text": "The open end and side bench gave different first readings."
+  },
+  {
+   "id": "h.forest.hands.retry.2",
+   "objective": "forest.hands.retry",
+   "depth": 2,
+   "text": "The side cover lifted after the first mark. Elian can move the recorder before another run."
+  },
+  {
+   "id": "h.forest.hands.retry.3",
+   "objective": "forest.hands.retry",
+   "depth": 3,
+   "text": "Keep the first readings. Change when the recorder can see the practice slide."
+  },
+  {
+   "id": "h.forest.hands.retry.4",
+   "objective": "forest.hands.retry",
+   "depth": 4,
+   "text": "Return to Elian’s frame and move the recorder to the opening. Check the recorder’s bench again."
+  },
+  {
+   "id": "h.forest.hands.context.1",
+   "objective": "forest.hands.context",
+   "depth": 1,
+   "text": "Fern Station has two public Gombe cases on different sides of the path."
+  },
+  {
+   "id": "h.forest.hands.context.2",
+   "objective": "forest.hands.context",
+   "depth": 2,
+   "text": "The two sources have different dates and credit different work. A later sheet gives no view of the 1960 moment."
+  },
+  {
+   "id": "h.forest.hands.context.3",
+   "objective": "forest.hands.context",
+   "depth": 3,
+   "text": "Bring the two record cards to Elian after the practice repeat. Compare what each account can tell the next keeper."
+  },
+  {
+   "id": "h.forest.hands.context.4",
+   "objective": "forest.hands.context",
+   "depth": 4,
+   "text": "Inspect both Gombe cases. At the practice frame keep the 1960 observation and the later team account in separate slots."
+  },
+  {
+   "id": "h.forest.hands.kept.1",
+   "objective": "forest.hands.kept",
+   "depth": 1,
+   "text": "Ayla has space for a next-watch sheet in Bridge Clearing."
+  },
+  {
+   "id": "h.forest.hands.kept.2",
+   "objective": "forest.hands.kept",
+   "depth": 2,
+   "text": "The crew can leave its recorder at the side bench, or move their seat before the watch begins."
+  },
+  {
+   "id": "h.forest.hands.kept.3",
+   "objective": "forest.hands.kept",
+   "depth": 3,
+   "text": "The side view keeps a gap in the record. A moved seat can repeat the whole practice run."
+  },
+  {
+   "id": "h.forest.hands.kept.4",
+   "objective": "forest.hands.kept",
+   "depth": 4,
+   "text": "At Ayla’s sheet, clip separate readings for the two places or set the recorder at the opening. Bring the watched and recorded roles forward."
+  },
+  {
+   "id": "h.stage.hands.compare.1",
+   "objective": "stage.hands.compare",
+   "depth": 1,
+   "text": "Open Elian’s field notebook from your Bag in the House of Performance."
+  },
+  {
+   "id": "h.stage.hands.compare.2",
+   "objective": "stage.hands.compare",
+   "depth": 2,
+   "text": "A prompt gap tells the caller what to say. A low pin shows the result of the crew’s movement."
+  },
+  {
+   "id": "h.stage.hands.compare.3",
+   "objective": "stage.hands.compare",
+   "depth": 3,
+   "text": "Repeat the call in Rehearsal, then check the pin from the Gallery. File the reports with the work each person did."
+  },
+  {
+   "id": "h.stage.hands.compare.4",
+   "objective": "stage.hands.compare",
+   "depth": 4,
+   "text": "Use the first call at the prompt gap. Go through the wing to the Gallery and follow the low pin to its visible mark."
+  },
+  {
+   "id": "h.stage.hands.served.1",
+   "objective": "stage.hands.served",
+   "depth": 1,
+   "text": "Hari has two clip positions in the Gallery."
+  },
+  {
+   "id": "h.stage.hands.served.2",
+   "objective": "stage.hands.served",
+   "depth": 2,
+   "text": "The wing caller can wait and check a rise alone, or send the cue while a second worker checks the visible marker."
+  },
+  {
+   "id": "h.stage.hands.served.3",
+   "objective": "stage.hands.served",
+   "depth": 3,
+   "text": "Keep the cue and the sighting in separate slots. Watch which crew gets the next check."
+  },
+  {
+   "id": "h.stage.hands.served.4",
+   "objective": "stage.hands.served",
+   "depth": 4,
+   "text": "Set the clips for a gallery helper to confirm the pin, or move the caller to the clear end before the next run."
+  }
+ ]
+}

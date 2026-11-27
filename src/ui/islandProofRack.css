@@ -1,0 +1,16 @@
+.island-proof-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: .35em;
+  list-style: none;
+  padding: 0;
+}
+.island-proof-slots li {
+  padding: .4em;
+  border: 1px solid currentColor;
+  border-radius: .25em;
+  text-align: center;
+}
+.island-proof-scale { display: grid; gap: .3em; justify-items: start; margin: .5em 0; }
+.island-proof-scale span { height: 1.1em; background: #ca9c68; border-radius: 45%; }
+.island-proof-scale i { height: .15em; background: currentColor; }

@@ -1066,49 +1066,49 @@
    "id": "h.latch.water.observed.1",
    "objective": "latch.water.observed",
    "depth": 1,
-   "text": "The two model positions show how the copied signal can miss a change."
+   "text": "The practice bar moved twice. The desk flag stayed down. What could the crew see from where they stood?"
   },
   {
    "id": "h.latch.water.observed.2",
    "objective": "latch.water.observed",
    "depth": 2,
-   "text": "Find the marked place where you can see the live latch."
+   "text": "Look for the white sight mark. From there you can see the service bar through the opening."
   },
   {
    "id": "h.latch.water.observed.3",
    "objective": "latch.water.observed",
    "depth": 3,
-   "text": "Look at the latch through its own gap while the crew stays behind the rail."
+   "text": "Stand at the sight mark with the flag behind you. Compare the live bar with the request the crew has on paper."
   },
   {
    "id": "h.latch.water.observed.4",
    "objective": "latch.water.observed",
    "depth": 4,
-   "text": "Clip your sighting beside the request on its own line, so others can trace how each reading was made."
+   "text": "Clip the view through the grille beside the desk request. Give each reading its own line."
   },
   {
    "id": "h.latch.water.finish.1",
    "objective": "latch.water.finish",
    "depth": 1,
-   "text": "People have different work waiting on each side."
+   "text": "A broad tool tray is waiting. The crew can send it straight through if someone leaves the marker posts."
   },
   {
    "id": "h.latch.water.finish.2",
    "objective": "latch.water.finish",
    "depth": 2,
-   "text": "Read the board for the staffed short crossing and the smaller load on the longer route."
+   "text": "Find the keeper’s plan. A spotter can take the broad tray through the short lane. The small tray can go by the raised bank with the marker crew still together."
   },
   {
    "id": "h.latch.water.finish.3",
    "objective": "latch.water.finish",
    "depth": 3,
-   "text": "Open the route whose cost the crew can accept. The other rail remains held."
+   "text": "Ask the keeper to staff the direct rail or clear the raised bank. Look beyond the open rail for the receiving stop."
   },
   {
    "id": "h.latch.water.finish.4",
    "objective": "latch.water.finish",
    "depth": 4,
-   "text": "Go through your open rail and place the practice load on its matching marked stop."
+   "text": "On the direct lane, bring the broad tool tray to the north stop at the spotter’s call. On the raised bank, set the small tray at its little stop."
   }
  ],
  "items": [

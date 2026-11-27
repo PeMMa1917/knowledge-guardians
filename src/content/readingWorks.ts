@@ -71,8 +71,8 @@ const idrisiHistory: SourceRecord = {
 };
 const idrisiScribe: SourceRecord = {
   id: 'HIS-READING-WORKS-IDRISI-SCRIBE', title: 'Fihrist manuscript description for MS. Pococke 375',
-  url: 'https://www.fihrist.org.uk/catalog/manuscript_1554', locator: 'Hand description, Naskh',
-  supports: 'Fihrist names ʻAlī ibn Ḥasan al-Ḥūfī al-Qāsimī as the scribe of this manuscript.',
+  url: 'https://www.fihrist.org.uk/catalog/manuscript_1554', locator: 'Naskh hand, origin dates and acquisition',
+  supports: 'Fihrist names the scribe ʻAlī ibn Ḥasan al-Ḥūfī al-Qāsimī and gives 1692 for the Bodleian purchase. Its origin fields put 960 AH alongside a Gregorian date of 1533.',
   accessed: '2026-11-26',
 };
 const sourceIds = (entry: ReadingCase) => {

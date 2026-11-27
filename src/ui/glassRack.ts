@@ -1,6 +1,6 @@
 import type { GameController } from '../app/controller';
 import { GLASS_RACK_CASES, GLASS_RACK_USES, glassRackStation, type GlassMount, type GlassMode, type GlassRecord } from '../content/glassRack';
-import { specimenEquipped } from '../domain/specimenGear';
+import { ownsSpecimen, specimenEquipped } from '../domain/specimenGear';
 import { h } from './dom';
 import './glassRack.css';
 
@@ -15,6 +15,10 @@ function glassImage(record: GlassRecord, other = false): HTMLElement {
 function glassSource(record: GlassRecord): HTMLElement {
   return h('div', { class: 'glass-source' }, h('p', {}, record.record), h('p', { class: 'fine' }, record.limit),
     h('a', { href: record.url, target: '_blank', rel: 'noopener noreferrer' }, `Collection record · ${record.accession}`));
+}
+
+function spoken(who: 'Quena' | 'Osyth' | 'Rennel' | 'Marek', line: string, feedback = false): HTMLElement {
+  return h('p', { role: feedback ? 'status' : undefined }, h('strong', {}, who), ' “' + line + '”');
 }
 
 export function glassRackPanel(controller: GameController, station: string, refresh: () => void): HTMLElement {
@@ -43,8 +47,10 @@ export function glassRackPanel(controller: GameController, station: string, refr
     show(
       h('h2', {}, c.title),
       h('p', { class: 'fine' }, `${c.accession} · ${c.date}`),
+      spoken('Quena', c.story.work),
       !ready ? h('p', {}, 'Inspect the numbered case beside this window first.') :
         h('div', { class: 'glass-window' }, compared ? pair(c) : face ? glassImage(c, face === 'other') : h('p', {}, 'Quena’s window is empty.')),
+      compared ? spoken('Quena', c.story.comparison, true) : null,
       !ready ? null : h('div', { class: 'row' },
         !face ? button('Set the whole view', 'whole', c.nodes.work, 0) : null,
         face === 'whole' && !compared ? button(use.action, 'other', c.nodes.work, 1) : null,
@@ -64,15 +70,16 @@ export function glassRackPanel(controller: GameController, station: string, refr
       ...atStation.map((c) => {
         const ready = state(c, 'heard') === mount;
         const flipped = state(c, 'flap') === true;
+        const who = isRail ? 'Osyth' : 'Rennel';
         return h('article', { class: 'glass-record' }, h('h3', {}, `${c.title} · ${c.accession}`),
+          !ready ? spoken(who, isRail ? c.story.rail : c.story.pocket) : null,
           isRail ? pair(c) : h('div', { class: 'glass-window' }, glassImage(c, !ready && flipped)),
           isRail || flipped ? glassSource(c) : null,
-          ready ? h('p', { role: 'status' }, isRail
-            ? 'Osyth matched each picture to the same record at a glance. The case can now lend its specimen.'
-            : 'Rennel used the hinge, closed the pocket and kept the case number beside it. The specimen can now travel.')
+          ready ? spoken(who, isRail ? c.story.railDone : c.story.pocketDone, true)
             : isRail ? button('Set both photos side by side and leave the source tab', c.slug, c.nodes.rail, 0)
               : flipped ? button('Close the flap and keep the case number', c.slug, c.nodes.pocket, 1)
-                : button('Lift the pocket flap for the other view', c.slug, c.nodes.pocket, 0));
+                : button('Lift the pocket flap for the other view', c.slug, c.nodes.pocket, 0),
+          ready && !ownsSpecimen(controller.state, c.key) ? h('p', { class: 'fine' }, 'The specimen is ready to collect at its case.') : null);
       }));
   }
 
@@ -87,7 +94,7 @@ export function glassRackPanel(controller: GameController, station: string, refr
     const other = state(c, 'nile-other') === true;
     const placed = state(c, 'nile');
     show(h('h2', {}, `${c.title} · ${c.accession}`),
-      h('p', {}, use.title[0].toLocaleUpperCase() + use.title.slice(1) + '.'),
+      !placed ? spoken('Marek', c.story.revisit) : null,
       other ? pair(c) : whole ? glassImage(c) : null,
       other ? glassSource(c) : null,
       h('div', { class: 'row' },
@@ -95,7 +102,9 @@ export function glassRackPanel(controller: GameController, station: string, refr
         whole && !other ? button(use.work, 'other', c.nodes.revisit, 1) : null,
         other && !placed ? button('Leave both views on the board', 'board', c.nodes.revisit, 2) : null,
         other && !placed ? button('Keep the views at the desk', 'desk', c.nodes.revisit, 3) : null),
-      placed ? h('p', { role: 'status' }, placed === 'board' ? 'The public board is ready by the south aisle.' : 'A whole view points to the second view at the south desk.') : null);
+      placed ? spoken('Marek', placed === 'board' ? c.story.boardDone : c.story.deskDone, true) : null,
+      placed ? h('p', { class: 'fine' }, placed === 'board' ? 'See the mounted views by the south aisle.'
+        : 'The south aisle view points to the reading desk.') : null);
   }
 
   function readback(position: 'board' | 'desk') {
@@ -105,7 +114,8 @@ export function glassRackPanel(controller: GameController, station: string, refr
         const pointer = position === 'board' && state(c, 'nile') === 'desk';
         return h('article', { class: 'glass-record' }, h('h3', {}, `${c.title} · ${c.accession}`),
           pointer ? glassImage(c) : pair(c), glassSource(c),
-          h('p', {}, pointer ? 'The matching view waits at the reading desk, two steps east.' : `Marek: “${GLASS_RACK_USES[c.mode].response}”`));
+          spoken('Marek', state(c, 'nile') === 'desk' ? c.story.deskDone : c.story.boardDone),
+          pointer ? h('p', { class: 'fine' }, 'The reading desk is two steps east.') : null);
       }));
   }
 

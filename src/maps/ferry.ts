@@ -1,3 +1,4 @@
+import { sefaDispatchDesk } from './sefaDispatch';
 /**
  * WORLD-02 Aethelgard: the old ferry road and the ferry folk's landing, east of Emberford.
  * A pathway that a keepsake opens: Kip's map beside Elsbet's map shows the forgotten road
@@ -7,6 +8,7 @@
  */
 import { FERRY_FIELD_BADGES } from './fieldBadges';
 import type { Condition } from '../domain/types';
+import { eastWellSlipAt } from '../domain/rumours';
 import { specimenEquipped } from '../domain/specimenGear';
 import { FERRY_PACKING_DOOR } from './ferryPacking';
 import { WARM_FERRY_RETURNS } from './warmRoom';
@@ -61,6 +63,7 @@ export const FERRY: MapDef = {
     ...FERRY_SILL_BRIDGE,
     { id: 'field-trade', kind: 'fieldgame', game: 'trade', x: 13, y: 3, w: 1, h: 1, label: 'a spare carrier tag on the ferry step (The Spare Tag)', art: 'guest-book' },
     { id: 'cross-lamb', kind: 'fieldgame', game: 'cross-lamb', x: 10, y: 5, w: 1, h: 1, label: 'the lamb on the old ford stone (a crossing)', art: 'flood-post' },
+    sefaDispatchDesk('ferry', 13, 8),
     { id: 'ferry-copy-ledger', kind: 'scene', node: 'tova.nexus-copy.ledger', x: 11, y: 7, w: 1, h: 1,
       label: 'the landing book with the Nexus packet', art: 'ledger', walkThrough: true,
       visibleIf: { flag: 'ferry.copy.place', eq: 'ledger' } },
@@ -68,6 +71,13 @@ export const FERRY: MapDef = {
       label: 'Tova’s note by the water slate', art: 'nile.slip', walkThrough: true,
       visibleIf: { flag: 'ferry.copy.place', eq: 'slate' } },
     { id: 'ferry-road-back', kind: 'door', x: 0, y: 4, w: 1, h: 2, label: 'the road back to Emberford', art: 'road-post', to: { map: 'aethelgard.emberford', x: 38, y: 18 } },
+    { id: 'east-well-road-peg', kind: 'scene', node: 'well.records.ferry-start', x: 2, y: 4, w: 1, h: 1, walkThrough: true,
+      label: 'Efua’s east-well peg by the old ferry road', art: 'departure.peg', visibleIf: eastWellSlipAt('ferry'),
+      artOpen: { key: 'departure.peg-marked', if: { flag: 'well.records.peg', eq: true } } },
+    { id: 'east-well-school-peg', kind: 'scene', node: 'well.records.ferry-end', x: 16, y: 6, w: 1, h: 1, walkThrough: true,
+      label: 'the school peg by the landing crates', art: 'departure.peg',
+      visibleIf: { all: [eastWellSlipAt('ferry'), { flag: 'well.records.peg', eq: true }] },
+      artOpen: { key: 'departure.peg-marked', if: { flag: 'well.records.ferry', eq: true } } },
     { id: 'secret-star-names', kind: 'secret', secret: 'star-names', x: 22, y: 8, w: 1, h: 1, label: 'something glinting in the reeds' },
     { id: 'clay-bank', kind: 'gather', resource: 'clay', x: 9, y: 8, w: 1, h: 1, label: 'the clay bank (gather)', art: 'clay-bank' },
     { id: 'reeds-ferry', kind: 'gather', resource: 'reed', x: 19, y: 8, w: 1, h: 1, label: 'the tall reeds (gather)', art: 'reeds' },

@@ -23,18 +23,22 @@ import { BIG_ART } from '../ui/illustrations';
 import { LUMEN_COLOURS, lumenArt } from '../app/settings';
 import Phaser from 'phaser';
 import type { BootScene } from './BootScene';
-import { ctx, type WorldApi } from '../app/context';
+import { ctx, type WorldApi, type WorldTransition } from '../app/context';
 import { MAPS } from '../maps';
 import type { Interactable, MapDef } from '../maps/types';
 import { STAMPS, TILE } from './art';
 import { CHUNK, explored, isRevealed, revealAround } from '../domain/fog';
 import { hasTalent } from '../domain/talents';
 import { frayLevel } from '../domain/label';
+import { decorateConceptText } from '../ui/conceptMarkup';
 
 type Dir = 'down' | 'up' | 'left' | 'right';
 
+type NpcPlacement = MapDef['npcs'][number];
+
 interface Actor {
   id: string;
+  mapOrder?: number;
   /** "Something new to say" marker above the head. */
   mark?: Phaser.GameObjects.Image;
   sprite: Phaser.GameObjects.Sprite;
@@ -50,14 +54,17 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private blocked: boolean[][] = [];
   private player!: Actor;
   private npcs: Actor[] = [];
+  private conditionalCast: { place: NpcPlacement; order: number; actor?: Actor; floorBlocked: boolean }[] = [];
+  private waitingForSpace: NpcPlacement[] = [];
   private follower: Actor | null = null;
   private trail: { x: number; y: number; f: Dir }[] = [];
   private lumen!: Phaser.GameObjects.Image;
   private lumenGlow!: Phaser.GameObjects.Image;
   private keys!: Record<string, Phaser.Input.Keyboard.Key>;
+  private readonly handledInteractEvents = new WeakSet<KeyboardEvent>();
   private playerSheet = 'player-a';
   private path: { x: number; y: number }[] = [];
-  private pendingInteract: (() => void) | null = null;
+  private pendingInteract: { run: () => void; actor?: Actor } | null = null;
   private zonesInside = new Set<string>();
   private walkingArrivalFrom: string | null = null;
   private paused = false;
@@ -90,7 +97,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   constructor() { super('world'); }
 
-  create(data: { walkingArrivalFrom?: string } = {}): void {
+  create(data: { walkingArrivalFrom?: string; via?: { from: string; id: string; label: string } } = {}): void {
     ctx.world = this;
     // Reset per-map fields (the scene object is reused when the map changes).
     if (!this.textures.exists('mark.new')) {
@@ -101,6 +108,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       g.fillStyle(0x1a1426, 1).fillRect(4, 2, 1, 4).fillRect(4, 7, 1, 1);
       g.generateTexture('mark.new', 9, 13); g.destroy();
     }
+    this.conditionalCast = []; this.waitingForSpace = [];
     this.npcs = []; this.follower = null; this.trail = []; this.path = []; this.pendingInteract = null;
     this.zonesInside = new Set(); this.target = null; this.fx = []; this.lightPools = []; this.portalRing = null;
     this.walkingArrivalFrom = data.walkingArrivalFrom ?? null;
@@ -115,6 +123,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.keys = kb.addKeys({ W: km.up, A: km.left, S: km.down, D: km.right, E: km.interact, UP: 'UP', DOWN: 'DOWN', LEFT: 'LEFT', RIGHT: 'RIGHT', SPACE: 'SPACE', ENTER: 'ENTER' }) as Record<string, Phaser.Input.Keyboard.Key>;
     kb.addCapture('UP,DOWN,LEFT,RIGHT,SPACE');
     const interactKey = (_key: Phaser.Input.Keyboard.Key, event: KeyboardEvent) => {
+      // Phaser can deliver the same DOM event again when more keys arrive before the next frame.
+      if (this.handledInteractEvents.has(event)) return;
+      this.handledInteractEvents.add(event);
       if (!event.repeat && !this.paused && !ctx.ui.isModalOpen()) this.tryInteract();
     };
     this.keys.E.on('down', interactKey); this.keys.SPACE.on('down', interactKey); this.keys.ENTER.on('down', interactKey);
@@ -127,7 +138,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.scale.off('resize', this.resizeCamera));
     this.playMusic();
     this.cameras.main.fadeIn(ctx.settings.reducedMotion ? 0 : 400, 10, 8, 24);
-    ctx.controller.dispatch({ type: 'VisitPlace', name: this.map.name });
+    ctx.controller.dispatch({ type: 'VisitPlace', name: this.map.name, via: data.via });
     // Arrival zone (e.g. "emberford") is recorded the moment the map opens.
     this.checkZones(true);
     this.refreshWorld();
@@ -238,10 +249,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
     // Characters.
     const s = ctx.controller.state;
-    for (const n of m.npcs) {
-      if (n.visibleIf && !ctx.controller.check(n.visibleIf)) continue;
+    for (const [order, n] of m.npcs.entries()) {
+      if (n.visibleIf) continue;
       if (n.id === s.companion) continue; // the companion walks with the player
       const a = this.makeActor(n.id, n.x, n.y, n.facing);
+      a.mapOrder = order;
       this.npcs.push(a);
       block(n.x, n.y, 1, 1);
     }
@@ -251,6 +263,10 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       this.npcs.push(a);
       block(21, 23, 1, 1);
     }
+
+    this.conditionalCast = m.npcs.flatMap((place, order) => place.visibleIf
+      ? [{ place, order, floorBlocked: this.blocked[place.y][place.x] }] : []);
+    this.syncConditionalCast(false);
 
     const look = ensureLook(this, ctx.controller.state.player.look, this.threadColours());
     this.playerSheet = look;
@@ -277,6 +293,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   refreshWorld(): void {
     const s = ctx.controller.state;
     if (!s || !this.threadGfx) return;
+    for (const { place, floorBlocked } of this.conditionalCast) this.blocked[place.y][place.x] = floorBlocked;
     this.refreshBlockedTiles();
     const cases = this.map.id === SPECIMEN_BASE ? specimenDisplay(ctx.controller.pack, s).cases : [];
     for (const it of this.map.interactables) {
@@ -314,6 +331,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         if (img.texture.key !== key && this.textures.exists(key)) img.setTexture(key);
       }
     }
+    this.syncConditionalCast(true);
     this.syncPet();
     // Cloak embroidery (spec 32.6): a new thread appears on the outfit when a world arc is resolved.
     if (this.player) {
@@ -355,6 +373,50 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
     }
     if (this.portalRing) this.portalRing.setAlpha(ctx.controller.check({ objective: 'm01.o6.label' }) ? 1 : 0.35);
+  }
+
+  /** Apply entrances and departures to dialogue targets, markers and walkable tiles in the same visit. */
+  private syncConditionalCast(protectPlayer: boolean): void {
+    this.waitingForSpace = [];
+    for (const member of this.conditionalCast) {
+      const { place, actor } = member;
+      const present = place.id !== ctx.controller.state.companion && ctx.controller.check(place.visibleIf);
+      if (present && !actor) {
+        if (protectPlayer && this.playerOverlaps(place)) {
+          this.waitingForSpace.push(place);
+          continue;
+        }
+        member.actor = this.makeActor(place.id, place.x, place.y, place.facing);
+        member.actor.mapOrder = member.order;
+        this.npcs.push(member.actor);
+        this.npcs.sort((a, b) => (a.mapOrder ?? this.map.npcs.length) - (b.mapOrder ?? this.map.npcs.length));
+      } else if (!present && actor) {
+        this.npcs = this.npcs.filter((npc) => npc !== actor);
+        if (this.pendingInteract?.actor === actor) {
+          this.path = [];
+          this.pendingInteract = null;
+        }
+        if (this.target?.kind === 'npc' && this.target.actor === actor) this.target = null;
+        if (actor.mark) {
+          this.tweens.killTweensOf(actor.mark);
+          actor.mark.destroy();
+        }
+        actor.sprite.destroy();
+        actor.shadow.destroy();
+        member.actor = undefined;
+      }
+      if (member.actor) this.blocked[place.y][place.x] = true;
+    }
+    if (this.conditionalCast.length && this.path.some(({ x, y }) => this.blocked[y][x])) {
+      this.path = [];
+      this.pendingInteract = null;
+    }
+  }
+
+  private playerOverlaps({ x, y }: NpcPlacement): boolean {
+    const feet = this.player.sprite;
+    return feet.x + FEET.w / 2 >= x * TILE && feet.x - FEET.w / 2 < (x + 1) * TILE &&
+      feet.y + FEET.h / 2 >= y * TILE && feet.y - FEET.h / 2 < (y + 1) * TILE;
   }
 
   private refreshBlockedTiles(): void {
@@ -653,10 +715,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private secretGlows: { id: string; img: Phaser.GameObjects.Image }[] = [];
   update(_t: number, dtMs: number): void {
     const dt = Math.min(dtMs, 100) / 1000;
+    if (this.waitingForSpace.some((place) => !this.playerOverlaps(place))) this.refreshWorld();
     // Fog of war: clear the map around the player when they enter a new chunk.
     if (this.player && !this.transitioning) {
       const tx = Math.floor(this.player.sprite.x / TILE), ty = Math.floor(this.player.sprite.y / TILE);
-      const ck = `${Math.floor(tx / CHUNK)},${Math.floor(ty / CHUNK)}`;
+      const ck = `${this.map.id}:${Math.floor(tx / CHUNK)},${Math.floor(ty / CHUNK)}`;
       if (ck !== this.fogChunk) {
         this.fogChunk = ck;
         const key = `fog.${this.map.id}`, was = ctx.controller.state.flags[key];
@@ -684,7 +747,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         const dx = tx - this.player.sprite.x, dy = ty - this.player.sprite.y;
         if (Math.abs(dx) < 2 && Math.abs(dy) < 2) {
           this.player.sprite.x = tx; this.player.sprite.y = ty; this.path.shift();
-          if (!this.path.length && this.pendingInteract) { const f = this.pendingInteract; this.pendingInteract = null; f(); }
+          if (!this.path.length && this.pendingInteract) { const f = this.pendingInteract; this.pendingInteract = null; f.run(); }
         } else {
           waypointDistance = { x: Math.abs(dx), y: Math.abs(dy) };
           vx = waypointDistance.x > 1 ? Math.sign(dx) : 0;
@@ -880,6 +943,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       el.className = 'world-say'; el.setAttribute('role', 'status');
       const b = document.createElement('strong'); b.textContent = name.split(' ').slice(-2).join(' ');
       el.append(b, document.createTextNode(m.line));
+      decorateConceptText(el);
       document.body.append(el);
       this.sayEl = { el, target: a.sprite, until: this.time.now + 3500 + m.line.length * 45 };
       if (ctx.settings.talkSounds) babble(m.line, voiceFor(a.id), ctx.settings.sfxVolume);
@@ -1031,9 +1095,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     if (!t) return;
     if (t.kind === 'npc') {
       const a = t.actor;
+      if (!a.sprite.active) return;
       const dx = this.player.sprite.x - a.sprite.x, dy = this.player.sprite.y - a.sprite.y;
       a.facing = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
       a.sprite.setFrame(this.idleFrame(a.facing));
+      ctx.controller.recordLeaderboardNpc(a.id);
       ctx.ui.openDialogue(a.id);
       return;
     }
@@ -1094,20 +1160,24 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
       case 'clue': ctx.ui.openClue(it.clue!); break;
       case 'door':
-        if (it.openIf && !ctx.controller.check(it.openIf)) { ctx.ui.showSign(it.label, it.text ?? 'It does not open.'); break; }
+        if (it.openIf && !ctx.controller.check(it.openIf)) {
+          const text = it.text ?? 'It does not open.';
+          ctx.controller.dispatch({ type: 'ReadWorldSign', id: it.id, title: it.label, text, blocked: true });
+          ctx.ui.showSign(it.label, text);
+          break;
+        }
         if (it.flag && ctx.controller.state.flags[it.flag] !== true) ctx.controller.dispatch({ type: 'SetFlag', flag: it.flag, value: true });
-        if (it.to) this.changeMap(it.to.map, it.to.x, it.to.y);
+        if (it.to) this.changeMap(it.to.map, it.to.x, it.to.y, { route: { id: it.id, label: it.label } });
         break;
       case 'forge': ctx.ui.openForge(); break;
       case 'assay': ctx.ui.openAssay(it.exhibit!); break;
       case 'thread': ctx.ui.followThread(it.thread!, it.node!); break;
       case 'waystone': ctx.ui.openWaystone(it.place ?? this.map.name); break;
       case 'sign':
-        if (it.flag && ctx.controller.state.flags[it.flag] !== true) {
-          const events = ctx.controller.dispatch({ type: 'SetFlag', flag: it.flag, value: true });
-          if (!events.length) this.refreshWorld();
-        }
-        ctx.ui.showSign(it.label, it.text ?? ''); break;
+        const first = it.flag && ctx.controller.state.flags[it.flag] !== true;
+        const events = ctx.controller.dispatch({ type: 'ReadWorldSign', id: it.id, title: it.label, text: it.text ?? '', readFlag: it.flag });
+        if (first && !events.length) this.refreshWorld();
+        ctx.ui.showSign(it.label, it.text ?? '', it.id); break;
       case 'portal': break;
     }
   }
@@ -1131,7 +1201,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         const dx = cx - this.player.sprite.x, dy = cy - this.player.sprite.y;
         this.player.facing = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
         this.tryInteract(hitA ? { kind: 'npc', actor: hitA } : { kind: 'obj', obj: hitO! });
-      });
+      }, hitA);
       return;
     }
     if (this.blocked[ty]?.[tx] === false) this.walkTo(tx, ty, null);
@@ -1147,12 +1217,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     return ok.find(({ x, y }) => this.bfs(pt.x, pt.y, x, y) !== null) ?? null;
   }
 
-  private walkTo(tx: number, ty: number, then: (() => void) | null): void {
+  private walkTo(tx: number, ty: number, then: (() => void) | null, actor?: Actor): void {
     const sx = Math.floor(this.player.sprite.x / TILE), sy = Math.floor(this.player.sprite.y / TILE);
     const path = this.bfs(sx, sy, tx, ty);
     if (!path) return;
     this.path = path;
-    this.pendingInteract = then;
+    this.pendingInteract = then ? { run: then, actor } : null;
     if (!path.length && then) { this.pendingInteract = null; then(); }
   }
 
@@ -1193,11 +1263,16 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       // A key held through a crossing may keep moving but cannot send the player straight back.
       if (!arrival && z.to?.map === this.walkingArrivalFrom) continue;
       if (z.if && !ctx.controller.check(z.if)) {
-        if (z.to && !arrival) ctx.ui.toast(z.id === 'portal' ? 'The portal is not open yet. Repair the label first.' : 'Not yet. Finish your work here first.', 'info');
+        if (z.to && !arrival) {
+          const portal = z.id === 'portal';
+          const text = portal ? 'The portal is not open yet. Repair the label first.' : 'Not yet. Finish your work here first.';
+          ctx.controller.dispatch({ type: 'ReadWorldSign', id: z.id, title: portal ? 'the portal' : 'the crossing', text, blocked: true });
+          ctx.ui.toast(text, 'info');
+        }
         continue;
       }
       if (!ctx.controller.state.flags[`reached.${z.id}`]) ctx.controller.dispatch({ type: 'Reach', zone: z.id });
-      if (z.to && !arrival) this.changeMap(z.to.map, z.to.x, z.to.y, true);
+      if (z.to && !arrival) this.changeMap(z.to.map, z.to.x, z.to.y, { throughZone: true, route: { id: z.id, label: 'the crossing' } });
     }
   }
 
@@ -1210,15 +1285,16 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   /** Called by the shell before saving, so the save has the current position. */
   snapshotPosition(): void { this.saveSpot(); }
 
-  changeMap(mapId: string, x: number, y: number, throughZone = false): void {
+  changeMap(mapId: string, x: number, y: number, { throughZone = false, route }: WorldTransition = {}): void {
     if (this.transitioning) return;
     this.transitioning = true;
     this.playSfx('sfx.sparkle');
-    const walkingArrivalFrom = throughZone ? this.map.id : undefined;
+    const from = this.map.id;
+    const walkingArrivalFrom = throughZone ? from : undefined;
     const go = () => {
       const s = ctx.controller.state;
       s.mapId = mapId; s.pos = { x, y }; s.facing = 'down';
-      this.scene.restart({ walkingArrivalFrom });
+      this.scene.restart({ walkingArrivalFrom, via: route ? { ...route, from } : undefined });
     };
     if (ctx.settings.reducedMotion) go();
     else { this.cameras.main.fadeOut(500, 220, 240, 255); this.cameras.main.once('camerafadeoutcomplete', go); }

@@ -6,6 +6,7 @@ import { compareCopy } from './copyComparison';
 import { seaChart } from './seaCharts';
 import { stageRehearsal, type StageCue } from './stageRehearsal';
 import { filmEffects, type FilmAction } from './filmCuts';
+import { tileDispatchEffects, type TileDispatchAction } from './tiles';
 import { marketComparison, type MarketBasis } from './marketScale';
 import { waterTrial, type WaterSetting } from './waterGate';
 import { civicAllocation, type CivicRule, type CivicSample } from './civicConsole';
@@ -31,7 +32,7 @@ import { WARES, priceFor } from './shop';
 import { TALENTS, cannotLearn, hasTalent } from './talents';
 import { GATHER_YIELD, RECIPES, RESOURCES, cannotCraft } from './craft';
 import { cannotRead, readingOf } from './readings';
-import { RUMOURS, missingRumourSources, rumourDone } from './rumours';
+import { RUMOUR_DESKS, RUMOURS, type RumourDesk, missingRumourSources, rumourDone } from './rumours';
 import { BARTER, DYES, ferryPrice } from './trade';
 import { approvalOf, approvalRank, isInquiry } from './approval';
 import { ROLES } from './roles';
@@ -60,7 +61,12 @@ import { playMove, startShowdown, type ShowdownMove } from './showdown';
 import { tryLock, type LockResult } from './lock';
 import { compareWithBlade, forgeStep, newForge, type ForgeAction } from './forge';
 import { addPortfolio, addSignal, checkMoments, recordWeave, tickEvents } from './learning';
-import { diaryDialogueChoice, diaryNoteKind, newAdventureDiary, recordAdventure } from './adventureJournal';
+import { diaryDialogueChoice, diaryNoteKind, newAdventureDiary, recordAdventure, setDiaryReflection } from './adventureJournal';
+import { isDiaryNoteKind } from './diaryReflection';
+import { setDiaryPortfolioWriting } from './adventureWriting';
+import { biographyReadFlag, isHistoricalBiography } from './historicalEncounters';
+
+const DIALOGUE_FALLBACK = 999;
 
 export type Command =
   | IncentiveAction
@@ -70,8 +76,10 @@ export type Command =
   | LoopAction
   | CatchmentAction
   | FilmAction
+  | TileDispatchAction
   | { type: 'Reach'; zone: string }
-  | { type: 'VisitPlace'; name: string }
+  | { type: 'VisitPlace'; name: string; via?: { from: string; id: string; label: string } }
+  | { type: 'ReadWorldSign'; id: string; title: string; text: string; readFlag?: string; blocked?: true }
   | { type: 'EquipPerspective'; keepsake: string | null }
   | { type: 'SharedCarry'; site: CarrySite; stop: CarryStop; action: string }
   | { type: 'SetPronouns'; pronouns: Pronouns }
@@ -113,6 +121,7 @@ export type Command =
   | { type: 'BossMove'; choice: number }
   | { type: 'FinishFieldGame'; game: string }
   | { type: 'OpenDrawerCase'; face: number }
+  | { type: 'RouteRumour'; rumour: string; desk: RumourDesk }
   | { type: 'JudgeRumour'; rumour: string; verdict: number }
   | { type: 'DiveAnswer'; day: string; prompt: string; item: string; facet: number }
   | { type: 'PuzzleListen'; puzzle: string; action: 'play' | 'guess' | 'compare'; index?: number }
@@ -129,6 +138,7 @@ export type Command =
   | { type: 'EnterNode'; node: string }
   | { type: 'ChooseDialogueOption'; node: string; index: number }
   | { type: 'InspectExhibit'; exhibit: string }
+  | { type: 'ReadBiography'; card: string }
   | { type: 'ClaimSpecimen'; exhibit: string }
   | { type: 'CarrySpecimen'; key: string; carry: boolean }
   | { type: 'SetSpecimenReading'; exhibit: string; reading: 'use' | 'source' }
@@ -164,7 +174,10 @@ export type Command =
   | { type: 'Purchase'; offer: string }
   | { type: 'RequestHint'; objective: string }
   | { type: 'SetFlag'; flag: string; value: string | number | boolean }
-  | { type: 'AddNote'; text: string; kind?: DiaryNoteKind }
+  | { type: 'AddNote'; text: string; kind?: DiaryNoteKind; fromDraft?: boolean }
+  | { type: 'SetDiaryNoteDraft'; text: string; kind: DiaryNoteKind }
+  | { type: 'SetDiaryReflection'; entry: string; prompt: string; text: string }
+  | { type: 'SetDiaryPortfolioDraft'; entry: string; text: string; attach?: true }
   | { type: 'SetDiaryQuestion'; index: number; resolved: boolean }
   | { type: 'PortfolioShare'; entry: string; shared: boolean }
   | { type: 'PortfolioReflect'; entry: string; text: string };
@@ -298,7 +311,7 @@ export class Engine {
     const extra = this.keepsakeOptions(nodeId, s);
     if (!extra.length) return base;
     const n = this.node(nodeId);
-    return [...base, ...extra, ...(base.length ? [] : [{ option: { text: n.next ? 'Go on.' : 'Goodbye.', next: n.next ?? null }, index: 999 }])];
+    return [...base, ...extra, ...(base.length ? [] : [{ option: { text: n.next ? 'Go on.' : 'Goodbye.', next: n.next ?? null }, index: DIALOGUE_FALLBACK }])];
   }
 
   /**
@@ -379,18 +392,25 @@ export class Engine {
     let s = s0;
     let p = p0;
     let nextNode: string | null | undefined;
-    let diaryChoice: ReturnType<typeof diaryDialogueChoice>;
+    let diaryChoice: ReturnType<typeof diaryDialogueChoice> | undefined;
     try {
       switch (cmd.type) {
         case 'VisitPlace':
           if (!cmd.name.trim()) throw new Error('This place has no name');
           if (s.flags[`visited.map.${s.mapId}`] !== true) s = apply([{ setFlag: `visited.map.${s.mapId}`, value: true }], s, out);
           break;
+        case 'ReadWorldSign':
+          if (!cmd.id || !cmd.title.trim()) throw new Error('This notice has no name');
+          if (cmd.readFlag && s.flags[cmd.readFlag] !== true) s = apply([{ setFlag: cmd.readFlag, value: true }], s, out);
+          break;
         case 'Reach':
           s = apply([{ setFlag: `reached.${cmd.zone}`, value: true }], s, out);
           break;
         case 'SetFlag':
           s = apply([{ setFlag: cmd.flag, value: cmd.value }], s, out);
+          break;
+        case 'CompleteTileStitch': case 'SendTileDispatch': case 'ReceiveTileDispatch':
+          s = apply(tileDispatchEffects(cmd, s), s, out);
           break;
         case 'SharedCarry':
           s = apply(moveSharedCarry(cmd.site, cmd.stop, cmd.action, s, p), s, out);
@@ -452,7 +472,7 @@ export class Engine {
           events.push({ kind: 'reading', reading: r.id, ok: o.ok, why: o.why, first });
           break;
         }
-        case 'CheckRumourSource': case 'JudgeRumour': {
+        case 'CheckRumourSource': case 'RouteRumour': case 'JudgeRumour': {
           const r = RUMOURS.find((x) => x.id === cmd.rumour);
           if (!r) throw new Error('Unknown rumour');
           if (cmd.type === 'CheckRumourSource') {
@@ -461,10 +481,21 @@ export class Engine {
             break;
           }
           if (missingRumourSources(s.flags, r).length) throw new Error("Check the rumour’s listed sources before giving a verdict.");
-          const why = r.whys[cmd.verdict];
-          if (why === undefined) throw new Error('Choose a verdict');
-          const ok = cmd.verdict === r.best;
-          const fx: Effect[] = [{ addNum: `mill.${r.id}.tries`, by: 1 }];
+          let why: string;
+          let ok: boolean;
+          const fx: Effect[] = [];
+          if (cmd.type === 'RouteRumour') {
+            if (s.mapId !== 'aethelgard.emberford' || !RUMOUR_DESKS.includes(cmd.desk)) throw new Error('Choose a receiver at the tea table.');
+            const flag = `mill.${r.id}.desk`;
+            if (s.flags[flag] !== cmd.desk) fx.push({ setFlag: flag, value: cmd.desk });
+            why = cmd.desk === 'ledger' ? 'The slip is in the guild’s public record book.' : 'The slip is in Tova’s guest book at the old ferry landing.';
+            ok = true;
+          } else {
+            why = r.whys[cmd.verdict];
+            if (why === undefined) throw new Error('Choose a verdict');
+            ok = cmd.verdict === r.best;
+            fx.push({ addNum: `mill.${r.id}.tries`, by: 1 });
+          }
           if (ok && !rumourDone(s.flags, r.id)) {
             fx.push({ setFlag: `mill.${r.id}.done`, value: true }, { addNum: 'count.rumours', by: 1 }, { addMarks: 5 });
             if (r.fray) fx.push({ setFlag: `meet.fray.${r.fray}`, value: true });
@@ -601,10 +632,11 @@ export class Engine {
         }
         case 'ChooseDialogueOption': {
           const n = this.node(cmd.node);
-          const opt = cmd.index >= 999 ? this.visibleOptions(cmd.node, s).find((o) => o.index === cmd.index)?.option : n.options?.[cmd.index];
+          const opt = cmd.index >= DIALOGUE_FALLBACK ? this.visibleOptions(cmd.node, s).find((o) => o.index === cmd.index)?.option : n.options?.[cmd.index];
           if (!opt) throw new Error('That option does not exist');
           if (!check(opt.if, s)) throw new Error('That option is not available now');
-          diaryChoice = diaryDialogueChoice(this.pack, n, opt, cmd.index, this.visibleOptions(cmd.node, s).length);
+          // The generated fallback mirrors the ordinary next/close control.
+          if (cmd.index !== DIALOGUE_FALLBACK) diaryChoice = diaryDialogueChoice(this.pack, n, opt, cmd.index, s.player);
           s = apply(opt.effects, s, out);
           if (s.companion && isInquiry(opt.tag)) s = this.approve(s, out, events, `${cmd.node}.${cmd.index}`);
           nextNode = opt.next ?? null;
@@ -614,6 +646,13 @@ export class Engine {
           const e = this.pack.exhibits.find((x) => x.id === cmd.exhibit);
           if (!e) throw new Error('Unknown exhibit');
           s = apply([{ setFlag: `inspected.${e.id}`, value: true }, { addCard: e.grantsCard }, { addNum: 'count.inspected', by: s.flags[`inspected.${e.id}`] ? 0 : 1 }], s, out);
+          break;
+        }
+        case 'ReadBiography': {
+          const card = this.pack.cards.find(({ id }) => id === cmd.card);
+          if (!card || !isHistoricalBiography(card) || !s.cards.includes(card.id)) throw new Error('Open a historical evidence card first');
+          const flag = biographyReadFlag(card.id);
+          if (s.flags[flag] !== true) s = apply([{ setFlag: flag, value: true }], s, out);
           break;
         }
         case 'ClaimSpecimen': {
@@ -1145,6 +1184,10 @@ export class Engine {
             const r = rec.type === 'sightlines' ? rec.reports[cmd.index] : rec.reflect[cmd.index];
             if (!r) throw new Error('No such report');
             ok = r.honest; text = r.why; solved = r.honest;
+            if (rec.type === 'sightlines' && solved) {
+              const delivery = rec.reports[cmd.index].delivery;
+              if (delivery) s = apply([{ setFlag: `${F}.delivery`, value: delivery }], s, out);
+            }
             if (!r.honest) s = apply([{ addNum: `${F}.misses`, by: 1 }], s, out);
           } else if (cmd.type === 'PuzzlePeel') {
             const r = peelLayer(rec, Number(s.flags[`${F}.peeled`] ?? 0));
@@ -1222,15 +1265,33 @@ export class Engine {
           s.player.pronouns = cleanPronouns(cmd.pronouns);
           break;
         }
+        case 'SetDiaryPortfolioDraft': {
+          const entry = p.portfolio.find(({ id }) => id === cmd.entry);
+          if (!entry || typeof cmd.text !== 'string') throw new Error('Unknown portfolio entry');
+          const adventureDiary = setDiaryPortfolioWriting(s.adventureDiary, entry, cmd.text, now, s.mapId, !cmd.attach);
+          const state = adventureDiary === s.adventureDiary ? s : { ...s, adventureDiary };
+          return { state, permanent: p, events };
+        }
+        case 'SetDiaryReflection': {
+          const state = setDiaryReflection(this.pack, s, cmd.entry, cmd.prompt, cmd.text);
+          return { state, permanent: p, events };
+        }
+        case 'SetDiaryNoteDraft': {
+          if (!isDiaryNoteKind(cmd.kind) || typeof cmd.text !== 'string') throw new Error('Unknown note type');
+          const noteDraft = cmd.text.length || cmd.kind !== 'note' ? { text: cmd.text, kind: cmd.kind, at: now, mapId: s.mapId } : null;
+          const current = s.adventureDiary.noteDraft;
+          if (current?.text === noteDraft?.text && current?.kind === noteDraft?.kind) return { state: s, permanent: p, events };
+          const state = { ...s, adventureDiary: { ...s.adventureDiary, noteDraft } };
+          return { state, permanent: p, events };
+        }
         case 'AddNote': {
-          const t = cmd.text.trim().slice(0, 500);
-          if (!t) throw new Error('The note is empty');
-          if (s.notes.length >= 200) throw new Error('The journal is full');
-          const kind = cmd.kind ?? diaryNoteKind(t);
-          if (kind !== 'note' && kind !== 'reflection' && kind !== 'question') throw new Error('Unknown note type');
+          if (typeof cmd.text !== 'string' || !cmd.text.length) throw new Error('The note is empty');
+          const kind = cmd.kind ?? diaryNoteKind(cmd.text);
+          if (!isDiaryNoteKind(kind)) throw new Error('Unknown note type');
           s = structuredClone(s);
-          s.notes.push(t);
+          s.notes.push(cmd.text);
           s.adventureDiary.noteDetails.push({ kind, at: now, mapId: s.mapId, resolved: false });
+          if (cmd.fromDraft) s.adventureDiary.noteDraft = null;
           s = apply([{ addNum: 'count.notes', by: 1 }], s, out);
           break;
         }
@@ -1262,8 +1323,15 @@ export class Engine {
         case 'PortfolioReflect': {
           const i = p.portfolio.findIndex((e) => e.id === cmd.entry);
           if (i < 0) throw new Error('Unknown portfolio entry');
-          const list = [...p.portfolio]; list[i] = { ...list[i], reflection: cmd.text.trim().slice(0, 800) };
-          p = { ...p, portfolio: list };
+          const entry = p.portfolio[i];
+          const reflection = cmd.text;
+          if (entry.reflection !== reflection) {
+            const list = [...p.portfolio];
+            list[i] = { ...entry, reflection };
+            p = { ...p, portfolio: list };
+          }
+          const adventureDiary = setDiaryPortfolioWriting(s.adventureDiary, entry, cmd.text, now, s.mapId);
+          if (adventureDiary !== s.adventureDiary) s = { ...s, adventureDiary };
           break;
         }
       }

@@ -427,7 +427,7 @@
    "id": "tipped-cart",
    "type": "sightlines",
    "title": "The Tipped Cart",
-   "intro": "Yesterday a cart of copper pots tipped over in the square. The driver left a note at the guild: she will pay for the damage that she caused, but first she asks what really happened. Three people tell you what they saw. The guild clerk has drawn a map of that corner. Click a person to draw their sightlines, then sort each claim.",
+   "intro": "Yesterday a cart of copper pots tipped over in the square. The driver left a note at the guild: she will pay for the damage that she caused, but first she asks what really happened. Three people tell you what they saw. The guild clerk has drawn a map of that corner. Stand with each witness on the clerk’s map. Trace where each story came from, then decide what to send the driver or the square.",
    "skills": [
     "SK-KNO-05",
     "SK-MED-04",
@@ -572,9 +572,10 @@
      "why": "No one saw the whole accident. Each person saw one part from where they stood. And who should pay is a different question, about fairness, not about what was seen."
     },
     {
-     "text": "Hana saw the wheel hit a loose stone. Idris saw the cart tip by the fountain. Mara saw a boy pick up a pot; nobody saw where he went. Each part has one first-hand witness.",
+     "text": "Seal the three accounts for the driver. Hana saw the wheel strike the stone. Idris saw the cart tip. Mara saw someone pick up a pot. Its destination is still open.",
+     "delivery": "driver",
      "honest": true,
-     "why": "The report gives each part to the person who could see it, and it says where the record stops. The driver thanks you: the loose stone is the guild's to fix."
+     "why": "The driver folds the three slips into her belt. “I can ask the guild about that stone. And I can ask Mara where to look for my pot.” Her receipt goes on the rail beside the map."
     },
     {
      "text": "The witnesses tell different stories, so we cannot know what happened.",
@@ -585,6 +586,12 @@
      "text": "Two witnesses saw a boy steal a pot.",
      "honest": false,
      "why": "Hana heard it from Mara: two voices, one source. And Mara saw a boy pick up a pot. 'Steal' adds a claim that she did not see."
+    },
+    {
+     "text": "Chalk the loose stone on the public lane map. Keep the account of the pot with the clerk until someone can trace it farther.",
+     "delivery": "lane",
+     "honest": true,
+     "why": "A carter wheels her load around the chalk mark. Mara hands the clerk her slip. “Tell the driver where to find me. I saw a hand on a pot. I didn’t see whose door it went through.”"
     }
    ]
   },

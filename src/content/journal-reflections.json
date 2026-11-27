@@ -1,0 +1,390 @@
+{
+  "quest:m01.o1.look": {
+    "first-glance": "When Ise showed you the glowing label, which part made you look again?"
+  },
+  "quest:m01.o2.inspect": {
+    "three-firsts": "What did one of the three “first” pens do that the others could not show you?",
+    "next-display": "Which two pens would you set next to each other for someone seeing them for the first time?"
+  },
+  "quest:m01.o4.test": {
+    "mark": "Which mark did you return to before judging the pen?",
+    "unchanged": "If a new apprentice changes the surface and the pen together, what would you ask them to repeat?"
+  },
+  "quest:m01.o6.label": {
+    "first-reader": "Which part of your label would you keep if a visitor only had time to read one line?"
+  },
+  "quest:m02.o3.thread": {
+    "blade-trail": "Where along Corvan’s stall, the ledger and the workshop did the story become harder to follow?",
+    "next-clue": "What could you ask a keeper to show you at that point?"
+  },
+  "quest:m02.o4.forge": {
+    "billet": "Which mark on your test billet gave you a reason to ask a new question about Corvan’s blade?"
+  },
+  "quest:m02.o5.showdown": {
+    "market-crowd": "What did you hear from the crowd that you would want to remember before meeting Corvan again?"
+  },
+  "thread:nile-strike:payment": {
+    "grain": "What did the grain entry make clearer for you about what the crew needed?"
+  },
+  "thread:nile-strike:return": {
+    "stoppage": "Where would you stop a reader who was about to put the file away after the grain delivery?"
+  },
+  "quest:nile.workers": {
+    "lead-slip": "What would you like a visitor to notice first in the slip you chose?",
+    "paired-slip": "What might the second slip make them see differently?"
+  },
+  "quest:nile.diplomacy": {
+    "sources": "Which part of your label would you point to if someone tried to settle the battle from the later treaty?"
+  },
+  "quest:nile.routes": {
+    "load": "What changed between the two cart runs while the crate stayed the same?",
+    "recipient": "If the first reader needed to check the cast’s weight, what would they need after reading the courier’s note?",
+    "separate-map": "Which part of Marek’s cart result would you keep off a caption for the original Mine Map?"
+  },
+  "quest:nile.dispatch": {
+    "receiving-table": "Who can use the first packet as soon as Imani sends it?",
+    "later-packet": "What would you leave on Imani’s desk for a reader who needs another packet?"
+  },
+  "quest:preserved.publish": {
+    "stands": "Who would you ask to walk past the two stands before the display opened?",
+    "reader-path": "What could that person miss if they only saw the first heading?"
+  },
+  "quest:coast.revise": {
+    "second-reading": "What did the next bell give you a reason to change on Ruan’s notice?",
+    "steady-line": "Which line would you leave in place for the people who have already read it?"
+  },
+  "quest:forest.recheck": {
+    "obstruction": "When the view was obstructed, what could you still mark in the lookout notes?",
+    "another-watch": "Where would you stand for one more watch to check what you missed?"
+  },
+  "quest:metal.finish": {
+    "docket": "Where would you clip the cart docket so a buyer can ask about the transfer without assuming both panels have one maker?"
+  },
+  "quest:copies.revise": {
+    "trial-hours": "If a reader brings the corrected copy to the landing, which line tells them about the trial, and which affects whether they can enter?"
+  },
+  "quest:sea.finish": {
+    "map-edge": "Which mark would you add beside the blank water for the next chart reader?",
+    "route-question": "What would you want a survey crew to check before extending the chart?"
+  },
+  "quest:stage.finish": {
+    "sightline": "What did the audience note tell you that the movement plan alone could not show?",
+    "new-seat": "Where would you sit for the next performance to check that reading?"
+  },
+  "quest:market.finish": {
+    "purse": "Suppose someone brings the household purse to the stall. What do they need alongside the comparison per credit?",
+    "remaining-need": "What might another wick maker ask you to keep on the board?"
+  },
+  "quest:water.finish": {
+    "old-order": "Why might the next keeper still need Sena’s drought order after you post the repaired one?",
+    "wait": "Who had to wait under the order you chose, and what would you ask them to look for on the next turn?"
+  },
+  "quest:civic.finish": {
+    "still-waiting": "Where would you stand to find a reader the published library schedule still misses?",
+    "request": "What could their next request tell you about how the crews collected their other slips?"
+  },
+  "quest:voices.finish": {
+    "two-starts": "What would you point to from the quay that you would leave out of a note for someone coming down the stairs?",
+    "voice-record": "Which part of the witness record would you want reachable at the desk even if the route notice stays short?"
+  },
+  "quest:island.finish": {
+    "landing": "Which part of your first dock sheet needed a second look when the lower landing opened?",
+    "quiet-margin": "What would you ask the margin crew to observe before saying what the crossing marks mean for them?"
+  },
+  "quest:council.compare": {
+    "matching-face": "What did a single glance at the watch face leave open?",
+    "minute": "After one minute, which other reading would you keep beside the watch record?"
+  },
+  "quest:council.finish": {
+    "next-crew": "What could the next crew check for themselves using the arrangement you left?",
+    "shutter": "Whose view do you still need to ask about when the shutter goes down?"
+  },
+  "quest:cart.o1.sight": {
+    "one-source": "Whose word reached the clerk twice? What did the second telling add to the account of the pot?",
+    "other-recipient": "If you met the driver and a passing carter together, which part of your report could each act on?"
+  },
+  "quest:metal.rim.runs": {
+    "change-one": "Which part of the tray setup would you keep still if the rim slipped again?",
+    "one-tray": "What would a wider tray have to do before you trusted the same support with it?"
+  },
+  "quest:metal.rim.record": {
+    "docket": "Which marks on the old docket would help someone repeat its check? Where does that docket fall silent?"
+  },
+  "quest:metal.rim.compare": {
+    "two-kinds": "If the copied caption blew away, what could the old shift hand still tell you? What could your blue tray show them in return?"
+  },
+  "quest:metal.rim.receive": {
+    "missing-reader": "Whose tray still needs another time or place after the handover you chose?",
+    "change-plan": "What would have to happen at the next bell for you to send the crew a different plan?"
+  },
+  "quest:copies.check.press": {
+    "tuesday": "Which queues could use the line before the date was lifted? Who might take a risk if only the shorter line travels?"
+  },
+  "quest:copies.check.landing": {
+    "clerk": "If somebody challenged the claim at the landing, whom could they find with each copy in hand?"
+  },
+  "quest:ember.circle.trace": {
+    "third-copy": "What could a third copy tell you about how far the report travelled? Who could tell you whether the crossing was actually open?"
+  },
+  "quest:hands.o.compare": {
+    "changed-name": "If the small tag has room for only one detail, what would lead a visitor back to the other hands that made the pen possible?"
+  },
+  "quest:last-turn.compare": {
+    "gesture": "Which detail would you need from the next speaker to tell whether a face-down slate ended a turn or kept it open?"
+  },
+  "quest:linen.o.compare": {
+    "two-readers": "If you took the cuttings away, which part of your note could the dyer still check? What would the ferry crew want back?"
+  },
+  "quest:pigment-window.controlled": {
+    "lamp": "If someone changed the lamp and left the strip uncovered on the same day, what would you do before blaming either change?"
+  },
+  "quest:m01.o5.practice": {
+    "visitor": "If a visitor left halfway through your exchange with Venn, what might they tell the next person about the pen?",
+    "return": "Which detail would you put back in front of that visitor so they could check the story for themselves?"
+  },
+  "showdown-move:practice:concede": {
+    "concession": "What could you let Venn keep without giving up the part of your account that the pen still supports?"
+  },
+  "showdown-move:practice:reframe": {
+    "two-firsts": "If Venn pinned the patent beside the working pen, what could each of you still mean by “first”?"
+  },
+  "quest:forest.hands.first": {
+    "quest": "If the recorder handed you the first strip, which mark would you ask the other observer about?"
+  },
+  "quest:forest.hands.retry": {
+    "quest": "What would be lost if Ayla erased the first strip once the recorder could see all three marks?"
+  },
+  "quest:forest.hands.context": {
+    "quest": "When you separated the dated cards, which detail belonged with Baraka Daniel’s work?",
+    "limit": "What would you still need before connecting that work to the 1960 observation?"
+  },
+  "choice:forest.hands.receiver:0": {
+    "choice": "Ayla has two records. How could the next watch tell that one mark on the first strip came from someone else?"
+  },
+  "choice:forest.hands.receiver:1": {
+    "choice": "The recorder can see more after the move. Which part of the older account would you still keep?"
+  },
+  "quest:stage.hands.compare": {
+    "quest": "Imagine hearing the two knocks with your eyes closed. Which part of the account would you leave for the person by the pin?"
+  },
+  "choice:stage.hands.plan:0": {
+    "choice": "The helper signals while the caller stays in place. How would the caller know what the helper actually saw?"
+  },
+  "choice:stage.hands.plan:1": {
+    "choice": "The caller waits for a sightline. What might that extra beat change for someone watching the scene?"
+  },
+  "quest:preserved.scale.compare": {
+    "quest": "The paper arrows were the same length. What changed when you stood at zero and walked both routes?"
+  },
+  "choice:preserved.scale.choose:0": {
+    "choice": "The floor guide reaches the carrier. What might someone misunderstand if they filed it with the historical journey?"
+  },
+  "choice:preserved.scale.choose:1": {
+    "choice": "Why might a blank space for distance be useful to the next reader of your file slip?"
+  },
+  "choice:preserved.scale.choose:2": {
+    "choice": "What would you want to see someone do with the papers before choosing which one to pass on?"
+  },
+  "quest:coast-copy.delivered": {
+    "quest": "If someone at a different bench received just one leaf, how could they find the other?",
+    "attribution": "What came from the carving itself? What depends on the account of Kunit’s explanation?"
+  },
+  "choice:metal.rim.plan:0": {
+    "choice": "At the low peg a small carrier can work without waiting. Who still needs another arrangement?"
+  },
+  "choice:metal.rim.plan:1": {
+    "choice": "The wide cradle works while Bea is there. What would the next shift need to know before relying on it?"
+  },
+  "choice:pigment-sample.plan:0": {
+    "choice": "If the next visitor wants to inspect the missing edge of R13, what can you still offer them?"
+  },
+  "choice:pigment-sample.plan:1": {
+    "choice": "R13 still has both notches. What would you say to a visitor who asks which colourants made it?"
+  },
+  "quest:pigment-sample.reconciled": {
+    "quest": "Which detail on the two new captions keeps a reader from borrowing R13’s story for the older loan?"
+  },
+  "quest:m01.o3.lens": {
+    "from-the-scene": "Which date could you read off the object, and which date needed a keeper’s record?"
+  },
+  "quest:m02.o2.claim": {
+    "from-the-scene": "If you had seen only Corvan’s stall, which part of his story could you have checked there?"
+  },
+  "quest:nile.return": {
+    "from-the-scene": "Which visitor can act on the packet Imani sent, and who is still waiting on a different piece of the archive?"
+  },
+  "quest:preserved.coast": {
+    "from-the-scene": "Which mark on the coastal map needed its place in the ground before you could read it?"
+  },
+  "quest:coast.forecast": {
+    "from-the-scene": "If the wind changes before the notice reaches the quay, which part of the forecast can Ruan still stand by?"
+  },
+  "quest:forest.account": {
+    "from-the-scene": "What can the bridge keeper remember on a day when no lookout could see the trail?"
+  },
+  "quest:metal.docket": {
+    "from-the-scene": "The docket follows a cart. Which part of a panel’s history can travel with it?"
+  },
+  "quest:copies.feedback": {
+    "from-the-scene": "If the landing reader passed the notice to a friend, what detail about access could vanish in the retelling?"
+  },
+  "quest:sea.feedback": {
+    "from-the-scene": "Whose boat might turn back because someone read blank water as a warning?"
+  },
+  "quest:stage.sightline": {
+    "from-the-scene": "Which gesture would a gallery visitor miss while the director could still see it?"
+  },
+  "quest:market.terms": {
+    "from-the-scene": "If Dagny swapped the wick and display headings, which buyer might change their mind first?"
+  },
+  "quest:water.retest": {
+    "from-the-scene": "After the repair, which change in the water can you trace to the gate setting, and which needs another run?"
+  },
+  "quest:civic.rules": {
+    "from-the-scene": "Who moves closer to a window when you change the rule while keeping the request slips in place?"
+  },
+  "quest:voices.verify": {
+    "from-the-scene": "A visitor remembers being at the trial. Which part of their memory belongs on the public opening notice?"
+  },
+  "quest:island.lower": {
+    "from-the-scene": "If a courier brought only the upper-landing sheet, where would their instructions run out?"
+  },
+  "quest:council.reader": {
+    "from-the-scene": "What would the courier have to do to see the hand from the far side of the shutter?"
+  },
+  "quest:parcel.rack": {
+    "from-the-scene": "What happened to the two slips that went missing from Omrin’s count?"
+  },
+  "quest:parcel.roll": {
+    "from-the-scene": "Could two matching moons tell Omrin which runner owned the wrapper? What could he check next?"
+  },
+  "quest:parcel.reply": {
+    "from-the-scene": "Which person would have the hardest time using the counter you left behind?"
+  },
+  "parcel:reply:desk": {
+    "chair": "What could Omrin learn from the torn wrapping that a mark on the roll never recorded?"
+  },
+  "parcel:reply:token": {
+    "token": "Who can return now without telling the waiting line why they came back?"
+  },
+  "quest:glass.1972-40.earned": {
+    "mount-reading": "Where would you stand a reader who still sees a ladder on the jar?"
+  },
+  "quest:glass.1989-357.earned": {
+    "mount-reading": "How could someone check the gap if they had only your first drawing?"
+  },
+  "quest:glass.1989-360.earned": {
+    "mount-reading": "Which part of the cup would someone miss if they saw it only from across the room?"
+  },
+  "quest:glass.1973-13.earned": {
+    "mount-reading": "What could you tell the next potter about the foot from the side alone?"
+  },
+  "quest:glass.1989-366.earned": {
+    "mount-reading": "Which edge would help the next reader tell the mouth from the base?"
+  },
+  "quest:glass.1983-156.earned": {
+    "mount-reading": "If the jar and lid arrived on separate slips, what would help you put them back together?"
+  },
+  "quest:glass.1917-26.earned": {
+    "mount-reading": "What landmark would let another reader find those blossoms on the whole cloth?"
+  },
+  "quest:glass.1925-477.earned": {
+    "mount-reading": "What would a weaver want to see beyond the patch of straight lines?"
+  },
+  "quest:glass.1917-770.earned": {
+    "mount-reading": "Which detail would convince a receiver that these are two views of one bag?"
+  },
+  "quest:glass.1934-330.earned": {
+    "mount-reading": "Where does your description of the shawl have to stop?"
+  },
+  "quest:glass.1952-190.earned": {
+    "mount-reading": "What could you give a waiting reader who has lost their place among the rows?"
+  },
+  "quest:glass.2006-200.earned": {
+    "mount-reading": "Which view would help a reader find the animal again after the first look?"
+  },
+  "quest:glass.1916-1206.earned": {
+    "mount-reading": "How might a drawing made only at the border change what someone expects of the whole sari?"
+  },
+  "quest:glass.1953-474.earned": {
+    "mount-reading": "How would you show the walker’s place without filling in the missing cloth?"
+  },
+  "quest:glass.2020-205.earned": {
+    "mount-reading": "Which side of the basin would you show someone deciding how to draw its depth?"
+  },
+  "quest:glass.2020-206.earned": {
+    "mount-reading": "If the lid slid off its label, which photograph would help put it back?"
+  },
+  "quest:glass.1986-86.earned": {
+    "mount-reading": "What might a reader decide about the opening from the landscape alone?"
+  },
+  "quest:glass.1918-456.earned": {
+    "mount-reading": "Which part of that ring could you actually trace in the side view?"
+  },
+  "quest:glass.1928-179.earned": {
+    "mount-reading": "Which view would help you point out a part’s position, and which its height?"
+  },
+  "quest:glass.1992-113.earned": {
+    "mount-reading": "What would you send with the circle so a reader could recognise the bottle?"
+  },
+  "quest:glass.2025-179.earned": {
+    "mount-reading": "Which claim about the bowl would lose its source if the gift entry went missing?"
+  },
+  "quest:glass.1921-634.earned": {
+    "mount-reading": "Where could someone start if they wanted to check the width of the mouth against the shoulder?"
+  },
+  "quest:glass.2022-145.earned": {
+    "mount-reading": "What could make four pictured shapes look like four separate objects?"
+  },
+  "quest:glass.2024-36.earned": {
+    "mount-reading": "Which feature of the vase would be easiest to lose on a hurried copy?"
+  },
+  "quest:glass.1963-513.earned": {
+    "mount-reading": "How would you help a reader decide which piece carries the flower?"
+  },
+  "quest:glass.1972-9.earned": {
+    "mount-reading": "What could you learn about the lid from the photograph, and what took a catalogue record?"
+  },
+  "quest:glass.2014-391.earned": {
+    "mount-reading": "What could a reader compare if the foot were all they could see?"
+  },
+  "quest:glass.1969-59.earned": {
+    "mount-reading": "What might go wrong if you put the tree on a drawing of the closed lid?"
+  },
+  "quest:glass.1966-24.earned": {
+    "mount-reading": "Which detail on the dish would change your estimate of its depth?"
+  },
+  "quest:glass.1962-154.earned": {
+    "mount-reading": "Which mark would be of most use to a reader approaching from below?"
+  },
+  "quest:glass.1999-220.earned": {
+    "mount-reading": "How much of the mirror’s shape could you recover from the flat face?"
+  },
+  "quest:glass.1973-74.earned": {
+    "mount-reading": "What would make you hesitate before copying a bird onto the reverse?"
+  },
+  "quest:glass.1971-168.earned": {
+    "mount-reading": "What would help someone tell the two hollows apart on a loose sheet?"
+  },
+  "quest:glass.1969-124.earned": {
+    "mount-reading": "Which detail about the implements could a drawing of the closed box never settle?"
+  },
+  "quest:glass.2024-37.earned": {
+    "mount-reading": "How might a guess from the side panels mislead someone looking for the opening?"
+  },
+  "quest:glass.1942-212.earned": {
+    "mount-reading": "What could a visitor verify by looking at the broad faces, and where could they check the date?"
+  },
+  "quest:glass.1964-281.earned": {
+    "mount-reading": "What would a reader need to see before making a claim about the fit?"
+  },
+  "quest:glass.1988-75.earned": {
+    "mount-reading": "What could you credit to Wang Meilin from the record in front of you?"
+  },
+  "quest:glass.1991-120.earned": {
+    "mount-reading": "How would the story of the box change for a reader who saw only the cord?"
+  },
+  "quest:glass.2020-66.earned": {
+    "mount-reading": "Where would you put a close-up so another player could find its place on the jacket?"
+  }
+}

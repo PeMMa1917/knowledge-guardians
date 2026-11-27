@@ -1,6 +1,7 @@
 import { specimenEquipped } from '../domain/specimenGear';
 import type { Condition, ContentPack, DialogueNode, Effect, Hint, Objective } from '../domain/types';
 import specimens from './glass-rack-specimens.json';
+import voices from './glass-rack-lines.json';
 
 export const GLASS_RACK_PREFIX = 'glass-rack:';
 export const GLASS_RACK_READY: Condition = { objective: 'preserved.publish' };
@@ -8,6 +9,22 @@ export const GLASS_RACK_MODES = ['turn', 'open', 'detail'] as const;
 export type GlassMode = (typeof GLASS_RACK_MODES)[number];
 export type GlassMount = 'rail' | 'pocket';
 const museum = 'The Cleveland Museum of Art';
+
+interface GlassStory {
+  work: string;
+  comparison: string;
+  rail: string;
+  railDone: string;
+  pocket: string;
+  pocketDone: string;
+  revisit: string;
+  boardDone: string;
+  deskDone: string;
+  hintAtCase: string;
+  hintAtReturn: string;
+  journal: string;
+}
+const stories: Record<string, GlassStory> = voices;
 
 export const GLASS_RACK_USES = {
   turn: {
@@ -17,7 +34,6 @@ export const GLASS_RACK_USES = {
     hint: 'Bring the equipped object to Marek’s double sleeve. Walk the outer or inner route to read from the side you reached.',
     action: 'Turn to the other side',
     work: 'Turn the other face toward the return path',
-    response: 'This side stops being the part that gets left out. I can approach from the other edge and still identify the same object.',
   },
   open: {
     prop: 'nile-glass-parts',
@@ -26,7 +42,6 @@ export const GLASS_RACK_USES = {
     hint: 'Bring the equipped object to Marek’s two pockets. Line up the body and its parts with the correct source scope.',
     action: 'Open the view of the parts',
     work: 'Open the second pocket for the separated parts',
-    response: 'The two pockets give me the assembled view and the parts. I can look without asking anyone to open the original.',
   },
   detail: {
     prop: 'nile-glass-edge',
@@ -35,7 +50,6 @@ export const GLASS_RACK_USES = {
     hint: 'Bring the equipped object to the shutter. Leave a whole view and a labelled position for its inset.',
     action: 'Bring the framed detail forward',
     work: 'Set the inset beside its whole frame',
-    response: 'I can find that detail by opening the inset. The outside frame tells me where the detail came from.',
   },
 } as const;
 
@@ -50,8 +64,10 @@ export const GLASS_RACK_CASES = specimens.map((record) => {
   const mode = record.mode;
   const flag = `glass.${record.slug}`;
   const use = GLASS_RACK_USES[mode];
+  const story = stories[record.slug];
+  if (!story) throw new Error(`No Glass Rack dialogue for ${record.slug}`);
   return {
-    ...record, mode, flag,
+    ...record, mode, flag, story,
     source: `HIS-GLASS-${record.slug}`, exhibit: `OBJ-GLASS-${record.slug}`, card: `card.${flag}`,
     earned: `${flag}.earned`, returned: `${flag}.returned`,
     nodes: { work: `${flag}.work`, rail: `${flag}.rail`, pocket: `${flag}.pocket`, revisit: `${flag}.revisit` },
@@ -87,7 +103,7 @@ function glassCaseNodes(c: GlassRecord): DialogueNode[] {
   const returnReady = all(specimenEquipped(key), absent(`${flag}.nile`));
   return [
     { id: nodes.work, speaker: keeper, historicalLabel: 'fictional-world',
-      text: 'Set the first view. Move the glass. Check where you started again before you send it.', options: [
+      text: c.story.work, options: [
         { text: 'Set the whole view in the window.', if: all(ready, absent(`${flag}.face`)), effects: [write(`${flag}.face`, 'whole')] },
         { text: use.action, if: all(ready, face('whole'), absent(`${flag}.compared`)), effects: [write(`${flag}.face`, 'other')] },
         { text: 'Return to the whole view and line up its number.', if: all(ready, face('other')),
@@ -96,19 +112,19 @@ function glassCaseNodes(c: GlassRecord): DialogueNode[] {
         { text: 'Fit a hinged pocket for the close desk.', if: compared, effects: [write(`${flag}.mount`, 'pocket')] },
       ] },
     { id: nodes.rail, speaker: 'glass-rail-reader', historicalLabel: 'fictional-world',
-      text: 'I can look at both while I stand here. Let the accession travel with the wide rail.', options: [
+      text: c.story.rail, options: [
         { text: 'Set both photos side by side and leave the source tab.',
           if: approach('rail'), effects: [write(`${flag}.heard`, 'rail')] },
       ] },
     { id: nodes.pocket, speaker: 'glass-pocket-reader', historicalLabel: 'fictional-world',
-      text: 'My little dash of a desk can keep one side in view. Give me a hinge and I’ll read both.', options: [
+      text: c.story.pocket, options: [
         { text: 'Lift the pocket flap for the other view.', if: all(approach('pocket'), absent(`${flag}.flap`)),
           effects: [write(`${flag}.flap`)] },
         { text: 'Close the flap and link it to the whole view.', if: all(approach('pocket'), glassFlag(`${flag}.flap`)),
           effects: [write(`${flag}.heard`, 'pocket')] },
       ] },
     { id: nodes.revisit, speaker: 'nile-marek', historicalLabel: 'fictional-world',
-      text: 'You have two ways of looking at one thing. We can make the spare rack easier to read.', options: [
+      text: c.story.revisit, options: [
         { text: 'Set the whole frame against the old board.', if: all(returnReady, absent(`${flag}.nile-whole`)),
           effects: [write(`${flag}.nile-whole`)] },
         { text: use.work, if: all(returnReady, glassFlag(`${flag}.nile-whole`), absent(`${flag}.nile-other`)),
@@ -177,12 +193,12 @@ export const glassRackContent = {
     objectives, caseVisits: GLASS_RACK_CASES.map((c) => [c.earned, c.returned]),
   }],
   journal: GLASS_RACK_CASES.map((c) => ({
-    id: `j.${c.earned}`, claimKind: 'observation', text: `Both views of ${c.accession} made it to the reading station that could use their mount.`,
+    id: `j.${c.earned}`, claimKind: 'observation', text: c.story.journal,
   })),
   hints: GLASS_RACK_CASES.flatMap((c) => [
-    [c.earned, ['The second photo does something different from the first.', 'Inspect the numbered case and use the glass beside it.',
+    [c.earned, [c.story.hintAtCase, 'Inspect the numbered case and use the glass beside it.',
       'Set the first view, change the glass and return to the first view once.', 'Choose the broad rail or the pocket and go to its reader.']],
-    [c.returned, ['Show the same pair earlier in the Archive.', 'Take the earned object and equip it in your Bag.',
+    [c.returned, [c.story.hintAtReturn, 'Take the earned object and equip it in your Bag.',
       'Find its matching rack in the Nile Map Room. Open the first frame and fit the second.', 'Leave both views on the board or leave a pointer to the reading desk.']],
   ].flatMap(([objective, texts]) => (texts as string[]).map((text, index) => ({
     id: `h.${objective}.${index + 1}`, objective: objective as string, text, depth: (index + 1) as Hint['depth'],

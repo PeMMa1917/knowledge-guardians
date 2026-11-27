@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { microSkillId } from '../src/content/microSkillEvidence';
 import { TURNING_CARD, TURNING_EXHIBIT, TURNING_OBJECTIVE } from '../src/content/turningTable';
 import people from '../src/content/navigation-people.json';
 import { check } from '../src/domain/rules';
@@ -17,6 +18,8 @@ describe('A Shore You Can Turn', () => {
     expect(e.dateText).toContain('8 February 1885');
     expect(e.dateKind).toContain('received it from Kunit');
     expect(e.summary).toContain('separate islands piece 390 B');
+    expect(e.specimen?.people).toContainEqual(expect.objectContaining({ name: 'Kunit of Umivik',
+      role: 'Inuit map maker from Umivik named in the Walters label', source: 'HIS-KUNIT-WALTERS' }));
     expect(BIG_ART[e.art]).toBe('big.turning.kunit-case');
     const placements = Object.values(MAPS).flatMap((map) => map.interactables.filter((prop) => prop.exhibit === e.id).map(() => map.id));
     expect(placements).toEqual(['sea.turning-room']);
@@ -69,8 +72,9 @@ describe('A Shore You Can Turn', () => {
     expect(check(reply.visibleIf, d.s)).toBe(true);
   });
 
-  it.each(['rail', 'keeper'])('requires the actual %s reply, alongside both physical checks', (route) => {
+  it.each(['rail', 'keeper'])('requires the actual %s reply alongside both checks before recording raised-mark practice', (route) => {
     const d = new Driver();
+    const skill = microSkillId(744);
     d.s.objectivesDone.push('sea.arrival');
     d.run({ type: 'InspectExhibit', exhibit: TURNING_EXHIBIT });
     expect(check({ card: TURNING_CARD }, d.s)).toBe(true);
@@ -79,9 +83,13 @@ describe('A Shore You Can Turn', () => {
     const reader = TURNING_READERS.find(({ id }) => id === `turning-${route}`)!;
     expect(check(reader.visibleIf, d.s)).toBe(true);
     expect(check(reader.artOpen?.if, d.s)).toBe(false);
+    expect(d.p.skills[skill]).toBeUndefined();
+    d.run({ type: 'SetFlag', flag: 'turning.kunit.read', value: route === 'rail' ? 'keeper' : 'rail' });
+    expect(d.p.skills[skill]).toBeUndefined();
     d.run({ type: 'SetFlag', flag: 'turning.kunit.read', value: route });
     expect(d.done(TURNING_OBJECTIVE)).toBe(true);
     expect(check(reader.artOpen?.if, d.s)).toBe(true);
     expect(d.s.journal).toContain('j.turning.kunit');
+    expect(d.p.skills[skill]).toEqual([expect.stringContaining(`WORLD-09|game-189|${TURNING_OBJECTIVE}`)]);
   });
 });

@@ -13,6 +13,8 @@ import {
 import type { CampaignState, ContentPack, PermanentRecord } from '../domain/types';
 import { validateContent } from '../domain/validate';
 import { addActivity, dayOf } from '../domain/ledger';
+import { leaderboardSharing, normalizeLeaderboardAlias } from '../domain/leaderboard';
+import { leaderboardIndex, recordLeaderboardAction, recordLeaderboardMeeting, startLeaderboard } from '../domain/leaderboardTracking';
 import { MAPS } from '../maps';
 import { ctx } from './context';
 
@@ -30,11 +32,14 @@ export class GameController {
   contentProblems: string[];
   private listeners: Listener[] = [];
   private playStart = Date.now();
+  private diarySessionStart: number | null = null;
   private permanentDirty = false;
+  private readonly leaderboardRules: ReturnType<typeof leaderboardIndex>;
   private permanentWriteFailed = false;
 
   constructor() {
     this.pack = buildPack();
+    this.leaderboardRules = leaderboardIndex(this.pack, Object.values(MAPS));
     this.contentProblems = validateContent(this.pack);
     this.engine = new Engine(this.pack);
     this.saves = new SaveService(browserStore());
@@ -48,6 +53,12 @@ export class GameController {
   }
 
   onEvents(fn: Listener): void { this.listeners.push(fn); }
+
+  get diarySessionStartedAt(): number | null { return this.diarySessionStart; }
+
+  private beginSession(): void {
+    this.diarySessionStart = this.playStart = Date.now();
+  }
 
   // ------------------------------------------------- active time (the Ledger)
 
@@ -63,17 +74,77 @@ export class GameController {
   }
 
   dispatch(cmd: Command): GameEvent[] {
-    const o = this.engine.dispatch(cmd, this.state, this.permanent);
+    const now = new Date();
+    this.captureLeaderboardBaseline(now);
+    const before = this.state;
+    const o = this.engine.dispatch(cmd, before, this.permanent, now.toISOString());
     this.state = o.state;
-    const recordChanged = o.permanent !== this.permanent;
-    this.updatePermanent(o.permanent);
+    const history = this.permanent.leaderboard!;
+    const measured = recordLeaderboardAction(history, this.leaderboardRules, before, o.state, cmd, o.events, now);
+    const record = measured === history ? o.permanent : { ...o.permanent, leaderboard: measured };
+    const recordChanged = record !== this.permanent;
+    this.updatePermanent(record);
     const xp = o.events.reduce((n, e) => n + (e.kind === 'xp' ? e.amount : 0), 0);
-    if (xp) this.updatePermanent({ ...this.permanent, activity: addActivity(this.permanent.activity, dayOf(new Date()), { xp }) });
+    if (xp) this.updatePermanent({ ...this.permanent, activity: addActivity(this.permanent.activity, dayOf(now), { xp }) });
     if (recordChanged || xp) this.flushPermanent();
     const events = o.events.filter((event) => event.kind !== 'checkpoint' || this.checkpoint(event.label));
     this.emit(events);
     (events as any).nextNode = o.nextNode;
     return events;
+  }
+
+  private captureLeaderboardBaseline(now: Date): void {
+    if (this.permanent.leaderboard) return;
+    const saves = [this.pair.continue?.state, this.pair.recovery?.state, this.state]
+      .filter((state): state is CampaignState => Boolean(state));
+    this.updatePermanent({ ...this.permanent, leaderboard: startLeaderboard(this.leaderboardRules, saves, now) });
+  }
+
+  /** Called for an actual map character interaction after resolving a live dialogue. */
+  recordLeaderboardNpc(id: string): void {
+    if (!this.state || !this.engine.talkEntry(id, this.state)) return;
+    const now = new Date();
+    this.captureLeaderboardBaseline(now);
+    const history = this.permanent.leaderboard!;
+    const next = recordLeaderboardMeeting(history, this.leaderboardRules, id, now);
+    if (next === history) return;
+    this.updatePermanent({ ...this.permanent, leaderboard: next });
+    this.flushPermanent();
+  }
+
+  /** Participation stays off until the player chooses a nickname and saves their choice. */
+  setLeaderboardSharing(alias: string | null): boolean {
+    this.captureLeaderboardBaseline(new Date());
+    const history = this.permanent.leaderboard!;
+    const player = this.state?.player.name ?? this.pair.continue?.state.player.name;
+    const clean = alias === null ? null : normalizeLeaderboardAlias(alias);
+    if (clean && player && clean.toLocaleLowerCase() === player.normalize('NFC').trim().replace(/\s+/gu, ' ').toLocaleLowerCase()) {
+      this.emit([{ kind: 'error', message: 'Choose a nickname different from your adventure name.' }]);
+      return false;
+    }
+    try {
+      const next = leaderboardSharing(history, alias, () =>
+        Array.from(crypto.getRandomValues(new Uint8Array(16)), byte => byte.toString(16).padStart(2, '0')).join(''));
+      if (next === history) return true;
+      const previous = this.permanent;
+      const wasDirty = this.permanentDirty;
+      this.updatePermanent({ ...previous, leaderboard: next });
+      if (this.flushPermanent(true)) return true;
+      this.permanent = previous;
+      this.permanentDirty = wasDirty;
+      return false;
+    } catch (error) {
+      this.emit([{ kind: 'error', message: error instanceof Error ? error.message : 'Could not change sharing.' }]);
+      return false;
+    }
+  }
+
+  canExportLeaderboard(): boolean {
+    if (!this.saves.permanentIsCurrent()) {
+      this.emit([{ kind: 'error', message: 'Your saved sharing settings may have changed in another tab. Reopen the game before making a leaderboard file.' }]);
+      return false;
+    }
+    return this.flushPermanent(true);
   }
 
   emit(events: GameEvent[]): void { if (events.length) this.listeners.forEach((l) => l(events)); }
@@ -84,10 +155,11 @@ export class GameController {
 
   newGame(name: string, look: string, opts: Parameters<typeof newCampaign>[4] = {}): void {
     const seed = (Date.now() ^ Math.floor(Math.random() * 1e9)) >>> 0;
+    this.captureLeaderboardBaseline(new Date());
     this.state = newCampaign(this.pack, name, look, seed, opts);
     const m = MAPS['nexus.archive'];
     this.state.pos = { x: m.spawn.x, y: m.spawn.y };
-    this.playStart = Date.now();
+    this.beginSession();
     this.checkpoint('New recruit');
   }
 
@@ -159,11 +231,12 @@ export class GameController {
       this.state.mapId = nexus.id;
       this.state.pos = { ...nexus.spawn };
     }
-    this.playStart = Date.now();
+    this.beginSession();
     this.refreshAwards();
     const questions = restoreQuestionWays(this.permanent, this.pack, this.state.objectivesDone);
     this.updatePermanent(restoreMicroSkillUses(questions, this.pack, this.state.objectivesDone));
     this.flushPermanent();
+    this.captureLeaderboardBaseline(new Date());
   }
 
   loadRecovery(): boolean {

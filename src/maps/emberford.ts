@@ -1,4 +1,6 @@
+import { sefaDispatchDesk } from './sefaDispatch';
 import { EMBERFORD_PIGMENT_WINDOW } from './pigmentWindow';
+import { EMBERFORD_PIGMENT_SAMPLE } from './pigmentSample';
 import { PRICE_DRAWERS_RETURNS } from './priceDrawers';
 import { JIG_EMBERFORD_RETURNS } from './jigShop';
 /**
@@ -8,6 +10,7 @@ import { JIG_EMBERFORD_RETURNS } from './jigShop';
  */
 import { EMBERFORD_FIELD_ORDER } from './fieldBadges';
 import type { Condition } from '../domain/types';
+import { eastWellSlipAt } from '../domain/rumours';
 import type { Interactable, MapDef } from './types';
 import { sceneProp } from './sceneProps';
 import { EMBERFORD_LANTERN_FAIR } from './lanternfair';
@@ -21,6 +24,7 @@ import { PORTER_EMBERFORD } from './porterPace';
 import { EMBERFORD_WINDOW } from './ferryWindow';
 import { CART_MEMORY_ACTORS, CART_MEMORY_PROPS } from './memoryCart';
 import { EMBERFORD_LAST_TURN } from './lastTurn';
+import { CIRCULAR_REPORT_EMBERFORD } from './circularReport';
 import { starStations } from './starPaths';
 
 const W = 40, H = 28;
@@ -87,6 +91,24 @@ const REPAIR_GATE = { x: 2, y: 16 };
 const REPAIR_SHELF = { x: 4, y: 16 };
 const REPAIR_YARD_ID = 'aethelgard.repair-yard';
 
+const tallyHeading: Condition = { flag: 'emberford.tally', in: ['weight', 'loaves'] };
+const [unsetTally, ...setTallies] = sceneProp('emberford.tally', 14, 20, 'the bakers’ tally', 'ledger',
+  { weight: 'nile.tablet', loaves: 'nile.scroll' });
+const tallyPlaced = (heading: 'weight' | 'loaves'): Condition => ({ flag: 'emberford.tally.placed', eq: heading });
+const tallyReceivers: Interactable[] = [
+  { id: 'tally-bake-plan', kind: 'sign', x: 12, y: 20, w: 1, h: 1, walkThrough: true,
+    label: 'Della’s marked bake plan', art: 'nile.scroll', flag: 'emberford.tally.witness',
+    text: 'Small tray for six stalls. Six loaves at six scale weights. Reserve the large tray: three loaves at the same weight.',
+    visibleIf: { all: [{ flag: 'emberford.tally', eq: 'loaves' }, tallyPlaced('loaves')] } },
+  { id: 'tally-ferry-read', kind: 'scene', node: 'emberford.tally.ferry.read', x: 24, y: 23, w: 1, h: 1, walkThrough: true,
+    label: 'Idris’s ferry copy of the tally', art: 'nile.slip',
+    visibleIf: { all: [tallyHeading, { not: tallyPlaced('weight') }] } },
+  { id: 'tally-load-slip', kind: 'sign', x: 24, y: 23, w: 1, h: 1, walkThrough: true,
+    label: 'Idris’s clipped load slip', art: 'preserved.folder', flag: 'emberford.tally.witness',
+    text: 'One deck compartment, six scale weights. Tie the three large loaves as one bundle. The six small loaves would weigh the same.',
+    visibleIf: { all: [{ flag: 'emberford.tally', eq: 'weight' }, tallyPlaced('weight')] } },
+];
+
 export const EMBERFORD: MapDef = {
   id: 'aethelgard.emberford',
   name: 'Aethelgard: Emberford market',
@@ -152,6 +174,7 @@ export const EMBERFORD: MapDef = {
     { id: 'fruit-seller', x: 15, y: 19, facing: 'down' },
     // The Shattering Rumour (side quest): each person heard the blade story from the next.
     { id: 'porter-idris', x: 23, y: 22, facing: 'left' },
+    { id: 'baker-della', x: 11, y: 20, facing: 'right' },
     { id: 'stallkeeper-hana', x: 12, y: 12, facing: 'right' },
     // Origin side quests (spec 35.1): each giver appears only for that origin.
     { id: 'runner-tamar', x: 18, y: 21, facing: 'right', visibleIf: { origin: 'harbour' } },
@@ -164,6 +187,7 @@ export const EMBERFORD: MapDef = {
     ...EMBERFORD_WINDOW,
     ...EMBERFORD_BASKET,
     ...EMBERFORD_PIGMENT_WINDOW,
+    ...EMBERFORD_PIGMENT_SAMPLE,
     ...PRICE_DRAWERS_RETURNS,
     ...EMBERFORD_BRIDGE_PROOF,
     EMBERFORD_SILL_BRIDGE,
@@ -210,8 +234,9 @@ export const EMBERFORD: MapDef = {
       visibleIf: { all: [repairBranch('leave'), repairQueue.receipt] } },
     ...sceneProp('emberford.gauge', 29, 19, 'the river gauge board', 'notice-board',
       { repeat: 'board-stand', compare: 'cork-board' }),
-    ...sceneProp('emberford.tally', 14, 20, 'the bakers’ tally', 'ledger',
-      { weight: 'nile.tablet', loaves: 'nile.scroll' }),
+    { ...unsetTally, visibleIf: { not: tallyHeading } },
+    ...setTallies,
+    ...tallyReceivers,
     ...sceneProp('emberford.repair-notice', 30, 21, 'the bridge repair notice', 'notice-board',
       { sketch: 'nile.map', direction: 'signpost' }),
     ...sceneProp('emberford.pattern-order', 9, 15, 'the smith’s sample tray', 'nile.tablet',
@@ -377,13 +402,25 @@ export const EMBERFORD: MapDef = {
     { id: 'brass-sorter', kind: 'puzzle', puzzle: 'brass-sorter', x: 11, y: 19, w: 1, h: 1, label: "Mara's brass sorter", art: 'brass-sorter' },
     { id: 'map-table', kind: 'puzzle', puzzle: 'map-table', x: 2, y: 20, w: 1, h: 1, label: "the mapmaker's table", art: 'map-table' },
     { id: 'cart-map', kind: 'puzzle', puzzle: 'tipped-cart', x: 13, y: 21, w: 1, h: 1, label: "the guild clerk's map of the tipped cart", art: 'clerk-map' },
+    { id: 'cart-driver-receipt', kind: 'sign', x: 12, y: 22, w: 1, h: 1, walkThrough: true, art: 'preserved.slip',
+      label: 'the driver’s receipt beside the lane map', flag: 'cart.received.driver',
+      text: 'The driver collected all three accounts. Her thumbprint is beside Mara’s stall number. The stone still needs a public mark.',
+      visibleIf: { all: [{ flag: 'puzzle.tipped-cart.done', eq: true }, { not: { flag: 'puzzle.tipped-cart.delivery', eq: 'lane' } }] } },
+    { id: 'cart-public-route', kind: 'sign', x: 12, y: 22, w: 1, h: 1, walkThrough: true, art: 'signpost',
+      label: 'the carters’ chalk detour beside the lane map', flag: 'cart.received.lane',
+      text: 'A chalk line curves around the loose stone. Two barrows have left wheel marks along it. The clerk keeps Mara’s account for the driver. People passing here see the detour.',
+      visibleIf: { flag: 'puzzle.tipped-cart.delivery', eq: 'lane' } },
     { id: 'cite-bridge', kind: 'puzzle', puzzle: 'song-bridge', x: 25, y: 22, w: 1, h: 1, label: 'the Citation Thread bridge post', art: 'bridge-post' },
     { id: 'lock-authors', kind: 'lock', lock: 'authors', x: 17, y: 7, w: 1, h: 1, label: 'the wooden Title Lock (EE practice)', art: 'title-lock', visibleIf: { flag: 'ee2.started', eq: true } },
     { id: 'table-authors', kind: 'label', kit: 'ee.authors', x: 15, y: 7, w: 1, h: 1, label: "Keeper Oduya's table", art: 'label-stand', visibleIf: { objective: 'ee2.o3.weigh' } },
     { id: 'thread-ledger', kind: 'thread', thread: 'blade', node: 'ledger', x: 21, y: 7, w: 1, h: 1, label: 'the guild ledger desk', art: 'ledger' },
     { id: 'thread-workshop', kind: 'thread', thread: 'blade', node: 'workshop', x: 3, y: 13, w: 1, h: 1, label: "Hesper's workshop sheet", art: 'board-stand' },
+    sefaDispatchDesk('guild', 12, 8),
     { id: 'record-book', kind: 'sign', x: 13, y: 8, w: 1, h: 1, label: "the guild's public record book", art: 'ledger', flag: 'rumour.record',
       text: 'GUILD RECORD, WINTER. Test blade from Hesper\'s forge: cracked in the quench. Cause: the quench water was too cold. Action: Hesper warms the water. Three new test blades passed. This book is open to everyone.' },
+    { id: 'east-well-ledger', kind: 'scene', node: 'well.records.guild', x: 14, y: 8, w: 1, h: 1, walkThrough: true,
+      label: 'Noa’s two well leaves by the guild book', art: 'ledger', visibleIf: eastWellSlipAt('ledger'),
+      artOpen: { key: 'preserved.display-paired', if: { flag: 'well.records.guild', eq: true } } },
     // The story (Lamp Wall): each knot the town unties lights a lamp; six open the old Guardian's cellar.
     { id: 'lamp-wall', kind: 'lamps', x: 14, y: 5, w: 1, h: 1, label: 'the Lamp Wall', art: 'lamp-wall.0' },
     { id: 'cellar-door', kind: 'door', x: 12, y: 6, w: 1, h: 1, label: 'the cellar door', art: 'cellar-door', flag: 'study.entered',
@@ -394,6 +431,7 @@ export const EMBERFORD: MapDef = {
     { id: 'reeds-bridge', kind: 'gather', resource: 'reed', x: 30, y: 23, w: 1, h: 1, label: 'the reeds by the bridge (gather)', art: 'reeds' },
     { id: 'makers-bench', kind: 'workbench', x: 9, y: 19, w: 1, h: 1, label: "the Maker's bench (make tools)", art: 'workbench' },
     { id: 'rumour-mill', kind: 'rumours', x: 16, y: 17, w: 1, h: 1, label: 'the tea table (listen to the rumour mill)', art: 'tea-table' },
+    ...CIRCULAR_REPORT_EMBERFORD,
     // Field games from the TOK lessons (src/domain/fieldgames.ts).
     { id: 'pell-doors', kind: 'fieldgame', game: 'doors', x: 25, y: 17, w: 2, h: 1, label: "Dov's lantern stall (Three Doors)", art: 'lantern-stall' },
     { id: 'odo-notice', kind: 'fieldgame', game: 'word', x: 27, y: 22, w: 1, h: 1, label: "Odo's notice board and word chest", art: 'notice-board' },
@@ -402,7 +440,7 @@ export const EMBERFORD: MapDef = {
     { id: 'reading-rain', kind: 'reading', reading: 'rain', x: 35, y: 17, w: 1, h: 1, label: "the rain stake by Noa's board (take a reading)", art: 'rain-stake' },
     { id: 'reading-tower', kind: 'reading', reading: 'tower', x: 22, y: 6, w: 1, h: 1, label: 'the bell tower door frame (take a reading)', art: 'plumb-mark' },
     { id: 'reading-flood', kind: 'reading', reading: 'flood-post', x: 32, y: 21, w: 1, h: 1, label: 'the old flood post (copy it)', art: 'flood-post' },
-    { id: 'word-tiles', kind: 'tiles', x: 12, y: 15, w: 1, h: 1, label: "Sefa's word tiles (a memory game)", art: 'tile-table' },
+    { id: 'word-tiles', kind: 'tiles', x: 12, y: 15, w: 1, h: 1, label: "Sefa's stitching table for work slips", art: 'tile-table' },
     // Secrets (Easter eggs): no art, found by searching. Lore in story.json, Journal > Lore.
     { id: 'secret-ember-myth', kind: 'secret', secret: 'ember-myth', x: 7, y: 9, w: 1, h: 1, label: 'a loose brick in the smithy wall' },
     { id: 'secret-three-coins', kind: 'secret', secret: 'three-coins', x: 19, y: 15, w: 1, h: 1, label: 'the bottom of the fountain' },

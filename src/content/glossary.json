@@ -1,11 +1,279 @@
 {
+ "sources": [
+  {
+   "id": "LEX-REASON-DEDUCTION",
+   "title": "Online Etymology Dictionary: deduction",
+   "url": "https://www.etymonline.com/word/deduction",
+   "locator": "Origin and history, and the logic sense",
+   "supports": "The word reached English through French and from Latin deductio.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "LEX-REASON-INDUCTION",
+   "title": "Online Etymology Dictionary: induction",
+   "url": "https://www.etymonline.com/word/induction",
+   "locator": "Origin and history, including Cicero’s use for a reasoning term",
+   "supports": "Latin inductio could mean a leading in or an introduction.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "LEX-REASON-ABDUCTION",
+   "title": "Online Etymology Dictionary: abduction",
+   "url": "https://www.etymonline.com/word/abduction",
+   "locator": "Origin and history of the noun and its uses",
+   "supports": "The Latin verb abducere meant to lead or take away.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "LEX-REASON-ANALOGY",
+   "title": "American Heritage Dictionary: analogy",
+   "url": "https://www.ahdictionary.com/word/search.html?q=analogy",
+   "locator": "Etymology and reasoning sense",
+   "supports": "Analogy reached Middle English through French and Latin.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "LEX-REASON-CAUSAL",
+   "title": "Merriam-Webster: causal",
+   "url": "https://www.merriam-webster.com/dictionary/causal",
+   "locator": "Word History, Etymology",
+   "supports": "The English adjective came from Late Latin causalis.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "LEX-REASON-PRAGMATIC",
+   "title": "American Heritage Dictionary: pragmatic",
+   "url": "https://www.ahdictionary.com/word/search.html?q=pragmatic",
+   "locator": "Etymology and practical sense",
+   "supports": "Greek pragma meant a deed.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "LEX-REASON-CONCESSION",
+   "title": "Merriam-Webster: concession",
+   "url": "https://www.merriam-webster.com/dictionary/concession",
+   "locator": "Word History, Etymology",
+   "supports": "Middle English took the noun through Anglo-French.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "LEX-REASON-REFRAME",
+   "title": "Online Etymology Dictionary: reframe",
+   "url": "https://www.etymonline.com/word/reframe",
+   "locator": "Origin and history of the verb",
+   "supports": "English made reframe from re-, meaning again, and the verb frame.",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "REF-REASON-ABDUCTION",
+   "title": "Igor Douven: Abduction, Stanford Encyclopedia of Philosophy",
+   "url": "https://plato.stanford.edu/entries/abduction/",
+   "locator": "Introduction and section 1, Abduction: The General Idea",
+   "supports": "The reasoning sense concerns explanatory inference. A modern use favours the best available explanation. This is a distinct use from the dictionary entry’s historical gloss.",
+   "accessed": "2026-11-26"
+  }
+ ],
  "glossary": [
+  {
+   "id": "truth",
+   "term": "Truth",
+   "match": [
+    "truth"
+   ],
+   "text": "Whether a claim fits what is actually the case.",
+   "history": {
+    "note": "Old English treowth carried a sense of faithfulness. Its descendant trewthe was used in Middle English.",
+    "url": "https://www.merriam-webster.com/dictionary/truth"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "The stall and tea table agreed about a closure. In the issue book you found that the two notices traced back to one unchecked report."
+    },
+    {
+     "if": {
+      "objective": "corner.compare"
+     },
+     "text": "Both inserts fitted the cloth you tried. Only the repair order dated a change to the hem. The first weaving stayed an open question."
+    },
+    {
+     "text": "A new reading can make you reopen a perfectly tidy label."
+    }
+   ]
+  },
+  {
+   "id": "power",
+   "term": "Power",
+   "match": [
+    "power"
+   ],
+   "text": "Who has the means or authority to make something happen.",
+   "history": {
+    "note": "The Anglo-French poer could describe being able to do something. The English noun power grew out of that verb.",
+    "url": "https://www.merriam-webster.com/dictionary/power"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "clearbay.use"
+     },
+     "text": "You put the visitor’s waiting time beside the duty book. The keeper’s entry had been able to set the public rule on its own."
+    },
+    {
+     "if": {
+      "objective": "voices.elsbet.handled"
+     },
+     "text": "With Elsbet’s signed index you could give visitors access to her first take. Her signature still reserved the second take for the Council."
+    },
+    {
+     "text": "At the Civic hearing, who can get an objection onto the record?"
+    }
+   ]
+  },
+  {
+   "id": "explanation",
+   "term": "Explanation",
+   "match": [
+    "explanation",
+    "explanations"
+   ],
+   "text": "An account of how or why something happens.",
+   "history": {
+    "note": "The verb explain goes back to Latin explanare, to make level. Its relative planus meant flat.",
+    "url": "https://www.merriam-webster.com/dictionary/explain"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "forest.moss.place"
+     },
+     "text": "Your frames showed where more squares stayed green. The walkers’ tally gave you a possible reason. It also left open why they picked that path."
+    },
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "You followed the broken C back through the issue book. That print trail explained why the stall and tea table sounded like two witnesses to one closure."
+    },
+    {
+     "text": "Two lanterns can look alike from the bank. Ask who carried them before explaining the light."
+    }
+   ]
+  },
+  {
+   "id": "culture",
+   "term": "Culture",
+   "match": [
+    "culture",
+    "cultures"
+   ],
+   "text": "Practices, meanings and ways of knowing that people share, question and pass on.",
+   "history": {
+    "note": "Culture came through French from Latin cultura. In Middle English it could refer to cultivated ground or the work of tending it.",
+    "url": "https://www.merriam-webster.com/dictionary/culture"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "sea.threadbend.compare"
+     },
+     "text": "At the harbour, Ariadne’s thread gave your crew a way to remember the return. You had to try your own loads before the old story could guide a working route."
+    },
+    {
+     "if": {
+      "objective": "voices.elsbet.handled"
+     },
+     "text": "At the listening desk, the place where people gathered mattered to Elsbet. Her index gave the two groups different ways to hear her account."
+    },
+    {
+     "text": "A map keeper and a visiting crew may read the same mark in different ways."
+    }
+   ]
+  },
+  {
+   "id": "values",
+   "term": "Values",
+   "match": [
+    "values"
+   ],
+   "text": "What someone thinks is worth protecting or pursuing.",
+   "history": {
+    "note": "The Middle English word for worth came through French. Farther back, Latin valere could mean to be strong or well.",
+    "url": "https://www.merriam-webster.com/dictionary/value"
+   },
+   "examples": [
+    {
+     "if": {
+      "flag": "sea.threadbend.placed",
+      "eq": "letter"
+     },
+     "text": "You gave the messenger the quick turn before the signal. The wide tray waited for its ordinary crew."
+    },
+    {
+     "if": {
+      "flag": "sea.threadbend.placed",
+      "eq": "tray"
+     },
+     "text": "You kept the wide turn free for the tray. The letter went with the next handoff."
+    },
+    {
+     "if": {
+      "flag": "clearbay.checked",
+      "eq": "north"
+     },
+     "text": "You saved a staffed opening for a cart and helper. The visitor who came with a parcel at first bell had to wait."
+    },
+    {
+     "if": {
+      "flag": "clearbay.checked",
+      "eq": "west"
+     },
+     "text": "You let the hand parcel through at first bell. A porter had to meet the wide cart later."
+    },
+    {
+     "text": "Posting a notice now helps the queue. Waiting gives another crew time to sign it."
+    }
+   ]
+  },
+  {
+   "id": "responsibility",
+   "term": "Responsibility",
+   "match": [
+    "responsibility",
+    "responsibilities"
+   ],
+   "text": "What someone is answerable for when they act on or pass on knowledge.",
+   "history": {
+    "note": "In this word family, responsible came from Anglo-French responsable. The older word is related to an answer or response.",
+    "url": "https://www.merriam-webster.com/dictionary/responsible"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "clearbay.compare"
+     },
+     "text": "You kept the visitor’s experience on the notice and folded the private family name out of sight. Another visitor could still check the wait."
+    },
+    {
+     "if": {
+      "objective": "voices.elsbet.handled"
+     },
+     "text": "Elsbet trusted the keeper with two recordings. You left a way for visitors to hear one and kept the other for the room she named."
+    },
+    {
+     "text": "The reader who posts a notice can also leave room for a correction."
+    }
+   ]
+  },
   {
    "id": "evidence",
    "term": "Evidence",
    "match": [
     "evidence"
    ],
+   "history": {"note": "Latin videre meant to see. It sits behind evidentia, something plain to view.", "url": "https://www.merriam-webster.com/dictionary/evidence"},
    "text": "Something you can point to that makes a claim more or less likely: a record, an object, a test result, what a person saw.",
    "examples": [
     {
@@ -14,6 +282,18 @@
       "gte": 3
      },
      "text": "You inspected three exhibits. Each record was evidence for a different kind of 'first'."
+    },
+    {
+     "if": {
+      "objective": "corner.compare"
+     },
+     "text": "The matching diamonds and the dated repair slip told you different things about the same gap in the cloth."
+    },
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "Havra watched a porter use the upper landing at second bell. A wall blocked her view of the lower landing. You kept that limit with her sighting."
     },
     {
      "text": "Inspect an exhibit. Its record is evidence for some claims and not for others."
@@ -27,6 +307,7 @@
     "claim",
     "claims"
    ],
+   "history": {"note": "Anglo-French clamer could mean asking for something as a right. Its Latin ancestor clamare meant to call out.", "url": "https://www.merriam-webster.com/dictionary/claim"},
    "text": "Something that someone says is true. A claim can be bigger or smaller than its evidence.",
    "examples": [
     {
@@ -35,6 +316,12 @@
       "eq": true
      },
      "text": "Your museum label was a claim: '{flag:label.pen.text}'"
+    },
+    {
+     "if": {
+      "objective": "tail.coast"
+     },
+     "text": "At the Coast you returned each report to the watch that produced it. A claim about the quiet interval still needed somebody who had actually been there."
     },
     {
      "text": "The old label 'The first ballpoint pen' is a claim. Is it bigger than its evidence?"
@@ -49,6 +336,7 @@
     "justified",
     "justification"
    ],
+   "history": {"note": "Follow the verb justify back through Middle English justifien to Late Latin justificare, a relative of justus, meaning just.", "url": "https://www.merriam-webster.com/dictionary/justify"},
    "text": "The reasons and evidence that you give for a claim, so that someone else can check it.",
    "examples": [
     {
@@ -57,6 +345,18 @@
       "eq": true
      },
      "text": "Your label held because the cards you held gave it enough support."
+    },
+    {
+     "if": {
+      "objective": "sea.threadbend.compare"
+     },
+     "text": "You kept the run where the tray caught on the inner posts. Sending it the long way now had a reason another carrier could try."
+    },
+    {
+     "if": {
+      "objective": "clearbay.compare"
+     },
+     "text": "Your notice could name which loads fitted because you tried the cart alone and again with its handler."
     },
     {
      "text": "When a label holds in the label builder, you have justified it."
@@ -71,8 +371,21 @@
     "certainty",
     "certainly"
    ],
+   "history": {"note": "Middle English speakers used certeinte. They borrowed it from Anglo-French certeinté, built from the word for certain.", "url": "https://www.merriam-webster.com/dictionary/certainty"},
    "text": "How sure we can be. Most knowledge comes with a range or a 'probably', not with total certainty.",
    "examples": [
+    {
+     "if": {
+      "objective": "corner.compare"
+     },
+     "text": "Turning the insert settled how the diamond repeat would fit. The first maker’s choice stayed uncertain after you read the later repair order."
+    },
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "You could date the upper crossing to Havra’s bell. The issue book gave you no witness who could settle the lower crossing."
+    },
     {
      "text": "The Met record says the ingots are 'probably' eighteenth century. The word 'probably' is part of the knowledge."
     }
@@ -86,6 +399,7 @@
     "interpret",
     "interprets"
    ],
+   "history": {"note": "The verb interpret leads back to Latin interpres. An interpres could be an interpreter, an agent or a negotiator.", "url": "https://www.merriam-webster.com/dictionary/interpret"},
    "text": "What someone decides a piece of evidence means. Two people can interpret the same record in different ways.",
    "examples": [
     {
@@ -94,6 +408,26 @@
       "eq": true
      },
      "text": "Clerk Venn and Curator Dace read the same pen records and gave different interpretations of 'first'."
+    },
+    {
+     "if": {
+      "flag": "corner.checked",
+      "eq": "repeat"
+     },
+     "text": "Aro could use your tracing to cut a new repeat. The dashed fourth diamond marked a proposal for the cloth."
+    },
+    {
+     "if": {
+      "flag": "corner.checked",
+      "eq": "gap"
+     },
+     "text": "Junel could lift the hem and follow the old holes because you left the corner open beside the dated order."
+    },
+    {
+     "if": {
+      "objective": "forest.moss.place"
+     },
+     "text": "The boot count and the green squares could fit two stories. Boots might wear a patch bare, or walkers might choose bare patches."
     },
     {
      "text": "Talk to Curator Dace and Clerk Venn. They interpret the same records differently."
@@ -108,8 +442,21 @@
     "perspectives",
     "point of view"
    ],
+   "history": {"note": "The word has several histories of looking. A Middle English form for an optical device goes back to Latin perspicere, to look through.", "url": "https://www.merriam-webster.com/dictionary/perspective"},
    "text": "Where someone stands when they know something: their place, purpose, training and values. Having one is normal. It is not the same as bias.",
    "examples": [
+    {
+     "if": {
+      "objective": "clearbay.compare"
+     },
+     "text": "The keeper recorded where a crew was stationed. The visitor recorded who waited. You put them beside the same bell and gate."
+    },
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "You stood at Havra’s mark. From there a porter on the upper landing was visible, while the retaining wall hid the route below."
+    },
     {
      "text": "Hesper made the blade. That is her perspective, and it is also why she knows how it was made."
     }
@@ -122,6 +469,7 @@
     "objective",
     "objectivity"
    ],
+   "history": {"note": "Objective traces back to Medieval Latin objectivus and objectum, something presented to the mind. English formed objectivity from objective.", "url": "https://www.merriam-webster.com/dictionary/objective"},
    "text": "Trying to reduce the effect of any one person's view, by checking, comparing and staying open to correction.",
    "examples": [
     {
@@ -130,6 +478,18 @@
       "eq": true
      },
      "text": "You compared your own billet with the blade. That check did not depend on who you trusted."
+    },
+    {
+     "if": {
+      "objective": "sea.threadbend.compare"
+     },
+     "text": "You kept the same tray and starting peg when you moved the cord to the wider turn. The tray cleared the posts on that run."
+    },
+    {
+     "if": {
+      "objective": "forest.moss.survey"
+     },
+     "text": "By counting squares within the same size frame, you gave someone at a different part of the path a way to repeat your comparison."
     },
     {
      "text": "A fair test, where you change one thing, is one way to be more objective."
@@ -143,8 +503,21 @@
     "source",
     "sources"
    ],
+   "history": {"note": "A surse in Anglo-French could be a spring. Its verb meant to rise, like water coming out of the ground.", "url": "https://www.merriam-webster.com/dictionary/source"},
    "text": "Where a piece of information comes from. Ask who made it, when, and why.",
    "examples": [
+    {
+     "if": {
+      "objective": "citation.rail.nexus.found"
+     },
+     "text": "The reader with your strip reached A606881. She could follow a catalogue number back to the record that supplied it."
+    },
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "At Emberford you followed two printed notices back to the same unsigned slip. Counting the sheets twice would give one source two votes."
+    },
     {
      "text": "Every documented exhibit in the hall lists its source. Open the Sources tab in your journal."
     }
@@ -157,6 +530,7 @@
     "criterion",
     "criteria"
    ],
+   "history": {"note": "Greek kritērion was a means of judging. It belongs to the same word family as krinein, to separate or decide.", "url": "https://www.merriam-webster.com/dictionary/criterion"},
    "text": "The standard that you use to judge something. 'First' needs a criterion: first to patent, first to work, first to sell?",
    "examples": [
     {
@@ -165,6 +539,12 @@
       "eq": true
      },
      "text": "You chose a criterion for your label: '{flag:label.pen.criterion}'."
+    },
+    {
+     "if": {
+      "objective": "market.terms"
+     },
+     "text": "Dagny showed you what the wick grade and the display grade each valued in a fibre lot. A lot could change standing while the fibre stayed the same."
     },
     {
      "text": "In the label builder, the criterion is 'what kind of first'."
@@ -178,6 +558,7 @@
     "counterclaim",
     "counterclaims"
    ],
+   "history": {"note": "The counter- in counterclaim came by way of French. Its Latin ancestor contra meant against or facing.", "url": "https://www.merriam-webster.com/dictionary/counter"},
    "text": "A reasonable claim against your own. Answering a counterclaim makes an argument stronger.",
    "examples": [
     {
@@ -186,6 +567,12 @@
       "eq": true
      },
      "text": "On Tull's claim board you added a counterclaim and still held your claim."
+    },
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "The stall said both landings were closed. Havra saw a porter cross the upper one. Her account challenged the word “both” and left the lower landing open for another lookout."
     },
     {
      "text": "In a Showdown, conceding a fair point and answering it gains the crowd's trust."
@@ -198,6 +585,7 @@
    "match": [
     "provenance"
    ],
+   "history": {"note": "French provenir means to come from. Further back are two Latin parts meaning forth and come.", "url": "https://www.merriam-webster.com/dictionary/provenance"},
    "text": "The history of an object: where it has been and who has held it. A gap in the provenance is where the record stops.",
    "examples": [
     {
@@ -206,6 +594,12 @@
       "eq": true
      },
      "text": "Your Provenance Thread stopped at a gap after Hesper's workshop."
+    },
+    {
+     "if": {
+      "objective": "copies.check.landing"
+     },
+     "text": "At the landing you compared the signature on the press proof with the one on the copy. Following the hands on the sheets gave you a history of how the notice travelled."
     },
     {
      "text": "The Provenance Thread follows an object back through its records."
@@ -218,8 +612,21 @@
    "match": [
     "documented"
    ],
+   "history": {"note": "Document comes from Latin documentum. It could mean a lesson or a piece of proof. The related verb docere meant to teach.", "url": "https://www.merriam-webster.com/dictionary/document"},
    "text": "In this game: supported by a real, named historical source for the exact, narrow claim.",
    "examples": [
+    {
+     "if": {
+      "card": "card.loud-patent"
+     },
+     "text": "The date on Loud’s patent belongs to the grant. You could point to a document for that day even while the date of somebody’s first purchase stayed open."
+    },
+    {
+     "if": {
+      "objective": "xin.o.records"
+     },
+     "text": "At the Cold Store you put dates on the Mawangdui place file and the modern methods report. A visitor could now ask which record supported a detail of the burial and which described later work."
+    },
     {
      "text": "Loud's patent drawing is documented. The workshop model is a reconstruction."
     }
@@ -231,8 +638,21 @@
    "match": [
     "reconstruction"
    ],
+   "history": {"note": "Look inside reconstruction for construct. Its Latin relative construere was formed with struere, to build.", "url": "https://www.merriam-webster.com/dictionary/construct"},
    "text": "Something made later to show how a thing might have been. It can teach a lot, but it is not the original.",
    "examples": [
+    {
+     "if": {
+      "card": "card.loud-model"
+     },
+     "text": "You met the Nexus workshop’s version of Loud’s pen. Its build date follows the workshop that made the model. The older patent has its own date."
+    },
+    {
+     "if": {
+      "objective": "xin.o.layers"
+     },
+     "text": "In the Cold Store you handled the observation sheet and the model sheet separately. A reader who lifts the model can still see which features had a recorded starting point."
+    },
     {
      "text": "The workshop model of Loud's pen was built this year. Its date says nothing about 1888."
     }
@@ -243,16 +663,23 @@
    "term": "Simulation",
    "match": [
     "simulation",
-    "model"
+    "simulations"
    ],
+   "history": {"note": "Latin simulatio could mean imitation. Middle English used simulacioun for pretence. A workshop simulation gives that old idea of imitation a different job.", "url": "https://www.merriam-webster.com/dictionary/simulation"},
    "text": "A test or picture that follows stated rules. It shows what happens if the rules are right, not what happened in history.",
    "examples": [
     {
      "if": {
-      "flag": "sim.fair",
-      "eq": true
+      "num": "sim.fair",
+      "gte": 1
      },
      "text": "Your fair test at the bench was a simulation. Its numbers came from a stated model."
+    },
+    {
+     "if": {
+      "objective": "catchment.compare"
+     },
+     "text": "In the culvert you sent the same six practice floats past the open pocket and the cover. You could account for each float on the model before deciding what to try at the real weir."
     },
     {
      "text": "The marking test at the bench is a simulation with a stated model."
@@ -267,8 +694,21 @@
     "patents",
     "patented"
    ],
+   "history": {"note": "Latin patere meant to stand open. It supplied the word that came through French into English as patent.", "url": "https://www.merriam-webster.com/dictionary/patent"},
    "text": "An official record that gives an inventor rights to a design. It shows that a claim was made and granted, not that the thing worked or sold.",
    "examples": [
+    {
+     "if": {
+      "card": "card.loud-patent"
+     },
+     "text": "US 392,046 gave you Loud’s design and a grant date. A buyer’s name or a shop receipt would have to come from somewhere else."
+    },
+    {
+     "if": {
+      "objective": "nexus.ribbon.checked"
+     },
+     "text": "You fastened the grant to one day on the date ribbon. When a binder asked when people started using the pen, the years between the peg and the museum sleeve stayed open."
+    },
     {
      "text": "US Patent 392,046 was granted to John J. Loud in 1888."
     }
@@ -281,8 +721,21 @@
     "bias",
     "biased"
    ],
+   "history": {"note": "English borrowed bias from Middle French biais. One early image associated with the word is a slant.", "url": "https://ahdictionary.com/word/search.html?q=bias"},
    "text": "A lean that pushes a judgement one way without good reason. Everyone has a perspective; bias is when it distorts the judgement.",
    "examples": [
+    {
+     "if": {
+      "objective": "forest.hands.retry"
+     },
+     "text": "At the Forest bench the observer behind the cover missed the first beat. Moving the recorder brought it into view on the same three marks. A careful person could keep making the same omission from the first seat."
+    },
+    {
+     "if": {
+      "objective": "civic.incentive.audit"
+     },
+     "text": "Lin’s crews could gain marks by splitting a load. At the other desk the hooks and feet still had to make a usable kit. You checked how the target steered what went into the count."
+    },
     {
      "text": "Throwing out every source with a perspective would empty the archive. Check the reasoning instead."
     }
@@ -295,8 +748,21 @@
     "knowledge question",
     "knowledge questions"
    ],
+   "history": {"note": "The question in this phrase came through French from Latin quaestio. Its verb quaerere meant to seek or ask.", "url": "https://www.merriam-webster.com/dictionary/question"},
    "text": "A question about how we know, not about a fact. 'Who invented the pen?' is a history question. 'How do we decide what counts as first?' is a knowledge question.",
    "examples": [
+    {
+     "if": {
+      "objective": "m01.o6.label"
+     },
+     "text": "Deciding which pen to name forced another decision on the label stand. What would make one use of “first” worth defending to the next visitor?"
+    },
+    {
+     "if": {
+      "objective": "sea.names"
+     },
+     "text": "You traced the names on the two sea charts to their users. Whose knowledge of a passage can give it a name, and what happens to that authority when another crew copies the chart?"
+    },
     {
      "text": "Ask Warden Ise: 'What is the question behind all this?'"
     }
@@ -309,6 +775,7 @@
     "research question",
     "research questions"
    ],
+   "history": {"note": "The research in this phrase came through French recerche. The related verb described going about in search of something.", "url": "https://www.merriam-webster.com/dictionary/research"},
    "text": "A focused question that an essay can investigate and argue. Practice only in this game: your real Extended Essay question is your own.",
    "examples": [
     {
@@ -319,7 +786,431 @@
      "text": "Your practice question: '{flag:lock.inventor.question}'"
     },
     {
+     "if": {
+      "objective": "ee2.o1.lock"
+     },
+     "text": "The wooden lock at Oduya’s table opened when you chose a particular case, a record and a writer to investigate. Now you had somewhere to start looking for a counterexample."
+    },
+    {
      "text": "The Title Lock opens only for a focused, arguable question."
+    }
+   ]
+  },
+  {
+   "id": "deduction",
+   "term": "Deduction",
+   "match": [
+    "deduction",
+    "deductions",
+    "deductive"
+   ],
+   "text": "A conclusion that has to follow if the starting statements are true and the steps are sound.",
+   "history": {
+    "note": "The word reached English through French and from Latin deductio. The Latin word could describe leading something away or making an amount smaller. The English reasoning sense concerns what follows from a starting point.",
+    "url": "https://www.etymonline.com/word/deduction"
+   },
+   "examples": [
+    {
+     "if": {
+      "flag": "corner.repeatFit",
+      "eq": true
+     },
+     "text": "At the Fourth Corner you turned the square insert. If the diamond spacing repeats at each corner, the last diamond needs that same spacing. The fitting gives you a pattern to use for a new hanging."
+    },
+    {
+     "if": {
+      "flag": "civic.overlap.counted",
+      "eq": true
+     },
+     "text": "At Civic dispatch, the rule leaves four choices for the first load, three unused marks for the second and two for the third. That gives 24 of the 64 ordered rows with all three on separate marks."
+    },
+    {
+     "text": "The store has four empty hooks. If each of three parcels needs its own hook, one hook will stay empty."
+    }
+   ]
+  },
+  {
+   "id": "induction",
+   "term": "Induction",
+   "match": [
+    "induction",
+    "inductive"
+   ],
+   "text": "Use several observations to suggest a pattern or make an expectation about the next case. Another case could change your mind.",
+   "history": {
+    "note": "Latin inductio could mean a leading in or an introduction. Cicero used it to translate a Greek term for reasoning from cases.",
+    "url": "https://www.etymonline.com/word/induction"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "coast.breeze.first"
+     },
+     "text": "At the headland you checked still air and two gusts. The step reading dipped in both gusts. That gives you a reason to look for a dip in the next gust at this stand."
+    },
+    {
+     "if": {
+      "objective": "forest.moss.survey"
+     },
+     "text": "Your Forest frames found fewer green squares at the path edge in both light pairs. That supports checking for the same pattern at another trail edge. The four patches leave its cause open."
+    },
+    {
+     "if": {
+      "objective": "water.retest"
+     },
+     "text": "At the Weir you repeated the same setting after repair and checked another setting. More water reached the outlets across the repaired runs in that model. A keeper could use the pattern to plan another check at the same intake."
+    },
+    {
+     "text": "A ferry keeper sees the step get wet at three successive high waters. She watches that step sooner on the next high tide."
+    }
+   ]
+  },
+  {
+   "id": "abduction",
+   "term": "Abduction",
+   "match": [
+    "abduction",
+    "abductive"
+   ],
+   "text": "In reasoning, use the clues to favour the best available explanation. You can keep other explanations open and look for a clue that separates them.",
+   "history": {
+    "note": "The Latin verb abducere meant to lead or take away. English has several uses of abduction. Its reasoning sense names a later technical use.",
+    "url": "https://www.etymonline.com/word/abduction"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "nile.lamp.compare"
+     },
+     "text": "The Nile slip showed two grooves from above. The missing groove appeared from the side and disappeared when you returned the lamp. The changing view explains the difference while the slip stays fixed."
+    },
+    {
+     "if": {
+      "objective": "metal.tag.explained"
+     },
+     "text": "You turned the old triangle and fitted a fresh one. Each could explain the tag’s new direction. The trip note records the direction and says nothing about the hole that could separate the explanations."
+    },
+    {
+     "text": "A lamp went dark. The wick is wet and the oil still reaches it. The wet wick is the better lead for the keeper to check first."
+    }
+   ]
+  },
+  {
+   "id": "analogy",
+   "term": "Analogy",
+   "match": [
+    "analogy",
+    "analogies",
+    "analogical"
+   ],
+   "text": "Use a relationship from one case to guide a check or choice in another. Check whether it still holds there.",
+   "history": {
+    "note": "Analogy reached Middle English through French and Latin. Its Greek roots expressed proportion or correspondence between things.",
+    "url": "https://www.ahdictionary.com/word/search.html?q=analogy"
+   },
+   "examples": [
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "metal.witness.use",
+        "eq": "archive"
+       },
+       {
+        "objective": "metal.witness.compare"
+       }
+      ]
+     },
+     "text": "You used Leila’s earlier guide strip at the Metalworks. Its fold held a starting corner in the archive. At the new shop it held the order of the six sleeve positions so you could compare two tallies."
+    },
+    {
+     "if": {
+      "objective": "asia.loft.compare"
+     },
+     "text": "At the Island Label Loft you used a lesson from case labels on the two berths. A case figure belongs with its tested setting, and a place name belongs with the row it describes. The dock copy needed the same fit between a claim and its own record."
+    },
+    {
+     "text": "Find a ferry crate by matching its tag to its shelf. Then try matching each bench tool’s tag to its own drawer."
+    }
+   ]
+  },
+  {
+   "id": "causal",
+   "term": "Causal reasoning",
+   "match": [
+    "causal reasoning",
+    "causal explanation",
+    "causal explanations"
+   ],
+   "text": "Look for what made a difference. A useful test changes one thing and checks which result changes with it.",
+   "history": {
+    "note": "The English adjective came from Late Latin causalis. The Latin form was built from causa, a word for a cause or reason.",
+    "url": "https://www.merriam-webster.com/dictionary/causal"
+   },
+   "examples": [
+    {
+     "if": {
+      "num": "sim.fair",
+      "gte": 1
+     },
+     "text": "At the Nexus marking bench you compared runs that changed one thing at a time. Keeping the rest of the setup still gave you a way to test what changed the mark in the model."
+    },
+    {
+     "if": {
+      "objective": "catchment.compare"
+     },
+     "text": "At the Water Commons you released the same six floats with the pocket open and covered. When open, the pocket held two and four arrived below. Covering it let all six reach the lower peg."
+    },
+    {
+     "text": "Keep the crate and the cart the same. Change the wheel and see whether the rattle changes."
+    }
+   ]
+  },
+  {
+   "id": "pragmatic",
+   "term": "Pragmatic reasoning",
+   "match": [
+    "pragmatic reasoning",
+    "pragmatic"
+   ],
+   "text": "Choose a workable action by thinking about what it will do, who it can help and what it will leave for later.",
+   "history": {
+    "note": "Greek pragma meant a deed. The word came through Latin, where its form could describe being skilled in practical business.",
+    "url": "https://www.ahdictionary.com/word/search.html?q=pragmatic"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "nexus.rest.checked"
+     },
+     "text": "You placed the scarce reading rests where people could use them. At the check you kept the loan count and a different group’s request where the next keeper could see both."
+    },
+    {
+     "if": {
+      "objective": "boundary.water.deliver"
+     },
+     "text": "You used a signed boundary order to send four service slips first. The delivery let that group act and left the five other households’ requests visible for the next round."
+    },
+    {
+     "text": "One lamp can help the stitch keeper now or light the queue after dark. Pick who needs it first and arrange the next handover."
+    }
+   ]
+  },
+  {
+   "id": "concession",
+   "term": "Concession",
+   "match": [
+    "concession",
+    "concessions",
+    "concede",
+    "conceded"
+   ],
+   "text": "In an argument, accept a fair point from the other person. Keep checking what that point actually supports.",
+   "history": {
+    "note": "Middle English took the noun through Anglo-French. The Latin source belonged to a family of words for giving way or granting a point.",
+    "url": "https://www.merriam-webster.com/dictionary/concession"
+   },
+   "examples": [
+    {
+     "if": {
+      "flag": "sd.practice.conceded",
+      "eq": true
+     },
+     "text": "In the practice Showdown you accepted a limited point of Venn’s before continuing. The rest of your case still needed its own support."
+    },
+    {
+     "if": {
+      "flag": "sd.stage-vesper.conceded",
+      "eq": true
+     },
+     "text": "At the House of Performance you gave Vesper the short call a late arrival can use. Hari still had a place for the fuller scene note."
+    },
+    {
+     "text": "Grant the keeper that the fold carries a date. Then ask who can link that date to the box."
+    }
+   ]
+  },
+  {
+   "id": "reframe",
+   "term": "Reframe",
+   "match": [
+    "reframe",
+    "reframes",
+    "reframed",
+    "reframing"
+   ],
+   "text": "Change the question or the way a disagreement is set up. Say what each answer would need to show.",
+   "history": {
+    "note": "English made reframe from re-, meaning again, and the verb frame. An early use described putting something together anew.",
+    "url": "https://www.etymonline.com/word/reframe"
+   },
+   "examples": [
+    {
+     "if": {
+      "flag": "sd.practice.reframed",
+      "eq": true
+     },
+     "text": "You helped Venn’s crowd hear several questions in the word first. A patent date answers one of them. Evidence of a pen that worked for its users has a different job."
+    },
+    {
+     "if": {
+      "flag": "sd.stage-vesper.reframed",
+      "eq": true
+     },
+     "text": "You helped Vesper’s audience ask separate questions. A seat view can show what moved and what stayed hidden. What a character meant or what a late visitor needs to hear calls for another check."
+    },
+    {
+     "text": "Before arguing over whose map is better, ask whether the reader is carrying a tray or looking for an exhibit."
+    }
+   ]
+  },
+  {
+   "id": "model",
+   "term": "Model",
+   "match": [
+    "model",
+    "models"
+   ],
+   "text": "A representation that keeps features useful for a particular job. Its omissions matter when someone tries to use it for another job.",
+   "history": {
+    "note": "English took model from French modelle. Its Italian ancestor modello goes back to Latin modulus, a small measure.",
+    "url": "https://www.merriam-webster.com/dictionary/model"
+   },
+   "examples": [
+    {
+     "if": {
+      "card": "card.loud-model"
+     },
+     "text": "You saw the Nexus workshop’s version of Loud’s pen. It gave you a shape to inspect, while the patent kept the date of the design."
+    },
+    {
+     "if": {
+      "objective": "latch.water.observed"
+     },
+     "text": "You brought the model bar to both known stops. The live service bar still needed its own sighting before the crew could move a tray."
+    },
+    {
+     "text": "A tiny gate might show where the bar moves. It cannot tell a waiting porter where the real bar is now."
+    }
+   ]
+  },
+  {
+   "id": "context",
+   "term": "Context",
+   "match": [
+    "context",
+    "contexts"
+   ],
+   "text": "The surroundings or circumstances that help a reader understand what a record can mean.",
+   "history": {
+    "note": "Latin contexere meant to weave together. Contextus could describe a connection or the way words fit together before context took on its wider English sense.",
+    "url": "https://www.merriam-webster.com/dictionary/context"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "preserved.coast"
+     },
+     "text": "You placed the site map beside the coastal record. The way a burial survived could not settle which practice every burial followed."
+    },
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "Havra could see the upper landing at the second bell. You kept the place and the time beside her observation when the stall notice claimed more."
+    },
+    {
+     "text": "A mark for a closed landing means something different before the tide turns."
+    }
+   ]
+  },
+  {
+   "id": "measurement",
+   "term": "Measurement",
+   "match": [
+    "measurement",
+    "measurements"
+   ],
+   "text": "A comparison made with a chosen unit or rule. Another person needs to know where and how it was made.",
+   "history": {
+    "note": "Middle English mesurement came from an Anglo-French word for the act of measuring. It was also used for the apportioning of shares.",
+    "url": "https://www.merriam-webster.com/dictionary/measurement"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "forest.moss.survey"
+     },
+     "text": "You used the same six squares at four pegs. A square with a speck of green counted just as much as one that was full."
+    },
+    {
+     "if": {
+      "objective": "xin.o.layers"
+     },
+     "text": "You checked which sheets could go on the portrait board. A cleanly drawn edge on the illustration brought no new measurement of its own."
+    },
+    {
+     "text": "A tray might clear one gap and catch in the next. The edges you measured belong on the slip."
+    }
+   ]
+  },
+  {
+   "id": "hypothesis",
+   "term": "Hypothesis",
+   "match": [
+    "hypothesis",
+    "hypotheses"
+   ],
+   "text": "An explanation or supposition you can investigate. A useful check can turn out differently depending on whether it holds.",
+   "history": {
+    "note": "Greek hypotithenai could mean to put under or to suppose. Hypothesis comes from that idea of laying down a supposition.",
+    "url": "https://www.merriam-webster.com/dictionary/hypothesis"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "ember.circle.trace"
+     },
+     "text": "The matching broken C gave you a lead about the two notices. The dated issue book let you check which copy drew on which."
+    },
+    {
+     "if": {
+      "objective": "forest.moss.place"
+     },
+     "text": "The patches near both paths held fewer green squares. Boots, drier edges and bare ground offered different explanations to investigate."
+    },
+    {
+     "text": "A second copy might be an independent report. Where would you look for its first observer?"
+    }
+   ]
+  },
+  {
+   "id": "correlation",
+   "term": "Correlation",
+   "match": [
+    "correlation",
+    "correlations"
+   ],
+   "text": "A pattern in the way two things vary together. Several different causes can produce the same pattern.",
+   "history": {
+    "note": "Medieval Latin correlatio joined a form of com-, together, to relatio, a relation.",
+    "url": "https://www.merriam-webster.com/dictionary/correlation"
+   },
+   "examples": [
+    {
+     "if": {
+      "objective": "forest.moss.place"
+     },
+     "text": "Green squares were less common at both path edges. Yesterday’s shoe counts suggested a question about boots, and the four frames left several explanations open."
+    },
+    {
+     "if": {
+      "objective": "latch.water.observed"
+     },
+     "text": "The flag and the tick sheet agreed even when the practice bar moved. You traced both readings to the same request."
+    },
+    {
+     "text": "Two markers may rise together because each takes its reading from one float."
     }
    ]
   }

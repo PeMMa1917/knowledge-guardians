@@ -4,8 +4,8 @@
     {"name":"James Cook","role":"Endeavour captain named in the shelfmark’s catalogue entry","detail":"The British Library files this sheet under his name with the date 1769. This establishes the catalogue’s attribution. Te Ara identifies the same shelfmark with Tupaia.","source":"HIS-DEPART-01"}
   ],
   "nka:holm-collection-fig390-a": [
-    {"name":"Kunit of Umivik","role":"Tunumiit map maker credited with the carved coast piece","detail":"Holm reports that Kunit carved the chart himself and explained its features, including how to recognize a carry between two fjords.","source":"HIS-KUNIT-HOLM"},
-    {"name":"Gustav Holm","role":"Expedition leader who received and described the carvings","detail":"Holm published the exchange and distinguished the shape of the mainland coast from the separate island piece. His paper is an expedition account of Kunit’s work.","source":"HIS-KUNIT-HOLM"},
+    {"name":"Kunit of Umivik","role":"Inuit map maker from Umivik named in the Walters label","detail":"The label credits Kunit with the carved coast piece and names the Greenland National Museum and Archives as lender.","source":"HIS-KUNIT-WALTERS"},
+    {"name":"Gustav Holm","role":"Expedition leader who received and described the carvings","detail":"Holm published the exchange and distinguished the mainland coast from the separate island piece. He reports Kunit carving and explaining the chart, including where a kayak could be carried between two fjords.","source":"HIS-KUNIT-HOLM"},
     {"name":"Hans Harmsen","role":"Greenland National Museum curator and archaeologist","detail":"In a modern account of the pieces, Harmsen emphasizes how their shapes helped one person tell another about a route and its coast.","source":"HIS-KUNIT-HARMSEN"}
   ],
   "usnm:e432083-0": [

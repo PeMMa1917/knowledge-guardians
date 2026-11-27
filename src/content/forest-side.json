@@ -1630,10 +1630,10 @@
     "flagSet": "forest.observer.method"
    },
    "where": "Fern Station, after the two Gombe records and the trail watch comparison.",
-   "use": "Open it in your Bag. Follow the field marks at Listening Trail and check two pegs in Water Commons.",
+   "use": "Open it in your Bag. Follow the field marks at Listening Trail and check two pegs in Water Commons. If you have helped Ayla set a next-watch sheet, use the same two lines in the House of Performance.",
    "equip": {
     "method": "Hold the count beside its place, time and observer. Mark a gap when the view is covered.",
-    "hint": "Look for the first-section field marks at Listening Trail, or the upper and lower peg marks in Water Commons.",
+    "hint": "Look for the first-section field marks at Listening Trail, or the upper and lower peg marks in Water Commons. At the House look for the prompt gap after setting a next-watch sheet with Ayla.",
     "art": "preserved.catalogue"
    }
   }

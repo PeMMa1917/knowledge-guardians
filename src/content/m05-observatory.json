@@ -56,7 +56,8 @@
       ],
       "aoks": [
        "NAT",
-       "MAT"
+       "MAT",
+       "LAN"
       ],
       "subjects": [
        "geography",
@@ -84,6 +85,7 @@
        "interpretation",
        "justification"
       ],
+      "framework": ["scope", "methods-and-tools"],
       "atl": [
        "research",
        "thinking"
@@ -174,6 +176,10 @@
       "subjects": [
        "geography",
        "math-ai"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
       ]
      },
      "skills": [
@@ -203,11 +209,17 @@
       ],
       "aoks": [
        "NAT",
-       "HUM"
+       "HUM",
+       "POL"
       ],
       "subjects": [
        "geography",
-       "lang-langlit"
+       "lang-langlit",
+       "global-politics"
+      ],
+      "framework": [
+       "scope",
+       "ethics"
       ]
      },
      "skills": [
@@ -963,13 +975,48 @@
   {
    "id": "coast.signal.revise",
    "speaker": "coast-signalkeeper",
-   "text": "The people at the board have seen our first copy. One has drawn a line in the margin where the new numbers ought to go. The next bell gave us two at the headland, with no fresh quay mark.",
+   "text": "The people at the board have seen our first copy. One has drawn a line in the margin where the new numbers ought to go. The next bell gave us two at the headland, with no fresh quay mark. I have one signed catch. A crew with it can attach its own dated check to the correction. The other crew can send a signed slip back for me to attach.",
    "historicalLabel": "fictional-world",
    "options": [
     {
-     "text": "Pin the new reading beside the earlier notice, with the quay entry left open.",
+     "text": "Pin the new reading beside the earlier notice, with the quay entry left open. Lend the catch to the quay cutters.",
      "next": "coast.signal.updated",
      "effects": [
+      {
+       "setFlag": "coast.correction.catch",
+       "value": "quay"
+      },
+      {
+       "setFlag": "coast.updated",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "coast.observe-again"
+       },
+       {
+        "flag": "coast.notice",
+        "eq": "signal"
+       },
+       {
+        "not": {
+         "flag": "coast.updated",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Pin the new reading at the board. Send the signed catch to the basket crews at the steps.",
+     "next": "coast.signal.updated.steps",
+     "effects": [
+      {
+       "setFlag": "coast.correction.catch",
+       "value": "steps"
+      },
       {
        "setFlag": "coast.updated",
        "value": true
@@ -1001,13 +1048,48 @@
   {
    "id": "coast.runner.revise",
    "speaker": "coast-signalkeeper",
-   "text": "The basket crews heard us at the steps first. Our runner is back. The second headland mark is two, and the quay’s second line is still missing.",
+   "text": "The basket crews heard us at the steps first. Our runner is back. The second headland mark is two, and the quay’s second line is still missing. I have one signed catch. A crew with it can attach its own dated check to the correction. The other crew can send a signed slip back for me to attach.",
    "historicalLabel": "fictional-world",
    "options": [
     {
-     "text": "Send the runner back with the new reading and leave a dated copy here.",
+     "text": "Send the runner back with the new reading and leave a dated copy here. Lend the catch to the basket crews at the steps.",
      "next": "coast.runner.updated",
      "effects": [
+      {
+       "setFlag": "coast.correction.catch",
+       "value": "steps"
+      },
+      {
+       "setFlag": "coast.updated",
+       "value": true
+      }
+     ],
+     "if": {
+      "all": [
+       {
+        "objective": "coast.observe-again"
+       },
+       {
+        "flag": "coast.notice",
+        "eq": "runner"
+       },
+       {
+        "not": {
+         "flag": "coast.updated",
+         "eq": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "text": "Send the runner back with the corrected sheet. Leave the signed catch with the quay cutters.",
+     "next": "coast.runner.updated.quay",
+     "effects": [
+      {
+       "setFlag": "coast.correction.catch",
+       "value": "quay"
+      },
       {
        "setFlag": "coast.updated",
        "value": true
@@ -1039,13 +1121,135 @@
   {
    "id": "coast.signal.updated",
    "speaker": "coast-signalkeeper",
-   "text": "The board holds both notices. Someone has circled the empty quay line so the next reader knows where we’re still waiting.",
+   "text": "The board holds both notices. The cutters can attach a dated check at the quay hook under my eye. The basket crews can ask me to attach theirs.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "coast.runner.updated",
    "speaker": "coast-signalkeeper",
-   "text": "The runner will tell the same crews that the new mark is from the headland. I’ve kept a copy at the quay so nobody has to rely on who heard it first.",
+   "text": "The runner takes the dated headland reading and the signed catch to the steps. The basket crews can add their own check there. The quay copy stays here, and I’ll attach the cutters’ signed slip if they bring it.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.signal.updated.steps",
+   "speaker": "coast-signalkeeper",
+   "text": "The board has its dated correction. I’ve lent the catch to the basket crews at the steps. They can add a check there themselves. I’ll attach the cutters’ signed slip if they bring it here.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.runner.updated.quay",
+   "speaker": "coast-signalkeeper",
+   "text": "The runner has the correction for the basket crews. The quay cutters keep the catch at their hook. They can add a check there themselves. The runner can bring me any signed reply from the steps.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.correction.quay",
+   "speaker": "narrator",
+   "text": "A cutter holds Ruan’s signed catch. The correction still has an open line for Wallfoot at the second bell. “I can clip our next reading here beside his when we have one. His reply can go beside it. Can you fit the dated blank under the catch?”",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Fit the dated blank at the cutters’ hook and leave the reading line open.",
+     "if": {
+      "all": [
+       {
+        "flag": "coast.correction.catch",
+        "eq": "quay"
+       },
+       {
+        "objective": "coast.revise"
+       },
+       {
+        "not": {
+         "flag": "coast.correction.fitted",
+         "eq": "quay"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "coast.correction.fitted",
+       "value": "quay"
+      },
+      {
+       "journal": "j.coast.correction.quay"
+      }
+     ],
+     "next": "coast.correction.quay.fitted"
+    },
+    {
+     "text": "Read the signed catch again.",
+     "if": {
+      "flag": "coast.correction.fitted",
+      "eq": "quay"
+     },
+     "next": "coast.correction.quay.fitted"
+    },
+    {
+     "text": "Leave the catch for later."
+    }
+   ]
+  },
+  {
+   "id": "coast.correction.quay.fitted",
+   "speaker": "narrator",
+   "text": "The cutters can now post a dated field check for everyone at the quay. The marked blank still waits for a second quay reading. The basket crews can bring Ruan their check in person.",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "coast.correction.steps",
+   "speaker": "narrator",
+   "text": "The basket crews’ checker turns Ruan’s signed catch toward the steps. The copy says two at Wind Peg for the second bell. Wallfoot’s second line is empty. “If our next run brings a reading, I want to pin its time here, where people can see it.”",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Fit the dated blank under the basket crews’ catch at the steps.",
+     "if": {
+      "all": [
+       {
+        "flag": "coast.correction.catch",
+        "eq": "steps"
+       },
+       {
+        "objective": "coast.revise"
+       },
+       {
+        "not": {
+         "flag": "coast.correction.fitted",
+         "eq": "steps"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "coast.correction.fitted",
+       "value": "steps"
+      },
+      {
+       "journal": "j.coast.correction.steps"
+      }
+     ],
+     "next": "coast.correction.steps.fitted"
+    },
+    {
+     "text": "Read the signed catch again.",
+     "if": {
+      "flag": "coast.correction.fitted",
+      "eq": "steps"
+     },
+     "next": "coast.correction.steps.fitted"
+    },
+    {
+     "text": "Leave the catch for later."
+    }
+   ]
+  },
+  {
+   "id": "coast.correction.steps.fitted",
+   "speaker": "narrator",
+   "text": "The checker can now pin a named, dated reading beside the notice where the crews stop. The second Wallfoot line stays open until they actually have a reading. The cutters can still leave their check with Ruan.",
    "historicalLabel": "fictional-world"
   },
   {
@@ -1737,6 +1941,16 @@
    "id": "j.coast.revise",
    "title": "The next bell",
    "text": "The quay and headland measured the same bell at different places. I sent the readings with a limited estimate, then helped Ruan publish the next headland mark with the second quay line still open."
+  },
+  {
+   "id": "j.coast.correction.quay",
+   "claimKind": "value",
+   "text": "The cutters can attach their own dated check at the quay. The basket crews still have a route through Ruan. The headland correction keeps an empty line for the next Wallfoot measurement."
+  },
+  {
+   "id": "j.coast.correction.steps",
+   "claimKind": "value",
+   "text": "The basket crews can attach their own dated check at the steps. The cutters still have a route through Ruan. The headland correction keeps an empty line for the next Wallfoot measurement."
   },
   {
    "id": "j.coast.copy",

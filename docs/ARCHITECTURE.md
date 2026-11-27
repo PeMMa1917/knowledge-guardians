@@ -91,7 +91,7 @@ There are exactly **two campaign slots**: **Continue** and **Checkpoint recovery
 
 Both slots are written in one `localStorage` key (`kg.slots`) in one write, with an FNV checksum and a revision number. If another tab changed the save, the write stops with "Save changed in another tab". The permanent record is in `kg.permanent`. Settings are in `kg.settings`.
 
-`adventureJournal.ts` records confirmed choices, quest steps, and experiences after a command runs. Earlier saves keep their notes and known quest history with their dates left open. In the Diary tab, players can download a Word document or open the browser’s print dialog to print or save an A4 PDF. Both formats use the same local snapshot of diary entries and open quests. The checkbox includes private notes, reflections, and questions in the current export. It starts unchecked.
+`adventureJournal.ts` records confirmed choices, quest steps, and experiences after a command runs. Earlier saves keep their notes and known quest history with their dates left open. Each recorded moment has one to three optional questions. Their identifiers stay attached to that exact encounter, including repeat visits. Reflections, notes in progress, and Portfolio writing from this adventure use the local Continue save. A checkpoint restores the writing saved with that checkpoint. In the Diary tab, players can download a Word document or open the browser’s print dialog to print or save an A4 PDF. Both formats use the current local journal. Player-initiated exports include private writing by default, and the player can clear the checkbox before exporting.
 
 **Schema changes:** when you change `CampaignState`, raise `CAMPAIGN_SCHEMA` and add a function to `MIGRATIONS` in `src/domain/saves.ts`. Add a test in `tests/saves.test.ts`. A save from a newer version is refused, not damaged.
 
@@ -105,6 +105,10 @@ Both slots are written in one `localStorage` key (`kg.slots`) in one write, with
 
 `src/ui/ui.ts` makes all panels in HTML over the canvas (`#ui`). HTML gives keyboard focus, screen-reader text, text scaling and high contrast. Modals trap focus. Esc closes them.
 
+`src/domain/conceptText.ts` matches the twelve TOK concept words and their plural forms at Unicode word boundaries. It preserves the original spelling and case, and supplies foreground colours for dark panels and paper. `src/ui/conceptMarkup.ts` formats new interface text with bold, underlined spans, including the text inside existing glossary buttons. It updates only changed text and skips native inputs and editable content. Captions and companion speech use the same formatter outside the main interface. Forced-colour mode retains the bold and underline. The markers are display markup, so saved text and accessible control names keep their original values.
+
+`src/ui/conceptEditor.ts` layers the same concept colours and an underline behind designated prose editors. The real field keeps its text, focus, selection, caret and scrollbar. A slightly thicker letter stroke leaves the caret spacing aligned. IME composition and operating-system forced colours use the browser's own visible text. Draft formatting performs no save or network action.
+
 ## Teacher view
 
 `teacher.html` is a second Vite entry (see `vite.config.ts`). It has no server.
@@ -112,6 +116,10 @@ Both slots are written in one `localStorage` key (`kg.slots`) in one write, with
 1. In the game, the student opens Menu, "Share with my teacher". The game makes a progress JSON file: objectives, awards, XP, moments, met concepts, ATL, subjects and areas of knowledge, open misconception signals, and **only** the portfolio entries that the student shared. Notes and the journal are not in the file.
 2. The teacher opens `teacher.html` and adds the files. `src/teacher/report.ts` (pure, tested in `tests/teacher.test.ts`) checks each file, keeps the latest file per student, and makes the class summary.
 3. The dashboard shows a weekly summary, concept, ATL, area and subject coverage, learner-profile class totals, misconception alerts (with "Not a misconception"), and a private progress list. Each student has a printable report (A4, 1.5 cm margins).
+
+An optional leaderboard is available in the game menu and in the teacher tab. The game shows private totals for today, this week, this month and the year to date. A player can choose a nickname and download a separate score file with the selected activity’s value for that period. Score files carry no player name from the save, journal, portfolio or learner profile. Rankings compare activity for one metric at a time. Equal values share a place. Missing values do not rank, while recorded zeroes are shown.
+
+Score files and withdrawal files are read only into the open tab. They never contribute to the formative reports or print views. Turning off score sharing prevents future score downloads. An older copy stops appearing in a comparison when that tab imports the newer withdrawal. Copies already held by someone else must be removed there.
 
 ## Debug hook
 

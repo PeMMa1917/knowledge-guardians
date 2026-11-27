@@ -15,7 +15,7 @@ export const TALENTS: Talent[] = [
     why: 'A good map records what you saw, and shows clearly what you have not seen yet.' },
   { id: 'pace', name: 'Steady pace', skill: 'Self-management', cost: 1, text: 'You walk a little faster.',
     why: 'Managing your time and energy is part of knowing well.' },
-  { id: 'recall', name: 'Recall', skill: 'Thinking', cost: 1, text: "In Sefa's Word Tiles, all tiles show for 3 seconds at the start.",
+  { id: 'recall', name: 'Recall', skill: 'Thinking', cost: 1, text: "At Sefa's stitching table, all slips show for 3 seconds at the start.",
     why: 'Memory is a way of knowing. It is also easy to trust too much.' },
   { id: 'fairtrade', name: 'Fair trader', skill: 'Social', cost: 2, needs: 'pace', text: "Corvan's stall takes 1 more mark off each price.",
     why: 'Trust between people is knowledge too: who has been honest with you before?' },

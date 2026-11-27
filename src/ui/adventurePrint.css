@@ -40,6 +40,8 @@
     font-size: 11pt;
     line-height: 1.5;
     overflow-wrap: anywhere;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
     orphans: 2;
     widows: 2;
   }
@@ -60,12 +62,14 @@
   .adventure-print h1 { font-size: 23pt; margin: 0 0 2mm; }
   .adventure-print h2 { font-size: 16pt; margin: 6mm 0 2mm; }
   .adventure-print h3 { font-size: 12pt; margin: 0 0 1mm; }
-  .adventure-print article { break-inside: avoid-page; margin: 0 0 4mm; }
+  .adventure-print article { margin: 0 0 4mm; }
   .adventure-print p,
   .adventure-print ul { margin: 0 0 2mm; }
+  .adventure-print :is(h1, h2, h3, p, li) { white-space: pre-wrap; }
   .adventure-print .print-details { color: #425855; font-size: 9.5pt; break-after: avoid-page; }
-  .adventure-print .print-writing { white-space: pre-wrap; }
+  .adventure-print .print-reflection { margin-inline-start: 3mm; }
+  .adventure-print .print-concept { font-weight: 700; }
   .adventure-print .diary-references li { break-inside: avoid-page; }
   .adventure-print .diary-citation { padding-inline-start: .5in; text-indent: -.5in; line-height: 2; }
-  .adventure-print .diary-citation a { color: #184e4b; text-decoration: underline; }
+  .adventure-print :is(.diary-citation, .print-encyclopedia) a { color: #184e4b; text-decoration: underline; }
 }

@@ -1,8 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { MAPS } from '../src/maps';
+import { check } from '../src/domain/rules';
 import type { MapDef } from '../src/maps/types';
 import { STAMPS } from '../src/scenes/art';
 import { artKeys, BIG_ART } from '../src/ui/illustrations';
+import { Driver } from './driver';
 
 const maps = Object.values(MAPS).filter((map) => ['WORLD-04', 'WORLD-05', 'WORLD-06', 'WORLD-07', 'WORLD-08', 'WORLD-09', 'WORLD-10', 'WORLD-11', 'WORLD-12', 'WORLD-13', 'WORLD-14', 'WORLD-15', 'WORLD-16'].includes(map.world));
 const art = new Set(artKeys());
@@ -79,6 +81,87 @@ it('gives Hesper’s return drawer and the City of Copies door separate facing t
     expect(targets.map(({ id }) => id)).toEqual([id]);
   }
 });
+
+it('keeps Market kettle stages separate from the open Price Drawers door', () => {
+  const d = new Driver();
+  d.s.flags['market.arrived'] = true;
+  d.s.inventory['item.kettle.service-card'] = 1;
+  const map = MAPS['market.square'];
+  checkFacingTarget(map, d, 'price-drawers-door', 5, 12, 5, 11, 'down');
+  checkFacingTarget(map, d, 'market-kettle-card', 6, 12, 6, 11, 'down');
+  d.s.objectivesDone.push('market.kettle.compare');
+  checkFacingTarget(map, d, 'market-kettle-plan', 6, 12, 6, 11, 'down');
+  d.s.flags['market.kettle.layout'] = 'table';
+  checkFacingTarget(map, d, 'market-kettle-table', 6, 12, 6, 11, 'down');
+});
+
+it('keeps both exhibition-packet stages separate from the open Metalworks Pattern Shop door', () => {
+  const d = new Driver();
+  d.s.objectivesDone.push('metal.arrival');
+  d.s.flags['metal.exhibit.layout'] = 'window';
+  const map = MAPS['metalworks.records'];
+  checkFacingTarget(map, d, 'metal-reference-shop', 18, 13, 18, 14, 'up');
+  checkFacingTarget(map, d, 'metal-exhibition-packet', 19, 13, 19, 14, 'up');
+  d.s.flags['metal.exhibit.carrier'] = 'local';
+  checkFacingTarget(map, d, 'metal-exhibition-packet-ready', 19, 13, 19, 14, 'up');
+});
+
+it('lets Observatory readers inspect drafts and choose a checked dispatch at separate targets', () => {
+  const d = new Driver();
+  const windows = MAPS['observatory.window-shop'];
+  d.s.objectivesDone.push('window.compare');
+  checkFacingTarget(windows, d, 'window-trial-draft', 20, 14, 20, 15, 'up');
+  checkFacingTarget(windows, d, 'window-publish', 21, 14, 21, 15, 'up');
+  d.s.flags['window.post'] = 'deck';
+  checkFacingTarget(windows, d, 'window-desk-detail', 16, 13, 16, 14, 'up');
+
+  const references = MAPS['observatory.reference-station'];
+  d.s.objectivesDone.push('refstation.globe', 'refstation.tube', 'refstation.horn');
+  checkFacingTarget(references, d, 'refstation-first-claim', 17, 14, 17, 15, 'up');
+  checkFacingTarget(references, d, 'refstation-send', 18, 14, 18, 15, 'up');
+  d.s.flags['refstation.plan'] = 'local';
+  checkFacingTarget(references, d, 'refstation-sent-local', 17, 14, 17, 15, 'up');
+});
+
+it('keeps both Emberford circular runner phases clear of the bridge and the standing gauge', () => {
+  const d = new Driver();
+  d.s.inventory['item.ember.circle-packet'] = 1;
+  d.s.flags['ember.circle.choice'] = 'runner';
+  const emberford = MAPS['aethelgard.emberford'];
+  checkFacingTarget(emberford, d, 'circlereport-receive.runner', 30, 19, 30, 18, 'down');
+  d.s.flags['ember.circle.placed'] = 'runner';
+  checkFacingTarget(emberford, d, 'circlereport-result.runner', 30, 19, 30, 18, 'down');
+});
+
+it('gives the Harbour date receiver a tap target beside Irven and the bell relay', () => {
+  const d = new Driver();
+  d.s.objectivesDone.push('sea.arrival', 'sea.finish');
+  const harbour = MAPS['sea.harbour'];
+  const irven = harbour.npcs.find((npc) => npc.id === 'peg-reader-irven');
+  expect([irven?.x, irven?.y]).toEqual([6, 8]);
+  checkFacingTarget(harbour, d, 'sea-date-market', 7, 9, 7, 8, 'down');
+});
+
+function checkFacingTarget(
+  map: MapDef, d: Driver, id: string, x: number, y: number, standX: number, standY: number, facing: 'up' | 'down',
+) {
+  const prop = map.interactables.find((entry) => entry.id === id);
+  expect([prop?.x, prop?.y], id).toEqual([x, y]);
+  expect(walkable(map)(standX, standY), id).toBe(true);
+
+  const frontX = standX * 16 + 8;
+  const frontY = standY * 16 + 12 + (facing === 'up' ? -12 : 12);
+  const visible = map.interactables.filter((entry) => check(entry.visibleIf, d.s));
+  const exactUnderFront = visible.filter((p) => frontX >= p.x * 16 && frontX <= (p.x + p.w) * 16
+    && frontY >= p.y * 16 && frontY <= (p.y + p.h) * 16 + 6);
+  expect(exactUnderFront.map((entry) => entry.id)).toEqual([id]);
+
+  const pointX = x * 16 + 8;
+  const pointY = y * 16 + 8;
+  const pointerTargets = visible.filter((p) => pointX >= p.x * 16 && pointX < (p.x + p.w) * 16
+    && pointY >= (p.y - 1) * 16 && pointY < (p.y + p.h) * 16);
+  expect(pointerTargets.map((entry) => entry.id)).toEqual([id]);
+}
 
 describe('Chapter layouts after the Nile Archive', () => {
   it.each(maps)('$name has an approach to every actor and prop, and clear arrival tiles', (map) => {

@@ -30,7 +30,7 @@ These are examples, not a measure of whether every player will find, enjoy or in
 
 | # | Story element | Adaptation and current scope | Status | Reference |
 | ---: | --- | --- | :---: | --- |
-| 11 | Dilemmas between two goods | Water allocation, the Civic timetable and the night surge show costs on both sides of a defensible choice. | ✓ | [water-story.test.ts](../tests/water-story.test.ts), [civic-story.test.ts](../tests/civic-story.test.ts), [crossings.ts](../src/domain/crossings.ts) |
+| 11 | Dilemmas between two goods | Water allocation, the Civic timetable and the night surge show costs on both sides of a defensible choice. Emberford’s last loose swatch makes the cost visible to the next reader. | ✓ | [water-story.test.ts](../tests/water-story.test.ts), [civic-story.test.ts](../tests/civic-story.test.ts), [crossings.ts](../src/domain/crossings.ts), [pigment-sample.test.ts](../tests/pigment-sample.test.ts) |
 | 12 | Non-violent paths | The whole game. Showdowns are arguments; Fray creatures are errors you name. | ✓ | [AGENTS.md](../AGENTS.md), [showdown.ts](../src/domain/showdown.ts) |
 | 13 | Fail forward | No game over. Lost Showdowns branch; crossings have a way to leave it, and the world goes on. | ✓ | [playthrough.test.ts](../tests/playthrough.test.ts), [crossings.test.ts](../tests/crossings.test.ts) |
 | 14 | Tone choices | Rook's first talk; hearth talks (joke, hard question, kind word, plain words). | ✓ | [rook.json](../src/content/rook.json), [hearth.ts](../src/domain/hearth.ts) |

@@ -293,7 +293,7 @@
    "id": "nexus.rest.pair-read",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "The clerk keeps the four lending marks and gives the landing group’s request its own place. Anyone who looks after the table tomorrow can see both what a rest did here and how many groups still need one elsewhere.",
+   "text": "The clerk keeps the four lending marks and gives the landing group’s request its own place. Anyone who looks after the table tomorrow can see both what a rest did here and how many groups still need one elsewhere. The clerk calls the arrangement pragmatic.",
    "effects": [
     {
      "setFlag": "nexus.rest.used",
@@ -421,7 +421,7 @@
    "id": "nexus.rest.mobile-read",
    "speaker": "narrator",
    "historicalLabel": "fictional-world",
-   "text": "The clerk puts a slip for the waiting pair next to the loan counters. A new loan can show that a rest went out. The slip keeps the comparison they still want in sight.",
+   "text": "The clerk puts a slip for the waiting pair next to the loan counters. A new loan can show that a rest went out. The slip keeps the comparison they still want in sight. The clerk calls the arrangement pragmatic.",
    "effects": [
     {
      "setFlag": "nexus.rest.used",

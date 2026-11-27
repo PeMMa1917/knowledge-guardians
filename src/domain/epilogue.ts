@@ -32,7 +32,9 @@ export const VIGNETTES: Vignette[] = [
   { who: 'Hesper', if: f('loyalty.hesper', 'sign'), text: 'The forge sign says: "The salt quench of Imre and the Lyles." Buyers ask about Imre. Hesper tells them. She has started to enjoy it.' },
   { who: 'Hesper', if: f('loyalty.hesper', 'private'), text: "Every Lyle apprentice learns Imre's name on their first day. The sign stays the same. Hesper looks at it sometimes." },
   { who: 'Hesper', if: f('loyalty.hesper', 'find'), text: "A letter came back from the east: Imre's granddaughter. She is coming to Emberford in spring. Hesper has cleaned the forge twice." },
-  { who: 'Rook', if: { flagSet: 'loyalty.rook' }, text: 'Rook went back to every well they ever stamped. Eleven so far. At each one, they test in the dry month and post the result, with their own name.' },
+  { who: 'Rook', if: f('loyalty.rook', 'public'), text: 'Rook went back to every well they ever stamped. Eleven so far. At each one, they test in the dry month and post the result, with their own name.' },
+  { who: 'Rook', if: f('loyalty.rook', 'quiet'), text: 'The seed-row crew clips an unsigned warning to the old well post each dry month. Rook brings the fresh date slips at dawn. The old seal holds the blank ones flat on the keeper’s desk.' },
+  { who: 'Rook', if: f('loyalty.rook', 'family'), text: 'Rook brings the next dry-month reading to the family at their kitchen table. The mother asks for a warning by the well and keeps the written account of that first visit in her drawer. Rook brings a second cup each time they come.' },
   { who: 'Rook', if: { all: [{ flag: 'rook.joined', eq: true }, { not: { flagSet: 'loyalty.rook' } }] }, text: 'Rook still carries the old Seal stamp in a pocket. They have not decided what to do with it. They have stopped using it.' },
   // Places and small faces (chapter choices and crossings).
   { who: 'Hollis', if: { flagSet: 'cross.lamb' }, text: 'Hollis keeps a little notebook of flood-post readings now, twice a day. The lamb is a sheep. It still stands on stones.' },

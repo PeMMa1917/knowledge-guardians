@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { activePerspective } from '../src/domain/perspectives';
-import { canClaimSpecimen, carriedSpecimenCount, carriesSpecimen, hasSpecimen, ownsSpecimen,
+import { canClaimSpecimen, carriedSpecimenCount, carriesSpecimen, findCollectedSpecimens, hasSpecimen, ownsSpecimen,
   SPECIMEN_BASE, SPECIMEN_CAPACITY, SPECIMEN_CASES, SPECIMEN_PAGE, specimenDisplay, specimenItemId, specimenReadingFlag, specimenToolId } from '../src/domain/specimenGear';
 import { check } from '../src/domain/rules';
 import { NUMBER_LEAF_RETURNS } from '../src/maps/numberLeaves';
@@ -65,6 +65,64 @@ describe('The collection and field gear', () => {
     expect(NUMBER_LEAF_RETURNS.filter((prop) => check(prop.visibleIf, d.s))).toEqual([]);
     expect(() => d.run({ type: 'SetSpecimenReading', exhibit: record.id, reading: 'use' })).toThrow('Bring the object to its stand');
     expect(d.s.flags[specimenReadingFlag(record.specimen.key)]).toBe('source');
+  });
+
+  it('locates only earned objects, including credited names, in the satchel or their actual shelf', () => {
+    const d = new Driver();
+    const records = d.e.pack.exhibits.filter(hasSpecimen);
+    const jarboe = records.find(({ specimen }) => specimen.key === 'nmah:pg.000762')!;
+    const samples = records.filter((record) => record !== jarboe).slice(0, SPECIMEN_CAPACITY + SPECIMEN_CASES);
+    for (const record of samples) {
+      d.s.objectivesDone.push(record.specimen.objective);
+      d.run({ type: 'InspectExhibit', exhibit: record.id });
+      d.run({ type: 'ClaimSpecimen', exhibit: record.id });
+    }
+    d.run({ type: 'InspectExhibit', exhibit: jarboe.id });
+    const before = specimenDisplay(d.e.pack, d.s);
+    expect(findCollectedSpecimens(before, 'PG.000762')).toEqual([]);
+    expect(findCollectedSpecimens(before, samples[0].specimen.accession)).toContainEqual({ record: samples[0], page: null });
+    d.s.objectivesDone.push(jarboe.specimen.objective);
+    d.run({ type: 'ClaimSpecimen', exhibit: jarboe.id });
+    const collected = specimenDisplay(d.e.pack, d.s);
+    const targetPage = Math.floor(collected.stored.indexOf(jarboe) / SPECIMEN_CASES);
+    expect(findCollectedSpecimens(collected, 'jÁrboe pg000762')).toEqual([{ record: jarboe, page: targetPage }]);
+    expect(findCollectedSpecimens(collected, jarboe.specimen.institution)).toContainEqual({ record: jarboe, page: targetPage });
+    expect(findCollectedSpecimens(collected, '   ')).toEqual([]);
+    expect(findCollectedSpecimens(collected, '.')).toEqual([]);
+    d.s.mapId = SPECIMEN_BASE;
+    d.run({ type: 'SetFlag', flag: SPECIMEN_PAGE, value: targetPage });
+    expect(specimenDisplay(d.e.pack, d.s).cases).toContain(jarboe);
+  });
+
+  it('indexes each separately credited contributor when their name is absent from the title', () => {
+    const d = new Driver();
+    const greenBook = d.e.pack.exhibits.filter(hasSpecimen).find(({ specimen }) =>
+      specimen.people?.some(({ name }) => name === 'James A. Jackson'))!;
+    d.s.inventory[specimenItemId(greenBook.specimen.key)] = 1;
+    expect(findCollectedSpecimens(specimenDisplay(d.e.pack, d.s), 'jackson Green-book'))
+      .toEqual([{ record: greenBook, page: 0 }]);
+  });
+
+  it('finds earned early objects by the specific contribution recorded for each person', () => {
+    const d = new Driver();
+    const people = [
+      ['smg:1949-174/2', 'Georg Bíró', 'Collaborator on the ink'],
+      ['smg:1949-174/2', 'Miles Martin Pen Company Limited', 'Manufacturer of this pen'],
+      ['smg:a606881', 'Anna Bertha Ludwig', 'Subject of the exposure'],
+      ['loc:52002339', 'Johann Gutenberg', 'Printer named in the catalogue'],
+      ['cma:1914.680', 'Amenemope', 'Vizier named on the paint box'],
+    ];
+    for (const [key, name, role] of people) {
+      const exhibit = d.e.pack.exhibits.filter(hasSpecimen).find(({ specimen }) => specimen.key === key)!;
+      expect(exhibit.specimen.people).toContainEqual(expect.objectContaining({ name, role }));
+      if (!d.s.inventory[specimenItemId(key)]) {
+        expect(findCollectedSpecimens(specimenDisplay(d.e.pack, d.s), name)).toEqual([]);
+        d.s.objectivesDone.push(exhibit.specimen.objective);
+        d.run({ type: 'InspectExhibit', exhibit: exhibit.id });
+        d.run({ type: 'ClaimSpecimen', exhibit: exhibit.id });
+      }
+      expect(findCollectedSpecimens(specimenDisplay(d.e.pack, d.s), name).map(({ record }) => record.id)).toContain(exhibit.id);
+    }
   });
 
   it('uses matching pages for the visible cases and the satchel hooks', () => {

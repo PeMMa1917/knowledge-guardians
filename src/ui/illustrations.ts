@@ -1,3 +1,5 @@
+import { FOURTH_CORNER_ART } from './fourthCornerArt';
+import { BLUE_TAIL_ART } from './blueTailArt';
 /**
  * Original procedural pixel art, drawn in code (no external files).
  * Used for exhibits, icons, the fairy guide and inspection pictures.
@@ -47,6 +49,8 @@ function pedestal(g: Ctx, x: number, y: number, w: number) {
 }
 
 const DRAW: Record<string, [number, number, (g: Ctx) => void]> = {
+  ...FOURTH_CORNER_ART,
+  ...BLUE_TAIL_ART,
   'collection-stand': [16, 24, (g) => {
     pedestal(g, 1, 14, 14);
     R(g, '#66868b', 2, 2, 12, 12);
@@ -638,7 +642,7 @@ DRAW['tea-table'] = [16, 24, (g) => { R(g, '#5b3b22', 2, 17, 2, 7); R(g, '#5b3b2
 DRAW['rain-stake'] = [16, 24, (g) => { R(g, '#5b3b22', 7, 10, 2, 14); R(g, '#c98d60', 4, 6, 8, 6); R(g, '#9fd0ff', 5, 8, 6, 3); R(g, '#3b2a1a', 4, 12, 8, 1); for (let i = 0; i < 3; i++) R(g, '#3b2a1a', 11, 7 + i * 2, 1, 1); R(g, '#4a7a3a', 3, 22, 10, 2); }];
 DRAW['plumb-mark'] = [16, 24, (g) => { R(g, '#8b8f99', 2, 2, 12, 22); R(g, '#6f737d', 3, 3, 10, 20); R(g, '#4a4d55', 5, 3, 1, 20); R(g, '#e8e2d0', 9, 3, 1, 14); R(g, '#c9a24a', 8, 17, 3, 3); R(g, '#2a2440', 9, 5, 3, 1); }];
 DRAW['flood-post'] = [16, 24, (g) => { R(g, '#6b4a2a', 6, 3, 4, 21); R(g, '#8a5a30', 7, 3, 2, 21); R(g, '#2a2440', 5, 12, 6, 1); R(g, '#d8c79a', 6, 6, 4, 3); R(g, '#9a8a6a', 7, 7, 1, 1); R(g, '#2b6f9a', 2, 21, 12, 3); R(g, '#9fd0ff', 3, 21, 4, 1); }];
-// Sefa's word tiles: a small table with face-down tiles, two turned up.
+// Sefa's stitching table with two work-slip halves turned up.
 DRAW['tile-table'] = [16, 24, (g) => {
   R(g, '#5b3b22', 2, 17, 1, 7); R(g, '#5b3b22', 13, 17, 1, 7); R(g, '#8a5a30', 0, 13, 16, 4); R(g, '#a87445', 0, 13, 16, 1);
   for (let i = 0; i < 6; i++) R(g, i === 1 || i === 4 ? '#efe1bd' : '#3b3355', 1 + (i % 3) * 5, 7 + Math.floor(i / 3) * 3, 4, 2);
@@ -1826,6 +1830,38 @@ function threeLibraryVolumes(g: Ctx) {
   R(g, '#9b7469', 34, 17, 4, 1);
   R(g, '#9b7469', 34, 19, 4, 1);
 }
+// The same swatch shape survives only in the viewing tray. The sealed window
+// has one notch, and the R13 sleeve and tray show the later piece's two notches.
+function pigmentSampleStation(g: CanvasRenderingContext2D, view: 'window' | 'sleeve' | 'tray' | 'report' | 'labels'): void {
+  pedestal(g, 1, 15, 22);
+  R(g, '#3b2d38', 2, 4, 20, 12);
+  R(g, view === 'window' ? '#73958c' : '#8f775c', 3, 5, 18, 10);
+  R(g, '#362d3f', 4, 6, 16, 8);
+  if (view === 'report' || view === 'labels') {
+    paper(g, 5, 7, 6, 6);
+    paper(g, 13, 7, 6, 6);
+    R(g, '#836353', 6, 9, 3, 1);
+    R(g, '#514763', 14, 9, 3, 1);
+    if (view === 'report') R(g, '#d2bc8f', 6, 11, 4, 1);
+    return;
+  }
+  R(g, '#b6a188', 5, 7, 14, 6);
+  R(g, '#8d6595', 6, 8, 12, 4);
+  R(g, '#ae83ae', 7, 8, 9, 1);
+  R(g, '#362d3f', 8, 11, 2, 2);
+  if (view !== 'window') R(g, '#362d3f', 14, 11, 2, 2);
+  if (view === 'window') {
+    R(g, '#a0b9a1', 5, 6, 10, 1);
+    R(g, '#d8c78d', 18, 12, 2, 2);
+  } else if (view === 'sleeve') R(g, '#d8c78d', 17, 7, 3, 3);
+}
+
+DRAW['pigment-sample.window'] = [24, 24, (g) => pigmentSampleStation(g, 'window')];
+DRAW['pigment-sample.sleeve'] = [24, 24, (g) => pigmentSampleStation(g, 'sleeve')];
+DRAW['pigment-sample.tray'] = [24, 24, (g) => pigmentSampleStation(g, 'tray')];
+DRAW['pigment-sample.report'] = [24, 24, (g) => pigmentSampleStation(g, 'report')];
+DRAW['pigment-sample.labels'] = [24, 24, (g) => pigmentSampleStation(g, 'labels')];
+
 DRAW['same-red.exhibit'] = [44, 30, threeLibraryVolumes];
 DRAW['big.same-red.exhibit'] = [96, 64, (g) => {
   g.save();

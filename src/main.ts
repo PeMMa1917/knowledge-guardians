@@ -5,7 +5,9 @@
 import '@fontsource/lexend/300.css';
 import '@fontsource/lexend/400.css';
 import '@fontsource/lexend/600.css';
+import '@fontsource/lexend/700.css';
 import './ui/styles.css';
+import './ui/conceptMarkup.css';
 import Phaser from 'phaser';
 import { ctx } from './app/context';
 import { GameController } from './app/controller';
@@ -14,6 +16,8 @@ import { setupCaptions } from './app/captions';
 import { BootScene } from './scenes/BootScene';
 import { WorldScene } from './scenes/WorldScene';
 import { UI } from './ui/ui';
+import { observeConceptText } from './ui/conceptMarkup';
+import { flushJournalWriting } from './ui/journalWriting';
 
 ctx.settings = loadSettings();
 applySettingsToDocument(ctx.settings);
@@ -28,7 +32,9 @@ function startWorld(): void {
   else game.scene.start('world', {});
 }
 
-const ui = new UI(document.getElementById('ui')!, () => {
+const uiRoot = document.getElementById('ui')!;
+observeConceptText(uiRoot);
+const ui = new UI(uiRoot, () => {
   if (booted) startWorld(); else pendingStart = true;
 });
 ctx.ui = ui;
@@ -72,11 +78,24 @@ game.events.once('boot-complete', () => {
 
 ui.showTitle();
 
-// Save a suspend state when the tab is hidden. A browser may still close
-// before this finishes, so this is a convenience, not a guarantee (spec 24.1).
+// A reload can fire pagehide before or after visibilitychange. Save once for
+// either order, and start a new cycle if the player returns to the page.
+let handledExitSave = false;
+function saveOnExit(includeAdventure: boolean): void {
+  if (handledExitSave || !ctx.world || !ctx.controller.state) return;
+  const label = 'Auto-save when leaving';
+  if (flushJournalWriting(ctx.controller, label) !== null) handledExitSave = true;
+  else if (includeAdventure) {
+    handledExitSave = true;
+    ctx.controller.suspend(label);
+  }
+}
 document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'hidden' && ctx.world && ctx.controller.state) ctx.controller.suspend('Auto-save when leaving');
+  if (document.visibilityState === 'hidden') saveOnExit(true);
+  else handledExitSave = false;
 });
+window.addEventListener('pagehide', () => saveOnExit(false));
+window.addEventListener('pageshow', () => { handledExitSave = false; });
 
 // The Guardian's Ledger: count active play time (input in the last 2 minutes, tab visible, in the world).
 for (const ev of ['keydown', 'pointerdown', 'wheel'] as const) window.addEventListener(ev, () => ctx.controller.noteInput(), { passive: true });
