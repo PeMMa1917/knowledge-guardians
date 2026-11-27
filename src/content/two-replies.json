@@ -1074,6 +1074,23 @@
      "text": "My mother's triangle is still my triangle. Choosing it did not make it less true. People who meet under the same three trees for fifty years have found something, even if someone else could have chosen other trees."
     }
    ]
+  },
+  {
+   "id": "water.mozi.judged",
+   "after": {
+    "flagSet": "thinker.mozi.judged"
+   },
+   "heading": "Two views on Mozi's three tests",
+   "replies": [
+    {
+     "speaker": "water-keeper",
+     "text": "I like his tests. The runnel told me more in two mornings than the saying told me in twenty years. If one person on the channel saves four buckets, I will walk it myself."
+    },
+    {
+     "speaker": "water-scribe",
+     "text": "The tests are good, but look who wrote the ledgers. Keepers. The crews who lost their water never wrote a line in them. A test of the past is only as wide as the people the past let speak."
+    }
+   ]
   }
  ]
 }

@@ -239,6 +239,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/threeTrees.ts`, `src/content/three-trees.json`, `src/ui/treesPanel.ts`, `src/maps/forest.ts`, `tests/three-trees.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
+### Mozi at the Old Weir, the first thinker to meet in the world (X-012, X-015)
+
+**What.** After the drought choice, Mozi waits at the Old Weir (chapter 11). Lumen first says that he is the Nexus's reconstruction, with his lines written for the game. Mozi asks the player to test a saying that the whole yard repeats: "Open the gate before the morning bell in a drought, and you waste the water." The player uses his three tests: the drought ledgers (what the past found), the crews' bench (what ordinary people saw and heard) and Omi's trial runnel (what happens in use). Then the player tells Mozi what the tests show. There are three answers, and each gets its own reply from Mozi. None is marked wrong. Omi and Sena then reply (X-008): Omi trusts the runnel, and Sena asks who was allowed to write the ledgers. Meeting Mozi adds the pragmatic and consequences views to the journal.
+
+**Why.** Mika asked that students meet real thinkers as people who give quests (X-015), and that the views have names (X-012). The three Mohist tests are a clear, old method of testing a claim. The quest shows that a claim many people repeat can be tested, and that the test can narrow it ("it holds when nobody watches the channel") instead of only keeping or dropping it. The source is the Stanford Encyclopedia of Philosophy entry on Mohism.
+
+**Where.** `src/content/thinker-mozi.json`, `src/maps/water.ts`, a new entry in `src/content/two-replies.json`, `tests/thinker-mozi.test.ts`.
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.
@@ -247,7 +255,7 @@ These decisions need more content work. They will be done chapter by chapter, wi
 | --- | --- |
 | X-005 Difficult real history | Plan each case (for example the Nanking massacre, Nat Turner's revolt, the Lewis and Clark expedition and the Blackfeet, Columbus) with content notes, documented testimony and reliable sources. |
 | X-006 Indigenous knowledge | Weave knowledge from separate Indigenous peoples into the chapters, from sources made by the peoples themselves. |
-| X-012, X-015 Thinkers in the world | Add thinkers as people the student meets in the chapters, each with a quest. The advisor call and the Views tab are ready for them. |
+| X-012, X-015 Thinkers in the world | Mozi is the first (chapter 11). Add more thinkers as people the student meets, each with a quest. |
 | X-007 More trials | Add more restartable trial sections in later chapters, each with its own idea. |
 | X-008 More replies | Every chapter now has two-reply moments (59 in all). Add more where a chapter has other key choices. |
 | X-001 Leaderboard in the hosted build | Connect the opt-in leaderboard to the hosted build when accounts exist. |

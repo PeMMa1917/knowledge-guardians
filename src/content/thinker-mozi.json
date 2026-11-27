@@ -1,0 +1,619 @@
+{
+ "characters": [
+  {
+   "id": "mozi",
+   "name": "Mozi",
+   "role": "A thinker from the state of Lu or Song (about 470 to 391 BCE), as the Nexus reconstructs him",
+   "sprite": "villager-2",
+   "mode": "historical",
+   "talk": [
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "thinker.mozi.quest",
+        "eq": true
+       },
+       {
+        "flag": "thinker.mozi.test.past",
+        "eq": true
+       },
+       {
+        "flag": "thinker.mozi.test.people",
+        "eq": true
+       },
+       {
+        "flag": "thinker.mozi.test.use",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "thinker.mozi.judged"
+        }
+       }
+      ]
+     },
+     "node": "thinker.mozi.judge"
+    },
+    {
+     "if": {
+      "flagSet": "thinker.mozi.judged"
+     },
+     "node": "thinker.mozi.after"
+    },
+    {
+     "if": {
+      "flag": "thinker.mozi.quest",
+      "eq": true
+     },
+     "node": "thinker.mozi.wait"
+    },
+    {
+     "node": "thinker.mozi.intro"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "thinker.mozi.intro",
+   "speaker": "lumen",
+   "historicalLabel": "fictional-world",
+   "claimKind": "interpretation",
+   "text": "Lumen glows softly. 'This is the Nexus's reconstruction of Mozi, a thinker who lived about 2,400 years ago. His words here are written for the game. His real ideas come from the Mohist writings, and the journal names where to read about them.'",
+   "options": [
+    {
+     "text": "Listen to Mozi.",
+     "next": "thinker.mozi.tests"
+    },
+    {
+     "text": "Come back later."
+    }
+   ]
+  },
+  {
+   "id": "thinker.mozi.tests",
+   "speaker": "mozi",
+   "historicalLabel": "reconstruction",
+   "claimKind": "interpretation",
+   "text": "Everyone in this yard says it: open the gate before the morning bell in a drought, and you waste the water. Many people say it. Saying is not testing. I put every claim to three tests. What did people in the past find when they did it? What have ordinary people seen and heard with their own eyes and ears? And what happens when you put it into use, and who gets the benefit?",
+   "options": [
+    {
+     "text": "Put the saying to Mozi's three tests.",
+     "next": "thinker.mozi.go",
+     "if": {
+      "not": {
+       "flag": "thinker.mozi.quest",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "thinker.mozi.met",
+       "value": true
+      },
+      {
+       "setFlag": "view.pragmatic.met",
+       "value": true
+      },
+      {
+       "setFlag": "view.consequences.met",
+       "value": true
+      },
+      {
+       "setFlag": "thinker.mozi.quest",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Not now."
+    }
+   ]
+  },
+  {
+   "id": "thinker.mozi.go",
+   "speaker": "mozi",
+   "historicalLabel": "reconstruction",
+   "text": "Good. The drought ledgers are on the shelf by the old house. The crews sit on the bench by the far trees. Omi keeps a trial runnel near the east path. Come back when all three have spoken."
+  },
+  {
+   "id": "thinker.mozi.wait",
+   "speaker": "mozi",
+   "historicalLabel": "reconstruction",
+   "text": "Three tests: the ledger shelf for the past, the crews' bench for what people saw and heard, the trial runnel for use. One test alone can fool you."
+  },
+  {
+   "id": "thinker.mozi.judge",
+   "speaker": "mozi",
+   "historicalLabel": "reconstruction",
+   "claimKind": "interpretation",
+   "text": "You have the ledgers, the crews and the runnel. So tell me. What do the three tests show about the saying?",
+   "options": [
+    {
+     "text": "The saying holds only when nobody watches the channels. Early water with a watcher is not wasted.",
+     "next": "thinker.mozi.reply.narrow",
+     "if": {
+      "all": [
+       {
+        "flag": "thinker.mozi.quest",
+        "eq": true
+       },
+       {
+        "flag": "thinker.mozi.test.past",
+        "eq": true
+       },
+       {
+        "flag": "thinker.mozi.test.people",
+        "eq": true
+       },
+       {
+        "flag": "thinker.mozi.test.use",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "thinker.mozi.judged"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "thinker.mozi.judged",
+       "value": "narrow"
+      }
+     ]
+    },
+    {
+     "text": "The saying is right. Keep the gate shut until the bell.",
+     "next": "thinker.mozi.reply.keep",
+     "if": {
+      "all": [
+       {
+        "flag": "thinker.mozi.quest",
+        "eq": true
+       },
+       {
+        "flag": "thinker.mozi.test.past",
+        "eq": true
+       },
+       {
+        "flag": "thinker.mozi.test.people",
+        "eq": true
+       },
+       {
+        "flag": "thinker.mozi.test.use",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "thinker.mozi.judged"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "thinker.mozi.judged",
+       "value": "keep"
+      }
+     ]
+    },
+    {
+     "text": "The tests do not agree everywhere. The yard should not use the saying until it tests more.",
+     "next": "thinker.mozi.reply.wait",
+     "if": {
+      "all": [
+       {
+        "flag": "thinker.mozi.quest",
+        "eq": true
+       },
+       {
+        "flag": "thinker.mozi.test.past",
+        "eq": true
+       },
+       {
+        "flag": "thinker.mozi.test.people",
+        "eq": true
+       },
+       {
+        "flag": "thinker.mozi.test.use",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "thinker.mozi.judged"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "thinker.mozi.judged",
+       "value": "wait"
+      }
+     ]
+    },
+    {
+     "text": "I need to think about it first."
+    }
+   ]
+  },
+  {
+   "id": "thinker.mozi.reply.narrow",
+   "speaker": "mozi",
+   "historicalLabel": "reconstruction",
+   "text": "You kept the saying and wrote its condition beside it. Now count who benefits. The far fields get water in the cool hours, and one person on the channel loses sleep. Ask that person before you call it the best rule."
+  },
+  {
+   "id": "thinker.mozi.reply.keep",
+   "speaker": "mozi",
+   "historicalLabel": "reconstruction",
+   "text": "A safe rule has real benefit, and it is easy to keep. But count the far fields. They lose the cool hours. Your ledgers and your runnel both showed a way to keep that benefit. If you keep the old rule, tell them why."
+  },
+  {
+   "id": "thinker.mozi.reply.wait",
+   "speaker": "mozi",
+   "historicalLabel": "reconstruction",
+   "text": "Caution is a fair answer when tests disagree. But in a drought the gate must open some time. A rule with its condition written beside it may serve the yard better than no rule. What more test would change your mind?"
+  },
+  {
+   "id": "thinker.mozi.after",
+   "speaker": "mozi",
+   "historicalLabel": "reconstruction",
+   "text": "A saying that many people repeat can still be tested. Take the three tests with you. They work on claims far from any weir."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH11-T01",
+   "world": "WORLD-12",
+   "title": "Three Tests at the Weir",
+   "knowledgeQuestion": "Is a claim that everyone repeats more likely to be true, or only more likely to be heard?",
+   "stake": "If the saying is wrong, the far fields lose the cool morning hours in a drought. If it is right, opening early wastes water nobody can spare.",
+   "available": {
+    "flagSet": "water.response"
+   },
+   "objectives": [
+    {
+     "id": "thinker.mozi.meet",
+     "title": "Hear what Mozi asks of the yard's saying.",
+     "essential": false,
+     "done": {
+      "flag": "thinker.mozi.quest",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "justification",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT"
+      ],
+      "subjects": [
+       "history",
+       "ess"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "understand",
+       "fink": "application",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "thinker.mozi.past",
+     "title": "Read what the drought ledgers say about early opening.",
+     "essential": false,
+     "done": {
+      "flag": "thinker.mozi.test.past",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT"
+      ],
+      "subjects": [
+       "history",
+       "geography"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "objective": "thinker.mozi.meet"
+     }
+    },
+    {
+     "id": "thinker.mozi.people",
+     "title": "Hear what the crews have seen and heard.",
+     "essential": false,
+     "done": {
+      "flag": "thinker.mozi.test.people",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "perspective"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT"
+      ],
+      "subjects": [
+       "geography",
+       "ess"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "objective": "thinker.mozi.meet"
+     }
+    },
+    {
+     "id": "thinker.mozi.use",
+     "title": "Watch the saying put into use at the trial runnel.",
+     "essential": false,
+     "done": {
+      "flag": "thinker.mozi.test.use",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "explanation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "MAT"
+      ],
+      "subjects": [
+       "ess",
+       "biology",
+       "math-ai"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "objective": "thinker.mozi.meet"
+     }
+    },
+    {
+     "id": "thinker.mozi.judge",
+     "title": "Tell Mozi what the three tests show.",
+     "essential": false,
+     "done": {
+      "flagSet": "thinker.mozi.judged"
+     },
+     "weave": {
+      "concepts": [
+       "justification",
+       "certainty",
+       "responsibility",
+       "values"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HUM",
+       "NAT",
+       "POL"
+      ],
+      "subjects": [
+       "history",
+       "ess",
+       "global-politics"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "objective": "thinker.mozi.meet"
+     },
+     "onComplete": [
+      {
+       "journal": "j.thinker.mozi"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "hint.thinker.mozi.meet.1",
+   "objective": "thinker.mozi.meet",
+   "depth": 1,
+   "text": "Mozi waits near the old house when the gate choice is made."
+  },
+  {
+   "id": "hint.thinker.mozi.meet.2",
+   "objective": "thinker.mozi.meet",
+   "depth": 2,
+   "text": "He asks about a saying that the whole yard repeats."
+  },
+  {
+   "id": "hint.thinker.mozi.meet.3",
+   "objective": "thinker.mozi.meet",
+   "depth": 3,
+   "text": "Listen to his three tests."
+  },
+  {
+   "id": "hint.thinker.mozi.meet.4",
+   "objective": "thinker.mozi.meet",
+   "depth": 4,
+   "text": "Talk to Mozi and choose to put the saying to his tests."
+  },
+  {
+   "id": "hint.thinker.mozi.past.1",
+   "objective": "thinker.mozi.past",
+   "depth": 1,
+   "text": "The first test is what people in the past found."
+  },
+  {
+   "id": "hint.thinker.mozi.past.2",
+   "objective": "thinker.mozi.past",
+   "depth": 2,
+   "text": "Old drought ledgers are kept on a shelf."
+  },
+  {
+   "id": "hint.thinker.mozi.past.3",
+   "objective": "thinker.mozi.past",
+   "depth": 3,
+   "text": "The shelf is west of the old house, near the top of the yard."
+  },
+  {
+   "id": "hint.thinker.mozi.past.4",
+   "objective": "thinker.mozi.past",
+   "depth": 4,
+   "text": "Read the ledger shelf. Look at which summers lost water and who was on the channel."
+  },
+  {
+   "id": "hint.thinker.mozi.people.1",
+   "objective": "thinker.mozi.people",
+   "depth": 1,
+   "text": "The second test is what ordinary people have seen and heard."
+  },
+  {
+   "id": "hint.thinker.mozi.people.2",
+   "objective": "thinker.mozi.people",
+   "depth": 2,
+   "text": "The field crews rest on a bench."
+  },
+  {
+   "id": "hint.thinker.mozi.people.3",
+   "objective": "thinker.mozi.people",
+   "depth": 3,
+   "text": "The bench is by the trees at the north-east of the yard."
+  },
+  {
+   "id": "hint.thinker.mozi.people.4",
+   "objective": "thinker.mozi.people",
+   "depth": 4,
+   "text": "Read the crews' bench. The two crews do not tell the same story."
+  },
+  {
+   "id": "hint.thinker.mozi.use.1",
+   "objective": "thinker.mozi.use",
+   "depth": 1,
+   "text": "The third test is what happens in use."
+  },
+  {
+   "id": "hint.thinker.mozi.use.2",
+   "objective": "thinker.mozi.use",
+   "depth": 2,
+   "text": "Omi's crew runs a small trial before the bell."
+  },
+  {
+   "id": "hint.thinker.mozi.use.3",
+   "objective": "thinker.mozi.use",
+   "depth": 3,
+   "text": "The trial runnel is east of the crews' bench."
+  },
+  {
+   "id": "hint.thinker.mozi.use.4",
+   "objective": "thinker.mozi.use",
+   "depth": 4,
+   "text": "Read the trial runnel. Compare the count with a watcher and without one."
+  },
+  {
+   "id": "hint.thinker.mozi.judge.1",
+   "objective": "thinker.mozi.judge",
+   "depth": 1,
+   "text": "Go back to Mozi when all three tests have spoken."
+  },
+  {
+   "id": "hint.thinker.mozi.judge.2",
+   "objective": "thinker.mozi.judge",
+   "depth": 2,
+   "text": "There is no one right answer. Each one gets a reply from Mozi."
+  },
+  {
+   "id": "hint.thinker.mozi.judge.3",
+   "objective": "thinker.mozi.judge",
+   "depth": 3,
+   "text": "Think about the condition under which the saying holds."
+  },
+  {
+   "id": "hint.thinker.mozi.judge.4",
+   "objective": "thinker.mozi.judge",
+   "depth": 4,
+   "text": "Talk to Mozi and choose what the tests show."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.thinker.mozi",
+   "kind": "quest",
+   "title": "Three Tests at the Weir",
+   "text": "I met the Nexus's reconstruction of Mozi. He tests a claim three ways: what the past found, what ordinary people saw and heard, and what happens in use. I tested a saying everyone repeats and decided how far it holds. To read about his real ideas: Stanford Encyclopedia of Philosophy, Mohism (plato.stanford.edu/entries/mohism)."
+  }
+ ]
+}

@@ -19,10 +19,10 @@ Each item has the decision, then **How to build it**: notes that keep the decisi
 | X-009 | Translations | English only for now. | rule |
 | X-010 | Volume | Keep all missions. No single main path that leads to a win. | rule |
 | X-011 | Lumen when stuck | A setting, on by default. Lumen offers, the student clicks to hear it. | done |
-| X-012 | Ethics and truth theories | Characters argue from each view and say its name. The journal names and tracks each view. Students meet the thinkers who held each view and get quests from them. | started (views, advisor call, journal tab) |
+| X-012 | Ethics and truth theories | Characters argue from each view and say its name. The journal names and tracks each view. Students meet the thinkers who held each view and get quests from them. | started (views, advisor call, journal tab; Mozi's quest at the Old Weir) |
 | X-013 | "EE practice" in titles | In-world titles. EE shows only in the teacher map and the journal. | done |
 | X-014 | Knotted ropes at the East Well | Change to notched tally sticks. | done |
-| X-015 | Real philosophers | In dialogue and as people to meet. Lumen can call one as an advisor when the student is stuck. | started (12 thinkers as advisors) |
+| X-015 | Real philosophers | In dialogue and as people to meet. Lumen can call one as an advisor when the student is stuck. | started (12 thinkers as advisors; Mozi met in chapter 11) |
 | X-016 | Code licence | No licence, as now. | rule |
 | X-017 | Credit lesson authors | A credits page names where each idea came from, without its wording. Everything is paraphrased and adapted to the world. | done |
 | X-018 | Research data | Yes: real data shows what works. | done (off until the hosted build and school consent) |
