@@ -1,0 +1,110 @@
+[
+  {
+    "number": 22,
+    "name": "Test the reach of a word like “every”",
+    "uses": [
+      {
+        "objective": "hearing.missing-tooth.checked1",
+        "action": "Listen to a claim about every tested tooth. Hold the jig setting fixed across two marked spares, then challenge the word “every” with the spare that held.",
+        "styles": [
+          "challenger"
+        ],
+        "modes": [
+          "analytical",
+          "reflective"
+        ],
+        "game": 171,
+        "story": 27
+      },
+      {
+        "objective": "hearing.last-cup.checked1",
+        "action": "Use two dated tokens against the claim that an equal queue place always gives both buyers access.",
+        "styles": [
+          "helper"
+        ],
+        "modes": [
+          "social",
+          "reflective"
+        ],
+        "game": 180,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 23,
+    "name": "Find what changes when a comparison uses a different base",
+    "uses": [
+      {
+        "objective": "hearing.last-cup.checked0",
+        "action": "Pay the same coin from four and ten, compare the original purse with its remainder and challenge the claim of equal proportional cost.",
+        "styles": [
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "reflective"
+        ],
+        "game": 171,
+        "story": 27
+      }
+    ]
+  },
+  {
+    "number": 31,
+    "name": "Separate what the evidence establishes from what the town decides",
+    "uses": [
+      {
+        "objective": "hearing.empty-chair.checked0",
+        "action": "Fit the family stub, date the sister’s arrival and challenge a rule that treats a family name as eyewitness evidence. The policy for who can enter stays open.",
+        "styles": [
+          "helper"
+        ],
+        "modes": [
+          "social",
+          "reflective"
+        ],
+        "game": 180,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 100,
+    "name": "Check a claim about a group against the way cases were selected",
+    "uses": [
+      {
+        "objective": "hearing.missing-tooth.checked0",
+        "action": "Follow two stamped ends past a common pin. Challenge the inference that a selected tray represents one delivery.",
+        "styles": [
+          "explorer"
+        ],
+        "modes": [
+          "spatial",
+          "reflective"
+        ],
+        "game": 267,
+        "story": 27
+      }
+    ]
+  },
+  {
+    "number": 682,
+    "name": "Repair an opening phrase whose subject has gone missing",
+    "uses": [
+      {
+        "objective": "hearing.dropped-verb.checked0",
+        "action": "Set two different grammatical subjects beneath the opening phrase. Compare who now counts with the tally and challenge the assumption that only the collector changed.",
+        "styles": [
+          "maker"
+        ],
+        "modes": [
+          "linguistic",
+          "reflective"
+        ],
+        "game": 171,
+        "story": 27
+      }
+    ]
+  }
+]

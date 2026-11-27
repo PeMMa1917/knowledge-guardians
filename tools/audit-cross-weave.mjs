@@ -141,6 +141,55 @@ const copiesEvidenceInvestigations = [
 // Each row identifies a complete action and the intersection its trace actually supports.
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
+  {
+    objective:'hearing.empty-chair.amended',map:'preserved.archive',target:'agate-vale',
+    source:'tests/town-hearings.test.ts',anchor:'retains the two source editions in all eight repairs',
+    action:'Bring a market token decision to the family door. Offer a return hook or a witness bell and see how a visitor can enter a place but still have no opportunity to speak.',
+    dimensions:['area:HIS','area:HUM','concept:evidence','concept:power','framework:scope','framework:perspectives'],
+    elements:['game:180','story:114'],
+    reasoning:[{mode:'analogical',basis:'Being issued a ticket differs from being served. The distinction transfers to being admitted and being heard, although the gate and people differ.'}],
+    comparison:{concepts:['evidence','power'],framework:['scope','perspectives'],areas:[
+      {id:'HIS',method:'Date a visit and identify which part of the bedside account can be corroborated by a second person.',limit:'A family roll cannot establish that a relative witnessed the night.'},
+      {id:'HUM',method:'Track the practical effect of an access rule on two visitors with different schedules.',limit:'Counting admissions cannot establish that each visitor got a hearing.'}],
+      connection:'Fit a return hook or offer a bell. The visitor who returns can tell the keeper which part of the record needs a second witness.'},
+  },
+  {
+    objective:'hearing.missing-tooth.amended',map:'metalworks.yard',target:'agate-vale',
+    source:'tests/town-hearings.test.ts',anchor:'retains the two source editions in all eight repairs',
+    action:'Carry the distinction between a bedside key and a witnessed event to a jig. Split delivery provenance from the pull and put a second person in a position to sign or repeat it.',
+    dimensions:['area:HIS','area:NAT','concept:justification','concept:certainty','framework:scope','framework:methods-and-tools'],
+    elements:['game:267','story:114'],
+    reasoning:[{mode:'inductive',basis:'A marked spare that held informs the next inspection. The observation of a single spare does not license a rate for eighteen unseen teeth.'}],
+    comparison:{concepts:['justification','certainty'],framework:['scope','methods-and-tools'],areas:[
+      {id:'HIS',method:'Trace the distinct stamped ends through the delivery chain, as the dated key is traced to a named visitor.',limit:'A delivery history identifies the part to inspect without establishing its material behaviour.'},
+      {id:'NAT',method:'Compare the two teeth on the same pull, then let the late shift examine the setting.',limit:'One spare holding a pull cannot predict whether every tooth in another delivery will hold.'}],
+      connection:'Keep the dated tag with its owner and separately sign or repeat the pull. A follow-up can identify what was tested and which setting produced the reading.'},
+  },
+  {
+    objective:'hearing.dropped-verb.amended',map:'copies.press',target:'agate-vale',
+    source:'tests/town-hearings.test.ts',anchor:'retains the two source editions in all eight repairs',
+    action:'Use the wheel crews’ traced delivery to separate two jobs in a printed sentence. Set the collecting address below the counting docket or compare how two desks read the proof.',
+    dimensions:['area:ART','area:NAT','concept:interpretation','concept:explanation','framework:methods-and-tools','framework:perspectives'],
+    elements:['game:267','story:114'],
+    reasoning:[{mode:'causal',basis:'Changing the subject changes the assignment of the opening phrase on the proof. Returned time slips show whether changing the wording was enough to coordinate a collection.'}],
+    comparison:{concepts:['interpretation','explanation'],framework:['methods-and-tools','perspectives'],areas:[
+      {id:'NAT',method:'Trace the stamped delivery and test a named tooth at a defined setting before attributing a result to it.',limit:'Co-location in a tray cannot establish common origin or the same mechanical response.'},
+      {id:'ART',method:'Move the subject in a printer’s forme and compare two intended readers’ responses to the words.',limit:'A formally clear subject cannot establish that its two readers took the same action.'}],
+      connection:'Separately trace counting and collecting through the public proof. A named address helps a runner reach the next desk, and two independent replies can reveal a difference in dates.'},
+  },
+  {
+    objective:'hearing.last-cup.amended',map:'market.square',target:'agate-vale',
+    source:'tests/town-hearings.test.ts',anchor:'retains the two source editions in all eight repairs',
+    action:'Compare issued and used tickets or invite holders to explain an unused ticket privately. A buyer may leave without giving a reason, leaving the counted gap intact.',
+    dimensions:['area:MAT','area:HUM','concept:objectivity','concept:values','framework:scope','framework:ethics'],
+    elements:['game:180','story:114'],
+    reasoning:[{mode:'abductive',basis:'An unused ticket is compatible with a ferry shift and several other causes. An account can distinguish a particular case, while a refusal keeps the cause open.'},
+      {mode:'pragmatic',basis:'Separate strings show where to look without identifying buyers. A voluntary private account can reveal a particular obstacle but cannot describe people who declined.'}],
+    comparison:{concepts:['objectivity','values'],framework:['scope','ethics'],areas:[
+      {id:'MAT',method:'Compare the extra coin to four and ten, and distinguish counts of issued and used tickets.',limit:'Ratios require a named denominator. A difference in the totals carries no explanation of its cause.'},
+      {id:'HUM',method:'Compare the two workers’ schedules and seek a voluntary account of an unused ticket.',limit:'Privacy and the people who return limit the group about whom any explanation can be made.'}],
+      connection:'Two counting strings preserve the gap. At the quiet desk an individual can help explain one case or decline with their ticket intact.'},
+  },
   ...coatProofs,
   {
     objective:'whistle.fern.sent',map:'forest.station',target:'whistle.fern.table',

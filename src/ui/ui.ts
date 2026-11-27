@@ -2787,17 +2787,28 @@ export class UI implements UIApi {
     // Touch screens cannot show hover titles, so move explanations start visible there (phone pass).
     let explain = (() => { try { return window.matchMedia('(pointer: coarse)').matches; } catch { return false; } })();
     const opp = c.pack.characters.find((x) => x.id === rec.opponent);
-    const move = (m: ShowdownMove) => { c.dispatch({ type: 'ShowdownMove', move: m }); this.sfx('sfx.click'); render(); };
-    const pick = (label: string, opts: { v: string; t: string }[], go: (v: string) => void) => {
+    const cardTitles = new Map(c.pack.cards.map(card => [card.id, card.title]));
+    const move = (m: ShowdownMove) => {
+      const control = document.activeElement as HTMLElement | null;
+      const label = control?.getAttribute('aria-label') ?? control?.getAttribute('title');
+      c.dispatch({ type: 'ShowdownMove', move: m });
+      this.sfx('sfx.click');
+      render();
+      const next = label && Array.from(box.querySelectorAll<HTMLElement>('select,button')).find(el =>
+        el.getAttribute('aria-label') === label || el.getAttribute('title') === label);
+      const target = next || box.querySelector<HTMLElement>('[data-autofocus],select');
+      target?.focus();
+    };
+    const pick = (label: string, opts: { v: string; t: string }[], go: (v: string) => void, clearChoice?: () => void) => {
       const sel = h('select', { 'aria-label': label }, h('option', { value: '' }, `${label}…`), ...opts.map((o) => h('option', { value: o.v }, o.t))) as HTMLSelectElement;
-      sel.addEventListener('change', () => { if (sel.value) go(sel.value); });
+      sel.addEventListener('change', () => { if (sel.value) go(sel.value); else clearChoice?.(); });
       return sel;
     };
     const render = () => {
       const sd = c.state.showdown as ShowdownState;
       clear(box);
       const myClaim = rec.playerClaims.find((x) => x.id === sd.claim);
-      const cards = c.state.cards.map((cid) => ({ v: cid, t: c.pack.cards.find((x) => x.id === cid)?.title ?? cid }));
+      const cards = c.state.cards.map((cid) => ({ v: cid, t: cardTitles.get(cid) ?? cid }));
       box.append(this.closeBtn(), h('h2', {}, rec.title), h('p', { class: 'fine' }, `${rec.place}. No timer. ${sd.relaxed ? 'Zen mode: the crowd waits as long as you like. ' : ''}Each move says why it worked or not.`),
         h('div', { class: 'crowd', role: 'img', 'aria-label': `Crowd trust: you ${sd.trust.player}, ${opp?.name} ${sd.trust.opponent}` },
           h('span', {}, 'You'), h('span', { class: 'bar' }, h('i', { style: { width: `${sd.trust.player}%` } })), h('span', {}, String(sd.trust.player)),
@@ -2836,9 +2847,12 @@ export class UI implements UIApi {
         pick('Support with a card', cards.filter((x) => !sd.used.includes(x.v)), (v) => move({ move: 'support', card: v })),
         h('span', { class: 'move-pair' },
           pick('Challenge a link', rec.opponentClaim.links.filter((l) => !sd.cracked.includes(l.id)).map((l) => ({ v: l.id, t: l.text })), (v) => {
-            const s2 = h('div', { class: 'row' }, h('span', {}, 'With which card?'), pick('Card', cards, (cv) => move({ move: 'challenge', link: v, card: cv })));
-            box.querySelector('.move-pair')!.append(s2);
-          })),
+            const pair = box.querySelector('.move-pair')!;
+            pair.querySelector('.row')?.remove();
+            const card = pick('Card', cards, (cv) => move({ move: 'challenge', link: v, card: cv }));
+            pair.append(h('div', { class: 'row' }, h('span', {}, 'With which card?'), card));
+            card.focus();
+          }, () => box.querySelector('.move-pair .row')?.remove())),
         pick('Counterexample', cards, (v) => move({ move: 'counter', card: v })),
         wit.length ? pick('Call a witness', wit.map((w) => ({ v: w.id, t: w.name })), (v) => move({ move: 'witness', witness: v })) : '',
         mv('qualify', 'Qualify my claim', { move: 'qualify' }),

@@ -20,7 +20,7 @@ describe('voice sheets (C-005)', () => {
     const ids = new Set(pack.characters.map((c) => c.id));
     for (const [id, block] of sheets) {
       expect(ids.has(id), id).toBe(true);
-      for (const label of ['Believes', 'Worries', 'Speaks', 'Why']) expect(block, `${id} ${label}`).toContain(`**${label}:**`);
+      for (const label of ['Believes', 'Worries', 'Speaks', 'Why']) expect(block, `${id} ${label}`).toMatch(new RegExp("^[-*] \\*\\*" + label + ":?\\*\\*\\s+\\S", "m"));
     }
   });
 });

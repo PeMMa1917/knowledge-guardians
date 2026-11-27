@@ -999,6 +999,9 @@ export class Engine {
           const r = playMove(rec, s.showdown, cmd.move, s);
           s = structuredClone(s);
           s.showdown = r.state;
+          if (cmd.move.move === 'challenge' && r.state.cracked.includes(cmd.move.link)) {
+            s.flags[`sd.${rec.id}.checked.${cmd.move.link}`] = true;
+          }
           r.signals.forEach((x) => out.signals.push(x));
           if (r.state.outcome) {
             const o = rec.outcomes[r.state.outcome];

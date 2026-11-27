@@ -16,6 +16,32 @@
         ],
         "game": 234,
         "story": 91
+      },
+      {
+        "objective": "hearing.dropped-verb.checked1",
+        "action": "Read the two returns and use the opposite plans to test whether both desks reading the notice was sufficient for the transfer.",
+        "styles": [
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "reflective"
+        ],
+        "game": 267,
+        "story": 109
+      },
+      {
+        "objective": "hearing.empty-chair.checked1",
+        "action": "Trace the unlisted carer across a key loan and a repaired knot. Use the second source to test whether a family name is necessary to give a checkable account.",
+        "styles": [
+          "helper"
+        ],
+        "modes": [
+          "social",
+          "reflective"
+        ],
+        "game": 180,
+        "story": 95
       }
     ]
   },

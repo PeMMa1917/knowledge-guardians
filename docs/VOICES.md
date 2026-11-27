@@ -496,3 +496,10 @@ At these registers Ostrom asks who was able to enter a mark in each book. Pearl 
 #### The Hollow Archivist under Elsbet’s study
 
 The mark on its face identifies who kept the box. It has taken that duty as its name for ten years. Its first words come from stamp pads and labels. The first story it volunteers is about a woman it knew who worked nights. When a visitor moves the second chair it notices the uneven leg. If the Guardian takes the lamp upstairs, it asks somebody to describe the weather. Each request lets it keep a job and gives another person a reason to return. [The six stations](../src/content/vaultNight.ts)
+
+### Agate Vale (`agate-vale`)
+
+- **Believes** a person at a door deserves a chair before anybody asks them to justify their presence. She also wants the line to move and has written rules that kept people waiting.
+- **Worries** about Pev, her father. A family fed from his soup pot for eleven winters. He still has no box to tick on the bedside register. Agate ruled the column herself.
+- **Speaks** in the language of chair repairs, wet labels and receipts. Give her a joint to mend while she talks. When a thing she took for granted fails, she can name who taught her to look again.
+- **Why** the Gilded Seal pays her to set up public hearings. A porter, a runner and a buyer can each put an account in her repair book. Whether she can use what they sent depends on what the next town does with its own chair.

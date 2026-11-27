@@ -1,3 +1,4 @@
+import { hearingPictures } from './hearingPictures';
 import { UNDERPAN_ART } from './underpanArt';
 import { SPARE_MOON_ART } from './spareMoonArt';
 import { FOURTH_CORNER_ART } from './fourthCornerArt';
@@ -629,6 +630,20 @@ DRAW['workbench'] = [16, 24, (g) => {
   R(g, '#c98d60', 2, 9, 3, 4); R(g, '#8b8f99', 7, 6, 1, 7); R(g, '#4a4d55', 6, 12, 3, 1); R(g, '#b98d55', 11, 8, 1, 5); R(g, '#2a2440', 11, 12, 1, 1);
 }];
 // The Undercroft: a fallacy seal (a barrier of gold-violet runes) and the Hollow Archivist (dust and pages, a KEEPER label for a face).
+for (const [id, blocks] of Object.entries(hearingPictures)) {
+  DRAW['hearing.'+id] = [16,24,g=>{
+    for (const [x,y,width,height,colour] of blocks) R(g,colour,x,y,width,height);
+  }];
+}
+// Agate's beech chair, with a wool repair over the tall right-hand joint.
+DRAW['hearing-chair'] = [16,24,(g)=>{
+  R(g,'#553321',3,3,2,19); R(g,'#553321',11,2,2,19);
+  R(g,'#a66a39',3,3,10,2); R(g,'#cf9654',4,5,8,1);
+  R(g,'#905833',4,8,8,2); R(g,'#453727',2,13,12,4);
+  R(g,'#c6945c',3,13,10,2); R(g,'#966537',2,15,12,2);
+  R(g,'#6c432a',2,17,2,6); R(g,'#573621',12,17,2,6);
+  R(g,'#ab6463',10,7,4,2); R(g,'#e3aaa0',11,9,2,1);
+}];
 DRAW['whistle.notched'] = [16,16,(g)=>{
   R(g,'#644333',2,7,12,6);R(g,'#e4b956',1,6,12,4);R(g,'#ffe9a3',2,6,9,1);
   R(g,'#43354a',5,6,2,2);R(g,'#8e6951',11,8,4,4);R(g,'#dac17a',12,9,2,1);

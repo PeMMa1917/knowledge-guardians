@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 27 November • Who gets the hearing chair?
+
+A chair mender for the Gilded Seal has written a rule that leaves her own father outside a hearing. In the Cold Store, the Metalworks, the City of Copies and the Market, players can bring together two named witnesses who saw different things. A second visit lets the next town use an earlier decision. A returned milk token can change who gets a second hearing. Following two delivery tags can help a runner untangle two promises printed in the same sentence. [Four hearings](src/content/hearings/index.ts) · [Witness and cross-town repair checks](tests/town-hearings.test.ts)
+
 ## 27 November • A visible path under every lamp
 
 On Firefox’s 2D renderer, a light wash could cover the entire floor, including the Guardian and other characters. The game now keeps the map visible when the renderer substitutes ordinary paint for a multiply blend. Slow frames also finish the arrival fade according to elapsed time. [Visual test](tools/chapter-lights-journey.mjs)
@@ -25,7 +29,7 @@ The teacher dashboard opens a printable map of all 15 chapters. Each chapter has
 
 In the Nile pay room, the porter who kept the boards dry can finish the same shift with three counters or an empty bowl. At the Metalworks, the Guardian can try all four bells with the apprentice’s tooth and the porter’s help. In the City of Copies, the workers get to read what the Guardian put in print. Opening a public proof at the wheel uncovers the workers’ stair. Opening a folded letter in the pay room uncovers the letter chute. Each worker keeps the edition they opened, even if Bayette prints a different one tomorrow. [Three registers](src/content/millShift.ts) · [Playable routes](tests/mill-shift.test.ts)
 
-The current skill review has 562 of 1,200 definitions linked to 1,254 authored actions or uses, including 350 skills in multiple worlds. The cross-world audit found 22 explicit comparisons of how two areas establish and limit the same claim. Of the 10,729,248 world, learning dimension and RPG element intersections, two meet the ten-action target and 787 have one to nine documented actions. [Skill evidence](docs/TOK_MICRO_SKILLS.md) · [Coverage audit](docs/CROSS_WEAVE_AUDIT.md)
+The current skill review has 567 of 1,200 definitions linked to 1,262 authored actions or uses, including 352 skills in multiple worlds. The cross-world audit found 26 explicit comparisons of how two areas establish and limit the same claim. Of the 10,729,248 world, learning dimension and RPG element intersections, two meet the ten-action target and 840 have one to nine documented actions. [Skill evidence](docs/TOK_MICRO_SKILLS.md) · [Coverage audit](docs/CROSS_WEAVE_AUDIT.md)
 
 ## 27 November • Opening the game on the school connection
 

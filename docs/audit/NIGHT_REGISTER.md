@@ -182,3 +182,16 @@ The player first fits the bank walker’s tracing, then covers the rehearsal-roo
 ## Seeing the floor under the lanterns
 
 A Firefox screenshot showed a single opaque colour behind the HUD even while the player could walk between two working doors. On a Canvas renderer that offers ordinary paint for Phaser’s multiply setting, the game now uses a translucent wash. The fade on entering or leaving a room also follows elapsed time. The visual journey places two contrasting chalk marks at walking height, samples the finished camera image underneath the lighting and removes the marks. The earlier Firefox build returned identical pixels for both marks. Firefox 146 and WebKit 26 passed the new check across the sixteen settings in the production build. [Lighting and pixel checks](../../tools/chapter-lights-journey.mjs)
+
+## Four hearings and a chair
+
+The Cold Store’s family stamp admits Iren. Her boat arrived after the night the register asks her to describe. The visitor outside the door can sign for a repaired knot and give a different account. At the Metalworks a single pinhole joins two deliveries. In the City of Copies the word a player sets into a sentence changes who is expected to count and collect. In the Market an extra coin and a longer wait affect two households differently. The local chair can move after any hearing. Its new keeper sends a reply that gives the following town a third voice. [Hearings](../../src/content/hearings/index.ts) · [Rules](../../tests/town-hearings.test.ts)
+
+| Perspective | What a player can try | Concern and response |
+| --- | --- | --- |
+| A player who dislikes debates | Inspect the purse, two coats or tooth jig and walk on. | Without both readings the witness has no account to sign. The hearing can still take place and a return visit can reopen it. |
+| A learner acquiring English | Move the grammatical subject, then turn out the two readers’ pockets. | A correct-sounding sentence could leave both desks waiting. The returned slips show their incompatible plans. Each mark and spoken line has text. |
+| History, science and TOK teachers | Ask which part of the night key a witness can verify, then test which part of a delivery the lever reading covers. | A well-attended hearing can still endorse a weak claim. The practice record distinguishes an actual challenge supported by the relevant card from a vote or a speech. |
+| Family and citizenship reviewers | Give the visitor a return stub, a low bell, a quiet desk or an unsigned option. | Even a privacy screen can reveal who asked for help. The first recipient notices where the queue is visible and moves the chair. |
+| Keyboard, touch and UI reviewers | Change the challenged link before playing a card, call two witnesses, then leave the meeting. | An earlier control appended another card selector each time the target changed. The chooser now follows the latest selection, clears on cancellation and receives keyboard focus. |
+| Writers and exploratory players | Revisit Agate after someone has used her chair. A worker can reveal a second stamp or ask to retry a lever. | Returning to an earlier town can change that town’s choice. The travelling repair preserves the source and local editions the two keepers used. |

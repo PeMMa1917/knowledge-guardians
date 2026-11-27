@@ -106,3 +106,7 @@ The History on Trial cards’ contrast between structural and intentional accoun
 ## Choosing who evaluates a record
 
 In *Assessing and Certifying Indigenous Tracking Expertise and Skills*, Liebenberg and colleagues describe local trackers nominating evaluators and deciding whether to call an outside evaluator. The Fern Station draws on that distinction. The people who examined each impression choose what they can sign. The player may invite a visitor to compare the strips at their tray. Liri, her colleagues, the animal print and the later ferry arrangement belong to the game world. [Report](https://unesdoc.unesco.org/ark:/48223/pf0000382276) · [Play evidence](../../tests/whistle-watch.test.ts)
+
+## Setting the subject back in the sentence
+
+The supplied title-unpacking materials invite learners to change a term and follow what happens to the claim. Lark lets a Guardian move the grammatical subject in a metal chase. Assigning collection to the lending desk also assigns the counting to it. Mina’s two coat pockets keep the readers’ independent replies, so the audience can challenge a statement about the wording or one about what the readers understood. Putting this beside the wheel crew’s two delivery tags can change the next collection run. [Source activity](https://docs.google.com/presentation/d/1OXm6BzxsBjXB2yrqh5LLAQ7FCOMyPtN5/edit) · [The press and its two readers](../../src/content/hearings/copies.ts)

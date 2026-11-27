@@ -1,3 +1,4 @@
+import { addTownHearings } from './hearings';
 import {addWhistleWatch} from './whistleWatch';
 import {addVaultMissions} from './vaultMissions';
 import {reviewChapterPractices} from './chapterPractice';
@@ -252,6 +253,7 @@ export function buildPack(): ContentPack {
   addMillMissions(content);
   addVaultMissions(content);
   addWhistleWatch(content);
+  addTownHearings(content);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);
