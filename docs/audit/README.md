@@ -37,7 +37,8 @@ Play, engagement and enjoyable learning stay the main goal. Other views can stil
 | --- | --- | --- |
 | Whole game | [PERSONAS.md](PERSONAS.md) | C-001, C-002, C-003 done; others planned |
 | 1 Emberford and the Nexus | [CH01](chapters/CH01.md) | C-026, C-027 done; polish list C-021 started |
-| 2 to 15 | next | next |
+| 2 The Nile archive | [CH02](chapters/CH02.md) | C-028 game-wide; plain titles; 4 two-reply moments |
+| 3 to 15 | next | next |
 
 ## How to use this audit (for developers)
 

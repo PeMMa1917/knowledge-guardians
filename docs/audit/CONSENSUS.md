@@ -33,5 +33,6 @@ When you change code for a fix, update its status and the "Where" column.
 | C-025 | The journal's 20 tabs go into 4 groups: Story, Evidence, Me, Help. | K1, I1, A5 | planned | `src/ui/ui.ts` |
 | C-026 | Lumen's first line separates facts that can be checked from judgements that belong to the player. | D2, C3, B1 | done | `src/content/m01-nexus.json` |
 | C-027 | EE practice step titles use world words. The EE tag stays in the weave data for teachers. | A5, A8, E1, B5 | done (14 titles) | `src/content/ee-trails.json` |
+| C-028 | Every knowledge question is a real question, not an instruction. A test checks it. | B1, C1, A4 | done (22 missions fixed) | `earlier-viewing.json`, `star-paths.json`, `tests/audit-rules.test.ts` |
 
 Mika's decisions on the contested list (X-001 to X-019) add more work. See [DECISIONS.md](DECISIONS.md). Two are done: X-013 (EE mission and board titles are in-world) and X-014 (the East Well uses notched tally sticks).
