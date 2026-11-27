@@ -48,6 +48,7 @@ import memories from './memories.json';
 import chapterVoices from './chapter-voices.json';
 import rook from './rook.json';
 import harrowmere from './harrowmere.json';
+import lowerRail from './lower-rail.json';
 import vesper from './vesper.json';
 import blueTail from './blue-tail.json';
 import vesperTrust from './vesper-trust.json';
@@ -185,15 +186,21 @@ import leafFrame from './leaf-frame.json';
 import spareSeat from './spare-seat.json';
 import lastTurn from './last-turn.json';
 import stripBend from './strip-bend.json';
+import { addPublicationReturns, publicationReturnContent } from './publicationReturns';
 import { catchmentContent } from './catchment';
 import { facingCueContent } from './facingCue';
 import witnessClip from './witness-clip.json';
 import threadBend from './thread-bend.json';
 import sillBridge from './sill-bridge.json';
+import { underpanContent } from './underpan';
+import { firstClapContent } from './firstClap';
+import { neighbourDialogues } from '../domain/neighbours';
+import { spareMoonContent } from './spareMoon';
+import publicVoices from './nexus-public-voices.json';
 
 export const CONTENT_VERSION = 5;
 
-const parts: any[] = [sources, common, blueTail, m01, fourthCorner, openingPractice, doorFold, shelfRoom, linkedNotes, drawerCases, nexusWayfinding, nexusReadingRests, nexusDateRibbon, nexusPrint, nexusPacking, nexusViewer, nexusHandle, nexusLostGauge, vindolanda, m02, emberfordSide, lanternfair, backbill, welcome, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, stiltfrog, fray, rumour, rumourWell, clueboard, memories, chapterVoices, quarters, dive, story, nile, scenes, coldFirstBell, preservedRecords, preserved, preservedScaleStrip, reconstruction, copper, preservedExhibition, observatory, opticsScreen, observatoryInland, observatoryArchive, waterLoop, departureStrip, ferryKettle, transferFaces, lintelFold, seamWitness, forest, forestAccounts, forestSide, observationSheet, forestReader, sharedCarry, metalworks, metalworksSide, metalRim, benchDebate, fittingViews, copies, copiesSide, copiesMargin, sameRed, citationRail, cartographers, cartographersSide, paperLanding, performance, performanceFrames, filmCuts, market, marketBasket, pairedAccessions, rook, water, latchCheck, harrowmere, vesper, vesperTrust, civic, civicAppeal, civicIncentive, serviceBoundary, voices, elsbetReel, island, islandMovement, islandSkiff, council, afterCouncil, handoverGallery];
+const parts: any[] = [sources, common, blueTail, m01, fourthCorner, openingPractice, doorFold, shelfRoom, linkedNotes, drawerCases, nexusWayfinding, nexusReadingRests, nexusDateRibbon, nexusPrint, nexusPacking, nexusViewer, nexusHandle, nexusLostGauge, vindolanda, m02, emberfordSide, lanternfair, backbill, welcome, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, stiltfrog, fray, rumour, rumourWell, clueboard, memories, chapterVoices, quarters, dive, story, nile, scenes, coldFirstBell, preservedRecords, preserved, preservedScaleStrip, reconstruction, copper, preservedExhibition, observatory, opticsScreen, observatoryInland, observatoryArchive, waterLoop, departureStrip, ferryKettle, transferFaces, lintelFold, seamWitness, forest, forestAccounts, forestSide, observationSheet, forestReader, sharedCarry, metalworks, metalworksSide, metalRim, benchDebate, fittingViews, copies, copiesSide, copiesMargin, sameRed, citationRail, cartographers, cartographersSide, paperLanding, performance, performanceFrames, filmCuts, market, marketBasket, pairedAccessions, rook, water, latchCheck, harrowmere, lowerRail, vesper, vesperTrust, civic, civicAppeal, civicIncentive, serviceBoundary, voices, elsbetReel, island, islandMovement, islandSkiff, council, afterCouncil, handoverGallery];
 const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'missions', 'hints', 'criteria', 'awards', 'items', 'offers', 'journal',
   'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks', 'glossary', 'questions', 'origins', 'alcoves', 'puzzles', 'skillDomains', 'skills', 'lorelings', 'lorelingAtlas', 'fray', 'clueBoards', 'memories', 'keepsakes', 'divePrompts', 'diveItems', 'knots', 'clues', 'keepsakeTalks', 'chronicle', 'secrets', 'communities'] as const;
 
@@ -208,7 +215,7 @@ export function buildPack(): ContentPack {
     ferryPackingContent, workScheduleContent, bearingBayContent, jigShopContent, earlierViewsContent, curtainContent,
     coastDetector, coastBreeze, bridgeProof, memoryCart, dispatchStatsContent, prismViewerContent, priceDrawersContent, warmRoomContent,
     mapAlignmentContent, scriptRailContent, pigmentWindow, pigmentSample, correspondenceRoomContent, porterPace, leafFrame, forestNarrators, spareSeat, lastTurn, twoCalls, twoShutters, openPlace, catchmentContent, facingCueContent, witnessClip, stripBend, sillBridge,
-    threadBend, circularReport];
+    threadBend, circularReport, publicVoices, publicationReturnContent, spareMoonContent, firstClapContent, underpanContent, { dialogue: neighbourDialogues() }];
   for (const k of keys) pack[k] = [...parts, ...collectionRooms].flatMap((p) => p[k] ?? []);
   const content = pack as ContentPack;
   content.questions.push(...QUESTION_ROUTES.map(({ question }) => question));
@@ -222,6 +229,7 @@ export function buildPack(): ContentPack {
   }));
   addSpecimenPeople(content);
   installEarlierViews(content);
+  addPublicationReturns(content);
   specimenEquipment(content);
   addMicroSkills(content);
   return content;

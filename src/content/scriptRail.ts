@@ -158,7 +158,7 @@ export const scriptRailContent = {
       sources: [entry.source, ...(object.related ? [`${entry.source}-RELATED`] : [])],
       specimen: { key: object.key, institution: object.institution, accession: object.accession, source: entry.source,
         objective: entry.objective, pixelAsset: object.pixelAsset, revisit: { ...SCRIPT_RAIL_RETURN, method: entry.revisit[0],
-          hint: 'Equip the working copy and bring it to the folded index at the City of Copies Record Room.' } },
+          hint: 'Equip the object from this case and bring it to the folded index at the City of Copies Record Room.' } },
     };
   }),
   characters: Object.values(SCRIPT_DETAILS).map(({ actor, name, role }) => ({

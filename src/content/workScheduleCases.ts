@@ -139,7 +139,7 @@ export const workScheduleContent = {
       altText: object.altText, sources: [record.source], grantsCard: record.card,
       specimen: { key: object.key, institution: object.institution, accession: object.accession,
         source: record.source, objective: record.objective, pixelAsset: object.pixelAsset,
-        revisit: { ...SCHEDULE_REVISIT, method: record.revisit[0], hint: 'Equip the working copy and take it to the late-proof shelf in the City of Copies Record Room.' } },
+        revisit: { ...SCHEDULE_REVISIT, method: record.revisit[0], hint: 'Equip the object and take it to the late-proof shelf in the City of Copies Record Room.' } },
     };
   }),
   cards: SCHEDULE_CASES.map(({ source, card, object }) => ({

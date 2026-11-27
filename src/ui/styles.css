@@ -1103,3 +1103,7 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .ladder-table { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.6rem; }
 .ladder-table h4, .ladder-fifth h4 { margin: 0.2rem 0; }
 .ladder input[type=text] { width: 6rem; text-transform: uppercase; letter-spacing: 0.1em; font-size: 1.05rem; }
+
+.moon-beats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .4rem; list-style: none; padding: 0; }
+.moon-beats li { padding: .45rem .15rem; text-align: center; border: 1px solid currentColor; border-radius: .35rem; }
+.moon-music .actions { display: flex; flex-wrap: wrap; gap: .4rem; }

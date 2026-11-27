@@ -1,3 +1,4 @@
+import { MOON_TUNE, moonPerformance, validMoonTune } from './spareMoonMusic';
 import { runNileTrial, nileDelivery, type NileRoad, type NileDelivery } from './nileModel';
 import { bendEffects, type BendAction } from './stripBend';
 import { forestWatch, type ForestWindow } from './forestWatch';
@@ -28,7 +29,7 @@ import { moveSharedCarry, type CarrySite, type CarryStop } from './sharedCarry';
  * (spec 22.2). A button never writes XP or state directly.
  */
 import { trustOf, rankOf } from './communities';
-import { WARES, priceFor } from './shop';
+import { WARES, priceFor, wareAvailable } from './shop';
 import { TALENTS, cannotLearn, hasTalent } from './talents';
 import { GATHER_YIELD, RECIPES, RESOURCES, cannotCraft } from './craft';
 import { cannotRead, readingOf } from './readings';
@@ -56,7 +57,7 @@ import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
 import { addQuestionWay, checkAwards, grantCredit } from './permanent';
 import { evaluateLabel, type LabelResult } from './label';
 import { canClaimSpecimen, carriedSpecimenCount, carryFlag, hasSpecimen, ownsSpecimen, SPECIMEN_BASE, SPECIMEN_CAPACITY,
-  specimenEquipped, specimenItemId, specimenReadingFlag, specimenToolId } from './specimenGear';
+  specimenEquipped, specimenItemId, specimenReadingFlag, specimenToolId, swapSpecimenPlaces } from './specimenGear';
 import { playMove, startShowdown, type ShowdownMove } from './showdown';
 import { tryLock, type LockResult } from './lock';
 import { compareWithBlade, forgeStep, newForge, type ForgeAction } from './forge';
@@ -69,6 +70,7 @@ import { biographyReadFlag, isHistoricalBiography } from './historicalEncounters
 const DIALOGUE_FALLBACK = 999;
 
 export type Command =
+  | { type: 'PlayMoonTune'; tune: string }
   | IncentiveAction
   | BendAction
   | SkiffAction
@@ -140,6 +142,7 @@ export type Command =
   | { type: 'InspectExhibit'; exhibit: string }
   | { type: 'ReadBiography'; card: string }
   | { type: 'ClaimSpecimen'; exhibit: string }
+  | { type: 'SwapSpecimenPlaces'; first: string; second: string; targetSeat: string; satchel: boolean }
   | { type: 'CarrySpecimen'; key: string; carry: boolean }
   | { type: 'SetSpecimenReading'; exhibit: string; reading: 'use' | 'source' }
   | { type: 'UseLens'; exhibit: string }
@@ -406,6 +409,13 @@ export class Engine {
         case 'Reach':
           s = apply([{ setFlag: `reached.${cmd.zone}`, value: true }], s, out);
           break;
+        case 'PlayMoonTune': {
+          if (!validMoonTune(cmd.tune) || !moonPerformance(s)) throw new Error('This tune needs four beats and an instrument here.');
+          const performed = 'spare-moon.played.' + s.mapId;
+          if (s.flags[MOON_TUNE] !== cmd.tune || !s.flags[performed])
+            s = apply([{ setFlag: MOON_TUNE, value: cmd.tune }, { setFlag: performed, value: true }], s, out);
+          break;
+        }
         case 'SetFlag':
           s = apply([{ setFlag: cmd.flag, value: cmd.value }], s, out);
           break;
@@ -588,7 +598,7 @@ export class Engine {
         }
         case 'BuyWare': {
           const w = WARES.find((x) => x.id === cmd.ware);
-          if (!w) throw new Error('Corvan does not sell that');
+          if (!w || !wareAvailable(s,w)) throw new Error('Corvan does not sell that');
           if (s.flags[`owned.${w.id}`] === true) throw new Error('You already have that');
           const price = priceFor(w, s, this.pack);
           if (s.marks < price) throw new Error('You do not have enough marks');
@@ -666,6 +676,9 @@ export class Engine {
             { setFlag: 'specimens.collected', value: true }], s, out);
           break;
         }
+        case 'SwapSpecimenPlaces':
+          s = apply(swapSpecimenPlaces(s,cmd.first,cmd.second,cmd.targetSeat,cmd.satchel),s,out);
+          break;
         case 'CarrySpecimen': {
           const { key, carry } = cmd;
           if (s.mapId !== SPECIMEN_BASE) throw new Error('Swap collection objects at the Nexus');

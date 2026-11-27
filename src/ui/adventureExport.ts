@@ -40,7 +40,7 @@ export function adventureExportSnapshot(view: AdventureJournalView, options: Adv
   const details = (kind: string, at: string | null, mapId: string | null) =>
     [kind, journalUtc(at), mapId ? options.placeName(mapId) : null].filter(Boolean).join(' · ');
   const reflections = (items?: readonly JournalReflection[]) => items?.length ? {
-    reflections: items.map(({ prompt, response }) => ({
+    reflections: items.filter((item) => includePersonal || !item.earlier).map(({ prompt, response }) => ({
       prompt, ...(includePersonal && response !== undefined ? { response } : {}),
     })),
   } : {};

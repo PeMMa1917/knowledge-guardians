@@ -1,3 +1,4 @@
+import { adventureExportSnapshot } from '../src/ui/adventureExport';
 import { describe, expect, it } from 'vitest';
 import { buildPack } from '../src/content';
 import { adventureJournalView, newAdventureDiary } from '../src/domain/adventureJournal';
@@ -98,6 +99,24 @@ describe('optional private journal prompts', () => {
       [old.notes![0], 'note'], [old.notes![1], 'reflection'], [old.notes![2], 'question'],
     ]);
     expect(restored.notes[1].reflections?.[0].response).toBe('Try another angle.');
+  });
+
+  it('offers three Nile prompts while retaining earlier answers during reload and export', () => {
+    const state = campaign();
+    state.objectivesDone.push('nile.routes');
+    const id = 'quest:nile.routes';
+    const saved = { quest: 'I kept the date beside the crate.', 'separate-map': 'The mine map has its own history.' };
+    state.adventureDiary.reflectionResponses = { [id]: saved };
+    const entry = () => view(readBack(state)).entries.find((row) => row.id === id)!;
+    expect(entry().reflections?.map((row) => row.id)).toEqual(['quest', 'separate-map', 'load']);
+    Object.assign(saved, { load: 'Same crate.', recipient: 'Idris kept the cast’s weight.' });
+    expect(entry().reflections?.filter((row) => !row.earlier)).toHaveLength(3);
+    const all = view(readBack(state));
+    const exported = (includeNotes: boolean) => adventureExportSnapshot(all, { includeNotes, placeName: () => undefined })
+      .entries.find((row) => row.title === entry().title && row.text === entry().text)!.reflections!;
+    expect(exported(true).map((row) => row.response)).toEqual(expect.arrayContaining(Object.values(saved)));
+    expect(exported(false)).toHaveLength(3);
+    expect(exported(false).every((row) => row.response === undefined)).toBe(true);
   });
 
   it('keeps an earlier quest question beside a new scene question if the student wrote an answer', () => {

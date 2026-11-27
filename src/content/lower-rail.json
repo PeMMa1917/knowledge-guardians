@@ -1,0 +1,537 @@
+{
+ "items": [
+  {
+   "id": "item.lower-rail",
+   "name": "Leila’s two-position strip",
+   "historicalLabel": "fictional-world",
+   "art": "lower-rail.open",
+   "description": "Tessi’s new paper and two matching pin marks. A practice rail can hide its lower line. Keep it apart from the scratches on the old Nexus label."
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "lower-rail.sample",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "Leave the old card in its case. This is my practice holder. Tessi set a second line into it for her first display. A visitor said she had cut the line. She was ready to bring me her key. Before I decide whose work to defend, slide her strip back over the two pin marks.",
+   "options": [
+    {
+     "text": "Slide the marked strip under the practice window.",
+     "next": "lower-rail.covered",
+     "effects": [
+      {
+       "setFlag": "lower-rail.fitted",
+       "value": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lower-rail.covered",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The strip slides to both pin marks. The lower rail covers its last line. The edge is smooth. On the old card next door, the bare scratches run higher than this rail. Lumen tries to read both at once and forgets to breathe.",
+   "claimKind": "observation",
+   "options": [
+    {
+     "text": "Lift the practice window and compare it with the old scrape.",
+     "next": "lower-rail.paired",
+     "effects": [
+      {
+       "giveItem": "item.lower-rail"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lower-rail.paired",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "There it is. ‘Only while this room is staffed.’ Tessi can keep her key. The window hid her words. It made no mark on the paper. I can defend that much. I still can’t give the old scrape a name or fill it with a line I’ve made up. Take the two-position strip. If you meet Omi, ask how he keeps a short warning from losing its limit.",
+   "claimKind": "interpretation"
+  },
+  {
+   "id": "lower-rail.early-receipt",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "The old card is where you left it. Tessi’s whole practice line is in the window now. She keeps moving the little rail for people who ask where it went. I’ll keep a space for Omi’s reply."
+  },
+  {
+   "id": "lower-rail.watch",
+   "speaker": "water-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "That old order in the drawer has had a long time to dry. I’ve got tonight to think about. When a child asks if she can cross, I get one breath before she puts a foot down. Here’s what I wrote for this watch. Try your holder around my paper, over the pin marks.",
+   "options": [
+    {
+     "text": "Fit Leila’s window over the current crossing notice.",
+     "next": "lower-rail.watch-choice",
+     "effects": [
+      {
+       "setFlag": "lower-rail.checked",
+       "value": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lower-rail.watch-choice",
+   "speaker": "water-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "With the rail down all I can read is ‘USE THIS CROSSING’. Lift it and here’s what I wrote. ‘Use this crossing until the watch bell. Ask the keeper after the bell.’ The old order names another place and another time. I can give you a complete line from my watch. I can’t tell you what made those older scratches. Which part of this setup shall Leila use?",
+   "options": [
+    {
+     "text": "Fasten the whole warning here and take the spare full-width backing to Leila.",
+     "next": "lower-rail.water-wide",
+     "effects": [
+      {
+       "setFlag": "lower-rail.design",
+       "value": "wide"
+      },
+      {
+       "journal": "j.lower-rail.water-wide"
+      }
+     ]
+    },
+    {
+     "text": "Post the whole warning here and take a working hinge to Leila.",
+     "next": "lower-rail.water-hinge",
+     "effects": [
+      {
+       "setFlag": "lower-rail.design",
+       "value": "hinge"
+      },
+      {
+       "journal": "j.lower-rail.water-hinge"
+      }
+     ]
+    },
+    {
+     "text": "Leave the full warning with Omi and come back to the choice later.",
+     "next": "lower-rail.water-wait"
+    }
+   ]
+  },
+  {
+   "id": "lower-rail.water-wide",
+   "speaker": "water-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "Both lines on the same board. Good. The next keeper can read it in the dark with a lamp in one hand. I’ll use the other slot for the bell card. Give Leila the spare backing. She can mount the same wording as it stands here and keep my date with it."
+  },
+  {
+   "id": "lower-rail.water-hinge",
+   "speaker": "water-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "I’ve pinned the full notice right over the old holder. It stays in sight during the watch. Take the spare hinge. We’ve got room for the keeper to hold it and let the apprentices try it after the bell. The published notice can stay where people use it."
+  },
+  {
+   "id": "lower-rail.water-wait",
+   "speaker": "water-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "Fine. I’ll pin the full notice flat for the watch. Your test mark stays on this sheet. We can look again when you have time."
+  },
+  {
+   "id": "lower-rail.watch-wide",
+   "speaker": "water-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "‘Use this crossing until the watch bell. Ask the keeper after the bell.’ The full sheet is on the board. The bell card has its own place where I can turn it with a glove on."
+  },
+  {
+   "id": "lower-rail.watch-hinge",
+   "speaker": "water-keeper",
+   "historicalLabel": "fictional-world",
+   "text": "The full notice stays flat on the board. After the bell I put the shorter practice card on this hinge. A new keeper can see what a reader misses before I let them put up a notice."
+  },
+  {
+   "id": "lower-rail.wide-return",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "Tessi brought an armful of books and opened the door with her elbow. She says if she had a third hand, she’d still keep a book in it. I’ve put the old card under glass and left the cut line bare. There’s room on this backing for Omi’s whole notice and the name of his crossing.",
+   "options": [
+    {
+     "text": "Fasten Omi’s whole notice beside the scratched old card.",
+     "next": "lower-rail.wide-kept",
+     "effects": [
+      {
+       "setFlag": "lower-rail.mounted",
+       "value": "wide"
+      },
+      {
+       "journal": "j.lower-rail.return-wide"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lower-rail.wide-kept",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "A reader with both hands full stopped here and read to the bell all the way through. Tessi heard her leave the right words with the next visitor. She asked me to put her name on the new mount. I asked her where it should go. It’s on the back in pencil, where she wants it."
+  },
+  {
+   "id": "lower-rail.hinge-return",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "Tessi used to apologize before anyone asked her a question. She wants to lead the next visit. The old card can stay under glass, scrape and all. Set Omi’s hinge on her teaching copy. I’ll leave the whole watch notice alongside, where somebody can read it while she shows how the window works.",
+   "options": [
+    {
+     "text": "Fit the hinge to Tessi’s teaching copy.",
+     "next": "lower-rail.hinge-down",
+     "effects": [
+      {
+       "setFlag": "lower-rail.mounted",
+       "value": "hinge"
+      },
+      {
+       "setFlag": "lower-rail.demo",
+       "value": "down"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lower-rail.hinge-down",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "On the whole notice to the side, the watch bell is still there. In the teaching window the rail hides it. Tessi asks the visitor to put a fingertip on the paper below the words before lifting the rail.",
+   "options": [
+    {
+     "text": "Lift the hinge and check the copy against the posted notice.",
+     "next": "lower-rail.hinge-up",
+     "effects": [
+      {
+       "setFlag": "lower-rail.demo",
+       "value": "up"
+      },
+      {
+       "setFlag": "lower-rail.demonstrated",
+       "value": true
+      },
+      {
+       "journal": "j.lower-rail.return-hinge"
+      }
+     ]
+    },
+    {
+     "text": "Leave the rail here for the next visitor.",
+     "next": "lower-rail.hinge-leave"
+    }
+   ]
+  },
+  {
+   "id": "lower-rail.hinge-up",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "A visitor reads ‘until the watch bell’ out loud. Tessi leaves the hinge up until the visitor has finished. Her hand is still shaking. She turns to the next person and asks if they want a turn.",
+   "options": [
+    {
+     "text": "Lower the practice rail for the next visitor.",
+     "next": "lower-rail.hinge-down",
+     "effects": [
+      {
+       "setFlag": "lower-rail.demo",
+       "value": "down"
+      }
+     ]
+    },
+    {
+     "text": "Leave the rail here for the next visitor.",
+     "next": "lower-rail.hinge-leave"
+    }
+   ]
+  },
+  {
+   "id": "lower-rail.hinge-leave",
+   "speaker": "nile-leila",
+   "historicalLabel": "fictional-world",
+   "text": "The full notice stays pinned beside the hinge. You can leave the teaching rail where it is. Tessi will check the next visitor can reach both."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.lower-rail.sample",
+   "text": "I lifted a rail and recovered words on Tessi’s new paper. The old scrape was higher and stayed unreadable. The two blanks have different traces."
+  },
+  {
+   "id": "j.lower-rail.water-wide",
+   "text": "Omi kept the current crossing’s whole warning together on a fixed board. I carried its spare backing to Leila. The old order stays on its own shelf."
+  },
+  {
+   "id": "j.lower-rail.water-hinge",
+   "text": "I took Omi’s spare hinge for a working demonstration. His watch notice stays posted in full. The older order has its own shelf."
+  },
+  {
+   "id": "j.lower-rail.return-wide",
+   "text": "I fixed Omi’s complete wording at the old case. Tessi’s visitor read through to the watch bell with both hands still full."
+  },
+  {
+   "id": "j.lower-rail.return-hinge",
+   "text": "I lifted Tessi’s demonstration rail and heard a visitor recover the words about the watch bell. Omi’s complete notice stays at their side."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH2-LOWER-RAIL",
+   "world": "WORLD-03",
+   "title": "The Lower Rail",
+   "knowledgeQuestion": "When does a display make a whole record look incomplete?",
+   "stake": "Tessi thinks a visitor blamed her for cutting a sentence she wrote in full.",
+   "available": {
+    "flag": "clue.scraped-label",
+    "eq": true
+   },
+   "objectives": [
+    {
+     "id": "lower-rail.sample",
+     "title": "Try both positions of Leila’s practice window.",
+     "essential": false,
+     "done": {
+      "item": "item.lower-rail"
+     },
+     "skills": [
+      "SK-RSC-15"
+     ],
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "explanation",
+       "certainty"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools"
+      ],
+      "atl": [
+       "thinking",
+       "research"
+      ],
+      "aoks": [
+       "HIS",
+       "ART"
+      ],
+      "subjects": [
+       "history",
+       "design-tech"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "onComplete": [
+      {
+       "journal": "j.lower-rail.sample"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KG-CH11-LOWER-RAIL",
+   "world": "WORLD-12",
+   "title": "The Lower Rail at the Weir",
+   "knowledgeQuestion": "What has to stay in sight when somebody must act before they can ask?",
+   "stake": "A person at Omi’s crossing can read an instruction before they notice whose watch it describes.",
+   "available": {
+    "all": [
+     {
+      "item": "item.lower-rail"
+     },
+     {
+      "flag": "harrowmere.found",
+      "eq": true
+     }
+    ]
+   },
+   "objectives": [
+    {
+     "id": "lower-rail.choose",
+     "title": "Check Leila’s window against Omi’s current warning and arrange the handover.",
+     "essential": false,
+     "done": {
+      "flagSet": "lower-rail.design"
+     },
+     "skills": [
+      "SK-THK-14"
+     ],
+     "weave": {
+      "concepts": [
+       "evidence",
+       "responsibility",
+       "power",
+       "justification"
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "atl": [
+       "thinking",
+       "social"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM"
+      ],
+      "subjects": [
+       "history",
+       "design-tech"
+      ],
+      "minutes": 4,
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "relational"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "KG-CH2-LOWER-RAIL-RETURN",
+   "world": "WORLD-03",
+   "title": "The Lower Rail Returns",
+   "knowledgeQuestion": "Who gets to check what a display has left in view?",
+   "stake": "Tessi has to decide whether she can trust her own work enough to guide the next visitor.",
+   "available": {
+    "flagSet": "lower-rail.design"
+   },
+   "objectives": [
+    {
+     "id": "lower-rail.return",
+     "title": "Install the chosen display with Leila and help a visitor read it.",
+     "essential": false,
+     "done": {
+      "any": [
+       {
+        "flag": "lower-rail.mounted",
+        "eq": "wide"
+       },
+       {
+        "flag": "lower-rail.demonstrated",
+        "eq": true
+       }
+      ]
+     },
+     "skills": [],
+     "weave": {
+      "concepts": [
+       "perspective",
+       "responsibility",
+       "values",
+       "power"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "atl": [
+       "communication",
+       "social"
+      ],
+      "aoks": [
+       "ART",
+       "HUM"
+      ],
+      "subjects": [
+       "visual-arts",
+       "design-tech"
+      ],
+      "minutes": 3,
+      "thinking": {
+       "dok": 3,
+       "bloom": "apply",
+       "fink": "caring",
+       "solo": "relational"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "h.lower-rail.sample.1",
+   "objective": "lower-rail.sample",
+   "depth": 1,
+   "text": "A second line has left different traces in the old case and the practice holder."
+  },
+  {
+   "id": "h.lower-rail.sample.2",
+   "objective": "lower-rail.sample",
+   "depth": 2,
+   "text": "Keep the loose paper and the scratches on the old card separate."
+  },
+  {
+   "id": "h.lower-rail.sample.3",
+   "objective": "lower-rail.sample",
+   "depth": 3,
+   "text": "Put the fresh strip against both marks before changing the window."
+  },
+  {
+   "id": "h.lower-rail.sample.4",
+   "objective": "lower-rail.sample",
+   "depth": 4,
+   "text": "Read the old Nexus label, then slide the strip under Leila’s practice window. Lift it to check the covered line."
+  },
+  {
+   "id": "h.lower-rail.choose.1",
+   "objective": "lower-rail.choose",
+   "depth": 1,
+   "text": "Omi has one current notice beside an older order."
+  },
+  {
+   "id": "h.lower-rail.choose.2",
+   "objective": "lower-rail.choose",
+   "depth": 2,
+   "text": "Check where the limit on the notice sits before somebody puts a foot on the crossing."
+  },
+  {
+   "id": "h.lower-rail.choose.3",
+   "objective": "lower-rail.choose",
+   "depth": 3,
+   "text": "The short rack can hide a condition even when it leaves the headline in view."
+  },
+  {
+   "id": "h.lower-rail.choose.4",
+   "objective": "lower-rail.choose",
+   "depth": 4,
+   "text": "After finding the Harrowmere order, fit Leila’s window to Omi’s current notice. Compare both lines before taking a backing or a hinge."
+  },
+  {
+   "id": "h.lower-rail.return.1",
+   "objective": "lower-rail.return",
+   "depth": 1,
+   "text": "Leila left a space by the old case for Omi’s reply."
+  },
+  {
+   "id": "h.lower-rail.return.2",
+   "objective": "lower-rail.return",
+   "depth": 2,
+   "text": "Choose where a visitor can read the whole notice and, if there’s a hinge, where they can lift it."
+  },
+  {
+   "id": "h.lower-rail.return.3",
+   "objective": "lower-rail.return",
+   "depth": 3,
+   "text": "Keep the old scrape in its own case. Mark the place and watch of Omi’s complete warning."
+  },
+  {
+   "id": "h.lower-rail.return.4",
+   "objective": "lower-rail.return",
+   "depth": 4,
+   "text": "Fasten the full board beside the old card. If you brought the hinge, fit it to the teaching copy and lift it once with the visitor."
+  }
+ ]
+}

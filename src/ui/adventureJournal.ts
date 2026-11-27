@@ -151,7 +151,7 @@ function diaryReflections(
 ): HTMLElement | null {
   if (!reflections?.length) return null;
   const status = h('p', { class: 'fine', role: 'status' });
-  const editors = reflections.map(({ id, prompt, response }) => {
+  const editors = reflections.map(({ id, prompt, response, earlier }) => {
     const fieldId = `reflection-${encodeURIComponent(entry)}-${encodeURIComponent(id)}`;
     const field = h('textarea', { id: fieldId, rows: 3 });
     field.value = response ?? '';
@@ -178,7 +178,8 @@ function diaryReflections(
       answer.hidden = edit.hidden = false;
       editor.hidden = true;
     });
-    return h('div', { class: 'diary-reflection' }, h('label', { for: fieldId }, prompt), answer, edit, editor);
+    const reflection = h('div', { class: 'diary-reflection' }, h('label', { for: fieldId }, prompt), answer, edit, editor);
+    return earlier ? h('details', {}, h('summary', {}, 'My earlier reflection'), reflection) : reflection;
   });
   return h('details', { class: 'diary-reflections' },
     h('summary', {}, 'Optional reflections'), ...editors, status);

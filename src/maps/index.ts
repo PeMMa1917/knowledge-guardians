@@ -1,4 +1,6 @@
 import type { MapDef } from './types';
+import { UNDERPAN } from './underpan';
+import { BELL_LOFT, SPARE_MOON } from './spareMoon';
 import { NEXUS } from './nexus';
 import { HALF_LIGHT_ROOM } from './lanternWeave';
 import { TWO_SHUTTER_ROOM } from './shutterBoard';
@@ -44,6 +46,7 @@ import { WORK_SCHEDULE_MAPS } from './workSchedule';
 import { BEARING_ROOM, BEARING_RETURN_ROOM } from './bearingBay';
 import { JIG_SHOP_MAP } from './jigShop';
 import { earlierViewingAt } from './earlierViewing';
+import { publicationReturnsAt } from './publicationReturns';
 import { blueTailAt } from './blueTail';
 import { PRICE_DRAWERS_MAP } from './priceDrawers';
 import { WARM_ROOM } from './warmRoom';
@@ -76,6 +79,9 @@ import { SILL_BRIDGE, SILL_RECEIVING } from './sillBridge';
 const campaignMaps: Record<string, MapDef> = {
   [WATER_CULVERT.id]: WATER_CULVERT,
   [NEXUS.id]: NEXUS,
+  [UNDERPAN.id]: UNDERPAN,
+  [BELL_LOFT.id]: BELL_LOFT,
+  [SPARE_MOON.id]: SPARE_MOON,
   [HALF_LIGHT_ROOM.id]: HALF_LIGHT_ROOM,
   [TWO_SHUTTER_ROOM.id]: TWO_SHUTTER_ROOM,
   [NUMBER_LEAF_ROOM.id]: NUMBER_LEAF_ROOM,
@@ -187,6 +193,6 @@ const campaignMaps: Record<string, MapDef> = {
 };
 
 export const MAPS: Record<string, MapDef> = Object.fromEntries(Object.values(campaignMaps).map((map) => {
-  const returns = [...earlierViewingAt(map.id), ...blueTailAt(map.id)];
+  const returns = [...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id)];
   return [map.id, returns.length ? { ...map, interactables: [...map.interactables, ...returns] } : map];
 }));

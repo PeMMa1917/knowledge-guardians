@@ -31,6 +31,20 @@
         ],
         "game": 146,
         "story": 53
+      },
+      {
+        "objective": "spare-moon.keep-watch",
+        "action": "Take the night watch from the person on the calling cord. Decide which people a tally of available beds can stand for when choosing a public call, a private cord or a walk-in bed.",
+        "styles": [
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "social",
+          "analytical"
+        ],
+        "game": 133,
+        "story": 72
       }
     ]
   },
@@ -66,6 +80,21 @@
         ],
         "game": 267,
         "story": 69
+      },
+      {
+        "objective": "first-clap.measure",
+        "action": "Sit in the marked gallery seat, then stand up to reproduce the clap. Use the timing to explain a sound, while leaving the identity and intention of the person who once stood up to other evidence.",
+        "styles": [
+          "explorer",
+          "performer"
+        ],
+        "modes": [
+          "physical",
+          "auditory",
+          "visual"
+        ],
+        "game": 267,
+        "story": 72
       }
     ]
   },
@@ -755,6 +784,42 @@
     ]
   },
   {
+    "number": 710,
+    "name": "Ground a judgment about a performance in the choices its makers made",
+    "uses": [
+      {
+        "objective": "stage.finish",
+        "action": "Put the cue and the spectator’s sightline in the program. Identify which movement or silence supported that reading when two stagings used the same words.",
+        "styles": [
+          "performer",
+          "explorer"
+        ],
+        "modes": [
+          "auditory",
+          "spatial",
+          "linguistic"
+        ],
+        "game": 247,
+        "story": 95
+      },
+      {
+        "objective": "film.stage.received",
+        "action": "Screen both edits before posting one. Find the person who used it and check which image held their attention long enough to read the cue or the movement.",
+        "styles": [
+          "maker",
+          "companion"
+        ],
+        "modes": [
+          "visual",
+          "social",
+          "analytical"
+        ],
+        "game": 238,
+        "story": 95
+      }
+    ]
+  },
+  {
     "number": 711,
     "name": "Move authority back to the check that earned it",
     "uses": [
@@ -1394,7 +1459,7 @@
       },
       {
         "objective": "align.keppel-harbour.returned",
-        "action": "Use the dated Keppel chart and its scale to carry a working copy to the Nile. Align the two known marks on the practice plans and inspect the separately moved third mark before setting a route limit or checking it again.",
+        "action": "Carry the dated Keppel chart to the Nile and use its scale. Align the two known marks on the practice plans and inspect the separately moved third mark before setting a route limit or checking it again.",
         "styles": [
           "explorer",
           "maker"

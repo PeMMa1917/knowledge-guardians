@@ -23,7 +23,7 @@ export const CORRESPONDENCE_CASES = records.map((record) => ({
   revisit: {
     map: 'nexus.archive', prop: `correspondence-nexus-${record.slug}`,
     method: record.use,
-    hint: 'Carry and equip this working copy at Venn’s spare letter stand on the east side of the Nexus.',
+    hint: `Bring ${record.title} to Venn’s spare letter stand in the east Nexus. Equip it there.`,
   },
 }));
 export type CorrespondenceCase = (typeof CORRESPONDENCE_CASES)[number];
@@ -91,7 +91,7 @@ function caseScenes(record: CorrespondenceCase): DialogueNode[] {
       options: [{ text: 'Rehang the practice slip.', if: letterCurrent(record), effects: [stop(CURRENT, EMPTY)] }, { text: 'Keep carrying this slip.' }] },
     ...CORRESPONDENCE_PLANS.map((plan) => fiction(`${record.flag}.${plan}`, sealResult(record, plan), CORRESPONDENCE_READER)),
     fiction(`${record.flag}.answer`, `${record.answer} Take my signed return to the centre hook. I want the next runner to know what the note actually did.`, CORRESPONDENCE_READER),
-    { ...fiction(`${record.flag}.nexus`, `There is a shortened note waiting on the east stand. Your working copy of ${record.accession} gives us another way to show ${record.returnFocus}.`, 'clerk-venn'),
+    { ...fiction(`${record.flag}.nexus`, `There is a shortened note waiting on the east stand. Set ${record.title} beside it. The detail we need is ${record.returnFocus}.`, 'clerk-venn'),
       options: [{ text: record.use, if: all(specimenEquipped(record.key), not(letterReturned(record))),
         effects: [stop(`${record.flag}.used`), stop(CORRESPONDENCE_RETURN, record.slug), { journal: `j.${record.flag}.nexus` }], next: `${record.flag}.nexus-read` },
         { text: 'Leave Venn’s spare stand open.' }] },
@@ -179,6 +179,6 @@ export const correspondenceRoomContent = {
     { id: `j.${record.flag}.fold`, claimKind: 'observation' as const,
       text: `I took both forms to the staffed desk with the source for ${record.accession}. Ansel opened the joint copy and sent back a signed reply.` },
     { id: `j.${record.flag}.nexus`, claimKind: 'observation' as const,
-      text: `I carried the working copy for ${record.accession} back to the Nexus. ${record.returnResult}` },
+      text: `I laid ${record.title} (${record.accession}) on Venn’s stand. ${record.returnResult}` },
   ]),
 } satisfies Partial<ContentPack>;

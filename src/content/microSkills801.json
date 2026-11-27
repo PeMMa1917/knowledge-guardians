@@ -811,6 +811,22 @@
         ],
         "game": 179,
         "story": 54
+      },
+      {
+        "objective": "bridge.message.checked",
+        "action": "Trace the driver’s redrawn wheels to a fold, or carry a warning back past a squeaking wheel to the driver who filled its gap with yesterday’s call.",
+        "styles": [
+          "explorer",
+          "companion"
+        ],
+        "modes": [
+          "visual",
+          "auditory",
+          "linguistic",
+          "social"
+        ],
+        "game": 173,
+        "story": 95
       }
     ]
   },
@@ -946,6 +962,42 @@
         ],
         "game": 193,
         "story": 137
+      }
+    ]
+  },
+  {
+    "number": 939,
+    "name": "Distinguish a preserved record from knowledge someone can perform or pass on",
+    "uses": [
+      {
+        "objective": "story.frame.board.read",
+        "action": "Keep Brooklyn’s exact accession beside the separate public account of trained Luba interpretation. Give the receiver a way to find both without treating the museum’s material description as a performance.",
+        "styles": [
+          "collector",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 179,
+        "story": 54
+      },
+      {
+        "objective": "earlier-viewing.memory-board",
+        "action": "Let the local workroom guide show who waited using plain pegs for an invented handover. Leave the public source with the question about the historical board instead of assigning its beads a translation.",
+        "styles": [
+          "companion",
+          "maker"
+        ],
+        "modes": [
+          "physical",
+          "linguistic",
+          "social"
+        ],
+        "game": 173,
+        "story": 95
       }
     ]
   },

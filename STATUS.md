@@ -1,14 +1,39 @@
 # Status and next steps
 
+## 27 November playtest
+
+Thirty-two residents now have personal stories in sixteen pairs across Chapters 2–15. Visit either neighbour first, take either action, then call on the other to hear what made it across the street. Visiting later or leaving a conversation open keeps the ordinary chapter work available. The diary preserves the part of the exchange the player heard. In the Market of Measures these conversations also open the Underpan. Following the coin on the square opens a third way in. Fen can take her lamp upstairs or run a private reading room below. [Neighbour stories](src/content/neighbours.json) · [Underpan routes](tests/underpan.test.ts)
+
+The brass fish beside the starting tile opens the Bell Loft. Players can trace a creature, test the cords or play their own four beats. Ket’s overnight decision and the Wick siblings’ futures are independent. Noll takes a kitchen shift when the Guardian reaches Emberford. A guest reprises the tune after any Council ending. At the House of Performance, Edda and Hari remember a single clap differently. Either curtain call can become a place to play the tune. The original chapter gates and central endings still work. [The Spare Moon](tests/spare-moon.test.ts) · [The Seat That Clapped First](tests/first-clap.test.ts)
+
+The release suite passed 2,340 tests in 272 files. Desktop Chromium and Firefox and phone-sized Linux WebKit exercised all sixteen households between them and both outcomes of the Underpan. The Chromium navigation stress test checked 128 maps and 71,877 tiles, including an accelerated hour against the Archive wall. Physical device testing and facilitated student play remain open. The curriculum audit records 657 authored links across 352 of the 803 supplied numbered skill definitions. [Neighbour route permutations](tests/neighbours.test.ts) · [Coverage evidence](docs/CROSS_WEAVE_AUDIT.md)
+
+The inn’s paper lantern can be bought and hung in the Guardian’s room. Collected objects can change cases across display pages. A Guardian carrying three objects can exchange one at the case, with the outgoing object taking the exhibited object’s place. When only one Nile prerequisite has been earned, the doorframe gives a location for the other. [Collection routes](tests/specimen-gear.test.ts)
+
+The story and collection checks exercise alternative entries, delayed visits, the three overnight decisions, both siblings’ independent responses, both theatre bows, an 81-phrase instrument and retry-safe exchanges. Release evidence distinguishes automated play from engagement with students. The separate chapter audit and its training gym are in [PR #8](https://github.com/PeMMa1917/knowledge-guardians/pull/8).
+
+At Emberford’s east bridge, a driver returns with an empty cart after a warning changes hands. A folded sketch and a relayed call each let the Guardian find a different source of the misunderstanding. Four arrangements give the next crew different help and costs. A player can revisit the board, change the medium, and try another crossing. [Bridge routes](tests/bridge-message.test.ts)
+
 This file is for the next developer, human or AI. Read [AGENTS.md](AGENTS.md) first. **Update this file when you stop work.**
 
-Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master specification is version 3, expanded from version 2.10. See [the design summary](docs/DESIGN_SUMMARY.md).
+Last update 27 November 2026 on `feat/tok-gameplay-weave`. The private master specification is version 3, expanded from version 2.10. See [the design summary](docs/DESIGN_SUMMARY.md).
+
+## Accounts and hosting (planned, 26 November 2026)
+
+Mika chose Cloudflare (Workers + D1) with our own login. Students use a username only, with no email. Teachers reset student passwords. Nothing is built yet. Read [docs/ACCOUNTS_AND_HOSTING.md](docs/ACCOUNTS_AND_HOSTING.md) before you add any login, online save or class feature.
 
 ## Multi-persona audit (in progress)
 
 A critique of the whole game from more than seventy points of view is in [docs/audit/](docs/audit/README.md). Read the chapter file before you change an encounter. Agreed fixes are in [CONSENSUS.md](docs/audit/CONSENSUS.md). Items for Mika to decide are in [CONTESTED.md](docs/audit/CONTESTED.md); do not decide them yourself. Chapter 1 is done. Mika's decisions on the contested list are in [DECISIONS.md](docs/audit/DECISIONS.md), and what was built from them, with reasons, is in [CHANGES.md](docs/audit/CHANGES.md): the training gym, Lumen's help offer, timed replays, two replies after key choices, thinkers and named views, the Proving Floor trial, trust that returns, idea credits and research data (off by default). Chapters 2 to 15 are next. Run `node tools/audit-personas.mjs --md` after content changes.
 
 ## Playtest build
+
+The Guardian’s diary now records which guide or viewing aid actually reached its reader in The Third Landmark and Where the Two Sights Meet. Both the first installation and its later return remember the chosen outcome across 40 dated maps and 41 artworks. Players carry the named object from the satchel. A practice rubbing, copy of a chart or comparison strip has its own identity when the story uses one. [Map choices](tests/map-alignment.test.ts) · [Sightline choices](tests/bearing-bay.test.ts)
+
+The diary can retrieve 58 more completed tasks by the part of the knowledge framework a player actually used. Examples include changing a stage cue, tracking a panel’s custody and checking who a request desk missed. Fifty-three newly written optional reflections follow specific actions. The Skill Atlas also remembers why a particular cut helped its audience and why a museum record and a living interpreter have different roles. Seventeen carried-object returns now have individual field notes and clues for the station where a player actually uses the object. [Learning design](docs/LEARNING_DESIGN.md) · [Stage diary check](tests/performance-story.test.ts)
+The collected Bíró pen opens Hesper’s writing bench in Emberford. Players compare a flat rest with a rolled strap, then fit a working rest for Della’s stall or Idris’s rounds. At the Ferry, the equipped 1941 Green-Book opens Tova’s shelter inquiry. The visitor acts on a dated public notice or checks in with Enna, who decides which details she can share. [Both returns and their saved receivers](tests/publication-returns.test.ts)
+
+Twenty-nine collection accessions have new source-linked credits. At the Civic Callboard, Neris receives the roles for *The Hearth* with the image or at a later source stop. In the City of Copies, visitors can meet Kehar Singh’s artist line or the workers’ occupations first. On the coast and at the House of Performance, the Ènata fan and the hanging with a Mende, Vai, or Temne attribution keep a maker’s credit distinct from a measurement or purchase. [Exact records](src/content/historical-credit-people.json) · [Earning and receiving checks](tests/historical-credits.test.ts)
 
 Neris follows the signed Civic Callboard passage to the source desk during the same visit. The old bench becomes walkable. If the Guardian is standing where a character is due to arrive, the character waits for room. A click on a departing character drops the old walking target. Other encounters with conditional characters use the same movement rules. Tull now gives his first research question in dialogue and explains what it left out. [Browser regression](tools/smoke-navigation.mjs) · [Word histories](tests/glossary.test.ts)
 
@@ -604,3 +629,11 @@ The Skill Atlas records #744 after Kori uses the raised proof at the Landing or 
 ## Matching sources to particular objects
 
 An engine playthrough now reaches Confident for #791, matching evidence to its particular object and claim, after eight compatible uses. The Cold Store reader keeps the body and replacement lid’s dates separate, and a House of Performance reader keeps the surviving Usugumo leaf and the earlier tale on different lines. The stage describes practice recorded in the game. [Eight-use replay](tests/object-specific-skill.test.ts)
+
+## Moving the Painter’s Frame
+
+The arrow keeps keyboard focus after each nudge, so a player can move the frame several steps with consecutive presses. [Keyboard replay](tools/smoke-fieldgames.mjs)
+
+## The Lower Rail
+
+The old Nexus label in the Nile hall now leads to Leila’s practice window. Clear paper that holds a whole line makes a different trace from the old scrape. After opening the Harrowmere drawer, the Guardian helps Omi keep the watch limit in view and brings a full-width board or a working teaching hinge back to the hall. Both leave a physical result that Tessi and a visitor can use. [Branch, save and access checks](tests/lower-rail.test.ts) · [Story and stakes](docs/STORY_BIBLE.md#7-the-long-mystery-setup-and-payoff)

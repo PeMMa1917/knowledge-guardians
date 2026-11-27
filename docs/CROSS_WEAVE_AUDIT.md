@@ -1,5 +1,7 @@
 # Learning actions across worlds and RPG elements
 
+The November 27 review adds four playable traces. At the Spare Moon the Guardian can see who reaches a bed. In the gallery, standing up isolates the clap from the person’s memory of an audience. In the Underpan, turning the lamp explains part of a silhouette, while deciding where Fen works changes who can show her a receipt. Hearing Fen’s story alone gives no credit for testing the light. The audit checks the world target and corresponding test for each trace. [Reviewed actions](../tools/audit-cross-weave.mjs)
+
 The audit checks a design target of ten distinct recorded actions for each world, learning dimension and numbered story or game element. A source-reviewed action can count in more than one pair when the same action supports each claim. An action only counts once in any one pair. The census is evidence of authored opportunities. It does not measure play frequency or learner attainment.
 
 ```sh

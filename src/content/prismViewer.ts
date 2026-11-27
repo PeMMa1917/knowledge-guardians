@@ -10,7 +10,7 @@ export const PRISM_RETURN = 'prism.accessible';
 export const PRISM_AVAILABLE: Condition = { flag: 'study.letter', eq: true };
 export const PRISM_REVISIT = { map: 'aethelgard.study', prop: 'prism-reading-light',
   method: 'Test a shape key and a greyscale reading under the Study’s dim lamp.',
-  hint: 'Equip the Webb working copy in the Bag. Try both settings at the Study’s dim reading light.' };
+  hint: 'Equip Webb’s Tarantula Nebula image in the Bag. Try both settings at the Study’s dim reading light.' };
 const WEBB_CATALOGUE = 'HIS-PRISM-WEBB';
 const WEBB_FILTERS = 'HIS-PRISM-NASA';
 const routes = PRISM_LENSES.map((lens) => ({ flag: `prism.fitted.${lens}`, eq: true }));
@@ -32,7 +32,7 @@ export const prismViewerContent = {
         detail: 'NASA names the production team alongside NASA, ESA, CSA, and STScI in the image credit.', source: WEBB_FILTERS }] } }],
   cards: [{ id: PRISM_CARD, title: 'Separate filters, assigned colours', claimKind: 'observation', historicalLabel: 'documented',
     sources: [WEBB_CATALOGUE, WEBB_FILTERS], text: 'Webb’s camera recorded light separately through infrared filters. The published mosaic uses assigned visible colours. Three named inputs are F090W in blue, F200W in green and F444W in red.',
-    limits: 'The published colours are a rendering of measured bands. The Annex viewer uses the same three filter names with invented intensities for a paper exercise.' }],
+    limits: 'The published colours are a rendering of measured bands. The Annex viewer uses the same three filter names with invented intensities on the workshop’s three-band viewer.' }],
   missions: [{ id: 'KG-CH1-R29-PRISM', title: 'Three Bands Through One Window', world: 'WORLD-02', available: PRISM_AVAILABLE,
     stake: 'Nell needs the fold before her support can dry. Venn needs the separated pinholes before the dispatch leaves. The Annex can fit either holder first.',
     knowledgeQuestion: 'What can change in the way a signal is shown while its measured values stay the same?',
@@ -53,11 +53,11 @@ export const prismViewerContent = {
     }],
   }],
   journal: [{ id: 'j.prism.delivered', claimKind: 'observation', text: 'I kept the Annex’s three practice readings fixed. Turning the viewing sliders brought out the seam or the pinholes. Nell used the seam and Venn used the separate pinholes. Webb’s dated filter record stayed beside the practice viewer.' },
-  { id: 'j.prism.accessible', claimKind: 'observation', text: 'I used the Webb working copy at the Study’s dim reading light. I compared added marks with greyscale and fitted one display without changing the three readings.' }],
+  { id: 'j.prism.accessible', claimKind: 'observation', text: 'I used Webb’s Tarantula Nebula image at the Study’s dim reading light. I compared added marks with greyscale and fitted one display without changing the three readings.' }],
   hints: [
     [PRISM_DONE, ['The same sheet stays in the viewer when a rendering changes.', 'Read the Webb case in the Loan Annex, then try both slider combinations.',
       'Keep an eye on the three sample values as you change each assigned visible hue.', 'Choose a first reader, walk to their holder and fit the view. Bring the other rendering to the other holder afterwards.']],
-    [PRISM_RETURN, ['A reader may distinguish a shape more readily than a hue.', 'Claim and equip the Webb working copy, then use the Study’s dim light by the stairs.',
+    [PRISM_RETURN, ['A reader may distinguish a shape more readily than a hue.', 'Claim and equip Webb’s Tarantula Nebula image, then use the Study’s dim light by the stairs.',
       'Compare the shape key and the greyscale. Both draw from the same three numbers.', 'Leave one display at the dim lamp. The nearby holder keeps your choice when you return.']],
   ].flatMap(([objective, texts]) => (texts as string[]).map((text, index) => ({
     id: `h.${objective}.${index + 1}`, objective: objective as string, depth: (index + 1) as Hint['depth'], text,

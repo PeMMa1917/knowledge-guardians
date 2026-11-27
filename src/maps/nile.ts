@@ -10,6 +10,7 @@ import { starStations } from './starPaths';
 import { WORKMEN_CURTAIN_PROPS } from './curtainCall';
 import { NILE_SPARE_SEAT } from './spareSeat';
 import { NILE_BEND_BOARD } from './stripBend';
+import { NILE_LOWER_RAIL } from './lowerRail';
 
 const W = 25, H = 13;
 const room = (id: string, name: string, npcs: MapDef['npcs'], interactables: Interactable[], palette: number, stamps: MapDef['stamps']): MapDef => ({
@@ -74,6 +75,7 @@ export const NILE_HALL = room('nile.hall', 'Nile Archive: The Door Without a Nam
     { id: 'cross-borrowed', kind: 'fieldgame', game: 'cross-borrowed', x: 18, y: 5, w: 1, h: 1, label: 'Ambry\'s reading desk (a crossing)', art: 'catalogue' },
     { id: 'nile-old-label', kind: 'sign', x: 20, y: 4, w: 1, h: 1, label: 'an old Nexus label in a side case', art: 'old-sign', flag: 'clue.scraped-label',
       text: "An old Nexus label, older than any here, in the same style as the ones in the hall above. The main line is confident and clear. Under it, someone has scraped a second line away. Only the scratches are left. Lumen holds a little light close and gives up: 'Too faint for me. A gentler light might show it. My light is mostly enthusiasm.'" },
+    ...NILE_LOWER_RAIL,
     { id: 'nile-mark-tag', kind: 'exhibit', exhibit: 'OBJ-ARCHIVE-RECEIVING-TAG', x: 4, y: 5, w: 1, h: 1,
       label: 'Ketta’s receiving tag', art: 'nile.tablet' },
     { id: 'nile-mark-label', kind: 'label', kit: 'nile-borrowed-mark', x: 4, y: 8, w: 1, h: 1,

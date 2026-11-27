@@ -82,6 +82,8 @@ describe('The Third Landmark', () => {
     expect(d.done(record.objective)).toBe(false);
     move(d, record, { type: 'receive', reader });
     expect(d.done(record.objective)).toBe(true);
+    const received = d.s.adventureDiary.entries.find((entry) => entry.id === `quest:${record.objective}`);
+    expect(received?.text).toContain(reader === 'strip' ? record.stripResult : record.pairResult);
     d.run({ type: 'ClaimSpecimen', exhibit: record.exhibit });
     const prop = ALIGN_RETURN.find(({ id }) => id === record.prop)!;
     expect(check(prop.visibleIf, d.s)).toBe(false);
@@ -93,5 +95,8 @@ describe('The Third Landmark', () => {
     move(d, record, { type: 'place', action });
     expect(readSheet(record.slug, d.s.flags).returned).toBe(action);
     expect(d.done(record.second)).toBe(true);
+    const diary = d.s.adventureDiary.entries.find((entry) => entry.id === `quest:${record.second}`);
+    expect(diary?.text).toContain(action === 'tentative' ? record.nearResult : record.surveyResult);
+    expect(diary?.text).not.toContain(action === 'tentative' ? record.surveyResult : record.nearResult);
   });
 });

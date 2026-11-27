@@ -88,6 +88,7 @@ Settings include calm mode (delay random events), text size, reduced motion, red
 - [docs/DESIGN_SUMMARY.md](docs/DESIGN_SUMMARY.md): a short paraphrase of the design.
 - [CREDITS.md](CREDITS.md): every asset with its source, author and licence.
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): how the code fits together.
+- [docs/ACCOUNTS_AND_HOSTING.md](docs/ACCOUNTS_AND_HOSTING.md): the approved plan for student login, classes, online saves and hosting (not built yet).
 - [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md): how to add missions, dialogue, exhibits and maps.
 - [docs/ASSETS.md](docs/ASSETS.md): how to find, add and credit art and audio.
 - [docs/SOURCES.md](docs/SOURCES.md): the historical objects and the sources for each claim.

@@ -2203,6 +2203,7 @@
       ]
      },
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "certainty",
@@ -2236,6 +2237,7 @@
       "flagSet": "scout.notice"
      },
      "weave": {
+      "framework": ["scope", "perspectives", "ethics"],
       "concepts": [
        "interpretation",
        "responsibility",
@@ -2248,7 +2250,8 @@
       ],
       "aoks": [
        "MAT",
-       "HUM"
+       "HUM",
+       "LAN"
       ],
       "subjects": [
        "math-ai",

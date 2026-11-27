@@ -107,6 +107,7 @@ describe('The First Frame', () => {
     d.talk(actor, cut === 'cue' ? 'Take the cue-first copy' : 'Take the doorway-first copy');
     expect(d.s.inventory[item]).toBe(1);
     expect(d.done('film.stage.received')).toBe(true);
+    expect(d.p.skills['SK-MICRO-0710']).toContainEqual(expect.stringContaining('film.stage.received'));
     expect(d.done('stage.perform')).toBe(false);
 
     if (cut === 'cue') cross(d, 'stage-gallery-return');

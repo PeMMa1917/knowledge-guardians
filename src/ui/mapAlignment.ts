@@ -112,7 +112,7 @@ export function mapAlignmentPanel(place: string, controller: GameController, sou
     const state = readSheet(record.slug, controller.state.flags);
     body.append(h('h2', {}, `Marek’s check of ${record.name}`));
     if (!state.received || !controller.check(specimenEquipped(record.key))) {
-      body.append(h('p', {}, 'Use the matching working copy to open these sheets.'));
+      body.append(h('p', {}, `Equip ${record.name} in the Bag to open Marek’s overlays.`));
       return;
     }
     body.append(h('p', {}, record.callback));

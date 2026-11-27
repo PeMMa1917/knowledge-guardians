@@ -1,4 +1,4 @@
-import type { CampaignState, Condition, ContentPack, ExhibitRecord } from './types';
+import type { CampaignState, Condition, ContentPack, Effect, ExhibitRecord } from './types';
 
 export const SPECIMEN_BASE = 'nexus.specimen-vault';
 export const SPECIMEN_CAPACITY = 3;
@@ -24,12 +24,41 @@ export const carriesSpecimen = (state: CampaignState, key: string) => ownsSpecim
 export const carriedSpecimenCount = (state: CampaignState) => Object.keys(state.inventory)
   .filter((id) => isSpecimenItem(id) && state.flags[carryFlag(id.slice(ITEM_PREFIX.length))] === true).length;
 
+const seatFlag = (key: string) => 'specimen.seat.' + key;
+/** Anchors refer to catalogue IDs so adding a new exhibit does not invalidate a saved arrangement. */
+export function specimenSeat(state: CampaignState, key: string): string {
+  const seat = state.flags[seatFlag(key)];
+  return typeof seat === 'string' ? seat : key;
+}
+
+export function swapSpecimenPlaces(state: CampaignState, first: string, second: string, targetSeat: string, satchel: boolean): Effect[] {
+  if (state.mapId !== SPECIMEN_BASE || first === second || !ownsSpecimen(state, first) || !ownsSpecimen(state, second))
+    throw new Error('Select two different collected objects at the Nexus display.');
+  if (specimenSeat(state, first) === targetSeat && carriesSpecimen(state, first) === satchel) return [];
+  if (carriesSpecimen(state, first) || carriesSpecimen(state, second) !== satchel || specimenSeat(state, second) !== targetSeat)
+    throw new Error('The objects have moved. Choose their current places.');
+  const effects: Effect[] = [
+    { setFlag: seatFlag(second), value: specimenSeat(state, first) }, { setFlag: seatFlag(first), value: targetSeat },
+  ];
+  if (satchel) {
+    effects.push({setFlag:carryFlag(second),value:false},{setFlag:carryFlag(first),value:true});
+    if (state.flags[PERSPECTIVE_FLAG] === specimenToolId(second)) effects.push({setFlag:PERSPECTIVE_FLAG,value:false});
+  }
+  return effects;
+}
+
 export function specimenDisplay(pack: ContentPack, state: CampaignState) {
   const stored = [], carried = [];
-  for (const exhibit of pack.exhibits.filter(hasSpecimen)) {
+  const exhibits = pack.exhibits.filter(hasSpecimen);
+  for (const exhibit of exhibits) {
     if (!ownsSpecimen(state, exhibit.specimen.key)) continue;
     if (carriesSpecimen(state, exhibit.specimen.key)) carried.push(exhibit);
     else stored.push(exhibit);
+  }
+  if (stored.some(record => specimenSeat(state, record.specimen.key) !== record.specimen.key)) {
+    const catalogueOrder = new Map(exhibits.map(({specimen}, index) => [specimen.key, index]));
+    const rank = ({specimen}: SpecimenExhibit) => catalogueOrder.get(specimenSeat(state,specimen.key)) ?? catalogueOrder.get(specimen.key)!;
+    stored.sort((a,b) => rank(a) - rank(b));
   }
   const pages = Math.max(1, Math.ceil(stored.length / SPECIMEN_CASES));
   const selected = state.flags[SPECIMEN_PAGE];

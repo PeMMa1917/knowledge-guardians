@@ -48,16 +48,24 @@ export const bearingBayContent = {
     specimen: { key: record.key, accession: record.accession, institution: record.institution, source: record.source,
       objective: record.objective, pixelAsset: record.asset, revisit: { map: BEARING_RETURN_MAP, prop: record.returnProp,
         method: `Use the copied sight lines at the second rack for ${record.name}.`,
-        hint: `Equip this working copy and find its shutter at the Headland Station return room.` } } })),
+        hint: `Equip this object and find its shutter at the Headland Station return room.` } } })),
   journal: BEARING_CASES.flatMap((record) => [{ id: `j.${record.objective}`, claimKind: 'observation',
-    text: `Two same-bell practice sights crossed at one square. ${record.name}, ${record.accession}, stays documented separately from our model. I fitted the route aid at a receiver.` },
+    text: `I checked two practice sights against “${record.name}” (${record.accession}). They crossed at one square while the lamp held still.`,
+    readings: [
+      { when: { flag: `${bearingKey(record.slug)}.received`, eq: 'quay' }, text: `I fitted a low lamp for ${record.job} at the west dock. A carrier can read it alone. If it moves, both posts will have to sight it again. My reference was “${record.name}”.` },
+      { when: { flag: `${bearingKey(record.slug)}.received`, eq: 'fold' }, text: `I took the two sights for ${record.job} to Marl Fold. At the rail a visitor can slide them together and ask the guide where they cross. I kept “${record.name}” with my notes.` },
+    ] },
   { id: `j.${record.returnObjective}`, claimKind: 'observation',
-    text: `I held back one sight when its window or post changed. I kept both the next-bell check and the side-post check beside the returned copy of ${record.name}, then fitted a new aid.` }]),
+    text: `I took ${record.name} back to the shutter and tried the next-bell clip and the side rail. ${record.change}`,
+    readings: [
+      { when: { flag: `${bearingKey(record.slug)}.fitted`, eq: 'wait' }, text: `I brought “${record.name}” to the shutter and waited for the next pair of sights. ${record.change} ${record.waitResult}` },
+      { when: { flag: `${bearingKey(record.slug)}.fitted`, eq: 'side' }, text: `I used “${record.name}” at the shutter and opened the side rail for the first arrival. ${record.change} ${record.sideResult}` },
+    ] }]),
   hints: BEARING_CASES.flatMap((record) => [
     ['A direction from one position can pass through more than one square.', `Open ${record.accession} beside the practice view, and keep its source limits with the image.`,
       'Record the west and east same-bell sights. Look for the squares where the two lines agree.',
       'Take the paired trace to Marl Fold for a guided check or fit the checked mark at the low west dock.'],
-    ['One sight has a different time, playing surface or viewing condition.', `Equip the working copy of ${record.name} to uncover its shutter in the second room.`,
+    ['One sight has a different time, playing surface or viewing condition.', `Equip ${record.name} to uncover its shutter in the second room.`,
       'Try the old pair before collecting a matched pair one bell later and a side-post view at this bell.',
       'Fit the repeat-bell rack or the side-view guide. The rack keeps both measured results.'],
   ].flatMap((lines, phase) => lines.map((text, index) => { const objective = phase === 0 ? record.objective : record.returnObjective;

@@ -60,6 +60,8 @@ The Last Turn now gives Emberford players an optional response to the first gap.
 
 Never add a tag that the play does not support. Add play.
 
+A receiving task can make an area of the framework visible in the diary. Rehearsing the same line with two cue orders belongs under methods and tools. Choosing whose movement the audience will notice foregrounds perspectives and ethics. At the Civic Machine, running the same scheduling rule against different request slips examines the method. Deciding who gets the four windows calls for an ethical judgment. A visit to either room alone earns neither record. [Rehearsal and diary example](../tests/performance-story.test.ts)
+
 ## The 20- and 30-minute opportunity floor
 
 The floor is six different key concepts, two explicitly authored framework parts, one area of knowledge and one optional theme in a rolling window. The report checks 20 and 30 minutes separately. It counts an action when the modeled player completes it, and keeps absent and unrecognized tags visible. The report distinguishes a tag supported by one authored action from a tag supported by multiple actions. Retaking the same action counts once for that comparison. The executable traces also list the gameplay formats used in each opening window. The cumulative first-hour report shows breadth across the five areas and five optional themes as well as the concepts and framework. [Floor implementation](../tools/tok-floor.ts)

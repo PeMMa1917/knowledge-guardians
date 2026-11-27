@@ -116,6 +116,7 @@ describe('The Story Archive', () => {
       expect(d.done(record.objective)).toBe(false);
       scene(d, id, route.action);
       expect(d.done(record.objective)).toBe(true);
+      if (record === board) expect(d.p.skills['SK-MICRO-0939']).toContainEqual(expect.stringContaining(record.objective));
       expect(visible(d, `${id}-done`)).toBe(true);
       expect(visible(d, id)).toBe(false);
       expect(d.s.journal).toContain(`j.${record.flag}`);

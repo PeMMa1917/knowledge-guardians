@@ -7,6 +7,7 @@ export const INK_CHARGES = [
 ] as const;
 export type InkCharge = (typeof INK_CHARGES)[number]['key'];
 export type ImprintRoute = 'counter' | 'drawer';
+export type ImprintHeading = 'artist' | 'work';
 
 const offset = [-24, 10, -12, 21, 14, -17, 24, -6, -10, 19, -21, 8, 24, -4, 12, -16];
 
@@ -28,6 +29,11 @@ export function pullInk(rgba: Uint8ClampedArray, width: number, charge: InkCharg
 export const pullFlag = (stem: string, charge: InkCharge) => `${stem}.ink.${charge}`;
 export const pressFlag = (stem: string) => `${stem}.sent`;
 export const installFlag = (stem: string) => `${stem}.mounted`;
+export const imprintHeadingFlag = (stem: string) => `${stem}.heading`;
+
+export function imprintHeading(state: Pick<CampaignState, 'flags'>, stem: string): ImprintHeading {
+  return state.flags[imprintHeadingFlag(stem)] === 'work' ? 'work' : 'artist';
+}
 
 export function pressedCharges(state: Pick<CampaignState, 'flags'>, stem: string): InkCharge[] {
   return INK_CHARGES.filter(({ key }) => state.flags[pullFlag(stem, key)] === true).map(({ key }) => key);

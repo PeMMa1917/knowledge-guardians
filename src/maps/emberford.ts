@@ -1,3 +1,4 @@
+import { MOON_EMBERFORD_CARRIER, MOON_ROAD_SONG } from './spareMoon';
 import { sefaDispatchDesk } from './sefaDispatch';
 import { EMBERFORD_PIGMENT_WINDOW } from './pigmentWindow';
 import { EMBERFORD_PIGMENT_SAMPLE } from './pigmentSample';
@@ -163,6 +164,7 @@ export const EMBERFORD: MapDef = {
     [0, -1, W, 1], [0, H, W, 1], [-1, 0, 1, H], [W, 0, 1, H],
   ],
   npcs: [
+    MOON_EMBERFORD_CARRIER,
     ...CART_MEMORY_ACTORS,
     { id: 'merchant-corvan', x: 25, y: 13, facing: 'down' },
     { id: 'smith-hesper', x: 7, y: 13, facing: 'right' },
@@ -182,6 +184,7 @@ export const EMBERFORD: MapDef = {
     { id: 'singer-teodora', x: 16, y: 15, facing: 'down', visibleIf: { origin: 'singer' } },
   ],
   interactables: [
+    MOON_ROAD_SONG,
     ...EMBERFORD_FIELD_ORDER,
     ...starStations('chronicler', [17, 20], [18, 20]),
     ...EMBERFORD_WINDOW,
