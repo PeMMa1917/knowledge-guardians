@@ -1,3 +1,4 @@
+import {courierArt,largeCourierArt} from './courierLiftArt';
 import { hearingPictures } from './hearingPictures';
 import { UNDERPAN_ART } from './underpanArt';
 import { SPARE_MOON_ART } from './spareMoonArt';
@@ -52,6 +53,7 @@ function pedestal(g: Ctx, x: number, y: number, w: number) {
 }
 
 const DRAW: Record<string, [number, number, (g: Ctx) => void]> = {
+  ...courierArt,
   ...SPARE_MOON_ART,
   ...UNDERPAN_ART,
   ...FOURTH_CORNER_ART,
@@ -3155,6 +3157,7 @@ DRAW['big.correspondence.crowther-book'] = [96, 64, (g) => {
 }];
 
 export const BIG_ART: Record<string, string> = {
+  ...largeCourierArt,
   'birdside.canoe': 'big.birdside.canoe',
   'correspondence.crowther-book': 'big.correspondence.crowther-book',
   'callboard.gage-mount': 'big.callboard.gage-mount',

@@ -418,6 +418,37 @@ const proofRows = [
   },
   ...coatProofs,
   {
+    objective:'courier.rete.theatre',map:'stage.foyer',target:'courier-theatre',
+    source:'tests/courier-lift.test.ts',anchor:"expect(carriedMark(d.s, c, stop)).toEqual(c.handles[index])",
+    action:'Equip Musa’s 1480/81 spherical astrolabe. Tip the moving rete and the star pointers. Send one checked cue to Pella. The performer can lead with the physical model or the maker and act out a turn; the celestial observation remains to be made.',
+    comparison:{areas:[
+      {id:'NAT',method:'Use the pointer to connect an instrument reading with an observation of the sky.',limit:'Turning the rete demonstrates the model. That motion by itself is no observation of a star.'},
+      {id:'ART',method:'Choose an entrance and embody the moving framework for spectators at the theatre.',limit:'A vivid gesture can clarify the model while leaving its astronomical prediction untested.'}],
+      concepts:['interpretation'],framework:['methods-and-tools'],connection:'The audience follows the same motion that the observer would use. The stage demonstration establishes how to operate the model; a sky observation tests what the model predicts.'},
+    dimensions:['micro:79','concept:interpretation','framework:methods-and-tools','area:NAT','area:ART','subject:theatre','subject:physics'],elements:['game:21','story:114'],
+  },
+  {
+    objective:'courier.drawers.theatre',map:'stage.foyer',target:'courier-theatre',
+    source:'tests/courier-lift.test.ts',anchor:"expect(lastCourierOpening(d.s, c, 'market')).toBe('person')",
+    action:'Take the Michigan copy of Bertrand to the stage. Issue the gold showing or the paired-drawer mark. The announcer’s first visible move affects what a spectator can infer about the sampling procedure.',
+    comparison:{areas:[
+      {id:'MAT',method:'Keep the possible paired compartments and the selection of a visible face distinct when counting outcomes.',limit:'A view of the gold face alone does not specify how the drawer was chosen.'},
+      {id:'ART',method:'Stage the selection with a visible choosing hand or announce the colour before showing the mechanism.',limit:'Seeing what one actor did in this performance cannot determine a selection rule used on every occasion.'}],
+      concepts:['evidence'],framework:['perspectives'],connection:'The receiver’s opening controls which part of the procedure the spectator sees. The counting rule still depends on how the observation was selected.'},
+    dimensions:['micro:176','concept:evidence','framework:perspectives','area:MAT','area:ART','subject:math-ai','subject:theatre'],elements:['game:21','story:114'],
+  },
+  {
+    objective:'courier.banknote.market',map:'market.square',target:'courier-market',
+    source:'tests/courier-lift.test.ts',anchor:"expect(entry.event?.sourceIds).toEqual([c.source])",
+    action:'Give Bew the denomination, serial number or issuer’s promise from AA2986931. Choose whose evidence comes first. The receipt can identify the note. A historical price series would be necessary to infer what the household could buy.',
+    reasoning:[{mode:'deductive',basis:'Identifying a particular note and its printed denomination supplies no premise that fixes local purchasing power. A transaction or price at a specified place and time is still missing.'}],
+    comparison:{areas:[
+      {id:'HIS',method:'Use this note’s catalogue identity and printed number to distinguish it from another surviving issue.',limit:'A correctly identified object cannot establish the price of an entire household’s purchases.'},
+      {id:'HUM',method:'Relate a nominal monetary amount to observed prices at the relevant place and time.',limit:'The price series is absent at the counter, so the buyer leaves the amount of goods open.'}],
+      concepts:['evidence'],framework:['scope'],connection:'Holding the individual note fixes which currency artifact is in question and lets the buyer identify the extra evidence a claim about buying power needs.'},
+    dimensions:['micro:92','concept:evidence','framework:scope','area:HIS','area:HUM','subject:economics'],elements:['game:21','story:114'],
+  },
+  {
     objective:'whistle.fern.sent',map:'forest.station',target:'whistle.fern.table',
     source:'tests/whistle-watch.test.ts',anchor:'keeps two signatures with their own impressions',
     action:'Overlay the bank tracing and the turned heel. Each person can sign only the impression their own work establishes. The local hands may retain both slips or invite a visitor to compare them at the original tray.',

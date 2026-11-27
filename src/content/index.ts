@@ -1,3 +1,4 @@
+import {installCourierLift} from './courierLift';
 import {petalContent} from './petalGlasshouse';
 import { homecomingDialogue } from './originHomecomings';
 import { installOriginTours } from './originTours';
@@ -272,6 +273,7 @@ export function buildPack(): ContentPack {
   addTownHearings(content);
   addSeaBirdWatch(content);
   addCanoeProjection(content);
+  installCourierLift(content);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);

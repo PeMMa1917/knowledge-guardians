@@ -1312,3 +1312,13 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .tally-door .tally-loaf.small {width:58%;}
 .tally-door .tally-loaf.large {width:90%;}
 .tally-weight {display:inline-block;height:.65rem;width:9%;background:#acb9c4;border:2px solid #dae2e8;}
+
+.courier-panel { display: grid; gap: .65rem; min-width: 0; }
+.courier-panel p { margin: 0; overflow-wrap: anywhere; }
+.courier-frame { display: flow-root; min-height: 5rem; background: #29223b; border: 2px solid #89704b; border-radius: .4rem; padding: .65rem; }
+.courier-frame > img { width: min(31%, 9.5rem); float: inline-start; margin-inline-end: .85rem; image-rendering: pixelated; }
+.courier-frame p + p { margin-top: .45rem; }
+.courier-marks { display: flex; flex-wrap: wrap; gap: .45rem; }
+.courier-marks button { white-space: normal; }
+.courier-marks button[aria-pressed="true"] { outline: 2px solid currentColor; outline-offset: -4px; }
+.courier-panel [role="status"] { min-height: 1.4em; }

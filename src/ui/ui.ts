@@ -1,3 +1,4 @@
+import {courierLiftPanel} from './courierLift';
 import { touringInstrument } from '../content/originTours';
 import { scores as originScores } from '../domain/originInstruments';
 import { originInstrument } from './originInstrument';
@@ -3633,6 +3634,10 @@ export class UI implements UIApi {
   }
 
   private mountFieldGame(id: string): void {
+    if(id==='courier-lift'||id==='courier-market'||id==='courier-theatre'){
+      const landing=id==='courier-lift'?'lift':id==='courier-market'?'market':'theatre';
+      this.openModal('bench-panel wide','The counterweight letters',this.closeBtn(),h('h2',{},landing==='lift'?'The counterweight letters':landing==='market'?'Bew’s counter':'Pella’s theatre bell'),courierLiftPanel(ctx.controller,landing,key=>this.sfx(key)));return;
+    }
     const fixed = fieldGamePanels.get(id);
     if (fixed) {
       this.openModal('bench-panel wide', fixed.title, this.closeBtn(),

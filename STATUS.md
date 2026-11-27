@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 27 November • The ring below the floorboards
+
+The Harvard Brooks and Michigan Bertrand volumes, two individually catalogued papyri and nine further holdings can travel from their original quests to the market and theatre. The address can travel ahead while the Guardian keeps the object. Bew and Pella sign the exact mark that arrived. A second receiving room opens the family stair where three freight charges turn out to have more than one cause. The source record, the reader’s contribution and the public consequences travel into the diary. [Playtest scope](docs/audit/NIGHT_REGISTER.md#the-counterweight-room)
+
 ## 27 November • Opening a room and returning to class
 
 A new player now loads the field pictures needed in the Nexus as they enter it. A player typing in the diary uses a quieter rendering clock. Calm and Zen players can leave a field invitation waiting while they walk. The class-copy comparison shows both drafts, checks the latest server revision while the choice is on screen and saves the selected text before reopening the adventure. [Hosting and online saves](docs/ACCOUNTS_AND_HOSTING.md) · [Rendering checks](docs/audit/NIGHT_REGISTER.md#map-pictures-and-the-first-room)

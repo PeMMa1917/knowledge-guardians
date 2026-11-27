@@ -781,3 +781,25 @@ The Polynesian Voyaging Society dates Hōkūleʻa’s launch at Kualoa/Hakipuʻu
 ### Louis Braille and Fen’s practice tabs
 
 Perkins describes its copy of Braille’s 1829 *Procédé*, an early method of writing words and music that used dashes as well as dots. An equipped copy brings its author to the travelling orchard. His journal entry links to the Perkins account and to his biography. Fen’s seven-notch wooden tabs, two moulds and stylus belong to the fictional touring company. The carver lets the player change the contact pressure and compare the two impressions. A student can trace the history of the book and identify exactly where the staged experiment begins. [Perkins School for the Blind](https://www.perkins.org/brailles-most-famous-book/)
+
+### The counterweight deliveries
+
+The collection room uses the existing sources and original earning quests for thirteen additional holdings. A player takes the individual object to a second room. The address can name a material mark, the process that produced it or a person whose contribution would otherwise disappear. The source and the signed mark travel together in the diary. The two desk keepers and their family history belong to the game.
+
+| Held item | Holding or published witness | Record |
+| --- | --- | --- |
+| The Harvard copy of Brooks’s Century Book for Young Americans | Harvard University library copy, digitised in Internet Archive | [centurybookfory00revogoog](https://archive.org/details/centurybookfory00revogoog) |
+| The Michigan copy of Bertrand’s Calcul des probabilités | University of Michigan library copy, digitised in Internet Archive | [calculdesprobab01bertgoog](https://archive.org/details/calculdesprobab01bertgoog) |
+| The British Museum’s first sheet of Papyrus Sallier III | British Museum | [EA10181,1](https://www.britishmuseum.org/sites/default/files/2022-10/Hieroglyphs_unlocking_ancient_Egypt_large_print_guide_The_British_Museum_2.pdf) |
+| The Turin Strike Papyrus in Museo Egizio, Cat. 1880 | Museo Egizio, Turin | [Cat. 1880](https://collezionepapiri.museoegizio.it/en-GB/document/131/) |
+| Mikaela Rose Cottingham’s binak, Museums Victoria X 104841 | Museums Victoria | [X 104841](https://collections.museumsvictoria.com.au/items/1915791) |
+| The southern bays map recorded from Hoani Te Hau Pere and Hone Tututaua Pere | Auckland War Memorial Museum collection, described by the Ngāi Tahu Archive | [Ngāi Tahu Archive MS7-002](https://kahurumanu.co.nz/map-stories/hoani-te-hau-pere-map/) |
+| Njoya and his scribes’ signed leaf in the Foumban palace archive | Archives du Palais des Rois Bamoun, Foumban; British Library EAP catalogue | [EAP051/1/1/2/2](https://eap.bl.uk/archive-file/EAP051-1-1-2-2) |
+| Frédéric Bruly Bouabré’s «BOU» «10» from Alphabet Bété | Museum of Modern Art, New York | [104.2019.10](https://www.moma.org/collection/works/299029) |
+| Shellabear’s romanised Sejarah Malayu in the National Library of Singapore | National Library, Singapore | [B20025340E](https://biblioasia.nlb.gov.sg/all-sections/vol-11-issue-4-jan-mar-2016-sejarah-malayu-malay-annals/) |
+| Britta Marakatt-Labba’s 2024 hand-coloured Garjját print at Moderna Museet | Moderna Museet, Stockholm | [MOM/2024/133](https://sis.modernamuseet.se/en/objects/120998/garjjat) |
+| Musa’s spherical astrolabe, Oxford inventory 49687 | History of Science Museum, University of Oxford | [49687](https://www.hsm.ox.ac.uk/spherical-astrolabe) |
+| Rra-Kalwanyimara at the Australian National Maritime Museum | Australian National Maritime Museum | [00001826](https://www.sea.museum/object/dugout-canoe) |
+| Zimbabwe’s 100-trillion-dollar banknote AA2986931 at the Smithsonian | National Museum of American History, Smithsonian Institution | [2015.0071.1](https://americanhistory.si.edu/collections/object/nmah_1694052) |
+
+The Garjját drawing indicates the paper mount and inventory slip. The binak drawing describes basket form. The vessel drawing follows the museum display. The public catalogue supplies the named makers and dates. The original diagrams omit protected clan designs and artists’ compositions.

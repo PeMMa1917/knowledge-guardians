@@ -1,3 +1,4 @@
+import {courierAt,underWeight} from './courierLift';
 import {petalHouse} from './petalHouse';
 import { withOriginVisitor } from './originTours';
 import { pictureFerryRoom } from './pictureFerry';
@@ -204,6 +205,7 @@ const campaignMaps: Record<string, MapDef> = {
   [ISLAND_MARGIN.id]: ISLAND_MARGIN,
   [COUNCIL_HALL.id]: COUNCIL_HALL,
   [SECOND_READING_STORE.id]: SECOND_READING_STORE,
+  [underWeight.id]:underWeight,
   [COUNCIL_GALLERY.id]: COUNCIL_GALLERY,
   [COUNCIL_LOADING_BAY.id]: COUNCIL_LOADING_BAY,
   [COUNCIL_LOAD_CHECK.id]: COUNCIL_LOAD_CHECK,
@@ -217,7 +219,7 @@ for (const room of nightRooms) {
 }
 
 export const MAPS: Record<string, MapDef> = Object.fromEntries(Object.values(campaignMaps).map((map) => {
-  const returns = [...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id), ...inkPostAt(map.id), ...nightDoor(map.id), ...foldingFlockAt(map.id), ...fieldLoansAt(map.id)];
+  const returns = [...courierAt(map.id), ...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id), ...inkPostAt(map.id), ...nightDoor(map.id), ...foldingFlockAt(map.id), ...fieldLoansAt(map.id)];
   const room = returns.length ? { ...map, interactables: [...map.interactables, ...returns] } : map;
   return [map.id, withOriginVisitor(withTownHearing(withWhistleWatch(room)))];
 }));

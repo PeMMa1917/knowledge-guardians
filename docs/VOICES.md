@@ -586,3 +586,11 @@ The mark on its face identifies who kept the box. It has taken that duty as its 
 ## On Tova’s picture ferry
 
 Bo punches things when he cannot put his feeling into words. He offers the Guardian his bruised supper ticket before he will explain why he has put a moon on either side of it. At the bunk he counts what the adults fail to see. At the playhouse he wants a turn with the opening line. Tova measures the price of an extra minute in connections her passengers will miss. Neris volunteers to walk home when making room for another person costs them their own seat. The cook has been waiting to see what everyone else spent supper laughing at. Giving one of them the first page changes who gets to set up a stranger’s story and who has to answer afterwards. [Boat and gallery](../src/content/pictureFerry.ts) · [Individual commissions and replies](../src/content/ferryCommissions.ts)
+
+### Bew, freight clerk under Lantern Square
+
+Bew closes his book with a thumb inside it. It is the only way he can look somebody in the eye and still find his place. He wants to keep the lift running cheaply enough for families to use. He charged his own sister Nemi for the sound of her sister Pella’s stage cue. His habit of counting every ring used to pay everyone’s wages. He can run a second cord or leave the account open and return the money. On the market floor his next action shows which arrangement the family tried.
+
+### Pella, caller at the theatre door
+
+Pella can project a whisper across a foyer and lose the next line when a child asks who taught it to her. She learned her cues from Nemi and kept Nemi’s pauses even when she took her place. Her use of the freight bell let an actor finish a difficult entrance and put an unexplained charge in Bew’s book. Give her something to do with her hands while somebody else speaks. With the second cord she can hear her sister again. With the repaid fees she gives the cue silently.

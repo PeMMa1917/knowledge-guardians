@@ -1,3 +1,4 @@
+import {courierDiary,courierWeave} from './courierLift';
 import {wagerDiary} from './petalWager';
 import {gearDiary} from './petalGears';
 import {petalDiary, flowerWeave} from './petalWindow';
@@ -156,6 +157,7 @@ function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignS
   if (cmd.type==='TryMothPerch') return mothPerchDiary(cmd);
   if (cmd.type==='DrawOrchardStylus') return mouldDiary(cmd);
   if (cmd.type === 'HangFerryPrint' || cmd.type === 'OpenFerryBill' || cmd.type === 'HearFerryBill') return billDiary(previous, next, cmd);
+  if (cmd.type === 'WorkCourierLift') return courierDiary(next,cmd);
   if(cmd.type==='DrawPetalRibbon')return wagerDiary(next,cmd);
   if(cmd.type==='WindPetalGear')return gearDiary(next,cmd);
   if (cmd.type === 'WorkPetalWindow') return petalDiary(previous,next,cmd);
@@ -561,6 +563,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if (family==='moth-perch') { const moth=pack.lorelings.find(r=>r.id==='glimmermoth'); if(moth)return diaryTopics(moth.weave); }
     if (family === 'origin-work') { const o = origins.find(x => x === event.ref); if (o) return diaryTopics(originWeave[o]); }
     if (family === 'picture-bill') return diaryTopics(billWeave);
+    if (family === 'courier') return diaryTopics(courierWeave);
     if (family === 'petal-window'||family === 'petal-gear'||family === 'petal-ribbon') return diaryTopics(flowerWeave);
     if (family === 'picture-ferry') return diaryTopics(ferryWeave);
     if (family === 'plum') {

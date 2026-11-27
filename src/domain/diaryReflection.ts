@@ -1,3 +1,4 @@
+import { courierCases } from './courierLift';
 import {whistlePlaces,whistleStories} from '../content/whistleWatch';
 import {vaultStations,vaultWork} from '../content/vaultNight';
 import { pocketStories } from '../content/pocketStories';
@@ -31,6 +32,18 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
+  if (key.startsWith('courier:')) {
+    const [shape, action, place, , opening] = key.slice('courier:'.length).split('.');
+    const record = courierCases.find(c => c.shape === shape);
+    if (record) {
+      const q = record.questions;
+      if (place === 'market' || place === 'theatre') {
+        return action === 'receive' && opening === 'person'
+          ? { person: q.person, landing: q[place] }
+          : { mark: q.mark, landing: q[place] };
+      }
+      return { mark: q.mark, person: q.person };
+    }
   if(key.startsWith('origin-work:')){
     if(key.includes('.send.')||key.includes('.return.'))return {who:'Who gained a place in the work because of my choice?',cost:'Who still had to ask or wait?'};
     if(key.startsWith('origin-work:archive'))return {lens:'What did an empty drawer tell the visitor? What did it leave open?'};
