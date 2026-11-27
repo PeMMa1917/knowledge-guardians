@@ -42,6 +42,8 @@ export const FIELD_GAMES: FieldGame[] = [
     idea: 'A pattern seen in many examples can still break on the next one. A proof from the rules of the game holds for every case, even cases nobody has made yet. But a proof covers only what it states: the part it does not state is still a guess.' },
   { id: 'trees', name: 'The Three Trees', host: 'Naturalist Elian and Steward Ayla, at the old grove on the Listening Trail', concept: 'interpretation',
     idea: 'The shape is chosen: one grove holds many triangles, and the word "triangle" is ours. The distances are not chosen: two people pacing from opposite ends get the same number, and three trees in a line will not make a triangle however much we want one. Mathematics may be partly made and partly found.' },
+  { id: 'fair', name: 'The Value Fair', host: 'Clerk Dagny and Assayer Tellen, at the token table in Lantern Square', concept: 'values',
+    idea: 'Time to prepare is scarce, so we defend some claims and let others drop. Three people with the same facts keep three different sets of rules. What we spend our effort on shows what we value, and what we value shapes what we accept.' },
   { id: 'lens', name: 'The Lens Table', host: 'Director Edda and Host Hari, at the green card table in the Rehearsal Room', concept: 'perspective',
     idea: 'An account of an event is built from a few people and a few things it left behind. Each choice brings some of the event into view and leaves some out. A true title can still leave someone out.' },
   { id: 'relay', name: 'The Sketch Relay', host: 'Printer Lark and Lending Keeper Mina, at the river signal towers below the Lending Hall', concept: 'interpretation',

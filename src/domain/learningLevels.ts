@@ -83,6 +83,8 @@ export const LEARN: Record<string, LearnTag> = {
   'field:ladder': { ...t(['certainty', 'justification', 'evidence'], [M], 3, 'analyse', 'application', 'relational', 8), aoks: ['MAT'] },
   // Choose a triangle in a grove (a line is refused), see other shapes, say where the shape came from, then pace a side.
   'field:trees': { ...t(['interpretation', 'objectivity', 'perspective'], [M], 2, 'evaluate', 'integration', 'relational', 6), aoks: ['MAT', 'NAT'] },
+  // Spend ten tokens to defend market rules, see what is kept or clashes, compare two keepers, name the value.
+  'field:fair': { ...t(['values', 'justification', 'responsibility', 'power'], [P, E], 3, 'evaluate', 'human', 'relational', 5), aoks: ['HUM', 'POL'] },
   // Choose two lenses and two objects for one event, hear what the account leaves out, then title it.
   'field:lens': { ...t(['perspective', 'interpretation', 'evidence', 'values', 'power'], [S, P, E], 3, 'evaluate', 'human', 'relational', 5), aoks: ['HIS', 'ART'] },
   // Send a message by drawings through two copyists; see what is lost or reversed; paint shared keys and resend.

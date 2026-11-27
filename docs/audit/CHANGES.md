@@ -317,6 +317,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/lensTable.ts`, `src/content/lens-table.json`, `src/ui/lensPanel.ts`, `src/maps/stage.ts`, `tests/lens-table.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
+### The Value Fair, chapter 10's signature game (C-004)
+
+**What.** At her token table in Lantern Square, Clerk Dagny gives the player ten wooden tokens. Each token is an hour of getting ready for tomorrow's town meeting. The player spends them on five market rules (the checked scale, the hill farmers' basket measure, posted prices, opening at dawn, the market book). A rule needs three tokens to be defended and kept, so at most three can be kept. At the meeting the player sees which rules stand, where two kept rules clash, and which rules Assayer Tellen and Clerk Dagny would have kept with the same tokens. Then the player says what their biggest pile protected, and a keeper replies. Tellen and Dagny then disagree (X-008) about the market book.
+
+**Why.** The first lesson folder has an auction of beliefs. Mika's rules exclude money, so the game uses tokens that stand for time. The game shows that the same facts lead to different rules, because what we spend effort on shows what we value. No set of rules is marked right (OPEN-001).
+
+**Where.** `src/domain/valueFair.ts`, `src/content/value-fair.json`, `src/ui/fairPanel.ts`, `src/maps/market.ts`, `tests/value-fair.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md. The 30-minute audit bound for the puzzler and cozy paths grows by the measured minutes of the new optional games (`tests/learning.test.ts`).
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.

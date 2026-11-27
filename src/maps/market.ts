@@ -52,6 +52,7 @@ export const MARKET_SQUARE: MapDef = {
     { stamp: 'crates', x: 3, y: 9 }, { stamp: 'barrel', x: 29, y: 12 }, { stamp: 'crates', x: 6, y: 13 },
   ],
   interactables: [
+    { id: 'field-fair', kind: 'fieldgame', game: 'fair', x: 22, y: 2, w: 1, h: 1, label: 'Dagny’s token table (The Value Fair)', art: 'old-sign' },
     ...MARKET_BASKET,
     ...UNDERPAN_SQUARE,
     PRICE_DRAWERS_DOOR,

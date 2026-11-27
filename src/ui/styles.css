@@ -1136,3 +1136,10 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .lens-cards h3 { width: 100%; margin: 0.2rem 0; font-size: 1rem; }
 .lens-cards button[aria-pressed="true"] { outline: 2px solid #f2c94c; }
 .lens-account { margin: 0.4rem 0 0.4rem 1.2rem; }
+
+/* The Value Fair (chapter 10). */
+.vfair-claims { list-style: none; padding: 0; margin: 0.4rem 0; }
+.vfair-claims li { display: grid; grid-template-columns: 1fr auto auto auto; gap: 0.4rem; align-items: center; margin: 0.3rem 0; }
+.vfair-count { min-width: 1.6rem; text-align: center; font-weight: 700; }
+.vfair-other { border-left: 3px solid rgba(255, 255, 255, 0.25); padding-left: 0.6rem; margin: 0.5rem 0; }
+.vfair-other h3 { margin: 0.2rem 0; font-size: 1rem; }

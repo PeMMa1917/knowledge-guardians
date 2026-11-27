@@ -1341,6 +1341,24 @@
      "text": "Nobody reads a programme that long. People want one sentence. Our job is to choose the sentence that does the least harm, and say so if anyone asks."
     }
    ]
+  },
+  {
+   "id": "market.fair",
+   "after": {
+    "flag": "field.fair.done",
+    "eq": true
+   },
+   "heading": "Two views on the token table",
+   "replies": [
+    {
+     "speaker": "market-assayer",
+     "text": "The tokens show it plainly. Rules are not found lying in the square. People who had the time made them. I want the market book so the people without time can check us later."
+    },
+    {
+     "speaker": "market-clerk",
+     "text": "And the people without time are the ones the book will count. A rule that protects strangers can still watch neighbours. I spent my tokens on the hill families because nobody else would."
+    }
+   ]
   }
  ]
 }

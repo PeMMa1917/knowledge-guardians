@@ -91,6 +91,7 @@ import { treesPanel } from './treesPanel';
 import { assayPanel } from './assayPanel';
 import { relayPanel } from './relayPanel';
 import { lensPanel } from './lensPanel';
+import { fairPanel } from './fairPanel';
 import { contentNoteFor, noteSeenFlag } from '../domain/contentNotes';
 import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
 import { flushResearch, recordResearch } from '../app/research';
@@ -3741,6 +3742,8 @@ export class UI implements UIApi {
     else if (id === 'trade') this.openTrade();
     else if (id === 'ladder') this.openModal('bench-panel wide', "The Copyists' Ladder", this.closeBtn(),
       ladderPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('ladder'), () => this.closeModal()));
+    else if (id === 'fair') this.openModal('bench-panel wide', 'The Value Fair', this.closeBtn(),
+      fairPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('fair'), () => this.closeModal()));
     else if (id === 'lens') this.openModal('bench-panel wide', 'The Lens Table', this.closeBtn(),
       lensPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('lens'), () => this.closeModal()));
     else if (id === 'relay') this.openModal('bench-panel wide', 'The Sketch Relay', this.closeBtn(),
