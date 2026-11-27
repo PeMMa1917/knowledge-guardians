@@ -1521,6 +1521,60 @@
      "text": "One Odette, yes. But Lio was the only one who asked what Tess and Maren would be to each other next week. A council that forgets that writes rules nobody keeps."
     }
    ]
+  },
+  {
+   "id": "nile.reassembly",
+   "after": {
+    "flag": "field.reassembly.done",
+    "eq": true
+   },
+   "heading": "Two views on the torn notices",
+   "replies": [
+    {
+     "speaker": "nile-marek",
+     "text": "Glue the strips down and be done. A notice that needs a keeper to explain it is not finished. If the limit matters, write it bigger."
+    },
+    {
+     "speaker": "nile-nasir",
+     "text": "Glue makes it look settled. I would rather pin the strips, so the limit can change when the river does, without anyone pretending the old notice was always this one."
+    }
+   ]
+  },
+  {
+   "id": "stage.primer",
+   "after": {
+    "flag": "field.primer.done",
+    "eq": true
+   },
+   "heading": "Two views on page twelve",
+   "replies": [
+    {
+     "speaker": "stage-director",
+     "text": "A primer is a stage. You choose the one scene that holds the whole story, and you commit to it. A page that tries to show everything shows nothing."
+    },
+    {
+     "speaker": "stage-host",
+     "text": "A primer is a seat, and every child sits in the same one. I would put a small line under it, always: this is one view of the bridge. Ask someone who was there."
+    }
+   ]
+  },
+  {
+   "id": "market.pattern",
+   "after": {
+    "flag": "field.pattern.done",
+    "eq": true
+   },
+   "heading": "Two views on the willow-stitch",
+   "replies": [
+    {
+     "speaker": "market-clerk",
+     "text": "I would put the weavers' rule in the market book, so no trader can say they did not know. A rule people can read protects the makers who are not at the stall that day."
+    },
+    {
+     "speaker": "market-assayer",
+     "text": "Written down, it will be measured and argued over, word by word. The Mixe community did not need a market book to know their blouse. I would ask the weavers, every time, and write down only what they want written."
+    }
+   ]
   }
  ]
 }

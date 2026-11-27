@@ -397,6 +397,74 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/festivalDilemma.ts`, `src/content/festival-dilemma.json`, `src/ui/festivalPanel.ts`, `src/maps/water.ts`, `tests/festival-dilemma.test.ts` (it checks that the facts tell the friends apart), credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
+### Custodian voices: Chinchorro sites, Yirrkala petitions, Shawnee sources (C-023, X-006)
+
+**What.** Three changes about who keeps a record today, and how they describe it.
+- **Chinchorro (chapter 3).** A new card in the Chinchorro Records room says who looks after the three sites now: Chile's National Monuments Council, which supervises them and must approve any change, and the Chinchorro Marka Corporation, which runs the management system. It also says what UNESCO asks: that the people of Arica and any community with a link to the sites share in decisions, and that questions about the treatment of the dead are still open. The card says plainly that it gives the institutions' words, and that the community's own words are not on it yet.
+- **Yirrkala bark petitions.** A new "Yolŋu account" card in the Shoal Shelf Reading Shelter gives the makers' name for the petitions, Näku Dhäruk (bark, and word or message). It says that for Yolŋu they were an offering between equal powers, and that one petition returned to Yirrkala in December 2023. The card stands next to the parliamentary receipt, so the player sees two records of one event.
+- **Shawnee (chapter 13).** The Tecumseh records already cite the Absentee Shawnee Tribe and the Eastern Shawnee Tribe of Oklahoma. The audit item is marked done. The Eastern Shawnee page names all three federally recognised Shawnee nations.
+
+**Why.** Decision X-006 asks for Indigenous knowledge that is verified and woven in, with sources from the people themselves where possible. Where no community source was found (Chinchorro, Luba), the game says so in the text, instead of filling the gap with a guess.
+
+**Where.** `src/maps/preserved.ts` (preserved-coast-custodians), `src/maps/specimenPassage.ts` (yirrkala-yolngu-account). Sources: UNESCO World Heritage Centre property 1634; National Museum of Australia, Defining Moments: Yirrkala bark petitions; East Arnhem Regional Council, on the fourth petition's return (4 December 2023).
+
+### Pushback after a weighed judgement (C-016)
+
+**What.** After seven weighed choices, a person affected by the choice pushes back, and the player answers. The words depend on what the player chose:
+- **The Green Squares (chapter 5):** Elian pushes back on ribbons that turn a lead into a cause, or on ties that tell walkers nothing.
+- **Where the Ink Stops (chapter 8):** a skiff crew who steered by the old chart pushes back on the new chart wall.
+- **The Agreement at the Weir (chapter 11):** the crew who lost water pushes back on the order, whichever order the player chose.
+- **The Next Bell (chapter 4):** a boat crew who acted on the first notice pushes back on the revision.
+- **The Missing Tuesday (chapter 7):** a reader who walked to the closed hall asks who is responsible for that walk.
+- **The Doorway Pause (chapter 9):** a note from the side gallery says the scene looked different from there.
+- **A Place on the Route (chapter 12):** a reader from Canal Walk says the count counted only the people who could come.
+
+The player can keep the choice and say why, change it, or ask what would change the other person's mind. Each answer gets a reply. The answer is kept as a flag (`push.<id>.answer`) for the journal and for research data.
+
+**Why.** Personas D1, D2, C3 and E1 noted that many missions ended with "a reader uses the display", with no one who disagreed. A judgement that nobody challenges teaches less than one the player must defend. No answer is marked right (OPEN-001). Holding a choice can be as good as changing it, and the replies say so.
+
+**Where.** `src/domain/pushbacks.ts`, `src/content/pushbacks.json`, `src/ui/ui.ts` (showPushback, after the two replies), `tests/pushbacks.test.ts`. More missions can be added in the JSON file alone.
+
+### Open quests as pathways, with a good place to stop (C-010)
+
+**What.** The journal's "Open quests" page now groups quests by place (the Nexus, the Living Forest, the Cartographers' Sea and so on). Each place is a section that opens and closes; the place where the player is now starts open. Each quest shows how many of its steps are done. When at least one step is done, it says that this is a good place to stop, and that the rest will wait. A quest with many steps shows the first four, and the rest go into a "more steps" drawer.
+
+**Why.** Personas A5, G9, G11 and I3 found the journal hard to scan: one room listed 36 to 43 steps in a row, and nothing told a player with little time that it was safe to stop. Mika decided to keep every case and to mark no main path (X-010), so the fix groups and folds the list and removes nothing.
+
+**Where.** `src/domain/adventureJournal.ts` (each quest now has its world and step counts), `src/ui/adventureJournal.ts` (the grouped view), `src/ui/styles.css`, `tests/quest-pathways.test.ts`. The material drawers planned for single rooms in chapters 2, 3 and 6 can build on this.
+
+### The Reassembly Line, chapter 2's second game (C-004)
+
+**What.** In the Royal Records Room, the wind has torn three river notices (about the ferry, the north well and the flood). The player rebuilds each one: a claim, then its evidence, then the line that says where it stops. A strip from another notice is handed back with a reason, and so is the strip "Everyone on the quay says so", because it shows who believes a claim, not why. When all three hold, the player chooses which line goes at the top of each notice. Marek and Nasir each answer every choice, and they disagree. Then they disagree again (X-008) about gluing or pinning the notices.
+
+**Why.** The first lesson folder has a card game where students rebuild a split argument. Here the argument parts are things a ferry crowd needs, so the structure has a reason. The well's limit ("both tests were made before the river rose") shows why a limit can matter more than the claim. No order is marked right (OPEN-001).
+
+**Where.** `src/domain/reassemblyLine.ts`, `src/content/reassembly-line.json`, `src/ui/reassemblyPanel.ts`, `src/maps/nile.ts`, `tests/reassembly-line.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
+### The Primer Page, chapter 9's second game (C-004)
+
+**What.** At the printer's proof table in the Rehearsal Room, Host Hari shows page twelve of the town's new children's primer: the opening of the Lantern Bridge, forty years ago. There is room for one picture (the mayor's ribbon, the builders on the scaffold, the old ferry crew, the first crowd) and one caption. Edda says what the picture shows, and Hari says what it hides. When picture and caption agree, Hari notes that what both leave out becomes very quiet; when they disagree, a child will ask why. Then a child from the school group asks a question about the picture, and the player answers it, adds a note, or asks what she thinks. Edda and Hari then disagree (X-008) about what a primer is for.
+
+**Why.** The second lesson folder asks how a history textbook chooses its picture and words. The event is from the game world, so the game does not judge a real textbook. Every page leaves someone's bridge out, and the game says so; no page is marked right (OPEN-001).
+
+**Where.** `src/domain/primerPage.ts`, `src/content/primer-page.json`, `src/ui/primerPanel.ts`, `src/maps/stage.ts`, `tests/primer-page.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
+### The Pattern Book, chapter 10's second game (C-004, X-006)
+
+**What.** At Clerk Dagny's cloth stall in Lantern Square, a trader wants to print the willow-stitch of the Fenmarket weavers (an invented people) on a thousand scarves, because "old patterns belong to everybody". Dagny opens the pattern book: three real cases, each about one people on its own page, each with its source. The Navajo Nation holds the NAVAJO trademark and went to court over goods sold under its name (Northern Arizona University ethics case). Maasai elders planned how to control the use of their name and image, and Maasai community members recorded their own elders' knowledge (WIPO; Strathmore University CIPIT). The Mixe community of Santa María Tlahuitoltepec spoke out in 2015 about a designer's copy of their blouse (Global Voices). Then Elder Yeva of the weavers asks for an offer: who agrees, whose name goes on it, and who gains. The weavers answer each term in their own words, and the player can change the offer or suggest buying the weavers' own scarves. Dagny and Tellen then disagree (X-008) about writing the rule down.
+
+**Why.** The second lesson folder asks who may use a people's designs. Decision X-006 asks for Indigenous knowledge that is verified and woven in, each people separately. Here the weavers' answers decide the outcome, because consent means the makers decide and can say no. That is the lesson, so their answers are not a hidden "right answer" from the game.
+
+**Where.** `src/domain/patternBook.ts`, `src/content/pattern-book.json` (with sources), `src/ui/patternPanel.ts`, `src/maps/market.ts`, `tests/pattern-book.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
+### Voice sheets (C-005)
+
+**What.** A new file, `docs/VOICES.md`, gives 63 characters a voice sheet: what each one believes, the mistake each one fears most, how each one speaks, and why. It covers every keeper and every character with more than 20 lines. The two keepers in each chapter are built to pull against each other, as decision X-008 asks. A test (`tests/voices.test.ts`) fails if a character with more than 20 lines has no sheet, or if a sheet lacks one of its four parts.
+
+**Why.** Personas E2, E3, E4 and G5 found that many characters sounded alike, and that the two keepers in a chapter rarely disagreed. The new two-reply moments, pushbacks and games already follow these sheets. Writers adding lines later now have one place to check a voice.
+
+**Where.** `docs/VOICES.md`, `tests/voices.test.ts`. Pronouns are used only where the game's own text already uses them.
+
 ### The 30-minute audit and the new games
 
 **What.** The audit test (`tests/learning.test.ts`) measures minutes of play in which a 30-minute window lacks some TOK concept or framework part. The new optional games add minutes inside windows that were already open, so the measure grew with each game. The test now checks the original bound on the path without the new games, and allows each new game to lengthen the gaps by at most three times its own minutes.

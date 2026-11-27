@@ -298,12 +298,39 @@ function diaryNotes(view: AdventureJournalView, controller: GameController, refr
       diaryReflections(`note:${note.index}`, note.reflections, controller)))) : h('p', {}, 'You have no personal entries yet.'));
 }
 
+/** Steps shown before the rest go into a drawer (C-010: long step lists are hard to scan). */
+const STEPS_SHOWN = 4;
+
+/** The place name of a chapter world, from its first map ("Cartographers’ Sea: Lantern House" gives "Cartographers’ Sea"). */
+function worldName(world: string): string {
+  const map = Object.values(MAPS).find((m) => m.world === world);
+  return map ? map.name.split(':')[0] : world;
+}
+
+function questItem(quest: AdventureJournalView['quests'][number]): HTMLElement {
+  const shown = quest.steps.slice(0, STEPS_SHOWN);
+  const rest = quest.steps.slice(STEPS_SHOWN);
+  return h('li', {}, h('h4', {}, quest.title),
+    quest.question ? h('p', {}, quest.question) : null,
+    h('p', { class: 'fine' }, `${quest.done} of ${quest.total} steps done.`,
+      quest.done > 0 ? ' Good place to stop: what you have done is saved, and the rest will wait for you.' : ''),
+    h('ul', {}, ...shown.map((step) => h('li', {}, step))),
+    rest.length ? h('details', { class: 'quest-drawer' }, h('summary', {}, `${rest.length} more steps`),
+      h('ul', {}, ...rest.map((step) => h('li', {}, step)))) : null);
+}
+
 function openQuests(view: AdventureJournalView, controller: GameController, refresh: () => void): HTMLElement {
   const questions = view.notes.filter((note) => note.kind === 'question' && !note.resolved && !note.draft);
+  // C-010: group open quests into one pathway per place. No main path is marked (decision X-010).
+  const here = MAPS[controller.state.mapId]?.world;
+  const worlds = [...new Set(view.quests.map((q) => q.world))];
   return h('section', { class: 'adventure-journal' }, h('h3', {}, 'Open quests and questions'),
-    view.quests.length ? h('ol', { class: 'diary-feed' }, ...view.quests.map((quest) => h('li', {}, h('h3', {}, quest.title),
-      quest.question ? h('p', {}, quest.question) : null,
-      h('ul', {}, ...quest.steps.map((step) => h('li', {}, step)))))) : h('p', {}, 'You have no open quests.'),
+    view.quests.length ? h('div', { class: 'quest-pathways' }, ...worlds.map((world) => {
+      const qs = view.quests.filter((q) => q.world === world);
+      return h('details', { class: 'quest-pathway', open: world === here || worlds.length === 1 },
+        h('summary', {}, `${worldName(world)} (${qs.length} open)`),
+        h('ol', { class: 'diary-feed' }, ...qs.map(questItem)));
+    })) : h('p', {}, 'You have no open quests.'),
     h('h3', {}, 'My open questions'),
     questions.length ? h('ul', { class: 'diary-feed diary-notes' }, ...questions.map((note) => h('li', {},
       h('p', {}, note.text), questionButton(note, controller, refresh)))) : h('p', {}, 'You have no personal questions open.'));

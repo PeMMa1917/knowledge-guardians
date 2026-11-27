@@ -205,6 +205,7 @@ export const NILE_ROYAL = room('nile.royal', 'Nile Archive: Royal Records Room',
     exhibit('TREATY', 18, 5, 'the peace treaty and its replica', 'tablet'),
     // Chapter 2's first field game (audit fix C-004): pattern versus proof. Rules in src/domain/wordLadder.ts.
     { id: 'field-ladder', kind: 'fieldgame', game: 'ladder', x: 16, y: 9, w: 1, h: 1, label: 'Nasir’s copy desk (The Copyists’ Ladder)', art: 'catalogue' },
+    { id: 'field-reassembly', kind: 'fieldgame', game: 'reassembly', x: 9, y: 5, w: 1, h: 1, label: 'the torn river notice board (The Reassembly Line)', art: 'catalogue' },
     { id: 'nile-label', kind: 'label', kit: 'nile-qadesh', x: 12, y: 5, w: 1, h: 1, label: 'the Qadesh label stand', art: 'label-stand' },
   ], 0x312432,
   [{ stamp: 'banners', x: 5, y: 2 }, { stamp: 'banners', x: 17, y: 2 }, { stamp: 'rug-green', x: 11, y: 8 }, { stamp: 'bench', x: 2, y: 9 }, { stamp: 'bench', x: 19, y: 9 }]);

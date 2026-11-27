@@ -100,6 +100,9 @@ import { collagePanel } from './collagePanel';
 import { tokenPanel } from './tokenPanel';
 import { fogPanel } from './fogPanel';
 import { festivalPanel } from './festivalPanel';
+import { reassemblyPanel } from './reassemblyPanel';
+import { primerPanel } from './primerPanel';
+import { patternPanel } from './patternPanel';
 import { fairPanel } from './fairPanel';
 import { batPanel } from './batPanel';
 import { mirrorPanel } from './mirrorPanel';
@@ -107,6 +110,7 @@ import { surveyPanel } from './surveyPanel';
 import { labyrinthPanel } from './labyrinthPanel';
 import { contentNoteFor, noteSeenFlag } from '../domain/contentNotes';
 import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
+import { pendingPushback, pushAnswerFlag, pushSeenFlag } from '../domain/pushbacks';
 import { flushResearch, recordResearch } from '../app/research';
 import { ROWS, SECTIONS, startTrial, step, tileWords, type Tile } from '../domain/provingFloor';
 import { THINKERS, VIEWS as TOK_VIEWS, adviceLabel, meetFlags, thinkerFlag, thinkersFor, viewsMet } from '../domain/thinkers';
@@ -644,6 +648,7 @@ export class UI implements UIApi {
     this.refreshHud();
     if (this.pendingChapterEnd) { this.pendingChapterEnd = false; this.chapterEnd(); return; }
     if (this.showTwoReplies()) return;
+    if (this.showPushback()) return;
     if (this.queue.length) {
       setTimeout(() => {
         // A dialogue can replace its panel before this callback runs.
@@ -669,6 +674,37 @@ export class UI implements UIApi {
       h('div', { class: 'two-replies-row' }, voice(entry.replies[0]), voice(entry.replies[1])),
       h('p', { class: 'fine' }, 'Two people, two good reasons. Neither one is the answer. Which reasons do you find stronger, and why?'),
       h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep walking')));
+    this.sfx('sfx.page');
+    return true;
+  }
+
+  /** C-016: after a weighed judgement, someone affected pushes back and the player answers. Returns true if a panel opened. */
+  private showPushback(): boolean {
+    const c = ctx.controller;
+    if (!c.state || this.modal) return false;
+    const found = pendingPushback(c.state.flags);
+    if (!found) return false;
+    const { entry, text } = found;
+    c.dispatch({ type: 'SetFlag', flag: pushSeenFlag(entry.id), value: true });
+    const who = c.pack.characters.find((x) => x.id === entry.speaker);
+    const body = h('div', { class: 'pushback' });
+    const show = (answer: string | null): void => {
+      const a = entry.answers.find((x) => x.id === answer);
+      body.replaceChildren(
+        h('div', { class: 'two-reply' },
+          h('span', { class: 'portrait', style: { backgroundImage: `url(assets/art/generated/characters/${who?.sprite}.png)` }, 'aria-hidden': 'true' }),
+          h('div', {}, h('strong', {}, who?.name ?? entry.speaker), h('p', {}, text))),
+        ...(a
+          ? [h('p', { class: 'clue-view fresh', role: 'status' }, a.reply),
+            h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep walking'))]
+          : [h('p', { class: 'fine' }, 'How do you answer? There is no right answer, only reasons.'),
+            h('div', { class: 'row' }, ...entry.answers.map((x) => h('button', { type: 'button', onclick: () => {
+              c.dispatch({ type: 'SetFlag', flag: pushAnswerFlag(entry.id), value: x.id }); this.sfx('sfx.page'); show(x.id);
+            } }, x.text)))]));
+      (body.querySelector('[data-autofocus]') as HTMLElement | null)?.focus();
+    };
+    show(null);
+    this.openModal('two-replies', entry.heading, this.closeBtn(), h('h2', {}, entry.heading), body);
     this.sfx('sfx.page');
     return true;
   }
@@ -3778,6 +3814,12 @@ export class UI implements UIApi {
       batPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('bats'), () => this.closeModal()));
     else if (id === 'fair') this.openModal('bench-panel wide', 'The Value Fair', this.closeBtn(),
       fairPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('fair'), () => this.closeModal()));
+    else if (id === 'pattern') this.openModal('bench-panel wide', 'The Pattern Book', this.closeBtn(),
+      patternPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('pattern'), () => this.closeModal()));
+    else if (id === 'primer') this.openModal('bench-panel wide', 'The Primer Page', this.closeBtn(),
+      primerPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('primer'), () => this.closeModal()));
+    else if (id === 'reassembly') this.openModal('bench-panel wide', 'The Reassembly Line', this.closeBtn(),
+      reassemblyPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('reassembly'), () => this.closeModal()));
     else if (id === 'festival') this.openModal('bench-panel wide', 'The Festival Dilemma', this.closeBtn(),
       festivalPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('festival'), () => this.closeModal()));
     else if (id === 'fog') this.openModal('bench-panel wide', 'The Fog Chart', this.closeBtn(),

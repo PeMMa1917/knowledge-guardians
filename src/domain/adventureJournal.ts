@@ -36,6 +36,11 @@ export interface JournalQuest {
   title: string;
   question: string;
   steps: string[];
+  /** The chapter world, so the journal can group quests into pathways (C-010). */
+  world: string;
+  /** Steps done and steps in all, so the journal can show a good place to stop (C-010). */
+  done: number;
+  total: number;
 }
 
 export interface JournalNote extends DiaryNoteDetails {
@@ -445,7 +450,10 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
   for (const objective of objectives) {
     if (objective.complete) continue;
     const mission = objective.mission;
-    const quest = quests.get(mission.id) ?? { id: mission.id, title: mission.title, question: mission.knowledgeQuestion, steps: [] };
+    const quest = quests.get(mission.id) ?? {
+      id: mission.id, title: mission.title, question: mission.knowledgeQuestion, steps: [], world: mission.world,
+      done: mission.objectives.filter((o) => state.objectivesDone.includes(o.id)).length, total: mission.objectives.length,
+    };
     quest.steps.push(objective.title);
     quests.set(mission.id, quest);
   }

@@ -1139,6 +1139,23 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .collage-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.5rem; margin: 0.5rem 0; }
 .collage-card { display: flex; flex-direction: column; gap: 0.3rem; text-align: left; white-space: normal; }
 .collage-card[aria-pressed="true"] { outline: 2px solid #f2c94c; }
+.pattern-case { border-left: 3px solid #f2c94c; padding: 0.2rem 0.7rem; margin: 0.5rem 0; }
+.pattern-case h3 { margin: 0.2rem 0; font-size: 1rem; }
+.pattern-case a { color: var(--cyan); }
+.pattern-term { margin: 0.4rem 0; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 6px; }
+.pattern-term label { display: flex; gap: 0.4rem; align-items: flex-start; margin: 0.2rem 0; }
+.primer-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.4rem; margin: 0.4rem 0; }
+.primer-group h3 { grid-column: 1 / -1; margin: 0.2rem 0; font-size: 1rem; }
+.primer-card { display: flex; flex-direction: column; gap: 0.2rem; text-align: left; white-space: normal; }
+.primer-card[aria-pressed="true"] { outline: 2px solid #f2c94c; }
+.primer-proof { margin: 0.5rem 0; padding: 0.6rem; background: #f4ecd8; color: #2a2418; border-radius: 6px; }
+.primer-picture { padding: 1.2rem 0.6rem; border: 2px dashed #b8a47a; text-align: center; font-style: italic; }
+.primer-proof figcaption { margin-top: 0.4rem; font-weight: 700; color: #2a2418; opacity: 1; font-size: 1rem; }
+.reassembly-notice { border: 1px dashed rgba(242, 201, 76, 0.6); border-radius: 6px; padding: 0.3rem 0.7rem; margin: 0.4rem 0; }
+.reassembly-notice.done { border-style: solid; background: rgba(242, 201, 76, 0.08); }
+.reassembly-notice p { margin: 0.2rem 0; }
+.reassembly-strips { display: flex; flex-direction: column; gap: 0.35rem; margin: 0.4rem 0; }
+.reassembly-strip { text-align: left; white-space: normal; }
 .festival .row button[aria-pressed="true"] { outline: 2px solid #f2c94c; background: rgba(242, 201, 76, 0.2); }
 .festival-facts { display: flex; flex-direction: column; gap: 0.35rem; margin: 0.5rem 0; }
 .festival-facts button { text-align: left; white-space: normal; }
@@ -1191,3 +1208,7 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .maze-you { fill: #f2c94c; stroke: #fff; stroke-width: 2; }
 .maze-dirs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3rem; margin: 0.4rem 0; }
 .lens-buttons button[aria-pressed="true"], .maze [aria-pressed="true"] { outline: 2px solid #f2c94c; }
+/* C-010: open quests grouped by place, with long step lists in a drawer. */
+.quest-pathway { margin: 0.4rem 0; border-left: 3px solid rgba(159, 232, 255, 0.4); padding-left: 0.6rem; }
+.quest-pathway > summary { cursor: pointer; font-weight: 700; }
+.quest-drawer > summary { cursor: pointer; font-size: 0.9rem; }
