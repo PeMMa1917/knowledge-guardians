@@ -1,3 +1,4 @@
+import './lamplight.css';
 import {nightWatch} from './watchBell';
 import { lanternPair } from './lanternPair';
 import { lanternInstrument } from './lanternInstrument';

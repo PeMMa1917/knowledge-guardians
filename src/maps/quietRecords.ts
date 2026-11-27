@@ -39,6 +39,9 @@ export const QUIET_RECORDS: MapDef = {
     { id: 'quiet-records-rule', kind: 'sign', x: 7, y: 7, w: 1, h: 1, label: 'the first rule for records of studies on people', art: 'civic.notice',
       visibleIf: { flagSet: 'civic.tuskegee.rule' },
       text: 'The rule is pinned above the desk, with the three folders named under it as the reason.' },
+    // The Survey Bell (chapter 12 field game), after the first rule for study records is written.
+    { id: 'field-survey', kind: 'fieldgame', game: 'survey', x: 11, y: 9, w: 1, h: 1, label: 'Ade’s survey bell (The Survey Bell)', art: 'old-sign',
+      visibleIf: { flagSet: 'civic.tuskegee.rule' } },
     { id: 'quiet-records-return', kind: 'door', x: 7, y: 11, w: 1, h: 1, art: 'preserved.door',
       label: 'the way back to Library Dispatch', to: { map: 'civic.dispatch', x: 25, y: 5 } },
   ],

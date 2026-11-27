@@ -1,0 +1,9 @@
+.guest-instrument { min-inline-size: 0; margin-block: .7rem; padding: .65rem; border: 1px solid currentColor; }
+.lantern-rack { list-style: none; display: flex; gap: .45rem; padding: 0; margin: .5rem 0; }
+.lantern-rack li { flex: 1 1 0; padding: .45rem; border: 2px solid currentColor; }
+.lantern-rack li.empty { border-style: dashed; }
+.lantern-rack small, .lantern-rack strong { display: block; }
+.lantern-controls { display: flex; gap: .35rem; flex-wrap: wrap; }
+.lantern-controls button[aria-pressed="true"] { outline: 2px solid currentColor; outline-offset: -4px; }
+.lantern-observations { margin-block: .45rem; }
+.lamplight input[type=search] { max-width: 100%; }

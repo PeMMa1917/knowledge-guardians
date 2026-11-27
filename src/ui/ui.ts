@@ -95,9 +95,13 @@ import { treesPanel } from './treesPanel';
 import { assayPanel } from './assayPanel';
 import { relayPanel } from './relayPanel';
 import { lensPanel } from './lensPanel';
+import { riverPanel } from './riverPanel';
+import { collagePanel } from './collagePanel';
 import { fairPanel } from './fairPanel';
 import { batPanel } from './batPanel';
 import { mirrorPanel } from './mirrorPanel';
+import { surveyPanel } from './surveyPanel';
+import { labyrinthPanel } from './labyrinthPanel';
 import { contentNoteFor, noteSeenFlag } from '../domain/contentNotes';
 import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
 import { flushResearch, recordResearch } from '../app/research';
@@ -3761,12 +3765,20 @@ export class UI implements UIApi {
     else if (id === 'trade') this.openTrade();
     else if (id === 'ladder') this.openModal('bench-panel wide', "The Copyists' Ladder", this.closeBtn(),
       ladderPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('ladder'), () => this.closeModal()));
+    else if (id === 'maze') this.openModal('bench-panel wide', 'The Labyrinth Lens', this.closeBtn(),
+      labyrinthPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('maze'), () => this.closeModal()));
+    else if (id === 'survey') this.openModal('bench-panel wide', 'The Survey Bell', this.closeBtn(),
+      surveyPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('survey'), () => this.closeModal()));
     else if (id === 'mirror') this.openModal('bench-panel wide', 'The Time Mirror', this.closeBtn(),
       mirrorPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('mirror'), () => this.closeModal()));
     else if (id === 'bats') this.openModal('bench-panel wide', 'The Bat Keeper', this.closeBtn(),
       batPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('bats'), () => this.closeModal()));
     else if (id === 'fair') this.openModal('bench-panel wide', 'The Value Fair', this.closeBtn(),
       fairPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('fair'), () => this.closeModal()));
+    else if (id === 'collage') this.openModal('bench-panel wide', 'The Collage Wall', this.closeBtn(),
+      collagePanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('collage'), () => this.closeModal()));
+    else if (id === 'river') this.openModal('bench-panel wide', 'The River Crossing Inquiry', this.closeBtn(),
+      riverPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('river'), () => this.closeModal()));
     else if (id === 'lens') this.openModal('bench-panel wide', 'The Lens Table', this.closeBtn(),
       lensPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('lens'), () => this.closeModal()));
     else if (id === 'relay') this.openModal('bench-panel wide', 'The Sketch Relay', this.closeBtn(),

@@ -1395,6 +1395,78 @@
      "text": "Some first lines did harm. A family does not need to read the old wrong label every time it reads the right one. Keeping is not always kind."
     }
    ]
+  },
+  {
+   "id": "civic.survey",
+   "after": {
+    "flag": "field.survey.done",
+    "eq": true
+   },
+   "heading": "Two views on the survey bell",
+   "replies": [
+    {
+     "speaker": "civic-operator",
+     "text": "A city that does not study itself plans lanes by guesswork, and guesswork favours whoever shouts loudest. I want the study. I want it with its price written on the front."
+    },
+    {
+     "speaker": "civic-clerk",
+     "text": "Write the price, yes. And write what the data may never be used for. A record kept for lanes will be very tempting to someone who wants to steer people."
+    }
+   ]
+  },
+  {
+   "id": "island.maze",
+   "after": {
+    "flag": "field.maze.done",
+    "eq": true
+   },
+   "heading": "Two views on the three maps",
+   "replies": [
+    {
+     "speaker": "island-planner",
+     "text": "The plan was wrong about one bridge. One. It was right about every other path. I will mark the bridge, and I will keep trusting the plan for what it is good at."
+    },
+    {
+     "speaker": "island-dockhand",
+     "text": "The plan is what the island was meant to be. My paths are what it is. When they disagree, ask the people who walk it, not the people who drew it."
+    }
+   ]
+  },
+  {
+   "id": "water.river",
+   "after": {
+    "flag": "field.river.done",
+    "eq": true
+   },
+   "heading": "Two views on the flood night at Reed Ford",
+   "replies": [
+    {
+     "speaker": "water-keeper",
+     "text": "I wanted the village to agree on one order. It never did. Now I think the arguing was the useful part: every reason someone gave went into the new rule."
+    },
+    {
+     "speaker": "water-scribe",
+     "text": "The arguing was useful because the log was honest. If Ravel's line about the keel had been lost, half the village would still be blaming the wrong person for the wrong reason."
+    }
+   ]
+  },
+  {
+   "id": "voices.collage",
+   "after": {
+    "flag": "field.collage.done",
+    "eq": true
+   },
+   "heading": "Two views on the sweeps' wall",
+   "replies": [
+    {
+     "speaker": "voices-steward",
+     "text": "I would put a blank card on that wall, in the middle, with the children's names if we can find them in the parish books. A gap you can see is more honest than a wall that looks full."
+    },
+    {
+     "speaker": "voices-clerk",
+     "text": "A blank card invites people to fill it in with what they imagine. I would rather keep the four real cards and write the gap on the label, in plain words."
+    }
+   ]
   }
  ]
 }

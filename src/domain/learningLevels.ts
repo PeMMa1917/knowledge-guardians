@@ -83,6 +83,14 @@ export const LEARN: Record<string, LearnTag> = {
   'field:ladder': { ...t(['certainty', 'justification', 'evidence'], [M], 3, 'analyse', 'application', 'relational', 8), aoks: ['MAT'] },
   // Choose a triangle in a grove (a line is refused), see other shapes, say where the shape came from, then pace a side.
   'field:trees': { ...t(['interpretation', 'objectivity', 'perspective'], [M], 2, 'evaluate', 'integration', 'relational', 6), aoks: ['MAT', 'NAT'] },
+  // Join a print, a poem, a debate record and a machine engraving about child sweeps; name the missing voice.
+  'field:collage': { ...t(['evidence', 'interpretation', 'perspective', 'power'], [S, M, P], 3, 'analyse', 'human', 'relational', 6), aoks: ['ART', 'HIS'] },
+  // Rank five people from one flood night, hear who ranks the same way, then rank again after a new fact.
+  'field:river': { ...t(['values', 'responsibility', 'perspective', 'evidence'], [E, P], 3, 'evaluate', 'caring', 'relational', 6), aoks: ['HUM', 'POL'] },
+  // Walk an island maze through three map lenses; one plan path is gone; no lens alone reaches the ferry.
+  'field:maze': { ...t(['perspective', 'interpretation', 'evidence', 'objectivity'], [S, M], 2, 'apply', 'integration', 'relational', 5), aoks: ['NAT', 'HUM'] },
+  // Design a study of people: how they join, what is kept, who sees it first; then read the trial week and its warnings.
+  'field:survey': { ...t(['responsibility', 'evidence', 'values', 'power'], [M, E], 3, 'create', 'caring', 'relational', 5), aoks: ['HUM', 'POL'] },
   // See your first and latest journal entries, decide how to rewrite the first, and hear your past self answer.
   'field:mirror': { ...t(['certainty', 'perspective', 'responsibility', 'truth'], [S, P], 2, 'evaluate', 'learning-to-learn', 'extended', 4), aoks: ['HUM'] },
   // Listen with bare ears, tune a detector to find bats, hear a catch, then say what we can know of the bat's experience.

@@ -48,6 +48,7 @@ export const VOICES_LISTENING: MapDef = {
     { stamp: 'plant-tall', x: 10, y: 13 }, { stamp: 'plant-tall', x: 17, y: 13 },
   ],
   interactables: [
+    { id: 'field-collage', kind: 'fieldgame', game: 'collage', x: 17, y: 5, w: 1, h: 1, label: 'Wren’s collage wall (The Collage Wall)', art: 'old-sign' },
     ...starStations('empath', [3, 6], [4, 6]),
     door('voices-walk-path', 3, 11, 'the passage to the Glass Walk stairs', { map: 'voices.walk', x: 11, y: 13 }),
     ...LINKED_LISTENING,

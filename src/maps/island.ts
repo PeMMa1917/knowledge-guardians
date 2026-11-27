@@ -118,6 +118,7 @@ export const ISLAND_DOCK: MapDef = {
     { stamp: 'market-planter', x: 14, y: 3 }, { stamp: 'voices-bench', x: 4, y: 7 },
   ],
   interactables: [
+    { id: 'field-maze', kind: 'fieldgame', game: 'maze', x: 9, y: 4, w: 1, h: 1, label: 'the harbour office table (The Labyrinth Lens)', art: 'old-sign' },
     ...ISLAND_INCENTIVE_DOCK,
     ...ISLAND_MOVEMENT_DOCK,
     ...ISLAND_DOCK_FRAMES,
