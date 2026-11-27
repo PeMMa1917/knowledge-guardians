@@ -408,6 +408,20 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/maps/preserved.ts` (preserved-coast-custodians), `src/maps/specimenPassage.ts` (yirrkala-yolngu-account). Sources: UNESCO World Heritage Centre property 1634; National Museum of Australia, Defining Moments: Yirrkala bark petitions; East Arnhem Regional Council, on the fourth petition's return (4 December 2023).
 
+### Pushback after a weighed judgement (C-016)
+
+**What.** After four weighed choices, a person affected by the choice pushes back, and the player answers. The words depend on what the player chose:
+- **The Green Squares (chapter 5):** Elian pushes back on ribbons that turn a lead into a cause, or on ties that tell walkers nothing.
+- **Where the Ink Stops (chapter 8):** a skiff crew who steered by the old chart pushes back on the new chart wall.
+- **The Agreement at the Weir (chapter 11):** the crew who lost water pushes back on the order, whichever order the player chose.
+- **The Next Bell (chapter 4):** a boat crew who acted on the first notice pushes back on the revision.
+
+The player can keep the choice and say why, change it, or ask what would change the other person's mind. Each answer gets a reply. The answer is kept as a flag (`push.<id>.answer`) for the journal and for research data.
+
+**Why.** Personas D1, D2, C3 and E1 noted that many missions ended with "a reader uses the display", with no one who disagreed. A judgement that nobody challenges teaches less than one the player must defend. No answer is marked right (OPEN-001). Holding a choice can be as good as changing it, and the replies say so.
+
+**Where.** `src/domain/pushbacks.ts`, `src/content/pushbacks.json`, `src/ui/ui.ts` (showPushback, after the two replies), `tests/pushbacks.test.ts`. More missions can be added in the JSON file alone.
+
 ### The 30-minute audit and the new games
 
 **What.** The audit test (`tests/learning.test.ts`) measures minutes of play in which a 30-minute window lacks some TOK concept or framework part. The new optional games add minutes inside windows that were already open, so the measure grew with each game. The test now checks the original bound on the path without the new games, and allows each new game to lengthen the gaps by at most three times its own minutes.
