@@ -106,7 +106,7 @@ describe('The folded-wing post', () => {
     expect(d.e.node(read).text).toBe(observation);
   });
 
-  it.each([['mozi', 'q272411', 'mozi'], ['haytham', 'q11104', 'ibn-al-haytham']])(
+  it.each([['mozi', 'q272411', 'mozi'], ['haytham', 'q11104', 'ibn-al-haytham'], ['khaldun', 'q9294', 'ibn-khaldun']])(
     'gives the letter and the in-person %s quest one identity and remembers the returned fold', (quest, letter, character) => {
       const d = new Driver(), wing = 'ink.' + letter, at = 'thinker.' + quest + '.after';
       expect(engine.node(wing).speaker).toBe(character);
