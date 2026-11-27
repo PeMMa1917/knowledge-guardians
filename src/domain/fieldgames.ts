@@ -42,6 +42,9 @@ export const FIELD_GAMES: FieldGame[] = [
     idea: 'A pattern seen in many examples can still break on the next one. A proof from the rules of the game holds for every case, even cases nobody has made yet. But a proof covers only what it states: the part it does not state is still a guess.' },
   { id: 'trees', name: 'The Three Trees', host: 'Naturalist Elian and Steward Ayla, at the old grove on the Listening Trail', concept: 'interpretation',
     idea: 'The shape is chosen: one grove holds many triangles, and the word "triangle" is ours. The distances are not chosen: two people pacing from opposite ends get the same number, and three trees in a line will not make a triangle however much we want one. Mathematics may be partly made and partly found.' },
+  // A trial section: a wrong call restarts the round (decision X-007). Rules in assayTrial.ts.
+  { id: 'assay', name: 'The Assay Trial', host: 'Inspector Corra, at the sample bench in the Metalworks Sample Yard', concept: 'evidence',
+    idea: 'Looks mislead in both directions: two yellow stones can differ, and a dull stone can match a bright one. Each test tells some samples apart and not others. A test that cannot tell two things apart does not show that they are the same.' },
 ];
 
 export const fieldDone = (flags: Record<string, unknown>, id: string): boolean => flags[`field.${id}.done`] === true;

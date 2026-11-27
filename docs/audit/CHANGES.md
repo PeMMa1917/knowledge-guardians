@@ -255,6 +255,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/content/thinker-haytham.json`, `src/content/thinkers.json`, `src/maps/observatory.ts`, `src/content/two-replies.json`, `tests/thinker-quests.test.ts` (one test file for every thinker quest).
 
+### The Assay Trial, chapter 6's signature game (C-004, X-007)
+
+**What.** At Corra's sample bench in the Sample Yard, four claims arrive, each with two samples. The player can look, rub both on a white tile (streak) and weigh both in a water jar (density, shown with its margin). Then the player calls the pair the same stone or different stones. A wrong call restarts that claim, with Corra saying what was missed. The four claims are built so that looks mislead both ways (gold and pyrite look alike; fresh and tarnished galena do not), one pair can only be told apart by streak (hematite and magnetite), and one only by density (chalcopyrite and pyrite). At the end the player says which test to trust, and Corra or Bea replies. Corra and Bea then disagree about what goes on the front of a label (X-008).
+
+**Why.** Chapter 6 had no field game (G8, H4). The chapter's story is a label ("matched") that claims more than its test showed. The trial makes the player feel the main lesson in their hands: a test that cannot tell two things apart does not show that they are the same. Streak colours and densities are standard mineral data.
+
+**Where.** `src/domain/assayTrial.ts`, `src/content/assay-trial.json`, `src/ui/assayPanel.ts`, `src/maps/metalworks.ts`, `tests/assay-trial.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md. The 30-minute audit bound for the puzzler and cozy paths grows by the game's 6 minutes (`tests/learning.test.ts`).
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.

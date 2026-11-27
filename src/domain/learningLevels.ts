@@ -83,6 +83,8 @@ export const LEARN: Record<string, LearnTag> = {
   'field:ladder': { ...t(['certainty', 'justification', 'evidence'], [M], 3, 'analyse', 'application', 'relational', 8), aoks: ['MAT'] },
   // Choose a triangle in a grove (a line is refused), see other shapes, say where the shape came from, then pace a side.
   'field:trees': { ...t(['interpretation', 'objectivity', 'perspective'], [M], 2, 'evaluate', 'integration', 'relational', 6), aoks: ['MAT', 'NAT'] },
+  // Four claims, two samples each; run the streak or density test; call same or different; a wrong call restarts the round.
+  'field:assay': { ...t(['evidence', 'certainty', 'justification', 'values'], [S], 3, 'evaluate', 'application', 'relational', 6), aoks: ['NAT'] },
   'field:trade': t(['values', 'justification', 'perspective'], [P, S], 2, 'analyse', 'human', 'multistructural', 6),
   // Loyalty missions (src/domain/loyalty.ts)
   'loyalty:sefa': t(['culture', 'truth', 'values'], [P, E], 4, 'evaluate', 'caring', 'extended', 10),

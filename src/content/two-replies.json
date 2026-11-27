@@ -1108,6 +1108,24 @@
      "text": "Slowly. Lookouts trust that book because it does not change every week. Change one line and they will wonder about every page. Tell them why it changed, in their own log, before you touch the print."
     }
    ]
+  },
+  {
+   "id": "metal.assay",
+   "after": {
+    "flag": "field.assay.done",
+    "eq": true
+   },
+   "heading": "Two views on the sample labels",
+   "replies": [
+    {
+     "speaker": "metal-inspector",
+     "text": "The tests go on the label, every one, with the margin. A buyer who can read \"streak red-brown, density 5.3 ± 0.2\" can check us. A buyer who reads \"matched\" can only trust us."
+    },
+    {
+     "speaker": "metal-steward",
+     "text": "And most buyers will not read a line of numbers. Put the tests on the back. On the front, write where the stone came from and who sent it. That is what people ask me at the door."
+    }
+   ]
   }
  ]
 }

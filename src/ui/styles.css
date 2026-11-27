@@ -1117,3 +1117,9 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .trees-shape.other0 { stroke: #6fb7ff; stroke-dasharray: 6 4; }
 .trees-shape.other1 { stroke: #7fd18b; stroke-dasharray: 2 4; }
 .trees-buttons { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0.4rem 0; }
+
+/* The Assay Trial (chapter 6). */
+.assay-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.6rem; margin: 0.5rem 0; }
+.assay-sample { border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 8px; padding: 0.4rem 0.7rem; background: rgba(120, 140, 170, 0.12); }
+.assay-sample h3 { margin: 0.2rem 0; font-size: 1rem; }
+.assay-reading { font-weight: 600; }

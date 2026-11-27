@@ -33,5 +33,6 @@ export const IDEA_CREDITS: readonly IdeaCredit[] = [
   { game: 'Star Pictures', idea: 'Measured star positions and the different pictures people draw between them', source: LESSONS },
   { game: "The Copyists' Ladder", idea: 'A word ladder that shows the difference between a pattern and a proof',
     source: `${LESSONS}. The lesson credits an activity shared by the TOK teacher Ric Sims. Word ladders ("doublets") were invented by Lewis Carroll in 1877.` },
+  { game: 'The Assay Trial', idea: 'Telling minerals apart by streak and density, and what a test cannot tell apart', source: 'Original design for the game. Streak colours and densities are standard mineral data.' },
   { game: 'The Three Trees', idea: 'A "triangle of trees" as a shape the viewer chooses (is mathematics invented or discovered?)', source: LESSONS },
 ];
