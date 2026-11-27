@@ -11,56 +11,57 @@ import './ui/styles.css';
 import './ui/conceptMarkup.css';
 import { ctx } from './app/context';
 import { GameController } from './app/controller';
-import { applySettingsToDocument, loadSettings } from './app/settings';
+import { type Settings } from './app/settings';
 import { setupCaptions } from './app/captions';
 import { UI } from './ui/ui';
 import { observeConceptText } from './ui/conceptMarkup';
 import { flushJournalWriting } from './ui/journalWriting';
 
-ctx.settings = loadSettings();
-applySettingsToDocument(ctx.settings);
-setupCaptions(() => ctx.settings.captions);
-ctx.controller = new GameController();
+export function enterGame(settings: Settings): void {
+  ctx.settings = settings;
+  setupCaptions(() => ctx.settings.captions);
+  ctx.controller = new GameController();
 
-let runtime: typeof import('./app/worldRuntime') | undefined;
-async function prepareWorld() {
-  runtime ??= await import('./app/worldRuntime');
-  await runtime.prepareWorld();
-}
+  let runtime: typeof import('./app/worldRuntime') | undefined;
+  async function prepareWorld() {
+    runtime ??= await import('./app/worldRuntime');
+    await runtime.prepareWorld();
+  }
 
-const uiRoot = document.getElementById('ui')!;
-observeConceptText(uiRoot);
-const ui = new UI(uiRoot, prepareWorld, () => runtime?.startWorld());
-ctx.ui = ui;
+  const uiRoot = document.getElementById('ui')!;
+  observeConceptText(uiRoot);
+  const ui = new UI(uiRoot, prepareWorld, () => runtime?.startWorld());
+  ctx.ui = ui;
 
-/** Return to the title screen (used by "Save and leave" and the chapter end). */
-(window as any).kgToTitle = () => {
-  runtime?.stopWorld();
-  ctx.world = null;
+  /** Return to the title screen (used by "Save and leave" and the chapter end). */
+  (window as any).kgToTitle = () => {
+    runtime?.stopWorld();
+    ctx.world = null;
+    ui.showTitle();
+  };
+
   ui.showTitle();
-};
 
-ui.showTitle();
+  // A reload can fire pagehide before or after visibilitychange. Save once for
+  // either order, and start a new cycle if the player returns to the page.
+  let handledExitSave = false;
+  function saveOnExit(): void {
+    if (handledExitSave || !ctx.world || !ctx.controller.state) return;
+    const label = 'Auto-save when leaving';
+    handledExitSave = flushJournalWriting(ctx.controller, label) ?? ctx.controller.suspend(label);
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') { saveOnExit(); void classroom?.sync(true); }
+    else handledExitSave = false;
+  });
+  window.addEventListener('pagehide', () => { saveOnExit(); void classroom?.sync(true); });
+  window.addEventListener('pageshow', () => { handledExitSave = false; });
 
-// A reload can fire pagehide before or after visibilitychange. Save once for
-// either order, and start a new cycle if the player returns to the page.
-let handledExitSave = false;
-function saveOnExit(): void {
-  if (handledExitSave || !ctx.world || !ctx.controller.state) return;
-  const label = 'Auto-save when leaving';
-  handledExitSave = flushJournalWriting(ctx.controller, label) ?? ctx.controller.suspend(label);
+  // The Guardian's Ledger: count active play time (input in the last 2 minutes, tab visible, in the world).
+  for (const ev of ['keydown', 'pointerdown', 'wheel'] as const) window.addEventListener(ev, () => ctx.controller.noteInput(), { passive: true });
+  setInterval(() => { if (ctx.world) ctx.controller.tickActive(document.visibilityState === 'visible'); }, 15_000);
+  // Debug/test hook: lets automated tests read state. Not used by the game.
+  (window as any).kg = ctx;
+
+  window.addEventListener('kg-class-status',()=>{ for(const label of document.querySelectorAll('[data-class-status]')) label.textContent=classroom?.status ?? ''; });
 }
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'hidden') { saveOnExit(); void classroom?.sync(true); }
-  else handledExitSave = false;
-});
-window.addEventListener('pagehide', () => { saveOnExit(); void classroom?.sync(true); });
-window.addEventListener('pageshow', () => { handledExitSave = false; });
-
-// The Guardian's Ledger: count active play time (input in the last 2 minutes, tab visible, in the world).
-for (const ev of ['keydown', 'pointerdown', 'wheel'] as const) window.addEventListener(ev, () => ctx.controller.noteInput(), { passive: true });
-setInterval(() => { if (ctx.world) ctx.controller.tickActive(document.visibilityState === 'visible'); }, 15_000);
-// Debug/test hook: lets automated tests read state. Not used by the game.
-(window as any).kg = ctx;
-
-window.addEventListener('kg-class-status',()=>{ for(const label of document.querySelectorAll('[data-class-status]')) label.textContent=classroom?.status ?? ''; });

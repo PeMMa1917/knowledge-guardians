@@ -1,10 +1,15 @@
 /* Sent with the opening page before the campaign and its renderer. */
-html { background: #120f24; color: #f6eedb; }
+html { font-size: calc(100% * var(--text-scale, 1)); background: #120f24; color: #f6eedb; }
 .arrival {
   position: fixed;
   inset: 0;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  overflow-wrap: anywhere;
   align-content: center;
+  align-content: safe center;
+  box-sizing: border-box;
+  overflow-y: auto;
   justify-items: center;
   padding: 1rem;
   color: #f6eedb;
@@ -12,6 +17,20 @@ html { background: #120f24; color: #f6eedb; }
   font: 1rem/1.5 Lexend, system-ui, sans-serif;
   text-align: center;
 }
-.arrival h1 { margin: 0; color: #fff2cf; font-size: clamp(2rem, 6vw, 2.6rem); }
+.arrival h1 { margin: 0; color: #fff2cf; font-size: clamp(2em, 6vw, 2.6em); }
 .arrival button { font: inherit; color: #9fe8ff; background: #21193d; border: 1px solid currentColor; border-radius: .5rem; padding: .6rem 1rem; }
 .arrival button:focus-visible { outline: 3px solid currentColor; }
+
+.arrival details { min-width: 0; width: min(26em, 100%); text-align: left; }
+.arrival summary, .arrival a { max-width: 100%; box-sizing: border-box; width: fit-content; margin: 0 auto; padding: .65em .4em; color: #bce9ff; cursor: pointer; }
+.arrival label { min-width: 0; box-sizing: border-box; display: block; padding: .4em .6em; }
+.arrival select { font: inherit; }
+.arrival [hidden] { display: none; }
+.arrival :focus-visible { outline: 3px solid currentColor; outline-offset: 2px; }
+.high-contrast .arrival { color: white; background: #080910; }
+.dyslexia-spacing .arrival { letter-spacing: .055em; line-height: 1.8; }
+@media (forced-colors: active) {
+  .arrival { color: CanvasText; background: Canvas; }
+  .arrival h1 { color: CanvasText; }
+  .arrival summary, .arrival a { color: LinkText; }
+}

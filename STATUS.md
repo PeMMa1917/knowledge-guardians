@@ -1,5 +1,11 @@
 # Status and next steps
 
+## 27 November • Reading the opening screen on a school connection
+
+Students can change text size, contrast, spacing, motion and visual effects while the campaign downloads. The menu waits for a student who is still adjusting a control. The same choices carry into the game, including when storage is unavailable for that visit. The school and family guide is available from the first page. [First visit](src/arrival.ts) · [Shared controls](src/ui/readingControls.ts) · [Browser tests](tools/smoke-arrival.mjs)
+
+On a simulated 4 Mbit/s mobile connection, the first available reading controls appeared at a median 0.44 seconds, compared with 9.20 seconds for the earlier build’s Settings button. Chromium, Firefox and WebKit also kept the focused control accessible on a 320-pixel-wide screen with 175% text. [Test conditions](docs/audit/NIGHT_REGISTER.md)
+
 ## 27 November • Supper for a Shadow
 
 In the City of Copies, a skipping rhyme has cost Otla’s brother his place at supper. A child drew two outlines and Otla added the word *people*. The Guardian can work the spoons, move the lamps and slide the bar to a second stop. Two arrangements fit the chalk at the first stop. The second stop separates them, but nobody recorded where Thursday’s bar was. What a visitor does with that uncertainty changes where the family eats, who hears the song and what Corvan puts on his shutter back in Emberford. Eight things already in the game have jobs here. A cup of tea can go to Kip or the porter. [Kitchen and witnesses](src/content/supperShadow.ts) · [Light and shadow](src/domain/supperShadow.ts) · [Branch and recovery tests](tests/supper-shadow.test.ts)

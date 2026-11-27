@@ -75,6 +75,51 @@ try {
   assert.deepEqual(fatal, []);
   const entry = await page.locator('script[type="module"][src]').first().evaluate(el=>el.src);
   await page.close();
+
+  // Hold the campaign download while a reader chooses an accessible display. The first
+  // module still works with storage blocked, and the incoming title must respect live focus.
+  const reader = await browser.newPage({ viewport: { width: 320, height: 480 } });
+  await reader.addInitScript(() => {
+    Object.defineProperty(Storage.prototype, 'setItem', { value() { throw new DOMException('Storage is unavailable', 'QuotaExceededError'); } });
+  });
+  let releaseCampaign;
+  const waiting = new Promise(resolve => { releaseCampaign = resolve; });
+  await reader.route('**/assets/main-*.js', async route => {
+    if (route.request().url() !== entry) await waiting;
+    await route.continue();
+  });
+  await reader.goto(url, { waitUntil: 'commit' });
+  const disclosure = reader.locator('#arrival-reading summary');
+  await disclosure.waitFor({ state: 'visible' });
+  await disclosure.focus();
+  await reader.keyboard.press('Enter');
+  const size = reader.getByRole('combobox', { name: 'Text size' });
+  await size.selectOption('1.75');
+  const contrast = reader.getByRole('checkbox', { name: 'High-contrast interface' });
+  await contrast.check();
+  await reader.getByRole('checkbox', {name: /Reduce motion/}).check();
+  await contrast.focus();
+  assert.equal(await reader.locator('#game canvas').count(), 0);
+  assert.equal(await reader.getByRole('link',{name:'For schools and families'}).getAttribute('href'),'./schools.html');
+  const readingStyle = () => reader.locator('.arrival').evaluate(el => ({
+    size: getComputedStyle(el).fontSize, overflow: el.scrollWidth > el.clientWidth + 1,
+  }));
+  const before = await readingStyle();
+  assert.equal(before.overflow, false);
+  assert.ok(parseFloat(before.size) >= 27, before.size);
+  releaseCampaign();
+  await reader.getByText(/The game is ready[.] Close Reading settings/).waitFor();
+  assert.deepEqual(await readingStyle(), before);
+  assert.equal(await contrast.evaluate(el => el === document.activeElement), true);
+  assert.equal(await reader.getByRole('button', { name: /New game/ }).count(), 0);
+  await disclosure.focus();
+  await reader.keyboard.press('Enter');
+  await reader.getByRole('button', {name: /New game/}).waitFor();
+  assert.deepEqual(await reader.evaluate(() => [kg.settings.textScale, kg.settings.highContrast, kg.settings.reducedMotion]), [1.75, true, true]);
+  await reader.getByRole('button', {name: /^Settings/}).click();
+  assert.equal(await reader.getByRole('combobox',{name:'Text size'}).inputValue(),'1.75');
+  assert.equal(await reader.getByRole('checkbox',{name:'High-contrast interface'}).isChecked(),true);
+  await reader.close();
   for(const kind of ['entry','application','shared']){
     const failed = await browser.newPage({ viewport });
     const blocked = '**/assets/' + (kind==='shared'?'skills-*.js':'main-*.js');
@@ -104,7 +149,7 @@ try {
   console.log(
     engine,
     browser.version(),
-    'showed a title during download, opened settings before renderer load, restored a chosen name after a failed map, retried and resumed with one world canvas. Recovered into play after separate entry, application and shared module failures.',
+    'changed reading settings during an interrupted download at 320px, retained focus and preferences with storage unavailable, opened settings before renderer load, restored a chosen name after a failed map, retried and resumed with one world canvas. Recovered into play after separate entry, application and shared module failures.',
   );
 } finally {
   await browser.close();
