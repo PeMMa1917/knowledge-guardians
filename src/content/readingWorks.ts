@@ -56,10 +56,11 @@ const checks: Record<string, SourceRecord> = {
     accessed: '2026-11-26',
   },
   next: {
-    id: 'HIS-READING-WORKS-CERN', title: 'CERN’s short history of the Web',
-    url: 'https://home.cern/science/computing/birth-web/short-history-web', locator: 'The note identifying the machine in the server photograph',
-    supports: 'CERN identifies Tim Berners-Lee’s NeXT machine as the first Web server.',
-    accessed: '2026-11-26',
+    id: 'HIS-READING-WORKS-CERN', title: 'A Little History of the World Wide Web',
+    url: 'https://www.w3.org/History.html', locator: 'September and October 1990 entries naming the NeXT cube and the first Web server',
+    supports: 'The W3C timeline records the purchase of a NeXT cube and the network name of the first Web server at CERN.',
+    accessed: '2026-11-27',
+    mla: {kind: 'page', title: 'A Little History of the World Wide Web', container: 'World Wide Web Consortium', showAccessDate: true},
   },
 };
 const idrisiHistory: SourceRecord = {

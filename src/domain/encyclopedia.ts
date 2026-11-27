@@ -1,6 +1,7 @@
 import { lanternCase } from './lamplight';
 import { mlaCitation } from './mla';
 import research from '../content/encyclopedia.json';
+import museumArticles from '../content/museum-articles.json';
 import { historicalEncounters, isHistoricalBiography } from './historicalEncounters';
 import type { CampaignState, CharacterRecord, ContentPack, EvidenceCard, ExhibitRecord } from './types';
 
@@ -16,6 +17,7 @@ export interface EncyclopediaLink {
   title: string;
   url: string;
   language?: ArticleLanguage;
+  catalogueRole?: string;
 }
 
 interface PersonMatch {
@@ -36,6 +38,14 @@ const researched = research as { people: PersonMatch[]; exhibits: ExhibitMatch[]
 const peopleByCharacter = new Map(researched.people.flatMap((entry) => entry.characters.map((id) => [id, entry] as const)));
 const peopleByBiography = new Map(researched.people.flatMap((entry) => entry.biographies.map((id) => [id, entry] as const)));
 const exhibitsById = new Map(researched.exhibits.map((entry) => [entry.id, entry] as const));
+interface MuseumArticle {
+  title: string;
+  language?: ArticleLanguage;
+  relation: string;
+  holdings: string[];
+}
+const articlesByHolding = new Map((museumArticles as MuseumArticle[]).flatMap((row) =>
+  row.holdings.map((key) => [key, row] as const)));
 const english = 'https://en.wikipedia.org';
 
 function destination(link: Omit<EncyclopediaLink, 'url'>): EncyclopediaLink {
@@ -61,11 +71,15 @@ export function encyclopediaForBiography(card: EvidenceCard): EncyclopediaLink |
 
 export function encyclopediaForExhibit(exhibit: ExhibitRecord): EncyclopediaLink | undefined {
   if (exhibit.historicalLabel !== 'documented') return undefined;
-  const match = exhibitsById.get(exhibit.id);
+  const curated = exhibitsById.get(exhibit.id);
+  const catalogue = !curated && exhibit.specimen ? articlesByHolding.get(exhibit.specimen.key) : undefined;
+  const match = curated ?? catalogue;
+  const kind = curated?.kind ?? (catalogue ? (catalogue.relation === 'object' ? 'article' : 'related') : 'search');
   const accession = exhibit.specimen?.accession;
   const search = accession && !exhibit.name.toLowerCase().includes(accession.toLowerCase()) ? `${exhibit.name} ${accession}` : exhibit.name;
   return destination({ key: `object:${exhibit.specimen?.key ?? exhibit.id}`, entity: 'object', name: exhibit.name,
-    encounter: 'inspected', kind: match?.kind ?? 'search', title: match?.title ?? search,
+    encounter: 'inspected', kind, title: match?.title ?? search,
+    ...(catalogue && catalogue.relation !== 'object' ? { catalogueRole: catalogue.relation } : {}),
     ...(match?.language ? { language: match.language } : {}) });
 }
 
@@ -125,7 +139,9 @@ export function encyclopediaEncounterLabel(link: EncyclopediaLink): string {
 
 export function encyclopediaLinkLabel(link: EncyclopediaLink): string {
   if (link.kind === 'search') return `Search Wikipedia for ${link.title}`;
-  const label = link.kind === 'related' ? 'Related Wikipedia article' : 'Wikipedia';
+  const label = link.catalogueRole
+    ? 'Related Wikipedia article · catalogued ' + link.catalogueRole
+    : link.kind === 'related' ? 'Related Wikipedia article' : 'Wikipedia';
   return `${label} · ${link.title}${link.language ? ` (${languageNames[link.language]})` : ''}`;
 }
 
