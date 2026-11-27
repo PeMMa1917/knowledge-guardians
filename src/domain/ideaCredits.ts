@@ -33,6 +33,7 @@ export const IDEA_CREDITS: readonly IdeaCredit[] = [
   { game: 'Star Pictures', idea: 'Measured star positions and the different pictures people draw between them', source: LESSONS },
   { game: "The Copyists' Ladder", idea: 'A word ladder that shows the difference between a pattern and a proof',
     source: `${LESSONS}. The lesson credits an activity shared by the TOK teacher Ric Sims. Word ladders ("doublets") were invented by Lewis Carroll in 1877.` },
+  { game: 'The Survey Bell', idea: 'Ethics limits on research with people, and who decides', source: LESSONS },
   { game: 'The Time Mirror', idea: 'How a past self would see the present (a time mirror)', source: LESSONS },
   { game: 'The Bat Keeper', idea: "Thomas Nagel's question 'What is it like to be a bat?' (1974), about another being's experience", source: `${LESSONS}. Bat facts: London Bat Group, Echolocation and bat detectors; Maryland Department of Natural Resources, Bat Echolocation.` },
   { game: 'The Value Fair', idea: 'An auction of beliefs, played with tokens (never money)', source: LESSONS },

@@ -94,6 +94,7 @@ Many games grew from TOK lessons in Mika's lesson folder (decision X-017 in [doc
 | The Careful Dig | Excavation as a choice about what later people can know | Mika's TOK lesson folder |
 | Star Pictures | Measured star positions and the different pictures people draw between them | Mika's TOK lesson folder |
 | The Copyists' Ladder | A word ladder that shows the difference between a pattern and a proof | Mika's TOK lesson folder; the lesson credits an activity shared by Ric Sims. Word ladders ("doublets") were invented by Lewis Carroll in 1877. |
+| The Survey Bell | Ethics limits on research with people, and who decides | Mika's TOK lesson folder |
 | The Time Mirror | How a past self would see the present (a time mirror) | Mika's TOK lesson folder |
 | The Bat Keeper | Thomas Nagel's question "What is it like to be a bat?" (1974) | Mika's TOK lesson folder. Bat facts: London Bat Group; Maryland Department of Natural Resources. |
 | The Value Fair | An auction of beliefs, played with tokens (never money) | Mika's TOK lesson folder |

@@ -94,6 +94,7 @@ import { lensPanel } from './lensPanel';
 import { fairPanel } from './fairPanel';
 import { batPanel } from './batPanel';
 import { mirrorPanel } from './mirrorPanel';
+import { surveyPanel } from './surveyPanel';
 import { contentNoteFor, noteSeenFlag } from '../domain/contentNotes';
 import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
 import { flushResearch, recordResearch } from '../app/research';
@@ -3744,6 +3745,8 @@ export class UI implements UIApi {
     else if (id === 'trade') this.openTrade();
     else if (id === 'ladder') this.openModal('bench-panel wide', "The Copyists' Ladder", this.closeBtn(),
       ladderPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('ladder'), () => this.closeModal()));
+    else if (id === 'survey') this.openModal('bench-panel wide', 'The Survey Bell', this.closeBtn(),
+      surveyPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('survey'), () => this.closeModal()));
     else if (id === 'mirror') this.openModal('bench-panel wide', 'The Time Mirror', this.closeBtn(),
       mirrorPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('mirror'), () => this.closeModal()));
     else if (id === 'bats') this.openModal('bench-panel wide', 'The Bat Keeper', this.closeBtn(),

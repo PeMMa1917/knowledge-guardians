@@ -1,0 +1,27 @@
+{
+ "steps": [
+  { "id": "join", "ask": "How do people come into the study?", "options": [
+    { "id": "default", "text": "Everyone who walks a lane is counted, unless they ring the bell to say no.", "coverage": 95,
+      "note": "Almost everyone is counted. Most of them never heard the bell explained, and do not know they are in a study." },
+    { "id": "ask", "text": "A keeper at each bell explains the study, and people sign a slip if they agree.", "coverage": 55,
+      "note": "About half agree. Night workers and the hill families are mostly missing: they pass the bells when no keeper is there." },
+    { "id": "lot", "text": "Forty households are chosen by lot, visited, and asked.", "coverage": 40,
+      "note": "Only forty households, but the lot reaches every district, including the hill families and the night shift." } ] },
+  { "id": "keep", "ask": "What does the study keep?", "options": [
+    { "id": "counts", "text": "Only counts: how many people pass each lane in each hour.", "power": 1,
+      "note": "The council learns where the lanes are busy. Nobody can be followed from lane to lane." },
+    { "id": "routes", "text": "Each person's route, under a token number instead of a name.", "power": 2,
+      "note": "The council learns how people move across the city. On a quiet lane at night, a token number can point to one person." },
+    { "id": "names", "text": "Names and routes, so the council can ask people why they chose a lane.", "power": 3,
+      "note": "The council can ask good follow-up questions. It can also see exactly where each named person goes." } ] },
+  { "id": "see", "ask": "Who sees the results first?", "options": [
+    { "id": "people", "text": "The people who took part, at an open evening, before anyone else.", "note": "The people in the study can correct it before it is used. It takes a month longer." },
+    { "id": "council", "text": "The council, which decides what to do with the lanes.", "note": "The council can act quickly. The people in the study learn about it when the lanes change." },
+    { "id": "board", "text": "Everyone, on the public board in Library Dispatch.", "note": "Anyone can check the council's reading. Anyone can also read whatever the study kept." } ] }
+ ],
+ "warnings": [
+  { "if": ["names", "board"], "line": "Clerk Lin goes pale. 'Names and routes on the public board. Anyone could find out where anyone walks at night.'" },
+  { "if": ["routes", "board"], "line": "Keeper Ade frowns. 'Token routes on a public board. On the quiet lanes, people will work out whose token is whose.'" },
+  { "if": ["default", "names"], "line": "Clerk Lin: 'So we would hold the names and routes of people who never knew they were in a study.'" }
+ ]
+}

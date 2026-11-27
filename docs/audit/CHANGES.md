@@ -261,7 +261,7 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Why.** Chapter 6 had no field game (G8, H4). The chapter's story is a label ("matched") that claims more than its test showed. The trial makes the player feel the main lesson in their hands: a test that cannot tell two things apart does not show that they are the same. Streak colours and densities are standard mineral data.
 
-**Where.** `src/domain/assayTrial.ts`, `src/content/assay-trial.json`, `src/ui/assayPanel.ts`, `src/maps/metalworks.ts`, `tests/assay-trial.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md. The 30-minute audit bound for the puzzler and cozy paths grows by the game's 6 minutes (`tests/learning.test.ts`).
+**Where.** `src/domain/assayTrial.ts`, `src/content/assay-trial.json`, `src/ui/assayPanel.ts`, `src/maps/metalworks.ts`, `tests/assay-trial.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md. The 30-minute audit keeps its original bound on the core path; see "The 30-minute audit and the new games" below.
 
 ### Marshall Islands stick charts in the Lantern House (X-006)
 
@@ -297,7 +297,7 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Why.** The second lesson folder has a "draw a concept for others to guess" activity. The audit moved this game to the City of Copies, where it fits the chapter's question of what a copy keeps and loses. The game shows that bold is not the same as clear, and that meaning depends on a shared agreement that no copy shows.
 
-**Where.** `src/domain/sketchRelay.ts`, `src/content/sketch-relay.json`, `src/ui/relayPanel.ts`, `src/maps/copies.ts`, `tests/sketch-relay.test.ts` (it checks that no single key is enough, and that two keys can be), credits in `src/domain/ideaCredits.ts` and CREDITS.md. The 30-minute audit bound for the puzzler and cozy paths grows by the measured minutes of the two new optional games.
+**Where.** `src/domain/sketchRelay.ts`, `src/content/sketch-relay.json`, `src/ui/relayPanel.ts`, `src/maps/copies.ts`, `tests/sketch-relay.test.ts` (it checks that no single key is enough, and that two keys can be), credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
 ### Tupaia's chart in the Lantern House (X-006)
 
@@ -323,7 +323,7 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Why.** The first lesson folder has an auction of beliefs. Mika's rules exclude money, so the game uses tokens that stand for time. The game shows that the same facts lead to different rules, because what we spend effort on shows what we value. No set of rules is marked right (OPEN-001).
 
-**Where.** `src/domain/valueFair.ts`, `src/content/value-fair.json`, `src/ui/fairPanel.ts`, `src/maps/market.ts`, `tests/value-fair.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md. The 30-minute audit bound for the puzzler and cozy paths grows by the measured minutes of the new optional games (`tests/learning.test.ts`).
+**Where.** `src/domain/valueFair.ts`, `src/content/value-fair.json`, `src/ui/fairPanel.ts`, `src/maps/market.ts`, `tests/value-fair.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
 ### The Bat Keeper, chapter 4's night scene (C-004)
 
@@ -340,6 +340,20 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 **Why.** The second lesson folder has a "time mirror" (how a past self sees the present). The audit placed it at the end of the story, so reflection happens inside the story and uses the player's own words, not a quiz or an essay. It uses only the private journal; nothing is shared or graded.
 
 **Where.** `src/domain/timeMirror.ts`, `src/content/time-mirror.json`, `src/ui/mirrorPanel.ts`, `src/maps/council.ts`, `tests/time-mirror.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
+### The Survey Bell, chapter 12's signature game (C-004)
+
+**What.** After the player writes the first rule for study records in the Quiet Records Room, Keeper Ade brings out a brass bell. The council wants to study how people use the lanes. The player answers three design questions: how people join (counted unless they say no, sign a slip after an explanation, or forty households chosen by lot), what is kept (counts, token routes, or names and routes), and who sees the results first (the people in the study, the council, or the public board). Each answer shows what it gains and what it costs, and risky pairs raise a warning from Ade or Lin. A trial week then sums up the design. Ade and Lin disagree (X-008) about writing down what the data may never be used for. The design is kept as flags, so Vesper's Seal can use the same data later.
+
+**Why.** The second lesson folder asks about ethics limits on research with people, and who decides. The game sits after the Tuskegee records, so the player designs a study having just read what a study without consent did. No design is marked right; each has a price.
+
+**Where.** `src/domain/surveyBell.ts`, `src/content/survey-bell.json`, `src/ui/surveyPanel.ts`, `src/maps/quietRecords.ts`, `tests/survey-bell.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
+### The 30-minute audit and the new games
+
+**What.** The audit test (`tests/learning.test.ts`) measures minutes of play in which a 30-minute window lacks some TOK concept or framework part. The new optional games add minutes inside windows that were already open, so the measure grew with each game. The test now checks the original bound on the path without the new games, and allows each new game to lengthen the gaps by at most three times its own minutes.
+
+**Why.** Raising the bound after each game would have weakened the guard for the core campaign. This way the core guard stays as it was, and the cost of each new game stays visible and limited. Where a game honestly covers what its window lacked (for example ethics in The Lens Table, truth in The Bat Keeper), its learning tag says so.
 
 ## Not done yet
 

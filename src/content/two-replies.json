@@ -1395,6 +1395,24 @@
      "text": "Some first lines did harm. A family does not need to read the old wrong label every time it reads the right one. Keeping is not always kind."
     }
    ]
+  },
+  {
+   "id": "civic.survey",
+   "after": {
+    "flag": "field.survey.done",
+    "eq": true
+   },
+   "heading": "Two views on the survey bell",
+   "replies": [
+    {
+     "speaker": "civic-operator",
+     "text": "A city that does not study itself plans lanes by guesswork, and guesswork favours whoever shouts loudest. I want the study. I want it with its price written on the front."
+    },
+    {
+     "speaker": "civic-clerk",
+     "text": "Write the price, yes. And write what the data may never be used for. A record kept for lanes will be very tempting to someone who wants to steer people."
+    }
+   ]
   }
  ]
 }

@@ -42,6 +42,8 @@ export const FIELD_GAMES: FieldGame[] = [
     idea: 'A pattern seen in many examples can still break on the next one. A proof from the rules of the game holds for every case, even cases nobody has made yet. But a proof covers only what it states: the part it does not state is still a guess.' },
   { id: 'trees', name: 'The Three Trees', host: 'Naturalist Elian and Steward Ayla, at the old grove on the Listening Trail', concept: 'interpretation',
     idea: 'The shape is chosen: one grove holds many triangles, and the word "triangle" is ours. The distances are not chosen: two people pacing from opposite ends get the same number, and three trees in a line will not make a triangle however much we want one. Mathematics may be partly made and partly found.' },
+  { id: 'survey', name: 'The Survey Bell', host: 'Keeper Ade and Route Clerk Lin, in the Quiet Records Room of the Civic Machine', concept: 'responsibility',
+    idea: 'A study of people buys knowledge with their trust. How people join decides who is missing; what is kept decides what can be done with it later; who sees the results first decides who can correct them. Every design has a price.' },
   { id: 'mirror', name: 'The Time Mirror', host: 'Workshop Keeper Hale, at Elsbet’s mirror in the Time Hall', concept: 'certainty',
     idea: 'What we knew then is part of what we know now. A first entry can be kept, dated and added to, instead of being erased. Our past selves judged with what they had, and our future selves will judge us the same way.' },
   { id: 'bats', name: 'The Bat Keeper', host: 'Signalkeeper Ruan, at the night lamp on Headland Station', concept: 'perspective',
