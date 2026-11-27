@@ -1087,3 +1087,11 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .two-replies-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.8rem; }
 .two-reply { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.6rem; border: 1px solid var(--gold-dim); border-radius: var(--radius, 0.6rem); }
 .two-reply .portrait { flex: none; }
+
+/* The Proving Floor (decision X-007). Each tile also shows its colour in words, so colour never carries meaning alone. */
+.proving-examples, .proving-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.6rem 0; }
+.proving-tile { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; min-width: 5.5rem; min-height: 4.5rem;
+  border: 2px solid var(--gold-dim); border-radius: 0.5rem; background: rgba(255,255,255,0.05); font-size: 1.3rem; padding: 0.3rem; }
+.proving-tile small { font-size: 0.75rem; color: var(--ink-dim); }
+.proving-tile.gold > span { color: #f2c94c; } .proving-tile.blue > span { color: #6fb7ff; } .proving-tile.red > span { color: #ff7a6b; }
+button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var(--gold); }

@@ -81,6 +81,7 @@ import { OFFER_LINE, shouldOfferHelp } from '../domain/lumenOffer';
 import { IDEA_CREDITS } from '../domain/ideaCredits';
 import { gymPanel } from './gymPanel';
 import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
+import { ROWS, SECTIONS, startTrial, step, tileWords, type Tile } from '../domain/provingFloor';
 import { THINKERS, VIEWS as TOK_VIEWS, adviceLabel, meetFlags, thinkerFlag, thinkersFor, viewsMet } from '../domain/thinkers';
 import { bestFlag, canTimedReplay, clockText, elapsedSeconds, resultText, timedResult } from '../domain/timedReplay';
 import { routingBoard } from './routingBoards';
@@ -3676,6 +3677,7 @@ export class UI implements UIApi {
       const title = id === 'relief-routing' ? 'The weir’s relief bench' : 'The library’s lane board';
       this.openModal('bench-panel wide', title, this.closeBtn(), routingBoard(id, ctx.controller, (key) => this.sfx(key)));
     }
+    else if (id === 'proving') this.openProving();
     else if (id === 'doors') this.openDoors();
     else if (id === 'guests') this.openGuestBook();
     else if (id === 'slate') this.openSlate();
@@ -3956,6 +3958,48 @@ export class UI implements UIApi {
       h('span', {}, r.label),
       h('span', { class: 'track', role: 'img', 'aria-label': `${r.label}: ${r.n} of ${r.of}` }, h('span', { class: 'fill', style: `width:${r.of ? Math.round((100 * r.n) / r.of) : 0}%` })),
       h('span', { class: 'fine' }, `${r.n} of ${r.of} (${r.of ? Math.round((100 * r.n) / r.of) : 0}%)`))));
+  }
+
+  /** The Proving Floor (decision X-007): a trial where a wrong step restarts the section. Rules in provingFloor.ts. */
+  openProving(): void {
+    const c = ctx.controller;
+    const runs = Number(c.state.flags['field.proving.runs'] ?? 0);
+    c.dispatch({ type: 'SetFlag', flag: 'field.proving.runs', value: runs + 1 });
+    const seed = 41 + runs * 7;
+    let trial = startTrial(seed);
+    let note = '';
+    const box = this.openModal('bench-panel wide', 'The Proving Floor');
+    this.sfx('sfx.page');
+    const mark = { circle: '●', square: '■', triangle: '▲' } as const;
+    const tileView = (tile: Tile, onStep?: () => void) => h(onStep ? 'button' : 'span', {
+      type: onStep ? 'button' : undefined, class: `proving-tile ${tile.colour}`, 'aria-label': tileWords(tile), onclick: onStep,
+    }, h('span', { 'aria-hidden': 'true' }, mark[tile.shape].repeat(tile.count)), h('small', {}, tile.colour));
+    const render = () => {
+      const section = SECTIONS[trial.section];
+      if (!section) {
+        box.replaceChildren(this.closeBtn(), h('h2', {}, 'The Proving Floor'),
+          h('p', {}, `Orrin lifts his lamp. 'Across. ${trial.cracks ? `${trial.cracks} cracked tiles on the way, and that is how the floor teaches.` : 'Not one crack.'} The old guild tested every apprentice here.'`),
+          this.finishField('proving'),
+          h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+        return;
+      }
+      box.replaceChildren(this.closeBtn(), h('h2', {}, `The Proving Floor: ${section.title}`),
+        trial.section === 0 && trial.row === 0 && !trial.cracks
+          ? h('p', { class: 'fine' }, "Guildmaster Orrin: 'The old guild built this floor to test apprentices. Each span has a rule. The tiles by each door follow it. Step wrong, and the span resets. Nobody gets hurt, and nothing is lost but the walk.'") : '',
+        h('p', {}, section.intro),
+        h('div', { class: 'proving-examples', 'aria-label': 'Example tiles' }, ...section.examples.map((t) => tileView(t))),
+        note ? h('p', { class: 'clue-view', role: 'status' }, note) : '',
+        h('p', { class: 'fine' }, `Row ${trial.row + 1} of ${ROWS}. Section ${trial.section + 1} of ${SECTIONS.length}.`),
+        h('div', { class: 'proving-row', role: 'group', 'aria-label': `Row ${trial.row + 1}` },
+          ...trial.floor[trial.row].map((tile, i) => tileView(tile, () => {
+            const out = step(trial, i, seed);
+            trial = out.state;
+            note = out.result === 'cracked' ? section.crack : out.result === 'crossed' ? section.crossed : out.result === 'finished' ? section.crossed : '';
+            this.sfx(out.result === 'cracked' ? 'sfx.page' : out.result === 'held' ? 'sfx.click' : 'sfx.sparkle');
+            render();
+          }))));
+    };
+    render();
   }
 
   /** Dov's Three Doors: play by feel, then let the counting frame run 300 rounds, then change one assumption. */

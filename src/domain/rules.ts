@@ -23,6 +23,12 @@ export function check(c: Condition | undefined, s: CampaignState): boolean {
   if ('card' in c) return s.cards.includes(c.card);
   if ('objective' in c) return s.objectivesDone.includes(c.objective);
   if ('origin' in c) return s.player.origin === c.origin;
+  if ('trust' in c) {
+    const v = s.relations[c.trust] ?? 0;
+    if (c.gte !== undefined && v < c.gte) return false;
+    if (c.lte !== undefined && v > c.lte) return false;
+    return true;
+  }
   return false;
 }
 

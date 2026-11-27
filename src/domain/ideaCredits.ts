@@ -22,6 +22,8 @@ export const IDEA_CREDITS: readonly IdeaCredit[] = [
     source: `${LESSONS}. The puzzle was set by Steve Selvin in a 1975 letter to The American Statistician and made famous by Marilyn vos Savant's Parade column in 1990. It is named after Monty Hall, host of the TV show Let's Make a Deal.` },
   { game: 'The Ferry Guest Book', idea: 'The birthday problem',
     source: `${LESSONS}. The problem is often credited to the mathematician Richard von Mises (1939).` },
+  { game: 'The Proving Floor', idea: 'Guessing a rule from examples and testing it on new cases (induction)',
+    source: 'Original to Knowledge Guardians. The idea is close to the rule-discovery task that Peter Wason described in 1960.' },
   { game: 'The Weigh-House Slate', idea: 'Questioning the order of operations', source: LESSONS },
   { game: 'The Missing Word', idea: 'Euphemism, and how a chosen word shapes what people notice', source: LESSONS },
   { game: 'Lanterns and Bones', idea: 'The gambler\'s fallacy, and how many rolls it takes to tell a loaded die', source: LESSONS },

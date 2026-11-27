@@ -69,6 +69,8 @@ export const LEARN: Record<string, LearnTag> = {
   // Field games (src/domain/fieldgames.ts)
   // The counting frame runs with an informed host and a forgetful host before completion.
   'field:doors': { ...t(['certainty', 'evidence', 'justification'], [M], 3, 'analyse', 'application', 'relational', 8), aoks: ['MAT', 'TEC'] },
+  // A restartable trial: guess a rule from examples, then test it on new tiles; the last span has two rules that fit.
+  'field:proving': { ...t(['evidence', 'certainty', 'justification'], [M], 3, 'analyse', 'application', 'relational', 6), aoks: ['NAT', 'MAT'] },
   'field:guests': t(['certainty', 'explanation'], [M, S], 2, 'apply', 'foundational', 'multistructural', 6),
   'field:slate': t(['interpretation', 'culture', 'objectivity'], [S, M], 3, 'evaluate', 'integration', 'relational', 6),
   // Before painting, players see the same readers react to at least two wordings of the same toll.

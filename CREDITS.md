@@ -85,6 +85,7 @@ Many games grew from TOK lessons in Mika's lesson folder (decision X-017 in [doc
 |---|---|---|
 | Dov's Three Doors | The Monty Hall problem | Mika's TOK lesson folder. The puzzle was set by Steve Selvin in a 1975 letter to The American Statistician and made famous by Marilyn vos Savant's Parade column in 1990. It is named after Monty Hall, host of the TV show Let's Make a Deal. |
 | The Ferry Guest Book | The birthday problem | Mika's TOK lesson folder. The problem is often credited to the mathematician Richard von Mises (1939). |
+| The Proving Floor | Guessing a rule from examples and testing it on new cases (induction) | Original to Knowledge Guardians. The idea is close to the rule-discovery task that Peter Wason described in 1960. |
 | The Weigh-House Slate | Questioning the order of operations | Mika's TOK lesson folder |
 | The Missing Word | Euphemism, and how a chosen word shapes what people notice | Mika's TOK lesson folder |
 | Lanterns and Bones | The gambler's fallacy, and how many rolls it takes to tell a loaded die | Mika's TOK lesson folder |

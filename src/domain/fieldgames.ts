@@ -17,6 +17,9 @@ export interface FieldGame {
 }
 
 export const FIELD_GAMES: FieldGame[] = [
+  // A trial section: a wrong step restarts the section (decision X-007). Rules in provingFloor.ts.
+  { id: 'proving', name: 'The Proving Floor', host: 'Guildmaster Orrin, at the old proving floor under the bell tower in Emberford', concept: 'evidence',
+    idea: 'Guessing a rule from a few examples is induction. The guess has to survive new cases. More than one rule can fit the same examples, and only a new case can tell them apart.' },
   { id: 'doors', name: "Dov's Three Doors", host: 'Dov, at the lantern stall in Emberford', concept: 'certainty',
     idea: 'A strong gut feeling can be wrong, and the answer can change when one assumption changes (does the host know?). Many careful runs can correct an intuition; an argument can explain why.' },
   { id: 'guests', name: 'The Ferry Guest Book', host: 'Tova, at the old ferry landing', concept: 'certainty',
