@@ -1,4 +1,5 @@
 import type { MapDef } from './types';
+import { BELL_LOFT, SPARE_MOON } from './spareMoon';
 import { NEXUS } from './nexus';
 import { HALF_LIGHT_ROOM } from './lanternWeave';
 import { TWO_SHUTTER_ROOM } from './shutterBoard';
@@ -77,6 +78,8 @@ import { SILL_BRIDGE, SILL_RECEIVING } from './sillBridge';
 const campaignMaps: Record<string, MapDef> = {
   [WATER_CULVERT.id]: WATER_CULVERT,
   [NEXUS.id]: NEXUS,
+  [BELL_LOFT.id]: BELL_LOFT,
+  [SPARE_MOON.id]: SPARE_MOON,
   [HALF_LIGHT_ROOM.id]: HALF_LIGHT_ROOM,
   [TWO_SHUTTER_ROOM.id]: TWO_SHUTTER_ROOM,
   [NUMBER_LEAF_ROOM.id]: NUMBER_LEAF_ROOM,

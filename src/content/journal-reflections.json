@@ -1,4 +1,47 @@
 {
+  "quest:first-clap.curtain": {
+    "audience": "Whose part in the bow became visible? Who preferred to stay in the dark?"
+  },
+  "record:j.first-clap.seat": {
+    "repeat": "What did standing up establish about the clap? What could the seat never tell you about that night?"
+  },
+  "record:j.first-clap.name": {
+    "name": "When did the audience belong in the story, and when did Edda need a room to herself?"
+  },
+  "record:j.first-clap.light": {
+    "light": "How did the girl with the programme change what it meant to raise the lights?"
+  },
+  "record:j.first-clap.dark": {
+    "dark": "What could the singer take from a clap when she couldn’t see who stayed?"
+  },
+  "quest:spare-moon.keep-watch": {
+    "guest": "Who could find a bed after your choice? Who would have to ask another way?",
+    "count": "If you heard eleven tugs tomorrow, what would you still need to know?"
+  },
+  "record:j.spare-moon.knot": {
+    "separate": "What could you feel when Auda let go that the sound from the hall could not tell you?"
+  },
+  "record:j.spare-moon.shutter": {
+    "wait": "What did the silence between Noll’s notes let you notice?"
+  },
+  "record:j.spare-moon.touch": {
+    "wear": "What could the worn wood tell you about earlier visitors? What could it never tell you about any one of them?"
+  },
+  "record:j.spare-moon.host": {
+    "guest-host": "How did meeting the person offering a bed change what the hall’s count meant to you?"
+  },
+  "record:j.spare-moon.thimble": {
+    "fish": "Which detail on the fish meant something different once you knew who made it?"
+  },
+  "record:j.spare-moon.bell": {
+    "hearing": "Who paid a price for being heard in the street?"
+  },
+  "record:j.spare-moon.cord": {
+    "outside": "How would the person outside the five loops describe tonight?"
+  },
+  "record:j.spare-moon.bench": {
+    "second": "What would you build differently after meeting the second person on the step?"
+  },
   "quest:m01.o1.look": {
     "first-glance": "When Ise showed you the glowing label, which part made you look again?"
   },

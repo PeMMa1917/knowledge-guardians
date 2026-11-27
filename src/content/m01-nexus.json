@@ -1217,7 +1217,7 @@
    "id": "cold.open",
    "speaker": "narrator",
    "motif": "first-light",
-   "text": "A stone hall floats among the stars. By the entrance, an old label glows a sickly gold: THE FIRST BALLPOINT PEN.",
+   "text": "A stone hall floats among the stars. A brass fish hangs beside the stair at your feet. Twice it rings. Downstairs someone whispers, “Leave it. Let them answer.” Across the hall a label glows a sickly gold: THE FIRST BALLPOINT PEN.",
    "effects": [
     {
      "setFlag": "seen.coldopen",
@@ -1406,7 +1406,7 @@
   {
    "id": "ise.start5",
    "speaker": "warden-ise",
-   "text": "One more thing. The Waystone by the west wall saves your place, and you can rest there. The east wing is the Hall of Firsts. Its plaques have the same problem. Help them if you like.",
+   "text": "The west Waystone saves your place. The east wing is the Hall of Firsts. And if that little fish rings again, the stair beside the entrance goes up to the Wicks. I used to sleep under their roof. You can tell them that.",
    "next": null
   },
   {
@@ -1745,7 +1745,7 @@
   {
    "id": "dace.start",
    "speaker": "curator-dace",
-   "text": "Visitors read a label for about five seconds. If it says three things, they remember none of them.",
+   "text": "“Five seconds.” Dace watches a visitor hurry off. “She gets five seconds here before the ferry goes. I used to think a short label was a kindness. Then I heard my own words come back with a maker missing.”",
    "effects": [
     {
      "setFlag": "heard.dace",
@@ -2037,7 +2037,7 @@
   {
    "id": "venn.start",
    "speaker": "clerk-venn",
-   "text": "'First' should mean something you can check. Loud's patent was granted on 30 October 1888. That is a public, dated record.",
+   "text": "Venn rests his thumb under a date. “30 October 1888. The day Loud’s patent was granted. You could come back while I’m off duty and still check that. Mireille says you ought to be able to write with the thing. Frankly, I’d like to try.”",
    "effects": [
     {
      "setFlag": "heard.venn",
@@ -2171,7 +2171,7 @@
   {
    "id": "venn.after",
    "speaker": "clerk-venn",
-   "text": "We may not agree, but you can say why you think what you think. That is what I ask of a Guardian.",
+   "text": "“Mireille sent me a pen to try.” Venn shows you a thumb smudged blue. “I sent her a copy of the grant. We’re each keeping the other’s present. I still like my date.”",
    "options": [
     {
      "text": "See you in the hall.",
@@ -2211,7 +2211,7 @@
   {
    "id": "kip.start",
    "speaker": "kip-arden",
-   "text": "Hi, I'm Kip. I started yesterday. Can I tell you what I noticed? Everyone asks WHO was first. Nobody asks first AT WHAT.",
+   "text": "Kip has FIRST inked across one palm and WHAT on the other. “Yesterday I shook the Warden’s hand. She’s still got half my question. Look at the cases with me? Everyone keeps asking who was first. First at what?”",
    "options": [
     {
      "text": "Go on.",
@@ -2541,7 +2541,7 @@
   {
    "id": "ev.bell.end",
    "speaker": "narrator",
-   "text": "A cold draught from the portal moves the rope when the portal opens. That is one explanation that you can test: watch the rope the next time the portal glows."
+   "text": "A cold draught nudges the great rope when the portal opens. You can watch for it next time. Just as the rope falls still, the little brass fish by the entrance gives two answering knocks. There are stairs behind it."
   },
   {
    "id": "ev.tokens",

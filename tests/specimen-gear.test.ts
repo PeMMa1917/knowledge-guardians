@@ -146,3 +146,29 @@ describe('The collection and field gear', () => {
     expect(display.cases.some(({ specimen }) => specimen.key === last)).toBe(false);
   });
 });
+
+it('rearranges exact collected objects across pages and exchanges a full satchel without losing the case or perspective', () => {
+  const d=new Driver();
+  const records=d.e.pack.exhibits.filter(hasSpecimen).slice(0,12);
+  for(const r of records){
+    d.s.objectivesDone.push(r.specimen.objective);
+    d.run({type:'InspectExhibit',exhibit:r.id}); d.run({type:'ClaimSpecimen',exhibit:r.id});
+  }
+  const keys=records.map(r=>r.specimen.key);
+  const order=()=>specimenDisplay(d.e.pack,d.s).stored.map(r=>r.specimen.key);
+  const rearrange={type:'SwapSpecimenPlaces' as const,first:keys[3],second:keys[10],targetSeat:keys[10],satchel:false};
+  expect(()=>d.run(rearrange)).toThrow();
+  d.s.mapId=SPECIMEN_BASE;
+  d.run(rearrange);d.run(rearrange);
+  expect(order()[0]).toBe(keys[10]);expect(order()[7]).toBe(keys[3]);
+  d.run({type:'EquipPerspective',keepsake:specimenToolId(keys[0])});
+  const swap={type:'SwapSpecimenPlaces' as const,first:keys[10],second:keys[0],targetSeat:keys[0],satchel:true};
+  d.run(swap);d.run(swap);
+  expect(order()[0]).toBe(keys[0]);expect(carriesSpecimen(d.s,keys[10])).toBe(true);
+  expect(carriedSpecimenCount(d.s)).toBe(SPECIMEN_CAPACITY);
+  expect(activePerspective(d.e.pack,d.s)).toBeUndefined();
+  const preserved=order();
+  expect(()=>d.run({...rearrange,first:keys[4]})).toThrow();
+  expect(()=>d.run({...swap,first:'never-earned'})).toThrow();
+  expect(order()).toEqual(preserved);
+});

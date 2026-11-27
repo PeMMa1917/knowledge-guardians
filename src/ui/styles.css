@@ -1060,3 +1060,7 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .catchment-current[data-pocket='open'] > :nth-child(2) { border-block-end-style: dashed; }
 .catchment-floats { min-block-size: 1em; display: flex; align-items: center; gap: 0.25em; flex-wrap: wrap; }
 .catchment-floats i { width: 0.45em; height: 0.45em; background: var(--gold); border: 1px solid var(--ink); }
+
+.moon-beats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .4rem; list-style: none; padding: 0; }
+.moon-beats li { padding: .45rem .15rem; text-align: center; border: 1px solid currentColor; border-radius: .35rem; }
+.moon-music .actions { display: flex; flex-wrap: wrap; gap: .4rem; }

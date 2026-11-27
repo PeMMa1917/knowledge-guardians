@@ -14,7 +14,7 @@ import { seaChart } from './seaCharts';
 import { stageRehearsal } from './stageRehearsal';
 import { voiceReading } from './voiceReadings';
 import { waterTrial } from './waterGate';
-import { hasSpecimen, ownsSpecimen } from './specimenGear';
+import { hasSpecimen, ownsSpecimen, specimenSeat } from './specimenGear';
 import { biographyReadFlag, isHistoricalBiography } from './historicalEncounters';
 import type { Command } from './engine';
 import type { CampaignState, ContentPack, DiaryEntry, DiaryEvent } from './types';
@@ -90,6 +90,15 @@ export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, ne
       if (cmd.type === 'SetSpecimenReading') return diaryEvent(`specimen-reading:${object.specimen.key}:${cmd.reading}`, 'choice', object.id, object.name,
         cmd.reading === 'use' ? 'I put the observation first at this stand.' : 'I kept the source and its limits together at this stand.', sources, 'after-break');
       break;
+    }
+    case 'SwapSpecimenPlaces': {
+      const first = pack.exhibits.find(row => row.specimen?.key === cmd.first);
+      const second = pack.exhibits.find(row => row.specimen?.key === cmd.second);
+      if (!first?.specimen || !second?.specimen || specimenSeat(previous,cmd.first) === specimenSeat(next,cmd.first)) return;
+      const action = cmd.satchel ? `I put ${first.name} in my satchel. I left ${second.name} in its case.` :
+        `I exchanged the display places of ${first.name} and ${second.name} in my collection room.`;
+      return diaryEvent(`specimen-swap:${cmd.first}:${cmd.second}:${cmd.targetSeat}`, 'choice', first.id, 'My collection room', action,
+        {sourceIds:[first.specimen.source,second.specimen.source]}, 'after-break');
     }
     case 'ReadClue': {
       const clue = pack.clues?.find(({ id }) => id === cmd.clue);

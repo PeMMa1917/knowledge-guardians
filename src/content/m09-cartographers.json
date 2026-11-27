@@ -453,7 +453,7 @@
   {
    "id": "sea.chart.welcome",
    "speaker": "sea-cartographer",
-   "text": "Two people brought me charts with Lantern House on them. One followed the carriers to Market Rail. The other watched the shoal from a strip of water. Both want the larger pin beside the harbour door. Look at the two edges before we pick a sheet.",
+   "text": "Renna has a pinhole in her thumb. “Sora gave me one brass pin and two charts. Walkers finished at Market Rail. The boat stopped where the shoal goes pale. Lantern House is on both. If I hang one over the other, somebody is going to walk a line no one has ever walked.”",
    "historicalLabel": "fictional-world"
   },
   {
@@ -557,7 +557,7 @@
   {
    "id": "sea.harbour.welcome",
    "speaker": "sea-harbourkeeper",
-   "text": "People from the market say Seagrass Steps. The boat workers start a route story from Lantern House. Find the route book in the chartroom. The names carry some of what their speakers do for a living.",
+   "text": "“Seagrass Steps,” says Sora. “Lantern House,” calls a deckhand. They point the same way and both grin. “When the fog took the lamps, my sister came up those steps with a rope. That’s the name I shouted. Ask the crew what they needed to hear. Then find the route book in Renna’s chartroom.”",
    "historicalLabel": "fictional-world"
   },
   {
@@ -801,13 +801,13 @@
   {
    "id": "sea.update.shore",
    "speaker": "sea-harbourkeeper",
-   "text": "The reader has put a hand beside our new edge mark. The map has a place for a later walk now. The words keep this walk’s stop visible even if someone copies the outline alone.",
+   "text": "Sora puts a wet boot at the end of the shore line. “Here’s where my sister stopped. See that empty bit? She’d kill me for giving her credit for the rest.” She leaves room beside the rail for the next walker to make a different mark.",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "sea.update.water",
    "speaker": "sea-harbourkeeper",
-   "text": "Both sheets have an edge a visitor can point to. The reader has left the space beyond the rail open for whoever checks it. The crews can still find Lantern House and their shelf.",
+   "text": "A deckhand lays a thumbnail on the water edge. Sora finds the rail on the shore sheet. For once neither has to lift a corner to find where the other one turned back. “We could have used this the night the lamps went out,” she says.",
    "historicalLabel": "fictional-world"
   },
   {

@@ -1,3 +1,4 @@
+import { FIRST_CLAP_GALLERY, FIRST_CLAP_REHEARSAL } from './firstClap';
 /** Fictional theatre with separate backstage and audience sightlines. */
 import type { Condition } from '../domain/types';
 import { SCRIPT_RAIL_ENTRANCE, SCRIPT_RAIL_GALLERY } from './scriptRail';
@@ -124,6 +125,7 @@ export const STAGE_REHEARSAL = room({
     { stamp: 'rug-green', x: 12, y: 9 }, { stamp: 'plant-tall', x: 5, y: 13 },
   ],
   interactables: [
+    ...FIRST_CLAP_REHEARSAL,
     ...STAGE_REHEARSAL_FRAMES,
     ...STAGE_FILM_REHEARSAL,
     STAGE_SHEET_REHEARSAL,
@@ -176,6 +178,7 @@ export const STAGE_GALLERY = room({
     { stamp: 'plant-tall', x: 3, y: 14 }, { stamp: 'plant-tall', x: 23, y: 14 },
   ],
   interactables: [
+    ...FIRST_CLAP_GALLERY,
     ...SCRIPT_RAIL_GALLERY,
     ...STAGE_GALLERY_BACKBILL,
     ...GALLERY_SEAM,

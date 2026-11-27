@@ -5,6 +5,7 @@
  * East wing (x 26-38): the Hall of Firsts, an optional side quest with
  * plaques, each about one person shown with their own place and people, from many periods.
  */
+import { MOON_HALL_FIDDLER, MOON_HALL_SONG, MOON_LOFT_DOOR } from './spareMoon';
 import { NEXUS_FIELD_CUES } from './fieldBadges';
 import { BADGE_ANNEX_DOOR } from './badgeRoom';
 import { NEXUS_FACING_ACTOR, NEXUS_FACING_CUE } from './facingCue';
@@ -143,6 +144,7 @@ export const NEXUS: MapDef = {
     [11, 3, 1, 2], [14, 3, 1, 2],      // portal posts
   ],
   npcs: [
+    MOON_HALL_FIDDLER,
     EARLY_CURTAIN_NPC,
     NEXUS_FACING_ACTOR,
     ...SHUTTER_VISITORS,
@@ -159,6 +161,7 @@ export const NEXUS: MapDef = {
     { id: 'translator-lio', x: 24, y: 13, facing: 'right', visibleIf: { origin: 'traveller' } },
   ],
   interactables: [
+    MOON_LOFT_DOOR, MOON_HALL_SONG,
     ...NEXUS_FIELD_CUES,
     ...NEXUS_FACING_CUE,
     ...NEXUS_FOURTH_CORNER,
@@ -302,6 +305,12 @@ export const NEXUS: MapDef = {
     ] as const).map(([choice, x, text]) => ({ id: 'nile-delivery-tag-' + choice, kind: 'sign' as const, x, y: 10, w: 1, h: 1, walkThrough: true, label: 'the tag from the model route', text, art: 'nile.slip',
       visibleIf: { all: [{ flag: 'nile.dispatch', eq: 'pair' }, { flag: 'nile.returned', eq: true }, { flag: 'nile.routeLead', eq: choice }] } })),
 
+    { id: 'door-waits-for-letter', kind: 'sign', x: 37, y: 2, w: 1, h: 1, label: 'the seam where a letter should fit',
+      art: 'fold.strip', walkThrough:true, text: 'Ise has turned her half of the latch. Nestled in the other half is a curl of blue sealing wax. “Elsbet kept that colour,” someone has scratched. “Six lamps open her old study beneath the Emberford guild hall. Look at her desk.”',
+      visibleIf: {all:[{objective:'m02.o8.ise'},{not:{flag:'study.letter',eq:true}}]} },
+    { id: 'door-waits-for-ise', kind: 'sign', x: 37, y: 2, w: 1, h: 1, label: 'the handprint beside the folded letter',
+      art: 'preserved.slip', walkThrough:true, text: 'The letter fits the narrow seam. A second handprint stays dark. Kip has pencilled a reminder underneath. “Take the Emberford seal to Warden Ise in this hall. She stayed to hear what happened.”',
+      visibleIf: {all:[{flag:'study.letter',eq:true},{not:{objective:'m02.o8.ise'}}]} },
     { id: 'door-without-a-name', kind: 'door', x: 37, y: 2, w: 1, h: 1, label: 'the Door Without a Name', art: 'nile.door',
       visibleIf: { all: [{ flag: 'study.letter', eq: true }, { objective: 'm02.o8.ise' }] }, flag: 'nile.arrived', to: { map: 'nile.hall', x: 12, y: 10 } },
     { id: 'preserved-door', kind: 'door', x: 38, y: 15, w: 1, h: 1, label: 'the door to the Cold Store', art: 'preserved.door',

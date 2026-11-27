@@ -1,10 +1,18 @@
 # Status and next steps
 
+## 27 November playtest
+
+The brass fish beside the starting tile opens the Bell Loft. Players can trace a creature, test the cords or play their own four beats. Ket’s overnight decision and the Wick siblings’ futures are independent. Noll takes a kitchen shift when the Guardian reaches Emberford. A guest reprises the tune after any Council ending. At the House of Performance, Edda and Hari remember a single clap differently. Either curtain call can become a place to play the tune. The original chapter gates and central endings still work. [The Spare Moon](tests/spare-moon.test.ts) · [The Seat That Clapped First](tests/first-clap.test.ts)
+
+The inn’s paper lantern can be bought and hung in the Guardian’s room. Collected objects can change cases across display pages. A Guardian carrying three objects can exchange one at the case, with the outgoing object taking the exhibited object’s place. When only one Nile prerequisite has been earned, the doorframe gives a location for the other. [Collection routes](tests/specimen-gear.test.ts)
+
+The story and collection checks exercise alternative entries, delayed visits, the three overnight decisions, both siblings’ independent responses, both theatre bows, an 81-phrase instrument and retry-safe exchanges. Release evidence distinguishes automated play from engagement with students. The separate chapter audit and its training gym are in [PR #8](https://github.com/PeMMa1917/knowledge-guardians/pull/8).
+
 At Emberford’s east bridge, a driver returns with an empty cart after a warning changes hands. A folded sketch and a relayed call each let the Guardian find a different source of the misunderstanding. Four arrangements give the next crew different help and costs. A player can revisit the board, change the medium, and try another crossing. [Bridge routes](tests/bridge-message.test.ts)
 
 This file is for the next developer, human or AI. Read [AGENTS.md](AGENTS.md) first. **Update this file when you stop work.**
 
-Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master specification is version 3, expanded from version 2.10. See [the design summary](docs/DESIGN_SUMMARY.md).
+Last update 27 November 2026 on `feat/tok-gameplay-weave`. The private master specification is version 3, expanded from version 2.10. See [the design summary](docs/DESIGN_SUMMARY.md).
 
 ## Accounts and hosting (planned, 26 November 2026)
 

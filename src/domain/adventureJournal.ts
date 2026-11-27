@@ -1,3 +1,4 @@
+import { moonBeatNames, moonPerformance } from './spareMoonMusic';
 import { crossingOf, crossingWay } from './crossings';
 import { PARCEL_REPLY } from './parcelLedger';
 import { RUMOURS } from './rumours';
@@ -110,6 +111,13 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
+  if (cmd.type === 'PlayMoonTune') {
+    const site = moonPerformance(next);
+    if (!site || next === previous) return;
+    const beats = moonBeatNames(cmd.tune).join(', ');
+    return diaryEvent(`moon-tune:${next.mapId}:${cmd.tune}`, 'tool', 'spare-moon.tune', site.title,
+      `I played ${beats}. I left a beat for the other player and heard ${moonBeatNames(site.reply).join(', ')} come back.`);
+  }
   if (cmd.type === 'SendTileDispatch' || cmd.type === 'ReceiveTileDispatch') {
     const flag = dispatchFlag(cmd.desk, cmd.slip);
     const slip = dispatchSlip(cmd.slip);

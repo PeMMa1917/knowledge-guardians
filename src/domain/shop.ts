@@ -8,13 +8,15 @@ import type { CampaignState, ContentPack } from './types';
 import { trustOf } from './communities';
 import { hasTalent } from './talents';
 
-export interface Ware { id: string; part: 'wall' | 'floor' | 'rug' | 'lamp' | 'view' | 'plant'; key: string; price: number; community: string; hype: string; honest: string }
+export interface Ware { id: string; part: 'wall' | 'floor' | 'rug' | 'lamp' | 'view' | 'plant'; key: string; availableAfter?: string; price: number; community: string; hype: string; honest: string }
 
 export const WARES: Ware[] = [
   { id: 'wall-cant', part: 'wall', key: 'cant', price: 20, community: 'river', hype: 'Secret wallpaper of the ancient river kings!', honest: 'Wallpaper printed with the river cant. Made this year by ferry-folk printers. Tova checked the words.' },
   { id: 'wall-ember', part: 'wall', key: 'ember', price: 25, community: 'forge', hype: 'Tiles that never crack, forged in dragon fire!', honest: "Glazed tiles from Hesper's kiln. Strong, but they can crack if you drop them." },
   { id: 'floor-guild', part: 'floor', key: 'guild', price: 20, community: 'guild', hype: 'The very floor the founders walked on!', honest: 'New tiles in the old guild-hall pattern. The pattern is old; these tiles are not.' },
   { id: 'rug-river', part: 'rug', key: 'river', price: 15, community: 'river', hype: 'A magic rug that brings good luck!', honest: 'A rug woven by the ferry folk. I cannot show that it brings luck. It is warm.' },
+  { id: 'lamp-moonshade', part:'lamp',key:'moonshade',price:8,community:'market',availableAfter:'spare-moon.night',
+    hype:'A second moon! The last one lit a whole street!',honest:'Ket folds these shades from clean flour wrappers. She leaves a crescent open for the light.' },
   { id: 'lamp-wall', part: 'lamp', key: 'wall', price: 15, community: 'guild', hype: 'A lamp from the Lamp Wall itself!', honest: 'A copy of a Lamp Wall lamp, made by the guild. The real ones stay on the wall.' },
   { id: 'view-river', part: 'view', key: 'river', price: 10, community: 'river', hype: 'A window that shows the future!', honest: 'A painted window scene of the ferry river at dusk, by Nell the painter. It shows one moment, framed.' },
   { id: 'plant-reeds', part: 'plant', key: 'reeds', price: 5, community: 'market', hype: 'Rare reeds that cure all illness!', honest: 'Reeds from the riverbank, in a pot. Pretty. I know of no cure.' },
@@ -31,6 +33,8 @@ export function priceFor(w: Ware, s: CampaignState, pack: ContentPack): number {
 }
 
 export const owns = (s: CampaignState, w: Ware): boolean => s.flags[`owned.${w.id}`] === true;
+
+export const wareAvailable = (s: CampaignState, w: Ware) => !w.availableAfter || !!s.flags[w.availableAfter] || owns(s,w);
 
 /** Is a quarters option locked (sold at the stall and not bought)? */
 export function lockedOption(s: CampaignState, part: string, key: string): Ware | null {

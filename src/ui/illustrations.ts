@@ -1,3 +1,4 @@
+import { SPARE_MOON_ART } from './spareMoonArt';
 import { FOURTH_CORNER_ART } from './fourthCornerArt';
 import { BLUE_TAIL_ART } from './blueTailArt';
 /**
@@ -49,6 +50,7 @@ function pedestal(g: Ctx, x: number, y: number, w: number) {
 }
 
 const DRAW: Record<string, [number, number, (g: Ctx) => void]> = {
+  ...SPARE_MOON_ART,
   ...FOURTH_CORNER_ART,
   ...BLUE_TAIL_ART,
   'collection-stand': [16, 24, (g) => {
@@ -308,6 +310,15 @@ function moth(g: Ctx, f: number, ox = 0, oy = 0, k = 1) {
 DRAW['moth.0'] = [12, 8, (g) => moth(g, 0)];
 DRAW['moth.1'] = [12, 8, (g) => moth(g, 1)];
 DRAW['moth.big'] = [48, 32, (g) => moth(g, 0, 0, 0, 4)];
+for (const [perch, sign] of [['moon.perch','moon.sign'], ['moon.perch-open','moon.open']]) {
+  DRAW[perch] = [18, 24, (g) => {
+    g.save();
+    g.translate(0, 4);
+    SPARE_MOON_ART[sign][2](g);
+    g.restore();
+    moth(g, 0, 6, 0);
+  }];
+}
 
 function straightedgeTray(g: Ctx, keeper: boolean) {
   R(g, '#473748', 1, 11, 23, 4);
