@@ -263,6 +263,16 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/assayTrial.ts`, `src/content/assay-trial.json`, `src/ui/assayPanel.ts`, `src/maps/metalworks.ts`, `tests/assay-trial.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md. The 30-minute audit bound for the puzzler and cozy paths grows by the game's 6 minutes (`tests/learning.test.ts`).
 
+### Marshall Islands stick charts in the Lantern House (X-006)
+
+**What.** After the chapter 8 choice, the Lantern House has a new case. The player reads three documented records and keeps each as a card with its sources: what the three kinds of stick chart are for (they were learned ashore and left ashore); the voyages to Aur, where the navigator Korent Joel described a line of swells that the scientists' buoys did not detect; and who may share this knowledge (by family and permission). Then the player writes the display card. There are three cards to choose from, and each gets two replies from Renna and Sora (X-008).
+
+**Why.** Reviewers J1 and J2 asked that the Marshallese tradition be shown as knowledge with its own method, not as a learning aid, and with sources from the Marshallese people (Mika's decision X-006). The case keeps the main TOK point: an instrument that finds nothing does not show that nothing is there. The game does not teach how to read the swells, because that knowledge belongs to Marshallese navigators to share. A news report was not used as a source (NONEWS-001).
+
+**Sources.** Waan Aelõñ in Majel (the Marshallese canoe school), the Library of Congress, Smithsonian Ocean and Smithsonian Magazine. They are listed in `src/content/sea-stick-charts.json`.
+
+**Where.** `src/content/sea-stick-charts.json`, `src/maps/sea.ts`, three entries in `src/content/two-replies.json`, `tests/sea-stick-charts.test.ts`.
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.

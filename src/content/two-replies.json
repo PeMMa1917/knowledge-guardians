@@ -1126,6 +1126,60 @@
      "text": "And most buyers will not read a line of numbers. Put the tests on the back. On the front, write where the stone came from and who sent it. That is what people ask me at the door."
     }
    ]
+  },
+  {
+   "id": "sea.stick.two",
+   "after": {
+    "flag": "sea.stick.label",
+    "eq": "two"
+   },
+   "heading": "Two views on the stick chart card",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "The buoys and the navigator side by side, each with its method. Good. A visitor can see that the instrument found nothing, and also why that may not mean nothing is there."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "Side by side looks fair, but the buoy readings come with numbers and graphs, and the navigator's account comes with words. Visitors trust numbers. The two will not look equal on the wall, even if they are."
+    }
+   ]
+  },
+  {
+   "id": "sea.stick.ashore",
+   "after": {
+    "flag": "sea.stick.label",
+    "eq": "ashore"
+   },
+   "heading": "Two views on the stick chart card",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "Now the card says what the chart is for. People will stop thinking the sticks are the map. That is the most common mistake I hear at this case."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "And what will they think the body learns at sea? You have pointed at knowledge, then given them nothing of it. Some will think it was never real."
+    }
+   ]
+  },
+  {
+   "id": "sea.stick.gap",
+   "after": {
+    "flag": "sea.stick.label",
+    "eq": "gap"
+   },
+   "heading": "Two views on the stick chart card",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "A marked space. I would never leave an empty part of a chart without saying why. This says why."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "I like it, but a space can look like we lost something. Name the canoe school in Majuro beside it, so people know the knowledge is alive and who holds it."
+    }
+   ]
   }
  ]
 }
