@@ -44,7 +44,7 @@
     }
   ],
   "hints": [
-    { "id": "h.joined.cloth.1", "objective": "joined.cloth.handoff", "depth": 1, "text": "Equip the joined tapa cloth working copy. Find the two-panel test frame at the east end of Two-Tide Dock." },
+    { "id": "h.joined.cloth.1", "objective": "joined.cloth.handoff", "depth": 1, "text": "Equip the joined tapa cloth from Hawaiʻi. Find the two-panel test frame at the east end of Two-Tide Dock." },
     { "id": "h.joined.cloth.2", "objective": "joined.cloth.handoff", "depth": 2, "text": "The packet stays the same size. Run it in the middle and at the outer mark on the shared beam." },
     { "id": "h.joined.cloth.3", "objective": "joined.cloth.handoff", "depth": 3, "text": "Fit one support under each panel and repeat from both marks. Find how far the join moves before the pin." },
     { "id": "h.joined.cloth.4", "objective": "joined.cloth.handoff", "depth": 4, "text": "Send the centred transfer to the Plan Workshop or send the separate supports to the east ledge. At that receiver, put the packet at the mark that fits the crew’s place and try the transfer." }

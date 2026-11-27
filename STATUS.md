@@ -12,6 +12,8 @@ Mika chose Cloudflare (Workers + D1) with our own login. Students use a username
 
 ## Playtest build
 
+The Guardian’s diary now records which guide or viewing aid actually reached its reader in The Third Landmark and Where the Two Sights Meet. Both the first installation and its later return remember the chosen outcome across 40 dated maps and 41 artworks. Players carry the named object from the satchel. A practice rubbing, copy of a chart or comparison strip has its own identity when the story uses one. [Map choices](tests/map-alignment.test.ts) · [Sightline choices](tests/bearing-bay.test.ts)
+
 The diary can retrieve 58 more completed tasks by the part of the knowledge framework a player actually used. Examples include changing a stage cue, tracking a panel’s custody and checking who a request desk missed. Fifty-three newly written optional reflections follow specific actions. The Skill Atlas also remembers why a particular cut helped its audience and why a museum record and a living interpreter have different roles. Seventeen carried-object returns now have individual field notes and clues for the station where a player actually uses the object. [Learning design](docs/LEARNING_DESIGN.md) · [Stage diary check](tests/performance-story.test.ts)
 The collected Bíró pen opens Hesper’s writing bench in Emberford. Players compare a flat rest with a rolled strap, then fit a working rest for Della’s stall or Idris’s rounds. At the Ferry, the equipped 1941 Green-Book opens Tova’s shelter inquiry. The visitor acts on a dated public notice or checks in with Enna, who decides which details she can share. [Both returns and their saved receivers](tests/publication-returns.test.ts)
 

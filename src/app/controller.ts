@@ -3,6 +3,7 @@
  * saves. Scenes and UI call `dispatch`; nothing else writes state.
  */
 import { buildPack } from '../content';
+import { journalText } from '../domain/adventureJournal';
 import { Engine, newCampaign, type Command, type GameEvent } from '../domain/engine';
 import { checkAwards, restoreQuestionWays } from '../domain/permanent';
 import { restoreMicroSkillUses } from '../domain/skills';
@@ -254,7 +255,10 @@ export class GameController {
   /** Text for the return recap (spec 29.1 "readable return recap"). */
   recap(): { title: string; lines: string[] } {
     const s = this.state;
-    const lastJournal = s.journal.slice(-2).map((id) => this.pack.journal.find((j) => j.id === id)?.text ?? '');
+    const lastJournal = s.journal.slice(-2).flatMap((id) => {
+      const note = this.pack.journal.find((entry) => entry.id === id);
+      return note ? [journalText(note, s)] : [];
+    });
     const cur = this.engine.currentObjective(s);
     return {
       title: `Welcome back, ${s.player.name}.`,

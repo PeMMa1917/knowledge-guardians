@@ -2,6 +2,7 @@ import { crossingOf, crossingWay } from './crossings';
 import { PARCEL_REPLY } from './parcelLedger';
 import { RUMOURS } from './rumours';
 import { personalise } from './player';
+import { check } from './rules';
 import { LOYALTY } from './loyalty';
 import { DISPATCH_DESKS, dispatchFlag, dispatchSlip } from './tiles';
 import { specimenReferences, type SpecimenReference } from './specimenReferences';
@@ -81,20 +82,24 @@ function objectiveEntries(pack: ContentPack) {
   return pack.missions.flatMap((mission) => mission.objectives.map((objective) => ({ mission, objective })));
 }
 
-function objectiveDraft(pack: ContentPack, mission: Mission, objective: Objective): EntryDraft {
+export function journalText(note: ContentPack['journal'][number], state: CampaignState): string {
+  return note.readings?.find((reading) => check(reading.when, state))?.text ?? note.text;
+}
+
+function objectiveDraft(pack: ContentPack, mission: Mission, objective: Objective, state: CampaignState): EntryDraft {
   const journalEffect = objective.onComplete?.find((effect) => 'journal' in effect);
   const note = journalEffect && pack.journal.find((row) => row.id === journalEffect.journal);
   return diaryEvent(`quest:${objective.id}`, 'quest', objective.id, mission.title,
-    note ? firstPerson(note.text) : `I finished the step “${objective.title}” in ${mission.title}.`);
+    note ? firstPerson(journalText(note, state)) : `I finished the step “${objective.title}” in ${mission.title}.`);
 }
 
 function authorEntryId(effect: Effect): string[] {
   return 'journal' in effect ? [effect.journal] : [];
 }
 
-function journalDraft(pack: ContentPack, id: string): EntryDraft | undefined {
+function journalDraft(pack: ContentPack, id: string, state: CampaignState): EntryDraft | undefined {
   const note = pack.journal.find((row) => row.id === id);
-  if (note) return diaryEvent(`record:${id}`, 'finding', id, 'From my field notes', firstPerson(note.text));
+  if (note) return diaryEvent(`record:${id}`, 'finding', id, 'From my field notes', firstPerson(journalText(note, state)));
 }
 
 /** Record deliberate dialogue selections, including leaving something as it is. */
@@ -269,11 +274,11 @@ export function recordAdventure(
   for (const event of events) {
     if (event.kind === 'objective') {
       const completedObjective = objectives.find(({ objective }) => objective.id === event.id);
-      if (completedObjective) drafts.push(objectiveDraft(pack, completedObjective.mission, completedObjective.objective));
+      if (completedObjective) drafts.push(objectiveDraft(pack, completedObjective.mission, completedObjective.objective, next));
       continue;
     }
     const entry = event.kind === 'journal'
-      ? (authored.has(event.id) ? undefined : journalDraft(pack, event.id))
+      ? (authored.has(event.id) ? undefined : journalDraft(pack, event.id, next))
       : experienceDraft(pack, previous, cmd, event);
     if (entry) drafts.push(entry);
   }
@@ -330,7 +335,7 @@ function availableDiaryQuestions(pack: ContentPack, state: CampaignState, entry:
     const id = entry.slice('quest:'.length);
     if (!state.objectivesDone.includes(id)) return;
     const prior = objectiveEntries(pack).find(({ objective }) => objective.id === id);
-    if (prior) return diaryQuestions(objectiveDraft(pack, prior.mission, prior.objective), saved);
+    if (prior) return diaryQuestions(objectiveDraft(pack, prior.mission, prior.objective, state), saved);
   }
   if (entry.startsWith('record:')) {
     const id = entry.slice('record:'.length);
@@ -338,7 +343,7 @@ function availableDiaryQuestions(pack: ContentPack, state: CampaignState, entry:
     // Quest-owned records appear through their quest entry even in earlier saves.
     if (objectiveEntries(pack).some(({ objective }) => state.objectivesDone.includes(objective.id)
       && objective.onComplete?.some((effect) => 'journal' in effect && effect.journal === id))) return;
-    const prior = journalDraft(pack, id);
+    const prior = journalDraft(pack, id, state);
     if (prior) return diaryQuestions(prior);
   }
   if (/^note:(0|[1-9][0-9]*)$/.test(entry)) {
@@ -373,13 +378,13 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     const entry = objectivesById.get(id);
     if (!entry) continue;
     const { mission, objective } = entry;
-    const draft = objectiveDraft(pack, mission, objective);
+    const draft = objectiveDraft(pack, mission, objective, state);
     if (!known.has(draft.id)) prior.push(draft);
     for (const id of (objective.onComplete ?? []).flatMap(authorEntryId)) authored.add(id);
   }
   for (const id of state.journal) {
     if (authored.has(id) || known.has(`record:${id}`)) continue;
-    const note = journalDraft(pack, id);
+    const note = journalDraft(pack, id, state);
     if (note) prior.push(note);
   }
   const quests = new Map<string, JournalQuest>();

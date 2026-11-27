@@ -62,7 +62,7 @@ export function scriptRailPanel(controller: GameController, station: string, sou
       panel.append(h('article', {}, h('h3', {}, entry.title), source(entry), h('p', {}, entry.revisit[1])));
     }
     if (!equipped) {
-      panel.append(h('p', {}, 'Equip a Script Cabinet working copy to add its separate retrieval line.'));
+      panel.append(h('p', {}, 'Equip an object from the Script Cabinet. Pull its second strip into reach at the index.'));
       return panel;
     }
     const active: ScriptCase = equipped;

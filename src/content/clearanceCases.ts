@@ -75,7 +75,7 @@ export const clearanceContent = {
       ...(`cma:${record.accession}` === BEATER_KEY ? {
         revisit: { map: BEATER_PRESS_MAP, prop: BEATER_PRESS_PROP,
           method: 'Compare two local proof faces at the same stop.',
-          hint: 'Equip the working copy and look for the plain two-face block in the Reconstruction Workroom.' },
+          hint: 'Equip the Hawaiian tapa cloth beater and look for the plain two-face block in the Reconstruction Workroom.' },
       } : {}),
     },
   })),

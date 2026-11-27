@@ -32,7 +32,7 @@ function runObjectives(record: LoadCase): [Objective, Objective] {
       atl: ['thinking', 'communication', 'social'], aoks: ['MAT', 'HIS', 'ART'], subjects: ['physics', 'design-tech', 'history'], minutes: 4,
     },
   }, {
-    id: record.returnObjective, title: `Fit a second load beside the working copy of ${record.name}.`, essential: false,
+    id: record.returnObjective, title: `Fit a second load beside ${record.name}.`, essential: false,
     visible: { item: `item.specimen.${record.key}` }, done: { all: [
       { objective: record.objective }, { flag: `${key}.repeat`, eq: true },
       ...LOAD_FIXES.map((fix) => ({ flag: `${key}.test.${fix}`, eq: true })), { flag: `${key}.fit`, in: [...LOAD_FIXES] },
@@ -62,7 +62,7 @@ export const loadingBayContent = {
     specimen: { key: record.key, accession: record.accession, institution: record.institution, source: record.source,
       objective: record.objective, pixelAsset: record.asset, revisit: { map: LOAD_CHECK_MAP, prop: record.returnProp,
         method: `Try the return load for ${record.name} at its own rack.`,
-        hint: `Equip this working copy and visit the return rack for ${record.name} in the Council Cart Bay.` },
+        hint: `Equip ${record.name} and visit its rack in the Council Cart Bay.` },
     },
   })),
   cards: LOAD_CASES.map((record) => ({
@@ -83,7 +83,7 @@ export const loadingBayContent = {
     ['The boxes stay in place while you move the axle.', `Open the exact record for ${record.name} beside the practice cart.`,
       'Try both axle notches. Keep both readings, then mark the notch that you want your receiver to try.',
       'Deliver to Hale’s low Time Hall bench or Essi’s Bell Rail handover. Each offers a different way to use the two readings.'],
-    ['A new load makes the old axle mark into a fresh claim.', `Equip the working copy of ${record.name}, then look for its return rack through the second door in the Cart Bay.`,
+    ['A new load makes the old axle mark into a fresh claim.', `Equip ${record.name}, then look for its return rack through the second door in the Cart Bay.`,
       'Run the changed load on your old mark. Keep that result when you try each change on its own.',
       'Leave the other axle notch open or tie the changed box at the nearer ring. Your fitted position and result stay at this rack.'],
   ].flatMap((lines, phase) => lines.map((text, index) => {

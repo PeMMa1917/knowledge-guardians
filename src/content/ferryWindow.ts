@@ -27,7 +27,7 @@ export const FERRY_WINDOW_CASES = records.map((record) => ({
   revisit: {
     map: 'aethelgard.emberford', prop: `ferry-window-ember-${record.slug}`,
     method: `Mark ${record.returnTag}.`,
-    hint: 'Carry this working copy to the old sight board by the east road in Emberford.',
+    hint: `Bring ${record.title} to the old sight board by Emberford’s east road.`,
   },
 }));
 export type WindowCase = (typeof FERRY_WINDOW_CASES)[number];
@@ -188,6 +188,6 @@ export const ferryWindowContent = {
     { id: `j.${entry.flag}.edge`, claimKind: 'observation' as const,
       text: `I left the cargo screen in place, used the outside ledge and pinned two positions for ${entry.accession}.` },
     { id: `j.${entry.flag}.ember`, claimKind: 'observation' as const,
-      text: `I equipped the working copy for ${entry.accession} at Emberford. ${entry.returnResult}` },
+      text: `I set ${entry.title} (${entry.accession}) on Emberford’s sight board. ${entry.returnResult}` },
   ]),
 } satisfies Partial<ContentPack>;

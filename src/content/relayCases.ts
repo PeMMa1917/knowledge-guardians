@@ -73,7 +73,7 @@ export const relayContent = {
       ...(record.source === JOINED_CLOTH_SOURCE ? {
         revisit: { map: JOINED_CLOTH_MAP, prop: JOINED_CLOTH_PROP,
           method: 'Compare a shared beam and independent supports under the same model packet.',
-          hint: 'Equip the working copy and find the two-panel test frame at the east end of Two-Tide Dock.' },
+          hint: 'Equip the joined cloth from Hawaiʻi and find the two-panel test frame at the east end of Two-Tide Dock.' },
       } : {}),
     },
   })),

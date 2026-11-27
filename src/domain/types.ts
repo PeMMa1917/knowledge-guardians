@@ -733,7 +733,11 @@ export interface ContentPack {
   awards: AwardRecord[];
   items: ItemRecord[];
   offers: Offer[];
-  journal: { id: string; text: string; claimKind?: ClaimKind }[];
+  journal: {
+    id: string; text: string; claimKind?: ClaimKind;
+    /** Choose the wording from a completed action when the Guardian records it. */
+    readings?: { when: Condition; text: string }[];
+  }[];
   labelKits: LabelKit[];
   showdowns: ShowdownRecord[];
   locks: TitleLockRecord[];

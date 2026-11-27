@@ -56,7 +56,7 @@ export const COUNCIL_LOAD_CHECK = cartMap(LOAD_CHECK_MAP, 'Council of Inquiry: R
   { id: 'loading-check-return', kind: 'door', x: 18, y: 29, w: 1, h: 1,
     label: 'the passage to the Cart Bay', art: 'preserved.door', to: { map: BAY, x: 18, y: 5 } },
   { id: 'loading-check-slip', kind: 'sign', x: 19, y: 27, w: 1, h: 1, walkThrough: true, label: 'the return rack’s work notice', art: 'council.letter',
-    text: 'Keep the old axle mark until you have tried the returned load there. Open the Bag and use one working copy. Its rack lights up with the recorded load and the two ways the keeper can adjust it.' },
+    text: 'Keep the old axle mark until you have tried the returned load there. Equip a Cart Bay object in the Bag. Its rack lights up with the recorded load and the two ways the keeper can adjust it.' },
   ...LOAD_CASES.map((record, index): Interactable => ({
     id: record.returnProp, kind: 'fieldgame', game: `${LOAD_GROUP}:return:${record.slug}`, x: 4 + 6 * (index % 6), y: 5 + 4 * Math.floor(index / 6),
     w: 1, h: 1, walkThrough: true, art: 'loading.cart', visibleIf: specimenEquipped(record.key),

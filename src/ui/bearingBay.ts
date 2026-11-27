@@ -114,7 +114,7 @@ export function bearingBayPanel(place: string, controller: GameController, sound
     const state = readBearing(record.slug, controller.state.flags);
     body.append(h('h2', {}, record.name));
     if (!state.received || !controller.check(specimenEquipped(record.key))) {
-      body.append(h('p', {}, 'The right working copy must be in use to lift this shutter.'));
+      body.append(h('p', {}, `Equip ${record.name} to lift its shutter.`));
       return;
     }
     const flawed = record.kind === 'fog' ? 'The east sight is missing behind the screen.' : record.kind === 'late'

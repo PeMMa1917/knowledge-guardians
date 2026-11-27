@@ -147,7 +147,14 @@ export function validateContent(pack: ContentPack): string[] {
     dup('character', c.id);
     c.talk.forEach((t) => { nodes.has(t.node) || p.push(`character ${c.id}: unknown node ${t.node}`); cond(t.if, `character ${c.id}`); });
   });
-  pack.journal.forEach((j) => { dup('journal', j.id); text(`journal ${j.id}`, j.text); });
+  pack.journal.forEach((j) => {
+    dup('journal', j.id);
+    text(`journal ${j.id}`, j.text);
+    for (const reading of j.readings ?? []) {
+      cond(reading.when, `journal ${j.id}`);
+      text(`journal ${j.id}`, reading.text);
+    }
+  });
   // Origins (spec 35.1): each gives a starting Lens hint and a unique option in each world, never an advantage.
   (pack.origins ?? []).forEach((o) => {
     dup('origin', o.id); text(`origin ${o.id}`, o.background);

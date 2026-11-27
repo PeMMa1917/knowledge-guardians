@@ -19,6 +19,7 @@ import { VOICE_SOURCES, VOICE_VIEWS, voiceReading, type VoiceView } from '../dom
 import { ISLAND_CRATES, ISLAND_LANDINGS, ISLAND_ROUTES, islandPlan, type IslandLanding, type IslandRoute } from '../domain/islandPlan';
 import { COUNCIL_TRIALS, councilClock, type CouncilTrial } from '../domain/councilClock';
 import { buildScoutBoard } from './scoutRoutes';
+import { journalText } from '../domain/adventureJournal';
 import { adventureJournalTab } from './adventureJournal';
 import { leaderboardPanel } from './leaderboard';
 import type { LeaderboardFile } from '../domain/leaderboard';
@@ -2820,7 +2821,7 @@ export class UI implements UIApi {
     } else if (tab === 'entries') {
       body.append(h('ol', { class: 'journal' }, ...s.journal.map((id) => {
         const j = c.pack.journal.find((x) => x.id === id)!;
-        return h('li', {}, j.claimKind ? claimChip(j.claimKind) : null, ' ', j.text);
+        return h('li', {}, j.claimKind ? claimChip(j.claimKind) : null, ' ', journalText(j, s));
       })));
       if (!s.journal.length) body.append(h('p', {}, 'No entries yet.'));
     } else if (tab === 'cards') {

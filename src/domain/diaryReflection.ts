@@ -5,6 +5,7 @@ export interface JournalReflection {
   id: string;
   prompt: string;
   response?: string;
+  earlier?: true;
 }
 
 type ReflectionSource = Pick<DiaryEntry, 'id' | 'title' | 'kind'> & {
@@ -26,7 +27,15 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
     const questions = questionsByEntry[key];
     // A student may already have answered the earlier general question on this quest.
     if (key.startsWith('quest:') && saved && Object.hasOwn(saved, 'quest') && !Object.hasOwn(questions, 'quest')) {
-      return { quest: questPrompt(entry.title), ...questions };
+      const retained: Record<string, string> = { quest: questPrompt(entry.title) };
+      for (const [id, prompt] of Object.entries(questions)) {
+        if (Object.hasOwn(saved, id)) retained[id] = prompt;
+      }
+      for (const [id, prompt] of Object.entries(questions)) {
+        if (Object.keys(retained).length >= 3) break;
+        retained[id] = prompt;
+      }
+      return retained;
     }
     return questions;
   }
@@ -77,6 +86,10 @@ export function journalReflections(diary: AdventureDiary, entry: string, questio
   const responses = Object.hasOwn(all, entry) ? all[entry] : undefined;
   return Object.entries(questions).map(([id, prompt]) => {
     const response = responses?.[id];
+    // Older saves can contain answers to the former prompt and all three current ones.
+    if (id === 'quest' && Object.keys(questions).length > 3 && response !== undefined) {
+      return { id, prompt, response, earlier: true };
+    }
     return response === undefined ? { id, prompt } : { id, prompt, response };
   });
 }

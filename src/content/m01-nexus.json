@@ -568,17 +568,17 @@
   },
   {
    "id": "OBJ-001-C",
-   "name": "Biro pen (record of Science Museum Group object 1949-174/2)",
+   "name": "Biro ballpoint pen, Science Museum Group 1949-174/2",
    "art": "exhibit.biro",
    "historicalLabel": "documented",
    "dateText": "Dated 1945–1948 (museum record)",
    "dateKind": "AN OBJECT DATE RANGE from a museum record: when this particular pen was made, given as a range of years. It is not the date of an idea or a patent.",
-   "summary": "The real pen is in the Science Museum Group collection. The Nexus shows a projection of its record. The record names László József Bíró and his brother Georg.",
+   "summary": "A ballpoint pen made in Britain in 1945–1948. Its Science Museum Group record names László József Bíró and his brother Georg. The date belongs to this pen. A different piece of paper dates the patent.",
    "sources": [
     "HIS-S13"
    ],
    "grantsCard": "card.biro-object",
-   "altText": "A slim pen with a dark body and a metal tip, shown as a soft glowing projection.",
+   "altText": "A slim, dark-bodied pen with a bright metal tip.",
    "specimen": {
     "key": "smg:1949-174/2",
     "institution": "Science Museum Group",
@@ -1153,7 +1153,7 @@
   },
   {
    "id": "j.m01.three",
-   "text": "The three exhibits are a patent drawing (1888), a modern workshop model, and the record of a Biro pen dated 1945–1948.",
+   "text": "The three exhibits are a patent drawing (1888), a modern workshop model, and the Biro pen dated 1945–1948.",
    "claimKind": "observation"
   },
   {
@@ -3709,7 +3709,7 @@
    "id": "h.m01.o2.inspect.2",
    "objective": "m01.o2.inspect",
    "depth": 2,
-   "text": "Look at what kind of thing each exhibit is: a document, a model or a record of a real object."
+   "text": "Check what each date belongs to. Who filed the drawing, who built the workshop model, and when was this pen made?"
   },
   {
    "id": "h.m01.o2.inspect.3",

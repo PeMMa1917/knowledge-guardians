@@ -1430,7 +1430,7 @@
       },
       {
         "objective": "align.keppel-harbour.returned",
-        "action": "Use the dated Keppel chart and its scale to carry a working copy to the Nile. Align the two known marks on the practice plans and inspect the separately moved third mark before setting a route limit or checking it again.",
+        "action": "Carry the dated Keppel chart to the Nile and use its scale. Align the two known marks on the practice plans and inspect the separately moved third mark before setting a route limit or checking it again.",
         "styles": [
           "explorer",
           "maker"

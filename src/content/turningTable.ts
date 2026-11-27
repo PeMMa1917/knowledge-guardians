@@ -7,12 +7,12 @@ export const TURNING_CARD = 'card.turning.kunit';
 export const TURNING_GATE: Condition = { objective: 'sea.arrival' };
 export const KUNIT_KEY = 'nka:holm-collection-fig390-a';
 export const KUNIT_REVISIT = { map: 'sea.turning-room', prop: 'turning-working-copy', method: 'Use a raised end stop when a second reader turns a relief block.',
-  hint: 'Equip the working copy and return to the second rack in Lantern House’s Turning Room.' };
+  hint: 'Equip Kunit’s carved coast piece and return to the second rack in Lantern House’s Turning Room.' };
 const F = 'turning.kunit';
 
 export const turningTableContent = {
   dialogue: [{ id: 'turning.worked-return', speaker: 'sea-cartographer', historicalLabel: 'fictional-world',
-    text: 'Your working copy keeps Kunit’s role as maker and teller beside Holm’s record. The new practice block has two ends that feel alike. A visitor coming from the wall reads the shallow mark first. We can fit an end stop at the wall or let a second reader take the two positions in turn.',
+    text: 'Kunit carved the coast and explained it. Holm wrote down the account. Set the carving beside my practice block. The new practice block has two ends that feel alike. A visitor coming from the wall reads the shallow mark first. We can fit an end stop at the wall or let a second reader take the two positions in turn.',
     options: [
       { text: 'Fit a fixed end stop for arrivals from the wall.', effects: [{ setFlag: 'turning.kunit.revisit', value: 'stop' }] },
       { text: 'Give the second reader the reversible rack.', effects: [{ setFlag: 'turning.kunit.revisit', value: 'pair' }] },

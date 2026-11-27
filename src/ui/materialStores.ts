@@ -87,7 +87,7 @@ export function materialStorePanel(controller: GameController, station: string, 
     panel.append(h('h2', {}, 'Canal Walk’s used-work-copy shelf'));
     for (const record of replies) panel.append(h('article', {}, h('h3', {}, record.title), objectLink(record), h('p', {}, record.returnEffect)));
     if (!available) {
-      panel.append(h('p', {}, 'Fit a working copy in your bag to check another part of the shelf.'));
+      panel.append(h('p', {}, 'Equip a Material Stores object in the Bag to check the matching shelf.'));
       return panel;
     }
     const record: MaterialCase = available;
@@ -104,7 +104,7 @@ export function materialStorePanel(controller: GameController, station: string, 
       open = !open;
       compare.setAttribute('aria-pressed', String(open));
       update();
-    } }, 'Swing the shelf clamp over this working copy');
+    } }, 'Swing the shelf clamp over the object');
     let open = false;
     function update() {
       const used = state().flags[record.reprise] === 'use';

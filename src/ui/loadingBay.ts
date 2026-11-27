@@ -95,7 +95,7 @@ export function loadingBayPanel(place: string, controller: GameController, sound
     const { axle } = state;
     body.append(h('h2', {}, record.name));
     if (!state.received || axle === undefined || !controller.check(specimenEquipped(record.key))) {
-      body.append(h('p', {}, 'Equip the matching working copy to uncover this rack’s load record.'));
+      body.append(h('p', {}, `Equip ${record.name} in the Bag to uncover its load record.`));
       return;
     }
     const changed = changeLoad(record.load, record.changedRight, record.changedSlot);

@@ -11,7 +11,7 @@ export const PERKINS_KEY = 'perkins:procede-1829';
 export const PERKINS_REVISIT = {
   map: 'preserved.archive', prop: 'perkins-cold-impression',
   method: 'Fit a raised stop that lets a reader find the maker credit on the right record',
-  hint: 'Return to the Cold Store with the Perkins working copy equipped. Use the two author slips beside the east bench.',
+  hint: 'Return to the Cold Store with the 1829 Perkins volume of Braille’s Procédé equipped. Use the two author slips beside the east bench.',
 };
 
 export const READING_WORKS_CASES = data.map((entry) => ({
@@ -221,5 +221,5 @@ export const readingWorksContent = {
     id: `j.${entry.flag}.${route}`, claimKind: 'observation' as const,
     text: `After both checks, I chose “${entry.routes[index].action}”. I used the arrangement with the reader at the Landing and kept their reply.`,
   }))), { id: 'j.reading-works.perkins.cold', claimKind: 'observation',
-    text: 'I brought the Perkins working copy to the Cold Store and fitted the two raised stops. A reader can find the author and copyist slips independently.' }],
+    text: 'I brought Perkins’s 1829 volume of Braille’s Procédé to the Cold Store and fitted the two raised stops. A reader can find the author and copyist slips independently.' }],
 } satisfies Partial<ContentPack>;

@@ -566,5 +566,47 @@
   },
   "quest:scout.o.notice": {
     "scout-receiver": "What does the next carrier need to hear alongside “turn blocked” before it is safe to act on the slip?"
+  },
+  "quest:align.keppel-harbour.returned": {
+    "second-look": "A pilot asks for today’s safe depth. Which mark on your 1874 harbour chart would send you back to the water with a sounding line?"
+  },
+  "quest:align.sumatra-coast.received": {
+    "second-look": "Where would you take your finger off Gillis’s line if someone asked you to guide them past its last surveyed span?"
+  },
+  "quest:align.manila-bay.returned": {
+    "second-look": "When would the date of the Manila field survey matter more to a skipper than the date on the published sheet?"
+  },
+  "quest:align.pearl-river.received": {
+    "second-look": "Two surveys agree at your turn. Which other mark on this compilation would you date separately before trusting it?"
+  },
+  "quest:align.yokohama-tokyo.returned": {
+    "second-look": "What would someone standing on the street corner need to show you before you enlarged that part of the regional map?"
+  },
+  "quest:align.ryukyu-voyage.received": {
+    "second-look": "Whose directions would you seek before repeating the expedition crew’s names for a Ryukyuan crossing?"
+  },
+  "quest:align.hilo-bay.returned": {
+    "second-look": "If a boat reaches the landing safely once, what remains uncertain about the next tide?"
+  },
+  "quest:align.tongatapu.received": {
+    "second-look": "What would you ask a local keeper before treating a route that appears on the Tongatapu sheet as permission to travel it?"
+  },
+  "quest:bearing.tautira-mouth.returned": {
+    "second-look": "If the east wing appears again when the mist lifts, which of your earlier conclusions would you test first?"
+  },
+  "quest:bearing.colliers-point.returned": {
+    "second-look": "How could someone discover that the far post moved even if the edge of the print still lines up neatly?"
+  },
+  "quest:bearing.rio-bay.received": {
+    "second-look": "Which part of the painted view could help an arriving crew orient itself, and where would it need a depth reading?"
+  },
+  "quest:bearing.trinidad-house.returned": {
+    "second-look": "When is the bell marked on a strip more important than the accuracy of the drawing on it?"
+  },
+  "quest:bearing.salt-kettle.returned": {
+    "second-look": "What happens to your confidence in two sightings when one is the other’s reflection?"
+  },
+  "quest:bearing.santiago-cuba.received": {
+    "second-look": "How could two roofs look close together to the painter and still be far apart for someone walking between them?"
   }
 }
