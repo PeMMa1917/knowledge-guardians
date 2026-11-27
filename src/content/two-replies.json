@@ -1467,6 +1467,24 @@
      "text": "A blank card invites people to fill it in with what they imagine. I would rather keep the four real cards and write the gap on the label, in plain words."
     }
    ]
+  },
+  {
+   "id": "preserved.tokens",
+   "after": {
+    "flag": "field.tokens.done",
+    "eq": true
+   },
+   "heading": "Two views on the token drawer",
+   "replies": [
+    {
+     "speaker": "preserved-registrar",
+     "text": "The hospital left the name off to protect the mothers, and it worked. A record that keeps less can be kinder. I would not call that billet a failure."
+    },
+    {
+     "speaker": "preserved-inquiry-keeper",
+     "text": "Kinder to the mothers, perhaps. The children grew up not knowing a token had been left for them. When we decide what a record leaves out, we should ask the person it leaves out."
+    }
+   ]
   }
  ]
 }

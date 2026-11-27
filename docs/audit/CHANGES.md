@@ -373,6 +373,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/collageWall.ts`, `src/content/collage-wall.json` (with sources), `src/ui/collagePanel.ts`, `src/maps/voices.ts`, `tests/collage-wall.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
+### The Token Drawer, chapter 3's signature game (C-004)
+
+**What.** In the Cold Store, Registrar Aster opens a drawer of real tokens left with babies at the Foundling Hospital in London (1740s to 1760s): an embroidered name ribbon, a ribbon with "My Name is Andrews" in ink, a bent and scratched shilling, a penny on a pink ribbon, a scrap of a baby's gown, and a child's ring. The player first acts as the clerk and chooses three lines for a billet; each line gets a reply, and Pilar explains why the real billets left off the birth name. Then three parents return and can only describe their token; the player finds the matching sealed packet (a wrong packet gets a gentle reply and another try). Last, the player labels a case of tokens that lost their billets. Aster and Pilar then disagree (X-008) about whether a record that keeps less can be kinder.
+
+**Why.** The lesson folder asks who gets remembered. Chapter 3 is about a display board that gives two places one heading, so a game about what a record keeps and loses fits it. Decision X-005 includes difficult history with a content note and reliable sources: the panel opens with a note and a choice to come back later, and it lists the Foundling Museum and Coram pages it uses.
+
+**Where.** `src/domain/tokenDrawer.ts`, `src/content/token-drawer.json` (with sources), `src/ui/tokenPanel.ts`, `src/maps/preserved.ts`, `tests/token-drawer.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
 ### The 30-minute audit and the new games
 
 **What.** The audit test (`tests/learning.test.ts`) measures minutes of play in which a 30-minute window lacks some TOK concept or framework part. The new optional games add minutes inside windows that were already open, so the measure grew with each game. The test now checks the original bound on the path without the new games, and allows each new game to lengthen the gaps by at most three times its own minutes.

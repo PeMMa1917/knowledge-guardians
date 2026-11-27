@@ -1139,6 +1139,11 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .collage-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.5rem; margin: 0.5rem 0; }
 .collage-card { display: flex; flex-direction: column; gap: 0.3rem; text-align: left; white-space: normal; }
 .collage-card[aria-pressed="true"] { outline: 2px solid #f2c94c; }
+.token-fields, .token-packets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.4rem 0; }
+.token-fields button[aria-pressed="true"] { outline: 2px solid #f2c94c; }
+.token-packet { display: flex; flex-direction: column; gap: 0.2rem; text-align: left; white-space: normal; flex: 1 1 10rem; }
+.token-clue { font-style: italic; background: rgba(255, 210, 140, 0.1); padding: 0.4em 0.7em; border-radius: 6px; }
+.token-replies { margin: 0.4rem 0 0.4rem 1.2rem; }
 .collage-sources a { color: var(--cyan); }
 .river-story { margin: 0.3rem 0; padding-left: 0.6rem; border-left: 3px solid rgba(120, 180, 220, 0.5); }
 .river-people { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.4rem 0; }
