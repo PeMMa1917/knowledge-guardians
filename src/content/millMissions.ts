@@ -1,3 +1,4 @@
+import {addMillCrew} from './millCrew';
 import { millAccounts, millSites, millWeave, type MillSite } from './millShift';
 import type { ContentPack } from '../domain/types';
 import places from './ink-post-stations.json';
@@ -125,6 +126,7 @@ const jobs: Record<MillSite, Job[]> = {
   ],
 };
 export function addMillMissions(pack: ContentPack) {
+  addMillCrew(pack);
   for (const site of millSites) {
     const work = millAccounts[site],
       world = places.find((p) => p.id === site)!.world,

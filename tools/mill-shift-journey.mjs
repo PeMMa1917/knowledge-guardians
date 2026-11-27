@@ -76,6 +76,37 @@ export async function playMillShift({ page, engine, use, close, waitMap }) {
   await close();
   await use('mill-shift.letter-chute');
   await waitMap('night-register.nile');
+  const message = (name) => page.getByRole('button', { name }).click();
+  await use('tessel-fen');
+  await message(/Walk out to the ferry bend/);
+  await message(/Mark where to wait/);
+  await page
+    .getByText(/Tessel paints a white toe/)
+    .first()
+    .waitFor();
+  await close();
+  await enter('press');
+  await close();
+  await use('aven-dorr');
+  await message(/Tell Aven who marked/);
+  await page
+    .getByText(/A white toe on the kerb/)
+    .first()
+    .waitFor();
+  await close();
+  await use('aven-dorr');
+  await message(/Look under Aven/);
+  await message(/Bind Liri/);
+  await close();
+  await enter('yard');
+  await close();
+  await use('liri-pell');
+  await message(/Tell Liri what Aven/);
+  await page
+    .getByText(/Aven put my rough copy/)
+    .first()
+    .waitFor();
+  await close();
   const result = await page.evaluate(() => ({
     proof: kg.controller.state.flags['mill-shift.nile.opened-leaf'],
     count: kg.controller.state.objectivesDone.filter((id) => id.startsWith('mill-shift.')).length,

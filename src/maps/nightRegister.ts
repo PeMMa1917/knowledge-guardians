@@ -1,3 +1,4 @@
+import {millCrew} from '../content/millCrew';
 import {millSites,millAccounts} from '../content/millShift';
 import { nightSites, nightWorks, type NightSite } from '../domain/nightRegister';
 import type { Interactable, MapDef } from './types';
@@ -82,7 +83,8 @@ function room(site: NightSite): MapDef {
     ],
     stamps: [],
     zones: [],
-    npcs: [{ id: site.actor, x: 21, y: 23, facing: 'left' }],
+    npcs: [{ id: site.actor, x: 21, y: 23, facing: 'left' },
+      ...millCrew.filter(c=>c.site===site.site).map(c=>({id:c.id,x:7,y:23,facing:'right' as const}))],
     lights: [
       { x: 16, y: 23, r: 80, color: 0xeab86c },
       { x: 7, y: 9, r: 80, color: 0xb5d6c1 },

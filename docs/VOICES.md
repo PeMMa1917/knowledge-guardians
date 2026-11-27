@@ -468,8 +468,25 @@ A test (`tests/voices.test.ts`) checks that every character with more than 20 li
 Each person's morning can change after the Guardian has heard the consequences of a delivery. [Dialogue and branches](../src/content/nightKeepers.ts)
 
 
-### Liri Pell, Tessel Fen and Aven Dorr
+### Liri Pell (`liri-pell`)
 
-Liri, the apprentice who cut the second tooth, is proud enough to sign her spare and embarrassed when the notice gives her everybody’s work. She puts the slow tooth in a visitor’s hand. Tessel counts a shift in meals and crossings. He can wear an empty bowl as a hat while worrying about the cost of breakfast. Aven wants Liri recognised and the boards accepted before the boats leave. Having signed for work she helped teach, she prefers moving the pay desk up to the rack to asking anybody to take her word. [Wages and replies](../src/domain/millShift.ts)
+- **Believes:** Someone who has to feed a tool ought to be able to move its shelf.
+- **Worries:** The guild will credit her for the whole crew’s shift and ignore her on the next drawing.
+- **Speaks:** Measures against a thumb, a shoulder or a sore elbow before she gives a number.
+- **Why:** The new tooth was her work. Working the long boards round a corner was Tessel’s.
+
+### Tessel Fen (`tessel-fen`)
+
+- **Believes:** A mark means more to somebody who has walked round the post with a full load.
+- **Worries:** Showing the apprentice where to turn will make him late for another promise to his sister.
+- **Speaks:** Counts in breakfasts, ferry fares and the time it takes a kettle to boil.
+- **Why:** His carrying kept the boards dry but never put a stamp on one.
+
+### Aven Dorr (`aven-dorr`)
+
+- **Believes:** A guild record can make working people visible if they get to use the ink.
+- **Worries:** Signing for her crew helped the work pass inspection at the price of two other names.
+- **Speaks:** Rules a line, moves the desk or ties a loop round a book before she explains her part.
+- **Why:** She was the apprentice before Liri. She still has the drawing she almost trimmed to fit the book.
 
 At these registers Ostrom asks who was able to enter a mark in each book. Pearl asks a keeper to leave the four holes where they are while the crew and wheel change. Trouillot follows Tessel’s name from the first slip to the line of type. Each has a different job for the Guardian and a different reason to care about what reaches the press. [Register dialogue](../src/content/millShift.ts)
