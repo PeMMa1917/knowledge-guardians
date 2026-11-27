@@ -15,12 +15,12 @@ Options that we did not choose: Supabase, Firebase, PocketBase on a rented serve
 ## 2. Rules (in addition to AGENTS.md)
 
 1. **No runtime AI** (CORE-005). The service only stores and returns data.
-2. **Least data.** Store only: username, password hash, class membership, save packages, progress summary, assignments, shared portfolio entries. Usernames must not be real names. The game suggests Guardian-style names.
+2. **Least data.** The preview stores pseudonymous student logins, teacher logins, salted password verifiers, session digests, short-lived sign-in limits, accepted class assignments, recovery packages and the scoped diary projection. Progress summaries and assignments are planned separately. Usernames must not be real names. The game suggests Guardian-style names.
 3. **The teacher is the gate.** A student joins a class with a class code, and the teacher must accept the request.
-4. **Student password reset by the teacher.** The teacher presses Reset. The student gets a one-time code to set a new password.
+4. **Planned student password reset by the teacher.** The teacher presses Reset. The student gets a one-time code to set a new password.
 5. **No tracking.** No analytics, no ads, no third-party scripts, no data sale.
 6. **Writing audiences.** In a class adventure the student and their currently assigned teacher can read saved diary notes, questions, reflections and unfinished diary writing. The student sees the teacher’s name and class before opening the adventure and a reminder at the editor. The teacher sees unfinished work labelled Draft. Separate portfolio entries reach the teacher through the existing per-entry Share choice and explicit progress-file handoff. A student's private recovery package can restore private portfolio writing for its owner. The photo album lives on the device. The optional progress-file export keeps its existing sharing controls.
-7. **Delete.** A teacher can delete one student or a whole class. Accounts with no sign-in for 18 months are deleted automatically. A student can download their own data.
+7. **Planned deletion and retention.** The production design calls for teacher deletion of a student or whole class and automatic deletion after 18 months of inactivity. A student can download their own data.
 8. **No student-to-student features.** No chat, no sharing of creations (NOMAKE-001).
 9. **Local-only mode stays.** The game must work with no account, as it does now.
 10. **Security.** Slow password hashes (never plain text), sign-in rate limits, HTTPS only, HttpOnly session cookies.
@@ -46,7 +46,7 @@ The game is still in development. The service must not depend on game content.
 
 ## 5. Teacher tools
 
-- Class list: accept, remove, reset password, delete data.
+- Planned class administration includes acceptance, removal, password reset and deletion. The preview uses provisioned, accepted memberships.
 - Assignments: choose skills, concepts or areas of knowledge from the content pack. In the game, an assignment arrives as a **Council commission** in the story. It is never a task list or a quiz, and it gives no extra XP (PLAY-001, OPEN-001).
 - Writing: sign in at `teacher.html`, select an assigned class, and refresh its writing. Drafts and saved entries have distinct labels. The progress-file view continues to show explicitly shared portfolio work.
 - Progress: the current `teacher.html` views with live data. Formative only, no ranking, class totals only for the learner profile (TEACH-001 to TEACH-005, PROFILE-001).

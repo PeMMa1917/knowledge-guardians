@@ -1,6 +1,8 @@
 import { createRequire } from 'node:module';
 import assert from 'node:assert/strict';
 import { inflateSync } from 'node:zlib';
+import { readFile } from 'node:fs/promises';
+import { unzipSync, strFromU8 } from 'fflate';
 import { setTimeout as delay } from 'node:timers/promises';
 import { preview } from './classroom-preview.mjs';
 const require = createRequire(process.env.KG_PLAYWRIGHT_PACKAGE || import.meta.url);
@@ -88,15 +90,20 @@ try {
   // The same device can later sign in without importing the local diary.
   await local.reload();
   const a = local;
-  await a.route('**/api/classroom/capabilities', route=>route.fulfill({status:404,contentType:'text/html',body:'Static preview'}));
-  let passwordsPosted=0;
-  const countLogins = r => {if(r.url().endsWith('/student/login')) passwordsPosted++;};
-  a.on('request',countLogins);
-  await login(a,'ash-moth');
+  await a.route('**/api/classroom/capabilities', (route) =>
+    route.fulfill({ status: 404, contentType: 'text/html', body: 'Static preview' }),
+  );
+  let passwordsPosted = 0;
+  const countLogins = (r) => {
+    if (r.url().endsWith('/student/login')) passwordsPosted++;
+  };
+  a.on('request', countLogins);
+  await login(a, 'ash-moth');
   await a.getByText(/Class sign-in requires a school server/).waitFor();
-  assert.equal(passwordsPosted,0);
+  assert.equal(passwordsPosted, 0);
   await a.unroute('**/api/classroom/capabilities');
-  a.off('request',countLogins);await a.keyboard.press('Escape');
+  a.off('request', countLogins);
+  await a.keyboard.press('Escape');
   await open(a);
   await button(a, 'New game');
   await button(a, 'Begin');
@@ -107,9 +114,12 @@ try {
     .first()
     .waitFor();
   await a.keyboard.press('Escape');
-  await a.evaluate(()=>kg.ui.showNode('sefa.free'));
-  await a.getByText(/You and Keeper North/).first().waitFor();
-  await a.getByLabel('Your question',{exact:true}).fill('Could the lamp mark belong to a reader?');
+  await a.evaluate(() => kg.ui.showNode('sefa.free'));
+  await a
+    .getByText(/You and Keeper North/)
+    .first()
+    .waitFor();
+  await a.getByLabel('Your question', { exact: true }).fill('Could the lamp mark belong to a reader?');
   await a.keyboard.press('Escape');
   await journal(a);
   console.log('opened student diary');
@@ -166,10 +176,28 @@ try {
     'private portfolio canary',
   );
   assert.equal(await b.evaluate(() => Object.keys(localStorage).some((k) => k.endsWith('album'))), false);
-  const road=b.locator('details').filter({has:b.locator('summary').filter({hasText:'Draft · Question for Sefa'})}).last();
+  const road = b
+    .locator('details')
+    .filter({ has: b.locator('summary').filter({ hasText: 'Draft · Question for Sefa' }) })
+    .last();
   await road.locator('summary').first().click();
-  assert.equal(await road.locator('textarea').inputValue(),'Could the lamp mark belong to a reader?');
-  console.log('device B recovered');
+  assert.equal(await road.locator('textarea').inputValue(), 'Could the lamp mark belong to a reader?');
+  await b.locator('.diary-notes .diary-reflections summary').first().click();
+  await b.getByText('I heard only the second witness.', { exact: true }).first().waitFor();
+  await b.getByRole('tab', { name: 'Diary', exact: true }).click();
+  const file = b.waitForEvent('download');
+  await button(b, 'Download journal (.docx)');
+  const archive = unzipSync(await readFile(await (await file).path()));
+  const xml = strFromU8(archive['word/document.xml']);
+  for (const part of [
+    'The bell cast two shadows.',
+    'Who stood behind the lamp',
+    'I heard only the second witness.',
+    'Could the lamp mark belong to a reader?',
+  ])
+    assert.ok(xml.includes(part), part);
+  await b.getByRole('tab', { name: 'My notes', exact: true }).click();
+  console.log('device B recovered and exported the saved note, draft, reflection and scene writing');
   const t = await device('teacher.html');
   await login(t, 'north@example.invalid', 'teacher');
   await t.getByText('Draft · note', { exact: true }).first().waitFor();
@@ -180,7 +208,7 @@ try {
   await t.emulateMedia({ media: 'print' });
   assert.equal(await t.locator('.class-writing').isVisible(), false);
   await t.emulateMedia({ media: 'screen' });
-  await t.getByText('Could the lamp mark belong to a reader?',{exact:true}).waitFor();
+  await t.getByText('Could the lamp mark belong to a reader?', { exact: true }).waitFor();
   const teacherText = await t.locator('body').innerText();
   for (const s of [
     'private portfolio canary',
