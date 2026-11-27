@@ -119,6 +119,22 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 ---
 
+## Stage 3: the second lesson folder (27 November 2026)
+
+### The Copyists' Ladder, chapter 2's first game (C-004)
+
+**What.** Nasir's copy desk in the Royal Records Room has a word ladder. The player turns "ship" into "dock", one letter at a time, with a real word on every rung. Then the player tests three patterns across four ladders. One pattern breaks on the table. One fits all four ladders, then breaks on an old sheet from Nasir's drawer. The last one holds, and the player builds a proof "arch" from the three rules that make it true for every ladder. A loose stone (such as "Nasir has never seen one without it") or a missing stone makes the arch slip, and the player tries again. Last, the player says what the proof covers. The proof shows that some word has two vowels. It does not show that they sit in the middle, so that part is still a guess. Marek and Nasir then give two replies (X-008).
+
+**Why.** Chapter 2 had no game of its own (CH02). Mika's second folder has a lesson that uses a word ladder to show why mathematics can reach certainty. The game turns it into play and adds the scope step, so the player also sees the limit of a proof. A test checks the proof by search: no ladder of one-vowel words reaches "dock".
+
+**Where.** `src/domain/wordLadder.ts`, `src/content/word-ladder.json`, `src/ui/ladderPanel.ts`, `src/maps/nile.ts`, `tests/word-ladder.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
+### The second folder in the weave plan
+
+**What.** [DRIVE_WEAVE.md](DRIVE_WEAVE.md) has a new section with 14 ideas from the second folder and a chapter for each. Examples: the Three Trees (is a shape found or chosen), the Pattern Book (consent and credit for a people's designs), the Survey Bell (ethics of research with people), the Primer Page (choosing a picture for a history book), and Tupaia's chart.
+
+**Why.** Mika asked to weave the new material in the same way as the first folder: paraphrased, adapted into play, and never quiz-like.
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.

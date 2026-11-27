@@ -80,6 +80,7 @@ import { FIELD_GAMES } from '../domain/fieldgames';
 import { OFFER_LINE, shouldOfferHelp } from '../domain/lumenOffer';
 import { IDEA_CREDITS } from '../domain/ideaCredits';
 import { gymPanel } from './gymPanel';
+import { ladderPanel } from './ladderPanel';
 import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
 import { flushResearch, recordResearch } from '../app/research';
 import { ROWS, SECTIONS, startTrial, step, tileWords, type Tile } from '../domain/provingFloor';
@@ -3697,6 +3698,8 @@ export class UI implements UIApi {
     else if (id === 'stars') this.openStars();
     else if (id === 'dig') this.openDig();
     else if (id === 'trade') this.openTrade();
+    else if (id === 'ladder') this.openModal('bench-panel wide', "The Copyists' Ladder", this.closeBtn(),
+      ladderPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('ladder'), () => this.closeModal()));
   }
 
   /** Star Pictures: draw your own picture, see two traditions, measure, then choose what the chart says. */

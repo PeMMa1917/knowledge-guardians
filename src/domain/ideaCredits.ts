@@ -31,4 +31,6 @@ export const IDEA_CREDITS: readonly IdeaCredit[] = [
   { game: 'The Spare Tag', idea: 'Different kinds of value for the same object', source: LESSONS },
   { game: 'The Careful Dig', idea: 'Excavation as a choice about what later people can know', source: LESSONS },
   { game: 'Star Pictures', idea: 'Measured star positions and the different pictures people draw between them', source: LESSONS },
+  { game: "The Copyists' Ladder", idea: 'A word ladder that shows the difference between a pattern and a proof',
+    source: `${LESSONS}. The lesson credits an activity shared by the TOK teacher Ric Sims. Word ladders ("doublets") were invented by Lewis Carroll in 1877.` },
 ];

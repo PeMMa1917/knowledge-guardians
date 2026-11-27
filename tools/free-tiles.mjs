@@ -1,3 +1,5 @@
+// Lists free floor tiles in a map (each with a free 3x3 area round it), to place a new prop.
+// Usage: node tools/free-tiles.mjs <map id>, for example: node tools/free-tiles.mjs nile.royal
 import { createServer } from 'vite';
 const server = await createServer({configFile:false, optimizeDeps:{noDiscovery:true, include:[]}, server:{middlewareMode:true, watch:null, hmr:false}});
 const { MAPS } = await server.ssrLoadModule('/src/maps/index.ts');
@@ -14,6 +16,5 @@ for (let y=1;y<m.height-1;y++) for (let x=1;x<m.width-1;x++) {
   let ok=true; for (let dx=-1;dx<=1;dx++) for (let dy=-1;dy<=1;dy++) if(!free(x+dx,y+dy)) ok=false;
   if (ok) out.push([x,y]);
 }
-console.log(m.id, m.width, m.height, 'spawn', m.spawn, 'free3x3', out.length, JSON.stringify(out.filter((_,i)=>i%25==0).slice(0,30)));
-console.log('well', JSON.stringify(m.interactables.filter(i=>/rope|well|slate|doors|lantern/.test(i.id)).map(i=>[i.id,i.x,i.y])));
+console.log(m.id, m.width, m.height, 'spawn', m.spawn, 'free3x3', out.length, JSON.stringify(out));
 await server.close();

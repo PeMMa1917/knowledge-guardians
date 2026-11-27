@@ -79,6 +79,8 @@ export const LEARN: Record<string, LearnTag> = {
   'field:ballad': t(['truth', 'evidence', 'power'], [E, M], 2, 'evaluate', 'learning-to-learn', 'multistructural', 5),
   'field:stars': t(['interpretation', 'culture', 'perspective', 'objectivity'], [P, S, M], 3, 'create', 'integration', 'relational', 7),
   'field:dig': t(['evidence', 'responsibility', 'values', 'certainty'], [M, E], 3, 'apply', 'caring', 'relational', 7),
+  // Make a ladder, test three patterns (two break), build a proof from the rules, then say what it covers.
+  'field:ladder': { ...t(['certainty', 'justification', 'evidence'], [M], 3, 'analyse', 'application', 'relational', 8), aoks: ['MAT'] },
   'field:trade': t(['values', 'justification', 'perspective'], [P, S], 2, 'analyse', 'human', 'multistructural', 6),
   // Loyalty missions (src/domain/loyalty.ts)
   'loyalty:sefa': t(['culture', 'truth', 'values'], [P, E], 4, 'evaluate', 'caring', 'extended', 10),

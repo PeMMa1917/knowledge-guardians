@@ -210,6 +210,24 @@
      "text": "The museum links much of the map's writing to him, not all of it. Put both records under one name and readers will remember the link and forget the 'much of'. Some links should be harder to make."
     }
    ]
+  },
+  {
+   "id": "nile.ladder",
+   "after": {
+    "flag": "field.ladder.done",
+    "eq": true
+   },
+   "heading": "Two views on the copyists' proof",
+   "replies": [
+    {
+     "speaker": "nile-marek",
+     "text": "I trust what I can test with my hands. Your arch rests on the word list. Add one word with no vowel, and it falls. A proof is only as strong as the rules under it, and in the world, someone always changes the rules."
+    },
+    {
+     "speaker": "nile-nasir",
+     "text": "That is exactly why I like it. The arch tells you which stone to watch. A hundred ladders could not tell you that. With a proof, you know what would break it before it breaks."
+    }
+   ]
   }
  ]
 }

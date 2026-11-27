@@ -6,7 +6,7 @@ Rules for every item:
 - It becomes part of the one storyline. The player is a knowledge guardian, and the activity happens to someone in the world.
 - It must not feel like a quiz, flashcards, an essay or homework.
 - No crime (a mystery is an audit or a lost-property case), no betting, invented gods only, friendships only.
-- Real people's knowledge stays locked until advisors approve.
+- Real peoples' knowledge is included and verified with reliable sources, best from the people themselves (decision X-006). Each people is separate.
 
 Status: **in game** (already woven), **planned** (has a place), **idea** (needs a place).
 
@@ -19,6 +19,7 @@ Status: **in game** (already woven), **planned** (has a place), **idea** (needs 
 | Questioning the order of operations | The Weigh-House Slate, chapter 1 field game |
 | Missing word and euphemism | The Missing Word, chapter 1 field game |
 | Maya calendar records | date register and date peg cases (`date-register-specimens.json`, `date-peg-specimens.json`) |
+| A word ladder that shows a pattern is not a proof (second folder) | **The Copyists' Ladder**, chapter 2 field game at Nasir's copy desk (`src/domain/wordLadder.ts`) |
 
 ## Planned
 
@@ -48,10 +49,32 @@ Status: **in game** (already woven), **planned** (has a place), **idea** (needs 
 | Verstehen (understanding from inside) | A historian character who lives a day as a ferry worker to understand a record | Ch 9 | Human sciences method |
 | Time mirror (how a past self sees the present) | **The Time Mirror**: a mirror in Elsbet's study that shows the player's first journal entries | Ch 15 | Reflection inside the story |
 
+## Second folder (added 27 November 2026)
+
+Mika added more lessons to the folder. The ideas below come from them. Chapter numbers use the worlds in [EVIDENCE.md](EVIDENCE.md): 3 Preserved Lives, 4 Observatory, 5 Living Forest, 6 Metalworks, 7 Copies, 8 Sea, 9 Stage, 10 Market of Measures, 11 Water Commons, 12 Civic, 13 Archive of Voices, 14 Island, 15 Council of Inquiry.
+
+| Idea from the folder | Game form | Chapter and place | Status |
+| --- | --- | --- | --- |
+| A word ladder (ship to dock): the pattern every ladder shares can be proved from the rules of the game | **The Copyists' Ladder**: make a ladder, test three patterns (two break), build a proof arch from three rules, then say what the proof covers | Ch 2, Nasir's copy desk | in game |
+| Is maths invented or discovered: a "triangle of trees" is a shape the viewer chooses | **The Three Trees**: a forester and a mapmaker look at the same grove and each draws a different shape. The player chooses which trees count, and sees that the choice made the shape | Ch 5, forest clearing | planned |
+| Who may use a people's designs (consent, credit, who profits) | **The Pattern Book**: the Workbench room (R45) gets a pattern book. A trader wants to copy a pattern. The maker's community says how it may be used. Real cases go in object records, each people separately, with the people's own sources: the Navajo Nation's trademark case (2012), the Maasai Intellectual Property Initiative, the Mixe blouse of Santa María Tlahuitoltepec (2015) | Ch 2 Workbench, then Ch 10 market | planned (with C-023) |
+| Can sacred objects and miracle claims be evidence? Testing a relic, and who has the right to test | An invented faith in the world (rule: invented gods only) keeps a weeping statue. A visiting tester wants to take a sample. The keeper asks whether testing is respect or harm. Real cases stay in the teacher map only | Ch 9 or 13 | planned |
+| Is "religion" one category? Some traditions never split science from religion | A character from an invented culture refuses the archive's label "religion" for their practice, and the player rewrites the shelf mark | Ch 13 | idea |
+| Ethics limits on research with people, and who decides | **The Survey Bell**: the Civic council wants to study how people use the lanes. The player decides what consent means, and who sees the results. Vesper's Seal later uses the same data to steer people | Ch 12, then Ch 14 (Vesper) | planned |
+| Hard cases of research harm (for example the Tuskegee study, 1932 to 1972) | Testimony and records, with a content note and sources (X-005). Never play for points | Ch 12 archive room | planned, one case at a time |
+| Choosing the picture and words for a history textbook page | **The Primer Page**: a children's primer needs one picture and one caption for an event. The player picks; two keepers say what each choice shows and hides | Ch 9 (Lens Table) | planned |
+| "The map is not the territory", and Tupaia's map (Tupaia of Ra'iātea, on the Endeavour, 1769) | A real object case: Tupaia's chart, drawn with Polynesian ways of placing islands, read wrong by people who expected a European chart | Ch 8 Sea | planned (verify with Pacific sources) |
+| Data, information, knowledge, wisdom | A tide keeper sorts the same notes into four shelves, and the player sees what each shelf adds | Ch 8 Sea | idea |
+| Indigenous knowledge and science working together ("two ways" learning; rangers and scientists) | A ranger case where local knowledge and a lab test answer one question together. Use only cases with published sources from the people and their ranger groups | Ch 5 or 11 | planned (verify) |
+| Oral history and written history check each other | Already fix C-024. The folder adds cases where an old story matched later evidence | Ch 3 and 13 | planned |
+| A people who refuse contact (the Sentinelese) | Not a game. A note in the journal on the choice not to go, and why that is also knowledge | Ch 14 | idea, needs care |
+| Exhibition planning (tracking how each object links to the prompt) | The gym's exhibition bench already does this. Add a "link strength" note per object | Training gym | idea |
+
+Not used from the second folder: student tracking sheets and named student files (private), the IB extract on communities of knowers (IB copyright), and any handout wording. The UNESCO documents in the "Indigenous Cultures" folder are sources to check facts against, not text to copy.
+
 ## Ideas that need a decision first
 
 - **Nanking, slavery and Nat Turner, Lewis and Clark with the Blackfeet, Columbus.** See X-005 and X-006.
-- **Indigenous knowledge lessons (Rapa Nui and others).** Locked until advisors approve (AGENTS.md).
 
 ## Not used
 

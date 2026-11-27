@@ -1095,3 +1095,11 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .proving-tile small { font-size: 0.75rem; color: var(--ink-dim); }
 .proving-tile.gold > span { color: #f2c94c; } .proving-tile.blue > span { color: #6fb7ff; } .proving-tile.red > span { color: #ff7a6b; }
 button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var(--gold); }
+
+/* The Copyists' Ladder (src/ui/ladderPanel.ts) */
+.ladder-rungs { list-style: none; padding: 0; margin: 0.4rem 0; display: flex; flex-wrap: wrap; gap: 0.3rem; font-family: ui-monospace, monospace; }
+.ladder-rungs li { border: 1px solid var(--line, #5a4a2a); border-radius: 4px; padding: 0.15rem 0.45rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.ladder-rungs.broken li { opacity: 0.7; border-style: dashed; }
+.ladder-table { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.6rem; }
+.ladder-table h4, .ladder-fifth h4 { margin: 0.2rem 0; }
+.ladder input[type=text] { width: 6rem; text-transform: uppercase; letter-spacing: 0.1em; font-size: 1.05rem; }
