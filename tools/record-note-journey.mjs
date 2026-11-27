@@ -16,6 +16,10 @@ export async function playRecordNotes({page,engine,waitMap,use,close,button}){
    // The fold opens after the main Archive label has been set.
    kg.controller.state.objectivesDone.push('m01.o6.label');});
  await visit('civic.quiet-records');await popup.getByRole('button',{name:'Go in'}).waitFor();
+ await page.reload({waitUntil:'domcontentloaded'});
+ await button('Continue');await waitMap('civic.quiet-records');
+ await popup.getByRole('button',{name:'Go in'}).waitFor();
+ assert.equal(await popup.getByRole('button',{name:'Continue playing'}).count(),0);
  await page.keyboard.press('Escape');await waitMap('civic.dispatch');
  await visit('civic.quiet-records');await button('Go in');
  assert.equal(await page.evaluate(()=>kg.controller.state.flags['note.medical-harm.tuskegee.seen']),true);
@@ -43,8 +47,10 @@ export async function playRecordNotes({page,engine,waitMap,use,close,button}){
      await popup.locator('.night-register .options button').first().click();
      await button('Take this object');
      await close();
-     await page.reload({waitUntil:'domcontentloaded'});await button('Continue');await waitMap(map);
-     await use(prop);await popup.getByText(/^Text view ·/).waitFor();
+     await page.reload({waitUntil:'domcontentloaded'});await button('Continue');await waitMap(map);await button('Continue playing');
+     await use(prop);await popup.getByText(/^Text view ·/).waitFor().catch(async error=>{
+       throw Error('Recovered reader '+JSON.stringify(await page.evaluate(id=>({dialog:document.querySelector('[role=dialog]')?.textContent?.slice(0,450),mode:kg.controller.state.flags['reading-view.'+id],map:kg.world.map.id,paused:kg.world.paused}),id)),{cause:error});
+     });
      assert.equal(imageRequests.length,0);
    }
    await close();await use(prop);await popup.getByText(/^Text view ·/).waitFor();

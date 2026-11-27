@@ -1104,7 +1104,8 @@ export class UI implements UIApi {
     this.activeEventNode = null;
     this.onStart();
     if (returning) {
-      this.showRecap();
+      // The world opens an unanswered room invitation on arrival, including after a reload.
+      if (!contentNoteFor(pc.state.mapId, pc.state.flags)) this.showRecap();
       const pending = pc.state.events.pending;
       if (pending) {
         const event = pc.pack.events.find(({ id }) => id === pending);
