@@ -21,7 +21,7 @@ When you change code for a fix, update its status and the "Where" column.
 | C-013 | Phone and low-end device check, and a keyboard path for every drag action. | I1, K1, B7, E10 | planned | QA notes |
 | C-014 | Content notes for sensitive real objects (human remains, conflict, colonial collection). | J1, J2, B8, I4 | started (chapter 3 human remains) | `src/content/content-notes.json`, `src/domain/contentNotes.ts` |
 | C-015 | Progression table per chapter: what the player can do at the end that they could not do at the start. | H1, H2, H6 | planned | `docs/` |
-| C-016 | Some missions end with a weighed judgement that a character pushes back on, not only "a reader uses the display". | D1, D2, C3, E1 | started (pushback panels in chapters 4, 5, 8 and 11; `src/content/pushbacks.json`) | R- and S-series missions |
+| C-016 | Some missions end with a weighed judgement that a character pushes back on, not only "a reader uses the display". | D1, D2, C3, E1 | started (pushback panels in chapters 4, 5, 7, 8, 9, 11 and 12; `src/content/pushbacks.json`) | R- and S-series missions |
 | C-017 | A peer apprentice: a student-age friend who joins some side missions and sometimes disagrees. Friendship only. | A1, A9, E4, G3 | planned | new character |
 | C-018 | Colour script: one palette shift per chapter that keeps the single art style. | E6, E7 | planned | art notes |
 | C-019 | A registry for field-game panels, so `src/ui/ui.ts` gets smaller and new games use one shared layout. | E8, E14, K1 | planned | `src/ui/` |

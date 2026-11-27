@@ -410,11 +410,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 ### Pushback after a weighed judgement (C-016)
 
-**What.** After four weighed choices, a person affected by the choice pushes back, and the player answers. The words depend on what the player chose:
+**What.** After seven weighed choices, a person affected by the choice pushes back, and the player answers. The words depend on what the player chose:
 - **The Green Squares (chapter 5):** Elian pushes back on ribbons that turn a lead into a cause, or on ties that tell walkers nothing.
 - **Where the Ink Stops (chapter 8):** a skiff crew who steered by the old chart pushes back on the new chart wall.
 - **The Agreement at the Weir (chapter 11):** the crew who lost water pushes back on the order, whichever order the player chose.
 - **The Next Bell (chapter 4):** a boat crew who acted on the first notice pushes back on the revision.
+- **The Missing Tuesday (chapter 7):** a reader who walked to the closed hall asks who is responsible for that walk.
+- **The Doorway Pause (chapter 9):** a note from the side gallery says the scene looked different from there.
+- **A Place on the Route (chapter 12):** a reader from Canal Walk says the count counted only the people who could come.
 
 The player can keep the choice and say why, change it, or ask what would change the other person's mind. Each answer gets a reply. The answer is kept as a flag (`push.<id>.answer`) for the journal and for research data.
 
