@@ -433,6 +433,14 @@ The player can keep the choice and say why, change it, or ask what would change 
 
 **Where.** `src/domain/adventureJournal.ts` (each quest now has its world and step counts), `src/ui/adventureJournal.ts` (the grouped view), `src/ui/styles.css`, `tests/quest-pathways.test.ts`. The material drawers planned for single rooms in chapters 2, 3 and 6 can build on this.
 
+### The Reassembly Line, chapter 2's second game (C-004)
+
+**What.** In the Royal Records Room, the wind has torn three river notices (about the ferry, the north well and the flood). The player rebuilds each one: a claim, then its evidence, then the line that says where it stops. A strip from another notice is handed back with a reason, and so is the strip "Everyone on the quay says so", because it shows who believes a claim, not why. When all three hold, the player chooses which line goes at the top of each notice. Marek and Nasir each answer every choice, and they disagree. Then they disagree again (X-008) about gluing or pinning the notices.
+
+**Why.** The first lesson folder has a card game where students rebuild a split argument. Here the argument parts are things a ferry crowd needs, so the structure has a reason. The well's limit ("both tests were made before the river rose") shows why a limit can matter more than the claim. No order is marked right (OPEN-001).
+
+**Where.** `src/domain/reassemblyLine.ts`, `src/content/reassembly-line.json`, `src/ui/reassemblyPanel.ts`, `src/maps/nile.ts`, `tests/reassembly-line.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
 ### Voice sheets (C-005)
 
 **What.** A new file, `docs/VOICES.md`, gives 63 characters a voice sheet: what each one believes, the mistake each one fears most, how each one speaks, and why. It covers every keeper and every character with more than 20 lines. The two keepers in each chapter are built to pull against each other, as decision X-008 asks. A test (`tests/voices.test.ts`) fails if a character with more than 20 lines has no sheet, or if a sheet lacks one of its four parts.

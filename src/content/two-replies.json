@@ -1521,6 +1521,24 @@
      "text": "One Odette, yes. But Lio was the only one who asked what Tess and Maren would be to each other next week. A council that forgets that writes rules nobody keeps."
     }
    ]
+  },
+  {
+   "id": "nile.reassembly",
+   "after": {
+    "flag": "field.reassembly.done",
+    "eq": true
+   },
+   "heading": "Two views on the torn notices",
+   "replies": [
+    {
+     "speaker": "nile-marek",
+     "text": "Glue the strips down and be done. A notice that needs a keeper to explain it is not finished. If the limit matters, write it bigger."
+    },
+    {
+     "speaker": "nile-nasir",
+     "text": "Glue makes it look settled. I would rather pin the strips, so the limit can change when the river does, without anyone pretending the old notice was always this one."
+    }
+   ]
   }
  ]
 }

@@ -25,7 +25,7 @@ Status: **in game** (already woven), **planned** (has a place), **idea** (needs 
 
 | Idea from the folder | Game form | Chapter and place | Why it fits |
 | --- | --- | --- | --- |
-| Card game where students rebuild a split argument | **The Reassembly Line**: a torn notice board where the player puts claim, evidence and limit back together, and townspeople argue about the order | Ch 2, river crossing | Structure of an argument, by hand |
+| Card game where students rebuild a split argument | **The Reassembly Line**: a torn notice board where the player puts claim, evidence and limit back together, and townspeople argue about the order | Ch 2, river crossing | Structure of an argument, by hand (in game) |
 | Drop-point card duel | **Drop-Point Duel**: a two-player card table game between friends, no stakes | Ch 4 signature game | Quick, social, replayable |
 | Drawing a concept for others to guess | **Sketch Relay**: a signal tower crew passes a concept by drawings only | Ch 6 coast | Shows how meaning is lost and kept (in game, chapter 7) |
 | Highlighting evidence in a text | **Lamp-Glass Hunt**: a coloured glass shows marks in an old letter, each colour for a kind of claim | Ch 5 archive | Close reading as play |

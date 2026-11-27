@@ -83,6 +83,8 @@ export const LEARN: Record<string, LearnTag> = {
   'field:ladder': { ...t(['certainty', 'justification', 'evidence'], [M], 3, 'analyse', 'application', 'relational', 8), aoks: ['MAT'] },
   // Choose a triangle in a grove (a line is refused), see other shapes, say where the shape came from, then pace a side.
   'field:trees': { ...t(['interpretation', 'objectivity', 'perspective'], [M], 2, 'evaluate', 'integration', 'relational', 6), aoks: ['MAT', 'NAT'] },
+  // Rebuild three torn notices from claim, evidence and limit strips; choose which line goes at the top.
+  'field:reassembly': { ...t(['justification', 'evidence', 'certainty', 'responsibility'], [M, S], 2, 'analyse', 'application', 'relational', 5), aoks: ['HIS', 'NAT'] },
   // Try three new facts on four friends' advice, see whose advice moves, then advise Tess.
   'field:festival': { ...t(['values', 'justification', 'perspective', 'responsibility'], [E, P], 3, 'evaluate', 'human', 'relational', 6), aoks: ['HUM'] },
   // Sound a fogged bay; each found feature shows what supports it; one sailor report is wrong; decide how to print the rest.
