@@ -1,5 +1,21 @@
 # Voice sheets
 
+## Opal Fenn and Tallis Vale
+
+### Opal Fenn (`stacks-opal`)
+
+- **Believes** A room can travel to someone who cannot leave work long enough to see it.
+- **Worries** If Tallis finds the filed hinge, he will think the swapped names were his fault.
+- **Speaks** Puts a handle into your hand before she explains it. Measures a visit in ferry stops.
+- **Why** Her mother worked the far ferry. Opal built this room to open during unloading. She still asks her niece to try a handle before she drills the second screw.
+
+### Tallis Vale (`stacks-tallis`)
+
+- **Believes** The heading should be visible from the height of his niece’s eyes.
+- **Worries** The audience will miss a name while admiring a room that appears to hold itself up.
+- **Speaks** Offers the lamp freely. Keeps his shoulder under the ladder. Gives directions from where his listener is standing.
+- **Why** His sister took him down to the quay with her little girl. He learned what the chalk circle meant by kneeling beside her. [Canal and quay dialogue](../src/content/turningStacks.ts)
+
 ## Viri and the two benches
 
 Viri earns her rent dancing with her mother’s wire glove. The gesture she spent a winter learning makes a bee wash its eyes. She wants a child to notice the wirework and worries that admitting how the show works will empty the seats. She borrows Elian’s pencil for an overconfident poster. Elian doubts the claim and still wants a place in the audience. After a silk performance Viri is proud when a child asks about the legs. After the garden show she begins to enjoy the wait.

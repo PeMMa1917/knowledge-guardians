@@ -123,6 +123,7 @@ export interface SourceRecord {
     title: string;
     container: string;
     author?: string;          // filed surname first, as it appears in the entry
+    documentDate?: string;    // date of the document published in an online collection
     workDate?: string;        // original creation date of an artwork
     repository?: string;      // physical collection when the online container is separate
     publication?: { volume:string; issue:string; year:string; pages:string };

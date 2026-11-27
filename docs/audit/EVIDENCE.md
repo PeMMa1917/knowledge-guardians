@@ -3,12 +3,13 @@
 This file holds the numbers that the persona audit uses. Make it again after a content change:
 
 ```bash
-node tools/audit-personas.mjs --md > /tmp/evidence.md   # then paste the tables below
+node tools/audit-personas.mjs --md > /tmp/evidence.md
+node tools/audit-personas.mjs --inventory
 ```
 
 The script reads the whole content pack (`buildPack()`), so it also counts missions and scenes that TypeScript files make. Its word rules are a first filter for a human reviewer, not a judgement. Read a mission before you change it.
 
-The chapter counts and dialogue inventory below come from the 27 November review build after the cocoa cart and its two stops were added. The earlier audit identified repetitive handovers and long quest labels. The new music goals were shortened after the first measurement put them among the fifteen hardest sets of objective titles. Museum names and accession details remain available on the object and in the journal. The counts use all missions that the content pack registers. Whether a student can find or enjoy a particular path needs play observation. [Class and field review](NIGHT_REGISTER.md)
+The chapter counts and dialogue inventory below come from the 27 November review build after the two civic reading rooms and the cocoa cart were added. The earlier audit identified repetitive handovers and long quest labels. The new music goals were shortened after the first measurement put them among the fifteen hardest sets of objective titles. Museum names and accession details remain available on the object and in the journal. The counts use all missions that the content pack registers. Whether a student can find or enjoy a particular path needs play observation. [Class and field review](NIGHT_REGISTER.md)
 
 ## Play shape and reading load per chapter
 
@@ -27,8 +28,8 @@ A mission may appear in several action columns. “Standard loop” counts title
 | 9 | 62 | 12 | 0.19 | 3 | 7 | 1 | 2 | 6 | 15 | 0.07 | 0.02 | 53 |
 | 10 | 48 | 3 | 0.06 | 8 | 4 | 0 | 3 | 6 | 15.2 | 0.05 | 0.02 | 41 |
 | 11 | 46 | 8 | 0.17 | 9 | 8 | 1 | 4 | 7 | 14.8 | 0.07 | 0.03 | 41 |
-| 12 | 44 | 6 | 0.14 | 2 | 3 | 2 | 3 | 8 | 14.7 | 0.05 | 0.03 | 40 |
-| 13 | 52 | 3 | 0.06 | 10 | 5 | 2 | 1 | 7 | 16.6 | 0.09 | 0.02 | 42 |
+| 12 | 45 | 6 | 0.13 | 2 | 3 | 2 | 3 | 9 | 14.6 | 0.05 | 0.03 | 41 |
+| 13 | 53 | 4 | 0.08 | 10 | 6 | 2 | 1 | 8 | 16.5 | 0.09 | 0.02 | 43 |
 | 14 | 46 | 4 | 0.09 | 4 | 3 | 0 | 6 | 7 | 16.2 | 0.05 | 0.01 | 40 |
 | 15 | 31 | 4 | 0.13 | 4 | 4 | 0 | 8 | 3 | 15.6 | 0.06 | 0.03 | 25 |
 
@@ -54,9 +55,9 @@ These missions have the highest combined shares of longer words and abstract wor
 
 ## Dialogue texture
 
-Dialogue: 8125 scenes, about 327900 words, 450 speakers.
+Dialogue: 8135 scenes, about 328400 words, 452 speakers.
 
-Most frequent work words in dialogue (times used): slip 1180, fold 873, bell 831, rail 624, strip 406, runner 406, peg 338, receipt 225, tag 181, sleeve 167, crate 131, rack 114, tally 92, docket 61.
+Most frequent work words in dialogue (times used): slip 1180, fold 873, bell 831, rail 626, strip 408, runner 406, peg 338, receipt 225, tag 181, sleeve 168, crate 131, rack 114, tally 92, docket 61.
 
 Scenes per speaker, core cast: warden-ise 93, kip-arden 50, smith-hesper 80, scholar-sefa 35, rook-tamsin 14, vesper-quill 34, lumen 6.
 
@@ -68,13 +69,13 @@ Showdowns: 7. Puzzles: 15.
 
 | Fact | Value | Where to check |
 | --- | --- | --- |
-| Missions in the pack | 360 | `buildPack().missions` |
-| Field games | 9; 7 of them at Emberford or the ferry landing (chapter 1) | `src/domain/fieldgames.ts` |
-| Side puzzles | 15, all in chapter 1 places | `src/content/puzzles.json` |
-| Showdowns | 3 (two in chapter 1, Vesper in chapter 9) | `showdowns` in the pack |
+| Missions in the pack | 845 missions and 3,889 objectives | [Live inventory](../../tools/audit-personas.mjs) |
+| Field games | 1,198 stands in 117 rooms use 1,141 field-game IDs. Different editions and receiving stations can share a mechanic. | [Live map inventory](../../tools/audit-personas.mjs) |
+| Side puzzles | 15 entries in the original word-puzzle bank, with dedicated puzzle stands in two rooms. Other playable puzzles also use instruments and map scenes. | `src/content/puzzles.json` |
+| Showdowns | 7 registered showdowns | `showdowns` in the pack |
 | Music | 3 recorded loops plus one synthesised score per world | `public/assets/audio/music`, `src/domain/campaignScore.ts` |
-| Network use | None in game code. Links to museums and encyclopedia pages open only when the player clicks them. | `grep -rn "fetch(" src` |
-| Saves | Browser storage only (`kg.slots`, `kg.permanent`, `kg.settings`) | `docs/ARCHITECTURE.md` |
+| Network use | The static game serves its assets and can open reader-selected source links. When class hosting is configured and a student opts into a class adventure, the approved class service receives recovery data, diary writing and labelled drafts. | [Hosting design](../ACCOUNTS_AND_HOSTING.md) |
+| Saves | Local play uses browser storage. Class play can recover text and progress across devices. Student photos stay on the originating device. Separate portfolio entries retain their own sharing controls. | [Recovery and audience](../ACCOUNTS_AND_HOSTING.md) |
 | Accessibility settings | text scale, reduced motion, reduced effects, high contrast, dyslexia spacing, calm mode, zen mode, glossary, read aloud, colour-safe marks, captions, key remapping | `src/app/settings.ts` |
 | Languages | English only | |
-| Production bundle | about 2.1 MB gzip | `docs/PLAYTEST_PRIORITIES.md` |
+| Production bundle | about 2.46 MB gzip for the largest main JavaScript chunk in the 27 November review build, plus other chunks and assets | `docs/PLAYTEST_PRIORITIES.md` |

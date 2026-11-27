@@ -143,6 +143,17 @@ async function main() {
   try {
     const { buildPack } = await server.ssrLoadModule('/src/content/index.ts');
     const pack = buildPack();
+    if (process.argv.includes('--inventory')) {
+      const {MAPS} = await server.ssrLoadModule('/src/maps/index.ts');
+      const rooms=Object.values(MAPS);
+      const placements=rooms.flatMap(room=>room.interactables.map(prop=>({room,prop})));
+      const fields=placements.filter(({prop})=>prop.kind==='fieldgame' && prop.game);
+      const puzzles=placements.filter(({prop})=>prop.kind==='puzzle' && prop.puzzle);
+      console.log(JSON.stringify({missions:pack.missions.length, rooms:rooms.length, objectives:pack.missions.reduce((n,m)=>n+m.objectives.length,0),
+        fieldGameTools:new Set(fields.map(({prop})=>prop.game)).size,fieldGameStands:fields.length,fieldGameRooms:new Set(fields.map(({room})=>room.id)).size,
+        puzzleRecords:pack.puzzles.length,puzzleRooms:new Set(puzzles.map(({room})=>room.id)).size,showdowns:pack.showdowns.length},null,2));
+      return;
+    }
     const rows = pack.missions.map(measureMission);
     const table = summarise(rows);
     if (process.argv.includes('--json')) { console.log(JSON.stringify({ table, rows }, null, 2)); return; }

@@ -1,3 +1,4 @@
+import {stackDiary,stackWeave} from './turningStacks';
 import {cupDiary,cupWeave} from './firstCup';
 import {almanacDiary,calendarCases,calendarTopics} from './streetAlmanac';
 import {courierDiary,courierTopics,courierCases} from './courierLift';
@@ -160,6 +161,7 @@ function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignS
   if (cmd.type==='TryMothPerch') return mothPerchDiary(cmd);
   if (cmd.type==='DrawOrchardStylus') return mouldDiary(cmd);
   if (cmd.type === 'HangFerryPrint' || cmd.type === 'OpenFerryBill' || cmd.type === 'HearFerryBill') return billDiary(previous, next, cmd);
+  if (cmd.type === 'WorkTurningStacks') return stackDiary(next,cmd);
   if (cmd.type === 'WorkFirstCup') return cupDiary(next,cmd);
   if (cmd.type === 'ArrangeStreetAlmanac') return almanacDiary(next,cmd);
   if (cmd.type === 'WorkCourierLift') return courierDiary(next,cmd);
@@ -570,6 +572,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if (family === 'origin-work') { const o = origins.find(x => x === event.ref); if (o) return diaryTopics(originWeave[o]); }
     if (family === 'picture-bill') return diaryTopics(billWeave);
     if(family==='trail-thread') { const weave=objectivesById.get(event.ref)?.objective.weave; if(weave)return diaryTopics(weave); }
+    if (family === 'turning-stacks') return diaryTopics(stackWeave);
     if (family === 'first-cup') return diaryTopics(cupWeave);
     if (family === 'street-almanac') {
       const c=calendarCases.find(c=>c.exhibit===event.ref);

@@ -35,6 +35,16 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
   if(key.startsWith('trail-thread:')) return key.endsWith(':voice')
     ? {voice:'Whose account do I want to hear on my return, and what might they have missed?'}
     : {object:'Which detail would I look for next time, and what might it help me reconsider?'};
+  if(key.startsWith('turning-stacks:')){
+    if(key.startsWith('turning-stacks:headline.'))return {notice:'What did the new first line make easiest to notice?',fixed:'Which count and denominator stayed the same?'};
+    if(key.startsWith('turning-stacks:signature.'))return {work:'What work did those signatures accomplish on this page?',scope:'Whose choices are still private?'};
+    if(key.startsWith('turning-stacks:glass.'))return {voice:'Which institution or Nation stands behind each leaf?',limit:'What would be lost if a single date or byline covered the pair?'};
+    if(key.startsWith('turning-stacks:count.'))return {group:'Which people are in my denominator and which are outside it?',change:'What happens to the percentage when I keep the count of 115 fixed?'};
+    if(key.startsWith('turning-stacks:read.'))return {owner:'Whose public account did I read, and what can this particular source establish?',reach:'What would I need a different source to investigate?'};
+    if(key.startsWith('turning-stacks:bind.'))return {credit:'Whose credit would be lost if one heading covered both pages?',sequence:'What would a reader who opens the other end encounter first?'};
+    if(key.startsWith('turning-stacks:reply.')||key.startsWith('turning-stacks:open.'))return {neighbour:'Which visitor needed the light somewhere else?',listen:'Whose account could help me change the display again?'};
+    return {view:'What could someone who came in through the other door see first?',model:'Which part of the walk could the little model never show?'};
+  }
   if(key.startsWith('first-cup:')){
     if(key.startsWith('first-cup:passers.'))return {missing:'What would happen to my conclusion if I entered zero for every absent offer?',voice:'Whom would I need to ask before setting a price for this whole street?'};
     if(key.startsWith('first-cup:tip.'))return {bench:'Who had a chance to make an offer and who passed the cart?',person:'Which two individual offers complicate the pattern in the crew?'};

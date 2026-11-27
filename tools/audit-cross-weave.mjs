@@ -1,5 +1,6 @@
 /** Audit documented intersections of one authored action, one learning dimension and one RPG element. */
 import { originActions } from './origin-action-evidence.mjs';
+import {stacksProofs} from './turning-stacks-evidence.mjs';
 import {cupProofs} from './first-cup-evidence.mjs';
 import {almanacProofs} from './street-almanac-evidence.mjs';
 import { elbowProofs } from './giant-sleeve-evidence.mjs';
@@ -147,6 +148,7 @@ const copiesEvidenceInvestigations = [
 const proofRows = [
   ...originActions,
   ...elbowProofs,
+  ...stacksProofs,
   ...cupProofs,
   ...almanacProofs,
   {

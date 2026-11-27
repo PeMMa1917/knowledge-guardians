@@ -1,3 +1,4 @@
+import {stackProps,stackPeople,turningRoom} from './turningStacks';
 import {cupStreet,cupVisitors,firstCupRoom} from './firstCup';
 import {almanacAt,almanacRoom,almanacVisitors} from './streetAlmanac';
 import {courierAt,underWeight} from './courierLift';
@@ -210,6 +211,7 @@ const campaignMaps: Record<string, MapDef> = {
   [COUNCIL_HALL.id]: COUNCIL_HALL,
   [SECOND_READING_STORE.id]: SECOND_READING_STORE,
   [firstCupRoom.id]:firstCupRoom,
+  [turningRoom.id]:turningRoom,
   [almanacRoom.id]:almanacRoom,
   [underWeight.id]:underWeight,
   [COUNCIL_GALLERY.id]: COUNCIL_GALLERY,
@@ -225,8 +227,8 @@ for (const room of nightRooms) {
 }
 
 export const MAPS: Record<string, MapDef> = Object.fromEntries(Object.values(campaignMaps).map((map) => {
-  const returns = [...cupStreet(map.id), ...almanacAt(map.id), ...elbowAt(map.id), ...courierAt(map.id), ...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id), ...inkPostAt(map.id), ...nightDoor(map.id), ...foldingFlockAt(map.id), ...fieldLoansAt(map.id)];
-  const guests=[...cupVisitors(map.id),...almanacVisitors(map.id)];
+  const returns = [...stackProps(map.id), ...cupStreet(map.id), ...almanacAt(map.id), ...elbowAt(map.id), ...courierAt(map.id), ...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id), ...inkPostAt(map.id), ...nightDoor(map.id), ...foldingFlockAt(map.id), ...fieldLoansAt(map.id)];
+  const guests=[...stackPeople(map.id),...cupVisitors(map.id),...almanacVisitors(map.id)];
   const room = returns.length||guests.length ? {...map,interactables:[...map.interactables,...returns],npcs:[...map.npcs,...guests]} : map;
   return [map.id, withOriginVisitor(withTownHearing(withWhistleWatch(room)))];
 }));

@@ -136,3 +136,5 @@ The pay bowls, punch wheel and type case in the mill registers are original in-g
 The small and enlarged Hōkūleʻa, the folding flock and its three stitched waterscapes are original Knowledge Guardians pixel illustrations drawn in code. The Society’s launch record informs the identification. [Graphics](src/ui/illustrations.ts) · [Polynesian Voyaging Society](https://hokulea.com/hokulea-44th/)
 
 The cocoa cart, twin carafes, rain flap, gutter, folded offers and chalkboard are original pixel drawings made for Knowledge Guardians. [Cart artwork](src/ui/firstCupArt.ts)
+
+The suitcase house, lamp, hinged floor and certificate drawings are original game artwork. The Peoria Tribe of Indians of Oklahoma publishes the history used on its leaf. The Eastern Shawnee Tribe of Oklahoma publishes the constitutional file used for its election certificate. The Absentee Shawnee Tribe of Indians of Oklahoma publishes the description of its own emblem. [Sources and locators](docs/SOURCES.md#two-leaves-at-lamp-quay) · [Artwork](src/ui/turningStacksArt.ts)

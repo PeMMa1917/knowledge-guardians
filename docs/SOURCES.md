@@ -1,5 +1,13 @@
 # Historical objects and sources
 
+## Two leaves at Lamp Quay
+
+The travelling model credits the Oklahoma State University transcripts of the 30 September and 26 October 1809 instruments separately. The latter names Wea representatives. The 2011 Indiana Historical Bureau marker commemorates the 1810 and 1811 Vincennes meetings. The Absentee Shawnee Tribe’s account explains a choice on its own emblem. All four sources and their precise locators are registered with the earlier Civic and Voices cases. [Civic case](../src/content/m13-civic.json) · [Voices case](../src/content/m14-voices.json)
+
+The Peoria Tribe of Indians of Oklahoma names Kaskaskia, Peoria, Piankashaw and Wea peoples in its account of the 1854 confederation and describes twenty tribes in the Nation’s wider history. The Eastern Shawnee Tribe of Oklahoma’s constitutional file includes a certificate signed on 17 June 1999 by Mary Moss, Lena Mae Elliott and Glen Brock. PDF page 16 records 115 for, 48 against, 6 spoiled and 270 eligible. The game’s three percentages are derived from those published counts. The election date applies to this particular certificate. [Peoria Tribe history](https://peoriatribe.com/204/History) · [Eastern Shawnee constitutional file](https://www.estoo-nsn.gov/media/2551)
+
+Opal and Tallis speak about their own exhibition and family. The public leaves identify each publishing body and keep the limits of its account attached. The schematic artwork depicts the cabinet, lamps, model floor and layout of a certificate. [Source pairs](../src/content/stackWindows.ts) · [Artwork](../src/ui/turningStacksArt.ts)
+
 ## Viri’s glasshouse
 
 The two costume crops, instrument readings and garden visits belong to the fictional company. The game uses the silverweed study to support variation in ultraviolet floral patterning and the Arizona State University resource to support ultraviolet sensitivity. The museum record identifies the particular hand-coloured 1771 impression held in Cleveland. The artist’s attribution and that later edition have separate stops in play. [Koski and Ashman](https://doi.org/10.1086/671803) · [Ask A Biologist](https://askabiologist.asu.edu/colors-animals-see) · [Cleveland Museum of Art, 1955.320](https://www.clevelandart.org/art/1955.320)

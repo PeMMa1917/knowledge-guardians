@@ -1,5 +1,11 @@
 # Story bible: the whole campaign (chapters 1 to 15)
 
+## The house with six names
+
+Opal Fenn’s mother worked the ferry and never made it to the town exhibition before closing time. Opal built a room that could travel to her. When its brass heading knocked a contributor’s name off the wall, Opal hid the hinge pin. Her uncle Tallis kept taking the weight of the heading from behind the case. Each mistook the other’s silence for a request to keep the show going.
+
+A Guardian can enter through either door, set two shelves and bind their contents in walking order. Turning the lamp towards the ferry lets a child read the credits in passing. The woman at the bench then has to shade the fine print with her hand. Turning it in brings the reader at the bench closer to the date. The last boat is already leaving. A player can change either decision, hear both relatives separately and take another pair back to the quay. [Source leaves](../src/domain/turningStacks.ts) · [The two people carrying the room](../src/content/turningStacks.ts)
+
 ## A winter in one thumb
 
 Viri touched her mother’s wire glove long before she understood how it worked. The theatre earns its first real crowd from a poster neither Viri nor Elian can defend. Players can still put on an excellent show. A repeatable trick gives the understudy a real job. An open garden gives a waiting child power over the last minute. The same landing that spoils a prediction can give the company a movement they never would have written. Merian’s later bench brings an older argument about simultaneous images and successive movements to either audience. [Curtains, watches and callbacks](../src/content/petalGlasshouse.ts)

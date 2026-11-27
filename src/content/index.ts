@@ -1,3 +1,4 @@
+import {installTurningStacks} from './turningStacks';
 import {installFirstCup} from './firstCup';
 import {installStreetAlmanac} from './streetAlmanac';
 import {installCourierLift} from './courierLift';
@@ -281,6 +282,7 @@ export function buildPack(): ContentPack {
   installCourierLift(content);
   installStreetAlmanac(content);
   installFirstCup(content);
+  installTurningStacks(content);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);

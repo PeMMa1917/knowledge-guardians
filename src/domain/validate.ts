@@ -107,6 +107,10 @@ export function validateContent(pack: ContentPack): string[] {
     text(`source ${s.id} MLA container`, s.mla.container);
     if (s.mla.repository !== undefined) text(`source ${s.id} MLA repository`, s.mla.repository);
     if (!['page', 'artwork'].includes(s.mla.kind)) p.push(`source ${s.id}: unknown MLA source kind`);
+    if (s.mla.documentDate !== undefined) {
+      text(`source ${s.id} MLA document date`, s.mla.documentDate);
+      if (s.mla.kind !== 'page') p.push(`source ${s.id}: a document date belongs to a page entry`);
+    }
     if (s.mla.kind === 'page' && s.mla.workDate) p.push(`source ${s.id}: an artwork date belongs to the artwork entry`);
     if (s.mla.showAccessDate && !/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(s.accessed)) {
       p.push(`source ${s.id}: access date must use YYYY-MM-DD`);

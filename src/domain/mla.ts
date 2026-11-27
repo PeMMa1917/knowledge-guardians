@@ -19,6 +19,7 @@ export function mlaCitation(source: Pick<SourceRecord, 'url' | 'mla'> & { access
   if (work.workDate) parts.push({ text: `${work.workDate.trimEnd().replace(/\.$/, '')}. ` });
   if (work.repository) parts.push({ text: `${work.repository.trimEnd().replace(/\.$/, '')}. ` });
   parts.push({ text: work.container, cite: true }, { text: ', ' });
+  if (work.documentDate) parts.push({ text: work.documentDate + ', ' });
   if (work.publication) {
     const { volume, issue, year, pages } = work.publication;
     parts.push({text: `vol. ${volume}, no. ${issue}, ${year}, pp. ${pages}, `});

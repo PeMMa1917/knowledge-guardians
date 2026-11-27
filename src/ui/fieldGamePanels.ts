@@ -1,3 +1,4 @@
+import {turningStacksPanel,signatureLamp} from './turningStacks';
 import {firstCupPanel} from './firstCup';
 import {streetAlmanacPanel} from './streetAlmanac';
 import {giantPanel} from './giantSleeve';
@@ -73,6 +74,8 @@ interface Panel<T> {
 }
 
 export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
+  ['stacks-signature',{title:'The names under the count',open:signatureLamp}],
+  ['turning-stacks',{title:'The house with six names',open:turningStacksPanel}],
   ['first-cup-shop',{title:'Who gets the first cup?',open:(c,sound)=>firstCupPanel(c,sound,false)}],
   ['first-cup-street',{title:'The cart in the rain',open:(c,sound)=>firstCupPanel(c,sound,true)}],
   ['street-compose',{title:'A birthday with four dates',open:(c,sound)=>streetAlmanacPanel(c,sound,false)}],

@@ -52,6 +52,19 @@ button, select, input, textarea {
   font: inherit; color: var(--ink); background: var(--panel-2); border: 1px solid var(--gold-dim);
   border-radius: 8px; padding: 0.45em 0.9em; cursor: pointer;
 }
+/* A light native select face can mask the light lettering on game panels in WebKit. */
+select { color-scheme: dark; }
+select:not([multiple]):not([size]) {
+  appearance: none;
+  padding-inline-end: 2.2em;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-repeat: no-repeat;
+  background-size: .32em .32em;
+  background-position: right 1em center, right .7em center;
+}
+@media (forced-colors: active) {
+  select:not([multiple]):not([size]) { appearance: auto; background-image: none; }
+}
 input, textarea { cursor: text; }
 button:hover { border-color: var(--gold); background: #3b2f70; }
 button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible {
@@ -1364,3 +1377,17 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .cup-trays section { display: flex; flex-direction: column; justify-content: flex-start; border: 1px solid currentColor; border-radius: .45rem; padding: .35rem; }
 .cup-trays section p { margin: .3rem; }
 .first-cup .cup-receipt { border-inline-start: .25rem solid currentColor; padding-inline-start: .55rem; }
+
+/* The cabinetmaker's portable reading room. */
+.turning-stacks { display:grid;gap:.5rem;min-width:0; }
+.turning-stacks h4,.turning-stacks p { margin:.4rem 0; }
+.stack-settings,.stack-guides { display:grid;gap:.5rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr)); }
+.stack-settings label,.stack-guides > div { display:grid;align-content:start;gap:.25rem;min-width:0; }
+.stack-settings select { width:100%;min-width:0; }
+.stack-grid { display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;max-width:19rem;list-style:none;padding:.4rem;background:#433744;border:2px solid var(--gold-dim); }
+.stack-grid li { display:grid;place-items:center;aspect-ratio:1.7;background:#f2d7a1;color:#362a30;border:1px solid #815d49;font-weight:bold; }
+.stack-grid [data-terrain=partition] { background:#405f60;color:#fff4c8; }
+.stack-grid [data-here] { background:#9a4554;color:#fff;border:2px solid currentColor; }
+.stack-leaf,.stack-receipt { border-inline-start:.24rem solid var(--gold);padding:.4rem .7rem;margin:.5rem 0;background:var(--panel-2); }
+.stack-feedback:not(:empty) { padding:.3rem .5rem;border:1px solid var(--gold-dim); }
+.turning-stacks meter { width:min(16rem,100%); }

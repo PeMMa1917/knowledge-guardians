@@ -4,9 +4,9 @@ This tracker maps each numbered item in the supplied *Ultimate Universal RPG Com
 
 | Status | Meaning | Numbered items |
 | --- | --- | ---: |
-| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 112 |
+| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 115 |
 | ◐ Partial | A reachable analogue covers part of the idea, or operates in a narrower setting. The gap is stated. | 111 |
-| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 38 |
+| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 35 |
 | ✗ Excluded | The classroom, privacy or nonviolent game rules exclude the original system. | 27 |
 
 The marks reflect inspection of authored maps, dialogue, interfaces and tests. A mark does not measure how often players find the activity, how long they spend, or what they learn. Each numbered row refers to the attachment’s item number. Source links point to playable evidence or the existing feature nearest to a planned adaptation.
@@ -159,9 +159,9 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | 110 | Transparent probability games | ✓ | Three Doors and Lanterns and Bones expose the draw rules and compare outcomes with no wagering. | [fairgames.ts](../src/domain/fairgames.ts), [fairgames.test.ts](../tests/fairgames.test.ts) |
 | 111 | Push-your-luck banking | ✗ | Chance investigations explain streaks and decision rules. They do not risk money or progress on a wager. | [fairgames.ts](../src/domain/fairgames.ts), [AGENTS.md](../AGENTS.md) |
 | 112 | Build an efficient process | ○ | Packing and Civic receiving let players compare procedures. Persistent, combinable workflow upgrades remain open. | [opening-packing.test.ts](../tests/opening-packing.test.ts), [civicArrivals.ts](../src/domain/civicArrivals.ts) |
-| 113 | Place-based strategy grid | ○ | Current route models compare use of space. A nonviolent strategy grid for allocating shared ground remains open. | [islandPlan.ts](../src/domain/islandPlan.ts), [civicConsole.ts](../src/domain/civicConsole.ts) |
+| 113 | Place-based strategy grid | ✓ | Opal’s model puts two named readers at opposite doors. Swing the partition and place the source leaves before physically trying the shared floor. Visitors can use the guided aisle as well as individual steps. | [Floor and routes](../src/domain/turningStacks.ts) |
 | 114 | Allocate roles and turns | ◐ | Civic service windows, Council relay and repair queue choices allocate time and people. There is no reusable worker-placement board. | [civic-story.test.ts](../tests/civic-story.test.ts), [council-story.test.ts](../tests/council-story.test.ts), [emberford-repair-queue.test.ts](../tests/emberford-repair-queue.test.ts) |
-| 115 | Combine sources into an edition | ○ | The City of Copies restores omissions in a proof. A reusable way of joining two provenance cards into a new edition remains open. | [copies-side.test.ts](../tests/copies-side.test.ts), [clueboard.ts](../src/domain/clueboard.ts) |
+| 115 | Combine sources into an edition | ✓ | A player binds any two of six separately credited public leaves in the order a visitor walks to them. The resulting edition travels to the quay. Each of the fifteen possible pairs has its own two readings. | [Pair-specific windows](../src/content/stackWindows.ts) |
 | 116 | Manage a hand of evidence | ◐ | Context-sensitive plays use collected sources; drawing, discarding and cycling a hand are absent. | [showdown.ts](../src/domain/showdown.ts) |
 | 117 | Optional personal constraint | ○ | A private goal such as relying on a limited set of sources could add variety. It does not currently affect a Showdown. | [showdown.ts](../src/domain/showdown.ts), [AGENTS.md](../AGENTS.md) |
 | 118 | Pace scarce resources | ◐ | Patience paces a debate, and the Civic routes allocate limited service. There is no combat energy or mana system. | [showdown.ts](../src/domain/showdown.ts), [civicConsole.ts](../src/domain/civicConsole.ts) |
@@ -169,7 +169,7 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | 120 | Seeded shifts in events | ✓ | A seeded deck draws authored encounters and avoids repeats in a chapter. Calm mode lets players postpone an event. | [engine.ts](../src/domain/engine.ts), [playthrough.test.ts](../tests/playthrough.test.ts) |
 | 121 | Turn timing as evidence | ◐ | A performance tool changes the order of silence and movement. Players do not manipulate party initiative in a general combat system. | [stageRehearsal.ts](../src/domain/stageRehearsal.ts), [performance-story.test.ts](../tests/performance-story.test.ts) |
 | 122 | Lay route tiles | ✓ | Civic players tile a lane and check who can reach the receiving rack. Water Commons adds a second routing board with field and channel constraints. | [route-tiles.test.ts](../tests/route-tiles.test.ts), [routingBoards.ts](../src/ui/routingBoards.ts), [civic.ts](../src/maps/civic.ts), [water.ts](../src/maps/water.ts) |
-| 123 | Tabletop route models | ○ | The Island uses miniature route trials. Moving figures on a shared strategy board remains open. | [islandPlan.ts](../src/domain/islandPlan.ts), [island.ts](../src/maps/island.ts) |
+| 123 | Tabletop route models | ✓ | Walk either visitor on a five-by-five tabletop plan with a movable crossing. A partition blocks the walking piece, a shelf can only be read from its square and the two starting doors change the journey. | [Route and collision tests](../tests/turning-stacks.test.ts) |
 
 ## VIII. Replay and challenge
 
