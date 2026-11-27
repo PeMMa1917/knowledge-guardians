@@ -81,3 +81,5 @@ Not used from the second folder: student tracking sheets and named student files
 - Student work, response sheets, feedback letters, meeting notes and group lists. These are private.
 - IB guides, subject reports, examiner notes and prescribed titles. These are copyright documents.
 - Whole copyrighted books. Ideas only.
+
+A fresh index on 27 November found 931 files in 55 folders of the supplied public Drive. The correspondence scenes revisit three practices from the role material. A seal can identify a source without proving what a witness saw. Changing the observer can change the result. A return visit can reveal whose account a record leaves out. The index alone gives no evidence that every file has a playable adaptation. [Routes through these practices](FOLDED_WING.md)

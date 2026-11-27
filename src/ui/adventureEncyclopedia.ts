@@ -1,4 +1,5 @@
-import { encyclopediaEncounterLabel, encyclopediaLinkLabel, isEncyclopediaURL, type EncyclopediaLink } from '../domain/encyclopedia';
+import { personArticleCitation, encyclopediaEncounterLabel, encyclopediaLinkLabel, isEncyclopediaURL, type EncyclopediaLink } from '../domain/encyclopedia';
+import { citationLine } from './adventureReferences';
 import { h } from './dom';
 
 export function wikipediaLink(link: EncyclopediaLink): HTMLElement | null {
@@ -17,8 +18,11 @@ export function adventureEncyclopedia(links: readonly EncyclopediaLink[]): HTMLE
   let shown = 0;
   function showMore() {
     const part = links.slice(shown, shown + 24);
-    list.append(...part.map((link) => h('li', {}, h('p', { class: 'diary-reference-label' },
-      `${encyclopediaEncounterLabel(link)} · ${link.name}`), h('p', {}, wikipediaLink(link)))));
+    list.append(...part.map((link) => {
+      const citation = personArticleCitation(link);
+      return h('li', {}, h('p', { class: 'diary-reference-label' }, encyclopediaEncounterLabel(link) + ' · ' + link.name),
+        citation ? citationLine(citation) : h('p', {}, wikipediaLink(link)));
+    }));
     shown += part.length;
     more.hidden = shown >= links.length;
   }

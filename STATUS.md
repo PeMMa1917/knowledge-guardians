@@ -1,5 +1,13 @@
 # Status and next steps
 
+## 27 November • The folded-wing post
+
+The Archive Hall paper bird beside Warden Ise opens a correspondence between 140 historical people and 15 chapter keepers. Each voice has two first decisions with different consequences in another chapter. The receiving keeper chooses what to do with the letter with the Guardian’s help. Seventy pairs of returned replies reveal a shared watermark. Try following Gārgī’s loose thread to the Nile, or find the two optics letters at the coast. [Chapter posts](src/content/ink-post-stations.json) · [Individual stories](src/content/ink-post-letters.json)
+
+Four pocket experiments travel inside particular letters. Closing a pinhole, changing the view of an eclipse, carrying debt beside cash and shifting a four-beat recording each produce a result the other chapter can revisit. Each case has its own diary prompt. The diary and exports link to encountered people with MLA citations. Daily, weekly and monthly streak displays have separate opt-ins in settings. [Tests of both decisions and returned observations](tests/ink-post.test.ts) · [Streak boundaries](tests/ledger.test.ts)
+
+The release check passed 2,407 tests, the production build and the 860-file asset check. Three browser engines played through three paired endings. Navigation stress visited 128 maps. Six new documented actions exercise the six reasoning forms. The current audit counts 359 of 803 supplied numbered skills with an authored action and two intersections at ten documented actions. Priorities for classroom review are locating a reply after a week away, transferring a method to a new problem, performance on a managed Chromebook and paid community-specific source review. [73-perspective review and disagreements](docs/audit/FOLDED_WING.md) · [Coverage](docs/CROSS_WEAVE_AUDIT.md)
+
 ## 27 November playtest
 
 Thirty-two residents now have personal stories in sixteen pairs across Chapters 2–15. Visit either neighbour first, take either action, then call on the other to hear what made it across the street. Visiting later or leaving a conversation open keeps the ordinary chapter work available. The diary preserves the part of the exchange the player heard. In the Market of Measures these conversations also open the Underpan. Following the coin on the square opens a third way in. Fen can take her lamp upstairs or run a private reading room below. [Neighbour stories](src/content/neighbours.json) · [Underpan routes](tests/underpan.test.ts)

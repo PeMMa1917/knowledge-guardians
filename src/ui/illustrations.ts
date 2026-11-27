@@ -699,6 +699,18 @@ DRAW['clue.jar'] = [16, 24, (g) => { smallTable(g); R(g, '#9fc7cf', 4, 4, 8, 10)
 DRAW['clue.stove'] = [16, 24, (g) => { R(g, '#3b3b42', 2, 8, 12, 14); R(g, '#4a4d55', 2, 8, 12, 2); R(g, '#1d1a1a', 5, 13, 6, 5); R(g, '#3b3b42', 6, 0, 3, 8); R(g, '#2a2a33', 3, 22, 2, 2); R(g, '#2a2a33', 11, 22, 2, 2); }];
 DRAW['clue.bucket'] = [16, 24, (g) => { R(g, '#6b4a2a', 3, 12, 10, 11); R(g, '#8a6a2a', 3, 14, 10, 1); R(g, '#8a6a2a', 3, 19, 10, 1); R(g, '#5b5f69', 4, 8, 1, 4); R(g, '#5b5f69', 11, 8, 1, 4); R(g, '#5b5f69', 5, 7, 6, 1); R(g, '#d8c08a', 13, 13, 2, 9); R(g, '#b98d55', 13, 16, 2, 1); }];
 DRAW['clue.corner'] = [16, 24, (g) => { R(g, '#0f0c0a', 0, 6, 16, 18); R(g, '#1d1612', 2, 10, 12, 12); R(g, '#2a2440', 9, 16, 3, 2); }];
+// The roost carries an unsigned wing. A second ink mark appears after a reply.
+for (const reply of [false, true]) {
+  DRAW[reply ? 'ink-post.reply' : 'ink-post.bird'] = [16, 24, (g) => {
+    smallTable(g);
+    R(g, '#543453', 2, 10, 11, 5); R(g, '#efd6aa', 3, 9, 8, 4);
+    R(g, '#fff0c9', 2, 6, 2, 4); R(g, '#f6dfb5', 4, 7, 2, 4);
+    R(g, '#d3ae8c', 6, 8, 2, 3); R(g, '#a57971', 8, 10, 2, 2);
+    R(g, '#fff0c9', 10, 6, 3, 5); R(g, '#382939', 12, 7, 1, 1);
+    R(g, '#edb559', 13, 8, 2, 1); R(g, '#a84343', 5, 12, 2, 2);
+    if (reply) { R(g, '#88d9ca', 9, 13, 3, 2); R(g, '#e9fff5', 9, 13, 1, 1); }
+  }];
+}
 DRAW['clue.letter'] = [16, 24, (g) => { R(g, '#8b8f99', 2, 16, 12, 6); paper(g, 4, 10, 8, 7); R(g, '#c0392b', 7, 13, 2, 2); R(g, '#8a7f66', 5, 11, 5, 1); R(g, '#ffd25a', 3, 9, 1, 1); R(g, '#ffd25a', 12, 9, 1, 1); }];
 
 // Archive icons. These are stylised props; the evidence panels identify them as illustrations.

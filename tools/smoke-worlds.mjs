@@ -4,7 +4,7 @@
  * Serve that checkout's dist directory, then run with Node 22 or newer and Chromium:
  *   node tools/smoke-worlds.mjs http://127.0.0.1:4173 /path/to/checkout
  * The second argument defaults to the working directory. The optional third argument selects
- * "maps", "access", "collections", "stress", "portal", "cast", "focus", "soak", "events", "guidance" or "fieldgames".
+ * "maps", "access", "collections", "stress", "portal", "cast", "focus", "soak", "events", "guidance", "ink" or "fieldgames".
  * CHROMIUM can name a different binary. KG_SOAK_MINUTES sets the real-time soak length (default 60).
  *
  * The script starts a new game and uses debug entry at each registered spawn. Its traversal
@@ -22,8 +22,8 @@ import { smokeCallboardReader, smokeFerryFocus, smokeInteractionEscape, smokeNav
 import { smokeGuidance } from './smoke-guidance.mjs';
 
 const [url, directory = '.', mode = 'all'] = process.argv.slice(2);
-if (!url || !['all', 'maps', 'access', 'collections', 'stress', 'portal', 'cast', 'focus', 'soak', 'events', 'guidance', 'fieldgames'].includes(mode)) {
-  throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access|collections|stress|portal|cast|focus|soak|events|guidance|fieldgames]');
+if (!url || !['all', 'maps', 'access', 'collections', 'stress', 'portal', 'cast', 'focus', 'soak', 'events', 'guidance', 'ink', 'fieldgames'].includes(mode)) {
+  throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access|collections|stress|portal|cast|focus|soak|events|guidance|ink|fieldgames]');
 }
 const root = resolve(directory);
 const waitScale = Number(process.env.KG_BROWSER_WAIT_SCALE ?? 1);
@@ -525,6 +525,10 @@ try {
   if (mode === 'fieldgames') {
     const { smokeFieldGames } = await import('./smoke-fieldgames.mjs');
     await smokeFieldGames(browser, { button, press, until });
+  }
+  if (mode === 'ink') {
+    const { smokeInkPost } = await import('./smoke-ink-post.mjs');
+    await smokeInkPost(browser, { button, press, until });
   }
   if (mode === 'collections') await smokeCollections(browser, { button, press, until });
   if (mode === 'stress') await smokeNavigation(browser, { press, until }, maps);

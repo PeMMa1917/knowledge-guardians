@@ -2,6 +2,8 @@
 
 The November 27 review adds four playable traces. At the Spare Moon the Guardian can see who reaches a bed. In the gallery, standing up isolates the clap from the person’s memory of an audience. In the Underpan, turning the lamp explains part of a silhouette, while deciding where Fen works changes who can show her a receipt. Hearing Fen’s story alone gives no credit for testing the light. The audit checks the world target and corresponding test for each trace. [Reviewed actions](../tools/audit-cross-weave.mjs)
 
+Following the folded-wing post adds six checked reasoning actions. In the Council, Lovelace's musical roll preserves a mathematical repeat while pitch depends on a musician. At the Island, Wang Zhenyi's ball casts a shadow whose position can be explained geometrically while the scale of real celestial bodies remains open. These raise the number of explicit two-area comparisons to 15. The census records 2 intersections meeting the target and 333 with one to nine reviewed actions, out of 9,327,648. [Actions and reasoning evidence](../tools/audit-cross-weave.mjs) · [Receiving-scene checks](../tests/ink-post.test.ts)
+
 The audit checks a design target of ten distinct recorded actions for each world, learning dimension and numbered story or game element. A source-reviewed action can count in more than one pair when the same action supports each claim. An action only counts once in any one pair. The census is evidence of authored opportunities. It does not measure play frequency or learner attainment.
 
 ```sh

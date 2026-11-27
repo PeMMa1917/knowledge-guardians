@@ -1,3 +1,5 @@
+import { inkInvitation } from '../domain/inkPost';
+import { inkTrialDiagram } from './inkTrialDiagram';
 import { neighbourInvitation } from '../domain/neighbours';
 import { MOON_INSTRUMENT } from '../domain/spareMoonMusic';
 import { spareMoonMusicPanel } from './spareMoonMusic';
@@ -1357,6 +1359,8 @@ export class UI implements UIApi {
     const portrait = n.speaker === 'lumen'
       ? h('img', { class: 'portrait lumen-portrait', src: artURL(lumenArt(ctx.settings)), alt: '' })
       : n.speaker === 'narrator' ? null
+      : id.startsWith('ink.') && speaker && 'mode' in speaker && speaker.mode === 'historical'
+        ? h('img', { class: 'portrait ink-portrait', src: artURL('ink-post.bird'), alt: '' })
       : String((speaker as any)?.sprite ?? '').startsWith('custom:')
         ? h('span', { class: 'portrait custom', 'aria-hidden': 'true' }, previewLook((speaker as any).sprite, 3))
         : h('span', { class: 'portrait', style: { backgroundImage: `url(assets/art/generated/characters/${(speaker as any)?.sprite}.png)` }, 'aria-hidden': 'true' });
@@ -1378,6 +1382,8 @@ export class UI implements UIApi {
     }
     const visit = visiting && neighbourInvitation(visiting, c.state.flags);
     if (visit) optionList.append(h('button', { onclick: () => this.showNode(visit.node) }, visit.text));
+    const roost = visiting && inkInvitation(visiting, c.state.mapId);
+    if (roost) optionList.append(h('button', { onclick: () => this.showNode(roost.node) }, roost.text));
     const cornerObjective = id.startsWith('corner.') && c.state.flags['corner.found'] && !c.state.objectivesDone.includes('corner.receive')
       ? c.state.objectivesDone.includes('corner.compare') ? 'corner.receive' : 'corner.compare'
       : undefined;
@@ -1385,7 +1391,7 @@ export class UI implements UIApi {
     const guideObjective = guidedCase
       ? c.engine.visibleObjectives(c.state).find((step) => !step.complete && step.id.startsWith(guidedCase))?.id
       : id === 'stage.call.stand' ? 'stage.call.audience' : cornerObjective;
-    const extra = id === 'sefa.free' ? this.freeQuestion() : null;
+    const extra = id === 'sefa.free' ? this.freeQuestion() : inkTrialDiagram(id, ctx.settings.sfxVolume);
     const earlier = conversationHistory(c.pack.dialogue, c.state.flags).filter((line) => line.id !== id).slice(0, 5);
     const source = n.citationSource ? c.pack.sources.find((entry) => entry.id === n.citationSource) : undefined;
     const citation = source ? mlaCitation(source) : [];
@@ -3315,11 +3321,15 @@ export class UI implements UIApi {
     box.append(this.closeBtn(), h('h2', {}, "The Guardian's Ledger"),
       h('p', { class: 'fine' }, 'Your own record, kept on this device. It is not a grade, and nobody ranks it. Time counts only while you are really playing.'),
       h('div', { class: 'ledger-tiles' }, tile('Today', L.today), tile('Last 7 days', L.week), tile('This month', L.month), tile('All time', L.total)),
-      ctx.settings.showStreak === false ? h('p', { class: 'fine' }, 'Your streak is hidden (Menu, Settings). It is still kept.') : h('div', { class: 'ledger-streak' },
+      !ctx.settings.showStreak ? '' : h('div', { class: 'ledger-streak' },
         h('span', { class: 'flame-big', 'aria-hidden': 'true' }),
         h('span', {}, h('strong', {}, `${L.streak}-day streak`), ` · best ${L.bestStreak} · `,
           h('span', { title: 'Every 7 active days in a row earn a shield. A missed day uses a shield, so a rest day keeps your streak.' }, `${'🛡'.repeat(L.shields)}${'·'.repeat(MAX_SHIELDS - L.shields)} freeze shields`)),
         h('span', { class: 'fine' }, ' A day counts after 5 active minutes or any XP. Rest days are good for learning too.')),
+      ctx.settings.showWeekStreak ? h('p', { class: 'ledger-streak' }, h('strong', {}, L.weekStreak + '-week streak'),
+        'One active day counts a week. A new week starts on Monday.') : '',
+      ctx.settings.showMonthStreak ? h('p', { class: 'ledger-streak' }, h('strong', {}, L.monthStreak + '-month streak'),
+        'One active day counts a calendar month.') : '',
       h('h3', {}, 'Activity, last 12 weeks'), cal,
       h('div', { class: 'ledger-split' },
         h('div', {}, h('h3', {}, 'Concept web'), webEl),
@@ -5845,7 +5855,9 @@ export class UI implements UIApi {
       check('dyslexiaSpacing', 'Wider letter and line spacing'),
       check('guidePrompts', 'Lumen may show short prompts without being asked'),
       check('lumenOffers', 'When you seem stuck, the lantern glows and Lumen offers help. The hint shows only when you click'),
-      check('showStreak', 'Show my day streak in the Ledger'),
+      check('showStreak', 'Show my daily streak in the Ledger'),
+      check('showWeekStreak', 'Show my weekly streak in the Ledger'),
+      check('showMonthStreak', 'Show my monthly streak in the Ledger'),
       check('calmMode', 'Calm mode: surprise events warn first, and you can choose "Later"'),
       check('zenMode', 'Zen mode: no turn limit in Showdowns (the crowd waits), surprise events always ask first, and nothing can be failed'),
       check('glossary', 'Smart glossary: underline key words in conversations, so you can tap them for an explanation'),
