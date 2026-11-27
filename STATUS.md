@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 27 November • A visible path under every lamp
+
+On Firefox’s 2D renderer, a light wash could cover the entire floor, including the Guardian and other characters. The game now keeps the map visible when the renderer substitutes ordinary paint for a multiply blend. Slow frames also finish the arrival fade according to elapsed time. [Visual test](tools/chapter-lights-journey.mjs)
+
 ## 27 November • In the margins of my diary
 
 The journal keeps its pages in four sections. Opening a word beside a played action can bring up an earlier entry from another place where the same idea mattered in a different discipline. A word history and dictionary are available in the margin. Each world also takes its light from a local material, from reed and river silt to velvet and footlights. The high-contrast and reduced-effects settings keep the floor colours clear of the wash. [Journal pages](src/ui/journalNavigation.ts) · [Earned comparisons](src/ui/diaryWords.ts) · [Chapter light](src/app/daylight.ts)

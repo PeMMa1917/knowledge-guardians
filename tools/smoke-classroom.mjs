@@ -43,6 +43,22 @@ async function open(p) {
   await button(p, 'Open my class adventure');
   await p.getByRole('dialog', { name: 'Class adventure' }).waitFor({ state: 'hidden' });
 }
+async function resume(p) {
+  await button(p, 'Continue');
+  const recap = p.getByRole('dialog', { name: 'Recap' });
+  try {
+    await recap.waitFor({ timeout: 90000 });
+  } catch (cause) {
+    const screen = await p.evaluate(() => ({
+      dialog: document.querySelector('[role="dialog"]')?.getAttribute('aria-label'),
+      map: window.kg?.world?.map?.id,
+      retriable: !!document.querySelector('.map-loading button:not([disabled])'),
+      title: !!document.querySelector('.title-screen'),
+    }));
+    throw new Error('Class recovery did not reach the recap: ' + JSON.stringify(screen), { cause });
+  }
+  await recap.getByRole('button', {name:'Continue playing', exact:true}).click();
+}
 async function journal(p) {
   await p.evaluate(() => kg.ui.openJournal('notes'));
   await p.locator('#diary-note-text').waitFor();
@@ -161,23 +177,16 @@ try {
   });
   await waitForDraft(a, 'Who stood behind the lamp');
   assert.ok((await remote(a)).revision >= 1);
-  console.log('device A synced');
+  await a.keyboard.press('Escape');
+  await a.keyboard.press('Escape');
+  await button(a, 'Save and leave');
+  await a.locator('.title-screen').waitFor();
+  await a.waitForFunction(() => JSON.parse(localStorage.getItem('kg.class.v1.a/north/ta') || '{}').dirty === false);
+  await a.context().close();
+  console.log('device A synced and closed');
   const b = await device();
   await open(b);
-  await button(b, 'Continue');
-  const recap = b.getByRole('dialog', { name: 'Recap' });
-  try {
-    await recap.waitFor({ timeout: 90000 });
-  } catch (cause) {
-    const screen = await b.evaluate(() => ({
-      dialog: document.querySelector('[role="dialog"]')?.getAttribute('aria-label'),
-      map: window.kg?.world?.map?.id,
-      retriable: !!document.querySelector('.map-loading button:not([disabled])'),
-      title: !!document.querySelector('.title-screen'),
-    }));
-    throw new Error('Class recovery did not reach the recap: ' + JSON.stringify(screen), { cause });
-  }
-  await recap.getByRole('button', {name:'Continue playing', exact:true}).click();
+  await resume(b);
   await journal(b);
   assert.equal(await b.locator('#diary-note-text').inputValue(), 'Who stood behind the lamp');
   await b.getByText('The bell cast two shadows.', { exact: true }).first().waitFor();
@@ -239,11 +248,17 @@ try {
     ),
     403,
   );
+  // The recovery device first finishes its online play. A fresh online device then shares its latest revision.
+  await b.waitForFunction(() => JSON.parse(localStorage.getItem('kg.class.v1.a/north/ta') || '{}').dirty === false);
   await b.context().setOffline(true);
   await b.locator('#diary-note-text').fill('Offline continuation');
   await b.waitForTimeout(1350);
-  await a.locator('#diary-note-text').fill('Alternate device continuation');
-  await waitForDraft(a, 'Alternate device continuation');
+  const alternate = await device();
+  await open(alternate);
+  await resume(alternate);
+  await journal(alternate);
+  await alternate.locator('#diary-note-text').fill('Alternate device continuation');
+  await waitForDraft(alternate, 'Alternate device continuation');
   await b.context().setOffline(false);
   await b
     .getByText(/Two devices have changes/)
@@ -259,8 +274,7 @@ try {
   await login(b, 'ash-moth');
   await button(b, 'Open my class adventure');
   await button(b, 'Use this device');
-  await button(b, 'Continue');
-  await button(b, 'Continue playing');
+  await resume(b);
   await journal(b);
   assert.equal(await b.locator('#diary-note-text').inputValue(), 'Offline continuation');
   await waitForDraft(b, 'Offline continuation');

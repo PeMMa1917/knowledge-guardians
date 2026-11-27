@@ -178,3 +178,7 @@ Two Firefox guest runs reached the final workbench and then reopened the recruit
 ## The visitor in the diary margin
 
 The player first fits the bank walker’s tracing, then covers the rehearsal-room names. Opening Responsibility on the second entry retrieves the actual mudbank entry and exposes the word’s dictionary source. The same route checks that an unvisited chart stays out of the margin, that arrow keys move between journal pages and that the post-Council page stays sealed. The chapter light journey visits all sixteen visual settings and changes the two comfort settings while staying in the same room. [Diary route](../../tools/diary-shelves-journey.mjs) · [Lighting route](../../tools/chapter-lights-journey.mjs)
+
+## Seeing the floor under the lanterns
+
+A Firefox screenshot showed a single opaque colour behind the HUD even while the player could walk between two working doors. On a Canvas renderer that offers ordinary paint for Phaser’s multiply setting, the game now uses a translucent wash. The fade on entering or leaving a room also follows elapsed time. The visual journey places two contrasting chalk marks at walking height, samples the finished camera image underneath the lighting and removes the marks. The earlier Firefox build returned identical pixels for both marks. Firefox 146 and WebKit 26 passed the new check across the sixteen settings in the production build. [Lighting and pixel checks](../../tools/chapter-lights-journey.mjs)

@@ -76,6 +76,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private lightPools: Phaser.GameObjects.Image[] = [];
   /** Town day cycle: the grade rectangle, the fireflies, and the shared clock (seconds, kept across maps). */
   private grade: Phaser.GameObjects.Rectangle | null = null;
+  private fadeDeadline = 0;
+  private softWash = false;
+  private lampStrength = 1;
   private fireflies: Phaser.GameObjects.Particles.ParticleEmitter | null = null;
   private rainFx: Phaser.GameObjects.Particles.ParticleEmitter | null = null;
   private wasRaining = false;
@@ -140,7 +143,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.scale.on('resize', this.resizeCamera);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.scale.off('resize', this.resizeCamera));
     this.playMusic();
-    this.cameras.main.fadeIn(ctx.settings.reducedMotion ? 0 : 400, 10, 8, 24);
+    // Presentation fades follow real elapsed time, including on renderers that drop most frames.
+    this.fadeDeadline = performance.now() + 400;
+    if (!ctx.settings.reducedMotion) this.cameras.main.fadeIn(400, 10, 8, 24);
     ctx.controller.dispatch({ type: 'VisitPlace', name: this.map.name, via: data.via });
     // Arrival zone (e.g. "emberford") is recorded the moment the map opens.
     this.checkZones(true);
@@ -487,11 +492,17 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const w = m.width * TILE, h = m.height * TILE;
     // Ambient colour grade (multiply) and light pools (additive).
     const ambient = chapterTint(m.world, m.ambience === 'archive' ? 0xa29ce0 : m.ambience === 'study' ? 0xc9a77e : 0xffe8c4);
-    this.grade = this.add.rectangle(-200, -200, w + 400, h + 400, ambient).setOrigin(0).setDepth(200000).setBlendMode(Phaser.BlendModes.MULTIPLY).setAlpha(effects && !ctx.settings.highContrast ? 1 : 0);
+    const canvas = this.renderer.type === Phaser.CANVAS ? this.renderer as Phaser.Renderer.Canvas.CanvasRenderer : null;
+    // Phaser can substitute source-over for multiply in its Canvas renderer. An opaque tint then covers the entire floor.
+    this.softWash = !!canvas && canvas.blendModes[Phaser.BlendModes.MULTIPLY] !== 'multiply';
+    this.lampStrength = ctx.settings.highContrast ? .16 : canvas ? .38 : 1;
+    this.grade = this.add.rectangle(-200, -200, w + 400, h + 400, ambient).setOrigin(0).setDepth(200000)
+      .setBlendMode(this.softWash ? Phaser.BlendModes.NORMAL : Phaser.BlendModes.MULTIPLY);
+    this.setRoomLight(ambient);
     for (const l of m.lights) {
       const img = this.add.image(l.x * TILE, l.y * TILE, 'glow').setDepth(200001).setBlendMode(Phaser.BlendModes.ADD)
-        .setTint(l.color).setScale((l.r * 2) / 128).setAlpha(effects ? 0.6 : 0);
-      if (l.flicker && effects && !ctx.settings.reducedMotion) this.tweens.add({ targets: img, alpha: 0.4, scale: img.scale * 0.94, duration: Phaser.Math.Between(400, 900), yoyo: true, repeat: -1 });
+        .setTint(l.color).setScale((l.r * 2) / 128).setAlpha(effects ? .6 * this.lampStrength : 0);
+      if (l.flicker && effects && !ctx.settings.reducedMotion) this.tweens.add({ targets: img, alpha: .4 * this.lampStrength, scale: img.scale * 0.94, duration: Phaser.Math.Between(400, 900), yoyo: true, repeat: -1 });
       this.lightPools.push(img);
     }
     if (!effects) return;
@@ -538,6 +549,22 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     if (this.renderer.type === Phaser.WEBGL && cam.postFX) {
       cam.postFX.addVignette(0.5, 0.5, 0.95, 0.22);
       cam.postFX.addBloom(0xffffff, 1, 1, 0.8, 0.45, 4);
+    }
+  }
+
+  private setRoomLight(tint: number): void {
+    if (!this.grade) return;
+    if (ctx.settings.reducedEffects || ctx.settings.highContrast) {
+      this.grade.setAlpha(0);
+      return;
+    }
+    if (this.softWash) {
+      // Use a translucent wash whose strength follows the lightness of the sky. The art stays visible at night.
+      const r = (tint >>> 16) & 255, g = (tint >>> 8) & 255, b = tint & 255;
+      const luminance = (.2126 * r + .7152 * g + .0722 * b) / 255;
+      this.grade.setFillStyle(Phaser.Display.Color.GetColor(r >> 1, g >> 1, b >> 1)).setAlpha(.09 + .4 * (1 - luminance));
+    } else {
+      this.grade.setFillStyle(tint).setAlpha(1);
     }
   }
 
@@ -686,8 +713,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const sky = skyAt(WorldScene.dayClock / CYCLE);
     // A grey-blue wash while it rains.
     const tint = this.rainDim > 0 ? Phaser.Display.Color.Interpolate.ColorWithColor(Phaser.Display.Color.ValueToColor(sky.tint), Phaser.Display.Color.ValueToColor(0x5a6a88), 100, Math.round(this.rainDim * 55)) : null;
-    this.grade.setFillStyle(chapterTint(this.map.world, tint ? Phaser.Display.Color.GetColor(tint.r, tint.g, tint.b) : sky.tint));
-    for (const l of this.lightPools) if (!this.tweens.isTweening(l)) l.setAlpha(sky.light);
+    this.setRoomLight(chapterTint(this.map.world, tint ? Phaser.Display.Color.GetColor(tint.r, tint.g, tint.b) : sky.tint));
+    for (const l of this.lightPools) if (!this.tweens.isTweening(l)) l.setAlpha(sky.light * this.lampStrength);
     if (this.fireflies) { if (sky.night > 0.5 && !this.fireflies.emitting) this.fireflies.start(); else if (sky.night <= 0.5 && this.fireflies.emitting) this.fireflies.stop(); }
     if (sky.name !== this.lastSky) {
       if (this.lastSky && sky.name === 'dusk') { bell(ctx.settings.sfxVolume); caption('amb.bell'); }
@@ -719,6 +746,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private fogChunk = '';
   private secretGlows: { id: string; img: Phaser.GameObjects.Image }[] = [];
   update(_t: number, dtMs: number): void {
+    const fade = this.cameras.main.fadeEffect;
+    if (fade.isRunning && performance.now() >= this.fadeDeadline) fade.update(_t, fade.duration);
     const dt = Math.min(dtMs, 100) / 1000;
     if (this.waitingForSpace.some((place) => !this.playerOverlaps(place))) this.refreshWorld();
     // Fog of war: clear the map around the player when they enter a new chunk.
@@ -1307,6 +1336,10 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       this.scene.restart({ walkingArrivalFrom, via: route ? { ...route, from } : undefined });
     };
     if (ctx.settings.reducedMotion) go();
-    else { this.cameras.main.fadeOut(500, 220, 240, 255); this.cameras.main.once('camerafadeoutcomplete', go); }
+    else {
+      this.fadeDeadline = performance.now() + 500;
+      this.cameras.main.once('camerafadeoutcomplete', go);
+      this.cameras.main.fadeOut(500, 220, 240, 255);
+    }
   }
 }
