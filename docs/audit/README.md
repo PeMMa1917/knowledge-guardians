@@ -17,6 +17,7 @@ Play, engagement and enjoyable learning stay the main goal. Other views can stil
 | [PERSONAS.md](PERSONAS.md) | Every persona: who they are, what they value, and their game-wide likes, concerns and solutions. |
 | [chapters/](chapters/) | One file per chapter. Each encounter has the persona notes that are specific to it, then the agreed fixes and the open disagreements. |
 | [CONSENSUS.md](CONSENSUS.md) | The agreed fixes, numbered `C-###`, with their status and where they are in the code. |
+| [DECISIONS.md](DECISIONS.md) | Mika's decisions on the contested list. These are rules for all developers. |
 | [CONTESTED.md](CONTESTED.md) | The disagreements, numbered `X-###`, with who wants what, why, the options, and a recommendation for Mika. |
 | [DRIVE_WEAVE.md](DRIVE_WEAVE.md) | Ideas from Mika's lesson folder and where they go in the story. Ideas only: no handout wording (the repository is public). |
 | [EVIDENCE.md](EVIDENCE.md) | Measured facts: play shape, reading load, dialogue texture, counts. Made by `tools/audit-personas.mjs`. |
@@ -41,5 +42,5 @@ Play, engagement and enjoyable learning stay the main goal. Other views can stil
 
 1. Before you change an encounter, read its section in the chapter file.
 2. If your change touches a consensus fix, update its status in CONSENSUS.md.
-3. If your change touches a contested item, do not decide it yourself. Ask Mika, or leave the item open.
+3. If your change touches a contested item, follow [DECISIONS.md](DECISIONS.md). If the item is still open, ask Mika.
 4. After a content change, run `node tools/audit-personas.mjs --md` and update EVIDENCE.md.

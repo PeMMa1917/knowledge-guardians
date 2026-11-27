@@ -1,6 +1,8 @@
 # Contested changes
 
-These are changes that one persona wants and another persona thinks are wrong. Developers do not decide these. Mika decides. Until then, the game stays as it is.
+**Mika decided these items on 27 November 2026. Follow [DECISIONS.md](DECISIONS.md), not the recommendations below.** Only X-016 (code licence) is still open.
+
+These are changes that one persona wants and another persona thinks are wrong. Developers do not decide these. Mika decides.
 
 Each item has: the question, who wants what and why, the options, and a recommendation. The recommendation is only advice.
 
@@ -99,7 +101,11 @@ Ideas from the School Dance and ethics-ranking lessons use virtue ethics, duty a
 ## X-016 Code licence
 - **Question:** open licence for code, separate from asset licences.
 - **For open:** E12, E14, B15. **Cautious:** B6.
-- **Recommendation:** Mika's choice. No change until decided.
+- **Recommendation:** the project is for classroom use and not commercial, so a standard open-source licence (MIT, GPL) does not fit: those allow commercial use. Options:
+  - (a) **PolyForm Noncommercial 1.0.0** for the code, and **CC BY-NC-SA 4.0** for the story text and docs. Schools, teachers and students can use, change and share it. Companies cannot sell it. Recommended.
+  - (b) **No licence** (as now). Nobody else may legally copy or change the code, so other schools and developers cannot help.
+  - (c) **MIT or GPL**. The widest reuse, including commercial use.
+- Assets keep their own licences (CC0, CC-BY, OGA-BY) in CREDITS.md. This is general information, not legal advice.
 
 ## X-017 Credit lesson authors
 - **Question:** some ideas in the Drive folder come from other teachers or published lessons.

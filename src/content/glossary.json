@@ -1291,6 +1291,12 @@
      "text": "At the Civic Machine, one joined tally of requests gave different results under two dispatch rules."
     },
     {
+     "if": {
+      "flagSet": "well.east.read"
+     },
+     "text": "At the east well in Emberford, a tally stick had a notch for every hand of depth. Efua used the notches to compare two wells."
+    },
+    {
      "text": "Before you use a tally, ask who counted, where they stood and what they left out."
     }
    ]

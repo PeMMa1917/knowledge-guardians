@@ -457,7 +457,7 @@ export const NEXUS: MapDef = {
     { id: 'sign-hall', kind: 'sign', x: 26, y: 12, w: 1, h: 1, label: 'the Hall of Firsts sign', art: 'signpost',
       text: 'THE HALL OF FIRSTS. Every plaque here says "the first". First at what? Repair a plaque by choosing what kind of first it was, and what we do not know.' },
     { id: 'alcove-firsts', kind: 'alcove', alcove: 'firsts', x: 27, y: 14, w: 1, h: 1, label: 'the Alcove of Firsts (exhibition)', art: 'alcove', visibleIf: { objective: 'm01.o6.label' } },
-    { id: 'title-lock', kind: 'lock', lock: 'inventor', x: 37, y: 13, w: 1, h: 1, label: 'the Title Lock (EE practice)', art: 'title-lock', visibleIf: { objective: 'm01.o6.label' } },
+    { id: 'title-lock', kind: 'lock', lock: 'inventor', x: 37, y: 13, w: 1, h: 1, label: 'the Title Lock', art: 'title-lock', visibleIf: { objective: 'm01.o6.label' } },
     { id: 'claim-board', kind: 'label', kit: 'ee.inventor', x: 33, y: 16, w: 1, h: 1, label: "Tull's claim board", art: 'label-stand', visibleIf: { objective: 'ee1.o3.weigh' } },
     // Lorelings (spec 36.1): three places to watch the Glimmermoth. They go when it is a friend.
     ...([['lamp', 7, 8, 'the glimmer by the patent drawing'], ['desk', 4, 13, 'the glimmer at the reading table'], ['case', 22, 14, 'the glimmer by the glass cabinet']] as const)

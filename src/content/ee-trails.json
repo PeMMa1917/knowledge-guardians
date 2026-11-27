@@ -2,7 +2,7 @@
  "missions": [
   {
    "id": "KG-CH1-EE1",
-   "title": "EE practice trail: The Inventor's Share",
+   "title": "The Inventor's Share",
    "world": "WORLD-01",
    "objectives": [
     {
@@ -269,7 +269,7 @@
   },
   {
    "id": "KG-CH1-EE2",
-   "title": "EE practice trail: Who Holds the Pen?",
+   "title": "Who Holds the Pen?",
    "world": "WORLD-02",
    "objectives": [
     {
@@ -756,7 +756,7 @@
  "labelKits": [
   {
    "id": "ee.inventor",
-   "title": "EE practice: claim and counterclaim",
+   "title": "Tull's claim board",
    "oldLabel": "Patents decide who invented things.",
    "place": "Archive reading room",
    "subjects": [
@@ -929,7 +929,7 @@
   },
   {
    "id": "ee.authors",
-   "title": "EE practice: who holds the pen",
+   "title": "Keeper Oduya's table",
    "oldLabel": "The record says it, so it happened.",
    "place": "The record-keeper's table",
    "sentence": true,
