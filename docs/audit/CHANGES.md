@@ -283,6 +283,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/content/civic-tuskegee.json`, `src/maps/quietRecords.ts`, `src/maps/civic.ts`, `src/content/content-notes.json`, three entries in `src/content/two-replies.json`, `tests/civic-tuskegee.test.ts`.
 
+### Ibn Khaldun in the Nile Map Room (X-012, X-015)
+
+**What.** After the dispatch is sent (chapter 2), Ibn Khaldun waits in the Map Room. Lumen says he is the Nexus's reconstruction. He asks the player to test a chronicle's claim that an army of three hundred thousand marched south. The player reads the granary rolls (food for about twenty thousand for a month), the road record (wells that water a few thousand a day) and the copy chain (the oldest copy says thirty thousand; a later copyist added a stroke). Three answers, each with its own reply. Marek and Nasir then disagree (X-008): Marek trusts grain and water over any book, and Nasir asks who wanted the bigger number. Meeting him adds the coherence view.
+
+**Why.** Ibn Khaldun (1332 to 1406) warned in the Muqaddimah that historians copy reports without testing them against what is possible, and he used army sizes as an example. The audit suggested him for chapter 2. He is now the 14th thinker. Source: Britannica, https://www.britannica.com/biography/Ibn-Khaldun/The-Muqaddimah-Ibn-Khalduns-philosophy-of-history
+
+**Where.** `src/content/thinker-khaldun.json`, `src/content/thinkers.json`, `src/maps/nile.ts`, `src/content/two-replies.json`, `tests/thinker-quests.test.ts`.
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.
@@ -291,7 +299,7 @@ These decisions need more content work. They will be done chapter by chapter, wi
 | --- | --- |
 | X-005 Difficult real history | Plan each case (for example the Nanking massacre, Nat Turner's revolt, the Lewis and Clark expedition and the Blackfeet, Columbus) with content notes, documented testimony and reliable sources. |
 | X-006 Indigenous knowledge | Weave knowledge from separate Indigenous peoples into the chapters, from sources made by the peoples themselves. |
-| X-012, X-015 Thinkers in the world | Mozi (chapter 11) and Ibn al-Haytham (chapter 4) are in. Add more thinkers as people the student meets, each with a quest. |
+| X-012, X-015 Thinkers in the world | Mozi (chapter 11), Ibn al-Haytham (chapter 4) and Ibn Khaldun (chapter 2) are in. Add more thinkers as people the student meets, each with a quest. |
 | X-007 More trials | Add more restartable trial sections in later chapters, each with its own idea. |
 | X-008 More replies | Every chapter now has two-reply moments (59 in all). Add more where a chapter has other key choices. |
 | X-001 Leaderboard in the hosted build | Connect the opt-in leaderboard to the hosted build when accounts exist. |

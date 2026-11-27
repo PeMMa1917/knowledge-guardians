@@ -1234,6 +1234,23 @@
      "text": "The people who could stop it were the people running it. The rule has to name someone outside the study, or it changes nothing."
     }
    ]
+  },
+  {
+   "id": "nile.khaldun.judged",
+   "after": {
+    "flagSet": "thinker.khaldun.judged"
+   },
+   "heading": "Two views on changing the chronicle",
+   "replies": [
+    {
+     "speaker": "nile-marek",
+     "text": "Grain, water, road length. I trust those more than any chronicle. A scribe can add a stroke. A well cannot water more people than it can."
+    },
+    {
+     "speaker": "nile-nasir",
+     "text": "I copy for a living, and I tell you: the copyist who added that stroke may have been told to. A bigger army pleased someone. Ask who wanted the number, not only whether it fits."
+    }
+   ]
   }
  ]
 }

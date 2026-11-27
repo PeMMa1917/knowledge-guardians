@@ -307,8 +307,19 @@ export const NILE_WORKYARD = room('nile.workyard', 'Nile Archive: Workmen’s Ro
   [{ stamp: 'crates', x: 2, y: 4 }, { stamp: 'barrel', x: 7, y: 5 }, { stamp: 'long-table', x: 10, y: 3 }, { stamp: 'bookshelf', x: 18, y: 2 }]);
 
 export const NILE_ROUTE = room('nile.route', 'Nile Archive: Map Room',
-  [{ id: 'nile-marek', x: 16, y: 7, facing: 'left' }],
+  [{ id: 'nile-marek', x: 16, y: 7, facing: 'left' },
+    { id: 'ibn-khaldun', x: 21, y: 5, facing: 'left', visibleIf: { flagSet: 'nile.dispatch' } }],
   [
+    // Ibn Khaldun's tests of the chronicle (KG-CH2-T01, X-015). Content: src/content/thinker-khaldun.json.
+    { id: 'khaldun-test-grain', kind: 'sign', x: 15, y: 4, w: 1, h: 1, walkThrough: true, label: "the granary rolls", art: 'ledger',
+      flag: 'thinker.khaldun.test.grain', visibleIf: { flag: 'thinker.khaldun.quest', eq: true },
+      text: "The granary rolls for that year list every store in the province. Added together, the stores could feed about twenty thousand people for a month, and the farms still had to eat." },
+    { id: 'khaldun-test-road', kind: 'sign', x: 19, y: 4, w: 1, h: 1, walkThrough: true, label: "the desert road record", art: 'nile.slip',
+      flag: 'thinker.khaldun.test.road', visibleIf: { flag: 'thinker.khaldun.quest', eq: true },
+      text: "The road record lists the wells on the desert road south. Each well can water a few thousand people and their animals in a day before it runs low. Marching one behind another, three hundred thousand people would make a line longer than the road between two wells." },
+    { id: 'khaldun-test-chain', kind: 'sign', x: 22, y: 7, w: 1, h: 1, walkThrough: true, label: "the copy chain of the chronicle", art: 'preserved.folder',
+      flag: 'thinker.khaldun.test.chain', visibleIf: { flag: 'thinker.khaldun.quest', eq: true },
+      text: "Five copies of the chronicle hang in order, oldest first. The oldest says thirty thousand. The third copy says three hundred thousand. Between the two, one stroke was added to the number. Every later copy follows the third." },
     ...SHELF_NILE_CALLBACK,
     ...LEAVITT_NILE_REVISIT,
     ...ALIGN_RETURN,

@@ -4,6 +4,7 @@ import { THINKERS } from '../src/domain/thinkers';
 import { MAPS } from '../src/maps';
 import mozi from '../src/content/thinker-mozi.json';
 import haytham from '../src/content/thinker-haytham.json';
+import khaldun from '../src/content/thinker-khaldun.json';
 import { Driver } from './driver';
 
 /** Thinkers the player meets in the world, each with a three-test quest (X-012, X-015). */
@@ -12,6 +13,8 @@ const QUESTS = [
     picks: ['holds only when', 'saying is right', 'do not agree'] },
   { key: 'haytham', who: 'ibn-al-haytham', map: 'observatory.station', unlock: ['coast.notice', 'signal'], data: haytham, accept: 'Test the manual',
     picks: ['same notch', 'tides', 'finer test'] },
+  { key: 'khaldun', who: 'ibn-khaldun', map: 'nile.route', unlock: ['nile.dispatch', 'board'], data: khaldun, accept: 'Test the chronicle',
+    picks: ['oldest copy says', 'cannot be right', 'Keep three hundred'] },
 ] as const;
 
 function read(d: Driver, map: string, id: string): void {

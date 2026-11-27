@@ -1,0 +1,608 @@
+{
+ "characters": [
+  {
+   "id": "ibn-khaldun",
+   "name": "Ibn Khaldun",
+   "role": "A historian from Tunis and Cairo (1332 to 1406), as the Nexus reconstructs him",
+   "sprite": "villager-2",
+   "mode": "historical",
+   "talk": [
+    {
+     "if": {
+      "all": [
+       {
+        "flag": "thinker.khaldun.quest",
+        "eq": true
+       },
+       {
+        "flag": "thinker.khaldun.test.grain",
+        "eq": true
+       },
+       {
+        "flag": "thinker.khaldun.test.road",
+        "eq": true
+       },
+       {
+        "flag": "thinker.khaldun.test.chain",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "thinker.khaldun.judged"
+        }
+       }
+      ]
+     },
+     "node": "thinker.khaldun.judge"
+    },
+    {
+     "if": {
+      "flagSet": "thinker.khaldun.judged"
+     },
+     "node": "thinker.khaldun.after"
+    },
+    {
+     "if": {
+      "flag": "thinker.khaldun.quest",
+      "eq": true
+     },
+     "node": "thinker.khaldun.wait"
+    },
+    {
+     "node": "thinker.khaldun.intro"
+    }
+   ]
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "thinker.khaldun.intro",
+   "speaker": "lumen",
+   "historicalLabel": "fictional-world",
+   "claimKind": "interpretation",
+   "text": "Lumen settles on a shelf edge. 'This is the Nexus's reconstruction of Ibn Khaldun, a historian who lived in Tunis and Cairo about six hundred years ago. His words here are written for the game. His real ideas are in the Muqaddimah, the introduction to his history, and the journal names where to read about them.'",
+   "options": [
+    {
+     "text": "Listen to Ibn Khaldun.",
+     "next": "thinker.khaldun.ask"
+    },
+    {
+     "text": "Come back later."
+    }
+   ]
+  },
+  {
+   "id": "thinker.khaldun.ask",
+   "speaker": "ibn-khaldun",
+   "historicalLabel": "reconstruction",
+   "claimKind": "interpretation",
+   "text": "Your archive keeps a fine chronicle. It says the army that marched south to the Second Cataract numbered three hundred thousand. Historians copy numbers like this from one book to the next, because a big number honours a ruler. I ask a different question: could it have happened, in the land as it was? A report must fit everything else we know about how people live, eat and travel. Will you test this number?",
+   "options": [
+    {
+     "text": "Test the chronicle's number.",
+     "next": "thinker.khaldun.go",
+     "if": {
+      "not": {
+       "flag": "thinker.khaldun.quest",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "thinker.ibn-khaldun.met",
+       "value": true
+      },
+      {
+       "setFlag": "view.coherence.met",
+       "value": true
+      },
+      {
+       "setFlag": "thinker.khaldun.quest",
+       "value": true
+      }
+     ]
+    },
+    {
+     "text": "Not now."
+    }
+   ]
+  },
+  {
+   "id": "thinker.khaldun.go",
+   "speaker": "ibn-khaldun",
+   "historicalLabel": "reconstruction",
+   "text": "Three places will help. The granary rolls tell you what the province could feed. The road record tells you about the wells on the desert road. And the oldest copy of the chronicle is in the copy chain on the high shelf. Come back when you have all three."
+  },
+  {
+   "id": "thinker.khaldun.wait",
+   "speaker": "ibn-khaldun",
+   "historicalLabel": "reconstruction",
+   "text": "The granary rolls, the road and its wells, the oldest copy. A report does not stand alone. It must stand with everything else."
+  },
+  {
+   "id": "thinker.khaldun.judge",
+   "speaker": "ibn-khaldun",
+   "historicalLabel": "reconstruction",
+   "claimKind": "interpretation",
+   "text": "So. Three hundred thousand men. What do your tests say?",
+   "options": [
+    {
+     "text": "The oldest copy says thirty thousand. A copyist changed it. The grain and the wells fit thirty thousand.",
+     "next": "thinker.khaldun.reply.copy",
+     "if": {
+      "all": [
+       {
+        "flag": "thinker.khaldun.quest",
+        "eq": true
+       },
+       {
+        "flag": "thinker.khaldun.test.grain",
+        "eq": true
+       },
+       {
+        "flag": "thinker.khaldun.test.road",
+        "eq": true
+       },
+       {
+        "flag": "thinker.khaldun.test.chain",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "thinker.khaldun.judged"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "thinker.khaldun.judged",
+       "value": "copy"
+      }
+     ]
+    },
+    {
+     "text": "Three hundred thousand cannot be right. The land could not feed or water them. We do not know the real number yet.",
+     "next": "thinker.khaldun.reply.impossible",
+     "if": {
+      "all": [
+       {
+        "flag": "thinker.khaldun.quest",
+        "eq": true
+       },
+       {
+        "flag": "thinker.khaldun.test.grain",
+        "eq": true
+       },
+       {
+        "flag": "thinker.khaldun.test.road",
+        "eq": true
+       },
+       {
+        "flag": "thinker.khaldun.test.chain",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "thinker.khaldun.judged"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "thinker.khaldun.judged",
+       "value": "impossible"
+      }
+     ]
+    },
+    {
+     "text": "Keep three hundred thousand in the record, with a note that it does not fit the grain and the wells.",
+     "next": "thinker.khaldun.reply.keep",
+     "if": {
+      "all": [
+       {
+        "flag": "thinker.khaldun.quest",
+        "eq": true
+       },
+       {
+        "flag": "thinker.khaldun.test.grain",
+        "eq": true
+       },
+       {
+        "flag": "thinker.khaldun.test.road",
+        "eq": true
+       },
+       {
+        "flag": "thinker.khaldun.test.chain",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "thinker.khaldun.judged"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "thinker.khaldun.judged",
+       "value": "keep"
+      }
+     ]
+    },
+    {
+     "text": "I need to think about it first."
+    }
+   ]
+  },
+  {
+   "id": "thinker.khaldun.reply.copy",
+   "speaker": "ibn-khaldun",
+   "historicalLabel": "reconstruction",
+   "text": "Good. You found the error and how it came in. But be careful: thirty thousand fits better, and fitting is not the same as proof. Write that the oldest copy says so, not that you know the number."
+  },
+  {
+   "id": "thinker.khaldun.reply.impossible",
+   "speaker": "ibn-khaldun",
+   "historicalLabel": "reconstruction",
+   "text": "That is the test I trust most: is it possible at all? You have ruled out a number without claiming a new one. Many historians cannot stop themselves from putting a better number in its place."
+  },
+  {
+   "id": "thinker.khaldun.reply.keep",
+   "speaker": "ibn-khaldun",
+   "historicalLabel": "reconstruction",
+   "text": "You keep what the chronicle says, and you warn the reader. That is honest. But a note in the margin is easy to miss, and the big number is easy to copy. Will the next copyist copy your note too?"
+  },
+  {
+   "id": "thinker.khaldun.after",
+   "speaker": "ibn-khaldun",
+   "historicalLabel": "reconstruction",
+   "text": "When a report surprises you, do not ask first who wrote it. Ask whether it fits the world it describes."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH2-T01",
+   "world": "WORLD-03",
+   "title": "The Army That Grew",
+   "knowledgeQuestion": "How can we check a report about the past when no one who saw it is alive?",
+   "stake": "Teachers copy numbers from this chronicle into their lessons. If the number is wrong, every class will learn it.",
+   "available": {
+    "flagSet": "nile.dispatch"
+   },
+   "objectives": [
+    {
+     "id": "thinker.khaldun.meet",
+     "title": "Hear what Ibn Khaldun asks about the chronicle.",
+     "essential": false,
+     "done": {
+      "flag": "thinker.khaldun.quest",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "justification",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS"
+      ],
+      "subjects": [
+       "history"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "understand",
+       "fink": "application",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "thinker.khaldun.grain",
+     "title": "Read what the province could feed.",
+     "essential": false,
+     "done": {
+      "flag": "thinker.khaldun.test.grain",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "explanation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "MAT"
+      ],
+      "subjects": [
+       "history",
+       "economics",
+       "math-ai"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "objective": "thinker.khaldun.meet"
+     }
+    },
+    {
+     "id": "thinker.khaldun.road",
+     "title": "Read about the road and its wells.",
+     "essential": false,
+     "done": {
+      "flag": "thinker.khaldun.test.road",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "NAT"
+      ],
+      "subjects": [
+       "history",
+       "geography"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "objective": "thinker.khaldun.meet"
+     }
+    },
+    {
+     "id": "thinker.khaldun.chain",
+     "title": "Read the oldest copy of the chronicle.",
+     "essential": false,
+     "done": {
+      "flag": "thinker.khaldun.test.chain",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "objective": "thinker.khaldun.meet"
+     }
+    },
+    {
+     "id": "thinker.khaldun.judge",
+     "title": "Tell Ibn Khaldun what the tests show.",
+     "essential": false,
+     "done": {
+      "flagSet": "thinker.khaldun.judged"
+     },
+     "weave": {
+      "concepts": [
+       "justification",
+       "certainty",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "HIS"
+      ],
+      "subjects": [
+       "history"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "application",
+       "solo": "relational"
+      }
+     },
+     "visible": {
+      "objective": "thinker.khaldun.meet"
+     },
+     "onComplete": [
+      {
+       "journal": "j.thinker.khaldun"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "hint.thinker.khaldun.meet.1",
+   "objective": "thinker.khaldun.meet",
+   "depth": 1,
+   "text": "A visitor waits in the Map Room after the dispatch is sent."
+  },
+  {
+   "id": "hint.thinker.khaldun.meet.2",
+   "objective": "thinker.khaldun.meet",
+   "depth": 2,
+   "text": "He asks about a number in a chronicle."
+  },
+  {
+   "id": "hint.thinker.khaldun.meet.3",
+   "objective": "thinker.khaldun.meet",
+   "depth": 3,
+   "text": "The number is the size of an army."
+  },
+  {
+   "id": "hint.thinker.khaldun.meet.4",
+   "objective": "thinker.khaldun.meet",
+   "depth": 4,
+   "text": "Talk to Ibn Khaldun and choose to test the number."
+  },
+  {
+   "id": "hint.thinker.khaldun.grain.1",
+   "objective": "thinker.khaldun.grain",
+   "depth": 1,
+   "text": "An army must eat."
+  },
+  {
+   "id": "hint.thinker.khaldun.grain.2",
+   "objective": "thinker.khaldun.grain",
+   "depth": 2,
+   "text": "The granary keeps records of every store."
+  },
+  {
+   "id": "hint.thinker.khaldun.grain.3",
+   "objective": "thinker.khaldun.grain",
+   "depth": 3,
+   "text": "The rolls are on the top shelf, on the left."
+  },
+  {
+   "id": "hint.thinker.khaldun.grain.4",
+   "objective": "thinker.khaldun.grain",
+   "depth": 4,
+   "text": "Read the granary rolls and compare them with the army's size."
+  },
+  {
+   "id": "hint.thinker.khaldun.road.1",
+   "objective": "thinker.khaldun.road",
+   "depth": 1,
+   "text": "An army must also drink and march."
+  },
+  {
+   "id": "hint.thinker.khaldun.road.2",
+   "objective": "thinker.khaldun.road",
+   "depth": 2,
+   "text": "The road south crosses desert."
+  },
+  {
+   "id": "hint.thinker.khaldun.road.3",
+   "objective": "thinker.khaldun.road",
+   "depth": 3,
+   "text": "The road record is on the top shelf, in the middle."
+  },
+  {
+   "id": "hint.thinker.khaldun.road.4",
+   "objective": "thinker.khaldun.road",
+   "depth": 4,
+   "text": "Read the road record. Think about water and the length of the line."
+  },
+  {
+   "id": "hint.thinker.khaldun.chain.1",
+   "objective": "thinker.khaldun.chain",
+   "depth": 1,
+   "text": "A number can change when a book is copied."
+  },
+  {
+   "id": "hint.thinker.khaldun.chain.2",
+   "objective": "thinker.khaldun.chain",
+   "depth": 2,
+   "text": "The archive keeps old copies in order."
+  },
+  {
+   "id": "hint.thinker.khaldun.chain.3",
+   "objective": "thinker.khaldun.chain",
+   "depth": 3,
+   "text": "The copy chain is on the right wall."
+  },
+  {
+   "id": "hint.thinker.khaldun.chain.4",
+   "objective": "thinker.khaldun.chain",
+   "depth": 4,
+   "text": "Read the copy chain. Compare the oldest copy with the later ones."
+  },
+  {
+   "id": "hint.thinker.khaldun.judge.1",
+   "objective": "thinker.khaldun.judge",
+   "depth": 1,
+   "text": "Go back to Ibn Khaldun when all three tests have spoken."
+  },
+  {
+   "id": "hint.thinker.khaldun.judge.2",
+   "objective": "thinker.khaldun.judge",
+   "depth": 2,
+   "text": "There is no single right answer. Each one gets a reply."
+  },
+  {
+   "id": "hint.thinker.khaldun.judge.3",
+   "objective": "thinker.khaldun.judge",
+   "depth": 3,
+   "text": "Think about what the record should say now."
+  },
+  {
+   "id": "hint.thinker.khaldun.judge.4",
+   "objective": "thinker.khaldun.judge",
+   "depth": 4,
+   "text": "Talk to Ibn Khaldun and choose what the tests show."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.thinker.khaldun",
+   "kind": "quest",
+   "title": "The Army That Grew",
+   "text": "I met the Nexus's reconstruction of Ibn Khaldun. He tested reports about the past by asking whether they fit how people really live, eat and travel. I tested a chronicle's army number against the grain, the wells and the oldest copy. To read about his real ideas: Britannica, Ibn Khaldun: The Muqaddimah (britannica.com/biography/Ibn-Khaldun)."
+  }
+ ]
+}
