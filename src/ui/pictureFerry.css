@@ -1,5 +1,6 @@
 .picture-ferry-work {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.7em;
 }
 .picture-ferry-work p,
@@ -8,13 +9,21 @@
 }
 .ferry-choose {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.35em;
   font-weight: bold;
+}
+.ferry-select-frame {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  padding: 3px;
 }
 .ferry-choose select {
   width: 100%;
   min-width: 0;
   font: inherit;
+  text-overflow: ellipsis;
 }
 .ferry-window-stage {
   display: grid;
@@ -63,7 +72,7 @@
 }
 @media (max-width: 520px) {
   .ferry-window-stage {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .ferry-spindle {
     display: none;

@@ -1,5 +1,11 @@
 # Status and next steps
 
+## 27 November • The night we had two moons
+
+Bo has punched two moons in his supper ticket. One window faces the deck. The other faces his bunk. A Guardian can turn the three-sided sleeve, walk between the windows and decide whether to ring the bell in time for a connection or tie up long enough for the passengers to see what was folded away. Each of 31 signed prints from the Civic Callboard has a passenger waiting for it and two possible replies ashore. Three different prints that have made the crossing can go on Hari’s evening bill. The cook or the child can open the show, and the last seat hears the three pages in the order the Guardian chose. [The wheel](src/ui/pictureFerry.ts) · [The passengers](src/content/ferryCommissions.ts) · [The programme](src/domain/ferryBill.ts)
+
+The collectible audit follows ordinary items and keepsakes from where a player earns them to where someone can actually use them. It found a use outside the observed acquisition rooms for 158 of 172. Fourteen still have only same-room evidence. [Collectible audit](tools/audit-collectible-use.mjs)
+
 ## 27 November • A place for a moth
 
 Kip has lent the Guardian a shutter, a glass tile, a wool cuff and a well-worn piece of brass. A second sighting lets the Guardian try them where the Glimmermoth has landed. Choosing its resting place opens work together at a forest station, an archive or a rehearsal. At the theatre, a cue ribbon helps the understudy find her entrance. Waiting for her signal gives her control of the silence. The choice follows the two of them out of the rehearsal. [Three homes and six outcomes](src/content/mothPerchReturns.ts)

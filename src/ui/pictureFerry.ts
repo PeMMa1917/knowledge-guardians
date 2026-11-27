@@ -30,7 +30,12 @@ function selector(label: string, sheets: readonly FerrySheet[], slug: string) {
   select.value = slug;
   return {
     select,
-    label: h('label', { class: 'ferry-choose' }, label, select),
+    label: h(
+      'label',
+      { class: 'ferry-choose' },
+      label,
+      h('span', { class: 'ferry-select-frame' }, select),
+    ),
   };
 }
 function proof(sheet: FerrySheet, c: GameController) {
@@ -221,7 +226,8 @@ export function printWheel(c: GameController, sound: (key: string) => void) {
       window.figure.dataset.face = fitted ? faces[side] : 'empty';
     }
     const job = ferryCommissions[sheet.slug];
-    voice.textContent = job.caller + ' · “' + job.request + '”';
+    voice.textContent =
+      sheet.title + ' · ' + job.caller + ' · “' + job.request + '”';
     instruction.textContent = checked
       ? 'Ring now to keep the connection. Tie up and let the crowd walk round to the folded leaf.'
       : fitted

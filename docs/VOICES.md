@@ -538,3 +538,8 @@ The mark on its face identifies who kept the box. It has taken that duty as its 
 - **Worries** the next player will inherit two workshop signs they cannot distinguish. Fen offers to make that comparison on her own materials.
 - **Speaks** about the reader’s hand, the working surface and the person who has to use the next copy. The workshop conversation is original dialogue.
 - **Why** the first edition records dots and dashes for writing and music. Fen can use the history to ask a question and put her own name on the solution she tried. [Perkins School for the Blind](https://www.perkins.org/brailles-most-famous-book/)
+
+
+## On Tova’s picture ferry
+
+Bo punches things when he cannot put his feeling into words. He offers the Guardian his bruised supper ticket before he will explain why he has put a moon on either side of it. At the bunk he counts what the adults fail to see. At the playhouse he wants a turn with the opening line. Tova measures the price of an extra minute in connections her passengers will miss. Neris volunteers to walk home when making room for another person costs them their own seat. The cook has been waiting to see what everyone else spent supper laughing at. Giving one of them the first page changes who gets to set up a stranger’s story and who has to answer afterwards. [Boat and gallery](../src/content/pictureFerry.ts) · [Individual commissions and replies](../src/content/ferryCommissions.ts)

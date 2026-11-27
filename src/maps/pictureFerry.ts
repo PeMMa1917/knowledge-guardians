@@ -31,7 +31,7 @@ const sail: Condition = { flag: 'picture-ferry.landing', eq: 'sail' },
   moor: Condition = { flag: 'picture-ferry.landing', eq: 'moor' };
 export const pictureFerryDoor = prop(
   'gangway',
-  19,
+  20,
   12,
   'the painted boat with two little moons',
   'picture-ferry.boat',

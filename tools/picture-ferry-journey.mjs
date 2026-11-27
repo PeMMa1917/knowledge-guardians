@@ -22,9 +22,7 @@ export async function playPictureFerry({ page, engine, use, waitMap, close }) {
     page.evaluate((flag) => kg.controller.state.flags[flag] ?? null, flag);
   const resume = async (map) => {
     await page.reload({ waitUntil: 'domcontentloaded' });
-    await key(
-      page.getByRole('button', { name: 'Continue', exact: true }).first(),
-    );
+    await key(page.getByRole('button', { name: /^Continue\b/ }).first());
     await waitMap(map);
     await key(
       page.getByRole('button', { name: 'Continue playing', exact: true }),
@@ -61,7 +59,7 @@ export async function playPictureFerry({ page, engine, use, waitMap, close }) {
       1,
     );
   }
-  await move(shore, 19, 13);
+  await move(shore, 20, 13);
   await use('picture-ferry-gangway');
   await waitMap(boat);
   await use('picture-boy');
