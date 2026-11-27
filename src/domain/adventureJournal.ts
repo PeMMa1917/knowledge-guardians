@@ -504,6 +504,14 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if (!event) return undefined;
     const [family] = event.key.split(':', 1);
     const specimen = family === 'specimen' ? exhibits.get(event.ref)?.specimen : undefined;
+    if (family === 'coat-tracing') {
+      const pair = lanternCase(event.ref);
+      if (pair && pocketStories[pair.site.id]) {
+        const work = coatWeave(pair.site.id);
+        return diaryTopics({...work, concepts:[...new Set([...work.concepts,...pair.person.weave.concepts as typeof work.concepts])],
+          aoks:[...new Set([...(work.aoks ?? []),...pair.person.weave.aoks as NonNullable<typeof work.aoks>])]});
+      }
+    }
     if (family === 'coat') {
       const site = event.key.split(':')[1];
       if (Object.hasOwn(pocketStories,site)) return diaryTopics(coatWeave(site));

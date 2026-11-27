@@ -1,3 +1,5 @@
+import { coatMargins } from '../content/coatMargins';
+import { coatSlip, coatSlipReply, mountedCoatSlips, openedCoatSlip } from '../domain/coatTracing';
 import type { GameController } from '../app/controller';
 import { playNotes } from '../app/ambience';
 import { pocketStories } from '../content/pocketStories';
@@ -77,7 +79,9 @@ export function coatPanel(c: GameController, site: string, volume: () => number,
     const restored = [...body.querySelectorAll<HTMLElement>('[data-coat-focus]')].find(
       (el) => el.dataset.coatFocus === focusKey,
     );
-    restored?.focus({ preventScroll: true });
+    (restored ?? body.querySelector<HTMLElement>('[data-coat-focus="loop"]'))?.focus({
+      preventScroll: true,
+    });
   }
   function action(text: string, key: string, cmd: PocketCommand, message: string) {
     return h(
@@ -166,6 +170,59 @@ export function coatPanel(c: GameController, site: string, volume: () => number,
       workshop.append(printRack);
     }
     const outgoing = h('section', {}, h('h3', {}, 'Pocket for ' + pocketPlace(p.to)));
+    const slips = mountedCoatSlips(s, site);
+    const draftSlip = coatSlip(s, site, 'draft');
+    const enclosure = h(
+      'section',
+      { class: 'coat-enclosure' },
+      h('h4', { tabindex: '-1', 'data-coat-focus': 'loop' }, 'A loop for a guest’s tracing'),
+    );
+    if (slips.length) {
+      enclosure.append(
+        h(
+          'p',
+          {},
+          slips[0].person.name +
+            ' left two pieces mounted at the chapter lamp. Pin one to the outside. The other folds underneath.',
+        ),
+      );
+      for (const [i, slip] of slips.entries())
+        enclosure.append(
+          action(
+            'Pin the ' + slip.pinned.label,
+            'slip' + i,
+            { type: 'WorkCoatPocket', action: 'thread', slip: slip.value },
+            slip.pinned.reading,
+          ),
+        );
+    } else
+      enclosure.append(
+        h(
+          'p',
+          {},
+          'A tracing you finish with a guest at the chapter lamp will fit here. The coat can travel on its own.',
+        ),
+      );
+    if (draftSlip)
+      enclosure.append(
+        h(
+          'p',
+          {},
+          'On the next pocket: ' +
+            draftSlip.person.name +
+            ' · ' +
+            draftSlip.pinned.label +
+            '. ' +
+            draftSlip.pinned.reading,
+        ),
+        action(
+          'Leave the guest’s tracing here',
+          'unthread',
+          { type: 'WorkCoatPocket', action: 'unthread' },
+          'Lifted out for your next edition.',
+        ),
+      );
+    outgoing.append(enclosure);
     if (compared)
       outgoing.append(
         ...p.seams.map((name, i) =>
@@ -198,11 +255,25 @@ export function coatPanel(c: GameController, site: string, volume: () => number,
             pocketProof(site, gotReply.setting).face,
         ),
       );
+    const homeReply = coatSlipReply(s, site);
+    const homeSlip = coatSlip(s, site, 'read');
+    if (homeReply && homeSlip)
+      outgoing.append(
+        h(
+          'aside',
+          { class: 'coat-enclosure' },
+          h('h4', {}, 'The keeper wrote back about ' + homeSlip.pinned.label),
+          h('p', {}, homeSlip.person.name + ' · ' + coatMargins[p.to][homeReply]),
+        ),
+      );
     const incoming = h('section', {}, h('h3', {}, 'Lining from ' + pocketPlace(source)));
     if (sent)
       incoming.append(
         action(
-          read?.value === sent.value ? 'Open the sewn pocket again' : 'Open the sewn pocket',
+          read?.value === sent.value &&
+            coatSlip(s, source, 'read')?.value === coatSlip(s, source, 'sent')?.value
+            ? 'Open the sewn pocket again'
+            : 'Open the sewn pocket',
           'read',
           { type: 'WorkCoatPocket', action: 'read' },
           sender.replies[sent.seam],
@@ -247,6 +318,70 @@ export function coatPanel(c: GameController, site: string, volume: () => number,
             ),
           );
       });
+    }
+    const opened = openedCoatSlip(s, source);
+    if (opened) {
+      const { slip } = opened;
+      const leaves = h(
+        'section',
+        { class: 'coat-enclosure' },
+        h('h4', {}, 'A fold from ' + slip.person.name),
+        h(
+          'p',
+          {},
+          'At ' + slip.site.place + ' you chose “' + slip.fold.action + '” and “' + slip.use.action + '”.',
+        ),
+        h(
+          'p',
+          { class: 'coat-paper', 'data-concept-paper': true },
+          'Pinned on top · ' + slip.pinned.label + ' — ' + slip.pinned.reading,
+        ),
+      );
+      for (const leaf of ['other', 'loose'] as const) {
+        const label =
+          leaf === 'other'
+            ? 'Lift the flap on the original tracing'
+            : 'Bring the omitted piece to the table';
+        leaves.append(
+          action(
+            label,
+            'leaf-' + leaf,
+            { type: 'WorkCoatPocket', action: 'unfold', leaf },
+            slip[leaf].reading,
+          ),
+        );
+        if (opened.examined(leaf))
+          leaves.append(
+            h(
+              'p',
+              { class: 'coat-paper', 'data-concept-paper': true },
+              (leaf === 'other' ? 'Originally under the flap' : 'Added at this table') +
+                ' · ' +
+                slip[leaf].label +
+                ' — ' +
+                slip[leaf].reading,
+            ),
+          );
+      }
+      if (opened.both) {
+        leaves.append(
+          action(
+            'Hang the two readings side by side',
+            'margin-alongside',
+            { type: 'WorkCoatPocket', action: 'reply', reading: 'alongside' },
+            coatMargins[site].alongside,
+          ),
+          action(
+            'Mark where the comparison stops',
+            'margin-limit',
+            { type: 'WorkCoatPocket', action: 'reply', reading: 'limit' },
+            coatMargins[site].limit,
+          ),
+        );
+        const reply = coatSlipReply(s, source);
+        if (reply) leaves.append(h('blockquote', {}, coatMargins[site][reply]));
+      }
+      incoming.append(leaves);
     }
     const count = coatNames(s).length;
     const lining = h(

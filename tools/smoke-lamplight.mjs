@@ -84,7 +84,7 @@ try {
   const shiftOnly = process.argv.includes('--emberford-shift');
   const registerOnly = process.argv.includes('--night-register');
   const coatOnly = process.argv.includes('--shift-coat');
-  if (coatOnly) await playPocketCoat({page,engine,posts,waitMap,use,close});
+  if (coatOnly) await playPocketCoat({page,engine,posts,sites,people,waitMap,use,close,button});
   else if (registerOnly) await playNightRegister({page,engine,waitMap,use,close,button,posts,works:load('night-register.json'),trails:load('night-trails.json')});
   else if (shiftOnly) await playEmberfordShift({page,engine,waitMap,use,close,button,puzzles:load('puzzles.json').puzzles});
   else if (bellOnly) await playLastBell({page,engine,waitMap,use,close,button,sites,posts});

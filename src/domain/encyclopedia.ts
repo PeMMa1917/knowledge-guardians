@@ -77,7 +77,7 @@ export interface EncyclopediaDiaryEvent {
 
 export function encyclopediaForDiaryEvent(pack: ContentPack, event?: EncyclopediaDiaryEvent): EncyclopediaLink | undefined {
   if (!event) return undefined;
-  if (event.key.startsWith('lantern:' + event.ref + ':')) {
+  if (event.key.startsWith('lantern:' + event.ref + ':') || event.key.startsWith('coat-tracing:' + event.ref + ':')) {
     const guest = lanternCase(event.ref)?.person;
     const character = guest && pack.characters.find(({ id }) => id === guest.character);
     if (character) return encyclopediaForCharacter(character);

@@ -1,3 +1,5 @@
+import { coatMargins } from '../content/coatMargins';
+import { coatSlip, mountedCoatSlips, openedCoatSlip, slipFlag } from './coatTracing';
 import { pocketStories } from '../content/pocketStories';
 import stations from '../content/ink-post-stations.json';
 import { pocketProof } from './pocketProof';
@@ -7,6 +9,10 @@ import type { CampaignState, Effect } from './types';
 type State = Pick<CampaignState, 'flags' | 'mapId'>;
 export type PocketCommand = { type: 'WorkCoatPocket' } & (
   | { action: 'turn'; rail: 0 | 1; side: 0 | 1 }
+  | { action: 'thread'; slip: string }
+  | { action: 'unthread' }
+  | { action: 'unfold'; leaf: 'other' | 'loose' }
+  | { action: 'reply'; reading: 'alongside' | 'limit' }
   | { action: 'pull' }
   | { action: 'read' }
   | { action: 'recheck'; rail: 0 | 1 }
@@ -64,6 +70,33 @@ export function coatEffects(cmd: PocketCommand, s: State): Effect[] {
   const edition = (seam: number) => 1 + setting + 4 * seam;
   if ('seam' in cmd && cmd.seam !== 0 && cmd.seam !== 1) throw Error('Choose a seam on the coat.');
   switch (cmd.action) {
+    case 'thread': {
+      const slip = mountedCoatSlips(s, id).find((v) => v.value === cmd.slip);
+      if (!slip)
+        throw Error(
+          'At the chapter lamp, mount two pieces you worked on together. Choose one of those pieces for the pocket.',
+        );
+      return [put(slipFlag(id, 'draft'), slip.value)];
+    }
+    case 'unthread':
+      return [put(slipFlag(id, 'draft'), false)];
+    case 'unfold':
+    case 'reply': {
+      const sender = pocketSender(id)!;
+      const opened = openedCoatSlip(s, sender);
+      if (!opened) throw Error('Open a sewn pocket with a guest tracing inside.');
+      if (cmd.action === 'unfold') {
+        if (cmd.leaf !== 'other' && cmd.leaf !== 'loose') throw Error('Choose a leaf on the tracing.');
+        return [put(slipFlag(sender, cmd.leaf), opened.receipt)];
+      }
+      if (!opened.both)
+        throw Error(
+          'Look under the sewn leaf and bring the loose piece beside it before sending word home.',
+        );
+      if (cmd.reading !== 'alongside' && cmd.reading !== 'limit')
+        throw Error('Choose how this keeper will use the tracing.');
+      return [put(slipFlag(sender, 'reply'), opened.receipt + '/' + cmd.reading)];
+    }
     case 'turn': {
       if (![0, 1].includes(cmd.rail) || ![0, 1].includes(cmd.side))
         throw Error('Move one of the two fittings.');
@@ -87,7 +120,10 @@ export function coatEffects(cmd: PocketCommand, s: State): Effect[] {
       if (!(pulls & (1 << setting))) throw Error('Try this arrangement before sewing it in.');
       if (![0, 1].some((rail) => (pulls & (1 << (setting ^ (1 << rail)))) !== 0))
         throw Error('Try changing one fitting on its own. Keep an impression of each version.');
-      return [put(coatKey(id, 'sent'), edition(cmd.seam))];
+      return [
+        put(coatKey(id, 'sent'), edition(cmd.seam)),
+        put(slipFlag(id, 'sent'), coatSlip(s, id, 'draft')?.value ?? false),
+      ];
     case 'recheck': {
       const sender = pocketSender(id);
       const arrived = sender && pocketEdition(s, sender, 'read');
@@ -100,7 +136,11 @@ export function coatEffects(cmd: PocketCommand, s: State): Effect[] {
       const sender = pocketSender(id);
       const sent = sender && pocketEdition(s, sender, 'sent');
       if (!sender || !sent) throw Error('This pocket has not arrived from its shift yet.');
-      const received = [put(coatKey(id, 'open'), true), put(coatKey(sender, 'read'), sent.value)];
+      const received = [
+        put(coatKey(id, 'open'), true),
+        put(coatKey(sender, 'read'), sent.value),
+        put(slipFlag(sender, 'read'), coatSlip(s, sender, 'sent')?.value ?? false),
+      ];
       if (!pocketEdition(s, sender, 'first')) received.push(put(coatKey(sender, 'first'), sent.value));
       return received;
     }
@@ -133,6 +173,70 @@ export function coatDiary(cmd: PocketCommand, previous: State, state: State) {
   let where = id,
     text: string,
     detail: string;
+  if (
+    cmd.action === 'thread' ||
+    cmd.action === 'unthread' ||
+    cmd.action === 'unfold' ||
+    cmd.action === 'reply'
+  ) {
+    const own = cmd.action === 'thread' || cmd.action === 'unthread';
+    const from = own ? id : pocketSender(id)!;
+    const slip = own
+      ? coatSlip(cmd.action === 'thread' ? state : previous, from, 'draft')
+      : coatSlip(state, from, 'read');
+    if (!slip) return;
+    const receipt = pocketEdition(state, from, 'read');
+    let move: string = cmd.action;
+    let line: string;
+    if (cmd.action === 'thread')
+      line =
+        'I pinned the ' +
+        slip.pinned.label +
+        ' from my work with ' +
+        slip.person.name +
+        ' beside the coat impression. ' +
+        slip.pinned.reading;
+    else if (cmd.action === 'unthread')
+      line =
+        'I lifted ' +
+        slip.person.name +
+        '’s ' +
+        slip.pinned.label +
+        ' out before sewing the next edition. The last sent pocket stayed closed.';
+    else if (cmd.action === 'unfold') {
+      const material = slip[cmd.leaf];
+      move += '-' + cmd.leaf;
+      line =
+        cmd.leaf === 'other'
+          ? 'I unfolded the other piece from the original tracing with ' + slip.person.name + '. '
+          : 'I brought in the piece missing from the original tracing with ' + slip.person.name + '. ';
+      line +=
+        material.label +
+        ' — ' +
+        material.reading +
+        ' Beside it, the sewn coat reading said: ' +
+        pocketProof(from, receipt!.setting).face;
+    } else {
+      move += '-' + cmd.reading;
+      line =
+        'I sent word back to ' +
+        pocketPlace(from) +
+        ' about the tracing with ' +
+        slip.person.name +
+        '. ' +
+        coatMargins[id][cmd.reading];
+    }
+    const source = ('station' in slip.person ? 'HIS-INK-' : 'HIS-LAMPLIGHT-') + slip.person.id;
+    return diaryEvent(
+      'coat-tracing:' + slip.ref + ':' + move + ':' + (own ? 'draft' : receipt!.value) + ':' + slip.value,
+      cmd.action === 'unfold' ? 'tool' : 'choice',
+      slip.ref,
+      pocketStories[id].title,
+      line,
+      { sourceIds: [source] },
+      'after-break',
+    );
+  }
   if (cmd.action === 'turn') {
     if (currentSetting(previous, id) === setting) return;
     text =

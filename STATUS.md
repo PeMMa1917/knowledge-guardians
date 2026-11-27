@@ -4,6 +4,8 @@
 
 Ise's mother's button turns up on a coat with fifteen working pockets. At Ostel's peg, change the ruler on the ferry queue and choose which wait to put on the sign. At Wren's, let two people describe the same boat separately or after hearing each other. Every pocket goes to a particular second keeper, who can try the tool against the actual impression sewn inside. Three receiving keepers can sign either of two endings. Both remain playable. [Fifteen stories](src/content/pocketStories.ts) · [State and recovery checks](tests/pocket-coat.test.ts)
 
+A player can stitch a guest's actual tracing inside the coat. The next keeper sees what was chosen, can try the piece that was left out, and has two different ways to put the result to work. The domain tests cover all 250 guests at all 15 chapter lamps, both pins and both replies. Journal links and citations follow the guest who was actually met. [Guest return checks](tests/coat-tracing.test.ts)
+
 The 75 new optional objectives add 84 action links across 42 previously uncovered micro-skills. All 35 adapted exhibition question families appear in these workshops. The campaign total is 551 of 1,200 skills, with 350 linked in multiple worlds. Of 10,729,248 world, learning and RPG combinations, two have ten documented actions and 673 have one to nine. [Skill ledger](docs/TOK_MICRO_SKILLS.md) · [Action-level audit](docs/CROSS_WEAVE_AUDIT.md)
 
 The build passed 2,606 tests in 314 files. All 2,038 exact specimens passed the release check and all 1,880 assets passed the credits check. [Persona review and field route](docs/audit/NIGHT_REGISTER.md#the-blue-shift-coat)

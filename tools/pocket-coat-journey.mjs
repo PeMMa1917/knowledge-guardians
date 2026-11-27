@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 
 // Chapter access is staged. Inside each room the player targets the peg and operates the visible tool.
-export async function playPocketCoat({ page, engine, posts, waitMap, use, close }) {
+export async function playPocketCoat({ page, engine, posts, sites, people, waitMap, use, close, button }) {
   const destinations = {
     archive: 'press',
     nile: 'market',
@@ -36,7 +36,31 @@ export async function playPocketCoat({ page, engine, posts, waitMap, use, close 
     await panel.waitFor();
   }
   for (const [i, p] of selected.entries()) {
+    const site = sites.find((s) => s.id === p.id);
+    const guest = people.find((person) => person.id === site.pair.guests[0]);
+    if (i === 0) {
+      await page.evaluate((post) => kg.world.changeMap(post.map, post.at[0], post.at[1] + 1), p);
+      await waitMap(p.map);
+      await use('ink-post.' + site.id);
+      await button('call a guest to the lantern');
+      await page.getByRole('searchbox').fill(guest.name);
+      await button(guest.name + ' ·');
+      for (const piece of [0, 2]) await page.locator('[data-lantern-piece="' + piece + '"]').click();
+      await button(guest.folds[0].action);
+      await close();
+      await use('lamplight.' + site.id + '.bench');
+      await button(guest.name + ' ·');
+      await button(site.uses[1].action);
+      await close();
+    }
     await open(p.id, true);
+    if (i === 0) {
+      await control('slip1').click();
+      await panel
+        .getByText('On the next pocket: ' + guest.name, { exact: false })
+        .first()
+        .waitFor();
+    }
     await control('pull').click();
     assert.equal(await control('sew0').count(), 0);
     await control('fit0').selectOption('1');
@@ -53,6 +77,18 @@ export async function playPocketCoat({ page, engine, posts, waitMap, use, close 
     await control('read').click();
     await control('counter0').click();
     await control('counter1').click();
+    if (i === 0) {
+      await control('leaf-loose').click();
+      assert.equal(await control('margin-limit').count(), 0);
+      await control('leaf-other').click();
+      await control('margin-alongside').click();
+      await control('margin-limit').click();
+      await close();
+      await open(p.id);
+      await panel.getByRole('heading', { name: /The keeper wrote back about/ }).waitFor();
+      await close();
+      await open(target);
+    }
     assert.equal(await panel.locator('details[open] .coat-paper').count(), 2);
     if (i === 2) {
       await control('ending0').click();
