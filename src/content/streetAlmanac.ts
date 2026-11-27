@@ -98,8 +98,9 @@ export function installStreetAlmanac(pack: ContentPack) {
   for (const s of pack.sources) if (mla[s.id]) s.mla = mla[s.id];
   for (const c of calendarCases) {
     const e = pack.exhibits.find((e) => e.id === c.exhibit)!;
-    e.name = c.title;
-    if (c.id === 'shell') e.dateText = c.date;
+    // At the Market, the two parallel shelf labels make their accession prefixes easy to compare.
+    if (c.id !== 'shell') e.name = c.title;
+    if (c.id === 'shell') e.dateText += ' The museum records the gift on 18 November 1876.';
     if (c.id === 'volume') e.dateText += ' This copy was scanned on 5 March 2020.';
     e.dateKind += ' ' + c.date;
     e.sources = [...new Set([...e.sources, c.source, c.context])];
