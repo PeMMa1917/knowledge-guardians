@@ -81,6 +81,7 @@ import { OFFER_LINE, shouldOfferHelp } from '../domain/lumenOffer';
 import { IDEA_CREDITS } from '../domain/ideaCredits';
 import { gymPanel } from './gymPanel';
 import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
+import { THINKERS, VIEWS as TOK_VIEWS, adviceLabel, meetFlags, thinkerFlag, thinkersFor, viewsMet } from '../domain/thinkers';
 import { bestFlag, canTimedReplay, clockText, elapsedSeconds, resultText, timedResult } from '../domain/timedReplay';
 import { routingBoard } from './routingBoards';
 import { counterReplayBoard } from './counterReplayBoard';
@@ -1137,10 +1138,31 @@ export class UI implements UIApi {
       h('p', { class: 'hint-text' }, hint.hint.text),
       ...(roleOf(c.state.flags) ? [h('p', { class: 'fine' }, h('strong', {}, `As a ${roleOf(c.state.flags)!.name}, ask: `), roleOf(c.state.flags)!.ask, ' ', h('em', {}, `Watch your blind spot: ${roleOf(c.state.flags)!.blind}`))] : []),
       h('p', { class: 'fine' }, 'Asking for help never lowers your XP or blocks an award.'),
+      this.thinkerAdvisor(),
       h('div', { class: 'row' },
         hint.hint.depth < 4 ? h('button', { onclick: () => this.askLumen() }, 'More help') : null,
         h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Thanks')));
     void box;
+  }
+
+  /** Decision X-015: Lumen can call a thinker as an advisor. Their view is then tracked in the journal (X-012). */
+  private thinkerAdvisor(): HTMLElement {
+    const c = ctx.controller;
+    const out = h('div', { class: 'advisor-out', 'aria-live': 'polite' });
+    const pick = h('select', { 'aria-label': 'Choose a thinker' },
+      h('option', { value: '' }, 'Choose a thinker…'),
+      ...THINKERS.map((t) => h('option', { value: t.id }, `${t.name} (${t.views.map((v) => TOK_VIEWS.find((x) => x.id === v)?.name).join('; ')})`)));
+    pick.addEventListener('change', () => {
+      const t = THINKERS.find((x) => x.id === pick.value);
+      clear(out);
+      if (!t) return;
+      for (const flag of meetFlags(t)) c.dispatch({ type: 'SetFlag', flag, value: true });
+      this.sfx('sfx.page');
+      out.append(...t.views.map((v) => h('p', {}, h('strong', {}, `${TOK_VIEWS.find((x) => x.id === v)?.name}: `), t.advice[v])),
+        h('p', { class: 'fine' }, adviceLabel(t)));
+    });
+    return h('details', { class: 'advisor' }, h('summary', {}, 'Ask a thinker'),
+      h('p', { class: 'fine' }, 'Lumen can ask a thinker from history how they would look at this step. Each one has a named view.'), pick, out);
   }
 
   // ------------------------------------------------------------ events
@@ -2799,11 +2821,26 @@ export class UI implements UIApi {
     this.sfx('sfx.book');
     if (tab === 'letters') this.deliverCommunityLetters(false);
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { diary: 'Diary', notes: 'My notes', 'open-quests': 'Open quests', story: 'Story so far', conversations: 'Conversations', entries: 'Entries', cards: 'Evidence cards', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', crossings: 'Crossings', ...(s.flags['ending.council'] ? { afterwards: 'Afterwards' } : {}), glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
+    const tabs: Record<string, string> = { diary: 'Diary', notes: 'My notes', 'open-quests': 'Open quests', story: 'Story so far', conversations: 'Conversations', entries: 'Entries', cards: 'Evidence cards', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', crossings: 'Crossings', ...(s.flags['ending.council'] ? { afterwards: 'Afterwards' } : {}), glossary: 'Glossary', views: 'Views', awards: 'Awards and XP', sources: 'Sources' };
     const body = h('div', { class: 'tab-body' });
     const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
     if (tab === 'diary' || tab === 'notes' || tab === 'open-quests') {
       body.append(adventureJournalTab(tab, c, (page) => this.openJournal(page)));
+    } else if (tab === 'views') {
+      // Decision X-012: named views of truth and of ethics, and the thinkers the student has heard.
+      const met = viewsMet(s.flags);
+      body.append(h('p', { class: 'fine' }, met.length
+        ? `${met.length} of ${TOK_VIEWS.length} views met. Ask a thinker from Lumen's hint panel to meet more.`
+        : 'No views yet. When you are stuck, open Lumen\'s hint and choose "Ask a thinker".'),
+      ...(['truth', 'ethics'] as const).map((family) => h('section', {}, h('h3', {}, family === 'truth' ? 'Views of truth' : 'Views of ethics'),
+        ...TOK_VIEWS.filter((v) => v.family === family).map((v) => {
+          const known = met.includes(v);
+          const heard = thinkersFor(v.id).filter((x) => s.flags[thinkerFlag(x.id)] === true);
+          return h('div', { class: `lore-entry ${known ? '' : 'locked'}` }, h('h4', {}, known ? v.name : `${v.name} (not met yet)`),
+            known ? h('p', {}, v.plain) : '',
+            ...heard.map((x) => h('p', { class: 'fine' }, h('strong', {}, `${x.name}, ${x.life}, ${x.place}. `), x.summary, ' ',
+              x.source.url ? h('a', { href: x.source.url, target: '_blank', rel: 'noopener' }, x.source.title) : h('cite', {}, x.source.title))));
+        }))));
     } else if (tab === 'crossings') {
       // Conflicts met in the world, and how the player met them.
       const met = CROSSINGS.filter((x) => crossingWay(s.flags, x.id));
