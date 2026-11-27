@@ -1,3 +1,4 @@
+import {tiedThread} from './trailThread';
 import {equippedLoan,loanReading,readerAnswer,readerLetters,selectedLoan,setupLabels} from './fieldLoan';
 import {loanStops} from '../content/loanCrews';
 import { SERVICE_CUTS, servicePlan } from './boundaryBoard';
@@ -45,6 +46,16 @@ function fixedTrial(key: `${string}:${string}`, ref: string, title: string, text
 /** Describe completed commands from their validated parameters and the same authored models the tools display. */
 export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, next: CampaignState, cmd: Command): DiaryEntryDraft | undefined {
   switch (cmd.type) {
+    case 'TieJournalThread':
+    case 'UntieJournalThread': {
+      const tie=tiedThread(pack,cmd.type==='TieJournalThread'?next:previous);
+      if(!tie)return;
+      const old=tiedThread(pack,previous);
+      if(cmd.type==='TieJournalThread' && old?.objective.id===tie.objective.id && old.face===tie.face)return;
+      const removed=cmd.type==='UntieJournalThread';
+      return diaryEvent('trail-thread:'+(removed?'free':'tied')+':'+tie.objective.id+':'+tie.face,'choice',tie.objective.id,tie.marker.paper,
+        removed?'I slipped my ribbon out of “'+tie.mission.title+'”. I can still return to that story.':'I marked “'+tie.objective.title+'” for my return. '+tie.marker[tie.face],{},'after-break');
+    }
     case 'WorkFieldLoan': {
       const loan=equippedLoan(pack,previous,cmd.stop);
       if(!loan)return;

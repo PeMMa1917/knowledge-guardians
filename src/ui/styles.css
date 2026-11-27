@@ -1328,3 +1328,9 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .giant-strip{display:grid;align-content:end;min-width:1.7rem;padding:.2rem;text-align:center;border-top:var(--lift) solid #92bec5;background:#414560}
 .giant-strip.clipped{border-top-color:#db987c;outline:2px dashed #f4ca73}
 .giant-strip small{font-size:.8rem}.giant-sleeve button[aria-pressed=true]{text-decoration:underline}
+
+
+.trail-choices { display:grid; gap:.55rem; margin-block:.7rem; }
+.trail-choices[hidden] { display:none; }
+.trail-choices label { display:grid; gap:.2rem; }
+.trail-choices select { min-width:0; max-width:100%; }

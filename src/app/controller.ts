@@ -1,3 +1,4 @@
+import {threadKey,threadRecap} from '../domain/trailThread';
 /**
  * GameController: the single owner of campaign state, permanent record and
  * saves. Scenes and UI call `dispatch`; nothing else writes state.
@@ -268,13 +269,14 @@ export class GameController {
       const note = this.pack.journal.find((entry) => entry.id === id);
       return note ? [journalText(note, s)] : [];
     });
-    const cur = this.engine.currentObjective(s);
+    const trail = s.flags[threadKey] ? threadRecap(this.pack,s,this.engine.visibleObjectives(s)) : [];
+    const cur = trail.length ? null : this.engine.currentObjective(s);
     return {
       title: `Welcome back, ${s.player.name}.`,
       lines: [
         `You are in ${MAPS[s.mapId]?.name ?? s.mapId}.`,
         ...lastJournal.filter(Boolean).map((t) => `Last time: ${t}`),
-        cur ? `Next step: ${cur.title}` : 'You have finished this chapter. You can explore, or start a new campaign.',
+        ...(trail.length ? trail : [cur ? `One open lead: ${cur.title}` : 'Your stopping place is saved. You can explore again whenever you like.']),
       ],
     };
   }

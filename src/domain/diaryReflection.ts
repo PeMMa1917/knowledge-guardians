@@ -32,6 +32,9 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
+  if(key.startsWith('trail-thread:')) return key.endsWith(':voice')
+    ? {voice:'Whose account do I want to hear on my return, and what might they have missed?'}
+    : {object:'Which detail would I look for next time, and what might it help me reconsider?'};
   if (key.startsWith('courier:')) {
     const [shape, action, place, , opening] = key.slice('courier:'.length).split('.');
     const record = courierCases.find(c => c.shape === shape);

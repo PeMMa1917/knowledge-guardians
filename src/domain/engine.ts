@@ -1,3 +1,4 @@
+import {threadKey,threadFaceKey,trailMarkers,type ThreadCommand} from './trailThread';
 import {courierEffects,type CourierCommand} from './courierLift';
 import {elbowEffects,type ElbowCommand} from './giantSleeve';
 import {wagerEffects,type WagerCommand} from './petalWager';
@@ -220,6 +221,7 @@ export type Command =
   | { type: 'Rest'; place: string }
   | { type: 'Purchase'; offer: string }
   | { type: 'RequestHint'; objective: string }
+  | ThreadCommand
   | { type: 'SetFlag'; flag: string; value: string | number | boolean }
   | { type: 'AddNote'; text: string; kind?: DiaryNoteKind; fromDraft?: boolean }
   | { type: 'SetDiaryNoteDraft'; text: string; kind: DiaryNoteKind }
@@ -401,6 +403,8 @@ export class Engine {
   /** The first open, visible objective. Used by the guide and the recap. */
   currentObjective(s: CampaignState): (Objective & { mission: Mission }) | null {
     const open = this.visibleObjectives(s).filter((o) => !o.complete);
+    const pinned=open.find(o=>o.id===s.flags[threadKey]);
+    if(pinned)return pinned;
     const main = open.filter((o) => /-M\d+$/.test(o.mission.id));
     return main.find((o) => o.essential) ?? main[0] ?? open[0] ?? null;
   }
@@ -503,6 +507,16 @@ export class Engine {
           if (practice) skillUses.push(practice);
           break;
         }
+        case 'TieJournalThread': {
+          const step = this.visibleObjectives(s).find(o=>o.id===cmd.step && !o.complete);
+          if (!step || !trailMarkers[step.mission.world] || !['thing','voice'].includes(cmd.face))
+            throw Error('Choose a step that is open in your journal.');
+          s=apply([{setFlag:threadKey,value:step.id},{setFlag:threadFaceKey,value:cmd.face}],s,out);
+          break;
+        }
+        case 'UntieJournalThread':
+          s=apply([{setFlag:threadKey,value:false},{setFlag:threadFaceKey,value:false}],s,out);
+          break;
         case 'SetFlag':
           s = apply([{ setFlag: cmd.flag, value: cmd.value }], s, out);
           break;

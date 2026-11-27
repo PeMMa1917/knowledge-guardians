@@ -565,6 +565,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if (family==='moth-perch') { const moth=pack.lorelings.find(r=>r.id==='glimmermoth'); if(moth)return diaryTopics(moth.weave); }
     if (family === 'origin-work') { const o = origins.find(x => x === event.ref); if (o) return diaryTopics(originWeave[o]); }
     if (family === 'picture-bill') return diaryTopics(billWeave);
+    if(family==='trail-thread') { const weave=objectivesById.get(event.ref)?.objective.weave; if(weave)return diaryTopics(weave); }
     if (family === 'courier') {
       const record = courierCases.find(c => c.exhibit === event.ref);
       const landing = event.key.split('.')[2];

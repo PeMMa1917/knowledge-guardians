@@ -1,3 +1,4 @@
+import {trailThreadPanel} from './trailThread';
 import {classroom} from '../classroom/client';
 import {writingNotice,sceneEditor} from '../classroom/student';
 import type { GameController } from '../app/controller';
@@ -314,8 +315,7 @@ function questItem(quest: AdventureJournalView['quests'][number]): HTMLElement {
   const rest = quest.steps.slice(STEPS_SHOWN);
   return h('li', {}, h('h4', {}, quest.title),
     quest.question ? h('p', {}, quest.question) : null,
-    h('p', { class: 'fine' }, `${quest.done} of ${quest.total} steps done.`,
-      quest.done > 0 ? ' Good place to stop: what you have done is saved, and the rest will wait for you.' : ''),
+    h('p', { class: 'fine' }, `${quest.done} of ${quest.total} steps done.`),
     h('ul', {}, ...shown.map((step) => h('li', {}, step))),
     rest.length ? h('details', { class: 'quest-drawer' }, h('summary', {}, `${rest.length} more steps`),
       h('ul', {}, ...rest.map((step) => h('li', {}, step)))) : null);
@@ -327,6 +327,7 @@ function openQuests(view: AdventureJournalView, controller: GameController, refr
   const here = MAPS[controller.state.mapId]?.world;
   const worlds = [...new Set(view.quests.map((q) => q.world))];
   return h('section', { class: 'adventure-journal' }, h('h3', {}, 'Open quests and questions'),
+    h('p',{class:'fine'},'You can stop between steps. Your journal keeps your place.'), trailThreadPanel(controller,worldName),
     view.quests.length ? h('div', { class: 'quest-pathways' }, ...worlds.map((world) => {
       const qs = view.quests.filter((q) => q.world === world);
       return h('details', { class: 'quest-pathway', open: world === here || worlds.length === 1 },
