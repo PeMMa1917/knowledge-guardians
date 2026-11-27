@@ -44,10 +44,10 @@ describe('the 30-minute design audit along play-style paths', () => {
   // independent of how many steps or dimensions change during those minutes.
   const baseline: Record<PlayStyle, number> = {
     // Puzzler and cozy paths include optional field games added 2026-11-27: The Assay Trial (ch 6),
-    // The Sketch Relay (ch 7), The Lens Table (ch 9) and The Value Fair (ch 10). Their minutes lengthen
+    // The Sketch Relay (ch 7), The Lens Table (ch 9), The Value Fair (ch 10) and The Bat Keeper (ch 4). Their minutes lengthen
     // windows that were already open, so the bound grows by the measured amount
-    // (puzzler 260 -> 286, cozy 342 -> 374). Each game's tag covers what its window lacked where it honestly can.
-    story: 160, social: 356, explorer: 667, puzzler: 286, cozy: 374,
+    // (puzzler 260 -> 292, cozy 342 -> 382). Each game's tag covers what its window lacked where it honestly can.
+    story: 160, social: 356, explorer: 667, puzzler: 292, cozy: 382,
   };
   // The original checkpoint measured 1,582 modeled explorer minutes. New
   // optional room time can extend the upper bound by its own duration. The

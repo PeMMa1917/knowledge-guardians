@@ -1143,3 +1143,6 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .vfair-count { min-width: 1.6rem; text-align: center; font-weight: 700; }
 .vfair-other { border-left: 3px solid rgba(255, 255, 255, 0.25); padding-left: 0.6rem; margin: 0.5rem 0; }
 .vfair-other h3 { margin: 0.2rem 0; font-size: 1rem; }
+
+/* The Bat Keeper (chapter 4). */
+.bats-found { margin: 0.4rem 0 0.4rem 1.2rem; }

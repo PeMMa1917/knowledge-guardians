@@ -42,6 +42,8 @@ export const FIELD_GAMES: FieldGame[] = [
     idea: 'A pattern seen in many examples can still break on the next one. A proof from the rules of the game holds for every case, even cases nobody has made yet. But a proof covers only what it states: the part it does not state is still a guess.' },
   { id: 'trees', name: 'The Three Trees', host: 'Naturalist Elian and Steward Ayla, at the old grove on the Listening Trail', concept: 'interpretation',
     idea: 'The shape is chosen: one grove holds many triangles, and the word "triangle" is ours. The distances are not chosen: two people pacing from opposite ends get the same number, and three trees in a line will not make a triangle however much we want one. Mathematics may be partly made and partly found.' },
+  { id: 'bats', name: 'The Bat Keeper', host: 'Signalkeeper Ruan, at the night lamp on Headland Station', concept: 'perspective',
+    idea: 'Most bat calls are above human hearing. A detector turns them into sounds for us, one setting at a time, and lets us know which bats are feeding and when one catches a moth. What the catch was like for the bat is a different question, and our words for it are always our own.' },
   { id: 'fair', name: 'The Value Fair', host: 'Clerk Dagny and Assayer Tellen, at the token table in Lantern Square', concept: 'values',
     idea: 'Time to prepare is scarce, so we defend some claims and let others drop. Three people with the same facts keep three different sets of rules. What we spend our effort on shows what we value, and what we value shapes what we accept.' },
   { id: 'lens', name: 'The Lens Table', host: 'Director Edda and Host Hari, at the green card table in the Rehearsal Room', concept: 'perspective',

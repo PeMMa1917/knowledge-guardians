@@ -220,6 +220,7 @@ export const OBSERVATORY_STATION: MapDef = {
     sign('coast-station-recheck', 20, 9, 'the headland’s next reading', 'coast.gauge',
       'Two finger-widths at the headland. Same gauge, same interval, one bell later. No second quay reading has reached the station.',
       { flag: 'coast.gauge.recheck', visibleIf: { flagSet: 'coast.notice' } }),
+    { id: 'field-bats', kind: 'fieldgame', game: 'bats', x: 20, y: 3, w: 1, h: 1, label: 'the night lamp on the headland (The Bat Keeper)', art: 'old-sign' },
     // Ibn al-Haytham's tests of the station manual (KG-CH4-T01).
     sign('haytham-test-ring', 4, 4, "the brass sighting ring", 'coast.gauge',
       "Lookouts hold the brass ring at arm's length and count the notches the moon fills. The log has two nights. Moon rising over the roof line: three notches. Moon high over the sea, the same night: three notches.",

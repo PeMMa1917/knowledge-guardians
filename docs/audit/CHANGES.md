@@ -325,6 +325,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/valueFair.ts`, `src/content/value-fair.json`, `src/ui/fairPanel.ts`, `src/maps/market.ts`, `tests/value-fair.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md. The 30-minute audit bound for the puzzler and cozy paths grows by the measured minutes of the new optional games (`tests/learning.test.ts`).
 
+### The Bat Keeper, chapter 4's night scene (C-004)
+
+**What.** At the night lamp on Headland Station, Signalkeeper Ruan tells the player that bats are calling all around. The player hears nothing: people hear up to about 20 kHz, and bat calls run from about 9 to 200 kHz. With a heterodyne detector, which listens at one setting at a time, the player tunes the dial and finds a noctule (about 20 kHz), a Daubenton's bat (35), a common pipistrelle (45) and a soprano pipistrelle (55); one setting is empty. After three are found, the player waits at 45 and hears a feeding buzz: a catch. Then Ruan asks what that was like for the bat. Three answers, each with a reply. Neri and Ruan then disagree (X-008) about whether a station log should say what it cannot hold.
+
+**Why.** The second lesson folder uses Thomas Nagel's question "What is it like to be a bat?" (1974). The audit placed it at the observatory, where the chapter is about instruments and what they report. The game separates what an instrument lets us know (which bat, where, a catch) from what it cannot give us (the bat's own experience). Bat facts come from the London Bat Group and the Maryland Department of Natural Resources.
+
+**Where.** `src/domain/batKeeper.ts`, `src/content/bat-keeper.json`, `src/ui/batPanel.ts`, `src/maps/observatory.ts`, `tests/bat-keeper.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.
