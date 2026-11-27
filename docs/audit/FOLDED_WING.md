@@ -12,12 +12,35 @@ Begin beside Warden Ise in the Archive Hall. Unfold Gārgī’s bird, decide wha
 
 - **Story.** The supplied 140 people have 140 distinct predicaments, 280 first decisions with individually written consequences, and 70 matched stories across 15 chapter posts. A second, local decision determines who gets to use the first decision. Chapter travel still follows the existing story gates.
 - **What learners can try.** Close Ibn al-Haytham’s shutter or move his screen. Move the observer or ball in Wang Zhenyi’s eclipse. Vary cash and debt independently with Brahmagupta. Move a scrape in a four-beat sound reel with Genesis P-Orridge. All four settings on each bench can travel to the next keeper.
+- **Existing field quests.** At the Old Weir and Headland Station, Mozi and Ibn al-Haytham also have in-person three-test quests. The scholar and the letter share a single journal identity. Bringing back a finished fold changes their reply according to the actual first decision.
 - **Feedback and recovery.** Every delivery names the destination, allows a revision before a keeper acts and provides four depths of optional help per objective. A previously handled reply can be reconsidered at the receiving post. The matching watermark waits until both latest replies have been kept.
 - **Student record.** The diary has 140 case-specific optional reflection questions. Encountered historical speakers have article links and MLA citations in the diary and its exports. Student writing stays with the selected entries. Day, week and month streak displays are each opt-in and independent of leaderboard sharing.
 - **Checks.** 2,407 automated tests passed across 285 files. All 560 combinations of the sender’s and keeper’s choices ran through the game rules. Separate tests cover both halves of all 70 matches, all 16 bench settings and old-save restoration. Navigation stress exercised all 128 maps and a simulated hour of pushing against a solid wall.
-- **Browser play.** Browser interaction covered all 15 posts across desktop Chromium, tablet-width Firefox and phone-width Linux WebKit. Three pairs were played through their matched ending. Test fixtures moved between chapters and placed the player near the posts. The station interaction, menus, decisions, return state, controls and streak settings used the running game.
+- **Browser play.** Browser interaction covered all 15 posts across desktop Chromium, tablet-width Firefox and phone-width Linux WebKit. Three pairs were played through their matched ending. A separate Chromium check downloaded a Word diary and generated a native PDF with a student-written reflection and the encountered article link. Test fixtures moved between chapters and placed the player near the posts. The station interaction, menus, decisions, return state, controls and streak settings used the running game.
 - **Learning evidence.** Six documented actions exercise deductive, inductive, abductive, analogical, causal and pragmatic reasoning. The game-wide audit now records 15 explicit comparisons between two areas. It verifies ten distinct actions in 2 of 9,327,648 world–dimension–element combinations. Another 333 have one to nine checked actions.
 - **Source and review gaps.** 359 of the 803 supplied numbered skill definitions have an authored gameplay link. The five files omit 197 numbered definitions. The public Drive index contains 931 files in 55 folders. Indexing establishes what is available. Lesson-level adaptation, representative classroom trials, real assistive devices and reviews with individual communities remain incomplete.
+
+## Review by chapter
+
+These are optional encounters available from each home post. A visit and an earned outcome are distinct. The whole-game chapter reviews remain linked in the audit index.
+
+| Chapter post | Voices | Two sender actions each | Receiving chapter | Example of a decision |
+| --- | ---: | ---: | --- | --- |
+| Archive Hall | 8 | 16 | Nile Archive hall | Gārgī Vāchaknavī • Follow one thread to its peg |
+| Nile Archive hall | 9 | 18 | Listening Room | Al-Khwārizmī • Unfold the seam on the bench |
+| Cold Store | 11 | 22 | Rehearsal Room | Tu Youyou • Lift the dent into the margin |
+| Slate Harbour | 10 | 20 | Plan Workshop | Ibn al-Haytham • Slide a card across the opening |
+| Fern Station | 10 | 20 | Lantern Square | George Washington Carver • Take both beds on the fair map |
+| Metalworks Sample Yard | 10 | 20 | Lantern House | Michael Faraday • Turn the dial toward the apprentice |
+| Print Workshop | 10 | 20 | Time Hall | Zera Yacob • Cover the signature and read it again |
+| Lantern House | 10 | 20 | Slate Harbour | Maryam Mirzakhani • Run a cord along the curved walk |
+| Rehearsal Room | 10 | 20 | Print Workshop | Judith Butler • Trade coats in sight of the queue |
+| Lantern Square | 9 | 18 | Library Dispatch | Brahmagupta • Hang a debt bead below the beam |
+| Old Weir | 8 | 16 | Fern Station | Elinor Ostrom • Hang the key by the user roster |
+| Library Dispatch | 9 | 18 | Old Weir | B. R. Ambedkar • Move the hearing to the steps |
+| Listening Room | 11 | 22 | Metalworks Sample Yard | Sor Juana Inés de la Cruz • Slip a verse under the door |
+| Plan Workshop | 9 | 18 | Cold Store | Emmy Noether • Scrape a chalk ring round the turning hub |
+| Time Hall | 6 | 12 | Archive Hall | Epictetus • Share the water through the bars |
 
 ## Decisions where players may want different things
 

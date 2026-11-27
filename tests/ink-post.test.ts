@@ -106,6 +106,24 @@ describe('The folded-wing post', () => {
     expect(d.e.node(read).text).toBe(observation);
   });
 
+  it.each([['mozi', 'q272411', 'mozi'], ['haytham', 'q11104', 'ibn-al-haytham']])(
+    'gives the letter and the in-person %s quest one identity and remembers the returned fold', (quest, letter, character) => {
+      const d = new Driver(), wing = 'ink.' + letter, at = 'thinker.' + quest + '.after';
+      expect(engine.node(wing).speaker).toBe(character);
+      expect(engine.node(at).speaker).toBe(character);
+      expect(engine.visibleOptions(at, d.s).some((o) => o.option.next === wing)).toBe(true);
+      for (const way of ['first', 'second']) {
+        d.run({ type: 'SetFlag', flag: wing + '.fold', value: way });
+        expect(engine.visibleOptions(at, d.s).some((o) => o.option.next === wing)).toBe(false);
+        expect(engine.visibleOptions(at, d.s).some((o) => o.option.next?.includes('.wing.'))).toBe(false);
+        d.run({ type: 'SetFlag', flag: wing + '.kept', value: true });
+        const reply = engine.visibleOptions(at, d.s).find((o) => o.option.next?.includes('.wing.'))!;
+        expect(reply.option.next).toBe('thinker.' + quest + '.wing.' + way);
+        expect(engine.node(reply.option.next!).speaker).toBe(character);
+        d.run({ type: 'SetFlag', flag: wing + '.kept', value: false });
+      }
+    });
+
   it('resumes a changed fold and keeps its actual speaker and reflection in the diary', () => {
     const d = new Driver(), l = INK_LETTERS[0], s = 'ink.' + l.id;
     d.run({ type: 'EnterNode', node: s });

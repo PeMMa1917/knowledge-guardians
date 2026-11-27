@@ -262,7 +262,65 @@
    "id": "thinker.mozi.after",
    "speaker": "mozi",
    "historicalLabel": "reconstruction",
-   "text": "A saying that many people repeat can still be tested. Take the three tests with you. They work on claims far from any weir."
+   "text": "A saying that many people repeat can still be tested. Take the three tests with you. They work on claims far from any weir.",
+   "options": [
+    {
+     "text": "Help me weigh the crossing in my letter",
+     "if": {
+      "not": {
+       "flagSet": "ink.q272411.fold"
+      }
+     },
+     "next": "ink.q272411"
+    },
+    {
+     "text": "Show what came home in the paper wing",
+     "if": {
+      "all": [
+       {
+        "flag": "ink.q272411.kept",
+        "eq": true
+       },
+       {
+        "flag": "ink.q272411.fold",
+        "eq": "first"
+       }
+      ]
+     },
+     "next": "thinker.mozi.wing.first"
+    },
+    {
+     "text": "Show what came home in the paper wing",
+     "if": {
+      "all": [
+       {
+        "flag": "ink.q272411.kept",
+        "eq": true
+       },
+       {
+        "flag": "ink.q272411.fold",
+        "eq": "second"
+       }
+      ]
+     },
+     "next": "thinker.mozi.wing.second"
+    },
+    {
+     "text": "Leave the scholar to the work."
+    }
+   ]
+  },
+  {
+   "id": "thinker.mozi.wing.first",
+   "speaker": "mozi",
+   "historicalLabel": "reconstruction",
+   "text": "The carpenter has brought back the common weight. It tells me which board bends first. The child at the longer queue still needs me to decide whose turn comes next."
+  },
+  {
+   "id": "thinker.mozi.wing.second",
+   "speaker": "mozi",
+   "historicalLabel": "reconstruction",
+   "text": "The last carrier reaches the bridge before dusk now. My cousin says the boards were his. I have asked him to come tomorrow and keep the turn list with the other families."
   }
  ],
  "missions": [

@@ -83,3 +83,15 @@ Not used from the second folder: student tracking sheets and named student files
 - Whole copyrighted books. Ideas only.
 
 A fresh index on 27 November found 931 files in 55 folders of the supplied public Drive. The correspondence scenes revisit three practices from the role material. A seal can identify a source without proving what a witness saw. Changing the observer can change the result. A return visit can reveal whose account a record leaves out. The index alone gives no evidence that every file has a playable adaptation. [Routes through these practices](FOLDED_WING.md)
+
+| Teaching role reviewed | What the Guardian can do | What the receiving chapter adds |
+| --- | --- | --- |
+| Hana, customs officer | With Ennigaldi-Nanna, give an older label its own stand. | The label can now be examined as a dated claim by a curator. The object it described has a different history. |
+| Kai, locksmith | With Kwasi Wiredu, request an everyday use for a word at the crossing. | A speaker can take a different action on hearing the translated line. Its reach depends on the occasion. |
+| Ines, bridge inspector | With Wang Zhenyi, move the ball or mark the observer’s position. | A child can point to a physical reason for two witnesses disagreeing about the same lamp. |
+| Roux, conductor | Keep the two returns from Ibn al-Haytham and Wang Zhenyi and hold the paired wings to the light. | One model makes an image. The other accounts for an observer losing the light. The pair contributes two different explanations. |
+| Petra, archaeologist | With Lewis Binford, plot ash against the walking lane before calling a patch a hearth. | One patch falls in the lane, giving the keeper a second account to investigate. |
+| Darya, photographer | With Claude Cahun, turn the mirror toward the camera stand. | Work outside the picture enters the account of who made it. |
+| Amara, weaver | With Ada Lovelace, move a repeat from loom to music roll. | The pattern stays traceable in the roll. Giving it pitches requires a second contributor. |
+
+[The two outcomes of each case](../../src/content/ink-post-letters.json) · [The shared watermarks](../../src/content/ink-post-watermarks.json)

@@ -258,7 +258,65 @@
    "id": "thinker.haytham.after",
    "speaker": "ibn-al-haytham",
    "historicalLabel": "reconstruction",
-   "text": "Do not trust a line because it is old, or because it is new, or because it is yours. Test it, and say how you tested it."
+   "text": "Do not trust a line because it is old, or because it is new, or because it is yours. Test it, and say how you tested it.",
+   "options": [
+    {
+     "text": "Help me catch a tree on the darkroom wall",
+     "if": {
+      "not": {
+       "flagSet": "ink.q11104.fold"
+      }
+     },
+     "next": "ink.q11104"
+    },
+    {
+     "text": "Show what came home in the paper wing",
+     "if": {
+      "all": [
+       {
+        "flag": "ink.q11104.kept",
+        "eq": true
+       },
+       {
+        "flag": "ink.q11104.fold",
+        "eq": "first"
+       }
+      ]
+     },
+     "next": "thinker.haytham.wing.first"
+    },
+    {
+     "text": "Show what came home in the paper wing",
+     "if": {
+      "all": [
+       {
+        "flag": "ink.q11104.kept",
+        "eq": true
+       },
+       {
+        "flag": "ink.q11104.fold",
+        "eq": "second"
+       }
+      ]
+     },
+     "next": "thinker.haytham.wing.second"
+    },
+    {
+     "text": "Leave the scholar to the work."
+    }
+   ]
+  },
+  {
+   "id": "thinker.haytham.wing.first",
+   "speaker": "ibn-al-haytham",
+   "historicalLabel": "reconstruction",
+   "text": "The housekeeper has taken to closing the shutter halfway when scholars come in. Yesterday one of them finally looked up from the manual to ask where the missing branch had gone."
+  },
+  {
+   "id": "thinker.haytham.wing.second",
+   "speaker": "ibn-al-haytham",
+   "historicalLabel": "reconstruction",
+   "text": "A fork in the little tree! My visitor counted it on the screen, then went outside to count again. I kept the chalk marks from the screen. They tell us where we were standing."
   }
  ],
  "missions": [
