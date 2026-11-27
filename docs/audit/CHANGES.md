@@ -333,6 +333,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/batKeeper.ts`, `src/content/bat-keeper.json`, `src/ui/batPanel.ts`, `src/maps/observatory.ts`, `tests/bat-keeper.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
+### The Time Mirror, chapter 15's signature scene (C-004)
+
+**What.** In the Time Hall, Workshop Keeper Hale uncovers Elsbet's mirror. It shows a younger guardian holding the first page of the player's own journal: the first two entries ("Then") beside the latest two ("Now"). The guardian in the mirror asks whether the player would change the first entry: keep it, keep it and add a dated line, or add who else should have been asked. Each answer gets a reply from the past self, who then asks whether the next guardian will read the player's entries the same way. Hale and Essi then disagree (X-008) about keeping old wrong lines in a record.
+
+**Why.** The second lesson folder has a "time mirror" (how a past self sees the present). The audit placed it at the end of the story, so reflection happens inside the story and uses the player's own words, not a quiz or an essay. It uses only the private journal; nothing is shared or graded.
+
+**Where.** `src/domain/timeMirror.ts`, `src/content/time-mirror.json`, `src/ui/mirrorPanel.ts`, `src/maps/council.ts`, `tests/time-mirror.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
 ## Not done yet
 
 These decisions need more content work. They will be done chapter by chapter, with research from reliable sources.

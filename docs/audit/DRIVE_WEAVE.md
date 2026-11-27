@@ -47,7 +47,7 @@ Status: **in game** (already woven), **planned** (has a place), **idea** (needs 
 | False starts and changed minds | Elsbet's journal pages show where she was wrong and changed her mind | across chapters | Models changing one's mind |
 | Exhibition of the self | The player's Guardian Study, where keepsakes go on display and each one changes the room | across chapters | Already close to keepsakes |
 | Verstehen (understanding from inside) | A historian character who lives a day as a ferry worker to understand a record | Ch 9 | Human sciences method |
-| Time mirror (how a past self sees the present) | **The Time Mirror**: a mirror in Elsbet's study that shows the player's first journal entries | Ch 15 | Reflection inside the story |
+| Time mirror (how a past self sees the present) | **The Time Mirror**: a mirror in Elsbet's study that shows the player's first journal entries | Ch 15 | Reflection inside the story (in game, chapter 15) |
 
 ## Second folder (added 27 November 2026)
 

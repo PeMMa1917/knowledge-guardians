@@ -83,6 +83,8 @@ export const LEARN: Record<string, LearnTag> = {
   'field:ladder': { ...t(['certainty', 'justification', 'evidence'], [M], 3, 'analyse', 'application', 'relational', 8), aoks: ['MAT'] },
   // Choose a triangle in a grove (a line is refused), see other shapes, say where the shape came from, then pace a side.
   'field:trees': { ...t(['interpretation', 'objectivity', 'perspective'], [M], 2, 'evaluate', 'integration', 'relational', 6), aoks: ['MAT', 'NAT'] },
+  // See your first and latest journal entries, decide how to rewrite the first, and hear your past self answer.
+  'field:mirror': { ...t(['certainty', 'perspective', 'responsibility', 'truth'], [S, P], 2, 'evaluate', 'learning-to-learn', 'extended', 4), aoks: ['HUM'] },
   // Listen with bare ears, tune a detector to find bats, hear a catch, then say what we can know of the bat's experience.
   'field:bats': { ...t(['perspective', 'objectivity', 'evidence', 'certainty', 'truth'], [S, M], 3, 'evaluate', 'human', 'relational', 5), aoks: ['NAT', 'HUM'] },
   // Spend ten tokens to defend market rules, see what is kept or clashes, compare two keepers, name the value.

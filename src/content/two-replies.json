@@ -1377,6 +1377,24 @@
      "text": "I wrote 'not written' on purpose. A log that never mentions what it cannot hold teaches the next keeper that it holds everything."
     }
    ]
+  },
+  {
+   "id": "council.mirror",
+   "after": {
+    "flag": "field.mirror.done",
+    "eq": true
+   },
+   "heading": "Two views on Elsbet's mirror",
+   "replies": [
+    {
+     "speaker": "council-keeper",
+     "text": "Every record should work like that mirror. Keep the first line, date the new one, and let a reader see the change. A record that hides its old mistakes teaches nobody."
+    },
+    {
+     "speaker": "council-reader",
+     "text": "Some first lines did harm. A family does not need to read the old wrong label every time it reads the right one. Keeping is not always kind."
+    }
+   ]
   }
  ]
 }
