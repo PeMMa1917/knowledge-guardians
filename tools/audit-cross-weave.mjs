@@ -143,6 +143,26 @@ const copiesEvidenceInvestigations = [
 const proofRows = [
   ...coatProofs,
   {
+    objective: 'maker.rain-gauge.compared-bounds', map: 'aethelgard.emberford', target: 'reading-rain',
+    source: 'tests/maker-field.test.ts', anchor: 'puts two independent edges on the same field slip',
+    action: 'Shade the catch and the calibration ring separately. Retain both margins on the slip for the bridge watch and reopen the one-limit edition.',
+    reasoning: [{mode:'deductive',basis:'Given two possible errors bounded by half a millimetre, the central value of nine can differ by up to one in either direction. The range makes no probability claim about the next flood.'}],
+    dimensions: ['micro:621','concept:certainty','framework:methods-and-tools','question:KQ-ROUTE-08'],elements: ['game:234'],
+  },
+  {
+    objective: 'maker.plumb-line.compared-bounds', map: 'aethelgard.emberford', target: 'reading-tower',
+    source: 'tests/maker-field.test.ts', anchor: 'puts two independent edges on the same field slip',
+    action: 'Set the present line against the notch beneath Maren’s grandmother’s button. Open both edge margins and deliver the allowable change to the morning shift.',
+    reasoning: [{mode:'deductive',basis:'Two agreeing centre readings with a half-width error on each can hide one finger-width of change in either direction.'}],
+    dimensions: ['micro:621','concept:certainty','framework:methods-and-tools','question:KQ-ROUTE-08'],elements: ['game:234'],
+  },
+  {
+    objective: 'maker.reed-pen.recipient', map: 'aethelgard.emberford', target: 'reading-flood',
+    source: 'tests/maker-field.test.ts', anchor: 'works at each mounting on both reference orders',
+    action: 'Take the surviving strokes from the worn post and hear Venn place his father’s entry beside them. Pass on the gap or mount the signed recollection alongside it. The two versions have different readers.',
+    dimensions:['concept:evidence','concept:interpretation','framework:perspectives','question:KQ-ROUTE-07'],elements:['game:234'],
+  },
+  {
     objective: 'night-register.archive.caption', map: 'night-register.archive', target: 'night-case-26807',
     source: 'tests/night-register.test.ts', anchor: 'expect(missingCaption(d.s, w.site)).toBe(w)',
     action: 'Follow the pencil marks to the mount of Ruth M. Barnes’s Needle Book. A neighbouring case does not fit. Match the accession before deciding whether the label travels on the sleeve or stays where another reader can find it.',

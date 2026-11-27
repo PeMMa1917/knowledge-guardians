@@ -1,3 +1,4 @@
+import { makerEffects, type MakerCommand, type FieldCommand } from './makerField';
 import { coatEffects, type PocketCommand } from './pocketCoat';
 import { nightByExhibit, nightEffects, type NightCommand } from './nightRegister';
 import {lastBellEffects, type LastBellCommand} from './lastBell';
@@ -76,6 +77,7 @@ const DIALOGUE_FALLBACK = 999;
 import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand, type LanternPairCommand } from './lamplight';
 
 export type Command =
+  | MakerCommand | FieldCommand
   | PocketCommand
   | NightCommand
   | LastBellCommand
@@ -125,7 +127,7 @@ export type Command =
   | { type: 'LearnTalent'; talent: string }
   | { type: 'ForgetTalents' }
   | { type: 'Gather'; node: string; resource: string; day: string }
-  | { type: 'Craft'; recipe: string; choice: number }
+  | { type: 'Craft'; recipe: string; choice?: number }
   | { type: 'Calibrate'; recipe: string; choice: number }
   | { type: 'TakeReading'; reading: string; choice: number }
   | { type: 'CheckRumourSource'; rumour: string; source: number }
@@ -441,6 +443,9 @@ export class Engine {
             s = apply([{ setFlag: MOON_TUNE, value: cmd.tune }, { setFlag: performed, value: true }], s, out);
           break;
         }
+        case 'WorkMakerInstrument': case 'WorkTownReading':
+          s = apply(makerEffects(s, cmd), s, out);
+          break;
         case 'WorkCoatPocket':
           s = apply(coatEffects(cmd, s), s, out);
           break;
@@ -503,7 +508,9 @@ export class Engine {
         case 'Craft': case 'Calibrate': {
           const r = RECIPES.find((x) => x.id === cmd.recipe);
           if (!r) throw new Error('Unknown recipe');
-          const o = r.check.options[cmd.choice];
+          const o = cmd.type === 'Craft' && cmd.choice === undefined
+            ? { ok: false, why: 'I assembled the '+r.name.toLowerCase()+' at Hesper’s bench. The two reference cuts are ready.' }
+            : r.check.options[cmd.choice!];
           if (!o) throw new Error('Choose an answer');
           const fx: Effect[] = [{ setFlag: `craft.${r.id}.calibrated`, value: o.ok || s.flags[`craft.${r.id}.calibrated`] === true }];
           if (cmd.type === 'Craft') {
@@ -1450,8 +1457,7 @@ export class Engine {
         for (const o of m.objectives) {
           if (s.objectivesDone.includes(o.id)) continue;
           if (!check(o.visible, s) || !check(o.done, s)) continue;
-          s = structuredClone(s);
-          s.objectivesDone.push(o.id);
+          s = { ...s, objectivesDone: [...s.objectivesDone, o.id] };
           events.push({ kind: 'objective', id: o.id, title: o.title });
           s = apply(o.onComplete, s, out);
           if (o.weave) weaves.push(o.weave);

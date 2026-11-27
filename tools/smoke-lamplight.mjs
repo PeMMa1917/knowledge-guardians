@@ -1,3 +1,4 @@
+import { playMakerField } from './maker-field-journey.mjs';
 import { playPocketCoat } from './pocket-coat-journey.mjs';
 import { createRequire } from 'node:module';
 import { playEmberfordShift } from './emberford-shift-journey.mjs';
@@ -84,7 +85,9 @@ try {
   const shiftOnly = process.argv.includes('--emberford-shift');
   const registerOnly = process.argv.includes('--night-register');
   const coatOnly = process.argv.includes('--shift-coat');
-  if (coatOnly) await playPocketCoat({page,engine,posts,sites,people,waitMap,use,close,button});
+  const makerOnly = process.argv.includes('--maker-tools');
+  if (makerOnly) await playMakerField({page,engine,waitMap,use,close});
+  else if (coatOnly) await playPocketCoat({page,engine,posts,sites,people,waitMap,use,close,button});
   else if (registerOnly) await playNightRegister({page,engine,waitMap,use,close,button,posts,works:load('night-register.json'),trails:load('night-trails.json')});
   else if (shiftOnly) await playEmberfordShift({page,engine,waitMap,use,close,button,puzzles:load('puzzles.json').puzzles});
   else if (bellOnly) await playLastBell({page,engine,waitMap,use,close,button,sites,posts});
@@ -140,7 +143,7 @@ try {
     faults.filter((s) => !s.includes('favicon')),
     [],
   );
-  console.log(engine, browser.version(), coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
+  console.log(engine, browser.version(), makerOnly ? 'passed three instruments and six handovers' : coatOnly ? 'passed the travelling coat and both endings' : registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
 } finally {
   await browser.close();
 }

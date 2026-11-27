@@ -1,3 +1,4 @@
+import { addMakerMissions } from './makerMissions';
 import { addCoatMissions } from './coatMissions';
 /**
  * Builds the content pack for the first chapter from the JSON files in this
@@ -243,6 +244,7 @@ export function buildPack(): ContentPack {
   installLamplight(content, articles);
   installNightCollection(content);
   addCoatMissions(content);
+  addMakerMissions(content);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);

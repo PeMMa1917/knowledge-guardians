@@ -29,6 +29,13 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
+  if (key.startsWith('maker-trial:')) return {reference:'Which mark belonged to the reference, and which one came from your tool?', hand:'What would another worker need to repeat your reading?'};
+  if (key.startsWith('maker-field:')) {
+    const [,field]=key.split(':');
+    if (field==='rain') return {place:'What would a worker upstream have to check before using this cup’s reading?'};
+    if (field==='tower') return {joint:'How far up the tower does the old mark let your claim reach?'};
+    if (field==='flood-post') return {hand:'What could the printer read from the post alone?', voice:'Which part needed Venn’s name beside it?'};
+  }
   if (key.startsWith('coat-tracing:')) {
     const [,ref,move] = key.split(':');
     const guest = lanternCase(ref);

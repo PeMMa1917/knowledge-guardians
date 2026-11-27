@@ -1212,3 +1212,19 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .quest-pathway { margin: 0.4rem 0; border-left: 3px solid rgba(159, 232, 255, 0.4); padding-left: 0.6rem; }
 .quest-pathway > summary { cursor: pointer; font-weight: 700; }
 .quest-drawer > summary { cursor: pointer; font-size: 0.9rem; }
+
+.maker-imprint {
+  display: block;
+  width: min(100%, 14rem);
+  height: auto;
+  image-rendering: pixelated;
+  margin-block: .35rem;
+  border: 1px solid var(--gold-dim);
+}
+.maker-shade {
+  display: flex;
+  align-items: center;
+  gap: .65em;
+  margin-block: .35em;
+  min-height: 2.75em;
+}

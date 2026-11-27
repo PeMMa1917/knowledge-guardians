@@ -1,9 +1,8 @@
 /**
  * Field readings (Mika 2026-11-25: crafting must matter in the world). A tool made at the Maker's
  * bench can test a claim that someone in town makes. The tool must be calibrated first: a reading
- * from an unchecked tool can be off by any amount. After the reading, the player says what it shows.
- * Each answer explains itself (no hidden correct answer). TOK link: measurement, evidence, records
- * over time, certainty and its limits, the difference between a wrong claim and a lie. Pure rules.
+ * from an unchecked tool can be off by any amount. The playable scene uses observations and a handover in makerField.ts.
+ * The option records here preserve the earlier command format for existing replays. Pure rules.
  */
 import type { Recipe } from './craft';
 import { RECIPES } from './craft';

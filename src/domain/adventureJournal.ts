@@ -1,3 +1,6 @@
+import { makerWeave } from '../content/makerMissions';
+import { makerTrialForReading, makerTrialForTool } from '../content/makerTrials';
+import { makerDiary } from './makerField';
 import { coatDiary } from './pocketCoat';
 import { coatWeave } from '../content/coatMissions';
 import { pocketStories } from '../content/pocketStories';
@@ -127,6 +130,7 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
+  if (cmd.type === 'WorkMakerInstrument' || cmd.type === 'WorkTownReading') return makerDiary(next,cmd);
   if (cmd.type === 'WorkCoatPocket') return coatDiary(cmd, previous, next);
   if (cmd.type === 'WorkNightRegister') return nightDiary(cmd, previous, next);
   if (cmd.type === 'WorkLastBell') return lastBellDiary(cmd, previous, next);
@@ -504,6 +508,14 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if (!event) return undefined;
     const [family] = event.key.split(':', 1);
     const specimen = family === 'specimen' ? exhibits.get(event.ref)?.specimen : undefined;
+    if (family === 'maker-trial' || family === 'maker-field') {
+      const trial = makerTrialForTool(event.ref.slice('maker.'.length));
+      if (trial) return diaryTopics(makerWeave(trial.tool, family === 'maker-trial' ? 'fit' : event.key.includes(':limits:') ? 'compared-bounds' : 'recipient'));
+    }
+    if (family === 'sign' && event.ref.startsWith('maker-reply.')) {
+      const trial = makerTrialForReading(event.ref.split('.')[1]);
+      if (trial) return diaryTopics(makerWeave(trial.tool));
+    }
     if (family === 'coat-tracing') {
       const pair = lanternCase(event.ref);
       if (pair && pocketStories[pair.site.id]) {

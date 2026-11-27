@@ -1,5 +1,12 @@
 # Status and next steps
 
+## 27 November • The breakfast shelf, the tower button and Venn’s father
+
+Hesper has opened the test stand by the forge. Try both mounting faces on a rain gauge, a plumb line or a pen. Down at the bridge a decision about the rain record lets a child reach the breakfast cups or brings an upstream watch to its post. Maren can put a new ringer on duty or ask a stoneworker to check above the door. Venn can keep his father’s signed memory beside a worn date. Each handover comes back to the Lamp Wall. [Three workshops](src/content/makerTrials.ts) · [Route and recovery tests](tests/maker-field.test.ts)
+
+Players can put both measurement limits on a field slip and see how wide the resulting claim becomes. The audit now verifies 552 of 1,200 skills and 1,243 skill-to-action links. Two of the 10,729,248 world, learning and RPG intersections meet the ten-action target and 679 have one to nine. [Skill evidence](src/content/microSkillsMakerField.json) · [Coverage audit](docs/CROSS_WEAVE_AUDIT.md)
+
+
 ## 27 November • The Blue Shift Coat
 
 Ise's mother's button turns up on a coat with fifteen working pockets. At Ostel's peg, change the ruler on the ferry queue and choose which wait to put on the sign. At Wren's, let two people describe the same boat separately or after hearing each other. Every pocket goes to a particular second keeper, who can try the tool against the actual impression sewn inside. Three receiving keepers can sign either of two endings. Both remain playable. [Fifteen stories](src/content/pocketStories.ts) · [State and recovery checks](tests/pocket-coat.test.ts)

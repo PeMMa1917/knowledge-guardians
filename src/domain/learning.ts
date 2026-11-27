@@ -95,8 +95,7 @@ export const EVENT_SPREAD = 300;
  */
 export function tickEvents(pack: ContentPack, s0: CampaignState, seconds: number): CampaignState {
   if (s0.events.pending || seconds <= 0) return s0;
-  let s = structuredClone(s0);
-  s.events.clock += seconds;
+  let s = { ...s0, events: { ...s0.events, clock: s0.events.clock + seconds } };
   if (s.events.clock < s.events.next) return s;
   const pool = eligibleEvents(pack, s);
   if (!pool.length) { s.events.clock = 0; return s; }

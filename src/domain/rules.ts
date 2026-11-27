@@ -55,44 +55,59 @@ export function emptyOutputs(): EffectOutputs {
  */
 export function apply(effects: Effect[] | undefined, s: CampaignState, out: EffectOutputs): CampaignState {
   if (!effects || effects.length === 0) return s;
-  const n: CampaignState = structuredClone(s);
+  // A field interaction can occur with thousands of diary entries already on the save.
+  // Effects only write these five collections and scalar fields. Own each collection on its first write.
+  const n: CampaignState = { ...s };
+  const pending = emptyOutputs();
   for (const e of effects) {
-    if ('setFlag' in e) n.flags[e.setFlag] = e.value;
-    else if ('addNum' in e) n.flags[e.addNum] = Number(n.flags[e.addNum] ?? 0) + e.by;
-    else if ('giveItem' in e) {
-      const q = e.qty ?? 1;
-      n.inventory[e.giveItem] = (n.inventory[e.giveItem] ?? 0) + q;
-      out.items.push({ id: e.giveItem, qty: q });
-    } else if ('takeItem' in e) {
-      const q = e.qty ?? 1;
-      const have = n.inventory[e.takeItem] ?? 0;
-      if (have < q) throw new Error(`Not enough ${e.takeItem}`);
-      n.inventory[e.takeItem] = have - q;
-      if (n.inventory[e.takeItem] === 0) delete n.inventory[e.takeItem];
-      out.items.push({ id: e.takeItem, qty: -q });
+    if ('setFlag' in e || 'addNum' in e) {
+      if (n.flags === s.flags) n.flags = { ...s.flags };
+      if ('setFlag' in e) n.flags[e.setFlag] = e.value;
+      else n.flags[e.addNum] = Number(n.flags[e.addNum] ?? 0) + e.by;
+    } else if ('giveItem' in e || 'takeItem' in e) {
+      if (n.inventory === s.inventory) n.inventory = { ...s.inventory };
+      const give = 'giveItem' in e, id = give ? e.giveItem : e.takeItem, qty = give ? e.qty ?? 1 : -(e.qty ?? 1);
+      const amount = (n.inventory[id] ?? 0) + qty;
+      if (!give && amount < 0) throw new Error(`Not enough ${id}`);
+      if (!give && amount === 0) delete n.inventory[id];
+      else n.inventory[id] = amount;
+      pending.items.push({ id, qty });
     } else if ('addMarks' in e) {
       if (n.marks + e.addMarks < 0) throw new Error('Not enough marks');
       n.marks += e.addMarks;
-      out.marks += e.addMarks;
-    } else if ('addCard' in e) {
-      if (!n.cards.includes(e.addCard)) { n.cards.push(e.addCard); out.cards.push(e.addCard); }
-    } else if ('journal' in e) {
-      if (!n.journal.includes(e.journal)) { n.journal.push(e.journal); out.journal.push(e.journal); }
-    } else if ('relation' in e) n.relations[e.relation] = (n.relations[e.relation] ?? 0) + e.by;
-    else if ('companion' in e) n.companion = e.companion;
-    else if ('credit' in e) out.credits.push(e.credit);
-    else if ('checkpoint' in e) out.checkpoints.push(e.checkpoint);
-    else if ('signal' in e) out.signals.push(e.signal);
-    else if ('portfolio' in e) out.portfolio.push(e.portfolio);
+      pending.marks += e.addMarks;
+    } else if ('addCard' in e && !n.cards.includes(e.addCard)) {
+      if (n.cards === s.cards) n.cards = [...s.cards];
+      n.cards.push(e.addCard);
+      pending.cards.push(e.addCard);
+    } else if ('journal' in e && !n.journal.includes(e.journal)) {
+      if (n.journal === s.journal) n.journal = [...s.journal];
+      n.journal.push(e.journal);
+      pending.journal.push(e.journal);
+    } else if ('relation' in e) {
+      if (n.relations === s.relations) n.relations = { ...s.relations };
+      n.relations[e.relation] = (n.relations[e.relation] ?? 0) + e.by;
+    } else if ('companion' in e) n.companion = e.companion;
+    else if ('credit' in e) pending.credits.push(e.credit);
+    else if ('checkpoint' in e) pending.checkpoints.push(e.checkpoint);
+    else if ('signal' in e) pending.signals.push(e.signal);
+    else if ('portfolio' in e) pending.portfolio.push(e.portfolio);
   }
+  out.marks += pending.marks;
+  out.cards.push(...pending.cards);
+  out.items.push(...pending.items);
+  out.journal.push(...pending.journal);
+  out.credits.push(...pending.credits);
+  out.checkpoints.push(...pending.checkpoints);
+  out.signals.push(...pending.signals);
+  out.portfolio.push(...pending.portfolio);
   return n;
 }
 
 /** Deterministic RNG (mulberry32). State is saved in the campaign (spec 24.2). */
 export function nextRandom(s: CampaignState): [number, CampaignState] {
   let t = (s.rng.state + 0x6d2b79f5) >>> 0;
-  const n = structuredClone(s);
-  n.rng.state = t;
+  const n = { ...s, rng: { ...s.rng, state: t } };
   t = Math.imul(t ^ (t >>> 15), t | 1);
   t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
   return [((t ^ (t >>> 14)) >>> 0) / 4294967296, n];

@@ -85,6 +85,9 @@ import { DISPATCH_DESKS, DISPATCH_GAME } from '../domain/tiles';
 import { SEFA_TABLE, sefaDeskPanel, sefaStitching } from './sefaDispatch';
 import { TRUST_RANKS, rankOf, trustOf } from '../domain/communities';
 import { RECIPES, RESOURCES, cannotCraft, resCount, type Resource } from '../domain/craft';
+import { makerBench, makerField } from './makerField';
+import { fieldReceipt,makerRecipient } from '../domain/makerField';
+import { makerTrials, makerTrialForReading } from '../content/makerTrials';
 import { READINGS, cannotRead, readingOf, toolOf } from '../domain/readings';
 import { approvalOf, approvalRank } from '../domain/approval';
 import { ROLES, fitsRole, roleOf } from '../domain/roles';
@@ -4675,25 +4678,21 @@ export class UI implements UIApi {
     render();
   }
 
-  /**
-   * The Maker's bench: make measuring tools from gathered ore, clay and reeds. Each tool asks one
-   * calibration question. Any answer makes the tool; a checked tool is marked 'calibrated'.
-   */
+  /** Assemble once, then fit the measuring instrument against two physical references. */
   openWorkbench(): void {
     const c = ctx.controller;
     const box = this.openModal('bench-panel wide', "The Maker's bench");
     this.sfx('sfx.page');
-    const ask = (r: (typeof RECIPES)[number], mode: 'Craft' | 'Calibrate') => {
-      box.replaceChildren(this.closeBtn(), h('h2', {}, `${mode === 'Craft' ? 'Make' : 'Calibrate'}: ${r.name}`),
-        h('p', {}, 'Before a tool is used, it is checked. ', h('strong', {}, r.check.q)),
-        h('div', { class: 'notice-options' }, ...r.check.options.map((o, i) => h('button', { type: 'button', onclick: () => {
-          const ev = c.dispatch({ type: mode, recipe: r.id, choice: i });
-          const res = ev.find((e) => e.kind === 'craft') as Extract<GameEvent, { kind: 'craft' }> | undefined;
-          if (!res) return;
-          this.sfx(res.ok ? 'sfx.sparkle' : 'sfx.page');
-          render(`${res.ok ? 'Calibrated. ' : `${mode === 'Craft' ? 'The tool is made, but not calibrated. ' : 'Not calibrated yet. '}`}${res.why}`);
-        } }, o.text))),
-        h('div', { class: 'row' }, h('button', { onclick: () => render() }, 'Back')));
+    const inspect = (r: (typeof RECIPES)[number]) => {
+      if (!c.state.inventory[r.item]) {
+        const error=c.dispatch({type:'Craft',recipe:r.id}).find(e=>e.kind==='error');
+        if (error) {render(error.message);return;}
+      }
+      box.replaceChildren(this.closeBtn(),h('h2',{},r.name),makerBench(c,r.id,()=>{
+        render();
+        box.querySelector<HTMLElement>('[data-maker-tool="' + r.id + '"]')?.focus();
+      },()=>this.sfx('sfx.page')));
+      box.querySelector<HTMLElement>('[data-maker]')?.focus();
     };
     const render = (note?: string) => {
       const s = c.state;
@@ -4707,8 +4706,7 @@ export class UI implements UIApi {
             h('strong', {}, r.name), h('p', {}, r.use),
             h('p', { class: 'fine' }, `Needs: ${(Object.entries(r.cost) as [Resource, number][]).map(([k, n]) => `${n} ${k === 'reed' && n === 1 ? 'reed' : RESOURCES[k].toLowerCase()}`).join(', ')}`),
             have ? h('p', { class: 'fine' }, cal ? 'Made and calibrated.' : 'Made, not calibrated.') : null,
-            have ? (cal ? h('span', {}) : h('button', { type: 'button', onclick: () => ask(r, 'Calibrate') }, 'Calibrate'))
-              : h('button', { type: 'button', disabled: !!why, onclick: () => ask(r, 'Craft') }, why ?? 'Make it'));
+            h('button', { type:'button','data-maker-tool':r.id,disabled: !have && !!why,onclick:()=>inspect(r) },have?'Use the test stand':why ?? 'Make it'));
         })),
         h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
     };
@@ -4803,24 +4801,11 @@ export class UI implements UIApi {
         h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
       return;
     }
-    const done = Number(c.state.flags['count.readings'] ?? 0);
-    box.replaceChildren(...head,
-      h('p', {}, h('strong', {}, `Your ${t.name.toLowerCase()}: `), r.result),
-      h('p', {}, h('strong', {}, r.q)),
-      h('div', { class: 'notice-options' }, ...r.options.map((o, i) => h('button', { type: 'button', onclick: () => {
-        const ev = c.dispatch({ type: 'TakeReading', reading: id, choice: i });
-        const res = ev.find((e) => e.kind === 'reading') as Extract<GameEvent, { kind: 'reading' }> | undefined;
-        if (!res) return;
-        this.sfx(res.ok ? 'sfx.sparkle' : 'sfx.page');
-        const n = Number(c.state.flags['count.readings'] ?? 0);
-        box.replaceChildren(...head,
-          h('p', { class: 'clue-view fresh' }, res.why),
-          ...(res.first ? [h('p', { class: 'fine', role: 'status' }, `Reading recorded (+4 marks). Field readings: ${n} of ${READINGS.length}.`)] : []),
-          h('div', { class: 'row' },
-            res.ok ? null : h('button', { type: 'button', onclick: () => this.openReading(id) }, 'Think again'),
-            h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
-      } }, o.text))),
-      h('p', { class: 'fine' }, `Field readings taken: ${done} of ${READINGS.length}. A reading is evidence; what it shows is your call, and you explain it.`));
+    const trial = makerTrialForReading(id)!;
+    box.replaceChildren(this.closeBtn(), h('h2',{},r.place),makerField(c,trial,()=>this.sfx('sfx.page')),
+      h('button',{type:'button',onclick:()=>this.closeModal()},'Close'));
+    box.querySelector<HTMLElement>('[data-maker]')?.focus();
+
   }
 
   openTiles(daily = false): void {
@@ -4850,6 +4835,14 @@ export class UI implements UIApi {
         : 'Sixteen small lamps on an old board by the guild hall door. A brass plate says: ONE LAMP FOR EACH KNOT THE TOWN UNTIES. Most lamps are dark. Guildmaster Orrin may know why.'),
       h('p', { class: 'lamp-count', role: 'status' }, `${n} of ${knots.length} lamps lit. `,
         n >= 6 ? 'The cellar door beside the guild hall is open.' : `${6 - n} more, and the cellar door beside the guild hall opens.`),
+      ...makerTrials.flatMap(t=>{
+        const chosen=makerRecipient(c.state,t);
+        if (chosen===undefined) return [];
+        const title=t.gifts[chosen],text=fieldReceipt(c.state,t)!;
+        const note=h('details',{},h('summary',{},title),h('p',{},text));
+        note.addEventListener('toggle',()=>{if(note.open)c.dispatch({type:'ReadWorldSign',id:'maker-reply.'+t.reading+'.'+chosen,title,text});});
+        return [note];
+      }),
       ...c.pack.puzzles.flatMap((job) => {
         if (!('handoffs' in job)) return [];
         const chosen = c.state.flags['puzzle.' + job.id + '.handoff'];

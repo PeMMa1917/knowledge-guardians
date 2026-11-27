@@ -1,9 +1,8 @@
 /**
  * Gathering and crafting (Mika 2026-11-25). The player gathers ore, clay and reeds from places in the
  * world (each place gives 2 once a day), then makes simple measuring tools at the Maker's bench.
- * Every tool must be calibrated: a short question about checking an instrument against something
- * known. Any answer makes the tool; only a checked tool is marked 'calibrated', and the player can
- * calibrate again at any time. TOK link: methods, measurement, error. Pure rules, no DOM.
+ * In the workshop the player tries two references, then fits the instrument.
+ * The check records below retain the original command format for older replay clients. Pure rules, no DOM.
  */
 export type Resource = 'ore' | 'clay' | 'reed';
 export const RESOURCES: Record<Resource, string> = { ore: 'Iron ore', clay: 'River clay', reed: 'Reeds' };
