@@ -1,3 +1,5 @@
+import { nightByExhibit, nightSites } from '../domain/nightRegister';
+import { nightCase, nightDesk, nightPerch } from './nightRegister';
 import { GameController as ClassroomController } from '../app/controller';
 import {classroom} from '../classroom/client';
 import {classPanel,writingNotice,sceneEditor} from '../classroom/student';
@@ -1610,6 +1612,8 @@ export class UI implements UIApi {
         }
       };
       showClaim();
+      const nightWork = nightByExhibit.get(ex.id);
+      if (nightWork) stand.append(nightCase(c, nightWork, () => ctx.world?.refreshWorld(), showClaim));
       const key = ex.specimen.key;
       const reading = h('p', { class: 'fine', role: 'status' });
       const read = () => {
@@ -3528,6 +3532,14 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    if (id === 'night-perch' || id === 'night-desk') {
+      const c = ctx.controller;
+      const site = nightSites.find(site => site.room === c.state.mapId);
+      if (!site) return;
+      const panel = id === 'night-perch' ? nightPerch : nightDesk;
+      this.openModal('bench-panel wide', site.title, this.closeBtn(), panel(c, site, () => ctx.world?.refreshWorld()));
+      return;
+    }
     if (id === MOON_INSTRUMENT) {
       const instrument = spareMoonMusicPanel(ctx.controller, () => ctx.settings.sfxVolume, () => ctx.world?.refreshWorld());
       if (instrument) {

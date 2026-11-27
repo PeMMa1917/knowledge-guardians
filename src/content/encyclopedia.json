@@ -3407,6 +3407,24 @@
       "kind": "related",
       "wikidata": "Q234908",
       "basis": "The collection credits Nizami Ganjavi with this role: Author of the literary work. The article provides background on that role."
-    }
+    },
+    {"id": "OBJ-NIGHT-1201", "title": "The Mill (Rembrandt)", "kind": "article", "wikidata": "Q3224802", "basis": "The museum record identifies this work with the Wikidata item linked to the article."},
+    {"id": "OBJ-NIGHT-41637", "title": "Christ at the Sea of Galilee", "kind": "article", "wikidata": "Q9191534", "basis": "The museum record identifies this work with the Wikidata item linked to the article."},
+    {"id": "OBJ-NIGHT-46681", "title": "A Girl with a Watering Can", "kind": "article", "wikidata": "Q4657050", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-46437", "title": "A Lady Writing a Letter", "kind": "article", "wikidata": "Q914984", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-61371", "title": "Bulb Fields", "kind": "article", "wikidata": "Q4987244", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-46660", "title": "In the Dining Room", "kind": "article", "wikidata": "Q19973935", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-52279", "title": "Rotterdam Ferry-Boat", "kind": "article", "wikidata": "Q20185784", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-46569", "title": "The Boating Party", "kind": "article", "wikidata": "Q15876324", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-46114", "title": "The Emperor Napoleon in His Study at the Tuileries", "kind": "article", "wikidata": "Q1313605", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-52192", "title": "The Harbor at Lorient", "kind": "article", "wikidata": "Q3225805", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-166463", "title": "The House of Representatives", "kind": "article", "wikidata": "Q20184686", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-1211", "title": "Danseuse (Renoir)", "kind": "article", "wikidata": "Q17627753", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "fr"},
+    {"id": "OBJ-NIGHT-46480", "title": "Moe piluda, Trouville (trutca ke Boudin)", "kind": "article", "wikidata": "Q20189875", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "avk"},
+    {"id": "OBJ-NIGHT-52156", "title": "Piluda koe Trouville (3) (trutca ke Boudin)", "kind": "article", "wikidata": "Q20188645", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "avk"},
+    {"id": "OBJ-NIGHT-52161", "title": "Tcatesikya moe piluda ke Étretat (trutca ke Boudin)", "kind": "article", "wikidata": "Q20190455", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "avk"},
+    {"id": "OBJ-NIGHT-74", "title": "Porträtt av en äldre kvinna", "kind": "article", "wikidata": "Q17859670", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "sv"},
+    {"id": "OBJ-NIGHT-88615", "title": "A Szent Bertalan-templom szigete és hídjai", "kind": "article", "wikidata": "Q20185097", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "hu"},
+    {"id": "OBJ-NIGHT-97", "title": "Le Château de cartes (Chardin, Washington)", "kind": "article", "wikidata": "Q12859917", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "fr"}
   ]
 }

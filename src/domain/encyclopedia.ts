@@ -4,7 +4,7 @@ import research from '../content/encyclopedia.json';
 import { historicalEncounters, isHistoricalBiography } from './historicalEncounters';
 import type { CampaignState, CharacterRecord, ContentPack, EvidenceCard, ExhibitRecord } from './types';
 
-const languageNames = { de: 'German', it: 'Italian', arz: 'Egyptian Arabic', avk: 'Kotava' } as const;
+const languageNames = { fr: 'French', hu: 'Hungarian', sv: 'Swedish', de: 'German', it: 'Italian', arz: 'Egyptian Arabic', avk: 'Kotava' } as const;
 type ArticleLanguage = keyof typeof languageNames;
 
 export interface EncyclopediaLink {

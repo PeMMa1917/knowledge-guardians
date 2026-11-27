@@ -157,3 +157,5 @@ The previous checkpoint passed the production build along with all 2,528 Vitest 
 | Remaining performance check | The production build warns about its main bundle at roughly 2.44 MB compressed. Physical-device startup, screen-reader use, student retention and effectiveness still need field trials. |
 
 Across all six supplied blocks, 507 of 1,200 skills have an authored play link and 306 have links in more than one world. The other 693 require evidence. The world-by-element census still has a substantial gap against the ten-action target. The same brief action repeated in multiple sites does not demonstrate independent mastery. An action-by-action evaluation with actual students and all 73 stakeholder groups remains outstanding. [Skill evidence](../TOK_MICRO_SKILLS.md) · [World intersections](../CROSS_WEAVE_AUDIT.md) · [Classroom review setup](../ACCOUNTS_AND_HOSTING.md) · [Classroom browser checks](../../tools/smoke-classroom.mjs) · [Physical lantern checks](../../tools/smoke-lamplight.mjs)
+
+The next review covers the Night Register, its travelling collections and the companions' paired trails. [Night Register review](NIGHT_REGISTER.md)

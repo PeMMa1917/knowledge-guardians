@@ -241,3 +241,7 @@ These are examples, not a measure of whether every player will find, enjoy or in
 - Recurring chapter characters need more decisions and consequences beyond the current cast. A catalogue of character names or lines cannot show a full arc.
 - Full daily schedules, a return-to-character card and broader late faction responses could give more reasons to revisit the same room.
 - A walkable mirror scene and a post-ending challenge remain open. The Journal’s aftermath and illustrated credits currently revisit the player’s earlier choices.
+
+### A recurring clue that changes owner
+
+The hook at Ise's desk, the thumbprint between Tovrie's panes and the chalk mark outside Hale's seating plan each preserve the presence of a person the formal list missed. Players can encounter the clues in different orders. The signed register names the actual keepers whose receipts made the ending possible. A courier can help a player return to a first account after its author has changed their mind. [Fifteen local mysteries](../src/content/nightKeepers.ts) · [Persistent endings](../src/domain/nightRegister.ts)

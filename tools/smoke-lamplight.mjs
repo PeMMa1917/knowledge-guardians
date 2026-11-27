@@ -1,5 +1,6 @@
 import { createRequire } from 'node:module';
 import { playEmberfordShift } from './emberford-shift-journey.mjs';
+import { playNightRegister } from './night-register-journey.mjs';
 import { playLastBell } from './last-bell-journey.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -80,7 +81,9 @@ try {
   await waitMap('nexus.archive');
   const bellOnly = process.argv.includes('--last-bell');
   const shiftOnly = process.argv.includes('--emberford-shift');
-  if (shiftOnly) await playEmberfordShift({page,engine,waitMap,use,close,button,puzzles:load('puzzles.json').puzzles});
+  const registerOnly = process.argv.includes('--night-register');
+  if (registerOnly) await playNightRegister({page,engine,waitMap,use,close,button,posts,works:load('night-register.json'),trails:load('night-trails.json')});
+  else if (shiftOnly) await playEmberfordShift({page,engine,waitMap,use,close,button,puzzles:load('puzzles.json').puzzles});
   else if (bellOnly) await playLastBell({page,engine,waitMap,use,close,button,sites,posts});
   else for (const [i, site] of sites.entries())
     if (i % 3 === split) {
@@ -134,7 +137,7 @@ try {
     faults.filter((s) => !s.includes('favicon')),
     [],
   );
-  console.log(engine, browser.version(), shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
+  console.log(engine, browser.version(), registerOnly ? 'passed the night register journey' : shiftOnly ? 'passed the Emberford shift' : bellOnly ? 'passed the kitchen bell journey' : 'passed both endings at each of five physical stations');
 } finally {
   await browser.close();
 }

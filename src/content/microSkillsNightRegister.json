@@ -1,0 +1,434 @@
+[
+  {
+    "number": 1003,
+    "name": "Trace an image back to its original caption",
+    "uses": [
+      {
+        "objective": "night-register.archive.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      },
+      {
+        "objective": "night-register.nile.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      },
+      {
+        "objective": "night-register.cold.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      },
+      {
+        "objective": "night-register.coast.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      },
+      {
+        "objective": "night-register.fern.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      },
+      {
+        "objective": "night-register.yard.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      },
+      {
+        "objective": "night-register.press.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      },
+      {
+        "objective": "night-register.chart.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      },
+      {
+        "objective": "night-register.stage.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      },
+      {
+        "objective": "night-register.market.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      },
+      {
+        "objective": "night-register.gate.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      },
+      {
+        "objective": "night-register.dispatch.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      },
+      {
+        "objective": "night-register.voices.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      },
+      {
+        "objective": "night-register.island.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      },
+      {
+        "objective": "night-register.council.caption",
+        "action": "Follow the pencilled drawer address to the mount. Compare the image and accession with its museum caption before stitching or separating them.",
+        "styles": [
+          "explorer",
+          "collector"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 267,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 1115,
+    "name": "Distinguish personal, technical and collective memory",
+    "uses": [
+      {
+        "objective": "night-register.archive.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      },
+      {
+        "objective": "night-register.nile.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      },
+      {
+        "objective": "night-register.cold.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      },
+      {
+        "objective": "night-register.coast.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      },
+      {
+        "objective": "night-register.fern.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      },
+      {
+        "objective": "night-register.yard.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      },
+      {
+        "objective": "night-register.press.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      },
+      {
+        "objective": "night-register.chart.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      },
+      {
+        "objective": "night-register.stage.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      },
+      {
+        "objective": "night-register.market.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      },
+      {
+        "objective": "night-register.gate.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      },
+      {
+        "objective": "night-register.dispatch.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      },
+      {
+        "objective": "night-register.voices.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      },
+      {
+        "objective": "night-register.island.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      },
+      {
+        "objective": "night-register.council.memory-folders",
+        "action": "Hear the person who received the sheet, unseal the frozen edition and compare the current home account. A later change at home leaves the received record intact.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 114
+      }
+    ]
+  }
+]

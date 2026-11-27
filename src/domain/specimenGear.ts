@@ -2,7 +2,7 @@ import type { CampaignState, Condition, ContentPack, Effect, ExhibitRecord } fro
 
 export const SPECIMEN_BASE = 'nexus.specimen-vault';
 export const SPECIMEN_CAPACITY = 3;
-export const SPECIMEN_TARGET = 1000;
+export const SPECIMEN_TARGET = 2000;
 export const SPECIMEN_CASES = 6;
 export const SPECIMEN_SHELF = 'specimen-shelf:';
 export const SPECIMEN_PAGE = 'specimens.display.page';
@@ -96,13 +96,13 @@ export function specimenEquipped(key: string): Condition {
 export function specimenEquipment(pack: ContentPack): void {
   const equipment = pack.keepsakes ?? (pack.keepsakes = []);
   for (const record of pack.exhibits.filter(hasSpecimen)) {
-    const { key, institution, accession, revisit } = record.specimen;
+    const { key, institution, accession, revisit, fieldUse } = record.specimen;
     const item = specimenItemId(key);
     pack.items.push({ id: item, name: record.name, historicalLabel: record.historicalLabel,
       description: `${institution} · ${accession}`, art: record.art });
     equipment.push({ id: specimenToolId(key), name: record.name, text: record.summary,
-      if: { item }, where: 'The Nexus collection room', use: revisit?.hint ?? 'Try the return arch in the Nexus collection room.',
+      if: { item }, where: 'The Nexus collection room', use: fieldUse ?? revisit?.hint ?? 'Try the return arch in the Nexus collection room.',
       equip: { method: revisit?.method ?? 'Reopen a route with this object.',
-        hint: revisit?.hint ?? 'Use the route arch in the Nexus collection room to return to where you found it.', art: record.art } });
+        hint: fieldUse ?? revisit?.hint ?? 'Use the route arch in the Nexus collection room to return to where you found it.', art: record.art } });
   }
 }

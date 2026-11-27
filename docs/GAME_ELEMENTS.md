@@ -407,3 +407,9 @@ These nine preferences pair an early invitation with later play. Six have a play
 - A piloted ferry, a calm movement course, a recurring research challenge and a post-ending replay remain open. Existing convoy models and private retry support are listed alongside those gaps.
 - A diorama, a portable passport, a specialist traversal tool and advanced apprenticeship remain open. Each has a nearby authored case that can be expanded through play.
 - Online systems, student publishing, wagers, grading and combat are governed by the [repository rules](../AGENTS.md). The adapted alternatives sit in the individual rows.
+
+### Field companions and the register
+
+A scout points to an unread frame and offers its row and position to readers who use text. A courier keeps a particular edition in reserve while the Guardian carries something else. At the home perch either can learn the other job. Both jobs use the species' field tool. A guardian can also operate all sixteen tools by hand. Bringing a reading to a different chapter opens a keeper's favour, a witness comparison and a clue to the unsigned register. The number of possible delivery routes measures different recipients and outcomes. The routes share mechanics. [Field tools](../src/content/nightFamilies.ts) · [Keeper actions](../src/domain/nightRegister.ts)
+
+Each individual also has its own two-work trail. Button follows the left edges of Barnes's *Needle Book* and Bartlett's *Water Barrel or Runlet*. The Gallery classifies both in its Index of American Design and credits different hands and media. Take Button to both works in either order. A travelling comparison opens at the perches with the two editions Button actually helped prepare. All 240 such trails have distinct pairs, using 480 different works. [Trail assignments](../src/content/night-trails.json)

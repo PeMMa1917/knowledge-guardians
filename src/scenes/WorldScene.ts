@@ -6,6 +6,8 @@
  * Controls: arrows / WASD to walk, E / Space / Enter to interact,
  * click or tap to walk to a spot or a person (alternative control route).
  */
+import { nightByFriend } from '../domain/nightRegister';
+import { creaturePortrait } from '../ui/nightCreature';
 import { ensureLook } from './looks';
 import { cloakThreads } from '../domain/appearance';
 import { EMOTES, EMOTE_ICONS } from '../domain/emotes';
@@ -1002,8 +1004,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const x = this.player.sprite.x + 12, y = this.player.sprite.y + (guide ? 0 : -14);
     const glow = this.add.image(x, y, 'glow').setTint(0xfff0a0).setBlendMode(Phaser.BlendModes.ADD)
       .setAlpha(guide ? 0.3 : 0.85).setScale(0.18);
-    const sprite = this.add.sprite(x, y, guide?.sprite ?? 'moth.0');
-    if (!guide) sprite.play('moth.flap');
+    const friend = nightByFriend.get(want);
+    const coat = 'register-pet.' + want;
+    if (friend && !this.textures.exists(coat)) this.textures.addCanvas(coat, creaturePortrait(friend));
+    const sprite = this.add.sprite(x, y, friend ? coat : guide?.sprite ?? 'moth.0');
+    if (!guide && !friend) sprite.play('moth.flap');
     this.pet = { id: want, sprite, glow, target: null, until: 0, next: this.time.now + 4000 };
   }
 
@@ -1018,11 +1023,13 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const rec = ctx.controller.pack.lorelings.find((l) => l.id === pet.id);
     const guide = rec?.fieldGuide;
     const form = rec ? lorelingForm(rec, ctx.controller.pack, ctx.controller.state.objectivesDone).form : 1;
-    if (!guide && !pet.target && now > pet.next && !ctx.ui.isModalOpen()) {
+    const scout=nightByFriend.has(pet.id) && ctx.controller.state.flags['night.bond.'+pet.id]==='scout' && this.map.id.startsWith('night-register.');
+    if (!guide && (!nightByFriend.has(pet.id) || scout) && !pet.target && now > pet.next && !ctx.ui.isModalOpen()) {
       pet.next = now + 7000;
       const px = this.player.sprite.x, py = this.player.sprite.y, range = (form >= 2 ? 11 : 7) * TILE;
       let best: Interactable | null = null, bd = range;
       for (const it of this.map.interactables) {
+        if (scout && (!it.exhibit || ctx.controller.state.flags['inspected.'+it.exhibit])) continue;
         if (!['exhibit', 'sign', 'puzzle', 'board', 'alcove', 'lock', 'label', 'assay', 'bench'].includes(it.kind)) continue;
         if (it.visibleIf && !ctx.controller.check(it.visibleIf)) continue;
         if (ctx.controller.state.flags[`used.${this.map.id}.${it.id}`] === true) continue;

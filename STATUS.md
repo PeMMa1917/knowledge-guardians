@@ -1,5 +1,13 @@
 # Status and next steps
 
+## 27 November • The Night Register
+
+Start beside Ise's lamp in the Archive. Her mother's key is back on the hook, still wet. At the perch, Button can scout for an unread frame or carry an edition that the Guardian may need again. To follow Button's own trail, try the left edge of Ruth M. Barnes's *Needle Book* and Dana Bartlett's *Water Barrel or Runlet* with Button. The two readings can then be opened together at any chapter perch. [Keeper stories](src/content/nightKeepers.ts) · [Trails for all 240 companions](src/content/night-trails.json)
+
+The collection now has 2,038 individually identified objects. The 1,020 additions each have a dated National Gallery of Art accession, an individual pixel image, a museum source, a local use and fourteen possible receiving chapters. Fifteen keepers have personal shifts and two different mornings. Their mystery has two signed endings. All 250 existing historical guests can leave a tracing that the keeper's desk remembers. [Playable route](tools/night-register-journey.mjs) · [Object sources](docs/SOURCES.md#the-night-register-collection)
+
+The supplied skill ledger records 1,157 playable links across 509 of the 1,200 definitions. Two new practices ask the player to recover an image's caption and compare three memories after a delivery. A separate test exercises 57,120 combinations of object, first recipient, receiving chapter and local use. The 73-perspective review records remaining concerns about curriculum coverage, cultural scope, managed devices and classroom transfer. [Review and disagreements](docs/audit/NIGHT_REGISTER.md) · [Evidence tests](tests/night-register.test.ts)
+
 ## 27 November • Who heard the bell?
 
 The bell mystery now runs from Maro’s tide steps to the Council in five chapters. Cut or restore a witness’s recording, try two runner routes in fog, walk Joss’s hinged footbridge in both directions and amend the chart. Let the families call a meeting or send the crew out at dawn. Either decision can open a second hearing. Students who enter the Council first can use clearly identified loan records. [Story and routes](docs/STORY_BIBLE.md#the-kitchen-bell-and-the-missing-houses-chapters-1115) · [Playable checks](tests/last-bell.test.ts)

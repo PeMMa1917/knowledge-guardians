@@ -3,6 +3,7 @@
  * folder. To add content, edit the JSON and run `npm test`: the content tests
  * validate every reference (see docs/CONTENT_GUIDE.md).
  */
+import { installNightCollection } from './nightCollection';
 import type { ContentPack } from '../domain/types';
 import sources from './sources.json';
 import common from './common.json';
@@ -239,6 +240,7 @@ export function buildPack(): ContentPack {
   const articles = new Map(encyclopedia.people.flatMap((article) => article.characters.map((id) => [id, article.title] as const)));
   installInkPost(content, articles);
   installLamplight(content, articles);
+  installNightCollection(content);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);

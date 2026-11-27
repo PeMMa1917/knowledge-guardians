@@ -163,6 +163,7 @@ export interface ExhibitRecord {
     pixelAsset?: string;    // optional local licensed image within assets/specimens/
     people?: { name: string; role: string; detail: string; source: string }[];
     /** A new interaction or route made possible by carrying and equipping the object. */
+    fieldUse?: string;
     revisit?: { map: string; prop: string; method: string; hint: string };
   };
   /** Optional label kit that repairs this exhibit's label (Hall of Firsts). */
@@ -201,6 +202,8 @@ export interface CharacterRecord {
   role: string;
   sprite: string;             // file id in public/assets/art/generated/characters
   mode: 'fictional' | 'historical';
+  /** A resident can be on a different shift when encountered in a second room. */
+  localGreeting?: Record<string, string>;
   /** Dialogue entry points, first matching condition wins. */
   talk: { if?: Condition; node: string }[];
 }

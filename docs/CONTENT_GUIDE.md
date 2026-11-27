@@ -322,3 +322,9 @@ Rules: god and fate crossings use invented in-world patrons and prophecies only;
 
 Give every new crossing, hearth talk, field game or loyalty mission a `LEARN` entry in `src/domain/learningLevels.ts` (concepts, framework parts, DOK, Bloom, Fink, SOLO, minutes) and a chapter in `OPTIONAL_CHAPTER` (`src/domain/learningPaths.ts`). For an objective, `weave.framework` and `weave.minutes` are optional. Then run `npx vitest run tests/learning.test.ts --mode tok-report`, and lower the gap budget if it went down. Read [LEARNING_DESIGN.md](LEARNING_DESIGN.md) for how to vary the levels.
 
+
+### A keeper working a second shift
+
+A character's optional `localGreeting` maps a physical room ID to a dialogue entry. The engine uses that greeting when the player meets the resident in that room. Their usual conditional conversations remain available everywhere else. The dialogue graph test counts a local greeting only in a room that actually places the character. [Keeper assembly](../src/content/nightCollection.ts) · [Map and dialogue checks](../tests/playthrough.test.ts)
+
+The Night Register catalogue order fixes saved case positions. Keep a published accession at its existing position. Each companion's trail refers to two permanent museum IDs. The test requires a real placement at home and in another chapter, a distinct maker and medium, and successful completion in either order. [Trail tests](../tests/night-register.test.ts)

@@ -1,3 +1,4 @@
+import { nightByExhibit, nightEffects, type NightCommand } from './nightRegister';
 import {lastBellEffects, type LastBellCommand} from './lastBell';
 import {watchEffects,type BellAction} from './watchBell';
 import { MOON_TUNE, moonPerformance, validMoonTune } from './spareMoonMusic';
@@ -74,6 +75,7 @@ const DIALOGUE_FALLBACK = 999;
 import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand, type LanternPairCommand } from './lamplight';
 
 export type Command =
+  | NightCommand
   | LastBellCommand
   | BellAction
   | LanternPairCommand
@@ -344,6 +346,8 @@ export class Engine {
   talkEntry(characterId: string, s: CampaignState): string | null {
     const c = this.pack.characters.find((x) => x.id === characterId);
     if (!c) return null;
+    const local = c.localGreeting?.[s.mapId];
+    if (local) return local;
     const t = c.talk.find((x) => check(x.if, s));
     return t ? t.node : null;
   }
@@ -435,6 +439,9 @@ export class Engine {
             s = apply([{ setFlag: MOON_TUNE, value: cmd.tune }, { setFlag: performed, value: true }], s, out);
           break;
         }
+        case 'WorkNightRegister':
+          s = apply(nightEffects(cmd, s), s, out);
+          break;
         case 'WorkLastBell':
           s = apply(lastBellEffects(cmd, s), s, out);
           break;
@@ -689,7 +696,9 @@ export class Engine {
         case 'InspectExhibit': {
           const e = this.pack.exhibits.find((x) => x.id === cmd.exhibit);
           if (!e) throw new Error('Unknown exhibit');
-          s = apply([{ setFlag: `inspected.${e.id}`, value: true }, { addCard: e.grantsCard }, { addNum: 'count.inspected', by: s.flags[`inspected.${e.id}`] ? 0 : 1 }], s, out);
+          const registerWork=nightByExhibit.get(e.id);
+          if(registerWork && s.mapId!==registerWork.site.room)throw Error('Visit the object in its own register room.');
+          s = apply([...(registerWork?[{setFlag:registerWork.site.room+'.open',value:true}]:[]), { setFlag: `inspected.${e.id}`, value: true }, { addCard: e.grantsCard }, { addNum: 'count.inspected', by: s.flags[`inspected.${e.id}`] ? 0 : 1 }], s, out);
           break;
         }
         case 'ReadBiography': {
@@ -1412,7 +1421,7 @@ export class Engine {
       let changed = false;
       // Keepsakes and the Lamp Wall (the storyline): mark each new one with a flag and a moment.
       for (const k of this.pack.keepsakes ?? []) {
-        if (s.flags[`keepsake.${k.id}`] === true || !check(k.if, s)) continue;
+        if (!check(k.if, s) || s.flags[`keepsake.${k.id}`] === true) continue;
         s = apply([{ setFlag: `keepsake.${k.id}`, value: true }], s, out);
         events.push({ kind: 'keepsake', id: k.id, name: k.name, use: k.use ?? '' });
         changed = true;

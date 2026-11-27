@@ -444,3 +444,25 @@ A test (`tests/voices.test.ts`) checks that every character with more than 20 li
 - **Worries:** two readings merged into one that nobody can check.
 - **Speaks:** remembers the old bell-runner shifts.
 - **Why:** council loan steward and former harbour bell runner.
+
+## After closing at the chapter registers
+
+| Keeper | What changes how they speak |
+| --- | --- |
+| Ise | A key and a saucer let her mother ask for help on her own terms. Ise offers the stool and waits. |
+| Imani | She remembers the wage for a delivery nobody believed. She lends her runner her good shoe before discussing the seal. |
+| Tovrie | She checks the cold-room pane twice when her brother stops visiting. She lets him decide what his first shift will be. |
+| Orren Bell | He trusts a timing count he has practised for years. Seeing the harbour from his daughter's height makes him count again. |
+| Vellune | Six years of calls have taught her which marks look like her own. She has to check the date on a note before she can use it. |
+| Hesper | Anger at a broken tool coexists with pride in the apprentice who adapted it. Her own teacher's thumbprint complicates the choice. |
+| Bayette | She treats a reversed initial as a clue to her friend's working position. She wants to see where her friend reads it. |
+| Ostel | His friend leaves space for a homecoming at the edge of a map. Ostel sails out to learn which boat can actually see the light. |
+| Brannic | She hates hearing herself hesitate in a practice reel. The scene shifter counts on that exact hesitation. |
+| Sessa Vale | She wants to pay her aunt fairly. Her aunt wants to keep a say in how the basket is mended. Both have good reason to insist. |
+| Maro | She has to balance a sleeping father's rest with a sister's need for a warning. Her father has his own reason for coming downstairs. |
+| Ro | She is quick to picture six lighted windows. Drawing her own seventh window makes it possible for other people to offer help. |
+| Wren | She has promised a young speaker control over one sentence. A visitor can make a long wait bearable without opening the girl's boat. |
+| Joss | Her first instinct is to glue a loose roof down. A child's wheels invite her to follow the house beyond the planning board. |
+| Hale | He has kept everybody else's minutes. When invited to take his turn, he still gets to choose where to sit. |
+
+Each person's morning can change after the Guardian has heard the consequences of a delivery. [Dialogue and branches](../src/content/nightKeepers.ts)

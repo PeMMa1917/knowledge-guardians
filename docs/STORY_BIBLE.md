@@ -452,3 +452,11 @@ Mika's list of 150 story elements is adapted to this game in [STORY_ELEMENTS.md]
 A torn parcel wrapper comes under the Ledger Room door after its claim has closed. Lella opens an empty drawer on purpose. Omrin’s blind spring sometimes exposes the seal. Players pin a drawer and run both opening rules on the same six slips. A second work surface lets them thread Lella’s own tag to the queue, then run the thread between every pair. The two moon tags are grounds to reopen the claim. Neither identifies an owner.
 
 At the return slot, the Guardian can leave anonymous tokens or stay to hear both accounts. Lella and Omrin remember the arrangement in separate conversations. Both arrangements can be tried on the same save. The rack and roll give a civic use to the reasoning encountered at Dov’s lantern crates and Tova’s ferry.
+
+### The missing signature
+
+In the Archive, Ise has been leaving a key under a saucer so her mother can open the library for herself. Now the key is back and the hook is wet. A guardian can follow a loose picture to its drawer, keep watch with a creature, or take a shift at the register. The museum works are real. The people arguing over who gets to use the reading live in the game.
+
+Each of the fifteen rooms gives the receiving keeper an urgent task and a quieter reason to stay after closing. Ostel needs to plot a light his friend can see from the quay and that disappears offshore. Brannic discovers that the shifter uses the uneven clap she hated on her rehearsal reel. Hale wants the chair keeper to have a voice and chooses to sit by the wall. Bringing a reading from elsewhere lets the Guardian intervene. A later visitor can hear how the person acted the following morning.
+
+The carried edition remembers which tool exposed the detail, who helped and who received it first. When the home display changes, the first recipient can give a different account in good faith. After three receiving chapters the keepers discover what the blank signature means. The Guardian can leave a space for the earliest helper or pass the register on to its latest reader. Each ending keeps its original witnesses. A player may return to either decision. [Keepers, morning scenes and clues](../src/content/nightKeepers.ts) · [Playable handovers](../tests/night-register.test.ts)

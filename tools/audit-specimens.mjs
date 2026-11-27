@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { createServer } from 'vite';
 import { existsSync, readFileSync } from 'node:fs';
 
@@ -17,6 +18,7 @@ try {
   const authoredArt = new Set(artKeys());
   const manifest = JSON.parse(readFileSync('public/assets/credits.json', 'utf8'));
   const illustrations = new Map();
+  const imageBytes = new Map();
   const physical = new Map();
   for (const map of Object.values(MAPS)) {
     for (const prop of map.interactables) {
@@ -36,7 +38,13 @@ try {
     if (earlier) errors.push(`${specimen.key}: its image is also registered to ${earlier}`);
     illustrations.set(picture, specimen.key);
     if (specimen.pixelAsset) {
-      if (!manifest.files[picture] || !existsSync(`public/assets/${picture}`)) errors.push(`${specimen.key}: missing licensed local image ${picture}`);
+      if (!manifest.files[picture] || !existsSync(`public/assets/${picture}`)) {
+        errors.push(`${specimen.key}: missing licensed local image ${picture}`);
+      } else {
+        const digest = createHash('sha256').update(readFileSync(`public/assets/${picture}`)).digest('hex');
+        if (imageBytes.has(digest)) errors.push(`${specimen.key}: identical image bytes to ${imageBytes.get(digest)}`);
+        imageBytes.set(digest, specimen.key);
+      }
     } else if (!authoredArt.has(picture)) errors.push(`${specimen.key}: missing original illustration ${picture}`);
     if (specimen.revisit) {
       const revisit = MAPS[specimen.revisit.map]?.interactables.find((prop) => prop.id === specimen.revisit.prop);
@@ -62,7 +70,7 @@ try {
     console.log(JSON.stringify({ target: TARGET, unique: unique.size, registered, legacyExhibits: legacy.map(({ id, name }) => ({ id, name })), errors }, null, 2));
   } else {
     console.log(`${unique.size} unique exact specimens registered and ${legacy.length} documented exhibits awaiting exact identity review.`);
-    console.log(`${registered.filter(({ revisit }) => revisit).length} have a distinct equipped return interaction. Other collected objects open their return route from the Nexus.`);
+    console.log(`${registered.filter(({ revisit }) => revisit).length} have a dedicated equipped return prop. ${registered.filter(({ fieldUse }) => fieldUse).length} support a portable use at other chapter desks. The Nexus also offers a return route.`);
     console.log(`${Math.max(0, TARGET - unique.size)} open places in the ${TARGET}-specimen target.`);
     for (const error of errors) console.error(error);
   }

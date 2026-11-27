@@ -1,3 +1,4 @@
+import { nightQuestions } from './nightRegister';
 import {lastBellScenes, type LastBellSite} from '../content/lastBell';
 import { watches, type WatchSite } from './watchBell';
 import { lanternQuestions } from './lamplight';
@@ -27,6 +28,8 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
+  const register = nightQuestions(key);
+  if (register) return register;
   const watch = /^night-watch\.(gate|dispatch):/.exec(key);
   if (watch) {
     const question = watches[watch[1] as WatchSite].question;

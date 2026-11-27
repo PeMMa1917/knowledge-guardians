@@ -1,3 +1,4 @@
+import { nightDoor, nightRooms } from './nightRegister';
 import type { MapDef } from './types';
 import { HINGED_PLANK } from './hingedPlank';
 import { UNDERPAN } from './underpan';
@@ -197,7 +198,12 @@ const campaignMaps: Record<string, MapDef> = {
   [BADGE_ANNEX.id]: BADGE_ANNEX,
 };
 
+for (const room of nightRooms) {
+  const door = room.interactables.find(prop => prop.id === room.id+'.back')!;
+  campaignMaps[room.id] = { ...room, music: campaignMaps[door.to!.map].music };
+}
+
 export const MAPS: Record<string, MapDef> = Object.fromEntries(Object.values(campaignMaps).map((map) => {
-  const returns = [...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id), ...inkPostAt(map.id)];
+  const returns = [...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id), ...inkPostAt(map.id), ...nightDoor(map.id)];
   return [map.id, returns.length ? { ...map, interactables: [...map.interactables, ...returns] } : map];
 }));

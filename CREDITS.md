@@ -117,3 +117,9 @@ Many games grew from TOK lessons in Mika's lesson folder (decision X-017 in [doc
 The historical sources for the real objects in the game are in [docs/SOURCES.md](docs/SOURCES.md) and in the chapter content. The game uses original pixel drawings and transforms collection images released under verified open licences. The Polar Store’s exact accession illustrations are original drawings based on catalogue descriptions. Per-image rights, catalogue and download links are in [the asset manifest](public/assets/credits.json).
 
 The sealed paper bird, open reply and four small instrument diagrams are original pixel illustrations drawn in code for this project. The four-beat bench plays synthesized notes through the existing instrument. [Folded-wing sprites](src/ui/illustrations.ts) · [Playable diagrams](src/ui/inkTrialDiagram.ts)
+
+## The Night Register
+
+The 1,020 images in `public/assets/specimens/night-register/` are pixel renditions of individual National Gallery of Art open-access collection images. Each numbered filename uses the Gallery's object ID. The catalogue preserves the artist or workshop credit, the work's title, date and accession. Each file's manifest entry links to its corresponding museum record and original IIIF image. The images retain their proportions within 64 pixels and use up to 40 colours. [Individual works and maker credits](src/content/night-register.json) · [Image sources and licences](public/assets/credits.json) · [Gallery open data](https://github.com/NationalGalleryOfArt/opendata)
+
+The sixteen field-creature silhouettes and fifteen coat palettes are original pixel drawings made for this game. [Portraits and field sprites](src/ui/nightCreature.ts)

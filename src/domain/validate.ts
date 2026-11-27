@@ -137,7 +137,7 @@ export function validateContent(pack: ContentPack): string[] {
       for (const person of e.specimen.people ?? []) {
         if (!person.name.trim() || !person.role.trim() || !sources.has(person.source)) p.push(`exhibit ${e.id}: incomplete or unsourced person ${person.name}`);
       }
-      if (pixelAsset && !/^specimens\/[a-z0-9][a-z0-9._-]*\.(png|webp|jpg)$/.test(pixelAsset)) {
+      if (pixelAsset && !/^specimens\/(?:[a-z0-9][a-z0-9_-]*\/)*[a-z0-9][a-z0-9._-]*\.(png|webp|jpg)$/.test(pixelAsset)) {
         p.push(`exhibit ${e.id}: specimen image must be a local asset`);
       }
     }
@@ -145,6 +145,9 @@ export function validateContent(pack: ContentPack): string[] {
   pack.items.forEach((i) => dup('item', i.id));
   pack.characters.forEach((c) => {
     dup('character', c.id);
+    for (const [room, node] of Object.entries(c.localGreeting ?? {})) {
+      if (!room || !nodes.has(node)) p.push(`character ${c.id}: invalid greeting in ${room}`);
+    }
     c.talk.forEach((t) => { nodes.has(t.node) || p.push(`character ${c.id}: unknown node ${t.node}`); cond(t.if, `character ${c.id}`); });
   });
   pack.journal.forEach((j) => {
@@ -545,8 +548,14 @@ export function validateContent(pack: ContentPack): string[] {
   // NONEWS-001: no news source types.
   pack.sources.forEach((src) => { if (/\bnews\b|newspaper|gazette/i.test(src.title)) p.push(`source ${src.id}: news sources are not allowed (NONEWS-001)`); });
   // Every objective needs four hint depths (spec 16.3).
+  const hintDepths = new Map<string, Set<number>>();
+  for (const hint of pack.hints) {
+    const depths = hintDepths.get(hint.objective) ?? new Set<number>();
+    depths.add(hint.depth);
+    hintDepths.set(hint.objective, depths);
+  }
   for (const o of objectives) {
-    const depths = new Set(pack.hints.filter((h) => h.objective === o).map((h) => h.depth));
+    const depths = hintDepths.get(o) ?? new Set<number>();
     for (const d of [1, 2, 3, 4] as const) if (!depths.has(d)) p.push(`objective ${o}: missing hint depth ${d}`);
   }
   // The Deep Dive (spec 59): every prompt can be answered two or more ways; daily sets are balanced.

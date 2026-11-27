@@ -1,4 +1,6 @@
 import './lamplight.css';
+import { registerThresholds } from '../maps/nightRegister';
+import { nightSites } from '../domain/nightRegister';
 import { lastBellPanel } from './lastBell';
 import {nightWatch} from './watchBell';
 import { lanternPair } from './lanternPair';
@@ -96,6 +98,8 @@ export function lamplightPanel(node: string, c: GameController, refresh: () => v
     const mounted = lanternDisplay(c.state, site);
     const waiting = lanternReturn(c.state, site, bench);
     const pocket = h('div', {class:'lamp-return'});
+    const register=nightSites.find(s=>s.site===site.id);
+    if(bench && register)pocket.append(h('p', {},register.title+' · The door to the night register is nearby. '+direction(site.at,registerThresholds[register.index])));
     if (waiting) {
       const ready = lanternRead(c.state, site, waiting).trace !== undefined;
       if (ready === bench) pocket.append(button((bench ? 'Deliver my tracing to ' : 'Resume my work with ') + waiting.name, () => encounter(waiting)));
