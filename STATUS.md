@@ -2,7 +2,7 @@
 
 ## 27 November • Music at the workbench
 
-A rehearsal leaves room for the whistle. Three notes mark a bench at work and two mark a hearing. Either ruling has the same handover bell. Players can follow captions and set music and effects separately. The field-game registry opens 18 individual games and 14 families of workstations across the map.
+A rehearsal leaves room for the whistle. Three notes mark a bench at work and two mark a hearing. Either ruling has the same handover bell. Players can follow captions and set music and effects separately. The field-game registry opens 18 individual games and 14 families of workstations across the map. Long-running saves can open an earlier conversation without rebuilding the whole scene catalogue.
 
 ## 27 November • Who gets the hearing chair?
 

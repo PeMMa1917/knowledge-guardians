@@ -313,7 +313,11 @@ export const SIM_MODEL: Record<string, Record<string, { q: number; note: string 
 };
 
 export class Engine {
-  constructor(public pack: ContentPack) {}
+  readonly dialogueById: ReadonlyMap<string, DialogueNode>;
+
+  constructor(public readonly pack: ContentPack) {
+    this.dialogueById = new Map(pack.dialogue.map((node) => [node.id, node]));
+  }
 
   /** Companion approval for a good question (src/domain/approval.ts). Each source of approval counts once. */
   private approve(s: CampaignState, out: EffectOutputs, events: GameEvent[], key: string): CampaignState {
@@ -327,7 +331,7 @@ export class Engine {
   }
 
   node(id: string): DialogueNode {
-    const n = this.pack.dialogue.find((x) => x.id === id);
+    const n = this.dialogueById.get(id);
     if (!n) throw new Error(`Unknown dialogue node ${id}`);
     return n;
   }

@@ -1470,7 +1470,7 @@ export class UI implements UIApi {
       : id === 'stage.call.stand' ? 'stage.call.audience' : cornerObjective;
     const extra = id === 'sefa.free' ? this.freeQuestion() : lamplightPanel(id, c, () => ctx.world?.refreshWorld(), (line) => this.speak(line), ctx.settings.sfxVolume)
       ?? inkTrialDiagram(id, ctx.settings.sfxVolume);
-    const earlier = conversationHistory(c.pack.dialogue, c.state.flags).filter((line) => line.id !== id).slice(0, 5);
+    const earlier = conversationHistory(c.engine.dialogueById, c.state.flags, { except: id, limit: 5 });
     const source = n.citationSource ? c.pack.sources.find((entry) => entry.id === n.citationSource) : undefined;
     const citation = source ? mlaCitation(source) : [];
     const spoken = `${speaker?.name ? `${speaker.name}: ` : ''}${n.text}${citation.length ? ` ${citation.map((part) => part.text).join('')}` : ''}`;
@@ -2988,7 +2988,7 @@ export class UI implements UIApi {
         h('h3', {}, 'The same bench'), h('p', {}, mirror(s)), h('h3', {}, 'Last words'), ...lingering(s).map((t) => h('p', {}, t)),
         h('button', { type: 'button', onclick: () => this.openCredits() }, 'Credits from your journey'));
     } else if (tab === 'conversations') {
-      const heard = conversationHistory(c.pack.dialogue, s.flags);
+      const heard = conversationHistory(c.engine.dialogueById, s.flags);
       if (!heard.length) body.append(h('p', {}, 'No conversations yet.'));
       else {
         let shown = 0;

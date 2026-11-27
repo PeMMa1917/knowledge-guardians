@@ -1,13 +1,22 @@
 import type { CampaignState, ContentPack, DialogueNode } from './types';
 
-/** Read-only history in first-heard order, using the same marks that support returning dialogue. */
-export function conversationHistory(dialogue: ContentPack['dialogue'], flags: CampaignState['flags']): DialogueNode[] {
-  const byId = new Map(dialogue.map((node) => [node.id, node]));
+/** Newest first by first hearing. Returning to a line leaves its original place in the diary. */
+export function conversationHistory(
+  dialogue: ContentPack['dialogue'] | ReadonlyMap<string, DialogueNode>,
+  flags: CampaignState['flags'],
+  options: { except?: string; limit?: number } = {},
+): DialogueNode[] {
+  const byId = 'get' in dialogue ? dialogue : new Map(dialogue.map((node) => [node.id, node]));
   const heard: DialogueNode[] = [];
-  for (const [flag, value] of Object.entries(flags)) {
-    if (value !== true || !flag.startsWith('node.')) continue;
-    const node = byId.get(flag.slice(5));
+  const keys = Object.keys(flags);
+  const limit = options.limit ?? Infinity;
+  for (let i = keys.length - 1; i >= 0 && heard.length < limit; i--) {
+    const key = keys[i];
+    if (!key.startsWith('node.') || flags[key] !== true) continue;
+    const id = key.slice(5);
+    if (id === options.except) continue;
+    const node = byId.get(id);
     if (node) heard.push(node);
   }
-  return heard.reverse();
+  return heard;
 }
