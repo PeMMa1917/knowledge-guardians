@@ -358,3 +358,9 @@ The earlier integrated build clipped the words on two empty crates after the rev
 ### A reader changes desks during the same visit
 
 Run `node tools/smoke-worlds.mjs URL CHECKOUT cast` against a production build. The test supplies the signed maize folio and queues an approach to Neris. It files the folio through the Civic Callboard dialogue, checks both collision footprints and the abandoned click, and repeats with the Guardian on the new arrival tile. It also checks the authored order of two nearby Emberford characters. The stress mode includes this case. [Cast and movement checks](../tools/smoke-navigation.mjs)
+
+## Pocket screens and keyboard return
+
+The player opens each of the 21 journal sections, the journal frame and the map. The test inspects the width of the open panel, tabs through both ends of its focus order and dismisses it. It waits for map controls to finish loading. Twelve viewport sizes from 320 × 568 to 1920 × 1080 include phone landscape and both tablet orientations. Each size runs at ordinary and 175 percent game text. Chromium 156, Firefox 146 and WebKit 26 each completed all 552 panel checks with no recorded overflow, lost modal focus or page error. That gives 1,656 panel visits and 3,312 keyboard boundary transitions across these three Linux browser engines. Physical touch keyboards, screen readers and device-specific browser chrome still need direct testing. [Layout and focus journey](../tools/pocket-layout-journey.mjs)
+
+The test originally found clipped long buttons and a Tab escape from the glossary through a closed disclosure. The panel now allows long titles to wrap, narrow grid tracks to shrink and open controls to keep focus when their enclosing dialog cycles. Focus returns to the accessible launcher after closing.

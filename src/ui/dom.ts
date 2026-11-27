@@ -26,7 +26,17 @@ export function clear(el: Element): void { while (el.firstChild) el.removeChild(
 
 /** Move focus into a container and keep Tab inside it (modal focus trap). */
 export function trapFocus(container: HTMLElement): () => void {
-  const sel = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea, summary, [tabindex]:not([tabindex="-1"])';
+  const selector = 'button, a[href], input, select, textarea, summary, [tabindex]';
+  const visible = (el: HTMLElement) => {
+    if (el.closest('[hidden], [inert]') || !el.getClientRects().length || getComputedStyle(el).visibility !== 'visible') return false;
+    // Some engines lay out the contents of a closed disclosure. Only its first summary can receive focus.
+    for (let fold = el.closest('details:not([open])'); fold; fold = fold.parentElement?.closest('details:not([open])') ?? null) {
+      if (!fold.querySelector(':scope > summary')?.contains(el)) return false;
+    }
+    return true;
+  };
+  const tabStops = () => Array.from(container.querySelectorAll<HTMLElement>(selector))
+    .filter((el) => el.tabIndex >= 0 && !el.matches(':disabled') && visible(el));
   // The world captures its keys on the window. Let native controls handle them inside dialogs.
   let nativeSpaceDown = false;
   const keepSpaceRelease = (e: KeyboardEvent) => {
@@ -45,7 +55,7 @@ export function trapFocus(container: HTMLElement): () => void {
       }
     }
     if (e.key !== 'Tab') return;
-    const items = Array.from(container.querySelectorAll<HTMLElement>(sel)).filter((x) => x.offsetParent !== null);
+    const items = tabStops();
     if (!items.length) return;
     const first = items[0], last = items[items.length - 1];
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
@@ -54,8 +64,9 @@ export function trapFocus(container: HTMLElement): () => void {
   container.addEventListener('keydown', onKey);
   container.addEventListener('keyup', keepSpaceRelease);
   const focusTimer = setTimeout(() => {
-    const f = container.querySelector<HTMLElement>('[data-autofocus]') ?? container.querySelector<HTMLElement>(sel);
-    f?.focus();
+    const preferred = container.querySelector<HTMLElement>('[data-autofocus]');
+    const first = preferred && !preferred.matches(':disabled') && visible(preferred) ? preferred : tabStops()[0];
+    first?.focus();
   }, 0);
   return () => {
     clearTimeout(focusTimer);
