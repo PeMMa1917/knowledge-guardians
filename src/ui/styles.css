@@ -1151,3 +1151,14 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .mirror-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.6rem; margin: 0.5rem 0; }
 .mirror-pair > div { border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 8px; padding: 0.4rem 0.7rem; background: rgba(170, 190, 220, 0.1); }
 .mirror-pair h3 { margin: 0.2rem 0; font-size: 1rem; }
+
+/* The Labyrinth Lens (chapter 14). */
+.maze-map { width: 100%; max-width: 20rem; display: block; margin: 0.5rem auto; border-radius: 8px; background: rgba(90, 140, 170, 0.18); }
+.maze-map.lens-ground { background: rgba(110, 150, 80, 0.2); }
+.maze-map.lens-tide { background: rgba(200, 180, 120, 0.2); }
+.maze-path { stroke: #f2e6c4; stroke-width: 6; stroke-linecap: round; }
+.maze-node { fill: rgba(255, 255, 255, 0.35); }
+.maze-goal { fill: none; stroke: #f2c94c; stroke-width: 3; }
+.maze-you { fill: #f2c94c; stroke: #fff; stroke-width: 2; }
+.maze-dirs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3rem; margin: 0.4rem 0; }
+.lens-buttons button[aria-pressed="true"], .maze [aria-pressed="true"] { outline: 2px solid #f2c94c; }

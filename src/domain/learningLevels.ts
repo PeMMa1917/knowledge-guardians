@@ -83,6 +83,8 @@ export const LEARN: Record<string, LearnTag> = {
   'field:ladder': { ...t(['certainty', 'justification', 'evidence'], [M], 3, 'analyse', 'application', 'relational', 8), aoks: ['MAT'] },
   // Choose a triangle in a grove (a line is refused), see other shapes, say where the shape came from, then pace a side.
   'field:trees': { ...t(['interpretation', 'objectivity', 'perspective'], [M], 2, 'evaluate', 'integration', 'relational', 6), aoks: ['MAT', 'NAT'] },
+  // Walk an island maze through three map lenses; one plan path is gone; no lens alone reaches the ferry.
+  'field:maze': { ...t(['perspective', 'interpretation', 'evidence', 'objectivity'], [S, M], 2, 'apply', 'integration', 'relational', 5), aoks: ['NAT', 'HUM'] },
   // Design a study of people: how they join, what is kept, who sees it first; then read the trial week and its warnings.
   'field:survey': { ...t(['responsibility', 'evidence', 'values', 'power'], [M, E], 3, 'create', 'caring', 'relational', 5), aoks: ['HUM', 'POL'] },
   // See your first and latest journal entries, decide how to rewrite the first, and hear your past self answer.

@@ -349,6 +349,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/surveyBell.ts`, `src/content/survey-bell.json`, `src/ui/surveyPanel.ts`, `src/maps/quietRecords.ts`, `tests/survey-bell.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
+### The Labyrinth Lens, chapter 14's signature game (C-004)
+
+**What.** At the harbour office on the Two-Tide Dock, Plan Keeper Ivo spreads three maps of the island: his plan, Landing Keeper Joss's footpaths, and the low-tide chart. The player must reach the last ferry, and can only step along a path that the current map shows. The plan shows a footbridge that is gone; the player who trusts it is stopped at two posts in the water. No map alone, and no two maps, reach the ferry; all three together do. Then Joss asks which sheet is the real map. Each answer gets a reply. Ivo and Joss then disagree (X-008) about the plan.
+
+**Why.** The first lesson folder has a maze with lens toggles. Its scoring of answers as "nuanced" or "dogmatic" was left out, because it gives a hidden right answer (OPEN-001). The game shows that models are partial, that each perspective shows something real, and that the most official model can still be out of date.
+
+**Where.** `src/domain/labyrinthLens.ts`, `src/content/labyrinth-lens.json`, `src/ui/labyrinthPanel.ts`, `src/maps/island.ts`, `tests/labyrinth-lens.test.ts` (it checks that no one or two lenses are enough), credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
 ### The 30-minute audit and the new games
 
 **What.** The audit test (`tests/learning.test.ts`) measures minutes of play in which a 30-minute window lacks some TOK concept or framework part. The new optional games add minutes inside windows that were already open, so the measure grew with each game. The test now checks the original bound on the path without the new games, and allows each new game to lengthen the gaps by at most three times its own minutes.

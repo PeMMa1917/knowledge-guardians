@@ -42,6 +42,8 @@ export const FIELD_GAMES: FieldGame[] = [
     idea: 'A pattern seen in many examples can still break on the next one. A proof from the rules of the game holds for every case, even cases nobody has made yet. But a proof covers only what it states: the part it does not state is still a guess.' },
   { id: 'trees', name: 'The Three Trees', host: 'Naturalist Elian and Steward Ayla, at the old grove on the Listening Trail', concept: 'interpretation',
     idea: 'The shape is chosen: one grove holds many triangles, and the word "triangle" is ours. The distances are not chosen: two people pacing from opposite ends get the same number, and three trees in a line will not make a triangle however much we want one. Mathematics may be partly made and partly found.' },
+  { id: 'maze', name: 'The Labyrinth Lens', host: 'Plan Keeper Ivo and Landing Keeper Joss, at the harbour office on the Two-Tide Dock', concept: 'perspective',
+    idea: 'Each map is a lens: the plan, the paths people walk, the tide chart. Each shows real paths the others miss, and the most official one can show a bridge that is gone. No single lens reaches the ferry.' },
   { id: 'survey', name: 'The Survey Bell', host: 'Keeper Ade and Route Clerk Lin, in the Quiet Records Room of the Civic Machine', concept: 'responsibility',
     idea: 'A study of people buys knowledge with their trust. How people join decides who is missing; what is kept decides what can be done with it later; who sees the results first decides who can correct them. Every design has a price.' },
   { id: 'mirror', name: 'The Time Mirror', host: 'Workshop Keeper Hale, at Elsbet’s mirror in the Time Hall', concept: 'certainty',

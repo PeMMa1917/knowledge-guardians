@@ -1,0 +1,36 @@
+{
+ "size": 5,
+ "start": [0, 4],
+ "goal": [4, 0],
+ "lenses": [
+  { "id": "plan", "name": "Ivo's plan", "about": "The island plan, as the planners drew it." },
+  { "id": "ground", "name": "Joss's footpaths", "about": "The paths people actually walk, worn into the grass." },
+  { "id": "tide", "name": "the low-tide chart", "about": "The sand bars that open when the tide is out." }
+ ],
+ "edges": [
+  { "a": [0, 4], "b": [0, 3], "shows": ["plan", "ground"] },
+  { "a": [0, 3], "b": [0, 2], "shows": ["plan"] },
+  { "a": [0, 2], "b": [1, 2], "shows": ["plan", "ground"] },
+  { "a": [1, 2], "b": [2, 2], "shows": ["plan"] },
+  { "a": [2, 2], "b": [2, 1], "shows": ["plan"] },
+  { "a": [2, 1], "b": [2, 0], "shows": ["plan"] },
+  { "a": [2, 0], "b": [3, 0], "shows": ["plan"] },
+  { "a": [3, 0], "b": [4, 0], "shows": ["plan"], "gone": "The plan shows a footbridge here. Only its two posts are left in the water. Joss's map would have shown you." },
+  { "a": [2, 2], "b": [3, 2], "shows": ["ground"] },
+  { "a": [3, 2], "b": [3, 3], "shows": ["ground"] },
+  { "a": [3, 2], "b": [4, 2], "shows": ["tide"] },
+  { "a": [3, 3], "b": [4, 3], "shows": ["tide"] },
+  { "a": [4, 3], "b": [4, 2], "shows": ["ground", "tide"] },
+  { "a": [4, 2], "b": [4, 1], "shows": ["plan", "ground"] },
+  { "a": [4, 1], "b": [4, 0], "shows": ["plan", "ground"] },
+  { "a": [0, 4], "b": [1, 4], "shows": ["ground"] },
+  { "a": [1, 4], "b": [2, 4], "shows": ["ground"] },
+  { "a": [2, 4], "b": [2, 3], "shows": ["ground"] },
+  { "a": [1, 2], "b": [1, 1], "shows": ["tide"] }
+ ],
+ "views": [
+  { "id": "none", "text": "No lens was the true map. I needed all three.", "reply": "Ivo rolls up the plan slowly. 'All three, and the one that looked most official was the one with the bridge that is not there.'" },
+  { "id": "plan", "text": "The plan is the true map. The others are additions to it.", "reply": "Joss laughs. 'The plan sent you to a bridge that fell down two winters ago. The plan is a good start. It is not the island.'" },
+  { "id": "each", "text": "Each lens was true about something different. None was true about everything.", "reply": "Ivo and Joss look at each other. 'Then we keep all three in the harbour office,' says Ivo, 'and we write on each one what it is for.'" }
+ ]
+}
