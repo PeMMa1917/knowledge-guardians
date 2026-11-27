@@ -15,7 +15,7 @@ When you change code for a fix, update its status and the "Where" column.
 | C-007 | "At a glance" pack for IT, data security, families and school leaders: no network calls, what is stored on the device, two saves, no accounts in this build. It says the game is not endorsed by the IB. | B5, B6, B8, B9, B10, B11 | planned | `docs/FOR_SCHOOLS.md` (new) |
 | C-008 | Teacher map made from the weave tags (concepts, AoKs, subjects, thinking levels), with debrief prompts per chapter. | B1, B2, B4, C1 | planned | `tools/`, `docs/` |
 | C-009 | After a choice, the journal can show the TOK words for what the player just did. Journal only, never a pop-up. | A7, B1, H2 | planned | journal UI |
-| C-010 | "Good place to stop" notes, and a journal that shows pathways. No main-story badge and no single main path (Mika, X-010). All cases stay. | A5, G9, G11, I3 | planned | mission data and journal UI |
+| C-010 | "Good place to stop" notes, and a journal that shows pathways. No main-story badge and no single main path (Mika, X-010). All cases stay. | A5, G9, G11, I3 | started (the journal groups open quests by place, folds long step lists, and shows a good place to stop) | mission data and journal UI |
 | C-011 | Choices are remembered: Echoes change the map, tone choices change later greetings, titles change how people speak to the player, origin characters return. | G5, G10, E3, H4 | planned | dialogue conditions |
 | C-012 | Each chapter has at least one main-route encounter with a DP subject, so the subject link is not only in side missions. | B3, B4, B12 | planned | chapters 2 to 15 |
 | C-013 | Phone and low-end device check, and a keyboard path for every drag action. | I1, K1, B7, E10 | planned | QA notes |

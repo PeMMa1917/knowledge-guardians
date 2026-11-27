@@ -425,6 +425,14 @@ The player can keep the choice and say why, change it, or ask what would change 
 
 **Where.** `src/domain/pushbacks.ts`, `src/content/pushbacks.json`, `src/ui/ui.ts` (showPushback, after the two replies), `tests/pushbacks.test.ts`. More missions can be added in the JSON file alone.
 
+### Open quests as pathways, with a good place to stop (C-010)
+
+**What.** The journal's "Open quests" page now groups quests by place (the Nexus, the Living Forest, the Cartographers' Sea and so on). Each place is a section that opens and closes; the place where the player is now starts open. Each quest shows how many of its steps are done. When at least one step is done, it says that this is a good place to stop, and that the rest will wait. A quest with many steps shows the first four, and the rest go into a "more steps" drawer.
+
+**Why.** Personas A5, G9, G11 and I3 found the journal hard to scan: one room listed 36 to 43 steps in a row, and nothing told a player with little time that it was safe to stop. Mika decided to keep every case and to mark no main path (X-010), so the fix groups and folds the list and removes nothing.
+
+**Where.** `src/domain/adventureJournal.ts` (each quest now has its world and step counts), `src/ui/adventureJournal.ts` (the grouped view), `src/ui/styles.css`, `tests/quest-pathways.test.ts`. The material drawers planned for single rooms in chapters 2, 3 and 6 can build on this.
+
 ### The 30-minute audit and the new games
 
 **What.** The audit test (`tests/learning.test.ts`) measures minutes of play in which a 30-minute window lacks some TOK concept or framework part. The new optional games add minutes inside windows that were already open, so the measure grew with each game. The test now checks the original bound on the path without the new games, and allows each new game to lengthen the gaps by at most three times its own minutes.
