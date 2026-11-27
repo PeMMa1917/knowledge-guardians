@@ -1069,3 +1069,21 @@ mark.cant, strong.cant { background: #3f6f8f; color: #fff; border-radius: 4px; p
 .hud-buttons button.lumen-offer { box-shadow: 0 0 0 2px var(--gold), 0 0 14px var(--gold); }
 @media (prefers-reduced-motion: no-preference) { .hud-buttons button.lumen-offer { animation: lumen-offer 2s ease-in-out infinite; } }
 @keyframes lumen-offer { 50% { box-shadow: 0 0 0 2px var(--gold), 0 0 4px var(--gold); } }
+
+/* Training gym (decision X-002): practice outside the story. */
+.gym-note { border-left: 3px solid var(--gold); padding-left: 0.6rem; }
+.gym-tabs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0; }
+.gym-tabs [aria-selected="true"] { outline: 2px solid var(--gold); }
+.gym-card { min-height: 7rem; padding: 1rem; border-radius: var(--radius, 0.6rem); background: var(--panel); border: 2px solid var(--gold-dim); margin: 0.6rem 0; }
+.gym-term { font-size: 1.6rem; font-weight: 700; color: var(--gold); margin: 0 0 0.4rem; }
+.gym-objects { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; padding: 0; }
+.gym-objects [aria-pressed="true"] { outline: 2px solid var(--gold); }
+.gym-field { display: block; margin: 0.4rem 0; }
+.gym-field textarea { display: block; width: 100%; box-sizing: border-box; font: inherit; }
+.gym-room select { max-width: 100%; font: inherit; }
+.gym-bench-object { border-top: 1px solid var(--gold-dim); margin-top: 0.6rem; padding-top: 0.4rem; }
+
+/* Two replies after a key choice (decision X-008). */
+.two-replies-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.8rem; }
+.two-reply { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.6rem; border: 1px solid var(--gold-dim); border-radius: var(--radius, 0.6rem); }
+.two-reply .portrait { flex: none; }

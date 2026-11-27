@@ -1,0 +1,77 @@
+{
+ "_note": "Decision X-008 (docs/audit/DECISIONS.md): after a key choice, two characters who disagree each give a strong reply. Neither reply is marked as the better one. Each entry shows once, after its condition first becomes true.",
+ "twoReplies": [
+  {
+   "id": "m01.label",
+   "after": { "objective": "m01.o6.label" },
+   "heading": "Two views on your new label",
+   "replies": [
+    { "speaker": "curator-dace", "text": "A careful label is the whole job. Visitors read one line and walk on. If that line matches what we can show, the hall is honest." },
+    { "speaker": "clerk-venn", "text": "A careful label is a start, not the job. Who decided which kind of 'first' gets a line at all? The label answers our question. A visitor may have brought a different one." }
+   ]
+  },
+  {
+   "id": "m02.test",
+   "after": { "objective": "m02.o4.forge" },
+   "heading": "Two views on the test billet",
+   "replies": [
+    { "speaker": "smith-hesper", "text": "You made the pattern yourself in one afternoon. That is the evidence. A pattern on the surface does not prove age, and now you have seen why with your own hands." },
+    { "speaker": "merchant-corvan", "text": "One billet in one forge proves that the pattern can be new. It does not prove that mine is new. You tested what is possible. You did not test my blade." }
+   ]
+  },
+  {
+   "id": "m02.sign.honest",
+   "after": { "flag": "sign.state", "eq": "honest" },
+   "heading": "Two views on Corvan's new sign",
+   "replies": [
+    { "speaker": "guildmaster-orrin", "text": "He changed the sign and kept his stall. That is how a market learns. Shame teaches people to hide. A fair second chance teaches them to check." },
+    { "speaker": "smith-hesper", "text": "He changed it because a crowd watched. Next month there is no crowd. I want the guild to check the signs, not wait for a Guardian." }
+   ]
+  },
+  {
+   "id": "m02.sign.down",
+   "after": { "flag": "sign.state", "eq": "down" },
+   "heading": "Two views on the empty signboard",
+   "replies": [
+    { "speaker": "merchant-corvan", "text": "No sign is safer than a sign someone can argue with. I have a family to feed. Now buyers will ask me, and I will say less." },
+    { "speaker": "guildmaster-orrin", "text": "An empty board tells buyers nothing. A true sign would have been worth more to him and to them. Silence is not the same as honesty." }
+   ]
+  },
+  {
+   "id": "m02.sign.note",
+   "after": { "flag": "sign.state", "eq": "note" },
+   "heading": "Two views on the maker's note",
+   "replies": [
+    { "speaker": "guildmaster-orrin", "text": "The old word stays, and the note under it tells the truth. Buyers who read get both. That is a fair market." },
+    { "speaker": "smith-hesper", "text": "Most buyers read the big word and not the small note. A sign is judged by what people take from it, not by what it says somewhere at the bottom." }
+   ]
+  },
+  {
+   "id": "well.show",
+   "after": { "objective": "well.o5.show" },
+   "heading": "Two views on the well plan",
+   "replies": [
+    { "speaker": "well-keeper", "text": "Two sticks, the same drop, and the whole street heard it together. That was enough to stop the blaming. People needed an answer this week, not next year." },
+    { "speaker": "smith-hesper", "text": "Two wells on one day is a small check. If the forge is part of the cause, we will not see it until the rains come back. I would keep reading the sticks every week." }
+   ]
+  },
+  {
+   "id": "archive.toys",
+   "after": { "objective": "os.archive.o3" },
+   "heading": "Two views on the shelf called 'Toys'",
+   "replies": [
+    { "speaker": "cataloguer-bela", "text": "A category is a promise about where people will look. Nobody looking for pens looks under 'Toys'. The shelf hid the model." },
+    { "speaker": "curator-dace", "text": "Every shelf hides something. The clerk filed it by who gave it, and that is worth knowing too. Move the slip, and we hide that instead. A second card can point from one shelf to the other." }
+   ]
+  },
+  {
+   "id": "rumour.source",
+   "after": { "objective": "rum.o4.tell" },
+   "heading": "Two views on the first source",
+   "replies": [
+    { "speaker": "porter-idris", "text": "So the record book had it first. Good. Then the story is settled, and I can stop telling the wrong one." },
+    { "speaker": "stallkeeper-hana", "text": "The book had it first. That tells us where the story started, not whether the book was right. Someone wrote that page, and they heard it from someone too." }
+   ]
+  }
+ ]
+}

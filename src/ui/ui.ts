@@ -79,6 +79,8 @@ import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/underc
 import { FIELD_GAMES } from '../domain/fieldgames';
 import { OFFER_LINE, shouldOfferHelp } from '../domain/lumenOffer';
 import { IDEA_CREDITS } from '../domain/ideaCredits';
+import { gymPanel } from './gymPanel';
+import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
 import { bestFlag, canTimedReplay, clockText, elapsedSeconds, resultText, timedResult } from '../domain/timedReplay';
 import { routingBoard } from './routingBoards';
 import { counterReplayBoard } from './counterReplayBoard';
@@ -612,12 +614,34 @@ export class UI implements UIApi {
     }
     this.refreshHud();
     if (this.pendingChapterEnd) { this.pendingChapterEnd = false; this.chapterEnd(); return; }
+    if (this.showTwoReplies()) return;
     if (this.queue.length) {
       setTimeout(() => {
         // A dialogue can replace its panel before this callback runs.
         if (!this.modal) this.queue.shift()?.();
       }, 0);
     }
+  }
+
+  /** Decision X-008: after a key choice, two characters who disagree each reply. Returns true if a panel opened. */
+  private showTwoReplies(): boolean {
+    const c = ctx.controller;
+    if (!c.state || this.modal) return false;
+    const entry = pendingTwoReplies(c.state.flags, (cond) => c.check(cond));
+    if (!entry) return false;
+    c.dispatch({ type: 'SetFlag', flag: seenFlag(entry.id), value: true });
+    const voice = (r: { speaker: string; text: string }) => {
+      const who = c.pack.characters.find((x) => x.id === r.speaker);
+      return h('div', { class: 'two-reply' },
+        h('span', { class: 'portrait', style: { backgroundImage: `url(assets/art/generated/characters/${who?.sprite}.png)` }, 'aria-hidden': 'true' }),
+        h('div', {}, h('strong', {}, who?.name ?? r.speaker), h('p', {}, r.text)));
+    };
+    this.openModal('two-replies', entry.heading, this.closeBtn(), h('h2', {}, entry.heading),
+      h('div', { class: 'two-replies-row' }, voice(entry.replies[0]), voice(entry.replies[1])),
+      h('p', { class: 'fine' }, 'Two people, two good reasons. Neither one is the answer. Which reasons do you find stronger, and why?'),
+      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep walking')));
+    this.sfx('sfx.page');
+    return true;
   }
 
   /** Run now if nothing is open; otherwise run when the open panel closes. */
@@ -3059,6 +3083,12 @@ export class UI implements UIApi {
     (window as any).kgToTitle?.();
   }
 
+  /** The training gym (decision X-002): practice outside the story. */
+  private openGym(): void {
+    this.openModal('gym-panel wide', 'Training gym', this.closeBtn(), h('h2', {}, 'Training gym'),
+      gymPanel(ctx.controller, (key) => this.sfx(key)));
+  }
+
   private openMenu(): void {
     const c = ctx.controller;
     this.openModal('menu-panel', 'Menu', this.closeBtn(), h('h2', {}, 'Menu'),
@@ -3076,6 +3106,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openTalents() }, 'Insight tree'),
         h('button', { onclick: () => this.openRoles() }, 'Knower role'),
         h('button', { onclick: () => this.openLedger() }, "The Guardian's Ledger (progress)"),
+        h('button', { onclick: () => this.openGym(), title: 'Practice outside the story: word cards, exhibition practice, practice titles' }, 'Training gym (practice)'),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
         h('button', { onclick: () => this.openLeaderboard() }, 'Leaderboard'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
