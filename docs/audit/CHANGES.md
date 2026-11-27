@@ -365,6 +365,14 @@ Contents: [Stage 1: chapter 1 fixes](#stage-1-chapter-1-fixes-26-november-2026) 
 
 **Where.** `src/domain/riverCrossing.ts`, `src/content/river-crossing.json`, `src/ui/riverPanel.ts`, `src/maps/water.ts`, `tests/river-crossing.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
 
+### The Collage Wall, chapter 13's signature game (C-004)
+
+**What.** In the Listening Room, Listener Wren pins four real records about child chimney sweeps in Britain: a coloured street print (1804, London Museum), William Blake's poem "The Chimney Sweeper" (1789, a copy at The Met), the House of Lords debate of 15 March 1819 (Hansard), and an engraving of George Smart's sweeping machine (Wellcome Collection). The player ties threads between pairs. Each of the six joins says something that neither card says alone. After three joins, Wren names the gap: every card was made by an adult, and no child's own words are on the wall. Eren then asks which card to send a visitor to, and every answer, including "none of them, alone", gets a reply. Wren and Eren then disagree (X-008) about how to show the gap.
+
+**Why.** The second lesson folder asks whether a picture can tell the truth, with a collage, the 1819 debate and poems of the time. Decision X-005 includes difficult history with content notes and reliable sources, so the panel opens with a content note and a choice to come back later, and it lists its sources (museum and Parliament pages only, NONEWS-001). The game is about art, history and testimony as evidence, and about whose voice a record keeps.
+
+**Where.** `src/domain/collageWall.ts`, `src/content/collage-wall.json` (with sources), `src/ui/collagePanel.ts`, `src/maps/voices.ts`, `tests/collage-wall.test.ts`, credits in `src/domain/ideaCredits.ts` and CREDITS.md.
+
 ### The 30-minute audit and the new games
 
 **What.** The audit test (`tests/learning.test.ts`) measures minutes of play in which a 30-minute window lacks some TOK concept or framework part. The new optional games add minutes inside windows that were already open, so the measure grew with each game. The test now checks the original bound on the path without the new games, and allows each new game to lengthen the gaps by at most three times its own minutes.

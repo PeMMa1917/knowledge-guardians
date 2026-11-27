@@ -1449,6 +1449,24 @@
      "text": "The arguing was useful because the log was honest. If Ravel's line about the keel had been lost, half the village would still be blaming the wrong person for the wrong reason."
     }
    ]
+  },
+  {
+   "id": "voices.collage",
+   "after": {
+    "flag": "field.collage.done",
+    "eq": true
+   },
+   "heading": "Two views on the sweeps' wall",
+   "replies": [
+    {
+     "speaker": "voices-steward",
+     "text": "I would put a blank card on that wall, in the middle, with the children's names if we can find them in the parish books. A gap you can see is more honest than a wall that looks full."
+    },
+    {
+     "speaker": "voices-clerk",
+     "text": "A blank card invites people to fill it in with what they imagine. I would rather keep the four real cards and write the gap on the label, in plain words."
+    }
+   ]
   }
  ]
 }

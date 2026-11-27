@@ -33,6 +33,7 @@ export const IDEA_CREDITS: readonly IdeaCredit[] = [
   { game: 'Star Pictures', idea: 'Measured star positions and the different pictures people draw between them', source: LESSONS },
   { game: "The Copyists' Ladder", idea: 'A word ladder that shows the difference between a pattern and a proof',
     source: `${LESSONS}. The lesson credits an activity shared by the TOK teacher Ric Sims. Word ladders ("doublets") were invented by Lewis Carroll in 1877.` },
+  { game: 'The Collage Wall', idea: 'Can a picture tell the truth: a collage, an 1819 parliamentary debate about child chimney sweeps, and poems of the time, read together', source: LESSONS },
   { game: 'The River Crossing Inquiry', idea: 'A story where people rank who acted worst and each ranking shows a way of judging (the story is fully rewritten as a flood night, with no sexual content)', source: LESSONS },
   { game: 'The Labyrinth Lens', idea: 'Lens toggles that show hidden paths (the scoring of nuanced or dogmatic answers was left out)', source: LESSONS },
   { game: 'The Survey Bell', idea: 'Ethics limits on research with people, and who decides', source: LESSONS },
