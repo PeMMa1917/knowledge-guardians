@@ -99,7 +99,7 @@ export function foldingFlockAt(map: string): Interactable[] {
         id: "birdside.second-watch",
         kind: "door",
         label: "The paired watch passage to the Quiet Margin",
-        art: "lantern",
+        art: "voices.lamp",
         x: 11,
         y: 10,
         w: 1,
