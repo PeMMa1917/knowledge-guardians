@@ -423,3 +423,10 @@ Firefox 146 traced streets with the arrow keys and carried the district edition.
 ## The covered jug at the East Well
 
 Chromium 156, Firefox 146 and WebKit 26 entered Emberford with the market investigation unstarted. Each read both sticks before speaking to the keeper, heard the fruit seller and smith, chose an investigation, opened its three-day record, left the jug unassigned and returned to make a choice. Chromium pursued the ordinary shifts. Firefox and WebKit kept Hesper’s shorter draw and the rain on the same record. Each read both neighbours’ responses, met someone affected by the assigned bell, and changed tomorrow’s turn. The domain tests also cover a previously completed save, the two refusals, the one private portfolio entry and equal permanent credit. [Repeat the journey with the east-well option](../tools/east-well-journey.mjs)
+
+
+## Objective conditions on a travelled save
+
+On a journey with thousands of completed steps, a new clue may check earlier steps inside several nested conditions. A turn now shares its objective index with the mission, keepsake and individual step checks. Rewinding builds the index from the recovered save. A new completion becomes visible to later rules on the same turn.
+
+The alternating benchmark compared ordered events, permanent credit and complete save states after every command sequence. The median CPU time per command plus guide lookup on this host changed from 2.90 to 2.72 ms with 600 completed steps, from 3.14 to 2.57 ms with 1,800 and from 2.94 to 2.31 ms with 3,000. The empty-save figure was 1.58 and 1.55 ms. Browser paint and disk time are outside these measurements. The three previously timing-sensitive route files and the long-campaign regression passed 38 checks at their original time limit in a single-worker run. [Benchmark](../tools/bench-campaign-turns.mjs) · [Completion, ordering and rewind tests](../tests/long-campaign-objectives.test.ts)

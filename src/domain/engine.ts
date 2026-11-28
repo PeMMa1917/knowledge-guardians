@@ -404,14 +404,14 @@ export class Engine {
     return t ? t.node : null;
   }
 
-  activeMissions(s: CampaignState): Mission[] {
-    return this.pack.missions.filter((m) => check(m.available, s));
+  activeMissions(s: CampaignState, completed?: ReadonlySet<string>): Mission[] {
+    return this.pack.missions.filter((m) => check(m.available, s, completed));
   }
 
   visibleObjectives(s: CampaignState): (Objective & { mission: Mission; complete: boolean })[] {
-    const completed = s.objectivesDone.length >= OBJECTIVE_INDEX_THRESHOLD ? new Set(s.objectivesDone) : null;
-    return this.activeMissions(s).flatMap((m) =>
-      m.objectives.filter((o) => check(o.visible, s)).map((o) => ({ ...o, mission: m, complete: completed ? completed.has(o.id) : s.objectivesDone.includes(o.id) })),
+    const completed = s.objectivesDone.length >= OBJECTIVE_INDEX_THRESHOLD ? new Set(s.objectivesDone) : undefined;
+    return this.activeMissions(s, completed).flatMap((m) =>
+      m.objectives.filter((o) => check(o.visible, s, completed)).map((o) => ({ ...o, mission: m, complete: completed ? completed.has(o.id) : s.objectivesDone.includes(o.id) })),
     );
   }
 
@@ -1578,14 +1578,15 @@ export class Engine {
     }
 
     // A travelled save holds thousands of objective IDs. Build one membership index for this dispatch.
-    // The ordered save array remains the source for conditions and for a later replay or rewind.
-    const completed = s.objectivesDone.length >= OBJECTIVE_INDEX_THRESHOLD ? new Set(s.objectivesDone) : null;
+    // Nested conditions use the same index. Additions within this turn are visible immediately.
+    // A rewind or a different save starts from its own ordered objective list.
+    const completed = s.objectivesDone.length >= OBJECTIVE_INDEX_THRESHOLD ? new Set(s.objectivesDone) : undefined;
     // Objectives, then awards. Repeat so that completion effects can chain.
     for (let guard = 0; guard < 10; guard++) {
       let changed = false;
       // Keepsakes and the Lamp Wall (the storyline): mark each new one with a flag and a moment.
       for (const k of this.pack.keepsakes ?? []) {
-        if (!check(k.if, s) || s.flags[`keepsake.${k.id}`] === true) continue;
+        if (!check(k.if, s, completed) || s.flags[`keepsake.${k.id}`] === true) continue;
         s = apply([{ setFlag: `keepsake.${k.id}`, value: true }], s, out);
         events.push({ kind: 'keepsake', id: k.id, name: k.name, use: k.use ?? '' });
         changed = true;
@@ -1605,10 +1606,10 @@ export class Engine {
         if (rankOf(pts) !== rankOf(was)) events.push({ kind: 'trust', id: cm.id, name: cm.name, rank: rankOf(pts) });
         changed = true;
       }
-      for (const m of this.activeMissions(s)) {
+      for (const m of this.activeMissions(s, completed)) {
         for (const o of m.objectives) {
           if (completed ? completed.has(o.id) : s.objectivesDone.includes(o.id)) continue;
-          if (!check(o.visible, s) || !check(o.done, s)) continue;
+          if (!check(o.visible, s, completed) || !check(o.done, s, completed)) continue;
           completed?.add(o.id);
           s = { ...s, objectivesDone: [...s.objectivesDone, o.id] };
           events.push({ kind: 'objective', id: o.id, title: o.title });
