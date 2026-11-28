@@ -403,3 +403,8 @@ Chromium 156, Firefox 146 and WebKit 26 completed the fictional two-class journe
 ### Three evenings in the inn
 
 The Chromium journey seated an earned creature, tested Tover’s supper floor, stretched its east seam and delivered the kettle to tea before leaving the light toward the loft. Firefox tried Neska’s song floor and heard the answer from Yilka’s garden. WebKit took the garden floor back to the tea table, where a quiet visitor put down a second spoon. Each journey went through both field handovers, met Jane Jacobs and Zaha Hadid, entered the landing the town had opened and inspected the references in the downloaded Word diary. The underlying route checks cover the nine floor-purpose and evening-use combinations. [Played route](../tools/open-house-journey.mjs) · [Household and route checks](../tests/open-house.test.ts)
+
+
+### Finding someone across chapters
+
+Chromium revisited Vera Rubin after the City of Copies, Firefox revisited Wangari Maathai after the Cold Store and WebKit revisited Zaha Hadid after the Living Forest. Each test delivered the first workshop, left a second tracing unfinished, reopened the game and used the Conversations tab to see both. Opening Ise’s page during a real conversation recovered the words actually heard. The book omitted a guest the Guardian had never called. [Played route](../tools/calling-book-journey.mjs)

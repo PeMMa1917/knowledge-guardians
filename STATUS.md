@@ -1,5 +1,11 @@
 # Status and next steps
 
+## 28 November • Finding a person again
+
+The Conversations tab now keeps a page for each person the Guardian has met. A page shows what went up at each workshop, how its recipient answered, any unfinished tracing and the words the Guardian actually heard. Chromium recovered Vera Rubin’s pages, Firefox recovered Wangari Maathai’s and WebKit recovered Zaha Hadid’s. Each journey also met Ise and opened her page in a live conversation. The inventory on this revision contains 856 missions, 3,925 objectives and 161 rooms. [Calling book](tools/calling-book-journey.mjs)
+
+A student who brings a class adventure into the foreground during a pending write can now finish syncing their latest words. A conflict still lets the student choose the edition. Three engines completed the fictional student and teacher journeys. [Recovery and class access](docs/ACCOUNTS_AND_HOSTING.md)
+
 ## 28 November • The inn under the mat
 
 A smaller door appeared under Neska’s front mat. A Guardian can give any of 240 earned creatures a place at home and come back to find which of them stayed. Loaded wheels, a flat shoe and a real lamp give three different readings of the same nine rooms. The supper cart goes to Emberford, the lamp goes to the harbour and the keys go to a meeting. Jane Jacobs and Zaha Hadid each return in a second place. The new landing keeps the actual cart stop, chosen lamp and one of nine evenings. The source-linked skill ledger now records 609 of 1,200 skills in playable actions. [The inn and its inhabitants](docs/STORY_BIBLE.md#the-inn-under-the-mat) · [Verified learning actions](docs/CROSS_WEAVE_AUDIT.md#a-house-that-changes-length)
