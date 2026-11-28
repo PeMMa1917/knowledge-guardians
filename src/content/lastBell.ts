@@ -57,6 +57,7 @@ interface Scene {
   chapter: number;
   opening: string;
   task: string;
+  goal: string;
   prompts: [string, string];
   hints: [string, string, string, string];
   weave: Weave;
@@ -70,6 +71,7 @@ export const lastBellScenes: Record<LastBellSite, Scene> = {
     chapter: 13,
     opening:
       'Someone has chalked “I heard it ring” under the tower keeper’s portrait. A girl from one of the two dark windows sets a wax cylinder on Wren’s table. “That is my voice. Please let me finish.” The chalk ends at the first seam in the wax.',
+    goal: 'Find what Wren can let the town hear',
     task: 'Fit the start and end stops on the cylinder. Wind the chalked words alone, then listen past the cut. Decide what the girl will let the town carry.',
     prompts: [
       'What happened to the pronoun when the words after it disappeared?',
@@ -99,6 +101,7 @@ export const lastBellScenes: Record<LastBellSite, Scene> = {
     chapter: 14,
     opening:
       'Joss takes both little boots off Ivo’s model and puts them side by side. “Lovely boots. There’s only one of me.” At the kiln, someone must move the clay before the water comes. Upstairs in the sail loft a boy sleeps through the morning shift.',
+    goal: 'Give Joss a route through the fog',
     task: 'Run both lanes in fog. Lift the shutter on one run to see what the tower changes. Watch the four-beat crossing deadline. Put the boots where you want the runner to go first.',
     prompts: [
       'Which paths shared a single point of failure?',
@@ -128,6 +131,7 @@ export const lastBellScenes: Record<LastBellSite, Scene> = {
     chapter: 15,
     opening:
       'Hale has mended the hearing chair three times. A child turns it round so the people behind the rail can sit in it. “Who sits there tomorrow?” she asks. For once Hale leaves his pencil on the hook.',
+    goal: 'Choose who calls the next bell hearing',
     task: 'Lay two different records on the hearing desk. The first decides who opens the meeting. The second limits what they can say. Choose who gets to call people back.',
     prompts: [
       'Which part of your finding came from testimony, a model or a count?',
@@ -167,7 +171,7 @@ export function installLastBell(pack: ContentPack) {
         {
           id,
           essential: false,
-          title: scene.task,
+          title: scene.goal,
           visible: { flagSet: 'last-bell.' + site + '.work' },
           done: { flag: id, in: [0, 1] },
           weave: scene.weave,
@@ -184,7 +188,7 @@ export function installLastBell(pack: ContentPack) {
   voiceMission.objectives.unshift({
     id: sleeve,
     essential: false,
-    title: 'Follow the shelf mark on the chalk strip to its wax sleeve.',
+    title: 'Find the wax sleeve that fits Wren’s strip',
     done: { flag: sleeve, eq: true },
     visible: { any: [{ flagSet: 'last-bell.voices.work' }, { flag: sleeve, eq: true }] },
     weave: {
@@ -221,7 +225,7 @@ export function installLastBell(pack: ContentPack) {
       {
         id: revision,
         essential: false,
-        title: 'Follow Joss across the bridge, retest her time in fog and post the measured route.',
+        title: 'Walk the tipping plank with Joss',
         visible: { flagSet: 'last-bell.island.left' },
         done: { flag: revision, eq: true },
         weave: {
@@ -263,8 +267,7 @@ export function installLastBell(pack: ContentPack) {
       {
         id: rehear,
         essential: false,
-        title:
-          'Bring the bell setting, dispatch rota, witness and walked trial back to the hearing. Give both houses a part in tomorrow’s check.',
+        title: 'Give both houses a say in tomorrow’s bell trial',
         visible: {
           all: [{ objective: 'last-bell.council.left' }, { objective: 'last-bell.island.field-check' }],
         },

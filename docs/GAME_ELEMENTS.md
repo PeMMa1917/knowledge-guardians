@@ -4,8 +4,8 @@ This tracker maps each numbered item in the supplied *Ultimate Universal RPG Com
 
 | Status | Meaning | Numbered items |
 | --- | --- | ---: |
-| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 126 |
-| ◐ Partial | A reachable analogue covers part of the idea, or operates in a narrower setting. The gap is stated. | 110 |
+| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 127 |
+| ◐ Partial | A reachable analogue covers part of the idea, or operates in a narrower setting. The gap is stated. | 109 |
 | ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 25 |
 | ✗ Excluded | The classroom, privacy or nonviolent game rules exclude the original system. | 27 |
 
@@ -52,7 +52,7 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | 28 | Hearth conversations and food | ◐ | Hearth discussions let companions exchange views or take a breath. The ferry service has preparation effects. Shared preparation at the companion hearth remains open. | [hearth.ts](../src/domain/hearth.ts), [ferry-kettle.test.ts](../tests/ferry-kettle.test.ts) |
 | 29 | Configurable companion help | ✓ | Train a companion as a scout to locate an unread frame or as a courier to preserve an edition. At its home perch it can learn the other job. Each can keep two observations open once its own trail is complete. | [Companion controls](../src/ui/nightRegister.ts), [Job and trail checks](../tests/night-register.test.ts) |
 | 30 | Lending companions online | ✗ | The campaign is offline and has no shared accounts or lending. NPC companionship is the local alternative. | [loyalty.ts](../src/domain/loyalty.ts), [DESIGN_SUMMARY.md](DESIGN_SUMMARY.md) |
-| 31 | Recall a returning person | ◐ | Use the conversation recall while talking or open the Journal history. A short profile card dedicated to returning people remains open. | [conversationHistory.ts](../src/domain/conversationHistory.ts), [ui.ts](../src/ui/ui.ts) |
+| 31 | Recall a returning person | ✓ | Open a page for a person you have met, in conversation or in the journal. See that person’s heard lines, the exact materials left at their workshops and the still-open worktable. The page carries their encountered research. | [Calling book](../src/domain/callingBook.ts), [visit and legacy-save checks](../tests/calling-book.test.ts) |
 
 ## III. Progress, roles and crafting
 

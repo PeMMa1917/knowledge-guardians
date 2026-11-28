@@ -1,3 +1,4 @@
+import {callingBook} from './callingBook';
 import {paintHousehold,housePanel} from './openHouse';
 import {chairNames,household} from '../domain/openHouse';
 import {courierLiftPanel} from './courierLift';
@@ -1531,6 +1532,7 @@ export class UI implements UIApi {
       h('div', { class: 'chips' }, n.claimKind ? claimChip(n.claimKind) : null, n.historicalLabel ? histChip(n.historicalLabel) : null),
       extra ?? '', optionList,
       guideObjective ? localGuide(c, MAPS[c.state.mapId]?.world ?? '', guideObjective) : '',
+      speaker && 'mode' in speaker ? callingBook(c, line => this.dialogueMemory(line), speaker) : '',
       earlier.length ? h('details', { class: 'dialogue-recall' }, h('summary', {}, 'Earlier dialogue'),
         ...earlier.map((line) => this.dialogueMemory(line))) : '');
     if (n.motif && firstHearing) this.playStoryCue(n.motif);
@@ -3057,6 +3059,7 @@ export class UI implements UIApi {
         h('h3', {}, 'The same bench'), h('p', {}, mirror(s)), h('h3', {}, 'Last words'), ...lingering(s).map((t) => h('p', {}, t)),
         h('button', { type: 'button', onclick: () => this.openCredits() }, 'Credits from your journey'));
     } else if (tab === 'conversations') {
+      body.append(callingBook(c, line => this.dialogueMemory(line,true)));
       const heard = conversationHistory(c.engine.dialogueById, s.flags);
       if (!heard.length) body.append(h('p', {}, 'No conversations yet.'));
       else {

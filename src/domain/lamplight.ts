@@ -1,7 +1,7 @@
 import { installLastBell } from '../content/lastBell';
 import {installWatches} from './watchBell';
 import { microSkillId, useSignature } from './skills';
-import { guestInstrument, isPiece, pinPiece, readPieces, type Piece } from './lanternInstruments';
+import { guestInstrument, isPiece, pinPiece, readPieces, type InstrumentKind, type Piece } from './lanternInstruments';
 import letters from '../content/ink-post-letters.json';
 import roosts from '../content/ink-post-stations.json';
 import people from '../content/lamplight-voices.json';
@@ -185,6 +185,12 @@ export function lanternQuestions(key: string) {
   }
 }
 
+const workshopGoals: Record<InstrumentKind,string> = {
+  bench:'Try two settings', layers:'Overlay two records', scale:'Focus at two scales',
+  chain:'Fasten two links', frame:'Frame two views', route:'Connect two stops',
+  supply:'Pack two pieces', score:'Play two phrases',
+};
+
 export function installLamplight(pack: ContentPack, articles: ReadonlyMap<string, string>) {
   installWatches(pack);
   installLastBell(pack);
@@ -203,7 +209,7 @@ export function installLamplight(pack: ContentPack, articles: ReadonlyMap<string
     const action = 'Choose and compare two parts of ' + guest.title + ' with ' + guest.name + ', then use the finding at ' + site.bench + '.';
     pack.missions.push({ id: 'KG-CH' + String(Math.max(1, Number(site.world.slice(6)) - 1)).padStart(2, '0') + '-' + ref,
       world: site.world, title: guest.title + ' at ' + site.place, stake: guest.opening, knowledgeQuestion: guest.question,
-      objectives: [{ id: objective, title: action, essential: false, visible: { flag: ref + '.met', eq: true },
+      objectives: [{ id: objective, title: workshopGoals[kit.kind] + ' with ' + guest.name + ' for ' + site.bench, essential: false, visible: { flag: ref + '.met', eq: true },
         done: { flag: ref + '.use', in: [0, 1] }, questionWays: [{ id: 'KQ-ROUTE-' + String(kit.questionRoute).padStart(2, '0'), action }],
         weave: { concepts, atl: ['thinking', 'communication'], framework: frameworkFromConcepts(concepts), aoks: guest.weave.aoks as Weave['aoks'],
           subjects: guest.weave.subjects, minutes: 3, thinking: { dok: 2, bloom: 'apply', fink: 'application', solo: 'multistructural' } } }] });
