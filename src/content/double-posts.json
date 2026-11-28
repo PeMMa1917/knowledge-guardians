@@ -1,0 +1,314 @@
+{
+  "slips": [
+    {
+      "chapter": 1,
+      "other": 2,
+      "title": "The farthing in the wick",
+      "address": "Mabry Brassey",
+      "opening": "Mabry fishes a tiny coin out of the dead lamp. It has left a green circle on her last receipt. “My boy thinks I can light it by paying it.”",
+      "first": "Rub the circle onto the back of the receipt",
+      "discovery": "Three cuts on the coin match the places where the lamp used to hold a strip of paper.",
+      "routes": [
+        {
+          "action": "Hang the rubbing on the lamp rail",
+          "consequence": "Mabry leaves it low enough for her boy to touch. Her first customer asks if she stole a coin."
+        },
+        {
+          "action": "Put the original in Mabry’s apron pocket",
+          "consequence": "Mabry lets her boy feel the edge. A stranger has to ask her before trying it."
+        }
+      ]
+    },
+    {
+      "chapter": 2,
+      "other": 1,
+      "title": "The envelope with a little sun",
+      "address": "Wystan Greer",
+      "opening": "Wystan has been scraping the return label for most of the afternoon. On the back a child has drawn a round lamp with three rays.",
+      "first": "Hold the envelope to the reed screen",
+      "discovery": "There is space between the rays for a folded instruction. Wystan used to work the lamp before the river posting.",
+      "routes": [
+        {
+          "action": "Copy the three rays at the returns desk",
+          "consequence": "A visiting keeper can find the pocket. Wystan turns his old duty badge face down."
+        },
+        {
+          "action": "Ask Wystan to keep the drawing with the letter",
+          "consequence": "He puts the paper back in the right hands. Nobody outside the old crew knows the pocket is there."
+        }
+      ]
+    },
+    {
+      "chapter": 3,
+      "other": 6,
+      "title": "Snow on a dry-year slip",
+      "address": "Osric Coldry",
+      "opening": "Osric will let you take off one glove. He keeps the other around a name on the catchment slip. The family who wrote it are still waiting to be paid.",
+      "first": "Ease the tissue off the dash between the dates",
+      "discovery": "A dry-year proviso continues into a clean-edged gap. The paper has been cut twice, first with blunt kitchen shears.",
+      "routes": [
+        {
+          "action": "Show the cut beneath the family’s folded name",
+          "consequence": "People can see what went missing. Osric has promised to stand beside the fold all day."
+        },
+        {
+          "action": "Give the family the tissue with the impression",
+          "consequence": "Osric gets a thank-you meant for somebody who died years ago. He has to arrange a second viewing."
+        }
+      ]
+    },
+    {
+      "chapter": 4,
+      "other": 8,
+      "title": "A boat drawn at two waterlines",
+      "address": "Astor Quaile",
+      "opening": "Astor wants the harbour portrait in tomorrow’s fair. The painter drew Elsbet above a second set of wet boots and never painted in the person wearing them.",
+      "first": "Set the little tide mirror level with the lower boot",
+      "discovery": "The painter left room for someone kneeling beside Elsbet. Gold foil on the heel came from a press, not a uniform.",
+      "routes": [
+        {
+          "action": "Hang the trial portrait with the empty space visible",
+          "consequence": "Someone will ask who was kneeling. Astor gives up the chance to sell a finished picture."
+        },
+        {
+          "action": "Let the pilot see the working sketch first",
+          "consequence": "The pilot recognises the turn in the sole. The fair opens with an empty hook."
+        }
+      ]
+    },
+    {
+      "chapter": 5,
+      "other": 7,
+      "title": "An invoice that sings",
+      "address": "Gale Pryce",
+      "opening": "A bird in Gale’s observation blind whistles three notes whenever the old cash box shuts. Gale holds it open. “Nobody borrowed a tune from a bird with an invoice in its foot.”",
+      "first": "Close the lid over the carbon paper",
+      "discovery": "Three notches on the lid strike three pitches. The carbon caught the last loop of a customer's signature.",
+      "routes": [
+        {
+          "action": "Play the three-note receipt at the watch post",
+          "consequence": "Gale’s assistant can challenge the result in daylight. Every visitor starts whistling the tune."
+        },
+        {
+          "action": "Carry the silent carbon in the cash box",
+          "consequence": "The customer’s loop stays intact. Only the custodian can let a second listener test the box."
+        }
+      ]
+    },
+    {
+      "chapter": 6,
+      "other": 3,
+      "title": "The two blades",
+      "address": "Harl Tagg",
+      "opening": "Harl is weighing a pair of warped shears against his pay chit. One blade was bought by the Warden’s office. The other was ground in a kitchen by somebody left off the payroll.",
+      "first": "Close the blades on a doubled strip of waste paper",
+      "discovery": "A stepped cut crosses both layers. The coarse teeth are an exact fit for a proviso torn from a river sheet.",
+      "routes": [
+        {
+          "action": "Leave the sample on the workers’ gate",
+          "consequence": "The grinder can claim a wage in public. Harl will have to say who gave him the shears."
+        },
+        {
+          "action": "Put the shears and the pay chit in the worker’s hands",
+          "consequence": "The grinder can speak when ready. The public ledger keeps its blank for another shift."
+        }
+      ]
+    },
+    {
+      "chapter": 7,
+      "other": 5,
+      "title": "Three notches in the first press",
+      "address": "Liesl Marrable",
+      "opening": "Liesl keeps the press oiled with the money from her father’s first order. The customer’s name has faded. Three pinholes cross the word deposit.",
+      "first": "Pull a blind impression without ink",
+      "discovery": "Three little ridges come up. A stray ivory-coloured thread is still caught under the last ridge.",
+      "routes": [
+        {
+          "action": "Clip the impression beside the daybook",
+          "consequence": "Strangers can compare it. Liesl can hear people guessing her father’s name from the doorway."
+        },
+        {
+          "action": "Give Liesl the first pull for her father",
+          "consequence": "He can recognise his old press by touch. Somebody must bring the second copy to the woods."
+        }
+      ]
+    },
+    {
+      "chapter": 8,
+      "other": 4,
+      "title": "The unfinished promise",
+      "address": "Penrose Abernathy",
+      "opening": "Penrose keeps two pilots’ orders folded together. One says to issue a warning immediately. The other has a blank after the words “come back when”.",
+      "first": "Thread the two slips on the same wet peg",
+      "discovery": "The lines meet at the peg. Two different people had agreed to return for a second sounding.",
+      "routes": [
+        {
+          "action": "Fly the two slips together as a signal",
+          "consequence": "The crews see the promise. Penrose stays on deck as living ballast until the tide turns."
+        },
+        {
+          "action": "Ask the two pilots to carry one slip apiece",
+          "consequence": "Both can call for the return trip. A new crew has to find the pilots before it can hear the whole agreement."
+        }
+      ]
+    },
+    {
+      "chapter": 9,
+      "other": 10,
+      "title": "One chair in the wrong wings",
+      "address": "Lucan Fairweather",
+      "opening": "Lucan is trying to return a chair after the show. A gold ticket under the seat is for a market hearing, and the person who used it cannot stand for long.",
+      "first": "Turn the chair by its back and read the footmarks",
+      "discovery": "The chair moved between two meetings while both rolls still listed the witness as seated.",
+      "routes": [
+        {
+          "action": "Put the empty chair in the interval light",
+          "consequence": "The audience sees where somebody was counted twice. The understudy gives up her warm seat."
+        },
+        {
+          "action": "Take the ticket to the witness’s own seat",
+          "consequence": "The witness can mark the error in private. The audience repeats the larger crowd count for another night."
+        }
+      ]
+    },
+    {
+      "chapter": 10,
+      "other": 9,
+      "title": "The audience of one extra coat",
+      "address": "Cass Mott",
+      "opening": "Cass folds a paid cloak over an empty stool. “If a clerk counted it, the clerk got paid. That was our arrangement.” A drawing of a sore foot sticks out of the pocket.",
+      "first": "Set the cloak and the stool on separate marks",
+      "discovery": "Two admission tags use the same worn corner. One purchased a reserved seat while its owner was elsewhere.",
+      "routes": [
+        {
+          "action": "Set the spare tag on the public scales",
+          "consequence": "The crowd can see why two tickets made one witness. Cass has to refund a day’s commission."
+        },
+        {
+          "action": "Send the spare tag home inside the cloak",
+          "consequence": "The owner gets their money first. The empty stool looks occupied until close."
+        }
+      ]
+    },
+    {
+      "chapter": 11,
+      "other": 13,
+      "title": "Two villages in one minute",
+      "address": "Dorran Sluys",
+      "opening": "On the weir wheel Dorran has scratched a notch for every warning he heard. One notch has been cut so deep it looks like two.",
+      "first": "Turn the warning drum while the lower wheel rests",
+      "discovery": "The upper wheel sounds before the lower village is within earshot. Dorran had counted the echo as a reply.",
+      "routes": [
+        {
+          "action": "Mark the silent interval on both gateposts",
+          "consequence": "Both crews can see how long the answer takes. Dorran will have to stand through the interval again."
+        },
+        {
+          "action": "Lend the moving drum to the listening family",
+          "consequence": "They can hear exactly what Dorran heard. At the gate his crew must count without it."
+        }
+      ]
+    },
+    {
+      "chapter": 12,
+      "other": 14,
+      "title": "A house the model cannot reach",
+      "address": "Nyle Ostry",
+      "opening": "Nyle points at the blank between two homes on the route. The cart served the painted model beautifully. A real woman had to cross the canal to fetch her books.",
+      "first": "Roll the little cart until its axle catches",
+      "discovery": "A pencilled doorway sits one wheel-width outside the model. The larger cart never actually crossed.",
+      "routes": [
+        {
+          "action": "Paint the doorway at its measured distance",
+          "consequence": "The scale looks less tidy. The new driver can find the right house."
+        },
+        {
+          "action": "Ask the woman to guide a full-size trial",
+          "consequence": "She can show the driver a safer turn. We owe her a morning at her own work."
+        }
+      ]
+    },
+    {
+      "chapter": 13,
+      "other": 11,
+      "title": "The breath after the warning",
+      "address": "Tolly Fadden",
+      "opening": "Tolly's hand is on the mute button when a child in the recording starts to answer the old warning. “Her family asked me to look after that breath.”",
+      "first": "Run the two receivers until the unwound thread tightens",
+      "discovery": "The child began speaking during the interval the upper crew recorded as silence.",
+      "routes": [
+        {
+          "action": "Play only the space before the family’s answer",
+          "consequence": "The upper crew hears its own wait. Tolly sits ready to stop anyone who winds further."
+        },
+        {
+          "action": "Give the family the rewind handle",
+          "consequence": "They choose who hears the answer. The other crew must return when the family can receive them."
+        }
+      ]
+    },
+    {
+      "chapter": 14,
+      "other": 12,
+      "title": "The knuckle in the paper canal",
+      "address": "Sabine Orrell",
+      "opening": "Sabine's exhibition bridge fits the painted canal exactly. A builder stops a paper cart with one knuckle. “That’s where my mother's door would be.”",
+      "first": "Turn the street tray until the doorstep meets the bridge",
+      "discovery": "The model was trimmed to fit its case. The last straight cut removed a house and made the route look complete.",
+      "routes": [
+        {
+          "action": "Leave the house outside the glass",
+          "consequence": "A visitor can test what the frame left out. Sabine loses the prize for the cleanest model."
+        },
+        {
+          "action": "Lend the open tray to the canal builder",
+          "consequence": "The mother gets to tell the story first. At the fair an empty socket marks the missing exhibit."
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      1,
+      2,
+      "The lamp's old wage",
+      "The lamp had never run on coins. A carrier used the coin to hold her instructions upright. Wystan folds a new slip and Mabry lets her boy put the farthing back in his purse."
+    ],
+    [
+      3,
+      6,
+      "Who cut the river proviso?",
+      "Laid together, the two cuts show a household copy shortened for packing and a second cut made at the office. Osric takes the family name out of the accusation. Harl leaves the office signature for the Water Commons witnesses."
+    ],
+    [
+      4,
+      8,
+      "What did Elsbet promise Vesper?",
+      "The second sounding was a promise Vesper helped write. She had pressed the paper flat with her knee while Elsbet drew the tide. The quarrel came over whether the first warning could travel alone."
+    ],
+    [
+      5,
+      7,
+      "Who bought the first stamp?",
+      "The three notes fit the ridges of the press. The deposit came through a river office before the Gilded Seal sold its first copy. Liesl had blamed her father for a price he had never set."
+    ],
+    [
+      9,
+      10,
+      "How many witnesses sat down?",
+      "The market ticket fits the empty theatre chair. A person needed an accessible seat in two places on one afternoon. It was the attendance books that claimed they sat in both at once."
+    ],
+    [
+      11,
+      13,
+      "Who heard the lower bank?",
+      "The two records share the same wheel click. What sounded like silence upriver was the time a child needed to answer downstream. Dorran sits beside Tolly for one whole turn of the reel."
+    ],
+    [
+      12,
+      14,
+      "Where did the last house go?",
+      "The gutter of the district map fits the trimmed edge of the model. A woman kept her house and lost her delivery route because a piece of paper had to fit a frame. Sabine carries her next parcel by hand."
+    ]
+  ]
+}

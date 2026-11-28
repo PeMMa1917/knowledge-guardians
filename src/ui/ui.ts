@@ -1,3 +1,4 @@
+import {rivalPostPanel} from './rivalPost';
 import { invitationFor, invitationChapter, type KeeperInvitation } from '../domain/workInvitations';
 import { templePanel, templeJournal, threadPanel } from './temple';
 import { arrivalLine, corridorOpen, PASSAGES, ribbon, openDestinations, delegations } from '../domain/corridor';
@@ -3691,6 +3692,9 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    if(id==='rivals-post'){
+      this.openModal('rivals-post wide','The rivals’ post',this.closeBtn(),rivalPostPanel(ctx.controller,n=>this.crossFromShelf(n)));return;
+    }
     if (id === 'world-work') { this.openWorkOrders(); return; }
     if (id === 'travelling-cases') {
       const controller=ctx.controller,map=controller.state.mapId;
@@ -3700,6 +3704,7 @@ export class UI implements UIApi {
         const stages=await module.chapterSagas(chapter);
         if(box.isConnected && ctx.controller===controller && controller.state.mapId===map)box.replaceChildren(this.closeBtn(),module.sagaPanel(controller,stages,chapter=>this.crossFromShelf(chapter)),
           h('button',{type:'button',onclick:()=>this.openFieldGame('world-work')},'Browse field games, requests and missions'),
+          h('button',{type:'button',onclick:()=>this.openFieldGame('rivals-post')},chapter===15?'Call the keepers to the witnesses’ rail':'Open the rivals’ post'),
           h('details',{},h('summary',{},'Cross to another open world'),
             ...PASSAGES.flatMap((p,i)=>p.hall!==map && corridorOpen(controller.state,i+1)?[h('button',{onclick:()=>this.crossFromShelf(i+1)},p.name)]:[])));
       }).catch(()=>{
@@ -3708,7 +3713,8 @@ export class UI implements UIApi {
       return;
     }
     if (id.startsWith('temple-')) {
-      this.openModal('temple-panel wide','Guardian hearing',this.closeBtn(),templePanel(ctx.controller,id.slice(7)));
+      this.openModal('temple-panel wide','Guardian hearing',this.closeBtn(),templePanel(ctx.controller,id.slice(7)),
+        id==='temple-custody'||id==='temple-index'?h('button',{onclick:()=>this.openFieldGame('rivals-post')},'Visit the witnesses’ post'):'');
       return;
     }
     if (id === 'corridor-ribbon') {
@@ -3746,7 +3752,7 @@ export class UI implements UIApi {
 
   private crossFromShelf(chapter: number): void {
     const state = ctx.controller.state;
-    if ((!PASSAGES.some(p => p.hall === state.mapId) && !invitationChapter(state.mapId)) || !corridorOpen(state, chapter)) return;
+    if ((!PASSAGES.some(p => p.hall === state.mapId) && !invitationChapter(state.mapId) && !/^temple\.(?:[1-9]|1[0-4])$/.test(state.mapId)) || !corridorOpen(state, chapter)) return;
     const destination = PASSAGES[chapter-1];
     const landing = MAPS[destination.hall];
     if (!landing || landing.id === state.mapId) return;

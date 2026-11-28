@@ -12,6 +12,8 @@ Every main hall also has work orders. There are 4,500 field games, 4,500 persona
 
 At 112 locations, 175 fictional keepers now offer their own requests during ordinary conversations. The thirty favour forms and twelve main-quest approaches each have two playable paths. A promise selects the activity and the keeper's later reply. Changing your mind begins another rehearsal. A recipient who already took the first order keeps those instructions until you issue a revision. Crew missions select a field instrument by their task.
 
+The rivals’ post links fourteen opponents in seven two-world mysteries. Either address can start a case. The next holder sees which traces went public and which stayed with a witness. Matched traces can change the testimony at the existing Council hearing. [Cases and their witnesses](docs/STORY_BIBLE.md#the-rivals-post)
+
 ## Chapter downloads and the historical cast
 
 The fresh menu opens with about 4.7 kB of compressed JavaScript. The playable Nexus loads its own map, dialogue and guide, and later rooms request their story sections and artwork as needed. A saved game can reopen directly in its chapter. The published map, dialogue and hint checks cover all 164 rooms across the Nexus and fifteen chapters. [Download measurements and browser journeys](docs/BROWSER_CHECKS.md#chapter-downloads)
