@@ -1,5 +1,10 @@
 # Status and next steps
 
+## 28 November • The inn under the mat
+
+A smaller door appeared under Neska’s front mat. A Guardian can give any of 240 earned creatures a place at home and come back to find which of them stayed. Loaded wheels, a flat shoe and a real lamp give three different readings of the same nine rooms. The supper cart goes to Emberford, the lamp goes to the harbour and the keys go to a meeting. Jane Jacobs and Zaha Hadid each return in a second place. The new landing keeps the actual cart stop, chosen lamp and one of nine evenings. The source-linked skill ledger now records 609 of 1,200 skills in playable actions. [The inn and its inhabitants](docs/STORY_BIBLE.md#the-inn-under-the-mat) · [Verified learning actions](docs/CROSS_WEAVE_AUDIT.md#a-house-that-changes-length)
+
+
 ## 28 November • The quarter that comes back
 
 Matel sewed copper feet onto the moth Siv once drew on a wage envelope. At the island the creature can walk, listen and stamp an entire watch. Trials that leave one worker out can still run exactly as instructed. Two shifts can change where the dry bench goes. A player who keeps the early and late hearings can step behind the clock into the earlier ferry studio. [Matel and Lovelace](src/content/tideClock.ts) · [Six arrangements and two traced leaves](tests/tide-clock.test.ts)
