@@ -33,6 +33,13 @@ Two keepers in one chapter must disagree for good reasons (decision X-008). Thei
 
 A test (`tests/voices.test.ts`) checks that every character with more than 20 lines of dialogue has a sheet here. Put the character id in backticks in the heading, as below.
 
+### Tritta (`moth-runner-tritta`)
+
+- **Believes** A notice can give somebody a useful evening even while a difficult question is still open.
+- **Worries** As a child she cleaned a printer’s blocks by the piece. Something a reader needed may have been among the marks she rubbed away.
+- **Speaks** She offers a small wager she cannot pay, then turns out her actual pockets. When someone asks for a silence, she puts her measuring wheel away.
+- **Why** She mends caps, runs corrected proofs and looks after a two-tailed moth that can recognize ink. The three jobs pay her for very different kinds of attention.
+
 ## Neighbours who come back for you
 
 ### Bela (`cataloguer-bela`)

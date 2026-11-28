@@ -1,0 +1,74 @@
+.second-ink {
+  overflow-wrap: anywhere;
+}
+.second-ink button {
+  white-space: normal;
+  max-width: 100%;
+  min-height: 2.75rem;
+}
+.ink-tools,
+.ink-positions,
+.ink-issue {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-block: 0.65rem;
+}
+.ink-issue > h4,
+.ink-issue > p {
+  flex-basis: 100%;
+  margin-block: 0.08rem;
+}
+.second-ink button[aria-pressed='true'] {
+  outline: 0.15rem solid currentColor;
+  outline-offset: -0.25rem;
+}
+.ink-instrument {
+  padding: 0.65rem;
+  border: 0.13rem solid currentColor;
+  border-radius: 0.3rem;
+}
+.ink-hatch,
+.ink-shutters,
+.ink-cord {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.2rem;
+  padding: 0.5rem;
+  font-weight: 700;
+  background: #302539;
+  color: #f6e5bd;
+  border: 0.15rem solid #ba8b65;
+}
+.ink-hatch span,
+.ink-shutters span {
+  flex: 1;
+  padding: 0.3rem;
+  text-align: center;
+  border-inline-start: 1px solid #c0a795;
+}
+.ink-hatch .ink-scar,
+.ink-shutters .open {
+  background: #e7b98b;
+  color: #35283b;
+}
+.ink-cord span {
+  min-width: 0;
+}
+.ink-claim {
+  border-inline-start: 0.25rem solid currentColor;
+  padding-inline-start: 0.6rem;
+}
+.ink-response:empty {
+  display: none;
+}
+.second-ink details {
+  margin-block: 0.7rem;
+}
+@media (forced-colors: active) {
+  .ink-hatch .ink-scar,
+  .ink-shutters .open {
+    outline: 2px solid Highlight;
+  }
+}

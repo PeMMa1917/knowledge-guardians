@@ -1,4 +1,5 @@
 import {orchardEffects,type OrchardCommand} from './walkingOrchard';
+import {inkEffects,type InkCommand} from './secondInk';
 import {houseEffects,type HouseCommand} from './openHouse';
 import {tideEffects,type TideCommand} from './tideClock';
 import {wireEffects,type WireCommand} from './ferryRadio';
@@ -106,7 +107,7 @@ import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand
 
 export type Command =
   | ChestCommand | BeatCommand | MouldCommand | PerchCommand | WelcomeCommand | BakeryCommand
-  | ElbowCommand | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | CupCommand | HouseCommand | OrchardCommand | TideCommand | WireCommand | LensCommand | StackCommand | AlmanacCommand | CourierCommand | BillCommand | FerryCommand
+  | ElbowCommand | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | CupCommand | InkCommand | HouseCommand | OrchardCommand | TideCommand | WireCommand | LensCommand | StackCommand | AlmanacCommand | CourierCommand | BillCommand | FerryCommand
   | ShadowCommand
   | FieldLoanCommand
   | BirdCommand
@@ -667,6 +668,8 @@ export class Engine {
           s = apply(stackEffects(s,cmd),s,out); break;
         case 'TendWalkingOrchard':
           s = apply(orchardEffects(s,cmd),s,out); break;
+        case 'WorkSecondInk':
+          s = apply(inkEffects(s,cmd),s,out); break;
         case 'FitMiddleDoor':
           s = apply(houseEffects(s,cmd),s,out); break;
         case 'WorkTideClock':

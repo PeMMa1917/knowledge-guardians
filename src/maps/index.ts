@@ -1,4 +1,5 @@
 import {groveNursery,groveStage,groveDoors} from './walkingOrchard';
+import {inkProps,inkPeople} from './secondInk';
 import {middleRoom,middleLanding,houseAt,houseVisitors} from './openHouse';
 import {quarterRoom,clockProps,clockGuests} from './tideClock';
 import {wireRoom,radioProps,radioVisitors} from './ferryRadio';
@@ -237,8 +238,8 @@ for (const room of nightRooms) {
 }
 
 export const MAPS: Record<string, MapDef> = Object.fromEntries(Object.values(campaignMaps).map((map) => {
-  const returns = [...houseAt(map.id), ...groveDoors(map.id), ...clockProps(map.id), ...radioProps(map.id), ...lensAt(map.id), ...stackProps(map.id), ...cupStreet(map.id), ...almanacAt(map.id), ...elbowAt(map.id), ...courierAt(map.id), ...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id), ...inkPostAt(map.id), ...nightDoor(map.id), ...foldingFlockAt(map.id), ...fieldLoansAt(map.id)];
-  const guests=[...houseVisitors(map.id), ...radioVisitors(map.id), ...clockGuests(map.id), ...lensVisitors(map.id), ...stackPeople(map.id),...cupVisitors(map.id),...almanacVisitors(map.id)];
+  const returns = [...inkProps(map.id), ...houseAt(map.id), ...groveDoors(map.id), ...clockProps(map.id), ...radioProps(map.id), ...lensAt(map.id), ...stackProps(map.id), ...cupStreet(map.id), ...almanacAt(map.id), ...elbowAt(map.id), ...courierAt(map.id), ...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id), ...inkPostAt(map.id), ...nightDoor(map.id), ...foldingFlockAt(map.id), ...fieldLoansAt(map.id)];
+  const guests=[...inkPeople(map.id), ...houseVisitors(map.id), ...radioVisitors(map.id), ...clockGuests(map.id), ...lensVisitors(map.id), ...stackPeople(map.id),...cupVisitors(map.id),...almanacVisitors(map.id)];
   const room = returns.length||guests.length ? {...map,interactables:[...map.interactables,...returns],npcs:[...map.npcs,...guests]} : map;
   return [map.id, withOriginVisitor(withTownHearing(withWhistleWatch(room)))];
 }));

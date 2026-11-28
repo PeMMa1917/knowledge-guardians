@@ -560,3 +560,17 @@ Neska Vell once charged each guest a story for a bed. Now somebody too small to 
 Turn the rooms, follow a flat shoe and a cart, then fold the east seam out and measure the same trip again. The joins can stay fixed while the distance grows. In the Emberford yard a child waits with one clean spoon. Behind Tover’s actual wheels, a neighbour holding a door matters in a way the drawing misses. At the harbour the lamp can shine straight through an opening and lose the person who walks round a corner. Jane Jacobs and Zaha Hadid return at those two sites. Their dialogue uses original scenes. Their journal readings lead to Project for Public Spaces, the community-run Jane’s Walk and the Pritzker Prize account of Hadid’s work.
 
 A resident at the mat can send the cart a direction thread. A resident on the sill can suggest a reachable lamp hook. Beside the hearth a friend can keep a folded plan while the town works from a later one. Any of the 240 creatures the student has actually befriended can occupy any one of the three places. Travellers leave their place waiting. The listening table needs the stop the player reached and the lamp they actually tried. Supper, a song and solitude lead to nine endings according to what the inn originally promised. The landing that opens at home remembers who received the kettle and who could see the light.
+
+## The moth with two tails
+
+A gold moth has eaten the middle out of three notices. Tritta is paid by the word to repair them. Agate was the person who first persuaded these towns to buy a stamp and is finding out what they thought they had bought. Each chapter’s night keeper has an independent reason to get a notice out this evening. Vesper’s letters survive as old impressions that can still be read after the Council hearing.
+
+The hand in the returns slit turns up before the family bed, ferry horn, free bowl, missing singer and other disputed notices. A Guardian can give any town immediate practical help, a public account of its sources or custody of its sheet. Someone must then work the extra shift, carry the load or wait for a reply. Walking to the place that receives the notice reveals a consequence. A folded notice can travel to another city even if its town later changes its mind.
+
+Agate buys a place in Tritta’s cap for one tiny scrap of paper. The moth can recognize a familiar working method across chapters. Someone who signs with a sliding proof gets a change of face. A cord reader gets a third ancestor. A keeper of bells gets two shifts at the same bell. Agate has a reason to press each one and one final cost she cannot hand back to her clerk. At the Council she takes her bag off the spare chair.
+
+| Chapters | Conflict | Stakes | Ways through | Return |
+| --- | --- | --- | --- | --- |
+| 1–15, the local Night Registers | Guardian and Seal, keeper and customer, witness and institution | A hot meal, cue, warm place, safe landing or public promise can have a real cost tonight. | Trace the three cords, slide a marked sheet or work the bell shutters. Put up a notice, arrange a service or return custody. A challenge can be left, answered or taken up again in a different town. | A physical rail, tray or witness seat appears in a different aisle. A carried edition keeps its original observations, even after a different notice goes up at home. |
+
+[The fifteen commissions](../src/content/second-ink.json) · [The rival’s changing terms](../src/domain/secondInk.ts)

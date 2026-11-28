@@ -1,5 +1,6 @@
 import {grovePanel} from './walkingOrchard';
 import {beds,bedName} from '../domain/walkingOrchard';
+import {secondInkPanel} from './secondInk';
 import {housePanel} from './openHouse';
 import {quarterPanel} from './tideClock';
 import {ferryRadioPanel} from './ferryRadio';
@@ -86,6 +87,8 @@ export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
   ['grove-shutters',{title:'The counting cloth',open:(c,sound)=>grovePanel(c,sound,'shutters')}],
   ['grove-promise',{title:'An evening for the orchard',open:(c,sound)=>grovePanel(c,sound,'promise')}],
   ['grove-square',{title:'The third turn of the orchard',open:(c,sound)=>grovePanel(c,sound,'square')}],
+  ['second-ink-press',{title:'The moth with two tails',open:(c,sound)=>secondInkPanel(c,sound)}],
+  ['second-ink-corner',{title:'Where the notice went',open:(c,sound)=>secondInkPanel(c,sound,true)}],
   ['middlehouse-plan',{title:'The inn under the mat',open:(c,sound)=>housePanel(c,sound,'plan')}],
   ['middlehouse-roost',{title:'Three warm places',open:(c,sound)=>housePanel(c,sound,'roost')}],
   ['middlehouse-cart',{title:'The kettle in the yard',open:(c,sound)=>housePanel(c,sound,'cart')}],

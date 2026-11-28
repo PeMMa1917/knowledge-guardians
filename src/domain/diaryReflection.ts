@@ -1,3 +1,4 @@
+import {inkCases} from './secondInk';
 import { courierCases } from './courierLift';
 import {whistlePlaces,whistleStories} from '../content/whistleWatch';
 import {vaultStations,vaultWork} from '../content/vaultNight';
@@ -41,6 +42,13 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
     if(/:(load|boot|roll|account):/.test(key))return {control:'Which one change brought the heel into both sets of prints?',limit:'What would it take to show who actually pulled the tubs that night?'};
     if(key.startsWith('walking-grove:track:'))return {tracks:'Which part of the night could this mark explain, and which part still needs a witness?'};
     return {date:'What changed when I brought the two springs up to the same date?',missing:'Which empty space in the book would I try to fill first, and why?'};
+  }
+  if(key.startsWith('secondink:')){
+    const [,topic,id]=key.split(':'), local=inkCases.find(k=>k.site===id);
+    if(local) return {
+      local:local.question,
+      limit:topic==='cord'?'What would count as a genuinely independent voice here?':topic==='slip'?'What did I keep fixed while I moved the impression?':topic==='bell'?'Who was in a position to see it on the shift I opened?':topic==='answer'?'Where else could my favourite test be misleading?':'Who has to do the work made possible by my notice?',
+    };
   }
   if(key.startsWith('middlehouse:')){
     const act=key.split(':')[1];

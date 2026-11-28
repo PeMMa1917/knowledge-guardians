@@ -4,8 +4,8 @@ This tracker maps every numbered story element in the supplied *Universal RPG Bl
 
 | Status | Meaning | Story elements |
 | --- | --- | ---: |
-| ✓ Playable | At least one authored scene demonstrates the core adapted idea. | 132 |
-| ◐ Partial | The story uses the idea in limited form. The remaining work is named. | 17 |
+| ✓ Playable | At least one authored scene demonstrates the core adapted idea. | 135 |
+| ◐ Partial | The story uses the idea in limited form. The remaining work is named. | 14 |
 | ○ Planned | The corresponding scene or system is open. | 0 |
 | ✗ Excluded | The original aspect is outside the classroom design. | 1 |
 
@@ -76,9 +76,9 @@ These are examples, not a measure of whether every player will find, enjoy or in
 | # | Story element | Adaptation and current scope | Status | Reference |
 | ---: | --- | --- | :---: | --- |
 | 41 | A rival with a reason | Vesper: Harrowmere was hurt by a confident Nexus label. | ✓ | [harrowmere.json](../src/content/harrowmere.json), [vesper.json](../src/content/vesper.json) |
-| 42 | The rival appears often | Letters recur across chapters, Nellis carries a disputed record and Vesper appears in the House and Council. Broader recurring Seal agents remain open. | ◐ | [letters.ts](../src/domain/letters.ts), [archive-handoff.test.ts](../tests/archive-handoff.test.ts), [performance-vesper.test.ts](../tests/performance-vesper.test.ts) |
-| 43 | Tiered gallery | Corvan, the Hollow Archivist and Vesper test different ways of challenging a story. A similarly structured adversary in every chapter remains open. | ◐ | [undercroft.ts](../src/domain/undercroft.ts), [playthrough.test.ts](../tests/playthrough.test.ts), [performance-vesper.test.ts](../tests/performance-vesper.test.ts) |
-| 44 | A growing rival | Vesper acknowledges changes in the player’s decisions. There is no mechanical rivalry that grows with the player’s skill. | ◐ | [letters.ts](../src/domain/letters.ts), [letters.test.ts](../tests/letters.test.ts), [performance-vesper.test.ts](../tests/performance-vesper.test.ts) |
+| 42 | The rival appears often | Meet Agate and her runner at fifteen registers. Vesper’s old commissions surface in the moth’s folds. Each town gives its own reason for using or questioning the Seal. | ✓ | [The moth with two tails](../tests/second-ink.test.ts) |
+| 43 | Tiered gallery | Each chapter has its own disputed notice. The ordinary commission can open immediately. A counterproof after two other towns changes the method’s conditions. A response after four asks for independent work with a second tool. | ✓ | [The moth with two tails](../tests/second-ink.test.ts) |
+| 44 | A growing rival | Agate remembers which method a Guardian actually used in distinct towns. Familiarity with knots, marks or shifts brings a different counterexample. Signing the same notice repeatedly cannot advance the challenge. | ✓ | [The moth with two tails](../tests/second-ink.test.ts) |
 | 45 | Nature and society too | Crossings: floods, geese, machines, crowds, rules. | ✓ | [crossings.ts](../src/domain/crossings.ts), [water-story.test.ts](../tests/water-story.test.ts) |
 | 46 | Presence | Vesper has a distinct look and dialogue. The recurring tune changes arrangement during the encounter. | ✓ | [vesper.json](../src/content/vesper.json), [storyMotifs.ts](../src/domain/storyMotifs.ts) |
 | 47 | Arguing with the rival | Vesper's letters make a fair point; the Council lets you answer. | ✓ | [performance-vesper.test.ts](../tests/performance-vesper.test.ts), [vesper.json](../src/content/vesper.json) |

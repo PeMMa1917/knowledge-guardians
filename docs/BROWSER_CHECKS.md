@@ -408,3 +408,9 @@ The Chromium journey seated an earned creature, tested Tover’s supper floor, s
 ### Finding someone across chapters
 
 Chromium revisited Vera Rubin after the City of Copies, Firefox revisited Wangari Maathai after the Cold Store and WebKit revisited Zaha Hadid after the Living Forest. Each test delivered the first workshop, left a second tracing unfinished, reopened the game and used the Conversations tab to see both. Opening Ise’s page during a real conversation recovered the words actually heard. The book omitted a guest the Guardian had never called. [Played route](../tools/calling-book-journey.mjs)
+
+## Tritta and the moth with two tails
+
+From the ordinary entrance to a Night Register, the Guardian can meet Tritta and Agate, try a tool, sign an edition and walk to the person whose day it changed. An edition carried through another door keeps its own observations. The rival looks at signed work from distinct towns before choosing her next condition. [Browser journey](../tools/second-ink-journey.mjs)
+
+On 28 November, Chromium 156 played the bell from the Archive through the Market to the Council. Firefox 146 followed the cords through the Cold Store and the Print Register. WebKit 26 tried the sliding sheet through the Stage and Coast registers. The journeys exercised all three ways of publishing, the changing rival, a historical guest, a reopened save and the exported Word diary. The rules suite separately plays all nine tool/edition combinations in each of the fifteen registers and both levels of each counterproof. [Rules and receiving-room checks](../tests/second-ink.test.ts)

@@ -1,0 +1,557 @@
+[
+  {
+    "site": "archive",
+    "title": "The hand smaller than the stamp",
+    "hook": "A gold moth has eaten the word OPEN off the returns hatch. A tiny palm print joins the two clean edges. Ise is holding a saucer below it in case another letter falls. “Funny,” she says. “The hatch was closed the day that hand got inside.”",
+    "claim": "Three notices say the little returns hatch opened at the first bell. A reader has brought her books back in the dark twice.",
+    "mark": "a bent thumb",
+    "fixed": "paper",
+    "writers": [
+      "child at the hatch",
+      "clerk at the desk"
+    ],
+    "desks": [
+      "front door",
+      "lamp shelf",
+      "returns slit"
+    ],
+    "origin": [
+      0,
+      0,
+      1
+    ],
+    "tide": [
+      0,
+      2
+    ],
+    "older": [
+      1,
+      2
+    ],
+    "exhibit": "Ise keeps the small hand at the bottom of the display. A grown reader kneels down to compare its height with the hatch.",
+    "serve": "A brass saucer wedges the hatch a finger wide. The reader slides her book through. Ise has to sit beside it in case a hand follows.",
+    "entrust": "The child keeps the loose print. Ise takes her turn at the hatch and learns the particular knock that used to send the child home.",
+    "question": "Who can establish who opened the hatch, and who can establish that a book went through it?",
+    "agate": "“Look at the saucer,” says Agate. “Warden Ise’s good china, under a hatch that never closes. Ask her where the chips came from.”",
+    "cost": "“I learned to sign my name on the back of a returns ticket. My father still keeps the ticket. He forgets there was a front.”",
+    "tritta": "Tritta takes her cap off. The moth inside it has left a silver PATCH where it ate the gold OPEN. “It likes the hand that made the word. It keeps coming back for the hand.”"
+  },
+  {
+    "site": "nile",
+    "title": "A fish in the grain account",
+    "hook": "A blue fish in the pay chest appears to have swallowed a sack of barley. Imani turns the tally over. The fish swims upside down. “That was my brother making me smile on a long shift. If it counted as a sack, somebody worked for a drawing.”",
+    "claim": "Three stubs record the last grain payment. One family has the string the sack was tied with and the other has the ink.",
+    "mark": "a fish tail",
+    "fixed": "bed",
+    "writers": [
+      "person who tied the sack",
+      "weigher at the chest"
+    ],
+    "desks": [
+      "knot book",
+      "gate counter",
+      "pay chest"
+    ],
+    "origin": [
+      1,
+      0,
+      0
+    ],
+    "tide": [
+      1,
+      0
+    ],
+    "older": [
+      0,
+      2
+    ],
+    "exhibit": "Imani pins the two accounts to the same knot. The family can see exactly whose hand weighed grain and whose hand carried it into the yard.",
+    "serve": "A spare basket goes to the waiting counter. Tomorrow’s stock will be light until the weigher reports how much the pay chest actually issued.",
+    "entrust": "Imani lets the carrier unpick the string in private. A written total must wait. The carrier can bring the family’s own account to the scales.",
+    "question": "Which detail gives an old payment its value as evidence for the people waiting today?",
+    "agate": "“I used to pay my printer by the sack. Paid him very handsomely the week the picture of a fish went through twice. I never asked if the carrier got anything.”",
+    "cost": "“If this takes much longer a person will leave with an empty basket. I was good at getting baskets filled. I think that is why people let me sign them.”",
+    "tritta": "Tritta rubs an empty patch flat until you can make out a fish scale. “I’m paid by the word. A picture is a long day for me.” She sets the fish aside for Imani."
+  },
+  {
+    "site": "cold",
+    "title": "The scarf in three windows",
+    "hook": "A scarf with a large moth hole hangs in the window of a room two women remember sharing. Both say it used to be green. Tovrie recognizes the pattern. Her own scarf has been folded in her drawer since she came here.",
+    "claim": "Three door cards say the old room has a bed ready. Someone has arrived with one blanket and no wish to give a name.",
+    "mark": "a ladder of stitches",
+    "fixed": "paper",
+    "writers": [
+      "person who folded the bedding",
+      "porter who copied the room card"
+    ],
+    "desks": [
+      "room book",
+      "outer peg",
+      "linen rail"
+    ],
+    "origin": [
+      0,
+      1,
+      1
+    ],
+    "tide": [
+      2,
+      1
+    ],
+    "older": [
+      2,
+      0
+    ],
+    "exhibit": "Two scarves hang side by side, one borrowed for an hour. Visitors can see which room card went through the porter’s hands. The owner takes both scarves down before dark.",
+    "serve": "Tovrie makes up a bed by the stove. The old room stays as it was. A second visitor will have to wait for the porter to check it.",
+    "entrust": "The unnamed traveller keeps the peg and decides when it can be turned. Tovrie gives up her own quiet corner to watch the stove.",
+    "question": "What can a shared recollection tell you about a room someone needs tonight?",
+    "agate": "“If the scarf were mine I would cut a corner for each claimant. I was about to offer somebody a pair of scissors.” Agate puts them back in her bag.",
+    "cost": "“My father makes chairs. I thought putting a name against each one would give everyone a seat.” She rubs an ink spot on her finger until her skin goes pink.",
+    "tritta": "Tritta has put her head through the large hole. “I can confidently report who’s wearing it now.” Tovrie folds the scarf around her shoulders and for once the joke goes quiet."
+  },
+  {
+    "site": "coast",
+    "title": "The lamp that answered itself",
+    "hook": "Orren’s daughter waves yellow wool under three windows. Three lamps answer. She puts the wool away. A fourth answer comes up from the water and makes her father take his good cuff off.",
+    "claim": "Three light logs put the pilot at the quay. A boatman has a whole supper laid for somebody who may still be offshore.",
+    "mark": "a fork of light",
+    "fixed": "bed",
+    "writers": [
+      "keeper at the shutter",
+      "pilot under the quay"
+    ],
+    "desks": [
+      "upper gallery",
+      "tide stair",
+      "harbour mirror"
+    ],
+    "origin": [
+      0,
+      1,
+      0
+    ],
+    "tide": [
+      0,
+      2
+    ],
+    "older": [
+      1,
+      0
+    ],
+    "exhibit": "The mirror line goes up beside the pilot’s own mark. The boatman can see why two lights agreed and leaves the second bowl covered.",
+    "serve": "Orren takes a lamp down the tide stair. The pilot has a clearer landing. The upper gallery is dark until his daughter takes the shutter.",
+    "entrust": "The pilot carries the slip back to sea. The boatman puts a chair by the quay where an arriving person can speak before anyone enters a name.",
+    "question": "What could make another bright signal add very little to the report?",
+    "agate": "“A lamp that answers you just when you need it. Would you have kept asking where the answer came from?” Agate pulls her good sleeve down over her wrist.",
+    "cost": "“The man setting two bowls may know perfectly well what he’s doing. Can you let him keep one warm without telling him you’ve seen his passenger?”",
+    "tritta": "Tritta tries waving a piece of yellow wool. Her shadow gives a quite convincing wave back. “I still like it better when somebody takes the trouble.”"
+  },
+  {
+    "site": "fern",
+    "title": "The hollow that called for two",
+    "hook": "Vellune hears two chicks inside a stump nobody can see into. The gold moth folds its wings over one ear. The other chick stops. A visiting child has already given the second one a name.",
+    "claim": "Three listening cards announce a second nest. The lookout has one stretch of dry board left to put between boots and reeds.",
+    "mark": "a split reed",
+    "fixed": "paper",
+    "writers": [
+      "reed-bed listener",
+      "walker at the hollow"
+    ],
+    "desks": [
+      "east walk",
+      "nest ledger",
+      "reed pipe"
+    ],
+    "origin": [
+      1,
+      0,
+      1
+    ],
+    "tide": [
+      1,
+      2
+    ],
+    "older": [
+      2,
+      0
+    ],
+    "exhibit": "The child draws two ears below the two lines in the register. Each recorded call leads back to a particular listener. The other chick keeps its name in pencil.",
+    "serve": "The dry board goes on the soft approach to the stump. People can pass without stepping on the reeds. Some of the calls fall outside their hearing.",
+    "entrust": "Vellune leaves the listening post to the child and steps away. For an evening the child can decide which sounds stay in the reed bed.",
+    "question": "When does hearing a call through a different opening count as a second observation?",
+    "agate": "“I heard two. I had my eyes shut. I was thinking of the name I would have given the nearer one.” Agate holds the little visitor’s pencil until it is wanted.",
+    "cost": "“That stretch of board is the last one the town can spare. A count is an extraordinary light thing to balance a plank on.”",
+    "tritta": "The moth makes no sound while its wings are open. Tritta puts her hand behind one ear. “We make a fine pair of tools. It finds the ink. I keep finding things it can’t.”"
+  },
+  {
+    "site": "yard",
+    "title": "The whistle Hesper pocketed",
+    "hook": "A shift whistle sounds in Hesper’s apron. She tips out three little brass slips and an apricot stone. “My daughter sends those so I count how many suppers I miss.” The youngest worker reaches for the whistle before the foreman can.",
+    "claim": "Three bench tickets release the late shift. One worker has stayed to keep the old bell from ringing under her hands.",
+    "mark": "a broken tooth",
+    "fixed": "bed",
+    "writers": [
+      "worker beside the release",
+      "worker who heard the bell"
+    ],
+    "desks": [
+      "time gate",
+      "brass rail",
+      "apron ticket"
+    ],
+    "origin": [
+      0,
+      0,
+      1
+    ],
+    "tide": [
+      2,
+      0
+    ],
+    "older": [
+      1,
+      2
+    ],
+    "exhibit": "The late worker files when the release moved beside when the whistle sounded. Hesper puts the stone on the gap between them.",
+    "serve": "Hesper takes the old bell shift herself. The younger worker reaches the supper table. A casting waits for the next crew.",
+    "entrust": "The worker takes the ticket to the time gate and chooses how to enter her shift. Hesper gives her the apricot stone to keep the folded paper shut.",
+    "question": "Who bears the cost of turning a heard signal into a claim about a person’s time?",
+    "agate": "“That brass whistle was my mother’s order. They wanted a voice loud enough to reach every bench. I came home delighted.” Agate tries to blow it. Her breath gives out.",
+    "cost": "“We never asked whether a person on the late shift could take the whistle out of a pocket.”",
+    "tritta": "Tritta tests the apricot stone between finger and thumb. “Good for five years of planting. Also good for one difficult conversation when you get home.” She slips it back to Hesper."
+  },
+  {
+    "site": "press",
+    "title": "An erratum with clean shoes",
+    "hook": "A printer’s correction arrives with three neat footprints in the margin. Bayette can account for two of her boots. The last footprint is the one a toddler leaves barefoot. A man at the gate would like to print the lot under his own name.",
+    "claim": "Three shop sheets announce the same correction. The person who caught the error wants the shops to change it and wants their child left out.",
+    "mark": "a heel notch",
+    "fixed": "paper",
+    "writers": [
+      "reader who spotted the slip",
+      "press hand who reset the line"
+    ],
+    "desks": [
+      "galley edge",
+      "counter slip",
+      "vendor post"
+    ],
+    "origin": [
+      1,
+      0,
+      1
+    ],
+    "tide": [
+      0,
+      2
+    ],
+    "older": [
+      2,
+      1
+    ],
+    "exhibit": "Bayette sets the corrected letters above their paths through the press. The three shops can credit the reader without printing a child’s footprint.",
+    "serve": "The shops put a short correction on their doors while the forme is still warm. Bayette spends the evening delivering it to customers who bought the first sheet.",
+    "entrust": "The reader keeps the marked proof and gives permission for the words alone. A collector waiting for the bare footprint leaves empty-handed.",
+    "question": "Which part of a correction needs publication and who has grounds to set its limits?",
+    "agate": "“I can have three thousand people reading the correction by tea.” Agate looks down at the little footprint. “I would need a smaller sort to tell them whose shoes those are.”",
+    "cost": "“I have made money on a better second edition more than once. That’s a funny thing to admit to a reader who paid for the first.”",
+    "tritta": "Tritta used to earn a coin for every smudge she cleaned off the forme. She has cut her thumb opening the foot-shaped one. “Some of the dirt was doing a job.”"
+  },
+  {
+    "site": "chart",
+    "title": "The island folded inside a name",
+    "hook": "A ferry passenger smooths a chart against Ostel’s knee. An island appears in its fold. “My sister draws that island,” he says, “when she wants me to write.” A man has already put a landing there on his sailing notice.",
+    "claim": "Three ferry notices advertise a landing at a folded name. A passenger wants to get close enough to answer a letter.",
+    "mark": "a hooked shoreline",
+    "fixed": "bed",
+    "writers": [
+      "ferry lookout",
+      "chart-room copyist"
+    ],
+    "desks": [
+      "fold seam",
+      "mast slate",
+      "booking desk"
+    ],
+    "origin": [
+      1,
+      0,
+      1
+    ],
+    "tide": [
+      1,
+      0
+    ],
+    "older": [
+      0,
+      2
+    ],
+    "exhibit": "The seam stays visible beside the lookout’s report. The passenger can ask what was actually seen before buying a landing ticket.",
+    "serve": "The ferry keeps its present landing and sends the letter on a smaller boat. Its crew gives up an hour of the next crossing.",
+    "entrust": "Ostel passes his sister the marked sheet to name or leave blank. The passenger pays for passage to a place that can already receive a letter.",
+    "question": "How far can a place name travel before it loses the observations that gave it meaning?",
+    "agate": "“I bought a ticket to a place because my mother had once said its name. I don’t think I wanted a refund. I wanted another person to have heard it.”",
+    "cost": "“That line has a buyer whether there’s a landing or not. Feel how hard the paper is folded. Somebody has wanted it for a long time.”",
+    "tritta": "Tritta turns the chart into a very small boat. Ostel reaches over and restores the spelling of his sister’s island before the crease can take it."
+  },
+  {
+    "site": "stage",
+    "title": "The cue for a person who left",
+    "hook": "Brannic has bowed to an empty wing for seventeen shows. Tonight a gold moth bows back. The understudy laughs until she sees the ink of a retired dancer’s first cue soaking through its wings.",
+    "claim": "Three prompt books mark an entrance. The understudy can wear the old coat. She cannot promise to be the person whose bow the audience remembers.",
+    "mark": "a torn hem",
+    "fixed": "paper",
+    "writers": [
+      "stage caller",
+      "dancer in the wing"
+    ],
+    "desks": [
+      "prompt box",
+      "coat peg",
+      "footlight"
+    ],
+    "origin": [
+      0,
+      1,
+      0
+    ],
+    "tide": [
+      2,
+      1
+    ],
+    "older": [
+      1,
+      0
+    ],
+    "exhibit": "One rail shows where the cue came from. Another leaves room for the dancer who chose to answer. Brannic bows once to each.",
+    "serve": "The understudy takes the entrance in her own coat. The music runs two bars long. Brannic has to play them for a room that is watching.",
+    "entrust": "The retired dancer receives the old cue, still folded. The entrance stays open for as long as the understudy wants to stand in other light.",
+    "question": "Who can inherit a cue, and what remains the dancer’s own choice?",
+    "agate": "“I have been asked to play myself at the curtain. There’s a coat and everything. Nobody can tell me who played me before.” Agate tests the hem between two ink-stained fingers.",
+    "cost": "“If the old dancer wants the cue back, they can have it. I would still like the young one to get a proper bow.”",
+    "tritta": "“Sixpence and an egg says the coat bows by itself.” Tritta turns out both pockets. No sixpence. One rather carefully wrapped egg."
+  },
+  {
+    "site": "market",
+    "title": "A receipt for the free bowl",
+    "hook": "Sessa washes the word FREE from a soup bowl. It comes back in three handwritings. A child has been paying for that bowl with a song every morning. Today he has a sore throat.",
+    "claim": "Three stalls call the first bowl free. The person who said it first may have meant somebody else was covering its cost.",
+    "mark": "a crescent rim",
+    "fixed": "bed",
+    "writers": [
+      "person who paid the cook",
+      "server who handed out the bowl"
+    ],
+    "desks": [
+      "ladle shelf",
+      "awning bill",
+      "bowl rack"
+    ],
+    "origin": [
+      0,
+      0,
+      1
+    ],
+    "tide": [
+      0,
+      1
+    ],
+    "older": [
+      2,
+      1
+    ],
+    "exhibit": "The cook hangs the payer’s mark beside the server’s. Customers can see which bowls each account covers. The child leaves his song for another day.",
+    "serve": "Sessa pays for the first pot from the awning fund. Everyone gets a bowl in the rain and the leaking corner stays uncovered for the week.",
+    "entrust": "The child holds the receipt while the cook asks for his terms. The sign stays turned in until he has finished eating.",
+    "question": "When can the same price word mean different obligations for the people using it?",
+    "agate": "“I put FREE on a door once. One woman took the long way home so she wouldn’t have to thank me. I thought she didn’t like soup.”",
+    "cost": "“Someone can have a splendid reason to open the door and still be in the wrong place to decide what the bowl costs.”",
+    "tritta": "Tritta warms her hands on the boy’s bowl while he gets a spoon. She moves them as soon as he returns. “Sorry. I was practising how to give something back before I explained it.”"
+  },
+  {
+    "site": "gate",
+    "title": "High water in a dry pocket",
+    "hook": "Maro empties his father’s coat. A line of water runs out of a perfectly dry pocket. On the lining, three little gates are stitched shut. The coat once belonged to someone who had to decide which house to wake.",
+    "claim": "Three catch notices report water at the same height. A family wants to know which stair to leave their shoes on tonight.",
+    "mark": "a stitch across the gauge",
+    "fixed": "paper",
+    "writers": [
+      "reader of the near gauge",
+      "watch on the upper stair"
+    ],
+    "desks": [
+      "gauge post",
+      "old coat",
+      "upper stair"
+    ],
+    "origin": [
+      0,
+      0,
+      1
+    ],
+    "tide": [
+      1,
+      2
+    ],
+    "older": [
+      2,
+      0
+    ],
+    "exhibit": "Maro lays both gauge positions beside the stitched line. The family can see which height goes with their own stair.",
+    "serve": "A lamp goes on the high stair for tonight. Maro’s neighbour carries meals up the extra flight until somebody reads the other gauge.",
+    "entrust": "The stair watch keeps the coat and names the hour for another look. The family moves a pair of shoes up and keeps one pair below.",
+    "question": "Which part of an old warning can travel to a different stair or a different night?",
+    "agate": "Agate shakes the dry coat. “We have so many good people watching water. It bothers me how thoroughly water can disagree with a good person.”",
+    "cost": "“I would take the shoes upstairs myself. Then I could say people had moved. I couldn’t say the reading made them do it.”",
+    "tritta": "Tritta draws round her boot on the upper stair, then stands below. “There. A perfectly good record of the place I was, getting less useful by the minute.”"
+  },
+  {
+    "site": "dispatch",
+    "title": "The messenger who arrived three times",
+    "hook": "A boy at dispatch has taken his hat off three times to be counted. Ro has three guest dinners tied up for him. “I meant to leave two for people still walking.” Outside, a messenger’s dog is waiting by itself.",
+    "claim": "Three arrivals unlock a late meal. Two runners could have copied a single bell mark while a third was still on the road.",
+    "mark": "a dog-eared fold",
+    "fixed": "bed",
+    "writers": [
+      "runner at the door",
+      "clerk ringing arrivals"
+    ],
+    "desks": [
+      "bell rack",
+      "outer stile",
+      "supper shelf"
+    ],
+    "origin": [
+      1,
+      0,
+      1
+    ],
+    "tide": [
+      2,
+      0
+    ],
+    "older": [
+      0,
+      1
+    ],
+    "exhibit": "Ro slips the three cards under the two source names. The spare dinners can now be kept for named runs without naming who has eaten.",
+    "serve": "A covered meal goes out to the stile with the boy. The other two stay warm. Nobody is left at the count for the next bell.",
+    "entrust": "The late runners keep the cards until they come through. Ro feeds the dog and takes the quiet shift at the gate.",
+    "question": "Which counts help people arrive, and which can you infer only once they have arrived?",
+    "agate": "“I have that boy’s handwriting from three other towns. He always draws a dinner plate too small for himself. I wish the clerk had kept the drawings.”",
+    "cost": "“Nobody minds a count if it feeds their dog. I’m still going to ask who had the time to ring the bell.”",
+    "tritta": "The dog places one paw on each of Tritta’s feet. “My third arrival seems to have four legs.” She squats down and scratches the mud from under its collar."
+  },
+  {
+    "site": "voices",
+    "title": "The pause that three voices shared",
+    "hook": "Three singers take a breath in the same place. Wren knows the exact length of that pause. It is the space her mother used to leave for somebody else to speak. She had hoped nobody would record it.",
+    "claim": "Three listening slips attribute a spoken line to the same voice. A listener wants to sing the line and its owner wants the silence after it back.",
+    "mark": "a gap shaped like a comma",
+    "fixed": "paper",
+    "writers": [
+      "person who recorded the interval",
+      "listener at the door"
+    ],
+    "desks": [
+      "first groove",
+      "listening slip",
+      "doorway stave"
+    ],
+    "origin": [
+      0,
+      0,
+      1
+    ],
+    "tide": [
+      0,
+      2
+    ],
+    "older": [
+      1,
+      2
+    ],
+    "exhibit": "The record shows how the three slips were made. Wren leaves the pause blank in the copy the choir can borrow.",
+    "serve": "The choir gives the rest to a closed hand. Someone who cannot see the cue comes to sit beside Wren, who taps it into their palm.",
+    "entrust": "The person who lent the line keeps the last strip. The choir rehearses the entrance and waits to hear whether the pause can travel with it.",
+    "question": "What can three listeners corroborate without acquiring the right to pass a voice on?",
+    "agate": "Agate listens to the pause with her eyes open. “Vesper used to leave a space before the last word. I filled it a great many times. I thought that was part of my job.”",
+    "cost": "“We can keep an exact length of silence in the register. Only one person is going to know what it costs to hear it played back.”",
+    "tritta": "Tritta has a little wheel that measures the length of a line. She rolls it through the pause and reads the distance. Wren holds out her palm. Tritta puts the wheel away."
+  },
+  {
+    "site": "island",
+    "title": "The second tide inside the horn",
+    "hook": "Joss catches the harbour horn under his coat. Another horn sounds inside it. “I know that one. My father used to shave a beat off the return so I’d pack quicker.” A boat is waiting for a signal from the other bank.",
+    "claim": "Three tide slips say the far bank answered. A loaded skiff can use the near steps, or it can keep waiting for the far horn.",
+    "mark": "a chipped mouthpiece",
+    "fixed": "bed",
+    "writers": [
+      "caller on the near pier",
+      "listener at the far steps"
+    ],
+    "desks": [
+      "near post",
+      "ticket hut",
+      "far landing"
+    ],
+    "origin": [
+      0,
+      0,
+      1
+    ],
+    "tide": [
+      1,
+      0
+    ],
+    "older": [
+      2,
+      1
+    ],
+    "exhibit": "Joss lays the return route of the sound beside the far listener’s line. The skiff’s crew can read what has actually crossed the water.",
+    "serve": "The skiff lands near and the crew carries its load over the footbridge. The cart takes two trips and the second horn can sound in its own time.",
+    "entrust": "The far listener keeps the horn slip and answers on a clean reed. Joss lets the crew decide how long to tie up.",
+    "question": "Which difference in place or timing changes what counts as an answering signal?",
+    "agate": "“We used to take turns calling through a horn on the stairs at home. You can make the other person sound remarkably far away without moving them.”",
+    "cost": "“The crate really does have to get off the boat. Whoever gives the signal can stay on the pier and help the crew carry it.”",
+    "tritta": "Tritta stands with the horn under one arm and a loaded basket under the other. “I have a very clear opinion about which signal comes first this morning.”"
+  },
+  {
+    "site": "council",
+    "title": "The last moth will not sign",
+    "hook": "Three witnesses have signed a blank space. The moth at Hale’s desk has ink on both tails. Agate offers it a fourth corner and waits. It presses the paper with one clear wing. She has to rub her eyes before she can see the mark.",
+    "claim": "Three council minutes call a promise unanimous. The person who must keep it has never seen a version with room to disagree.",
+    "mark": "a wing vein",
+    "fixed": "paper",
+    "writers": [
+      "person who made the promise",
+      "clerk who carried the minute"
+    ],
+    "desks": [
+      "public rail",
+      "minute book",
+      "open seat"
+    ],
+    "origin": [
+      1,
+      1,
+      0
+    ],
+    "tide": [
+      2,
+      1
+    ],
+    "older": [
+      0,
+      1
+    ],
+    "exhibit": "Hale dates the three signatures and the two paths along which they arrived. Agate leaves a corner clear where somebody can later set down a disagreement.",
+    "serve": "The council takes one evening of the work itself. The promise is still disputed and a door opens tonight for someone carrying a wet blanket.",
+    "entrust": "The person named in the promise carries the last sheet. Agate washes her fingers and takes an ordinary seat while they decide what, if anything, to say.",
+    "question": "What changes when the person who must keep a public promise can also edit its record?",
+    "agate": "Agate folds the minute over her signature. “A minute is a little part of an hour. I have printed some that have lasted longer than a person.”",
+    "cost": "“There is a spare chair between me and the promise. I used to keep my bag on it.” She puts the bag on the floor.",
+    "tritta": "The gold moth climbs out of Tritta’s cap. The top of her head is stained with a tiny backwards word. Agate stoops to read it. “May,” she says. Both women wait for more. There isn’t any."
+  }
+]
