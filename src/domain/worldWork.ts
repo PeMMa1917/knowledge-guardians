@@ -1,3 +1,4 @@
+import { rivalIntervention, rivalReply } from './rivalInterventions';
 import { dispatchFolder, travelFinding } from './dispatchFolders';
 import { leaveWithKeeper } from './orderReceipts';
 import { hallCost, hallShift } from './hallStories';
@@ -14,7 +15,7 @@ export type Ticket = [id:number, form:number, twist:number, keeper:string, objec
   destinations:number[], level:number, concepts:string, rival:string, gift:number, temple:number,
   hook:number, mystery:number, reveal:number, frameworkMask:number, areas:string, skill:number, clock?:number];
 export interface WorkOrder { chapter:number; group:number; ticket:Ticket }
-export type WorkCommand = {type:'WorldWork'; order:WorkOrder; action:'work'|'test'|'predict'|'issue'|'receive'|'handoff'|'inspect-trace'|'carry-trace'|'gift'|'hear'|'restart'; value:number};
+export type WorkCommand = {type:'WorldWork'; order:WorkOrder; action:'work'|'test'|'predict'|'issue'|'receive'|'handoff'|'inspect-trace'|'carry-trace'|'answer-rival'|'gift'|'hear'|'restart'; value:number};
 export const groupNames = ['Field games','Personal requests','Main quest routes','Crew missions','Story patterns'];
 export const ticketKey = (o:WorkOrder) => 'work.'+o.chapter+'.'+o.group+'.'+o.ticket[0];
 export const orderName = (o:WorkOrder) => o.ticket[4]+' · '+o.ticket[3];
@@ -74,7 +75,7 @@ export function workAction(s:CampaignState,cmd:WorkCommand):{effects:Effect[];ti
   if(cmd.action==='receive'){
     if(site===o.chapter || !t[7].includes(site) || !isIssued(s,o))throw Error('Carry an issued order to one of its other worlds.');
     const edition=Number(issued(s,o));
-    return {effects:[flag(returnKey(o,site),revision(s,o))],title:'Received at the other bench',text:[disposition(o,edition).cost,chosenRoute(o,s,true)?.returnLine,travelFinding(s,o,key,true)].filter(Boolean).join(' ')};
+    return {effects:[flag(returnKey(o,site),revision(s,o))],title:'Received at the other bench',text:[disposition(o,edition).cost,chosenRoute(o,s,true)?.returnLine,travelFinding(s,o,key,true),rivalReply(s,o,key,true)].filter(Boolean).join(' ')};
   }
   if(site!==o.chapter)throw Error('Return to the keeper who began this case.');
   if(cmd.action==='inspect-trace'||cmd.action==='carry-trace'){
@@ -91,6 +92,13 @@ export function workAction(s:CampaignState,cmd:WorkCommand):{effects:Effect[];ti
     const agent=rivalVoice(o,s);
     if(!agent || !s.flags[key+'.worked'])throw Error('Finish the rehearsal and find the agent named on the ticket.');
     return {effects:[flag(key+'.heard-agent',true)],title:agent.name,text:agent.line};
+  }
+  if(cmd.action==='answer-rival'){
+    const intervention=rivalIntervention(o);
+    if(!intervention || !s.flags[key+'.heard-agent'] || (i!==0 && i!==1))
+      throw Error('Hear the person at this bench before answering the intervention.');
+    const path=intervention.paths[i];
+    return {effects:[flag(key+'.objection',i)],title:path.action,text:path.result};
   }
   if(cmd.action==='gift'){
     if(!t[11] || !s.flags['temple.gift.'+t[11]])throw Error('The fitting needs its guardian gift.');
@@ -113,8 +121,9 @@ export function workAction(s:CampaignState,cmd:WorkCommand):{effects:Effect[];ti
   const {label,cost}=disposition(o,i),shape=methodId(o,s);
   const route=Number(s.flags[key+'.route']??-1);
   const finding=Number(s.flags[key+'.finding']??-1);
-  const changed=issued(s,o)!==i || Number(s.flags[key+'.posted-route']??-1)!==route || Number(s.flags[key+'.posted-finding']??-1)!==finding;
+  const objection=i===2?Number(s.flags[key+'.objection']??-1):-1;
+  const changed=Number(s.flags[key+'.posted-objection']??-1)!==objection || issued(s,o)!==i || Number(s.flags[key+'.posted-route']??-1)!==route || Number(s.flags[key+'.posted-finding']??-1)!==finding;
   const answer=chosenRoute(o,s)?.returnLine;
   const recent=[shape,...String(s.flags['work.recent']??'').split(',').filter(value=>value&&value!==shape)].slice(0,3);
-  return {effects:[flag(key+'.edition',i),flag(key+'.posted-route',route),flag(key+'.posted-finding',finding),flag(key+'.revision',revision(s,o)+(changed?1:0)),flag('work.recent',recent.join(','))],title:label,text:[cost,hallCost(o.chapter,i),answer,travelFinding(s,o,key,false)].filter(Boolean).join(' ')};
+  return {effects:[flag(key+'.edition',i),flag(key+'.posted-route',route),flag(key+'.posted-finding',finding),...(objection>=0 || s.flags[key+'.posted-objection']!==undefined?[flag(key+'.posted-objection',objection)]:[]),flag(key+'.revision',revision(s,o)+(changed?1:0)),flag('work.recent',recent.join(','))],title:label,text:[cost,hallCost(o.chapter,i),answer,travelFinding(s,o,key,false),i===2?rivalReply(s,o,key,false):undefined].filter(Boolean).join(' ')};
 }

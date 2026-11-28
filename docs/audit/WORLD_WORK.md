@@ -41,3 +41,9 @@ After receiving a travelling edition, the keeper in each destination has two loc
 ## Inside the dispatch folders
 
 The 18,000 field games, personal requests, main routes and crew missions use the individual workbook assignments for 78 openings, 72 mysteries, 72 reversals and 48 clocks. These scripts describe incidents in the game’s dispatch rooms. In each mystery two different physical actions produce two specific observations. Players can leave the folder alone, follow one trace, compare both, decide which finding to pack and later issue a different edition. A receiving keeper reads the finding that actually travelled. [Original scripts](../../src/content/dispatch-folders.json) · [All 18,000 assignments](../../tests/dispatch-folders.test.ts)
+
+## When someone interferes with the evidence
+
+The activity workbook assigns an opponent to 660 orders per chapter. On 60 field games, 200 personal requests, 200 main routes and 200 crew missions, the player sees what someone actually did to the record. Fifteen interventions have two different responses each. For instance, a witness who never went inside can mark where their knowledge ends or name the second person who told them the rest. When a player issues the rival’s reservation, the account travels to the receiving world. A new decision takes effect there when a new edition is issued.
+
+The coverage check also finds all 1,200 assigned micro-skill IDs and 501 distinct historical correspondent entries among each chapter’s 1,200 activity briefs. In each of the four shelves, at least 120 briefs link six concepts, two areas of knowledge and an optional theme. These counts measure the authored opportunities. Student performance and how varied a play session feels require observation. [Response and assignment tests](../../tests/rival-interventions.test.ts)
