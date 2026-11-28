@@ -1,5 +1,5 @@
 import { templePanel, templeJournal, threadPanel } from './temple';
-import { arrivalLine, PASSAGES, ribbon, openDestinations, delegations } from '../domain/corridor';
+import { arrivalLine, corridorOpen, PASSAGES, ribbon, openDestinations, delegations } from '../domain/corridor';
 import { titleActions, type TitleAction } from './titleActions';
 import {callingBook} from './callingBook';
 import {paintHousehold,housePanel} from './openHouse';
@@ -3688,13 +3688,30 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    if (id === 'world-work') {
+      const controller = ctx.controller, map = controller.state.mapId;
+      const box = this.openModal('saga-panel wide', 'Work orders', this.closeBtn(), h('p', {role:'status'}, 'Opening the work shelf…'));
+      void import('./worldWork').then(module => {
+        if (!box.isConnected || ctx.controller !== controller || controller.state.mapId !== map) return;
+        box.replaceChildren(this.closeBtn(), module.workPanel(controller, chapter => {
+          this.closeModal(false);
+          ctx.world?.changeMap('temple.' + chapter, 6, 8, {route:{id:'workshop-temple',label:'the keeper’s temple passage'}});
+        }, chapter => this.crossFromShelf(chapter)));
+      }).catch(() => {
+        if (box.isConnected) box.replaceChildren(this.closeBtn(), h('p', {role:'alert'}, 'The work shelf could not open.'), h('button', {onclick:()=>this.openFieldGame(id)}, 'Try again'));
+      });
+      return;
+    }
     if (id === 'travelling-cases') {
       const controller=ctx.controller,map=controller.state.mapId;
       const chapter=PASSAGES.findIndex(p=>p.hall===map)+1;
       const box=this.openModal('saga-panel wide','Travelling cases',this.closeBtn(),h('p',{role:'status'},'Opening the case shelf…'));
       void import('./corridorSagas').then(async module=>{
         const stages=await module.chapterSagas(chapter);
-        if(box.isConnected && ctx.controller===controller && controller.state.mapId===map)box.replaceChildren(this.closeBtn(),module.sagaPanel(controller,stages));
+        if(box.isConnected && ctx.controller===controller && controller.state.mapId===map)box.replaceChildren(this.closeBtn(),module.sagaPanel(controller,stages,chapter=>this.crossFromShelf(chapter)),
+          h('button',{type:'button',onclick:()=>this.openFieldGame('world-work')},'Browse field games, requests and missions'),
+          h('details',{},h('summary',{},'Cross to another open world'),
+            ...PASSAGES.flatMap((p,i)=>p.hall!==map && corridorOpen(controller.state,i+1)?[h('button',{onclick:()=>this.crossFromShelf(i+1)},p.name)]:[])));
       }).catch(()=>{
         if(box.isConnected)box.replaceChildren(this.closeBtn(),h('p',{role:'alert'},'This shelf could not open.'),h('button',{onclick:()=>this.openFieldGame(id)},'Try again'));
       });
@@ -3721,6 +3738,16 @@ export class UI implements UIApi {
     }
     this.openingFieldGame = id;
     try { this.mountFieldGame(id); } finally { this.openingFieldGame = undefined; }
+  }
+
+  private crossFromShelf(chapter: number): void {
+    const state = ctx.controller.state;
+    if (!PASSAGES.some(p => p.hall === state.mapId) || !corridorOpen(state, chapter)) return;
+    const destination = PASSAGES[chapter-1];
+    const landing = MAPS[destination.hall];
+    if (!landing || landing.id === state.mapId) return;
+    this.closeModal(false);
+    ctx.world?.changeMap(landing.id,landing.spawn.x,landing.spawn.y,{route:{id:'case-crossing',label:'the travelling case shelf'}});
   }
 
   private mountFieldGame(id: string): void {

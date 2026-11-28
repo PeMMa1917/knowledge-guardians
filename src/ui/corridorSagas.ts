@@ -1,5 +1,5 @@
 import type { GameController } from '../app/controller';
-import { PASSAGES } from '../domain/corridor';
+import { corridorOpen, PASSAGES } from '../domain/corridor';
 import { sagaAfterword,sagaChapter,sagaDecision,sagaFamily,sagaName,sagaRead,sagaRoute,sagaTrail,type SagaStage } from '../domain/corridorSagas';
 import { h } from './dom';
 
@@ -10,7 +10,7 @@ export async function chapterSagas(n:number) {
   return (await load()).default;
 }
 
-export function sagaPanel(c:GameController,stages:SagaStage[]) {
+export function sagaPanel(c:GameController,stages:SagaStage[], travel:(chapter:number)=>void) {
   const n=sagaChapter(c.state);
   const body=h('section',{}),status=h('p',{role:'status','aria-live':'polite'});
   let page=0,selection:SagaStage|undefined,filter='all';
@@ -50,6 +50,9 @@ export function sagaPanel(c:GameController,stages:SagaStage[]) {
     if(trail.length)body.append(h('p',{},'Places that have answered: '+trail.map(i=>PASSAGES[i-1].name).join(' → ')+'.'));
     const remaining=sagaRoute(id).filter(i=>!trail.includes(i));
     body.append(h('p',{},remaining.length?'Other stops on the docket: '+remaining.map(i=>PASSAGES[i-1].name).join(', ')+'.':sagaAfterword(s,id)));
+    for (const stop of sagaRoute(id)) {
+      if (stop !== n && corridorOpen(s,stop)) body.append(h('button',{onclick:()=>travel(stop)},'Follow the case to '+PASSAGES[stop-1].name));
+    }
   }
   drawList();return h('div',{},body,status);
 }
