@@ -28,6 +28,10 @@ node tools/audit-choice-paths.mjs --mode personas
 
 JSON Lines output can be streamed by room, speaker, chapter, individual option and profile. The chapter reports each carry a specific choice, its human stakes and a distinct stress test. The disagreements cover who can reasonably settle an issue. [Chapter files](chapters) · [Consensus](CONSENSUS.md) · [Decisions on conflicting requests](DECISIONS.md)
 
+## A copy for a reviewer
+
+Run `node tools/export-choice-review.mjs "Knowledge Guardians - Choice Review.html"` from the project root. Open the resulting HTML to read it offline. Search for a line or a character, select a chapter and room, and compare two perspectives on the same choice. The address remembers the selection on refresh. Printing includes the selected encounter and both reviews. Each concern remains a question for observation or consultation. [Review reader](../../tools/export-choice-review.mjs)
+
 ## Four decisions that affect the same player differently
 
 | Decision | A reason to choose it | A reason to choose differently | How the game handles both interests |
