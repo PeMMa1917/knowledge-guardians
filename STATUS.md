@@ -829,3 +829,7 @@ The adventure journal links 562 additional museum holdings to articles about the
 Cen Aster and Kit Oriel can take a four-scoop cocoa cart from Lantern Square into Water Commons or the Civic Machine. Their customers can see a price from a distance or fold an offer out of sight. A second journey changes who gets to approach the seller. Daniel Kahneman and Amos Tversky help with a six-tray street trial. The two individual testimonies and Kit’s adjustable thermometer change what the Guardian can put on the side of the cart. [The first cup](src/domain/firstCup.ts)
 
 A five-by-five travelling reading room opens on Canal Walk and at Lamp Quay. Opal, Tallis and two audiences give the same edition different lives. Every one of its fifteen source pairs has separate prose for the publishers and the dates. Earning the Eastern Shawnee constitutional file at the North Steps opens a further signature lamp and adds the dated election certificate to the player’s works cited. [Story and provenance](docs/SOURCES.md#two-leaves-at-lamp-quay) · [Branch and recovery checks](tests/turning-stacks.test.ts)
+
+## 28 November • A readable workshop on a narrow screen
+
+On a 320-pixel screen at 175% text, the clock, warm room, maker tools, object stands and stores give their controls space to wrap. A long cargo name on the skiff stays inside the dialog on WebKit. The night fiddle appears when the saved story names an evening it can actually play. [Browser checks](docs/BROWSER_CHECKS.md#station-controls-at-large-text-sizes)

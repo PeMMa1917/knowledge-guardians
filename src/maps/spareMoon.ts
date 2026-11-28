@@ -5,7 +5,12 @@ import type { Interactable, MapDef } from './types';
 
 const loft = 'nexus.bell-loft',
   house = 'nexus.spare-moon';
-const finale: Condition = { all: [moonHas('night'), { flagSet: 'ending.council' }] };
+const finale: Condition = {
+  all: [
+    { flag: 'spare-moon.night', in: ['bell', 'cord', 'bench'] },
+    { flagSet: 'ending.council' },
+  ],
+};
 function fiddle(id: string, x: number, y: number, label: string, visibleIf?: Condition): Interactable {
   return {
     id: 'moon-song-' + id,

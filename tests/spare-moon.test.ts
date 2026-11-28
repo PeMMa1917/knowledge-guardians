@@ -102,6 +102,9 @@ describe('The Spare Moon', () => {
     expect(() => d.run({ type: 'PlayMoonTune', tune: 'lrhh' })).toThrow();
     d.s.flags['ending.council'] = 'expose';
     expect(prop(d, 'song-council')).toBeUndefined();
+    d.s.flags['spare-moon.night'] = 'unrecognised';
+    expect(prop(d, 'song-council')).toBeUndefined();
+    expect(moonPerformance(d.s)).toBeUndefined();
     for (const night of nights) {
       d.s.flags['spare-moon.night'] = night;
       expect(prop(d, 'song-council')).toBeDefined();

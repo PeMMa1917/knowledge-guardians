@@ -1,5 +1,6 @@
 .time-room-panel {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: .6rem;
 }
 
@@ -29,4 +30,13 @@
   inset: 10% 44% 50%;
   transform-origin: center bottom;
   background: #3e3548;
+}
+
+/* Firefox sizes range controls from their scaled font. The reference wheel must still fit a phone. */
+.time-room-panel input[type="range"] {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  box-sizing: border-box;
 }

@@ -1,6 +1,7 @@
 .warm-panel,
 .warm-ferry {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: .7rem;
 }
 
@@ -29,7 +30,7 @@
 
 .warm-probes {
   display: grid;
-  grid-template-columns: minmax(10rem, 1fr) minmax(2.2rem, 4.5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(2.2rem, 4.5rem);
   gap: .16rem .5rem;
   align-items: center;
 }
@@ -37,6 +38,8 @@
 .warm-probes meter,
 .warm-ferry input[type="range"] {
   width: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
 }
 
 .warm-reply:not(:empty) {

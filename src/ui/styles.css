@@ -231,6 +231,9 @@ fieldset { border: 1px solid var(--gold-dim); border-radius: 10px; }
 legend { color: var(--gold); padding: 0 0.4em; }
 .radio, .check, .range { display: block; margin: 0.35em 0; cursor: pointer; }
 .settings .range :is(select, input[type="range"]) { max-width: 100%; }
+.bench-panel :is(input[type="range"], select) { min-inline-size: 0; max-inline-size: 100%; box-sizing: border-box; }
+/* WebKit includes a long native option in the panel’s scroll area even when its select fits. */
+.bench-panel select:not([multiple]):not([size]) { overflow: hidden; text-overflow: ellipsis; }
 .film-panel h2 { margin-right: 2rem; }
 .film-camera figure { max-width: 22rem; }
 .film-still { display: block; width: 100%; image-rendering: pixelated; border: 1px solid var(--gold-dim); border-radius: 6px; }
@@ -1175,7 +1178,7 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .festival-tally { border-collapse: collapse; margin: 0.5rem 0; width: 100%; font-size: 0.9rem; }
 .festival-tally th, .festival-tally td { border: 1px solid rgba(255, 255, 255, 0.2); padding: 0.2rem 0.4rem; text-align: center; }
 .festival-tally caption { text-align: left; font-weight: 700; }
-.fog-grid { display: grid; grid-template-columns: repeat(6, minmax(2.2rem, 3rem)); gap: 0.25rem; justify-content: center; margin: 0.6rem 0; }
+.fog-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 3rem)); gap: 0.25rem; justify-content: center; margin: 0.6rem 0; }
 .fog-sq { aspect-ratio: 1; padding: 0; min-width: 0; font-weight: 700; background: rgba(200, 210, 220, 0.25); }
 .fog-sq.report { background: rgba(255, 210, 140, 0.3); }
 .fog-sq.water { background: rgba(90, 150, 200, 0.35); }
@@ -1219,7 +1222,7 @@ button.proving-tile:hover, button.proving-tile:focus-visible { border-color: var
 .maze-node { fill: rgba(255, 255, 255, 0.35); }
 .maze-goal { fill: none; stroke: #f2c94c; stroke-width: 3; }
 .maze-you { fill: #f2c94c; stroke: #fff; stroke-width: 2; }
-.maze-dirs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3rem; margin: 0.4rem 0; }
+.maze-dirs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 4.3em), 1fr)); gap: 0.3rem; margin: 0.4rem 0; }
 .lens-buttons button[aria-pressed="true"], .maze [aria-pressed="true"] { outline: 2px solid #f2c94c; }
 /* C-010: open quests grouped by place, with long step lists in a drawer. */
 .quest-pathway { margin: 0.4rem 0; border-left: 3px solid rgba(159, 232, 255, 0.4); padding-left: 0.6rem; }
