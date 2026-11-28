@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 28 November • The covered jug
+
+At the East Well a player can keep three dawn readings across ordinary forge shifts or take up Hesper’s offer to draw less. Efua’s watch and Hesper’s ladle tally produce different records. Orrin keeps an open line for the cause. The Guardian chooses whether the covered jug is waiting for the dawn kitchen or the late porters, and can move it after hearing who had to wait. [The four playable combinations](tests/side-quests.test.ts)
+
 ## 28 November • Review checkpoint
 
 The game-content commit 9c2cb1f is preserved in draft PR #11. Its element audit covers all 438 numbered story and game elements. It records 614 supplied micro-skills with playable action links and two learning, design and world combinations with ten distinct action proofs. The 504-minute modeled story itinerary meets the 20- and 30-minute opportunity floor. Other routes still have gaps. [Checkpoint findings](docs/audit/ELEMENTS_CHECKPOINT.md) · [Individual element register](docs/audit/element-evidence.csv)

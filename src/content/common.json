@@ -723,6 +723,20 @@
    "talk": [
     {
      "if": {
+      "flag": "well.jug",
+      "eq": "dawn"
+     },
+     "node": "well.jug.dawn"
+    },
+    {
+     "if": {
+      "flag": "well.jug",
+      "eq": "late"
+     },
+     "node": "well.jug.late"
+    },
+    {
+     "if": {
       "flag": "well.shared",
       "eq": true
      },
@@ -738,6 +752,9 @@
      "if": {
       "all": [
        {
+        "objective": "well.o2.plan"
+       },
+       {
         "flag": "well.east.read",
         "eq": true
        },
@@ -748,6 +765,13 @@
       ]
      },
      "node": "well.reflect"
+    },
+    {
+     "if": {
+      "flag": "well.plan",
+      "eq": "trial"
+     },
+     "node": "well.plan.trial"
     },
     {
      "if": {
@@ -2313,7 +2337,7 @@
    "id": "pf.well",
    "kind": "reflection",
    "title": "The East Well: listen, plan, act, reflect, show",
-   "text": "In Emberford I listened to three people, planned a fair comparison with them, read the depth sticks at two wells, reflected and showed the guild. These are habits of a good community project. Play is not CAS. What I would do the same way in a real project:",
+   "text": "I brought Orrin the readings from both wells. We had enough to decide who would find water on a shared hook. We still needed more to explain why the two wells had fallen. Whose day changed when I chose a bell? Play is not CAS.",
    "weave": {
     "concepts": [
      "responsibility",

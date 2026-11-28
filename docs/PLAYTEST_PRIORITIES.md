@@ -1,5 +1,10 @@
 # Playtest and development priorities
 
+## Follow-up to the East Well finding
+
+The two wells now have separate summer reference marks. Keeping the usual shifts produces a three-dawn record. Taking Hesper’s offer produces a lower bucket tally during a night of rain. The two records support different comparisons and leave the cause open. The player can give the first jug to the soup kitchen or reserve it for late porters, then change tomorrow’s turn after hearing the cost. In a classroom playtest, listen for whether a student can explain why the jug can be assigned before the cause is settled. [Playable routes](../tests/side-quests.test.ts) · [Browser journey](../tools/east-well-journey.mjs)
+
+
 Knowledge Guardians has fifteen playable chapters and a post-Council return. The next round should measure what students encounter, what they can carry into a new setting, and which story choices they want to pursue. [Browser checks](BROWSER_CHECKS.md) · [Learning design](LEARNING_DESIGN.md)
 
 Across 60 executable chapter routes, all 60 reach six concepts, two framework parts, an area of knowledge and an optional theme in every complete estimated 30-minute window. At 20 minutes, 31 reach the floor in the first window and 13 sustain it throughout their trace. At 9c2cb1f the micro-skill audit records 1,434 links between playable actions and 614 of the 1,200 supplied skills. For 165 skills the highest available stage is Practised. Ten can reach Confident. Time real sessions on the routes with gaps and ask students to use the same method on an unfamiliar object. [Learning audit](LEARNING_DESIGN.md#the-20--and-30-minute-opportunity-floor) · [Micro-skills audit](TOK_MICRO_SKILLS.md)

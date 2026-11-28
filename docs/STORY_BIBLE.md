@@ -600,3 +600,10 @@ Kip kneels beside Corvan’s discarded market board. A tiny wax cricket goes qui
 Elsbet’s letter has two accounts folded inside. She heard no answer at the steps. Orrin was indoors filing the brass tooth of the catch. The guild copy leaves room for the name of a worker who deserted. A guardian willing to knock can find a silent spoon in a kitchen with a living man sitting at the table. A different test, with both reference settings known, makes silence a good clue to a missing tooth. The archive still lacks a working test for that particular night.
 
 The player can send the two uncut lines, the catch or an invitation to swap listening places. When any of the three Nile packets is installed, the first reader uses what travelled. The next caller lives with its cost. [The two chapter scenes](../src/content/hatch-margin.json) · [The catch and its two listeners](../src/domain/hatchSleeve.ts)
+
+
+## The pale H on the well cover
+
+Someone chalks Hesper’s name on the lid. The fruit seller owns the first letter. She saw steam over the smithy from the spot where she drew an empty bucket. Hesper can tell her which well filled the barrel, and Efua knows whose kettle missed its turn. Players can watch the usual shifts or accept a three-day change in Hesper’s draw. The watch catches the wells moving at different times. Rain arrives during the shorter-draw trial. Either record leaves Orrin with an honest line he can print.
+
+The council still has to put a jug somewhere. A dawn reservation gets soup out before the children arrive. A late reservation gives the returning porters water. At the east well, the player can hear what that decision cost and move the hook for tomorrow. The keeper accepts both turns. [The East Well](../src/content/side-quests.json)

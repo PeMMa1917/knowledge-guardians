@@ -114,6 +114,10 @@ A choice available in several chapters appears in each applicable row. The total
 | High • assessment transfer | A successful in-game action can be a memorised routine. One hour of play has no measured exam effect here. | Invite learners to interpret a new object, compare two fields and revise a claim without game hints. Use independent reviewers and student consent for any evidence of learning. |
 | Medium • different motivations | Published scores can encourage some students and deter others. A shorter hint can open a scene for one reader and disclose its mystery to another. | Test opt-in alias and withdrawal, optional streaks, on-demand hints, quiet exploration and the same consequential ending without a timer. Offer each pathway equal standing. |
 
+### Follow-up to the well finding
+
+The follow-up in the draft changes the two investigations, the notice, the sticks, the hints and the separate well event. The player can leave the cause open and still give the dawn kitchen or the late porters the covered jug. Both groups can be heard, and tomorrow’s turn can change. The follow-up is outside the counts for the original 9c2cb1f checkpoint. [Play and regression evidence](../BROWSER_CHECKS.md#the-covered-jug-at-the-east-well)
+
 ## Checks and reproduction
 
 The production build succeeded and all 1,881 asset files passed licence, author and source checks. The option replay exercised all 12,790 choices and found zero incorrect destinations or state effects in its staged scenarios. The same-node label scan found no simultaneously selectable identically labelled choices among the fixtures it could construct. The 259 entries in the source-and-design ledger each describe a particular action. [Choice replay](../../tools/choice-rehearsal.mjs)

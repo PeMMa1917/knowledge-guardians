@@ -418,3 +418,8 @@ On 28 November, Chromium 156 played the bell from the Archive through the Market
 ## Taking a river address to its readers
 
 Firefox 146 traced streets with the arrow keys and carried the district edition. WebKit 26 used the directions list at 320 CSS pixels and carried the guide edition. Chromium 156 selected grid squares with a pointer and carried the window edition. Each tried a wet stair, backed up, completed both crossings, obtained the walkers’ responses and compared the apprentice’s slip with a stranger’s. At the second quay they reached different people. Each reopened its save and checked that its downloaded Word diary held the three separately earned source links. Earlier export checks had found the reading in the diary without its link in Word. A separate rules test starts with one source and checks that the other two stay out. [Browser journey](../tools/river-name-journey.mjs) · [Source visibility checks](../tests/river-names.test.ts)
+
+
+## The covered jug at the East Well
+
+Chromium 156, Firefox 146 and WebKit 26 entered Emberford with the market investigation unstarted. Each read both sticks before speaking to the keeper, heard the fruit seller and smith, chose an investigation, opened its three-day record, left the jug unassigned and returned to make a choice. Chromium pursued the ordinary shifts. Firefox and WebKit kept Hesper’s shorter draw and the rain on the same record. Each read both neighbours’ responses, met someone affected by the assigned bell, and changed tomorrow’s turn. The domain tests also cover a previously completed save, the two refusals, the one private portfolio entry and equal permanent credit. [Repeat the journey with the east-well option](../tools/east-well-journey.mjs)
