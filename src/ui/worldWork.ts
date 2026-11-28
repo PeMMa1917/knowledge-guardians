@@ -3,7 +3,7 @@ import { corridorOpen, PASSAGES } from '../domain/corridor';
 import { sagaChapter } from '../domain/corridorSagas';
 import { TEMPLES } from '../domain/temples';
 import scenes from '../content/workshop-stories.json';
-import { workTool, shapeOf } from '../domain/workMethods';
+import { workTool } from '../domain/workMethods';
 import { revision, rivalVoice, canIssue, disposition, needsPrediction, requiredReadings, newLeads, workAction, groupNames,reading,readingKey,returnKey,ruleFor,issued,isIssued,ticketKey,type Ticket,type WorkOrder,type WorkCommand } from '../domain/worldWork';
 import forms from '../content/world-work/forms.json';
 import voices from '../content/workshop-voices.json';
@@ -47,9 +47,8 @@ export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:
       h('h3',{tabindex:'-1','data-work-step':true},tool.title));
     if(!done){
       body.append(h('p',{},tool.prompt));
-      if(shapeOf(o)==='ferry'){
-        const here=Number(s.flags[key+'.position']??0);
-        const post=[1,3,4,5,7][(t[0]*11+o.chapter*7+t[2]*3)%5];
+      if(tool.chart){
+        const {cell:here,post}=tool.chart;
         const chart=h('table',{'aria-label':'Ferry chart'});
         for(let row=0;row<3;row++){
           const tr=h('tr',{});

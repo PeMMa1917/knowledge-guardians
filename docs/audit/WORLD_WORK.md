@@ -11,7 +11,7 @@ Activate the travelling case shelf in a main hall. Open “Browse field games, r
 | Local story patterns | 816 | 12,240 |
 | Travelling saga stops on the separate shelf | 48 | 720 |
 
-The five work shelves use 40 field-game forms, 30 side-quest forms, 12 main approaches, 36 mission forms and 42 pattern forms. Players work with eight rehearsal mechanics and twelve evidence instruments. These encounters share controls, openings and character lines. The counts above describe different orders and stops. They cannot establish how often a class will experience repetition. The older main missions retain their own play systems.
+The five work shelves use 40 field-game forms, 30 side-quest forms, 12 main approaches, 36 mission forms and 42 pattern forms. Each of the forty field forms has its own playable instrument. A circuit changes the lamps when a wired pair is switched. A grower can shade one seed row while holding its partner steady. The remaining shelves use eight general rehearsal shapes and twelve evidence instruments. These encounters share controls, openings and character lines. The counts above describe different orders and stops. They cannot establish how often a class will experience repetition. The older main missions retain their own play systems.
 
 ## Following an order
 
@@ -23,4 +23,4 @@ An issued order with a destination enters the receiving world's “Incoming work
 
 ## Evidence
 
-The automated walk applies the public game controls to all 30,240 local orders, finds a working path through each instrument and delivers every addressed order. It checks every local world for eight rehearsal shapes and a maximum share below 40% for any one shape in this collection. Separate checks cover forecast order, missing gifts, rival access, revisions, saved state, journal topics and repeat avoidance. These checks cover feasibility and measured variety. Student playtesting is still needed to assess pacing and emotional engagement. [Work orders](../../tests/world-work.test.ts) · [Travelling cases](../../tests/corridor-sagas.test.ts)
+The automated walk applies the public game controls to all 30,240 local orders, finds a working path through each instrument and delivers every addressed order. It checks every local world for eight rehearsal shapes and a maximum share below 40% for any one shape in this collection. Separate checks cover forecast order, missing gifts, rival access, revisions, saved state, journal topics and repeat avoidance. These checks cover feasibility and measured variety. Student playtesting is still needed to assess pacing and emotional engagement. [Forty field instruments](../../src/domain/fieldActivities.ts) · [Work orders](../../tests/world-work.test.ts) · [Travelling cases](../../tests/corridor-sagas.test.ts)
