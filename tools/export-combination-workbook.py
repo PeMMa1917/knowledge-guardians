@@ -43,7 +43,7 @@ def review_row(records, names):
     anchor_kinds = {"story", "game", "concept", "framework", "area", "theme", "question"}
     extra = ", ".join(i for i in ids if i.split(":", 1)[0] not in anchor_kinds)
     if board.get("steps"):
-        extra = " > ".join(", ".join(step) for step in board["steps"])
+        extra = "Steps: " + " > ".join(", ".join(step) for step in board["steps"])
     answers = [None] * 24
     notes, actions, sample = [], [], ""
     for record in records:
@@ -94,7 +94,7 @@ def link_within(cell, sheet_title, coordinate):
     cell.style = "Hyperlink"
 
 
-def workbook(members, ledger, rubric=None, families=None):
+def workbook(members, ledger, rubric=None, families=None, sources=()):
     names = {m["id"]: m["name"] for m in members}
     groups = defaultdict(dict)
     if ledger.get("version") != 1 or not isinstance(ledger.get("records"), list):
@@ -125,6 +125,7 @@ def workbook(members, ledger, rubric=None, families=None):
         "Use one or more key concepts, framework parts, and areas or themes. Add story elements, game elements and the precise knowledge question. List the other members or ordered steps in column H.",
         "Each of columns J through AG is a separate review. Select Reviewed or Open. An empty cell awaits review. Identify the action, two viewpoints and what changed in column AH.",
         "For the ten-action target, enter distinct reproducible action IDs in column AI. Repeating an action leaves it as one opportunity. An implementation review establishes what was available to do.",
+        "To return edits to the offline checklist, save one chapter sheet as CSV UTF-8. Keep its headings. Use one row per cognitive cell for free-text notes, or label each note with its Bloom and DOK as in a recorded review.",
         "The offline HTML checklist can search by name, address a combination or order by number and store your decisions for future use. A board reference opens the same review. JSON carries the recorded checks and notes.",
     ]
     for line in instructions:
@@ -139,6 +140,15 @@ def workbook(members, ledger, rubric=None, families=None):
     if rubric:
         intro.append(["Read the 24 Bloom and DOK criteria"])
         link_within(intro.cell(intro.max_row, 1), "Bloom and DOK", "A1")
+    if sources:
+        intro.append(["Works cited for Bloom and Depth of Knowledge"])
+        for source in sources:
+            intro.append([source["citation"]])
+            cell = intro.cell(intro.max_row, 1)
+            cell.hyperlink = source["url"]
+            cell.style = "Hyperlink"
+            cell.alignment = Alignment(wrap_text=True, vertical="center")
+            intro.row_dimensions[cell.row].height = 44
     index = book.create_sheet("Find a family")
     kinds = list(dict.fromkeys(m["kind"] for m in members))
     first_member = {}
@@ -156,7 +166,7 @@ def workbook(members, ledger, rubric=None, families=None):
         cell.fill = PatternFill("solid", fgColor="17675C")
     for ch in range(1, 16):
         sheet = book.create_sheet(f"Chapter {ch:02d}")
-        sheet.append(HEADINGS)
+        sheet.append([*HEADINGS, f"Chapter {ch:02d}"])
         for records in groups[ch].values():
             put_review(book, sheet, review_row(records, names))
         first_row = sheet.max_row + 1
@@ -235,7 +245,7 @@ def verify_export(path, members, ledger, rubric=None):
         for chapter in range(1, 16):
             sheet = data[f"Chapter {chapter:02d}"]
             rows = iter(sheet.values)
-            if next(rows) != HEADINGS:
+            if next(rows) != (*HEADINGS, f"Chapter {chapter:02d}"):
                 raise ValueError(f"Chapter {chapter} is missing a cognitive column.")
             for records in expected[chapter].values():
                 row = next(rows)
@@ -270,4 +280,4 @@ if __name__ == "__main__":
         verify_export(args.output, members, ledger, rubric)
         print(f'Verified {len(members):,} rows across 15 chapters and {len(ledger["records"])} exact review records.')
     else:
-        workbook(members, ledger, rubric, catalogue.get("families")).save(args.output)
+        workbook(members, ledger, rubric, catalogue.get("families"), catalogue.get("rubricSources", ())).save(args.output)

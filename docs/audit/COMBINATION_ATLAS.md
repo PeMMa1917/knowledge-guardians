@@ -2,7 +2,7 @@
 
 In the Nile hall, a stitcher thinks everyone in the audience will spot her blue repair. A guide trusts a different sling because a famous donor bought it. Turn the repair into the light, then stand where the last family will sit. The same fringe that distracts the stitcher can guide a visitor’s hand. A Guardian can keep that guide or stretch the sling for the back row. Each choice leaves another person with a job.
 
-[Look up a skill’s chapter and evidence](SKILL_REVIEW_INDEX.md) · [See reviewed cells by chapter](COMBINATION_REVIEW_STATUS.md) · [Browse every selectable member](COMBINATION_MEMBERS.md) · [Read the questions, decisions and consequences by chapter](CHAPTER_VIEWPOINTS.md)
+[Read the remaining workload and estimate](REMAINING_COVERAGE.md) · [Look up a skill’s chapter and evidence](SKILL_REVIEW_INDEX.md) · [See reviewed cells by chapter](COMBINATION_REVIEW_STATUS.md) · [Browse every selectable member](COMBINATION_MEMBERS.md) · [Read the questions, decisions and consequences by chapter](CHAPTER_VIEWPOINTS.md)
 
 ## Check off a review
 
@@ -33,6 +33,9 @@ Use **Bookmark or open an exact review** to save a link to a chapter, combinatio
 ### Work in a spreadsheet
 
 [Download the chapter review workbook](CHAPTER_REVIEW_GRIDS.xlsx). To regenerate it from the repository, use Python and openpyxl. Each chapter has a row for every catalogue member and 24 independent review cells. Use **Find a family** to jump straight to the first item in any of the 29 families in any chapter. The element ID stays visible as you scroll across the cognitive columns. The first rows contain the exact documented reviews with their sources and action IDs. The other rows supply an editable starting combination. Duplicate a reviewed row before changing its members. A local checklist with different display names can be selected with `--checklist`. A reviewer’s own exported decisions can be selected with `--ledger`.
+
+
+To bring edits back into the checklist, save the individual chapter sheet as **CSV UTF-8**. In the HTML document open **Bring back an edited Excel chapter** and choose the file. The preview shows the chapter, how many cells will be added, and which existing reviews differ. Existing notes and action IDs are preserved when the corresponding spreadsheet fields are blank. For notes at several cognitive levels on a single row, use headings such as `Apply · DOK 2` over each block or duplicate the row and record one cell per line of the worksheet. For an ordered journey, begin column H with `Steps: ` and separate successive groups with ` > `.
 
 ```sh
 python tools/export-combination-workbook.py chapter-review.xlsx

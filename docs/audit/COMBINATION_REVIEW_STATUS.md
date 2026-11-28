@@ -2,7 +2,7 @@
 
 The tables count distinct registered player actions by Bloom level and DOK. Each action has a source, a location and two perspectives. A zero means this evidence register has no reviewed action in that cell. A repeated gesture or another ending of the same decision can share an action ID.
 
-[Check an exact combination](COMBINATION_CHECKLIST.html) · [Download the implementation-review checks](COMBINATION_REVIEWED.json) · [See what the two people in each scene stand to gain](CHAPTER_VIEWPOINTS.md)
+[What remains and estimated effort](REMAINING_COVERAGE.md) · [Check an exact combination](COMBINATION_CHECKLIST.html) · [Download the implementation-review checks](COMBINATION_REVIEWED.json) · [See what the two people in each scene stand to gain](CHAPTER_VIEWPOINTS.md)
 
 The catalogue contains 7,757 selectable entries. All 1,200 numbered micro-skills have names. 619 have objective links and 581 still need such a link. The current register contains 173 reviewed observations across 135 distinct action IDs, 173 exact checked cells (0 with ten distinct documented actions in the cell) and 57 ordered journeys. Download the JSON and use **Import checklist JSON** to bring the implementation checks into a personal review. Existing personal checks and notes take precedence when importing this snapshot. Start with an empty browser profile for an independent review.
 

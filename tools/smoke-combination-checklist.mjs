@@ -28,6 +28,10 @@ const url = process.argv.includes('--file')
   ? file.href
   : 'http://127.0.0.1:' + server.address().port + '/checklist';
 try {
+  if (process.argv.includes('--all-chapter-cells')) {
+    const {reviewAllChapterCells} = await import('./review-all-chapter-cells.mjs');
+    await reviewAllChapterCells(browser, engine, url);
+  }
   if (process.argv.includes('--stress')) {
     const {exerciseReviewScale} = await import('./review-checklist-stress.mjs');
     await exerciseReviewScale(browser, engine, url);
@@ -53,7 +57,7 @@ try {
   await page
     .getByRole('button', { name: 'Edit evidence for analyse DOK 2' })
     .click();
-  await page.locator('#criteria summary').click();
+  await page.locator('#criteria > summary').click();
   assert((await page.locator('#criteriaDetail').textContent()).includes('wet cuff'));
   await page
     .getByLabel('Review evidence', { exact: true })
@@ -269,6 +273,32 @@ try {
   assert.equal(await page.locator('#chapter').inputValue(),'4');
   assert.equal(await page.locator('#cellTitle').textContent(),'create · DOK 4');
   assert.equal(await page.locator('#grid input:checked').count(),0);
+  // Bring a teacher’s edited chapter sheet back with two different depth judgements.
+  const headings = ['Element or action ID','Row type or family','Element or observed action','Narrative and game','Key concepts','Knowledge framework','Areas and themes','Additional members or ordered steps','Knowledge questions',
+    ...['Remember','Understand','Apply','Analyse','Evaluate','Create'].flatMap(l=>[1,2,3,4].map(d=>l+' · DOK '+d)), 'Evidence / source / perspectives','Distinct action IDs','Chapter 12'];
+  const sheetRow = ['micro:1200','micro','Observation','story:11, game:22','concept:evidence','framework:ethics','theme:knower','','', ...Array(24).fill(''), '', ''];
+  sheetRow[9] = 'Open'; sheetRow[18] = 'Reviewed';
+  sheetRow[33] = 'Remember · DOK 1\nThe ferry clerk is still looking.\n\nApply · DOK 2\nA second window let the passenger answer.';
+  sheetRow[34] = 'Apply · DOK 2\nferry.second-window';
+  const asCSV = () => [headings,sheetRow].map(row=>row.map(value=>'"'+value.replaceAll('"','""')+'"').join(',')).join('\r\n');
+  await page.locator('#worksheetImport > summary').click();
+  const upload = () => page.locator('#sheetFile').setInputFiles({name:'Harbour review.csv',mimeType:'text/csv',buffer:Buffer.from(asCSV())});
+  await upload();
+  await page.waitForFunction(() => document.getElementById('sheetPreview').textContent.includes('2 cells to import'));
+  await page.locator('#sheetApply').click();
+  await page.waitForFunction(() => document.getElementById('sheetPreview').textContent.includes('Imported 2'));
+  sheetRow[18] = 'Open'; sheetRow[33] = ''; sheetRow[34] = '';
+  await upload();
+  await page.waitForFunction(() => document.getElementById('sheetPreview').textContent.includes('1 differ from existing'));
+  assert.equal(await page.locator('#sheetApply').isDisabled(),true);
+  await page.locator('#sheetReplace').check();
+  await page.locator('#sheetApply').click();
+  const exportEvent = page.waitForEvent('download');
+  await page.locator('#json').click();
+  const roundtrip = JSON.parse(await readFile(await (await exportEvent).path(), 'utf8'));
+  const imported = roundtrip.records.find(r => r.board.chapter === 12 && r.actions?.includes('ferry.second-window'));
+  assert.equal(imported.checked,false);
+  assert.equal(imported.evidence,'A second window let the passenger answer.');
   assert.deepEqual(errors, []);
   console.log(
     engine,

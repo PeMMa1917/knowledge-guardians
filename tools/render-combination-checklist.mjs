@@ -1,20 +1,21 @@
-import { cognitiveGuide } from './combination-rubric.mjs';
+import { cognitiveGuide, rubricSources } from './combination-rubric.mjs';
 import { readFile } from 'node:fs/promises';
 import { familyNames } from './combination-atlas.mjs';
 export async function renderChecklist(atlas) {
   const read = (name) => readFile(new URL(name, import.meta.url), 'utf8');
-  const [html, space, ledger, storage, ui] = await Promise.all(
+  const [html, space, ledger, storage, sheets, ui] = await Promise.all(
     [
       'combination-checklist.html',
       'combination-space.mjs',
       'combination-checklist.mjs',
       'combination-browser-storage.mjs',
+      'chapter-review-csv.mjs',
       'combination-checklist-ui.mjs',
     ].map(read),
   );
   const plain = (s) =>
     s.replace(/^import .*?;\s*$/gm, '').replace(/^export /gm, '');
-  const script = [space, ledger, storage, ui].map(plain).join('\n');
+  const script = [space, ledger, storage, sheets, ui].map(plain).join('\n');
   // Content can contain literal HTML. Use a raw JSON data block, escaped before embedding.
   // Objectives are starting points for a playtest. Their tags never mark a cognitive cell.
   const registered = new Set(atlas.members.map((m) => m.id));
@@ -42,6 +43,7 @@ export async function renderChecklist(atlas) {
   const compact = {
     leads,
     rubric: cognitiveGuide,
+    rubricSources,
     members: atlas.members,
     beats: atlas.beats,
     routes: atlas.routes,

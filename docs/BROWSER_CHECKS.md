@@ -15,6 +15,10 @@ node tools/smoke-combination-checklist.mjs firefox
 
 ## Curriculum checklist
 
+Chromium 156, Firefox 146 and WebKit 26 imported an edited chapter worksheet, previewed a conflicting edit, kept the previous note and recovered the final choice in a JSON export. All 15 original workbook sheets also round-tripped through CSV with their 173 reviewed cells, notes and action IDs. The 116,355 untouched starting rows produced no review records. The workbook verifier follows all 435 internal family links. The paged checklist rendered all 2,792,520 chapter and element checkbox positions in each of the three engines. Each control had the expected board, chapter, Bloom level, DOK and accessible name.
+
+At the pause, the separate 15-chapter guest recovery sweep on revision `4af552d` had completed 250 of 250 guests in Chromium, 250 of 250 in Firefox and 187 of 250 in WebKit. The latest hour-long wall holds were interrupted before the release-and-recovery check. These runs are outside the completed-hour totals.
+
 The review document runs from a downloaded HTML file and from a local web server. Its stress run uses a temporary reviewer profile. It addresses the 24 Bloom and DOK positions for each catalogue member in all 15 chapters, recovers a large fictional review ledger after reload, edits the same cell in two tabs and exports when both browser storage systems are unavailable. The check counts exercise the documentation interface. Implementation evidence comes from the separate action register.
 
 In Chromium 156, Firefox 146 and WebKit 26, each run addressed 2,792,520 worksheet positions and restored 28,800 fictional checked cells. The 8,715,841-byte JSON included one note and action ID per cell. A second tab changed a checked status while preserving the first tab’s note. With both storage systems disabled, a one-cell review still exported to JSON.

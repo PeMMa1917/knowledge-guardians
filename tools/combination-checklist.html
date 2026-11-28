@@ -39,7 +39,7 @@ code{overflow-wrap:anywhere}.pad{margin-top:.65rem}[hidden]{display:none!importa
 <button id="makeReference">Get a reference to this review</button>
 <label for="reviewRef">Review reference</label><textarea id="reviewRef" rows="2"></textarea>
 <button id="openReference">Open reference</button> <a id="bookmark" hidden>Open or bookmark this board</a></details>
-<div id="editPanel" hidden><h3 id="cellTitle" class="pad"></h3><details id="criteria"><summary>What would count at this Bloom level and DOK?</summary><p id="criteriaTitle"></p><p id="criteriaDetail"></p></details><label for="note">Review evidence</label><small>Record the location, the player’s action, the knowledge question, the differing perspectives and what changed. Include a test or source when available.</small><textarea id="note" rows="4"></textarea><label for="actionIds">Distinct action IDs</label><small>One per line. Track progress toward ten different actions in this chapter.</small><textarea id="actionIds" rows="2"></textarea><button id="saveNote" class="primary">Save evidence</button> <button id="closeNote">Close editor</button></div>
+<div id="editPanel" hidden><h3 id="cellTitle" class="pad"></h3><details id="criteria"><summary>What would count at this Bloom level and DOK?</summary><p id="criteriaTitle"></p><p id="criteriaDetail"></p><details><summary>Works cited</summary><ul id="rubricSources"></ul></details></details><label for="note">Review evidence</label><small>Record the location, the player’s action, the knowledge question, the differing perspectives and what changed. Include a test or source when available.</small><textarea id="note" rows="4"></textarea><label for="actionIds">Distinct action IDs</label><small>One per line. Track progress toward ten different actions in this chapter.</small><textarea id="actionIds" rows="2"></textarea><button id="saveNote" class="primary">Save evidence</button> <button id="closeNote">Close editor</button></div>
 <div id="printEvidence" class="printOnly"></div><div id="inspect"><h3 class="pad">Evidence from play</h3><div id="proof"></div></div></section>
 </div>
 <section><details id="matrix"><summary>Check a whole family against these same elements</summary>
@@ -55,6 +55,13 @@ code{overflow-wrap:anywhere}.pad{margin-top:.65rem}[hidden]{display:none!importa
 <section id="history"><h2>Saved reviews</h2><button id="documented">Include documented implementation checks</button><p class="muted">Each board has its own 24 cells. Checks stay with the exact combination, chapter and order you reviewed.</p><label for="savedBoards">Reopen a board</label><select id="savedBoards"></select> <button id="openSaved">Open board</button> <button id="priorSaved">Previous boards</button> <button id="moreSaved">More boards</button> <span id="savedRange" aria-live="polite"></span></section>
 <section id="transfer"><h2>Take your checklist with you</h2><p>Edits are saved in this browser when storage is available. Export JSON to continue on another device or send a copy to a reviewer. CSV includes every cell on your saved boards.</p>
 <div class="row"><button id="json">Export JSON</button><button id="csv">Export CSV</button><button id="print">Print this board</button><label for="load">Import checklist JSON <input id="load" type="file" accept="application/json,.json"></label></div>
+<details id="worksheetImport"><summary>Bring back an edited Excel chapter</summary>
+<p>Save one chapter sheet as CSV UTF-8, with its headings. The preview identifies its chapter and any changes to existing reviews. Empty cells preserve earlier work.</p>
+<label for="sheetChapter">Chapter for an older worksheet <select id="sheetChapter"><option value="">Read from file</option></select></label>
+<label for="sheetFile">Chapter worksheet <input id="sheetFile" type="file" accept=".csv,.tsv,text/csv,text/tab-separated-values"></label>
+<p id="sheetPreview" role="status"></p>
+<label id="sheetConflict" hidden><input id="sheetReplace" type="checkbox"> Use the worksheet values where existing reviews differ</label>
+<button id="sheetApply" disabled>Import these worksheet reviews</button></details>
 <output id="message" role="status"></output></section></main>
 <script type="application/json" id="atlasData">__ATLAS_DATA__</script>
 <script>__CHECKLIST_CODE__</script></html>

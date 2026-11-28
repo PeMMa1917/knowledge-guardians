@@ -117,3 +117,11 @@ Some examples below are design or playtest prompts. The implementation register 
 ## Observing transfer
 
 For a transfer claim, describe what changed in the new context, what help was available, what the learner independently adapted and how the outcome could be checked. Two routes or two valid endings can present different evidence for the same skill.
+
+## Works cited
+
+Hess, Karin K., et al. “Cognitive Rigor: Blending the Strengths of Bloom’s Taxonomy and Webb’s Depth of Knowledge to Enhance Classroom-Level Processes.” 7 Mar. 2009. ERIC, ED517804. [Source](https://eric.ed.gov/?id=ED517804)
+
+Krathwohl, David R. “A Revision of Bloom’s Taxonomy: An Overview.” Theory Into Practice, vol. 41, no. 4, 2002, pp. 212–18. [Source](https://doi.org/10.1207/s15430421tip4104_2)
+
+Webb, Norman L. Criteria for Alignment of Expectations and Assessments in Mathematics and Science Education. Research Monograph No. 6, Apr. 1997. ERIC, ED414305. [Source](https://eric.ed.gov/?id=ED414305)

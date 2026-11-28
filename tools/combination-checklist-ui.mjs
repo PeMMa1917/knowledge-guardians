@@ -209,6 +209,15 @@ function describe(id) {
   return memberMap.get(id)?.name ?? id;
 }
 for (let i = 1; i <= 15; i++) get('chapter').append(option(i, 'Chapter ' + i));
+for (const source of atlas.rubricSources) {
+  const item = el('li', source.citation + ' ');
+  const link = el('a', 'Source');
+  link.href = source.url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  item.append(link);
+  get('rubricSources').append(item);
+}
 get('family').append(option('', 'All families'));
 for (const [k, name] of Object.entries(atlas.families))
   get('family').append(option(k, name));
@@ -1025,6 +1034,56 @@ get('load').onchange = async () => {
   } finally {
     get('load').value = '';
   }
+};
+let pendingWorksheet;
+for (let n = 1; n <= 15; n++) get('sheetChapter').append(option(String(n), String(n)));
+function previewWorksheet() {
+  get('sheetApply').disabled = true;
+  get('sheetConflict').hidden = true;
+  if (!pendingWorksheet) return;
+  const plan = planChapterImport(records, pendingWorksheet.observations, get('sheetReplace').checked);
+  get('sheetPreview').textContent = 'Chapter ' + pendingWorksheet.chapter + ' · ' + plan.additions.size +
+    ' cells to import · ' + plan.identical + ' already match · ' + plan.differing + ' differ from existing reviews.';
+  get('sheetConflict').hidden = !plan.differing;
+  get('sheetApply').disabled = !plan.additions.size;
+}
+let sheetGeneration = 0;
+async function readSelectedWorksheet() {
+  const generation = ++sheetGeneration;
+  pendingWorksheet = undefined;
+  get('sheetReplace').checked = false;
+  previewWorksheet();
+  const file = get('sheetFile').files[0];
+  get('sheetPreview').textContent = file ? 'Reading the chapter worksheet…' : '';
+  if (!file) return;
+  try {
+    const text = await file.text();
+    if (generation !== sheetGeneration) return;
+    pendingWorksheet = readChapterCSV(text, atlas.members, get('sheetChapter').value);
+    previewWorksheet();
+  } catch (error) {
+    if (generation === sheetGeneration) get('sheetPreview').textContent = error.message;
+  }
+}
+get('sheetFile').onchange = readSelectedWorksheet;
+get('sheetChapter').onchange = readSelectedWorksheet;
+get('sheetReplace').onchange = previewWorksheet;
+get('sheetApply').onclick = () => {
+  if (!pendingWorksheet) return;
+  const replace = get('sheetReplace').checked;
+  const {additions} = planChapterImport(records, pendingWorksheet.observations, replace);
+  const previous = records;
+  records = new Map(previous);
+  for (const [key, value] of additions) records.set(key, value);
+  persistImported(previous, !replace);
+  refreshBoard();
+  memberOverview();
+  const chapter = pendingWorksheet.chapter;
+  pendingWorksheet = undefined;
+  get('sheetFile').value = '';
+  get('sheetReplace').checked = false;
+  previewWorksheet();
+  get('sheetPreview').textContent = 'Imported ' + additions.size + ' cells in Chapter ' + chapter + '.';
 };
 let matrixPage = 0;
 for (const [kind, name] of Object.entries(atlas.families))

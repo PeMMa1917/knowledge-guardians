@@ -1,3 +1,4 @@
+import { remainingDocument } from './remaining-coverage.mjs';
 import { guideDocument } from './combination-rubric.mjs';
 import { reviewStatus, skillReviewIndex } from './combination-review-status.mjs';
 import { reviewedLedger, reviewReference } from './combination-checklist.mjs';
@@ -145,6 +146,7 @@ async function main() {
     ['COMBINATION_MEMBERS.md', memberIndex(atlas)],
     ['CHAPTER_VIEWPOINTS.md', chapterRegister(atlas)],
     ['COMBINATION_REVIEW_STATUS.md', reviewStatus(atlas)],
+    ['REMAINING_COVERAGE.md', remainingDocument(atlas)],
     ['SKILL_REVIEW_INDEX.md', skillReviewIndex(atlas)],
     ['BLOOM_DOK_REVIEW_GUIDE.md', guideDocument()],
     ['COMBINATION_REVIEWED.json', JSON.stringify(reviewedLedger(atlas),null,2)+'\n'],

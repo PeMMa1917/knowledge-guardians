@@ -37,6 +37,11 @@ export const cognitiveGuide = {
     ['Design, transfer, test and revise over time.', 'Follow the player’s design across independent trials. Record the first version, what another community experienced, what the maker changed and how the revised version performed.'],
   ],
 };
+export const rubricSources = [
+  { citation: 'Hess, Karin K., et al. “Cognitive Rigor: Blending the Strengths of Bloom’s Taxonomy and Webb’s Depth of Knowledge to Enhance Classroom-Level Processes.” 7 Mar. 2009. ERIC, ED517804.', url: 'https://eric.ed.gov/?id=ED517804' },
+  { citation: 'Krathwohl, David R. “A Revision of Bloom’s Taxonomy: An Overview.” Theory Into Practice, vol. 41, no. 4, 2002, pp. 212–18.', url: 'https://doi.org/10.1207/s15430421tip4104_2' },
+  { citation: 'Webb, Norman L. Criteria for Alignment of Expectations and Assessments in Mathematics and Science Education. Research Monograph No. 6, Apr. 1997. ERIC, ED414305.', url: 'https://eric.ed.gov/?id=ED414305' },
+];
 export function guideDocument() {
   const out = [
     '# Reviewing a Bloom and DOK cell', '',
@@ -49,5 +54,6 @@ export function guideDocument() {
     rows.forEach(([title, detail], i) => out.push('### DOK '+(i+1), '', '**'+title+'** '+detail, ''));
   }
   out.push('## Observing transfer', '', 'For a transfer claim, describe what changed in the new context, what help was available, what the learner independently adapted and how the outcome could be checked. Two routes or two valid endings can present different evidence for the same skill.', '');
+  out.push('## Works cited', '', ...rubricSources.flatMap(s => [s.citation + ' [Source](' + s.url + ')', '']));
   return out.join('\n');
 }

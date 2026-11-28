@@ -15,7 +15,7 @@ export function reviewStatus(atlas) {
     '',
     'The tables count distinct registered player actions by Bloom level and DOK. Each action has a source, a location and two perspectives. A zero means this evidence register has no reviewed action in that cell. A repeated gesture or another ending of the same decision can share an action ID.',
     '',
-    '[Check an exact combination](COMBINATION_CHECKLIST.html) · [Download the implementation-review checks](COMBINATION_REVIEWED.json) · [See what the two people in each scene stand to gain](CHAPTER_VIEWPOINTS.md)',
+    '[What remains and estimated effort](REMAINING_COVERAGE.md) · [Check an exact combination](COMBINATION_CHECKLIST.html) · [Download the implementation-review checks](COMBINATION_REVIEWED.json) · [See what the two people in each scene stand to gain](CHAPTER_VIEWPOINTS.md)',
     '',
     'The catalogue contains ' +
       atlas.members.length.toLocaleString('en-US') +
