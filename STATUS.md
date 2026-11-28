@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 28 November • Following a choice back to its door
+
+The choice review traces every dialogue option in the curtain build to a map entrance. It replays 12,403 options, including the 6,876 whose availability changes with the player’s history. Each chapter report now shows how to inspect a particular choice, a speaker’s reply and a possible consequence from any of 84 stakeholder and play-style perspectives. The review distinguishes simulated inspections, engine checks and browser journeys. [Choice and station audit](docs/audit/CHOICE_REVIEW.md)
+
 ## 28 November • The river in Mayle’s curtain
 
 Nim has one entrance to make before the house opens. In the Survey Depot loft, two of four borrowed fittings help a Guardian decide where the silver thread went. Nim can use the result at rehearsal, where a porter sees the same cloth from another angle. A second visit lets the player change the staging, leave a new trial for Huygens, or carry the two tracings back to Cajal. The selected fittings, two drawer presets, audience responses and the edition sent to the stage survive Continue. [Play and branch evidence](docs/audit/NIGHT_REGISTER.md#the-river-in-the-hem) · [Source records](docs/SOURCES.md)

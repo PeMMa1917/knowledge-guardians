@@ -9,7 +9,7 @@ node tools/audit-personas.mjs --inventory
 
 The script reads the whole content pack (`buildPack()`), so it also counts missions and scenes that TypeScript files make. Its word rules are a first filter for a human reviewer, not a judgement. Read a mission before you change it.
 
-The chapter counts and dialogue inventory below come from the 27 November review build after the two civic reading rooms and the cocoa cart were added. The earlier audit identified repetitive handovers and long quest labels. The new music goals were shortened after the first measurement put them among the fifteen hardest sets of objective titles. Museum names and accession details remain available on the object and in the journal. The counts use all missions that the content pack registers. Whether a student can find or enjoy a particular path needs play observation. [Class and field review](NIGHT_REGISTER.md)
+The chapter counts and dialogue inventory below come from the 28 November build with the loan loft and the curtain rehearsal. The earlier audit identified repetitive handovers and long quest labels. The new music goals were shortened after the first measurement put them among the fifteen hardest sets of objective titles. Museum names and accession details remain available on the object and in the journal. The counts use all missions that the content pack registers. Whether a student can find or enjoy a particular path needs play observation. [Class and field review](NIGHT_REGISTER.md)
 
 ## Play shape and reading load per chapter
 
@@ -20,12 +20,12 @@ A mission may appear in several action columns. “Standard loop” counts title
 | 1 | 128 | 22 | 0.17 | 32 | 26 | 6 | 5 | 38 | 13.3 | 0.05 | 0.04 | 73 |
 | 2 | 61 | 9 | 0.15 | 6 | 6 | 3 | 3 | 8 | 14.2 | 0.05 | 0.02 | 43 |
 | 3 | 59 | 10 | 0.17 | 7 | 6 | 0 | 2 | 5 | 14.6 | 0.07 | 0.02 | 47 |
-| 4 | 55 | 6 | 0.11 | 9 | 2 | 0 | 3 | 11 | 14.8 | 0.05 | 0.03 | 46 |
+| 4 | 56 | 7 | 0.13 | 10 | 2 | 0 | 3 | 12 | 14.6 | 0.05 | 0.02 | 47 |
 | 5 | 54 | 6 | 0.11 | 10 | 5 | 1 | 4 | 13 | 15 | 0.08 | 0.02 | 47 |
 | 6 | 48 | 5 | 0.1 | 5 | 11 | 0 | 3 | 8 | 15.7 | 0.05 | 0.02 | 41 |
 | 7 | 58 | 12 | 0.21 | 12 | 7 | 0 | 15 | 8 | 14 | 0.07 | 0.04 | 48 |
 | 8 | 51 | 6 | 0.12 | 4 | 1 | 1 | 4 | 5 | 15.7 | 0.05 | 0.01 | 46 |
-| 9 | 62 | 12 | 0.19 | 3 | 7 | 1 | 2 | 6 | 15 | 0.07 | 0.02 | 53 |
+| 9 | 63 | 13 | 0.21 | 4 | 8 | 1 | 2 | 7 | 14.9 | 0.07 | 0.02 | 54 |
 | 10 | 48 | 3 | 0.06 | 8 | 4 | 0 | 3 | 6 | 15.2 | 0.05 | 0.02 | 41 |
 | 11 | 46 | 8 | 0.17 | 9 | 8 | 1 | 4 | 7 | 14.8 | 0.07 | 0.03 | 41 |
 | 12 | 45 | 6 | 0.13 | 2 | 3 | 2 | 3 | 9 | 14.6 | 0.05 | 0.03 | 41 |
@@ -55,9 +55,9 @@ These missions have the highest combined shares of longer words and abstract wor
 
 ## Dialogue texture
 
-Dialogue: 8135 scenes, about 328400 words, 452 speakers.
+Dialogue: 8161 scenes, about 329500 words, 453 speakers.
 
-Most frequent work words in dialogue (times used): slip 1180, fold 873, bell 831, rail 626, strip 408, runner 406, peg 338, receipt 225, tag 181, sleeve 168, crate 131, rack 114, tally 92, docket 61.
+Most frequent work words in dialogue (times used): slip 1183, fold 875, bell 831, rail 626, strip 408, runner 408, peg 338, receipt 225, tag 181, sleeve 170, crate 131, rack 114, tally 92, docket 61.
 
 Scenes per speaker, core cast: warden-ise 93, kip-arden 50, smith-hesper 80, scholar-sefa 35, rook-tamsin 14, vesper-quill 34, lumen 6.
 
@@ -69,8 +69,8 @@ Showdowns: 7. Puzzles: 15.
 
 | Fact | Value | Where to check |
 | --- | --- | --- |
-| Missions in the pack | 845 missions and 3,889 objectives | [Live inventory](../../tools/audit-personas.mjs) |
-| Field games | 1,198 stands in 117 rooms use 1,141 field-game IDs. Different editions and receiving stations can share a mechanic. | [Live map inventory](../../tools/audit-personas.mjs) |
+| Missions in the pack | 847 missions and 3,902 objectives | [Live inventory](../../tools/audit-personas.mjs) |
+| Field games | 1,200 stands in 118 rooms use 1,143 field-game IDs. Different editions and receiving stations can share a mechanic. | [Live map inventory](../../tools/audit-personas.mjs) |
 | Side puzzles | 15 entries in the original word-puzzle bank, with dedicated puzzle stands in two rooms. Other playable puzzles also use instruments and map scenes. | `src/content/puzzles.json` |
 | Showdowns | 7 registered showdowns | `showdowns` in the pack |
 | Music | 3 recorded loops plus one synthesised score per world | `public/assets/audio/music`, `src/domain/campaignScore.ts` |

@@ -374,3 +374,8 @@ A controlled comparison ran the same 65 exhibit and conversation turns against b
 ## Art coverage through the folding house
 
 Chromium 156, Firefox 146 and WebKit 26 each visited all 154 rooms in the build with Opal’s folding house. For each of 8,159 placed object pictures, the browser resolved the drawing. All five guide forms rendered. This sweep checks the presence of art. Contrast, composition, representation and touch ergonomics need separate review. [Field artwork journey](../tools/field-art-journey.mjs)
+
+
+## The river in the curtain
+
+Chromium 156, Firefox 146 and WebKit 26 each visited the loan loft and rehearsal. A Guardian borrowed a pair of fittings, saved both loan presets, returned to Cajal and Huygens, projected the tracing and heard two people at the stage. Each engine reopened the saved edition and exported the dated Cambridge microscope and case records in the diary. The test used a prepared chapter entrance and keyboard actions at the physical stands. The integrated build immediately preceding the optics story passed all 2,790 tests in 341 files. [Lens loan journey](../tools/lens-loan-journey.mjs) · [Choice replay scope](audit/CHOICE_REVIEW.md)

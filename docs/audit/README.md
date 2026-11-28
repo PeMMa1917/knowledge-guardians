@@ -12,6 +12,8 @@ The audit has three steps:
 
 Play, engagement and enjoyable learning stay the main goal. Other views can still change the game.
 
+[Action-by-action review and replay evidence](CHOICE_REVIEW.md)
+
 ## Files
 
 | File | What it holds |
