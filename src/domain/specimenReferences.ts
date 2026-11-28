@@ -1,3 +1,4 @@
+import { sources as riverNameSources, type TextLeaf } from './riverNames';
 import { mlaCitation, type CitationPart } from './mla';
 import { hasSpecimen, ownsSpecimen } from './specimenGear';
 import type { CampaignState, ContentPack, EvidenceCard } from './types';
@@ -74,6 +75,11 @@ export function earnedResearchReadings(pack: ContentPack, state: CampaignState):
       const source = dialogueSources.get(event.ref);
       // A conversation can cite a holding that is separately earned elsewhere in the game.
       if (source && event.sourceIds.includes(source) && !collectionSources.has(source)) credit(source, event.key);
+    }
+    if (event.kind === 'tool' && event.ref === 'river-names.leaf') {
+      for (const [leaf, source] of Object.entries(riverNameSources) as [TextLeaf, string][]) {
+        if (state.flags['rivernames.source.' + leaf] === true && event.key === 'river-names:reading:leaf.' + leaf && event.sourceIds.includes(source)) credit(source, event.key);
+      }
     }
     if (event.kind === 'tool' && event.ref === 'walking-grove'
       && event.key.startsWith('walking-grove:reserve:') && typeof state.flags['grove.draftWindow'] === 'string'

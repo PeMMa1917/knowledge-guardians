@@ -33,6 +33,13 @@ export function isDiaryNoteKind(value: unknown): value is DiaryNoteKind {
 
 export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<string, string>>): Questions {
   const key = entry.event?.key ?? entry.id;
+  if(key.startsWith('river-names:')){
+    const topic=key.split(':')[1];
+    if(topic==='walk')return {land:'What changed with the river, and what stayed true of the name?',limit:'What could my walk show a stranger about tomorrow?'};
+    if(topic==='map')return {address:'Who could still be recognised from a block?',time:'What difference did the empty landing make?'};
+    if(topic==='rights')return {custody:'Who could change the words I carried?',cost:'Whose time or privacy did this edition use?'};
+    return {credit:'Whose account am I using here and where was it made?',move:'Which part of this comparison belongs only to the fictional quay?'};
+  }
   if(key.startsWith('trail-thread:')) return key.endsWith(':voice')
     ? {voice:'Whose account do I want to hear on my return, and what might they have missed?'}
     : {object:'Which detail would I look for next time, and what might it help me reconsider?'};

@@ -759,3 +759,24 @@ Gresa sings alto because she can keep a tune while someone else goes looking for
 - **Why** Making lamps for the choir taught her how the same window looks from the street and from the dark room behind it.
 
 Neska used to earn her supper by getting a ballad out of every guest. She sincerely wants to remember people. At the door, the same habit makes every guest pay for a bed with a piece of themselves. She counts knocks, tastes the tea long after it goes cold and eventually sits outside the house she used to run. Tover speaks in handles, corners and bowls. His family knows him as both a singer and the child who once missed a lift on the stairs. His father’s button rattles in the test kettle. The child who finds it in her soup gets the last laugh. Yilka builds roof lamps for the choir. She can understand another person’s wish for a dark room without giving anyone the story behind her own tied blind. She asks permission with her hands and will leave the fishmonger in charge of his department.
+
+### Emlet Garth (`river-emlet`)
+
+- **Believes** Someone who knocks at a door is owed an answer, even when the door has moved.
+- **Worries** His faithful morning round may be the reason the council calls a working bakery a ruin.
+- **Speaks** He makes a small case for his own innocence with a thumb in a bite mark or sealing wax on his collar.
+- **Why** He used to carry the post. Now he brings flour on foot. It takes a pilot to show him the last inch of the journey he thought he made alone.
+
+### Rialla Mallow (`river-rialla`)
+
+- **Believes** A public address can help the next boat while leaving her sister a private door.
+- **Worries** The stamp at her desk keeps her from going home, and someone else may use it to locate the child asleep beside her.
+- **Speaks** She gives the stamp an eye to watch the queue. When it's time to decide she takes the eye off and puts a finger on the map.
+- **Why** A letter sorter who also pilots the boat, she learned two places called Warm Mouth by arriving at different hours.
+
+### Pendlow Mallow (`river-pendlow`)
+
+- **Believes** A neighbour who will have to climb a stair deserves the pencil.
+- **Worries** Her sister will spend another night guiding strangers while her own floating bakery acquires a permanent mark on a stranger’s chart.
+- **Speaks** She describes a boat in the language of a kitchen. A skate sleeps in her apron and a crumb can carry news.
+- **Why** She bakes at two moorings. She can agree to the first walk and still need the receiving household to change the second.

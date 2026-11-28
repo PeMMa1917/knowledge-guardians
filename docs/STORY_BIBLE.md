@@ -574,3 +574,15 @@ Agate buys a place in Tritta’s cap for one tiny scrap of paper. The moth can r
 | 1–15, the local Night Registers | Guardian and Seal, keeper and customer, witness and institution | A hot meal, cue, warm place, safe landing or public promise can have a real cost tonight. | Trace the three cords, slide a marked sheet or work the bell shutters. Put up a notice, arrange a service or return custody. A challenge can be left, answered or taken up again in a different town. | A physical rail, tray or witness seat appears in a different aisle. A carried edition keeps its original observations, even after a different notice goes up at home. |
 
 [The fifteen commissions](../src/content/second-ink.json) · [The rival’s changing terms](../src/domain/secondInk.ts)
+
+## The oven with two addresses
+
+The Guardian gets a letter with a small bite out of it. A child has been posting letters to a bakery that burnt down nine winters ago. The bricks are warm. Emlet walks flour out at ebb and Rialla pilots the letter boat at flood. Each has been telling the truth about the same name. The missing oven has a rudder. Pendlow is still baking and would like her sister home for supper.
+
+| Conflict | What the Guardian can change | Who remembers |
+| --- | --- | --- |
+| Emlet’s confidence in his own round | Walk his street and use the thread to show him where the boat came up to meet him. At flood the street he used is wet. | He can sign his morning account even if Rialla declines to sign for the evening. |
+| A council wants to mark the bakery with one brass dot | Carry a shuttered address, offer a walk with a guide or publish a district. Try the public mark at both tides before deciding who can be recognised. | At the Old Weir a different caller receives each edition. Someone still has to eat, staff a guide’s stool or look for a bell. |
+| The people who drew the working map have never climbed the receiving stair | Give a neighbour the pencil at the other quay or invite a new working pair. The folded edition can return for another trial. | Pendlow receives the crumb that travelled with the first letter. The receiving walkers keep authority over their own landing. |
+
+The oven skate follows a current of warm air one dry square at a time. Its gift for finding a route does not tell it whom a house belongs to. The little foil press goes further. An apprentice and a first-time traveller can hold identical slips and arrive at different interpretations. [The kitchen and the weir](../src/content/riverNames.ts) · [Walking and stamping](../tests/river-names.test.ts)

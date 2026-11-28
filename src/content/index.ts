@@ -1,4 +1,5 @@
 import {installWalkingOrchard} from './walkingOrchard';
+import {installRiverNames} from './riverNames';
 import {installSecondInk} from './secondInk';
 import {installOpenHouse} from './openHouse';
 import {installQuarterClock} from './tideClock';
@@ -286,6 +287,7 @@ export function buildPack(): ContentPack {
   installWalkingOrchard(content);
   installOpenHouse(content);
   installSecondInk(content);
+  installRiverNames(content);
   installLensLoan(content);
   addSpecimenPeople(content);
   installEarlierViews(content);

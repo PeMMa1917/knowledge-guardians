@@ -1,3 +1,5 @@
+import {markDiary} from './riverPostmark';
+import {riverDiary,riverTopics} from './riverNames';
 import {orchardDiary,orchardTopics,type OrchardCommand} from './walkingOrchard';
 import {inkDiary, inkWeave} from './secondInk';
 import {houseDiary,houseTopics,type HouseCommand} from './openHouse';
@@ -170,6 +172,8 @@ function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignS
   if (cmd.type === 'HangFerryPrint' || cmd.type === 'OpenFerryBill' || cmd.type === 'HearFerryBill') return billDiary(previous, next, cmd);
   if (cmd.type === 'WorkTurningStacks') return stackDiary(next,cmd);
   if (cmd.type === 'TendWalkingOrchard') return orchardDiary(next,cmd);
+  if (cmd.type === 'FoldRiverPostmark') return markDiary(next,cmd);
+  if (cmd.type === 'WalkRiverNames') return riverDiary(next,cmd);
   if (cmd.type === 'WorkSecondInk') return inkDiary(next,cmd);
   if (cmd.type === 'FitMiddleDoor') return houseDiary(next,cmd);
   if (cmd.type === 'WorkTideClock') return clockDiary(previous,next,cmd);
@@ -587,6 +591,10 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if(family==='trail-thread') { const weave=objectivesById.get(event.ref)?.objective.weave; if(weave)return diaryTopics(weave); }
     if (family === 'turning-stacks') return diaryTopics(stackWeave);
     if (family === 'walking-grove') return diaryTopics(orchardTopics(event.key.split(':')[1] as OrchardCommand['act']));
+    if (family === 'river-names') {
+      const topic=event.key.split(':')[1];
+      if(Object.hasOwn(riverTopics,topic)) return diaryTopics(riverTopics[topic as keyof typeof riverTopics]);
+    }
     if (family === 'secondink') {
       const topic=event.key.split(':')[1] as keyof typeof inkWeave;
       if (inkWeave[topic]) return diaryTopics(inkWeave[topic]);

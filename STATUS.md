@@ -1,5 +1,11 @@
 # Status and next steps
 
+## 28 November • The oven with two addresses
+
+A letter comes back with a bite out of it. The Seagrass postman says the bakery burned down and its boat pilot says her sister still bakes there. Players can walk their rounds at two tides, mark a public address, teach an apprentice at a small foil press and meet the people who receive the edition at the Old Weir. Each walker can change or decline their own part of the map. Individual readings about place names, language work and co-learning enter the diary and its export when discovered.
+
+The campaign now has 873 missions, 4,070 objectives and 1,291 physical field-game stands across 163 rooms. [Tide routes, signatures and delivery checks](tests/river-names.test.ts) · [Learning evidence](docs/CROSS_WEAVE_AUDIT.md#whose-door-an-address-can-open)
+
 ## 28 November • The moth with two tails
 
 Tritta brings fifteen unsigned notices to the Night Registers. One promises a pilot that someone will be at the lower stair. Another gives a child a permanent place on a public print. A Guardian can move a proof sheet, trace witnesses or open the same shutter at a different bell, then follow the notice to the people living with the decision. Agate remembers the instrument used in other towns. A signed slip kept in the moth’s pocket preserves the observations and the recipient of that edition. [Play through the registers](docs/BROWSER_CHECKS.md#tritta-and-the-moth-with-two-tails)

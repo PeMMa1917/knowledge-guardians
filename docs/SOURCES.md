@@ -862,3 +862,11 @@ The counting cloth uses twelve invented volunteer slips. The three borrowers, th
 The small inn and its residents are fictional. Jacobs’s visits to the model floor and the coal yard invite a comparison between an abstract route and somebody using a street. Community-led walks in her name provide a separate, later example. [Project for Public Spaces](https://www.pps.org/article/jjacobs-2) · [Jane’s Walk](https://janeswalk.org/about-us/)
 
 A sketchbook in the inn identifies Hadid’s Vitra Fire Station, completed in Weil am Rhein in 1993. Her two visits to the fictional house and harbour let a player see how changing a viewing position changes the reading of a space. [Pritzker Architecture Prize](https://www.pritzkerprize.com/laureates/2004)
+
+## Place names at two tides
+
+The Inuit Heritage Trust describes its Traditional Place Names Program and the 2014 update of *Nunavut, Where We Live and Travel*. Players can read what the programme says about documenting, making available and officially recognising names, and who contributed to that work. The edition has its own discovery record. [Inuit Heritage Trust](https://www.ihti.ca/traditional-place-names)
+
+Pitquhirnikkut Ilihautiniq describes the work it began in 2022 on the Inuinnaqtun Language Development Plan. The organisation discusses immersion, mentor-apprentice relationships and reference resources. The foil press and its two routes are fictional. The press uses an invented language gesture. [Kitikmeot Heritage Society](https://www.kitikmeotheritage.ca/inuinnaqtunlanguageplan)
+
+Cheryl Bartlett, Murdena Marshall and Albert Marshall describe their experience of co-learning and the Mi’kmaw setting of Two-Eyed Seeing. Players can read the authors’ account separately from the two northern programmes. The invented council at the Old Weir gives receiving neighbours a practical say in changing a map. Kunit’s Tunumiit coastal carving from East Greenland has its own source at the map rack and can be brought back once earned. [Bartlett and the Marshalls](https://doi.org/10.1007/s13412-012-0086-8) · [Kunit’s wooden maps](https://archaeology.org/issues/may-june-2019/collection/maps-greenland-wooden-inuit-maps/mapping-the-past/)

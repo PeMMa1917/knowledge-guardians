@@ -1,3 +1,5 @@
+import {markEffects,type MarkCommand} from './riverPostmark';
+import {riverEffects,type RiverCommand} from './riverNames';
 import {orchardEffects,type OrchardCommand} from './walkingOrchard';
 import {inkEffects,type InkCommand} from './secondInk';
 import {houseEffects,type HouseCommand} from './openHouse';
@@ -107,7 +109,7 @@ import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand
 
 export type Command =
   | ChestCommand | BeatCommand | MouldCommand | PerchCommand | WelcomeCommand | BakeryCommand
-  | ElbowCommand | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | CupCommand | InkCommand | HouseCommand | OrchardCommand | TideCommand | WireCommand | LensCommand | StackCommand | AlmanacCommand | CourierCommand | BillCommand | FerryCommand
+  | MarkCommand | RiverCommand | ElbowCommand | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | CupCommand | InkCommand | HouseCommand | OrchardCommand | TideCommand | WireCommand | LensCommand | StackCommand | AlmanacCommand | CourierCommand | BillCommand | FerryCommand
   | ShadowCommand
   | FieldLoanCommand
   | BirdCommand
@@ -666,6 +668,10 @@ export class Engine {
           break;
         case 'WorkTurningStacks':
           s = apply(stackEffects(s,cmd),s,out); break;
+        case 'FoldRiverPostmark':
+          s=apply(markEffects(s,cmd),s,out); break;
+        case 'WalkRiverNames':
+          s = apply(riverEffects(s,cmd),s,out); break;
         case 'TendWalkingOrchard':
           s = apply(orchardEffects(s,cmd),s,out); break;
         case 'WorkSecondInk':
