@@ -857,6 +857,8 @@ Wangari Maathai’s 2004 Nobel lecture describes hearing rural Kenyan women iden
 
 The counting cloth uses twelve invented volunteer slips. The three borrowers, their permissions and the minimum group size of three belong to the fictional nursery. The MLA source offered after a grower’s count or closed roll is prepared links to general research on disclosure risk. [National Institute of Standards and Technology](https://www.nist.gov/publications/de-identifying-government-datasets-techniques-and-governance)
 
+## Jane Jacobs and Zaha Hadid at the inn
+
 The small inn and its residents are fictional. Jacobs’s visits to the model floor and the coal yard invite a comparison between an abstract route and somebody using a street. Community-led walks in her name provide a separate, later example. [Project for Public Spaces](https://www.pps.org/article/jjacobs-2) · [Jane’s Walk](https://janeswalk.org/about-us/)
 
 A sketchbook in the inn identifies Hadid’s Vitra Fire Station, completed in Weil am Rhein in 1993. Her two visits to the fictional house and harbour let a player see how changing a viewing position changes the reading of a space. [Pritzker Architecture Prize](https://www.pritzkerprize.com/laureates/2004)
