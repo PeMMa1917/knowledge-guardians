@@ -25,7 +25,7 @@ function cross(d: Driver, id: string) {
 function arr() {
   const d = new Driver();
   expect(visible(d, 'stage-door')).toBe(false);
-  d.s.objectivesDone.push('sea.finish');
+  d.resumeAfter('sea.finish');
   cross(d, 'stage-door');
   cross(d, 'stage-gallery-path');
   cross(d, 'story-archive-entrance');

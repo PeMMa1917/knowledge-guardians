@@ -101,7 +101,7 @@ describe('A Cup before the Bell', () => {
     trial(d, busy, split);
     read(d, 'ferry-kettle-busy-split');
     d.s.mapId = 'nexus.archive';
-    d.s.objectivesDone.push('stage.finish');
+    d.resumeAfter('stage.finish');
     cross(d, 'market-door');
 
     act(d, 'market-kettle-card', 'Clip the ferry’s two counts');

@@ -849,7 +849,7 @@
    "knowledgeQuestion": "How can a public sign carry a local account and help someone who arrives by another path?",
    "stake": "If a remembered walk is filed as a record, the lantern opening is dated wrong for everyone after.",
    "available": {
-    "objective": "civic.finish"
+    "corridor": 13
    },
    "objectives": [
     {

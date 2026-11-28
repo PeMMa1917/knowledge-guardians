@@ -102,7 +102,7 @@ describe('The Bend That Stayed', () => {
     const d = new Driver();
     d.s.mapId = 'nexus.archive';
     expect(visible(d, 'copies-door')).toBeUndefined();
-    d.s.objectivesDone.push('metal.finish');
+    d.resumeAfter('metal.finish');
     expect(visible(d, 'copies-door')).toBeDefined();
     d.s.mapId = BEND_MAPS.landing;
     expect(visible(d, 'copies-bend-board')).toBeUndefined();

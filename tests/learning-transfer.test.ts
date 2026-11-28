@@ -63,7 +63,7 @@ it('uses a linked folio in two worlds and awards field practice only after each 
   const studyUses = ids.map((id) => d.p.skills[id][0]);
   expect(studyUses.every((use) => use.includes('WORLD-02|') && use.includes('|linked.study.bound|'))).toBe(true);
 
-  d.s.objectivesDone.push('civic.finish');
+  d.resumeAfter('civic.finish');
   d.s.mapId = 'nexus.archive';
   const entrance = useStation(d, 'voices-door');
   d.s.mapId = entrance.to!.map;

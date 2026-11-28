@@ -16,7 +16,7 @@ function begin() {
   expect(d.e.activeMissions(d.s).some((mission) => mission.id === 'KG-CH5-M01')).toBe(false);
   const crossing = MAPS['nexus.archive'].interactables.find((item) => item.to?.map === station)!;
   expect(check(crossing.visibleIf, d.s)).toBe(false);
-  d.s.objectivesDone.push('coast.revise');
+  d.resumeAfter('coast.revise');
   expect(check(crossing.visibleIf, d.s)).toBe(true);
   d.s.mapId = crossing.to!.map;
   d.run({ type: 'SetFlag', flag: crossing.flag!, value: true });

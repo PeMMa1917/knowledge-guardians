@@ -41,7 +41,7 @@ function scene(d: Driver, id: string, ...choices: string[]) {
 function start() {
   const d = new Driver();
   d.s.flags['nile.returned'] = true;
-  d.s.objectivesDone.push('civic.finish');
+  d.resumeAfter('civic.finish');
   cross(d, 'preserved-door');
   d.s.flags['preserved.display'] = 'paired';
   cross(d, 'preserved-door-inquiry');
@@ -69,7 +69,7 @@ describe('A Door in Two Lines and The Bench at the Turning', () => {
   it('changes the view at the same rail without marking it as checked', () => {
     const d = start();
     expect(visible(d, 'cold-lintel-sejarah')).toBe(false);
-    d.s.objectivesDone.push('preserved.publish');
+    d.resumeAfter('preserved.publish');
     inspect(d, 'cold-lintel-sejarah');
     expect(visible(d, 'cold-lintel-turn')).toBe(false);
     d.run({ type: 'EquipPerspective', keepsake: fold });
@@ -94,7 +94,7 @@ describe('A Door in Two Lines and The Bench at the Turning', () => {
     const pair = signs === 'pair';
     const escort = route === 'escort';
     const credit = { ...d.p.credit };
-    d.s.objectivesDone.push('preserved.publish');
+    d.resumeAfter('preserved.publish');
     inspect(d, 'cold-lintel-sejarah');
     d.run({ type: 'EquipPerspective', keepsake: fold });
     scene(d, 'cold-lintel-turn', 'Seat the slanted-letters', 'Mark who can read');

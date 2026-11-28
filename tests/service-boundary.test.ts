@@ -44,11 +44,11 @@ describe('The Line on the Night Map', () => {
   it('does not count the same view twice or allow testing from outside the table', () => {
     const d = new Driver();
     expect(() => d.run({ type: 'SetServiceBoundary', seam: 'ditch' })).toThrow(/North Steps/);
-    d.s.objectivesDone.push('water.finish');
+    d.resumeAfter('water.finish');
     move(d, 'civic-door');
     move(d, 'civic-steps-path');
     expect(prop(d, 'boundary-civic-start')).toBeUndefined();
-    d.s.objectivesDone.push('civic.finish');
+    d.resumeAfter('civic.finish');
     scene(d, 'boundary-civic-start', 'Peg the slips');
     expect(prop(d, 'boundary-civic-board')?.game).toBe('service-boundary');
     d.run({ type: 'SetServiceBoundary', seam: 'ditch' });
@@ -61,7 +61,7 @@ describe('The Line on the Night Map', () => {
 
   it.each(SERVICE_BOUNDARIES)('sends a different first delivery while retaining the other five (%s)', (seam) => {
     const d = new Driver();
-    d.s.objectivesDone.push('market.finish', 'water.finish', 'civic.finish');
+    d.resumeAfter('market.finish', 'water.finish', 'civic.finish');
     move(d, 'civic-door');
     move(d, 'civic-steps-path');
     scene(d, 'boundary-civic-start', 'Peg the slips');

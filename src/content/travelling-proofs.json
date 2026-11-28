@@ -1,0 +1,224 @@
+{
+  "keepsakes": [
+    {
+      "id": "window-tissue",
+      "name": "Odile’s window tissue",
+      "text": "The tissue has four corner pricks. The word under the fold was never on the original sheet.",
+      "where": "Finish the main case in the Cold Store.",
+      "use": "Carry it to a colleague in each of two other worlds.",
+      "if": {
+        "objective": "preserved.publish"
+      }
+    },
+    {
+      "id": "sounding-tab",
+      "name": "Ruan’s sounding tab",
+      "text": "Two notches preserve the interval between the harbour bell and its echo.",
+      "where": "Finish the main case in the Observatory Coast.",
+      "use": "Carry it to a colleague in each of two other worlds.",
+      "if": {
+        "objective": "coast.revise"
+      }
+    },
+    {
+      "id": "grass-sleeve",
+      "name": "Ayla’s grass sleeve",
+      "text": "A grass blade leans out of the sleeve each time the watcher turns into the wind.",
+      "where": "Finish the main case in the Living Forest.",
+      "use": "Carry it to a colleague in each of two other worlds.",
+      "if": {
+        "objective": "forest.finish"
+      }
+    },
+    {
+      "id": "trial-shim",
+      "name": "Corra’s trial shim",
+      "text": "The thin brass tongue is marked on one face where the test jaw gripped it.",
+      "where": "Finish the main case in the Metalworks.",
+      "use": "Carry it to a colleague in each of two other worlds.",
+      "if": {
+        "objective": "metal.finish"
+      }
+    },
+    {
+      "id": "press-space",
+      "name": "Mina’s type space",
+      "text": "A low piece of type kept the words on either side from running together. It leaves no ink.",
+      "where": "Finish the main case in the City of Copies.",
+      "use": "Carry it to a colleague in each of two other worlds.",
+      "if": {
+        "objective": "copies.revise"
+      }
+    },
+    {
+      "id": "sounding-loop",
+      "name": "Sora’s knotted sounding loop",
+      "text": "A dark line in the rope shows how far the slack end once sagged.",
+      "where": "Finish the main case in the Cartographers’ Sea.",
+      "use": "Carry it to a colleague in each of two other worlds.",
+      "if": {
+        "objective": "sea.finish"
+      }
+    }
+  ],
+  "keepsakeTalks": [
+    {
+      "id": "corridor.window-tissue.coast-signalkeeper",
+      "character": "coast-signalkeeper",
+      "keepsake": "window-tissue",
+      "text": "Stretch the tissue across the signal window.",
+      "node": "corridor.window-tissue.coast-signalkeeper"
+    },
+    {
+      "id": "corridor.window-tissue.copies-lendingkeeper",
+      "character": "copies-lendingkeeper",
+      "keepsake": "window-tissue",
+      "text": "Lay the tissue over the lender’s copy.",
+      "node": "corridor.window-tissue.copies-lendingkeeper"
+    },
+    {
+      "id": "corridor.sounding-tab.forest-naturalist",
+      "character": "forest-naturalist",
+      "keepsake": "sounding-tab",
+      "text": "Tap the second notch beside the recorder.",
+      "node": "corridor.sounding-tab.forest-naturalist"
+    },
+    {
+      "id": "corridor.sounding-tab.sea-harbourkeeper",
+      "character": "sea-harbourkeeper",
+      "keepsake": "sounding-tab",
+      "text": "Hang the tab where the mist bell carries.",
+      "node": "corridor.sounding-tab.sea-harbourkeeper"
+    },
+    {
+      "id": "corridor.grass-sleeve.metal-inspector",
+      "character": "metal-inspector",
+      "keepsake": "grass-sleeve",
+      "text": "Stand the sleeve beside the sample pans.",
+      "node": "corridor.grass-sleeve.metal-inspector"
+    },
+    {
+      "id": "corridor.grass-sleeve.preserved-royal-keeper",
+      "character": "preserved-royal-keeper",
+      "keepsake": "grass-sleeve",
+      "text": "Stand the sleeve at the case hinge.",
+      "node": "corridor.grass-sleeve.preserved-royal-keeper"
+    },
+    {
+      "id": "corridor.trial-shim.copies-presskeeper",
+      "character": "copies-presskeeper",
+      "keepsake": "trial-shim",
+      "text": "Slip the shim under the low corner of the type.",
+      "node": "corridor.trial-shim.copies-presskeeper"
+    },
+    {
+      "id": "corridor.trial-shim.coast-forecaster",
+      "character": "coast-forecaster",
+      "keepsake": "trial-shim",
+      "text": "Seat the shim against the loose gauge.",
+      "node": "corridor.trial-shim.coast-forecaster"
+    },
+    {
+      "id": "corridor.press-space.sea-cartographer",
+      "character": "sea-cartographer",
+      "keepsake": "press-space",
+      "text": "Try the type space between the two shore names.",
+      "node": "corridor.press-space.sea-cartographer"
+    },
+    {
+      "id": "corridor.press-space.forest-steward",
+      "character": "forest-steward",
+      "keepsake": "press-space",
+      "text": "Set the type space at the silent interval on the strip.",
+      "node": "corridor.press-space.forest-steward"
+    },
+    {
+      "id": "corridor.sounding-loop.preserved-registrar",
+      "character": "preserved-registrar",
+      "keepsake": "sounding-loop",
+      "text": "Loop the cord across the bowed shelf.",
+      "node": "corridor.sounding-loop.preserved-registrar"
+    },
+    {
+      "id": "corridor.sounding-loop.metal-steward",
+      "character": "metal-steward",
+      "keepsake": "sounding-loop",
+      "text": "Stretch the loop between the two delivery hooks.",
+      "node": "corridor.sounding-loop.metal-steward"
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "corridor.window-tissue.coast-signalkeeper",
+      "speaker": "coast-signalkeeper",
+      "text": "That pale shape comes from the patch on my glass. Look, it moves when you move the tissue. I sign for the lamps here. If a fisher reports two lights tonight, send them to me.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "corridor.window-tissue.copies-lendingkeeper",
+      "speaker": "copies-lendingkeeper",
+      "text": "There is room for the name under this fold. I was about to write it back from memory. Hold the paper still. I will trace the blank so the next borrower can see exactly where it falls.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "corridor.sounding-tab.forest-naturalist",
+      "speaker": "forest-naturalist",
+      "text": "There it is again. I counted the reply in the gully as a second bird. Please stay while I cross out my own initials. I would sooner you saw me do it.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "corridor.sounding-tab.sea-harbourkeeper",
+      "speaker": "sea-harbourkeeper",
+      "text": "I can hear the echo after my boat has passed the post. A skipper approaching from the other direction hears it sooner. Give me the wet chalk. I need a second ear marked on this chart.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "corridor.grass-sleeve.metal-inspector",
+      "speaker": "metal-inspector",
+      "text": "It is the open door. Every time the porter leaves, the light pan lifts. I made my apprentice weigh it twelve times. Will you help me tell her why?",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "corridor.grass-sleeve.preserved-royal-keeper",
+      "speaker": "preserved-royal-keeper",
+      "text": "Drawers breathing! I told my little girl the papers could breathe, and here we are. Watch this corner curl when the door opens. That crease alone cannot tell us who unfolded the file.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "corridor.trial-shim.copies-presskeeper",
+      "speaker": "copies-presskeeper",
+      "text": "The missing letter prints again! I had thought our apprentice forgot to set it. Here, take the first clean sheet. I owe the second one to him.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "corridor.trial-shim.coast-forecaster",
+      "speaker": "coast-forecaster",
+      "text": "Keep your thumb there. The zero slides when the housing moves. Yesterday I read the number correctly and gave the harbour a bad reading anyway.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "corridor.press-space.sea-cartographer",
+      "speaker": "sea-cartographer",
+      "text": "From this low ferry seat the names run together. Now I can point to either landing with my little finger. My pilot taught me those as separate places; I printed them as one.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "corridor.press-space.forest-steward",
+      "speaker": "forest-steward",
+      "text": "The gap is exactly where I turned the spool. People saw the blank and came to tell me the birds had gone. I can label my pause myself. You hold the end.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "corridor.sounding-loop.preserved-registrar",
+      "speaker": "preserved-registrar",
+      "text": "Two labels slid downhill to the same case. My tidy list made it look like two witnesses agreed. Help me lift the shelf. I want to see what is underneath.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "corridor.sounding-loop.metal-steward",
+      "speaker": "metal-steward",
+      "text": "The full coil sags past the lower hook. I used to charge the carriers for that difference. At closing I will walk the hooks with them and measure under load.",
+      "historicalLabel": "fictional-world"
+    }
+  ]
+}

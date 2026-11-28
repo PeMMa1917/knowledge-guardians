@@ -61,7 +61,7 @@ it('earns a higher rank for eight exact-object source checks in a single campaig
   scene('nexus-vind-later', 'Place the later slip');
   scene('nexus-vind-place', 'Set an invitation caption');
 
-  d.s.objectivesDone.push('preserved.publish');
+  d.resumeAfter('preserved.publish');
   d.s.mapId = 'preserved.gallery';
   d.walk('gallery.panel.royal', ['custody record at the front']);
   d.walk('gallery.panel.coast', ['Open the context note']);
@@ -83,7 +83,7 @@ it('earns a higher rank for eight exact-object source checks in a single campaig
   }
   earned(light.objective);
 
-  d.s.objectivesDone.push('forest.finish');
+  d.resumeAfter('forest.finish');
   d.s.mapId = 'nexus.archive';
   cross('metalworks-door');
   cross('metal-records-path');
@@ -107,7 +107,7 @@ it('earns a higher rank for eight exact-object source checks in a single campaig
   scene(`story-frame-${frame.key}-${frameRoute.key}`, frameRoute.action);
   earned(frame.objective);
 
-  d.s.objectivesDone.push('stage.finish', 'council.arrival');
+  d.resumeAfter('stage.finish', 'council.arrival');
   d.s.mapId = COUNCIL_LOADING_BAY.id;
   const ship = LOAD_CASES.find(({ slug }) => slug === 'red-jacket')!;
   inspect(ship.exhibit);

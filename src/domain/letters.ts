@@ -5,6 +5,7 @@
  * Vesper is charming, polite and funny, and sad under the charm. Fictional; no real person or group.
  * Pure rules: `dueLetters` says which letters can arrive; `composeLetter` picks the remembered line.
  */
+import { letterPostscript } from './corridor';
 import { check } from './rules';
 import type { CampaignState, Condition } from './types';
 
@@ -80,7 +81,7 @@ export const LETTERS: Letter[] = [
     opening: 'Dear Guardian, I sell complete charts. You sell charts with blanks. Guess which sell.',
     remembers: [{ text: 'You marked the blank on the chart. A skiff will slow down there, and a skipper will curse you, and live.' }],
     fair: 'The local names were there before any survey. You listened to them. The Nexus did not, once.',
-    hook: 'I will be at the House of Performance. Come and argue with me in front of people. It is more fun. V. Q.' },
+    hook: 'The House of Performance keeps our programmes. Leave room on yours for a voice from the harbour. It is more fun. V. Q.' },
   { id: 'l09', chapter: 9, when: { flagSet: 'sd.stage-vesper.outcome' },
     opening: 'Dear Guardian, the usher counted the programme slips after the bell.',
     remembers: [
@@ -101,7 +102,7 @@ export const LETTERS: Letter[] = [
       { text: 'You took the basket out of the weight. Small thing. Big thing.' },
     ],
     fair: 'Rook will tell you that my first customer wore your badge. Rook is right.',
-    hook: 'The Water Commons is next for you. Read the old orders by the weir. Read the signatures. V. Q.' },
+    hook: 'Should you reach the Water Commons, look for my old house. Read the old orders by the weir. Read the signatures. V. Q.' },
   { id: 'l11', chapter: 11, when: obj('water.finish'),
     opening: 'Dear Guardian.',
     remembers: [
@@ -159,7 +160,7 @@ export function dueLetters(s: CampaignState): Letter[] {
 /** The paragraphs of a letter for this player, with the first remembered line that fits. */
 export function composeLetter(l: Letter, s: CampaignState): string[] {
   const line = l.remembers.find((r) => !r.if || check(r.if, s));
-  return [l.opening, line ? line.text : '', l.fair, l.hook].filter(Boolean);
+  return [l.opening, line ? line.text : '', l.fair, l.hook, String(s.flags['postscript.' + l.id] ?? letterPostscript(s))].filter(Boolean);
 }
 
 export const arrivedLetters = (s: CampaignState): Letter[] => LETTERS.filter((l) => s.flags[`letter.${l.id}`] === true);

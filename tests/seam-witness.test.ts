@@ -39,7 +39,7 @@ function start() {
   d.s.flags['nile.returned'] = true;
   d.s.flags['preserved.display'] = 'paired';
   d.s.flags['stage.response'] = 'pause';
-  d.s.objectivesDone.push('sea.finish', 'preserved.publish');
+  d.resumeAfter('sea.finish', 'preserved.publish');
   cross(d, 'preserved-door');
   cross(d, 'preserved-door-workroom');
   return d;

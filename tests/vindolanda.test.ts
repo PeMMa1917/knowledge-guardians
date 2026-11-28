@@ -59,7 +59,7 @@ describe('Vindolanda tablet and the next Metalworks docket', () => {
     expect(d.s.flags['count.inspected']).toBeUndefined();
     expect(d.s.flags['count.lens']).toBeUndefined();
     expect(d.s.inventory[folio]).toBeUndefined();
-    d.s.objectivesDone.push('forest.finish');
+    d.resumeAfter('forest.finish');
     cross(d, 'metalworks-door');
     expect(prop(d, 'metal-vind-witness')).toBeUndefined();
     cross(d, 'metal-records-path');
@@ -88,7 +88,7 @@ describe('Vindolanda tablet and the next Metalworks docket', () => {
       expect(prop(d, openingResult)).toBeDefined();
       expect(d.s.inventory[folio]).toBe(1);
 
-      d.s.objectivesDone.push('forest.finish');
+      d.resumeAfter('forest.finish');
       cross(d, 'metalworks-door');
       cross(d, 'metal-records-path');
       openScene(d, 'metal-vind-fold', 'Fold the copy');

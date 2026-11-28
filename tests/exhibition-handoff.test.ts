@@ -134,8 +134,8 @@ describe('Where the Copy Stops and Two Pockets for the Ring', () => {
     const d = new Driver();
     const credit = totalXP(d.p);
     makeFolio(d, nile);
-    expect(() => door(d, 'metalworks-door')).toThrow(/Cannot use/);
-    d.s.objectivesDone.push('forest.finish');
+    expect(visible(d, 'metalworks-door')).toBe(true);
+    d.resumeAfter('forest.finish');
     displayRing(d, metal, true);
     expect(d.s.inventory[folio]).toBe(1);
     expect(totalXP(d.p)).toBe(credit);
@@ -143,7 +143,7 @@ describe('Where the Copy Stops and Two Pockets for the Ring', () => {
 
   it.each(['bench', 'window'] as const)('uses local source tabs at the %s with an older save', (layout) => {
     const d = new Driver();
-    d.s.objectivesDone.push('forest.finish');
+    d.resumeAfter('forest.finish');
     displayRing(d, layout, false);
     expect(d.s.inventory[folio]).toBeUndefined();
     expect(d.done('nile.exhibit.used')).toBe(false);

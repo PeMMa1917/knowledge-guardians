@@ -115,7 +115,7 @@ describe('The Line a Reader Can Follow and A Sunset on the Proof', () => {
     expect(d.s.inventory[comb]).toBe(1);
 
     // Stage only the earlier main chapter. All new choices run through normal scene conditions.
-    d.s.objectivesDone.push('metal.finish');
+    d.resumeAfter('metal.finish');
     d.s.flags['copies.response'] = 'strip';
     cross(d, 'copies-door');
     cross(d, 'copies-press-path');

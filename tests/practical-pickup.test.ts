@@ -34,7 +34,7 @@ function visitEmberford(d: Driver) {
 function enterMarket(d: Driver) {
   const { entry, visible } = prop(d, nexus, 'market-door');
   expect(visible).toBe(false);
-  d.s.objectivesDone.push('stage.finish');
+  d.resumeAfter('stage.finish');
   expect(prop(d, nexus, 'market-door').visible).toBe(true);
   d.s.mapId = entry.to!.map;
   d.run({ type: 'SetFlag', flag: entry.flag!, value: true });

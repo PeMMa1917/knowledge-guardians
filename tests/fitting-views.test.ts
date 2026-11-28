@@ -27,7 +27,7 @@ function cross(d: Driver, id: string) {
 }
 
 function study(d: Driver, reading: 'surface' | 'pair') {
-  d.s.objectivesDone.push('forest.finish');
+  d.resumeAfter('forest.finish');
   cross(d, 'metalworks-door');
   expect(visible(d, 'fitting-lamp')).toBeUndefined();
   cross(d, 'metal-records-path');
@@ -69,7 +69,7 @@ describe('The Mark Beneath the Lip', () => {
     const credit = { ...d.p.credit };
     study(d, reading);
     cross(d, 'metal-nexus-return');
-    d.s.objectivesDone.push('market.finish');
+    d.resumeAfter('market.finish');
     cross(d, 'water-door');
     expect(d.done('water.arrival')).toBe(true);
     if (reading === 'pair') {

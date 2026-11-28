@@ -27,7 +27,7 @@ function prepare(d: Driver, carried: boolean) {
     expect(d.done('linked.study.bound')).toBe(true);
   }
   d.s.mapId = VOICES.id;
-  d.s.objectivesDone.push('civic.finish');
+  d.resumeAfter('civic.finish');
   d.run({ type: 'SetFlag', flag: 'voices.arrived', value: true });
   expect(d.done('voices.arrival')).toBe(true);
   expect(d.done('linked.voices.indexed')).toBe(false);

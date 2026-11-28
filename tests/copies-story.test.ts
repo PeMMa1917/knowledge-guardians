@@ -17,7 +17,7 @@ function enter() {
   const crossing = MAPS['nexus.archive'].interactables.find((item) => item.to?.map === archive)!;
   expect(check(crossing.visibleIf, d.s)).toBe(false);
   expect(d.e.activeMissions(d.s).some((mission) => mission.id === 'KG-CH7-M01')).toBe(false);
-  d.s.objectivesDone.push('metal.finish');
+  d.resumeAfter('metal.finish');
   expect(check(crossing.visibleIf, d.s)).toBe(true);
   d.s.mapId = crossing.to!.map;
   d.run({ type: 'SetFlag', flag: crossing.flag!, value: true });

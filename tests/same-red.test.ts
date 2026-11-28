@@ -60,7 +60,7 @@ describe('The Same Red', () => {
     expect(d.done('gutenberg.red.referred')).toBe(true);
     scene(d, `filed-${bookmark}`);
     expect(d.s.inventory[leaf]).toBe(1);
-    d.s.objectivesDone.push('metal.finish');
+    d.resumeAfter('metal.finish');
     cross(d, 'copies-door');
     cross(d, 'copies-press-path');
     expect(visible(d, 'gutenberg-red-plan')).toBeUndefined();
@@ -92,7 +92,7 @@ describe('The Same Red', () => {
 
   it('leaves the regular press route available without the early exhibit', () => {
     const d = new Driver();
-    d.s.objectivesDone.push('metal.finish');
+    d.resumeAfter('metal.finish');
     cross(d, 'copies-door');
     cross(d, 'copies-press-path');
     expect(visible(d, 'copies-compare-press')).toBeDefined();

@@ -39,7 +39,7 @@ describe('The Eight Crates', () => {
   it.each(routes)('keeps the $upper upper sheet when publishing a $lower correction', ({ upper, lower }) => {
     const d = new Driver();
     expect(d.e.activeMissions(d.s).some((mission) => mission.id === 'KG-CH14-M01')).toBe(false);
-    d.s.objectivesDone.push('voices.finish');
+    d.resumeAfter('voices.finish');
     const recall = upper === 'marsh' && lower === 'ferry';
     if (recall) d.s.flags['voices.revision'] = 'routes';
     visit(d, 'island-door');
@@ -116,7 +116,7 @@ describe('The Eight Crates', () => {
     ['gloss', 'Keep the square clear and leave the guide at the shelter'],
   ])('checks the berth signal before posting the %s notice', (layout, choice) => {
     const d = new Driver();
-    d.s.objectivesDone.push('voices.finish');
+    d.resumeAfter('voices.finish');
     visit(d, 'island-door');
     visit(d, 'island-dock-path');
     read(d, 'island-square-claim');

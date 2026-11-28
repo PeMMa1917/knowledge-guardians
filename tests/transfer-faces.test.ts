@@ -38,7 +38,7 @@ function scene(d: Driver, id: string, ...choices: string[]) {
 
 function start() {
   const d = new Driver();
-  d.s.objectivesDone.push('forest.finish', 'island.finish');
+  d.resumeAfter('forest.finish');
   d.s.flags['metal.response'] = 'ledger';
   d.s.flags['council.revision'] = 'mark';
   enter(d, 'metalworks-door');
@@ -64,7 +64,7 @@ describe('Two-Face Frame field investigation', () => {
   it('can turn the hinged fixture in either direction without recording a check until its tab is clipped', () => {
     const d = start();
     expect(available(d, 'metal-plate-foumban')).toBe(false);
-    d.s.objectivesDone.push('metal.finish');
+    d.resumeAfter('metal.finish');
     inspect(d, 'metal-plate-foumban');
     expect(d.s.flags[`keepsake.${frame}`]).toBe(true);
     enter(d, 'metal-yard-return');
@@ -97,7 +97,7 @@ describe('Two-Face Frame field investigation', () => {
     const loan = ship === 'loan';
     const rail = place === 'rail';
     const initialCredit = { ...d.p.credit };
-    d.s.objectivesDone.push('metal.finish');
+    d.resumeAfter('metal.finish');
     inspect(d, 'metal-plate-foumban');
     enter(d, 'metal-yard-return');
     d.run({ type: 'EquipPerspective', keepsake: frame });
@@ -116,6 +116,7 @@ describe('Two-Face Frame field investigation', () => {
     expect(available(d, 'metal-plate-flat')).toBe(loan);
     expect(available(d, 'metal-plate-turn')).toBe(!loan);
     enter(d, 'metal-nexus-return');
+    d.resumeAfter('island.finish');
     enter(d, 'council-door');
     d.s.objectivesDone.push('council.arrival');
     enter(d, 'council-gallery-path');

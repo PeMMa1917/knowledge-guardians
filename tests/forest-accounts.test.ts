@@ -32,7 +32,7 @@ function prop(id: string, map = community) {
 }
 
 function enterClearing(d: Driver) {
-  d.s.objectivesDone.push('coast.revise');
+  d.resumeAfter('coast.revise');
   const crossing = prop('forest-door', 'nexus.archive');
   expect(check(crossing.visibleIf, d.s)).toBe(true);
   d.s.mapId = crossing.to!.map;

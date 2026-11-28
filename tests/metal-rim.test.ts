@@ -13,7 +13,7 @@ const release = {
 
 function enter(): Driver {
   const d = new Driver();
-  d.s.objectivesDone.push('forest.finish');
+  d.resumeAfter('forest.finish');
   takeDoor(d, 'metalworks-door');
   expect(d.done('metal.arrival')).toBe(true);
   return d;

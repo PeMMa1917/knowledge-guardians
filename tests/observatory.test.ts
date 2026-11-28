@@ -9,7 +9,7 @@ const station = MAPS['observatory.station'];
 function begin(): Driver {
   const d = new Driver();
   expect(d.e.activeMissions(d.s).some((mission) => mission.id === 'KG-CH4-M01')).toBe(false);
-  d.s.objectivesDone.push('preserved.publish');
+  d.s.objectivesDone.push('nile.return');
   d.s.mapId = harbour.id;
   d.run({ type: 'SetFlag', flag: 'coast.arrived', value: true });
   expect(d.done('coast.arrival')).toBe(true);

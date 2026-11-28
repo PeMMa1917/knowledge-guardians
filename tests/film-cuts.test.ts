@@ -34,7 +34,7 @@ const actor = 'film-door-reader';
 
 function rehearsal(): Driver {
   const d = new Driver();
-  d.s.objectivesDone.push('sea.finish');
+  d.resumeAfter('sea.finish');
   cross(d, 'stage-door');
   cross(d, 'stage-rehearsal-path');
   return d;
@@ -112,7 +112,7 @@ describe('The First Frame', () => {
 
     if (cut === 'cue') cross(d, 'stage-gallery-return');
     cross(d, 'stage-nexus-return');
-    d.s.objectivesDone.push('preserved.publish');
+    d.resumeAfter('preserved.publish');
     cross(d, 'observatory-door');
     expect(visible(d, 'coast-film-still')).toBeUndefined();
     scene(d, 'coast-film-handoff', 'Leave the two frames here');

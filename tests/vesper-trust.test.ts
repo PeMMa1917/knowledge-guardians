@@ -26,11 +26,11 @@ function cross(d: Driver, id: string) {
 }
 
 function atCoast(d: Driver, mode: 'signed' | 'walked') {
-  d.s.objectivesDone.push('preserved.publish');
+  d.resumeAfter('preserved.publish');
   cross(d, 'observatory-door');
   cross(d, 'coast-headland-path');
   expect(visible(d, 'vesper-line-coast-open')).toBeUndefined();
-  d.s.objectivesDone.push('coast.revise');
+  d.resumeAfter('coast.revise');
   scene(d, 'coast-open', 'Lift the OPEN sleeve');
   scene(d, 'coast-order', 'Slide the clip off');
   expect(visible(d, 'vesper-line-coast-choice')).toBeUndefined();
@@ -47,11 +47,11 @@ function atCoast(d: Driver, mode: 'signed' | 'walked') {
 }
 
 function atQuay(d: Driver) {
-  d.s.objectivesDone.push('civic.finish');
+  d.resumeAfter('civic.finish');
   cross(d, 'voices-door');
   cross(d, 'voices-quay-path');
   expect(visible(d, door)).toBeUndefined();
-  d.s.objectivesDone.push('voices.finish');
+  d.resumeAfter('voices.finish');
   expect(() => cross(d, door)).toThrow(/Cannot use/);
   scene(d, 'quay-open', 'Lift the copy just far enough');
 }

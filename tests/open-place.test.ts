@@ -41,10 +41,10 @@ function cross(d: Driver, id: string) {
 }
 
 function prepare(d: Driver) {
-  d.s.objectivesDone.push('water.finish');
+  d.resumeAfter('water.finish');
   cross(d, 'civic-door');
   expect(visible(d, 'open-place-draft')).toBeUndefined();
-  d.s.objectivesDone.push('civic.finish');
+  d.resumeAfter('civic.finish');
   read(d, 'draft', 'Take the first-bell invitation');
   cross(d, 'civic-steps-path');
   expect(actor(d, 'blythe')).toBe(true);
@@ -85,7 +85,7 @@ describe('The Place Left Open', () => {
     const marks = (['hearing', 'written'] as const).map((mode) => {
       const d = new Driver();
       prepare(d);
-      d.s.objectivesDone.push('island.finish');
+      d.resumeAfter('island.finish');
       cross(d, 'council-door');
       read(d, 'intake', mode === 'hearing' ? 'Book the second-bell public hearing' : 'Arrange the signed witness pocket');
       cross(d, 'council-gallery-path');

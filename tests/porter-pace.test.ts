@@ -48,7 +48,7 @@ describe('The Pace of a Load and The Middle Handover', () => {
     d.run({ type: 'SetFlag', flag: PORTER_EARLY, value: pace });
     const earlyReceipts = PORTER_EMBERFORD.slice(1).filter(({ visibleIf }) => check(visibleIf, d.s));
     expect(earlyReceipts.map(({ id }) => id)).toEqual([`porter-pace-${pace}`]);
-    d.s.objectivesDone.push('market.finish');
+    d.resumeAfter('market.finish');
     d.run({ type: 'SetFlag', flag: 'water.arrived', value: true });
     expect(check(waterBoard.visibleIf, d.s)).toBe(false);
     d.run({ type: 'SetFlag', flag: earlyReceipts[0].flag!, value: true });
