@@ -1,3 +1,4 @@
+import {templeAction} from './temples';
 import {tiedThread} from './trailThread';
 import {equippedLoan,loanReading,readerAnswer,readerLetters,selectedLoan,setupLabels} from './fieldLoan';
 import {loanStops} from '../content/loanCrews';
@@ -76,6 +77,10 @@ export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, ne
       return diaryEvent(key+cmd.setting,'tool',ref,desk.controls[cmd.setting],
         'I tried '+loan.record.name+' at '+desk.place+'. '+result.strips.map(row=>row.label+' · '+row.text).join(' / ')+'. '+result.observation,
         {sourceIds:[loan.record.specimen.source]},{fixedToolPrefix:key});
+    }
+    case 'TempleAction': {
+      const result=templeAction(previous,cmd);
+      return diaryEvent('temple:'+previous.mapId+':'+cmd.action+':'+(cmd.choice ?? ''),'choice',previous.mapId,result.title,result.text);
     }
     case 'VisitPlace': {
       const mapId = next.mapId;

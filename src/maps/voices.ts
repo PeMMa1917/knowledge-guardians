@@ -25,6 +25,7 @@ function ground(width: number, height: number, tile: (x: number, y: number) => s
 const verified: Condition = { objective: 'voices.verify' };
 const published: Condition = { objective: 'voices.publish' };
 const lastLampReady: Condition = { objective: 'voices.finish' };
+const reelReady: Condition = { any: [lastLampReady, { faction: 1, atLeast: 2 }] };
 const lastLampUndecided: Condition = { all: [lastLampReady, { not: { flagSet: 'cross.last-lamp' } }] };
 const lastLamp = (way: string): Condition => ({ flag: 'cross.last-lamp', eq: way });
 const lampTrial = (bracket: string): Condition => ({ all: [lastLampUndecided, { flag: 'voices.vow.last', eq: bracket }] });
@@ -65,10 +66,10 @@ export const VOICES_LISTENING: MapDef = {
       { flag: 'voices.permissions.read' }),
     { id: 'voices-elsbet-reel-first', kind: 'scene', x: 24, y: 7, w: 1, h: 1,
       label: 'the tin reel on the spare shelf', art: 'voices.desk', walkThrough: true, node: 'voices.elsbet.first',
-      visibleIf: { all: [lastLampReady, { not: { flagSet: 'voices.elsbet.register' } }] } },
+      visibleIf: { all: [reelReady, { not: { flagSet: 'voices.elsbet.register' } }] } },
     { id: 'voices-elsbet-reel-second', kind: 'scene', x: 24, y: 7, w: 1, h: 1,
       label: 'the opened reel with a second band', art: 'voices.paired', walkThrough: true, node: 'voices.elsbet.second',
-      visibleIf: { all: [lastLampReady, { flagSet: 'voices.elsbet.register' }] } },
+      visibleIf: { all: [reelReady, { flagSet: 'voices.elsbet.register' }] } },
     { id: 'voices-elsbet-copy-slot', kind: 'scene', x: 25, y: 8, w: 1, h: 1,
       label: 'Wren’s listening copy slot', art: 'voices.permission', walkThrough: true, node: 'voices.elsbet.place',
       visibleIf: { all: [{ objective: 'voices.elsbet.heard' }, { not: { flagSet: 'voices.elsbet.edition' } }] } },
@@ -153,7 +154,7 @@ export const VOICES_WALK: MapDef = {
       { flag: 'voices.register.read' }),
     sign('voices-elsbet-register', 8, 10, 'Elsbet’s signed reel slip', 'voices.permission',
       'Two bands by one speaker, wound at one desk. On the first white turn, sit at the visiting bench. On the second, in the Council room. Leave the second off public copies. Signed E. Varro and witnessed by the keeper.',
-      { flag: 'voices.elsbet.register', visibleIf: { all: [lastLampReady, { flagSet: 'node.voices.elsbet.first' }] } }),
+      { flag: 'voices.elsbet.register', visibleIf: { all: [reelReady, { flagSet: 'node.voices.elsbet.first' }] } }),
     sign('voices-stairs-approach', 18, 13, 'the stair post', 'voices.railing',
       'The stairs rise to the arch. A low rail follows the paving, then turns under the arch toward the quay.'),
     sign('voices-stairs-view', 16, 12, 'the view from the stair foot', 'voices.arch',

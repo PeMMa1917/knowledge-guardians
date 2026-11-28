@@ -1,3 +1,4 @@
+import { templePanel, templeJournal, threadPanel } from './temple';
 import { arrivalLine, PASSAGES, ribbon, openDestinations, delegations } from '../domain/corridor';
 import { titleActions, type TitleAction } from './titleActions';
 import {callingBook} from './callingBook';
@@ -3156,7 +3157,7 @@ export class UI implements UIApi {
         ...games.map((g) => h('div', { class: 'lore-entry' }, h('h3', {}, g.name), h('p', { class: 'fine' }, g.host), h('p', {}, g.idea),
           ...(g.id === 'word' && coinageOf(s.flags['word.coined']) ? [h('p', { class: 'fine' }, `Your word: '${coinageOf(s.flags['word.coined'])!.word}', ${coinageOf(s.flags['word.coined'])!.meaning}.`)] : []))));
     } else if (tab === 'story') {
-      body.append(h('h3', {}, 'Your route through the doors'), h('p', {}, ribbon(s)));
+      body.append(h('h3', {}, 'Your route through the doors'), h('p', {}, ribbon(s)), templeJournal(c));
       // The story so far: the beats the player has reached, written as a short chronicle.
       const lit = String(Number(s.flags['lamps.lit'] ?? 0));
       const beats = (c.pack.chronicle ?? []).filter((b) => c.check(b.if));
@@ -3687,11 +3688,15 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    if (id.startsWith('temple-')) {
+      this.openModal('temple-panel wide','Guardian hearing',this.closeBtn(),templePanel(ctx.controller,id.slice(7)));
+      return;
+    }
     if (id === 'corridor-ribbon') {
       const s = ctx.controller.state;
       const open = openDestinations(s);
       this.openModal('corridor-ribbon', 'Ribbon of doors', this.closeBtn(), h('h2',{},'Ribbon of doors'),
-        h('p',{},ribbon(s)),h('p',{},open.length ? 'Doors taking new work: ' + open.join(' · ') : 'All the delegations have returned.'),
+        h('p',{},ribbon(s)),threadPanel(ctx.controller),h('p',{},open.length ? 'Doors taking new work: ' + open.join(' · ') : 'The Council takes fourteen completed cases and fourteen guardian gifts. The journal lists the gifts you have brought back.'),
         h('button',{onclick:()=>this.openJournal('story')},'Open your travel journal'));
       return;
     }

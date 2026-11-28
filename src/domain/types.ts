@@ -87,6 +87,7 @@ export type Condition =
   | { card: string }
   | { objective: string }
   | { corridor: number }
+  | { faction: 0 | 1 | 2; atLeast: number }
   | { origin: string }              // the player's chosen origin (spec 35.1)
   | { trust: string; gte?: number; lte?: number } // a character's trust in the player (relations), decision X-007
   | { all: Condition[] }

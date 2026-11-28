@@ -14,7 +14,7 @@
       "world": "WORLD-14",
       "title": "The Second Take",
       "knowledgeQuestion": "What changes when an account is spoken for a different listener?",
-      "available": { "objective": "voices.finish" },
+      "available": { "any": [{ "objective": "voices.finish" }, { "faction": 1, "atLeast": 2 }] },
       "objectives": [
         {
           "id": "voices.elsbet.heard",

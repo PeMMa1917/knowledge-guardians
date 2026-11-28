@@ -1,0 +1,576 @@
+[
+  {
+    "chapter": 1,
+    "guardian": "Brannoc the Lampwright",
+    "temple": "Lantern Undercroft",
+    "gift": "Lamplight",
+    "agent": "Mabry Brassey",
+    "faction": "Gilded Seal",
+    "opening": "A boy holds a gold stamp under the dead lamp. Mabry quietly puts the refund money back inside her sleeve.",
+    "trials": [
+      {
+        "action": "Turn the stamped face to the wick",
+        "result": "Gold scatters cold light across the wall. No writing appears underneath it."
+      },
+      {
+        "action": "Slide the stallholder’s dated receipt into the lamp",
+        "result": "The wick burns steady beside the sale date. It cannot date the bowl."
+      }
+    ],
+    "admission": "I bought my stall board one letter at a time. Today I could afford the Y in my name.",
+    "editions": [
+      {
+        "action": "Hang the receipt where buyers can lift it",
+        "result": "The boy checks the date himself. Mabry spends the morning explaining the other stamps."
+      },
+      {
+        "action": "Give Mabry the lamp for her stall",
+        "result": "She lights each receipt before she takes a coin. The queue curls past her neighbour’s empty stall."
+      },
+      {
+        "action": "Hold the lamp for Mabry while she shows the buyer",
+        "result": "Mabry turns the bowl herself. For once the person who sold the story has to stand in its light."
+      }
+    ],
+    "away": {
+      "action": "Light the margin on the Nile label",
+      "result": "A second strip glows under the display heading. The date beside it belongs to the copy."
+    },
+    "witnessOffer": "Hold the lamp for Mabry while she shows the buyer",
+    "witnessResult": "Mabry turns the bowl herself. For once the person who sold the story has to stand in its light.",
+    "guardianVoice": "I can give light a weight, almost. I cannot weigh what it cost the boy to ask for his coin back."
+  },
+  {
+    "chapter": 2,
+    "guardian": "Marrow Reedfold",
+    "temple": "Hall of Three Records",
+    "gift": "Trace Thread",
+    "agent": "Wystan Greer",
+    "faction": "Scrapers",
+    "opening": "Marrow catches a loose reed in the door. Someone has rubbed a date from the paper where the fold hid it.",
+    "trials": [
+      {
+        "action": "Unroll the storekeeper’s copy",
+        "result": "Its last mark trails off the edge. The copyist never saw the end of the older roll."
+      },
+      {
+        "action": "Hold the later delivery slip against the gap",
+        "result": "The later writer signs the delivery in full. Neither piece names the day the other was written."
+      }
+    ],
+    "admission": "My father reads our case to visitors. I wanted him to get through a day without anyone laughing.",
+    "editions": [
+      {
+        "action": "Leave both rolls on separate pins",
+        "result": "Visitors can trace the broken line. Wystan sits by his father at opening time."
+      },
+      {
+        "action": "Give Wystan a facsimile hinge to mend",
+        "result": "He can lift it to show the missing date. Anyone in a hurry sees a smooth label."
+      },
+      {
+        "action": "Leave the later slip on Marrow’s high hook",
+        "result": "Wystan’s father can find the correction without a younger hand turning the roll for him."
+      }
+    ],
+    "away": {
+      "action": "Trace the loan number on the frozen page",
+      "result": "The oldest shelf mark points to a later family amendment. Its signature survives on the reverse."
+    },
+    "witnessOffer": "Leave the later slip on Marrow’s high hook",
+    "witnessResult": "Wystan’s father can find the correction without a younger hand turning the roll for him.",
+    "guardianVoice": "I used to give the oldest reed the highest hook. Rain gets to the oldest reed first, too."
+  },
+  {
+    "chapter": 3,
+    "guardian": "Mossgrave",
+    "temple": "Frost Vault",
+    "gift": "Keeping Frost",
+    "agent": "Osric Coldry",
+    "faction": "Scrapers",
+    "opening": "A warm thumbprint blooms over a blank name in the ice. Mossgrave tries to close the lid on Odile’s hand.",
+    "trials": [
+      {
+        "action": "Catch the impression on the cold pane",
+        "result": "The blank has four square corners. A slip was lifted out after the page was numbered."
+      },
+      {
+        "action": "Warm the flap with the family seal",
+        "result": "A closed envelope drops into Odile’s hand. The seal gives her family the choice of opening it."
+      }
+    ],
+    "admission": "My little sister practised our name every night. She thought it would fit if she wrote small enough.",
+    "editions": [
+      {
+        "action": "Mark the missing slip on the public file",
+        "result": "Odile can point to what went missing. She must answer strangers at the desk."
+      },
+      {
+        "action": "Let Odile hold the sealed envelope",
+        "result": "She keeps its contents private. The public file carries a gap and the date she took custody."
+      },
+      {
+        "action": "Let the family lift the pane themselves",
+        "result": "Odile sets a tea towel across the envelope. Mossgrave warms one corner for her alone."
+      }
+    ],
+    "away": {
+      "action": "Hold still the scraped graduation on the tide drum",
+      "result": "The gap stays white while the surrounding ink flows back. No reading was taken there."
+    },
+    "witnessOffer": "Let the family lift the pane themselves",
+    "witnessResult": "Odile sets a tea towel across the envelope. Mossgrave warms one corner for her alone.",
+    "guardianVoice": "Nobody told me how long a seed can sleep. I am still waiting for one my sister planted."
+  },
+  {
+    "chapter": 4,
+    "guardian": "Halcy Brightwater",
+    "temple": "Tide Dome",
+    "gift": "Weather Eye",
+    "agent": "Astor Quaile",
+    "faction": "Mirror Court",
+    "opening": "Halcy’s tide globe spills a second blue shadow across the harbour plan. Astor has painted only one line on the bell card.",
+    "trials": [
+      {
+        "action": "Advance the tide wheel a notch",
+        "result": "The near berth dries before the slower boat can turn."
+      },
+      {
+        "action": "Draw the wind vane across the same hour",
+        "result": "With a shore wind the second shadow slips over the ferry steps. Both traces fit the morning gauge."
+      }
+    ],
+    "admission": "They used to ask my teacher what I had said while I stood beside him.",
+    "editions": [
+      {
+        "action": "Call the earliest safe tide by bell",
+        "result": "The small boats move. The deep boat loses an hour waiting for a second call."
+      },
+      {
+        "action": "Pin both ghost tides at the landing",
+        "result": "Astor signs both curves. A deckhand stays to help passengers read them and misses his tea."
+      },
+      {
+        "action": "Set a peg where the child can leave her shoes",
+        "result": "Astor makes a safe shelf for today. Tomorrow’s tide keeps both its shadows."
+      }
+    ],
+    "away": {
+      "action": "Cast the two wind paths across the bird net",
+      "result": "One gust carries calls to the far recorder. A silent recorder need not mark an empty clearing."
+    },
+    "witnessOffer": "Set a peg where the child can leave her shoes",
+    "witnessResult": "Astor makes a safe shelf for today. Tomorrow’s tide keeps both its shadows.",
+    "guardianVoice": "I once told a child every height the water might reach. She was asking where to leave her shoes."
+  },
+  {
+    "chapter": 5,
+    "guardian": "Ninefold",
+    "temple": "Root Hall",
+    "gift": "Many Eyes",
+    "agent": "Gale Pryce",
+    "faction": "True Measure",
+    "opening": "Ninefold lands on the tally board in the shape of a question mark. Gale’s neat last column has no space for a call without a sighting.",
+    "trials": [
+      {
+        "action": "Count shadows at dusk",
+        "result": "One bird casts two shadows across the forked lamp. The moths count themselves until somebody laughs."
+      },
+      {
+        "action": "Turn the screen to the dawn reeds",
+        "result": "A reply comes from below the blind. The sunlit count missed the nesting bank."
+      }
+    ],
+    "admission": "If my numbers look soft, they will cut down my listening post. My brother built it high enough for me.",
+    "editions": [
+      {
+        "action": "Add a column for heard-only calls",
+        "result": "Gale keeps the nesting bank on the route. Comparing this year with last takes longer."
+      },
+      {
+        "action": "Keep a parallel notebook for uncertain calls",
+        "result": "The annual count stays comparable. Gale takes a second round before going home."
+      },
+      {
+        "action": "Give the dawn watcher a second slate",
+        "result": "Gale opens a line for a reply heard off the edge of the first count. The two watchers will meet at dusk."
+      }
+    ],
+    "away": {
+      "action": "Turn the many-eyed lens on the rejected sample tray",
+      "result": "A sample too small for the jaw has been excluded from every figure on the guild sheet."
+    },
+    "witnessOffer": "Give the dawn watcher a second slate",
+    "witnessResult": "Gale opens a line for a reply heard off the edge of the first count. The two watchers will meet at dusk.",
+    "guardianVoice": "We counted my sister twice. It felt like having her back. Please keep the two numbers where we can see them."
+  },
+  {
+    "chapter": 6,
+    "guardian": "Grisel Anvilsong",
+    "temple": "Quench Forge",
+    "gift": "True Temper",
+    "agent": "Harl Tagg",
+    "faction": "True Measure",
+    "opening": "A hot sample rolls under Grisel’s boot. Harl’s form lists a guild recipe. The smith who taught it worked outside the gate.",
+    "trials": [
+      {
+        "action": "Quench twin slips with the same weight",
+        "result": "Changing just the cooling bath leaves a bend in only one slip."
+      },
+      {
+        "action": "Repeat the cool bath in a different clamp",
+        "result": "The second slip bends at the jaws. The maker’s hands mattered along with the bath."
+      }
+    ],
+    "admission": "I could get her method into the guild book. I could not get her through its front door.",
+    "editions": [
+      {
+        "action": "Leave room for the traveller’s account in the register",
+        "result": "A new shift can find its teacher. The guild buys fewer named batches until she returns."
+      },
+      {
+        "action": "Demonstrate both clamps at the gate",
+        "result": "Buyers can repeat the test. Harl works his break to explain why the guild stamp stays."
+      },
+      {
+        "action": "Put Grisel’s cold and warm strikes on the docket",
+        "result": "The guild copies two conditions onto its label. Harl sets a stool at the bench for the traveller."
+      }
+    ],
+    "away": {
+      "action": "Repeat a print with only the pressure changed",
+      "result": "The missing word comes back without changing a single letter of type."
+    },
+    "witnessOffer": "Put Grisel’s cold and warm strikes on the docket",
+    "witnessResult": "The guild copies two conditions onto its label. Harl sets a stool at the bench for the traveller.",
+    "guardianVoice": "My elbow rings false when it is cold. I once failed a perfectly good hammer before breakfast."
+  },
+  {
+    "chapter": 7,
+    "guardian": "Mirro and Orrim",
+    "temple": "Press of Echoes",
+    "gift": "Original Sight",
+    "agent": "Liesl Marrable",
+    "faction": "Gilded Seal",
+    "opening": "The twin printers catch opposite ends of a falling proof. Each recognises their own coffee ring. Liesl has already sold the next edition.",
+    "trials": [
+      {
+        "action": "Match the torn edge to the first forme",
+        "result": "A shop nick repeats on both copies. The nick places the shop but cannot tell the twins apart."
+      },
+      {
+        "action": "Overlay the forgotten author’s correction",
+        "result": "One line was added in a different hand after printing. The late copy carries the stronger reading."
+      }
+    ],
+    "admission": "If the press sleeps tonight, three families go without a shift tomorrow.",
+    "editions": [
+      {
+        "action": "Print the correction on the next run",
+        "result": "The new sheet names the reviser. Readers with an old sheet must come back."
+      },
+      {
+        "action": "Send slips for readers to clip to existing copies",
+        "result": "People can mend the sheet they have. Somebody must keep the loose slips with it."
+      },
+      {
+        "action": "Keep the two corrections facing each other",
+        "result": "The twins give one another the clean sides to sign. Liesl hangs both at the public press."
+      }
+    ],
+    "away": {
+      "action": "Overlay the harbour survey and the pilot’s soundings",
+      "result": "An inlet appears under two spellings. Shared ink concealed two different survey dates."
+    },
+    "witnessOffer": "Keep the two corrections facing each other",
+    "witnessResult": "The twins give one another the clean sides to sign. Liesl hangs both at the public press.",
+    "guardianVoice": "I remember spilling the coffee. So does my brother. Would you turn the paper over for us?"
+  },
+  {
+    "chapter": 8,
+    "guardian": "Old Saltmark",
+    "temple": "Blank Lighthouse",
+    "gift": "Blank Chart",
+    "agent": "Penrose Abernathy",
+    "faction": "True Measure",
+    "opening": "Old Saltmark sings a name beyond the edge of Penrose’s survey. An apprentice has already tied a mooring rope to the wrong blue peg.",
+    "trials": [
+      {
+        "action": "Steer by the printed sounding",
+        "result": "It clears the shoal on a falling tide. The far bank shares its printed name with the landing."
+      },
+      {
+        "action": "Steer by the pilot’s sung turn",
+        "result": "The last verse finds the landing in fog. It carries no depth for the loaded boat."
+      }
+    ],
+    "admission": "When our boat radio failed I could say only one name clearly. I wanted one word every crew could hear.",
+    "editions": [
+      {
+        "action": "Mark both names with the depth and date",
+        "result": "New crews have a common reference. Local pilots give up a private shortcut."
+      },
+      {
+        "action": "Leave a blank with a call for a pilot",
+        "result": "The route stays under local care. Late boats may have to wait outside the channel."
+      },
+      {
+        "action": "Leave space for the surveyor and the singer to sign",
+        "result": "Penrose reads each name back to its speaker. The two people disagree about where the reef ends."
+      }
+    ],
+    "away": {
+      "action": "Unroll the blank chart behind the scenery",
+      "result": "The actor’s pencilled exit leads through a wing the front-row diagram leaves empty."
+    },
+    "witnessOffer": "Leave space for the surveyor and the singer to sign",
+    "witnessResult": "Penrose reads each name back to its speaker. The two people disagree about where the reef ends.",
+    "guardianVoice": "The first printed chart I ever saw had my sister’s reef on it. Somebody must have listened."
+  },
+  {
+    "chapter": 9,
+    "guardian": "The Prompter",
+    "temple": "Dark Stage",
+    "gift": "Stage Whisper",
+    "agent": "Lucan Fairweather",
+    "faction": "Mirror Court",
+    "opening": "Lucan hands out a programme headed REFUSAL. From the last seat the empty chair looks like a deliberate insult.",
+    "trials": [
+      {
+        "action": "Move the mask from prompt corner to balcony",
+        "result": "A crate hides the actor’s hand from the balcony. The first row saw a wave."
+      },
+      {
+        "action": "Light the aisle behind the empty chair",
+        "result": "An usher lifts the chair for a late arrival. A single empty seat carried three different stories."
+      }
+    ],
+    "admission": "An empty house sounds like somebody drawing a very long breath and never letting it go.",
+    "editions": [
+      {
+        "action": "Let the ushers print both sightlines",
+        "result": "Late arrivals have a way into the scene. Lucan loses the brisk heading that sold the first tickets."
+      },
+      {
+        "action": "Open two seats at the dress rehearsal",
+        "result": "The audience can test its own reading. Two paying places stay empty every evening."
+      },
+      {
+        "action": "Trade the prompt mask for the last spectator’s ticket",
+        "result": "Lucan sits in the seat he used to describe to other people. He crosses a word off the programme."
+      }
+    ],
+    "away": {
+      "action": "Listen to the bargain from the carrier’s seat",
+      "result": "The clerk calls a net weight. From behind the full basket the carrier hears only the larger number."
+    },
+    "witnessOffer": "Trade the prompt mask for the last spectator’s ticket",
+    "witnessResult": "Lucan sits in the seat he used to describe to other people. He crosses a word off the programme.",
+    "guardianVoice": "I watched from the wings for thirty years before anyone offered me a seat. Which chair did they keep for you?"
+  },
+  {
+    "chapter": 10,
+    "guardian": "Dame Quarta Evenhand",
+    "temple": "Balance Hall",
+    "gift": "Fair Weight",
+    "agent": "Cass Mott",
+    "faction": "Gilded Seal",
+    "opening": "Quarta sets three baskets on the brass hands. Cass puts a seal over the place where the wicker weight should go.",
+    "trials": [
+      {
+        "action": "Weigh the empty nesting basket",
+        "result": "Its double base weighs as much as a handful of grain."
+      },
+      {
+        "action": "Swap wicker while keeping the grain",
+        "result": "The seal reads the same lot. The hand moves because the new basket is lighter."
+      }
+    ],
+    "admission": "My mother taught me to keep the coins for flour apart from the coins for someone worse off. This week both jars are empty.",
+    "editions": [
+      {
+        "action": "Settle today’s sale by the tare",
+        "result": "The buyer recovers the difference. Cass must explain the refund before supper."
+      },
+      {
+        "action": "Loan the check weight to both stalls",
+        "result": "Tomorrow’s customers can test the scale. Today’s receipt stays disputed."
+      },
+      {
+        "action": "Hand the check basket to the customer",
+        "result": "Cass waits while a child steadies the brass hands. The queue watches the wicker tip the empty pan."
+      }
+    ],
+    "away": {
+      "action": "Set the fair weight against two water tokens",
+      "result": "Each token buys a turn of the wheel. The higher bank receives less water in that turn."
+    },
+    "witnessOffer": "Hand the check basket to the customer",
+    "witnessResult": "Cass waits while a child steadies the brass hands. The queue watches the wicker tip the empty pan.",
+    "guardianVoice": "My left hand and my right agree to a grain. They have never had to buy a loaf."
+  },
+  {
+    "chapter": 11,
+    "guardian": "Lull",
+    "temple": "Spring Steps",
+    "gift": "Common Current",
+    "agent": "Dorran Sluys",
+    "faction": "Single Bell",
+    "opening": "Brisk carries three cups through the spring and brings back two full. Dorran’s upstream and downstream crews signed on different days.",
+    "trials": [
+      {
+        "action": "Split one turn equally at the head gate",
+        "result": "The lower cup is short. Water soaks into the dry bank on its way down."
+      },
+      {
+        "action": "Let the last crew call the gate change",
+        "result": "All three hear the turn. The first crew leaves its plot to stand by the gate."
+      }
+    ],
+    "admission": "My sister and I used to sing across the weir. After the last public meeting she stopped answering.",
+    "editions": [
+      {
+        "action": "Bring both crews to the wet bank",
+        "result": "Everyone sees the shortfall. Dorran can no longer keep the two signatures a day apart."
+      },
+      {
+        "action": "Send a cup and a witness each way",
+        "result": "The crews keep separate meeting places. The witnesses give up their next shift."
+      },
+      {
+        "action": "Let the smallest crew sound the next turn",
+        "result": "The upstream crew hears its own gate discussed from downstream. Dorran leaves both meeting dates posted."
+      }
+    ],
+    "away": {
+      "action": "Follow the current between two district bins",
+      "result": "Each bin is full on its own return. The travelling library sits between them without a booking."
+    },
+    "witnessOffer": "Let the smallest crew sound the next turn",
+    "witnessResult": "The upstream crew hears its own gate discussed from downstream. Dorran leaves both meeting dates posted.",
+    "guardianVoice": "Lull fell asleep at the meeting. Brisk called it agreement. Swirl kept his cup upside down till morning."
+  },
+  {
+    "chapter": 12,
+    "guardian": "Ledgerlock",
+    "temple": "Clockwork Hall",
+    "gift": "Open Gears",
+    "agent": "Nyle Ostry",
+    "faction": "Single Bell",
+    "opening": "Ledgerlock lifts a brass foot over the district line and stalls. Nyle’s rule has no square for a doorstep shared by two streets.",
+    "trials": [
+      {
+        "action": "Run the rule from the east entrance",
+        "result": "The household goes west on the list and waits for a cart that never comes."
+      },
+      {
+        "action": "Move the starting peg to the west entrance",
+        "result": "The same household goes east. Each district has a justified entry, and neither delivers."
+      }
+    ],
+    "admission": "Our street is quiet for the first time in years. I forgot quiet could sound exactly like being left out.",
+    "editions": [
+      {
+        "action": "Keep both route names and one shared stop",
+        "result": "Each district keeps its song. One driver waits for the other at the boundary."
+      },
+      {
+        "action": "Leave the cart free to cross on request",
+        "result": "A household can call it across. Somebody who cannot call still needs a visitor."
+      },
+      {
+        "action": "Walk the missed doorstep with its resident",
+        "result": "Nyle pencils in both entrances and initials the route change. The library arrives from the quieter street."
+      }
+    ],
+    "away": {
+      "action": "Open the date rule in the listening catalogue",
+      "result": "Every unsigned account fell out at one step, including the one the volunteer heard herself."
+    },
+    "witnessOffer": "Walk the missed doorstep with its resident",
+    "witnessResult": "Nyle pencils in both entrances and initials the route change. The library arrives from the quieter street.",
+    "guardianVoice": "I can show every turn of my wheels. I still need a person to tell me whose house this is."
+  },
+  {
+    "chapter": 13,
+    "guardian": "Hollin Softvoice",
+    "temple": "Listening Well",
+    "gift": "Second Ear",
+    "agent": "Tolly Fadden",
+    "faction": "Scrapers",
+    "opening": "Hollin lifts a hand at a footstep nobody else picked out. Tolly has clipped a family voice to the public copy of a walk.",
+    "trials": [
+      {
+        "action": "Listen from the bridge stair",
+        "result": "A second cane answers the first. The walker had company for this part."
+      },
+      {
+        "action": "Follow the listener’s access slip",
+        "result": "One voice agreed to a family hearing. The public index lists the event without permission to play it."
+      }
+    ],
+    "admission": "I hid my own family’s page first. After that, every empty space looked like a little kindness.",
+    "editions": [
+      {
+        "action": "Keep the voice in the family room",
+        "result": "The relative can hear both footsteps. Visitors get the signed index and a silence."
+      },
+      {
+        "action": "Invite a fresh public telling of the walk",
+        "result": "The speaker can set their own boundary. A later account cannot replace this recording."
+      },
+      {
+        "action": "Let the family choose the public pause",
+        "result": "Tolly keeps the private voice with the family. Visitors can still find the point at which the public take ends."
+      }
+    ],
+    "away": {
+      "action": "Hear the model maker’s uncredited assistant",
+      "result": "She says which tray she watered twice. The harvest figure now has a witness and a limit."
+    },
+    "witnessOffer": "Let the family choose the public pause",
+    "witnessResult": "Tolly keeps the private voice with the family. Visitors can still find the point at which the public take ends.",
+    "guardianVoice": "I know that pause. I cannot tell you whose it is until they say I may."
+  },
+  {
+    "chapter": 14,
+    "guardian": "Tansy Littlemore",
+    "temple": "Model Garden",
+    "gift": "Small World",
+    "agent": "Sabine Orrell",
+    "faction": "Mirror Court",
+    "opening": "Tansy fits the last paper tree into the garden. Sabine brings a ribbon from a famous visitor. The model harvest fails on the shaded side.",
+    "trials": [
+      {
+        "action": "Run the dry slope with the same rain",
+        "result": "The low field keeps a crop. The higher bed dries before the fair."
+      },
+      {
+        "action": "Add the narrow shade cloth and rerun",
+        "result": "The result changes along one row. The visiting expert never saw this run."
+      }
+    ],
+    "admission": "People remember my face after a lecture. I wish somebody remembered the question I brought with me.",
+    "editions": [
+      {
+        "action": "Invite the gardener to demonstrate the shade",
+        "result": "A local finding travels with the model. Sabine gives up her place on the programme."
+      },
+      {
+        "action": "Publish the model with its two trial runs",
+        "result": "A stranger can repeat the comparison. The gardener waits for a name on the public label."
+      },
+      {
+        "action": "Leave the shade cloth in the gardener’s hands",
+        "result": "Sabine helps the gardener lift the cloth. Visitors can run either season and read who planted each row."
+      }
+    ],
+    "away": {
+      "action": "Run a miniature hearing with the quiet bench moved",
+      "result": "A delegate who could not hear the first motion can now give a reason before the vote."
+    },
+    "witnessOffer": "Leave the shade cloth in the gardener’s hands",
+    "witnessResult": "Sabine helps the gardener lift the cloth. Visitors can run either season and read who planted each row.",
+    "guardianVoice": "I was going to put the blue ribbon on that row. My mother says the smallest tree is the only one that looks like home."
+  }
+]
