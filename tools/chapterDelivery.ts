@@ -25,6 +25,10 @@ export function chapterDelivery(
       )
         return;
       const part = JSON.parse(code);
+      // On a playing device the story sections supply the conversations. The
+      // authoring profile and text are needed only when building those sections.
+      if (file.endsWith('/keeper-lives.json'))
+        return { code: JSON.stringify(Object.fromEntries(Object.keys(part).map(id => [id, {}]))), map: null };
       if (!Array.isArray(part.dialogue) && !Array.isArray(part.hints)) return;
       for (const hint of part.hints ?? []) hint.text = '';
       for (const node of part.dialogue ?? []) {
@@ -102,6 +106,7 @@ export function chapterDelivery(
           if (prop.kind === 'scene') own(prop.node, map.world);
         for (const npc of map.npcs) {
           const actor = actors.get(npc.id);
+          if (actor?.mode === 'fictional') own('offshift.' + actor.id + '.offer', map.world);
           own(actor?.localGreeting?.[map.id], map.world);
           for (const entry of actor?.talk ?? []) own(entry.node, map.world);
         }

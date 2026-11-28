@@ -1,3 +1,4 @@
+import { keeperLifeEntry, offersKeeperVisit } from '../src/domain/keeperLife';
 /**
  * Plays the whole chapter through the domain engine with no rendering.
  * Covers several label routes (M01), Showdown outcomes, both forge routes
@@ -508,6 +509,8 @@ describe('dialogue graph', () => {
       const node = pack.characters.find(c => c.id === npc.id)?.localGreeting?.[map.id];
       return node ? [node] : [];
     }));
+    const cast = new Map(pack.characters.map(c => [c.id, c]));
+    const greetings = new Set([...localGreetings, ...pack.characters.flatMap(c => c.talk.map(t => t.node))]);
     const stack = [...localGreetings, ...pack.characters.flatMap((c) => c.talk.map((t) => t.node)), ...pack.events.map((e) => e.node),
       ...(pack.keepsakeTalks ?? []).map((t) => t.node), ...entries, ...propScenes];
     while (stack.length) {
@@ -516,6 +519,8 @@ describe('dialogue graph', () => {
       reach.add(id);
       const n = pack.dialogue.find((x) => x.id === id);
       if (!n) throw new Error(`Missing dialogue entry: ${id}`);
+      if (offersKeeperVisit(n, cast.get(n.speaker), greetings.has(n.id)))
+        stack.push(keeperLifeEntry(n.speaker, {flags:{}}));
       if (n.next) stack.push(n.next);
       for (const o of n.options ?? []) if (o.next) stack.push(o.next);
     }

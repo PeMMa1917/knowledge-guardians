@@ -800,3 +800,63 @@ Neska used to earn her supper by getting a ballad out of every guest. She sincer
 At the market post, Kip catches himself wishing he had witnessed the first stamping. Putting the hour beside his own name makes him admit that he was at supper. Hesper remembers what Ise did for a hurt hand from the piece that is still missing from her coat. Ise offers that coat for the round, steadies a short stool with her foot and learns to let a stranger return an answer in her own glove. Orrin uses a joke about a wax cricket to ask a painful question. He wants to know whether he could have been sitting at his post all night while Elsbet thought he had left. [The cricket in the sleeve](STORY_BIBLE.md#the-cricket-in-the-sleeve)
 
 In the pocket theatre, Kip saves one chair for a singer with a long verse. He listens even when the apparent ten votes shrink to one. At the rehearsal rope Pella remembers the entrance still waiting for a bell. Wren values the breath before an archive excerpt because it gives the speaker back a condition on her words. At the Water Commons, the gardener who disputes the clerk's warning still needs to know who gets water on Thursday. Each speaker has a particular reason to stay after a claim has been corrected.
+
+## When the shift ends
+
+Warden Ise can show you what a promise cost or let you save a chair for a runner with empty hands. If you save the chair, the next time you ask about it she'll tell you what Kip did with the last biscuit. Vesper wants a return passage after the bell. Opal wants a latch her father can open on a moving ferry. Their personal scenes keep the choice the player made. Each fictional speaker's profile records their want, unspoken need, priority, belief, way of finding out, speech pattern and allegiance. [All keeper profiles](../src/content/keeper-lives.json)
+
+### Corvan Hale (`merchant-corvan`)
+
+- **Believes** A trader has to be there the next morning to hear what a buyer found.
+- **Worries** His daughter may inherit a label he has never explained.
+- **Speaks** Names the purchaser he must face the next morning.
+- **Why** He built a trading stall he hopes she will want to take over.
+
+### Guildmaster Orrin Pell (`guildmaster-orrin`)
+
+- **Believes** A neat total can hide the last pair of hands.
+- **Worries** The worker at the end of the queue will disappear from the accounts.
+- **Speaks** Waits to turn a page until the last worker can be named.
+- **Why** A wage book closes more readily than a workshop door.
+
+### Fruit seller Mara (`fruit-seller`)
+
+- **Believes** A warning can travel in the time it takes to hand back change.
+- **Worries** A rumour will settle over the apricots for the whole market day.
+- **Speaks** Turns a public rumour into private talk about the day's fruit.
+- **Why** A customer brought a story she never agreed to trade in.
+
+### Nellis Haig (`handoff-nellis`)
+
+- **Believes** A quick courier can still afford one honest sentence about what was missed.
+- **Worries** The stamp on a delivery will be mistaken for his own inspection.
+- **Speaks** Waits for a returning worker to supply the closing verb.
+- **Why** He got his courier job on the strength of a gold stamp.
+
+### Enna Bridgel (`ferry-cook`)
+
+- **Believes** An empty seat at closing time can still belong to a passenger.
+- **Worries** The last boat will arrive after the stallholders have eaten.
+- **Speaks** Offers a hot meal before she offers her gauge reading.
+- **Why** She has a pot on the landing that a tired passenger can smell from the water.
+
+### Nemi Rill (`fern-record-nemi`)
+
+- **Believes** One fern can give two views without growing another frond.
+- **Worries** Her tidy label may stop visitors turning the leaf.
+- **Speaks** Invites the next reader to turn the leaf over.
+- **Why** Other readers have seen a different thing on the very same frond.
+
+### Lio Cress (`fern-record-lio`)
+
+- **Believes** An instruction can cross a bridge without reaching the person under it.
+- **Worries** The crew on the bridge will count a signal that never reached the worker below.
+- **Speaks** Hears the bridge signal as someone standing underneath would.
+- **Why** His listening post sits beneath the bell that others hear from above.
+
+### Brenna Reedfast (`badge-keeper`)
+
+- **Believes** A badge that remembers only a name has lost most of its work.
+- **Worries** A name on a badge will conceal what the worker contributed.
+- **Speaks** Asks the quieter worker to begin the story before the supervisor.
+- **Why** A real worker can show the act that a badge commemorates.

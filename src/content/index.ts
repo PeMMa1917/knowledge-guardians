@@ -1,3 +1,4 @@
+import { keeperConversations } from './keeperLives';
 import { installReturnCoat } from './returnCoat';
 import { installPocketTheatre } from './pocketTheatre';
 import {installWalkingOrchard} from './walkingOrchard';
@@ -315,5 +316,6 @@ export function buildPack(): ContentPack {
   }));
   reviewChapterPractices(content);
   addMicroSkills(content);
+  content.dialogue.push(...keeperConversations());
   return content;
 }
