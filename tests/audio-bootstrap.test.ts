@@ -15,12 +15,13 @@ describe('optional sound bootstrap', () => {
     const scene = Object.assign(new BootScene(), {
       load, game: { events }, scale: { width: 640, height: 360 },
       add: { rectangle: vi.fn() }, children: { removeAll: vi.fn() },
-      textures: { exists: () => true },
+      textures: { exists: () => true, get: () => ({ has: () => true }) },
       anims: { exists: () => true, create: vi.fn(), generateFrameNumbers: vi.fn() },
     });
 
     scene.preload();
     expect(load.image).toHaveBeenCalled();
+    expect(load.image).not.toHaveBeenCalledWith('council', expect.any(String));
     expect(load.spritesheet).toHaveBeenCalled();
     expect(load.audio).not.toHaveBeenCalled();
 
@@ -39,7 +40,7 @@ describe('optional sound bootstrap', () => {
     const events = {emit:vi.fn()};
     const scene = Object.assign(new BootScene(), {
       load, game:{events}, scale:{width:390,height:844}, add:{rectangle:vi.fn()},
-      children:{removeAll:vi.fn()}, textures:{exists:()=>true}, anims:{exists:()=>true,create:vi.fn(),generateFrameNumbers:vi.fn()},
+      children:{removeAll:vi.fn()}, textures:{exists:()=>true,get:()=>({has:()=>true})}, anims:{exists:()=>true,create:vi.fn(),generateFrameNumbers:vi.fn()},
     });
     scene.preload();
     listeners.get('loaderror')!({type:'image',key:'ow'});

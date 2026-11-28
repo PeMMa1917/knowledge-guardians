@@ -1,3 +1,4 @@
+import { pendingHint } from 'virtual:kg-chapters';
 import type { GameController } from '../app/controller';
 import { guideObjectives } from '../domain/guidance';
 import { h } from './dom';
@@ -18,10 +19,17 @@ export function localGuide(controller: GameController, world: string, preferred?
       return;
     }
     const step = h('select', { 'aria-label': 'Choose a step for help' }, ...steps.map((entry) => h('option', { value: entry.id }, entry.title)));
-    const request = h('button', { type: 'button', onclick: () => {
+    const request = h('button', { type: 'button', onclick: async () => {
       if (!options().some(({ id }) => id === step.value)) {
         help.textContent = 'You have finished that step. Close this help to refresh the list.';
         return;
+      }
+      const loading=pendingHint(step.value);
+      if (loading) {
+        request.disabled=step.disabled=true;
+        try {await loading;} catch {help.textContent='The hint could not finish loading. Try again.';return;}
+        finally {request.disabled=step.disabled=false;}
+        if (!details.isConnected) return;
       }
       const reply = controller.dispatch({ type: 'RequestHint', objective: step.value }).find(({ kind }) => kind === 'hint');
       if (!reply || reply.kind !== 'hint') return;

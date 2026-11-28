@@ -17,7 +17,7 @@ describe('the lamplight guest and receiving bench', () => {
       expect(new Set(LANTERN_PEOPLE.map((p) => p[values])).size, values).toBe(250);
     for (const person of LANTERN_PEOPLE) {
       const speaker = pack.characters.find((ch) => ch.id === person.character)!;
-      expect(encyclopediaForCharacter(speaker)?.key).toBe('person:' + person.id.toUpperCase());
+      expect(encyclopediaForCharacter(speaker)?.key).toBe('person:' + (('wikidata' in person && person.wikidata) || person.id.toUpperCase()));
       expect(pack.sources.find((s) => s.id === 'HIS-INK-' + person.id || s.id === 'HIS-LAMPLIGHT-' + person.id)?.supports).toBe(person.context);
       expect(person.folds).toHaveLength(2);
       expect(person.folds[0].arrival).not.toBe(person.folds[1].arrival);

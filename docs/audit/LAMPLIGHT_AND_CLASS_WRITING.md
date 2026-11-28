@@ -1,5 +1,7 @@
 # Lantern workshops and class writing
 
+The workshop table below records the cast and trials at the time of this audit. The current guest records and paired scenes are in the [workshop roster](../../src/content/lamplight-stations.json).
+
 ## Review decision
 
 Keep this build in draft. A teacher’s access depends on the student’s accepted class assignment. In local play a pre-existing note stays on the device. School deployment still needs account lifecycle operations, an actual hosting pilot and evidence from students and teachers. This is a modeled review from 73 perspectives. There were no participant interviews, examiner endorsements or community approvals in this review.

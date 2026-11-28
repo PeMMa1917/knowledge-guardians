@@ -1,5 +1,18 @@
 # Chromium release checks
 
+## Chapter downloads
+
+Run `npm run build`, `npm run check:chapters` and `npm run preview`. The content check compares the released rooms with the authored map functions, including every tile, actor, stamp and exit. It also compares each full dialogue record, choice and authored guide hint with the canonical campaign.
+
+Run the following against the production preview. Both journeys accept `chromium`, `firefox` and `webkit`. The chapter journey uses a 1366 × 768 viewport and fictional local saves. It checks which files the browser requests, interrupts both a map and its artwork, retries, revisits a cached room, reopens a Nile save directly and enters the Council. Add `--all-rooms` to visit all published rooms and check their stamped artwork. The fictional player uses “Go in” at content notices.
+
+```sh
+node tools/smoke-chapter-delivery.mjs chromium http://127.0.0.1:4173
+node tools/smoke-arrival.mjs chromium http://127.0.0.1:4173
+```
+
+In the Chromium cold-cache comparison, the fresh menu used 2,663,807 bytes of JavaScript on the previous build and about 4,680 bytes on the chapter-loading build. By the first playable Nexus conversation, the totals were about 3.01 MB and 2.58 MB of JavaScript respectively. The new build also fetched about 115 kB of room, story and index data. These measurements gzip each downloaded script at level 9 and count the packaged data files at their published sizes. Fonts, audio and images are separate. They measure bytes rather than elapsed time on a physical Chromebook.
+
 ## Review a curriculum combination
 
 Open the offline [reviewer checklist](audit/COMBINATION_CHECKLIST.html). Choose a chapter and an anchored selection. A single check belongs to exactly one of 24 Bloom and DOK cells. Open a micro-skill as a row, pin it and use a combination number to try another selection. In the controlled browser checks, a checked cell survives a reload, keeps its note, transfers by JSON to another browser context and exports in a CSV. A new chapter and a neighbouring combination each open their own grid. [Checklist test](../tools/smoke-combination-checklist.mjs)

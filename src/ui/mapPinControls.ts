@@ -1,6 +1,6 @@
 import type { GameController } from '../app/controller';
 import { FOLLOW_PIN, mapPinKey, PIN_PURPOSES, readMapPin, writeMapPin, type MapPin, type PinPurpose } from '../domain/mapPins';
-import { MAPS } from '../maps';
+import { MAPS } from 'virtual:kg-chapters';
 import { h } from './dom';
 
 export function mapPinControls(controller: GameController, mapId: string, redraw: (pin?: MapPin) => void): HTMLElement {

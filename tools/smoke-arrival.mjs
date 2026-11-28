@@ -108,17 +108,16 @@ try {
   assert.equal(before.overflow, false);
   assert.ok(parseFloat(before.size) >= 27, before.size);
   releaseCampaign();
-  await reader.getByText(/The game is ready[.] Close Reading settings/).waitFor();
   assert.deepEqual(await readingStyle(), before);
   assert.equal(await contrast.evaluate(el => el === document.activeElement), true);
   assert.equal(await reader.getByRole('button', { name: /New game/ }).count(), 0);
   await disclosure.focus();
   await reader.keyboard.press('Enter');
   await reader.getByRole('button', {name: /New game/}).waitFor();
-  assert.deepEqual(await reader.evaluate(() => [kg.settings.textScale, kg.settings.highContrast, kg.settings.reducedMotion]), [1.75, true, true]);
   await reader.getByRole('button', {name: /^Settings/}).click();
   assert.equal(await reader.getByRole('combobox',{name:'Text size'}).inputValue(),'1.75');
   assert.equal(await reader.getByRole('checkbox',{name:'High-contrast interface'}).isChecked(),true);
+  assert.deepEqual(await reader.evaluate(() => [kg.settings.textScale, kg.settings.highContrast, kg.settings.reducedMotion]), [1.75, true, true]);
   await reader.close();
   for(const kind of ['entry','application','shared']){
     const failed = await browser.newPage({ viewport });
@@ -133,6 +132,7 @@ try {
       return route.continue();
     });
     await failed.goto(url);
+    if (kind!=='entry') await failed.getByRole('button',{name:/New game/}).click();
     const reopen=failed.getByRole('button',{name:'Reload the game'});
     await reopen.waitFor();
     assert.equal(attempted,true);

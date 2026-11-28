@@ -228,7 +228,7 @@ export function installLamplight(pack: ContentPack, articles: ReadonlyMap<string
     }
     pack.dialogue.push({ id, speaker: person.character, text: person.opening, historicalLabel: 'imagined-alternate' });
     pack.sources.push({ id: 'HIS-LAMPLIGHT-' + person.id, title, locator: 'Biographical article', supports: person.context,
-      url: 'https://en.wikipedia.org/wiki/' + encodeURIComponent(title.replaceAll(' ', '_')), accessed: '2026-11-27',
+      url: 'https://en.wikipedia.org/wiki/' + encodeURIComponent(title.replaceAll(' ', '_')), accessed: '2026-11-28',
       mla: { kind: 'page', title, container: 'Wikipedia', showAccessDate: true } });
   }
 }

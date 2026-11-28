@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { room } from 'virtual:kg-chapters';
 import { ctx } from './context';
 import { paceReadingRoom } from './readingPace';
 import { BootScene } from '../scenes/BootScene';
@@ -70,6 +71,9 @@ export function prepareWorld(): Promise<void> {
     throw error;
   });
   return boot;
+}
+export function prepareRoomPictures(id: string) {
+  return (game!.scene.getScene('boot') as BootScene).loadRoomPictures(room(id));
 }
 export function startWorld() {
   if (!game) return;

@@ -3,7 +3,7 @@ import {threadKey,threadRecap} from '../domain/trailThread';
  * GameController: the single owner of campaign state, permanent record and
  * saves. Scenes and UI call `dispatch`; nothing else writes state.
  */
-import { buildPack } from '../content';
+import { buildPack } from 'virtual:kg-chapters';
 import { journalText } from '../domain/adventureJournal';
 import { Engine, newCampaign, type Command, type GameEvent } from '../domain/engine';
 import { checkAwards, restoreQuestionWays } from '../domain/permanent';
@@ -17,7 +17,7 @@ import { validateContent } from '../domain/validate';
 import { addActivity, dayOf } from '../domain/ledger';
 import { leaderboardSharing, normalizeLeaderboardAlias } from '../domain/leaderboard';
 import { leaderboardIndex, recordLeaderboardAction, recordLeaderboardMeeting, startLeaderboard } from '../domain/leaderboardTracking';
-import { MAPS } from '../maps';
+import { MAPS } from 'virtual:kg-chapters';
 import { ctx } from './context';
 
 type Listener = (events: GameEvent[]) => void;
@@ -25,13 +25,24 @@ type Listener = (events: GameEvent[]) => void;
 // Only authored definitions and their lookup table are shared by accounts in the same page.
 function indexCampaign() {
   const pack = buildPack();
-  return {pack, leaderboardRules:leaderboardIndex(pack, Object.values(MAPS))};
+  return { pack, leaderboardRules: leaderboardIndex(pack, Object.values(MAPS)) };
 }
 let publishedCampaign: ReturnType<typeof indexCampaign> | undefined;
 
 export class GameController {
-  readonly pack: ContentPack;
-  readonly engine: Engine;
+  private definitions?: ReturnType<typeof indexCampaign> & { engine: Engine };
+
+  private campaign() {
+    if (!this.definitions) {
+      const rules = import.meta.env.PROD ? (publishedCampaign ??= indexCampaign()) : indexCampaign();
+      this.definitions = { ...rules, engine: new Engine(rules.pack) };
+    }
+    return this.definitions;
+  }
+  get pack(): ContentPack { return this.campaign().pack; }
+  get engine(): Engine { return this.campaign().engine; }
+  private get leaderboardRules() { return this.campaign().leaderboardRules; }
+
   readonly saves: SaveService;
   state!: CampaignState;
   permanent: PermanentRecord;
@@ -43,16 +54,10 @@ export class GameController {
   private playStart = Date.now();
   private diarySessionStart: number | null = null;
   private permanentDirty = false;
-  private readonly leaderboardRules: ReturnType<typeof leaderboardIndex>;
   private permanentWriteFailed = false;
 
   constructor(store = browserStore()) {
-    const definitions = import.meta.env.PROD ? (publishedCampaign ??= indexCampaign()) : indexCampaign();
-    this.pack = definitions.pack;
-    this.leaderboardRules = definitions.leaderboardRules;
-    // The production build validates this exact assembled pack. Development checks live content here.
     this.contentProblems = import.meta.env.PROD ? [] : validateContent(this.pack);
-    this.engine = new Engine(this.pack);
     this.saves = new SaveService(store);
     this.permanent = this.saves.loadPermanent();
     const r = this.saves.load();

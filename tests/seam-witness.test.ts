@@ -53,7 +53,8 @@ describe('The Gap in the Backdrop and The Edge That Stayed', () => {
     expect(textile.dateText).toEqual('1981 embroidery and 2024 print');
     const textileCard = pack.cards.find(({ id }) => id === textile.grantsCard)!;
     expect(textileCard.text).toContain('hand-coloured serigraph on paper, MOM/2024/133');
-    expect(textileCard.person?.place).toBe('Idivuoma, Sápmi');
+    expect(textileCard.person).toBeUndefined();
+    expect(pack.cards.find(c=>c.id === 'card.seam.valkeapaa')?.person?.name).toBe('Nils-Aslak Valkeapää');
     expect(textileCard.limits).toContain('1981 embroidery');
     const point = pack.exhibits.find(({ id }) => id === 'OBJ-SEAM-NUUGAARSUK')!;
     expect(point.sources).toEqual(['HIS-SEAM-04', 'HIS-SEAM-05']);

@@ -28,11 +28,11 @@ export const millAccounts = {
   yard: {
     title: 'A mill with an empty rack',
     keeper: 'Hesper',
-    guest: 'q92824',
-    guestName: 'Judea Pearl',
+    guest: 'q37103',
+    guestName: 'Florence Nightingale',
     opening:
       'Hesper has kept the old iron tooth. The apprentice would like it thrown in the river. “Everybody calls the new one mine. Nobody remembers who carried the boards.” There are four bells before the demonstration ends.',
-    work: 'Pearl puts the same four holes in a strip for every rehearsal. “Leave your moves on the strip. Change who feeds the wheel or which tooth it carries. Then we can see what each change buys.”',
+    work: 'Nightingale sets a tally beside the wheel. “A total alone will make the busier shift look worse. Give me the turns as well as the slips, and let the next shift repeat your four marks.”',
     lead: 'At the Nile register Imani has the pay bowls. Bayette is still waiting at the Copies press for a slip that tells her which part of the shift was tried again.',
     weave: {
       aoks: ['MAT', 'NAT', 'HUM', 'TEC'],
