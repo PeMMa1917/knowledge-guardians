@@ -480,3 +480,11 @@ The pocket theatre harness exercises all 30 cases, their control slides, prematu
 ### Class names and server-scored rounds
 
 Run `node tools/smoke-class-scores.mjs chromium`, `firefox` or `webkit` against the built game with the Playwright settings in the hosting guide. The fictional student finishes Sefa’s online round, checks that the 31 personal activities stay available, and shares two server-calculated results. The test checks the actual share request, the assigned teacher’s private nickname flag, a teacher-set Cyrillic nickname, sign-in with a replacement username, withdrawal and a second class. [Hosting and review](ACCOUNTS_AND_HOSTING.md)
+
+## Visiting keepers and faction responses
+
+A production playthrough in Chromium, Firefox and WebKit started with a fictional Guardian and a prepared save with the Nile and Metalworks crossings open. At Metalworks the player spoke to Aro and sent the full-size hem. Aro disappeared from the yard. The travelling case shelf took the player to Aro in the Nile Archive. Giving the seated reader the lift cord brought Aro back to Metalworks. The return conversation explained why a child now wanted a stool for her grandfather. Hearing it cleared the tracking shelf. The opening scene and homecoming were both in the adventure diary.
+
+In each browser a fresh Guardian then searched the first hall for the Mirror Lake field game, tried an unbalanced load, corrected it and heard Mabry Brassey at the stall. Posting both prices on the reading rail and testing the paid promise gave different accounts. Changing the intended reply left the previously issued order intact until the player reissued it. The game requested just one activity shelf for this route.
+
+The engine suite separately follows all 32 parcel-and-reply combinations, all 15 kinds of faction intervention and the cross-world receipts. These browser journeys exercised production builds on Linux. No physical Chromebook, iPad or phone was used for these two checks.
