@@ -1,3 +1,4 @@
+import { guideDocument } from './combination-rubric.mjs';
 import { reviewStatus, skillReviewIndex } from './combination-review-status.mjs';
 import { reviewedLedger, reviewReference } from './combination-checklist.mjs';
 /** Build and query the full authoring catalogue without enumerating its power set. */
@@ -145,6 +146,7 @@ async function main() {
     ['CHAPTER_VIEWPOINTS.md', chapterRegister(atlas)],
     ['COMBINATION_REVIEW_STATUS.md', reviewStatus(atlas)],
     ['SKILL_REVIEW_INDEX.md', skillReviewIndex(atlas)],
+    ['BLOOM_DOK_REVIEW_GUIDE.md', guideDocument()],
     ['COMBINATION_REVIEWED.json', JSON.stringify(reviewedLedger(atlas),null,2)+'\n'],
     ['COMBINATION_CHECKLIST.html', await renderChecklist(atlas)],
   ];

@@ -33,6 +33,8 @@ python tools/export-combination-workbook.py docs/audit/CHAPTER_REVIEW_GRIDS.xlsx
 
 ### What qualifies for a check
 
+Each cell has a review prompt for that particular combination of cognitive process and depth. Open **Note** beside a cell and expand **What would count at this Bloom level and DOK?** to see it. [Read all 24 review prompts](BLOOM_DOK_REVIEW_GUIDE.md).
+
 Choose the Bloom row for the thinking the student must do and the DOK column for how demanding that thinking is in this encounter. Write down one observable action or decision before inferring a student's reasoning. Two students who reach different endings can demonstrate the same demand. A second playthrough, interview or transfer task can supply evidence of what happened for a particular student.
 
 | Bloom level | Observable example at the coat rail |
@@ -88,7 +90,7 @@ World and chapter filters refer to where an action takes place. Bloom and DOK fi
 
 For a catalogue of N distinct members, each member is present or absent. Within any required group of g members, there are 2^g − 1 nonempty selections. Multiply that factor for each disjoint required group, and multiply by 2 for every remaining optional member. Pool areas and themes into a single required group. Joint designs use separate required groups for narrative and mechanics. Selecting several stories, mechanics, biases, questions or skills follows the same rule.
 
-For example there are 150 × 288 = 43,200 choices of exactly one narrative element and one mechanic. Selecting any nonempty subset of each gives (2^150 − 1)(2^288 − 1) design bundles before TOK anchoring. Two narrative elements, two mechanics and three biases still form one bundle when discovered together. A chapter with ten distinct opportunities to act on such a bundle has different evidence from a player opening the same prop ten times.
+For example there are 150 × 288 = 43,200 choices of exactly one narrative element and one mechanic. Choosing exactly one design element of each kind, one of the 12 concepts, one of the 4 framework parts and exactly one of the 5 areas or 6 themes gives 22,809,600 minimal joint combinations. Across 15 chapters and 24 cognitive cells that already gives 8,211,456,000 possible checks. The workbook starts each chapter with the individual elements. The interactive checklist constructs any requested combination on demand. Selecting any nonempty subset of each gives (2^150 − 1)(2^288 − 1) design bundles before TOK anchoring. Two narrative elements, two mechanics and three biases still form one bundle when discovered together. A chapter with ten distinct opportunities to act on such a bundle has different evidence from a player opening the same prop ten times.
 
 For fixed length k, the calculator counts all size-k sets that meet the required groups. Each such set has k! distinct orders. `--order repeated-sequence --length k` includes revisits. With unlimited revisits, there are infinitely many sequences whenever a valid route is available. Exact integer counts and zero-based lookup by rank make finite sets addressable without printing an exponentially long document. These are counts of design possibilities. Evidence for a particular order comes from a tested journey containing distinct actions in that order.
 

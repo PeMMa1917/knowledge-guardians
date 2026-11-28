@@ -22,12 +22,12 @@ HEADINGS = (
 )
 
 
-def catalogue(path):
+def checklist_data(path):
     raw = path.read_text(encoding="utf-8")
     match = re.search(r'<script type="application/json" id="atlasData">(.*?)</script>', raw, re.S)
     if not match:
         raise ValueError("The selected document has no combination catalogue.")
-    return json.loads(match.group(1))["members"]
+    return json.loads(match.group(1))
 
 
 def review_row(records, names):
@@ -85,7 +85,7 @@ def put_review(book, sheet, values):
         cell.data_type = "s"
 
 
-def workbook(members, ledger):
+def workbook(members, ledger, rubric=None):
     names = {m["id"]: m["name"] for m in members}
     groups = defaultdict(dict)
     if ledger.get("version") != 1 or not isinstance(ledger.get("records"), list):
@@ -150,10 +150,27 @@ def workbook(members, ledger):
         check.error = "Choose Reviewed or Open."
         sheet.add_data_validation(check)
         check.add("J2:AG1048576")
+    if rubric:
+        guide = book.create_sheet("Bloom and DOK")
+        guide.append(["Bloom", "DOK", "Review criterion", "Example or question for the reviewer"])
+        for level in LEVELS:
+            for dok, (criterion, example) in enumerate(rubric[level], 1):
+                guide.append([level.title(), dok, criterion, example])
+        for letter, width in [("A", 17), ("B", 9), ("C", 49), ("D", 96)]:
+            guide.column_dimensions[letter].width = width
+        for row in guide:
+            for cell in row:
+                cell.alignment = Alignment(wrap_text=True, vertical="center")
+            guide.row_dimensions[row[0].row].height = 50 if row[0].row > 1 else 28
+        for cell in guide[1]:
+            cell.font = Font(bold=True, color="FFFFFF")
+            cell.fill = PatternFill("solid", fgColor="17675C")
+        guide.freeze_panes = "C2"
+        guide.auto_filter.ref = guide.dimensions
     return book
 
 
-def verify_export(path, members, ledger):
+def verify_export(path, members, ledger, rubric=None):
     """Check the shipped workbook against every catalogue row and exact recorded cell."""
     names = {m["id"]: m["name"] for m in members}
     expected = defaultdict(dict)
@@ -163,6 +180,11 @@ def verify_export(path, members, ledger):
         expected[board["chapter"]].setdefault(key, []).append(record)
     data = load_workbook(path, read_only=True, data_only=False)
     try:
+        if rubric:
+            expected_guide = [(level.title(), dok, *entry) for level in LEVELS
+                              for dok, entry in enumerate(rubric[level], 1)]
+            if list(data["Bloom and DOK"].values)[1:] != expected_guide:
+                raise ValueError("The workbook differs from the current 24 review criteria.")
         for chapter in range(1, 16):
             sheet = data[f"Chapter {chapter:02d}"]
             rows = iter(sheet.values)
@@ -193,10 +215,12 @@ if __name__ == "__main__":
     parser.add_argument("--ledger", type=Path, default=DOCS / "COMBINATION_REVIEWED.json")
     parser.add_argument("--check", action="store_true", help="Verify an existing workbook against the catalogue and ledger.")
     args = parser.parse_args()
-    members = catalogue(args.checklist)
+    catalogue = checklist_data(args.checklist)
+    members = catalogue["members"]
+    rubric = catalogue.get("rubric")
     ledger = json.loads(args.ledger.read_text(encoding="utf-8"))
     if args.check:
-        verify_export(args.output, members, ledger)
+        verify_export(args.output, members, ledger, rubric)
         print(f'Verified {len(members):,} rows across 15 chapters and {len(ledger["records"])} exact review records.')
     else:
-        workbook(members, ledger).save(args.output)
+        workbook(members, ledger, rubric).save(args.output)

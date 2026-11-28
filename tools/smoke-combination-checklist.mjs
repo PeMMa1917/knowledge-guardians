@@ -48,6 +48,8 @@ try {
   await page
     .getByRole('button', { name: 'Edit evidence for analyse DOK 2' })
     .click();
+  await page.locator('#criteria summary').click();
+  assert((await page.locator('#criteriaDetail').textContent()).includes('wet cuff'));
   await page
     .getByLabel('Review evidence', { exact: true })
     .fill(

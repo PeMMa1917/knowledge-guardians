@@ -276,6 +276,9 @@ function grid() {
 function openNote(b, d) {
   editing = { b, d };
   get('cellTitle').textContent = b + ' · DOK ' + d;
+  const [criterion, example] = atlas.rubric[b][d - 1];
+  get('criteriaTitle').textContent = criterion;
+  get('criteriaDetail').textContent = example;
   const rec = records.get(cellKey(board, b, d));
   get('note').value = rec?.evidence ?? '';
   get('actionIds').value = (rec?.actions ?? []).join('\n');

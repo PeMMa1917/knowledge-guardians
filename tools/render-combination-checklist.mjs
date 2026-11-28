@@ -1,3 +1,4 @@
+import { cognitiveGuide } from './combination-rubric.mjs';
 import { readFile } from 'node:fs/promises';
 import { familyNames } from './combination-atlas.mjs';
 export async function renderChecklist(atlas) {
@@ -39,6 +40,7 @@ export async function renderChecklist(atlas) {
   });
   const compact = {
     leads,
+    rubric: cognitiveGuide,
     members: atlas.members,
     beats: atlas.beats,
     routes: atlas.routes,
