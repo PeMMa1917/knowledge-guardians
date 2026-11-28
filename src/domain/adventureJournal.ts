@@ -1,3 +1,4 @@
+import {workDiaryTopics} from './workTopics';
 import {markDiary} from './riverPostmark';
 import {riverDiary,riverTopics} from './riverNames';
 import {orchardDiary,orchardTopics,type OrchardCommand} from './walkingOrchard';
@@ -585,6 +586,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     const event = entry.event;
     if (!event) return undefined;
     const [family] = event.key.split(':', 1);
+    if(family==='work')return workDiaryTopics(event.key.split(':').at(-1)??'');
     const specimen = family === 'specimen' ? exhibits.get(event.ref)?.specimen : undefined;
     if (family === 'mill') {
       const site = millSites.find(key => event.ref.split('.')[1] === key);

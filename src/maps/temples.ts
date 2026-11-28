@@ -42,5 +42,5 @@ export function sagaDesk(mapId:string):Interactable[] {
   const i=PASSAGES.findIndex(p=>p.hall===mapId);
   if(i<0)return [];
   const [x,y]=sagaDesks[i];
-  return [{id:'travelling-cases',kind:'fieldgame',game:'travelling-cases',label:'the travelling case shelf',art:'ledger',x,y,w:1,h:1,walkThrough:true}];
+  return [{id:'travelling-cases',kind:'fieldgame',game:'travelling-cases',label:'the travelling cases and work orders',art:'ledger',x,y,w:1,h:1,walkThrough:true}];
 }

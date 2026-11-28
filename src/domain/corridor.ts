@@ -58,6 +58,8 @@ export function corridorArrival(s: CampaignState): Effect[] {
   if (!n) return [];
   const order = routeOrder(s);
   const effects: Effect[] = [];
+  if (n > 1 && !s.flags[PASSAGES[n-1].arrived])
+    effects.push({setFlag:PASSAGES[n-1].arrived,value:true});
   if (!order.includes(n)) {
     if (order.length) effects.push({ setFlag: 'corridor.from.' + n, value: s.flags['corridor.last'] ?? order[order.length-1] });
     order.push(n);

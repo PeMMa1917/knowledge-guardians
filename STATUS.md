@@ -8,6 +8,8 @@ The ribbon beside the Nexus entrance and the journal’s Story page preserve vis
 
 A travelling-case shelf in each main hall holds 48 saga stages. Players can take each of the 120 cases through four to eight worlds in any order the corridor allows. A later stop reads the instruction left at the previous stop. Revising a disposition preserves the recorded visit order.
 
+Every main hall also has work orders. There are 4,500 field games, 4,500 personal requests, 3,000 main-quest routes and 6,000 crew missions, plus 12,240 non-saga pattern encounters. These are encounters built from common instruments. Their count measures playable cases. The rehearsal has eight shapes, from steering a ferry around a submerged post to offering a witness a private seat. The shelf can recommend a shape the player has not used recently. 6,060 orders can be received in another world. An open crossing travels between halls without a detour through the Nexus. [Playable rules and coverage](docs/audit/WORLD_WORK.md)
+
 ## Chapter downloads and the historical cast
 
 The fresh menu opens with about 4.7 kB of compressed JavaScript. The playable Nexus loads its own map, dialogue and guide, and later rooms request their story sections and artwork as needed. A saved game can reopen directly in its chapter. The published map, dialogue and hint checks cover all 164 rooms across the Nexus and fifteen chapters. [Download measurements and browser journeys](docs/BROWSER_CHECKS.md#chapter-downloads)

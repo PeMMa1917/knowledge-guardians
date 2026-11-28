@@ -1,5 +1,9 @@
 # Story bible: the whole campaign (chapters 1 to 15)
 
+## Work carried between halls
+
+A keeper may bring the Guardian a hasty seal, a torn leaf or a badly balanced carrier. Opening an order introduces the keeper and the thing at stake. Players can give a witness a public seat or a screen, follow a material trace, pilot a ferry, cover a shift or repair a joint. A third observation can cost a runner the early departure. Hearing a rival out opens a settlement that sends their reservation with the player's instructions. The dispatcher signs in a different name until the Guardian has heard the Water Commons testimony. A keeper at the far end can receive a revision. [Rival voices](../src/content/workshop-rivals.json) · [Case scenes](../src/content/workshop-stories.json)
+
 ## Two coats for one fare
 
 Kip is still wearing his red coat when the lost-property hatch gives it back. On both coats the second button is a green pear with one bite missing. He laughs until he sees the fare taken from his purse. Ise remembers promising to cover a stranger’s crossing. Vesper remembers writing down two coats and letting somebody else enter two wearers. She needed the cloakroom to look busy enough to stay open. Kip would like the money back without becoming the boy everyone has to recognise at the ferry.
