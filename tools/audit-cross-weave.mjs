@@ -1,4 +1,5 @@
 import {orchardProofs} from './walking-orchard-evidence.mjs';
+import { houseProofs } from './open-house-evidence.mjs';
 import { tideClockProofs } from './tide-clock-evidence.mjs';
 import {ferryRadioProofs} from './ferry-radio-evidence.mjs';
 import {lensProofs} from './lens-loan-evidence.mjs';
@@ -157,6 +158,7 @@ const proofRows = [
   ...ferryRadioProofs,
   ...orchardProofs,
   ...tideClockProofs,
+  ...houseProofs,
   ...cupProofs,
   ...almanacProofs,
   {

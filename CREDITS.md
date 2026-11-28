@@ -140,3 +140,5 @@ The cocoa cart, twin carafes, rain flap, gutter, folded offers and chalkboard ar
 The suitcase house, lamp, hinged floor and certificate drawings are original game artwork. The Peoria Tribe of Indians of Oklahoma publishes the history used on its leaf. The Eastern Shawnee Tribe of Oklahoma publishes the constitutional file used for its election certificate. The Absentee Shawnee Tribe of Indians of Oklahoma publishes the description of its own emblem. [Sources and locators](docs/SOURCES.md#two-leaves-at-lamp-quay) · [Artwork](src/ui/turningStacksArt.ts)
 
 The felt loan drawer, two-hook stair, projector frame and silver-thread curtain are original pixel drawings for the Survey Depot and House of Performance. [Loan loft artwork](src/ui/lensLoanArt.ts)
+
+The inn’s turnable floor, kettle, patched chairs, shuttered lamp and spoon-handled door use five original pixel drawings. Returning residents use the campaign’s existing creature portraits. [Inn illustrations](src/ui/openHouseArt.ts)

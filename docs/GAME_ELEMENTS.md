@@ -4,9 +4,9 @@ This tracker maps each numbered item in the supplied *Ultimate Universal RPG Com
 
 | Status | Meaning | Numbered items |
 | --- | --- | ---: |
-| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 124 |
+| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 126 |
 | ◐ Partial | A reachable analogue covers part of the idea, or operates in a narrower setting. The gap is stated. | 110 |
-| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 27 |
+| ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 25 |
 | ✗ Excluded | The classroom, privacy or nonviolent game rules exclude the original system. | 27 |
 
 The marks reflect inspection of authored maps, dialogue, interfaces and tests. A mark does not measure how often players find the activity, how long they spend, or what they learn. Each numbered row refers to the attachment’s item number. Source links point to playable evidence or the existing feature nearest to a planned adaptation.
@@ -99,7 +99,7 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | 65 | Quiet observation and sightlines | ◐ | Players compare viewpoints and wait quietly at the Forest. Theft and evading guards are excluded. | [forest-watch.test.ts](../tests/forest-watch.test.ts), [sightlines.test.ts](../tests/sightlines.test.ts) |
 | 66 | Identity and permission checks | ○ | A future role badge could allow an approved visit and reveal what the badge certifies. Disguise and bluff systems are absent. | [preserved-records.json](../src/content/preserved-records.json) |
 | 67 | Punitive brig and bounty systems | ✗ | The story uses permits and disputes without player theft, jail or fines for mischief. | [AGENTS.md](../AGENTS.md), [archive-handoff.test.ts](../tests/archive-handoff.test.ts) |
-| 68 | Optional field preparation | ○ | The warm room and water trials model competing needs. Optional equipment preparation could extend these cases without survival meters. | [crossings.ts](../src/domain/crossings.ts), [waterGate.ts](../src/domain/waterGate.ts) |
+| 68 | Optional field preparation | ✓ | A resident can send a route thread to the wheel yard, a sightline to the harbour or a folded plan to the inn. Each tool changes a later action. All trips also work without these preparations. | [Household fieldwork](../tests/open-house.test.ts) |
 | 69 | Transparent chance and method checks | ✓ | Lanterns and Bones shows dice and evidence without stakes. The scout board shows the rule behind an apparent chance outcome. | [fairgames.ts](../src/domain/fairgames.ts), [emberford-scout.test.ts](../tests/emberford-scout.test.ts) |
 | 70 | A rival who responds | ◐ | Vesper's letters and subsequent scenes remember decisions. There is no procedural system creating or upgrading rivals. | [letters.ts](../src/domain/letters.ts), [performance-vesper.test.ts](../tests/performance-vesper.test.ts) |
 | 71 | Waystones and save recovery | ✓ | Waystones support rest and deliberate checkpoints. Continue and Recovery are the two save slots. | [saves.ts](../src/domain/saves.ts), [saves.test.ts](../tests/saves.test.ts) |
@@ -258,7 +258,7 @@ Contests use arguments, tests and investigation. Records, chance tools and schoo
 | 184 | Constraint deductions | ✓ | The Weigh-House Slate and Civic arrival rack let players reason about which arrangements satisfy fixed conditions. | [fairgames.ts](../src/domain/fairgames.ts), [civic-story.test.ts](../tests/civic-story.test.ts) |
 | 185 | Route a flow | ✓ | Water Commons compares gate settings before and after repair and lets players route a relief branch on a tile board. | [water-gate.test.ts](../tests/water-gate.test.ts), [route-tiles.test.ts](../tests/route-tiles.test.ts), [water.ts](../src/maps/water.ts) |
 | 186 | Wordplay and meaning | ✓ | Sign-Smith and translation choices change how people read a notice. At Sefa’s table a repaired slip keeps an observation and its limits together for the next reader. | [puzzles.test.ts](../tests/puzzles.test.ts), [translate.test.ts](../tests/translate.test.ts), [tiles.ts](../src/domain/tiles.ts) |
-| 187 | Push objects through constraints | ○ | Island crates and the Packing Table model grouping and route capacity. A push-block room remains open. | [island-story.test.ts](../tests/island-story.test.ts), [opening-packing.test.ts](../tests/opening-packing.test.ts) |
+| 187 | Push objects through constraints | ✓ | Push Tover’s wheeled kettle one room at a time through a layout you issued. Cross grain can stop it where a shoe could pass. Reverse, change the route or park at an alternative opening. | [Kettle yard](../src/domain/openHouse.ts), [wheel checks](../tests/open-house.test.ts) |
 | 188 | Optics and light | ◐ | Otla’s spoon theatre projects one or two spoons from up to two lamps. Shifting the rail separates two casts that had the same chalk outline. The Third Groove tests raking light. A prism chamber remains open. | [supper-shadow.test.ts](../tests/supper-shadow.test.ts), [nile-followups.test.ts](../tests/nile-followups.test.ts) |
 | 189 | Align a view | ✓ | Rotate a map against fixed landmarks in Nile and align shore marks at Lantern House. | [nile-map-guide.test.ts](../tests/nile-map-guide.test.ts), [cartographers-side.test.ts](../tests/cartographers-side.test.ts) |
 | 190 | Recognize rhythmic patterns | ✓ | The bell stair, music box and rehearsal tools show what repeating or reordering a sequence changes. | [bells.test.ts](../tests/bells.test.ts), [musicbox.test.ts](../tests/musicbox.test.ts), [stage-rehearsal.test.ts](../tests/stage-rehearsal.test.ts) |

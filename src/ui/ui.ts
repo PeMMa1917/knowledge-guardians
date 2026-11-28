@@ -1,3 +1,5 @@
+import {paintHousehold,housePanel} from './openHouse';
+import {chairNames,household} from '../domain/openHouse';
 import {courierLiftPanel} from './courierLift';
 import { touringInstrument } from '../content/originTours';
 import { scores as originScores } from '../domain/originInstruments';
@@ -4999,10 +5001,15 @@ export class UI implements UIApi {
     const canvas = h('canvas', { class: 'room-canvas', width: ROOM_W, height: ROOM_H, role: 'img' }) as HTMLCanvasElement;
     const g = canvas.getContext('2d')!;
     const crest = decodeCrest(c.state.flags['crest']);
-    const paint = (t: number) => drawRoom(g, room, { rings: ringData, crest, lumen: glowHex, selected, t });
+    const drawGuests = paintHousehold(c);
+    const paint = (t: number) => {
+      drawRoom(g, room, { rings: ringData, crest, lumen: glowHex, selected, t });
+      drawGuests(g, ctx.settings.reducedEffects ? 0 : t);
+    };
     const describe = () => {
       const items = room.shelf.filter(Boolean).map((id) => owned.find((k) => k.id === id)?.name.toLowerCase()).join(', ');
-      canvas.setAttribute('aria-label', `Your quarters: ${WALLS[room.wall].name} walls, ${FLOORS[room.floor].name.toLowerCase()}, a ${LAMPS[room.lamp].name.toLowerCase()}, a window onto ${VIEWS[room.view].name.toLowerCase()}${room.pet && PETS[room.pet] ? `, and ${/^[aeiou]/i.test(PETS[room.pet]!.name) ? 'an' : 'a'} ${PETS[room.pet]!.name.toLowerCase()} on the rug` : ''}. Star Chart: ${stars} stars. Shelves: ${items || 'empty'}.`);
+      const residents = household(c.state).map(({seat,f,here}) => f.name + (here ? ' at ' + chairNames[seat].toLowerCase() : ' is travelling with you')).join('. ');
+      canvas.setAttribute('aria-label', `Your quarters: ${WALLS[room.wall].name} walls, ${FLOORS[room.floor].name.toLowerCase()}, a ${LAMPS[room.lamp].name.toLowerCase()}, a window onto ${VIEWS[room.view].name.toLowerCase()}${room.pet && PETS[room.pet] ? `, and ${/^[aeiou]/i.test(PETS[room.pet]!.name) ? 'an' : 'a'} ${PETS[room.pet]!.name.toLowerCase()} on the rug` : ''}. Star Chart: ${stars} stars. Shelves: ${items || 'empty'}. ${residents}`.trim());
     };
     const save = () => { c.dispatch({ type: 'SetFlag', flag: 'room', value: encodeRoom(room) }); describe(); };
     const loop = (t: number) => { if (!canvas.isConnected) return; paint(t); if (!ctx.settings.reducedEffects) requestAnimationFrame(loop); };
@@ -5042,6 +5049,7 @@ export class UI implements UIApi {
       h('div', { class: 'room-wrap' }, canvas),
       h('p', { class: 'fine' }, `Star Chart: ${stars} of ${rings.length * 5} stars lit.`),
       h('div', { class: 'room-picks' }, pick('Walls', 'wall', WALLS), pick('Floor', 'floor', FLOORS), pick('Rug', 'rug', RUGS), pick('Lamp', 'lamp', LAMPS), pick('Window view', 'view', VIEWS), pick('Plant', 'plant', PLANTS), pick('Companion', 'pet', PETS)),
+      h('details', {}, h('summary', {}, 'Places for returning companions'), housePanel(c, key => this.sfx(key), 'roost', () => { describe(); paint(0); })),
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);

@@ -1,5 +1,6 @@
 import {grovePanel} from './walkingOrchard';
 import {beds,bedName} from '../domain/walkingOrchard';
+import {housePanel} from './openHouse';
 import {quarterPanel} from './tideClock';
 import {ferryRadioPanel} from './ferryRadio';
 import {turningStacksPanel,signatureLamp} from './turningStacks';
@@ -85,6 +86,12 @@ export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
   ['grove-shutters',{title:'The counting cloth',open:(c,sound)=>grovePanel(c,sound,'shutters')}],
   ['grove-promise',{title:'An evening for the orchard',open:(c,sound)=>grovePanel(c,sound,'promise')}],
   ['grove-square',{title:'The third turn of the orchard',open:(c,sound)=>grovePanel(c,sound,'square')}],
+  ['middlehouse-plan',{title:'The inn under the mat',open:(c,sound)=>housePanel(c,sound,'plan')}],
+  ['middlehouse-roost',{title:'Three warm places',open:(c,sound)=>housePanel(c,sound,'roost')}],
+  ['middlehouse-cart',{title:'The kettle in the yard',open:(c,sound)=>housePanel(c,sound,'cart')}],
+  ['middlehouse-light',{title:'Where the lamp reaches',open:(c,sound)=>housePanel(c,sound,'light')}],
+  ['middlehouse-table',{title:'Three keys to one house',open:(c,sound)=>housePanel(c,sound,'table')}],
+  ['middlehouse-porch',{title:'Somebody lives here',open:(c,sound)=>housePanel(c,sound,'porch')}],
   ['quarter-house',{title:'The quarter that comes back',open:(c,sound)=>quarterPanel(c,sound,false)}],
   ['quarter-plan',{title:'A place at the end of the pier',open:(c,sound)=>quarterPanel(c,sound,true)}],
   ['ferry-wire-studio',{title:'The last word on the water',open:(c,sound)=>ferryRadioPanel(c,sound,false)}],

@@ -4,8 +4,8 @@ This tracker maps every numbered story element in the supplied *Universal RPG Bl
 
 | Status | Meaning | Story elements |
 | --- | --- | ---: |
-| ✓ Playable | At least one authored scene demonstrates the core adapted idea. | 130 |
-| ◐ Partial | The story uses the idea in limited form. The remaining work is named. | 19 |
+| ✓ Playable | At least one authored scene demonstrates the core adapted idea. | 132 |
+| ◐ Partial | The story uses the idea in limited form. The remaining work is named. | 17 |
 | ○ Planned | The corresponding scene or system is open. | 0 |
 | ✗ Excluded | The original aspect is outside the classroom design. | 1 |
 
@@ -124,7 +124,7 @@ These are examples, not a measure of whether every player will find, enjoy or in
 | 72 | Side stories echo the theme | Reading rests and Civic arrival trays show how an official count can omit the people or timing behind it. Ket’s street bell, cord and bench leave different guests waiting. | ✓ | [opening-rests.test.ts](../tests/opening-rests.test.ts), [civic-story.test.ts](../tests/civic-story.test.ts), [crossings.ts](../src/domain/crossings.ts) |
 | 73 | Small favour grows | A small keepsake in Elsbet’s study opens a ferry route. The lamb case later contributes to Wynn’s account. | ✓ | [story.test.ts](../tests/story.test.ts), [ballad.ts](../src/domain/ballad.ts), [crossings.ts](../src/domain/crossings.ts) |
 | 74 | Linked side quests | Crossing `leadsTo` links, epilogue vignettes and ballad verses. "The Runner’s Second Line" changes the receiving conversation in "A Place for the Next Name" across Chapters 2 and 3. | ✓ | [archive-handoff.test.ts](../tests/archive-handoff.test.ts), [lanternfair.test.ts](../tests/lanternfair.test.ts), [witness-strips.test.ts](../tests/witness-strips.test.ts) |
-| 75 | Guild arcs | The Communities of Emberford track local trust. A multi-part vocation with ranks across chapters remains open. | ◐ | [communities.ts](../src/domain/communities.ts), [emberford.ts](../src/maps/emberford.ts) |
+| 75 | Guild arcs | Neska’s guild recognises a floor keeper, a runner, a neighbour with both keys and the keeper who gave the house away for an evening. The actual Emberford stop and harbour light determine what goes home. | ✓ | [Guild work](../src/domain/openHouse.ts), [rank and return checks](../tests/open-house.test.ts) |
 | 76 | Cozy quests | Quarters, dyes, the hearth, Juno's dice table. | ✓ | [quarters.ts](../src/domain/quarters.ts), [hearth.ts](../src/domain/hearth.ts), [fieldgames.ts](../src/domain/fieldgames.ts) |
 | 77 | Observation mysteries | Clue boards, the flood post, the tide engine. | ✓ | [clueboard.ts](../src/domain/clueboard.ts), [emberford.ts](../src/maps/emberford.ts), [observatory.test.ts](../tests/observatory.test.ts) |
 | 78 | Challenges with flair | Showdown spectators react to how an argument changes. The goat and other crossings give low-stakes alternatives. | ✓ | [showdown.ts](../src/domain/showdown.ts), [playthrough.test.ts](../tests/playthrough.test.ts), [crossings.ts](../src/domain/crossings.ts) |
@@ -140,7 +140,7 @@ These are examples, not a measure of whether every player will find, enjoy or in
 | 83 | Item text | The notable keepsakes carry a short history and can reveal a different view of a clue in Elsbet’s study. | ✓ | [story.json](../src/content/story.json), [quarters.json](../src/content/quarters.json) |
 | 84 | Play mirrors mood | The Lamp Wall responds visually to repairs, and the theme changes from the opening to the Council. | ✓ | [WorldScene.ts](../src/scenes/WorldScene.ts), [storyMotifs.ts](../src/domain/storyMotifs.ts) |
 | 85 | Easy retry | Waystones and Recovery support returning to a previous place; many tool trials can be repeated directly. Checkpoints before every major confrontation remain open. | ◐ | [saves.test.ts](../tests/saves.test.ts), [saves.ts](../src/domain/saves.ts) |
-| 86 | Home base grows | Players can furnish quarters and see new records and passageways in the Nexus. A home hub filled by returning companions remains open. | ◐ | [quarters.ts](../src/domain/quarters.ts), [nexus.ts](../src/maps/nexus.ts) |
+| 86 | Home base grows | Any of 240 earned companions can come home to the sill, mat or hearth. A traveller leaves a place waiting. After a public handover, a new landing opens with the actual supper or music stop and the chosen light. | ✓ | [Household](../src/ui/openHouse.ts), [landing](../src/maps/openHouse.ts) |
 | 87 | Non-fight skills pay off | Knowledge and companions open crossing ways. | ✓ | [crossings.test.ts](../tests/crossings.test.ts), [roles.ts](../src/domain/roles.ts) |
 | 88 | Story mode | Calm mode, layered hints and accessible inputs support deliberate play. Distinct story and advanced modes for the whole campaign remain open. | ◐ | [settings.ts](../src/app/settings.ts), [lumen.test.ts](../tests/lumen.test.ts) |
 | 89 | Tutorials in story | The cold open; Dov's stall teaches the counting frame. | ✓ | [opening-notebook.test.ts](../tests/opening-notebook.test.ts), [fieldgames.ts](../src/domain/fieldgames.ts) |

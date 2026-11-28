@@ -42,6 +42,15 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
     if(key.startsWith('walking-grove:track:'))return {tracks:'Which part of the night could this mark explain, and which part still needs a witness?'};
     return {date:'What changed when I brought the two springs up to the same date?',missing:'Which empty space in the book would I try to fill first, and why?'};
   }
+  if(key.startsWith('middlehouse:')){
+    const act=key.split(':')[1];
+    if(act==='seam'||act==='measure')return {join:'Which part of the journey stayed the same when I stretched the corridor?',pace:'When might a person choose a different route once they knew how far it really was?'};
+    if(['seat','clear','hear'].includes(act))return {friend:'What did I learn from waiting for this particular companion to come home?',place:'What might it notice from a different place in the house?'};
+    if(['step','park','undo','restart','route-note'].includes(act))return {measure:'Where did a line that my finger could follow stop being a way through for Tover?',witness:'Whose experience would help me decide what to move?'};
+    if(['place','light','file','lamp-note'].includes(act))return {view:'Who can see the hook I chose?',privacy:'When might a blind corner be worth keeping?'};
+    if(act==='table')return {purpose:'Who has a place at the first evening I chose?',change:'What might make me give the keys to someone else next time?'};
+    return {trace:'Which of my predictions still held when I changed from the shoe to the wheel?',use:'What would I have to try in a full-size room?'};
+  }
   if(key.startsWith('tideclock:')){
     if(key.startsWith('tideclock:compare:') || key.startsWith('tideclock:trace:'))
       return {criterion:'Which person’s request changes what counts as a good place for the same board?',distance:'What do the plank counts tell me, and what would I need to ask someone who used the pier?'};
