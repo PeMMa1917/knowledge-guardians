@@ -40,7 +40,7 @@ function reachTheDrawer(d: Driver) {
   const door = MAPS['nexus.archive'].interactables.find(({ id }) => id === 'water-door')!;
   expect(check(door.visibleIf, d.s)).toBe(false);
   // The earlier Market chapter is outside this route. Earn the Water trials and read the drawer below.
-  d.s.objectivesDone.push('market.finish');
+  d.resumeAfter('market.finish');
   expect(check(door.visibleIf, d.s)).toBe(true);
   visit(d, door.to!.map);
   d.run({ type: 'SetFlag', flag: door.flag!, value: true });

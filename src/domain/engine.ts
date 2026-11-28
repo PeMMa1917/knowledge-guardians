@@ -92,6 +92,7 @@ import { dailyPrompts, diveDepth, diveItems, judgeDive } from './dive';
 import { TIME_MAX, TIME_MIN, answerRound, runSurvey, translateLine, judgeFrame, readForecasts, checkOrder, judgeSight, panes, readTimes, echoReadings, runSorter, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
 import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
+import { corridorArrival, letterPostscript } from './corridor';
 import { objectiveSkillUse, recordSkillUse } from './skills';
 import { apply, check, emptyOutputs, type EffectOutputs } from './rules';
 import { addQuestionWay, checkAwards, grantCredit } from './permanent';
@@ -473,6 +474,7 @@ export class Engine {
         case 'VisitPlace':
           if (!cmd.name.trim()) throw new Error('This place has no name');
           if (s.events.pending && !this.pack.events.find(e=>e.id===s.events.pending)?.maps.includes(s.mapId)) s=deferEvent(s);
+          s = apply(corridorArrival(s), s, out);
           if (s.flags[`visited.map.${s.mapId}`] !== true) s = apply([{ setFlag: `visited.map.${s.mapId}`, value: true }], s, out);
           break;
         case 'HearWorldMemory': {
@@ -536,6 +538,9 @@ export class Engine {
           s=apply([{setFlag:threadKey,value:false},{setFlag:threadFaceKey,value:false}],s,out);
           break;
         case 'SetFlag':
+          if (/^letter\.l(0[1-9]|1[0-5])$/.test(cmd.flag) && cmd.value === true && !s.flags[cmd.flag]) {
+            s = apply([{setFlag:'postscript.' + cmd.flag.slice(7),value:letterPostscript(s)}],s,out);
+          }
           s = apply([{ setFlag: cmd.flag, value: cmd.value }], s, out);
           break;
         case 'CompleteTileStitch': case 'SendTileDispatch': case 'ReceiveTileDispatch':

@@ -7,7 +7,7 @@
    "knowledgeQuestion": "How does the timing of an action shape the reason an audience sees in it?",
    "stake": "If the programme says more than a seat can see, the audience leaves sure of something it never saw.",
    "available": {
-    "objective": "sea.finish"
+    "corridor": 9
    },
    "objectives": [
     {

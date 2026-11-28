@@ -976,7 +976,7 @@
    "knowledgeQuestion": "What must we hold alike to make a comparison that someone else can use?",
    "stake": "If the basket is weighed in with the fruit, households pay more for less, every market day.",
    "available": {
-    "objective": "stage.finish"
+    "corridor": 10
    },
    "objectives": [
     {

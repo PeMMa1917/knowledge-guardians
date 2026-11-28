@@ -1,3 +1,4 @@
+import { arrivalLine, PASSAGES, ribbon, openDestinations, delegations } from '../domain/corridor';
 import { titleActions, type TitleAction } from './titleActions';
 import {callingBook} from './callingBook';
 import {paintHousehold,housePanel} from './openHouse';
@@ -1478,6 +1479,16 @@ export class UI implements UIApi {
     const node = c.engine.talkEntry(characterId, c.state);
     if (!node) return;
     this.sfx('sfx.open');
+    const chapter = PASSAGES.findIndex(p => p.hall === c.state.mapId) + 1;
+    const greeting = arrivalLine(chapter,c.state);
+    const resident = c.pack.characters.find(person => person.id === characterId);
+    if (greeting && resident?.mode === 'fictional' && !c.state.flags['corridor.welcome.' + chapter]) {
+      c.dispatch({type:'SetFlag',flag:'corridor.welcome.' + chapter,value:true});
+      c.dispatch({type:'ReadWorldSign',id:'corridor-welcome-' + chapter,title:resident.name + ' at the door',text:greeting});
+      this.openModal('dialogue',resident.name,this.closeBtn(),h('h2',{},resident.name),h('p',{},greeting),
+        h('button',{onclick:()=>this.showNode(node,true,characterId)},'Stay and talk'));
+      return;
+    }
     this.showNode(node, true, characterId);
   }
 
@@ -1511,7 +1522,8 @@ export class UI implements UIApi {
     }
     if (this.activeEvent) this.activeEventNode = id;
     const raw: DialogueNode = c.engine.node(id);
-    const n: DialogueNode = { ...raw, text: personalise(raw.text, c.state.player) };
+    const witnesses = id === 'council.keeper.welcome' ? delegations(c.state).map(p => p.delegate + ': “' + p.testimony + '”') : [];
+    const n: DialogueNode = { ...raw, text: [personalise(raw.text, c.state.player), ...witnesses].join(' ') };
     const speaker = n.speaker === 'lumen' ? { name: 'Lumen', role: 'Fairy guide', sprite: '' }
       : n.speaker === 'narrator' ? { name: '', role: '', sprite: '' } : c.pack.characters.find((x) => x.id === n.speaker);
     const portrait = n.speaker === 'lumen'
@@ -3101,6 +3113,7 @@ export class UI implements UIApi {
         ...met.map((x) => { const w = crossingWay(s.flags, x.id)!; return h('div', { class: 'lore-entry' }, h('h3', {}, x.title), h('p', { class: 'fine' }, `Chapter ${x.chapter} · ${WAY_LABEL[w.kind]}`), h('p', {}, w.result), h('p', { class: 'fine' }, `Cost: ${w.cost}`)); }));
     } else if (tab === 'afterwards') {
       // The epilogue: where are they now, the mirror scene and the lingering thought.
+      for (const p of delegations(s)) body.append(h('p', {}, h('strong', {}, p.delegate + ' of ' + p.name + '. '), p.testimony));
       body.append(h('h3', {}, 'Where are they now'), ...vignettesFor(s).map((v) => h('div', { class: 'lore-entry' }, h('h3', {}, v.who), h('p', {}, v.text))),
         h('h3', {}, 'The same bench'), h('p', {}, mirror(s)), h('h3', {}, 'Last words'), ...lingering(s).map((t) => h('p', {}, t)),
         h('button', { type: 'button', onclick: () => this.openCampaign(()=>this.openCredits()) }, 'Credits from your journey'));
@@ -3143,6 +3156,7 @@ export class UI implements UIApi {
         ...games.map((g) => h('div', { class: 'lore-entry' }, h('h3', {}, g.name), h('p', { class: 'fine' }, g.host), h('p', {}, g.idea),
           ...(g.id === 'word' && coinageOf(s.flags['word.coined']) ? [h('p', { class: 'fine' }, `Your word: '${coinageOf(s.flags['word.coined'])!.word}', ${coinageOf(s.flags['word.coined'])!.meaning}.`)] : []))));
     } else if (tab === 'story') {
+      body.append(h('h3', {}, 'Your route through the doors'), h('p', {}, ribbon(s)));
       // The story so far: the beats the player has reached, written as a short chronicle.
       const lit = String(Number(s.flags['lamps.lit'] ?? 0));
       const beats = (c.pack.chronicle ?? []).filter((b) => c.check(b.if));
@@ -3673,6 +3687,14 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    if (id === 'corridor-ribbon') {
+      const s = ctx.controller.state;
+      const open = openDestinations(s);
+      this.openModal('corridor-ribbon', 'Ribbon of doors', this.closeBtn(), h('h2',{},'Ribbon of doors'),
+        h('p',{},ribbon(s)),h('p',{},open.length ? 'Doors taking new work: ' + open.join(' · ') : 'All the delegations have returned.'),
+        h('button',{onclick:()=>this.openJournal('story')},'Open your travel journal'));
+      return;
+    }
     const tour = touringInstrument(id);
     if (tour) {
       const view = originInstrument(ctx.controller, tour.o, tour.away, key => this.sfx(key), () => ctx.settings.sfxVolume);

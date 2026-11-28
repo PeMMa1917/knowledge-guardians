@@ -1,5 +1,11 @@
 # Status and next steps
 
+## Routes through the corridor
+
+Returning the Nile dispatch opens six Nexus doors. Any three of their completed cases open the House of Performance and the Market of Measures. The two cases lead to Water Commons. Civic Machine, Archive of Voices and Island of Models then open together. All fourteen earlier worlds must finish before the Council opens.
+
+The ribbon beside the Nexus entrance and the journal’s Story page preserve visit order. Six keepsakes unlock twelve conversations in the other Act II worlds. Vesper’s new letters remember the route at delivery.
+
 ## Chapter downloads and the historical cast
 
 The fresh menu opens with about 4.7 kB of compressed JavaScript. The playable Nexus loads its own map, dialogue and guide, and later rooms request their story sections and artwork as needed. A saved game can reopen directly in its chapter. The published map, dialogue and hint checks cover all 164 rooms across the Nexus and fifteen chapters. [Download measurements and browser journeys](docs/BROWSER_CHECKS.md#chapter-downloads)

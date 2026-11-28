@@ -856,7 +856,7 @@
    "knowledgeQuestion": "How can a shared rule stay fair when a measurement and the conditions change?",
    "stake": "If the drought plan hides who loses, one crew's fields fail and nobody owns the choice.",
    "available": {
-    "objective": "market.finish"
+    "corridor": 11
    },
    "objectives": [
     {

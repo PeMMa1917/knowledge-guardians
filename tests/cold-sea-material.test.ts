@@ -115,8 +115,8 @@ describe('The Open Rim and A Name That Travels', () => {
     const d = new Driver();
     const xp = totalXP(d.p);
     openRim(d, basket);
-    expect(() => door(d, 'sea-door')).toThrow(/Cannot use/);
-    d.s.objectivesDone.push('copies.revise');
+    expect(visible(d, 'sea-door')).toBe(true);
+    d.resumeAfter('copies.revise');
     nameThatTravels(d, boat, true);
     expect(d.s.inventory[tabs]).toBe(1);
     expect(totalXP(d.p)).toBe(xp);
@@ -124,7 +124,7 @@ describe('The Open Rim and A Name That Travels', () => {
 
   it('offers the same local chart decisions when a player skipped the Cold Store task', () => {
     const d = new Driver();
-    d.s.objectivesDone.push('copies.revise');
+    d.resumeAfter('copies.revise');
     nameThatTravels(d, 'skiff', false);
     expect(d.s.inventory[tabs]).toBeUndefined();
   });

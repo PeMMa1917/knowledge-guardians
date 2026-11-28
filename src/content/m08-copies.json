@@ -7,7 +7,7 @@
    "knowledgeQuestion": "What does a claim become when it travels without its limits or its source?",
    "stake": "If the missing Tuesday stays missing, readers walk to a closed hall, and blame the people inside.",
    "available": {
-    "objective": "metal.finish"
+    "corridor": 7
    },
    "objectives": [
     {

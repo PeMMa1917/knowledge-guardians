@@ -24,11 +24,11 @@ function cross(d: Driver, id: string) {
 }
 
 function collect(d: Driver) {
-  d.s.objectivesDone.push('forest.finish');
+  d.resumeAfter('forest.finish');
   cross(d, 'metalworks-door');
   cross(d, 'metal-records-path');
   expect(visible(d, 'bench-debate-entry')).toBeUndefined();
-  d.s.objectivesDone.push('metal.finish');
+  d.resumeAfter('metal.finish');
   cross(d, 'bench-debate-entry');
   scene(d, 'open', 'Set the two requests');
   scene(d, 'repair-record', 'Slide out the second line');
@@ -43,7 +43,7 @@ function civic(d: Driver, choice: 'whole' | 'split') {
   cross(d, 'bench-debate-return');
   cross(d, 'metal-yard-return');
   cross(d, 'metal-nexus-return');
-  d.s.objectivesDone.push('water.finish');
+  d.resumeAfter('water.finish');
   cross(d, 'civic-door');
   cross(d, 'civic-steps-path');
   expect(visible(d, `bench-debate-civic-fit-${choice}`)).toBeUndefined();

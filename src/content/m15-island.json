@@ -687,7 +687,7 @@
    "knowledgeQuestion": "When does a change at one landing make the original route plan too narrow?",
    "stake": "If the plan fails, the island's harvest fair has no crates.",
    "available": {
-    "objective": "voices.finish"
+    "corridor": 14
    },
    "objectives": [
     {

@@ -116,7 +116,7 @@ describe('A witness strip from the Nile Archive to the Metalworks', () => {
     const d = new Driver();
     archiveTrial(d, nile);
     expect(() => door(d, 'metalworks-door')).toThrow(/Cannot use/);
-    d.s.objectivesDone.push('forest.finish');
+    d.resumeAfter('forest.finish');
     const credit = totalXP(d.p);
     workshopTrial(d, metal, 'archive');
     expect(d.s.inventory[strip]).toBe(1);
@@ -125,7 +125,7 @@ describe('A witness strip from the Nile Archive to the Metalworks', () => {
 
   it('lends a strip to a player who skipped the archive practice', () => {
     const d = new Driver();
-    d.s.objectivesDone.push('forest.finish');
+    d.resumeAfter('forest.finish');
     workshopTrial(d, 'shared', 'loan');
     expect(d.s.inventory[strip]).toBeUndefined();
     expect(d.done('nile.witness.compare')).toBe(false);

@@ -20,7 +20,7 @@ function enter(): Driver {
   const d = new Driver();
   const gate = MAPS['nexus.archive'].interactables.find((item) => item.id === 'water-door')!;
   expect(check(gate.visibleIf, d.s)).toBe(false);
-  d.s.objectivesDone.push('market.finish');
+  d.resumeAfter('market.finish');
   expect(check(gate.visibleIf, d.s)).toBe(true);
   d.s.mapId = gate.to!.map;
   d.run({ type: 'SetFlag', flag: gate.flag!, value: true });

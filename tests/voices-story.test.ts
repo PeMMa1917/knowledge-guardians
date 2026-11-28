@@ -37,7 +37,7 @@ describe('The Second Lamp', () => {
   it.each(routes)('publishes $format and posts $revision for equal credit', ({ format, revision }) => {
     const d = new Driver();
     expect(d.e.activeMissions(d.s).some((mission) => mission.id === 'KG-CH13-M01')).toBe(false);
-    d.s.objectivesDone.push('civic.finish');
+    d.resumeAfter('civic.finish');
     visit(d, 'voices-door');
     expect(d.done('voices.arrival')).toBe(true);
     expect(visible(d, 'voices-draft-label')).toBe(true);
@@ -95,7 +95,7 @@ describe('The Second Lamp', () => {
 
   it('recalls checking reachable stops only after the Civic Machine revision', () => {
     const d = new Driver();
-    d.s.objectivesDone.push('civic.finish', 'voices.reader');
+    d.resumeAfter('civic.finish', 'voices.reader');
     d.s.flags['voices.response'] = 'guide';
     const recall = () => d.e.visibleOptions('voices.clerk.revisit', d.s)
       .find(({ option }) => option.next === 'voices.clerk.civic');
@@ -109,7 +109,7 @@ describe('The Second Lamp', () => {
 
   it('recalls a different open date only after the Nexus ribbon is checked', () => {
     const d = new Driver();
-    d.s.objectivesDone.push('civic.finish', 'voices.sources');
+    d.resumeAfter('civic.finish', 'voices.sources');
     const recall = () => d.e.visibleOptions('voices.steward.pin', d.s)
       .find(({ option }) => option.next === 'voices.steward.ribbon');
     expect(recall()).toBeUndefined();
@@ -124,7 +124,7 @@ describe('The Second Lamp', () => {
     ['desk', 'Keep the excerpt at the reading slot'],
   ])('places the optional reading copy by the %s after both source checks', (layout, choice) => {
     const d = new Driver();
-    d.s.objectivesDone.push('civic.finish');
+    d.resumeAfter('civic.finish');
     visit(d, 'voices-door');
     const available = () => d.e.visibleOptions('voices.steward.pin', d.s)
       .some(({ option }) => option.next === 'voices.steward.quote');

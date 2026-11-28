@@ -1074,7 +1074,7 @@
    "knowledgeQuestion": "What else needs to hold after a watch gives the right time once?",
    "stake": "If the hall sets its time by a watch that only agrees with itself, nobody can say when the repair really happened.",
    "available": {
-    "objective": "island.finish"
+    "corridor": 15
    },
    "objectives": [
     {

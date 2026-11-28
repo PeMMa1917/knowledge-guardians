@@ -47,7 +47,7 @@ const forestRoutes = [
 ] as const;
 
 function earnNotebook(d: Driver, route: (typeof forestRoutes)[number]) {
-  d.s.objectivesDone.push('coast.revise');
+  d.resumeAfter('coast.revise');
   visit(d, 'forest-door');
   const options = () => d.e.visibleOptions('forest.observer.bind', d.s).map(({ option }) => option.next);
   expect(options()).toEqual([undefined]);
@@ -106,7 +106,7 @@ describe('Elian’s field notebook', () => {
     const d = new Driver();
     earnNotebook(d, route);
     visit(d, 'forest-nexus-return');
-    d.s.objectivesDone.push('market.finish');
+    d.resumeAfter('market.finish');
     visit(d, 'water-door');
     expect(visible(d, 'water-observer-upper')).toBe(false);
     d.run({ type: 'EquipPerspective', keepsake: notebook });

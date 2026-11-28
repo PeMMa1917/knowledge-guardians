@@ -10,7 +10,7 @@ function enter() {
   const passage = MAPS['nexus.archive'].interactables.find(({ id }) => id === 'market-door')!;
   expect(check(passage.visibleIf, d.s)).toBe(false);
   expect(d.e.activeMissions(d.s).some(({ id }) => id === 'KG-CH10-M01')).toBe(false);
-  d.s.objectivesDone.push('stage.finish');
+  d.resumeAfter('stage.finish');
   expect(check(passage.visibleIf, d.s)).toBe(true);
   d.s.mapId = passage.to!.map;
   d.run({ type: 'SetFlag', flag: passage.flag!, value: true });
@@ -130,7 +130,7 @@ describe('The Price of a Basket', () => {
     const d = enter();
     const ticket = market.interactables.find(({ id }) => id === 'market-quote-return')!;
     expect(check(ticket.visibleIf, d.s)).toBe(false);
-    d.s.objectivesDone.push('market.finish', 'water.publish', 'water.finish');
+    d.resumeAfter('market.finish', 'water.publish', 'water.finish');
     d.s.flags['market.revised'] = true;
     d.s.flags['market.access-key'] = true;
     d.s.flags['market.wick-note'] = true;

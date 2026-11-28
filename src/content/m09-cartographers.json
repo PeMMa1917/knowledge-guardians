@@ -7,7 +7,7 @@
    "knowledgeQuestion": "What can a map’s empty spaces lead people to assume?",
    "stake": "If the chart hides its blank, a skiff runs onto the shoal.",
    "available": {
-    "objective": "copies.revise"
+    "corridor": 8
    },
    "objectives": [
     {

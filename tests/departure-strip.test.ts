@@ -82,7 +82,7 @@ describe('The Departure Strip and The Name on the Back', () => {
       const d = new Driver();
       const startCredit = { ...d.p.credit };
       d.s.mapId = 'aethelgard.emberford';
-      d.s.objectivesDone.push('m01.o6.label', 'preserved.publish');
+      d.resumeAfter('m01.o6.label', 'preserved.publish');
       d.s.flags['seal.found'] = true;
       d.s.flags['clue.oldmap.folded-map'] = true;
       d.s.flags['ferry.copy.place'] = 'ledger';

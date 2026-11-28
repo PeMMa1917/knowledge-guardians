@@ -24,7 +24,7 @@ function cross(d: Driver, key: string) {
 }
 
 function stage(d: Driver, layout: 'rail' | 'folio') {
-  d.s.objectivesDone.push('sea.finish');
+  d.resumeAfter('sea.finish');
   cross(d, 'stage-door');
   cross(d, 'stage-rehearsal-path');
   use(d, 'stage-brief', 'Clip a smaller task');
@@ -58,7 +58,7 @@ function stage(d: Driver, layout: 'rail' | 'folio') {
 }
 
 function island(d: Driver) {
-  d.s.objectivesDone.push('voices.finish');
+  d.resumeAfter('voices.finish');
   cross(d, 'island-door');
   expect(d.done('island.arrival')).toBe(true);
   expect(visible(d, 'island-plan')).toBeUndefined();

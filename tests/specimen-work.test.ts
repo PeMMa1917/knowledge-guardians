@@ -32,7 +32,7 @@ function scene(d: Driver, record: SpecimenWork, step: string, choice?: string) {
 function arrive(record: SpecimenWork) {
   const d = new Driver();
   // Only the previous main chapter is staged. The ordinary Nexus gate sets the arrival flag.
-  d.s.objectivesDone.push(record.room === 'market' ? 'stage.finish' : 'sea.finish');
+  d.resumeAfter(record.room === 'market' ? 'stage.finish' : 'sea.finish');
   cross(d, record.room === 'market' ? 'market-door' : 'stage-door');
   if (record.room === 'stage') cross(d, 'stage-gallery-path');
   cross(d, `specimen-work-${record.room}-entrance`);

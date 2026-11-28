@@ -22,7 +22,7 @@ function cross(d: Driver, id: string) {
 }
 
 function openIsland(d: Driver) {
-  d.s.objectivesDone.push('voices.finish');
+  d.resumeAfter('voices.finish');
   cross(d, 'island-door');
   cross(d, 'island-dock-path');
 }

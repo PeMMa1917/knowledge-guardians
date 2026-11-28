@@ -864,7 +864,7 @@ function observatoryCoast(stop?: 'bell-slip' | 'clear-terms'): Route {
   const route = new Route();
   const extra = stop === 'clear-terms' ? 4 : stop ? 2 : 0;
   // Independent Chapter 4 session. The Cold Store's first display is already open.
-  route.driver.s.objectivesDone.push('preserved.publish');
+  route.driver.resumeAfter('preserved.publish');
   route.at(4, 'Ask which crews need the notice and which route each follows', ['perspective', 'perspectives'], (d) => {
     useDoor(d, 'observatory-door');
     d.talk('coast-signalkeeper', 'Who is waiting');
@@ -936,7 +936,7 @@ function livingForest(pathbookFirst: boolean, greenSquares = false, sheet = fals
   const surveyMinutes = greenSquares ? 12 : 0;
   const copyMinutes = accountCopy ? 3 : 0;
   // Independent Chapter 5 session. The coast's revised notice is already up.
-  route.driver.s.objectivesDone.push('coast.revise');
+  route.driver.resumeAfter('coast.revise');
   const readPathbook = (d: AuditDriver) => {
     useDoor(d, 'forest-community-path');
     readSign(d, 'forest-pathbook');
@@ -1085,7 +1085,7 @@ function metalworks(turnedTag: boolean, rim?: 'hall' | 'yard'): Route {
   const clippingMinutes = rim ? 2 : 0;
   const receivingMinutes = rim ? 3 : 0;
   // Independent Chapter 6 session. The Forest keepers already revised their notice.
-  route.driver.s.objectivesDone.push('forest.finish');
+  route.driver.resumeAfter('forest.finish');
   route.at(4, 'Hear the seller’s claim of a matched set and why it raises the price', ['perspective', 'power', 'values'], (d) => {
     useDoor(d, 'metalworks-door');
     readSign(d, 'metal-weight-tag');
@@ -1207,7 +1207,7 @@ function checkCopyEdition(d: Driver, edition: 'press' | 'landing', missing: stri
 function cityOfCopies(checkRamp = false): Route {
   const route = new Route();
   // Independent Chapter 7 session. The Trade Hall's transfer addition is already up.
-  route.driver.s.objectivesDone.push('metal.finish');
+  route.driver.resumeAfter('metal.finish');
   route.at(4, 'Read the clerk’s original observation with the day of the trial attached', ['evidence', 'certainty', 'scope'], (d) => {
     useDoor(d, 'copies-door');
     readSign(d, 'copies-source');
@@ -1306,7 +1306,7 @@ function checkSeaChart(d: Driver, chartId: 'harbour' | 'shoal', names: readonly 
 function cartographersSea(checkSymbols = false): Route {
   const route = new Route();
   // Independent Chapter 8 session. The City has already revised the entry notice.
-  route.driver.s.objectivesDone.push('copies.revise');
+  route.driver.resumeAfter('copies.revise');
   route.at(4, 'Hear which landmarks market carriers and boat crews start from', ['perspective', 'perspectives'], (d) => {
     useDoor(d, 'sea-door');
     d.talk('sea-harbourkeeper');
@@ -1396,7 +1396,7 @@ function houseOfPerformance(firstCue: StageCue, seatRequest = false): Route {
   const extra = (galleryFirst ? 3 : 0) + (seatRequest ? 4 : 0) + (sideCall ? 2 : 0);
   const alternateCue = galleryFirst ? 'pause' : 'move';
   // Independent Chapter 9 session. Both survey edges have been published.
-  route.driver.s.objectivesDone.push('sea.finish');
+  route.driver.resumeAfter('sea.finish');
   useDoor(route.driver, 'stage-door');
   expect(route.driver.done('stage.arrival')).toBe(true);
   readSign(route.driver, 'stage-foyer-programme');
@@ -1489,7 +1489,7 @@ function weighLots(d: Driver, basis: MarketBasis, masses: readonly [number, numb
 function marketOfMeasures(): Route {
   const route = new Route();
   // Independent Chapter 10 session. The House programme has already been revised.
-  route.driver.s.objectivesDone.push('stage.finish');
+  route.driver.resumeAfter('stage.finish');
   route.at(4, 'Hear the terms of the offered lots before assuming which is a better purchase', ['perspective', 'scope'], (d) => {
     useDoor(d, 'market-door');
     d.talk('market-assayer');
@@ -1555,7 +1555,7 @@ function checkWaterTrial(d: Driver, condition: WaterCondition, setting: WaterSet
 function waterCommons(): Route {
   const route = new Route();
   // Prepared Chapter 10 save. The Market's whole-lot comparison has been revised.
-  route.driver.s.objectivesDone.push('market.finish');
+  route.driver.resumeAfter('market.finish');
   route.at(4, 'Ask what the gatehouse can measure and find the unchecked tally on the split board', ['scope', 'perspective'], (d) => {
     useDoor(d, 'water-door');
     d.talk('water-keeper');
@@ -1633,7 +1633,7 @@ function civicMachine(checkCouriers = false): Route {
   const route = new Route();
   const extra = checkCouriers ? 10 : 0;
   // Prepared Chapter 11 save. Both allocations at the weir have been entered.
-  route.driver.s.objectivesDone.push('water.finish');
+  route.driver.resumeAfter('water.finish');
   route.at(4, 'Hear how the library allocates four windows and what is counted as a request', ['scope', 'perspective'], (d) => {
     useDoor(d, 'civic-door');
     d.talk('civic-operator');
@@ -1756,7 +1756,7 @@ function archiveOfVoices(quoteInQueue = false): Route {
   const route = new Route();
   const extra = quoteInQueue ? 3 : 0;
   // Prepared Chapter 12 save. The Civic Machine has a revised notice.
-  route.driver.s.objectivesDone.push('civic.finish');
+  route.driver.resumeAfter('civic.finish');
   route.driver.s.flags['civic.revised'] = true;
   route.at(4, 'Read a signed opening date presented as the first crossing and ask what it covered', ['scope', 'perspective'], (d) => {
     useDoor(d, 'voices-door');
@@ -1873,7 +1873,7 @@ function islandOfModels(checkDockSignal = false): Route {
   const route = new Route();
   const extra = checkDockSignal ? 4 : 0;
   // Prepared Chapter 13 save. Both directions through the Archive of Voices have been checked.
-  route.driver.s.objectivesDone.push('voices.finish');
+  route.driver.resumeAfter('voices.finish');
   route.driver.s.flags['voices.revision'] = 'routes';
   route.at(4, 'Take the eight-crate order and read the claim about ferry capacity', ['scope', 'perspective'], (d) => {
     useDoor(d, 'island-door');
@@ -1991,7 +1991,7 @@ function councilOfInquiry(placePracticeDial = false): Route {
   const route = new Route();
   const extra = placePracticeDial ? 4 : 0;
   // Prepared Chapter 14 save. Both Island landing sheets still exist.
-  route.driver.s.objectivesDone.push('island.finish');
+  route.driver.resumeAfter('island.finish');
   route.driver.s.flags['island.revision'] = 'ridge';
   route.at(4, 'Read the draft about a watch that agrees at one glance and ask when the shutter closes', [
     'scope', 'perspective',

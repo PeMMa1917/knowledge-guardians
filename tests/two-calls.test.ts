@@ -31,7 +31,7 @@ function cross(d: Driver, id: string) {
 }
 
 function earnMinute(d: Driver) {
-  d.s.objectivesDone.push('forest.finish', 'metal.finish');
+  d.resumeAfter('forest.finish', 'metal.finish');
   cross(d, 'metalworks-door');
   cross(d, 'metal-records-path');
   cross(d, 'bench-debate-entry');
@@ -85,7 +85,7 @@ describe('Two Calls After Tuesday proof board', () => {
       earnMinute(d);
       cross(d, 'copies-door');
       expect(visible(d, 'two-calls-log')).toBeUndefined();
-      d.s.objectivesDone.push('copies.revise');
+      d.resumeAfter('copies.revise');
       use(d, 'two-calls-log', 'Clip the dated trial');
       cross(d, 'copies-press-path');
       use(d, 'two-calls-press', 'Check the door pocket');
@@ -124,7 +124,7 @@ describe('Two Calls After Tuesday proof board', () => {
   it('does not offer the coda to a reader with no signed Metalworks minute', () => {
     const d = new Driver();
     d.s.mapId = 'copies.archive';
-    d.s.objectivesDone.push('copies.revise');
+    d.resumeAfter('copies.revise');
     expect(visible(d, 'two-calls-log')).toBeUndefined();
   });
 });

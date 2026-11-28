@@ -26,7 +26,7 @@ function scene(d: Driver, id: string, ...choices: string[]) {
 function begin() {
   const d = new Driver();
   expect(spot(d, 'forest-door')).toBeUndefined();
-  d.s.objectivesDone.push('coast.revise');
+  d.resumeAfter('coast.revise');
   visit(d, 'forest-door');
   expect(d.done('forest.arrival')).toBe(true);
   scene(d, 'forest-hands-board', 'Run the three-mark', 'Leave the frame');
@@ -88,7 +88,7 @@ describe('Two Hands on the Sheet', () => {
     scene(d, 'forest-observer-book', 'Stitch in a first section for the limits');
     expect(d.s.flags['keepsake.observer-notebook']).toBe(true);
     visit(d, 'forest-nexus-return');
-    d.s.objectivesDone.push('sea.finish');
+    d.resumeAfter('sea.finish');
     visit(d, 'stage-door');
     visit(d, 'stage-rehearsal-path');
     expect(spot(d, 'stage-hands-prompt')).toBeUndefined();

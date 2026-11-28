@@ -1,4 +1,5 @@
 /** Test driver: plays the game through the domain engine (no browser). */
+import { PASSAGES } from '../src/domain/corridor';
 import { Engine, newCampaign, type GameEvent } from '../src/domain/engine';
 import { buildPack } from '../src/content';
 import { newPermanent } from '../src/domain/permanent';
@@ -36,6 +37,12 @@ export class Driver {
       if (!choice) throw new Error(`option "${pick}" not found at ${node}: ${opts.map((o) => o.option.text).join(' | ')}`);
       node = this.run({ type: 'ChooseDialogueOption', node, index: choice.index }).nextNode ?? null;
     }
+  }
+  /** Resume an old linear-route fixture with the preceding chapters actually completed. */
+  resumeAfter(...objectives: string[]) {
+    const last = Math.max(...objectives.map(id => PASSAGES.findIndex(p => p.finish === id)));
+    const done = new Set([...this.s.objectivesDone, ...PASSAGES.slice(0,last+1).map(p=>p.finish), ...objectives]);
+    this.s.objectivesDone = [...done];
   }
   moves(...mv: ShowdownMove[]) { for (const m of mv) { if (this.s.showdown?.outcome) break; this.run({ type: 'ShowdownMove', move: m }); } }
   done(id: string) { return this.s.objectivesDone.includes(id); }

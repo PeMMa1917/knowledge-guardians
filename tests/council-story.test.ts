@@ -39,7 +39,7 @@ describe('When the Hand Moves', () => {
   it.each(routes)('checks the two readings and keeps the $policy docket after adding $revision', ({ policy, revision }) => {
     const d = new Driver();
     expect(d.e.activeMissions(d.s).some((mission) => mission.id === 'KG-CH15-M01')).toBe(false);
-    d.s.objectivesDone.push('island.finish');
+    d.resumeAfter('island.finish');
     visit(d, 'council-door');
     expect(d.done('council.arrival')).toBe(true);
     expect(visible(d, 'council-draft')).toBe(true);
@@ -99,7 +99,7 @@ describe('When the Hand Moves', () => {
     ['voices.revision', 'I checked what someone could see', 'council.rail.voices', 'routes'],
   ])('keeps the same revision choices when recalling %s', (flag, label, node, value) => {
     const d = new Driver();
-    d.s.objectivesDone.push('island.finish', 'council.reader');
+    d.resumeAfter('island.finish', 'council.reader');
     d.s.flags['council.response'] = 'record';
     const options = () => d.e.visibleOptions('council.rail.revisit', d.s);
     expect(options().some(({ option }) => option.next === node)).toBe(false);
@@ -115,7 +115,7 @@ describe('When the Hand Moves', () => {
     ['slot', 'Set the practice dial in the low slot'],
   ])('places the optional dial at the %s and checks how it is used', (layout, choice) => {
     const d = new Driver();
-    d.s.objectivesDone.push('island.finish');
+    d.resumeAfter('island.finish');
     visit(d, 'council-door');
     read(d, 'council-low-slot');
     visit(d, 'council-gallery-path');
