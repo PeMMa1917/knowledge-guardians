@@ -911,4 +911,4 @@ The reasoning review traces 45 cognitive biases or related effects, 36 argument 
 
 ### Moderated names and verified class scores
 
-The assigned teacher can review flagged names, replace a username or class display name, and set, hide or release a class nickname. A rename preserves the account and saves. Device scores stay personal. The class board ranks only moves and time from completed online stitching rounds, calculated by the service. The migration removes earlier device-reported ranks. [School hosting and review](docs/ACCOUNTS_AND_HOSTING.md)
+The assigned teacher can review flagged names, replace a username or class display name, and set, hide or release a class nickname. A rename preserves the account and saves. Teacher-issued replacement usernames pass the same filter used at sign-in. Device scores stay personal. The class board ranks only moves and time from completed online stitching rounds, calculated by the service. The migration removes earlier device-reported ranks. [School hosting and review](docs/ACCOUNTS_AND_HOSTING.md)

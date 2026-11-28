@@ -379,3 +379,36 @@ test('school provisioning refuses a flagged username or display before creating 
     sql.close();
   }
 });
+
+test('teacher resets issue a username that the student can sign in with, even after a flagged draw', async (t) => {
+  const { DB, sql, password } = await fixture();
+  const origin = 'https://school.example';
+  const send = (path, method, input, cookie = '') => worker.fetch(new Request(origin + '/api/classroom/' + path, {
+    method, headers: { Origin: origin, Cookie: cookie, 'Content-Type': 'application/json' },
+    body: JSON.stringify(input),
+  }), { DB });
+  try {
+    const teacher = await send('teacher/login', 'POST', { login: 'north@example.invalid', password });
+    assert.equal(teacher.status, 200);
+    const cookie = teacher.headers.get('set-cookie').split(';')[0];
+    const reset = () => send('teacher/names?account=ta&class=north', 'PUT', {
+      student: 'a', field: 'login', action: 'remove', previous: 'ash-moth',
+    }, cookie);
+    const flagged = 'eca95ea8-4555-4000-8000-000000000000';
+    const uuid = t.mock.method(crypto, 'randomUUID', () => flagged);
+    assert.equal((await reset()).status, 503);
+    assert.equal(sql.prepare("SELECT login FROM accounts WHERE id='a'").get().login, 'ash-moth');
+
+    uuid.mock.mockImplementation(() => '01234567-89ab-4000-8000-000000000000');
+    uuid.mock.mockImplementationOnce(() => flagged);
+    const result = await reset();
+    assert.equal(result.status, 200);
+    const { value } = await result.json();
+    assert.equal(value, 'guardian-01234567-89ab');
+    const signIn = await send('student/login', 'POST', { login: value, password });
+    assert.equal(signIn.status, 200);
+    assert.equal((await signIn.json()).id, 'a');
+  } finally {
+    sql.close();
+  }
+});

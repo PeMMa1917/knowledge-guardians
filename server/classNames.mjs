@@ -4,6 +4,14 @@ export const approved = `EXISTS (SELECT 1 FROM memberships m JOIN classes c ON c
   WHERE m.student=? AND m.class=? AND c.teacher=? AND m.approved=1)`;
 export const teaching = 'EXISTS (SELECT 1 FROM classes WHERE id=? AND teacher=?)';
 
+function replacementLogin(previous) {
+  for (let attempt = 0; attempt < 8; attempt++) {
+    const candidate = studentName('guardian-' + crypto.randomUUID().slice(0, 13), 'login');
+    if (candidate && candidate !== previous) return candidate;
+  }
+  return null;
+}
+
 export async function flagAlias(db, scope, value) {
   const sample = typeof value === 'string' ? Array.from(value).slice(0, 80).join('') : '(invalid nickname)';
   await db
@@ -67,9 +75,11 @@ export async function classNames({ db, req, role, account, cls, body, reply, den
     const next =
       input.action === 'remove'
         ? field === 'login'
-          ? 'guardian-' + crypto.randomUUID().slice(0, 13)
+          ? replacementLogin(input.previous)
           : 'Guardian'
         : studentName(value, field);
+    if (!next && input.action === 'remove')
+      return reply(503, { error: 'Could not generate a replacement username. Please try the reset again.' });
     if (!next) return reply(422, { error: 'Choose another school-appropriate name.' });
     const column = field === 'login' ? 'login' : 'display';
     const result = await db
