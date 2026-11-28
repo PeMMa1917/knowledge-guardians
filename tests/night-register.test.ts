@@ -188,15 +188,19 @@ describe('the night register', () => {
       d.s.mapId = site.room;
       const entry = d.e.talkEntry(site.actor, d.s)!;
       expect(entry).toBe(site.room + '.keeper');
-      expect(d.e.visibleOptions(entry, d.s)).toHaveLength(2);
+      expect(d.e.visibleOptions(entry, d.s).map(({ option }) => option.next)).toEqual([
+        entry + '.trace', entry + '.shift', 'secondink.' + site.site + '.case',
+      ]);
       expect(() => commit(d, { action: 'favour', choice: 1 })).toThrow();
       const w = nightWorks.find((w) => w.site !== site)!;
       d.s.flags['night.delivering'] = [w.id, guest.family.mode, 0, ''].join('|');
       commit(d, { action: 'receive', choice: 0 });
       for (const choice of choices) {
         commit(d, { action: 'favour', choice });
-        const after = d.e.visibleOptions(entry, d.s).at(-1)!.option.next!;
-        expect(d.e.node(after).text).toBe(site.nextMorning[choice]);
+        const mornings = d.e.visibleOptions(entry, d.s).map(({ option }) => option.next)
+          .filter((next) => next?.startsWith(entry + '.morning.'));
+        expect(mornings).toEqual([entry + '.morning.' + choice]);
+        expect(d.e.node(mornings[0]!).text).toBe(site.nextMorning[choice]);
       }
       d.s.mapId = site.doorMap;
       if (!site.actor.startsWith('register-')) expect(d.e.talkEntry(site.actor, d.s)).not.toBe(entry);
