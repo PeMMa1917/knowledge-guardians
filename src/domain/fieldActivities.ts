@@ -24,12 +24,12 @@ function twoDecisions(title:string,first:string,offers:string[],replies:string[]
   const route=position-1;
   return tool(title,replies[route],second,'The first choice changes what your next action can preserve.',i=>advance(position,finals[route][i],true));
 }
-function ferry(seed:number,position:number,lens:boolean):FieldTool {
+function ferry(seed:number,position:number):FieldTool {
   const rock=[1,3,4,5,7][seed%5],cell=position%9,turned=position>=9;
   const coord=(n:number)=>String.fromCharCode(65+n%3)+(1+Math.floor(n/3));
   const chart=turned?'The obstruction is at '+coord(rock)+'.':'The first view marks the landing at C3.';
-  const view=tool(lens?'Walk the lens maze':'Run the two-chart crossing','At '+coord(cell)+'. '+chart+' Columns run west to east. Rows run north to south.',
-    ['North','East','South','West',lens?'Turn the coloured lens':'Unroll the shoal chart'],'Use the other view to see the obstruction. Reach C3 carrying both observations.',i=>{
+  const view=tool('Run the two-chart crossing','At '+coord(cell)+'. '+chart+' Columns run west to east. Rows run north to south.',
+    ['North','East','South','West','Unroll the shoal chart'],'Use the other view to see the obstruction. Reach C3 carrying both observations.',i=>{
       if(i===4)return advance(cell+9,'The second view singles out '+coord(rock)+'. You can keep it visible as you move.',cell===8);
       const n=cell+[-3,1,3,-1][i];
       if(n<0||n>8||i===1&&cell%3===2||i===3&&cell%3===0||n===rock)return advance(position,'The way is blocked. You keep your footing at '+coord(cell)+'.');
@@ -79,7 +79,7 @@ const games:Setup[]=[
         if(i===2)return advance(4+pigment,'The lamp changes. The dye in the vat stays still.');
         return advance(p,pigment===target&&lamplit?'The daylight match turns greenish under amber. Both swatches go on the tray.':'The keeper asks for the daylight mixture under the amber lamp.',pigment===target&&lamplit);});
   },
-  (s,p)=>ferry(s,p,false),
+  (s,p)=>ferry(s,p),
   (s,p)=>{
     const day=Math.floor(p/10),cash=p%10,demand=1+(s+day*2)%3;
     return tool('Keep the three-day stall','Market day '+(day+1)+'. '+demand+' visitors have put down a token. You have '+cash+' spare receipts.',
@@ -140,7 +140,16 @@ const games:Setup[]=[
     [s%4+7+' turns from the chalk.',s%4+8+' turns at the offset seam.',s%4+7+' turns on the return.'],3,p),
   (_,p)=>collect('Turn the prism','Put each light source through the same practice prism.', ['Open the white shutter','Open the red shutter','Return the white shutter through the filter'],
     ['Several bands spread across the blank card.','A narrow red band reaches the card.','The filter removes some bands even though the shutter began white.'],3,p),
-  (s,p)=>ferry(s,p,true),
+  (s,p)=>{
+    const chamber=Math.floor(p/2),blue=p%2===1;
+    const doors=['left','right','middle'],gate=(s+chamber)%3;
+    const marked=(chamber%2===0)===blue;
+    return tool('Walk the lens maze','Room '+(chamber+1)+'. Through the '+(blue?'blue':'amber')+' lens '+(marked?'a footprint points to the '+doors[gate]+' door.':'all three doorways look alike.'),
+      ['Turn the lens','Take the left door','Take the right door','Take the middle door'],'Change the lens to reveal a footprint. At the next chamber another colour may show the way.',
+      i=>{if(i===0)return advance(chamber*2+(blue?0:1),'The red and blue shadows trade places.');
+        if(i-1!==gate||!marked)return advance(p,'The painted doorway leads you back to this chamber.');
+        return advance((chamber+1)*2+(blue?1:0),chamber===2?'Daylight. You can guide a second visitor through the maze.':'The door opens onto a chamber lit by different glass.',chamber===2);});
+  },
   (s,p)=>{const mark=1+s%5;return tool('Line up the year mirror','Move the earlier outline to the hinge at mark '+mark+'. It is now at '+p+'.',
     ['Slide one mark left','Slide one mark right','Hold both outlines'],'Match the hinge. Then compare the edges that have moved over the years.',
     i=>i===2?advance(p,p===mark?'The hinge meets. The rooflines still part at the corner.':'The hinge points do not meet yet.',p===mark):advance(Math.max(0,Math.min(6,p+(i===0?-1:1))),'The earlier outline shifts one mark.'));},
