@@ -153,7 +153,7 @@ try {
   const notesOnly=process.argv.includes('--record-notes');
   const supperOnly=process.argv.includes('--supper-shadow');
   if(process.argv.includes('--calling-book')) await playCallingBook({page,engine,posts,sites,people,button,use,close,waitMap});
-  if(process.argv.includes('--second-ink')) await playSecondInk({page,engine,use,close,waitMap});
+  else if(process.argv.includes('--second-ink')) await playSecondInk({page,engine,use,close,waitMap});
   else if(process.argv.includes('--walking-orchard')) await playWalkingOrchard({page,engine,use,waitMap,close});
   else if(process.argv.includes('--open-house')) await playOpenHouse({page,engine,use,button,close,waitMap});
   else if(process.argv.includes('--tide-clock')) {
