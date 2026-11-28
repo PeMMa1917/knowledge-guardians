@@ -1,3 +1,4 @@
+import {rivalMove} from './rivalPost';
 import {workTopicStamp} from './workTopics';
 import {workAction, ticketKey, orderName} from './worldWork';
 import {sagaMove,sagaName} from './corridorSagas';
@@ -80,6 +81,10 @@ export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, ne
       return diaryEvent(key+cmd.setting,'tool',ref,desk.controls[cmd.setting],
         'I tried '+loan.record.name+' at '+desk.place+'. '+result.strips.map(row=>row.label+' · '+row.text).join(' / ')+'. '+result.observation,
         {sourceIds:[loan.record.specimen.source]},{fixedToolPrefix:key});
+    }
+    case 'RivalPost': {
+      const reply=rivalMove(previous,cmd);
+      return diaryEvent(['rival-letter',previous.mapId,cmd.act,cmd.value].join(':'),cmd.act==='trace'?'tool':'choice',previous.mapId,reply.title,reply.text,{},'after-break');
     }
     case 'WorldWork': {
       const work = workAction(previous, cmd);

@@ -92,6 +92,7 @@ import { dailyPrompts, diveDepth, diveItems, judgeDive } from './dive';
 import { TIME_MAX, TIME_MIN, answerRound, runSurvey, translateLine, judgeFrame, readForecasts, checkOrder, judgeSight, panes, readTimes, echoReadings, runSorter, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
 import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
+import { rivalMove, type RivalCommand } from './rivalPost';
 import { workAction, type WorkCommand } from './worldWork';
 import { sagaMove, type SagaMove } from './corridorSagas';
 import { templeAction, type TempleCommand } from './temples';
@@ -243,6 +244,7 @@ export type Command =
   | ThreadCommand
   | SagaMove
   | WorkCommand
+  | RivalCommand
   | TempleCommand
   | { type: 'SetFlag'; flag: string; value: string | number | boolean }
   | { type: 'AddNote'; text: string; kind?: DiaryNoteKind; fromDraft?: boolean }
@@ -542,6 +544,9 @@ export class Engine {
         }
         case 'UntieJournalThread':
           s=apply([{setFlag:threadKey,value:false},{setFlag:threadFaceKey,value:false}],s,out);
+          break;
+        case 'RivalPost':
+          s=apply(rivalMove(s,cmd).effects,s,out);
           break;
         case 'WorldWork':
           s = apply(workAction(s,cmd).effects,s,out);

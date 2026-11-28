@@ -1,5 +1,11 @@
 # Story bible: the whole campaign (chapters 1 to 15)
 
+## The rivals’ post
+
+Mabry’s boy thinks he can pay a dead lamp to burn. Wystan’s old envelope shows what its farthing once held in place. Several doors away, a forest cash box sings the three notes missing from a printer’s account of who paid for the Gilded Seal’s first press. Each address works as a first encounter. Who keeps the first trace matters to the person who brings the second. Two sealed slips give their keepers the floor at Council. Public traces let visitors inspect the join themselves.
+
+The Cold Store and Metalworks establish that two distinct cuts shortened the river proviso. The Coast and the Sea uncover Elsbet and Vesper’s agreement to return for a second sounding. The Forest and the City of Copies follow the first deposit back to a river office. Water Commons retains the signed disclosure. The Theatre and Market, Water and Voices, and Civic Machine and Island have further cases. [Seven joins and fourteen original addresses](../src/content/double-posts.json) · [All routes and custody arrangements](../tests/rival-post.test.ts)
+
 ## What the keeper asked for
 
 Someone who wants to apologise can offer a speech, a bit of glue or the chance to choose when a conversation begins. In the old-debt story, two keepers can agree on the morning tally and still disagree about the evening work. These small obligations can start when the player speaks to the person in the room. A second edition can carry the other choice. [Keeper stories and their replies](../src/content/keeper-favours.json) · [Approaches to the main case](../src/content/keeper-main-routes.json)

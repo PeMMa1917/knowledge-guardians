@@ -1,3 +1,4 @@
+import {councilPost} from '../domain/rivalPost';
 import type { GameController } from '../app/controller';
 import { offeredScenes } from '../domain/factionScenes';
 import { PASSAGES } from '../domain/corridor';
@@ -26,6 +27,7 @@ export function templePanel(c:GameController,station:string) {
       if (s.flags[giftKey(14)]) scene.append(makeButton(TEMPLES[13].away.action,'gift-view'));
       if (!s.flags['temple.hearing']) {scene.append(makeButton('Play the two receivers','hear'));return;}
       scene.append(h('p',{},councilOpening),h('p',{},'At the table: '+councilWitnesses(s)+'.'));
+      const finding=councilPost(s);if(finding)scene.append(h('p',{},finding));
       const ending=s.flags['temple.index'];
       if(typeof ending==='number' && indexEndings[ending])scene.append(h('p',{},indexEndings[ending].result));
       for(const [i,e] of indexEndings.entries()) scene.append(makeButton(e.title,'index',i));
