@@ -1,5 +1,7 @@
 # Micro-skills in the campaign
 
+All 1,200 supplied numbers have public descriptions in the [member index](audit/COMBINATION_MEMBERS.md#family-micro). To review a skill, find it in the [combination checklist](audit/COMBINATION_CHECKLIST.html), choose its chapter and add the relevant story, game and TOK elements. Each combination has an independent cell for every Bloom level at every DOK. The current campaign links 619 micro-skills to an objective. A reviewer can still track any of the other 581 while investigating or designing a new encounter.
+
 Look up one or more numbered micro-skills together with story elements, mechanics, reasoning patterns and questions. [Combination atlas](audit/COMBINATION_ATLAS.md)
 
 The ferry stories link the sampling hour, a leading word, permission to quote, a repeated sound and a musical rest to decisions at two different stops. The current ledger records 1,375 uses across 602 of 1,200 supplied skills. Of these, 376 have an evidenced use in more than one world. [Ferry practice records](../src/content/skillPractice/ferry-radio.json)

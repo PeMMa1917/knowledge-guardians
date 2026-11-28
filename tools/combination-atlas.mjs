@@ -1,4 +1,5 @@
 // The catalogue, the same-action evidence and the observed order have separate provenance.
+import { contextFamilies } from './combination-context.mjs';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { validatedActions } from './audit-cognitive-weave.mjs';
@@ -31,6 +32,7 @@ export const familyNames = {
   'essay-title': 'Prescribed title records',
   'cas-practice': 'CAS practice',
   'ee-practice': 'EE research practice',
+  ...contextFamilies,
 };
 const normalize = (s) => s.trim().replace(/\s+/g, ' ').normalize('NFC');
 export function questionRegistry(audit) {
@@ -74,7 +76,7 @@ function inventory(audit, registry) {
   for (const [id, name] of registry.names)
     if (!known.has(id))
       entries.push({ id, kind: 'question', name, origin: 'Mission question' });
-  return entries;
+  return [...entries, ...audit.contexts];
 }
 // Specific disciplinary lens supported by what the player does to the prop.
 // This avoids copying all areas assigned to a district onto each individual operation.
@@ -208,8 +210,18 @@ export function buildAtlas(audit) {
   const registry = questionRegistry(audit);
   const members = inventory(audit, registry),
     known = new Set(members.map((x) => x.id));
+  if (known.size !== members.length || members.some((m) => !m.name?.trim()))
+    throw Error('Missing or duplicate catalogue member.');
+  const prompts = new Map(
+    audit.contexts
+      .filter((m) => m.kind === 'exhibition')
+      .map((m) => [m.question, m.id]),
+  );
   const activities = audit.activities.map((a) => ({
     ...a,
+    promptIds: a.questions
+      .map((q) => prompts.get('question:' + q))
+      .filter(Boolean),
     chapter: chapters[a.world],
     questionIds: [
       ...new Set(
@@ -233,6 +245,7 @@ export function buildAtlas(audit) {
         ...review.dimensions,
         ...extra,
         ...location.questionIds,
+        ...location.promptIds,
       ]),
     ];
     const anchor = requirements(members, ids, {
@@ -329,10 +342,23 @@ export function buildAtlas(audit) {
       note: 'Observed settings in the order used on the browser journey. The ending is issued after the final setting.',
     });
   }
+  // Actors in these witnessed operations speak or handle the prop in that action.
+  const coatSpeakers = new Map(
+    data('src/content/return-coat-sites.json').flatMap((s) =>
+      s.trials.map(([trial, , , speaker]) => [
+        'returned-coat.' + s.id + '.' + trial,
+        'character:' + speaker,
+      ]),
+    ),
+  );
   const bell = [];
   for (const [objective, [lens, ...views]] of Object.entries(otherCases)) {
     const r = reviews.find((r) => r.objective === objective);
-    const beat = add(r, [lens], { id: objective, views });
+    const actor = coatSpeakers.get(objective);
+    const beat = add(r, actor ? [lens, actor] : [lens], {
+      id: objective,
+      views,
+    });
     if (objective.startsWith('claimbell.')) bell.push(beat.id);
   }
   routes.push({

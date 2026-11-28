@@ -44,6 +44,7 @@ try {
   });
   assert.equal(await page.getByRole('checkbox').count(), 24);
   await cell.check();
+  assert((await page.locator('#boardProgress').textContent()).includes('1 of 24 cells reviewed · 0 of 24'));
   await page
     .getByRole('button', { name: 'Edit evidence for analyse DOK 2' })
     .click();
@@ -184,14 +185,49 @@ try {
   );
   await page.locator('#search').fill('micro:129');
   await page.locator('#findAction').click();
-  const linkedObjective=page.locator('#objectiveLeads option').filter({hasText:'returned-coat.hook.print'});
-  assert.equal(await linkedObjective.count(),1);
-  await page.locator('#objectiveLeads').selectOption(await linkedObjective.getAttribute('value'));
+  const linkedObjective = page
+    .locator('#objectiveLeads option')
+    .filter({ hasText: 'returned-coat.hook.print' });
+  assert.equal(await linkedObjective.count(), 1);
+  await page
+    .locator('#objectiveLeads')
+    .selectOption(await linkedObjective.getAttribute('value'));
   await page
     .getByRole('button', { name: 'Build a review from this objective' })
     .click();
   assert((await page.locator('#boardDesc').innerText()).includes('micro:129'));
   assert.equal(await page.locator('#grid input:checked').count(), 0);
+  await page.locator('#family').selectOption('micro');
+  await page.locator('#search').fill('');
+  await page.locator('#moreMembers').click();
+  assert((await page.locator('#matchCount').textContent()).includes('151'));
+  await page.locator('#search').fill('self-monitoring unlikely wording');
+  assert(
+    (await page.locator('#matchCount').textContent()).includes('No matching'),
+  );
+  await page.locator('#search').fill('decision is still open');
+  assert.equal(await page.locator('#matches').inputValue(), 'micro:20');
+  await page.locator('#family').selectOption('exhibition');
+  await page.locator('#search').fill('Prompt 35');
+  assert.equal(await page.locator('#matches').inputValue(), 'exhibition:35');
+  await page.locator('#documented').click();
+  assert(
+    (await page.locator('#message').textContent()).includes(
+      'implementation reviews',
+    ),
+  );
+  await page.locator('#documented').click();
+  assert((await page.locator('#message').textContent()).startsWith('Added 0 '));
+  await page.locator('#sequence').selectOption('order');
+  await page.locator('#stepBox details summary').click();
+  await page.locator('#orderNumber').fill('2');
+  await page.locator('#openOrder').click();
+  assert((await page.locator('#steps').inputValue()).includes(' > '));
+  assert(
+    (await page.locator('#boardDesc').textContent()).includes(
+      'Ordered journey',
+    ),
+  );
   assert.deepEqual(errors, []);
   console.log(
     engine,

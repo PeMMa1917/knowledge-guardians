@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
 // @ts-expect-error audit tools run as native JavaScript.
 import { boardFor, boardKey, cellKey, depths, levels, mergeLedger, saveLedger, reviewTotals } from '../tools/combination-checklist.mjs';
+// @ts-expect-error audit tools run as native JavaScript.
+import { reviewedLedger } from '../tools/combination-checklist.mjs';
 const ids = [
   'concept:truth',
   'framework:scope',
@@ -41,6 +43,17 @@ describe('portable reviewer checklist', () => {
         ),
       ).size,
     ).toBe(24);
+  });
+  it('checks only the chapter, exact selection and cognition reviewed, even when two observations share an action',()=>{
+    const beat={members:ids,chapter:1,actionId:'one-act',bloom:'create',dok:4,act:'compose',views:['front','wings'],consequence:'send',map:'stage',target:'score',source:'test',anchor:'stage'};
+    const ledger=reviewedLedger({members,beats:[beat,{...beat,act:'repeat'}]});
+    expect(ledger.records).toHaveLength(1);
+    expect(ledger.records[0].actions).toEqual(['one-act']);
+    expect(mergeLedger(members,new Map(),ledger).size).toBe(1);
+    const prior=mergeLedger(members,new Map(),{version:1,records:[{...record,checked:false,updated:'2026-01-01T00:00:00.000Z',evidence:'Awaiting a second opinion.'}]});
+    const merged=mergeLedger(members,prior,ledger);
+    expect(saveLedger(merged).records[0].evidence).toBe('Awaiting a second opinion.');
+    expect(saveLedger(merged).records[0].checked).toBe(false);
   });
   it('round trips precisely, leaves unchecked cells independent and refuses a partial or conflicting import', () => {
     const ledger = mergeLedger(members, new Map(), {

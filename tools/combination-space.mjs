@@ -9,17 +9,10 @@ export const designScopes = [
   'game-only',
   'neither',
 ];
-export const sequenceKinds = [
-  'combination',
-  'permutation',
-  'repeated-sequence',
-];
+export const sequenceKinds = ['combination', 'permutation', 'repeated-sequence'];
 
 function model(entries, { design = 'joint', question = 'context', pool } = {}) {
-  if (
-    !designScopes.includes(design) ||
-    !['context', 'selected'].includes(question)
-  )
+  if (!designScopes.includes(design) || !['context', 'selected'].includes(question))
     throw Error('Unknown design or question policy.');
   const validKinds = new Set(entries.map((e) => e.kind));
   const required = [['concept'], ['framework'], ['area', 'theme']];
@@ -48,10 +41,30 @@ function model(entries, { design = 'joint', question = 'context', pool } = {}) {
   );
   return { members, groups, required };
 }
+// A single published catalogue is immutable for the lifetime of an offline document.
+const membershipIndexes = new WeakMap();
+function requirementIndex(entries, options) {
+  let policies = membershipIndexes.get(entries);
+  if (!policies) {
+    policies = new Map();
+    membershipIndexes.set(entries, policies);
+  }
+  const key = JSON.stringify([
+    options.design ?? 'joint',
+    options.question ?? 'context',
+    options.pool ?? null,
+  ]);
+  let index = policies.get(key);
+  if (!index) {
+    const { members, required } = model(entries, options);
+    index = { allowed: new Map(members.map((m) => [m.id, m])), required };
+    policies.set(key, index);
+  }
+  return index;
+}
 export function requirements(entries, ids, options = {}) {
   const selection = new Set(ids),
-    { members, required } = model(entries, options);
-  const allowed = new Map(members.map((e) => [e.id, e]));
+    { allowed, required } = requirementIndex(entries, options);
   const unknown = [...selection].filter((id) => !allowed.has(id));
   const kinds = new Set([...selection].map((id) => allowed.get(id)?.kind));
   const missing = required
@@ -117,8 +130,7 @@ export function spaceCount(
     const sets = inclusion(n, groups, (t) => choose(t, length));
     return order === 'permutation' ? sets * factorial(length) : sets;
   }
-  if (order === 'combination')
-    return inclusion(n, groups, (t) => 1n << BigInt(t));
+  if (order === 'combination') return inclusion(n, groups, (t) => 1n << BigInt(t));
   const orders = [1n];
   for (let i = 1; i <= n; i++) orders.push(1n + BigInt(i) * orders[i - 1]);
   return inclusion(n, groups, (t) => orders[t]);
@@ -149,6 +161,77 @@ export function unrankCombination(entries, length, rank, options = {}) {
     } else rank -= withThis;
   }
   return out;
+}
+/** Address an order of the selected members using its zero-based factoradic rank. */
+export function permutationAt(items, rank) {
+  rank = BigInt(rank);
+  const remaining = [...items];
+  let block = factorial(remaining.length);
+  if (rank < 0n || rank >= block)
+    throw Error('Rank is outside the selected permutation space.');
+  const result = [];
+  while (remaining.length) {
+    block /= BigInt(remaining.length);
+    const index = Number(rank / block);
+    result.push(remaining.splice(index, 1)[0]);
+    rank %= block;
+  }
+  return result;
+}
+/** For fixed-length revisiting journeys count the admissible suffixes after each next choice. */
+export function selectionAt(
+  entries,
+  length,
+  rank,
+  { order = 'combination', ...options } = {},
+) {
+  if (order === 'combination')
+    return unrankCombination(entries, length, rank, options);
+  length = nonnegative(length);
+  if (length === undefined)
+    throw Error('Choose a finite length before looking up an order.');
+  rank = BigInt(rank);
+  if (order === 'permutation') {
+    const perSet = factorial(length);
+    if (rank < 0n) throw Error('Rank is outside the selected permutation space.');
+    const members = unrankCombination(entries, length, rank / perSet, options);
+    return permutationAt(members, rank % perSet);
+  }
+  if (order !== 'repeated-sequence') throw Error('Unknown counting mode.');
+  const { members, groups, required } = model(entries, options);
+  const groupMask = members.map((m) => {
+    const g = required.findIndex((k) => k.includes(m.kind));
+    return g < 0 ? 0 : 1 << g;
+  });
+  const cache = new Map();
+  function ways(left, missing) {
+    const key = left + ':' + missing;
+    if (!cache.has(key)) {
+      const sizes = groups.filter((_, i) => missing & (1 << i));
+      cache.set(
+        key,
+        inclusion(members.length, sizes, (t) => BigInt(t) ** BigInt(left)),
+      );
+    }
+    return cache.get(key);
+  }
+  let missing = (1 << groups.length) - 1;
+  if (rank < 0n || rank >= ways(length, missing))
+    throw Error('Rank is outside the selected repeating sequence space.');
+  const result = [];
+  for (let left = length - 1; left >= 0; left--) {
+    for (let i = 0; i < members.length; i++) {
+      const next = missing & ~groupMask[i],
+        count = ways(left, next);
+      if (rank < count) {
+        result.push(members[i].id);
+        missing = next;
+        break;
+      }
+      rank -= count;
+    }
+  }
+  return result;
 }
 /** Choose additions to an already anchored board in catalogue order, without listing earlier sets. */
 export function additionalMembers(pool, size, rank) {

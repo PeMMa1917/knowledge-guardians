@@ -1,3 +1,5 @@
+import { reviewStatus } from './combination-review-status.mjs';
+import { reviewedLedger } from './combination-checklist.mjs';
 /** Build and query the full authoring catalogue without enumerating its power set. */
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -6,7 +8,7 @@ import { parseArgs } from 'node:util';
 import { loadAudit } from './audit-cross-weave.mjs';
 import { renderChecklist } from './render-combination-checklist.mjs';
 import { buildAtlas, familyNames, lookup } from './combination-atlas.mjs';
-import { spaceCount, unrankCombination } from './combination-space.mjs';
+import { spaceCount, selectionAt } from './combination-space.mjs';
 
 function cell(text) {
   return String(text ?? '')
@@ -18,7 +20,7 @@ export function memberIndex(atlas) {
   const out = [
     '# Combination catalogue',
     '',
-    'Each identifier selects a distinct member of the authoring space. The rows follow the game’s public catalogues and the mission questions in the current content pack. Numbers without a public title identify a supplied micro-skill by its worksheet number. A word and its history are independent selections.',
+    'Each identifier selects a distinct member of the authoring space. The rows follow the game’s public catalogues and the mission questions in the current content pack. All 1,200 supplied micro-skills have a searchable public description and retain their worksheet number. A word and its history are independent selections.',
     '',
     '[Combination rules, worked journeys and lookup commands](COMBINATION_ATLAS.md)',
     '',
@@ -136,6 +138,8 @@ async function main() {
   const lists = [
     ['COMBINATION_MEMBERS.md', memberIndex(atlas)],
     ['CHAPTER_VIEWPOINTS.md', chapterRegister(atlas)],
+    ['COMBINATION_REVIEW_STATUS.md', reviewStatus(atlas)],
+    ['COMBINATION_REVIEWED.json', JSON.stringify(reviewedLedger(atlas),null,2)+'\n'],
     ['COMBINATION_CHECKLIST.html', await renderChecklist(atlas)],
   ];
   if (values.write || values.check) {
@@ -174,7 +178,7 @@ async function main() {
   if (values.rank !== undefined) {
     console.log(
       JSON.stringify(
-        unrankCombination(atlas.members, opts.length, values.rank, opts),
+        selectionAt(atlas.members, opts.length, values.rank, opts),
       ),
     );
     return;

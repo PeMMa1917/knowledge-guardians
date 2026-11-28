@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 // @ts-expect-error audit tools run as native JavaScript.
-import { additionalMembers, matchesOrder, requirements, spaceCount, unrankCombination } from '../tools/combination-space.mjs';
+import { additionalMembers, selectionAt, matchesOrder, requirements, spaceCount, unrankCombination } from '../tools/combination-space.mjs';
 // @ts-expect-error audit tools run as native JavaScript.
 import { buildAtlas, lookup } from '../tools/combination-atlas.mjs';
 // @ts-expect-error audit tools run as native JavaScript.
@@ -61,6 +61,22 @@ describe('documented TOK combination space', () => {
     expect(additionalMembers(pool,12,309752320478994335005794n)).toHaveLength(12);
     expect(additionalMembers(pool,1,1199n)).toEqual(['1200']);
   });
+  it('addresses each finite permutation and repeated journey exactly once with the required anchor groups',()=>{
+    const triad=members.slice(0,3);
+    for(const order of ['permutation','repeated-sequence']){
+      const size=order==='permutation'?3:4, opt={design:'any',order};
+      const count=spaceCount(triad,{...opt,length:size});
+      const journeys=new Set<string>();
+      for(let n=0n;n<count;n++){
+        const seq=selectionAt(triad,size,n,opt);
+        expect(requirements(triad,seq,{design:'any'}).valid).toBe(true);
+        expect(seq).toHaveLength(size);
+        journeys.add(seq.join('>'));
+      }
+      expect(BigInt(journeys.size)).toBe(count);
+      expect(()=>selectionAt(triad,size,count,opt)).toThrow();
+    }
+  });
   it('requires either area or theme and honours finite lengths for revisits', () => {
     expect(
       requirements(members, ['concept0', 'framework1', 'theme3'], {
@@ -98,6 +114,17 @@ describe('documented TOK combination space', () => {
     expect(new Set(atlas.members.map((m: {id: string}) => m.id)).size).toBe(
       atlas.members.length,
     );
+    const micros=atlas.members.filter((m:{kind:string})=>m.kind==='micro');
+    expect(micros).toHaveLength(1200);
+    expect(micros.every((m:{name?:string})=>typeof m.name==='string'&&m.name.trim().length>4&&!/^#?\d+$/.test(m.name))).toBe(true);
+    expect(micros.find((m:{id:string})=>m.id==='micro:20').name).toContain('decision');
+    const byKind=(k:string)=>atlas.members.filter((m:{kind:string})=>m.kind===k);
+    expect(byKind('exhibition')).toHaveLength(35);
+    expect(byKind('companion').length).toBeGreaterThanOrEqual(264);
+    expect(byKind('exhibit').length).toBeGreaterThan(2000);
+    expect(byKind('solo')).toHaveLength(5);
+    const coat=atlas.beats.find((b:{id:string})=>b.id==='returned-coat.hook.print');
+    expect(coat.members).toEqual(expect.arrayContaining(['character:kip-arden','exhibition:25']));
     const first = ['bias:halo', 'fallacy:wealth', 'story:25', 'game:238'];
     const second = [
       'story:11',

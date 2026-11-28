@@ -90,6 +90,7 @@ export function mergeLedger(members, existing, incoming) {
     const rec = validateRecord(members, item),
       key = cellKey(rec.board, rec.bloom, rec.dok);
     const old = merged.get(key);
+    if (old && incoming.kind === 'implementation-review') continue;
     if (!old || rec.updated > old.updated) merged.set(key, rec);
     else if (
       rec.updated === old.updated &&
@@ -125,4 +126,39 @@ export function reviewTotals(records, member, chapter) {
     )
       totals[r.bloom][r.dok - 1]++;
   return totals;
+}
+
+const reviewDate = '2026-11-28T00:00:00.000Z';
+/** A portable implementation-review snapshot. Authored leads and merely counted combinations earn no checks. */
+export function reviewedLedger(atlas) {
+  const records = new Map();
+  for (const beat of atlas.beats) {
+    const board = boardFor(atlas.members, {
+      chapter: beat.chapter,
+      ids: beat.members,
+      design: 'any',
+    });
+    const key = cellKey(board, beat.bloom, beat.dok);
+    const note = [
+      beat.act,
+      ...beat.views,
+      beat.consequence,
+      beat.map + ' · ' + beat.target,
+      beat.source + ' · ' + beat.anchor,
+    ].join('\n');
+    const previous = records.get(key);
+    const actions = [
+      ...new Set([...(previous?.actions ?? []), beat.actionId]),
+    ].sort();
+    records.set(key, {
+      board,
+      bloom: beat.bloom,
+      dok: beat.dok,
+      checked: true,
+      updated: reviewDate,
+      actions,
+      evidence: (previous ? previous.evidence + '\n\n' : '') + note,
+    });
+  }
+  return { ...saveLedger(records), kind: 'implementation-review' };
 }

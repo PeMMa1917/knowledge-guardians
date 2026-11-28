@@ -44,6 +44,7 @@ for (let i = 1; i <= 15; i++) get('chapter').append(option(i, 'Chapter ' + i));
 get('family').append(option('', 'All families'));
 for (const [k, name] of Object.entries(atlas.families))
   get('family').append(option(k, name));
+let searchPage = 0;
 function search() {
   get('playMatches').replaceChildren();
   get('activityMatches').replaceChildren();
@@ -52,22 +53,46 @@ function search() {
   const filtered = atlas.members.filter(
     (m) =>
       (!kind || m.kind === kind) &&
-      [m.id, m.name, ...(m.aliases ?? [])].some((t) =>
+      [m.id, m.name, m.origin ?? '', ...(m.aliases ?? [])].some((t) =>
         t.toLocaleLowerCase().includes(q),
       ),
   );
   const list = get('matches');
+  searchPage = Math.min(
+    searchPage,
+    Math.max(0, Math.ceil(filtered.length / 150) - 1),
+  );
+  const first = searchPage * 150;
+  get('priorMembers').disabled = searchPage === 0;
+  get('moreMembers').disabled = first + 150 >= filtered.length;
   list.replaceChildren(
-    ...filtered.slice(0, 150).map((m) => option(m.id, m.name + ' · ' + m.id)),
+    ...filtered
+      .slice(first, first + 150)
+      .map((m) => option(m.id, m.name + ' · ' + m.id)),
   );
   list.selectedIndex = filtered.length ? 0 : -1;
-  get('matchCount').textContent =
-    filtered.length +
-    ' matches' +
-    (filtered.length > 150 ? ' · refine the search to see more.' : '.');
+  get('matchCount').textContent = filtered.length
+    ? first +
+      1 +
+      '–' +
+      Math.min(first + 150, filtered.length) +
+      ' of ' +
+      filtered.length +
+      ' matching elements.'
+    : 'No matching elements.';
 }
-get('search').oninput = search;
-get('family').onchange = search;
+get('priorMembers').onclick = () => {
+  searchPage--;
+  search();
+};
+get('moreMembers').onclick = () => {
+  searchPage++;
+  search();
+};
+get('search').oninput = get('family').onchange = () => {
+  searchPage = 0;
+  search();
+};
 function refreshBoard() {
   editing = null;
   get('editPanel').hidden = true;
@@ -83,6 +108,7 @@ function refreshBoard() {
     get('chips').append(b);
   }
   get('stepBox').hidden = get('sequence').value !== 'order';
+  if (!get('stepBox').hidden) updateOrderRange();
   try {
     const steps = get('stepBox').hidden
       ? undefined
@@ -109,14 +135,31 @@ function refreshBoard() {
     board = null;
     get('valid').textContent = e.message;
     get('boardTitle').textContent = 'Review grid';
-    get('boardDesc').textContent =
-      'Complete the selection to enable its 24 cells.';
+    get('boardDesc').textContent = 'Complete the selection to enable its 24 cells.';
   }
   grid();
   renderProof();
   listSaved();
   renderMatrix();
 }
+function updateOrderRange() {
+  const digits = get('orderNumber').value.trim(),
+    max = factorial(draft.length);
+  const ordinal = /^\d+$/.test(digits) ? BigInt(digits) : 0n;
+  get('orderRange').textContent = draft.length
+    ? max.toLocaleString('en-US') + ' orders of these ' + draft.length + ' elements.'
+    : 'Choose elements to order.';
+  get('openOrder').disabled = !draft.length || ordinal < 1n || ordinal > max;
+}
+get('orderNumber').oninput = updateOrderRange;
+get('openOrder').onclick = () => {
+  const ordered = permutationAt(
+    [...draft].sort(),
+    BigInt(get('orderNumber').value) - 1n,
+  );
+  get('steps').value = ordered.join(' > ');
+  refreshBoard();
+};
 function add() {
   const id = get('matches').value;
   if (id && !draft.includes(id)) {
@@ -161,7 +204,25 @@ function record(bloom, dok, changes, target = board) {
   persist();
   listSaved();
 }
+function boardProgress() {
+  const box = get('boardProgress');
+  if (!board) {
+    box.textContent = '';
+    return;
+  }
+  const cells = levels.flatMap((b) =>
+    depths.map((d) => records.get(cellKey(board, b, d))),
+  );
+  const checked = cells.filter((r) => r?.checked).length;
+  const target = cells.filter((r) => (r?.actions?.length ?? 0) >= 10).length;
+  box.textContent =
+    checked +
+    ' of 24 cells reviewed · ' +
+    target +
+    ' of 24 have ten distinct recorded actions.';
+}
 function grid() {
+  boardProgress();
   const table = el('table', '');
   table.setAttribute(
     'aria-label',
@@ -190,6 +251,7 @@ function grid() {
       cb.onchange = () => {
         record(b, d, { checked: cb.checked });
         renderMatrix();
+        boardProgress();
         tell(cb.checked ? 'Review checked.' : 'Review unchecked.');
       };
       const edit = el(
@@ -281,8 +343,7 @@ function objectiveLeads(id) {
   const list = el('select', '');
   list.id = 'objectiveLeads';
   heading.htmlFor = list.id;
-  for (const [i, a] of all.entries())
-    list.append(option(i, a[2] + ' · ' + a[0]));
+  for (const [i, a] of all.entries()) list.append(option(i, a[2] + ' · ' + a[0]));
   const action = el('button', 'Build a review from this objective');
   const help = el(
     'small',
@@ -364,9 +425,7 @@ function renderProof() {
       matchesOrder(
         board.steps,
         r.beats.map((k) =>
-          beatMap.get(k).chapter === board.chapter
-            ? beatMap.get(k).members
-            : [],
+          beatMap.get(k).chapter === board.chapter ? beatMap.get(k).members : [],
         ),
       ),
     );
@@ -383,8 +442,7 @@ function renderProof() {
   }
   const found = atlas.beats.filter(
     (b) =>
-      b.chapter === board.chapter &&
-      board.ids.every((id) => b.members.includes(id)),
+      b.chapter === board.chapter && board.ids.every((id) => b.members.includes(id)),
   );
   if (!found.length)
     box.append(
@@ -488,10 +546,7 @@ get('focus').onclick = () => {
   get('memberReview').replaceChildren(
     el('h3', describe(id) + ' · chapter ' + get('chapter').value),
     el('p', levels.map((l) => l + ' ' + totals[l].join(' / ')).join(' · ')),
-    el(
-      'small',
-      'Counts of checked boards at DOK 1 / 2 / 3 / 4 for this member.',
-    ),
+    el('small', 'Counts of checked boards at DOK 1 / 2 / 3 / 4 for this member.'),
   );
 };
 function download(name, content, type) {
@@ -502,6 +557,17 @@ function download(name, content, type) {
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
+get('documented').onclick = () => {
+  const count = records.size;
+  records = mergeLedger(atlas.members, records, reviewedLedger(atlas));
+  persist();
+  refreshBoard();
+  tell(
+    'Added ' +
+      (records.size - count) +
+      ' implementation reviews. Existing checks and notes were kept.',
+  );
+};
 get('json').onclick = () =>
   download(
     'knowledge-guardians-checklist.json',
@@ -607,7 +673,7 @@ function renderMatrix() {
   const matching = atlas.members.filter(
     (m) =>
       m.kind === kind &&
-      [m.id, m.name, ...(m.aliases ?? [])].some((t) =>
+      [m.id, m.name, m.origin ?? '', ...(m.aliases ?? [])].some((t) =>
         t.toLowerCase().includes(query),
       ),
   );
@@ -756,9 +822,7 @@ function range() {
   const input = get('extraCount').value.trim();
   const n = Number(input);
   if (!/^\d+$/.test(input) || !Number.isSafeInteger(n) || n > pool.length)
-    throw Error(
-      'Choose between 0 and ' + pool.length + ' additional elements.',
-    );
+    throw Error('Choose between 0 and ' + pool.length + ' additional elements.');
   const total = choose(pool.length, n);
   const digits = get('combinationNumber').value.trim();
   const number = /^\d+$/.test(digits) ? BigInt(digits) : 0n;

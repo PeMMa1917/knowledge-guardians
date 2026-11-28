@@ -70,9 +70,7 @@ describe('Two coats for one fare', () => {
         expect(d.s.flags['returned-coat.policy']).toBe(e);
         expect(position(d, site.id).id.endsWith('-' + e)).toBe(true);
         visit(d, site.id, 'Hear the two');
-        expect(d.s.flags['returned-coat.' + site.id + '.worked.' + e]).toBe(
-          true,
-        );
+        expect(d.s.flags['returned-coat.' + site.id + '.worked.' + e]).toBe(true);
         expect(d.s.journal).toContain('j.returned-coat.choose.' + e);
       }
     },
@@ -87,17 +85,10 @@ describe('Two coats for one fare', () => {
       const d = new Driver();
       visit(d, 'council', sites[3].trials[0][2]);
       visit(d, 'council', sites[3].trials[1][2]);
-      visit(
-        d,
-        'council',
-        'Decide how',
-        endings[policy as keyof typeof endings],
-      );
+      visit(d, 'council', 'Decide how', endings[policy as keyof typeof endings]);
       d.s.mapId = 'nexus.coat-lining';
       expect(
-        MAPS[d.s.mapId].npcs
-          .filter((n) => check(n.visibleIf, d.s))
-          .map((n) => n.id),
+        MAPS[d.s.mapId].npcs.filter((n) => check(n.visibleIf, d.s)).map((n) => n.id),
       ).toEqual([who]);
       const greeting = d.e.talkEntry(who, d.s)!;
       expect(greeting).toBe('returned-coat.watch.' + policy);
@@ -151,6 +142,25 @@ describe('Two coats for one fare', () => {
       expect(check(door.visibleIf, d.s)).toBe(o.kind === 'lining');
     },
   );
+  it('keeps the hatch, cuff and hidden door selectable beside existing Nexus stories', () => {
+    const props = MAPS['nexus.archive'].interactables;
+    const coat = props.filter((p) => p.id.startsWith('return-coat-hook-'));
+    const other = props.filter((p) => !coat.includes(p));
+    for (const p of coat) {
+      const obstructing = other.filter(
+        (q) => p.x >= q.x && p.x < q.x + q.w && p.y >= q.y - 1 && p.y <= q.y + q.h,
+      );
+      expect(
+        obstructing.map((q) => q.id),
+        p.id,
+      ).toEqual([]);
+    }
+    const door = coat.find((p) => p.id.endsWith('-pass'))!;
+    const exit = MAPS[door.to!.map].interactables.find(
+      (p) => p.id === 'coat-inside-back',
+    );
+    expect(exit?.to).toEqual({ map: 'nexus.archive', x: door.x, y: door.y + 1 });
+  });
   it('keeps the unearned object off the rack and gives the hidden landing an unconditional way back', () => {
     const d = new Driver();
     expect(() =>

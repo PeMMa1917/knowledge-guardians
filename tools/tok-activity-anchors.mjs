@@ -39,6 +39,10 @@ export function activityAnchors(pack, levels, topics) {
             ? 'micro:' + Number(k.slice(9))
             : 'skill:' + k,
         ),
+        learning: [
+          step.weave?.thinking?.fink && 'fink:' + step.weave.thinking.fink,
+          step.weave?.thinking?.solo && 'solo:' + step.weave.thinking.solo,
+        ].filter(Boolean),
         subjects: step.weave?.subjects ?? [],
         atl: step.weave?.atl ?? [],
         framework,

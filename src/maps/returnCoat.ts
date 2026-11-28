@@ -90,7 +90,7 @@ export function returnCoatAt(map: string): Interactable[] {
       ? [
           prop(
             'pass',
-            13,
+            29,
             12,
             'door',
             'the hidden door behind the lost-property rail',
@@ -179,7 +179,7 @@ export const liningLanding: MapDef = {
       art: 'coat.quiet',
       label: 'the door back to the lost-property hatch',
       walkThrough: true,
-      to: { map: 'nexus.archive', x: 13, y: 13 },
+      to: { map: 'nexus.archive', x: 29, y: 13 },
     },
   ],
 };

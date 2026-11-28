@@ -17,7 +17,7 @@ export async function playReturnCoat({ page, engine, use, waitMap, close }) {
     );
     await waitMap(map);
   };
-  await move('nexus.archive', 11, 14);
+  await move('nexus.archive', 25, 14);
   await use('return-coat-hook-first');
   await click('Continue');
   await click('Let the wet cuff');

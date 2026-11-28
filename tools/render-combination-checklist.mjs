@@ -26,6 +26,8 @@ export async function renderChecklist(atlas) {
       ...a.subjects.map((x) => 'subject:' + x),
       ...a.skills,
       ...a.questionIds,
+      ...a.promptIds,
+      ...a.learning,
     ].filter((x) => registered.has(x));
     return [
       a.id,

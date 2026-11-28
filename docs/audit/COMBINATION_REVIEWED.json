@@ -1,0 +1,2723 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:ART",
+          "concept:perspective",
+          "exhibition:25",
+          "framework:perspectives",
+          "game:247",
+          "micro:449",
+          "question:KQ-ROUTE-25",
+          "question:mission-a1b80f7f90ff2152",
+          "story:24"
+        ]
+      },
+      "bloom": "create",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.rain.lining"
+      ],
+      "evidence": "Issue the quiet rail’s score after watching the worker and listening at the hatch. The visiting company receives the score and billing.\nA named bow can keep the surprise for the waiting borrower.\nAn open demonstration gives the worker a chance to teach the next company.\nThe company in the other room receives this exact score and its chosen billing. A changed rehearsal leaves that version in circulation.\nnexus.coat-lining · indoor-rain-rig\ntests/rain-score.test.ts · credits an authored score only after an audience and a worker"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HIS",
+          "character:kip-arden",
+          "concept:evidence",
+          "exhibition:25",
+          "framework:scope",
+          "game:170",
+          "micro:129",
+          "question:KQ-ROUTE-25",
+          "question:mission-eb6260fed9e5eed8",
+          "story:5"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.hook.print"
+      ],
+      "evidence": "Use Kip’s sleeve to put the same chipped pear on clean cloth. A shared mark alone cannot identify a wearer.\nThe pear looks personal enough to let a friend recognise a cuff.\nThe same mark transfers to a blank sleeve. A keeper needs a separate account of who wore it.\nAnother chipped pear blooms on the blank sleeve. Kip tries to rub it off and gets a pear on his thumb. “You can have my autograph. Apparently you can have twelve.” The experiment explains the mark. He still owns exactly one coat.\nnexus.archive · return-coat-hook-work\ntests/return-coat.test.ts · records only the operation the Guardian actually tried"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HIS",
+          "character:warden-ise",
+          "concept:responsibility",
+          "exhibition:25",
+          "framework:ethics",
+          "game:77",
+          "micro:140",
+          "question:KQ-ROUTE-25",
+          "question:mission-eb6260fed9e5eed8",
+          "story:31"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.hook.fare"
+      ],
+      "evidence": "Walk the disputed fare to the window. Separate Ise’s guarantor stroke from the copied name of a wearer.\nThe name on the ticket identifies the person whose money was taken.\nThe guarantee stroke identifies a different person who agreed to answer for a charge.\nThe fare came off at noon. Ise shows you the little stroke she made to guarantee that somebody would pay. A clerk carried the wearer’s name across it. “That stroke is mine,” she says. “Kip, will you ask for the ticket or shall I?” He holds out his hand for the slip.\nnexus.archive · return-coat-hook-work\ntests/return-coat.test.ts · records only the operation the Guardian actually tried"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
+          "bias:anchoring",
+          "concept:values",
+          "framework:perspectives",
+          "game:119",
+          "question:KQ-NEW-005",
+          "question:mission-0dc10c053e320b64",
+          "story:4"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.brass-price.compare"
+      ],
+      "evidence": "The chalked eighty shifts the perceived generosity of forty without a change in the light.\nHang one lamp over the level arcade. Sefa walks her cousin home by the long, light road. The stair carriers keep a hand on the rail.\nLend both lamps to the stair crew. Two carriers try the fourth step together. Sefa and her cousin wait in the doorway until the lamps come back.\nEighty is cut deep in the brass. A board beside it says forty is generous. The two lamps throw identical pools of light on the stall.\naethelgard.emberford · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · forty is generous"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
+          "bias:bandwagon",
+          "bias:groupthink",
+          "concept:perspective",
+          "fallacy:popularity",
+          "framework:perspectives",
+          "game:267",
+          "question:KQ-NEW-002",
+          "question:mission-8293607ef2285fb0",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.ten-stamps.compare"
+      ],
+      "evidence": "The chair treats votes as proof of musical quality, while a member withdraws an independent vote amid apparent agreement.\nKeep the opening song for the waiting singer. She takes the first verse. A family who came for the fiddler has to stay through supper to hear him.\nGive each musician a short turn at the stool. Both are heard. The shy singer had practised a long piece and must cut its last verse.\nTen signatures fill ten neat spaces. The chair calls it proof the fiddler is the better musician. A committee member quietly puts her own folded ballot away.\naethelgard.emberford · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · folded ballot away"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
+          "bias:bandwagon",
+          "concept:values",
+          "framework:perspectives",
+          "game:119",
+          "question:KQ-NEW-005",
+          "question:mission-0dc10c053e320b64",
+          "story:4"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.brass-price.compare"
+      ],
+      "evidence": "The carrier adopts the price other carriers displayed without locating a sale.\nHang one lamp over the level arcade. Sefa walks her cousin home by the long, light road. The stair carriers keep a hand on the rail.\nLend both lamps to the stair crew. Two carriers try the fourth step together. Sefa and her cousin wait in the doorway until the lamps come back.\nThe carriers have rubbed eighty smooth with their sleeves. One says he used that figure because the last three people did. None remembers paying it.\naethelgard.emberford · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · last three people did"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
+          "bias:salience",
+          "concept:values",
+          "framework:perspectives",
+          "game:119",
+          "question:KQ-NEW-005",
+          "question:mission-0dc10c053e320b64",
+          "story:4"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.brass-price.compare"
+      ],
+      "evidence": "Covering an attention-catching price makes a functional property of the lamps easier to notice.\nHang one lamp over the level arcade. Sefa walks her cousin home by the long, light road. The stair carriers keep a hand on the rail.\nLend both lamps to the stair crew. Two carriers try the fourth step together. Sefa and her cousin wait in the doorway until the lamps come back.\nUnder a cloth the two lamps each light five floor tiles. When the cloth comes off, forty sounds very different to Sefa.\naethelgard.emberford · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · the two lamps each light five floor tiles"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
+          "character:scholar-sefa",
+          "concept:values",
+          "exhibition:25",
+          "framework:scope",
+          "game:22",
+          "micro:155",
+          "question:KQ-ROUTE-25",
+          "question:mission-d66a5ca64a335b4f",
+          "story:69"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.market.cross"
+      ],
+      "evidence": "Take one coat across the till twice. The second bit can be refunded while the number of borrowers stays open.\nTwo fare marks can be a useful count of transactions.\nA borrower can pass the till twice with one coat and one body.\nTwo fares land in the box. Sefa lifts the one coat high enough for the back of the queue. “Had I sung you two notes you would have heard two notes. Who heard two people?” The clerk gives the second bit back.\naethelgard.emberford · return-coat-market-work\ntests/return-coat.test.ts · records only the operation the Guardian actually tried"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
+          "character:smith-hesper",
+          "concept:perspective",
+          "exhibition:25",
+          "framework:perspectives",
+          "game:170",
+          "micro:58",
+          "question:KQ-ROUTE-25",
+          "question:mission-d66a5ca64a335b4f",
+          "story:117"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.market.awning"
+      ],
+      "evidence": "Carry the sleeve along the quick and sheltered routes. Compare their marks with Hesper’s account of carrying for somebody else.\nThe short route reaches the ferry sooner.\nThe sheltered route keeps the sleeve dry. Hesper also carried a coat on somebody else’s behalf.\nYour shoulder is dry on the long walk. The short way leaves a dark crescent on the cuff. Hesper sits down on the kerb. “Did that walk for a friend who couldn’t take the stairs. Never occurred to me what the coat would say about me after.”\naethelgard.emberford · return-coat-market-work\ntests/return-coat.test.ts · records only the operation the Guardian actually tried"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
+          "concept:perspective",
+          "deception:fabrication",
+          "deception:false-consensus",
+          "framework:perspectives",
+          "game:267",
+          "question:KQ-NEW-002",
+          "question:mission-8293607ef2285fb0",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.ten-stamps.compare"
+      ],
+      "evidence": "The clerk admits making nine extra votes to create the appearance of ten independent neighbours.\nKeep the opening song for the waiting singer. She takes the first verse. A family who came for the fiddler has to stay through supper to hear him.\nGive each musician a short turn at the stool. Both are heard. The shy singer had practised a long piece and must cut its last verse.\nIn the lining a clerk wrote, “I made nine more from my own. They must think we are ten.” Nine votes were invented. The fiddler did not sign any of them.\naethelgard.emberford · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · I made nine more from my own"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
+          "concept:perspective",
+          "framework:perspectives",
+          "game:22",
+          "question:KQ-NEW-002",
+          "question:mission-8293607ef2285fb0",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.ten-stamps.send"
+      ],
+      "evidence": "Choose who gets the first turn after the apparent crowd has shrunk to one author. Each musician has something to lose.\nKeep the opening song for the waiting singer. She takes the first verse. A family who came for the fiddler has to stay through supper to hear him.\nGive each musician a short turn at the stool. Both are heard. The shy singer had practised a long piece and must cut its last verse.\nThe singer offers him the refrain. He asks her to keep the chair for her sister next time. / Two families can now name what they heard. One asks for the missing verse.\naethelgard.emberford · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
+          "concept:values",
+          "framework:perspectives",
+          "game:22",
+          "question:KQ-NEW-005",
+          "question:mission-0dc10c053e320b64",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.brass-price.send"
+      ],
+      "evidence": "Sefa can prioritise a good light on the stairs or a journey home now. The two prices give neither answer for her.\nHang one lamp over the level arcade. Sefa walks her cousin home by the long, light road. The stair carriers keep a hand on the rail.\nLend both lamps to the stair crew. Two carriers try the fourth step together. Sefa and her cousin wait in the doorway until the lamps come back.\nThe arcade has a place to wait. The stair is still a two-person job. / The stair crew leaves a chalk mark at the reach of each lamp. Sefa wants one left at the arcade next time.\naethelgard.emberford · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:NAT",
+          "concept:explanation",
+          "exhibition:25",
+          "framework:methods-and-tools",
+          "game:190",
+          "micro:270",
+          "question:KQ-ROUTE-25",
+          "question:mission-a1b80f7f90ff2152",
+          "story:5"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.rain.lining.twocauses"
+      ],
+      "evidence": "Build a tap from a stored drop, then make the same sound with a direct squeeze at the cloakroom hatch.\nA third-beat tap can come from the one drop the hem has held since the first beat.\nA direct squeeze at the third beat gives the borrower the same sound.\nThe kept bar and the new one sound identical in the stalls. The workforce in the wings can point to two different gestures.\nnexus.coat-lining · indoor-rain-rig\ntests/rain-score.test.ts · credits an authored score only after an audience and a worker"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "concept:perspective",
+          "etymology:claim",
+          "exhibition:35",
+          "framework:perspectives",
+          "game:114",
+          "micro:370",
+          "question:KQ-ROUTE-35",
+          "question:mission-83f3dedec555fddf",
+          "story:11",
+          "theme:POL",
+          "vocabulary:claim"
+        ]
+      },
+      "bloom": "create",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "claimbell.issue"
+      ],
+      "evidence": "Design an entrance and a shift after trying both claimants and at least two methods of calling for a turn.\nA porter can speak at the open bell and keep his wrist to himself.\nA worker on shift needs a token or another person to hold the turn.\nThe sealed times and entrance travel to the council. The player must try the rule there as signed.\naethelgard.emberford · claim-bell-well\ntests/claim-bell.test.ts · expect(d.done('claimbell.issue')).toBe(true)"
+    },
+    {
+      "board": {
+        "chapter": 10,
+        "ids": [
+          "area:HUM",
+          "bias:expectancy",
+          "concept:interpretation",
+          "fallacy:nature",
+          "framework:methods-and-tools",
+          "game:238",
+          "question:KQ-NEW-003",
+          "question:mission-2a6da421cec3a5b2",
+          "story:33"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.ten-bowls.compare"
+      ],
+      "evidence": "The wild label attracts a judgement of superior sweetness without an ingredient difference.\nKeep the leaves and print the shared recipe. Tasters can enjoy a name and see what was in the bowl. The stallholder loses her secret.\nOffer an unlabelled tasting first. The next taster has a moment to notice before hearing the stall. The stallholder wants a turn to tell her herb story afterwards.\nAt the stall a taster expects the bowl labelled wild to be sweet. She says it is. Both ladles came from the same pot this morning.\nmarket.square · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · Both ladles came from the same pot"
+    },
+    {
+      "board": {
+        "chapter": 10,
+        "ids": [
+          "area:HUM",
+          "concept:interpretation",
+          "fallacy:ad-hominem",
+          "fallacy:tu-quoque",
+          "framework:methods-and-tools",
+          "game:238",
+          "question:KQ-NEW-003",
+          "question:mission-2a6da421cec3a5b2",
+          "story:33"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.ten-bowls.compare"
+      ],
+      "evidence": "A personal attack and a countercharge of inconsistency both leave the contents of the bowls to be checked.\nKeep the leaves and print the shared recipe. Tasters can enjoy a name and see what was in the bowl. The stallholder loses her secret.\nOffer an unlabelled tasting first. The next taster has a moment to notice before hearing the stall. The stallholder wants a turn to tell her herb story afterwards.\nA neighbour calls the stallholder foolish. She points out he once sold an untested spice too. Neither remark tells the taster what is in either bowl.\nmarket.square · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · once sold an untested spice too"
+    },
+    {
+      "board": {
+        "chapter": 10,
+        "ids": [
+          "area:HUM",
+          "concept:interpretation",
+          "framework:methods-and-tools",
+          "game:22",
+          "question:KQ-NEW-003",
+          "question:mission-2a6da421cec3a5b2",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.ten-bowls.send"
+      ],
+      "evidence": "Choose where the next taster can encounter the label relative to tasting. Both keep the shared recipe available.\nKeep the leaves and print the shared recipe. Tasters can enjoy a name and see what was in the bowl. The stallholder loses her secret.\nOffer an unlabelled tasting first. The next taster has a moment to notice before hearing the stall. The stallholder wants a turn to tell her herb story afterwards.\nA child asks for the wild name because it sounds good. Her friend wants to read the recipe. / Two visitors disagree about their favourite identical bowl. Each still gets a seat.\nmarket.square · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 10,
+        "ids": [
+          "area:MAT",
+          "bias:anchoring",
+          "concept:objectivity",
+          "fallacy:middle-ground",
+          "framework:scope",
+          "game:191",
+          "question:KQ-NEW-003",
+          "question:mission-e27290032cc4386a",
+          "story:55"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.two-coppers.compare"
+      ],
+      "evidence": "The first numbers frame a compromise before anyone checks what each number measures.\nStamp the fruit weight for buyers. Families can compare fruit across stalls. The porter still needs to weigh the whole load.\nHang both weights on the porter’s cord. The carrier gets a full load figure; buyers have to read the small fruit mark before paying.\nSix and ten stand on cards. Eight looks polite. The beam only knows the weight hanging from its hook.\nmarket.square · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · Eight looks polite"
+    },
+    {
+      "board": {
+        "chapter": 10,
+        "ids": [
+          "area:MAT",
+          "concept:objectivity",
+          "fallacy:equivocation",
+          "framework:scope",
+          "game:191",
+          "question:KQ-NEW-003",
+          "question:mission-e27290032cc4386a",
+          "story:55"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.two-coppers.compare"
+      ],
+      "evidence": "Lifting the empty wicker separates two meanings of the same quoted basket weight.\nStamp the fruit weight for buyers. Families can compare fruit across stalls. The porter still needs to weigh the whole load.\nHang both weights on the porter’s cord. The carrier gets a full load figure; buyers have to read the small fruit mark before paying.\nThe empty wicker balances at four. Six names the fruit alone; ten names fruit and wicker. Averaging the claims would buy neither.\nmarket.square · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · ten names fruit and wicker"
+    },
+    {
+      "board": {
+        "chapter": 10,
+        "ids": [
+          "area:MAT",
+          "concept:objectivity",
+          "framework:scope",
+          "game:22",
+          "question:KQ-NEW-003",
+          "question:mission-e27290032cc4386a",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.two-coppers.send"
+      ],
+      "evidence": "Choose the weight a buyer or carrier needs. Each answers a different question about the same basket.\nStamp the fruit weight for buyers. Families can compare fruit across stalls. The porter still needs to weigh the whole load.\nHang both weights on the porter’s cord. The carrier gets a full load figure; buyers have to read the small fruit mark before paying.\nThe fruit stamp travels with a basket whose wicker is heavier than yesterday’s. / The porter makes room for both marks on the cord. A buyer asks which one sets the price.\nmarket.square · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 11,
+        "ids": [
+          "area:NAT",
+          "bias:confirmation",
+          "concept:explanation",
+          "fallacy:oversimplification",
+          "framework:methods-and-tools",
+          "game:267",
+          "question:KQ-NEW-005",
+          "question:mission-8e6a825ab3fba683",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.dry-sleeve.compare"
+      ],
+      "evidence": "The listening cup preserves a source of the sound that a search for a visible crack alone would miss.\nKeep a listening watch while the wheel runs. People keep drawing water. A watcher stays after the shift to record when the sound returns.\nHalt one turn to inspect the peg. A crew can put a hand on the peg. The last allotment must wait until the wheel turns again.\nThe listening cup picks up three knocks. A loose peg on a sound wheel can also knock. The wheel worker wants her report entered as a sound.\nwater.gatehouse · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · A loose peg on a sound wheel can also knock"
+    },
+    {
+      "board": {
+        "chapter": 11,
+        "ids": [
+          "area:NAT",
+          "concept:explanation",
+          "fallacy:burden",
+          "fallacy:ignorance",
+          "framework:methods-and-tools",
+          "game:267",
+          "question:KQ-NEW-005",
+          "question:mission-8e6a825ab3fba683",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.dry-sleeve.compare"
+      ],
+      "evidence": "Demanding a drawing from the listener shifts support for the foreman’s assertion of soundness onto another worker.\nKeep a listening watch while the wheel runs. People keep drawing water. A watcher stays after the shift to record when the sound returns.\nHalt one turn to inspect the peg. A crew can put a hand on the peg. The last allotment must wait until the wheel turns again.\nThe top of the wheel looks smooth. The form has a box for a sketch. The worker hears something below it.\nwater.gatehouse · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · box for a sketch"
+    },
+    {
+      "board": {
+        "chapter": 11,
+        "ids": [
+          "area:NAT",
+          "concept:explanation",
+          "framework:methods-and-tools",
+          "game:22",
+          "question:KQ-NEW-005",
+          "question:mission-8e6a825ab3fba683",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.dry-sleeve.send"
+      ],
+      "evidence": "Use the competing sources of the knock to decide between an operational watch and an inspection at rest.\nKeep a listening watch while the wheel runs. People keep drawing water. A watcher stays after the shift to record when the sound returns.\nHalt one turn to inspect the peg. A crew can put a hand on the peg. The last allotment must wait until the wheel turns again.\nThe watcher brings back a rhythm and a time, with the cause line still open. / The peg moves beneath a thumb. The gatekeeper keeps the first listener’s report beside this new finding.\nwater.gatehouse · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 11,
+        "ids": [
+          "bias:backfire",
+          "bias:reactance",
+          "concept:responsibility",
+          "framework:ethics",
+          "game:238",
+          "question:KQ-NEW-004",
+          "question:mission-0249c47c8f70bc19",
+          "story:33",
+          "theme:POL"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.dry-garden.compare"
+      ],
+      "evidence": "One gardener resists a public correction under threat to his choice. Another engages, constraining the inference.\nGive both crews a reversible Thursday trial. The gardeners can see where the water goes. The last beds bear the cost of a failed turn.\nLet each crew choose a contact for the warning. The clerk loses an instant public answer. Both crews can name someone they will speak to.\nAt the public gate one gardener hears a neighbour call him careless. He grips the gate harder as the clerk corrects him. “I thought your warning might be right. Now I’m sure you’ve got it wrong.” The other gardener asks for the page.\nwater.gatehouse · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · grips the gate harder"
+    },
+    {
+      "board": {
+        "chapter": 11,
+        "ids": [
+          "bias:information",
+          "bias:ostrich",
+          "concept:responsibility",
+          "framework:ethics",
+          "game:238",
+          "question:KQ-NEW-004",
+          "question:mission-0249c47c8f70bc19",
+          "story:33",
+          "theme:POL"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.dry-garden.compare"
+      ],
+      "evidence": "Looking away avoids a worrying warning; piling up old weather adds information that cannot settle Thursday’s distribution.\nGive both crews a reversible Thursday trial. The gardeners can see where the water goes. The last beds bear the cost of a failed turn.\nLet each crew choose a contact for the warning. The clerk loses an instant public answer. Both crews can name someone they will speak to.\nAnother ten years of weather fill the cupboard. The gardener’s urgent problem is which beds still get water on Thursday. Another stack cannot settle that part.\nwater.gatehouse · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · which beds still get water on Thursday"
+    },
+    {
+      "board": {
+        "chapter": 11,
+        "ids": [
+          "concept:evidence",
+          "etymology:evidence",
+          "exhibition:35",
+          "framework:ethics",
+          "game:114",
+          "micro:759",
+          "question:KQ-ROUTE-35",
+          "question:mission-c9bc671c5085b81a",
+          "story:11",
+          "theme:POL",
+          "vocabulary:evidence"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "claimbell.sign"
+      ],
+      "evidence": "Judge the hearing rule after comparing a sight-based slot with a late oral hearing. Decide which channel and shift to sign.\nA signed slot leaves a mark a later keeper can check.\nA late hearing gives an unrecorded sound a witness.\nThe porter back in Emberford is bound by the returned rule. A proxy cannot speak for a wrist he wants to keep private.\nwater.council · claim-bell-weir\ntests/claim-bell.test.ts · keeps both the signed evidence and the later trial, including an excluded worker"
+    },
+    {
+      "board": {
+        "chapter": 11,
+        "ids": [
+          "concept:evidence",
+          "exhibition:12",
+          "framework:methods-and-tools",
+          "game:22",
+          "micro:64",
+          "question:KQ-ROUTE-12",
+          "question:mission-c9bc671c5085b81a",
+          "story:15",
+          "theme:LAN",
+          "vocabulary:claim"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "claimbell.weir.test"
+      ],
+      "evidence": "Apply the pot charter to a new kind of claim. Walk a listener and a chalk maker through its actual window.\nA chalk rubbing can wait in a slot after the keeper leaves.\nThree audible knocks need a listener who will enter them.\nOne can leave a rubbing while three knocks can leave the flat slot empty.\nwater.council · claim-bell-weir\ntests/claim-bell.test.ts · carries the distinction between asking for a pot and reporting a crack across both desks"
+    },
+    {
+      "board": {
+        "chapter": 11,
+        "ids": [
+          "concept:responsibility",
+          "framework:ethics",
+          "game:22",
+          "question:KQ-NEW-004",
+          "question:mission-0249c47c8f70bc19",
+          "story:11",
+          "theme:POL"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.dry-garden.send"
+      ],
+      "evidence": "Give the crews an adjustable trial with costs for the last beds or a chosen messenger for a warning.\nGive both crews a reversible Thursday trial. The gardeners can see where the water goes. The last beds bear the cost of a failed turn.\nLet each crew choose a contact for the warning. The clerk loses an instant public answer. Both crews can name someone they will speak to.\nOne gardener now checks the warning in public. The other sends a private measurement. / Two contacts return with different reasons for the same short watering turn.\nwater.gatehouse · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 12,
+        "ids": [
+          "area:HUM",
+          "bias:automation",
+          "concept:power",
+          "fallacy:circular",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-006",
+          "question:mission-60c06de6b68da3ef",
+          "story:95"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.no-queue.compare"
+      ],
+      "evidence": "The green output is treated as proof of the system’s completeness although the rule starts by omitting unnumbered requests.\nSeat a clerk at the turn. One clerk meets the next cart in person. The counter crew has one fewer pair of hands.\nCarry a second register down the stairs. People can leave a request before a clerk is free. A name on the sheet still needs someone to go back.\nThe strip is tidy. “The machine cannot lose a name,” says a supervisor who has never worked the stair.\ncivic.dispatch · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · machine cannot lose a name"
+    },
+    {
+      "board": {
+        "chapter": 12,
+        "ids": [
+          "area:HUM",
+          "bias:bystander",
+          "concept:power",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-006",
+          "question:mission-60c06de6b68da3ef",
+          "story:95"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.no-queue.compare"
+      ],
+      "evidence": "Three waiting clerks each expect another person to meet the cart.\nSeat a clerk at the turn. One clerk meets the next cart in person. The counter crew has one fewer pair of hands.\nCarry a second register down the stairs. People can leave a request before a clerk is free. A name on the sheet still needs someone to go back.\nThe hand register and the view from the stool show two different gaps. Lin asks who will meet the next cart at the turn. Three clerks thought the other two had that job.\ncivic.dispatch · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · other two had that job"
+    },
+    {
+      "board": {
+        "chapter": 12,
+        "ids": [
+          "area:HUM",
+          "bias:survivorship",
+          "concept:power",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-006",
+          "question:mission-60c06de6b68da3ef",
+          "story:95"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.no-queue.compare"
+      ],
+      "evidence": "People who reached the hand desk without a machine number could not survive into the machine’s success count.\nSeat a clerk at the turn. One clerk meets the next cart in person. The counter crew has one fewer pair of hands.\nCarry a second register down the stairs. People can leave a request before a clerk is free. A name on the sheet still needs someone to go back.\nOn the hand register two people reached the counter without a machine number. One walked away before a clerk had a turn to help.\ncivic.dispatch · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · without a machine number"
+    },
+    {
+      "board": {
+        "chapter": 12,
+        "ids": [
+          "area:HUM",
+          "concept:power",
+          "framework:ethics",
+          "game:22",
+          "question:KQ-NEW-006",
+          "question:mission-60c06de6b68da3ef",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.no-queue.send"
+      ],
+      "evidence": "Choose between a person at the inaccessible turn and a register that admits a request before anyone is available.\nSeat a clerk at the turn. One clerk meets the next cart in person. The counter crew has one fewer pair of hands.\nCarry a second register down the stairs. People can leave a request before a clerk is free. A name on the sheet still needs someone to go back.\nA cart reaches a hearing. The inside queue now runs to the second floor tile. / Lin finds a request without a time and leaves a chair downstairs for the answer.\ncivic.dispatch · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 12,
+        "ids": [
+          "area:MAT",
+          "bias:self-serving",
+          "concept:power",
+          "fallacy:special-pleading",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-002",
+          "question:mission-6f08f4ca04131366",
+          "story:95"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.green-window.compare"
+      ],
+      "evidence": "The supervisor wants a personal exemption for a condition also faced by a shift she marked down.\nHang both lanes with the reason for each delay. The late lane gets an explanation in public. It is small enough for neighbours to guess who waited.\nGive each lane a private appointment with its tickets. Each family can see its own wait. The colourful board tells passers-by much less.\nAll three late requests are from the small lane. The supervisor asks that her own morning be exempt because the clerk was new. The same happened on a shift she marked down.\ncivic.dispatch · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · her own morning be exempt"
+    },
+    {
+      "board": {
+        "chapter": 12,
+        "ids": [
+          "area:MAT",
+          "concept:power",
+          "deception:selective-display",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-002",
+          "question:mission-6f08f4ca04131366",
+          "story:95"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.green-window.compare"
+      ],
+      "evidence": "The supervisor instructs the clerk to leave red shifts off the public display in order to make performance look steady.\nHang both lanes with the reason for each delay. The late lane gets an explanation in public. It is small enough for neighbours to guess who waited.\nGive each lane a private appointment with its tickets. Each family can see its own wait. The colourful board tells passers-by much less.\nThe supervisor’s slip reads “Hang only green shifts in the window. I need the board to look steady.” She kept red tickets in the book. The window and the book have different jobs now.\ncivic.dispatch · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · Hang only green shifts in the window"
+    },
+    {
+      "board": {
+        "chapter": 12,
+        "ids": [
+          "area:MAT",
+          "concept:power",
+          "fallacy:division",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-002",
+          "question:mission-6f08f4ca04131366",
+          "story:95"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.green-window.compare"
+      ],
+      "evidence": "The measured whole met its target while a small lane within it waited.\nHang both lanes with the reason for each delay. The late lane gets an explanation in public. It is small enough for neighbours to guess who waited.\nGive each lane a private appointment with its tickets. Each family can see its own wait. The colourful board tells passers-by much less.\nThe district tabs separate two lanes. One cleared early. A small late lane disappeared inside the large total.\ncivic.dispatch · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · small late lane disappeared inside the large total"
+    },
+    {
+      "board": {
+        "chapter": 12,
+        "ids": [
+          "area:MAT",
+          "concept:power",
+          "framework:ethics",
+          "game:22",
+          "question:KQ-NEW-002",
+          "question:mission-6f08f4ca04131366",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.green-window.send"
+      ],
+      "evidence": "Decide how to expose the undercount of a small lane while respecting the households that neighbours might identify.\nHang both lanes with the reason for each delay. The late lane gets an explanation in public. It is small enough for neighbours to guess who waited.\nGive each lane a private appointment with its tickets. Each family can see its own wait. The colourful board tells passers-by much less.\nThe small lane wants its wait visible and its names covered. / A family asks to bring its own ticket to the next open meeting.\ncivic.dispatch · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 13,
+        "ids": [
+          "area:ART",
+          "bias:declinism",
+          "bias:negativity",
+          "concept:interpretation",
+          "fallacy:loaded-question",
+          "framework:methods-and-tools",
+          "game:267",
+          "question:KQ-NEW-005",
+          "question:mission-e86ae89475e4c613",
+          "story:95"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.old-singing.compare"
+      ],
+      "evidence": "The visitor’s question presupposes a decline inferred from a curated old take and a rough new one.\nPlay two rehearsals in the practice room. The new singers hear an admired voice miss a note. Someone who came for the gold take waits outside.\nMake a listening seat for the final takes. Families hear both choirs at their strongest. Someone must bring the practice reels for a question about learning.\nThe old gold take is clear. A new voice catches on the high note. The visitor sighs, “When did the children stop trying?”\nvoices.listening · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · When did the children stop trying"
+    },
+    {
+      "board": {
+        "chapter": 13,
+        "ids": [
+          "area:ART",
+          "bias:framing",
+          "concept:interpretation",
+          "fallacy:straw-man",
+          "framework:perspectives",
+          "game:267",
+          "question:KQ-NEW-002",
+          "question:mission-23986547b1ab98c9",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.rolled-echo.compare"
+      ],
+      "evidence": "Restoring the boundary on a quiet take lets the steward answer the actual request for a closed door.\nGive Wren the whole take for the listening room. The steward can answer a question about the first words. A visitor in the hall hears little until a place opens up.\nGive the hall a timed excerpt and a route to Wren. More visitors hear a short line. They need the listening room for what comes before and after.\nThe breath before the mark is followed by “During the quiet take, please”. The reel does not say who may hear the finished recording.\nvoices.listening · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · During the quiet take, please"
+    },
+    {
+      "board": {
+        "chapter": 13,
+        "ids": [
+          "area:ART",
+          "bias:pessimism",
+          "concept:interpretation",
+          "framework:methods-and-tools",
+          "game:267",
+          "question:KQ-NEW-005",
+          "question:mission-e86ae89475e4c613",
+          "story:95"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.old-singing.compare"
+      ],
+      "evidence": "The visitor's expectation of continuing misses meets a clear high note from the same night.\nPlay two rehearsals in the practice room. The new singers hear an admired voice miss a note. Someone who came for the gold take waits outside.\nMake a listening seat for the final takes. Families hear both choirs at their strongest. Someone must bring the practice reels for a question about learning.\nTwo new takes include a clear high note and a missed entry. The visitor had imagined the new choir would never manage it.\nvoices.listening · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · would never manage it"
+    },
+    {
+      "board": {
+        "chapter": 13,
+        "ids": [
+          "area:ART",
+          "concept:interpretation",
+          "fallacy:circular",
+          "framework:perspectives",
+          "game:267",
+          "question:KQ-NEW-002",
+          "question:mission-23986547b1ab98c9",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.rolled-echo.compare"
+      ],
+      "evidence": "A cabinet card derived from this sleeve cannot independently authenticate that same sleeve.\nGive Wren the whole take for the listening room. The steward can answer a question about the first words. A visitor in the hall hears little until a place opens up.\nGive the hall a timed excerpt and a route to Wren. More visitors hear a short line. They need the listening room for what comes before and after.\nThe sleeve lists a quiet take and a public take. The card was copied from the sleeve. The clerk says the card proves the sleeve is reliable. The only authority on the card is that same sleeve.\nvoices.listening · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · card was copied from the sleeve"
+    },
+    {
+      "board": {
+        "chapter": 13,
+        "ids": [
+          "area:ART",
+          "concept:interpretation",
+          "framework:methods-and-tools",
+          "game:22",
+          "question:KQ-NEW-005",
+          "question:mission-e86ae89475e4c613",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.old-singing.send"
+      ],
+      "evidence": "Choose like-for-like performances for the purpose of practice or appreciation. Rough and final takes support different claims.\nPlay two rehearsals in the practice room. The new singers hear an admired voice miss a note. Someone who came for the gold take waits outside.\nMake a listening seat for the final takes. Families hear both choirs at their strongest. Someone must bring the practice reels for a question about learning.\nThe new singer plays the missed note again and asks for the old singer’s next breath. / A grandparent recognises the high note and asks what happened in rehearsals.\nvoices.listening · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 13,
+        "ids": [
+          "area:ART",
+          "concept:interpretation",
+          "framework:perspectives",
+          "game:22",
+          "question:KQ-NEW-002",
+          "question:mission-23986547b1ab98c9",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.rolled-echo.send"
+      ],
+      "evidence": "Preserve the preceding breath for a limited room or give the wider hall a shorter hearing it can trace back.\nGive Wren the whole take for the listening room. The steward can answer a question about the first words. A visitor in the hall hears little until a place opens up.\nGive the hall a timed excerpt and a route to Wren. More visitors hear a short line. They need the listening room for what comes before and after.\nA listener returns the key with the opening words written out beside it. / One visitor returns with a precise time and asks to hear the preceding breath.\nvoices.listening · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 14,
+        "ids": [
+          "area:NAT",
+          "bias:conservatism",
+          "concept:certainty",
+          "framework:scope",
+          "game:238",
+          "question:KQ-NEW-003",
+          "question:mission-2d79b44916d9a17a",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.crate-sky.compare"
+      ],
+      "evidence": "Compare the new loaded trial with the earlier promise before deciding whether to revise the public number.\nAnnounce four early places and two late ones. Families can plan around the late boat. Two market baskets will miss the first sale.\nHold two boats for one shared late bell. All six families can come together. Both crews lose the first crossing home.\nWith a load in every crate the first axle dips. “I’ll leave six on the board. Our old run is the one we know,” says the planner. She has yet to count the loaded boats at the bell.\nisland.workshop · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · first axle dips"
+    },
+    {
+      "board": {
+        "chapter": 14,
+        "ids": [
+          "area:NAT",
+          "bias:ikea",
+          "concept:justification",
+          "fallacy:emotion",
+          "framework:methods-and-tools",
+          "game:238",
+          "question:KQ-NEW-003",
+          "question:mission-95abd0827718a600",
+          "story:25"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.blue-ribbon.compare"
+      ],
+      "evidence": "Pride in the family’s work matters to retaining the model, but the family connection is offered in place of testing the turn.\nKeep the ribbon and set an adjustable current. The child gets another turn with the model. Someone has to explain why the old demonstration looked easier.\nRun a second landing beside the family model. The old quay stands for visitors. The family worries that its new neighbour will become the only model people try.\nThe ribbon carries the builders’ family names. Their grandparents put years into the harbour. “I joined that model quay with my own hands.” A proud planner says doubting the turn is an insult to them.\nisland.workshop · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · an insult to them"
+    },
+    {
+      "board": {
+        "chapter": 14,
+        "ids": [
+          "area:NAT",
+          "bias:information",
+          "concept:justification",
+          "framework:methods-and-tools",
+          "game:238",
+          "question:KQ-NEW-003",
+          "question:mission-95abd0827718a600",
+          "story:25"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.blue-ribbon.compare"
+      ],
+      "evidence": "More true history of the harbour cannot supply the missing current at the model bend.\nKeep the ribbon and set an adjustable current. The child gets another turn with the model. Someone has to explain why the old demonstration looked easier.\nRun a second landing beside the family model. The old quay stands for visitors. The family worries that its new neighbour will become the only model people try.\nThere are flags from six festivals, records of three speeches and lists of donors. The child is looking for the water speed at the bend.\nisland.workshop · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · lists of donors"
+    },
+    {
+      "board": {
+        "chapter": 14,
+        "ids": [
+          "area:NAT",
+          "bias:optimism",
+          "concept:certainty",
+          "fallacy:wishful",
+          "framework:scope",
+          "game:238",
+          "question:KQ-NEW-003",
+          "question:mission-2d79b44916d9a17a",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.crate-sky.compare"
+      ],
+      "evidence": "An orderly empty trial and the planner’s hope become a promise about loaded boats.\nAnnounce four early places and two late ones. Families can plan around the late boat. Two market baskets will miss the first sale.\nHold two boats for one shared late bell. All six families can come together. Both crews lose the first crossing home.\nSix empty crates stand in the sun. The planner has already promised six loads. She wants the fair to work as much as the families do.\nisland.workshop · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · already promised six loads"
+    },
+    {
+      "board": {
+        "chapter": 14,
+        "ids": [
+          "area:NAT",
+          "concept:certainty",
+          "framework:scope",
+          "game:22",
+          "question:KQ-NEW-003",
+          "question:mission-2d79b44916d9a17a",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.crate-sky.send"
+      ],
+      "evidence": "The loaded, wet trial places a limit on a timetable. Decide how and when families will be promised places.\nAnnounce four early places and two late ones. Families can plan around the late boat. Two market baskets will miss the first sale.\nHold two boats for one shared late bell. All six families can come together. Both crews lose the first crossing home.\nAn early family offers to exchange with a late one. The model has no box for that kindness. / The village waits for the shared bell. A crew member asks who can meet a child at the school steps.\nisland.workshop · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 14,
+        "ids": [
+          "area:NAT",
+          "concept:justification",
+          "framework:methods-and-tools",
+          "game:22",
+          "question:KQ-NEW-003",
+          "question:mission-95abd0827718a600",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.blue-ribbon.send"
+      ],
+      "evidence": "Keep an adjustable current on the family model or run a second landing. Each route tests the boat while treating the family’s attachment differently.\nKeep the ribbon and set an adjustable current. The child gets another turn with the model. Someone has to explain why the old demonstration looked easier.\nRun a second landing beside the family model. The old quay stands for visitors. The family worries that its new neighbour will become the only model people try.\nA family member takes the tiller and asks the child to move the current pin. / Two small boats now leave together. A flag keeper wants both trials dated.\nisland.workshop · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "area:HIS",
+          "concept:responsibility",
+          "deception:alteration",
+          "deception:omission",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-002",
+          "question:mission-4e3cfdec661e41cf",
+          "story:54"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.cut-caveat.compare"
+      ],
+      "evidence": "The first work order establishes a deliberate cut meant to turn a limited finding into a settled public count.\nHang the two dated sheets together. Visitors can inspect the scar and the repair. The first family must tell its story again to a crowded room.\nLend the family the original for a quiet hearing. The family can speak with the old sheet in hand. The wall must show its dated copy until evening.\nThe first order says to take off a caution so the disputed count will read as settled. The signer knew what a reader would lose.\ncouncil.hall · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · so the disputed count will read as settled"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "area:HIS",
+          "concept:responsibility",
+          "fallacy:false-equivalence",
+          "fallacy:moral-equivalence",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-002",
+          "question:mission-4e3cfdec661e41cf",
+          "story:54"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.cut-caveat.compare"
+      ],
+      "evidence": "The repair and the original cut both change paper, yet their stated purposes and what readers can recover differ.\nHang the two dated sheets together. Visitors can inspect the scar and the repair. The first family must tell its story again to a crowded room.\nLend the family the original for a quiet hearing. The family can speak with the old sheet in hand. The wall must show its dated copy until evening.\nThe repair order names the first cut, dates the patch and preserves the earlier wording on the back. Both acts changed paper. Their purposes and the reader’s options differ.\ncouncil.hall · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · preserves the earlier wording on the back"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "area:HIS",
+          "concept:responsibility",
+          "framework:ethics",
+          "game:22",
+          "question:KQ-NEW-002",
+          "question:mission-4e3cfdec661e41cf",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.cut-caveat.send"
+      ],
+      "evidence": "Weigh public traceability of the repair against the family's control of its own testimony.\nHang the two dated sheets together. Visitors can inspect the scar and the repair. The first family must tell its story again to a crowded room.\nLend the family the original for a quiet hearing. The family can speak with the old sheet in hand. The wall must show its dated copy until evening.\nA visitor has traced the cut and the patch separately. The family asks for a quiet seat next time. / The family returns the original with permission for a narrow quotation. The rest of the hearing stays with them.\ncouncil.hall · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "bias:belief",
+          "concept:responsibility",
+          "fallacy:ignorance",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-005",
+          "question:mission-62fc70af2769dd07",
+          "story:48",
+          "theme:POL"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.night-ledger.compare"
+      ],
+      "evidence": "A plausible belief about fairness is used in reverse to infer fair access from a lack of complaints.\nGive a runner a late key for one week. A late voice can test the door. The scribe has to trust a key outside the chamber.\nLeave the chair on the public rota. The neighbourhood can see who takes the late duty. A named volunteer still needs to turn up.\nThe index is clean. The scribe believes a fair rule would make a clean book, and the clean book feels enough to prove this rule fair.\ncouncil.hall · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · clean book feels enough"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "bias:bystander",
+          "concept:responsibility",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-005",
+          "question:mission-62fc70af2769dd07",
+          "story:48",
+          "theme:POL"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.night-ledger.compare"
+      ],
+      "evidence": "Two neighbours both expected somebody else to bring the appeal chair.\nGive a runner a late key for one week. A late voice can test the door. The scribe has to trust a key outside the chamber.\nLeave the chair on the public rota. The neighbourhood can see who takes the late duty. A named volunteer still needs to turn up.\nAt the hearing door no one remembered to reserve a late chair. Two neighbours each expected the other to bring one. The runner could not enter her own appeal.\ncouncil.hall · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · each expected the other"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "character:vesper-quill",
+          "concept:responsibility",
+          "exhibition:25",
+          "framework:ethics",
+          "game:271",
+          "micro:549",
+          "question:KQ-ROUTE-25",
+          "question:mission-0f7a8ce37d11b225",
+          "story:11",
+          "theme:POL"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.council.mask"
+      ],
+      "evidence": "Cover both names on the refund slip and compare the till against one crossing. The fare can be audited without identifying the borrower.\nBoth marks are enough to establish an extra fare for one crossing.\nThe identity of the wearer remains open even after the fare can be refunded.\nVesper covers the ink with a cuff. The till still holds two bits for one crossing. “That is enough for a refund,” they say. When Kip asks whose spare it was, Vesper takes the hand away. “It doesn’t tell us that.”\ncouncil.hall · return-coat-council-work\ntests/return-coat.test.ts · records only the operation the Guardian actually tried"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "character:warden-ise",
+          "concept:power",
+          "exhibition:25",
+          "framework:perspectives",
+          "game:170",
+          "micro:58",
+          "question:KQ-ROUTE-25",
+          "question:mission-0f7a8ce37d11b225",
+          "story:117",
+          "theme:POL"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.council.hinge"
+      ],
+      "evidence": "Turn the empty chair sideways and try the inside hook. The same rule looks different to a seated borrower and a standing keeper.\nA standing keeper can reach the high hook.\nA seated borrower has a separate working route through the inside opening.\nThe chair fits through sideways. A borrower waiting behind it could reach the inside hook all along. Ise lets Kip steer it back. “I wrote the rule from the tall side of that desk,” she says. “I would like another seat.”\ncouncil.hall · return-coat-council-work\ntests/return-coat.test.ts · records only the operation the Guardian actually tried"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "concept:responsibility",
+          "exhibition:07",
+          "framework:ethics",
+          "game:114",
+          "micro:1180",
+          "micro:1200",
+          "question:KQ-ROUTE-07",
+          "question:mission-551c4169ad6ccf7b",
+          "story:15",
+          "theme:POL"
+        ]
+      },
+      "bloom": "create",
+      "dok": 4,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "last-bell.council.reopened"
+      ],
+      "evidence": "Reopen an issued minute after collecting the flood tally, missing replies, amended route and the witness’s conditions. Redesign who runs the trial.\nHouseholds can choose how to be reached when the bell fails.\nPaired timed walks make two crossings easier to compare.\nThe households receive either control of the trial or assigned roles with comparable observations. The final minute carries that decision.\ncouncil.hall · lamplight.council.bench\ntests/last-bell.test.ts · requires the four field records for either second hearing"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "concept:responsibility",
+          "fallacy:burden",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-005",
+          "question:mission-62fc70af2769dd07",
+          "story:48",
+          "theme:POL"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.night-ledger.compare"
+      ],
+      "evidence": "The runner is asked to disprove unrelated entries before a claim of universal access will be reconsidered.\nGive a runner a late key for one week. A late voice can test the door. The scribe has to trust a key outside the chamber.\nLeave the chair on the public rota. The neighbourhood can see who takes the late duty. A named volunteer still needs to turn up.\nThe scribe asks the runner to disprove every entry first. Her one missed appointment already matters to the promise that every request had a place.\ncouncil.hall · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · disprove every entry first"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "concept:responsibility",
+          "framework:ethics",
+          "game:22",
+          "question:KQ-NEW-005",
+          "question:mission-62fc70af2769dd07",
+          "story:11",
+          "theme:POL"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.night-ledger.send"
+      ],
+      "evidence": "Choose who controls a key after a single counterexample to universal access. A late chair also needs somebody responsible for it.\nGive a runner a late key for one week. A late voice can test the door. The scribe has to trust a key outside the chamber.\nLeave the chair on the public rota. The neighbourhood can see who takes the late duty. A named volunteer still needs to turn up.\nThe book gets its first late signature. Someone asks what would happen on a night the runner is ill. / Two neighbours arrive for the same turn. This time someone is there to open the door.\ncouncil.hall · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 2,
+        "ids": [
+          "area:ART",
+          "bias:halo",
+          "bias:spotlight",
+          "concept:perspective",
+          "fallacy:wealth",
+          "framework:perspectives",
+          "game:238",
+          "question:KQ-NEW-006",
+          "question:mission-6bec33d2d589c59a",
+          "story:25"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.blue-fringe.compare"
+      ],
+      "evidence": "The stitcher overestimates how much of the audience will notice her repair. A donor’s prestige spills into an unsupported judgment about how level the sling hangs.\nKeep the fringe as a finger guide. A visitor finds the fold without a guide. The bottom corner still needs someone to lift it.\nStretch the sling for the back row. The last family can read the whole label. The stitcher keeps a blue offcut in her apron.\nThe stitcher is sure everyone will spot her blue line. A guide says a famous donor bought the other sling, so it must hang straighter.\nnile.hall · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · everyone will spot her blue line"
+    },
+    {
+      "board": {
+        "chapter": 2,
+        "ids": [
+          "area:ART",
+          "bias:ikea",
+          "concept:perspective",
+          "framework:perspectives",
+          "game:238",
+          "question:KQ-NEW-006",
+          "question:mission-6bec33d2d589c59a",
+          "story:25"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.blue-fringe.compare"
+      ],
+      "evidence": "Her effort increases how much she values the seam; a separate trial checks whom it helps.\nKeep the fringe as a finger guide. A visitor finds the fold without a guide. The bottom corner still needs someone to lift it.\nStretch the sling for the back row. The last family can read the whole label. The stitcher keeps a blue offcut in her apron.\nWith both names hidden the blue line makes the fold easy to find. The stitcher rubs it proudly. She spent three evenings putting it there.\nnile.hall · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · three evenings"
+    },
+    {
+      "board": {
+        "chapter": 2,
+        "ids": [
+          "area:ART",
+          "concept:perspective",
+          "framework:perspectives",
+          "game:22",
+          "question:KQ-NEW-006",
+          "question:mission-6bec33d2d589c59a",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.blue-fringe.send"
+      ],
+      "evidence": "Choose whether the seam first helps a hand find a fold or gives someone in the back a clear reading.\nKeep the fringe as a finger guide. A visitor finds the fold without a guide. The bottom corner still needs someone to lift it.\nStretch the sling for the back row. The last family can read the whole label. The stitcher keeps a blue offcut in her apron.\nSmall hands have worn the blue thread soft. Three visitors waited for the sagging corner. / A family draws the old fringe in the margin to show the next guide where the fold used to be.\nnile.hall · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 2,
+        "ids": [
+          "area:HIS",
+          "concept:justification",
+          "deception:impersonation",
+          "deception:misattribution",
+          "fallacy:fallacy-fallacy",
+          "framework:methods-and-tools",
+          "game:267",
+          "question:KQ-NEW-003",
+          "question:mission-86f189431228a516",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.reed-hand.compare"
+      ],
+      "evidence": "The maker acknowledges using another person’s name to secure an audience for her own work. Discrediting a signature cannot by itself make the observable crossing of two cuts false.\nRepeat the scrape with the helper at the table. Children see the mark made again. The conservator must explain the signed heading to visitors already waiting.\nCarry the original and its corrected credit to the cabinet. The invented signature becomes visible beside the correction. Visitors have to come back for a live repeat.\nA note sewn into the helper’s apron reads “I used her name so they would listen to my own test.” She offers to repeat it under her name. A false signature does not establish that the observation was false.\nnile.hall · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · I used her name so they would listen to my own test"
+    },
+    {
+      "board": {
+        "chapter": 2,
+        "ids": [
+          "area:HIS",
+          "concept:justification",
+          "fallacy:authority",
+          "fallacy:genetic",
+          "framework:methods-and-tools",
+          "game:267",
+          "question:KQ-NEW-003",
+          "question:mission-86f189431228a516",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.reed-hand.compare"
+      ],
+      "evidence": "One visitor trusts the borrowed title and another rejects an observation because of who made it.\nRepeat the scrape with the helper at the table. Children see the mark made again. The conservator must explain the signed heading to visitors already waiting.\nCarry the original and its corrected credit to the cabinet. The invented signature becomes visible beside the correction. Visitors have to come back for a live repeat.\nThe heading calls the writer chief conservator. A visitor thinks that settles the age of the reed. Another dismisses the scraping because the writer is a school helper.\nnile.hall · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · settles the age of the reed"
+    },
+    {
+      "board": {
+        "chapter": 2,
+        "ids": [
+          "area:HIS",
+          "concept:justification",
+          "framework:methods-and-tools",
+          "game:22",
+          "question:KQ-NEW-003",
+          "question:mission-86f189431228a516",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.reed-hand.send"
+      ],
+      "evidence": "Give visitors a live repeat or a corrected chain of credit. Each offers a different check on a narrow observation.\nRepeat the scrape with the helper at the table. Children see the mark made again. The conservator must explain the signed heading to visitors already waiting.\nCarry the original and its corrected credit to the cabinet. The invented signature becomes visible beside the correction. Visitors have to come back for a live repeat.\nA second line appears in the same order. The helper leaves the date space open. / The conservator has written down exactly which part of the observation she can check.\nnile.hall · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 3,
+        "ids": [
+          "area:HIS",
+          "bias:attribution",
+          "bias:just-world",
+          "concept:responsibility",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-005",
+          "question:mission-c592cab7b3e9d3bb",
+          "story:53"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.empty-peg.compare"
+      ],
+      "evidence": "The attendant reads a missed ferry as a failing of character and imagines the loss of the shift deserved.\nMove the last cleaning round to daylight. The cleaner gets the crossing. Someone on the evening shift now needs to look for soot.\nKeep a paid evening exchange on the peg. The cleaner can trade that shift with a neighbour. A neighbour must be free to take it.\nFour lamps shine. The fifth peg is bare. “She deserves to lose her turn,” the attendant says. “Anyone who cared would be here.”\npreserved.archive · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · She deserves to lose her turn"
+    },
+    {
+      "board": {
+        "chapter": 3,
+        "ids": [
+          "area:HIS",
+          "bias:barnum",
+          "bias:confirmation",
+          "concept:explanation",
+          "framework:scope",
+          "game:267",
+          "question:KQ-NEW-005",
+          "question:mission-c390b0b861b80bcd",
+          "story:25"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.mitten-sheet.compare"
+      ],
+      "evidence": "Two different visitors can find a personally pleasing reading of the identical broadly applicable description.\nHang one mitten beside a dated night. A visitor gets a particular story with the familiar phrase. The veteran asks to leave the person who helped unnamed.\nLet visitors carry the mittens and open the shift book. Two visitors keep the comforting phrase. Anyone who wants the night’s particulars has a place to look.\nEvery mitten carries the same sentence. No one had to know a visitor to print it. The two visitors still have different reasons for liking it.\npreserved.archive · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · same sentence"
+    },
+    {
+      "board": {
+        "chapter": 3,
+        "ids": [
+          "area:HIS",
+          "bias:belief",
+          "concept:explanation",
+          "framework:scope",
+          "game:267",
+          "question:KQ-NEW-005",
+          "question:mission-c390b0b861b80bcd",
+          "story:25"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.mitten-sheet.compare"
+      ],
+      "evidence": "The veteran accepts a plausible-sounding conclusion although rising early does not entail steady work.\nHang one mitten beside a dated night. A visitor gets a particular story with the familiar phrase. The veteran asks to leave the person who helped unnamed.\nLet visitors carry the mittens and open the shift book. Two visitors keep the comforting phrase. Anyone who wants the night’s particulars has a place to look.\nSomeone argues, “People who work steadily can rise early. You rose early, so you must work steadily.” It sounds plausible to the veteran. It has evenings she was steady and mornings she called for help. A pleasing description can be broad enough to fit both.\npreserved.archive · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · so you must work steadily"
+    },
+    {
+      "board": {
+        "chapter": 3,
+        "ids": [
+          "area:HIS",
+          "concept:explanation",
+          "framework:scope",
+          "game:22",
+          "question:KQ-NEW-005",
+          "question:mission-c390b0b861b80bcd",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.mitten-sheet.send"
+      ],
+      "evidence": "Choose whether a pleasing phrase sits beside a dated night or travels as a saying with a route back to the shift book.\nHang one mitten beside a dated night. A visitor gets a particular story with the familiar phrase. The veteran asks to leave the person who helped unnamed.\nLet visitors carry the mittens and open the shift book. Two visitors keep the comforting phrase. Anyone who wants the night’s particulars has a place to look.\nA visitor asks what changed that night. The veteran brings the relief lamp. / The courier comes back for the date after the phrase stops feeling like a private message.\npreserved.archive · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 3,
+        "ids": [
+          "area:HIS",
+          "concept:responsibility",
+          "fallacy:ignorance",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-005",
+          "question:mission-c592cab7b3e9d3bb",
+          "story:53"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.empty-peg.compare"
+      ],
+      "evidence": "The file’s silence cannot establish that no one asked, especially when a dated request survives.\nMove the last cleaning round to daylight. The cleaner gets the crossing. Someone on the evening shift now needs to look for soot.\nKeep a paid evening exchange on the peg. The cleaner can trade that shift with a neighbour. A neighbour must be free to take it.\nA crumpled chit lies beneath the peg. It asks for a different crossing. A visitor mistakes the missing signature for proof the cleaner never asked.\npreserved.archive · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · missing signature for proof"
+    },
+    {
+      "board": {
+        "chapter": 3,
+        "ids": [
+          "area:HIS",
+          "concept:responsibility",
+          "framework:ethics",
+          "game:22",
+          "question:KQ-NEW-005",
+          "question:mission-c592cab7b3e9d3bb",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.empty-peg.send"
+      ],
+      "evidence": "Both rotas can leave a lamp unchecked. Choose who can act when a carer misses the ferry.\nMove the last cleaning round to daylight. The cleaner gets the crossing. Someone on the evening shift now needs to look for soot.\nKeep a paid evening exchange on the peg. The cleaner can trade that shift with a neighbour. A neighbour must be free to take it.\nThe daylight crew left the lamps ready. The last room has asked for a late check too. / One exchange holds; the next peg is still empty. The cleaner asks to keep the crossing chit beside the rota.\npreserved.archive · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 4,
+        "ids": [
+          "area:MAT",
+          "bias:availability",
+          "bias:clustering",
+          "bias:recency",
+          "concept:certainty",
+          "framework:methods-and-tools",
+          "game:238",
+          "question:KQ-NEW-005",
+          "question:mission-392f3ad5827cb26f",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.six-knots.compare"
+      ],
+      "evidence": "The runner treats a visually striking run on the cord as a sequence that predicts its own ending. A vivid crossing and the short run of recent fog dominate until older knot conditions can be checked.\nSet a lookout at the narrows. The mother gets a signal if the view clears. The lookout gives up a warm seat on the boat.\nDelay the ferry and run the shore cart. The cart collects the mother. Bakers on its usual road must carry their own trays.\nSix bells ran together. The runner says clear air is due. The ferrier remembers the one crossing she could hardly see.\nobservatory.harbour · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · clear air is due"
+    },
+    {
+      "board": {
+        "chapter": 4,
+        "ids": [
+          "area:MAT",
+          "concept:certainty",
+          "fallacy:gamblers",
+          "framework:methods-and-tools",
+          "game:238",
+          "question:KQ-NEW-005",
+          "question:mission-392f3ad5827cb26f",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.six-knots.compare"
+      ],
+      "evidence": "Replacement preserves both chances after six draws, while fog has different generating conditions.\nSet a lookout at the narrows. The mother gets a signal if the view clears. The lookout gives up a warm seat on the boat.\nDelay the ferry and run the shore cart. The cart collects the mother. Bakers on its usual road must carry their own trays.\nIn a separate game a child returned the black bead to a bag with one black bead and one white after each of six draws. The seventh draw still has both beads available.\nobservatory.harbour · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · one black bead and one white"
+    },
+    {
+      "board": {
+        "chapter": 4,
+        "ids": [
+          "area:MAT",
+          "concept:certainty",
+          "framework:methods-and-tools",
+          "game:22",
+          "question:KQ-NEW-005",
+          "question:mission-392f3ad5827cb26f",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.six-knots.send"
+      ],
+      "evidence": "Use uncertainty about the harbour to choose what the next lookout will observe or which cart will run.\nSet a lookout at the narrows. The mother gets a signal if the view clears. The lookout gives up a warm seat on the boat.\nDelay the ferry and run the shore cart. The cart collects the mother. Bakers on its usual road must carry their own trays.\nA clear patch lasted long enough for a loaf to cross. The lookout wants the wait counted too. / A baker has left flour on the cord. The next runner asks for both the wait and the journey time.\nobservatory.harbour · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 4,
+        "ids": [
+          "area:NAT",
+          "bias:choice-supportive",
+          "concept:explanation",
+          "framework:methods-and-tools",
+          "game:238",
+          "question:KQ-NEW-003",
+          "question:mission-0a89f1e759f0a5c6",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.varnish.compare"
+      ],
+      "evidence": "The captain recalls how favourably he felt about his purchase even when the trial exposes its limits.\nUse the varnish on a marked trial board. The captain can watch what it does to one board. His boat waits for a separate hull check.\nMove the boats to the dry inspection berth. The crew can look underneath. The owner of the last boat loses a morning at the mooring.\nThe paired log and damp patch give the next crew a repair to check, with or without the tins. The captain remembers being proud of the purchase. “I never thought the canvas cover was any good.” His old price sheet has a star beside that very cover.\nobservatory.harbour · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · proud of the purchase"
+    },
+    {
+      "board": {
+        "chapter": 4,
+        "ids": [
+          "area:NAT",
+          "bias:ostrich",
+          "bias:sunk-cost",
+          "concept:explanation",
+          "fallacy:sunk-cost",
+          "framework:methods-and-tools",
+          "game:238",
+          "question:KQ-NEW-003",
+          "question:mission-0a89f1e759f0a5c6",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.varnish.compare"
+      ],
+      "evidence": "Covering a damp patch avoids troubling information and treats the price already paid as grounds for future commitment.\nUse the varnish on a marked trial board. The captain can watch what it does to one board. His boat waits for a separate hull check.\nMove the boats to the dry inspection berth. The crew can look underneath. The owner of the last boat loses a morning at the mooring.\nThe damp patch is small enough to cover. “Do it tomorrow,” the captain says. “We have spent too much to change now.” The receipt cannot dry the wood.\nobservatory.harbour · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · spent too much to change now"
+    },
+    {
+      "board": {
+        "chapter": 4,
+        "ids": [
+          "area:NAT",
+          "concept:explanation",
+          "fallacy:false-cause",
+          "fallacy:post-hoc",
+          "framework:methods-and-tools",
+          "game:238",
+          "question:KQ-NEW-003",
+          "question:mission-0a89f1e759f0a5c6",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.varnish.compare"
+      ],
+      "evidence": "The purchase precedes a safe return, while the paired voyage shows other boats and causes.\nUse the varnish on a marked trial board. The captain can watch what it does to one board. His boat waits for a separate hull check.\nMove the boats to the dry inspection berth. The crew can look underneath. The owner of the last boat loses a morning at the mooring.\nPaint on fifth day, safe return on sixth. The captain has a receipt with three tins still to use.\nobservatory.harbour · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · Paint on fifth day, safe return on sixth"
+    },
+    {
+      "board": {
+        "chapter": 4,
+        "ids": [
+          "area:NAT",
+          "concept:explanation",
+          "framework:methods-and-tools",
+          "game:22",
+          "question:KQ-NEW-003",
+          "question:mission-0a89f1e759f0a5c6",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.varnish.send"
+      ],
+      "evidence": "Choose the surface trial or the boat berth after separating the purchase date from evidence about the hull.\nUse the varnish on a marked trial board. The captain can watch what it does to one board. His boat waits for a separate hull check.\nMove the boats to the dry inspection berth. The crew can look underneath. The owner of the last boat loses a morning at the mooring.\nThe board stays dry one morning and blisters on another. The dates remain on its edge. / A split shows up beside an unpainted joint. Nobody can work out the cause from the purchase date alone.\nobservatory.harbour · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 5,
+        "ids": [
+          "area:HUM",
+          "bias:blind-spot",
+          "bias:in-group",
+          "bias:self-serving",
+          "bias:stereotyping",
+          "concept:perspective",
+          "fallacy:ad-hominem",
+          "framework:perspectives",
+          "game:238",
+          "question:KQ-NEW-004",
+          "question:mission-d135b92eb03ca550",
+          "story:33"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.red-stitch.compare"
+      ],
+      "evidence": "The green crew excuses its own mistake, treats a badge as a trait and attacks a runner who supplied a checkable sketch.\nTake both crews on the cord walk. The red runner gets to lead at the bend. The green watcher loses a morning of counting.\nGive the runner the sketch and the green crew the cord. They work from opposite banks. The watcher must trust a runner with the drawing she once dismissed.\nThe red badge gets a laugh. A watcher in green calls her own mistake last week a trick of the light and calls the red runner careless.\nforest.station · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · green calls her own mistake"
+    },
+    {
+      "board": {
+        "chapter": 5,
+        "ids": [
+          "area:HUM",
+          "concept:perspective",
+          "fallacy:no-true-member",
+          "framework:perspectives",
+          "game:238",
+          "question:KQ-NEW-004",
+          "question:mission-d135b92eb03ca550",
+          "story:33"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.red-stitch.compare"
+      ],
+      "evidence": "A membership definition shifts to exclude exactly the member whose behaviour challenged the generalisation.\nTake both crews on the cord walk. The red runner gets to lead at the bend. The green watcher loses a morning of counting.\nGive the runner the sketch and the green crew the cord. They work from opposite banks. The watcher must trust a runner with the drawing she once dismissed.\nA green watcher says a green runner who rushed could not have been a real member. The red runner keeps her badge on and goes to fetch the measuring cord.\nforest.station · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · could not have been a real member"
+    },
+    {
+      "board": {
+        "chapter": 5,
+        "ids": [
+          "area:HUM",
+          "concept:perspective",
+          "framework:perspectives",
+          "game:22",
+          "question:KQ-NEW-004",
+          "question:mission-d135b92eb03ca550",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.red-stitch.send"
+      ],
+      "evidence": "Decide whose marks will be compared by the same cord and who can handle an account from the opposite crew.\nTake both crews on the cord walk. The red runner gets to lead at the bend. The green watcher loses a morning of counting.\nGive the runner the sketch and the green crew the cord. They work from opposite banks. The watcher must trust a runner with the drawing she once dismissed.\nThe crews return with a common distance and two different sightings. They keep both signatures. / A wet cord mark makes both crews laugh. The next sketch has a space for water level.\nforest.station · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 5,
+        "ids": [
+          "area:NAT",
+          "bias:confirmation",
+          "bias:selective-perception",
+          "concept:objectivity",
+          "framework:methods-and-tools",
+          "game:267",
+          "question:KQ-NEW-003",
+          "question:mission-6912095a416fa46e",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.white-tail.compare"
+      ],
+      "evidence": "Looking on the dull path changes what the collector notices and shows her setting aside an unlike result.\nRope off the crossing for one dawn watch. The walkers get a quiet count for one dawn. The porters take the long path until the rope comes down.\nSend observers with the porters. The path stays open. Footsteps may change which birds cross while the porters are there.\nThe path holds dark and pale tips. The collector reaches for the pale ones first. They show up well at dusk. She puts back a dark tip that would spoil her row.\nforest.station · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · puts back a dark tip"
+    },
+    {
+      "board": {
+        "chapter": 5,
+        "ids": [
+          "area:NAT",
+          "bias:survivorship",
+          "concept:objectivity",
+          "framework:methods-and-tools",
+          "game:267",
+          "question:KQ-NEW-003",
+          "question:mission-6912095a416fa46e",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.white-tail.compare"
+      ],
+      "evidence": "Showing only specimens intact enough to pin excludes material that failed the display process.\nRope off the crossing for one dawn watch. The walkers get a quiet count for one dawn. The porters take the long path until the rope comes down.\nSend observers with the porters. The path stays open. Footsteps may change which birds cross while the porters are there.\nThe cleaner has a sack of broken tips from both colours. A feather too small to pin never entered a drawer.\nforest.station · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · sack of broken tips"
+    },
+    {
+      "board": {
+        "chapter": 5,
+        "ids": [
+          "area:NAT",
+          "concept:objectivity",
+          "fallacy:hasty",
+          "framework:methods-and-tools",
+          "game:267",
+          "question:KQ-NEW-003",
+          "question:mission-6912095a416fa46e",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.white-tail.compare"
+      ],
+      "evidence": "A claim about the forest outruns a cabinet filtered by its own selection and cleaning.\nRope off the crossing for one dawn watch. The walkers get a quiet count for one dawn. The porters take the long path until the rope comes down.\nSend observers with the porters. The path stays open. Footsteps may change which birds cross while the porters are there.\nWhite fills all three drawers. The collector says the white-tailed birds must fill the forest just as thickly.\nforest.station · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · fill the forest just as thickly"
+    },
+    {
+      "board": {
+        "chapter": 5,
+        "ids": [
+          "area:NAT",
+          "concept:objectivity",
+          "framework:methods-and-tools",
+          "game:22",
+          "question:KQ-NEW-003",
+          "question:mission-6912095a416fa46e",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.white-tail.send"
+      ],
+      "evidence": "Decide whether to remove the noise of the porters for a watch or keep observers with them so a working crossing stays represented.\nRope off the crossing for one dawn watch. The walkers get a quiet count for one dawn. The porters take the long path until the rope comes down.\nSend observers with the porters. The path stays open. Footsteps may change which birds cross while the porters are there.\nTwo birds cross without dropping a feather. The return sheet leaves space for a morning with none. / The porters bring back a crossing time as well as a colour. The cabinet keeper asks for the noise of the cart to go on the card.\nforest.station · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 6,
+        "ids": [
+          "area:NAT",
+          "bias:calibration",
+          "bias:overconfidence",
+          "concept:justification",
+          "framework:methods-and-tools",
+          "game:238",
+          "question:KQ-NEW-003",
+          "question:mission-fbd01c0db715371a",
+          "story:25"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.ninth-tooth.compare"
+      ],
+      "evidence": "The maker compares her forecast with an unfamiliar gear; a second miss by the fitter keeps this about two observations, not a diagnosis.\nMark the two faces on the teaching ring. A newcomer can see what the fitter meant. Someone must keep the marks clear when the clay dries.\nGive the maker the surprise ring for a practice shift. She can check where her prediction misses. The teaching ring goes back without its extra markings.\nOn the unfamiliar ring the maker predicts eight contacts and counts four. She changes her next estimate. The fitter tries the unfamiliar jig too and misses one. The two trials can calibrate these estimates; they cannot rank all apprentices or experts.\nmetalworks.yard · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · predicts eight contacts and counts four"
+    },
+    {
+      "board": {
+        "chapter": 6,
+        "ids": [
+          "area:NAT",
+          "bias:curse-of-knowledge",
+          "concept:justification",
+          "framework:methods-and-tools",
+          "game:238",
+          "question:KQ-NEW-003",
+          "question:mission-fbd01c0db715371a",
+          "story:25"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.ninth-tooth.compare"
+      ],
+      "evidence": "The fitter knows which face is shy and mistakes her familiar cue for something a newcomer can already use.\nMark the two faces on the teaching ring. A newcomer can see what the fitter meant. Someone must keep the marks clear when the clay dries.\nGive the maker the surprise ring for a practice shift. She can check where her prediction misses. The teaching ring goes back without its extra markings.\nThe clay shows eight good contacts on the familiar ring. The fitter’s “shy edge” is the face away from the axle. No one had shown the maker which face that was.\nmetalworks.yard · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · No one had shown the maker which face"
+    },
+    {
+      "board": {
+        "chapter": 6,
+        "ids": [
+          "area:NAT",
+          "bias:outcome",
+          "bias:overconfidence",
+          "concept:justification",
+          "framework:scope",
+          "game:194",
+          "question:KQ-NEW-003",
+          "question:mission-f22192c58b5fd190",
+          "story:59"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.cooling-hook.compare"
+      ],
+      "evidence": "A single successful lift makes the public assurance outrun what the crew tried.\nLend the new lift to the lidless-pot crew. The new arm gets a bounded job. The apprentice has to put a small pot in a cart by hand.\nKeep the old lift on the kettle round. The familiar joint clears the swing. The new arm has to wait for a quieter trial.\nThe new arm holds. Its maker grins. Someone has already written SAFE across the chalkboard.\nmetalworks.yard · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · written SAFE"
+    },
+    {
+      "board": {
+        "chapter": 6,
+        "ids": [
+          "area:NAT",
+          "bias:pro-innovation",
+          "concept:justification",
+          "framework:scope",
+          "game:194",
+          "question:KQ-NEW-003",
+          "question:mission-f22192c58b5fd190",
+          "story:59"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.cooling-hook.compare"
+      ],
+      "evidence": "Looking at the exciting new arm beside the old one separates novelty from clearance at the joint.\nLend the new lift to the lidless-pot crew. The new arm gets a bounded job. The apprentice has to put a small pot in a cart by hand.\nKeep the old lift on the kettle round. The familiar joint clears the swing. The new arm has to wait for a quieter trial.\nThe old arm holds this kettle too. A costly bronze trim gleams on the new arm. “They only put bronze on the new kind. It must carry more,” a visitor says. The trim adds no support at the joint.\nmetalworks.yard · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · costly bronze trim"
+    },
+    {
+      "board": {
+        "chapter": 6,
+        "ids": [
+          "area:NAT",
+          "concept:justification",
+          "fallacy:composition",
+          "framework:scope",
+          "game:194",
+          "question:KQ-NEW-003",
+          "question:mission-f22192c58b5fd190",
+          "story:59"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.cooling-hook.compare"
+      ],
+      "evidence": "A lid can catch during a combined swing despite each part working alone.\nLend the new lift to the lidless-pot crew. The new arm gets a bounded job. The apprentice has to put a small pot in a cart by hand.\nKeep the old lift on the kettle round. The familiar joint clears the swing. The new arm has to wait for a quieter trial.\nEach part hangs steady on its own hook. Fit them together and the lid catches the arm as it swings. Every part passed its own test.\nmetalworks.yard · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · Every part passed its own test"
+    },
+    {
+      "board": {
+        "chapter": 6,
+        "ids": [
+          "area:NAT",
+          "concept:justification",
+          "framework:methods-and-tools",
+          "game:22",
+          "question:KQ-NEW-003",
+          "question:mission-fbd01c0db715371a",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.ninth-tooth.send"
+      ],
+      "evidence": "Choose whether a named face helps the next learner more than another unfamiliar calibration trial.\nMark the two faces on the teaching ring. A newcomer can see what the fitter meant. Someone must keep the marks clear when the clay dries.\nGive the maker the surprise ring for a practice shift. She can check where her prediction misses. The teaching ring goes back without its extra markings.\nA second apprentice names the shy edge without having to guess what the fitter knew. / She brings back a handprint and a smaller promise about her next fit. The fitter asks to try it again.\nmetalworks.yard · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 6,
+        "ids": [
+          "area:NAT",
+          "concept:justification",
+          "framework:scope",
+          "game:22",
+          "question:KQ-NEW-003",
+          "question:mission-f22192c58b5fd190",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.cooling-hook.send"
+      ],
+      "evidence": "Give a successful individual trial a restricted use or keep the old arm for the assembled kettle.\nLend the new lift to the lidless-pot crew. The new arm gets a bounded job. The apprentice has to put a small pot in a cart by hand.\nKeep the old lift on the kettle round. The familiar joint clears the swing. The new arm has to wait for a quieter trial.\nThe lidless crew returns the new arm with a rubbed patch marked for its maker. / The old lift has earned another shift. Its crew still leave a hook free for an unfamiliar load.\nmetalworks.yard · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 7,
+        "ids": [
+          "area:HIS",
+          "bias:third-person",
+          "concept:responsibility",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-002",
+          "question:mission-515e912f02fe2997",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.tuesday-fold.compare"
+      ],
+      "evidence": "The runner treats other readers as more susceptible and then finds his own Tuesday ticket.\nOpen the fold on every public board. Families can see Tuesday at once. The press team must carry a bucket of warm water to every corner.\nPin the signed correction to the book cart. The correction travels with the books and carries its author’s name. Some families pass the old board first.\nThe runner says the boards only fool visitors. His own empty book satchel still has last Tuesday’s ticket inside. He delivered two hundred boards at dawn. The slip says he carried the bundle tied. It gives no sign that he read or chose the fold.\ncopies.archive · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · boards only fool visitors"
+    },
+    {
+      "board": {
+        "chapter": 7,
+        "ids": [
+          "area:HIS",
+          "concept:responsibility",
+          "deception:alteration",
+          "deception:omission",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-002",
+          "question:mission-515e912f02fe2997",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.tuesday-fold.compare"
+      ],
+      "evidence": "The manager’s signed instruction explicitly orders a fold that hides a condition from readers.\nOpen the fold on every public board. Families can see Tuesday at once. The press team must carry a bucket of warm water to every corner.\nPin the signed correction to the book cart. The correction travels with the books and carries its author’s name. Some families pass the old board first.\nA signed instruction matches the glue edge: “Put the Tuesday line inside. I want the opening to look unbroken.” The press manager wrote it. The runner’s signature only records delivery.\ncopies.archive · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · I want the opening to look unbroken"
+    },
+    {
+      "board": {
+        "chapter": 7,
+        "ids": [
+          "area:HIS",
+          "concept:responsibility",
+          "framework:ethics",
+          "game:22",
+          "question:KQ-NEW-002",
+          "question:mission-515e912f02fe2997",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.tuesday-fold.send"
+      ],
+      "evidence": "Choose a public repair that reaches the distant board or a signed correction readers can follow to its author.\nOpen the fold on every public board. Families can see Tuesday at once. The press team must carry a bucket of warm water to every corner.\nPin the signed correction to the book cart. The correction travels with the books and carries its author’s name. Some families pass the old board first.\nThe child finds the open fold. Two more corners are still waiting for their boards to dry. / A family follows the cart back to the manager to ask about next Tuesday. The smaller street still has the old board.\ncopies.archive · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 7,
+        "ids": [
+          "concept:power",
+          "deception:diversion",
+          "fallacy:red-herring",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-002",
+          "question:mission-8a56745fc0edc619",
+          "story:48",
+          "theme:LAN"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.yellow-ink.compare"
+      ],
+      "evidence": "The seller’s order makes the prize for ink a deliberate diversion from the chair price.\nPut the two-bit mark on the public stamp. The next visitor knows the price before walking. Someone with no coins still needs a place to sit.\nGive out a seat token at the shop door. The waiting reader gets a seat. Until the stamp changes, another family may set out with no coins.\nThe order says “Keep them talking about the ink if they ask about the charge.” The ribbon really did win a prize. It gives the reader no chair.\ncopies.archive · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · Keep them talking about the ink"
+    },
+    {
+      "board": {
+        "chapter": 7,
+        "ids": [
+          "concept:power",
+          "deception:equivocation",
+          "fallacy:equivocation",
+          "framework:ethics",
+          "game:267",
+          "question:KQ-NEW-002",
+          "question:mission-8a56745fc0edc619",
+          "story:48",
+          "theme:LAN"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.yellow-ink.compare"
+      ],
+      "evidence": "The seller explicitly keeps a second meaning of free because readers are likely to understand it differently.\nPut the two-bit mark on the public stamp. The next visitor knows the price before walking. Someone with no coins still needs a place to sit.\nGive out a seat token at the shop door. The waiting reader gets a seat. Until the stamp changes, another family may set out with no coins.\nThe seller also wrote “Let ‘free’ stand. Half will read it as no charge.” The misleading sense and the diversion both have a traceable author. The printer who inked the word did not write the order.\ncopies.archive · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · Half will read it as no charge"
+    },
+    {
+      "board": {
+        "chapter": 7,
+        "ids": [
+          "concept:power",
+          "framework:ethics",
+          "game:22",
+          "question:KQ-NEW-002",
+          "question:mission-8a56745fc0edc619",
+          "story:11",
+          "theme:LAN"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.yellow-ink.send"
+      ],
+      "evidence": "Weigh repairing the stamp seen by distant readers against giving the waiting reader an actual seat.\nPut the two-bit mark on the public stamp. The next visitor knows the price before walking. Someone with no coins still needs a place to sit.\nGive out a seat token at the shop door. The waiting reader gets a seat. Until the stamp changes, another family may set out with no coins.\nA family brings two bits and passes a second family standing outside. / The keeper brings back the empty token bag. The yellow ribbon has not filled a single chair.\ncopies.archive · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 8,
+        "ids": [
+          "area:HUM",
+          "concept:explanation",
+          "exhibition:02",
+          "framework:methods-and-tools",
+          "game:122",
+          "question:KQ-ROUTE-02",
+          "question:mission-e6a5af2aabaab8ff",
+          "story:85",
+          "subject:geography"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "rivernames.walks"
+      ],
+      "evidence": "Walk the marked delivery under two tide conditions. Recover the slack at the flooded stair and try another edge.\nA reliable delivery route needs a walking time at this tide.\nA named landing keeps the receiving household in the account.\nA different hand receives the parcel. The route can be retried from the board.\nsea.the-last-oven · river-names-spool\ntests/river-names.test.ts · expect(warmfinTrail(d.s)).toContain('back past Reed Stair')"
+    },
+    {
+      "board": {
+        "chapter": 8,
+        "ids": [
+          "area:MAT",
+          "bias:clustering",
+          "concept:evidence",
+          "fallacy:sharpshooter",
+          "framework:methods-and-tools",
+          "game:267",
+          "question:KQ-NEW-005",
+          "question:mission-4d9b7402b96f1a39",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.lantern-drift.compare"
+      ],
+      "evidence": "Placing the ring after the lanterns returned selects a tidy-looking group and exempts the unmarked edges.\nSend a daylight skiff to the unmarked pier. Someone will see what a crossing from the west is like. The east net-menders have to wait for canvas.\nKeep a paired log at both piers. Every departure can be matched to a return. Someone still needs to chase each late entry.\nOutside the ring are two ordinary landings and a torn corner. The pencil crosses older lantern marks. The loop was drawn after the skiffs came home.\nsea.harbour · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · loop was drawn after"
+    },
+    {
+      "board": {
+        "chapter": 8,
+        "ids": [
+          "area:MAT",
+          "bias:survivorship",
+          "concept:evidence",
+          "fallacy:anecdotal",
+          "framework:methods-and-tools",
+          "game:267",
+          "question:KQ-NEW-005",
+          "question:mission-4d9b7402b96f1a39",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.lantern-drift.compare"
+      ],
+      "evidence": "Only some returning crews could put a mark on the keeper’s sheet; three happy returns cannot establish that this route always works.\nSend a daylight skiff to the unmarked pier. Someone will see what a crossing from the west is like. The east net-menders have to wait for canvas.\nKeep a paired log at both piers. Every departure can be matched to a return. Someone still needs to chase each late entry.\nFive crews left, from two piers. Only east crews were asked to bring a lamp back to this keeper. A blank outside the ring can mean no one was asked.\nsea.harbour · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · Only east crews were asked"
+    },
+    {
+      "board": {
+        "chapter": 8,
+        "ids": [
+          "area:MAT",
+          "bias:zero-risk",
+          "concept:certainty",
+          "fallacy:false-dilemma",
+          "fallacy:slippery-slope",
+          "framework:scope",
+          "game:238",
+          "question:KQ-NEW-005",
+          "question:mission-161a6fd7b871ed15",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.two-routes.compare"
+      ],
+      "evidence": "The two-chart display hides a timed third option and treats one bounded opening as grounds for fearing all will open.\nOpen the marked inner channel for one tide. The keeper gets her child home. Someone needs to take up the pin at the falling tide.\nKeep a sounding skiff out and walk the bank. The pilot gets another depth record. The child has to wait for a longer journey home.\n“Open or shut,” says the pilot. “Open one channel, then all open, then a boat is bound to be lost.” The keeper asks which step would open the other channels. Closing all of them removes the risk from skiffs while families walk the crumbling bank.\nsea.harbour · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · then all open"
+    },
+    {
+      "board": {
+        "chapter": 8,
+        "ids": [
+          "area:MAT",
+          "concept:certainty",
+          "fallacy:tradition",
+          "framework:scope",
+          "game:238",
+          "question:KQ-NEW-005",
+          "question:mission-161a6fd7b871ed15",
+          "story:48"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.two-routes.compare"
+      ],
+      "evidence": "The old inscription credits customary use, while dated soundings offer a separate check in present conditions.\nOpen the marked inner channel for one tide. The keeper gets her child home. Someone needs to take up the pin at the falling tide.\nKeep a sounding skiff out and walk the bank. The pilot gets another depth record. The child has to wait for a longer journey home.\nAn inscription calls the old channel safe because it has always been used. The dated lines match two of its bends and miss a third.\nsea.harbour · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · always been used"
+    },
+    {
+      "board": {
+        "chapter": 8,
+        "ids": [
+          "area:MAT",
+          "concept:certainty",
+          "framework:scope",
+          "game:22",
+          "question:KQ-NEW-005",
+          "question:mission-161a6fd7b871ed15",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.two-routes.send"
+      ],
+      "evidence": "Decide what one tide of soundings can license on a map with one uncertain bend.\nOpen the marked inner channel for one tide. The keeper gets her child home. Someone needs to take up the pin at the falling tide.\nKeep a sounding skiff out and walk the bank. The pilot gets another depth record. The child has to wait for a longer journey home.\nOne family makes the crossing. A chart reader comes back asking for tomorrow’s permission too. / The new sounding is too shallow for the freight skiff and deep enough for the narrow boat.\nsea.harbour · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 8,
+        "ids": [
+          "area:MAT",
+          "concept:evidence",
+          "framework:methods-and-tools",
+          "game:22",
+          "question:KQ-NEW-005",
+          "question:mission-4d9b7402b96f1a39",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.lantern-drift.send"
+      ],
+      "evidence": "Decide between a new daylight observation from the omitted pier and paired departure and return records.\nSend a daylight skiff to the unmarked pier. Someone will see what a crossing from the west is like. The east net-menders have to wait for canvas.\nKeep a paired log at both piers. Every departure can be matched to a return. Someone still needs to chase each late entry.\nA crew comes back with one daylight track from the west. Nobody knows what the torn corner once showed. / At dusk the keeper can name a missing entry without calling its crew lost.\nsea.harbour · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
+          "area:HIS",
+          "concept:interpretation",
+          "framework:perspectives",
+          "game:194",
+          "micro:1118",
+          "question:mission-f5296f4a9fbd490c",
+          "story:112"
+        ]
+      },
+      "bloom": "create",
+      "dok": 4,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "elbow.curtain"
+      ],
+      "evidence": "Develop a production across the costume trials and the records of repairs. Compose its visible sleeve, hinge and first entrance.\nThe intact sleeve reads clearly from the back row.\nA repaired hinge can give the other sister the opening.\nThe choices change the stage picture, the sister who enters first and what is later said in the loft.\nstage.rehearsal · elbow-curtain\ntests/giant-sleeve.test.ts · expect(flag(d.s, 'performedFace')).toBe('seam')"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
+          "bias:expectancy",
+          "bias:selective-perception",
+          "concept:interpretation",
+          "framework:perspectives",
+          "game:178",
+          "question:KQ-NEW-002",
+          "question:mission-ccd9f0c3b53655c0",
+          "story:106"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.paper-wings.compare"
+      ],
+      "evidence": "The cue can alter what a watcher anticipates and notices under the same performance.\nKeep the thread reveal for the bow. The child has time to wonder. A family that leaves early carries home a different account.\nShow the side view during the first flight. The back row sees how a small hand makes the turn. The puppeteer loses the long gasp he practised for.\nBefore the cue Pella says, “Watch the blue bird rise.” One watcher notices the blue wing first. Another still follows the drumbeat.\nstage.foyer · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · notices the blue wing first"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
+          "bias:negativity",
+          "bias:unfinished",
+          "concept:values",
+          "framework:ethics",
+          "game:238",
+          "question:KQ-NEW-006",
+          "question:mission-5b1882a02f1ac786",
+          "story:53"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.third-bell.compare"
+      ],
+      "evidence": "A lingering unfinished cue from this rehearsal overshadows two completed entrances.\nLower the rope for the next rehearsal. The child can ring it. Two children who chose colours ask when their vote will be heard.\nKeep the colour vote and assign a rope fitter. The children see their colour on the cord. The fitter must miss a rehearsal to lower it.\nThe caller cannot get the unfinished bell out of her head tonight. “Every entrance must have been a muddle,” a visitor says.\nstage.foyer · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · cannot get the unfinished bell out of her head"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
+          "bias:triviality",
+          "concept:values",
+          "framework:ethics",
+          "game:238",
+          "question:KQ-NEW-006",
+          "question:mission-5b1882a02f1ac786",
+          "story:53"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.third-bell.compare"
+      ],
+      "evidence": "An easy colour decision draws attention away from whether the cord can be reached from the back.\nLower the rope for the next rehearsal. The child can ring it. Two children who chose colours ask when their vote will be heard.\nKeep the colour vote and assign a rope fitter. The children see their colour on the cord. The fitter must miss a rehearsal to lower it.\nCoral or russet has taken the committee an hour. At the back a small child cannot see either colour. The bell rope nearly touches the ceiling.\nstage.foyer · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · taken the committee an hour"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
+          "character:optics-nim",
+          "concept:explanation",
+          "exhibition:25",
+          "framework:methods-and-tools",
+          "game:170",
+          "micro:490",
+          "question:KQ-ROUTE-25",
+          "question:mission-ce5b0f89c69c176c",
+          "story:5"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.stage.act"
+      ],
+      "evidence": "Hold the sponge through Nim’s entrance. Release the drops later. A repeatable backstage shower leaves the first wet coat an open case.\nFrom the audience the cuff appears to rain when Nim enters.\nThe sponge keeper can delay the shower, which leaves the earlier drop in the Nexus unexplained.\nNim enters early. You wait. For two whole beats her cuff stays dry under the painted cloud. She looks up at it, astonished. The back row laughs in a way she could never have rehearsed. Then you squeeze. Three drops.\nstage.foyer · return-coat-stage-work\ntests/return-coat.test.ts · records only the operation the Guardian actually tried"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
+          "character:optics-nim",
+          "concept:truth",
+          "exhibition:25",
+          "framework:scope",
+          "game:77",
+          "micro:310",
+          "question:KQ-ROUTE-25",
+          "question:mission-ce5b0f89c69c176c",
+          "story:31"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.stage.part"
+      ],
+      "evidence": "Trade the cast sheet for the wardrobe book. Two entries document two different jobs, even though one envelope went to Nim.\nA cast list names a part the audience sees.\nA pay envelope and wardrobe book make work behind the curtain visible.\nNim finds her name in two columns and one day’s pay in the envelope. “Two jobs. One me.” She chalks the sponge operator’s name on the cast list before anybody can use the show to balance Kip’s bill.\nstage.foyer · return-coat-stage-work\ntests/return-coat.test.ts · records only the operation the Guardian actually tried"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
+          "concept:interpretation",
+          "deception:staging",
+          "framework:perspectives",
+          "game:178",
+          "question:KQ-NEW-002",
+          "question:mission-ccd9f0c3b53655c0",
+          "story:106"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.paper-wings.compare"
+      ],
+      "evidence": "The puppeteer’s signed cue and the scheduled reveal establish a deliberately staged impression.\nKeep the thread reveal for the bow. The child has time to wonder. A family that leaves early carries home a different account.\nShow the side view during the first flight. The back row sees how a small hand makes the turn. The puppeteer loses the long gasp he practised for.\nFrom the wing a cue card signed by the puppeteer reads “Let them take the bird for a live one until the bow.” He steps out at the bow holding both paper wings. The planned illusion had an ending.\nstage.foyer · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · Let them take the bird for a live one until the bow"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
+          "concept:interpretation",
+          "fallacy:incredulity",
+          "framework:perspectives",
+          "game:178",
+          "question:KQ-NEW-002",
+          "question:mission-ccd9f0c3b53655c0",
+          "story:106"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.paper-wings.compare"
+      ],
+      "evidence": "The critic’s inability to picture a mechanism is checked by watching the working drum.\nKeep the thread reveal for the bow. The child has time to wonder. A family that leaves early carries home a different account.\nShow the side view during the first flight. The back row sees how a small hand makes the turn. The puppeteer loses the long gasp he practised for.\nAt the wing a drum takes up a thread. The child really did see a bird hang in the air. Her view offered no look at the drum.\nstage.foyer · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · a drum takes up a thread"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
+          "concept:interpretation",
+          "framework:perspectives",
+          "game:22",
+          "question:KQ-NEW-002",
+          "question:mission-ccd9f0c3b53655c0",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.paper-wings.send"
+      ],
+      "evidence": "Choose when a second audience will see the drum and what different testimony that audience can take home.\nKeep the thread reveal for the bow. The child has time to wonder. A family that leaves early carries home a different account.\nShow the side view during the first flight. The back row sees how a small hand makes the turn. The puppeteer loses the long gasp he practised for.\nOne child comes back for the bow because the usher mentioned a second look. / The next audience asks how heavy the wing felt on the drum. The front row misses the first surprise.\nstage.foyer · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
+          "concept:perspective",
+          "exhibition:25",
+          "framework:perspectives",
+          "game:247",
+          "micro:449",
+          "question:KQ-ROUTE-25",
+          "question:mission-03ed1474f24b9cad",
+          "story:24"
+        ]
+      },
+      "bloom": "create",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.rain.stage"
+      ],
+      "evidence": "Write the foyer’s rain part, check what visitors can hear, then issue a version that gives the keeper a bow or the stage.\nThe keeper’s bow can acknowledge her part and preserve the theatrical effect.\nGiving the keeper the demonstration lets the touring company learn from her directly.\nThe company in the other room receives this exact score and its chosen billing. A changed rehearsal leaves that version in circulation.\nstage.foyer · indoor-rain-rig\ntests/rain-score.test.ts · credits an authored score only after an audience and a worker"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
+          "concept:values",
+          "framework:ethics",
+          "game:22",
+          "question:KQ-NEW-006",
+          "question:mission-5b1882a02f1ac786",
+          "story:11"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "pocket.third-bell.send"
+      ],
+      "evidence": "A memorable missed cue, a child’s colour vote and the height of the rope compete for the next rehearsal.\nLower the rope for the next rehearsal. The child can ring it. Two children who chose colours ask when their vote will be heard.\nKeep the colour vote and assign a rope fitter. The children see their colour on the cord. The fitter must miss a rehearsal to lower it.\nThe next cue sounds from a much lower hand. Nobody has settled the colour. / The fitter brings back the length of a child’s reach. The caller still remembers the unfinished bell.\nstage.foyer · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:NAT",
+          "concept:explanation",
+          "exhibition:25",
+          "framework:methods-and-tools",
+          "game:190",
+          "micro:270",
+          "question:KQ-ROUTE-25",
+          "question:mission-03ed1474f24b9cad",
+          "story:5"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.rain.stage.twocauses"
+      ],
+      "evidence": "Reproduce a four-beat sound in the theatre stalls while changing the hand and gesture that cause the tap.\nThe audience has a repeatable sound in the programme.\nThe keeper can show two ways of making it with different hands.\nThe kept bar and the new one sound identical in the stalls. The workforce in the wings can point to two different gestures.\nstage.foyer · indoor-rain-rig\ntests/rain-score.test.ts · credits an authored score only after an audience and a worker"
+    }
+  ],
+  "kind": "implementation-review"
+}

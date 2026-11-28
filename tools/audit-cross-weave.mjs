@@ -1,3 +1,4 @@
+import { reviewContexts } from './combination-context.mjs';
 import { returnCoatProofs } from './return-coat-evidence.mjs';
 import { activityAnchors } from './tok-activity-anchors.mjs';
 import { pocketProofs } from './pocket-theatre-evidence.mjs';
@@ -1226,7 +1227,7 @@ export function essayTitleInventory(sources) {
   });
 }
 
-function makeDimensions({ pack, curriculum, levels, topics, exhibition, micro, suppliedMicro, microSkillId, titleSources }) {
+function makeDimensions({ pack, curriculum, levels, topics, exhibition, micro, suppliedMicro, microSkillId, titleSources, reviewNames }) {
   const group = (kind, items) => items.map(([value, name]) => ({ id: listId(kind, value), kind, name }));
   const named = (values) => Object.entries(values).map(([id, name]) => [id, name]);
   const names = (values) => values.map((id) => [id, id]);
@@ -1263,7 +1264,7 @@ function makeDimensions({ pack, curriculum, levels, topics, exhibition, micro, s
     ...group('reasoning', [...reasoningModes]),
     ...reasoningRepertoire,
     ...suppliedMicro.map((number) => ({
-      id: listId('micro', number), kind: 'micro', name: microNames.get(number) ?? `#${number}`,
+      id: listId('micro', number), kind: 'micro', name: microNames.get(number) ?? reviewNames[number],
       supplied: supplied.has(number), skillId: microSkillId(number),
     })),
   ];
@@ -1437,12 +1438,14 @@ export async function loadAudit({ activities = false } = {}) {
   });
   try {
     const [{ buildPack }, { MAPS }, curriculum, levels, topics, { QUESTION_ROUTES }, { MICRO_SKILLS, microSkillId },
-      { SUPPLIED_SKILL_IDS, NEW_SKILL_NAMES }, game, story, titleSources] =
+      { SUPPLIED_SKILL_IDS, NEW_SKILL_NAMES }, {nightFriends}, reviewNames, game, story, titleSources] =
       await Promise.all([
         server.ssrLoadModule('/src/content/index.ts'), server.ssrLoadModule('/src/maps/index.ts'),
         server.ssrLoadModule('/src/domain/curriculum.ts'), server.ssrLoadModule('/src/domain/learningLevels.ts'),
         server.ssrLoadModule('/tools/tok-floor.ts'), server.ssrLoadModule('/src/content/questionEncounters.ts'),
         server.ssrLoadModule('/src/content/microSkillEvidence.ts'), server.ssrLoadModule('/src/domain/microSkillAudit.ts'),
+        server.ssrLoadModule('/src/domain/nightRegister.ts'),
+        readFile(resolve(root,'tools/micro-skill-review-names.json'),'utf8').then(JSON.parse),
         readFile(resolve(root, 'docs/GAME_ELEMENTS.md'), 'utf8'), readFile(resolve(root, 'docs/STORY_ELEMENTS.md'), 'utf8'),
         readFile(resolve(root, 'tools/prescribed-title-sources.json'), 'utf8').then(JSON.parse),
       ]);
@@ -1454,14 +1457,14 @@ export async function loadAudit({ activities = false } = {}) {
     }));
     const elements = [...parseCatalogue(game, 'game', 288), ...parseCatalogue(story, 'story', 150)];
     const dimensions = makeDimensions({ pack, curriculum, levels, topics, exhibition: QUESTION_ROUTES,
-      micro: [...NEW_SKILL_NAMES, ...MICRO_SKILLS], suppliedMicro: SUPPLIED_SKILL_IDS, microSkillId, titleSources });
+      micro: [...NEW_SKILL_NAMES, ...MICRO_SKILLS], suppliedMicro: SUPPLIED_SKILL_IDS, microSkillId, titleSources, reviewNames });
     if (new Set(dimensions.map(({ id }) => id)).size !== dimensions.length) throw Error('Duplicate learning dimension IDs.');
     const sourceText = new Map(await Promise.all(distinct(proofRows.map(({ source }) => source)).map(async (file) =>
       [file, await readFile(resolve(root, file), 'utf8')])));
     const proofs = collectProofs({ objectives, maps: MAPS, elements, dimensions, rows: proofRows, sourceText, dialogue: pack.dialogue });
     const candidates = authoredLinks(objectives, MICRO_SKILLS, elements);
     return { worlds, elements, dimensions, proofs, candidates, bloomLevels: levels.BLOOM, ...(activities ? {
-      activities: activityAnchors(pack,levels,topics), questionNames: Object.fromEntries(pack.questions.map(q=>[q.id,q.text])),
+      contexts: reviewContexts(pack,levels,QUESTION_ROUTES,nightFriends), activities: activityAnchors(pack,levels,topics), questionNames: Object.fromEntries(pack.questions.map(q=>[q.id,q.text])),
       glossary: Object.fromEntries(pack.glossary.map(g=>[g.id,{term:g.term,history:g.history??null}])),
     } : {}) };
   } finally {

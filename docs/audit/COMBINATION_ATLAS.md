@@ -2,19 +2,21 @@
 
 In the Nile hall, a stitcher thinks everyone in the audience will spot her blue repair. A guide trusts a different sling because a famous donor bought it. Turn the repair into the light, then stand where the last family will sit. The same fringe that distracts the stitcher can guide a visitor’s hand. A Guardian can keep that guide or stretch the sling for the back row. Each choice leaves another person with a job.
 
-[Browse every selectable member](COMBINATION_MEMBERS.md) · [Read the questions, decisions and consequences by chapter](CHAPTER_VIEWPOINTS.md)
+[See reviewed cells by chapter](COMBINATION_REVIEW_STATUS.md) · [Browse every selectable member](COMBINATION_MEMBERS.md) · [Read the questions, decisions and consequences by chapter](CHAPTER_VIEWPOINTS.md)
 
 ## Check off a review
 
 [Download or open the offline combination checklist](COMBINATION_CHECKLIST.html). On GitHub, open the file and choose **Download raw file**, then open the downloaded HTML in a browser. It works without a server. Select a chapter, search by skill number or any other member, add the relevant TOK anchors and choose a narrative and game element. Select **In a particular sequence** when order matters. Open a worked example to try a complete board.
 
-Each exact selection has six Bloom rows and four DOK columns in each chapter. Tick a cell to record a review. Use **Note** beside it to record the player action, what the two people stood to gain or lose and where another reviewer can reproduce it. Enter one action ID per line to track the ten-action target separately for that cell. Existing source evidence appears under the grid. Only an explicit reviewer check marks a cell. The **Find its reviewed boards** control finds records involving any particular micro-skill or other member. **Check a whole family** lays out each skill or other member as a row against the current anchors, with all 24 review cells across the row. Search by ID to go straight to any micro-skill. **Export family grid CSV** produces a spreadsheet of every matching member in the selected family, including its exact anchors and 24 review statuses. Export JSON to share, back up or continue the ledger on another device. Export CSV for a spreadsheet with all 24 cells of the current and saved boards.
+Each exact selection has six Bloom rows and four DOK columns in each chapter. Tick a cell to record a review. Use **Note** beside it to record the player action, what the two people stood to gain or lose and where another reviewer can reproduce it. Enter one action ID per line to track the ten-action target separately for that cell. Existing source evidence appears under the grid. Use **Include documented implementation checks** to load verified examples while keeping your own decisions. You can also import [the dated implementation-review ledger](COMBINATION_REVIEWED.json) to start with the documented exact cells checked. Each record identifies its action and source. Only an explicit reviewer check marks a cell. The **Find its reviewed boards** control finds records involving any particular micro-skill or other member. **Check a whole family** lays out each skill or other member as a row against the current anchors, with all 24 review cells across the row. Search by ID to go straight to any micro-skill. **Export family grid CSV** produces a spreadsheet of every matching member in the selected family, including its exact anchors and 24 review statuses. Export JSON to share, back up or continue the ledger on another device. Export CSV for a spreadsheet with all 24 cells of the current and saved boards.
 
 ### Review all the ways a skill can appear
 
+Every one of the 1,200 micro-skills has a searchable public description and a stable worksheet number. Number 20, for instance, is about noticing your own reasoning change while a decision is still open. Search for the number or for a word such as “reasoning”.
+
 For a review of one micro-skill, pin the skill with a key concept, a framework part and an area or theme. Use **Any TOK-anchored selection** to start before choosing the story and mechanic. Use **Check a whole family** to compare narrative elements side by side against those anchors. To examine combinations involving several members, open **Browse possible combinations by number**, choose one or more families, and enter the number of additional elements. Keep the same pinned selection as you move between possible combinations. You can share a checked board, its exact membership and its notes in a JSON export. A catalogue update can introduce new numbers. Saved boards follow their stable element IDs.
 
-For example, use **The stitcher’s sling**, then pin it and choose **Micro-skills** with one addition. Combination 1,200 opens the last supplied micro-skill against that same sling. Its six-by-four grid starts open. For ordered journeys, open the desired board and group its members into the steps in which a player actually meets them. Reversing the steps creates a separate review.
+For example, use **The stitcher’s sling**, then pin it and choose **Micro-skills** with one addition. Combination 1,200 opens the last supplied micro-skill against that same sling. Its six-by-four grid starts open. For ordered journeys, open the desired board and group its members into the steps in which a player actually meets them. Reversing the steps creates a separate review. **Try an order by number** lays out each selected element as a separate successive action. Edit the steps to group simultaneous elements or to return to an earlier one.
 
 **Find this element in play** searches the published action evidence across chapters. Pick a result to open the exact combination and its observed Bloom and DOK cell. The note editor offers the player action, both perspectives, the map, a source test and the action ID. Edit or save the note and decide whether to tick the cell. The same search shows the linked objectives for the selected chapter. Open one as a starting point and add the story and game elements you observe. Only the separate action register supplies a tested trace and an observed cognitive cell.
 
@@ -48,6 +50,12 @@ The member index covers narrative, mechanics, argument patterns, cognitive biase
 
 A reviewer can address the same selection at remember, understand, apply, analyse, evaluate or create, at each of DOK 1 through 4. These are 24 separate cells. Creating one short caption might demand less sustained thought than comparing evidence gathered on several journeys. Each cell needs its own account of what a player actually did.
 
+### Plan around a person or object
+
+A reviewer can add a historical guest, fictional character, exhibit, keepsake or creature companion by name or catalogue ID. Select two characters to review a disagreement, or pair an earned keepsake with the person whose reply it opens. A catalogue entry identifies the subject of the proposed review. An exhibit and its collectible record can describe two different uses of the same physical object. A creature’s entry identifies whether it has a friendship record, belongs to the night register or appears in the Loreling atlas. Confirm the meeting, use and consequence in the game before checking its cognitive cell.
+
+Each of the 35 exhibition prompt families is searchable by number, with the game's original wording for its corresponding route question. The registered Fink and SOLO dimensions can also be combined with any Bloom and DOK cell. The SOLO entry for a response with no relevant connection describes a possible need for support.
+
 ## Look up a case
 
 From the repository root, run the commands below. The first finds the stitcher’s exact setting and its consequences. The second looks for an observed sequence from inspection to public decision. Commas group simultaneous members. A greater-than sign separates actions in order. Quote the sequence in a shell.
@@ -56,7 +64,8 @@ From the repository root, run the commands below. The first finds the stitcher�
 node tools/audit-combinations.mjs --members 'story:25,game:238,concept:perspective,framework:perspectives,area:ART,bias:halo,fallacy:wealth' --bloom analyse --dok 2
 node tools/audit-combinations.mjs --steps 'story:25,game:238,bias:halo,fallacy:wealth>concept:perspective,framework:perspectives,area:ART,story:11,game:22' --chapter 2
 node tools/audit-combinations.mjs --design any --members 'concept:evidence,framework:scope,theme:knower'
-node tools/audit-combinations.mjs --design joint --question selected --order permutation --length 8
+node tools/audit-combinations.mjs --design joint --question selected --order permutation --length 8 --rank 17
+node tools/audit-combinations.mjs --design joint --order repeated-sequence --length 8 --rank 17
 node tools/audit-combinations.mjs --design joint --pool bias,fallacy,micro --length 7 --rank 0
 node tools/audit-combinations.mjs --activities
 node tools/audit-combinations.mjs --check
