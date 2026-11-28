@@ -24,6 +24,8 @@ The 18,000 activity orders now have optional dispatch folders, with 144 evidence
 
 Eight keepers now physically travel between the Nile Archive, Metalworks, Civic Machine and the Archive of Voices. Each takes one of two pieces of evidence, brings back one of two arrangements and remembers the result at home. Open “Keepers on the road” on any travelling case shelf to find an outstanding journey. First arrivals in chapters 2–15 also preserve the hall’s opening scene in the diary. [The visits](docs/STORY_BIBLE.md#keepers-on-the-road)
 
+The 9,900 activity orders with a faction opponent now enact fifteen assigned interventions. The player can try either of two distinct responses and send the signed result to a receiving keeper. [Interventions and curriculum coverage](docs/audit/WORLD_WORK.md#when-someone-interferes-with-the-evidence)
+
 ## Chapter downloads and the historical cast
 
 The fresh menu opens with about 4.7 kB of compressed JavaScript. The playable Nexus loads its own map, dialogue and guide, and later rooms request their story sections and artwork as needed. A saved game can reopen directly in its chapter. The published map, dialogue and hint checks cover all 164 rooms across the Nexus and fifteen chapters. [Download measurements and browser journeys](docs/BROWSER_CHECKS.md#chapter-downloads)

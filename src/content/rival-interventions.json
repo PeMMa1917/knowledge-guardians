@@ -1,0 +1,197 @@
+[
+  {
+    "scene": "A blade has curled one word off the label. It used to say “usually”. The edge is still soft enough to take a print.",
+    "paths": [
+      {
+        "action": "Tilt the label and take the impression",
+        "result": "You find the tail of a letter under the smooth wax. The next reader can feel exactly where the surface changed."
+      },
+      {
+        "action": "Ask the night worker for a fresh wording",
+        "result": "The worker remembers the exception but hesitates over the word. Two versions leave with their names attached."
+      }
+    ]
+  },
+  {
+    "scene": "The binding opens flat at an empty stitch. A leaf riding under the blotter would have fallen exactly there.",
+    "paths": [
+      {
+        "action": "Count the holes against the loose leaf",
+        "result": "The three holes match. You can show where the leaf fitted even though the ink has run."
+      },
+      {
+        "action": "Invite the binder to read the leaf aloud",
+        "result": "The binder recognises the odd date. A reader who cannot see the holes can now ask about it."
+      }
+    ]
+  },
+  {
+    "scene": "Somebody moved the awkward slip into a drawer for broken handles. The keeper of that drawer knows why it stayed dry.",
+    "paths": [
+      {
+        "action": "Cut a second index tab",
+        "result": "Two drawers now point to the same dry slip. A visitor can find it by its case name."
+      },
+      {
+        "action": "Hold the reading beside the hiding place",
+        "result": "The handle keeper opens the drawer for the next shift. Visitors learn where it went, and he loses his quiet minute."
+      }
+    ]
+  },
+  {
+    "scene": "Two streets repeat a notice in different words. Each swears the other street must have stopped listening.",
+    "paths": [
+      {
+        "action": "Trade the posted copies across the corner",
+        "result": "When the houses swap slips the difference travels with the paper. Each street now holds the other's wording."
+      },
+      {
+        "action": "Have two runners listen at the same corner",
+        "result": "The runners agree on what they heard there. Both routes still need a reading at the far end."
+      }
+    ]
+  },
+  {
+    "scene": "A meeting room has been locked for the afternoon. One worker hopes to avoid another crowded, bitter hearing. Two sisters have arrived by different doors.",
+    "paths": [
+      {
+        "action": "Set a shared table on the threshold",
+        "result": "The sisters can set their slips side by side. People in the queue can see the exchange."
+      },
+      {
+        "action": "Walk a covered notebook between the doors",
+        "result": "Each sister can answer in private. A returning reader has to trust the carrier with the pause between their words."
+      }
+    ]
+  },
+  {
+    "scene": "Two witness groups have separate appointments. A pencilled circle on the rota is the only moment their shifts overlap.",
+    "paths": [
+      {
+        "action": "Borrow the last five minutes of both shifts",
+        "result": "One person from each crew meets at the bell. The rest must rely on those two to carry the reply."
+      },
+      {
+        "action": "Exchange the two marked calendars",
+        "result": "Both crews discover the missing overlap. They keep their separate appointments and can leave a question for each other."
+      }
+    ]
+  },
+  {
+    "scene": "The form has one slot where two quite different descriptions once fitted. The clerk who shortened it can finish a whole queue before lunch.",
+    "paths": [
+      {
+        "action": "Hinge a second strip beside the slot",
+        "result": "The fast form survives. A reader can lift the hinge to see the description that would have been lost."
+      },
+      {
+        "action": "Run one unusual parcel through the old form",
+        "result": "The clerk has to wait for a second term. The parcel gets a fuller account and the queue loses a few minutes."
+      }
+    ]
+  },
+  {
+    "scene": "A maker's name for the piece has been rubbed off the shelf. The trader's new name fits the same stock number.",
+    "paths": [
+      {
+        "action": "Ask the maker to mark a removable tie",
+        "result": "The stock room can keep its number. The tie carries the maker's term, and the maker decides when to remove it."
+      },
+      {
+        "action": "Mark where the two names are actually used",
+        "result": "A trading slip and a workshop slip leave together. The next keeper can follow either name back to a place."
+      }
+    ]
+  },
+  {
+    "scene": "A bundle of local readings is stamped “noise”. The clerk saved them, folded small, in case a second instrument arrived.",
+    "paths": [
+      {
+        "action": "Read one local slip beside the gauge",
+        "result": "The slip and gauge agree for one setting and part again at another. The conditions travel with the difference."
+      },
+      {
+        "action": "Give the local keeper a turn at the dial",
+        "result": "The keeper reproduces the old mark. The clerk sees which surface the original reading depended on."
+      }
+    ]
+  },
+  {
+    "scene": "A well-known face hangs above an unsigned claim. People gather under the portrait while the maker of the test clears up alone.",
+    "paths": [
+      {
+        "action": "Slide the portrait beside the maker's trace",
+        "result": "Visitors can still see the familiar face. Their eyes now follow a scored strip down to the person who made it."
+      },
+      {
+        "action": "Ask whose hand actually tried the claim",
+        "result": "A quiet worker lifts a stained thumb. The celebrity keeps the poster and agrees to point the next visitor their way."
+      }
+    ]
+  },
+  {
+    "scene": "A witness has begun to mistrust the mark they saw. The clean public copy has been before their eyes all morning.",
+    "paths": [
+      {
+        "action": "Let the witness revisit their old sightline",
+        "result": "The mark is visible from the low step for one short moment. The witness puts a place and time beside it."
+      },
+      {
+        "action": "Seal an account before showing the copy",
+        "result": "Two accounts now exist. A disagreement is visible without asking the witness to keep defending a memory in public."
+      }
+    ]
+  },
+  {
+    "scene": "A witness glows after a generous introduction and starts to describe a room they never entered. The audience would like them to go on.",
+    "paths": [
+      {
+        "action": "Give the witness a place to stop",
+        "result": "They end at the threshold. The last two lines now belong to a second speaker who stood inside."
+      },
+      {
+        "action": "Ask for the handoff between the two speakers",
+        "result": "The witness names the person who supplied the ending. The listener can follow the chain and the witness keeps their dignity."
+      }
+    ]
+  },
+  {
+    "scene": "A brilliant seal spans two clauses. The press tested the first one. A traveller about to leave is already pointing at the second.",
+    "paths": [
+      {
+        "action": "Cut a window round the tested clause",
+        "result": "The gold stays where the press made a test. A traveller can see daylight round the rest."
+      },
+      {
+        "action": "Ask the traveller to repeat the second test",
+        "result": "The traveller can confirm one extra condition. The seal still needs a note about the other conditions."
+      }
+    ]
+  },
+  {
+    "scene": "A folded certificate says the inspection has finished. Nobody has yet unwrapped the object, and the person waiting has the last ferry to catch.",
+    "paths": [
+      {
+        "action": "Stamp the time of the first inspection",
+        "result": "The courier goes with a definite time and an unfinished certificate. The next desk knows where to begin."
+      },
+      {
+        "action": "Send a removable tag for the next inspector",
+        "result": "The courier keeps the object moving. The tag can only be taken off by someone who opens the wrapping."
+      }
+    ]
+  },
+  {
+    "scene": "A stall sells an answer at two prices. The cheaper slip leaves off what the dearer one promises to explain. The buyer can afford one slip.",
+    "paths": [
+      {
+        "action": "Put both versions on the reading rail",
+        "result": "Anyone can now compare the two promises. A porter gives up the rail for the last part of the shift."
+      },
+      {
+        "action": "Let the buyer try the paid promise once",
+        "result": "The buyer takes one marked trial back to the stall. The next visitor sees what that money actually bought."
+      }
+    ]
+  }
+]
