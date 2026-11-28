@@ -1,0 +1,290 @@
+[
+ {
+  "saga": 1,
+  "person": "Tallowheel",
+  "object": "Portrait of a U.S. Army Musician",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 5,
+  "person": "Cetra Winnet",
+  "object": "Amusing Dance - Saukie",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 7,
+  "person": "Host Hari",
+  "object": "Nine Light Candelabra with Six Figures, Masks, and Chimeras",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 9,
+  "person": "Brannic",
+  "object": "Rovine del Piano superiore della Villa di Cassio a Tivoli",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 13,
+  "person": "Tallowheel",
+  "object": "Drum",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 14,
+  "person": "Cetra Winnet",
+  "object": "Pia Arke’s Nuugaarsuk photographs",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 17,
+  "person": "Host Hari",
+  "object": "Les liaisons dangereuses",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 20,
+  "person": "Brannic",
+  "object": "Trissotin Reading to Philaminte, Bélise, and Armande (from act 3,...",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 23,
+  "person": "Tallowheel",
+  "object": "Poem by Wang Wei in the Cursive Script Style",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 25,
+  "person": "Cetra Winnet",
+  "object": "Mascaras crueles (Cruel Masks) [recto]",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 26,
+  "person": "Host Hari",
+  "object": "Singerie: The Picnic",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 29,
+  "person": "Brannic",
+  "object": "Hand Bell with the Grimaldi Arms, Masks, Busts in Profile, Rabbits...",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 33,
+  "person": "Tallowheel",
+  "object": "Toy Theater with Automatic Dancer",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 34,
+  "person": "Cetra Winnet",
+  "object": "Portrait Mask of Etienne Carjat",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 37,
+  "person": "Host Hari",
+  "object": "Hoddu",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 40,
+  "person": "Brannic",
+  "object": "Duala seat with a carved lattice",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 43,
+  "person": "Tallowheel",
+  "object": "La Comedia",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 44,
+  "person": "Cetra Winnet",
+  "object": "Faust",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 48,
+  "person": "Host Hari",
+  "object": "Poem by Emperor Tenchi, from the series One Hundred Poems by One...",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 49,
+  "person": "Brannic",
+  "object": "Dancer",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 51,
+  "person": "Tallowheel",
+  "object": "Dancer at Rest, Hands on Her Hips, Left Leg Forward",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 55,
+  "person": "Cetra Winnet",
+  "object": "Costume Accessories: Worn by T. Jefferson",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 57,
+  "person": "Host Hari",
+  "object": "Ruderi essistenti a Tivoli del Piano inferiore della villa di Cassio",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 60,
+  "person": "Brannic",
+  "object": "\"Fan Dancer\" Marionette",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 63,
+  "person": "Tallowheel",
+  "object": "Nicolaus Schlifer, German Musician [obverse]",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 65,
+  "person": "Cetra Winnet",
+  "object": "Shinichi Tetsutani’s tricycle",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 67,
+  "person": "Host Hari",
+  "object": "Songs and Ballads of Shakespeare",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 69,
+  "person": "Brannic",
+  "object": "Illustrated Tale of Oishi Hyōroku",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 73,
+  "person": "Tallowheel",
+  "object": "Ballads",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 75,
+  "person": "Cetra Winnet",
+  "object": "Nicola Vicentino, 1511-c. 1576, Composer and Musical Theorist...",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 78,
+  "person": "Host Hari",
+  "object": "Theatre Box",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 80,
+  "person": "Brannic",
+  "object": "Large Wedding Dancers",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 83,
+  "person": "Tallowheel",
+  "object": "Coronation of the Virgin with Angel Musicians and All Saints",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 85,
+  "person": "Cetra Winnet",
+  "object": "Actor",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 86,
+  "person": "Host Hari",
+  "object": "Music Stand",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 89,
+  "person": "Brannic",
+  "object": "Saltcellar with Portuguese Figures",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 93,
+  "person": "Tallowheel",
+  "object": "Scenes from the Tales of Ise",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 94,
+  "person": "Cetra Winnet",
+  "object": "Layla and Majnun in the wilderness with animals, from a Khamsa...",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 96,
+  "person": "Host Hari",
+  "object": "Ichikawa Ebijūrō II as Horiguchi Manzaemon (right), Arashi Rikan...",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 100,
+  "person": "Brannic",
+  "object": "Doll and Costume",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 101,
+  "person": "Tallowheel",
+  "object": "Singer",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 104,
+  "person": "Cetra Winnet",
+  "object": "Portrait of a U.S. Army Musician",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 106,
+  "person": "Host Hari",
+  "object": "Amusing Dance - Saukie",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 109,
+  "person": "Brannic",
+  "object": "Nine Light Candelabra with Six Figures, Masks, and Chimeras",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 112,
+  "person": "Tallowheel",
+  "object": "Rovine del Piano superiore della Villa di Cassio a Tivoli",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 115,
+  "person": "Cetra Winnet",
+  "object": "Drum",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 118,
+  "person": "Host Hari",
+  "object": "Pia Arke’s Nuugaarsuk photographs",
+  "place": "Prop Room"
+ },
+ {
+  "saga": 120,
+  "person": "Brannic",
+  "object": "Les liaisons dangereuses",
+  "place": "Prop Room"
+ }
+]

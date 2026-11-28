@@ -6,6 +6,8 @@ Returning the Nile dispatch opens six Nexus doors. Any three of their completed 
 
 The ribbon beside the Nexus entrance and the journal’s Story page preserve visit order. Six keepsakes unlock twelve conversations in the other Act II worlds. Vesper’s new letters remember the route at delivery.
 
+A travelling-case shelf in each main hall holds 48 saga stages. Players can take each of the 120 cases through four to eight worlds in any order the corridor allows. A later stop reads the instruction left at the previous stop. Revising a disposition preserves the recorded visit order.
+
 ## Chapter downloads and the historical cast
 
 The fresh menu opens with about 4.7 kB of compressed JavaScript. The playable Nexus loads its own map, dialogue and guide, and later rooms request their story sections and artwork as needed. A saved game can reopen directly in its chapter. The published map, dialogue and hint checks cover all 164 rooms across the Nexus and fifteen chapters. [Download measurements and browser journeys](docs/BROWSER_CHECKS.md#chapter-downloads)

@@ -1,0 +1,290 @@
+[
+ {
+  "saga": 2,
+  "person": "Sella Marn",
+  "object": "Toleware Bread Tray",
+  "place": "the Exchange Bench"
+ },
+ {
+  "saga": 4,
+  "person": "Fen Clove",
+  "object": "Vegetable Market at Pontoise",
+  "place": "the Price of the Empty Basket · Night Register"
+ },
+ {
+  "saga": 8,
+  "person": "Aven Bragg",
+  "object": "Still Life with Fruit",
+  "place": "Lantern Square"
+ },
+ {
+  "saga": 10,
+  "person": "Rook Tamsin",
+  "object": "Still Life with Milk Jug and Fruit",
+  "place": "Sample Shed"
+ },
+ {
+  "saga": 13,
+  "person": "Kit Oriel",
+  "object": "Der Ernährer",
+  "place": "the Exchange Bench"
+ },
+ {
+  "saga": 15,
+  "person": "Sella Marn",
+  "object": "Les Amateurs de tableaux a l'hotel Bouillon",
+  "place": "the Price of the Empty Basket · Night Register"
+ },
+ {
+  "saga": 17,
+  "person": "Fen Clove",
+  "object": "Abamphruwa",
+  "place": "Lantern Square"
+ },
+ {
+  "saga": 19,
+  "person": "Aven Bragg",
+  "object": "Headrest",
+  "place": "Sample Shed"
+ },
+ {
+  "saga": 21,
+  "person": "Rook Tamsin",
+  "object": "Joachim Beuckelaer’s Fish Market",
+  "place": "the Exchange Bench"
+ },
+ {
+  "saga": 25,
+  "person": "Kit Oriel",
+  "object": "Bibby Line sailing and fare list for 1932",
+  "place": "the Price of the Empty Basket · Night Register"
+ },
+ {
+  "saga": 26,
+  "person": "Sella Marn",
+  "object": "John Legg’s York trade token",
+  "place": "Lantern Square"
+ },
+ {
+  "saga": 30,
+  "person": "Fen Clove",
+  "object": "Buxton and Landstreet Company scrip marked 1.00",
+  "place": "Sample Shed"
+ },
+ {
+  "saga": 32,
+  "person": "Aven Bragg",
+  "object": "Thomas T. Strode’s accounting adding-machine patent model",
+  "place": "the Exchange Bench"
+ },
+ {
+  "saga": 35,
+  "person": "Rook Tamsin",
+  "object": "Blacksmith's Shop",
+  "place": "the Price of the Empty Basket · Night Register"
+ },
+ {
+  "saga": 38,
+  "person": "Kit Oriel",
+  "object": "\"Pearl Keller, 18 Months Old, and Ada Sylvester\"",
+  "place": "Lantern Square"
+ },
+ {
+  "saga": 39,
+  "person": "Sella Marn",
+  "object": "Bartolommeo Pendaglia, died 1462, Merchant of Ferrara [obverse]",
+  "place": "Sample Shed"
+ },
+ {
+  "saga": 41,
+  "person": "Fen Clove",
+  "object": "Table - Double Lyre Base",
+  "place": "the Exchange Bench"
+ },
+ {
+  "saga": 45,
+  "person": "Aven Bragg",
+  "object": "Ornamental Panel Surmounted by a Basket of Flowers and a Garland",
+  "place": "the Price of the Empty Basket · Night Register"
+ },
+ {
+  "saga": 46,
+  "person": "Rook Tamsin",
+  "object": "Sultaness Adorned with Pearls, Turned to the Left",
+  "place": "Lantern Square"
+ },
+ {
+  "saga": 50,
+  "person": "Kit Oriel",
+  "object": "Still Life with Bottles and Fruit",
+  "place": "Sample Shed"
+ },
+ {
+  "saga": 53,
+  "person": "Sella Marn",
+  "object": "Woman with a Pearl Necklace",
+  "place": "the Exchange Bench"
+ },
+ {
+  "saga": 54,
+  "person": "Fen Clove",
+  "object": "Lady Wearing Pearls",
+  "place": "the Price of the Empty Basket · Night Register"
+ },
+ {
+  "saga": 56,
+  "person": "Aven Bragg",
+  "object": "Hat",
+  "place": "Lantern Square"
+ },
+ {
+  "saga": 59,
+  "person": "Rook Tamsin",
+  "object": "Inigo Vonholte’s Fine Waters trade card",
+  "place": "Sample Shed"
+ },
+ {
+  "saga": 63,
+  "person": "Kit Oriel",
+  "object": "A. J. Cater’s Queen Mary passage contract",
+  "place": "the Exchange Bench"
+ },
+ {
+  "saga": 64,
+  "person": "Sella Marn",
+  "object": "Dunblane Co-operative Society plastic token",
+  "place": "the Price of the Empty Basket · Night Register"
+ },
+ {
+  "saga": 68,
+  "person": "Fen Clove",
+  "object": "Straight’s Shoe Store advertising token",
+  "place": "Lantern Square"
+ },
+ {
+  "saga": 69,
+  "person": "Aven Bragg",
+  "object": "William C. McGill’s cash register patent model",
+  "place": "Sample Shed"
+ },
+ {
+  "saga": 73,
+  "person": "Rook Tamsin",
+  "object": "Woman Weaving a Basket",
+  "place": "the Exchange Bench"
+ },
+ {
+  "saga": 74,
+  "person": "Kit Oriel",
+  "object": "Blacksmith Shop",
+  "place": "the Price of the Empty Basket · Night Register"
+ },
+ {
+  "saga": 76,
+  "person": "Sella Marn",
+  "object": "McAllister's Optical Shop, Philadelphia",
+  "place": "Lantern Square"
+ },
+ {
+  "saga": 80,
+  "person": "Fen Clove",
+  "object": "Hand Bell with Armorial Shield, Falconers, Basket, and Profile...",
+  "place": "Sample Shed"
+ },
+ {
+  "saga": 83,
+  "person": "Aven Bragg",
+  "object": "Butterfly Table",
+  "place": "the Exchange Bench"
+ },
+ {
+  "saga": 84,
+  "person": "Rook Tamsin",
+  "object": "Seat Table",
+  "place": "the Price of the Empty Basket · Night Register"
+ },
+ {
+  "saga": 87,
+  "person": "Kit Oriel",
+  "object": "Six Diners at Table",
+  "place": "Lantern Square"
+ },
+ {
+  "saga": 90,
+  "person": "Sella Marn",
+  "object": "Market at Pontoise",
+  "place": "Sample Shed"
+ },
+ {
+  "saga": 93,
+  "person": "Fen Clove",
+  "object": "Two Merchant-Men: the \"Geele Fortuÿn,\" Trading in the Baltic, and...",
+  "place": "the Exchange Bench"
+ },
+ {
+  "saga": 95,
+  "person": "Aven Bragg",
+  "object": "Bracelet",
+  "place": "the Price of the Empty Basket · Night Register"
+ },
+ {
+  "saga": 97,
+  "person": "Rook Tamsin",
+  "object": "Francesco Curti’s Trades of Bologna, plate 5",
+  "place": "Lantern Square"
+ },
+ {
+  "saga": 100,
+  "person": "Kit Oriel",
+  "object": "H. J. Cater’s Queen Elizabeth passage contract",
+  "place": "Sample Shed"
+ },
+ {
+  "saga": 103,
+  "person": "Sella Marn",
+  "object": "Rochdale Provident Co-operative Society token",
+  "place": "the Exchange Bench"
+ },
+ {
+  "saga": 105,
+  "person": "Fen Clove",
+  "object": "Sample American Express credit card",
+  "place": "the Price of the Empty Basket · Night Register"
+ },
+ {
+  "saga": 107,
+  "person": "Aven Bragg",
+  "object": "National Cash Register Class 51",
+  "place": "Lantern Square"
+ },
+ {
+  "saga": 109,
+  "person": "Rook Tamsin",
+  "object": "Still Life, Flowers, and Fruit",
+  "place": "Sample Shed"
+ },
+ {
+  "saga": 111,
+  "person": "Kit Oriel",
+  "object": "Women at a Table in a Room",
+  "place": "the Exchange Bench"
+ },
+ {
+  "saga": 114,
+  "person": "Sella Marn",
+  "object": "Still Life with Dressed Game, Meat, and Fruit",
+  "place": "the Price of the Empty Basket · Night Register"
+ },
+ {
+  "saga": 117,
+  "person": "Fen Clove",
+  "object": "Large Walnut Table with Uberti Arms",
+  "place": "Lantern Square"
+ },
+ {
+  "saga": 120,
+  "person": "Aven Bragg",
+  "object": "Sebastian Zäh, 1527-1598, Merchant and Financier [obverse]",
+  "place": "Sample Shed"
+ }
+]

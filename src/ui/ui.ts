@@ -3688,6 +3688,18 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    if (id === 'travelling-cases') {
+      const controller=ctx.controller,map=controller.state.mapId;
+      const chapter=PASSAGES.findIndex(p=>p.hall===map)+1;
+      const box=this.openModal('saga-panel wide','Travelling cases',this.closeBtn(),h('p',{role:'status'},'Opening the case shelf…'));
+      void import('./corridorSagas').then(async module=>{
+        const stages=await module.chapterSagas(chapter);
+        if(box.isConnected && ctx.controller===controller && controller.state.mapId===map)box.replaceChildren(this.closeBtn(),module.sagaPanel(controller,stages));
+      }).catch(()=>{
+        if(box.isConnected)box.replaceChildren(this.closeBtn(),h('p',{role:'alert'},'This shelf could not open.'),h('button',{onclick:()=>this.openFieldGame(id)},'Try again'));
+      });
+      return;
+    }
     if (id.startsWith('temple-')) {
       this.openModal('temple-panel wide','Guardian hearing',this.closeBtn(),templePanel(ctx.controller,id.slice(7)));
       return;
