@@ -10,6 +10,7 @@ import { vaultReturnSquare } from '../maps/undercroft';
  * Controls: arrows / WASD to walk, E / Space / Enter to interact,
  * click or tap to walk to a spot or a person (alternative control route).
  */
+import { firstHallScene } from '../domain/hallStories';
 import { nightByFriend } from '../domain/nightRegister';
 import { creaturePortrait } from '../ui/nightCreature';
 import { ensureFieldArt } from './fieldArt';
@@ -156,11 +157,13 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     // Presentation fades follow real elapsed time, including on renderers that drop most frames.
     this.fadeDeadline = performance.now() + 400;
     if (!ctx.settings.reducedMotion) this.cameras.main.fadeIn(400, 10, 8, 24);
+    const firstScene = firstHallScene(ctx.controller.state);
     ctx.controller.dispatch({ type: 'VisitPlace', name: this.map.name, via: data.via });
     // Arrival zone (e.g. "emberford") is recorded the moment the map opens.
     this.checkZones(true);
     this.refreshWorld();
     ctx.ui.refreshHud();
+    if (firstScene) ctx.ui.toast(firstScene);
     ctx.ui.showContentNote(this.map.id);
   }
 

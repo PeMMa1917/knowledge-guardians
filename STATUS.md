@@ -22,6 +22,8 @@ Six supper conversations in the Nexus quarters let the four companions argue, an
 
 The 18,000 activity orders now have optional dispatch folders, with 144 evidence actions across 72 mysteries. A player can send a finding on to the next world and revise it without changing the shipment that already arrived. [Dispatch stories and coverage](docs/audit/WORLD_WORK.md#inside-the-dispatch-folders)
 
+Eight keepers now physically travel between the Nile Archive, Metalworks, Civic Machine and the Archive of Voices. Each takes one of two pieces of evidence, brings back one of two arrangements and remembers the result at home. Open “Keepers on the road” on any travelling case shelf to find an outstanding journey. First arrivals in chapters 2–15 also preserve the hall’s opening scene in the diary. [The visits](docs/STORY_BIBLE.md#keepers-on-the-road)
+
 ## Chapter downloads and the historical cast
 
 The fresh menu opens with about 4.7 kB of compressed JavaScript. The playable Nexus loads its own map, dialogue and guide, and later rooms request their story sections and artwork as needed. A saved game can reopen directly in its chapter. The published map, dialogue and hint checks cover all 164 rooms across the Nexus and fifteen chapters. [Download measurements and browser journeys](docs/BROWSER_CHECKS.md#chapter-downloads)

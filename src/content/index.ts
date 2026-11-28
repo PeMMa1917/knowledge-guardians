@@ -1,3 +1,4 @@
+import { installHallVisits } from './hallVisitors';
 import { keeperConversations } from './keeperLives';
 import { installReturnCoat } from './returnCoat';
 import { installPocketTheatre } from './pocketTheatre';
@@ -317,5 +318,6 @@ export function buildPack(): ContentPack {
   reviewChapterPractices(content);
   addMicroSkills(content);
   content.dialogue.push(...keeperConversations());
+  installHallVisits(content);
   return content;
 }
