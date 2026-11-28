@@ -17,7 +17,7 @@ Options that we did not choose: Supabase, Firebase, PocketBase on a rented serve
 ## 2. Rules (in addition to AGENTS.md)
 
 1. **No runtime AI** (CORE-005). The service only stores and returns data.
-2. **Least data.** The preview stores pseudonymous student logins, teacher logins, salted password verifiers, session digests, short-lived sign-in limits, accepted class assignments, recovery packages and the scoped diary projection. Progress summaries and assignments are planned separately. Usernames must not be real names. The game suggests Guardian-style names.
+2. **Least data.** The preview stores pseudonymous student logins, teacher logins, salted password verifiers, session digests, short-lived sign-in limits, accepted class assignments, recovery packages, the scoped diary projection, optional online rounds, daily bests, published results and name moderation records. Progress summaries and assignments are planned separately. Usernames must not be real names. The game suggests Guardian-style names.
 3. **The teacher is the gate.** A student joins a class with a class code, and the teacher must accept the request.
 4. **Planned student password reset by the teacher.** The teacher presses Reset. The student gets a one-time code to set a new password.
 5. **No tracking.** No analytics, no ads, no third-party scripts, no data sale.
@@ -87,12 +87,22 @@ The fictional-account journey includes a second online edit made while the first
 
 When a student returns to the game or reconnects while an earlier save is still waiting for a response, the client waits for that write and then retries with the latest words. An incompatible online revision opens the two-copy review. Small writes requested while leaving a page retain the browser’s background-delivery option. Larger drafts remain in local storage and retry when the student returns.
 
+### Class names and moderation
+
+Students use school-issued pseudonyms. The service checks sign-in usernames, roster display names and leaderboard nicknames. The same check runs when a school creates a student account or a teacher sets a replacement. Comparison handles common digit substitutions, mixed-script lookalikes, accents, repeated letters, punctuation and invisible formatting. A name can use its original alphabet. The list cannot anticipate every language or spelling.
+
+In **Class writing → Manage student names**, the assigned teacher can review flagged names for approved class members, set a replacement or remove a name. Removing a sign-in username gives the teacher a new pseudonym to pass to the student. The password, class membership and saved adventure follow the account. Removing a display name substitutes “Guardian.” A teacher can set the public nickname, hide it and its scores, or return control to the student.
+
+A rejected nickname stays off the board. Only the assigned teacher can see the last rejected attempt per student, including the code points of invisible characters, and dismiss it. Existing roster names are screened when read. A student with a flagged legacy login can regain access with the teacher’s replacement. School provisioning uses `provisionStudent` before assigning a class.
+
 ### Optional class leaderboards
 
-A student in a class adventure can open **Menu → Leaderboard**, select one of 31 activities and choose today, this week, this month or year to date. Opening a board simply reads the current class’s posted results. Before writing a nickname or posting, the screen identifies the audience. The post button sends the displayed value for that activity and period. Changing the nickname on a subsequent post updates the nickname on all that student’s class scores. A higher or lower score can replace an earlier result. Equal results share a place. Counts of TOK practice describe activity and carry no assessment mark.
+Device-recorded XP, time played, quest counts, practice counts and offline minigame results stay in the personal practice view. The class board accepts no score supplied by a student, teacher, save or import. The service currently scores Sefa’s online stitching table. A signed-in student can reach it through Sefa’s table in the world or **Menu → Leaderboard → Class leaderboard**.
 
-An approved class member and the assigned teacher can read posted nicknames, values and through-dates for the selected board. The teacher’s class-writing and leaderboard panels have separate service responses. An unposted student has no public row. Optional score files, progress exports, portfolio sharing, writing sync and streak preferences each keep their own controls. Local adventures use the existing file comparison.
+The service shuffles six pairs, keeps the hidden tiles on the server, and checks each turn against the account, class, round, and turn number. Two legal flips count as one move. The service measures elapsed time and records the best move count and best time for each UTC day only when all six pairs match. A round allows up to 120 moves and 24 hours. A student can resume an unfinished online round on another device. Local stitching remains available offline.
 
-Apply the versioned D1 migrations in order for hosted review. Migration 0002 stores at most one snapshot for each chosen activity and period per student and class assignment. A newer posting for that selection replaces its prior date range. Reading another student's row exposes the shared nickname. Account keys stay on the service. Withdrawal clears all score values and the nickname together and retains a revision counter to prevent an older device from putting them back accidentally. Withdrawing, losing approved membership, moving class, or a change of assigned teacher clears publication for that assignment. A current student with an incorrect device date can still withdraw. The preview uses disposable fictional accounts.
+Sharing is optional. After playing, choose the moves or time board, its period and a nickname, then select **Share server result**. The server looks up the student’s best eligible result for today, this week, this month or year to date. Classmates only see the chosen nickname, result and date earned. Tied scores share a rank. The service checks for lookalike nicknames already in use in the class. Teachers can moderate names and hide scores. The service gives neither teachers nor students a score-entry or approval control.
 
-[Service checks](../tools/test-classroom.mjs) · [Student and teacher browser journey](../tools/smoke-class-scores.mjs)
+Apply D1 migrations in order. Migration 0003 removes older, device-reported public rows. Private saves and personal practice remain available. Withdrawing removes all public scores. Moving or leaving a class, losing approval, or changing the assigned teacher also clears online rounds and daily bests for that assignment. On completion the service prunes that student’s bests older than the previous 366 days. Independent scoring establishes which legal moves the service received. A person can still receive outside help.
+
+[Service checks](../tools/test-classroom.mjs) · [Browser walkthrough](../tools/smoke-class-scores.mjs)

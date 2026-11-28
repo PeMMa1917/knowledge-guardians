@@ -1,4 +1,5 @@
-import {teacherScoreBoard} from '../ui/leaderboard';
+import {classNames} from './classNames';
+import {hostedScoreBoard} from '../ui/leaderboard';
 import '../ui/conceptMarkup.css';
 import {conceptTextNodes} from '../ui/conceptMarkup';
 import { signIn } from '../classroom/forms';
@@ -40,9 +41,16 @@ export function classWriting() {
         );
         const entries = h('div', { 'aria-live': 'polite' });
         const board = h('div',{});
+        const names = h('div',{});
         const showBoard=()=>{
           const chosen=groups.find(g=>g.id===list.value);
-          board.replaceChildren(...(chosen?[teacherScoreBoard({role:'teacher',account:teacher.id,classId:chosen.id,className:chosen.title})]:[]));
+          const roster=chosen && classNames(teacher.id,chosen.id,()=>{
+            void load();
+            const refreshBoard=board.querySelector<HTMLButtonElement>('.class-score-board[open] [data-refresh-scores]');
+            refreshBoard?.click();
+          });
+          names.replaceChildren(...(roster?[roster]:[]));
+          board.replaceChildren(...(chosen?[hostedScoreBoard({role:'teacher',account:teacher.id,classId:chosen.id,className:chosen.title})]:[]));
         };
         let version = 0;
         const load = async () => {
@@ -106,7 +114,7 @@ export function classWriting() {
             },
             'Sign out',
           ),
-          entries,board,
+          names,entries,board,
         );
         await load();
       }),

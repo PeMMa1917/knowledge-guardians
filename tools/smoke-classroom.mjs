@@ -257,7 +257,7 @@ try {
     assert.ok(!teacherText.includes(s));
   const t2 = await device('teacher.html');
   await login(t2, 'south@example.invalid', 'teacher');
-  await t2.getByText('Moss Wren', { exact: true }).waitFor();
+  await t2.getByRole('heading', { name: 'Moss Wren', exact: true }).waitFor();
   assert.ok(!(await t2.locator('body').innerText()).includes('Who stood behind'));
   assert.equal(
     await t2.evaluate(

@@ -1,12 +1,7 @@
-import {
-  normalizeLeaderboardAlias,
-  rankScoreRows,
-  type LeaderboardMetric,
-  type LeaderboardPeriod,
-} from '../domain/leaderboard';
-import { dayOf } from '../domain/ledger';
+import { rankScoreRows, type LeaderboardMetric, type LeaderboardPeriod } from '../domain/leaderboard';
 import { h } from '../ui/dom';
 import { request, ServiceError } from './request';
+import { rankedStitch } from './rankedStitch';
 
 export type BoardAudience = {
   role: 'student' | 'teacher';
@@ -15,228 +10,188 @@ export type BoardAudience = {
   className: string;
   teacher?: string;
 };
-
-interface Snapshot {
-  clockMismatch?: boolean;
-  rows: { alias: string; value: number; through: string }[];
-  own?: { revision: number; alias: string | null };
-}
-type Selection = {
-  period: LeaderboardPeriod;
-  metric: LeaderboardMetric;
-  periodLabel: string;
+type Selection = { period: LeaderboardPeriod; metric: LeaderboardMetric; periodLabel: string };
+type Owner = {
+  revision: number;
+  alias: string | null;
+  rule: string | null;
+  canWithdraw: boolean;
   value: number | null;
 };
-
-/** Reading a board and posting a score are separate, explicit actions. */
+type Snapshot = { rows: { alias: string; value: number; through: string }[]; own?: Owner };
 export function classScoreBoard(
   audience: BoardAudience,
   selected: () => Selection,
-  format: (value: number, unit: string) => string,
+  format: (n: number, u: string) => string,
 ) {
-  const label = audience.className;
+  const student = audience.role === 'student';
   const section = h(
     'details',
     { class: 'leaderboard-sharing class-score-board' },
-    h('summary', {}, 'Class leaderboard · ' + label),
+    h('summary', {}, 'Class leaderboard · ' + audience.className),
   );
-  const status = h('p', { role: 'status', class: 'leaderboard-caption' });
+  const status = h('p', { role: 'status' }),
+    rows = h('div', { class: 'leaderboard-table' }),
+    preview = h('p', {});
   const nickname = h('input', { type: 'text', autocomplete: 'off', spellcheck: 'false' });
-  const rows = h('div', { class: 'leaderboard-table' });
-  const preview = h('p', {});
-  const refresh = h('button', { type: 'button', onclick: () => void load() }, 'Refresh class scores');
-  const publish = h(
+  const refresh = h(
     'button',
-    { type: 'button', onclick: () => void change(false) },
-    'Post this score to my class',
+    { type: 'button', 'data-refresh-scores': true, onclick: () => load() },
+    'Refresh class scores',
   );
-  const remove = h(
-    'button',
-    { type: 'button', onclick: () => void change(true) },
-    'Remove all my class scores',
-  );
-  const student = audience.role === 'student';
-  let offered: Selection | undefined;
-  let saved: Snapshot['own'],
-    version = 0,
-    writing = false,
-    readKey = '';
-
-  const path = (s: Selection) => {
-    const q = new URLSearchParams({
-      account: audience.account,
-      class: audience.classId,
-      day: dayOf(new Date()),
-      period: s.period,
-      activity: s.metric.id,
-    });
+  const post = h('button', { type: 'button', onclick: () => change(false) }, 'Share server result');
+  const remove = h('button', { type: 'button', onclick: () => change(true) }, 'Remove all my class scores');
+  let version = 0,
+    busy = false,
+    owner: Owner | undefined,
+    readPath = '';
+  function path() {
+    const s = selected(),
+      q = new URLSearchParams({
+        account: audience.account,
+        class: audience.classId,
+        activity: s.metric.id,
+        period: s.period,
+      });
     if (audience.teacher) q.set('teacher', audience.teacher);
     return audience.role + '/scores?' + q;
-  };
-  function controls() {
-    refresh.disabled = writing;
-    publish.disabled = writing || !saved || offered?.value == null || readKey !== path(selected());
-    remove.disabled = writing || !saved?.alias || readKey !== path(selected());
-    remove.hidden = !saved?.alias;
-    nickname.disabled = writing;
   }
-  function clearSnapshot() {
-    saved = undefined;
-    offered = undefined;
-    readKey = '';
-    rows.replaceChildren();
-    controls();
+  function controls() {
+    refresh.disabled = busy;
+    post.disabled = busy || !owner || owner.value === null || owner.rule === '';
+    remove.disabled = busy || !owner?.canWithdraw;
+    nickname.disabled = busy || !owner || owner.rule !== null;
   }
   async function load(message = '') {
-    const serial = ++version;
-    clearSnapshot();
+    const seq = ++version,
+      url = path(),
+      s = selected();
+    owner = undefined;
+    readPath = '';
+    rows.replaceChildren();
+    preview.textContent = '';
+    controls();
     if (!section.open) return;
-    const activity = selected(),
-      url = path(activity);
-    offered = activity;
-    preview.textContent = student
-      ? activity.periodLabel +
-        ' · ' +
-        activity.metric.label +
-        ' · ' +
-        (activity.value == null ? 'No recorded value yet' : format(activity.value, activity.metric.unit))
-      : '';
-    status.textContent = 'Loading class scores…';
     try {
-      const response = await request<Snapshot>(url);
-      if (serial !== version || !section.isConnected || !section.open) return;
-      const ranked = rankScoreRows(response.rows, activity.metric.direction);
-      if (ranked.length) {
-        const list = h('tbody', {});
-        for (let i = 0; i < ranked.length; i++) {
-          const row = ranked[i];
-          const tied = ranked[i - 1]?.value === row.value || ranked[i + 1]?.value === row.value;
-          list.append(
-            h(
-              'tr',
-              {},
-              h('td', {}, row.rank + (tied ? ' (tie)' : '')),
-              h('th', { scope: 'row' }, h('bdi', {}, row.alias)),
-              h('td', {}, format(row.value, activity.metric.unit)),
-              h('td', {}, row.through),
-            ),
-          );
-        }
-        rows.replaceChildren(
+      const data = await request<Snapshot>(url);
+      if (seq !== version || !section.isConnected) return;
+      readPath = url;
+      owner = data.own;
+      const ranks = rankScoreRows(data.rows, s.metric.direction);
+      if (ranks.length)
+        rows.append(
           h(
             'table',
             {},
-            h('caption', {}, activity.periodLabel + ' · ' + activity.metric.label),
+            h('caption', {}, s.periodLabel + ' · ' + s.metric.label),
             h(
               'thead',
               {},
               h(
                 'tr',
                 {},
-                ...['Rank', 'Nickname', 'Value', 'Through'].map((t) => h('th', { scope: 'col' }, t)),
+                ...['Rank', 'Nickname', 'Result', 'Earned (UTC)'].map((text) =>
+                  h('th', { scope: 'col' }, text),
+                ),
               ),
             ),
-            list,
+            h(
+              'tbody',
+              {},
+              ...ranks.map((row) =>
+                h(
+                  'tr',
+                  {},
+                  h('td', {}, String(row.rank)),
+                  h('th', { scope: 'row' }, h('bdi', {}, row.alias)),
+                  h('td', {}, format(row.value, s.metric.unit)),
+                  h('td', {}, row.through),
+                ),
+              ),
+            ),
           ),
         );
-      }
-      saved = response.own;
-      readKey = url;
-      if (!nickname.value && saved?.alias) nickname.value = saved.alias;
-      if (response.clockMismatch) {
-        offered = { ...activity, value: null };
-        preview.textContent = '';
-        status.textContent =
-          'Check the date on this device to view or post current scores. You can still remove all your posted scores.';
-        return;
+      if (owner) {
+        if (owner.rule !== null) nickname.value = owner.rule;
+        else if (!nickname.value) nickname.value = owner.alias ?? '';
+        preview.textContent =
+          owner.value === null
+            ? 'You have no server result for this period.'
+            : 'Your server result: ' + format(owner.value, s.metric.unit) + '.';
       }
       status.textContent = [
         message,
-        ranked.length
-          ? ranked.length + ' class ' + (ranked.length === 1 ? 'entry.' : 'entries.')
-          : 'Nobody has posted this activity for this period.',
+        owner?.rule === ''
+          ? 'Your teacher has hidden your nickname.'
+          : owner?.rule
+            ? 'Your teacher set your nickname.'
+            : '',
+        ranks.length ? ranks.length + ' ranked.' : 'No verified scores for this activity and period.',
       ]
         .filter(Boolean)
         .join(' ');
-    } catch (err) {
-      if (serial === version)
-        status.textContent = err instanceof Error ? err.message : 'Could not read class scores.';
+    } catch (error) {
+      if (seq === version) status.textContent = (error as Error).message;
     } finally {
-      if (serial === version) controls();
+      if (seq === version) controls();
     }
   }
   async function change(withdraw: boolean) {
-    const activity = offered,
-      url = path(selected());
-    if (writing || !saved || !activity) return;
-    if (url !== readKey) {
-      await load('The date or selection changed. Check the displayed score.');
+    if (busy || !owner || !section.open) return;
+    if (path() !== readPath) {
+      await load();
       return;
     }
-    const alias = normalizeLeaderboardAlias(nickname.value);
-    if (!withdraw && !alias) {
-      status.textContent = 'Choose a nickname of 2 to 24 letters, numbers, spaces or simple punctuation.';
-      nickname.focus();
-      return;
-    }
-    if (!withdraw && activity.value == null) return;
-    const prior = saved.revision;
-    ++version;
-    writing = true;
+    busy = true;
     controls();
     try {
       await request(
-        url,
+        readPath,
         withdraw ? 'DELETE' : 'PUT',
-        withdraw ? { revision: prior } : { revision: prior, alias, value: activity.value },
+        withdraw ? { revision: owner.revision } : { revision: owner.revision, alias: nickname.value },
       );
       if (withdraw) nickname.value = '';
-      await load(
-        withdraw
-          ? 'All your posted scores have been removed.'
-          : activity.metric.label + ' was posted for ' + activity.periodLabel.toLowerCase() + '.',
-      );
-    } catch (err) {
-      if (err instanceof ServiceError && err.status === 409)
-        await load('A newer change arrived from another device. Review the board before posting.');
-      else if (section.isConnected)
-        status.textContent =
-          err instanceof Error ? err.message : 'Could not update class scores. Refresh to check your entry.';
+      await load(withdraw ? 'All your posted scores have been removed.' : 'Server result shared.');
+    } catch (error) {
+      if (error instanceof ServiceError && error.status === 409) await load(error.message);
+      else status.textContent = (error as Error).message;
     } finally {
-      writing = false;
+      busy = false;
       controls();
     }
   }
   section.append(
     h(
       'p',
-      { class: 'leaderboard-caption' },
-      'Members of ' +
-        label +
-        ' and its assigned teacher can see the nicknames and play results people choose to post. Equal results share a rank.',
+      {},
+      'This board ranks completed online rounds. Periods use UTC. Only members of ' +
+        audience.className +
+        ' and its assigned teacher can read shared results.',
     ),
     refresh,
     rows,
   );
   if (student)
     section.append(
+      rankedStitch(audience, () => void load()),
       h(
         'p',
         {},
-        'Post any activity you like. Your nickname applies to all your posted scores in this class. Your account name, diary and portfolio stay off the board. Scores update when you post again.',
+        'Sharing is optional. Your teacher can review flagged nicknames, including rejected ones. Classmates see the nickname and server result you share.',
       ),
       h('label', {}, 'Nickname for this class board', nickname),
       preview,
-      h('div', { class: 'leaderboard-actions' }, publish, remove),
+      h('div', { class: 'leaderboard-actions' }, post, remove),
     );
   section.append(status);
-  section.addEventListener('toggle', () => {
-    if (!writing) void load();
-  });
+  section.ontoggle = () => {
+    if (!busy) void load();
+  };
+  controls();
   return {
     section,
     refresh: () => {
-      if (!writing) void load();
+      if (!busy) void load();
     },
   };
 }

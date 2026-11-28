@@ -7,27 +7,13 @@ import { execFileSync } from 'node:child_process';
 import { createServer as createSecureServer } from 'node:https';
 import { resolve, extname, sep } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { provisionStudent } from '../server/provisionStudent.mjs';
 import worker, { verifier } from '../server/classroom.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 export async function fixture() {
   const sql = new DatabaseSync(':memory:');
   for (const name of (await readdir(resolve(root, 'server/migrations'))).filter(n => n.endsWith('.sql')).sort())
     sql.exec(await readFile(resolve(root, 'server/migrations', name), 'utf8'));
-  const insert = sql.prepare('INSERT INTO accounts VALUES (?,?,?,?,?,?)');
-  const password = 'Lantern-Fiction-42';
-  for (const [id, login, label, role] of [
-    ['a', 'ash-moth', 'Ash Moth', 'student'],
-    ['b', 'moss-wren', 'Moss Wren', 'student'],
-    ['p', 'pending-rook', 'Pending Rook', 'student'],
-    ['ta', 'north@example.invalid', 'Keeper North', 'teacher'],
-    ['tb', 'south@example.invalid', 'Keeper South', 'teacher'],
-  ]) {
-    const salt = crypto.randomUUID();
-    insert.run(id, login, label, role, salt, await verifier(password, salt));
-  }
-  sql.exec(
-    "INSERT INTO classes VALUES ('north','North Lanterns','ta'),('south','South Lanterns','tb'); INSERT INTO memberships VALUES ('a','north',1),('b','south',1),('p','north',0)",
-  );
   const DB = {
     prepare(query) {
       const stmt = sql.prepare(query);
@@ -42,6 +28,25 @@ export async function fixture() {
       };
     },
   };
+  const insert = sql.prepare('INSERT INTO accounts VALUES (?,?,?,?,?,?)');
+  const password = 'Lantern-Fiction-42';
+  for (const [id, login, label, role] of [
+    ['a', 'ash-moth', 'Ash Moth', 'student'],
+    ['b', 'moss-wren', 'Moss Wren', 'student'],
+    ['p', 'pending-rook', 'Pending Rook', 'student'],
+    ['ta', 'north@example.invalid', 'Keeper North', 'teacher'],
+    ['tb', 'south@example.invalid', 'Keeper South', 'teacher'],
+  ]) {
+    if (role === 'student') {
+      await provisionStudent(DB, { id, login, display: label, password });
+      continue;
+    }
+    const salt = crypto.randomUUID();
+    insert.run(id, login, label, role, salt, await verifier(password, salt));
+  }
+  sql.exec(
+    "INSERT INTO classes VALUES ('north','North Lanterns','ta'),('south','South Lanterns','tb'); INSERT INTO memberships VALUES ('a','north',1),('b','south',1),('p','north',0)",
+  );
   return { DB, sql, password };
 }
 async function previewCertificate() {
