@@ -22,7 +22,8 @@ export function validatedActions(audit, reviews) {
       throw Error('Unresolved cognitive review at ' + review.objective);
     }
     const { world, map, target, actionId, anchor, source } = matches[0];
-    return { ...review, world, map, target, actionId, anchor, source };
+    const reasoning = (matches[0].reasoning ?? []).filter(({ mode }) => review.dimensions.includes('reasoning:' + mode));
+    return { ...review, world, map, target, actionId, anchor, source, ...(reasoning.length ? { reasoning } : {}) };
   });
 }
 

@@ -114,6 +114,8 @@ const theatreLens = {
 };
 // Each pair gives two defensible readings or uses of the same physical evidence.
 const otherCases = {
+  'optics.drawings': [['area:ART', 'area:NAT'], 'Nim needs a cue that works from the seat her audience uses.', 'A maker seeking an explanation needs a doorway where the two drawings predict different views.'],
+  'rivernames.placename': [['area:HIS', 'theme:IND'], 'Emlet can preserve a particular morning by keeping his pin on his own sheet.', 'A walker can want a route she can change at high water. The published Nunavut example and the fictional river have different named sources.'],
   'returned-coat.hook.print': [
     'area:HIS',
     'The pear looks personal enough to let a friend recognise a cuff.',
@@ -272,15 +274,18 @@ export function buildAtlas(audit) {
   const beats = [],
     routes = [];
   function add(review, extra, { id, views, question, act, consequence } = {}) {
-    const location = byObjective.get(review.objective);
+    const questionIds = review.missionQuestion
+      ? [registry.ids.get(normalize(review.missionQuestion))]
+      : byObjective.get(review.objective).questionIds;
+    const promptIds = review.missionQuestion ? [] : byObjective.get(review.objective).promptIds;
     const ids = [
       ...new Set([
         ...(review.story ? ['story:' + review.story] : []),
         ...(review.game ? ['game:' + review.game] : []),
         ...review.dimensions,
         ...extra,
-        ...location.questionIds,
-        ...location.promptIds,
+        ...questionIds,
+        ...promptIds,
       ]),
     ];
     const anchor = requirements(members, ids, {
@@ -311,7 +316,8 @@ export function buildAtlas(audit) {
       bloom: review.bloom,
       dok: review.dok,
       members: ids,
-      question: question ?? location.questionIds[0],
+      question: question ?? questionIds[0],
+      ...(review.title ? { title: review.title } : {}),
       views,
       act: act ?? review.demand,
       consequence: consequence ?? review.consequence,
@@ -394,8 +400,19 @@ export function buildAtlas(audit) {
     const beat = add(r, actor ? [...anchors, actor] : anchors, {
       id: objective,
       views,
+      ...(r.reasoning?.length ? {
+        act: [r.demand, ...r.reasoning.map(item => item.basis)].join(' '),
+      } : {}),
     });
     if (objective.startsWith('claimbell.')) bell.push(beat.id);
+  }
+  for (const pair of audit.keepsakeActions) {
+    for (const r of [pair.field, pair.handover]) add(r, [], { id: r.actionId, views: r.views });
+    routes.push({
+      id: 'carry-' + pair.id, title: pair.name,
+      beats: [pair.field.actionId, pair.handover.actionId], source: pair.field.source,
+      note: 'Use the earned object at the coat, restore a saved campaign, and select its observation at the receiving bench in another district.',
+    });
   }
   routes.push({
     id: 'two-coats-ferry',

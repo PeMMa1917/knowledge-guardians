@@ -4,11 +4,14 @@ from collections import defaultdict
 import json
 from pathlib import Path
 import re
+from zipfile import ZipFile
+from xml.etree import ElementTree as ET
 
 from openpyxl import Workbook, load_workbook
 from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
+from openpyxl.worksheet.hyperlink import Hyperlink
 
 DOCS = Path(__file__).resolve().parents[1] / "docs" / "audit"
 LEVELS = ("remember", "understand", "apply", "analyse", "evaluate", "create")
@@ -85,7 +88,13 @@ def put_review(book, sheet, values):
         cell.data_type = "s"
 
 
-def workbook(members, ledger, rubric=None):
+def link_within(cell, sheet_title, coordinate):
+    address = "'" + sheet_title.replace("'", "''") + "'!" + coordinate
+    cell.hyperlink = Hyperlink(ref=cell.coordinate, location=address, display=str(cell.value))
+    cell.style = "Hyperlink"
+
+
+def workbook(members, ledger, rubric=None, families=None):
     names = {m["id"]: m["name"] for m in members}
     groups = defaultdict(dict)
     if ledger.get("version") != 1 or not isinstance(ledger.get("records"), list):
@@ -125,17 +134,41 @@ def workbook(members, ledger, rubric=None):
     for i in range(2, len(instructions) + 1):
         intro.cell(i, 1).alignment = Alignment(wrap_text=True, vertical="center")
         intro.row_dimensions[i].height = 42
+    intro.append(["Find an element family in a chapter"])
+    link_within(intro.cell(intro.max_row, 1), "Find a family", "A1")
+    if rubric:
+        intro.append(["Read the 24 Bloom and DOK criteria"])
+        link_within(intro.cell(intro.max_row, 1), "Bloom and DOK", "A1")
+    index = book.create_sheet("Find a family")
+    kinds = list(dict.fromkeys(m["kind"] for m in members))
+    first_member = {}
+    for position, member in enumerate(members):
+        first_member.setdefault(member["kind"], position)
+    index.append(["Family", *[f"Ch {n}" for n in range(1, 16)]])
+    for kind in kinds:
+        index.append([(families or {}).get(kind, kind), *[f"Open {n}" for n in range(1, 16)]])
+    index.freeze_panes = "B2"
+    index.column_dimensions["A"].width = 34
+    for column in range(2, 17):
+        index.column_dimensions[get_column_letter(column)].width = 11
+    for cell in index[1]:
+        cell.font = Font(bold=True, color="FFFFFF")
+        cell.fill = PatternFill("solid", fgColor="17675C")
     for ch in range(1, 16):
         sheet = book.create_sheet(f"Chapter {ch:02d}")
         sheet.append(HEADINGS)
         for records in groups[ch].values():
             put_review(book, sheet, review_row(records, names))
+        first_row = sheet.max_row + 1
+        for position, kind in enumerate(kinds, 2):
+            destination = "A" + str(first_row + first_member[kind])
+            link_within(index.cell(position, ch + 1), sheet.title, destination)
         for m in members:
             sheet.append([m["id"], m["kind"], m["name"], *CONTEXT])
             # openpyxl otherwise interprets an equals sign at the start of a title as a formula.
             if m["name"].startswith("="):
                 sheet.cell(sheet.max_row, 3).data_type = "s"
-        sheet.freeze_panes = "J2"
+        sheet.freeze_panes = "B2"
         sheet.auto_filter.ref = f"A1:AI{sheet.max_row}"
         sheet.sheet_view.zoomScale = 75
         for i, width in enumerate([32, 20, 66, 32, 30, 31, 30, 60, 54] + [15] * 24 + [88, 49], 1):
@@ -180,6 +213,20 @@ def verify_export(path, members, ledger, rubric=None):
         expected[board["chapter"]].setdefault(key, []).append(record)
     data = load_workbook(path, read_only=True, data_only=False)
     try:
+        kinds = list(dict.fromkeys(m["kind"] for m in members))
+        with ZipFile(path) as archive:
+            # The index is the second sheet. Its links are internal locations and work offline.
+            namespace = {"x": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+            index = ET.fromstring(archive.read("xl/worksheets/sheet2.xml"))
+            links = {el.get("ref"): el.get("location") for el in index.findall(".//x:hyperlink", namespace)}
+            offsets = {kind: next(i for i, m in enumerate(members) if m["kind"] == kind) for kind in kinds}
+            for chapter in range(1, 16):
+                start = 2 + len(expected[chapter])
+                for row, kind in enumerate(kinds, 2):
+                    ref = get_column_letter(chapter + 1) + str(row)
+                    target = f"'Chapter {chapter:02d}'!A{start + offsets[kind]}"
+                    if links.get(ref) != target:
+                        raise ValueError(f"The index entry for {kind} in chapter {chapter} needs updating.")
         if rubric:
             expected_guide = [(level.title(), dok, *entry) for level in LEVELS
                               for dok, entry in enumerate(rubric[level], 1)]
@@ -223,4 +270,4 @@ if __name__ == "__main__":
         verify_export(args.output, members, ledger, rubric)
         print(f'Verified {len(members):,} rows across 15 chapters and {len(ledger["records"])} exact review records.')
     else:
-        workbook(members, ledger, rubric).save(args.output)
+        workbook(members, ledger, rubric, catalogue.get("families")).save(args.output)

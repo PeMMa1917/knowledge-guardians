@@ -116,6 +116,292 @@ Use what the resident can sense to give its perch a job. The mat, sill and brick
 
 Find this at `nexus.middle-door`, using `middlehouse-chairs`. understand · DOK 2. [Review](../../tests/open-house.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A86&member=game%3A29&member=framework%3Aperspectives&member=concept%3Aresponsibility&member=area%3AHUM&member=question%3AKQ-ROUTE-02&member=question%3Amission-7b60749a07b43747&member=exhibition%3A02&bloom=understand&dok=2)
 
+### A spare ballpoint tip at the coat at the lost-property hatch
+
+*What does a copied mark let a keeper claim about the person who handled it?*
+
+Roll the ballpoint down both name seams.
+
+- The owner of a labelled coat can recognise the K without taking the seam apart.
+- A keeper deciding who wore the spare must account for how a second K could be pressed into it.
+
+Find this at `nexus.archive`, using `return-coat-hook-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A48&member=game%3A170&member=keepsake%3Apen-tip&member=concept%3Aevidence&member=framework%3Amethods-and-tools&member=area%3AHIS&member=question%3Amission-eb6260fed9e5eed8&bloom=apply&dok=1)
+
+### A spare lens ring at the coat at the lost-property hatch
+
+*What does a copied mark let a keeper claim about the person who handled it?*
+
+Lay the lens ring over the two dates.
+
+- A clerk can put the arrival of the buttons and the entry of the price in order.
+- A supper companion can account for particular evenings during the gap. Neither date gives a whole week of wear.
+
+Find this at `nexus.archive`, using `return-coat-hook-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A48&member=game%3A170&member=keepsake%3Adate-lens&member=concept%3Acertainty&member=framework%3Ascope&member=area%3AHIS&member=question%3Amission-eb6260fed9e5eed8&bloom=apply&dok=1)
+
+### Ask Sefa about the unpriced week.
+
+*Whose labour or debt can the same price slip make visible?*
+
+Ask Sefa about the unpriced week.
+
+- A clerk can put the arrival of the buttons and the entry of the price in order.
+- A supper companion can account for particular evenings during the gap. Neither date gives a whole week of wear.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A15&member=game%3A21&member=keepsake%3Adate-lens&member=concept%3Acertainty&member=framework%3Ascope&member=area%3AHIS&member=character%3Ascholar-sefa&member=question%3Amission-d66a5ca64a335b4f&bloom=remember&dok=1)
+
+### A brass key-plate at the coat at the lost-property hatch
+
+*What does a copied mark let a keeper claim about the person who handled it?*
+
+Slide the brass plate behind the coat rail.
+
+- A keeper standing at the rail can see a narrow doorway that saves space.
+- Someone reaching from a chair has to know whether they can operate the loop from inside.
+
+Find this at `nexus.archive`, using `return-coat-hook-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A48&member=game%3A170&member=keepsake%3Adoor-key&member=concept%3Aperspective&member=framework%3Aperspectives&member=area%3AHUM&member=question%3Amission-eb6260fed9e5eed8&bloom=apply&dok=1)
+
+### A moth lamp at the coat at the lost-property hatch
+
+*What does a copied mark let a keeper claim about the person who handled it?*
+
+Set the moth lamp on the floor and wait.
+
+- From the hall, the hanging coat and the plaster give the impression of a single wall.
+- The changing position of the light lets a performer find an entrance the audience cannot see.
+
+Find this at `nexus.archive`, using `return-coat-hook-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A48&member=game%3A170&member=keepsake%3Amoth-lamp&member=concept%3Aperspective&member=framework%3Amethods-and-tools&member=area%3AART&member=question%3Amission-eb6260fed9e5eed8&bloom=apply&dok=1)
+
+### The 32nd piece of glass at the coat at the lost-property hatch
+
+*What does a copied mark let a keeper claim about the person who handled it?*
+
+Turn the cut glass sideways through both pears.
+
+- A borrower can recognise the pear shape on both coats at arm’s length.
+- Turn the light sideways and a maker can distinguish a rounded button from a stamp with a flat back.
+
+Find this at `nexus.archive`, using `return-coat-hook-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A48&member=game%3A170&member=keepsake%3Aglass-piece&member=concept%3Ainterpretation&member=framework%3Amethods-and-tools&member=area%3ANAT&member=question%3Amission-eb6260fed9e5eed8&bloom=apply&dok=1)
+
+### Show Hesper the flat-backed pear.
+
+*Whose labour or debt can the same price slip make visible?*
+
+Show Hesper the flat-backed pear.
+
+- A borrower can recognise the pear shape on both coats at arm’s length.
+- Turn the light sideways and a maker can distinguish a rounded button from a stamp with a flat back.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A15&member=game%3A21&member=keepsake%3Aglass-piece&member=concept%3Ainterpretation&member=framework%3Amethods-and-tools&member=area%3ANAT&member=character%3Asmith-hesper&member=question%3Amission-d66a5ca64a335b4f&bloom=remember&dok=1)
+
+### A 'So what?' stone at the coat at the lost-property hatch
+
+*What does a copied mark let a keeper claim about the person who handled it?*
+
+Put the stone on the curling bottom corner.
+
+- The clerk needs the deduction line to settle the outstanding fare.
+- Kip has his own reason to keep the drawing and decide whether somebody accompanies him to the window.
+
+Find this at `nexus.archive`, using `return-coat-hook-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A48&member=game%3A170&member=keepsake%3Aso-what&member=concept%3Aresponsibility&member=framework%3Aethics&member=theme%3APOL&member=question%3Amission-eb6260fed9e5eed8&bloom=apply&dok=1)
+
+### Give Kip the loose fare line without smoothing away his drawing.
+
+*Whose labour or debt can the same price slip make visible?*
+
+Give Kip the loose fare line without smoothing away his drawing.
+
+- The clerk needs the deduction line to settle the outstanding fare.
+- Kip has his own reason to keep the drawing and decide whether somebody accompanies him to the window.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A15&member=game%3A21&member=keepsake%3Aso-what&member=concept%3Aresponsibility&member=framework%3Aethics&member=theme%3APOL&member=character%3Akip-arden&member=question%3Amission-d66a5ca64a335b4f&bloom=remember&dok=1)
+
+### A guild check weight at the pear on the price board
+
+*Whose labour or debt can the same price slip make visible?*
+
+Put the guild weight on the counter scale.
+
+- The trader can reproduce the old price per weight with the scale.
+- The passenger owes a price per crossing. Applying the wool price to a person would change what is being measured.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A48&member=game%3A170&member=keepsake%3Acheck-weight&member=concept%3Aobjectivity&member=framework%3Amethods-and-tools&member=area%3AMAT&member=question%3Amission-d66a5ca64a335b4f&bloom=apply&dok=1)
+
+### A spare brass cog at the pear on the price board
+
+*Whose labour or debt can the same price slip make visible?*
+
+Mesh Mara’s loose cog with the ticket stamper.
+
+- The two wet pears really do establish that the stamp struck the ticket twice.
+- One passenger can turn the cog twice. The number of impressions leaves the number of wearers open.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A48&member=game%3A170&member=keepsake%3Abrass-cog&member=concept%3Aevidence&member=framework%3Ascope&member=area%3AMAT&member=question%3Amission-d66a5ca64a335b4f&bloom=apply&dok=1)
+
+### Let Kip turn the double-stamp himself.
+
+*What does a copied mark let a keeper claim about the person who handled it?*
+
+Let Kip turn the double-stamp himself.
+
+- The two wet pears really do establish that the stamp struck the ticket twice.
+- One passenger can turn the cog twice. The number of impressions leaves the number of wearers open.
+
+Find this at `nexus.archive`, using `return-coat-hook-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A15&member=game%3A21&member=keepsake%3Abrass-cog&member=concept%3Aevidence&member=framework%3Ascope&member=area%3AMAT&member=character%3Akip-arden&member=question%3Amission-eb6260fed9e5eed8&bloom=remember&dok=1)
+
+### A copy of a notice at the pear on the price board
+
+*Whose labour or debt can the same price slip make visible?*
+
+Hold the market notice against the price tag.
+
+- A wearer reading across the line can think the obligation travels with the bundle.
+- A keeper who recognises the stop can locate the obligation at the moment a bundle is taken in.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A48&member=game%3A170&member=keepsake%3Anotice&member=concept%3Ainterpretation&member=framework%3Aperspectives&member=theme%3ALAN&member=question%3Amission-d66a5ca64a335b4f&bloom=apply&dok=1)
+
+### Ask Ise where the keeper’s sentence ends.
+
+*What does a copied mark let a keeper claim about the person who handled it?*
+
+Ask Ise where the keeper’s sentence ends.
+
+- A wearer reading across the line can think the obligation travels with the bundle.
+- A keeper who recognises the stop can locate the obligation at the moment a bundle is taken in.
+
+Find this at `nexus.archive`, using `return-coat-hook-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A15&member=game%3A21&member=keepsake%3Anotice&member=concept%3Ainterpretation&member=framework%3Aperspectives&member=theme%3ALAN&member=character%3Awarden-ise&member=question%3Amission-eb6260fed9e5eed8&bloom=remember&dok=1)
+
+### A splinter of an old sign at the pear on the price board
+
+*Whose labour or debt can the same price slip make visible?*
+
+Fit the splinter under the gilt tag.
+
+- Someone arriving today might reasonably expect to pay the figure on the visible tag.
+- The layer beneath it tells a mender why people once brought damaged clothes to this same peg.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A48&member=game%3A170&member=keepsake%3Asign-splinter&member=concept%3Avalues&member=framework%3Aperspectives&member=area%3AHIS&member=question%3Amission-d66a5ca64a335b4f&bloom=apply&dok=1)
+
+### A little copper pot at the pear on the price board
+
+*Whose labour or debt can the same price slip make visible?*
+
+Catch a drop from each cuff in the little pot.
+
+- A person under the awning can count three drops before the roof gets wet.
+- The hand at the pipe gives a performer something that can be varied when trying to reproduce the third drop.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A48&member=game%3A170&member=keepsake%3Acopper-pot&member=concept%3Aexplanation&member=framework%3Amethods-and-tools&member=area%3ANAT&member=question%3Amission-d66a5ca64a335b4f&bloom=apply&dok=1)
+
+### Kip's map of good places at the pear on the price board
+
+*Whose labour or debt can the same price slip make visible?*
+
+Walk Kip’s warm-step route under the hem of the awning.
+
+- The printed ticket tells a visitor which room normally receives a coat.
+- A late borrower needs to know how the same hook can be reached from the street once the desk closes.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A48&member=game%3A170&member=keepsake%3Afolded-map&member=concept%3Aperspective&member=framework%3Ascope&member=area%3AHUM&member=question%3Amission-d66a5ca64a335b4f&bloom=apply&dok=1)
+
+### Let the mapmaker lead the late way home.
+
+*What does a copied mark let a keeper claim about the person who handled it?*
+
+Let the mapmaker lead the late way home.
+
+- The printed ticket tells a visitor which room normally receives a coat.
+- A late borrower needs to know how the same hook can be reached from the street once the desk closes.
+
+Find this at `nexus.archive`, using `return-coat-hook-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A15&member=game%3A21&member=keepsake%3Afolded-map&member=concept%3Aperspective&member=framework%3Ascope&member=area%3AHUM&member=character%3Akip-arden&member=question%3Amission-eb6260fed9e5eed8&bloom=remember&dok=1)
+
+### Let Sefa put the unseen hand in the song.
+
+*Whose labour or debt can the same price slip make visible?*
+
+Let Sefa put the unseen hand in the song.
+
+- A spectator can follow the grieving actor without being able to see the sponge.
+- The worker in the wider picture has a claim on how the company tells the story of its rain.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A15&member=game%3A21&member=keepsake%3Apaper-frame&member=concept%3Apower&member=framework%3Aperspectives&member=area%3AART&member=character%3Ascholar-sefa&member=question%3Amission-d66a5ca64a335b4f&bloom=remember&dok=1)
+
+### Offer Ise the far end of the bell.
+
+*What does a copied mark let a keeper claim about the person who handled it?*
+
+Offer Ise the far end of the bell.
+
+- A keeper at a front desk can see who is waiting and offer a dry coat.
+- Someone unwilling to stand in front of the queue can still be heard through the pipe.
+
+Find this at `nexus.archive`, using `return-coat-hook-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A15&member=game%3A21&member=keepsake%3Atiny-bell&member=concept%3Aresponsibility&member=framework%3Aethics&member=theme%3APOL&member=character%3Awarden-ise&member=question%3Amission-eb6260fed9e5eed8&bloom=remember&dok=1)
+
+### Read the late-arrival mark aloud to Sefa.
+
+*Whose labour or debt can the same price slip make visible?*
+
+Read the late-arrival mark aloud to Sefa.
+
+- A cast-list reader may first look for a performer’s name beside the mark.
+- A reader familiar with the ferry community can recognise a request to keep a place warm, independent of the latecomer’s name.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A15&member=game%3A21&member=keepsake%3Aferry-chalk&member=concept%3Aculture&member=framework%3Aperspectives&member=theme%3ALAN&member=character%3Ascholar-sefa&member=question%3Amission-d66a5ca64a335b4f&bloom=remember&dok=1)
+
+### Tell Kip which rain you managed to repeat.
+
+*What does a copied mark let a keeper claim about the person who handled it?*
+
+Tell Kip which rain you managed to repeat.
+
+- The theatre can make an indoor shower while the instrument under its roof stays steady.
+- Kip can report the drop he saw at the hatch. Reproducing a shower in the theatre still leaves the hatch’s weather unresolved.
+
+Find this at `nexus.archive`, using `return-coat-hook-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A15&member=game%3A21&member=keepsake%3Aweather-glass&member=concept%3Acertainty&member=framework%3Ascope&member=area%3ANAT&member=character%3Akip-arden&member=question%3Amission-eb6260fed9e5eed8&bloom=remember&dok=1)
+
+### Give Sefa the one source behind two voices.
+
+*Whose labour or debt can the same price slip make visible?*
+
+Give Sefa the one source behind two voices.
+
+- A reader counting sheets sees two notices and can date the circulation of a story.
+- A reader comparing their spelling can trace both papers to one text. Two pieces of paper may carry a single witness.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A15&member=game%3A21&member=keepsake%3Arumour-shard&member=concept%3Ajustification&member=framework%3Amethods-and-tools&member=area%3AHIS&member=character%3Ascholar-sefa&member=question%3Amission-d66a5ca64a335b4f&bloom=remember&dok=1)
+
+### Give Kip a hook he can adjust from the floor.
+
+*What does a copied mark let a keeper claim about the person who handled it?*
+
+Give Kip a hook he can adjust from the floor.
+
+- The original hook suits the shoulder of the keeper who set it.
+- A seated visitor can use the lower hook while the hem still clears the puddle. Choosing the height determines who can work alone.
+
+Find this at `nexus.archive`, using `return-coat-hook-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A15&member=game%3A21&member=keepsake%3Awell-rope&member=concept%3Apower&member=framework%3Aperspectives&member=area%3AHUM&member=character%3Akip-arden&member=question%3Amission-eb6260fed9e5eed8&bloom=remember&dok=1)
+
+### Ask Ise to count the quiet night without naming sleepers.
+
+*What does a copied mark let a keeper claim about the person who handled it?*
+
+Ask Ise to count the quiet night without naming sleepers.
+
+- The signed returns can describe people who came to the desk.
+- The family passing a coat through the lining was outside the form’s reach. Buying wool calls for a count of repairs too.
+
+Find this at `nexus.archive`, using `return-coat-hook-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A15&member=game%3A21&member=keepsake%3Asurvey-slip&member=concept%3Aobjectivity&member=framework%3Ascope&member=area%3AHUM&member=character%3Awarden-ise&member=question%3Amission-eb6260fed9e5eed8&bloom=remember&dok=1)
+
+### Give Hesper the sweep of the hidden spring.
+
+*Whose labour or debt can the same price slip make visible?*
+
+Give Hesper the sweep of the hidden spring.
+
+- A still handle on the public side gives a waiting visitor little reason to think the desk is open.
+- The spring draws two arcs inside. A maker can test a lighter pull from the side that actually operates the latch.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=1&member=story%3A15&member=game%3A21&member=keepsake%3Asoot-jar&member=concept%3Aevidence&member=framework%3Amethods-and-tools&member=area%3ANAT&member=character%3Asmith-hesper&member=question%3Amission-d66a5ca64a335b4f&bloom=remember&dok=1)
+
 
 ## Chapter 2
 
@@ -302,16 +588,27 @@ Decide what one tide of soundings can license on a map with one uncertain bend.
 
 Find this at `sea.harbour`, using `travelling-pocket-theatre`. evaluate · DOK 3. [Review](../../tests/pocket-theatre.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=8&member=story%3A11&member=game%3A22&member=concept%3Acertainty&member=framework%3Ascope&member=area%3AMAT&member=question%3AKQ-NEW-005&member=question%3Amission-161a6fd7b871ed15&bloom=evaluate&dok=3)
 
+### rivernames.placename
+
+*Which people can make sense of the name a map carries?*
+
+Consult the two named source leaves and give the high-water walker the morning pin. Compare the different uses of a fixed point before deciding what goes on each sheet. The public Nunavut programme describes names carrying routes and events. The fictional river offers an independent example where a fixed point omits an environmental relationship, without conferring authority over the real names.
+
+- Emlet can preserve a particular morning by keeping his pin on his own sheet.
+- A walker can want a route she can change at high water. The published Nunavut example and the fictional river have different named sources.
+
+Find this at `sea.the-last-oven`, using `river-names-spool`. analyse · DOK 3. [Review](../../tests/river-names.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=8&member=story%3A52&member=game%3A209&member=micro%3A828&member=area%3AHIS&member=theme%3AIND&member=concept%3Ainterpretation&member=framework%3Aperspectives&member=reasoning%3Aanalogical&member=question%3AKQ-ROUTE-14&member=question%3Amission-e6a5af2aabaab8ff&member=exhibition%3A14&bloom=analyse&dok=3)
+
 ### rivernames.walks
 
 *Which information saves the next keeper a wasted trip?*
 
-Walk the marked delivery under two tide conditions. Recover the slack at the flooded stair and try another edge.
+Walk the marked delivery under two tide conditions. Recover the slack at the flooded stair and try another edge. Changing the water level on an otherwise identical path changes whether the walker can cross it. Following a warm brick alone cannot prove somebody received the parcel.
 
 - A reliable delivery route needs a walking time at this tide.
 - A named landing keeps the receiving household in the account.
 
-Find this at `sea.the-last-oven`, using `river-names-spool`. apply · DOK 2. [Review](../../tests/river-names.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=8&member=story%3A85&member=game%3A122&member=subject%3Ageography&member=concept%3Aexplanation&member=framework%3Amethods-and-tools&member=question%3AKQ-ROUTE-02&member=area%3AHUM&member=question%3Amission-e6a5af2aabaab8ff&member=exhibition%3A02&bloom=apply&dok=2)
+Find this at `sea.the-last-oven`, using `river-names-spool`. apply · DOK 2. [Review](../../tests/river-names.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=8&member=story%3A85&member=game%3A122&member=subject%3Ageography&member=concept%3Aexplanation&member=framework%3Amethods-and-tools&member=question%3AKQ-ROUTE-02&member=reasoning%3Acausal&member=area%3AHUM&member=question%3Amission-e6a5af2aabaab8ff&member=exhibition%3A02&bloom=apply&dok=2)
 
 
 ## Chapter 9
@@ -337,6 +634,17 @@ A memorable missed cue, a child’s colour vote and the height of the rope compe
 - Keep the colour vote and assign a rope fitter. The children see their colour on the cord. The fitter must miss a rehearsal to lower it.
 
 Find this at `stage.foyer`, using `travelling-pocket-theatre`. evaluate · DOK 3. [Review](../../tests/pocket-theatre.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A11&member=game%3A22&member=concept%3Avalues&member=framework%3Aethics&member=area%3AART&member=question%3AKQ-NEW-006&member=question%3Amission-5b1882a02f1ac786&bloom=evaluate&dok=3)
+
+### optics.drawings
+
+*When does a model useful for a performance also give us grounds for explaining what happened?*
+
+Test both chalk predictions at a seat. Change the aperture until their forecasts disagree and compare repeat readings before handing the company a cue or a further test. Several fictional rehearsals at the same seat establish a revisable tendency. The actor needs a cue that works. A claim about the underlying light needs a situation in which rival diagrams give different forecasts.
+
+- Nim needs a cue that works from the seat her audience uses.
+- A maker seeking an explanation needs a doorway where the two drawings predict different views.
+
+Find this at `stage.rehearsal`, using `optics-rail`. analyse · DOK 3. [Review](../../tests/lens-loan.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A119&member=game%3A41&member=micro%3A325&member=micro%3A496&member=area%3AART&member=area%3ANAT&member=concept%3Aexplanation&member=framework%3Amethods-and-tools&member=reasoning%3Ainductive&member=reasoning%3Apragmatic&member=question%3Amission-0bf5b9dbe59d91e0&bloom=analyse&dok=3)
 
 ### returned-coat.stage.act
 
@@ -386,23 +694,155 @@ Find this at `stage.foyer`, using `indoor-rain-rig`. create · DOK 2. [Review](.
 
 *What can a measuring pattern settle when two people have to share a part?*
 
-Develop a production across the costume trials and the records of repairs. Compose its visible sleeve, hinge and first entrance.
+Develop a production across the costume trials and the records of repairs. Compose its visible sleeve, hinge and first entrance. Three repairs on the inside fit Vee’s account of taking the weight. The printed entrance alone could lead a viewer to attribute the whole performance to Pip.
 
 - The intact sleeve reads clearly from the back row.
 - A repaired hinge can give the other sister the opening.
 
-Find this at `stage.rehearsal`, using `elbow-curtain`. create · DOK 4. [Review](../../tests/giant-sleeve.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A112&member=game%3A194&member=micro%3A1118&member=area%3AHIS&member=area%3AART&member=concept%3Ainterpretation&member=framework%3Aperspectives&member=question%3Amission-f5296f4a9fbd490c&bloom=create&dok=4)
+Find this at `stage.rehearsal`, using `elbow-curtain`. create · DOK 4. [Review](../../tests/giant-sleeve.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A112&member=game%3A194&member=micro%3A1118&member=area%3AHIS&member=area%3AART&member=concept%3Ainterpretation&member=framework%3Aperspectives&member=reasoning%3Aabductive&member=question%3Amission-f5296f4a9fbd490c&bloom=create&dok=4)
 
 ### elbow.fitting
 
 *What can a measuring pattern settle when two people have to share a part?*
 
-Separate the overall sleeve length from how it is distributed. Move joints and try the resulting fit over both troupes.
+Separate the overall sleeve length from how it is distributed. Move joints and try the resulting fit over both troupes. At most two joints can be borrowed. In the summer troupe every fixed reach differs by more than one centimetre, so at least two hands must miss.
 
 - The tailor’s measure preserves how much cloth is available for a shared sleeve.
 - The performers depend on where the elbow bends. The same length can put their hands too far apart.
 
-Find this at `stage.giants-elbow`, using `elbow-patterns`. analyse · DOK 3. [Review](../../tests/giant-sleeve.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A25&member=game%3A195&member=micro%3A1116&member=area%3AMAT&member=area%3AART&member=framework%3Ascope&member=concept%3Aevidence&member=question%3Amission-f5296f4a9fbd490c&bloom=analyse&dok=3)
+Find this at `stage.giants-elbow`, using `elbow-patterns`. analyse · DOK 3. [Review](../../tests/giant-sleeve.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A25&member=game%3A195&member=micro%3A1116&member=area%3AMAT&member=area%3AART&member=framework%3Ascope&member=reasoning%3Adeductive&member=concept%3Aevidence&member=question%3Amission-f5296f4a9fbd490c&bloom=analyse&dok=3)
+
+### Give Nim the two different Ks.
+
+*What can a staged event establish about something witnessed outside a theatre?*
+
+Give Nim the two different Ks.
+
+- The owner of a labelled coat can recognise the K without taking the seam apart.
+- A keeper deciding who wore the spare must account for how a second K could be pressed into it.
+
+Find this at `stage.foyer`, using `return-coat-stage-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A15&member=game%3A21&member=keepsake%3Apen-tip&member=concept%3Aevidence&member=framework%3Amethods-and-tools&member=area%3AHIS&member=character%3Aoptics-nim&member=question%3Amission-ce5b0f89c69c176c&bloom=remember&dok=1)
+
+### Give the understudy the moth’s entrance.
+
+*What can a staged event establish about something witnessed outside a theatre?*
+
+Give the understudy the moth’s entrance.
+
+- From the hall, the hanging coat and the plaster give the impression of a single wall.
+- The changing position of the light lets a performer find an entrance the audience cannot see.
+
+Find this at `stage.foyer`, using `return-coat-stage-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A15&member=game%3A21&member=keepsake%3Amoth-lamp&member=concept%3Aperspective&member=framework%3Amethods-and-tools&member=area%3AART&member=character%3Aoptics-nim&member=question%3Amission-ce5b0f89c69c176c&bloom=remember&dok=1)
+
+### Send Nim the offer that sat under the price.
+
+*What can a staged event establish about something witnessed outside a theatre?*
+
+Send Nim the offer that sat under the price.
+
+- Someone arriving today might reasonably expect to pay the figure on the visible tag.
+- The layer beneath it tells a mender why people once brought damaged clothes to this same peg.
+
+Find this at `stage.foyer`, using `return-coat-stage-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A15&member=game%3A21&member=keepsake%3Asign-splinter&member=concept%3Avalues&member=framework%3Aperspectives&member=area%3AHIS&member=character%3Aoptics-nim&member=question%3Amission-ce5b0f89c69c176c&bloom=remember&dok=1)
+
+### Give Nim a three-drop cue she can hear with her back turned.
+
+*What can a staged event establish about something witnessed outside a theatre?*
+
+Give Nim a three-drop cue she can hear with her back turned.
+
+- A person under the awning can count three drops before the roof gets wet.
+- The hand at the pipe gives a performer something that can be varied when trying to reproduce the third drop.
+
+Find this at `stage.foyer`, using `return-coat-stage-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A15&member=game%3A21&member=keepsake%3Acopper-pot&member=concept%3Aexplanation&member=framework%3Amethods-and-tools&member=area%3ANAT&member=character%3Aoptics-nim&member=question%3Amission-ce5b0f89c69c176c&bloom=remember&dok=1)
+
+### A small card frame at the part played by a sleeve
+
+*What can a staged event establish about something witnessed outside a theatre?*
+
+Frame the wet sleeve and then the hand above it.
+
+- A spectator can follow the grieving actor without being able to see the sponge.
+- The worker in the wider picture has a claim on how the company tells the story of its rain.
+
+Find this at `stage.foyer`, using `return-coat-stage-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A48&member=game%3A170&member=keepsake%3Apaper-frame&member=concept%3Apower&member=framework%3Aperspectives&member=area%3AART&member=question%3Amission-ce5b0f89c69c176c&bloom=apply&dok=1)
+
+### A tiny brass bell at the part played by a sleeve
+
+*What can a staged event establish about something witnessed outside a theatre?*
+
+Ring one note behind the drawn curtain.
+
+- A keeper at a front desk can see who is waiting and offer a dry coat.
+- Someone unwilling to stand in front of the queue can still be heard through the pipe.
+
+Find this at `stage.foyer`, using `return-coat-stage-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A48&member=game%3A170&member=keepsake%3Atiny-bell&member=concept%3Aresponsibility&member=framework%3Aethics&member=theme%3APOL&member=question%3Amission-ce5b0f89c69c176c&bloom=apply&dok=1)
+
+### A twist of red and gold yarn at the part played by a sleeve
+
+*What can a staged event establish about something witnessed outside a theatre?*
+
+Run the red and gold threads to the two cuffs.
+
+- The stage bill can accurately record who worked the bulb during a show.
+- A repair book can record a night when a coat came home wet. The two threads give those accounts different origins.
+
+Find this at `stage.foyer`, using `return-coat-stage-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A48&member=game%3A170&member=keepsake%3Ayarn&member=concept%3Atruth&member=framework%3Ascope&member=area%3AHIS&member=question%3Amission-ce5b0f89c69c176c&bloom=apply&dok=1)
+
+### A stub of slate chalk at the part played by a sleeve
+
+*What can a staged event establish about something witnessed outside a theatre?*
+
+Trace the ferryman’s chalk under the cast list.
+
+- A cast-list reader may first look for a performer’s name beside the mark.
+- A reader familiar with the ferry community can recognise a request to keep a place warm, independent of the latecomer’s name.
+
+Find this at `stage.foyer`, using `return-coat-stage-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A48&member=game%3A170&member=keepsake%3Aferry-chalk&member=concept%3Aculture&member=framework%3Aperspectives&member=theme%3ALAN&member=question%3Amission-ce5b0f89c69c176c&bloom=apply&dok=1)
+
+### A measuring knot at the part played by a sleeve
+
+*What can a staged event establish about something witnessed outside a theatre?*
+
+Pay the measuring knot out along the clothesline.
+
+- The measured line from the wings falls short of the peg.
+- The same length from the inside landing gives a seated borrower a working handoff. The starting point matters.
+
+Find this at `stage.foyer`, using `return-coat-stage-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A48&member=game%3A170&member=keepsake%3Aknot-rope&member=concept%3Aperspective&member=framework%3Amethods-and-tools&member=area%3AMAT&member=question%3Amission-ce5b0f89c69c176c&bloom=apply&dok=1)
+
+### A pocket weather glass at the part played by a sleeve
+
+*What can a staged event establish about something witnessed outside a theatre?*
+
+Leave the weather glass under the roof while the cuff drips.
+
+- The theatre can make an indoor shower while the instrument under its roof stays steady.
+- Kip can report the drop he saw at the hatch. Reproducing a shower in the theatre still leaves the hatch’s weather unresolved.
+
+Find this at `stage.foyer`, using `return-coat-stage-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A48&member=game%3A170&member=keepsake%3Aweather-glass&member=concept%3Acertainty&member=framework%3Ascope&member=area%3ANAT&member=question%3Amission-ce5b0f89c69c176c&bloom=apply&dok=1)
+
+### Let Nim show the audience what the seal can actually do.
+
+*What can a staged event establish about something witnessed outside a theatre?*
+
+Let Nim show the audience what the seal can actually do.
+
+- The outer circle can identify a familiar Guardian design.
+- A clerk comparing the inner cuts has grounds to question whether anybody signed this particular receipt.
+
+Find this at `stage.foyer`, using `return-coat-stage-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A15&member=game%3A21&member=keepsake%3Aseal&member=concept%3Ajustification&member=framework%3Amethods-and-tools&member=area%3AHIS&member=character%3Aoptics-nim&member=question%3Amission-ce5b0f89c69c176c&bloom=remember&dok=1)
+
+### Read Vesper’s last seven words with Nim.
+
+*What can a staged event establish about something witnessed outside a theatre?*
+
+Read Vesper’s last seven words with Nim.
+
+- The bill leads a keeper back to Vesper’s gift and the task it was meant to support.
+- The giver left the next wearer unnamed. A cast member can decide how to honour that open part.
+
+Find this at `stage.foyer`, using `return-coat-stage-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=9&member=story%3A15&member=game%3A21&member=keepsake%3Athread-knot&member=concept%3Ainterpretation&member=framework%3Aethics&member=area%3AHIS&member=character%3Aoptics-nim&member=question%3Amission-ce5b0f89c69c176c&bloom=remember&dok=1)
 
 
 ## Chapter 10
@@ -433,12 +873,12 @@ Find this at `market.square`, using `travelling-pocket-theatre`. evaluate · DOK
 
 *When is an unusual result large enough to matter to someone using it?*
 
-Commit to a direction before the packets open. Compare extreme and ordinary assignments before judging the observed result.
+Commit to a direction before the packets open. Compare extreme and ordinary assignments before judging the observed result. Under the sharp null and random assignment, there are twenty equally likely groups of three. One is as high as the observed draw and two are as far in either direction.
 
 - The person running the draw can compare an unusual assignment with the other possible packets.
 - A performer using the resulting sleeve still needs to know how much the difference changes their reach.
 
-Find this at `market.square`, using `elbow-lottery`. evaluate · DOK 3. [Review](../../tests/giant-sleeve.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=10&member=story%3A119&member=game%3A69&member=micro%3A1109&member=concept%3Aevidence&member=framework%3Amethods-and-tools&member=area%3AMAT&member=question%3Amission-2d6b87285b397e36&bloom=evaluate&dok=3)
+Find this at `market.square`, using `elbow-lottery`. evaluate · DOK 3. [Review](../../tests/giant-sleeve.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=10&member=story%3A119&member=game%3A69&member=micro%3A1109&member=concept%3Aevidence&member=framework%3Amethods-and-tools&member=area%3AMAT&member=reasoning%3Adeductive&member=question%3Amission-2d6b87285b397e36&bloom=evaluate&dok=3)
 
 
 ## Chapter 11
@@ -563,12 +1003,12 @@ Find this at `voices.listening`, using `lamplight.voices.bench`. analyse · DOK 
 
 *Whose priorities did we build into this rule or performance?*
 
-Carry a tested cart stop and sightline across the house inquiry. At the meeting weigh access, rest and performance against the earlier invitation.
+Carry a tested cart stop and sightline across the house inquiry. At the meeting weigh access, rest and performance against the earlier invitation. Each of three evenings can be defended for a different guest. The built route determines who receives supper and who still waits for a light.
 
 - A neighbour who needs rest can use the tested cart route when choosing whom to give the evening key.
 - A neighbour staging a performance can use the measured sightline to ask for the same room. The earlier invitation follows both of them to the table.
 
-Find this at `voices.listening`, using `middlehouse-keys`. evaluate · DOK 4. [Review](../../tests/open-house.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=13&member=story%3A86&member=game%3A162&member=micro%3A115&member=concept%3Avalues&member=framework%3Aethics&member=question%3AKQ-ROUTE-35&member=theme%3APOL&member=question%3Amission-533724ca716906cd&member=exhibition%3A35&bloom=evaluate&dok=4)
+Find this at `voices.listening`, using `middlehouse-keys`. evaluate · DOK 4. [Review](../../tests/open-house.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=13&member=story%3A86&member=game%3A162&member=micro%3A115&member=concept%3Avalues&member=framework%3Aethics&member=question%3AKQ-ROUTE-35&member=reasoning%3Apragmatic&member=theme%3APOL&member=question%3Amission-533724ca716906cd&member=exhibition%3A35&bloom=evaluate&dok=4)
 
 
 ## Chapter 14
@@ -646,9 +1086,119 @@ Find this at `council.hall`, using `return-coat-council-work`. analyse · DOK 2.
 
 *Whose next move changes when this becomes the public version?*
 
-Reopen an issued minute after collecting the flood tally, missing replies, amended route and the witness’s conditions. Redesign who runs the trial.
+Reopen an issued minute after collecting the flood tally, missing replies, amended route and the witness’s conditions. Redesign who runs the trial. Giving households a choice of contact makes the trial accessible to different witnesses. A paired timed walk yields a comparable measurement. Choose which purpose the next shift can serve first.
 
 - Households can choose how to be reached when the bell fails.
 - Paired timed walks make two crossings easier to compare.
 
-Find this at `council.hall`, using `lamplight.council.bench`. create · DOK 4. [Review](../../tests/last-bell.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=15&member=story%3A15&member=game%3A114&member=micro%3A1180&member=micro%3A1200&member=concept%3Aresponsibility&member=framework%3Aethics&member=theme%3APOL&member=question%3AKQ-ROUTE-07&member=question%3Amission-551c4169ad6ccf7b&member=exhibition%3A07&bloom=create&dok=4)
+Find this at `council.hall`, using `lamplight.council.bench`. create · DOK 4. [Review](../../tests/last-bell.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=15&member=story%3A15&member=game%3A114&member=micro%3A1180&member=micro%3A1200&member=concept%3Aresponsibility&member=framework%3Aethics&member=reasoning%3Apragmatic&member=theme%3APOL&member=question%3AKQ-ROUTE-07&member=question%3Amission-551c4169ad6ccf7b&member=exhibition%3A07&bloom=create&dok=4)
+
+### Bring Ise the measurement of the inside latch.
+
+*What should a community make public when a useful record can also name the wrong person?*
+
+Bring Ise the measurement of the inside latch.
+
+- A keeper standing at the rail can see a narrow doorway that saves space.
+- Someone reaching from a chair has to know whether they can operate the loop from inside.
+
+Find this at `council.hall`, using `return-coat-council-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=15&member=story%3A15&member=game%3A21&member=keepsake%3Adoor-key&member=concept%3Aperspective&member=framework%3Aperspectives&member=area%3AHUM&member=character%3Awarden-ise&member=question%3Amission-0f7a8ce37d11b225&bloom=remember&dok=1)
+
+### Give Ise the weight behind the coat price.
+
+*What should a community make public when a useful record can also name the wrong person?*
+
+Give Ise the weight behind the coat price.
+
+- The trader can reproduce the old price per weight with the scale.
+- The passenger owes a price per crossing. Applying the wool price to a person would change what is being measured.
+
+Find this at `council.hall`, using `return-coat-council-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=15&member=story%3A15&member=game%3A21&member=keepsake%3Acheck-weight&member=concept%3Aobjectivity&member=framework%3Amethods-and-tools&member=area%3AMAT&member=character%3Awarden-ise&member=question%3Amission-0f7a8ce37d11b225&bloom=remember&dok=1)
+
+### Send Sefa the two ends without tying them together.
+
+*What should a community make public when a useful record can also name the wrong person?*
+
+Send Sefa the two ends without tying them together.
+
+- The stage bill can accurately record who worked the bulb during a show.
+- A repair book can record a night when a coat came home wet. The two threads give those accounts different origins.
+
+Find this at `council.hall`, using `return-coat-council-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=15&member=story%3A15&member=game%3A21&member=keepsake%3Ayarn&member=concept%3Atruth&member=framework%3Ascope&member=area%3AHIS&member=character%3Ascholar-sefa&member=question%3Amission-0f7a8ce37d11b225&bloom=remember&dok=1)
+
+### Show Ise how far the inside hand can reach.
+
+*What should a community make public when a useful record can also name the wrong person?*
+
+Show Ise how far the inside hand can reach.
+
+- The measured line from the wings falls short of the peg.
+- The same length from the inside landing gives a seated borrower a working handoff. The starting point matters.
+
+Find this at `council.hall`, using `return-coat-council-work`. remember · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=15&member=story%3A15&member=game%3A21&member=keepsake%3Aknot-rope&member=concept%3Aperspective&member=framework%3Amethods-and-tools&member=area%3AMAT&member=character%3Awarden-ise&member=question%3Amission-0f7a8ce37d11b225&bloom=remember&dok=1)
+
+### A quiet rumour shard at the fare in the council cloakroom
+
+*What should a community make public when a useful record can also name the wrong person?*
+
+Turn the shard until both notices are legible.
+
+- A reader counting sheets sees two notices and can date the circulation of a story.
+- A reader comparing their spelling can trace both papers to one text. Two pieces of paper may carry a single witness.
+
+Find this at `council.hall`, using `return-coat-council-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=15&member=story%3A48&member=game%3A170&member=keepsake%3Arumour-shard&member=concept%3Ajustification&member=framework%3Amethods-and-tools&member=area%3AHIS&member=question%3Amission-0f7a8ce37d11b225&bloom=apply&dok=1)
+
+### A knotted rope end at the fare in the council cloakroom
+
+*What should a community make public when a useful record can also name the wrong person?*
+
+Set the worn reach of the rope beside the public hook.
+
+- The original hook suits the shoulder of the keeper who set it.
+- A seated visitor can use the lower hook while the hem still clears the puddle. Choosing the height determines who can work alone.
+
+Find this at `council.hall`, using `return-coat-council-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=15&member=story%3A48&member=game%3A170&member=keepsake%3Awell-rope&member=concept%3Apower&member=framework%3Aperspectives&member=area%3AHUM&member=question%3Amission-0f7a8ce37d11b225&bloom=apply&dok=1)
+
+### A blank survey slip at the fare in the council cloakroom
+
+*What should a community make public when a useful record can also name the wrong person?*
+
+Fold the survey slip to match the signed return.
+
+- The signed returns can describe people who came to the desk.
+- The family passing a coat through the lining was outside the form’s reach. Buying wool calls for a count of repairs too.
+
+Find this at `council.hall`, using `return-coat-council-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=15&member=story%3A48&member=game%3A170&member=keepsake%3Asurvey-slip&member=concept%3Aobjectivity&member=framework%3Ascope&member=area%3AHUM&member=question%3Amission-0f7a8ce37d11b225&bloom=apply&dok=1)
+
+### A wax copy of the seal at the fare in the council cloakroom
+
+*What should a community make public when a useful record can also name the wrong person?*
+
+Set the wax copy beside the price stamp.
+
+- The outer circle can identify a familiar Guardian design.
+- A clerk comparing the inner cuts has grounds to question whether anybody signed this particular receipt.
+
+Find this at `council.hall`, using `return-coat-council-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=15&member=story%3A48&member=game%3A170&member=keepsake%3Aseal&member=concept%3Ajustification&member=framework%3Amethods-and-tools&member=area%3AHIS&member=question%3Amission-0f7a8ce37d11b225&bloom=apply&dok=1)
+
+### A knot of citation thread at the fare in the council cloakroom
+
+*What should a community make public when a useful record can also name the wrong person?*
+
+Follow the citation thread back from the bill.
+
+- The bill leads a keeper back to Vesper’s gift and the task it was meant to support.
+- The giver left the next wearer unnamed. A cast member can decide how to honour that open part.
+
+Find this at `council.hall`, using `return-coat-council-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=15&member=story%3A48&member=game%3A170&member=keepsake%3Athread-knot&member=concept%3Ainterpretation&member=framework%3Aethics&member=area%3AHIS&member=question%3Amission-0f7a8ce37d11b225&bloom=apply&dok=1)
+
+### A tiny jar of soot at the fare in the council cloakroom
+
+*What should a community make public when a useful record can also name the wrong person?*
+
+Dust the inside handle with a pinch of soot.
+
+- A still handle on the public side gives a waiting visitor little reason to think the desk is open.
+- The spring draws two arcs inside. A maker can test a lighter pull from the side that actually operates the latch.
+
+Find this at `council.hall`, using `return-coat-council-lining`. apply · DOK 1. [Review](../../tests/return-coat.test.ts) · [Open this exact review](COMBINATION_CHECKLIST.html#review?chapter=15&member=story%3A48&member=game%3A170&member=keepsake%3Asoot-jar&member=concept%3Aevidence&member=framework%3Amethods-and-tools&member=area%3ANAT&member=question%3Amission-0f7a8ce37d11b225&bloom=apply&dok=1)

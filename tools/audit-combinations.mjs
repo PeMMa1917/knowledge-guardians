@@ -76,7 +76,7 @@ export function chapterRegister(atlas) {
     )) {
       const route = atlas.routes.find((r) => r.beats.includes(beat.id));
       out.push(
-        '### ' + (beat.id.endsWith('/send') ? route.title : beat.objective),
+        '### ' + (beat.id.endsWith('/send') ? route.title : beat.title ?? beat.objective),
         '',
         '*' + members.get(beat.question).name + '*',
         '',

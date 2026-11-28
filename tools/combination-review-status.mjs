@@ -1,3 +1,4 @@
+import { familyNames } from './combination-atlas.mjs';
 import { levels, depths, reviewedLedger } from './combination-checklist.mjs';
 const four = (values) => '| ' + values.join(' | ') + ' |';
 export function reviewStatus(atlas) {
@@ -65,6 +66,18 @@ export function reviewStatus(atlas) {
     'A checked cell records a review of the implemented task. A claim about a learner needs evidence from that learner. For extended work, record the investigation, its duration, how evidence from separate settings came together and what changed. Recalling a fact during that work can be a supporting step. The isolated act of recall provides evidence at DOK 1.',
     '',
   );
+  out.push('## Which elements have a documented action?', '',
+    'Each family shows how many different members occur in a reviewed action and how many still need one in this register. A single action can connect several families. The last column counts distinct chapters with at least one such action. Each exact combination still needs its own review.', '',
+    '| Family | Registered | With a reviewed action | Awaiting an action review | Chapters with an action |',
+    '| --- | ---: | ---: | ---: | ---: |');
+  const covered = new Set(atlas.beats.flatMap(beat => beat.members));
+  for (const [kind, name] of Object.entries(familyNames)) {
+    const members = atlas.members.filter(m => m.kind === kind);
+    const observed = members.filter(m => covered.has(m.id)).length;
+    const chapters = new Set(atlas.beats.filter(b => b.members.some(id => id.startsWith(kind + ':'))).map(b => b.chapter));
+    out.push(four(['[' + name + '](COMBINATION_MEMBERS.md#family-' + kind + ')', members.length, observed, members.length - observed, chapters.size]));
+  }
+  out.push('');
   for (let chapter = 1; chapter <= 15; chapter++) {
     out.push('## Chapter ' + chapter, '');
     matrix(atlas.beats.filter((b) => b.chapter === chapter));

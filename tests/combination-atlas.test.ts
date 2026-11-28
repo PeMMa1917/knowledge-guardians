@@ -108,6 +108,16 @@ describe('documented TOK combination space', () => {
   });
   it('keeps the live inventory, all objective anchors and the setting-to-decision order traceable', async () => {
     const atlas = buildAtlas(await loadAudit({ activities: true }));
+    const chalk = atlas.beats.filter((b: {members: string[]}) => b.members.includes('keepsake:ferry-chalk'));
+    expect(chalk).toMatchObject([
+      { bloom: 'apply', dok: 1, map: 'stage.foyer' },
+      { bloom: 'remember', dok: 1, map: 'aethelgard.emberford', members: expect.arrayContaining(['character:scholar-sefa']) },
+    ]);
+    expect(chalk[0].members).not.toContain('character:scholar-sefa');
+    expect(new Set(chalk.map((b: {chapter: number}) => b.chapter)).size).toBe(2);
+    expect(atlas.routes.filter((r: {id: string}) => r.id.startsWith('carry-'))).toHaveLength(24);
+    const reasoningModes = atlas.members.filter((m: {kind: string}) => m.kind === 'reasoning');
+    for (const m of reasoningModes) expect(atlas.beats.some((b: {members: string[]}) => b.members.includes(m.id))).toBe(true);
     expect(
       atlas.activities.filter((a: {gaps: string[]}) => a.gaps.length),
     ).toEqual([]);

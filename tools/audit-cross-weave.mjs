@@ -1,3 +1,4 @@
+import { keepsakeScenes } from './review-keepsake-scenes.mjs';
 import { reviewContexts } from './combination-context.mjs';
 import { returnCoatProofs } from './return-coat-evidence.mjs';
 import { activityAnchors } from './tok-activity-anchors.mjs';
@@ -1464,6 +1465,7 @@ export async function loadAudit({ activities = false } = {}) {
     const proofs = collectProofs({ objectives, maps: MAPS, elements, dimensions, rows: proofRows, sourceText, dialogue: pack.dialogue });
     const candidates = authoredLinks(objectives, MICRO_SKILLS, elements);
     return { worlds, elements, dimensions, proofs, candidates, bloomLevels: levels.BLOOM, ...(activities ? {
+      keepsakeActions: keepsakeScenes(pack, MAPS, sourceText.get('tests/return-coat.test.ts')),
       contexts: reviewContexts(pack,levels,QUESTION_ROUTES,nightFriends), activities: activityAnchors(pack,levels,topics), questionNames: Object.fromEntries(pack.questions.map(q=>[q.id,q.text])),
       glossary: Object.fromEntries(pack.glossary.map(g=>[g.id,{term:g.term,history:g.history??null}])),
     } : {}) };

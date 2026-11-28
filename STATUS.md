@@ -1,5 +1,7 @@
 # Status and next steps
 
+The curriculum review now follows 24 keepsakes from use at one coat rail to the reply each opens in another world. Each step has a separate cognitive cell and a reproducible test. The register also identifies a tested example of every key concept and each of the six reasoning modes. [Evidence by family](docs/audit/COMBINATION_REVIEW_STATUS.md#which-elements-have-a-documented-action)
+
 The combination atlas includes joint bundles, multiple members of one family, ordered actions, mission questions and the 24 Bloom × DOK cells. [Combination atlas](docs/audit/COMBINATION_ATLAS.md) · [Check off a combination](docs/audit/COMBINATION_CHECKLIST.html)
 
 ## 28 November • Checking a skill in play
@@ -8,7 +10,7 @@ The catalogue now names all 1,200 supplied micro-skills in public review languag
 
 Reviewers can recover large collections of cell notes and checks in the same browser. The three-engine stress run recovered 28,800 fictitious review cells after reload. [Storage and grid verification](docs/BROWSER_CHECKS.md#curriculum-checklist)
 
-The combination checklist can pin an exact selection, browse additional elements by number and open a registered action directly in its Bloom and DOK cell. Its 15 chapters share a catalogue of 7,757 members in 29 families. Reviews, action IDs and notes remain separate for every chapter, sequence and cognitive cell. The register documents 123 observations across 85 distinct action IDs and 33 ordered journeys. [Reviewer instructions](docs/audit/COMBINATION_ATLAS.md) · [Editable chapter workbook](docs/audit/CHAPTER_REVIEW_GRIDS.xlsx) · [Criteria for all 24 cognitive cells](docs/audit/BLOOM_DOK_REVIEW_GUIDE.md)
+The combination checklist can pin an exact selection, browse additional elements by number and open a registered action directly in its Bloom and DOK cell. Its 15 chapters share a catalogue of 7,757 members in 29 families. Reviews, action IDs and notes remain separate for every chapter, sequence and cognitive cell. The register documents 173 observations across 135 distinct action IDs and 57 ordered journeys. [Reviewer instructions](docs/audit/COMBINATION_ATLAS.md) · [Editable chapter workbook](docs/audit/CHAPTER_REVIEW_GRIDS.xlsx) · [Criteria for all 24 cognitive cells](docs/audit/BLOOM_DOK_REVIEW_GUIDE.md)
 
 Kip’s duplicate coat can turn up in four places. The Guardian can try eight different checks, take one of twelve later shifts and use any of the 24 early keepsakes to earn a particular response from a person at another rail. The new quiet landing and the theatre exchange four-beat rain scores. The player can write two different parts that produce the same sound, then give the rain keeper a bow or her own demonstration. [Story and review routes](docs/audit/RETURN_COAT.md)
 

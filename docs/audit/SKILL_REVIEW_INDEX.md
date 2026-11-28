@@ -386,7 +386,7 @@ In the offline checklist, select a skill and choose **Review this element across
 | `micro:322` | Keep missing knowledge separate from a missing thing | 1 | 8 | — |
 | `micro:323` | Distinguish studying a community on its own terms from accepting every truth claim | 0 | — | — |
 | `micro:324` | Separate what is measured from what a rule makes official | 3 | 10, 13 | — |
-| `micro:325` | Use a drawing for a cue or test what it says about light | 1 | 9 | — |
+| `micro:325` | Use a drawing for a cue or test what it says about light | 1 | 9 | 9 · analyse / 3 |
 | `micro:326` | Use simplicity to compare explanations and state what would still test them | 0 | — | — |
 | `micro:327` | Check whether a speaker’s expertise extends to the particular claim at issue | 0 | — | — |
 | `micro:328` | Give readers a route to check a keeper’s account | 1 | 1 | — |
@@ -557,7 +557,7 @@ In the offline checklist, select a skill and choose **Review this element across
 | `micro:493` | Look beyond the easiest count to measure | 2 | 5, 12 | — |
 | `micro:494` | Adapt a useful method to a changed setting before applying it | 2 | 7, 14 | — |
 | `micro:495` | Verify a disputed claim against a trusted independent reference | 2 | 7, 15 | — |
-| `micro:496` | Keep a working prediction distinct from the evidence for an explanation | 4 | 4, 9, 11, 14 | — |
+| `micro:496` | Keep a working prediction distinct from the evidence for an explanation | 4 | 4, 9, 11, 14 | 9 · analyse / 3 |
 | `micro:497` | Show how the choice of a heading changes what a fact supports | 2 | 5, 11 | — |
 | `micro:498` | Find a new way to check when a boundary protects someone | 2 | 3, 13 | — |
 | `micro:499` | Retain a useful short account and its material exception | 2 | 5, 7 | — |
@@ -889,7 +889,7 @@ In the offline checklist, select a skill and choose **Review this element across
 | `micro:825` | Practise community control of the use and recall of a record | 1 | 14 | — |
 | `micro:826` | Compare how different audiences hear the same coded political phrase | 0 | — | — |
 | `micro:827` | Explore what members of a tradition think a translation of a sacred term leaves out | 0 | — | — |
-| `micro:828` | Preserve what a place name says about changing water | 1 | 8 | — |
+| `micro:828` | Preserve what a place name says about changing water | 1 | 8 | 8 · analyse / 3 |
 | `micro:829` | Consider how the grammar of a particular language expresses relations with living beings | 0 | — | — |
 | `micro:830` | Compare reasons rooted in a faith tradition with reasons offered for a public decision | 0 | — | — |
 | `micro:831` | Examine how a court receives a particular community’s oral evidence about land | 0 | — | — |

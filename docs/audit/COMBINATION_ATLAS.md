@@ -10,6 +10,12 @@ In the Nile hall, a stitcher thinks everyone in the audience will spot her blue 
 
 Each exact selection has six Bloom rows and four DOK columns in each chapter. Tick a cell to record a review. Use **Note** beside it to record the player action, what the two people stood to gain or lose and where another reviewer can reproduce it. Enter one action ID per line to track the ten-action target separately for that cell. Existing source evidence appears under the grid. Use **Include documented implementation checks** to load verified examples while keeping your own decisions. You can also import [the dated implementation-review ledger](COMBINATION_REVIEWED.json) to start with the documented exact cells checked. Each record identifies its action and source. Only an explicit reviewer check marks a cell. Select **Review this element across chapters** for any skill, micro-skill or other member. Choose a Bloom level. The table shows its checked combinations at DOK 1–4 in all 15 chapters. Select a count to reopen its evidence. Select a zero to start a review at that chapter and level with the current selection. **Check a whole family** lays out each skill or other member as a row against the current anchors, with all 24 review cells across the row. Search by ID to go straight to any micro-skill. **Export family grid CSV** produces a spreadsheet of every matching member in the selected family, including its exact anchors and 24 review statuses. Export JSON to share, back up or continue the ledger on another device. Export CSV for a spreadsheet with all 24 cells of the current and saved boards.
 
+### Follow one object across chapters
+
+Search for *A stub of slate chalk* or `keepsake:ferry-chalk`, then select **Find this element in play**. At the theatre, a Guardian can trace a chalk mark that crosses the name column. It reserves a warm place for a late arrival. At the market, the Guardian can bring the mark to Sefa, who sets out a bowl and asks whether anybody wants soup. The checklist records using the chalk as Apply / DOK 1 and recognising the new offer in conversation as Remember / DOK 1. The commentaries give two readings of the mark. An independent interpretation from a learner could be recorded in a separate cell with its own evidence.
+
+The [family evidence table](COMBINATION_REVIEW_STATUS.md#which-elements-have-a-documented-action) shows which parts of the catalogue already have an observed action and which still need one.
+
 ### Review all the ways a skill can appear
 
 Every one of the 1,200 micro-skills has a searchable public description and a stable worksheet number. Number 20, for instance, is about noticing your own reasoning change while a decision is still open. Search for the number or for a word such as “reasoning”.
@@ -26,7 +32,7 @@ Use **Bookmark or open an exact review** to save a link to a chapter, combinatio
 
 ### Work in a spreadsheet
 
-[Download the chapter review workbook](CHAPTER_REVIEW_GRIDS.xlsx). To regenerate it from the repository, use Python and openpyxl. Each chapter has a row for every catalogue member and 24 independent review cells. The first rows contain the exact documented reviews with their sources and action IDs. The other rows supply an editable starting combination. Duplicate a reviewed row before changing its members. A local checklist with different display names can be selected with `--checklist`. A reviewer’s own exported decisions can be selected with `--ledger`.
+[Download the chapter review workbook](CHAPTER_REVIEW_GRIDS.xlsx). To regenerate it from the repository, use Python and openpyxl. Each chapter has a row for every catalogue member and 24 independent review cells. Use **Find a family** to jump straight to the first item in any of the 29 families in any chapter. The element ID stays visible as you scroll across the cognitive columns. The first rows contain the exact documented reviews with their sources and action IDs. The other rows supply an editable starting combination. Duplicate a reviewed row before changing its members. A local checklist with different display names can be selected with `--checklist`. A reviewer’s own exported decisions can be selected with `--ledger`.
 
 ```sh
 python tools/export-combination-workbook.py chapter-review.xlsx

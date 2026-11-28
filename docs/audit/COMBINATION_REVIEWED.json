@@ -6,6 +6,29 @@
         "chapter": 1,
         "ids": [
           "area:ART",
+          "character:scholar-sefa",
+          "concept:power",
+          "framework:perspectives",
+          "game:21",
+          "keepsake:paper-frame",
+          "question:mission-d66a5ca64a335b4f",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.paper-frame"
+      ],
+      "evidence": "Let Sefa put the unseen hand in the song.\nA spectator can follow the grieving actor without being able to see the sponge.\nThe worker in the wider picture has a claim on how the company tells the story of its rain.\nSefa gives the sponge a whole verse. The child who worked it objects to “silver rain”. It was ordinary dishwater. They keep that rhyme.\naethelgard.emberford · return-coat-market-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:ART",
           "concept:perspective",
           "exhibition:25",
           "framework:perspectives",
@@ -24,6 +47,28 @@
         "returned-coat.rain.lining"
       ],
       "evidence": "Issue the quiet rail’s score after watching the worker and listening at the hatch. The visiting company receives the score and billing.\nA named bow can keep the surprise for the waiting borrower.\nAn open demonstration gives the worker a chance to teach the next company.\nThe company in the other room receives this exact score and its chosen billing. A changed rehearsal leaves that version in circulation.\nnexus.coat-lining · indoor-rain-rig\ntests/rain-score.test.ts · credits an authored score only after an audience and a worker"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:ART",
+          "concept:perspective",
+          "framework:methods-and-tools",
+          "game:170",
+          "keepsake:moth-lamp",
+          "question:mission-eb6260fed9e5eed8",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.moth-lamp"
+      ],
+      "evidence": "Set the moth lamp on the floor and wait.\nFrom the hall, the hanging coat and the plaster give the impression of a single wall.\nThe changing position of the light lets a performer find an entrance the audience cannot see.\nA glimmermoth goes under the hanging coat. Half a wing reappears through the wall. Behind the rail a door has been painted the colour of plaster.\nnexus.archive · return-coat-hook-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
     },
     {
       "board": {
@@ -55,6 +100,52 @@
         "chapter": 1,
         "ids": [
           "area:HIS",
+          "character:scholar-sefa",
+          "concept:certainty",
+          "framework:scope",
+          "game:21",
+          "keepsake:date-lens",
+          "question:mission-d66a5ca64a335b4f",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.date-lens"
+      ],
+      "evidence": "Ask Sefa about the unpriced week.\nA clerk can put the arrival of the buttons and the entry of the price in order.\nA supper companion can account for particular evenings during the gap. Neither date gives a whole week of wear.\n“Seven suppers,” Sefa says. “He sat with me at two. The other five belong to somebody else’s memory.” She hums the tune she sang at the second one.\naethelgard.emberford · return-coat-market-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HIS",
+          "character:scholar-sefa",
+          "concept:justification",
+          "framework:methods-and-tools",
+          "game:21",
+          "keepsake:rumour-shard",
+          "question:mission-d66a5ca64a335b4f",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.rumour-shard"
+      ],
+      "evidence": "Give Sefa the one source behind two voices.\nA reader counting sheets sees two notices and can date the circulation of a story.\nA reader comparing their spelling can trace both papers to one text. Two pieces of paper may carry a single witness.\nSefa cuts the chorus down to one singer. It sounds lonelier. “Good,” she says. “One neighbour can still have something worth hearing.”\naethelgard.emberford · return-coat-market-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HIS",
           "character:warden-ise",
           "concept:responsibility",
           "exhibition:25",
@@ -74,6 +165,72 @@
         "returned-coat.hook.fare"
       ],
       "evidence": "Walk the disputed fare to the window. Separate Ise’s guarantor stroke from the copied name of a wearer.\nThe name on the ticket identifies the person whose money was taken.\nThe guarantee stroke identifies a different person who agreed to answer for a charge.\nThe fare came off at noon. Ise shows you the little stroke she made to guarantee that somebody would pay. A clerk carried the wearer’s name across it. “That stroke is mine,” she says. “Kip, will you ask for the ticket or shall I?” He holds out his hand for the slip.\nnexus.archive · return-coat-hook-work\ntests/return-coat.test.ts · records only the operation the Guardian actually tried"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HIS",
+          "concept:certainty",
+          "framework:scope",
+          "game:170",
+          "keepsake:date-lens",
+          "question:mission-eb6260fed9e5eed8",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.date-lens"
+      ],
+      "evidence": "Lay the lens ring over the two dates.\nA clerk can put the arrival of the buttons and the entry of the price in order.\nA supper companion can account for particular evenings during the gap. Neither date gives a whole week of wear.\nThe inner date is the day the pear buttons arrived. The later ink entered the price under Kip’s name. A week of wear sits nowhere on the slip.\nnexus.archive · return-coat-hook-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HIS",
+          "concept:evidence",
+          "framework:methods-and-tools",
+          "game:170",
+          "keepsake:pen-tip",
+          "question:mission-eb6260fed9e5eed8",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.pen-tip"
+      ],
+      "evidence": "Roll the ballpoint down both name seams.\nThe owner of a labelled coat can recognise the K without taking the seam apart.\nA keeper deciding who wore the spare must account for how a second K could be pressed into it.\nIt catches after the K on Kip’s cuff. On the spare it rolls straight across the K. One name was sewn into the cloth. The other was pressed into it.\nnexus.archive · return-coat-hook-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HIS",
+          "concept:values",
+          "framework:perspectives",
+          "game:170",
+          "keepsake:sign-splinter",
+          "question:mission-d66a5ca64a335b4f",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.sign-splinter"
+      ],
+      "evidence": "Fit the splinter under the gilt tag.\nSomeone arriving today might reasonably expect to pay the figure on the visible tag.\nThe layer beneath it tells a mender why people once brought damaged clothes to this same peg.\nThe lift exposes a paler pear. The price was pinned over an older offer to mend cuffs. The older sign gives a different reason for leaving a coat here.\naethelgard.emberford · return-coat-market-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
     },
     {
       "board": {
@@ -174,6 +331,52 @@
         "chapter": 1,
         "ids": [
           "area:HUM",
+          "character:kip-arden",
+          "concept:perspective",
+          "framework:scope",
+          "game:21",
+          "keepsake:folded-map",
+          "question:mission-eb6260fed9e5eed8",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.folded-map"
+      ],
+      "evidence": "Let the mapmaker lead the late way home.\nThe printed ticket tells a visitor which room normally receives a coat.\nA late borrower needs to know how the same hook can be reached from the street once the desk closes.\nKip gives you the slow tour. The third step makes the squeak of a very small duck. “There,” he says. “Now you could find it in the dark without me.”\nnexus.archive · return-coat-hook-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
+          "character:kip-arden",
+          "concept:power",
+          "framework:perspectives",
+          "game:21",
+          "keepsake:well-rope",
+          "question:mission-eb6260fed9e5eed8",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.well-rope"
+      ],
+      "evidence": "Give Kip a hook he can adjust from the floor.\nThe original hook suits the shoulder of the keeper who set it.\nA seated visitor can use the lower hook while the hem still clears the puddle. Choosing the height determines who can work alone.\nHe lowers it for a stranger and puts the end back in her hand. “You can put it exactly where you like. Mine was too high.”\nnexus.archive · return-coat-hook-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
           "character:scholar-sefa",
           "concept:values",
           "exhibition:25",
@@ -224,6 +427,29 @@
         "chapter": 1,
         "ids": [
           "area:HUM",
+          "character:warden-ise",
+          "concept:objectivity",
+          "framework:scope",
+          "game:21",
+          "keepsake:survey-slip",
+          "question:mission-eb6260fed9e5eed8",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.survey-slip"
+      ],
+      "evidence": "Ask Ise to count the quiet night without naming sleepers.\nThe signed returns can describe people who came to the desk.\nThe family passing a coat through the lining was outside the form’s reach. Buying wool calls for a count of repairs too.\nShe sets one jar each side of the pipe for dry and wet buttons. “I can buy enough wool with that. A person’s name was never the price of a button.”\nnexus.archive · return-coat-hook-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
           "concept:perspective",
           "deception:fabrication",
           "deception:false-consensus",
@@ -250,6 +476,28 @@
           "area:HUM",
           "concept:perspective",
           "framework:perspectives",
+          "game:170",
+          "keepsake:door-key",
+          "question:mission-eb6260fed9e5eed8",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.door-key"
+      ],
+      "evidence": "Slide the brass plate behind the coat rail.\nA keeper standing at the rail can see a narrow doorway that saves space.\nSomeone reaching from a chair has to know whether they can operate the loop from inside.\nThe square notch releases a door narrow enough for one shoulder. On the inside its latch is a soft loop. Whoever needs to leave in a hurry can pull without waking the hall.\nnexus.archive · return-coat-hook-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
+          "concept:perspective",
+          "framework:perspectives",
           "game:22",
           "question:KQ-NEW-002",
           "question:mission-8293607ef2285fb0",
@@ -264,6 +512,28 @@
         "pocket.ten-stamps.send"
       ],
       "evidence": "Choose who gets the first turn after the apparent crowd has shrunk to one author. Each musician has something to lose.\nKeep the opening song for the waiting singer. She takes the first verse. A family who came for the fiddler has to stay through supper to hear him.\nGive each musician a short turn at the stool. Both are heard. The shy singer had practised a long piece and must cut its last verse.\nThe singer offers him the refrain. He asks her to keep the chair for her sister next time. / Two families can now name what they heard. One asks for the missing verse.\naethelgard.emberford · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
+          "concept:perspective",
+          "framework:scope",
+          "game:170",
+          "keepsake:folded-map",
+          "question:mission-d66a5ca64a335b4f",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.folded-map"
+      ],
+      "evidence": "Walk Kip’s warm-step route under the hem of the awning.\nThe printed ticket tells a visitor which room normally receives a coat.\nA late borrower needs to know how the same hook can be reached from the street once the desk closes.\nThe official ticket puts the cloakroom indoors. Kip’s route reaches the same hook from the street, even after the name desk shuts. A damp footprint stops there.\naethelgard.emberford · return-coat-market-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
     },
     {
       "board": {
@@ -314,6 +584,142 @@
       "board": {
         "chapter": 1,
         "ids": [
+          "area:MAT",
+          "character:kip-arden",
+          "concept:evidence",
+          "framework:scope",
+          "game:21",
+          "keepsake:brass-cog",
+          "question:mission-eb6260fed9e5eed8",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.brass-cog"
+      ],
+      "evidence": "Let Kip turn the double-stamp himself.\nThe two wet pears really do establish that the stamp struck the ticket twice.\nOne passenger can turn the cog twice. The number of impressions leaves the number of wearers open.\nKip gets two pears on one receipt and four on another. “How many coats am I wearing now?” He copies the first pair. That joke will fit on one ticket.\nnexus.archive · return-coat-hook-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:MAT",
+          "concept:evidence",
+          "framework:scope",
+          "game:170",
+          "keepsake:brass-cog",
+          "question:mission-d66a5ca64a335b4f",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.brass-cog"
+      ],
+      "evidence": "Mesh Mara’s loose cog with the ticket stamper.\nThe two wet pears really do establish that the stamp struck the ticket twice.\nOne passenger can turn the cog twice. The number of impressions leaves the number of wearers open.\nAt half a turn it stamps one pear. At a full turn the same piece of paper has two. Mara counts the wet prints, then takes one finger off the counter lever.\naethelgard.emberford · return-coat-market-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:MAT",
+          "concept:objectivity",
+          "framework:methods-and-tools",
+          "game:170",
+          "keepsake:check-weight",
+          "question:mission-d66a5ca64a335b4f",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.check-weight"
+      ],
+      "evidence": "Put the guild weight on the counter scale.\nThe trader can reproduce the old price per weight with the scale.\nThe passenger owes a price per crossing. Applying the wool price to a person would change what is being measured.\nThe price tag stamped CLOTH swings up before the pan balances. It was printed for wool sold by weight. Somebody used it to charge a flat fare.\naethelgard.emberford · return-coat-market-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:NAT",
+          "character:kip-arden",
+          "concept:certainty",
+          "framework:scope",
+          "game:21",
+          "keepsake:weather-glass",
+          "question:mission-eb6260fed9e5eed8",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.weather-glass"
+      ],
+      "evidence": "Tell Kip which rain you managed to repeat.\nThe theatre can make an indoor shower while the instrument under its roof stays steady.\nKip can report the drop he saw at the hatch. Reproducing a shower in the theatre still leaves the hatch’s weather unresolved.\n“Good. I can stop saying I saw a storm.” He opens his pocket. “I still saw a drop land on this pear. You can keep the storm bit open.”\nnexus.archive · return-coat-hook-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:NAT",
+          "character:smith-hesper",
+          "concept:evidence",
+          "framework:methods-and-tools",
+          "game:21",
+          "keepsake:soot-jar",
+          "question:mission-d66a5ca64a335b4f",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.soot-jar"
+      ],
+      "evidence": "Give Hesper the sweep of the hidden spring.\nA still handle on the public side gives a waiting visitor little reason to think the desk is open.\nThe spring draws two arcs inside. A maker can test a lighter pull from the side that actually operates the latch.\nShe bends a loop so the spring will answer a lighter pull. “Had my hands full once,” she says. She tries it with both fists full of cloth.\naethelgard.emberford · return-coat-market-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:NAT",
+          "character:smith-hesper",
+          "concept:interpretation",
+          "framework:methods-and-tools",
+          "game:21",
+          "keepsake:glass-piece",
+          "question:mission-d66a5ca64a335b4f",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.glass-piece"
+      ],
+      "evidence": "Show Hesper the flat-backed pear.\nA borrower can recognise the pear shape on both coats at arm’s length.\nTurn the light sideways and a maker can distinguish a rounded button from a stamp with a flat back.\n“Button mould. Somebody wore the stamp to save pocket space.” Hesper laughs. She turns her own apron out and three little washers fall on the floor.\naethelgard.emberford · return-coat-market-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
           "area:NAT",
           "concept:explanation",
           "exhibition:25",
@@ -333,6 +739,164 @@
         "returned-coat.rain.lining.twocauses"
       ],
       "evidence": "Build a tap from a stored drop, then make the same sound with a direct squeeze at the cloakroom hatch.\nA third-beat tap can come from the one drop the hem has held since the first beat.\nA direct squeeze at the third beat gives the borrower the same sound.\nThe kept bar and the new one sound identical in the stalls. The workforce in the wings can point to two different gestures.\nnexus.coat-lining · indoor-rain-rig\ntests/rain-score.test.ts · credits an authored score only after an audience and a worker"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:NAT",
+          "concept:explanation",
+          "framework:methods-and-tools",
+          "game:170",
+          "keepsake:copper-pot",
+          "question:mission-d66a5ca64a335b4f",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.copper-pot"
+      ],
+      "evidence": "Catch a drop from each cuff in the little pot.\nA person under the awning can count three drops before the roof gets wet.\nThe hand at the pipe gives a performer something that can be varied when trying to reproduce the third drop.\nBefore rain touches the roof, the spare lets go three drops. The third one lands when the hand over the speaking pipe taps twice. The pot keeps the sound distinct.\naethelgard.emberford · return-coat-market-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:NAT",
+          "concept:interpretation",
+          "framework:methods-and-tools",
+          "game:170",
+          "keepsake:glass-piece",
+          "question:mission-eb6260fed9e5eed8",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.glass-piece"
+      ],
+      "evidence": "Turn the cut glass sideways through both pears.\nA borrower can recognise the pear shape on both coats at arm’s length.\nTurn the light sideways and a maker can distinguish a rounded button from a stamp with a flat back.\nLight splits at a bubble in the pear on Kip’s cuff. The chipped green pear on the spare throws one narrow shadow. It has a flat back like a stamp.\nnexus.archive · return-coat-hook-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "character:kip-arden",
+          "concept:responsibility",
+          "framework:ethics",
+          "game:21",
+          "keepsake:so-what",
+          "question:mission-d66a5ca64a335b4f",
+          "story:15",
+          "theme:POL"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.so-what"
+      ],
+      "evidence": "Give Kip the loose fare line without smoothing away his drawing.\nThe clerk needs the deduction line to settle the outstanding fare.\nKip has his own reason to keep the drawing and decide whether somebody accompanies him to the window.\n“You left the moustache!” Kip copies the fare line onto his ticket and keeps the original pear for himself. “I’ll ask at the window. You can stand by. Just stand.”\naethelgard.emberford · return-coat-market-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "character:scholar-sefa",
+          "concept:culture",
+          "framework:perspectives",
+          "game:21",
+          "keepsake:ferry-chalk",
+          "question:mission-d66a5ca64a335b4f",
+          "story:15",
+          "theme:LAN"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.ferry-chalk"
+      ],
+      "evidence": "Read the late-arrival mark aloud to Sefa.\nA cast-list reader may first look for a performer’s name beside the mark.\nA reader familiar with the ferry community can recognise a request to keep a place warm, independent of the latecomer’s name.\n“My father would put a bowl there before you finished that word.” Sefa sets a bowl on the warm step. You hear her ask first whether anyone wants soup.\naethelgard.emberford · return-coat-market-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "character:warden-ise",
+          "concept:interpretation",
+          "framework:perspectives",
+          "game:21",
+          "keepsake:notice",
+          "question:mission-eb6260fed9e5eed8",
+          "story:15",
+          "theme:LAN"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.notice"
+      ],
+      "evidence": "Ask Ise where the keeper’s sentence ends.\nA wearer reading across the line can think the obligation travels with the bundle.\nA keeper who recognises the stop can locate the obligation at the moment a bundle is taken in.\nIse reads both ways. At the second reading she stops rubbing her thumb over her own name. “I can initial that change. It was my line.”\nnexus.archive · return-coat-hook-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "character:warden-ise",
+          "concept:responsibility",
+          "framework:ethics",
+          "game:21",
+          "keepsake:tiny-bell",
+          "question:mission-eb6260fed9e5eed8",
+          "story:15",
+          "theme:POL"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.tiny-bell"
+      ],
+      "evidence": "Offer Ise the far end of the bell.\nA keeper at a front desk can see who is waiting and offer a dry coat.\nSomeone unwilling to stand in front of the queue can still be heard through the pipe.\n“I used to insist people came to the front.” Ise moves her stool to the pipe. A quiet sleeve comes through. She offers a dry one without looking up.\nnexus.archive · return-coat-hook-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "concept:interpretation",
+          "framework:perspectives",
+          "game:170",
+          "keepsake:notice",
+          "question:mission-d66a5ca64a335b4f",
+          "story:48",
+          "theme:LAN"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.notice"
+      ],
+      "evidence": "Hold the market notice against the price tag.\nA wearer reading across the line can think the obligation travels with the bundle.\nA keeper who recognises the stop can locate the obligation at the moment a bundle is taken in.\nBoth have the same stop after “keeper”. The little line after it belongs to the keeper who takes in a bundle. Reading straight across would charge the next wearer.\naethelgard.emberford · return-coat-market-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
     },
     {
       "board": {
@@ -359,6 +923,28 @@
         "claimbell.issue"
       ],
       "evidence": "Design an entrance and a shift after trying both claimants and at least two methods of calling for a turn.\nA porter can speak at the open bell and keep his wrist to himself.\nA worker on shift needs a token or another person to hold the turn.\nThe sealed times and entrance travel to the council. The player must try the rule there as signed.\naethelgard.emberford · claim-bell-well\ntests/claim-bell.test.ts · expect(d.done('claimbell.issue')).toBe(true)"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "concept:responsibility",
+          "framework:ethics",
+          "game:170",
+          "keepsake:so-what",
+          "question:mission-eb6260fed9e5eed8",
+          "story:48",
+          "theme:POL"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.so-what"
+      ],
+      "evidence": "Put the stone on the curling bottom corner.\nThe clerk needs the deduction line to settle the outstanding fare.\nKip has his own reason to keep the drawing and decide whether somebody accompanies him to the window.\nUnder the curl are the words “deduct one ferry fare”. Kip had drawn a fine angry moustache on the printed pear. He still has to get home.\nnexus.archive · return-coat-hook-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
     },
     {
       "board": {
@@ -464,6 +1050,7 @@
           "game:69",
           "micro:1109",
           "question:mission-2d6b87285b397e36",
+          "reasoning:deductive",
           "story:119"
         ]
       },
@@ -474,7 +1061,7 @@
       "actions": [
         "elbow.lottery"
       ],
-      "evidence": "Commit to a direction before the packets open. Compare extreme and ordinary assignments before judging the observed result.\nThe person running the draw can compare an unusual assignment with the other possible packets.\nA performer using the resulting sleeve still needs to know how much the difference changes their reach.\nThe receiving crew learns which comparison underlies the result they are asked to use.\nmarket.square · elbow-lottery\ntests/giant-sleeve.test.ts · expect(readings.at(-1)?.clears).toBe(sheet === 'chalk' ? 3 : 0)"
+      "evidence": "Commit to a direction before the packets open. Compare extreme and ordinary assignments before judging the observed result. Under the sharp null and random assignment, there are twenty equally likely groups of three. One is as high as the observed draw and two are as far in either direction.\nThe person running the draw can compare an unusual assignment with the other possible packets.\nA performer using the resulting sleeve still needs to know how much the difference changes their reach.\nThe receiving crew learns which comparison underlies the result they are asked to use.\nmarket.square · elbow-lottery\ntests/giant-sleeve.test.ts · expect(readings.at(-1)?.clears).toBe(sheet === 'chalk' ? 3 : 0)"
     },
     {
       "board": {
@@ -1091,6 +1678,7 @@
           "micro:115",
           "question:KQ-ROUTE-35",
           "question:mission-533724ca716906cd",
+          "reasoning:pragmatic",
           "story:86",
           "theme:POL"
         ]
@@ -1102,7 +1690,7 @@
       "actions": [
         "middlehouse.night"
       ],
-      "evidence": "Carry a tested cart stop and sightline across the house inquiry. At the meeting weigh access, rest and performance against the earlier invitation.\nA neighbour who needs rest can use the tested cart route when choosing whom to give the evening key.\nA neighbour staging a performance can use the measured sightline to ask for the same room. The earlier invitation follows both of them to the table.\nOn returning, the player finds which neighbour got the key and what the other neighbour has had to give up.\nvoices.listening · middlehouse-keys\ntests/open-house.test.ts · expect(endings.size).toBe(9)"
+      "evidence": "Carry a tested cart stop and sightline across the house inquiry. At the meeting weigh access, rest and performance against the earlier invitation. Each of three evenings can be defended for a different guest. The built route determines who receives supper and who still waits for a light.\nA neighbour who needs rest can use the tested cart route when choosing whom to give the evening key.\nA neighbour staging a performance can use the measured sightline to ask for the same room. The earlier invitation follows both of them to the table.\nOn returning, the player finds which neighbour got the key and what the other neighbour has had to give up.\nvoices.listening · middlehouse-keys\ntests/open-house.test.ts · expect(endings.size).toBe(9)"
     },
     {
       "board": {
@@ -1247,6 +1835,95 @@
         "chapter": 15,
         "ids": [
           "area:HIS",
+          "character:scholar-sefa",
+          "concept:truth",
+          "framework:scope",
+          "game:21",
+          "keepsake:yarn",
+          "question:mission-0f7a8ce37d11b225",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.yarn"
+      ],
+      "evidence": "Send Sefa the two ends without tying them together.\nThe stage bill can accurately record who worked the bulb during a show.\nA repair book can record a night when a coat came home wet. The two threads give those accounts different origins.\nShe ties one to the stage bill and the other to the repair book. “Two true ends,” she says. “A knot in the middle would tell a lie.”\ncouncil.hall · return-coat-council-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "area:HIS",
+          "concept:interpretation",
+          "framework:ethics",
+          "game:170",
+          "keepsake:thread-knot",
+          "question:mission-0f7a8ce37d11b225",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.thread-knot"
+      ],
+      "evidence": "Follow the citation thread back from the bill.\nThe bill leads a keeper back to Vesper’s gift and the task it was meant to support.\nThe giver left the next wearer unnamed. A cast member can decide how to honour that open part.\nThe receipt points to Vesper’s wardrobe gift. The gift note calls the spare “for the person who brings the first one back”. It does not say who that person will be.\ncouncil.hall · return-coat-council-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "area:HIS",
+          "concept:justification",
+          "framework:methods-and-tools",
+          "game:170",
+          "keepsake:rumour-shard",
+          "question:mission-0f7a8ce37d11b225",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.rumour-shard"
+      ],
+      "evidence": "Turn the shard until both notices are legible.\nA reader counting sheets sees two notices and can date the circulation of a story.\nA reader comparing their spelling can trace both papers to one text. Two pieces of paper may carry a single witness.\nTwo scraps say that Kip left a coat. Their crooked comma and missing T are identical. One notice was copied from the other before either witness arrived.\ncouncil.hall · return-coat-council-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "area:HIS",
+          "concept:justification",
+          "framework:methods-and-tools",
+          "game:170",
+          "keepsake:seal",
+          "question:mission-0f7a8ce37d11b225",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.seal"
+      ],
+      "evidence": "Set the wax copy beside the price stamp.\nThe outer circle can identify a familiar Guardian design.\nA clerk comparing the inner cuts has grounds to question whether anybody signed this particular receipt.\nThe outer rings match. The coat receipt has no inner cut. The Guardian seal travelled as a copied picture. No wearer signed either circle.\ncouncil.hall · return-coat-council-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "area:HIS",
           "concept:responsibility",
           "deception:alteration",
           "deception:omission",
@@ -1311,6 +1988,141 @@
         "pocket.cut-caveat.send"
       ],
       "evidence": "Weigh public traceability of the repair against the family's control of its own testimony.\nHang the two dated sheets together. Visitors can inspect the scar and the repair. The first family must tell its story again to a crowded room.\nLend the family the original for a quiet hearing. The family can speak with the old sheet in hand. The wall must show its dated copy until evening.\nA visitor has traced the cut and the patch separately. The family asks for a quiet seat next time. / The family returns the original with permission for a narrow quotation. The rest of the hearing stays with them.\ncouncil.hall · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "area:HUM",
+          "character:warden-ise",
+          "concept:perspective",
+          "framework:perspectives",
+          "game:21",
+          "keepsake:door-key",
+          "question:mission-0f7a8ce37d11b225",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.door-key"
+      ],
+      "evidence": "Bring Ise the measurement of the inside latch.\nA keeper standing at the rail can see a narrow doorway that saves space.\nSomeone reaching from a chair has to know whether they can operate the loop from inside.\n“I asked for a latch low enough to reach from a chair.” Ise takes off her badge and tries the loop sitting down. “Good. It still works.”\ncouncil.hall · return-coat-council-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "area:HUM",
+          "concept:objectivity",
+          "framework:scope",
+          "game:170",
+          "keepsake:survey-slip",
+          "question:mission-0f7a8ce37d11b225",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.survey-slip"
+      ],
+      "evidence": "Fold the survey slip to match the signed return.\nThe signed returns can describe people who came to the desk.\nThe family passing a coat through the lining was outside the form’s reach. Buying wool calls for a count of repairs too.\nThe forms counted people who stopped at the desk. Somebody passing a coat through the lining had no box to mark. A full page of signatures could miss an entire night.\ncouncil.hall · return-coat-council-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "area:HUM",
+          "concept:power",
+          "framework:perspectives",
+          "game:170",
+          "keepsake:well-rope",
+          "question:mission-0f7a8ce37d11b225",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.well-rope"
+      ],
+      "evidence": "Set the worn reach of the rope beside the public hook.\nThe original hook suits the shoulder of the keeper who set it.\nA seated visitor can use the lower hook while the hem still clears the puddle. Choosing the height determines who can work alone.\nThe hook height was copied from a standing keeper’s shoulder. Three turns lower it far enough for a seated hand. The hem still clears the puddle below.\ncouncil.hall · return-coat-council-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "area:MAT",
+          "character:warden-ise",
+          "concept:objectivity",
+          "framework:methods-and-tools",
+          "game:21",
+          "keepsake:check-weight",
+          "question:mission-0f7a8ce37d11b225",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.check-weight"
+      ],
+      "evidence": "Give Ise the weight behind the coat price.\nThe trader can reproduce the old price per weight with the scale.\nThe passenger owes a price per crossing. Applying the wool price to a person would change what is being measured.\nIse takes the fare table down for the afternoon. A driver has to wait for change. Kip gets to point out the two unlike units himself.\ncouncil.hall · return-coat-council-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "area:MAT",
+          "character:warden-ise",
+          "concept:perspective",
+          "framework:methods-and-tools",
+          "game:21",
+          "keepsake:knot-rope",
+          "question:mission-0f7a8ce37d11b225",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.knot-rope"
+      ],
+      "evidence": "Show Ise how far the inside hand can reach.\nThe measured line from the wings falls short of the peg.\nThe same length from the inside landing gives a seated borrower a working handoff. The starting point matters.\nShe fits the hook where the knot landed. The next visitor can hand clothes through from a seat. Ise finds another place to hang her badge.\ncouncil.hall · return-coat-council-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 15,
+        "ids": [
+          "area:NAT",
+          "concept:evidence",
+          "framework:methods-and-tools",
+          "game:170",
+          "keepsake:soot-jar",
+          "question:mission-0f7a8ce37d11b225",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.soot-jar"
+      ],
+      "evidence": "Dust the inside handle with a pinch of soot.\nA still handle on the public side gives a waiting visitor little reason to think the desk is open.\nThe spring draws two arcs inside. A maker can test a lighter pull from the side that actually operates the latch.\nA return spring pulls two narrow arcs through the dust. On the public side the handle hardly moves. The latch opens from inside even when the desk seems shut.\ncouncil.hall · return-coat-council-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
     },
     {
       "board": {
@@ -1421,6 +2233,7 @@
           "micro:1200",
           "question:KQ-ROUTE-07",
           "question:mission-551c4169ad6ccf7b",
+          "reasoning:pragmatic",
           "story:15",
           "theme:POL"
         ]
@@ -1432,7 +2245,7 @@
       "actions": [
         "last-bell.council.reopened"
       ],
-      "evidence": "Reopen an issued minute after collecting the flood tally, missing replies, amended route and the witness’s conditions. Redesign who runs the trial.\nHouseholds can choose how to be reached when the bell fails.\nPaired timed walks make two crossings easier to compare.\nThe households receive either control of the trial or assigned roles with comparable observations. The final minute carries that decision.\ncouncil.hall · lamplight.council.bench\ntests/last-bell.test.ts · requires the four field records for either second hearing"
+      "evidence": "Reopen an issued minute after collecting the flood tally, missing replies, amended route and the witness’s conditions. Redesign who runs the trial. Giving households a choice of contact makes the trial accessible to different witnesses. A paired timed walk yields a comparable measurement. Choose which purpose the next shift can serve first.\nHouseholds can choose how to be reached when the bell fails.\nPaired timed walks make two crossings easier to compare.\nThe households receive either control of the trial or assigned roles with comparable observations. The final minute carries that decision.\ncouncil.hall · lamplight.council.bench\ntests/last-bell.test.ts · requires the four field records for either second hearing"
     },
     {
       "board": {
@@ -2412,6 +3225,32 @@
       "board": {
         "chapter": 8,
         "ids": [
+          "area:HIS",
+          "concept:interpretation",
+          "exhibition:14",
+          "framework:perspectives",
+          "game:209",
+          "micro:828",
+          "question:KQ-ROUTE-14",
+          "question:mission-e6a5af2aabaab8ff",
+          "reasoning:analogical",
+          "story:52",
+          "theme:IND"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "rivernames.placename"
+      ],
+      "evidence": "Consult the two named source leaves and give the high-water walker the morning pin. Compare the different uses of a fixed point before deciding what goes on each sheet. The public Nunavut programme describes names carrying routes and events. The fictional river offers an independent example where a fixed point omits an environmental relationship, without conferring authority over the real names.\nEmlet can preserve a particular morning by keeping his pin on his own sheet.\nA walker can want a route she can change at high water. The published Nunavut example and the fictional river have different named sources.\nEmlet can keep the record of his own morning. The next walker receives a route she can alter or a tide-specific slip.\nsea.the-last-oven · river-names-spool\ntests/river-names.test.ts · expect(d.done('rivernames.placename')).toBe(true)"
+    },
+    {
+      "board": {
+        "chapter": 8,
+        "ids": [
           "area:HUM",
           "concept:explanation",
           "exhibition:02",
@@ -2419,6 +3258,7 @@
           "game:122",
           "question:KQ-ROUTE-02",
           "question:mission-e6a5af2aabaab8ff",
+          "reasoning:causal",
           "story:85",
           "subject:geography"
         ]
@@ -2430,7 +3270,7 @@
       "actions": [
         "rivernames.walks"
       ],
-      "evidence": "Walk the marked delivery under two tide conditions. Recover the slack at the flooded stair and try another edge.\nA reliable delivery route needs a walking time at this tide.\nA named landing keeps the receiving household in the account.\nA different hand receives the parcel. The route can be retried from the board.\nsea.the-last-oven · river-names-spool\ntests/river-names.test.ts · expect(warmfinTrail(d.s)).toContain('back past Reed Stair')"
+      "evidence": "Walk the marked delivery under two tide conditions. Recover the slack at the flooded stair and try another edge. Changing the water level on an otherwise identical path changes whether the walker can cross it. Following a warm brick alone cannot prove somebody received the parcel.\nA reliable delivery route needs a walking time at this tide.\nA named landing keeps the receiving household in the account.\nA different hand receives the parcel. The route can be retried from the board.\nsea.the-last-oven · river-names-spool\ntests/river-names.test.ts · expect(warmfinTrail(d.s)).toContain('back past Reed Stair')"
     },
     {
       "board": {
@@ -2583,6 +3423,7 @@
           "game:194",
           "micro:1118",
           "question:mission-f5296f4a9fbd490c",
+          "reasoning:abductive",
           "story:112"
         ]
       },
@@ -2593,7 +3434,7 @@
       "actions": [
         "elbow.curtain"
       ],
-      "evidence": "Develop a production across the costume trials and the records of repairs. Compose its visible sleeve, hinge and first entrance.\nThe intact sleeve reads clearly from the back row.\nA repaired hinge can give the other sister the opening.\nThe choices change the stage picture, the sister who enters first and what is later said in the loft.\nstage.rehearsal · elbow-curtain\ntests/giant-sleeve.test.ts · expect(flag(d.s, 'performedFace')).toBe('seam')"
+      "evidence": "Develop a production across the costume trials and the records of repairs. Compose its visible sleeve, hinge and first entrance. Three repairs on the inside fit Vee’s account of taking the weight. The printed entrance alone could lead a viewer to attribute the whole performance to Pip.\nThe intact sleeve reads clearly from the back row.\nA repaired hinge can give the other sister the opening.\nThe choices change the stage picture, the sister who enters first and what is later said in the loft.\nstage.rehearsal · elbow-curtain\ntests/giant-sleeve.test.ts · expect(flag(d.s, 'performedFace')).toBe('seam')"
     },
     {
       "board": {
@@ -2606,6 +3447,7 @@
           "game:195",
           "micro:1116",
           "question:mission-f5296f4a9fbd490c",
+          "reasoning:deductive",
           "story:25"
         ]
       },
@@ -2616,7 +3458,33 @@
       "actions": [
         "elbow.fitting"
       ],
-      "evidence": "Separate the overall sleeve length from how it is distributed. Move joints and try the resulting fit over both troupes.\nThe tailor’s measure preserves how much cloth is available for a shared sleeve.\nThe performers depend on where the elbow bends. The same length can put their hands too far apart.\nThe same total can leave different partners unable to take hands. The signed pattern travels.\nstage.giants-elbow · elbow-patterns\ntests/giant-sleeve.test.ts · expect(summer.filter((p) => p.fits)).toHaveLength(patchCount(mask))"
+      "evidence": "Separate the overall sleeve length from how it is distributed. Move joints and try the resulting fit over both troupes. At most two joints can be borrowed. In the summer troupe every fixed reach differs by more than one centimetre, so at least two hands must miss.\nThe tailor’s measure preserves how much cloth is available for a shared sleeve.\nThe performers depend on where the elbow bends. The same length can put their hands too far apart.\nThe same total can leave different partners unable to take hands. The signed pattern travels.\nstage.giants-elbow · elbow-patterns\ntests/giant-sleeve.test.ts · expect(summer.filter((p) => p.fits)).toHaveLength(patchCount(mask))"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
+          "area:NAT",
+          "concept:explanation",
+          "framework:methods-and-tools",
+          "game:41",
+          "micro:325",
+          "micro:496",
+          "question:mission-0bf5b9dbe59d91e0",
+          "reasoning:inductive",
+          "reasoning:pragmatic",
+          "story:119"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "optics.drawings"
+      ],
+      "evidence": "Test both chalk predictions at a seat. Change the aperture until their forecasts disagree and compare repeat readings before handing the company a cue or a further test. Several fictional rehearsals at the same seat establish a revisable tendency. The actor needs a cue that works. A claim about the underlying light needs a situation in which rival diagrams give different forecasts.\nNim needs a cue that works from the seat her audience uses.\nA maker seeking an explanation needs a doorway where the two drawings predict different views.\nThe production can keep a reliable entrance or reserve the disputed seat for another trial of the explanation.\nstage.rehearsal · optics-rail\ntests/lens-loan.test.ts · expect(d.done('optics.drawings')).toBe(true)"
     },
     {
       "board": {
@@ -2713,6 +3581,29 @@
         "returned-coat.stage.act"
       ],
       "evidence": "Hold the sponge through Nim’s entrance. Release the drops later. A repeatable backstage shower leaves the first wet coat an open case.\nFrom the audience the cuff appears to rain when Nim enters.\nThe sponge keeper can delay the shower, which leaves the earlier drop in the Nexus unexplained.\nNim enters early. You wait. For two whole beats her cuff stays dry under the painted cloud. She looks up at it, astonished. The back row laughs in a way she could never have rehearsed. Then you squeeze. Three drops.\nstage.foyer · return-coat-stage-work\ntests/return-coat.test.ts · records only the operation the Guardian actually tried"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
+          "character:optics-nim",
+          "concept:perspective",
+          "framework:methods-and-tools",
+          "game:21",
+          "keepsake:moth-lamp",
+          "question:mission-ce5b0f89c69c176c",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.moth-lamp"
+      ],
+      "evidence": "Give the understudy the moth’s entrance.\nFrom the hall, the hanging coat and the plaster give the impression of a single wall.\nThe changing position of the light lets a performer find an entrance the audience cannot see.\nNim sends the moth through first. For once the audience watches the little light instead of her hands. She gets to choose the instant she steps out.\nstage.foyer · return-coat-stage-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
     },
     {
       "board": {
@@ -2836,6 +3727,28 @@
         "chapter": 9,
         "ids": [
           "area:ART",
+          "concept:power",
+          "framework:perspectives",
+          "game:170",
+          "keepsake:paper-frame",
+          "question:mission-ce5b0f89c69c176c",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.paper-frame"
+      ],
+      "evidence": "Frame the wet sleeve and then the hand above it.\nA spectator can follow the grieving actor without being able to see the sponge.\nThe worker in the wider picture has a claim on how the company tells the story of its rain.\nIn the narrow frame a dry actor cries rain. Widen it and a second hand squeezes a sponge. Nim holds both pictures still long enough for a child to see who did the work.\nstage.foyer · return-coat-stage-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
           "concept:values",
           "framework:ethics",
           "game:22",
@@ -2852,6 +3765,187 @@
         "pocket.third-bell.send"
       ],
       "evidence": "A memorable missed cue, a child’s colour vote and the height of the rope compete for the next rehearsal.\nLower the rope for the next rehearsal. The child can ring it. Two children who chose colours ask when their vote will be heard.\nKeep the colour vote and assign a rope fitter. The children see their colour on the cord. The fitter must miss a rehearsal to lower it.\nThe next cue sounds from a much lower hand. Nobody has settled the colour. / The fitter brings back the length of a child’s reach. The caller still remembers the unfinished bell.\nstage.foyer · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:HIS",
+          "character:optics-nim",
+          "concept:evidence",
+          "framework:methods-and-tools",
+          "game:21",
+          "keepsake:pen-tip",
+          "question:mission-ce5b0f89c69c176c",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.pen-tip"
+      ],
+      "evidence": "Give Nim the two different Ks.\nThe owner of a labelled coat can recognise the K without taking the seam apart.\nA keeper deciding who wore the spare must account for how a second K could be pressed into it.\nNim puts her own cuff under the press. “You can carry the mark of someone who never wore you.” She leaves the pressed cuff on a dummy for the next audience.\nstage.foyer · return-coat-stage-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:HIS",
+          "character:optics-nim",
+          "concept:interpretation",
+          "framework:ethics",
+          "game:21",
+          "keepsake:thread-knot",
+          "question:mission-ce5b0f89c69c176c",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.thread-knot"
+      ],
+      "evidence": "Read Vesper’s last seven words with Nim.\nThe bill leads a keeper back to Vesper’s gift and the task it was meant to support.\nThe giver left the next wearer unnamed. A cast member can decide how to honour that open part.\nNim turns the line into a part anybody can play. Tonight the person who brings the coat back is the woman who wrings out the sponge. She gets the last bow.\nstage.foyer · return-coat-stage-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:HIS",
+          "character:optics-nim",
+          "concept:justification",
+          "framework:methods-and-tools",
+          "game:21",
+          "keepsake:seal",
+          "question:mission-ce5b0f89c69c176c",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.seal"
+      ],
+      "evidence": "Let Nim show the audience what the seal can actually do.\nThe outer circle can identify a familiar Guardian design.\nA clerk comparing the inner cuts has grounds to question whether anybody signed this particular receipt.\nNim stamps a paper pear and passes it along the whole back row. Everybody has an excellent pear. Nobody has acquired a coat.\nstage.foyer · return-coat-stage-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:HIS",
+          "character:optics-nim",
+          "concept:values",
+          "framework:perspectives",
+          "game:21",
+          "keepsake:sign-splinter",
+          "question:mission-ce5b0f89c69c176c",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.sign-splinter"
+      ],
+      "evidence": "Send Nim the offer that sat under the price.\nSomeone arriving today might reasonably expect to pay the figure on the visible tag.\nThe layer beneath it tells a mender why people once brought damaged clothes to this same peg.\nNim puts the old offer over the costume peg. A driver leaves a sleeve for repair on his way home. He has never once been to a play.\nstage.foyer · return-coat-stage-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:HIS",
+          "concept:truth",
+          "framework:scope",
+          "game:170",
+          "keepsake:yarn",
+          "question:mission-ce5b0f89c69c176c",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.yarn"
+      ],
+      "evidence": "Run the red and gold threads to the two cuffs.\nThe stage bill can accurately record who worked the bulb during a show.\nA repair book can record a night when a coat came home wet. The two threads give those accounts different origins.\nThe gold thread reaches the squeeze bulb. The red one stops at a hand-sewn repair. One explains the downpour in the show. The other belongs to a night somebody actually got wet.\nstage.foyer · return-coat-stage-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:MAT",
+          "concept:perspective",
+          "framework:methods-and-tools",
+          "game:170",
+          "keepsake:knot-rope",
+          "question:mission-ce5b0f89c69c176c",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.knot-rope"
+      ],
+      "evidence": "Pay the measuring knot out along the clothesline.\nThe measured line from the wings falls short of the peg.\nThe same length from the inside landing gives a seated borrower a working handoff. The starting point matters.\nFrom the wings the line stops short of the public peg. From the inside landing it reaches. Someone in the lining can pass a coat without stepping into the scene.\nstage.foyer · return-coat-stage-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:NAT",
+          "character:optics-nim",
+          "concept:explanation",
+          "framework:methods-and-tools",
+          "game:21",
+          "keepsake:copper-pot",
+          "question:mission-ce5b0f89c69c176c",
+          "story:15"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.reply.copper-pot"
+      ],
+      "evidence": "Give Nim a three-drop cue she can hear with her back turned.\nA person under the awning can count three drops before the roof gets wet.\nThe hand at the pipe gives a performer something that can be varied when trying to reproduce the third drop.\n“Again. I can do that one with my eyes on the child.” Nim catches the third drop in her palm and opens the curtain with her other hand.\nstage.foyer · return-coat-stage-work\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:NAT",
+          "concept:certainty",
+          "framework:scope",
+          "game:170",
+          "keepsake:weather-glass",
+          "question:mission-ce5b0f89c69c176c",
+          "story:48"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.weather-glass"
+      ],
+      "evidence": "Leave the weather glass under the roof while the cuff drips.\nThe theatre can make an indoor shower while the instrument under its roof stays steady.\nKip can report the drop he saw at the hatch. Reproducing a shower in the theatre still leaves the hatch’s weather unresolved.\nThe glass holds steady. A warm hand at the top of the sleeve starts another little shower. It settles what can happen inside this theatre. Kip’s first three drops still need a witness.\nstage.foyer · return-coat-stage-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
     },
     {
       "board": {
@@ -2876,6 +3970,50 @@
         "returned-coat.rain.stage.twocauses"
       ],
       "evidence": "Reproduce a four-beat sound in the theatre stalls while changing the hand and gesture that cause the tap.\nThe audience has a repeatable sound in the programme.\nThe keeper can show two ways of making it with different hands.\nThe kept bar and the new one sound identical in the stalls. The workforce in the wings can point to two different gestures.\nstage.foyer · indoor-rain-rig\ntests/rain-score.test.ts · credits an authored score only after an audience and a worker"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "concept:culture",
+          "framework:perspectives",
+          "game:170",
+          "keepsake:ferry-chalk",
+          "question:mission-ce5b0f89c69c176c",
+          "story:48",
+          "theme:LAN"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.ferry-chalk"
+      ],
+      "evidence": "Trace the ferryman’s chalk under the cast list.\nA cast-list reader may first look for a performer’s name beside the mark.\nA reader familiar with the ferry community can recognise a request to keep a place warm, independent of the latecomer’s name.\nA ferry-cant mark asks someone to save a warm place until a late arrival. Its line runs past the name column. Nobody has to claim to be an actor to need it.\nstage.foyer · return-coat-stage-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "concept:responsibility",
+          "framework:ethics",
+          "game:170",
+          "keepsake:tiny-bell",
+          "question:mission-ce5b0f89c69c176c",
+          "story:48",
+          "theme:POL"
+        ]
+      },
+      "bloom": "apply",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "returned-coat.used.tiny-bell"
+      ],
+      "evidence": "Ring one note behind the drawn curtain.\nA keeper at a front desk can see who is waiting and offer a dry coat.\nSomeone unwilling to stand in front of the queue can still be heard through the pipe.\nThe bell carries through the speaking pipe to the hook. A listener can ask for a coat without facing the whole waiting room. Nim leaves her end unplugged.\nstage.foyer · return-coat-stage-lining\ntests/return-coat.test.ts · reveals its own observation and a particular reply at another site"
     }
   ],
   "kind": "implementation-review"
