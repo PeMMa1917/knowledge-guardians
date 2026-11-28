@@ -270,6 +270,29 @@
         "chapter": 1,
         "ids": [
           "area:HUM",
+          "concept:responsibility",
+          "exhibition:02",
+          "framework:perspectives",
+          "game:29",
+          "question:KQ-ROUTE-02",
+          "question:mission-7b60749a07b43747",
+          "story:86"
+        ]
+      },
+      "bloom": "understand",
+      "dok": 2,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "middlehouse.guests"
+      ],
+      "evidence": "Use what the resident can sense to give its perch a job. The mat, sill and brick each offer different help.\nA traveller at the mat can use a resident’s directions to get the kettle around the house.\nA neighbour at the sill can ask the resident there for a sightline. The position changes what help they can give.\nWhen the resident returns, the player can follow a direction, use a sightline or recover a floor.\nnexus.middle-door · middlehouse-chairs\ntests/open-house.test.ts · expect(nightFriends).toHaveLength(240)"
+    },
+    {
+      "board": {
+        "chapter": 1,
+        "ids": [
+          "area:HUM",
           "concept:values",
           "framework:perspectives",
           "game:22",
@@ -430,6 +453,28 @@
         "pocket.two-coppers.compare"
       ],
       "evidence": "The first numbers frame a compromise before anyone checks what each number measures.\nStamp the fruit weight for buyers. Families can compare fruit across stalls. The porter still needs to weigh the whole load.\nHang both weights on the porter’s cord. The carrier gets a full load figure; buyers have to read the small fruit mark before paying.\nSix and ten stand on cards. Eight looks polite. The beam only knows the weight hanging from its hook.\nmarket.square · travelling-pocket-theatre\ntests/pocket-theatre-traces.json · Eight looks polite"
+    },
+    {
+      "board": {
+        "chapter": 10,
+        "ids": [
+          "area:MAT",
+          "concept:evidence",
+          "framework:methods-and-tools",
+          "game:69",
+          "micro:1109",
+          "question:mission-2d6b87285b397e36",
+          "story:119"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "elbow.lottery"
+      ],
+      "evidence": "Commit to a direction before the packets open. Compare extreme and ordinary assignments before judging the observed result.\nThe person running the draw can compare an unusual assignment with the other possible packets.\nA performer using the resulting sleeve still needs to know how much the difference changes their reach.\nThe receiving crew learns which comparison underlies the result they are asked to use.\nmarket.square · elbow-lottery\ntests/giant-sleeve.test.ts · expect(readings.at(-1)?.clears).toBe(sheet === 'chalk' ? 3 : 0)"
     },
     {
       "board": {
@@ -989,6 +1034,75 @@
         "pocket.rolled-echo.send"
       ],
       "evidence": "Preserve the preceding breath for a limited room or give the wider hall a shorter hearing it can trace back.\nGive Wren the whole take for the listening room. The steward can answer a question about the first words. A visitor in the hall hears little until a place opens up.\nGive the hall a timed excerpt and a route to Wren. More visitors hear a short line. They need the listening room for what comes before and after.\nA listener returns the key with the opening words written out beside it. / One visitor returns with a precise time and asks to hear the preceding breath.\nvoices.listening · travelling-pocket-theatre\ntests/pocket-theatre.test.ts · can receive and return both editions"
+    },
+    {
+      "board": {
+        "chapter": 13,
+        "ids": [
+          "area:HIS",
+          "concept:evidence",
+          "framework:methods-and-tools",
+          "micro:1016",
+          "question:mission-fcb860ad9a918ae1",
+          "story:48"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "last-bell.voices.sleeve"
+      ],
+      "evidence": "Retrieve the permission on the sleeve whose shelf mark matches the surviving strip.\nWren can use the shelf number to retrieve the kitchen recording and its loan terms.\nThe witness marked the same sleeve for private listening or unsigned wording. Finding it gives the guardian a specific permission to respect.\nThe correct record can be found again before the recording goes on the air.\nvoices.listening · lamplight.voices.bench\ntools/last-bell-journey.mjs · button('Follow W–17')"
+    },
+    {
+      "board": {
+        "chapter": 13,
+        "ids": [
+          "concept:interpretation",
+          "exhibition:07",
+          "framework:scope",
+          "game:287",
+          "micro:1010",
+          "question:KQ-ROUTE-07",
+          "question:mission-fcb860ad9a918ae1",
+          "story:48",
+          "theme:LAN"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "last-bell.voices.left"
+      ],
+      "evidence": "Listen beyond the excerpt to distinguish two bells and decide what the complete statement supports.\nA listener in Wren’s chair can hear the later grooves identify the stove bell.\nThe ferry crew can read an unsigned statement together. The witness keeps her voice and the question about the tower stays open.\nThe next listener can receive a named voice or an unsigned account with different limits.\nvoices.listening · lamplight.voices.bench\ntests/last-bell.test.ts · can hear six different cuts"
+    },
+    {
+      "board": {
+        "chapter": 13,
+        "ids": [
+          "concept:values",
+          "exhibition:35",
+          "framework:ethics",
+          "game:162",
+          "micro:115",
+          "question:KQ-ROUTE-35",
+          "question:mission-533724ca716906cd",
+          "story:86",
+          "theme:POL"
+        ]
+      },
+      "bloom": "evaluate",
+      "dok": 4,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "middlehouse.night"
+      ],
+      "evidence": "Carry a tested cart stop and sightline across the house inquiry. At the meeting weigh access, rest and performance against the earlier invitation.\nA neighbour who needs rest can use the tested cart route when choosing whom to give the evening key.\nA neighbour staging a performance can use the measured sightline to ask for the same room. The earlier invitation follows both of them to the table.\nOn returning, the player finds which neighbour got the key and what the other neighbour has had to give up.\nvoices.listening · middlehouse-keys\ntests/open-house.test.ts · expect(endings.size).toBe(9)"
     },
     {
       "board": {
@@ -1810,6 +1924,28 @@
     },
     {
       "board": {
+        "chapter": 4,
+        "ids": [
+          "concept:perspective",
+          "framework:methods-and-tools",
+          "game:49",
+          "question:mission-7b35aab54bc0ae26",
+          "story:74",
+          "subject:design-tech",
+          "theme:TEC"
+        ]
+      },
+      "bloom": "remember",
+      "dok": 1,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "optics.presets"
+      ],
+      "evidence": "Recall a previously stowed tool packing from its impression in the felt.\nA maker can recall the star packing from its mark in the felt after returning the tools.\nA second reader can open the knot packing and see the comparison with its own pair of fittings.\nThe same fittings are available for the next bench after the loan has ended.\nobservatory.loan-loft · optics-sled\ntests/lens-loan.test.ts · expect(d.done('optics.presets')).toBe(true)"
+    },
+    {
+      "board": {
         "chapter": 5,
         "ids": [
           "area:HUM",
@@ -2458,6 +2594,29 @@
         "elbow.curtain"
       ],
       "evidence": "Develop a production across the costume trials and the records of repairs. Compose its visible sleeve, hinge and first entrance.\nThe intact sleeve reads clearly from the back row.\nA repaired hinge can give the other sister the opening.\nThe choices change the stage picture, the sister who enters first and what is later said in the loft.\nstage.rehearsal · elbow-curtain\ntests/giant-sleeve.test.ts · expect(flag(d.s, 'performedFace')).toBe('seam')"
+    },
+    {
+      "board": {
+        "chapter": 9,
+        "ids": [
+          "area:ART",
+          "area:MAT",
+          "concept:evidence",
+          "framework:scope",
+          "game:195",
+          "micro:1116",
+          "question:mission-f5296f4a9fbd490c",
+          "story:25"
+        ]
+      },
+      "bloom": "analyse",
+      "dok": 3,
+      "checked": true,
+      "updated": "2026-11-28T00:00:00.000Z",
+      "actions": [
+        "elbow.fitting"
+      ],
+      "evidence": "Separate the overall sleeve length from how it is distributed. Move joints and try the resulting fit over both troupes.\nThe tailor’s measure preserves how much cloth is available for a shared sleeve.\nThe performers depend on where the elbow bends. The same length can put their hands too far apart.\nThe same total can leave different partners unable to take hands. The signed pattern travels.\nstage.giants-elbow · elbow-patterns\ntests/giant-sleeve.test.ts · expect(summer.filter((p) => p.fits)).toHaveLength(patchCount(mask))"
     },
     {
       "board": {

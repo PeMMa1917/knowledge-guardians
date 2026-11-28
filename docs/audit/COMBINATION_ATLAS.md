@@ -2,13 +2,13 @@
 
 In the Nile hall, a stitcher thinks everyone in the audience will spot her blue repair. A guide trusts a different sling because a famous donor bought it. Turn the repair into the light, then stand where the last family will sit. The same fringe that distracts the stitcher can guide a visitor’s hand. A Guardian can keep that guide or stretch the sling for the back row. Each choice leaves another person with a job.
 
-[See reviewed cells by chapter](COMBINATION_REVIEW_STATUS.md) · [Browse every selectable member](COMBINATION_MEMBERS.md) · [Read the questions, decisions and consequences by chapter](CHAPTER_VIEWPOINTS.md)
+[Look up a skill’s chapter and evidence](SKILL_REVIEW_INDEX.md) · [See reviewed cells by chapter](COMBINATION_REVIEW_STATUS.md) · [Browse every selectable member](COMBINATION_MEMBERS.md) · [Read the questions, decisions and consequences by chapter](CHAPTER_VIEWPOINTS.md)
 
 ## Check off a review
 
 [Download or open the offline combination checklist](COMBINATION_CHECKLIST.html). On GitHub, open the file and choose **Download raw file**, then open the downloaded HTML in a browser. It works without a server. Select a chapter, search by skill number or any other member, add the relevant TOK anchors and choose a narrative and game element. Select **In a particular sequence** when order matters. Open a worked example to try a complete board.
 
-Each exact selection has six Bloom rows and four DOK columns in each chapter. Tick a cell to record a review. Use **Note** beside it to record the player action, what the two people stood to gain or lose and where another reviewer can reproduce it. Enter one action ID per line to track the ten-action target separately for that cell. Existing source evidence appears under the grid. Use **Include documented implementation checks** to load verified examples while keeping your own decisions. You can also import [the dated implementation-review ledger](COMBINATION_REVIEWED.json) to start with the documented exact cells checked. Each record identifies its action and source. Only an explicit reviewer check marks a cell. The **Find its reviewed boards** control finds records involving any particular micro-skill or other member. **Check a whole family** lays out each skill or other member as a row against the current anchors, with all 24 review cells across the row. Search by ID to go straight to any micro-skill. **Export family grid CSV** produces a spreadsheet of every matching member in the selected family, including its exact anchors and 24 review statuses. Export JSON to share, back up or continue the ledger on another device. Export CSV for a spreadsheet with all 24 cells of the current and saved boards.
+Each exact selection has six Bloom rows and four DOK columns in each chapter. Tick a cell to record a review. Use **Note** beside it to record the player action, what the two people stood to gain or lose and where another reviewer can reproduce it. Enter one action ID per line to track the ten-action target separately for that cell. Existing source evidence appears under the grid. Use **Include documented implementation checks** to load verified examples while keeping your own decisions. You can also import [the dated implementation-review ledger](COMBINATION_REVIEWED.json) to start with the documented exact cells checked. Each record identifies its action and source. Only an explicit reviewer check marks a cell. Select **Review this element across chapters** for any skill, micro-skill or other member. Choose a Bloom level. The table shows its checked combinations at DOK 1–4 in all 15 chapters. Select a count to reopen its evidence. Select a zero to start a review at that chapter and level with the current selection. **Check a whole family** lays out each skill or other member as a row against the current anchors, with all 24 review cells across the row. Search by ID to go straight to any micro-skill. **Export family grid CSV** produces a spreadsheet of every matching member in the selected family, including its exact anchors and 24 review statuses. Export JSON to share, back up or continue the ledger on another device. Export CSV for a spreadsheet with all 24 cells of the current and saved boards.
 
 ### Review all the ways a skill can appear
 
@@ -19,6 +19,17 @@ For a review of one micro-skill, pin the skill with a key concept, a framework p
 For example, use **The stitcher’s sling**, then pin it and choose **Micro-skills** with one addition. Combination 1,200 opens the last supplied micro-skill against that same sling. Its six-by-four grid starts open. For ordered journeys, open the desired board and group its members into the steps in which a player actually meets them. Reversing the steps creates a separate review. **Try an order by number** lays out each selected element as a separate successive action. Edit the steps to group simultaneous elements or to return to an earlier one.
 
 **Find this element in play** searches the published action evidence across chapters. Pick a result to open the exact combination and its observed Bloom and DOK cell. The note editor offers the player action, both perspectives, the map, a source test and the action ID. Edit or save the note and decide whether to tick the cell. The same search shows the linked objectives for the selected chapter. Open one as a starting point and add the story and game elements you observe. Only the separate action register supplies a tested trace and an observed cognitive cell.
+
+Use **Bookmark or open an exact review** to save a link to a chapter, combination and order. If the evidence editor is open, the reference also selects its Bloom and DOK cell. A colleague with their own copy of the checklist can paste the reference into it. References identify the task. Use the separate JSON export to share notes and review decisions.
+
+### Work in a spreadsheet
+
+[Download the chapter review workbook](CHAPTER_REVIEW_GRIDS.xlsx). To regenerate it from the repository, use Python and openpyxl. Each chapter has a row for every catalogue member and 24 independent review cells. The first rows contain the exact documented reviews with their sources and action IDs. The other rows supply an editable starting combination. Duplicate a reviewed row before changing its members. A local checklist with different display names can be selected with `--checklist`. A reviewer’s own exported decisions can be selected with `--ledger`.
+
+```sh
+python tools/export-combination-workbook.py chapter-review.xlsx
+python tools/export-combination-workbook.py docs/audit/CHAPTER_REVIEW_GRIDS.xlsx --check
+```
 
 ### What qualifies for a check
 

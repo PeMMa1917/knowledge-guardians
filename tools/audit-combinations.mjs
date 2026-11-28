@@ -1,5 +1,5 @@
-import { reviewStatus } from './combination-review-status.mjs';
-import { reviewedLedger } from './combination-checklist.mjs';
+import { reviewStatus, skillReviewIndex } from './combination-review-status.mjs';
+import { reviewedLedger, reviewReference } from './combination-checklist.mjs';
 /** Build and query the full authoring catalogue without enumerating its power set. */
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -95,6 +95,11 @@ export function chapterRegister(atlas) {
           '. [Review](' +
           '../../' +
           beat.source +
+          ') · [Open this exact review](COMBINATION_CHECKLIST.html' +
+          reviewReference(
+            {chapter:beat.chapter,ids:beat.members},
+            {bloom:beat.bloom,dok:beat.dok},
+          ) +
           ')',
         '',
       );
@@ -139,6 +144,7 @@ async function main() {
     ['COMBINATION_MEMBERS.md', memberIndex(atlas)],
     ['CHAPTER_VIEWPOINTS.md', chapterRegister(atlas)],
     ['COMBINATION_REVIEW_STATUS.md', reviewStatus(atlas)],
+    ['SKILL_REVIEW_INDEX.md', skillReviewIndex(atlas)],
     ['COMBINATION_REVIEWED.json', JSON.stringify(reviewedLedger(atlas),null,2)+'\n'],
     ['COMBINATION_CHECKLIST.html', await renderChecklist(atlas)],
   ];

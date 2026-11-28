@@ -96,6 +96,7 @@ get('search').oninput = get('family').onchange = () => {
 function refreshBoard() {
   editing = null;
   get('editPanel').hidden = true;
+  get('bookmark').hidden = true;
   get('chips').replaceChildren();
   for (const id of draft) {
     const b = el('button', describe(id) + ' ×');
@@ -203,6 +204,7 @@ function record(bloom, dok, changes, target = board) {
   });
   persist();
   listSaved();
+  memberOverview();
 }
 function boardProgress() {
   const box = get('boardProgress');
@@ -538,17 +540,163 @@ get('openSaved').onclick = () => {
   const b = lastBoardList[Number(get('savedBoards').value)];
   if (b) show(b);
 };
-get('focus').onclick = () => {
-  const id = get('matches').value;
-  if (!id) return;
-  listSaved(id);
-  const totals = reviewTotals(records, id, Number(get('chapter').value));
-  get('memberReview').replaceChildren(
-    el('h3', describe(id) + ' · chapter ' + get('chapter').value),
-    el('p', levels.map((l) => l + ' ' + totals[l].join(' / ')).join(' · ')),
-    el('small', 'Counts of checked boards at DOK 1 / 2 / 3 / 4 for this member.'),
+let focusedMember = '';
+function memberOverview() {
+  const box = get('memberReview');
+  box.replaceChildren();
+  if (!focusedMember) return;
+  const id = focusedMember;
+  const title = el('h3', describe(id));
+  const info = el(
+    'p',
+    'Choose a Bloom level to see all four DOKs across chapters. Each count is a checked combination containing this element.',
   );
+  const label = el('label', 'Bloom level for this element');
+  const select = el('select', '');
+  select.id = 'overviewBloom';
+  label.htmlFor = select.id;
+  for (const level of levels)
+    select.append(option(level, level[0].toUpperCase() + level.slice(1)));
+  select.value = overviewBloom;
+  select.onchange = () => {
+    overviewBloom = select.value;
+    memberOverview();
+    get('overviewBloom').focus();
+  };
+  const table = el('table', '');
+  table.setAttribute(
+    'aria-label',
+    'Checked combinations by chapter and DOK for ' + describe(id),
+  );
+  const head = table.createTHead().insertRow();
+  for (const name of ['Chapter', ...depths.map((d) => 'DOK ' + d)]) {
+    const th = el('th', name);
+    th.scope = 'col';
+    head.append(th);
+  }
+  const rows = table.createTBody();
+  for (let chapter = 1; chapter <= 15; chapter++) {
+    const row = rows.insertRow(),
+      th = el('th', String(chapter));
+    th.scope = 'row';
+    row.append(th);
+    const counts = reviewTotals(records, id, chapter)[overviewBloom];
+    for (const d of depths) {
+      const button = el('button', String(counts[d - 1]));
+      button.setAttribute(
+        'aria-label',
+        'Inspect chapter ' +
+          chapter +
+          ' ' +
+          overviewBloom +
+          ' DOK ' +
+          d +
+          ' for ' +
+          id,
+      );
+      button.onclick = () => inspectMemberCell(id, chapter, overviewBloom, d);
+      row.insertCell().append(button);
+    }
+  }
+  const close = el('button', 'Close element overview');
+  close.onclick = () => {
+    focusedMember = '';
+    box.replaceChildren();
+    get('focus').focus();
+  };
+  const details = el('div', '');
+  details.id = 'overviewDetails';
+  details.tabIndex = -1;
+  box.append(title, info, label, select, table, details, close);
+}
+let overviewBloom = 'analyse';
+function inspectMemberCell(id, chapter, bloom, dok) {
+  const box = get('overviewDetails');
+  box.replaceChildren(
+    el('h3', 'Chapter ' + chapter + ' · ' + bloom + ' · DOK ' + dok),
+  );
+  const matches = [...records.values()].filter(
+    (r) =>
+      r.board.chapter === chapter &&
+      r.board.ids.includes(id) &&
+      r.bloom === bloom &&
+      r.dok === dok,
+  );
+  for (const record of matches) {
+    const text =
+      (record.checked ? 'Reviewed' : 'Open') +
+      ' · ' +
+      (record.board.steps ? 'Ordered journey' : 'Together') +
+      ' · ' +
+      record.board.ids.join(', ');
+    const select = el('button', text);
+    select.onclick = () => {
+      show(record.board);
+      openNote(bloom, dok);
+    };
+    box.append(select);
+  }
+  if (!matches.length)
+    box.append(el('p', 'This cell has no saved review for this element.'));
+  const build = el('button', 'Review with the current selection');
+  build.disabled = !board;
+  build.onclick = () => {
+    const selection = board;
+    if (!selection) return;
+    if (selection.steps && !selection.ids.includes(id)) {
+      tell(
+        'Add the element to the step where it occurs before reviewing this sequence.',
+      );
+      get('steps').focus();
+      return;
+    }
+    show({
+      chapter,
+      ids: [...new Set([...selection.ids, id])],
+      steps: selection.steps,
+    });
+    openNote(bloom, dok);
+  };
+  box.append(build);
+  box.focus();
+}
+get('focus').onclick = () => {
+  focusedMember = get('matches').value;
+  if (!focusedMember) return;
+  listSaved(focusedMember);
+  memberOverview();
+  get('overviewBloom').focus();
 };
+get('makeReference').onclick = () => {
+  if (!board) {
+    tell('Choose a valid combination first.');
+    return;
+  }
+  const fragment = reviewReference(
+    board,
+    editing && { bloom: editing.b, dok: editing.d },
+  );
+  get('reviewRef').value = fragment;
+  get('bookmark').href = fragment;
+  get('bookmark').hidden = false;
+  get('reviewRef').focus();
+  get('reviewRef').select();
+};
+function openRef(value) {
+  try {
+    const result = readReviewReference(atlas.members, value);
+    show(result.board);
+    if (result.cell) openNote(result.cell.bloom, result.cell.dok);
+    else get('boardTitle').scrollIntoView();
+    tell('Opened the requested review.');
+  } catch (err) {
+    tell('Could not open this reference. ' + err.message);
+  }
+}
+get('openReference').onclick = () => openRef(get('reviewRef').value);
+window.addEventListener('hashchange', () => {
+  if (location.hash.startsWith('#review?')) openRef(location.hash);
+});
 function download(name, content, type) {
   const url = URL.createObjectURL(new Blob([content], { type })),
     a = document.createElement('a');
@@ -562,6 +710,7 @@ get('documented').onclick = () => {
   records = mergeLedger(atlas.members, records, reviewedLedger(atlas));
   persist();
   refreshBoard();
+  memberOverview();
   tell(
     'Added ' +
       (records.size - count) +
@@ -634,6 +783,7 @@ get('load').onchange = async () => {
     records = mergeLedger(atlas.members, records, incoming);
     persist();
     refreshBoard();
+    memberOverview();
     tell('Checklist imported. ' + records.size + ' saved cells.');
   } catch (e) {
     tell('Import failed. ' + e.message);
@@ -765,10 +915,15 @@ function renderMatrix() {
         const td = tr.insertCell(),
           cb = document.createElement('input');
         cb.type = 'checkbox';
-        cb.checked = records.get(cellKey(b, l, d))?.checked ?? false;
+        const exact = cellKey(b, l, d);
+        cb.dataset.reviewCell = exact;
+        cb.checked = records.get(exact)?.checked ?? false;
         cb.setAttribute('aria-label', m.id + ' ' + l + ' DOK ' + d);
         cb.onchange = () => {
           record(l, d, { checked: cb.checked }, b);
+          for (const sibling of wrap.querySelectorAll('input[data-review-cell]')) {
+            if (sibling.dataset.reviewCell === exact) sibling.checked = cb.checked;
+          }
           grid();
         };
         td.append(cb);
@@ -879,3 +1034,4 @@ get('useSet').onclick = () => openNumber(0n);
 
 search();
 get('example1').click();
+if (location.hash.startsWith('#review?')) openRef(location.hash);

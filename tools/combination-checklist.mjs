@@ -119,13 +119,41 @@ export function saveLedger(records) {
 export function reviewTotals(records, member, chapter) {
   const totals = Object.fromEntries(levels.map((l) => [l, [0, 0, 0, 0]]));
   for (const r of records.values())
-    if (
-      r.checked &&
-      r.board.chapter === chapter &&
-      r.board.ids.includes(member)
-    )
+    if (r.checked && r.board.chapter === chapter && r.board.ids.includes(member))
       totals[r.bloom][r.dok - 1]++;
   return totals;
+}
+
+/** A reference identifies a board and optional cell. Notes and checked states stay in the ledger. */
+export function reviewReference(board, cell) {
+  const params = new URLSearchParams();
+  params.set('chapter', board.chapter);
+  for (const id of board.ids) params.append('member', id);
+  for (const step of board.steps ?? []) params.append('step', JSON.stringify(step));
+  if (cell) {
+    cellKey(board, cell.bloom, cell.dok);
+    params.set('bloom', cell.bloom);
+    params.set('dok', cell.dok);
+  }
+  return '#review?' + params;
+}
+export function readReviewReference(members, value) {
+  const trimmed = value.trim();
+  const fragment = trimmed.slice(trimmed.indexOf('#'));
+  if (!fragment.startsWith('#review?'))
+    throw Error('Paste a combination review reference.');
+  const params = new URLSearchParams(fragment.slice(8));
+  const steps = params.getAll('step');
+  const board = boardFor(members, {
+    chapter: Number(params.get('chapter')),
+    ids: params.getAll('member'),
+    steps: steps.length ? steps.map((step) => JSON.parse(step)) : undefined,
+    design: 'any',
+  });
+  if (!params.has('bloom') && !params.has('dok')) return { board };
+  const cell = { bloom: params.get('bloom'), dok: Number(params.get('dok')) };
+  cellKey(board, cell.bloom, cell.dok);
+  return { board, cell };
 }
 
 const reviewDate = '2026-11-28T00:00:00.000Z';

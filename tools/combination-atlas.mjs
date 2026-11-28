@@ -195,6 +195,41 @@ const otherCases = {
     'The intact sleeve reads clearly from the back row.',
     'A repaired hinge can give the other sister the opening.',
   ],
+  'last-bell.voices.sleeve': [
+    ['area:HIS', 'framework:methods-and-tools'],
+    'Wren can use the shelf number to retrieve the kitchen recording and its loan terms.',
+    'The witness marked the same sleeve for private listening or unsigned wording. Finding it gives the guardian a specific permission to respect.',
+  ],
+  'optics.presets': [
+    ['theme:TEC', 'concept:perspective'],
+    'A maker can recall the star packing from its mark in the felt after returning the tools.',
+    'A second reader can open the knot packing and see the comparison with its own pair of fittings.',
+  ],
+  'middlehouse.guests': [
+    'area:HUM',
+    'A traveller at the mat can use a resident’s directions to get the kettle around the house.',
+    'A neighbour at the sill can ask the resident there for a sightline. The position changes what help they can give.',
+  ],
+  'last-bell.voices.left': [
+    'theme:LAN',
+    'A listener in Wren’s chair can hear the later grooves identify the stove bell.',
+    'The ferry crew can read an unsigned statement together. The witness keeps her voice and the question about the tower stays open.',
+  ],
+  'elbow.fitting': [
+    ['area:ART', 'concept:evidence'],
+    'The tailor’s measure preserves how much cloth is available for a shared sleeve.',
+    'The performers depend on where the elbow bends. The same length can put their hands too far apart.',
+  ],
+  'elbow.lottery': [
+    'area:MAT',
+    'The person running the draw can compare an unusual assignment with the other possible packets.',
+    'A performer using the resulting sleeve still needs to know how much the difference changes their reach.',
+  ],
+  'middlehouse.night': [
+    'theme:POL',
+    'A neighbour who needs rest can use the tested cart route when choosing whom to give the evening key.',
+    'A neighbour staging a performance can use the measured sightline to ask for the same room. The earlier invitation follows both of them to the table.',
+  ],
   'last-bell.council.reopened': [
     'theme:POL',
     'Households can choose how to be reached when the bell fails.',
@@ -355,7 +390,8 @@ export function buildAtlas(audit) {
   for (const [objective, [lens, ...views]] of Object.entries(otherCases)) {
     const r = reviews.find((r) => r.objective === objective);
     const actor = coatSpeakers.get(objective);
-    const beat = add(r, actor ? [lens, actor] : [lens], {
+    const anchors = Array.isArray(lens) ? lens : [lens];
+    const beat = add(r, actor ? [...anchors, actor] : anchors, {
       id: objective,
       views,
     });

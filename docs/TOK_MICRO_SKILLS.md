@@ -1,5 +1,7 @@
 # Micro-skills in the campaign
 
+[Look up each skill’s linked chapters and documented cognitive cells](audit/SKILL_REVIEW_INDEX.md).
+
 All 1,200 supplied numbers have public descriptions in the [member index](audit/COMBINATION_MEMBERS.md#family-micro). To review a skill, find it in the [combination checklist](audit/COMBINATION_CHECKLIST.html), choose its chapter and add the relevant story, game and TOK elements. Each combination has an independent cell for every Bloom level at every DOK. The current campaign links 619 micro-skills to an objective. A reviewer can still track any of the other 581 while investigating or designing a new encounter.
 
 Look up one or more numbered micro-skills together with story elements, mechanics, reasoning patterns and questions. [Combination atlas](audit/COMBINATION_ATLAS.md)

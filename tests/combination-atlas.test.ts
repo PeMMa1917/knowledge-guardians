@@ -123,6 +123,9 @@ describe('documented TOK combination space', () => {
     expect(byKind('companion').length).toBeGreaterThanOrEqual(264);
     expect(byKind('exhibit').length).toBeGreaterThan(2000);
     expect(byKind('solo')).toHaveLength(5);
+    expect(new Set(atlas.beats.map((b:{bloom:string})=>b.bloom))).toEqual(new Set(['remember','understand','apply','analyse','evaluate','create']));
+    expect(atlas.beats.find((b:{id:string})=>b.id==='last-bell.voices.sleeve')).toMatchObject({bloom:'remember',dok:1});
+    expect(atlas.beats.find((b:{id:string})=>b.id==='last-bell.voices.left')).toMatchObject({bloom:'analyse',dok:3});
     const coat=atlas.beats.find((b:{id:string})=>b.id==='returned-coat.hook.print');
     expect(coat.members).toEqual(expect.arrayContaining(['character:kip-arden','exhibition:25']));
     const first = ['bias:halo', 'fallacy:wealth', 'story:25', 'game:238'];

@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 // @ts-expect-error audit tools run as native JavaScript.
 import { boardFor, boardKey, cellKey, depths, levels, mergeLedger, saveLedger, reviewTotals } from '../tools/combination-checklist.mjs';
 // @ts-expect-error audit tools run as native JavaScript.
-import { reviewedLedger } from '../tools/combination-checklist.mjs';
+import { readReviewReference, reviewedLedger, reviewReference } from '../tools/combination-checklist.mjs';
 const ids = [
   'concept:truth',
   'framework:scope',
@@ -54,6 +54,16 @@ describe('portable reviewer checklist', () => {
     const merged=mergeLedger(members,prior,ledger);
     expect(saveLedger(merged).records[0].evidence).toBe('Awaiting a second opinion.');
     expect(saveLedger(merged).records[0].checked).toBe(false);
+  });
+  it('references the exact chapter, order and cognitive cell without including a private review', () => {
+    const ordered = boardFor(members, {chapter:4,ids,steps:[ids,ids.slice(0,2)]});
+    const ref = reviewReference(ordered, {bloom:'create',dok:4});
+    expect(ref).not.toContain(record.evidence);
+    expect(readReviewReference(members, 'file:///offline.html'+ref)).toEqual({board:ordered,cell:{bloom:'create',dok:4}});
+    expect(readReviewReference(members, reviewReference(board))).toEqual({board});
+    expect(() => readReviewReference(members, ref.replace('dok=4','dok=8'))).toThrow();
+    expect(() => readReviewReference(members, ref.replace('chapter=4','chapter=0'))).toThrow();
+    expect(() => readReviewReference(members, ref.replace('micro%3A1200','unknown'))).toThrow();
   });
   it('round trips precisely, leaves unchecked cells independent and refuses a partial or conflicting import', () => {
     const ledger = mergeLedger(members, new Map(), {

@@ -1,6 +1,6 @@
 # Knowledge Guardians
 
-Reviewers can look up any combination of story, game and learning elements, its TOK anchors and the player actions observed in each chapter. [Combination atlas](docs/audit/COMBINATION_ATLAS.md) · [Check off a combination](docs/audit/COMBINATION_CHECKLIST.html) · [Review status by chapter](docs/audit/COMBINATION_REVIEW_STATUS.md)
+Reviewers can look up any combination of story, game and learning elements, its TOK anchors and the player actions observed in each chapter. [Combination atlas](docs/audit/COMBINATION_ATLAS.md) · [Check off a combination](docs/audit/COMBINATION_CHECKLIST.html) · [Review status by chapter](docs/audit/COMBINATION_REVIEW_STATUS.md) · [Skills and micro-skills](docs/audit/SKILL_REVIEW_INDEX.md) · [Chapter workbook](docs/audit/CHAPTER_REVIEW_GRIDS.xlsx)
 
 Knowledge Guardians is a 2D top-down pixel-art RPG for IB Diploma Theory of Knowledge (TOK) students. The player is a new Knowledge Guardian. The player examines real historical objects, compares claims and evidence, and makes honest labels.
 

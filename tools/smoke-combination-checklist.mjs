@@ -228,6 +228,34 @@ try {
       'Ordered journey',
     ),
   );
+  await page.locator('#family').selectOption('micro');
+  await page.locator('#search').fill('micro:1200');
+  await page.locator('#focus').click();
+  await page.locator('#overviewBloom').selectOption('create');
+  const overviewCell = page.getByRole('button', {name:'Inspect chapter 2 create DOK 4 for micro:1200',exact:true});
+  assert.equal(await overviewCell.innerText(), '1');
+  await overviewCell.click();
+  await page.locator('#overviewDetails').getByRole('button', {name:/^Reviewed/}).click();
+  assert.equal(await page.locator('#cellTitle').textContent(), 'create · DOK 4');
+  await page.locator('#boardAddress summary').click();
+  await page.locator('#makeReference').click();
+  const reference = await page.locator('#reviewRef').inputValue();
+  assert(reference.startsWith('#review?'));
+  await p2.goto(url + reference);
+  await p2.locator('#editPanel').waitFor();
+  assert.equal(await p2.locator('#chapter').inputValue(),'2');
+  assert.equal(await p2.locator('#cellTitle').textContent(), 'create · DOK 4');
+  assert.equal(await p2.locator('#grid input:checked').count(),0);
+  await page.locator('#reviewRef').fill(reference.replace('dok=4','dok=5'));
+  await page.locator('#openReference').click();
+  assert((await page.locator('#message').textContent()).includes('Could not open'));
+  const emptyCell = page.getByRole('button', {name:'Inspect chapter 4 create DOK 4 for micro:1200',exact:true});
+  assert.equal(await emptyCell.innerText(),'0');
+  await emptyCell.click();
+  await page.getByRole('button',{name:'Review with the current selection'}).click();
+  assert.equal(await page.locator('#chapter').inputValue(),'4');
+  assert.equal(await page.locator('#cellTitle').textContent(),'create · DOK 4');
+  assert.equal(await page.locator('#grid input:checked').count(),0);
   assert.deepEqual(errors, []);
   console.log(
     engine,

@@ -71,3 +71,65 @@ export function reviewStatus(atlas) {
   }
   return out.join('\n').trimEnd() + '\n';
 }
+
+export function skillReviewIndex(atlas) {
+  const objectives = new Map(),
+    observations = new Map();
+  function index(target, key, item) {
+    const items = target.get(key) ?? [];
+    items.push(item);
+    target.set(key, items);
+  }
+  for (const activity of atlas.activities)
+    for (const id of new Set(activity.skills)) index(objectives, id, activity);
+  for (const beat of atlas.beats)
+    for (const id of beat.members) index(observations, id, beat);
+  const members = atlas.members.filter(
+    (m) => m.kind === 'skill' || m.kind === 'micro',
+  );
+  const clean = (value) => String(value).replaceAll('|', '\\|').replace(/\s+/g, ' ');
+  const lines = [
+    '# Skill and micro-skill review index',
+    '',
+    'Find a skill by name or number. The chapter numbers identify where an objective links to the skill. The cognitive cells identify specific actions in the implementation register. An empty evidence column marks a review opportunity.',
+    '',
+    '[Open the full chapter checklist](COMBINATION_CHECKLIST.html) · [See the review criteria](COMBINATION_ATLAS.md) · [All curriculum and design elements](COMBINATION_MEMBERS.md)',
+    '',
+    'In the offline checklist, select a skill and choose **Review this element across chapters**. Pick a Bloom level, then a DOK cell. Select **Find this element in play** for the objective titles and observed actions. Each exact combination has its own evidence and ten-action count.',
+    '',
+  ];
+  for (const kind of ['skill', 'micro']) {
+    lines.push(
+      kind === 'skill' ? '## Skills' : '## Numbered micro-skills',
+      '',
+      '| ID | Skill | Linked objectives | Chapters with a link | Documented chapter, Bloom and DOK |',
+      '| --- | --- | ---: | --- | --- |',
+    );
+    for (const member of members.filter((m) => m.kind === kind)) {
+      const links = objectives.get(member.id) ?? [];
+      const chapters = [...new Set(links.map((a) => a.chapter))].sort(
+        (a, b) => a - b,
+      );
+      const cells = [
+        ...new Set(
+          (observations.get(member.id) ?? []).map(
+            (b) => b.chapter + ' · ' + b.bloom + ' / ' + b.dok,
+          ),
+        ),
+      ];
+      lines.push(
+        '| ' +
+          [
+            '`' + member.id + '`',
+            clean(member.name),
+            links.length,
+            chapters.join(', ') || '—',
+            cells.join(', ') || '—',
+          ].join(' | ') +
+          ' |',
+      );
+    }
+    lines.push('');
+  }
+  return lines.join('\n');
+}
