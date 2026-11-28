@@ -1,0 +1,254 @@
+[
+  {
+    "number": 79,
+    "name": "Read a sign within its own notation",
+    "uses": [
+      {
+        "objective": "courier.rete.theatre",
+        "action": "Turn the open rete and then the star pointers. Carry the selected mark to the stage and let the audience see what the model does when the demonstrator moves it. The actual star still needs an observation.",
+        "styles": [
+          "performer",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 114
+      },
+      {
+        "objective": "courier.roman-book.market",
+        "action": "Try the script tab beside the accession tab and send one first. At the receiving counter the person and edition cues separate the language of a work from the script used to set this particular edition.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 92,
+    "name": "Locate the silent premise between a clue and a claim",
+    "uses": [
+      {
+        "objective": "courier.banknote.market",
+        "action": "Set the serial or face-value tab on the bell. Open the slip with the note first, then listen to the family ask what its denomination could buy. The price list is an independent missing step.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 114
+      },
+      {
+        "objective": "courier.dome.theatre",
+        "action": "Address the picture of the dome to the stage doorkeeper. Open with the object or the invited party. Recognition of the building leaves the right to enter unresolved.",
+        "styles": [
+          "performer",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 171,
+    "name": "Choose a situated object for a particular audience",
+    "uses": [
+      {
+        "objective": "courier.bay-map.market",
+        "action": "Equip the archived map with the recorder and two named knowledge holders. Send one of its checked details to the clerk, then present this very map to open the counter.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 114
+      },
+      {
+        "objective": "courier.banknote.theatre",
+        "action": "Use AA2986931 at the theatre after earning it in its own quest. The treasurer can lead with a denomination or an issuer’s promise. The serial distinguishes the object on stage from another note.",
+        "styles": [
+          "performer",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 172,
+    "name": "Exchange a generic representation for a traceable individual object",
+    "uses": [
+      {
+        "objective": "courier.long-print.market",
+        "action": "Set the inventory slip beside the medium or date tab before dispatch. Take this dated screenprint to the handler and decide how to show why the earlier embroidered work would be the wrong delivery.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 114
+      },
+      {
+        "objective": "courier.number-board.theatre",
+        "action": "Frame one BOU 10 board from the specified series. Post a tab for the individual or series, carry the board to Pella and hear what happens when a single work has to introduce the whole.",
+        "styles": [
+          "performer",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 174,
+    "name": "Give the next reader the item’s identity and provenance at the opening",
+    "uses": [
+      {
+        "objective": "courier.one-leaf.theatre",
+        "action": "Send the holding place, signature or single-leaf slip. Choose whether the source face or the people enter first when Pella announces this manuscript. The opening determines which contribution her audience hears.",
+        "styles": [
+          "performer",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 114
+      },
+      {
+        "objective": "courier.dugout.market",
+        "action": "Equip the named museum vessel. Assign a receipt to the vessel name, commission or inventory number and open with the object or the person. Bew has to keep the vessel’s name as well as a traceable record.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 175,
+    "name": "Use a feature of the real setting to explain a knowledge problem",
+    "uses": [
+      {
+        "objective": "courier.papyrus-red.theatre",
+        "action": "Tip the battle passage and the gap left for another diplomatic source. Open the issued address in performance. The king’s voice can be heard without letting this one numbered sheet stand in for both governments.",
+        "styles": [
+          "performer",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 114
+      },
+      {
+        "objective": "courier.shallow-basket.market",
+        "action": "Put the year of making or the collection year on the address and give Bew the basket or its maker first. The next person has to distinguish the two dates to investigate the object.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 176,
+    "name": "Use the artifact to show a way knowledge is made and passed on",
+    "uses": [
+      {
+        "objective": "courier.drawers.theatre",
+        "action": "Select a visible coin or an underlying drawer pair before giving an announcer the result. The audience can see how the selection changed the claim they heard.",
+        "styles": [
+          "performer",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 114
+      },
+      {
+        "objective": "courier.papyrus-dark.market",
+        "action": "Raise the stopping point and another dated entry, issue a marked tab, and let a clerk or the worker open it. The grain board and the continued protest carry different records of the same delivery.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 114
+      }
+    ]
+  }
+]

@@ -1719,7 +1719,7 @@
    "objectives": [
     {
      "id": "tail.opening",
-     "title": "Get Kip’s warning where someone can use it.",
+     "title": "Carry Kip’s blue-tail warning from the Nexus stair to the board or the staffed desk.",
      "essential": false,
      "done": {
       "flagSet": "tail.start-route"

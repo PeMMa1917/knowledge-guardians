@@ -1,6 +1,7 @@
 .object-use,
 .object-use-queue {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.55rem;
 }
 .object-use h2,

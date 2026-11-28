@@ -1,0 +1,12 @@
+.claim-bell fieldset { border: 1px solid currentColor; border-radius: .45rem; padding: .55rem; margin: .65rem 0; min-inline-size: 0; }
+.claim-bell legend { padding: 0 .35rem; font-weight: 700; }
+.bell-controls { display: flex; flex-wrap: wrap; gap: .45rem; }
+.bell-controls button { max-inline-size: 100%; white-space: normal; overflow-wrap: anywhere; }
+.bell-controls button[aria-pressed="true"] { outline: 2px solid currentColor; outline-offset: -4px; font-weight: 700; }
+.bell-controls button[aria-pressed="true"]::before { content: "◆ "; }
+.bell-plate, .bell-slips { border-inline-start: .32rem double currentColor; padding-inline-start: 1.2rem; }
+.bell-slips li + li { margin-block-start: .45rem; }
+.bell-feedback { min-height: 1.35em; font-weight: 600; }
+
+.bell-scene img { float:inline-start; width:3.5rem; height:3.5rem; margin:0 .65rem .3rem 0; image-rendering:pixelated; }
+.bell-feedback:empty { display:none; }

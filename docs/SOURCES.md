@@ -1,5 +1,17 @@
 # Historical objects and sources
 
+## Two leaves at Lamp Quay
+
+The travelling model credits the Oklahoma State University transcripts of the 30 September and 26 October 1809 instruments separately. The latter names Wea representatives. The 2011 Indiana Historical Bureau marker commemorates the 1810 and 1811 Vincennes meetings. The Absentee Shawnee Tribe’s account explains a choice on its own emblem. All four sources and their precise locators are registered with the earlier Civic and Voices cases. [Civic case](../src/content/m13-civic.json) · [Voices case](../src/content/m14-voices.json)
+
+The Peoria Tribe of Indians of Oklahoma names Kaskaskia, Peoria, Piankashaw and Wea peoples in its account of the 1854 confederation and describes twenty tribes in the Nation’s wider history. The Eastern Shawnee Tribe of Oklahoma’s constitutional file includes a certificate signed on 17 June 1999 by Mary Moss, Lena Mae Elliott and Glen Brock. PDF page 16 records 115 for, 48 against, 6 spoiled and 270 eligible. The game’s three percentages are derived from those published counts. The election date applies to this particular certificate. [Peoria Tribe history](https://peoriatribe.com/204/History) · [Eastern Shawnee constitutional file](https://www.estoo-nsn.gov/media/2551)
+
+Opal and Tallis speak about their own exhibition and family. The public leaves identify each publishing body and keep the limits of its account attached. The schematic artwork depicts the cabinet, lamps, model floor and layout of a certificate. [Source pairs](../src/content/stackWindows.ts) · [Artwork](../src/ui/turningStacksArt.ts)
+
+## Viri’s glasshouse
+
+The two costume crops, instrument readings and garden visits belong to the fictional company. The game uses the silverweed study to support variation in ultraviolet floral patterning and the Arizona State University resource to support ultraviolet sensitivity. The museum record identifies the particular hand-coloured 1771 impression held in Cleveland. The artist’s attribution and that later edition have separate stops in play. [Koski and Ashman](https://doi.org/10.1086/671803) · [Ask A Biologist](https://askabiologist.asu.edu/colors-animals-see) · [Cleveland Museum of Art, 1955.320](https://www.clevelandart.org/art/1955.320)
+
 The project owner's rule: **objects in the game are real, from history, specific, time-bound and clear.** Fictional things (Aethelgard, its people and the patterned blade for sale in Emberford) are labelled `fictional-world` in the game and never look like historical records.
 
 The [content registry](../src/content/index.ts) gathers the shared source list and the recorded sources attached to individual missions. Keep this register and the in-game exhibits and evidence cards in agreement.
@@ -756,3 +768,105 @@ The reviewed set covers 1,066 documented exhibits, including 1,018 registered sp
 The 140 supplied names are recorded with distinct Wikidata identities and English Wikipedia article titles in the encounter registry. Each corresponding `HIS-INK-` record has a narrow biographical claim, an article URL and an access date of 27 November 2026. For example, the source for Gārgī supports her questioning of Yājñavalkya in the Bṛhadāraṇyaka Upaniṣad. Her paper bird and the silk ceiling are an authored scene. Marcel Duchamp, Mozi, Ibn Khaldun and Ibn al-Haytham each use the same character and article identity in their other encounters.
 
 The individual source sits under the wax seal in play. Meeting a historical speaker makes their article available in the diary and its Word and print exports. An institutional object citation still depends on the object being earned. The Indigenous scholars and makers have individually attributed accounts. Permissions for community knowledge or a representation on a community’s behalf need direct consultation. [Identifiers and articles](../src/content/encyclopedia.json) · [Biographical claims and original dialogue](../src/content/ink-post-letters.json) · [Credit formatting](../src/domain/mla.ts)
+
+## The Night Register collection
+
+Each of the 1,020 new works has one physical case, one museum accession and one catalogue source. The museum's Index of American Design includes watercolours depicting objects. For example, Ruth M. Barnes's *Needle Book*, accession 1943.8.14716, is the work the player receives. The represented needle book and the watercolour are different objects. Preserve this distinction when writing about materials or authorship. [Needle Book, National Gallery of Art](https://www.nga.gov/collection/art-object-page.26807.html)
+
+The catalogue uses the Gallery's accessioned, nonvirtual works, a credited creator or attribution, a bounded creation date and a published open-access primary image. Four display dates use “n.d.” or “date unknown”. Their entries also give the museum's year range and preserve that uncertainty. Entries retain the institutional attribution when it names a workshop or more than one contributor. A distinct artist-credit string can represent more than one person. [Accession records and dates](../src/content/night-register.json) · [National Gallery of Art open data](https://github.com/NationalGalleryOfArt/opendata)
+
+A receipt records how the fictional keeper used the reading. It does not document the museum object's original use. The collection record supplies the object citation in the journal after the player earns it. An exact Wikipedia article is offered where the work has a researched match. Other works keep a labelled search alongside their museum source. The edition with an accession can travel while the object occupies its sole case or the player's collection. [Journal source rules](../src/domain/specimenReferences.ts) · [Encyclopedia matches](../src/content/encyclopedia.json)
+
+## Field assessment at Fern Station
+
+Liebenberg, Louis, et al. *Assessing and Certifying Indigenous Tracking Expertise and Skills*. Indigenous Peoples of Africa Coordinating Committee, prepared for UNESCO Local and Indigenous Knowledge Systems, Sept. 2021, p. 12. The Fern Station’s separate signatures and its invitation to an outside observer adapt the report’s distinction between locally chosen and invited evaluators. [UNESCO record](https://unesdoc.unesco.org/ark:/48223/pf0000382276)
+
+### Hōkūleʻa at the folding flock
+
+The Polynesian Voyaging Society dates Hōkūleʻa’s launch at Kualoa/Hakipuʻu on Oʻahu to 8 March 1975. Its history names Mau Piailug of Satawal and Nainoa Thompson of Hawaiʻi and distinguishes their roles in the 1976 and 1980 voyages. Thompson recounts how Piailug adapted his teaching. The navigators’ stated communities remain separate from each other and from Tupaia of Raʻiātea in the Lantern House. The paper flock and the theatre projection are original play models. [Launch](https://hokulea.com/hokulea-44th/) · [Voyages](https://hokulea.com/history/) · [Thompson’s account](https://archive.hokulea.com/rapanui/mau.html) · [Observing birds](https://archive.hokulea.com/navigate/land.html)
+
+
+### Louis Braille and Fen’s practice tabs
+
+Perkins describes its copy of Braille’s 1829 *Procédé*, an early method of writing words and music that used dashes as well as dots. An equipped copy brings its author to the travelling orchard. His journal entry links to the Perkins account and to his biography. Fen’s seven-notch wooden tabs, two moulds and stylus belong to the fictional touring company. The carver lets the player change the contact pressure and compare the two impressions. A student can trace the history of the book and identify exactly where the staged experiment begins. [Perkins School for the Blind](https://www.perkins.org/brailles-most-famous-book/)
+
+### The counterweight deliveries
+
+The collection room uses the existing sources and original earning quests for thirteen additional holdings. A player takes the individual object to a second room. The address can name a material mark, the process that produced it or a person whose contribution would otherwise disappear. The source and the signed mark travel together in the diary. The two desk keepers and their family history belong to the game.
+
+| Held item | Holding or published witness | Record |
+| --- | --- | --- |
+| The Harvard copy of Brooks’s Century Book for Young Americans | Harvard University library copy, digitised in Internet Archive | [centurybookfory00revogoog](https://archive.org/details/centurybookfory00revogoog) |
+| The Michigan copy of Bertrand’s Calcul des probabilités | University of Michigan library copy, digitised in Internet Archive | [calculdesprobab01bertgoog](https://archive.org/details/calculdesprobab01bertgoog) |
+| The British Museum’s first sheet of Papyrus Sallier III | British Museum | [EA10181,1](https://www.britishmuseum.org/sites/default/files/2022-10/Hieroglyphs_unlocking_ancient_Egypt_large_print_guide_The_British_Museum_2.pdf) |
+| The Turin Strike Papyrus in Museo Egizio, Cat. 1880 | Museo Egizio, Turin | [Cat. 1880](https://collezionepapiri.museoegizio.it/en-GB/document/131/) |
+| Mikaela Rose Cottingham’s binak, Museums Victoria X 104841 | Museums Victoria | [X 104841](https://collections.museumsvictoria.com.au/items/1915791) |
+| The southern bays map recorded from Hoani Te Hau Pere and Hone Tututaua Pere | Auckland War Memorial Museum collection, described by the Ngāi Tahu Archive | [Ngāi Tahu Archive MS7-002](https://kahurumanu.co.nz/map-stories/hoani-te-hau-pere-map/) |
+| Njoya and his scribes’ signed leaf in the Foumban palace archive | Archives du Palais des Rois Bamoun, Foumban; British Library EAP catalogue | [EAP051/1/1/2/2](https://eap.bl.uk/archive-file/EAP051-1-1-2-2) |
+| Frédéric Bruly Bouabré’s «BOU» «10» from Alphabet Bété | Museum of Modern Art, New York | [104.2019.10](https://www.moma.org/collection/works/299029) |
+| Shellabear’s romanised Sejarah Malayu in the National Library of Singapore | National Library, Singapore | [B20025340E](https://biblioasia.nlb.gov.sg/all-sections/vol-11-issue-4-jan-mar-2016-sejarah-malayu-malay-annals/) |
+| Britta Marakatt-Labba’s 2024 hand-coloured Garjját print at Moderna Museet | Moderna Museet, Stockholm | [MOM/2024/133](https://sis.modernamuseet.se/en/objects/120998/garjjat) |
+| Musa’s spherical astrolabe, Oxford inventory 49687 | History of Science Museum, University of Oxford | [49687](https://www.hsm.ox.ac.uk/spherical-astrolabe) |
+| Rra-Kalwanyimara at the Australian National Maritime Museum | Australian National Maritime Museum | [00001826](https://www.sea.museum/object/dugout-canoe) |
+| Zimbabwe’s 100-trillion-dollar banknote AA2986931 at the Smithsonian | National Museum of American History, Smithsonian Institution | [2015.0071.1](https://americanhistory.si.edu/collections/object/nmah_1694052) |
+
+The Garjját drawing indicates the paper mount and inventory slip. The binak drawing describes basket form. The vessel drawing follows the museum display. The public catalogue supplies the named makers and dates. The original diagrams omit protected clan designs and artists’ compositions.
+
+Wasserstein, Ronald L., and Nicole A. Lazar. “The ASA Statement on p-Values: Context, Process, and Purpose.” *The American Statistician*, vol. 70, no. 2, 2016, pp. 129–33. The two puppet-hinge packets use original measurements, a stated randomization procedure and an explicit catch height. The statement supports the distinction between an analysis decision, a small p-value and a useful effect. [Journal article](https://doi.org/10.1080/00031305.2016.1154108)
+
+### The street musicians’ invitations
+
+The National Museum identifies the surviving Singapore Stone as a gallery highlight. The paper linked from the existing Nile story distinguishes the 1843 destruction, Bland’s attempt at a facsimile and the fragment’s return in 1919. Neither the early drawing nor the present fragment supplies missing characters. [National Museum of Singapore](https://www.nationalmuseum.nhb.gov.sg/whats-on/exhibition/singapore-history-gallery) · [Yap, Jiao, and Perono Cacciafoco](https://www.mdpi.com/2409-9252/3/3/19)
+
+The first page of Alfred Lucas’s report bears revisions and asks which process produced disorder in the tomb. The date of the card belongs to the report. February 1923 is separate from the ancient disturbance. [Griffith Institute, TAA i.1.memo.3](https://tutankhamun.griffith.ox.ac.uk/miscellaneous/notes-robberies-taa-i1memo1-15verso/taa-i1memo3)
+
+The M. C. Migel Library facsimile of Braille’s 1829 work carries call number HV1669 .B73 1829. The digitisation metadata gives 5 March 2020 for the scan and describes a photocopied volume. The game’s raised practice marker belongs to the musicians. [Library copy](https://archive.org/details/procdpourcrirele00loui) · [Digitisation metadata](https://archive.org/metadata/procdpourcrirele00loui)
+
+The British Museum records a triton-shell trumpet from Mangaia, collected by William Wyatt Gill and given by Augustus Wollaston Franks as part of a group on 18 November 1876. The source for the instrument’s use is a collector’s account. The makers of the invitation compose their own street music and leave the unrecorded maker unnamed. [British Museum, Oc.9941](https://www.britishmuseum.org/collection/object/E_Oc-9941)
+
+### Artist articles in the adventure journal
+
+The museum record identifies the individual object. An additional article can introduce the particular artist, maker, calligrapher, painter, sculptor or medalist credited for it. The National Gallery of Art records were reconciled by object ID and accession, then by the credited constituent’s identifier. The Met records were reconciled by object ID, accession, single unqualified credit and the museum’s linked identifier. At Cleveland, a named creator with one unqualified credit was matched to a single person by credited name or alias, birth year and death year together. These links describe the object the player inspected. Meeting the artist is a separate journal event. [Journal matches](../src/content/museum-articles.json) · [National Gallery of Art open data](https://github.com/NationalGalleryOfArt/opendata) · [Met Open Access](https://github.com/metmuseum/openaccess) · [Cleveland Open Access API](https://openaccess-api.clevelandart.org/) · [Wikidata article links](https://www.wikidata.org/wiki/Help:Sitelinks)
+
+The Science Museum exhibition record identifies Berners-Lee’s CERN-loaned computer. The W3C timeline supplies the 1990 network name and records the purchase of a NeXT cube. [World Wide Web Consortium timeline](https://www.w3.org/History.html)
+
+### The first cup
+
+Cen and Kit’s two crews, cocoa prices and readings belong to Lantern Square. The school of thought behind the numbered saucers includes Tversky and Kahneman’s 1974 discussion of anchoring and Ariely, Loewenstein and Prelec’s later studies of willingness to pay. The nine volunteers at each fictional stop taste the same reference serving once. Their offers cannot establish the preferences of people who passed by. An optional return with the unopened Carson’s cocoa tin uses Cambridge’s Y: 72/1/2 record and keeps the contents sealed. [1974 paper](https://doi.org/10.1126/science.185.4157.1124) · [2003 paper](https://doi.org/10.1162/00335530360535153)
+
+## Two readings from the loan loft
+
+The catalogue for Swift microscope Z: 408a describes body 16616 and its one fitted objective marked one inch. Case Z: 408j carries the serial 30607 and lists the three objectives adjusted to its earlier instrument. Its reuse with body 16616 is recorded. The individual catalogue entries supply no manufacturing date. The toy fittings are original to the game. [The microscope](https://www.spri.cam.ac.uk/museum/catalogue/article/z408a/) · [The reused case](https://www.spri.cam.ac.uk/museum/catalogue/article/z408j/)
+
+The 1906 lecture grounds Cajal’s interest in nerve structure, connections and drawing. His biographical account supplies his earlier wish to be an artist. The fresh and pressed petal patterns were invented for the loft. The prepared-cell discussion informs the limit on what a prepared view can establish. [Cajal’s lecture](https://www.nobelprize.org/prizes/medicine/1906/cajal/lecture/) · [Biographical account](https://www.nobelprize.org/prizes/medicine/1906/cajal/biographical/) · [Studying Cells](https://openstax.org/books/biology-2e/pages/4-1-studying-cells)
+
+The theatre adapts Huygens’s construction of a new front from secondary wavelets. Lamp counts on the crew’s rehearsal slips are fictional. They let a player find a seat where two simplified drawings offer competing forecasts. [Huygens’s Principle](https://openstax.org/books/university-physics-volume-3/pages/1-6-huygenss-principle)
+
+## The ferry radio and the Paris exhibition
+
+The Library of Congress identifies the 1900 Paris exhibition and the visual work of W. E. B. Du Bois and the Atlanta University collaborators. Princeton Architectural Press credits the contributors to the charts. The ferry, its song and its two sets of passenger slips are fictional. The abstract rates can be checked from the four displayed denominators. OpenStax supplies a separately credited reference about sampling. Readers can earn the three records through different conversations and export the records that have entered their diary. [Library of Congress](https://blogs.loc.gov/inside_adams/2015/02/du-bois-in-paris-exposition-universelle-1900/) · [Published chart collection](https://papress.com/products/w-e-b-du-boiss-data-portraits-visualizing-black-america) · [OpenStax](https://openstax.org/books/introductory-statistics-2e/pages/1-2-data-sampling-and-variation-in-data-and-sampling)
+
+
+## Lovelace at the island pier
+
+The Computer History Museum describes Lovelace’s appended notes on the proposed Analytical Engine. In Note A of the 1843 translation she considers the representation of musical relations by symbols. A player can encounter both sources through her visits. Matel’s wages, the paper moth and the island schedule are part of the Guardian’s story. [The Babbage Engine](https://www.computerhistory.org/babbage/adalovelace/) · [Lovelace’s notes](https://www.fourmilab.ch/babbage/sketch.html)
+
+## The walking orchard
+
+Wangari Maathai’s 2004 Nobel lecture describes hearing rural Kenyan women identify the work and resources they needed. The Green Belt Movement gives its own account of its environmental and community work. Paulo Freire’s Brazilian educational practice is introduced through a separately credited reading on dialogue and investigation drawn from lived situations. Each historical guest can return to the square and respond to what the Guardian helped build. [Wangari Maathai’s lecture](https://www.nobelprize.org/prizes/peace/2004/maathai/lecture/) · [The Green Belt Movement](https://www.greenbeltmovement.org/what-we-do/) · [Freire Institute](https://www.freire.org/concepts-used-by-paulo-freire/)
+
+The counting cloth uses twelve invented volunteer slips. The three borrowers, their permissions and the minimum group size of three belong to the fictional nursery. The MLA source offered after a grower’s count or closed roll is prepared links to general research on disclosure risk. [National Institute of Standards and Technology](https://www.nist.gov/publications/de-identifying-government-datasets-techniques-and-governance)
+
+## Jane Jacobs and Zaha Hadid at the inn
+
+The small inn and its residents are fictional. Jacobs’s visits to the model floor and the coal yard invite a comparison between an abstract route and somebody using a street. Community-led walks in her name provide a separate, later example. [Project for Public Spaces](https://www.pps.org/article/jjacobs-2) · [Jane’s Walk](https://janeswalk.org/about-us/)
+
+A sketchbook in the inn identifies Hadid’s Vitra Fire Station, completed in Weil am Rhein in 1993. Her two visits to the fictional house and harbour let a player see how changing a viewing position changes the reading of a space. [Pritzker Architecture Prize](https://www.pritzkerprize.com/laureates/2004)
+
+## Place names at two tides
+
+The Inuit Heritage Trust describes its Traditional Place Names Program and the 2014 update of *Nunavut, Where We Live and Travel*. Players can read what the programme says about documenting, making available and officially recognising names, and who contributed to that work. The edition has its own discovery record. [Inuit Heritage Trust](https://www.ihti.ca/traditional-place-names)
+
+Pitquhirnikkut Ilihautiniq describes the work it began in 2022 on the Inuinnaqtun Language Development Plan. The organisation discusses immersion, mentor-apprentice relationships and reference resources. The foil press and its two routes are fictional. The press uses an invented language gesture. [Kitikmeot Heritage Society](https://www.kitikmeotheritage.ca/inuinnaqtunlanguageplan)
+
+Cheryl Bartlett, Murdena Marshall and Albert Marshall describe their experience of co-learning and the Mi’kmaw setting of Two-Eyed Seeing. Players can read the authors’ account separately from the two northern programmes. The invented council at the Old Weir gives receiving neighbours a practical say in changing a map. Kunit’s Tunumiit coastal carving from East Greenland has its own source at the map rack and can be brought back once earned. [Bartlett and the Marshalls](https://doi.org/10.1007/s13412-012-0086-8) · [Kunit’s wooden maps](https://archaeology.org/issues/may-june-2019/collection/maps-greenland-wooden-inuit-maps/mapping-the-past/)

@@ -1,0 +1,24 @@
+[
+  {
+    "number": 621,
+    "name": "Carry two measurement limits into the claim about a change",
+    "uses": [
+      {
+        "objective": "maker.rain-gauge.compared-bounds",
+        "action": "Open the catch margin on the 9 mm reading, then include the error in its reference ring. The possible interval expands from 8.5–9.5 to 8–10 mm on the slip.",
+        "styles": ["maker", "helper"],
+        "modes": ["visual", "analytical", "reading"],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "maker.plumb-line.compared-bounds",
+        "action": "Match a plumb line with a fifty-year-old notch and shade the tolerances on the new and old edges. A central change of zero allows movement of up to one finger-width in either direction.",
+        "styles": ["explorer", "strategist"],
+        "modes": ["spatial", "analytical", "reading"],
+        "game": 234,
+        "story": 91
+      }
+    ]
+  }
+]

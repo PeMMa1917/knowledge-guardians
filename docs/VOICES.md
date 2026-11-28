@@ -1,5 +1,35 @@
 # Voice sheets
 
+## The lost-property rail
+
+Kip Arden knows what it costs to miss a ferry. He makes a joke about his autograph when his thumb prints a pear, and asks for the ticket himself when Ise offers to speak for him. On the private side of the hatch he can fit a child’s toy into a pocket. The important word in that exchange is the borrower’s second “yellow”.
+
+Ise signs for another passenger because somebody once signed for her. She remembers the feel of the pen better than the face of the person who handed it over. Her change of mind begins with letting a seated borrower show her the height of the latch. Sefa tries the clerk with a puppet coat and a real coin. A child laughs. The clerk takes the coin. The awkward second beat matters to everything Sefa says afterwards.
+
+Nim knows exactly when to break a hush on stage and worries everybody will see her miss an entrance. The rain keeper once reached out to steady her. Nim wants that private kindness to survive a public curtain call. Vesper knows two coats went on the rail. She admits why she allowed a busier story to be told. Give the Guardian time to take up either woman’s offer of help. [Lines, responses and later shifts](../src/content/returnCoat.ts)
+
+## Opal Fenn and Tallis Vale
+
+### Opal Fenn (`stacks-opal`)
+
+- **Believes** A room can travel to someone who cannot leave work long enough to see it.
+- **Worries** If Tallis finds the filed hinge, he will think the swapped names were his fault.
+- **Speaks** Puts a handle into your hand before she explains it. Measures a visit in ferry stops.
+- **Why** Her mother worked the far ferry. Opal built this room to open during unloading. She still asks her niece to try a handle before she drills the second screw.
+
+### Tallis Vale (`stacks-tallis`)
+
+- **Believes** The heading should be visible from the height of his niece’s eyes.
+- **Worries** The audience will miss a name while admiring a room that appears to hold itself up.
+- **Speaks** Offers the lamp freely. Keeps his shoulder under the ladder. Gives directions from where his listener is standing.
+- **Why** His sister took him down to the quay with her little girl. He learned what the chalk circle meant by kneeling beside her. [Canal and quay dialogue](../src/content/turningStacks.ts)
+
+## Viri and the two benches
+
+Viri earns her rent dancing with her mother’s wire glove. The gesture she spent a winter learning makes a bee wash its eyes. She wants a child to notice the wirework and worries that admitting how the show works will empty the seats. She borrows Elian’s pencil for an overconfident poster. Elian doubts the claim and still wants a place in the audience. After a silk performance Viri is proud when a child asks about the legs. After the garden show she begins to enjoy the wait.
+
+Maria Sibylla Merian handles the printed sheet, a fold and the space between insect forms. Her conversations with Viri concern what a single composition can hold. The 1771 date belongs to the Cleveland impression. Her words in these encounters belong to the game’s story. [Dialogue and two returns](../src/content/petalGlasshouse.ts)
+
 This file gives each named character a voice (audit fix C-005). Use it when you write a new line for a character. Each sheet has four parts:
 
 - **Believes:** what the character trusts or wants.
@@ -10,6 +40,50 @@ This file gives each named character a voice (audit fix C-005). Use it when you 
 Two keepers in one chapter must disagree for good reasons (decision X-008). Their beliefs are built to pull against each other. Neither keeper is right (OPEN-001).
 
 A test (`tests/voices.test.ts`) checks that every character with more than 20 lines of dialogue has a sheet here. Put the character id in backticks in the heading, as below.
+
+### Tritta (`moth-runner-tritta`)
+
+- **Believes** A notice can give somebody a useful evening even while a difficult question is still open.
+- **Worries** As a child she cleaned a printer’s blocks by the piece. Something a reader needed may have been among the marks she rubbed away.
+- **Speaks** She offers a small wager she cannot pay, then turns out her actual pockets. When someone asks for a silence, she puts her measuring wheel away.
+- **Why** She mends caps, runs corrected proofs and looks after a two-tailed moth that can recognize ink. The three jobs pay her for very different kinds of attention.
+
+## Neighbours who come back for you
+
+### Bela (`cataloguer-bela`)
+
+- **Believes** A child who gave something away should still know how to find it.
+- **Worries** Her brother can make a cabinet so well that a visitor will blame themself for opening the wrong drawer.
+- **Speaks** Names a person first and the label they expect to see second. Keeps a pencil ready even after promising to listen.
+- **Why** Mina grew up beside the drawer where her school left a gift. Now the school is closing and Bela has been asked to file an empty envelope.
+
+### Lio (`translator-lio`)
+
+- **Believes** You can lead a procession from its last rank.
+- **Worries** A passenger will miss their boat while the band is still arguing about who came first.
+- **Speaks** Uses a clock, a crooked knee or a baton to let the listener point before choosing a word.
+- **Why** Lio used to watch their sister play at the back. Working as an arrivals caller makes departure times matter to them too.
+
+### Tamar (`runner-tamar`)
+
+- **Believes** A notice has to reach the people who risk paying for it.
+- **Worries** An adult will use a child's delivery signature to settle what was in a crate.
+- **Speaks** Counts practical things aloud and stops when the next detail would be a guess. Pays the next runner with their own apple.
+- **Why** On market day the useful facts sit at different ends of the quay. The hand that signs for a boat sometimes belongs to its smallest carrier.
+
+### Ren (`apprentice-ren`)
+
+- **Believes** A bad batch is worth a drawer at the Trade Hall.
+- **Worries** A notice Ren signed in a hurry will cost Hesper a seat near the door.
+- **Speaks** Tries out large words in public and makes smaller, careful corrections on the actual ticket. Measures a curl in millimetres.
+- **Why** Hesper saved pieces someone else would have swept up. Ren does the same for a stranger at the next concert.
+
+### Teodora (`singer-teodora`)
+
+- **Believes** A borrowed line can carry a room if someone remembers who taught it.
+- **Worries** A beautiful ending will make the family stop listening for their own missing verse.
+- **Speaks** Sets a stool down, taps a heel or takes a breath before entering. Will quietly wait through a silence others rush to fill.
+- **Why** Sefa brought a hill verse to a family song with a gap. A traveller later recognises one word. Neither can promise where the fourth stool belongs next.
 
 ## The Nexus
 
@@ -444,3 +518,277 @@ A test (`tests/voices.test.ts`) checks that every character with more than 20 li
 - **Worries:** two readings merged into one that nobody can check.
 - **Speaks:** remembers the old bell-runner shifts.
 - **Why:** council loan steward and former harbour bell runner.
+
+## After closing at the chapter registers
+
+| Keeper | What changes how they speak |
+| --- | --- |
+| Ise | A key and a saucer let her mother ask for help on her own terms. Ise offers the stool and waits. |
+| Imani | She remembers the wage for a delivery nobody believed. She lends her runner her good shoe before discussing the seal. |
+| Tovrie | She checks the cold-room pane twice when her brother stops visiting. She lets him decide what his first shift will be. |
+| Orren Bell | He trusts a timing count he has practised for years. Seeing the harbour from his daughter's height makes him count again. |
+| Vellune | Six years of calls have taught her which marks look like her own. She has to check the date on a note before she can use it. |
+| Hesper | Anger at a broken tool coexists with pride in the apprentice who adapted it. Her own teacher's thumbprint complicates the choice. |
+| Bayette | She treats a reversed initial as a clue to her friend's working position. She wants to see where her friend reads it. |
+| Ostel | His friend leaves space for a homecoming at the edge of a map. Ostel sails out to learn which boat can actually see the light. |
+| Brannic | She hates hearing herself hesitate in a practice reel. The scene shifter counts on that exact hesitation. |
+| Sessa Vale | She wants to pay her aunt fairly. Her aunt wants to keep a say in how the basket is mended. Both have good reason to insist. |
+| Maro | She has to balance a sleeping father's rest with a sister's need for a warning. Her father has his own reason for coming downstairs. |
+| Ro | She is quick to picture six lighted windows. Drawing her own seventh window makes it possible for other people to offer help. |
+| Wren | She has promised a young speaker control over one sentence. A visitor can make a long wait bearable without opening the girl's boat. |
+| Joss | Her first instinct is to glue a loose roof down. A child's wheels invite her to follow the house beyond the planning board. |
+| Hale | He has kept everybody else's minutes. When invited to take his turn, he still gets to choose where to sit. |
+
+Each person's morning can change after the Guardian has heard the consequences of a delivery. [Dialogue and branches](../src/content/nightKeepers.ts)
+
+
+### Liri Pell (`liri-pell`)
+
+- **Believes:** Someone who has to feed a tool ought to be able to move its shelf.
+- **Worries:** The guild will credit her for the whole crew’s shift and ignore her on the next drawing.
+- **Speaks:** Measures against a thumb, a shoulder or a sore elbow before she gives a number.
+- **Why:** The new tooth was her work. Working the long boards round a corner was Tessel’s.
+- At sixteen she wants a ferry-watch appointment. Her little sister keeps asking when she can ride along. She tests a joke on the mudbank, admits her hand shakes in the wings and makes her sister cross by recalling a route she helped her learn. A friend can cover the visitors’ bench for the length of a cup of tea. [Liri’s three watches](../src/content/whistleWatch.ts)
+
+### Tessel Fen (`tessel-fen`)
+
+- **Believes:** A mark means more to somebody who has walked round the post with a full load.
+- **Worries:** Showing the apprentice where to turn will make him late for another promise to his sister.
+- **Speaks:** Counts in breakfasts, ferry fares and the time it takes a kettle to boil.
+- **Why:** His carrying kept the boards dry but never put a stamp on one.
+
+### Aven Dorr (`aven-dorr`)
+
+- **Believes:** A guild record can make working people visible if they get to use the ink.
+- **Worries:** Signing for her crew helped the work pass inspection at the price of two other names.
+- **Speaks:** Rules a line, moves the desk or ties a loop round a book before she explains her part.
+- **Why:** She was the apprentice before Liri. She still has the drawing she almost trimmed to fit the book.
+
+At these registers Ostrom asks who was able to enter a mark in each book. Pearl asks a keeper to leave the four holes where they are while the crew and wheel change. Trouillot follows Tessel’s name from the first slip to the line of type. Each has a different job for the Guardian and a different reason to care about what reaches the press. [Register dialogue](../src/content/millShift.ts)
+
+
+#### The Hollow Archivist under Elsbet’s study
+
+The mark on its face identifies who kept the box. It has taken that duty as its name for ten years. Its first words come from stamp pads and labels. The first story it volunteers is about a woman it knew who worked nights. When a visitor moves the second chair it notices the uneven leg. If the Guardian takes the lamp upstairs, it asks somebody to describe the weather. Each request lets it keep a job and gives another person a reason to return. [The six stations](../src/content/vaultNight.ts)
+
+### Agate Vale (`agate-vale`)
+
+- **Believes** a person at a door deserves a chair before anybody asks them to justify their presence. She also wants the line to move and has written rules that kept people waiting.
+- **Worries** about Pev, her father. A family fed from his soup pot for eleven winters. He still has no box to tick on the bedside register. Agate ruled the column herself.
+- **Speaks** in the language of chair repairs, wet labels and receipts. Give her a joint to mend while she talks. When a thing she took for granted fails, she can name who taught her to look again.
+- **Why** the Gilded Seal pays her to set up public hearings. A porter, a runner and a buyer can each put an account in her repair book. Whether she can use what they sent depends on what the next town does with its own chair.
+
+### Otla Rusk (`otla-rusk`)
+
+- **Believes** a cook can put a misunderstanding right by calling everybody back to the same table.
+- **Worries** that her little brother will hear her join the skipping rhyme again. She supplied the word people remember him by.
+- **Speaks** with one hand on the thing she can vouch for. Under pressure she remembers her own word in Kip’s voice. Her jokes come back while she washes up.
+- **Why** the supper hatch doubles as a puppet stage. Its cook can ring the public bell. Her brother gets to decide where he eats and who sits with him. [Otla’s kitchen](../src/content/supperShadow.ts)
+
+### Fen Oriel (`plum-fen`)
+
+- **Believes** people need a downbeat they can find together. The old touring company kept three taps and a hush even when nobody could afford a roof.
+- **Worries** the day the stage stops touring will be the last day someone remembers her mother. A sound from under the boards gives her a reason to wait longer than the score allows.
+- **Speaks** as a wheelwright first. She can find a loose spoke with her thumbnail. She hides an admission in an argument about a wheel or a bad review.
+- **Why** her mother left her the score while Tallowheel carried most of the weight. Fen has to find a way to work for someone who has already given twenty years.
+
+### Tallowheel (`plum-tallowheel`)
+
+- **Believes** a good touring company ought to let its carrier buy a ticket. She also wants her child to have time to finish a sentence.
+- **Worries** the smallest shell will learn that being useful means staying in a harness.
+- **Speaks** through small domestic observations. She has a public theory about how to eat a biscuit. Her foot passes a knock an ear may miss.
+- **Why** she spent twenty springs pulling Fen’s orchard and knows its music from underneath. When someone offers a workable arrangement she decides for herself how far to follow.
+
+### Pia Bosk (`plum-pia`)
+
+- **Believes** an actor can answer a writer by changing what an audience sees. Her favourite rehearsal partner is her brother, who counts the missed catches.
+- **Worries** she will still be waiting for the line to finish when the pear falls. A critic with an apple in their hand is harder to impress than a quiet tree.
+- **Speaks** in precise counts and shameless revisions. She lets a child supply a word when the line carries the wrong fruit.
+- **Why** she has caught a great many imaginary pears and missed forty-one real ones. Her brother can contribute a hammock or a review. She gives him a place on the sill or in the cast photograph.
+
+### Louis Braille at the orchard table (`orchard-louis-braille`)
+
+- **Believes** a musician needs a way to leave their own marks for the next player. The scene takes its starting point from the surviving 1829 volume at Perkins.
+- **Worries** the next player will inherit two workshop signs they cannot distinguish. Fen offers to make that comparison on her own materials.
+- **Speaks** about the reader’s hand, the working surface and the person who has to use the next copy. The workshop conversation is original dialogue.
+- **Why** the first edition records dots and dashes for writing and music. Fen can use the history to ask a question and put her own name on the solution she tried. [Perkins School for the Blind](https://www.perkins.org/brailles-most-famous-book/)
+
+
+## On Tova’s picture ferry
+
+Bo punches things when he cannot put his feeling into words. He offers the Guardian his bruised supper ticket before he will explain why he has put a moon on either side of it. At the bunk he counts what the adults fail to see. At the playhouse he wants a turn with the opening line. Tova measures the price of an extra minute in connections her passengers will miss. Neris volunteers to walk home when making room for another person costs them their own seat. The cook has been waiting to see what everyone else spent supper laughing at. Giving one of them the first page changes who gets to set up a stranger’s story and who has to answer afterwards. [Boat and gallery](../src/content/pictureFerry.ts) · [Individual commissions and replies](../src/content/ferryCommissions.ts)
+
+### Bew, freight clerk (`courier-bew`)
+
+- **Believes** Families should be able to afford the freight lift, including his own sister Nemi.
+- **Worries** His habit of counting every bell as a crate has made Nemi pay for her sister Pella’s stage cue.
+- **Speaks** He keeps a thumb in the ledger when he looks somebody in the eye. He asks who actually took delivery before he puts down a figure.
+- **Why** Counting bells once kept everyone’s wages straight. A second cord or a repayment gives his next customer a different account of what happened.
+
+### Pella, caller at the theatre door (`courier-pella`)
+
+- **Believes** A held pause can help an actor find the courage for a difficult entrance.
+- **Worries** She took over Nemi’s stage cues and kept her pauses. A child asking who taught them can stop her mid-line.
+- **Speaks** She can project a whisper across the foyer. She will reach for a cord or a loose cuff while she waits for someone else to speak.
+- **Why** Borrowing her brother Bew’s freight bell helped an actor and put a charge in Nemi’s book. Her next entrance uses either a second cord or a silent signal.
+
+### Pip Fenner, puppeteer (`elbow-pip`)
+
+- **Believes** A tiny cue from her chair can reach somebody who knows how to watch.
+- **Worries** She built the giant and taught Vee to work it. Being proud of her sister has made it harder to admit how much she misses taking a bow.
+- **Speaks** She lets a paper hand knock for her. A crease in a sleeve usually gets her talking more readily than a compliment.
+- **Why** Seeing her sister lead is different from hearing her praised from the wings. After the performance Pip can keep a paper moon for Vee’s future shop or recall the eyebrow they drew together.
+
+### Vee Fenner, puppeteer and ice seller (`elbow-vee`)
+
+- **Believes** The person at the far wall can still give Pip room to open the show.
+- **Worries** Wanting the bow might sound like wanting her sister to disappear. She has already picked a street for an ice shop and has told almost nobody.
+- **Speaks** She offers a taste from the edge of the plum-ice bucket before she explains herself. Look at the left-handed repairs on the cuff to see an account she has kept with a needle.
+- **Why** The ribbon she tied below the catch lets a short lift spill a dozen paper moons. Either sister can give the cue. The visiting Marcel Duchamp also offers a new gesture to a player carrying the earned Stoppages. [The loft and its callbacks](../src/content/giantSleeve.ts)
+
+## People at the striped awning
+
+### Rix Pottle (`almanac-rix`)
+
+- **Believes** A procession can get a housebound neighbour into the street for an evening.
+- **Worries** Someone will ask which anniversary he printed before he knows whose date it was.
+- **Speaks** Folds and taps while he talks. He can print four different invitations if someone will let him hear the reason for each.
+- **Why** The invitation business pays for a second pair of hands in the band. His own hands shake in front of an audience. Holding the glass steady for Jori gives him another part he can play.
+
+### Jori Wicks (`almanac-jori`)
+
+- **Believes** The person behind a closed window gets a say in how a street celebration starts.
+- **Worries** The last day at her glazier’s shop will become the only day anyone remembers.
+- **Speaks** Points out what a lamp looks like from the other side of a pane. Uses her hands to make room for someone else to lead.
+- **Why** People outside can see the blue street dancer she made. Until Rix takes the frame, the maker has only seen the burn on the back.
+
+William Bland can lend the Guardian a copy edge or help trace the surviving stone. Alfred Lucas offers both his crossed-out verbs and a clear reading. Louis Braille works alongside Rix on the street’s own locator strip. William Wyatt Gill has a named place on the collecting slip, while the concert printer has to keep the unknown maker’s line separate. The guest remembers the printing block that actually reached the reading hall. [Historical voices and the receiving-room scene](../src/content/almanacPrinters.ts)
+
+## The first cup
+
+### Cen Aster (`cup-cen`)
+
+- **Believes** A price on the board should let a stranger decide whether to join the line.
+- **Worries** The grooves from a price she cut as a girl are still turning people away before she can ask them why.
+- **Speaks** Reads hands, feet and the bits of faces visible across her counter. She knows the difference between a shallow cut and a letter that will keep catching the light.
+- **Why** Cocoa and sign lettering pay her rent. A former prompter taught her the cue for returning to the stage. Cen still answers it.
+
+### Kit Oriel (`cup-kit`)
+
+- **Believes** A good piece of stagecraft lets the person who missed the first cue make the next entrance.
+- **Worries** The cocoa cart will roll away while someone is still standing on the sunken step.
+- **Speaks** Can hear a loose wheel nut through the floor. She makes a joke while she gets her hands underneath the cart, then checks a physical reference.
+- **Why** Her final night as a theatre prompter ended on a worn step. An audience that misses an entrance cannot tell who was ready to come on.
+
+### Amos Tversky (`cup-tversky`)
+
+- **Believes** An unusual offer is worth keeping beside the group’s average.
+- **Worries** Unfolding someone’s note for an audience will detach their reason and their permission from the number.
+- **Speaks** Sets two spoons on a fulcrum or leaves a bundle tied long enough for the player to see the consequences.
+- **Why** His work on judgement gives this encounter its subject. In the cart story, two individuals have let him bring their reasons to another street.
+
+### Daniel Kahneman (`lantern-q233950`)
+
+- **Believes** Where a person first encounters a price can change the question they think they have been asked.
+- **Worries** His own place in the line may alter the comparison before the cart leaves the kitchen.
+- **Speaks** Offers his chair, returns a second ticket to the draw or listens while someone explains what a cup means to her.
+- **Why** His research on judgement and framing connects the earlier ferry-ticket instrument with the kitchen. Each stop gives him another chance to notice who is missing.
+
+## The curtain in the loan drawer
+
+### Nim Eave (`optics-nim`)
+
+- **Believes** An understudy should be able to choose how to make her first entrance.
+- **Worries** If she steps into the gap the audience will see only a girl who lost her place.
+- **Speaks** Practises the bow first. Gives the dresser a button to act with when she cannot yet say what she needs.
+- **Why** She spent years mending clothes other people would wear in the light. This is the first time the garment and the entrance both belong to her.
+
+### Mayle Arven (`depot-visitor-mayle`)
+
+- **Believes** Someone carrying a case has a right to know which thing is actually inside.
+- **Worries** A curator will put her father’s name beside somebody else’s stitch. Her company has also grown used to leaving both ends of its barrow to her.
+- **Speaks** Measures what she can lift. Shows her knot and star when talking about a promise.
+- **Why** She found a second serial number on a microscope at the depot. This time the thing she is carrying is a curtain her father helped make. [The porter in both rooms](../src/content/lensLoan.ts)
+
+### Oda Kett (`wire-oda`)
+
+- **Believes** A familiar voice on the ferry can make a passenger feel someone is waiting.
+- **Worries** A recording might keep her wife at the microphone through the summer she asked to have off.
+- **Speaks** She stops a spool by touch, waits for it to settle and says exactly which take she used.
+- **Why** A missed entrance once gave her a reason to borrow a performance. The passengers began coming back for it.
+
+Oda can find a splice with her thumb in the dark. She can fill a missed entrance without letting the passengers hear her hurry. Her wife asked for a summer away from the microphone. Oda borrowed an old performance for one Friday and then could not bring herself to drop it. At the second hearing, give her one concrete action to do with her hands before she speaks. The outcome determines whether she offers the last bar to the crowd, turns down her own spool or waits for an echo from the far bank.
+
+### Tavi Pell (`wire-tavi`)
+
+- **Believes** Somebody should take the trouble to find the people a count leaves outside.
+- **Worries** A broken receiver sounds much like a silent quay inside his headphones.
+- **Speaks** He sets a teaspoon by the lead, names the hour, then goes to the pier himself.
+- **Why** Siv taught him to coil rope. A passenger's unanswered call gave him a reason to learn how to repair receivers.
+
+Tavi Pell counts the slips after he coils the leads. Siv taught him rope work. He can repair a receiver and still mistake an empty winding for an empty pier. His teaspoon makes a warm seat for a paper moth. He offers to go back in person after he hears how the timing of his call kept people from answering. His correction to the painter is to give her both takes.
+
+At the island Joss speaks as a runner who has promised to get people home. His covered and exposed passengers have different reasons to want the horn moved. The visit from W. E. B. Du Bois brings the collaborative visual work at Atlanta University into the account. His station compares which hands made a picture, who supplied the observations and whom the picture can address. [Studio and island conversations](../src/content/ferryRadio.ts)
+
+### Matel Mear (`quarter-matel`)
+
+- **Believes** A shortened shift should still leave a person a place on the dock.
+- **Worries** The clock will conceal someone’s missed break as easily as she conceals the shake in her hand.
+- **Speaks** She speaks privately to a broken wheel and asks someone else to hold the light.
+- **Why** After years of piecework she became responsible for a clock that could schedule two people on opposite shifts.
+
+Matel was paid by the patch before the dock gave her a clock to keep. She treats broken equipment as a co-worker who deserves a discreet word. In company she hides a tremor by asking someone else to hold the lantern. Alone she can take the clock to pieces and put it back together by feel. Her mistake was promising two people on opposite shifts that she would always be there. She can accept the Guardian seeing her hand shake. She has a harder time letting Siv do unpaid work to prove the dock forgot her break. At the rail Matel discovers that Joss kept his foot in the boat so she could come down in her own time.
+
+Lovelace speaks in operations. She wants to know what goes into the machine before anybody describes the result. Upstairs the instruction strip is the one part of the record she could already reconstruct. When a worker puts a reason on the back, she waits for permission before handing it on. [Quarter House dialogue](../src/content/tideClock.ts)
+
+## Gresa Oker and Pella’s evening in the square
+
+Gresa sings alto because she can keep a tune while someone else goes looking for their note. The boots on her cart belonged to her father. She defends the little lie that lets him hear them coming home. When he walks beside the chair she has pushed all winter, she has to let go of his sleeve. Pella calls the dance and knows exactly when an empty beat will cost somebody money. The Guardian who has seen the three freight charges can open the sisters’ old fee story with her again. At the nursery, Pella catches herself about to give a carter’s cue and leaves Gresa the entrance. [Home and field conversations](../src/content/walkingOrchard.ts)
+
+### Neska Vell (`door-neska`)
+
+- **Believes** Knowing something about a guest helps her give them a home.
+- **Worries** The demand for a story at the threshold has sent people away before she learned their names.
+- **Speaks** She counts knocks, tastes cold tea and leaves listeners time to knock back.
+- **Why** Her mother charged one song for a bed. Neska started asking for two when the house got busy.
+
+### Tover Heth (`door-tover`)
+
+- **Believes** The person carrying supper can tell you something the person who drew the stairs cannot.
+- **Worries** He will be onstage while someone downstairs needs him to hold a door again.
+- **Speaks** He tests an arrangement with the weight of a kettle and the rattle of a button.
+- **Why** On the night he first sang in public, his father carried a pot upstairs alone.
+
+### Yilka An (`door-yilka`)
+
+- **Believes** Lighting a way home includes leaving the person at home control over their blind.
+- **Worries** A well-placed light for a spectator might illuminate somebody who never agreed to be watched.
+- **Speaks** She measures with a moving hand and lets the owner decide when the cord comes loose.
+- **Why** Making lamps for the choir taught her how the same window looks from the street and from the dark room behind it.
+
+Neska used to earn her supper by getting a ballad out of every guest. She sincerely wants to remember people. At the door, the same habit makes every guest pay for a bed with a piece of themselves. She counts knocks, tastes the tea long after it goes cold and eventually sits outside the house she used to run. Tover speaks in handles, corners and bowls. His family knows him as both a singer and the child who once missed a lift on the stairs. His father’s button rattles in the test kettle. The child who finds it in her soup gets the last laugh. Yilka builds roof lamps for the choir. She can understand another person’s wish for a dark room without giving anyone the story behind her own tied blind. She asks permission with her hands and will leave the fishmonger in charge of his department.
+
+### Emlet Garth (`river-emlet`)
+
+- **Believes** Someone who knocks at a door is owed an answer, even when the door has moved.
+- **Worries** His faithful morning round may be the reason the council calls a working bakery a ruin.
+- **Speaks** He makes a small case for his own innocence with a thumb in a bite mark or sealing wax on his collar.
+- **Why** He used to carry the post. Now he brings flour on foot. It takes a pilot to show him the last inch of the journey he thought he made alone.
+
+### Rialla Mallow (`river-rialla`)
+
+- **Believes** A public address can help the next boat while leaving her sister a private door.
+- **Worries** The stamp at her desk keeps her from going home, and someone else may use it to locate the child asleep beside her.
+- **Speaks** She gives the stamp an eye to watch the queue. When it's time to decide she takes the eye off and puts a finger on the map.
+- **Why** A letter sorter who also pilots the boat, she learned two places called Warm Mouth by arriving at different hours.
+
+### Pendlow Mallow (`river-pendlow`)
+
+- **Believes** A neighbour who will have to climb a stair deserves the pencil.
+- **Worries** Her sister will spend another night guiding strangers while her own floating bakery acquires a permanent mark on a stranger’s chart.
+- **Speaks** She describes a boat in the language of a kitchen. A skate sleeps in her apron and a crumb can carry news.
+- **Why** She bakes at two moorings. She can agree to the first walk and still need the receiving household to change the second.
+
+At the market post, Kip catches himself wishing he had witnessed the first stamping. Putting the hour beside his own name makes him admit that he was at supper. Hesper remembers what Ise did for a hurt hand from the piece that is still missing from her coat. Ise offers that coat for the round, steadies a short stool with her foot and learns to let a stranger return an answer in her own glove. Orrin uses a joke about a wax cricket to ask a painful question. He wants to know whether he could have been sitting at his post all night while Elsbet thought he had left. [The cricket in the sleeve](STORY_BIBLE.md#the-cricket-in-the-sleeve)
+
+In the pocket theatre, Kip saves one chair for a singer with a long verse. He listens even when the apparent ten votes shrink to one. At the rehearsal rope Pella remembers the entrance still waiting for a bell. Wren values the breath before an archive excerpt because it gives the speaker back a condition on her words. At the Water Commons, the gardener who disputes the clerk's warning still needs to know who gets water on Thursday. Each speaker has a particular reason to stay after a claim has been corrected.

@@ -1,0 +1,5002 @@
+{
+  "q2731767": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "silk",
+        "reading": "It bears my weight until I reach the knot."
+      },
+      {
+        "label": "peg",
+        "reading": "The thread ends here, but the wood is held in turn."
+      },
+      {
+        "label": "beam",
+        "reading": "Above the joint the ceiling hides the next support."
+      }
+    ],
+    "practice": 92,
+    "questionRoute": 19,
+    "home": "archive"
+  },
+  "q183144": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "guard's cup",
+        "reading": "Steam reaches the one person who must stay at the gate."
+      },
+      {
+        "label": "traveller's cup",
+        "reading": "The next person in line has a warm drink before the bell."
+      },
+      {
+        "label": "covered pot",
+        "reading": "The last cup stays warm for somebody we cannot yet see."
+      }
+    ],
+    "practice": 61,
+    "questionRoute": 27,
+    "home": "council"
+  },
+  "q2896591": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "signature",
+        "reading": "My name makes the reader uncross his arms before he has read a word."
+      },
+      {
+        "label": "argument",
+        "reading": "With the margin covered, one step still needs a reason."
+      },
+      {
+        "label": "objection",
+        "reading": "A different hand has underlined precisely that step."
+      }
+    ],
+    "practice": 99,
+    "questionRoute": 19,
+    "home": "press"
+  },
+  "q183074": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "gutter",
+        "reading": "A slip can travel beneath the door even when the reader cannot."
+      },
+      {
+        "label": "low shelf",
+        "reading": "The child can reach the verse and pass it on."
+      },
+      {
+        "label": "key hook",
+        "reading": "Opening the room also leaves somebody responsible for locking it again."
+      }
+    ],
+    "practice": 51,
+    "questionRoute": 7,
+    "home": "voices"
+  },
+  "q231690": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "stairs",
+        "reading": "The person refused at the door can speak here."
+      },
+      {
+        "label": "ink pad",
+        "reading": "The clerk can count a thumbprint without hearing a voice."
+      },
+      {
+        "label": "empty chair",
+        "reading": "A signature in the book did not get its owner into this seat."
+      }
+    ],
+    "practice": 52,
+    "questionRoute": 7,
+    "home": "dispatch"
+  },
+  "q219368": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "coat",
+        "reading": "The usher welcomes the sleeve before seeing the person."
+      },
+      {
+        "label": "door",
+        "reading": "The greeting changes on the other side of the lintel."
+      },
+      {
+        "label": "guest",
+        "reading": "The same traveller receives both greetings."
+      }
+    ],
+    "practice": 73,
+    "questionRoute": 24,
+    "home": "stage"
+  },
+  "q11104": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "slit",
+        "reading": "The narrow opening trims the edges of the image."
+      },
+      {
+        "label": "screen",
+        "reading": "The projected tree moves across the paper when the paper moves."
+      },
+      {
+        "label": "branch",
+        "reading": "The branch outside stays put throughout the trial."
+      }
+    ],
+    "practice": 71,
+    "questionRoute": 23,
+    "home": "coast"
+  },
+  "q8750": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "resting coil",
+        "reading": "With everything still the model needle rests."
+      },
+      {
+        "label": "moving magnet",
+        "reading": "A short deflection follows the movement."
+      },
+      {
+        "label": "reversed motion",
+        "reading": "The needle swings back the other way."
+      }
+    ],
+    "practice": 70,
+    "questionRoute": 28,
+    "home": "yard"
+  },
+  "q296898": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "first bed",
+        "reading": "The soil was already darker before the planting."
+      },
+      {
+        "label": "second bed",
+        "reading": "The neighbour used a different rotation here."
+      },
+      {
+        "label": "next season",
+        "reading": "The fair's single weigh-in leaves the next harvest open."
+      }
+    ],
+    "practice": 81,
+    "questionRoute": 32,
+    "home": "fern"
+  },
+  "q450317": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "source mark",
+        "reading": "This nick fixes which way the apparatus faced."
+      },
+      {
+        "label": "mirror",
+        "reading": "The reflected mitten changes handedness."
+      },
+      {
+        "label": "raw trace",
+        "reading": "The count is legible before anybody reverses the paper."
+      }
+    ],
+    "practice": 56,
+    "questionRoute": 28,
+    "home": "coast"
+  },
+  "q462843": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "copyist's dent",
+        "reading": "The pressure mark survives where the ink does not."
+      },
+      {
+        "label": "clean copy",
+        "reading": "A smooth line hides the copyist's hesitation."
+      },
+      {
+        "label": "earlier wording",
+        "reading": "The doubtful word changes what the instruction seems to mean."
+      }
+    ],
+    "practice": 141,
+    "questionRoute": 33,
+    "home": "cold"
+  },
+  "q7352852": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "moss patch",
+        "reading": "A boot at this point covers the edge we meant to watch."
+      },
+      {
+        "label": "cord",
+        "reading": "The cord can protect a patch while directing traffic into another."
+      },
+      {
+        "label": "caretaker's path",
+        "reading": "The caretaker knows which strip is already disturbed."
+      }
+    ],
+    "practice": 75,
+    "questionRoute": 29,
+    "home": "fern"
+  },
+  "q816430": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "dark field",
+        "reading": "The bright cells take all the attention."
+      },
+      {
+        "label": "faint edge",
+        "reading": "A shape becomes visible when the strongest line is covered."
+      },
+      {
+        "label": "second drawing",
+        "reading": "The assistant marked the same region on another sheet."
+      }
+    ],
+    "practice": 101,
+    "questionRoute": 34,
+    "home": "cold"
+  },
+  "q202943": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "debt",
+        "reading": "Two beads below the beam register an obligation."
+      },
+      {
+        "label": "empty hook",
+        "reading": "Zero stays distinct from a missing entry."
+      },
+      {
+        "label": "credit",
+        "reading": "A bead above the beam can cancel one below."
+      }
+    ],
+    "practice": 12,
+    "questionRoute": 6,
+    "home": "market"
+  },
+  "q9038": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "folded cloth",
+        "reading": "A seam hides part of the length."
+      },
+      {
+        "label": "left strip",
+        "reading": "The visible width stays fixed when the knot moves."
+      },
+      {
+        "label": "right strip",
+        "reading": "What balances both sides can be measured without undoing the entire cloth."
+      }
+    ],
+    "practice": 87,
+    "questionRoute": 23,
+    "home": "nile"
+  },
+  "q7099": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "first spoke",
+        "reading": "Its chalk dot moves around the rim."
+      },
+      {
+        "label": "second turn",
+        "reading": "The same pattern returns with a different spoke at the top."
+      },
+      {
+        "label": "hub",
+        "reading": "The centre remains fixed as the marks move."
+      }
+    ],
+    "practice": 53,
+    "questionRoute": 28,
+    "home": "island"
+  },
+  "q83163": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "small example",
+        "reading": "A calculation can be repeated on this square of paper."
+      },
+      {
+        "label": "next case",
+        "reading": "The pattern survives one more check."
+      },
+      {
+        "label": "general claim",
+        "reading": "The two examples still leave infinitely many cases unchecked."
+      }
+    ],
+    "practice": 42,
+    "questionRoute": 8,
+    "home": "archive"
+  },
+  "q1771279": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "seam",
+        "reading": "Crossing the drawn line returns the cord on the other side."
+      },
+      {
+        "label": "peg",
+        "reading": "A move around the peg changes the route that can be tightened."
+      },
+      {
+        "label": "curved walk",
+        "reading": "A straight line on the cut sheet joins a loop on the model."
+      }
+    ],
+    "practice": 6,
+    "questionRoute": 23,
+    "home": "chart"
+  },
+  "q60056205": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "lamp",
+        "reading": "The shadow develops a crossing as the light turns."
+      },
+      {
+        "label": "fixed ends",
+        "reading": "The cord stays tied throughout the apparent change."
+      },
+      {
+        "label": "bead",
+        "reading": "It can travel through a crossing the shadow alone cannot explain."
+      }
+    ],
+    "practice": 49,
+    "questionRoute": 9,
+    "home": "chart"
+  },
+  "q9372": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "runner's noon",
+        "reading": "His day begins outside the city gate."
+      },
+      {
+        "label": "court docket",
+        "reading": "The same hour is entered under the official who heard the case."
+      },
+      {
+        "label": "family page",
+        "reading": "The register gives a consequence for a household the docket leaves out."
+      }
+    ],
+    "practice": 126,
+    "questionRoute": 12,
+    "home": "nile"
+  },
+  "q179284": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "family chair",
+        "reading": "The doorway fills most of the witness's view."
+      },
+      {
+        "label": "servants' door",
+        "reading": "A second chair reveals who was standing behind the visitor."
+      },
+      {
+        "label": "hall plan",
+        "reading": "The positions can agree even when the two accounts differ."
+      }
+    ],
+    "practice": 58,
+    "questionRoute": 20,
+    "home": "council"
+  },
+  "q521729": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "site layer",
+        "reading": "The object has a recorded place in the ground."
+      },
+      {
+        "label": "local date",
+        "reading": "A sequence in the local record gives it neighbours."
+      },
+      {
+        "label": "drawer label",
+        "reading": "The filing name groups together things separated by centuries."
+      }
+    ],
+    "practice": 157,
+    "questionRoute": 33,
+    "home": "cold"
+  },
+  "q7517038": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "wet red",
+        "reading": "This strand stains a finger that tries to separate it."
+      },
+      {
+        "label": "wet blue",
+        "reading": "The second colour holds its own edge at the knot."
+      },
+      {
+        "label": "woven edge",
+        "reading": "The crossing is visible even where no third colour forms."
+      }
+    ],
+    "practice": 119,
+    "questionRoute": 21,
+    "home": "voices"
+  },
+  "q7648438": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "public label",
+        "reading": "The visitor can retrieve the box without exposing a former name."
+      },
+      {
+        "label": "sealed link",
+        "reading": "The archive can connect two records privately."
+      },
+      {
+        "label": "owner's pencil",
+        "reading": "The person named can correct the index."
+      }
+    ],
+    "practice": 76,
+    "questionRoute": 16,
+    "home": "press"
+  },
+  "q1396630": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "plan",
+        "reading": "A top view records the outline and misses the grip."
+      },
+      {
+        "label": "working hand",
+        "reading": "The angle of the wrist changes which end looks broad."
+      },
+      {
+        "label": "waterline",
+        "reading": "The paddle is held differently once the blade meets water."
+      }
+    ],
+    "practice": 18,
+    "questionRoute": 20,
+    "home": "chart"
+  },
+  "q1395135": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "case number",
+        "reading": "Two similar surfaces sit far apart in the catalogue."
+      },
+      {
+        "label": "trench plan",
+        "reading": "The find spots were close together."
+      },
+      {
+        "label": "empty space",
+        "reading": "A missing find breaks the neat museum sequence."
+      }
+    ],
+    "practice": 147,
+    "questionRoute": 33,
+    "home": "cold"
+  },
+  "q220480": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "setup",
+        "reading": "The joke seems literal until another person answers."
+      },
+      {
+        "label": "pause",
+        "reading": "A listener has time to recognise the turn."
+      },
+      {
+        "label": "laughter",
+        "reading": "Moving the laugh makes a different character seem ridiculous."
+      }
+    ],
+    "practice": 170,
+    "questionRoute": 9,
+    "home": "voices"
+  },
+  "q238890": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "cut face",
+        "reading": "A thin dark layer crosses the side of the trench."
+      },
+      {
+        "label": "tray",
+        "reading": "A loose sample has lost its neighbours."
+      },
+      {
+        "label": "standing strip",
+        "reading": "The undug strip preserves a relation a later visitor can check."
+      }
+    ],
+    "practice": 71,
+    "questionRoute": 23,
+    "home": "nile"
+  },
+  "q231111": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "heel",
+        "reading": "The heel shape shows contact with the ground."
+      },
+      {
+        "label": "stride",
+        "reading": "Two impressions give an interval without identifying a person."
+      },
+      {
+        "label": "trackway",
+        "reading": "The sequence changes direction beyond the edge of a single cast."
+      }
+    ],
+    "practice": 17,
+    "questionRoute": 18,
+    "home": "fern"
+  },
+  "q6450162": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "doorstep",
+        "reading": "A walker enters from the narrow side of the house."
+      },
+      {
+        "label": "work floor",
+        "reading": "The bowl lies closer to the work surface than to the entrance."
+      },
+      {
+        "label": "case",
+        "reading": "The display removed the distance between the two."
+      }
+    ],
+    "practice": 4,
+    "questionRoute": 20,
+    "home": "cold"
+  },
+  "q189725": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "first word",
+        "reading": "Before joining, its ending is visible."
+      },
+      {
+        "label": "next sound",
+        "reading": "The neighbouring sound changes which rule applies."
+      },
+      {
+        "label": "joined form",
+        "reading": "The result conceals the boundary that helped produce it."
+      }
+    ],
+    "practice": 170,
+    "questionRoute": 10,
+    "home": "press"
+  },
+  "q9294": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "one loaf",
+        "reading": "A single loaf gives a unit somebody can actually lift."
+      },
+      {
+        "label": "one day's stack",
+        "reading": "The stack already fills the cart before the claimed count is reached."
+      },
+      {
+        "label": "road capacity",
+        "reading": "The route limits how much bread could arrive in a day."
+      }
+    ],
+    "practice": 140,
+    "questionRoute": 3,
+    "home": "market"
+  },
+  "q158060": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "street corner",
+        "reading": "A household stood just outside the chart boundary."
+      },
+      {
+        "label": "bar",
+        "reading": "The total includes many experiences unlike this one."
+      },
+      {
+        "label": "boundary key",
+        "reading": "Moving a line moves the household between groups."
+      }
+    ],
+    "practice": 155,
+    "questionRoute": 12,
+    "home": "market"
+  },
+  "q14900709": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "adult chair",
+        "reading": "The watcher sits directly opposite the child."
+      },
+      {
+        "label": "toy table",
+        "reading": "The child's reach is the same on either side."
+      },
+      {
+        "label": "private seat",
+        "reading": "The setting changes when the adult moves away."
+      }
+    ],
+    "practice": 156,
+    "questionRoute": 12,
+    "home": "stage"
+  },
+  "q153761": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "day shift",
+        "reading": "These users can report a leak before sunset."
+      },
+      {
+        "label": "night shift",
+        "reading": "The people who find the overnight leak need access too."
+      },
+      {
+        "label": "repair hook",
+        "reading": "A key without a repair record obscures who acted."
+      }
+    ],
+    "practice": 8,
+    "questionRoute": 35,
+    "home": "gate"
+  },
+  "q453592": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "ordinary chair",
+        "reading": "The seat faces the day crew."
+      },
+      {
+        "label": "night entrance",
+        "reading": "From here the speaker is hidden by a pillar."
+      },
+      {
+        "label": "empty shift",
+        "reading": "An empty chair exposes the work nobody volunteered to hear."
+      }
+    ],
+    "practice": 51,
+    "questionRoute": 12,
+    "home": "dispatch"
+  },
+  "q762": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "paper hinge",
+        "reading": "This simple joint bends in one plane."
+      },
+      {
+        "label": "second fold",
+        "reading": "A second joint adds a movement the first cannot make."
+      },
+      {
+        "label": "living wing",
+        "reading": "The drawing cannot establish how much load the wing bears."
+      }
+    ],
+    "practice": 3,
+    "questionRoute": 30,
+    "home": "yard"
+  },
+  "q11621076": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "lamp",
+        "reading": "A small move carries light past the sleeve."
+      },
+      {
+        "label": "screen",
+        "reading": "The screen catches a sharp edge while hiding the source."
+      },
+      {
+        "label": "painted edge",
+        "reading": "The viewer can infer a light they cannot see."
+      }
+    ],
+    "practice": 159,
+    "questionRoute": 23,
+    "home": "stage"
+  },
+  "q219634": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "shutter",
+        "reading": "The shutter release extends beyond the edge of the portrait."
+      },
+      {
+        "label": "mirror",
+        "reading": "The reflected camera stand reveals another position."
+      },
+      {
+        "label": "caption",
+        "reading": "The single signature cannot establish who made every decision."
+      }
+    ],
+    "practice": 160,
+    "questionRoute": 29,
+    "home": "stage"
+  },
+  "q5588": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "pillow",
+        "reading": "The sitter sees the frame from below."
+      },
+      {
+        "label": "mirror tilt",
+        "reading": "A small tilt brings a different part of the face into view."
+      },
+      {
+        "label": "canvas reach",
+        "reading": "A brushstroke the seated painter could make lies outside the sitter's reach."
+      }
+    ],
+    "practice": 4,
+    "questionRoute": 20,
+    "home": "stage"
+  },
+  "q453890": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "public title",
+        "reading": "The custodian has released these words for visitors."
+      },
+      {
+        "label": "speaking place",
+        "reading": "The custodian retains the decision about what can be told."
+      },
+      {
+        "label": "closed space",
+        "reading": "The empty portion can stay outside the public account."
+      }
+    ],
+    "practice": 121,
+    "questionRoute": 29,
+    "home": "fern"
+  },
+  "q1323876": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "first crease",
+        "reading": "Its edge throws a shadow inherited from the previous hall."
+      },
+      {
+        "label": "new fold",
+        "reading": "The installer can change the shape without adding a piece."
+      },
+      {
+        "label": "metal link",
+        "reading": "The same links join both arrangements."
+      }
+    ],
+    "practice": 160,
+    "questionRoute": 9,
+    "home": "yard"
+  },
+  "q272411": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "short crossing",
+        "reading": "A single board covers the narrow gap."
+      },
+      {
+        "label": "busy crossing",
+        "reading": "More people depend on the longer route."
+      },
+      {
+        "label": "load mark",
+        "reading": "Using the same load makes one comparison fair while leaving demand unsettled."
+      }
+    ],
+    "practice": 60,
+    "questionRoute": 35,
+    "home": "gate"
+  },
+  "q11903": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "rotated circle",
+        "reading": "The labelled points move; their geometric relation survives."
+      },
+      {
+        "label": "copy line",
+        "reading": "The copyist has put one letter on a different point."
+      },
+      {
+        "label": "original step",
+        "reading": "The inference still needs the same relation after either drawing turns."
+      }
+    ],
+    "practice": 87,
+    "questionRoute": 28,
+    "home": "archive"
+  },
+  "q39837": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "older line",
+        "reading": "The original argument has a gap at the edge."
+      },
+      {
+        "label": "commentary",
+        "reading": "The commentator supplies a reading in a different hand."
+      },
+      {
+        "label": "hinge",
+        "reading": "Opening the sheets together reveals where the second hand intervened."
+      }
+    ],
+    "practice": 141,
+    "questionRoute": 33,
+    "home": "press"
+  },
+  "q595486": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "observer",
+        "reading": "The witness sees a hand withdraw."
+      },
+      {
+        "label": "visitor's token",
+        "reading": "Only the visitor marks how it felt."
+      },
+      {
+        "label": "empty column",
+        "reading": "The written observation cannot by itself fill the sensation column."
+      }
+    ],
+    "practice": 1,
+    "questionRoute": 25,
+    "home": "voices"
+  },
+  "q164797": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "stall",
+        "reading": "The seller can identify the word the notice gets wrong."
+      },
+      {
+        "label": "noticeboard",
+        "reading": "The old arrow assumes the reader starts at the gate."
+      },
+      {
+        "label": "first stop",
+        "reading": "Beginning where the seller stands changes which direction is useful."
+      }
+    ],
+    "practice": 19,
+    "questionRoute": 20,
+    "home": "dispatch"
+  },
+  "q570103": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "greeting",
+        "reading": "The word belongs to an ordinary exchange here."
+      },
+      {
+        "label": "translated line",
+        "reading": "The neat substitute carries a second meaning."
+      },
+      {
+        "label": "reply",
+        "reading": "The listener's answer clarifies which sense mattered."
+      }
+    ],
+    "practice": 33,
+    "questionRoute": 14,
+    "home": "voices"
+  },
+  "q468609": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "task key",
+        "reading": "The visitor can do the work without choosing a category."
+      },
+      {
+        "label": "pass label",
+        "reading": "The visitor can name themself here."
+      },
+      {
+        "label": "door log",
+        "reading": "The clerk can record access without publishing the label."
+      }
+    ],
+    "practice": 80,
+    "questionRoute": 6,
+    "home": "dispatch"
+  },
+  "q270085": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "shell",
+        "reading": "The shell lies in stone well above the sea."
+      },
+      {
+        "label": "ridge layer",
+        "reading": "The same band continues away from the path."
+      },
+      {
+        "label": "second outcrop",
+        "reading": "An isolated dropped shell would not account for the matching layer."
+      }
+    ],
+    "practice": 91,
+    "questionRoute": 25,
+    "home": "coast"
+  },
+  "q742233": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "house",
+        "reading": "A location alone does not tell which event came first."
+      },
+      {
+        "label": "date wheel",
+        "reading": "Dates separate clusters that appear simultaneous on the map."
+      },
+      {
+        "label": "unmarked door",
+        "reading": "A household chose not to put its experience on the public map."
+      }
+    ],
+    "practice": 94,
+    "questionRoute": 25,
+    "home": "gate"
+  },
+  "q150526": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "first cell",
+        "reading": "The sketch ends in a fine branch."
+      },
+      {
+        "label": "second field",
+        "reading": "A neighbouring branch lies just beyond the first view."
+      },
+      {
+        "label": "pencil join",
+        "reading": "The line between fields belongs to the drawing."
+      }
+    ],
+    "practice": 42,
+    "questionRoute": 25,
+    "home": "cold"
+  },
+  "q4794782": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "grower's label",
+        "reading": "It names a use the local grower recognises."
+      },
+      {
+        "label": "field tag",
+        "reading": "The collector can follow the cutting back to one plant."
+      },
+      {
+        "label": "catalogue name",
+        "reading": "A common index allows comparison but hides the other names."
+      }
+    ],
+    "practice": 59,
+    "questionRoute": 6,
+    "home": "fern"
+  },
+  "q100948": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "dawn",
+        "reading": "A call stands out before the carts are moving."
+      },
+      {
+        "label": "noon",
+        "reading": "The street noise masks a similar call."
+      },
+      {
+        "label": "blank bar",
+        "reading": "A silent recording alone cannot say whether the bird was absent."
+      }
+    ],
+    "practice": 17,
+    "questionRoute": 15,
+    "home": "fern"
+  },
+  "q2925049": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "outer bench",
+        "reading": "The waiting family is missing from the ward count."
+      },
+      {
+        "label": "clinic door",
+        "reading": "The register begins here."
+      },
+      {
+        "label": "little chair",
+        "reading": "The child's route through the room differs from the adult's."
+      }
+    ],
+    "practice": 52,
+    "questionRoute": 12,
+    "home": "gate"
+  },
+  "q28189": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "first diagram",
+        "reading": "This one predicts the familiar result."
+      },
+      {
+        "label": "second diagram",
+        "reading": "It also fits the result already known."
+      },
+      {
+        "label": "empty test slot",
+        "reading": "Where the diagrams disagree there is still no observation."
+      }
+    ],
+    "practice": 129,
+    "questionRoute": 18,
+    "home": "island"
+  },
+  "q11490": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "design tile",
+        "reading": "One part of the design can be reused in another shop."
+      },
+      {
+        "label": "boundary mark",
+        "reading": "It states what the next shop can rely on."
+      },
+      {
+        "label": "finished board",
+        "reading": "A working example alone does not explain where the responsibility changed hands."
+      }
+    ],
+    "practice": 71,
+    "questionRoute": 22,
+    "home": "yard"
+  },
+  "q115590": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "first pieces",
+        "reading": "A rough approximation is already useful."
+      },
+      {
+        "label": "third piece",
+        "reading": "The uncovered sliver has become smaller."
+      },
+      {
+        "label": "unfinished rule",
+        "reading": "The next step can be repeated without pretending the process has ended."
+      }
+    ],
+    "practice": 44,
+    "questionRoute": 8,
+    "home": "chart"
+  },
+  "q7259": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "pattern card",
+        "reading": "The holes preserve an order of operations."
+      },
+      {
+        "label": "music roll",
+        "reading": "The same order produces notes under another key."
+      },
+      {
+        "label": "meaning key",
+        "reading": "Without the key, the order alone fails to name the notes."
+      }
+    ],
+    "practice": 167,
+    "questionRoute": 23,
+    "home": "press"
+  },
+  "q184535": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "steady release",
+        "reading": "A controlled start gives a repeatable wobble."
+      },
+      {
+        "label": "tilted start",
+        "reading": "The same top takes a different course."
+      },
+      {
+        "label": "curve in chalk",
+        "reading": "The trace and prediction can be compared at the first visible divergence."
+      }
+    ],
+    "practice": 81,
+    "questionRoute": 30,
+    "home": "island"
+  },
+  "q7251": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "first reply",
+        "reading": "The first voice gains a small advantage from being heard alone."
+      },
+      {
+        "label": "changed order",
+        "reading": "The listener changes their guess while the replies stay fixed."
+      },
+      {
+        "label": "follow-up",
+        "reading": "A new exchange tests something repetition could not."
+      }
+    ],
+    "practice": 70,
+    "questionRoute": 26,
+    "home": "dispatch"
+  },
+  "q11740": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "input figure",
+        "reading": "A copied number already carries uncertainty."
+      },
+      {
+        "label": "independent step",
+        "reading": "A second calculation agrees at this step."
+      },
+      {
+        "label": "landing band",
+        "reading": "A band can contain both results where a pinprick would conceal their distance."
+      }
+    ],
+    "practice": 56,
+    "questionRoute": 28,
+    "home": "coast"
+  },
+  "q32538394": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "first fork",
+        "reading": "Two paths can start alike and end apart."
+      },
+      {
+        "label": "small corner",
+        "reading": "This bounded case can be counted by hand."
+      },
+      {
+        "label": "linked ends",
+        "reading": "Bending the model without changing a link preserves which journeys exist."
+      }
+    ],
+    "practice": 89,
+    "questionRoute": 8,
+    "home": "island"
+  },
+  "q177081": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "earlier hand",
+        "reading": "The ink changes before the chapter heading."
+      },
+      {
+        "label": "unfinished line",
+        "reading": "An open sentence marks where the work was taken up."
+      },
+      {
+        "label": "later hand",
+        "reading": "A continuation can remain legible without erasing the earlier maker."
+      }
+    ],
+    "practice": 140,
+    "questionRoute": 33,
+    "home": "nile"
+  },
+  "q11826": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "upper station",
+        "reading": "A line of sight uses the horizon from this height."
+      },
+      {
+        "label": "lower station",
+        "reading": "The same summit makes a different angle."
+      },
+      {
+        "label": "baseline",
+        "reading": "The two angles need a shared reference before they can be related."
+      }
+    ],
+    "practice": 71,
+    "questionRoute": 28,
+    "home": "chart"
+  },
+  "q773828": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "score call",
+        "reading": "The book records the run."
+      },
+      {
+        "label": "crowd roar",
+        "reading": "The crowd heard an event larger than the number."
+      },
+      {
+        "label": "rope-side teller",
+        "reading": "The listener near the boundary noticed who was kept outside."
+      }
+    ],
+    "practice": 158,
+    "questionRoute": 12,
+    "home": "stage"
+  },
+  "q696748": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "first port",
+        "reading": "Here the family appears under its departure name."
+      },
+      {
+        "label": "crossing",
+        "reading": "A change of paperwork makes one traveller look like two."
+      },
+      {
+        "label": "chosen port",
+        "reading": "The family's own naming gives the clerk another way to connect the record."
+      }
+    ],
+    "practice": 7,
+    "questionRoute": 14,
+    "home": "chart"
+  },
+  "q6836249": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "intake",
+        "reading": "No record was made of one request."
+      },
+      {
+        "label": "shelf",
+        "reading": "A shelf cannot preserve a page it never received."
+      },
+      {
+        "label": "visitor's request",
+        "reading": "A question about the gap is evidence of a search, not its answer."
+      }
+    ],
+    "practice": 157,
+    "questionRoute": 33,
+    "home": "voices"
+  },
+  "q1339859": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "older surface",
+        "reading": "The object's marks run under the edge of a later label."
+      },
+      {
+        "label": "label stand",
+        "reading": "A separate stand makes the curator's addition visible."
+      },
+      {
+        "label": "raking light",
+        "reading": "The two surfaces throw different shadows."
+      }
+    ],
+    "practice": 139,
+    "questionRoute": 33,
+    "home": "nile"
+  },
+  "q7977193": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "public technique",
+        "reading": "The maker chooses what can be shown."
+      },
+      {
+        "label": "practice strip",
+        "reading": "A visitor can try the motion on this separate band."
+      },
+      {
+        "label": "closed drawer",
+        "reading": "An empty public place can preserve a boundary."
+      }
+    ],
+    "practice": 121,
+    "questionRoute": 29,
+    "home": "yard"
+  },
+  "q780206": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "kin word",
+        "reading": "The single translated noun loses the relation."
+      },
+      {
+        "label": "introduction",
+        "reading": "A host identifies who is related to whom."
+      },
+      {
+        "label": "spoken example",
+        "reading": "The word changes how one person addresses another."
+      }
+    ],
+    "practice": 170,
+    "questionRoute": 14,
+    "home": "voices"
+  },
+  "q275622": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "section",
+        "reading": "The ledge sits over an earlier floor."
+      },
+      {
+        "label": "scaled mat",
+        "reading": "Distance is preserved across this drawing."
+      },
+      {
+        "label": "find tray",
+        "reading": "Nearness in the tray need not be nearness in the ground."
+      }
+    ],
+    "practice": 6,
+    "questionRoute": 23,
+    "home": "cold"
+  },
+  "q407741": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "first setting",
+        "reading": "The sign sits beside a different neighbour here."
+      },
+      {
+        "label": "second setting",
+        "reading": "A repeated sound is possible across changed pictures."
+      },
+      {
+        "label": "cover",
+        "reading": "The proposed reading can be tried without relying on a familiar image."
+      }
+    ],
+    "practice": 105,
+    "questionRoute": 4,
+    "home": "press"
+  },
+  "q1326832": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "home shore",
+        "reading": "The named starting place fixes the first bearing."
+      },
+      {
+        "label": "sea lane",
+        "reading": "The open water joins households rather than separating blank land."
+      },
+      {
+        "label": "moving deck",
+        "reading": "As the observer turns, the shore changes sides."
+      }
+    ],
+    "practice": 6,
+    "questionRoute": 14,
+    "home": "chart"
+  },
+  "q64597567": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "gate",
+        "reading": "A neighbour can join the discussion here."
+      },
+      {
+        "label": "furnace plan",
+        "reading": "The drawing can travel beyond the fence."
+      },
+      {
+        "label": "custodian's key",
+        "reading": "Taking a key would change who controls access to the site."
+      }
+    ],
+    "practice": 51,
+    "questionRoute": 29,
+    "home": "yard"
+  },
+  "q1808076": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "front light",
+        "reading": "A face is lit but two signing hands overlap in silhouette."
+      },
+      {
+        "label": "side light",
+        "reading": "The hands separate visibly from the background."
+      },
+      {
+        "label": "circle",
+        "reading": "Changing where the listeners stand changes who can follow the sign."
+      }
+    ],
+    "practice": 71,
+    "questionRoute": 24,
+    "home": "stage"
+  },
+  "q131117": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "high shelf",
+        "reading": "The learner sees the material and cannot reach it."
+      },
+      {
+        "label": "low shelf",
+        "reading": "The learner can start without waiting for a helper."
+      },
+      {
+        "label": "loose tray",
+        "reading": "The learner can choose the order as well as the object."
+      }
+    ],
+    "practice": 9,
+    "questionRoute": 23,
+    "home": "archive"
+  },
+  "q180819": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "full support",
+        "reading": "The structure stands with a helper bearing the load."
+      },
+      {
+        "label": "one block removed",
+        "reading": "The learner steadies a joint nobody could see before."
+      },
+      {
+        "label": "free span",
+        "reading": "What survives the last withdrawal reveals which support mattered."
+      }
+    ],
+    "practice": 3,
+    "questionRoute": 22,
+    "home": "archive"
+  },
+  "q193670": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "first queue",
+        "reading": "The clock begins when the visitor reaches the desk."
+      },
+      {
+        "label": "second entrance",
+        "reading": "The longer wait starts outside the register."
+      },
+      {
+        "label": "shared exit",
+        "reading": "Two people can finish together after very different journeys."
+      }
+    ],
+    "practice": 4,
+    "questionRoute": 12,
+    "home": "dispatch"
+  },
+  "q132489": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "ticket office",
+        "reading": "The passenger has the printed entitlement."
+      },
+      {
+        "label": "missing ramp",
+        "reading": "The ticket changes no part of this obstacle."
+      },
+      {
+        "label": "destination",
+        "reading": "A completed trip tells more about the opportunity than an issued ticket."
+      }
+    ],
+    "practice": 47,
+    "questionRoute": 2,
+    "home": "market"
+  },
+  "q682037": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "number",
+        "reading": "The quantity stays fixed between the two notices."
+      },
+      {
+        "label": "adjective",
+        "reading": "The same number sounds generous under a different heading."
+      },
+      {
+        "label": "rival board",
+        "reading": "The other seller can use the comparison in the opposite direction."
+      }
+    ],
+    "practice": 109,
+    "questionRoute": 9,
+    "home": "market"
+  },
+  "q232810": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "human eye",
+        "reading": "The shadow looks narrow from this height."
+      },
+      {
+        "label": "animal eye",
+        "reading": "The shadow falls across the entire apparent route."
+      },
+      {
+        "label": "first pause",
+        "reading": "The hesitation occurs before the place the keeper expected."
+      }
+    ],
+    "practice": 58,
+    "questionRoute": 20,
+    "home": "gate"
+  },
+  "q232505": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "carved face",
+        "reading": "The ritual scene is visible from the front."
+      },
+      {
+        "label": "dedication",
+        "reading": "The name is on the opposite face."
+      },
+      {
+        "label": "mirror",
+        "reading": "A visitor can see both sides without handling the disk."
+      }
+    ],
+    "practice": 147,
+    "questionRoute": 29,
+    "home": "nile"
+  },
+  "q5600": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "centre",
+        "reading": "A quiet sound returns clearly here."
+      },
+      {
+        "label": "side aisle",
+        "reading": "The same sound arrives differently along the wall."
+      },
+      {
+        "label": "thread line",
+        "reading": "The geometric centre and the clearest listening point need not coincide."
+      }
+    ],
+    "practice": 71,
+    "questionRoute": 23,
+    "home": "yard"
+  },
+  "q212657": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "working hand",
+        "reading": "The hand reveals labour hidden by the central gesture."
+      },
+      {
+        "label": "face",
+        "reading": "The viewer may read intention from expression alone."
+      },
+      {
+        "label": "gaze line",
+        "reading": "The figures direct attention beyond the brightest patch."
+      }
+    ],
+    "practice": 160,
+    "questionRoute": 9,
+    "home": "stage"
+  },
+  "q231121": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "single dot",
+        "reading": "A visitor can point to its painted edge."
+      },
+      {
+        "label": "mirror edge",
+        "reading": "Repetition continues outside the physical canvas."
+      },
+      {
+        "label": "bare corner",
+        "reading": "An unmarked place makes the boundary visible again."
+      }
+    ],
+    "practice": 49,
+    "questionRoute": 23,
+    "home": "island"
+  },
+  "q2662098": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "folded line",
+        "reading": "The edge reads like a letter on one sheet."
+      },
+      {
+        "label": "open line",
+        "reading": "The same mark joins a different shape across the fold."
+      },
+      {
+        "label": "second reader",
+        "reading": "Another reader recognises a different familiar form."
+      }
+    ],
+    "practice": 119,
+    "questionRoute": 9,
+    "home": "press"
+  },
+  "q158056": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "camera view",
+        "reading": "The present frame shows the assistant."
+      },
+      {
+        "label": "monitor return",
+        "reading": "The screen carries an earlier view back into the camera."
+      },
+      {
+        "label": "delayed beat",
+        "reading": "Changing the delay changes what seems to have caused the gesture."
+      }
+    ],
+    "practice": 19,
+    "questionRoute": 10,
+    "home": "coast"
+  },
+  "q47780": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "ramp entry",
+        "reading": "The first turn looks roomy from above."
+      },
+      {
+        "label": "inside turn",
+        "reading": "A bead bumps the inner wall."
+      },
+      {
+        "label": "eye line",
+        "reading": "Cutting the model shows a barrier the roof view concealed."
+      }
+    ],
+    "practice": 6,
+    "questionRoute": 20,
+    "home": "island"
+  },
+  "q6391838": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "earlier image",
+        "reading": "The first painting establishes a familiar pose."
+      },
+      {
+        "label": "returned gaze",
+        "reading": "The person looked at now looks back."
+      },
+      {
+        "label": "viewer",
+        "reading": "The place assigned to the visitor changes the force of the pose."
+      }
+    ],
+    "practice": 58,
+    "questionRoute": 20,
+    "home": "cold"
+  },
+  "q188903": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "rail",
+        "reading": "A cry reaches the helper before there is time for a rule."
+      },
+      {
+        "label": "quiet crossing",
+        "reading": "The same rule meets an ordinary decision here."
+      },
+      {
+        "label": "helper's seat",
+        "reading": "The helper can describe the impulse without proving everybody shares it."
+      }
+    ],
+    "practice": 92,
+    "questionRoute": 35,
+    "home": "gate"
+  },
+  "q28959": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "keeper's tally",
+        "reading": "The count rises when the reward is announced."
+      },
+      {
+        "label": "arrival stick",
+        "reading": "Visitors add their own marks independently."
+      },
+      {
+        "label": "reward notice",
+        "reading": "The keeper gains by changing what gets counted."
+      }
+    ],
+    "practice": 60,
+    "questionRoute": 35,
+    "home": "council"
+  },
+  "q9546": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "spark",
+        "reading": "A spark appears before the light."
+      },
+      {
+        "label": "wick",
+        "reading": "The wick remains dark in the comparison turn."
+      },
+      {
+        "label": "watcher's strip",
+        "reading": "Order alone leaves the cause open."
+      }
+    ],
+    "practice": 94,
+    "questionRoute": 25,
+    "home": "archive"
+  },
+  "q132524": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "working hinge",
+        "reading": "The maker's name can stay with the moving part."
+      },
+      {
+        "label": "display label",
+        "reading": "The public sees the name while the hinge stays in storage."
+      },
+      {
+        "label": "loan slip",
+        "reading": "The maker can keep a say in how the work is used."
+      }
+    ],
+    "practice": 76,
+    "questionRoute": 29,
+    "home": "market"
+  },
+  "q157309": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "speaking bell",
+        "reading": "The next turn belongs to the visitor."
+      },
+      {
+        "label": "quiet minute",
+        "reading": "A pause gives the visitor time to finish a thought."
+      },
+      {
+        "label": "clerk's slip",
+        "reading": "The standard answer was already written before anyone spoke."
+      }
+    ],
+    "practice": 52,
+    "questionRoute": 7,
+    "home": "voices"
+  },
+  "q81244": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "sealed forecast",
+        "reading": "A date fixes which prediction came first."
+      },
+      {
+        "label": "new mark",
+        "reading": "The mark can be compared with a stated expectation."
+      },
+      {
+        "label": "stop line",
+        "reading": "The painter has said what would count against the claim."
+      }
+    ],
+    "practice": 153,
+    "questionRoute": 4,
+    "home": "coast"
+  },
+  "q184980": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "cleaned chart",
+        "reading": "The repeated speck is gone from every polished copy."
+      },
+      {
+        "label": "raw chart",
+        "reading": "The same speck sits among other irregular marks."
+      },
+      {
+        "label": "new observation",
+        "reading": "A fresh telescope hour can distinguish persistence from copying."
+      }
+    ],
+    "practice": 13,
+    "questionRoute": 34,
+    "home": "coast"
+  },
+  "q3507232": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "painted outline",
+        "reading": "The outline quietly fixes whom the door calls ordinary."
+      },
+      {
+        "label": "visitor's trace",
+        "reading": "A real person's outline does not match the stencil."
+      },
+      {
+        "label": "doorway",
+        "reading": "The entrance works without either silhouette."
+      }
+    ],
+    "practice": 51,
+    "questionRoute": 12,
+    "home": "dispatch"
+  },
+  "q937": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "east clock",
+        "reading": "The first reading came from this end of the quay."
+      },
+      {
+        "label": "light path",
+        "reading": "A message takes time to reach the other tower."
+      },
+      {
+        "label": "midway witness",
+        "reading": "The travel distances change what simultaneity can be inferred."
+      }
+    ],
+    "practice": 81,
+    "questionRoute": 20,
+    "home": "chart"
+  },
+  "q7085": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "first instrument",
+        "reading": "This arrangement reveals one feature of the light."
+      },
+      {
+        "label": "second instrument",
+        "reading": "Its record comes from a different arrangement."
+      },
+      {
+        "label": "empty slot",
+        "reading": "The combined drawing does not show a single trial that did both."
+      }
+    ],
+    "practice": 74,
+    "questionRoute": 23,
+    "home": "island"
+  },
+  "q199654": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "patched kernel",
+        "reading": "The variation remains attached to its place on the ear."
+      },
+      {
+        "label": "whole ear",
+        "reading": "The arrangement provides a pattern lost by sorting."
+      },
+      {
+        "label": "field note",
+        "reading": "The field identity matters to a comparison between ears."
+      }
+    ],
+    "practice": 101,
+    "questionRoute": 34,
+    "home": "fern"
+  },
+  "q234583": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "outer border",
+        "reading": "The diagram shows a cell as one enclosing unit."
+      },
+      {
+        "label": "inner family line",
+        "reading": "A second history can be traced inside that boundary."
+      },
+      {
+        "label": "other diagram",
+        "reading": "Two accounts of the same visible structure suggest different origins."
+      }
+    ],
+    "practice": 91,
+    "questionRoute": 18,
+    "home": "fern"
+  },
+  "q44461": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "first generation",
+        "reading": "One feature belongs to an individual in the record."
+      },
+      {
+        "label": "next branch",
+        "reading": "The observed trait appears in a different family setting."
+      },
+      {
+        "label": "population book",
+        "reading": "A count over generations answers a different question from an individual story."
+      }
+    ],
+    "practice": 66,
+    "questionRoute": 32,
+    "home": "fern"
+  },
+  "q535129": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "caption",
+        "reading": "The caption describes the group the observer expected."
+      },
+      {
+        "label": "margin fish",
+        "reading": "A fish at the edge behaves differently in this sighting."
+      },
+      {
+        "label": "second group",
+        "reading": "A different group tests the reach of the caption."
+      }
+    ],
+    "practice": 137,
+    "questionRoute": 34,
+    "home": "gate"
+  },
+  "q48472405": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "bright band",
+        "reading": "These observations clear the detector threshold."
+      },
+      {
+        "label": "faint band",
+        "reading": "A blank here may be an instrumental limit."
+      },
+      {
+        "label": "credit margin",
+        "reading": "The calculation depended on work omitted from the first label."
+      }
+    ],
+    "practice": 17,
+    "questionRoute": 15,
+    "home": "coast"
+  },
+  "q470531": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "first row",
+        "reading": "The entries are aligned by place."
+      },
+      {
+        "label": "sliding row",
+        "reading": "A shift changes which entries are compared."
+      },
+      {
+        "label": "worked frame",
+        "reading": "The earlier arrangement can be reconstructed only if the frame stays."
+      }
+    ],
+    "practice": 12,
+    "questionRoute": 23,
+    "home": "yard"
+  },
+  "q7967775": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "lamp",
+        "reading": "The model casts a sharp shadow at this angle."
+      },
+      {
+        "label": "ball",
+        "reading": "Moving the ball changes where the shadow falls."
+      },
+      {
+        "label": "observer",
+        "reading": "The same alignment looks different from the second viewing point."
+      }
+    ],
+    "practice": 167,
+    "questionRoute": 30,
+    "home": "coast"
+  },
+  "q41585": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "starting rule",
+        "reading": "The rule gives permission for a particular move."
+      },
+      {
+        "label": "tile move",
+        "reading": "The move can be checked independently against the rule."
+      },
+      {
+        "label": "goal tile",
+        "reading": "Reaching the goal says little about a game with different rules."
+      }
+    ],
+    "practice": 151,
+    "questionRoute": 8,
+    "home": "council"
+  },
+  "q155887": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "first plank",
+        "reading": "There is a way to place this plank in the model."
+      },
+      {
+        "label": "next gap",
+        "reading": "A plausible span is still missing its construction."
+      },
+      {
+        "label": "finished span",
+        "reading": "A drawing of the destination does not supply the missing move."
+      }
+    ],
+    "practice": 3,
+    "questionRoute": 8,
+    "home": "archive"
+  },
+  "q41390": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "checked sum",
+        "reading": "The arithmetic checks within this system."
+      },
+      {
+        "label": "seal rule",
+        "reading": "The seal relies on rules it has not independently tested."
+      },
+      {
+        "label": "outer book",
+        "reading": "Changing systems changes what is being claimed."
+      }
+    ],
+    "practice": 88,
+    "questionRoute": 19,
+    "home": "council"
+  },
+  "q452116": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "solved card",
+        "reading": "There is a worked answer for this instance."
+      },
+      {
+        "label": "next card",
+        "reading": "The same trick stalls here."
+      },
+      {
+        "label": "universal promise",
+        "reading": "A pile of answered cards alone cannot establish a method for every card."
+      }
+    ],
+    "practice": 42,
+    "questionRoute": 8,
+    "home": "island"
+  },
+  "q77141": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "torn chart",
+        "reading": "The local tear explains one mismatch."
+      },
+      {
+        "label": "overlapping chart",
+        "reading": "A shared boundary can test whether local repairs agree."
+      },
+      {
+        "label": "whole atlas",
+        "reading": "Agreement on one boundary does not settle the rest."
+      }
+    ],
+    "practice": 74,
+    "questionRoute": 28,
+    "home": "chart"
+  },
+  "q11099812": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "doorway",
+        "reading": "One part can be measured with the makers' permission."
+      },
+      {
+        "label": "compound",
+        "reading": "A repeated form becomes visible across several structures."
+      },
+      {
+        "label": "hill view",
+        "reading": "From here a pattern can look exact even where lived spaces vary."
+      }
+    ],
+    "practice": 121,
+    "questionRoute": 29,
+    "home": "chart"
+  },
+  "q26825": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "traveller's bend",
+        "reading": "The first traveller saw the bend directly."
+      },
+      {
+        "label": "market stop",
+        "reading": "The second heard the first telling here."
+      },
+      {
+        "label": "third road",
+        "reading": "This traveller arrived independently but after the water fell."
+      }
+    ],
+    "practice": 140,
+    "questionRoute": 3,
+    "home": "nile"
+  },
+  "q41683": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "door closing",
+        "reading": "A witness heard only the opening words."
+      },
+      {
+        "label": "fragment",
+        "reading": "The surviving phrase can be attributed to this listener."
+      },
+      {
+        "label": "reconstruction",
+        "reading": "The connecting sentence is the historian's choice."
+      }
+    ],
+    "practice": 106,
+    "questionRoute": 18,
+    "home": "council"
+  },
+  "q34933": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "dated receipt",
+        "reading": "The receipt records buying material in one year."
+      },
+      {
+        "label": "remembered colour",
+        "reading": "A dancer recalls a different cloth."
+      },
+      {
+        "label": "current hem",
+        "reading": "The present seam includes both old and replacement material."
+      }
+    ],
+    "practice": 126,
+    "questionRoute": 33,
+    "home": "press"
+  },
+  "q85102": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "signature book",
+        "reading": "Only authorised signers appear in this column."
+      },
+      {
+        "label": "bill",
+        "reading": "A person barred from signing still paid for the work."
+      },
+      {
+        "label": "index",
+        "reading": "An empty slot can make absence discoverable without inventing a signature."
+      }
+    ],
+    "practice": 52,
+    "questionRoute": 33,
+    "home": "nile"
+  },
+  "q16885749": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "host's key",
+        "reading": "The host decides when an outsider may consult the account."
+      },
+      {
+        "label": "research copy",
+        "reading": "A copy supports later checking under agreed terms."
+      },
+      {
+        "label": "return address",
+        "reading": "The finding can reach the people who shaped the question."
+      }
+    ],
+    "practice": 75,
+    "questionRoute": 29,
+    "home": "fern"
+  },
+  "q377638": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "old road",
+        "reading": "This route is documented on the surviving plan."
+      },
+      {
+        "label": "alternative road",
+        "reading": "The alternative depends on a crossing that was never built."
+      },
+      {
+        "label": "costed crossing",
+        "reading": "Changing the cost changes how plausible the alternative appears."
+      }
+    ],
+    "practice": 81,
+    "questionRoute": 30,
+    "home": "market"
+  },
+  "q180099": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "speaker",
+        "reading": "The answer was given before family and visitors."
+      },
+      {
+        "label": "listener",
+        "reading": "The visitor's question helped set the terms."
+      },
+      {
+        "label": "private turn",
+        "reading": "A separate telling changes the audience as well as the answer."
+      }
+    ],
+    "practice": 156,
+    "questionRoute": 12,
+    "home": "voices"
+  },
+  "q352603": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "earlier interview",
+        "reading": "This statement belongs to a specific date and question."
+      },
+      {
+        "label": "later interview",
+        "reading": "The town had changed before the second visit."
+      },
+      {
+        "label": "matching question",
+        "reading": "Only part of the disagreement survives a like-for-like comparison."
+      }
+    ],
+    "practice": 126,
+    "questionRoute": 18,
+    "home": "voices"
+  },
+  "q381783": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "doorway ash",
+        "reading": "Foot traffic could have moved material into this patch."
+      },
+      {
+        "label": "sheltered patch",
+        "reading": "This patch lies away from the busy route."
+      },
+      {
+        "label": "unopened square",
+        "reading": "A prediction here can be checked against a still-unseen patch."
+      }
+    ],
+    "practice": 91,
+    "questionRoute": 5,
+    "home": "cold"
+  },
+  "q140575": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "custody slip",
+        "reading": "It traces who held the crate, leaving the original consent open."
+      },
+      {
+        "label": "community request",
+        "reading": "The request gives a reason the ownership tag omits."
+      },
+      {
+        "label": "crate latch",
+        "reading": "The person with this key controls access during the hearing."
+      }
+    ],
+    "practice": 76,
+    "questionRoute": 29,
+    "home": "nile"
+  },
+  "q556140": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "doorway",
+        "reading": "The bowl is partly hidden on entering the room."
+      },
+      {
+        "label": "wall niche",
+        "reading": "Seen from here its decoration faces away from arrivals."
+      },
+      {
+        "label": "second layout",
+        "reading": "Placing the same pieces differently changes how someone could use them."
+      }
+    ],
+    "practice": 58,
+    "questionRoute": 20,
+    "home": "cold"
+  },
+  "q1174579": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "gift bowl",
+        "reading": "The giver asks for no exact repayment."
+      },
+      {
+        "label": "owed bowl",
+        "reading": "A fixed return has been requested."
+      },
+      {
+        "label": "shared supper",
+        "reading": "The next exchange may happen between different neighbours."
+      }
+    ],
+    "practice": 73,
+    "questionRoute": 14,
+    "home": "market"
+  },
+  "q1325": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "far stall",
+        "reading": "The local price changes first."
+      },
+      {
+        "label": "cart route",
+        "reading": "A blocked road changes the cost of supply."
+      },
+      {
+        "label": "market board",
+        "reading": "The common price travels faster than the reason for it."
+      }
+    ],
+    "practice": 12,
+    "questionRoute": 10,
+    "home": "market"
+  },
+  "q234793": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "workshop",
+        "reading": "The posted wage is the only nearby offer."
+      },
+      {
+        "label": "ford",
+        "reading": "The alternative employer is beyond a crossing that can close."
+      },
+      {
+        "label": "new offer",
+        "reading": "Another reachable employer changes the worker's options."
+      }
+    ],
+    "practice": 155,
+    "questionRoute": 35,
+    "home": "gate"
+  },
+  "q213195": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "bell",
+        "reading": "It rings whether a keeper moves or not in this trial."
+      },
+      {
+        "label": "keeper's step",
+        "reading": "The keeper may also be learning the routine."
+      },
+      {
+        "label": "empty turn",
+        "reading": "A ring without the expected consequence changes the next response."
+      }
+    ],
+    "practice": 94,
+    "questionRoute": 5,
+    "home": "archive"
+  },
+  "q9049": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "word tiles",
+        "reading": "The child has heard each piece separately."
+      },
+      {
+        "label": "fresh sentence",
+        "reading": "The combination was never rehearsed."
+      },
+      {
+        "label": "unused order",
+        "reading": "An absent sentence alone does not tell why the child avoided it."
+      }
+    ],
+    "practice": 89,
+    "questionRoute": 8,
+    "home": "press"
+  },
+  "q666678": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "first speaker",
+        "reading": "The phrase is addressed to a particular guest."
+      },
+      {
+        "label": "pause",
+        "reading": "The reply changes if the gap is stripped away."
+      },
+      {
+        "label": "second scene",
+        "reading": "A repeated form can do different work elsewhere."
+      }
+    ],
+    "practice": 170,
+    "questionRoute": 24,
+    "home": "voices"
+  },
+  "q6409990": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "desk one",
+        "reading": "It records only one ground of complaint."
+      },
+      {
+        "label": "desk two",
+        "reading": "It assumes the other desk handles this person's case."
+      },
+      {
+        "label": "overlap",
+        "reading": "The same visitor is excluded by both sets of categories."
+      }
+    ],
+    "practice": 52,
+    "questionRoute": 12,
+    "home": "dispatch"
+  },
+  "q32729": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "old receipt",
+        "reading": "The workshop once received the protection it now questions."
+      },
+      {
+        "label": "new advice",
+        "reading": "The advice arrives when the other shop is still young."
+      },
+      {
+        "label": "same-age record",
+        "reading": "Matching stages changes the comparison."
+      }
+    ],
+    "practice": 126,
+    "questionRoute": 33,
+    "home": "yard"
+  },
+  "q61064": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "chord",
+        "reading": "A sustained chord invites the eye to linger."
+      },
+      {
+        "label": "shape",
+        "reading": "A sharp edge draws a quick gesture from the player."
+      },
+      {
+        "label": "rest",
+        "reading": "Leaving a silence changes how far the shape seems to continue."
+      }
+    ],
+    "practice": 165,
+    "questionRoute": 23,
+    "home": "stage"
+  },
+  "q171128": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "shift gate",
+        "reading": "Workers see the mural in a moving crowd."
+      },
+      {
+        "label": "street corner",
+        "reading": "A turn hides the gesture from a stationary observer."
+      },
+      {
+        "label": "workbench",
+        "reading": "From this side the gesture resembles a familiar movement."
+      }
+    ],
+    "practice": 159,
+    "questionRoute": 20,
+    "home": "dispatch"
+  },
+  "q5912": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "plinth",
+        "reading": "An everyday object gains distance and a title."
+      },
+      {
+        "label": "storeroom",
+        "reading": "The same object is encountered as equipment."
+      },
+      {
+        "label": "porter's angle",
+        "reading": "A maker's mark appears from the working side."
+      }
+    ],
+    "practice": 160,
+    "questionRoute": 9,
+    "home": "press"
+  },
+  "q273087": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "plaster",
+        "reading": "The model is vulnerable to weather."
+      },
+      {
+        "label": "shelter",
+        "reading": "Protection limits the number of visitors at once."
+      },
+      {
+        "label": "public square",
+        "reading": "A record reaches a larger crowd but lacks the surface of the work."
+      }
+    ],
+    "practice": 76,
+    "questionRoute": 27,
+    "home": "yard"
+  },
+  "q1791520": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "closed hinge",
+        "reading": "The visitor sees one smooth outline."
+      },
+      {
+        "label": "half turn",
+        "reading": "The visitor's hand changes which edge is visible."
+      },
+      {
+        "label": "last pose",
+        "reading": "The final shape is partly a record of the visitor's own action."
+      }
+    ],
+    "practice": 19,
+    "questionRoute": 26,
+    "home": "island"
+  },
+  "q314966": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "projector",
+        "reading": "The image reaches every seat."
+      },
+      {
+        "label": "spoken line",
+        "reading": "Some of the audience needs another language."
+      },
+      {
+        "label": "local telling",
+        "reading": "The teller can answer an audience in ways a fixed track cannot."
+      }
+    ],
+    "practice": 170,
+    "questionRoute": 24,
+    "home": "stage"
+  },
+  "q2900288": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "found image",
+        "reading": "The earlier image brings a history of how viewers were asked to look."
+      },
+      {
+        "label": "box edge",
+        "reading": "The assemblage places that image beside a new object."
+      },
+      {
+        "label": "eye level",
+        "reading": "The viewer's own position enters the encounter."
+      }
+    ],
+    "practice": 141,
+    "questionRoute": 9,
+    "home": "cold"
+  },
+  "q740036": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "first scrape",
+        "reading": "A single noise sounds accidental."
+      },
+      {
+        "label": "return beat",
+        "reading": "A repeated scrape starts to function like a motif."
+      },
+      {
+        "label": "listening seat",
+        "reading": "The echo at the back changes its spacing."
+      }
+    ],
+    "practice": 159,
+    "questionRoute": 23,
+    "home": "coast"
+  },
+  "q47739": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "gate bell",
+        "reading": "The night keeper hears the closing signal."
+      },
+      {
+        "label": "river bell",
+        "reading": "The boat crew hears the start of work."
+      },
+      {
+        "label": "echo",
+        "reading": "The same pitch returns from both banks."
+      }
+    ],
+    "practice": 49,
+    "questionRoute": 9,
+    "home": "coast"
+  },
+  "q216072": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "guest chair",
+        "reading": "The invitation has a seat but no clear route to it."
+      },
+      {
+        "label": "doorway",
+        "reading": "The porter remains here with a loaded tray."
+      },
+      {
+        "label": "host's place",
+        "reading": "Putting the host here changes who encounters the obstacle."
+      }
+    ],
+    "practice": 73,
+    "questionRoute": 20,
+    "home": "stage"
+  },
+  "q171195": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "axle",
+        "reading": "The carter can point to it without being able to travel."
+      },
+      {
+        "label": "cart box",
+        "reading": "This part alone will not carry a load."
+      },
+      {
+        "label": "loaded wheel",
+        "reading": "The working relation becomes visible as the parts turn together."
+      }
+    ],
+    "practice": 24,
+    "questionRoute": 6,
+    "home": "yard"
+  },
+  "q180967": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "threshold",
+        "reading": "The rope casts a curved moving shadow."
+      },
+      {
+        "label": "floor lamp",
+        "reading": "Bringing the light closer reveals separate fibres."
+      },
+      {
+        "label": "old sketch",
+        "reading": "A confident outline can survive even after the viewing conditions change."
+      }
+    ],
+    "practice": 43,
+    "questionRoute": 9,
+    "home": "voices"
+  },
+  "q19587071": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "screen",
+        "reading": "The audience hears the argument without seeing the pupil."
+      },
+      {
+        "label": "chalkboard",
+        "reading": "The steps can be checked independently of a title."
+      },
+      {
+        "label": "speaker's chair",
+        "reading": "Opening the screen changes who is accepted at the lectern."
+      }
+    ],
+    "practice": 84,
+    "questionRoute": 19,
+    "home": "council"
+  },
+  "q165792": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "worn joint",
+        "reading": "An old repair is helping to carry the load."
+      },
+      {
+        "label": "new block",
+        "reading": "This block fits the gap but shifts weight onto a neighbour."
+      },
+      {
+        "label": "whole lintel",
+        "reading": "The wall can remain standing while individual stones change."
+      }
+    ],
+    "practice": 13,
+    "questionRoute": 4,
+    "home": "yard"
+  },
+  "q101638": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "high shelf",
+        "reading": "The book is available to anyone who can reach it."
+      },
+      {
+        "label": "ladder hook",
+        "reading": "The key hangs beyond the apprentice's reach."
+      },
+      {
+        "label": "reading circle",
+        "reading": "A reader can take part without borrowing the ladder."
+      }
+    ],
+    "practice": 51,
+    "questionRoute": 7,
+    "home": "archive"
+  },
+  "q740884": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "speaker's breath",
+        "reading": "The speaker sets the first phrasing."
+      },
+      {
+        "label": "relay operator",
+        "reading": "The return is routed through another person's controls."
+      },
+      {
+        "label": "listener's switch",
+        "reading": "The hearer can replay a voice stripped from its original setting."
+      }
+    ],
+    "practice": 71,
+    "questionRoute": 10,
+    "home": "voices"
+  },
+  "q171969": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "fossil jaw",
+        "reading": "The preserved teeth constrain which comparisons fit."
+      },
+      {
+        "label": "living specimen",
+        "reading": "Its similar shape alone cannot identify the fossil."
+      },
+      {
+        "label": "empty stall",
+        "reading": "There need not be a living match for every recovered jaw."
+      }
+    ],
+    "practice": 91,
+    "questionRoute": 25,
+    "home": "cold"
+  },
+  "q5333": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "single shower",
+        "reading": "Fine grit shifts across the small channel."
+      },
+      {
+        "label": "seasonal bank",
+        "reading": "A sequence of showers leaves an appreciable cut."
+      },
+      {
+        "label": "older break",
+        "reading": "The sudden break needs evidence beyond the small changes nearby."
+      }
+    ],
+    "practice": 89,
+    "questionRoute": 32,
+    "home": "fern"
+  },
+  "q76432": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "ward ledger",
+        "reading": "Only people who reached the ward appear here."
+      },
+      {
+        "label": "street map",
+        "reading": "Several patients used one water route."
+      },
+      {
+        "label": "tenants' note",
+        "reading": "A resident outside the hospital gives the map another point of view."
+      }
+    ],
+    "practice": 155,
+    "questionRoute": 12,
+    "home": "gate"
+  },
+  "q529": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "delivery slip",
+        "reading": "This records where the cart stopped."
+      },
+      {
+        "label": "handler's shift",
+        "reading": "The transfer happened between two working shifts."
+      },
+      {
+        "label": "complaint date",
+        "reading": "The complaint followed the delivery but does not identify its cause."
+      }
+    ],
+    "practice": 94,
+    "questionRoute": 25,
+    "home": "market"
+  },
+  "q148109": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "light star",
+        "reading": "The model remains within its stated assumptions here."
+      },
+      {
+        "label": "limit mark",
+        "reading": "The calculation changes character near this mass."
+      },
+      {
+        "label": "far side",
+        "reading": "Extrapolating the same rule past its range leaves the result unsupported."
+      }
+    ],
+    "practice": 66,
+    "questionRoute": 15,
+    "home": "coast"
+  },
+  "q46795": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "nursery",
+        "reading": "Young trees need water and regular care."
+      },
+      {
+        "label": "walking path",
+        "reading": "The proposed strip is also a route used every morning."
+      },
+      {
+        "label": "growers' plot",
+        "reading": "A grower can say whether the plan will survive the dry season."
+      }
+    ],
+    "practice": 75,
+    "questionRoute": 29,
+    "home": "fern"
+  },
+  "q2540350": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "first dip",
+        "reading": "The light falls before the main crossing."
+      },
+      {
+        "label": "central crossing",
+        "reading": "A timing mark connects observations at different stations."
+      },
+      {
+        "label": "later dip",
+        "reading": "Its position offers a second check on a possible pattern."
+      }
+    ],
+    "practice": 70,
+    "questionRoute": 28,
+    "home": "chart"
+  },
+  "q88608397": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "observed graph",
+        "reading": "These measurements support a narrow change under the stated conditions."
+      },
+      {
+        "label": "reviewer's note",
+        "reading": "The objection identifies a limit to what follows."
+      },
+      {
+        "label": "future use",
+        "reading": "The proposed application would still need its own evidence."
+      }
+    ],
+    "practice": 106,
+    "questionRoute": 31,
+    "home": "yard"
+  },
+  "q316304": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "first polygon",
+        "reading": "The sides leave visible arcs against the circle."
+      },
+      {
+        "label": "doubled sides",
+        "reading": "The gaps shrink along the rim."
+      },
+      {
+        "label": "outer boundary",
+        "reading": "The sketch alone does not turn an approximation into an exact value."
+      }
+    ],
+    "practice": 42,
+    "questionRoute": 8,
+    "home": "chart"
+  },
+  "q7103": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "free edge",
+        "reading": "Flour gathers along a particular set of nodal lines."
+      },
+      {
+        "label": "supported corner",
+        "reading": "The pattern changes when the support changes."
+      },
+      {
+        "label": "traced ridge",
+        "reading": "One surviving ridge allows comparison after the plate is disturbed."
+      }
+    ],
+    "practice": 70,
+    "questionRoute": 28,
+    "home": "stage"
+  },
+  "q379999": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "prior forecast",
+        "reading": "The first observer began with a different expectation."
+      },
+      {
+        "label": "new sounding",
+        "reading": "Both observers receive the same new evidence."
+      },
+      {
+        "label": "revised forecast",
+        "reading": "Agreement can improve without the two estimates becoming identical."
+      }
+    ],
+    "practice": 44,
+    "questionRoute": 11,
+    "home": "coast"
+  },
+  "q539544": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "one cast",
+        "reading": "This interval either covers the value or misses it."
+      },
+      {
+        "label": "many casts",
+        "reading": "Coverage describes a procedure over repeated samples."
+      },
+      {
+        "label": "marked shoal",
+        "reading": "The true position lets the keeper check the procedure in the model."
+      }
+    ],
+    "practice": 89,
+    "questionRoute": 8,
+    "home": "market"
+  },
+  "q525037": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "detailed signal",
+        "reading": "The lookout can distinguish three routes."
+      },
+      {
+        "label": "short signal",
+        "reading": "It arrives sooner but combines two cases."
+      },
+      {
+        "label": "boat token",
+        "reading": "Extra detail matters only when a different action is available."
+      }
+    ],
+    "practice": 47,
+    "questionRoute": 2,
+    "home": "dispatch"
+  },
+  "q38636": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "whole film",
+        "reading": "The surface looks smooth from the room entrance."
+      },
+      {
+        "label": "crowded corner",
+        "reading": "Close up, a sharp concentration becomes visible."
+      },
+      {
+        "label": "wire outline",
+        "reading": "A changed boundary can alter a surface throughout."
+      }
+    ],
+    "practice": 82,
+    "questionRoute": 23,
+    "home": "island"
+  },
+  "q23721911": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "flat layer",
+        "reading": "The centres form a pattern you can trace."
+      },
+      {
+        "label": "orange crate",
+        "reading": "A stack in three dimensions can be handled directly."
+      },
+      {
+        "label": "higher-dimensional diagram",
+        "reading": "The crate is an analogy and cannot verify the general proof."
+      }
+    ],
+    "practice": 108,
+    "questionRoute": 30,
+    "home": "island"
+  },
+  "q473217": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "governor's heading",
+        "reading": "The official title frames the scene as an administrative report."
+      },
+      {
+        "label": "drawn carriers",
+        "reading": "The figures show who bears the load."
+      },
+      {
+        "label": "margin",
+        "reading": "A gesture at the edge directs attention back at the official."
+      }
+    ],
+    "practice": 58,
+    "questionRoute": 12,
+    "home": "press"
+  },
+  "q185105": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "one storm",
+        "reading": "A single voyage is delayed."
+      },
+      {
+        "label": "seasonal routes",
+        "reading": "Many voyages share a seasonal constraint."
+      },
+      {
+        "label": "century ledger",
+        "reading": "The pattern of trade changes more slowly than either voyage."
+      }
+    ],
+    "practice": 126,
+    "questionRoute": 33,
+    "home": "chart"
+  },
+  "q266185": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "signature",
+        "reading": "The strokes resemble the name on the old contract."
+      },
+      {
+        "label": "neighbour's account",
+        "reading": "This neighbour recognises a habit rather than a signature."
+      },
+      {
+        "label": "absent witness",
+        "reading": "A missing household voice leaves more than one reading possible."
+      }
+    ],
+    "practice": 14,
+    "questionRoute": 18,
+    "home": "nile"
+  },
+  "q501880": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "courtly address",
+        "reading": "A formal greeting sets a relationship between speakers."
+      },
+      {
+        "label": "literal verb",
+        "reading": "The short translation keeps the action while losing its register."
+      },
+      {
+        "label": "older dispatch",
+        "reading": "A similar verb once addressed a very different recipient."
+      }
+    ],
+    "practice": 170,
+    "questionRoute": 10,
+    "home": "nile"
+  },
+  "q201538": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "commission",
+        "reading": "The map was commissioned for a particular traveller."
+      },
+      {
+        "label": "subject's house",
+        "reading": "The people mapped did not choose the visitor's route."
+      },
+      {
+        "label": "viewing room",
+        "reading": "The intended reader can change what looks central."
+      }
+    ],
+    "practice": 140,
+    "questionRoute": 12,
+    "home": "chart"
+  },
+  "q2744161": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "reign heading",
+        "reading": "The dynasty changes at this mark."
+      },
+      {
+        "label": "street work",
+        "reading": "The same family trade continues across the heading."
+      },
+      {
+        "label": "local calendar",
+        "reading": "The festival follows a different historical rhythm."
+      }
+    ],
+    "practice": 80,
+    "questionRoute": 6,
+    "home": "council"
+  },
+  "q929268": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "chosen heading",
+        "reading": "The contributor can find the account under their own words."
+      },
+      {
+        "label": "cross-reference",
+        "reading": "A second search can succeed without making a former name public."
+      },
+      {
+        "label": "withdrawal slip",
+        "reading": "The contributor can change what later visitors are shown."
+      }
+    ],
+    "practice": 76,
+    "questionRoute": 16,
+    "home": "voices"
+  },
+  "q276177": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "wall",
+        "reading": "The join can be compared with the structure still standing."
+      },
+      {
+        "label": "section",
+        "reading": "The buried layer places the wall in a sequence."
+      },
+      {
+        "label": "landscape",
+        "reading": "A local route gives it a relationship the trench cannot show alone."
+      }
+    ],
+    "practice": 157,
+    "questionRoute": 25,
+    "home": "cold"
+  },
+  "q269002": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "first monument",
+        "reading": "A figure appears beside a date."
+      },
+      {
+        "label": "later carving",
+        "reading": "Repeated attributes connect the figure to another event."
+      },
+      {
+        "label": "sky chart",
+        "reading": "Not every date on a monument need serve the same purpose."
+      }
+    ],
+    "practice": 91,
+    "questionRoute": 5,
+    "home": "press"
+  },
+  "q10501504": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "regional sequence",
+        "reading": "There is local change before the imported form arrives."
+      },
+      {
+        "label": "exchange route",
+        "reading": "Two regions can exchange designs without one founding the other."
+      },
+      {
+        "label": "centre pin",
+        "reading": "A single birthplace pin hides that distinction."
+      }
+    ],
+    "practice": 120,
+    "questionRoute": 33,
+    "home": "chart"
+  },
+  "q310956": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "blink",
+        "reading": "An eyelid moves in both accounts."
+      },
+      {
+        "label": "wink",
+        "reading": "A second child responds to the same movement."
+      },
+      {
+        "label": "shared joke",
+        "reading": "The relation between the two supplies evidence unavailable in a bare description."
+      }
+    ],
+    "practice": 49,
+    "questionRoute": 9,
+    "home": "voices"
+  },
+  "q334842": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "fuel crate",
+        "reading": "Some dishes cost more heat to prepare."
+      },
+      {
+        "label": "feast calendar",
+        "reading": "The dates make certain resources available."
+      },
+      {
+        "label": "cook's choice",
+        "reading": "One costly dish stays on the menu for reasons the fuel account misses."
+      }
+    ],
+    "practice": 54,
+    "questionRoute": 32,
+    "home": "market"
+  },
+  "q4194733": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "flake edge",
+        "reading": "The worn edge can be examined without fitting a stranger's hand to it."
+      },
+      {
+        "label": "find layer",
+        "reading": "The context constrains its date."
+      },
+      {
+        "label": "drawn grip",
+        "reading": "A possible grip is a reconstruction, not a recovered movement."
+      }
+    ],
+    "practice": 41,
+    "questionRoute": 25,
+    "home": "cold"
+  },
+  "q132253334": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "host's question",
+        "reading": "The community sets a purpose for the visit."
+      },
+      {
+        "label": "return agreement",
+        "reading": "People can decide how the material comes home."
+      },
+      {
+        "label": "display key",
+        "reading": "Control of the final display changes who can revise it."
+      }
+    ],
+    "practice": 75,
+    "questionRoute": 29,
+    "home": "fern"
+  },
+  "q9215": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "spoken name",
+        "reading": "The visitor actually said this word."
+      },
+      {
+        "label": "stray association",
+        "reading": "The next word is the visitor's own association."
+      },
+      {
+        "label": "analyst's gloss",
+        "reading": "The interpretation was supplied by the analyst."
+      }
+    ],
+    "practice": 48,
+    "questionRoute": 25,
+    "home": "voices"
+  },
+  "q154723": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "corridor",
+        "reading": "The visitor has to wait here before being called."
+      },
+      {
+        "label": "promised visit",
+        "reading": "Another person's arrival gives the wait a different meaning."
+      },
+      {
+        "label": "self-chosen task",
+        "reading": "The visitor can act within a situation they did not choose."
+      }
+    ],
+    "practice": 4,
+    "questionRoute": 20,
+    "home": "archive"
+  },
+  "q984416": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "export receipt",
+        "reading": "The published total counts goods leaving the harbour."
+      },
+      {
+        "label": "import bill",
+        "reading": "The same workshop pays for tools from elsewhere."
+      },
+      {
+        "label": "loan payment",
+        "reading": "Part of the gain goes to a lender outside the town."
+      }
+    ],
+    "practice": 12,
+    "questionRoute": 12,
+    "home": "market"
+  },
+  "q233950": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "passenger count",
+        "reading": "The two notices describe the same number of arrivals."
+      },
+      {
+        "label": "loss wording",
+        "reading": "One queue attends to what might be lost."
+      },
+      {
+        "label": "gain wording",
+        "reading": "The other queue attends to what might be kept."
+      }
+    ],
+    "practice": 118,
+    "questionRoute": 9,
+    "home": "gate"
+  },
+  "q108184": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "familiar shoal",
+        "reading": "The usual lookout cue is informative on this route."
+      },
+      {
+        "label": "sheltered inlet",
+        "reading": "The same cue arises under different conditions here."
+      },
+      {
+        "label": "unknown channel",
+        "reading": "A fast decision rule has a setting in which it can fail."
+      }
+    ],
+    "practice": 47,
+    "questionRoute": 24,
+    "home": "coast"
+  },
+  "q242376": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "quoted report",
+        "reading": "The sentence arrives under a respected name."
+      },
+      {
+        "label": "transmitter",
+        "reading": "The record names who passed it on."
+      },
+      {
+        "label": "excluded reader",
+        "reading": "A different reader can ask why this report was selected."
+      }
+    ],
+    "practice": 140,
+    "questionRoute": 3,
+    "home": "nile"
+  },
+  "q212730": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "single week",
+        "reading": "The witness experienced a sharp deterioration."
+      },
+      {
+        "label": "several years",
+        "reading": "The short reversal sits in a longer sequence."
+      },
+      {
+        "label": "start date",
+        "reading": "Changing the start can change whether the trend looks upward."
+      }
+    ],
+    "practice": 146,
+    "questionRoute": 12,
+    "home": "market"
+  },
+  "q340234": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "counting station",
+        "reading": "The register covers only the district in reach."
+      },
+      {
+        "label": "district edge",
+        "reading": "A boundary cuts the same street in two."
+      },
+      {
+        "label": "residents' scale",
+        "reading": "The people affected can identify a danger absent from the official area."
+      }
+    ],
+    "practice": 51,
+    "questionRoute": 12,
+    "home": "council"
+  },
+  "q24572747": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "public page",
+        "reading": "The writer has chosen to share this part."
+      },
+      {
+        "label": "separate account",
+        "reading": "A different person can sign for their own experience."
+      },
+      {
+        "label": "closed page",
+        "reading": "The gap marks the limits of permission."
+      }
+    ],
+    "practice": 76,
+    "questionRoute": 16,
+    "home": "stage"
+  },
+  "q466627": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "large foot",
+        "reading": "The painting gives the figure weight near the ground."
+      },
+      {
+        "label": "painted space",
+        "reading": "The exaggerated scale changes how the horizon feels."
+      },
+      {
+        "label": "dealer's frame",
+        "reading": "An outside frame hides part of that relation."
+      }
+    ],
+    "practice": 159,
+    "questionRoute": 20,
+    "home": "stage"
+  },
+  "q4724": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "standard reach",
+        "reading": "The plan fits the model figure's arm."
+      },
+      {
+        "label": "bread basket",
+        "reading": "The same doorway narrows for someone carrying a load."
+      },
+      {
+        "label": "second reach",
+        "reading": "Another person's reach makes a different shelf usable."
+      }
+    ],
+    "practice": 58,
+    "questionRoute": 20,
+    "home": "island"
+  },
+  "q560101": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "shaded wall",
+        "reading": "The afternoon shadow changes conditions at the entrance."
+      },
+      {
+        "label": "air path",
+        "reading": "Air can move through a space even when the plan looks closed."
+      },
+      {
+        "label": "repair route",
+        "reading": "A builder must be able to reach what needs maintenance later."
+      }
+    ],
+    "practice": 71,
+    "questionRoute": 23,
+    "home": "island"
+  },
+  "q466654": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "flat light",
+        "reading": "The colour pattern dominates the surface."
+      },
+      {
+        "label": "side light",
+        "reading": "The padded areas throw small shadows."
+      },
+      {
+        "label": "stitch path",
+        "reading": "A line crosses a raised form the flat image seems to divide."
+      }
+    ],
+    "practice": 71,
+    "questionRoute": 23,
+    "home": "yard"
+  },
+  "q160115": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "single seed",
+        "reading": "A hand-worked mark is visible at close range."
+      },
+      {
+        "label": "whole field",
+        "reading": "The individual marks recede into a repeated pattern."
+      },
+      {
+        "label": "workshop",
+        "reading": "The work of many makers connects the two views."
+      }
+    ],
+    "practice": 18,
+    "questionRoute": 22,
+    "home": "yard"
+  },
+  "q146776": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "portrait",
+        "reading": "The sitter took part in making this view."
+      },
+      {
+        "label": "chosen room",
+        "reading": "The audience changes when the work moves."
+      },
+      {
+        "label": "return address",
+        "reading": "A sitter can still contest a caption after the opening."
+      }
+    ],
+    "practice": 76,
+    "questionRoute": 29,
+    "home": "voices"
+  },
+  "q256506": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "covered bowl",
+        "reading": "The meal reaches somebody whose name the giver never hears."
+      },
+      {
+        "label": "shared table",
+        "reading": "A guest can take part in giving the next meal."
+      },
+      {
+        "label": "prize token",
+        "reading": "Recognition may attract a donor and make another withdraw."
+      }
+    ],
+    "practice": 60,
+    "questionRoute": 35,
+    "home": "archive"
+  },
+  "q9397": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "rolling rim",
+        "reading": "The wobble reveals a dip under the rim."
+      },
+      {
+        "label": "water line",
+        "reading": "The same dip becomes a useful lip for pouring."
+      },
+      {
+        "label": "unit mark",
+        "reading": "The irregular edge makes this a poor standard for a full bowl."
+      }
+    ],
+    "practice": 24,
+    "questionRoute": 2,
+    "home": "market"
+  },
+  "q378462": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "pledge desk",
+        "reading": "The signatories have described the fault."
+      },
+      {
+        "label": "broken tread",
+        "reading": "The obstacle is felt by someone carrying a load."
+      },
+      {
+        "label": "long way round",
+        "reading": "Walking alongside the girl reveals the second damaged step."
+      }
+    ],
+    "practice": 3,
+    "questionRoute": 2,
+    "home": "island"
+  },
+  "q35802": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "west window",
+        "reading": "The wood grain remains visible through a gold cast."
+      },
+      {
+        "label": "east window",
+        "reading": "The knot is visible from a colder angle."
+      },
+      {
+        "label": "thread",
+        "reading": "The same knot sits at the meeting of the two views."
+      }
+    ],
+    "practice": 58,
+    "questionRoute": 9,
+    "home": "stage"
+  },
+  "q7197": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "apron",
+        "reading": "The task can remain enjoyable even when assigned unfairly."
+      },
+      {
+        "label": "spare hook",
+        "reading": "Another person can volunteer without taking the cook's place forever."
+      },
+      {
+        "label": "shift slip",
+        "reading": "Freedom to refuse depends on who will cover the meal."
+      }
+    ],
+    "practice": 51,
+    "questionRoute": 35,
+    "home": "yard"
+  },
+  "q28918": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "official opening",
+        "reading": "The greeting already names its imagined listener."
+      },
+      {
+        "label": "guest's voice",
+        "reading": "The invitation sounds different when the recipient begins it."
+      },
+      {
+        "label": "signature",
+        "reading": "A signature records who felt able to accept."
+      }
+    ],
+    "practice": 170,
+    "questionRoute": 24,
+    "home": "press"
+  },
+  "q43302497": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "saying",
+        "reading": "The first voice leaves an opening for disagreement."
+      },
+      {
+        "label": "pause",
+        "reading": "The audience hears humour before the rebuttal."
+      },
+      {
+        "label": "reply",
+        "reading": "The response is part of the argument the printed saying loses."
+      }
+    ],
+    "practice": 53,
+    "questionRoute": 10,
+    "home": "voices"
+  },
+  "q60894584": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "first house",
+        "reading": "The meeting starts on one family's step."
+      },
+      {
+        "label": "survey peg",
+        "reading": "The boundary marks land rather than an evening obligation."
+      },
+      {
+        "label": "second doorstep",
+        "reading": "A relative crosses the property line without leaving the relationship."
+      }
+    ],
+    "practice": 58,
+    "questionRoute": 20,
+    "home": "chart"
+  },
+  "q712288": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "common notice",
+        "reading": "Every opinion appears under the town's single name."
+      },
+      {
+        "label": "signed dissent",
+        "reading": "One resident takes responsibility for a particular objection."
+      },
+      {
+        "label": "empty chair",
+        "reading": "A resident absent that night has endorsed neither side."
+      }
+    ],
+    "practice": 119,
+    "questionRoute": 21,
+    "home": "council"
+  },
+  "q7765045": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "spoken phrase",
+        "reading": "The syllables are the same in both readings."
+      },
+      {
+        "label": "accented beat",
+        "reading": "The stress changes who seems to be blamed."
+      },
+      {
+        "label": "listener's laugh",
+        "reading": "A laugh from the audience can take the line away from its speaker."
+      }
+    ],
+    "practice": 109,
+    "questionRoute": 9,
+    "home": "stage"
+  },
+  "q39599": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "straight front",
+        "reading": "The incoming crest reaches the doorway as a broad line."
+      },
+      {
+        "label": "narrow opening",
+        "reading": "The wave travels beyond the straight-ahead path."
+      },
+      {
+        "label": "side cork",
+        "reading": "A cork at the edge responds despite being outside the arrow."
+      }
+    ],
+    "practice": 81,
+    "questionRoute": 30,
+    "home": "coast"
+  },
+  "q935": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "white patch",
+        "reading": "Several colours meet in one visible spot."
+      },
+      {
+        "label": "single stripe",
+        "reading": "A selected colour bends again without spreading into the whole band."
+      },
+      {
+        "label": "second prism",
+        "reading": "The orientation matters when trying to recombine the light."
+      }
+    ],
+    "practice": 70,
+    "questionRoute": 23,
+    "home": "coast"
+  },
+  "q185007": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "first sketch",
+        "reading": "The tip ends precisely at the edge of the drawing."
+      },
+      {
+        "label": "later sheet",
+        "reading": "A branch continues where the first drawing stopped."
+      },
+      {
+        "label": "paper margin",
+        "reading": "The edge belongs to the record rather than the nerve."
+      }
+    ],
+    "practice": 17,
+    "questionRoute": 15,
+    "home": "fern"
+  },
+  "q154824": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "one sack",
+        "reading": "It measures this plot's harvest."
+      },
+      {
+        "label": "two fields",
+        "reading": "The plots differ in available water as well as in grain."
+      },
+      {
+        "label": "season ledger",
+        "reading": "An impressive harvest can carry a cost after the weigh-in."
+      }
+    ],
+    "practice": 60,
+    "questionRoute": 35,
+    "home": "fern"
+  },
+  "q234888": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "inner orbit",
+        "reading": "The luminous inner region supplies the reference."
+      },
+      {
+        "label": "outer orbit",
+        "reading": "In the tracing the speed stays high where the visible light drops."
+      },
+      {
+        "label": "model curve",
+        "reading": "The expected fall comes from a particular account of the mass."
+      }
+    ],
+    "practice": 91,
+    "questionRoute": 25,
+    "home": "coast"
+  },
+  "q1389108": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "first galaxy",
+        "reading": "The proposed curve fits much of this rotation trace."
+      },
+      {
+        "label": "second galaxy",
+        "reading": "There is a point where the two predictions separate."
+      },
+      {
+        "label": "sealed forecast",
+        "reading": "A fresh observation can now count against the model."
+      }
+    ],
+    "practice": 153,
+    "questionRoute": 4,
+    "home": "coast"
+  },
+  "q235451": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "yield tag",
+        "reading": "It lets growers compare one outcome quickly."
+      },
+      {
+        "label": "season wheel",
+        "reading": "Ripening before the move uphill matters to this household."
+      },
+      {
+        "label": "reserve jar",
+        "reading": "Keeping a second variety leaves a choice after a late frost."
+      }
+    ],
+    "practice": 60,
+    "questionRoute": 35,
+    "home": "fern"
+  },
+  "q6777103": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "transmitter",
+        "reading": "The drawn reach assumes conditions near the tower."
+      },
+      {
+        "label": "ridge",
+        "reading": "The signal fades along the listener's route."
+      },
+      {
+        "label": "valley desk",
+        "reading": "A listener can report a gap that the circle on the map conceals."
+      }
+    ],
+    "practice": 6,
+    "questionRoute": 24,
+    "home": "dispatch"
+  },
+  "q35900": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "first curve",
+        "reading": "The carpenter can draw this locus from the given lengths."
+      },
+      {
+        "label": "second curve",
+        "reading": "Its crossing limits which lengths meet both conditions."
+      },
+      {
+        "label": "lifted segment",
+        "reading": "Transferring the length introduces an error separate from the construction."
+      }
+    ],
+    "practice": 151,
+    "questionRoute": 23,
+    "home": "chart"
+  },
+  "q7091": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "first exchange",
+        "reading": "Two keys swap pockets together."
+      },
+      {
+        "label": "second exchange",
+        "reading": "Reversing the order can change where one key ends."
+      },
+      {
+        "label": "unchanged relation",
+        "reading": "Some properties survive even a complete change of labels."
+      }
+    ],
+    "practice": 87,
+    "questionRoute": 28,
+    "home": "yard"
+  },
+  "q76410": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "first tread",
+        "reading": "It is an actual example of the construction."
+      },
+      {
+        "label": "repeatable rule",
+        "reading": "The next step can be checked without counting a finished infinity."
+      },
+      {
+        "label": "missing assumption",
+        "reading": "The rule silently expects room for another tread."
+      }
+    ],
+    "practice": 42,
+    "questionRoute": 8,
+    "home": "island"
+  },
+  "q76420": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "room one",
+        "reading": "Moving its guest vacates the first door."
+      },
+      {
+        "label": "successor room",
+        "reading": "Every old guest has a specified new door in the model."
+      },
+      {
+        "label": "even door",
+        "reading": "Pairing rooms with even numbers leaves all odd numbers available."
+      }
+    ],
+    "practice": 152,
+    "questionRoute": 8,
+    "home": "archive"
+  },
+  "q11641": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "instruction",
+        "reading": "The clerk's word has a particular intended meaning."
+      },
+      {
+        "label": "translation",
+        "reading": "A repeated symbol points to the wrong column."
+      },
+      {
+        "label": "shelf",
+        "reading": "Eleven misplaced parcels can share a single upstream mistake."
+      }
+    ],
+    "practice": 70,
+    "questionRoute": 13,
+    "home": "dispatch"
+  },
+  "q101740": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "long rule",
+        "reading": "A single span skips the little inlet."
+      },
+      {
+        "label": "short rule",
+        "reading": "Following the inlet adds steps and measured length."
+      },
+      {
+        "label": "map key",
+        "reading": "The number travels fairly only with its unit and scale."
+      }
+    ],
+    "practice": 6,
+    "questionRoute": 23,
+    "home": "chart"
+  },
+  "q92824": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "bell",
+        "reading": "The bell precedes many umbrella openings."
+      },
+      {
+        "label": "cloud",
+        "reading": "The weather can influence both the bell and the people outside."
+      },
+      {
+        "label": "dry trial",
+        "reading": "Ringing the model bell alone separates two stories about cause."
+      }
+    ],
+    "practice": 94,
+    "questionRoute": 25,
+    "home": "gate"
+  },
+  "q92894": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "coat",
+        "reading": "The garment stays fixed for this comparison."
+      },
+      {
+        "label": "backdrop",
+        "reading": "The class changes when only the background moves."
+      },
+      {
+        "label": "covered garment",
+        "reading": "A confident guess can survive the removal of the intended evidence."
+      }
+    ],
+    "practice": 101,
+    "questionRoute": 34,
+    "home": "dispatch"
+  },
+  "q275604": {
+    "kind": "scale",
+    "pieces": [
+      {
+        "label": "whole bar",
+        "reading": "A long window gives a steady note but blurs the instant of the scratch."
+      },
+      {
+        "label": "short window",
+        "reading": "The scratch is located but the note sounds harder to identify."
+      },
+      {
+        "label": "breath",
+        "reading": "The singer's breath sits near the noise a restorer might erase."
+      }
+    ],
+    "practice": 82,
+    "questionRoute": 23,
+    "home": "voices"
+  },
+  "q192124": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "first carrier",
+        "reading": "A named witness passed this account along."
+      },
+      {
+        "label": "common stop",
+        "reading": "Two routes meet before they split into different tellings."
+      },
+      {
+        "label": "ending",
+        "reading": "Two endings might have inherited a single original mistake."
+      }
+    ],
+    "practice": 140,
+    "questionRoute": 3,
+    "home": "nile"
+  },
+  "q77184": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "official seal",
+        "reading": "The paper's origin can be genuine while a claim on it is mistaken."
+      },
+      {
+        "label": "private draft",
+        "reading": "The phrase was changed before publication."
+      },
+      {
+        "label": "pay slip",
+        "reading": "The crew received pay later, but the slip does not state exactly what they repaired."
+      }
+    ],
+    "practice": 48,
+    "questionRoute": 25,
+    "home": "nile"
+  },
+  "q5047158": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "anniversary",
+        "reading": "The ceremony gives an institution a public date."
+      },
+      {
+        "label": "school notebook",
+        "reading": "An ordinary Tuesday preserves activity absent from that programme."
+      },
+      {
+        "label": "calendar edge",
+        "reading": "What survives outside an anniversary can change the historical question."
+      }
+    ],
+    "practice": 158,
+    "questionRoute": 33,
+    "home": "archive"
+  },
+  "q475026": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "drum call",
+        "reading": "The neighbours hear an invitation to gather."
+      },
+      {
+        "label": "district heading",
+        "reading": "The clerk's word makes the same gathering sound spontaneous."
+      },
+      {
+        "label": "named organiser",
+        "reading": "The choice of verb changes whose agency survives on paper."
+      }
+    ],
+    "practice": 170,
+    "questionRoute": 12,
+    "home": "nile"
+  },
+  "q434818": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "departure",
+        "reading": "Ending here makes the empty chair read as loss."
+      },
+      {
+        "label": "letter",
+        "reading": "The later message preserves a relationship through distance."
+      },
+      {
+        "label": "binding",
+        "reading": "Moving an ending changes the story without adding an event."
+      }
+    ],
+    "practice": 49,
+    "questionRoute": 33,
+    "home": "press"
+  },
+  "q7399969": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "ledger",
+        "reading": "Only the clerk's count is securely recorded here."
+      },
+      {
+        "label": "loose slip",
+        "reading": "An imagined possibility can be lifted away from the document."
+      },
+      {
+        "label": "blank space",
+        "reading": "Leaving a name open can preserve a distinction the reader needs."
+      }
+    ],
+    "practice": 17,
+    "questionRoute": 18,
+    "home": "cold"
+  },
+  "q106288014": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "private name",
+        "reading": "Releasing it would make the person identifiable."
+      },
+      {
+        "label": "office stamp",
+        "reading": "The institution remains visible with the name covered."
+      },
+      {
+        "label": "filing route",
+        "reading": "A visitor can study the system without reading the letter."
+      }
+    ],
+    "practice": 75,
+    "questionRoute": 16,
+    "home": "voices"
+  },
+  "q141037": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "lowest step",
+        "reading": "The furniture puts this case below the rest."
+      },
+      {
+        "label": "common table",
+        "reading": "The same objects can be viewed without a hierarchy."
+      },
+      {
+        "label": "old plan",
+        "reading": "The disused staircase is evidence of how the display once classified people."
+      }
+    ],
+    "practice": 80,
+    "questionRoute": 6,
+    "home": "cold"
+  },
+  "q76857": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "old handle",
+        "reading": "The basket shows an earlier repair."
+      },
+      {
+        "label": "later journey",
+        "reading": "A replacement handle travelled with its owner."
+      },
+      {
+        "label": "local account",
+        "reading": "Two similar handles need not have the same history."
+      }
+    ],
+    "practice": 126,
+    "questionRoute": 21,
+    "home": "cold"
+  },
+  "q128126": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "feather",
+        "reading": "The child gives this in exchange for passage."
+      },
+      {
+        "label": "return song",
+        "reading": "On the far bank the ferryman is the giver."
+      },
+      {
+        "label": "private verse",
+        "reading": "The teller declines this verse, limiting what the comparison can include."
+      }
+    ],
+    "practice": 128,
+    "questionRoute": 9,
+    "home": "voices"
+  },
+  "q221084": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "cup pattern",
+        "reading": "Formal resemblance is visible on both sites."
+      },
+      {
+        "label": "clay source",
+        "reading": "Some raw material moved before the pot was made."
+      },
+      {
+        "label": "settlement route",
+        "reading": "An idea and a person can travel different paths."
+      }
+    ],
+    "practice": 91,
+    "questionRoute": 5,
+    "home": "cold"
+  },
+  "q434391": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "charcoal",
+        "reading": "The date belongs directly to this material."
+      },
+      {
+        "label": "chipped stone",
+        "reading": "Its origin and association are separate claims."
+      },
+      {
+        "label": "layer boundary",
+        "reading": "A disturbance could bring two things together after deposition."
+      }
+    ],
+    "practice": 42,
+    "questionRoute": 25,
+    "home": "fern"
+  },
+  "q3048398": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "visitor perch",
+        "reading": "The first account was heard from a particular position."
+      },
+      {
+        "label": "teller's place",
+        "reading": "The teller can set a boundary on what may travel."
+      },
+      {
+        "label": "blank edge",
+        "reading": "An omitted element need not be missing knowledge."
+      }
+    ],
+    "practice": 121,
+    "questionRoute": 29,
+    "home": "fern"
+  },
+  "q27455889": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "back step",
+        "reading": "Fragments cluster beside a work entrance."
+      },
+      {
+        "label": "kitchen hearth",
+        "reading": "Use marks give one clue to what people did here."
+      },
+      {
+        "label": "house list",
+        "reading": "The written inventory says little about who did the work."
+      }
+    ],
+    "practice": 157,
+    "questionRoute": 33,
+    "home": "cold"
+  },
+  "q15948": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "early bell",
+        "reading": "The street often opens its shutters soon afterwards."
+      },
+      {
+        "label": "changed watch",
+        "reading": "The new keeper rings at a different pace."
+      },
+      {
+        "label": "household clock",
+        "reading": "Neighbours' obligations can keep the pattern going."
+      }
+    ],
+    "practice": 54,
+    "questionRoute": 32,
+    "home": "gate"
+  },
+  "q9387": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "gate latch",
+        "reading": "Both workers perform the same outward action."
+      },
+      {
+        "label": "lamb pen",
+        "reading": "One worker goes straight here afterwards."
+      },
+      {
+        "label": "fine notice",
+        "reading": "The other points to the rule he fears breaking."
+      }
+    ],
+    "practice": 155,
+    "questionRoute": 25,
+    "home": "yard"
+  },
+  "q9317": {
+    "kind": "chain",
+    "pieces": [
+      {
+        "label": "family savings",
+        "reading": "One household has kept more cash."
+      },
+      {
+        "label": "baker's till",
+        "reading": "Many households saving together leave the bakery with fewer customers."
+      },
+      {
+        "label": "apprentice's pay",
+        "reading": "A fall in demand can change another family's income."
+      }
+    ],
+    "practice": 92,
+    "questionRoute": 32,
+    "home": "market"
+  },
+  "q982656": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "centre house",
+        "reading": "The route starts from one household's obligations."
+      },
+      {
+        "label": "nearby door",
+        "reading": "The house next door need not be the first place help is sought."
+      },
+      {
+        "label": "far bank",
+        "reading": "A distant relative can be close in a network of help."
+      }
+    ],
+    "practice": 58,
+    "questionRoute": 20,
+    "home": "chart"
+  },
+  "q47426": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "inn sign",
+        "reading": "The inn can reduce lighting when oil grows costly."
+      },
+      {
+        "label": "midwife's lamp",
+        "reading": "The midwife needs light even at the higher price."
+      },
+      {
+        "label": "ration slip",
+        "reading": "Reserving oil requires an account of whose need has priority."
+      }
+    ],
+    "practice": 60,
+    "questionRoute": 35,
+    "home": "market"
+  },
+  "q7660347": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "overseer's book",
+        "reading": "It counts only time worked in the yard."
+      },
+      {
+        "label": "other work",
+        "reading": "Labour beyond the gate escapes the book."
+      },
+      {
+        "label": "contract",
+        "reading": "The person who calls others idle has an interest in paid labour for the yard."
+      }
+    ],
+    "practice": 122,
+    "questionRoute": 12,
+    "home": "market"
+  },
+  "q284025": {
+    "kind": "supply",
+    "pieces": [
+      {
+        "label": "place in line",
+        "reading": "The first arrival has a public claim to the token."
+      },
+      {
+        "label": "promised place",
+        "reading": "The traveller waiting for a neighbour has a second obligation."
+      },
+      {
+        "label": "last ferry",
+        "reading": "Delay has different consequences for each passenger."
+      }
+    ],
+    "practice": 61,
+    "questionRoute": 27,
+    "home": "gate"
+  },
+  "q22279356": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "clinic threshold",
+        "reading": "The sign says the service is open."
+      },
+      {
+        "label": "name field",
+        "reading": "The form prevents the visitor from reaching the next step."
+      },
+      {
+        "label": "return visit",
+        "reading": "Repeated attempts can count as visits without yielding access."
+      }
+    ],
+    "practice": 51,
+    "questionRoute": 7,
+    "home": "dispatch"
+  },
+  "q305477": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "entering light",
+        "reading": "One bent stem casts a distinct shadow."
+      },
+      {
+        "label": "full spray",
+        "reading": "A group of flowers changes the scale and scent."
+      },
+      {
+        "label": "empty corner",
+        "reading": "Space can direct attention as strongly as another object."
+      }
+    ],
+    "practice": 159,
+    "questionRoute": 23,
+    "home": "stage"
+  },
+  "q42207": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "knuckles",
+        "reading": "The lit hand looks urgent before its owner speaks."
+      },
+      {
+        "label": "brother's face",
+        "reading": "His response suggests he heard the knock too."
+      },
+      {
+        "label": "middle lamp",
+        "reading": "Sharing the light changes what the viewer treats as the main event."
+      }
+    ],
+    "practice": 160,
+    "questionRoute": 9,
+    "home": "stage"
+  },
+  "q41554": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "procession",
+        "reading": "The ordered gestures lead the eye along the line."
+      },
+      {
+        "label": "pointing hand",
+        "reading": "The child sends the viewer in the opposite direction."
+      },
+      {
+        "label": "open margin",
+        "reading": "The amount of space at the edge alters which gesture is seen first."
+      }
+    ],
+    "practice": 141,
+    "questionRoute": 9,
+    "home": "stage"
+  },
+  "q1111386": {
+    "kind": "layers",
+    "pieces": [
+      {
+        "label": "travel time",
+        "reading": "The proposed route reduces one measure of distance."
+      },
+      {
+        "label": "kitchen plan",
+        "reading": "The same line crosses a home on the street-scale drawing."
+      },
+      {
+        "label": "traveller's thread",
+        "reading": "The gain and the loss belong to different people."
+      }
+    ],
+    "practice": 6,
+    "questionRoute": 12,
+    "home": "island"
+  },
+  "q465342": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "first outline",
+        "reading": "The viewer recognises one shape from this edge."
+      },
+      {
+        "label": "neighbouring form",
+        "reading": "The outline changes meaning beside a second shape."
+      },
+      {
+        "label": "crowded centre",
+        "reading": "Two viewers can follow different routes to the same unresolved mark."
+      }
+    ],
+    "practice": 119,
+    "questionRoute": 9,
+    "home": "press"
+  },
+  "q234335": {
+    "kind": "route",
+    "pieces": [
+      {
+        "label": "noon pavement",
+        "reading": "The survey records very little activity at noon."
+      },
+      {
+        "label": "evening chair",
+        "reading": "A neighbour uses the same space to watch the street at dusk."
+      },
+      {
+        "label": "other walker",
+        "reading": "Being watched feels less reassuring to someone else."
+      }
+    ],
+    "practice": 4,
+    "questionRoute": 20,
+    "home": "island"
+  },
+  "q16010963": {
+    "kind": "bench",
+    "pieces": [
+      {
+        "label": "measured height",
+        "reading": "The rule gives a repeatable dimension."
+      },
+      {
+        "label": "soft strip",
+        "reading": "The strip follows the narrowing shoulder more closely than the height alone."
+      },
+      {
+        "label": "maker's hand",
+        "reading": "The pressure changes during the turn and is absent from the finished sketch."
+      }
+    ],
+    "practice": 18,
+    "questionRoute": 22,
+    "home": "yard"
+  },
+  "q262413": {
+    "kind": "frame",
+    "pieces": [
+      {
+        "label": "first screen",
+        "reading": "The listener can see who makes this gesture."
+      },
+      {
+        "label": "opposite screen",
+        "reading": "A simultaneous gesture is behind the same listener."
+      },
+      {
+        "label": "second seat",
+        "reading": "A companion can supply a detail a single view leaves out."
+      }
+    ],
+    "practice": 159,
+    "questionRoute": 26,
+    "home": "stage"
+  },
+  "q17581477": {
+    "kind": "score",
+    "pieces": [
+      {
+        "label": "spoken line",
+        "reading": "The words enter before the gesture is complete."
+      },
+      {
+        "label": "friend's gesture",
+        "reading": "The timing changes what the words appear to mean."
+      },
+      {
+        "label": "subtitle",
+        "reading": "The printed phrase arrives later and chooses a rhythm of its own."
+      }
+    ],
+    "practice": 170,
+    "questionRoute": 10,
+    "home": "voices"
+  }
+}

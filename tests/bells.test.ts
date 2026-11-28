@@ -21,14 +21,17 @@ describe('The Endless Bell Stair (perception)', () => {
   });
   it('listen, say what you heard, compare, then reflect', () => {
     const d = new Driver();
-    const honest = rec.reflect.findIndex((r) => r.honest);
+    const delivery = rec.handoffs.length - 1;
     expect(() => d.run({ type: 'PuzzleListen', puzzle: P, action: 'guess', index: 0 })).toThrow(/Listen/);
     d.run({ type: 'PuzzleListen', puzzle: P, action: 'play' });
     expect(() => d.run({ type: 'PuzzleListen', puzzle: P, action: 'compare' })).toThrow(/heard/);
     d.run({ type: 'PuzzleListen', puzzle: P, action: 'guess', index: 2 });
-    expect(() => d.run({ type: 'PuzzleReport', puzzle: P, index: honest })).toThrow(/tuning glass/);
+    expect(() => d.run({ type: 'PuzzleReport', puzzle: P, index: delivery })).toThrow(/tuning glass/);
     d.run({ type: 'PuzzleListen', puzzle: P, action: 'compare' });
-    d.run({ type: 'PuzzleReport', puzzle: P, index: honest });
+    for (let index = 0; index < rec.handoffs.length; index++) {
+      d.run({type: 'PuzzleReport', puzzle: P, index});
+      expect(d.s.flags[`puzzle.${P}.handoff`]).toBe(index);
+    }
     expect(d.s.flags[`puzzle.${P}.done`]).toBe(true);
     expect(conceptXP(d.p, pack).evidence).toBeGreaterThan(0);
   });

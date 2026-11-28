@@ -193,7 +193,7 @@ export const CIVIC_STEPS: MapDef = {
       `The ramp tile comes to North Steps. In the trial North Steps ${civicLaneReading(civicLaneRouting('first').steps)}. Keep the Canal Walk requests visible and ask which evening time would work.`,
       { flag: 'civic.routing.seen', visibleIf: laneChoice('first') }),
     { id: 'civic-edge-eastern-case', kind: 'exhibit', exhibit: 'OBJ-EDGE-EASTERN', x: 14, y: 6, w: 1, h: 1,
-      label: 'the Eastern Shawnee Tribe of Oklahoma’s constitutional case', art: 'preserved.folder', visibleIf: recordReferral },
+      label: 'the Eastern Shawnee Tribe of Oklahoma’s constitutional case', art: 'stacks.cert', visibleIf: recordReferral },
     { id: 'civic-edge-eastern-stand', kind: 'scene', node: 'record.edge.eastern', x: 14, y: 7, w: 1, h: 1,
       label: 'the constitutional title window', art: 'preserved.slip', walkThrough: true, visibleIf: recordFolio,
       artOpen: { key: 'civic.ledger', if: { flag: 'record.edge.eastern', eq: true } } },

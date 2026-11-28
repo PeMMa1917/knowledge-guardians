@@ -1,0 +1,52 @@
+[
+  {
+    "id":"stone","eveningGoal":"Play the day the stone came home.","blockGoal":"Open Bland’s two sheets by the window.","exhibit":"OBJ-NILE-STONE","key":"national-museum-singapore:singapore-stone-returned-1919",
+    "title":"The National Museum of Singapore’s surviving Singapore Stone fragment, returned in 1919",
+    "institution":"National Museum of Singapore","accession":"Singapore Stone, surviving fragment returned in 1919",
+    "date":"The slab was broken in 1843. This fragment returned to Singapore in 1919.","dateKind":"Destruction and return of a surviving fragment","objective":"nile.stone.publish","source":"HIS-SG-GALLERY-FRAGMENT","context":"HIS-NILE-07",
+    "alt":"A rough grey wedge with the surviving incised face shown as broken horizontal strokes. The absent stone is left open.",
+    "person":{"name":"William Bland","role":"Visitor who attempted an early facsimile","detail":"Bland tried to copy the inscription while the larger slab still stood. His copy and the surviving fragment preserve different traces.","source":"HIS-NILE-07"},
+    "first":{"tab":"The break in the face","line":"In 1843 the larger inscribed slab was destroyed. The surviving face ends at a break.","part":"trace"},
+    "second":{"tab":"The return journey","line":"One surviving fragment returned to Singapore in 1919. That date belongs to its journey.","part":"journey"},
+    "silence":"A gap in the inscription cannot supply the missing characters. Badang’s story can be told under its own name.",
+    "reply":"A child runs a finger to the broken edge of the painted outline, then waits for a sound on the other side. There is room in the score to let her wait.",
+    "areas":["HIS","ART"],"subjects":["history","music","lang-lit"],"themes":["LAN"]
+  },
+  {
+    "id":"report","eveningGoal":"Give the drummer a date from Lucas’s page.","blockGoal":"Lay the printed page beside Lucas’s card.","exhibit":"OBJ-PRES-TUT-NOTE","key":"griffith-institute:taa-i.1.memo.3",
+    "title":"Alfred Lucas’s first handwritten report page on evidence of robbery, TAA i.1.memo.3",
+    "institution":"Griffith Institute, University of Oxford","accession":"TAA i.1.memo.3",
+    "date":"February 1923, first excavation season of 1922–23","dateKind":"Writing the report","objective":"preserved.proof.hung","source":"HIS-PRES-06","context":"HIS-PRES-06",
+    "alt":"A horizontal rectangular card with broken dark lines and a filled corner. A margin separates the handwritten report from its modern catalogue reference.",
+    "person":{"name":"Alfred Lucas","role":"Author of the handwritten report","detail":"Lucas set out evidence of robbery on this first page. Howard Carter is mentioned in the text. The archive gives the card’s size as 12.6 by 20.5 centimetres.","source":"HIS-PRES-06"},
+    "first":{"tab":"A page in the first season","line":"The Oxford catalogue dates Lucas’s ink on this card to February 1923, in the first excavation season.","part":"trace"},
+    "second":{"tab":"An event before the page","line":"This first page assembles evidence of an earlier event. Its writing date tells us when Lucas made his report.","part":"journey"},
+    "silence":"The page’s date cannot put a day and hour on the ancient disturbance.",
+    "reply":"The drummer tries playing the author’s date as the hour of the robbery. A stagehand turns the card over. The drummer leaves her next beat open.",
+    "areas":["HIS","ART"],"subjects":["history","lang-lit","music"],"themes":["TEC"]
+  },
+  {
+    "id":"volume","eveningGoal":"Give the caller a beat to find by hand.","blockGoal":"Help Braille give the young caller a start.","exhibit":"OBJ-READING-WORKS-BRAILLE","key":"aph:procdpourcrirele00loui",
+    "title":"The M. C. Migel Library facsimile of Braille’s 1829 Procédé, HV1669 .B73 1829",
+    "institution":"M. C. Migel Library, American Printing House for the Blind","accession":"HV1669 .B73 1829",
+    "date":"The reproduced work was published in 1829. This library copy was scanned on 5 March 2020.","dateKind":"Publication of the reproduced work and imaging of this copy","objective":"reading-works.braille.used","source":"HIS-READING-WORKS-BRAILLE","context":"HIS-READING-WORKS-BRAILLE-MIGEL",
+    "alt":"A small open volume beside a square imaging frame. The abstract dark dots indicate printed notation. A flat image cannot communicate relief.",
+    "person":{"name":"Louis Braille","role":"Author of the reproduced work","detail":"Braille’s 1829 work describes writing words, music and plainsong using points. APH contributed this particular library facsimile for digitization.","source":"HIS-READING-WORKS-BRAILLE"},
+    "first":{"tab":"Words and music","line":"The text reproduced here appeared in 1829. Its title names words, music and plainsong.","part":"trace"},
+    "second":{"tab":"Through the scan frame","line":"The digitization record for this Migel copy gives 5 March 2020. Another reader can now examine its page image from elsewhere.","part":"journey"},
+    "silence":"The scan records a view of the page. It cannot let another hand test its surface, and the scan date leaves the date the facsimile was made open.",
+    "reply":"The lantern goes on beside the drum. A reader follows the beat through the light, then asks who can bring the actual page closer.",
+    "areas":["ART","HIS"],"subjects":["music","lang-b","design-tech"],"themes":["LAN","TEC"]
+  },
+  {
+    "id":"shell","eveningGoal":"Leave the maker a place in the street music.","blockGoal":"Hear whose name Gill puts on each slip.","exhibit":"OBJ-MKT-OC9941","key":"british-museum:oc.9941","title":"The Mangaia triton-shell trumpet Oc.9941 given to the British Museum on 18 November 1876",
+    "institution":"British Museum","accession":"Oc.9941","date":"18 November 1876, date of the museum gift. The making date is unrecorded.","dateKind":"Transfer into a museum collection","objective":"accession.market.read","source":"HIS-ID-02","context":"HIS-ID-02",
+    "alt":"A stylised spiral shell, cream with ochre flecks, with an opening in its side and a loop of fibre cord. Its museum reference is placed off the shell.",
+    "person":{"name":"William Wyatt Gill","role":"Collector named by the museum","detail":"The museum attributes field collection on Mangaia to Gill. Augustus Wollaston Franks bought the group from him and gave it to the museum. The record identifies neither the individual maker nor a making date.","source":"HIS-ID-02"},
+    "first":{"tab":"An island and an opening","line":"The museum records a pierced triton shell from Mangaia. Its registration slip describes a local ceremonial use through the collector’s account.","part":"trace"},
+    "second":{"tab":"The day of the gift","line":"On 18 November 1876 Franks gave the group containing Oc.9941 to the British Museum. The number follows that particular shell.","part":"journey"},
+    "silence":"A collector’s description leaves the maker’s name and local voices unrecorded here. The paper drum carries our street’s own music.",
+    "reply":"The bookkeeper asks for the player’s name. The caller points to the empty place on the score. A name read from the gift receipt would credit the wrong work.",
+    "areas":["HIS","ART","HUM"],"subjects":["anthropology","music","history"],"themes":["IND","POL"]
+  }
+]

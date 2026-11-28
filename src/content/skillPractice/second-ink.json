@@ -1,0 +1,339 @@
+[
+  {
+    "number": 102,
+    "name": "Test which surface can cause a mark to travel",
+    "uses": [
+      {
+        "objective": "secondink.press.answer.slip",
+        "action": "Record the notch at two pegs. Keep the peg fixed while turning the impressed sheet. Check whether the mark survives on the bed or leaves with the print. Explain what could have put the child’s trace onto several shop sheets.",
+        "styles": [
+          "explorer",
+          "challenger"
+        ],
+        "modes": [
+          "spatial",
+          "visual",
+          "analytical"
+        ],
+        "game": 70,
+        "story": 44
+      },
+      {
+        "objective": "secondink.archive.slip",
+        "action": "Slide Ise’s printed palm against its fixed pin. The position of the thumb on the bed changes with the sheet. Compare two positions before deciding what the original impression can explain.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "spatial"
+        ],
+        "game": 184,
+        "story": 5
+      }
+    ]
+  },
+  {
+    "number": 91,
+    "name": "Compare explanations for a returning mark",
+    "uses": [
+      {
+        "objective": "secondink.cold.slip",
+        "action": "Move the scarf’s printed stitch and keep the pinhole still. Look under a turned sheet. Decide whether a separate visitor or a travelling impression could explain a mark found at two pegs.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "spatial"
+        ],
+        "game": 184,
+        "story": 5
+      }
+    ]
+  },
+  {
+    "number": 310,
+    "name": "Use traces left in passing beside intended testimony",
+    "uses": [
+      {
+        "objective": "secondink.nile.slip",
+        "action": "Move the material fish-tail impression and turn the paper at the same peg. Keep its fixed position separate from the carriers’ deliberate account of the payment.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "reading"
+        ],
+        "game": 184,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 927,
+    "name": "Follow multiple attestations to their first witnesses",
+    "uses": [
+      {
+        "objective": "secondink.nile.cord",
+        "action": "Pull the knot-book and the gate-counter cords past their separate hooks. Record which original witness supplied each before carrying the marked payment forward.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "reading"
+        ],
+        "game": 77,
+        "story": 42
+      },
+      {
+        "objective": "secondink.council.answer.cord",
+        "action": "Reopen Agate’s counterproof by following a previously untried third set of minutes to its first witness. Three names at the desks can still lead to only two witnesses.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "reading"
+        ],
+        "game": 70,
+        "story": 44
+      }
+    ]
+  },
+  {
+    "number": 1098,
+    "name": "Check the independence of the counted observations",
+    "uses": [
+      {
+        "objective": "secondink.dispatch.cord",
+        "action": "Unwind the bell rack and supper shelf through their intermediaries. Two counts were supplied by the same arrivals clerk. The number of tickets differs from the number of independent observations.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "reading"
+        ],
+        "game": 169,
+        "story": 44
+      },
+      {
+        "objective": "secondink.fern.cord",
+        "action": "Trace the east walk and reed pipe to the same walker. Compare their dependence with the nest ledger’s route back to a different observer before counting witnesses.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "reading"
+        ],
+        "game": 169,
+        "story": 5
+      }
+    ]
+  },
+  {
+    "number": 215,
+    "name": "Trace the distance between a report and its witness",
+    "uses": [
+      {
+        "objective": "secondink.chart.cord",
+        "action": "Follow a fold seam and booking-desk slip through their knots. An independent-sounding ticket still goes back to one copyist who can be distinguished from the lookout.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "reading"
+        ],
+        "game": 77,
+        "story": 42
+      },
+      {
+        "objective": "secondink.island.transfer",
+        "action": "Unfold an earlier town’s signed account and put it beside a new kept hearing of the tide signal. The two named origins remain attached to the readings in the journal.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "reading"
+        ],
+        "game": 77,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 42,
+    "name": "Separate a supporting reading from a guarantee",
+    "uses": [
+      {
+        "objective": "secondink.gate.bell",
+        "action": "Open two moments of the gauge shift and see whose station was occupied. A shutter can show a person able to read that gauge. It cannot guarantee the water at the higher stair for the entire night.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "reading"
+        ],
+        "game": 184,
+        "story": 113
+      }
+    ]
+  },
+  {
+    "number": 140,
+    "name": "Investigate what the people behind a source could know",
+    "uses": [
+      {
+        "objective": "secondink.yard.cord",
+        "action": "Pull the two tickets past their visible intermediate hooks. Trace the route from the signal to the worker who heard it or operated the release. Hear why Hesper wants to get someone home for supper.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "reading"
+        ],
+        "game": 169,
+        "story": 42
+      }
+    ]
+  },
+  {
+    "number": 157,
+    "name": "Corroborate an account by tracing its sources",
+    "uses": [
+      {
+        "objective": "secondink.cold.cord",
+        "action": "Look past the apparent agreement of the outer peg and linen rail. Trace the pair back to the same porter before settling what the three room cards establish.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "reading"
+        ],
+        "game": 77,
+        "story": 5
+      }
+    ]
+  },
+  {
+    "number": 44,
+    "name": "Keep confidence in proportion to a tested condition",
+    "uses": [
+      {
+        "objective": "secondink.coast.bell",
+        "action": "Record which watcher appears at two actual bells. Open the earlier shift at one of the same bells. A sighting at one window supports only a qualified statement about a pilot at the quay.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "reading"
+        ],
+        "game": 184,
+        "story": 42
+      }
+    ]
+  },
+  {
+    "number": 41,
+    "name": "Check the evidence needed for the particular decision",
+    "uses": [
+      {
+        "objective": "secondink.market.delivery",
+        "action": "Choose what kind of notice to issue about the free bowl. Walk to the service tray, pin rail or witness seat to find who paid the cost of your chosen use of the receipts.",
+        "styles": [
+          "helper",
+          "companion"
+        ],
+        "modes": [
+          "social",
+          "reflective"
+        ],
+        "game": 21,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 534,
+    "name": "Read outward from a public report to its source",
+    "uses": [
+      {
+        "objective": "secondink.press.cord",
+        "action": "Open two shop cords and pull twice at both desks so the hook gives way to a named reader or press hand. Observe the shared or separate origins before backing the public correction.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "reading"
+        ],
+        "game": 77,
+        "story": 44
+      }
+    ]
+  },
+  {
+    "number": 89,
+    "name": "Inspect the reach of a general conclusion from observations",
+    "uses": [
+      {
+        "objective": "secondink.island.answer",
+        "action": "Use a method in at least two other towns. At the island put this familiar practice under Agate’s changed condition and establish which readings can still support a local claim.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "reading"
+        ],
+        "game": 70,
+        "story": 44
+      }
+    ]
+  },
+  {
+    "number": 58,
+    "name": "Read the notice from the place of the person it concerns",
+    "uses": [
+      {
+        "objective": "secondink.voices.delivery",
+        "action": "See who holds the pause when the listening slip goes to the rail, to tonight’s rehearsal or back to its owner. The same checked recording can serve different ends.",
+        "styles": [
+          "helper",
+          "performer"
+        ],
+        "modes": [
+          "social",
+          "reflective"
+        ],
+        "game": 21,
+        "story": 114
+      }
+    ]
+  }
+]

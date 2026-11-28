@@ -1,3 +1,43 @@
+import {markEffects,type MarkCommand} from './riverPostmark';
+import {riverEffects,type RiverCommand} from './riverNames';
+import {orchardEffects,type OrchardCommand} from './walkingOrchard';
+import { rainEffects, type RainCommand } from './rainScore';
+import { theatreEffects, type TheatreCommand } from './pocketTheatre';
+import { bellEffects, type BellCommand } from './claimBell';
+import { hatchEffects, type HatchCommand } from './hatchSleeve';
+import {inkEffects,type InkCommand} from './secondInk';
+import {houseEffects,type HouseCommand} from './openHouse';
+import {tideEffects,type TideCommand} from './tideClock';
+import {wireEffects,type WireCommand} from './ferryRadio';
+import {lensEffects,type LensCommand} from './lensLoan';
+import {threadKey,threadFaceKey,trailMarkers,type ThreadCommand} from './trailThread';
+import {stackEffects,type StackCommand} from './turningStacks';
+import {cupEffects,type CupCommand} from './firstCup';
+import {almanacEffects,type AlmanacCommand} from './streetAlmanac';
+import {courierEffects,type CourierCommand} from './courierLift';
+import {elbowEffects,type ElbowCommand} from './giantSleeve';
+import {wagerEffects,type WagerCommand} from './petalWager';
+import {gearEffects,type GearCommand} from './petalGears';
+import {petalEffects,type PetalCommand} from './petalWindow';
+import { instrumentEffects, type InstrumentCommand } from './originInstruments';
+import { changeTray, type BakeryCommand } from './bakeryTrays';
+import { tryMothPerch, inviteMoth, type PerchCommand, type WelcomeCommand } from './mothPerches';
+import { billEffects, type BillCommand } from './ferryBill';
+import { mouldEffects, type MouldCommand } from './orchardMould';
+import { ferryEffects, type FerryCommand } from './pictureFerry';
+import { chestEffects, beatEffects, type ChestCommand, type BeatCommand } from './plumChest';
+import { shadowEffects, type ShadowCommand } from './supperShadow';
+import {workFieldLoan,type FieldLoanCommand} from './fieldLoan';
+import {pinBirds,type BirdCommand} from './birdSide';
+import {workWhistle,type WhistleCommand} from './whistleWatch';
+import {useWeirLamp,type WeirLampCommand} from './weirLamp';
+import { workVault,openedVaultSeal,advancedVaultPhase,type VaultCommand } from './vaultWork';
+import { millEffects, type MillCommand } from './millShift';
+import { makerEffects, type MakerCommand, type FieldCommand } from './makerField';
+import { coatEffects, type PocketCommand } from './pocketCoat';
+import { nightByExhibit, nightEffects, type NightCommand } from './nightRegister';
+import {lastBellEffects, type LastBellCommand} from './lastBell';
+import {watchEffects,type BellAction} from './watchBell';
 import { MOON_TUNE, moonPerformance, validMoonTune } from './spareMoonMusic';
 import { runNileTrial, nileDelivery, type NileRoad, type NileDelivery } from './nileModel';
 import { bendEffects, type BendAction } from './stripBend';
@@ -49,7 +89,7 @@ import { cleanPronouns } from './player';
 import { isValidLook } from './appearance';
 import { implyAlcove, linkAlcove, placeInAlcove } from './exhibition';
 import { dailyPrompts, diveDepth, diveItems, judgeDive } from './dive';
-import { TIME_MAX, TIME_MIN, answerRound, runSurvey, translateLine, judgeFrame, readForecasts, checkOrder, judgeSight, panes, readTimes, runSorter, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
+import { TIME_MAX, TIME_MIN, answerRound, runSurvey, translateLine, judgeFrame, readForecasts, checkOrder, judgeSight, panes, readTimes, echoReadings, runSorter, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
 import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
 import { objectiveSkillUse, recordSkillUse } from './skills';
@@ -61,7 +101,7 @@ import { canClaimSpecimen, carriedSpecimenCount, carryFlag, hasSpecimen, ownsSpe
 import { playMove, startShowdown, type ShowdownMove } from './showdown';
 import { tryLock, type LockResult } from './lock';
 import { compareWithBlade, forgeStep, newForge, type ForgeAction } from './forge';
-import { addPortfolio, addSignal, checkMoments, recordWeave, tickEvents } from './learning';
+import { addPortfolio, addSignal, checkMoments, deferEvent, recordWeave, tickEvents } from './learning';
 import { diaryDialogueChoice, diaryNoteKind, newAdventureDiary, recordAdventure, setDiaryReflection } from './adventureJournal';
 import { isDiaryNoteKind } from './diaryReflection';
 import { setDiaryPortfolioWriting } from './adventureWriting';
@@ -69,7 +109,23 @@ import { biographyReadFlag, isHistoricalBiography } from './historicalEncounters
 
 const DIALOGUE_FALLBACK = 999;
 
+import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand, type LanternPairCommand } from './lamplight';
+
 export type Command =
+  | ChestCommand | BeatCommand | MouldCommand | PerchCommand | WelcomeCommand | BakeryCommand
+  | RainCommand | TheatreCommand | BellCommand | HatchCommand | MarkCommand | RiverCommand | ElbowCommand | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | CupCommand | InkCommand | HouseCommand | OrchardCommand | TideCommand | WireCommand | LensCommand | StackCommand | AlmanacCommand | CourierCommand | BillCommand | FerryCommand
+  | ShadowCommand
+  | FieldLoanCommand
+  | BirdCommand
+  | WhistleCommand
+  | MakerCommand | FieldCommand
+  | MillCommand
+  | PocketCommand
+  | NightCommand
+  | LastBellCommand
+  | BellAction
+  | LanternPairCommand
+  | LanternCommand
   | { type: 'PlayMoonTune'; tune: string }
   | IncentiveAction
   | BendAction
@@ -100,6 +156,7 @@ export type Command =
   | { type: 'PuzzleMap'; puzzle: string; audience: string; layers: string[] }
   | { type: 'PuzzleDiagnose'; puzzle: string; index: number }
   | { type: 'PuzzleTrain'; puzzle: string; examples: string[] }
+  | { type: 'SelectEchoRecord'; puzzle: string; source: 'personal' | 'slip' }
   | { type: 'PuzzleTime'; puzzle: string; kind: 'echo' | 'react'; ms: number }
   | { type: 'PuzzleSurvey'; puzzle: string; wording: string; sample: string }
   | { type: 'PuzzleTranslate'; puzzle: string; picks: number[] }
@@ -112,7 +169,7 @@ export type Command =
   | { type: 'LearnTalent'; talent: string }
   | { type: 'ForgetTalents' }
   | { type: 'Gather'; node: string; resource: string; day: string }
-  | { type: 'Craft'; recipe: string; choice: number }
+  | { type: 'Craft'; recipe: string; choice?: number }
   | { type: 'Calibrate'; recipe: string; choice: number }
   | { type: 'TakeReading'; reading: string; choice: number }
   | { type: 'CheckRumourSource'; rumour: string; source: number }
@@ -120,6 +177,8 @@ export type Command =
   | { type: 'Barter'; resource: string; dir: 'buy' | 'sell' }
   | { type: 'CompareDyePrices' }
   | { type: 'ChooseRole'; role: string }
+  | WeirLampCommand
+  | VaultCommand
   | { type: 'DisarmSeal'; seal: string; choice: number }
   | { type: 'BossMove'; choice: number }
   | { type: 'FinishFieldGame'; game: string }
@@ -177,6 +236,7 @@ export type Command =
   | { type: 'Rest'; place: string }
   | { type: 'Purchase'; offer: string }
   | { type: 'RequestHint'; objective: string }
+  | ThreadCommand
   | { type: 'SetFlag'; flag: string; value: string | number | boolean }
   | { type: 'AddNote'; text: string; kind?: DiaryNoteKind; fromDraft?: boolean }
   | { type: 'SetDiaryNoteDraft'; text: string; kind: DiaryNoteKind }
@@ -203,7 +263,7 @@ export type GameEvent =
   | { kind: 'puzzle'; puzzle: string; ok: boolean; text: string; gapAt?: number | null }
   | { kind: 'fray'; id: string; name: string; error: string }
   | { kind: 'yarn'; board: string; claim: string; card: string; tone: Tone; text: string; done: boolean }
-  | { kind: 'loreling'; loreling: string; stage: 'watch' | 'note' | 'offer' | 'name' | 'field'; ok: boolean; text: string; recheck?: string | null }
+  | { kind: 'loreling'; loreling: string; stage: 'watch' | 'note' | 'offer' | 'home' | 'name' | 'field'; ok: boolean; text: string; recheck?: string | null }
   | { kind: 'alcove'; alcove: string; stage: 'place' | 'link' | 'imply'; result: string; text: string }
   | { kind: 'showdown'; state: ShowdownState }
   | { kind: 'forge'; line: string }
@@ -289,8 +349,14 @@ export const SIM_MODEL: Record<string, Record<string, { q: number; note: string 
   },
 };
 
+const OBJECTIVE_INDEX_THRESHOLD = 32;
+
 export class Engine {
-  constructor(public pack: ContentPack) {}
+  readonly dialogueById: ReadonlyMap<string, DialogueNode>;
+
+  constructor(public readonly pack: ContentPack) {
+    this.dialogueById = new Map(pack.dialogue.map((node) => [node.id, node]));
+  }
 
   /** Companion approval for a good question (src/domain/approval.ts). Each source of approval counts once. */
   private approve(s: CampaignState, out: EffectOutputs, events: GameEvent[], key: string): CampaignState {
@@ -304,7 +370,7 @@ export class Engine {
   }
 
   node(id: string): DialogueNode {
-    const n = this.pack.dialogue.find((x) => x.id === id);
+    const n = this.dialogueById.get(id);
     if (!n) throw new Error(`Unknown dialogue node ${id}`);
     return n;
   }
@@ -335,23 +401,28 @@ export class Engine {
   talkEntry(characterId: string, s: CampaignState): string | null {
     const c = this.pack.characters.find((x) => x.id === characterId);
     if (!c) return null;
+    const local = c.localGreeting?.[s.mapId];
+    if (local) return local;
     const t = c.talk.find((x) => check(x.if, s));
     return t ? t.node : null;
   }
 
-  activeMissions(s: CampaignState): Mission[] {
-    return this.pack.missions.filter((m) => check(m.available, s));
+  activeMissions(s: CampaignState, completed?: ReadonlySet<string>): Mission[] {
+    return this.pack.missions.filter((m) => check(m.available, s, completed));
   }
 
   visibleObjectives(s: CampaignState): (Objective & { mission: Mission; complete: boolean })[] {
-    return this.activeMissions(s).flatMap((m) =>
-      m.objectives.filter((o) => check(o.visible, s)).map((o) => ({ ...o, mission: m, complete: s.objectivesDone.includes(o.id) })),
+    const completed = s.objectivesDone.length >= OBJECTIVE_INDEX_THRESHOLD ? new Set(s.objectivesDone) : undefined;
+    return this.activeMissions(s, completed).flatMap((m) =>
+      m.objectives.filter((o) => check(o.visible, s, completed)).map((o) => ({ ...o, mission: m, complete: completed ? completed.has(o.id) : s.objectivesDone.includes(o.id) })),
     );
   }
 
   /** The first open, visible objective. Used by the guide and the recap. */
   currentObjective(s: CampaignState): (Objective & { mission: Mission }) | null {
     const open = this.visibleObjectives(s).filter((o) => !o.complete);
+    const pinned=open.find(o=>o.id===s.flags[threadKey]);
+    if(pinned)return pinned;
     const main = open.filter((o) => /-M\d+$/.test(o.mission.id));
     return main.find((o) => o.essential) ?? main[0] ?? open[0] ?? null;
   }
@@ -401,6 +472,7 @@ export class Engine {
       switch (cmd.type) {
         case 'VisitPlace':
           if (!cmd.name.trim()) throw new Error('This place has no name');
+          if (s.events.pending && !this.pack.events.find(e=>e.id===s.events.pending)?.maps.includes(s.mapId)) s=deferEvent(s);
           if (s.flags[`visited.map.${s.mapId}`] !== true) s = apply([{ setFlag: `visited.map.${s.mapId}`, value: true }], s, out);
           break;
         case 'HearWorldMemory': {
@@ -426,6 +498,43 @@ export class Engine {
             s = apply([{ setFlag: MOON_TUNE, value: cmd.tune }, { setFlag: performed, value: true }], s, out);
           break;
         }
+        case 'WorkMakerInstrument': case 'WorkTownReading':
+          s = apply(makerEffects(s, cmd), s, out);
+          break;
+        case 'WorkMillShift':
+          s = apply(millEffects(s,cmd),s,out);
+          break;
+        case 'WorkCoatPocket':
+          s = apply(coatEffects(cmd, s), s, out);
+          break;
+        case 'WorkNightRegister':
+          s = apply(nightEffects(cmd, s), s, out);
+          break;
+        case 'WorkLastBell':
+          s = apply(lastBellEffects(cmd, s), s, out);
+          break;
+        case 'WorkNightWatch':
+          s = apply(watchEffects(cmd,s),s,out);
+          break;
+        case 'TurnLanternGlass':
+          s = apply(pairEffects(cmd, s), s, out);
+          break;
+        case 'WorkWithLantern': {
+          s = apply(lanternEffects(cmd, s), s, out);
+          const practice = lanternReturnPractice(s, cmd);
+          if (practice) skillUses.push(practice);
+          break;
+        }
+        case 'TieJournalThread': {
+          const step = this.visibleObjectives(s).find(o=>o.id===cmd.step && !o.complete);
+          if (!step || !trailMarkers[step.mission.world] || !['thing','voice'].includes(cmd.face))
+            throw Error('Choose a step that is open in your journal.');
+          s=apply([{setFlag:threadKey,value:step.id},{setFlag:threadFaceKey,value:cmd.face}],s,out);
+          break;
+        }
+        case 'UntieJournalThread':
+          s=apply([{setFlag:threadKey,value:false},{setFlag:threadFaceKey,value:false}],s,out);
+          break;
         case 'SetFlag':
           s = apply([{ setFlag: cmd.flag, value: cmd.value }], s, out);
           break;
@@ -467,7 +576,9 @@ export class Engine {
         case 'Craft': case 'Calibrate': {
           const r = RECIPES.find((x) => x.id === cmd.recipe);
           if (!r) throw new Error('Unknown recipe');
-          const o = r.check.options[cmd.choice];
+          const o = cmd.type === 'Craft' && cmd.choice === undefined
+            ? { ok: false, why: 'I assembled the '+r.name.toLowerCase()+' at Hesper’s bench. The two reference cuts are ready.' }
+            : r.check.options[cmd.choice!];
           if (!o) throw new Error('Choose an answer');
           const fx: Effect[] = [{ setFlag: `craft.${r.id}.calibrated`, value: o.ok || s.flags[`craft.${r.id}.calibrated`] === true }];
           if (cmd.type === 'Craft') {
@@ -554,12 +665,80 @@ export class Engine {
           }
           break;
         }
+        case 'WorkFieldLoan':
+          s=apply(workFieldLoan(this.pack,s,cmd),s,out);break;
+        case 'HangFerryPrint': case 'OpenFerryBill': case 'HearFerryBill':
+          s=apply(billEffects(s,cmd),s,out);
+          break;
+        case 'WorkTurningStacks':
+          s = apply(stackEffects(s,cmd),s,out); break;
+        case 'FoldRiverPostmark':
+          s=apply(markEffects(s,cmd),s,out); break;
+        case 'WalkRiverNames':
+          s = apply(riverEffects(s,cmd),s,out); break;
+        case 'TendWalkingOrchard':
+          s = apply(orchardEffects(s,cmd),s,out); break;
+        case 'WorkCoatRain':
+          s = apply(rainEffects(s,cmd),s,out); break;
+        case 'WorkPocketTheatre':
+          s = apply(theatreEffects(s,cmd),s,out); break;
+        case 'WorkClaimBell':
+          s = apply(bellEffects(s, cmd), s, out); break;
+        case 'WorkHatchSleeve':
+          s = apply(hatchEffects(s, cmd), s, out); break;
+        case 'WorkSecondInk':
+          s = apply(inkEffects(s,cmd),s,out); break;
+        case 'FitMiddleDoor':
+          s = apply(houseEffects(s,cmd),s,out); break;
+        case 'WorkTideClock':
+          s = apply(tideEffects(s,cmd),s,out); break;
+        case 'WorkFerryRadio':
+          s = apply(wireEffects(s,cmd),s,out); break;
+        case 'WorkLensLoan':
+          s=apply(lensEffects(s,cmd),s,out);break;
+        case 'WorkFirstCup':
+          s = apply(cupEffects(s, cmd), s, out); break;
+        case 'ArrangeStreetAlmanac':
+          s = apply(almanacEffects(s, cmd), s, out); break;
+        case 'WorkCourierLift':
+          s = apply(courierEffects(s, cmd), s, out); break;
+        case 'WorkGiantSleeve':
+          s=apply(elbowEffects(s,cmd),s,out);break;
+        case 'DrawPetalRibbon':
+          s=apply(wagerEffects(s,cmd),s,out);break;
+        case 'WindPetalGear':
+          s=apply(gearEffects(s,cmd),s,out);break;
+        case 'WorkPetalWindow':
+          s=apply(petalEffects(s,cmd),s,out);break;
+        case 'WorkOriginInstrument':
+          s = apply(instrumentEffects(s, cmd), s, out); break;
+        case 'TurnPictureFerry':
+          s = apply(ferryEffects(s, cmd), s, out);
+          break;
+        case 'WorkPlumChest':
+          s = apply(chestEffects(s, cmd), s, out); break;
+        case 'DrawOrchardStylus':
+          s=apply(mouldEffects(s,cmd),s,out);break;
+        case 'StrikeOrchardBeat':
+          s = apply(beatEffects(s,cmd),s,out); break;
+        case 'CastSupperShadow':
+          s = apply(shadowEffects(s, cmd), s, out); break;
+        case 'PinBirdWatch':
+          s=apply(pinBirds(s,cmd),s,out);break;
+        case 'WorkWhistle':
+          s=apply(workWhistle(s,cmd),s,out);break;
+        case 'UseWeirLamp':
+          s=apply(useWeirLamp(s,cmd),s,out);
+          break;
+        case 'WorkVault':
+          s=apply(workVault(s,cmd),s,out);
+          break;
         case 'DisarmSeal': {
           const x = SEALS.find((y) => y.id === cmd.seal);
           if (!x) throw new Error('Unknown seal');
           const o = x.options[cmd.choice];
           if (!o) throw new Error('Choose an answer');
-          if (o.ok && s.flags[`trap.${x.id}.open`] !== true) s = apply([{ setFlag: `trap.${x.id}.open`, value: true }, { setFlag: `meet.fray.${x.fray}`, value: true }, { addMarks: 2 }], s, out);
+          if (o.ok) s=apply(openedVaultSeal(s.flags,x),s,out);
           events.push({ kind: 'seal', seal: x.id, ok: o.ok, why: o.why });
           break;
         }
@@ -586,7 +765,7 @@ export class Engine {
           if (!o) throw new Error('Choose an answer');
           const done = o.ok && ph + 1 >= BOSS.phases.length;
           s = apply(o.ok
-            ? [{ setFlag: `boss.${BOSS.id}.phase`, value: ph + 1 }, { setFlag: `meet.fray.${p.fray}`, value: true }, ...(done ? [{ setFlag: 'undercroft.done', value: true }, { addMarks: 10 }, { giveItem: 'item.brass-lamp' }] as Effect[] : [])]
+            ? advancedVaultPhase(ph)
             : [{ addNum: `boss.${BOSS.id}.hollow`, by: 1 }], s, out);
           events.push({ kind: 'boss', phase: ph, ok: o.ok, why: o.why, done });
           break;
@@ -648,6 +827,7 @@ export class Engine {
           // Remember seen lines, so the world can mark people with something new to say.
           if (!s.flags[`node.${n.id}`]) s = apply([{ setFlag: `node.${n.id}`, value: true }], s, out);
           s = apply(n.effects, s, out);
+          if (n.biographyCard) s = apply([{addCard:n.biographyCard},{setFlag:biographyReadFlag(n.biographyCard),value:true}],s,out);
           break;
         }
         case 'ChooseDialogueOption': {
@@ -665,7 +845,9 @@ export class Engine {
         case 'InspectExhibit': {
           const e = this.pack.exhibits.find((x) => x.id === cmd.exhibit);
           if (!e) throw new Error('Unknown exhibit');
-          s = apply([{ setFlag: `inspected.${e.id}`, value: true }, { addCard: e.grantsCard }, { addNum: 'count.inspected', by: s.flags[`inspected.${e.id}`] ? 0 : 1 }], s, out);
+          const registerWork=nightByExhibit.get(e.id);
+          if(registerWork && s.mapId!==registerWork.site.room)throw Error('Visit the object in its own register room.');
+          s = apply([...(registerWork?[{setFlag:registerWork.site.room+'.open',value:true}]:[]), { setFlag: `inspected.${e.id}`, value: true }, { addCard: e.grantsCard }, { addNum: 'count.inspected', by: s.flags[`inspected.${e.id}`] ? 0 : 1 }], s, out);
           break;
         }
         case 'ReadBiography': {
@@ -935,6 +1117,9 @@ export class Engine {
           const r = playMove(rec, s.showdown, cmd.move, s);
           s = structuredClone(s);
           s.showdown = r.state;
+          if (cmd.move.move === 'challenge' && r.state.cracked.includes(cmd.move.link)) {
+            s.flags[`sd.${rec.id}.checked.${cmd.move.link}`] = true;
+          }
           r.signals.forEach((x) => out.signals.push(x));
           if (r.state.outcome) {
             const o = rec.outcomes[r.state.outcome];
@@ -996,9 +1181,7 @@ export class Engine {
           break;
         }
         case 'DelayEvent': {
-          if (!s.events.pending) break;
-          s = structuredClone(s);
-          s.events.pending = null; s.events.clock = 0; s.events.next = 240; // ask again in about four minutes
+          s = deferEvent(s);
           break;
         }
         case 'ResolveEvent': {
@@ -1028,8 +1211,16 @@ export class Engine {
           s = apply([{ addMarks: -o.price }, { giveItem: o.item }, ...(o.effects ?? [])], s, out);
           break;
         }
+        case 'MoveBakeryTray':
+          s = apply(changeTray(s, cmd), s, out);
+          break;
+        case 'TryMothPerch':
+          s = apply(tryMothPerch(s, cmd), s, out);
+          break;
+        case 'WelcomeMoth':
         case 'LorelingWatch': case 'LorelingNote': case 'LorelingOffer': case 'LorelingName': case 'LorelingField': {
-          const rec = this.pack.lorelings.find((x) => x.id === cmd.loreling);
+          const loreling = cmd.type === 'WelcomeMoth' ? 'glimmermoth' : cmd.loreling;
+          const rec = this.pack.lorelings.find((x) => x.id === loreling);
           if (!rec) throw new Error('Unknown Loreling');
           const F = `lor.${rec.id}`;
           const friend = s.flags[`${F}.friend`] === true;
@@ -1046,14 +1237,26 @@ export class Engine {
             if (!q || !q.options.some((o) => o.id === cmd.option)) throw new Error('No such option');
             s = apply([{ setFlag: `${F}.note.${q.id}`, value: cmd.option }], s, out);
             events.push({ kind: 'loreling', loreling: rec.id, stage: 'note', ok: true, text: '' });
-          } else if (cmd.type === 'LorelingOffer') {
-            if (friend) throw new Error('Already a friend');
+          } else if (cmd.type === 'LorelingOffer' || cmd.type === 'WelcomeMoth') {
+            if (friend && cmd.type === 'LorelingOffer') throw new Error('Already a friend');
             const note = Object.fromEntries(rec.questions.map((q) => [q.id, s.flags[`${F}.note.${q.id}`] as string | undefined]));
-            const r = checkOffer(rec, note, cmd.place, seen);
-            s = apply(r.ok ? [{ setFlag: `${F}.friend`, value: true }, { setFlag: `${F}.name`, value: rec.name }, { setFlag: 'lor.out', value: rec.id }, ...(rec.onComplete ?? [])]
-              : [{ addNum: `${F}.misses`, by: 1 }], s, out);
-            if (r.ok) weaves.push(rec.weave);
-            events.push({ kind: 'loreling', loreling: rec.id, stage: 'offer', ok: r.ok, text: r.text, recheck: r.recheck });
+            const result = cmd.type === 'WelcomeMoth'
+              ? { ...inviteMoth(s, cmd.perch), recheck: null }
+              : checkOffer(rec, note, cmd.place, seen);
+            if (!result.ok) {
+              s = apply([{ addNum: `${F}.misses`, by: 1 }], s, out);
+            } else {
+              if (cmd.type === 'WelcomeMoth') s = apply([{ setFlag: 'moth.perch.home', value: cmd.perch }], s, out);
+              if (!friend) {
+                s = apply([
+                  { setFlag: `${F}.friend`, value: true }, { setFlag: `${F}.name`, value: rec.name },
+                  { setFlag: 'lor.out', value: rec.id }, ...(rec.onComplete ?? []),
+                ], s, out);
+                weaves.push(rec.weave);
+              }
+            }
+            events.push({ kind: 'loreling', loreling: rec.id, stage: friend ? 'home' : 'offer',
+              ok: result.ok, text: result.text, recheck: result.recheck });
           } else if (cmd.type === 'LorelingName') {
             if (!friend) throw new Error('Not a friend yet');
             const n = cleanPetName(cmd.name);
@@ -1091,14 +1294,19 @@ export class Engine {
           events.push({ kind: 'yarn', board: rec.id, claim: cmd.claim, card: cmd.card, tone: v.tone, text: v.text, done });
           break;
         }
-        case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': case 'PuzzleAddPoint': case 'PuzzlePredict': case 'PuzzleMap': case 'PuzzleDiagnose': case 'PuzzleTrain': case 'PuzzleTime': case 'PuzzleSurvey': case 'PuzzleTranslate': case 'PuzzleFrame': case 'PuzzleListen': case 'PuzzleForecast': {
+        case 'SelectEchoRecord': case 'PuzzleRound': case 'PuzzleOrder': case 'PuzzleWeigh': case 'PuzzlePeel': case 'PuzzleRestore': case 'PuzzleSight': case 'PuzzleReport': case 'PuzzleAddPoint': case 'PuzzlePredict': case 'PuzzleMap': case 'PuzzleDiagnose': case 'PuzzleTrain': case 'PuzzleTime': case 'PuzzleSurvey': case 'PuzzleTranslate': case 'PuzzleFrame': case 'PuzzleListen': case 'PuzzleForecast': {
           const rec = this.pack.puzzles.find((x) => x.id === cmd.puzzle);
           if (!rec) throw new Error('Unknown puzzle');
           if (rec.needs && !s.inventory[rec.needs.item]) throw new Error(rec.needs.sealed);
           const F = `puzzle.${rec.id}`;
           const wasDone = s.flags[`${F}.done`] === true;
           let ok: boolean, text: string, solved: boolean, gapAt: number | null = null;
-          if (cmd.type === 'PuzzleForecast') {
+          if (cmd.type === 'SelectEchoRecord') {
+            if (rec.type !== 'echo' || !['slip','personal'].includes(cmd.source)) throw new Error('Choose a timing record at the echo stone.');
+            s = apply([{setFlag: F + '.use-slip', value: cmd.source === 'slip'}], s, out);
+            ok = true; solved = false;
+            text = cmd.source === 'slip' ? 'I unfolded ' + rec.timingSlip.label + '. His pencil marks pair each returning clap with a separate light trial.' : 'My timing marks are back beside the stone.';
+          } else if (cmd.type === 'PuzzleForecast') {
             if (rec.type !== 'forecast') throw new Error('Not a forecast puzzle');
             const list = readForecasts(s.flags[`${F}.f`]);
             if (list.length >= rec.days.length) throw new Error('Every day already has a forecast');
@@ -1154,12 +1362,12 @@ export class Engine {
           } else if (cmd.type === 'PuzzleDiagnose' || cmd.type === 'PuzzleTrain') {
             if (rec.type !== 'sorter') throw new Error('Not a sorter puzzle');
             if (cmd.type === 'PuzzleDiagnose') {
-              const r = rec.diagnose[cmd.index];
-              if (!r) throw new Error('No such answer');
-              ok = r.honest; text = r.why;
-              s = apply(r.honest ? [{ setFlag: `${F}.diagnosed`, value: true }] : [{ addNum: `${F}.misses`, by: 1 }], s, out);
+              const inspection = rec.inspections[cmd.index];
+              if (!inspection) throw new Error('Choose a tray or a chute to inspect.');
+              ok = true; text = inspection.result;
+              s = apply([{ setFlag: `${F}.diagnosed`, value: true }], s, out);
             } else {
-              if (s.flags[`${F}.diagnosed`] !== true) throw new Error('Say why the sorter failed first');
+              if (s.flags[`${F}.diagnosed`] !== true) throw new Error('Inspect where the sorter sent the first basket.');
               if (cmd.examples.length > rec.slots) throw new Error(`The sorter holds only ${rec.slots} examples`);
               if (new Set(cmd.examples).size !== cmd.examples.length || cmd.examples.some((x) => !rec.crate.includes(x))) throw new Error('Choose examples from the crate');
               const r = runSorter(rec, cmd.examples);
@@ -1197,21 +1405,28 @@ export class Engine {
             if (rec.type === 'conjecture' && Number(s.flags[`${F}.n`] ?? 0) < rec.predictAt) throw new Error('Add the next point first');
             if (rec.type === 'mapmaker' && !rec.audiences.every((a) => typeof s.flags[`${F}.a.${a.id}`] === 'string')) throw new Error('Make a map for everyone first');
             if (rec.type === 'sorter' && typeof s.flags[`${F}.trained`] !== 'string') throw new Error('Teach the sorter first');
-            if (rec.type === 'echo' && (readTimes(s.flags[`${F}.echo`]).length < rec.minTimes || readTimes(s.flags[`${F}.react`]).length < rec.minTimes)) throw new Error('Time the echo and your reaction first');
+            if (rec.type === 'echo') {
+              const {echoes, reacts} = echoReadings(rec, s.flags);
+              if (echoes.length < rec.minTimes || reacts.length < rec.minTimes) throw new Error('Time the echo and your reaction or open Idris’s slip first.');
+            }
             if (rec.type === 'survey' && !String(s.flags[`${F}.runs`] ?? '').split(',').includes(`${rec.fair.wording}:${rec.fair.sample}`)) throw new Error('Run a survey with a plain question and a fair group first');
             if (rec.type === 'translate' && typeof s.flags[`${F}.sent`] !== 'string') throw new Error('Send a translation that keeps every part first');
             if (rec.type === 'forecast' && readForecasts(s.flags[`${F}.f`]).length < rec.days.length) throw new Error('Forecast every day first');
             if (rec.type === 'shepard' && s.flags[`${F}.compared`] !== true) throw new Error('Compare with the tuning glass first');
             if (rec.type === 'frame' && !rec.briefs.every((b) => typeof s.flags[`${F}.b.${b.id}`] === 'string')) throw new Error('Paint a poster for everyone first');
             if (rec.type !== 'forecast' && rec.type !== 'shepard' && rec.type !== 'frame' && rec.type !== 'sightlines' && rec.type !== 'conjecture' && rec.type !== 'mapmaker' && rec.type !== 'sorter' && rec.type !== 'echo' && rec.type !== 'survey' && rec.type !== 'translate') throw new Error('This puzzle has no report');
-            const r = rec.type === 'sightlines' ? rec.reports[cmd.index] : rec.reflect[cmd.index];
-            if (!r) throw new Error('No such report');
-            ok = r.honest; text = r.why; solved = r.honest;
-            if (rec.type === 'sightlines' && solved) {
-              const delivery = rec.reports[cmd.index].delivery;
-              if (delivery) s = apply([{ setFlag: `${F}.delivery`, value: delivery }], s, out);
+            if ('handoffs' in rec) {
+              const delivery = rec.handoffs[cmd.index];
+              if (!delivery) throw new Error('Choose a delivery for the next shift.');
+              s = apply([{ setFlag: `${F}.handoff`, value: cmd.index }], s, out);
+              ok = true; solved = true; text = delivery.result;
+            } else {
+              const r = rec.reports[cmd.index];
+              if (!r) throw new Error('No such report');
+              ok = r.honest; text = r.why; solved = r.honest;
+              if (solved && r.delivery) s = apply([{ setFlag: `${F}.delivery`, value: r.delivery }], s, out);
+              if (!r.honest) s = apply([{ addNum: `${F}.misses`, by: 1 }], s, out);
             }
-            if (!r.honest) s = apply([{ addNum: `${F}.misses`, by: 1 }], s, out);
           } else if (cmd.type === 'PuzzlePeel') {
             const r = peelLayer(rec, Number(s.flags[`${F}.peeled`] ?? 0));
             ok = r.ok; text = r.text; solved = false;
@@ -1371,12 +1586,16 @@ export class Engine {
       if (first) events.push({ kind: 'fray', id, name: f.name, error: f.error });
     }
 
+    // A travelled save holds thousands of objective IDs. Build one membership index for this dispatch.
+    // Nested conditions use the same index. Additions within this turn are visible immediately.
+    // A rewind or a different save starts from its own ordered objective list.
+    const completed = s.objectivesDone.length >= OBJECTIVE_INDEX_THRESHOLD ? new Set(s.objectivesDone) : undefined;
     // Objectives, then awards. Repeat so that completion effects can chain.
     for (let guard = 0; guard < 10; guard++) {
       let changed = false;
       // Keepsakes and the Lamp Wall (the storyline): mark each new one with a flag and a moment.
       for (const k of this.pack.keepsakes ?? []) {
-        if (s.flags[`keepsake.${k.id}`] === true || !check(k.if, s)) continue;
+        if (!check(k.if, s, completed) || s.flags[`keepsake.${k.id}`] === true) continue;
         s = apply([{ setFlag: `keepsake.${k.id}`, value: true }], s, out);
         events.push({ kind: 'keepsake', id: k.id, name: k.name, use: k.use ?? '' });
         changed = true;
@@ -1396,12 +1615,12 @@ export class Engine {
         if (rankOf(pts) !== rankOf(was)) events.push({ kind: 'trust', id: cm.id, name: cm.name, rank: rankOf(pts) });
         changed = true;
       }
-      for (const m of this.activeMissions(s)) {
+      for (const m of this.activeMissions(s, completed)) {
         for (const o of m.objectives) {
-          if (s.objectivesDone.includes(o.id)) continue;
-          if (!check(o.visible, s) || !check(o.done, s)) continue;
-          s = structuredClone(s);
-          s.objectivesDone.push(o.id);
+          if (completed ? completed.has(o.id) : s.objectivesDone.includes(o.id)) continue;
+          if (!check(o.visible, s, completed) || !check(o.done, s, completed)) continue;
+          completed?.add(o.id);
+          s = { ...s, objectivesDone: [...s.objectivesDone, o.id] };
           events.push({ kind: 'objective', id: o.id, title: o.title });
           s = apply(o.onComplete, s, out);
           if (o.weave) weaves.push(o.weave);

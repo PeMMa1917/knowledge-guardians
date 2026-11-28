@@ -1,0 +1,101 @@
+[
+  {
+    "number": 7,
+    "uses": [
+      {
+        "objective": "origin-tour.singer.pack",
+        "action": "Perform a family cadence whose words are missing, or invite Sefa to voice a named hill line. Change the fourth beat to hear who can carry the tune after Teodora.",
+        "styles": [
+          "performer",
+          "companion"
+        ],
+        "modes": [
+          "auditory",
+          "linguistic",
+          "social"
+        ],
+        "game": 247,
+        "story": 6
+      }
+    ]
+  },
+  {
+    "number": 170,
+    "uses": [
+      {
+        "objective": "origin-tour.traveller.pack",
+        "action": "Pull separate cords for earliest departure, leadership and first arrival at two moments. A runner, a baton bearer and a porter can each answer to first.",
+        "styles": [
+          "explorer",
+          "performer"
+        ],
+        "modes": [
+          "spatial",
+          "linguistic",
+          "analytical"
+        ],
+        "game": 21,
+        "story": 119
+      }
+    ]
+  },
+  {
+    "number": 24,
+    "uses": [
+      {
+        "objective": "origin-tour.traveller.tour",
+        "action": "Carry the issued procession to the island. Choose a departure pennant or the conductor’s stand. A different person can act on the new meaning of first.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "spatial",
+          "social",
+          "analytical"
+        ],
+        "game": 22,
+        "story": 144
+      }
+    ]
+  },
+  {
+    "number": 89,
+    "uses": [
+      {
+        "objective": "origin-tour.workshop.pack",
+        "action": "Compare the three numbered ticket lifts in packets that differ on one setting. Publish a first arrangement with its individual results still visible to the next maker.",
+        "styles": [
+          "maker",
+          "challenger"
+        ],
+        "modes": [
+          "analytical",
+          "physical",
+          "visual"
+        ],
+        "game": 206,
+        "story": 6
+      }
+    ]
+  },
+  {
+    "number": 13,
+    "uses": [
+      {
+        "objective": "origin-tour.workshop.tour",
+        "action": "Bring the issued paper ticket to the next workshop. Put another sheet into service or display the batch-specific sample where a visitor can ask for the others.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "analytical",
+          "reflective"
+        ],
+        "game": 104,
+        "story": 144
+      }
+    ]
+  }
+]

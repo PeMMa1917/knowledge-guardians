@@ -1,7 +1,8 @@
 import { BASE_SHEET_KEY, BASE_SHEET_URL } from './looks';
 import Phaser from 'phaser';
 import { STAMPS, CHAR_FRAME } from './art';
-import { artKeys, drawArt, glowCanvas } from '../ui/illustrations';
+import { ensureFieldArt } from './fieldArt';
+import { glowCanvas } from '../ui/illustrations';
 
 // These tracks are only needed if the browser cannot play a generated score.
 const MUSIC: Record<string, string | undefined> = {
@@ -30,10 +31,14 @@ const AUDIO: Record<string, string> = {
 
 export const CHARACTER_SHEETS = [
   'player-a', 'player-b', 'player-c', 'player-d', 'warden-ise', 'curator-dace', 'clerk-venn', 'kip-arden',
-  'merchant-corvan', 'smith-hesper', 'guildmaster-orrin', 'scholar-sefa', 'villager-1', 'villager-2',
+  'merchant-corvan', 'smith-hesper', 'guildmaster-orrin', 'scholar-sefa', 'villager-1', 'villager-2', 'tallowheel',
 ];
 
 export class BootScene extends Phaser.Scene {
+  private readonly missingPictures = new Set<string>();
+  private readonly markMissing = (file: Phaser.Loader.File) => {
+    if (file.type === 'image' || file.type === 'spritesheet') this.missingPictures.add(file.key);
+  };
   private readonly pendingMusic = new Map<string, Promise<boolean>>();
 
   constructor() { super('boot'); }
@@ -85,21 +90,24 @@ export class BootScene extends Phaser.Scene {
     for (const id of CHARACTER_SHEETS) {
       this.load.spritesheet(`char.${id}`, `assets/art/generated/characters/${id}.png`, { frameWidth: CHAR_FRAME.w, frameHeight: CHAR_FRAME.h });
     }
-    this.load.on('loaderror', (f: Phaser.Loader.File) => console.warn('Could not load', f.key));
+    this.missingPictures.clear();
+    this.load.on('loaderror', this.markMissing);
+    this.load.once(Phaser.Loader.Events.COMPLETE, () => this.load.off('loaderror', this.markMissing));
   }
 
   create(): void {
     this.children.removeAll(true); // remove the loading bar
+    if (this.missingPictures.size) {
+      this.game.events.emit('boot-failed');
+      return;
+    }
     // Named frames for every stamp on the tile sheets.
     for (const [name, s] of Object.entries(STAMPS)) {
       const tex = this.textures.get(s.sheet);
       if (!tex.has(name)) tex.add(name, 0, s.x * 16, s.y * 16, s.w * 16, s.h * 16);
     }
-    // Procedural art (original, drawn in code).
-    for (const key of artKeys()) {
-      const c = drawArt(key);
-      if (c && !this.textures.exists(key)) this.textures.addCanvas(key, c);
-    }
+    // These two frames are needed when registering the shared animation.
+    for (const key of ['moth.0', 'moth.1', 'shadow']) ensureFieldArt(this.textures, key);
     if (!this.textures.exists('glow')) this.textures.addCanvas('glow', glowCanvas(128));
     if (!this.anims.exists('moth.flap')) this.anims.create({ key: 'moth.flap', frames: [{ key: 'moth.0' }, { key: 'moth.1' }], frameRate: 9, repeat: -1 });
     // Walk animations.

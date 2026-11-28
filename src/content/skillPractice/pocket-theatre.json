@@ -1,0 +1,474 @@
+[
+  {
+    "number": 501,
+    "name": "Check a memorable crossing against the whole cord",
+    "uses": [
+      {
+        "objective": "pocket.six-knots.compare",
+        "action": "Compare a memorable fog crossing with the long knot cord before commissioning the lookout.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 238,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 502,
+    "name": "Test the light before accepting the first price",
+    "uses": [
+      {
+        "objective": "pocket.brass-price.compare",
+        "action": "Cover the chalked price and look at the two pools of light before making a loan. Reintroduce the eighty-bit starting price.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 119,
+        "story": 4
+      }
+    ]
+  },
+  {
+    "number": 504,
+    "name": "Trace the crossing behind a missed shift",
+    "uses": [
+      {
+        "objective": "pocket.empty-peg.compare",
+        "action": "Hang the ferry times beside the rota. Follow the return address on the missed shift before deciding who should cover it.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 53
+      }
+    ]
+  },
+  {
+    "number": 507,
+    "name": "Calibrate a fitting forecast against a clay impression",
+    "uses": [
+      {
+        "objective": "pocket.ninth-tooth.compare",
+        "action": "Compare the maker’s predicted contacts with clay impressions of a familiar gear and an unfamiliar one. The experienced fitter tries a new jig too.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 238,
+        "story": 25
+      }
+    ]
+  },
+  {
+    "number": 508,
+    "name": "Judge a lift with the information its maker had",
+    "uses": [
+      {
+        "objective": "pocket.cooling-hook.compare",
+        "action": "Pass the previously successful arm through a separate and assembled load before judging the evidence of its first lift.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 511,
+    "name": "Try a load that combines separately tested parts",
+    "uses": [
+      {
+        "objective": "pocket.cooling-hook.compare",
+        "action": "Try the kettle and lid individually and together. Watch the swinging lid catch on an otherwise serviceable arm.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 194,
+        "story": 59
+      }
+    ]
+  },
+  {
+    "number": 512,
+    "name": "Open the lanes inside a district total",
+    "uses": [
+      {
+        "objective": "pocket.green-window.compare",
+        "action": "Slide the lanes apart. A district total can be within the wait target even when households in the smaller lane are late.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 514,
+    "name": "Check who was excluded from a sweeping claim",
+    "uses": [
+      {
+        "objective": "pocket.red-stitch.compare",
+        "action": "Cover both crew badges, follow the stretched cord, and consider the green watcher’s proposed exception for a rushing member.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 238,
+        "story": 33
+      }
+    ]
+  },
+  {
+    "number": 515,
+    "name": "Test a boundary drawn after the boats came home",
+    "uses": [
+      {
+        "objective": "pocket.lantern-drift.compare",
+        "action": "Lift the drawn ring to recover the map edges and replace the return log with the departure log. Choose where a fresh observation will be made.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 518,
+    "name": "Check a voyage beyond its order in the log",
+    "uses": [
+      {
+        "objective": "pocket.varnish.compare",
+        "action": "Set dates in order and compare boats from one crossing. Try the damp patch under the rail before assigning the captain another job.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 519,
+    "name": "Find a second explanation for a silent register",
+    "uses": [
+      {
+        "objective": "pocket.dry-sleeve.compare",
+        "action": "Put the lamp underneath the sill and bring the listening cup near the peg. An empty sketch box leaves the source of the first sound uncertain.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 48
+      },
+      {
+        "objective": "pocket.night-ledger.compare",
+        "action": "Take the runner’s route and check who could enter an appeal. A clean book cannot establish universal access to the late hearing.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 252,
+    "name": "Decide which quantity a stable scale measures",
+    "uses": [
+      {
+        "objective": "pocket.two-coppers.compare",
+        "action": "Weigh empty wicker and fruit separately. The same stable reading can answer the porter’s load question and mislead the buyer about fruit alone.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 191,
+        "story": 55
+      }
+    ]
+  },
+  {
+    "number": 302,
+    "name": "Recover observations that missed the display",
+    "uses": [
+      {
+        "objective": "pocket.white-tail.compare",
+        "action": "Open the cleaning sack and follow the dull path. The returns that could be displayed differ from the birds that were present.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 310,
+    "name": "Distinguish a purposeful instruction from a working trace",
+    "uses": [
+      {
+        "objective": "pocket.tuesday-fold.compare",
+        "action": "Compare the manager’s signed concealment order with the runner’s delivery slip. Two signatures establish different kinds of involvement.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 48
+      },
+      {
+        "objective": "pocket.cut-caveat.compare",
+        "action": "Bring the original cut and the later repair under the council lamp. Match each with the job its own work order describes.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 54
+      }
+    ]
+  },
+  {
+    "number": 312,
+    "name": "Check who could return a lantern at all",
+    "uses": [
+      {
+        "objective": "pocket.lantern-drift.compare",
+        "action": "Bring the departure and homecoming sheets together to see which crews were asked for a lantern at all.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 318,
+    "name": "Compare a memorable voyage with another crossing",
+    "uses": [
+      {
+        "objective": "pocket.varnish.compare",
+        "action": "Match boats from the same crossing and inspect the damp hull before treating a good return as a trial of the surface.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 238,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 526,
+    "name": "Change the seat before interpreting a performance",
+    "uses": [
+      {
+        "objective": "pocket.paper-wings.compare",
+        "action": "Play the flight from the front slit and the wing, then move the caller’s cue. A shared performance makes different evidence available to each row.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 178,
+        "story": 106
+      }
+    ]
+  },
+  {
+    "number": 711,
+    "name": "Check what a title and a repeated observation each establish",
+    "uses": [
+      {
+        "objective": "pocket.reed-hand.compare",
+        "action": "Cover the grand title and compare the incision with the job book. Decide whether a repeat or a corrected credit would help the next visitor check it.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 1010,
+    "name": "Restore the words before an archive excerpt",
+    "uses": [
+      {
+        "objective": "pocket.rolled-echo.compare",
+        "action": "Wind to the breath before the excerpt and inspect the sleeve before letting the take travel. One signed room permission has a narrower scope than the public clipping.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 1108,
+    "name": "Separate authority to sign from knowledge of the marks",
+    "uses": [
+      {
+        "objective": "pocket.reed-hand.compare",
+        "action": "Place the conservator’s seal against the actual job assignment. The person who can authorise a label and the person who made the scraping can differ.",
+        "styles": [
+          "explorer",
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 48
+      }
+    ]
+  }
+]

@@ -1,0 +1,85 @@
+.picture-ferry-work {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.7em;
+}
+.picture-ferry-work p,
+.picture-ferry-work h3 {
+  margin-block: 0.15em;
+}
+.ferry-choose {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.35em;
+  font-weight: bold;
+}
+.ferry-select-frame {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  padding: 3px;
+}
+.ferry-choose select {
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+  text-overflow: ellipsis;
+}
+.ferry-window-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.45em;
+  align-items: stretch;
+}
+.ferry-window {
+  padding: 0.75em;
+  border: 0.2em double #6aa2a0;
+  border-radius: 0.4em;
+  background: #1d333c;
+  color: #fff3d7;
+  overflow-wrap: anywhere;
+}
+.ferry-window h3 {
+  font-size: 1em;
+}
+.ferry-window strong {
+  color: #ffda8c;
+  display: block;
+  padding-block: 0.45em 0.1em;
+}
+.ferry-window[data-face='source'] {
+  border-style: dashed;
+}
+.ferry-window[data-face='margin'] {
+  border-style: dotted;
+}
+.ferry-spindle {
+  display: grid;
+  align-items: center;
+}
+.ferry-spindle img {
+  width: 2.4em;
+  image-rendering: pixelated;
+}
+.ferry-response {
+  min-height: 1.4em;
+}
+.ferry-print {
+  max-height: 16rem;
+  max-width: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+@media (max-width: 520px) {
+  .ferry-window-stage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ferry-spindle {
+    display: none;
+  }
+}
+@media (forced-colors: active) {
+  .ferry-window {
+    border-color: CanvasText;
+  }
+}

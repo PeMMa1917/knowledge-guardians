@@ -3,6 +3,7 @@
  * 'dungeon'). A hatch in the study opens after her letter is found. Three fallacy seals block the
  * corridor (src/domain/undercroft.ts); the Hollow Archivist waits at the end. 32 x 9 tiles. Fictional.
  */
+import type { CampaignState } from '../domain/types';
 import type { MapDef } from './types';
 
 const W = 32, H = 9;
@@ -18,7 +19,7 @@ function floor(x: number, y: number): string | null {
 }
 
 const seal = (id: string, x: number, label: string) =>
-  ({ id: `seal-${id}`, kind: 'seal' as const, seal: id, x, y: 3, w: 1, h: 4, label, art: 'fray-seal', visibleIf: { not: { flag: `trap.${id}.open`, eq: true } } });
+  ({ id: `seal-${id}`, kind: 'seal' as const, seal: id, x, y: 3, w: 1, h: H - 4, label, art: 'fray-seal', visibleIf: { not: { flag: `trap.${id}.open`, eq: true } } });
 
 export const UNDERCROFT: MapDef = {
   id: 'aethelgard.undercroft',
@@ -55,3 +56,9 @@ export const UNDERCROFT: MapDef = {
   ],
   spawn: { x: 3, y: 5 },
 };
+
+/** Older Keepers could walk along row seven behind a closed grate and save there. */
+export function vaultReturnSquare(pos: {x:number;y:number}, flags: CampaignState['flags']) {
+  const first = UNDERCROFT.interactables.find(it => it.kind==='seal' && flags['trap.'+it.seal+'.open']!==true);
+  return first && pos.x>=first.x ? {x:first.x-1,y:UNDERCROFT.spawn.y} : pos;
+}

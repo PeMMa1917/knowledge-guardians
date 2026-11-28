@@ -1,0 +1,439 @@
+Element ID,Catalogue,Element,Catalogue status,Distinct reviewed actions,Worlds with proof,Learning and world combinations with proof,Combinations at ten,Representative objective,Representative source
+game:1,game,"Art, lighting and sound",playable,0,,0,0,,
+game:2,game,Connected exploration,playable,0,,0,0,,
+game:3,game,Landmark-led navigation,playable,0,,0,0,,
+game:4,game,Layered world lore,playable,0,,0,0,,
+game:5,game,Map revealed by walking,playable,0,,0,0,,
+game:6,game,Compass and map annotations,partial,0,,0,0,,
+game:7,game,Fast travel and rides,partial,0,,0,0,,
+game:8,game,Player-piloted transport,playable,0,,0,0,,
+game:9,game,Time and weather,partial,0,,0,0,,
+game:10,game,Resource gathering,playable,0,,0,0,,
+game:11,game,Secrets and optional discoveries,playable,0,,0,0,,
+game:12,game,Scout from a vantage,partial,0,,0,0,,
+game:13,game,Active mapmaking,playable,3,"WORLD-03, WORLD-06, WORLD-09",18,0,grove.tracks,tests/walking-orchard.test.ts
+game:14,game,Read different states of one place,playable,0,,0,0,,
+game:15,game,Terrain-specialist companions,playable,0,,0,0,,
+game:16,game,Lost-property retrieval,partial,0,,0,0,,
+game:17,game,Campaign and personal subplots,playable,0,,0,0,,
+game:18,game,NPC lives and voices,partial,0,,0,0,,
+game:19,game,Avatar and identity choices,playable,1,WORLD-01,7,0,origin-tour.archive.pack,tests/origin-instruments.test.ts
+game:20,game,Companions in exploration,playable,3,"WORLD-01, WORLD-10, WORLD-12",18,0,lor.o2.friend,tests/first-chapter-perches.test.ts
+game:21,game,Branching conversations,playable,17,"WORLD-01, WORLD-03, WORLD-06, WORLD-08, WORLD-10, WORLD-11, WORLD-12, WORLD-13, WORLD-14, WORLD-15, WORLD-16",105,0,origin-tour.traveller.pack,tests/origin-instruments.test.ts
+game:22,game,Consequences that change play,playable,12,"WORLD-02, WORLD-09, WORLD-10, WORLD-12, WORLD-13, WORLD-15, WORLD-16",66,0,origin-tour.archive.homecoming,tests/origin-instruments.test.ts
+game:23,game,Community trust,partial,0,,0,0,,
+game:24,game,Character stance and epithets,partial,0,,0,0,,
+game:25,game,Guilds and affiliations,partial,0,,0,0,,
+game:26,game,Loyalty and mentorship,playable,0,,0,0,,
+game:27,game,Ending branches,playable,0,,0,0,,
+game:28,game,Hearth conversations and food,partial,0,,0,0,,
+game:29,game,Configurable companion help,playable,1,WORLD-01,6,0,middlehouse.guests,tests/open-house.test.ts
+game:30,game,Lending companions online,excluded,0,,0,0,,
+game:31,game,Recall a returning person,playable,0,,0,0,,
+game:32,game,Progress through practice,playable,0,,0,0,,
+game:33,game,Branching upgrades,playable,0,,0,0,,
+game:34,game,Combat-style attributes,excluded,0,,0,0,,
+game:35,game,Distinct inquiry roles,playable,0,,0,0,,
+game:36,game,Advanced vocation paths,planned,0,,0,0,,
+game:37,game,Reselect roles and talents,playable,0,,0,0,,
+game:38,game,Tool expertise,partial,0,,0,0,,
+game:39,game,Bag and meaningful items,playable,0,,0,0,,
+game:40,game,Detailed combat loadouts,excluded,0,,0,0,,
+game:41,game,Sets with combined uses,playable,4,"WORLD-05, WORLD-10",30,0,optics.scratch,tests/lens-loan.test.ts
+game:42,game,Appearance independent of skill,playable,0,,0,0,,
+game:43,game,Maintenance as care,partial,0,,0,0,,
+game:44,game,Forging and crafting,playable,0,,0,0,,
+game:45,game,Modular instrument fittings,playable,4,"WORLD-05, WORLD-10",28,0,optics.scratch,tests/lens-loan.test.ts
+game:46,game,Appraise uncertain objects,playable,0,,0,0,,
+game:47,game,Creature and helper care,partial,0,,0,0,,
+game:48,game,Heirloom with later meaning,partial,0,,0,0,,
+game:49,game,Remember a set of work tools,playable,1,WORLD-05,4,0,optics.presets,tests/lens-loan.test.ts
+game:50,game,Sortable inventory by purpose,partial,0,,0,0,,
+game:51,game,Fair randomness and recovery,partial,0,,0,0,,
+game:52,game,Structured contest,playable,0,,0,0,,
+game:53,game,Temporary encounter state,partial,0,,0,0,,
+game:54,game,Moves work together,partial,0,,0,0,,
+game:55,game,Timed input,partial,0,,0,0,,
+game:56,game,Finite action resources,partial,0,,0,0,,
+game:57,game,Position affects access,planned,0,,0,0,,
+game:58,game,Place people advantageously,partial,0,,0,0,,
+game:59,game,Coordinated specialist help,partial,0,,0,0,,
+game:60,game,A multi-room dungeon,playable,0,,0,0,,
+game:61,game,Multi-phase climax,playable,0,,0,0,,
+game:62,game,Environmental constraints,partial,0,,0,0,,
+game:63,game,Material interactions,partial,0,,0,0,,
+game:64,game,Animal and habitat patterns,partial,0,,0,0,,
+game:65,game,Quiet observation and sightlines,partial,0,,0,0,,
+game:66,game,Identity and permission checks,planned,0,,0,0,,
+game:67,game,Punitive brig and bounty systems,excluded,0,,0,0,,
+game:68,game,Optional field preparation,playable,3,"WORLD-01, WORLD-02, WORLD-09",27,0,middlehouse.guests,tests/open-house.test.ts
+game:69,game,Transparent chance and method checks,playable,1,WORLD-11,9,0,elbow.lottery,tests/giant-sleeve.test.ts
+game:70,game,A rival who responds,playable,4,"WORLD-02, WORLD-05, WORLD-08",28,0,hatch.control,tests/hatch-sleeve.test.ts
+game:71,game,Waystones and save recovery,playable,0,,0,0,,
+game:72,game,Replay with knowledge retained,planned,0,,0,0,,
+game:73,game,Local currency and shops,playable,1,WORLD-02,8,0,emberford.tally.weigh,tests/first-chapter-perches.test.ts
+game:74,game,Economic changes and investment,partial,0,,0,0,,
+game:75,game,Collections and unlocks,playable,0,,0,0,,
+game:76,game,Fray Bestiary and lore,playable,0,,0,0,,
+game:77,game,Journal and mystery tracker,playable,2,"WORLD-03, WORLD-09",13,0,secondink.nile.cord,tests/second-ink.test.ts
+game:78,game,Short board or rumor jobs,partial,0,,0,0,,
+game:79,game,A customizable home,partial,0,,0,0,,
+game:80,game,Traveling merchant,playable,0,,0,0,,
+game:81,game,Local active-time counter,playable,0,,0,0,,
+game:82,game,Local XP over time,playable,0,,0,0,,
+game:83,game,Skill practice record,playable,0,,0,0,,
+game:84,game,Record and chapter progress,partial,0,,0,0,,
+game:85,game,Exam readiness and papers,excluded,0,,0,0,,
+game:86,game,Personal bests and discovery counts,partial,0,,0,0,,
+game:87,game,Awards and in-world currencies,playable,0,,0,0,,
+game:88,game,Forgiving streaks,playable,0,,0,0,,
+game:89,game,Rings and progress colors,partial,0,,0,0,,
+game:90,game,Progress by discipline,partial,0,,0,0,,
+game:91,game,Calendar view,partial,0,,0,0,,
+game:92,game,Post-encounter grades,excluded,0,,0,0,,
+game:93,game,Personal replay ghost,partial,0,,0,0,,
+game:94,game,Skill decay,excluded,0,,0,0,,
+game:95,game,Answer streak multipliers,excluded,0,,0,0,,
+game:96,game,Progress analytics,partial,0,,0,0,,
+game:97,game,Visible home growth,partial,0,,0,0,,
+game:98,game,Seasonal reward passes,excluded,0,,0,0,,
+game:99,game,Tiered achievements and hidden finds,playable,0,,0,0,,
+game:100,game,Regional passport,planned,0,,0,0,,
+game:101,game,Wearable titles,playable,0,,0,0,,
+game:102,game,Aggregate classroom progress,partial,0,,0,0,,
+game:103,game,Hall of fame and public ranking,excluded,0,,0,0,,
+game:104,game,Visible improvement after revision,partial,1,WORLD-07,6,0,origin-tour.workshop.tour,tests/origin-instruments.test.ts
+game:105,game,Mistake log and rematches,partial,0,,0,0,,
+game:106,game,Personal goals without wagers,playable,0,,0,0,,
+game:107,game,Hint independence,partial,0,,0,0,,
+game:108,game,Evidence cards and combinations,partial,2,"WORLD-09, WORLD-10",17,0,birdside.paper,tests/folding-flock.test.ts
+game:109,game,Limited evidence draft,planned,0,,0,0,,
+game:110,game,Transparent probability games,playable,0,,0,0,,
+game:111,game,Push-your-luck banking,excluded,0,,0,0,,
+game:112,game,Build an efficient process,planned,0,,0,0,,
+game:113,game,Place-based strategy grid,playable,4,"WORLD-01, WORLD-09, WORLD-13",28,0,stacks.bound,tests/turning-stacks.test.ts
+game:114,game,Allocate roles and turns,partial,4,"WORLD-02, WORLD-16",21,0,survey.o1.report,tests/survey.test.ts
+game:115,game,Combine sources into an edition,playable,2,"WORLD-13, WORLD-14",8,0,stacks.bound,tests/turning-stacks.test.ts
+game:116,game,Manage a hand of evidence,partial,0,,0,0,,
+game:117,game,Optional personal constraint,planned,0,,0,0,,
+game:118,game,Pace scarce resources,partial,0,,0,0,,
+game:119,game,Compare starting price anchors,playable,5,"WORLD-11, WORLD-12, WORLD-13",32,0,cup.roll,tests/first-cup.test.ts
+game:120,game,Seeded shifts in events,playable,0,,0,0,,
+game:121,game,Turn timing as evidence,partial,1,WORLD-09,10,0,birdside.cloth,tests/folding-flock.test.ts
+game:122,game,Lay route tiles,playable,3,"WORLD-02, WORLD-09",20,0,m02.o7.kip,tests/hatch-sleeve.test.ts
+game:123,game,Tabletop route models,playable,3,"WORLD-01, WORLD-13",17,0,stacks.bound,tests/turning-stacks.test.ts
+game:124,game,Procedural campaign mazes,excluded,0,,0,0,,
+game:125,game,Try a temporary research kit,playable,1,WORLD-05,4,0,optics.presets,tests/lens-loan.test.ts
+game:126,game,Seeded challenges,partial,0,,0,0,,
+game:127,game,Voluntary challenge constraints,planned,0,,0,0,,
+game:128,game,Progress between attempts,partial,0,,0,0,,
+game:129,game,Endless survival waves,excluded,0,,0,0,,
+game:130,game,Post-ending argument gauntlet,planned,0,,0,0,,
+game:131,game,Opt-in no-hint run,planned,0,,0,0,,
+game:132,game,Compare times on a local activity,partial,0,,0,0,,
+game:133,game,Trade-offs with costs,partial,0,,0,0,,
+game:134,game,Recover a misplaced object,playable,0,,0,0,,
+game:135,game,Branching route choices,partial,0,,0,0,,
+game:136,game,Prestige resets,excluded,0,,0,0,,
+game:137,game,Personal replay ghost,partial,0,,0,0,,
+game:138,game,Arrange a small historical scene,planned,0,,0,0,,
+game:139,game,Photography and an album,playable,0,,0,0,,
+game:140,game,Player-built levels,excluded,0,,0,0,,
+game:141,game,Music box and sound choice,partial,0,,0,0,,
+game:142,game,Dyes and heraldry,playable,0,,0,0,,
+game:143,game,Visible restoration,playable,0,,0,0,,
+game:144,game,Museum curation,playable,1,WORLD-10,6,0,picture-ferry.encore,tests/picture-ferry.test.ts
+game:145,game,Befriend and observe creatures,partial,0,,0,0,,
+game:146,game,Plant and habitat variation,partial,1,WORLD-06,7,0,forest.moss.place,tests/forest-sampling.test.ts
+game:147,game,Expressive emotes,playable,0,,0,0,,
+game:148,game,A town celebration,partial,0,,0,0,,
+game:149,game,Calm exploration option,playable,0,,0,0,,
+game:150,game,Letters across places,partial,0,,0,0,,
+game:151,game,Reshape a small public space,planned,0,,0,0,,
+game:152,game,Shared tea or cocoa preparation,playable,1,WORLD-11,9,0,cup.roll,tests/first-cup.test.ts
+game:153,game,Sky observations and drawing,playable,0,,0,0,,
+game:154,game,Networked class encounters,excluded,0,,0,0,,
+game:155,game,Different roles within a shared task,partial,0,,0,0,,
+game:156,game,Mentorship and buddy support,partial,0,,0,0,,
+game:157,game,Safe exchanges,partial,0,,0,0,,
+game:158,game,Pass work along a relay,playable,32,"WORLD-01, WORLD-02, WORLD-03, WORLD-04, WORLD-05, WORLD-06, WORLD-07, WORLD-08, WORLD-09, WORLD-10, WORLD-11, WORLD-12, WORLD-13, WORLD-14, WORLD-15, WORLD-16",55,0,coat.press.counter1,tests/pocket-coat.test.ts
+game:159,game,Student-authored hint stones,excluded,0,,0,0,,
+game:160,game,Gathering in team spaces,partial,0,,0,0,,
+game:161,game,Optional rhetorical duels,playable,0,,0,0,,
+game:162,game,Friendly competing plans,playable,5,"WORLD-06, WORLD-14, WORLD-15",42,0,grove.promise,tests/walking-orchard.test.ts
+game:163,game,Spectating and sharing replays,excluded,0,,0,0,,
+game:164,game,Peer commendations online,excluded,0,,0,0,,
+game:165,game,Community repair projects,partial,0,,0,0,,
+game:166,game,Collaborative puzzle structure,partial,0,,0,0,,
+game:167,game,Assign online squads,excluded,0,,0,0,,
+game:168,game,Multiplayer level synchronization,excluded,0,,0,0,,
+game:169,game,Connect clues visually,playable,2,"WORLD-09, WORLD-13",16,0,rivernames.smallblock,tests/river-names.test.ts
+game:170,game,Change what a tool reveals,playable,2,"WORLD-12, WORLD-13",20,0,cup.facing.steps,tests/first-cup.test.ts
+game:171,game,Challenge a contradiction,playable,0,,0,0,,
+game:172,game,Follow a repeating event,playable,1,WORLD-15,7,0,quarter.watch,tests/tide-clock.test.ts
+game:173,game,Witnesses tell different versions,playable,2,"WORLD-09, WORLD-15",18,0,wire.leading,tests/ferry-radio.test.ts
+game:174,game,Trace rumors to their sources,playable,0,,0,0,,
+game:175,game,Interpret language in use,partial,0,,0,0,,
+game:176,game,Choice-based epilogue vignettes,playable,0,,0,0,,
+game:177,game,Persistent world memory,playable,0,,0,0,,
+game:178,game,Act within staged beats,partial,0,,0,0,,
+game:179,game,Rebuild a document with limits,playable,1,WORLD-15,3,0,asia.loft.compare,tests/asia-label-loft.test.ts
+game:180,game,Public debate and persuasion,playable,2,"WORLD-04, WORLD-11",15,0,hearing.empty-chair.amended,tests/town-hearings.test.ts
+game:181,game,A faction and people revealed by letters,playable,0,,0,0,,
+game:182,game,Episodic campaign progression,playable,0,,0,0,,
+game:183,game,Revisit a memory through objects,partial,0,,0,0,,
+game:184,game,Constraint deductions,playable,4,"WORLD-01, WORLD-09, WORLD-13",31,0,rivernames.smallblock,tests/river-names.test.ts
+game:185,game,Route a flow,playable,0,,0,0,,
+game:186,game,Wordplay and meaning,playable,1,WORLD-10,8,0,plum.verse,tests/plum-orchard.test.ts
+game:187,game,Push objects through constraints,playable,1,WORLD-02,10,0,middlehouse.cart,tests/open-house.test.ts
+game:188,game,Optics and light,partial,3,WORLD-08,15,0,supper.trace,tests/supper-shadow.test.ts
+game:189,game,Align a view,playable,0,,0,0,,
+game:190,game,Recognize rhythmic patterns,playable,2,"WORLD-09, WORLD-10",18,0,wire.voice,tests/ferry-radio.test.ts
+game:191,game,Balance and compare measures,playable,0,,0,0,,
+game:192,game,Reorder a visible procedure,playable,1,WORLD-15,14,0,quarter.moth,tests/tide-clock.test.ts
+game:193,game,Pair records by content,playable,1,WORLD-12,10,0,rivernames.postmark,tests/river-names.test.ts
+game:194,game,Manipulate a small object in several views,playable,4,"WORLD-06, WORLD-10",29,0,elbow.curtain,tests/giant-sleeve.test.ts
+game:195,game,Test a route or repair before opening it,partial,6,"WORLD-02, WORLD-03, WORLD-07, WORLD-10, WORLD-12",31,0,elbow.fitting,tests/giant-sleeve.test.ts
+game:196,game,Layered hints without penalties,playable,0,,0,0,,
+game:197,game,Check a changing shadow or light,partial,0,,0,0,,
+game:198,game,Study a clock's mechanism,partial,0,,0,0,,
+game:199,game,Terrain traversal tools,planned,0,,0,0,,
+game:200,game,Route timing and momentum,planned,0,,0,0,,
+game:201,game,Revisit with a new ability,playable,0,,0,0,,
+game:202,game,Match a rhythm,playable,0,,0,0,,
+game:203,game,Combat reaction windows,excluded,0,,0,0,,
+game:204,game,Surroundings change during play,partial,0,,0,0,,
+game:205,game,Dodge patterns under attack,excluded,0,,0,0,,
+game:206,game,Explore physical cause and effect,partial,1,WORLD-02,7,0,origin-tour.workshop.pack,tests/origin-instruments.test.ts
+game:207,game,Forgiving timing inputs,partial,0,,0,0,,
+game:208,game,Control a rolling object,planned,0,,0,0,,
+game:209,game,Read layered viewpoints,partial,3,"WORLD-06, WORLD-09",21,0,rivernames.placename,tests/river-names.test.ts
+game:210,game,Gravity changes and zero-gravity travel,excluded,0,,0,0,,
+game:211,game,Expressive movement choices,planned,0,,0,0,,
+game:212,game,Supply and delivery logistics,playable,0,,0,0,,
+game:213,game,Delegate work with limits,partial,0,,0,0,,
+game:214,game,Plan shared spaces,planned,0,,0,0,,
+game:215,game,Budgets and finite supplies,partial,0,,0,0,,
+game:216,game,Care for habitats,partial,0,,0,0,,
+game:217,game,Unlock new methods over time,partial,0,,0,0,,
+game:218,game,Prepare for changing conditions,playable,0,,0,0,,
+game:219,game,Trade and fulfill local requests,partial,0,,0,0,,
+game:220,game,Allocate a work schedule,partial,0,,0,0,,
+game:221,game,Plan a visit or attraction,partial,0,,0,0,,
+game:222,game,Send work beyond the current scene,partial,0,,0,0,,
+game:223,game,Plan an exhibit and its resources,partial,1,WORLD-04,9,0,clearbay.use,tests/clear-bay.test.ts
+game:224,game,Change a repeated workflow,playable,1,WORLD-15,14,0,quarter.moth,tests/tide-clock.test.ts
+game:225,game,Automatic difficulty based on tracking,excluded,0,,0,0,,
+game:226,game,Access settings and inputs,playable,0,,0,0,,
+game:227,game,Comfort choices,partial,0,,0,0,,
+game:228,game,Interface inside the world,playable,0,,0,0,,
+game:229,game,Sound responds to the story,partial,0,,0,0,,
+game:230,game,Responsive feedback,playable,0,,0,0,,
+game:231,game,In-world notices and dispatches,partial,0,,0,0,,
+game:232,game,Course ideas embedded in play,partial,0,,0,0,,
+game:233,game,Guide character and glossary,playable,0,,0,0,,
+game:234,game,Low-stakes rehearsal,playable,52,"WORLD-01, WORLD-02, WORLD-03, WORLD-04, WORLD-05, WORLD-06, WORLD-07, WORLD-08, WORLD-09, WORLD-10, WORLD-11, WORLD-12, WORLD-13, WORLD-14, WORLD-15, WORLD-16",214,0,stacks.headlines,tests/turning-stacks.test.ts
+game:235,game,Reflect through character moments,playable,0,,0,0,,
+game:236,game,Inclusive avatar choices,playable,0,,0,0,,
+game:237,game,Change activity during a chapter,partial,0,,0,0,,
+game:238,game,Compare alternative approaches safely,partial,0,,0,0,,
+game:239,game,Cheat and toybox switches,excluded,0,,0,0,,
+game:240,game,Student-published guidebooks,excluded,0,,0,0,,
+game:241,game,Break-friendly progress,partial,0,,0,0,,
+game:242,game,Short and longer activities,playable,0,,0,0,,
+game:243,game,Optional term reflection,planned,0,,0,0,,
+game:244,game,Timing and reflex games,partial,0,,0,0,,
+game:245,game,"Cards, boards and chance without stakes",playable,0,,0,0,,
+game:246,game,Logic and constraints,playable,0,,0,0,,
+game:247,game,Rhythm and performance,playable,4,"WORLD-01, WORLD-02, WORLD-10",23,0,origin-tour.singer.pack,tests/origin-instruments.test.ts
+game:248,game,Hands-on making,partial,0,,0,0,,
+game:249,game,Friendly contests,partial,0,,0,0,,
+game:250,game,Small management models,partial,0,,0,0,,
+game:251,game,Games inside the world,playable,0,,0,0,,
+game:252,game,Photography and field observation,partial,0,,0,0,,
+game:253,game,Persuasion and reading a room,playable,3,"WORLD-01, WORLD-10, WORLD-11",10,0,underpan.account,tests/underpan.test.ts
+game:254,game,Compare prices and exchange terms,partial,0,,0,0,,
+game:255,game,Defend a public record,planned,0,,0,0,,
+game:256,game,Observe and befriend creatures,partial,0,,0,0,,
+game:257,game,A timed observation course,planned,0,,0,0,,
+game:258,game,Find a story's weak link through play,playable,1,WORLD-02,5,0,ember.circle.trace,tests/circular-report.test.ts
+game:259,game,"Art, clothing and decorating",partial,0,,0,0,,
+game:260,game,Delicate dig and restoration,playable,0,,0,0,,
+game:261,game,Prepare food for a visitor,playable,0,,0,0,,
+game:262,game,Trace the sky and measure a view,playable,0,,0,0,,
+game:263,game,Purposeful courier errands,playable,2,"WORLD-08, WORLD-13",6,0,catchment.civic.receipt,tests/catchment.test.ts
+game:264,game,Protect papers in transit,partial,0,,0,0,,
+game:265,game,Clear a source of trouble,partial,0,,0,0,,
+game:266,game,Accompany a vulnerable courier,planned,0,,0,0,,
+game:267,game,Investigation and forensic comparisons,playable,49,"WORLD-01, WORLD-02, WORLD-03, WORLD-04, WORLD-05, WORLD-06, WORLD-07, WORLD-08, WORLD-09, WORLD-10, WORLD-11, WORLD-12, WORLD-13, WORLD-16",133,2,stacks.counts,tests/turning-stacks.test.ts
+game:268,game,Explore unmarked sites,playable,0,,0,0,,
+game:269,game,Companion history quests,playable,0,,0,0,,
+game:270,game,Guild responsibilities,partial,0,,0,0,,
+game:271,game,Dilemmas with real trade-offs,playable,4,"WORLD-01, WORLD-09, WORLD-12, WORLD-13",25,0,wire.issue,tests/ferry-radio.test.ts
+game:272,game,Collect across linked places,partial,0,,0,0,,
+game:273,game,Repeatable local leads,partial,0,,0,0,,
+game:274,game,Retrieve a record with permission,partial,0,,0,0,,
+game:275,game,A chain of exchanges,playable,0,,0,0,,
+game:276,game,Restore part of a settlement,playable,0,,0,0,,
+game:277,game,Find a place from a drawing,partial,0,,0,0,,
+game:278,game,Post-ending mastery challenge,planned,0,,0,0,,
+game:279,game,Plan an authorized audit,partial,0,,0,0,,
+game:280,game,Playful detours,playable,0,,0,0,,
+game:281,game,Festival and friendly gathering,playable,0,,0,0,,
+game:282,game,Investigate a schedule,playable,2,WORLD-15,13,0,wire.shift,tests/ferry-radio.test.ts
+game:283,game,Take on an optional limitation,planned,0,,0,0,,
+game:284,game,Deliberate in council,playable,0,,0,0,,
+game:285,game,Reporting and public correction,partial,0,,0,0,,
+game:286,game,Seat placement as negotiation,partial,0,,0,0,,
+game:287,game,Reconstruct a past voice or event,playable,1,WORLD-14,5,0,last-bell.voices.left,tests/last-bell.test.ts
+game:288,game,An apprenticeship culminating in a proof,planned,0,,0,0,,
+story:1,story,Play at once,playable,0,,0,0,,
+story:2,story,One-sentence premise,playable,0,,0,0,,
+story:3,story,Early emotional anchor,playable,0,,0,0,,
+story:4,story,Micro-decision at once,playable,0,,0,0,,
+story:5,story,Mystery on the horizon,playable,2,"WORLD-01, WORLD-06",13,0,secondink.archive.slip,tests/second-ink.test.ts
+story:6,story,Personal stakes first,playable,2,WORLD-02,15,0,origin-tour.workshop.pack,tests/origin-instruments.test.ts
+story:7,story,Short exposition,playable,0,,0,0,,
+story:8,story,Clear inciting incident,playable,0,,0,0,,
+story:9,story,Clear first goals,playable,0,,0,0,,
+story:10,story,Promise of change,playable,0,,0,0,,
+story:11,story,Dilemmas between two goods,playable,9,"WORLD-06, WORLD-09, WORLD-12, WORLD-13, WORLD-14, WORLD-15",70,0,wire.issue,tests/ferry-radio.test.ts
+story:12,story,Non-violent paths,playable,0,,0,0,,
+story:13,story,Fail forward,playable,0,,0,0,,
+story:14,story,Tone choices,playable,0,,0,0,,
+story:15,story,Delayed ripples,playable,6,"WORLD-03, WORLD-08, WORLD-13, WORLD-15, WORLD-16",30,0,field-loan.dispatch.issued,tests/field-loans.test.ts
+story:16,story,Instant reactions,playable,0,,0,0,,
+story:17,story,Respect refusal,playable,0,,0,0,,
+story:18,story,Many keys to one lock,playable,0,,0,0,,
+story:19,story,Honest option text,playable,0,,0,0,,
+story:20,story,Warn before no return,playable,0,,0,0,,
+story:21,story,Any archetype fits,partial,0,,0,0,,
+story:22,story,Personal tie to the plot,playable,0,,0,0,,
+story:23,story,Background is noticed,playable,0,,0,0,,
+story:24,story,Skill is recognised,playable,0,,0,0,,
+story:25,story,Vulnerability,playable,1,WORLD-10,8,0,elbow.fitting,tests/giant-sleeve.test.ts
+story:26,story,Your own reason,playable,0,,0,0,,
+story:27,story,Act in big scenes,playable,0,,0,0,,
+story:28,story,Growth in story and play,playable,0,,0,0,,
+story:29,story,Journal in a voice,partial,4,"WORLD-06, WORLD-08, WORLD-10",25,0,field-loan.press.compared,tests/field-loans.test.ts
+story:30,story,Earned names,playable,0,,0,0,,
+story:31,story,Companions with own goals,playable,1,WORLD-12,4,0,night.work.20806,tools/night-register-journey.mjs
+story:32,story,Banter,playable,0,,0,0,,
+story:33,story,Friction with respect,playable,0,,0,0,,
+story:34,story,Companion arcs,partial,0,,0,0,,
+story:35,story,Found family,playable,0,,0,0,,
+story:36,story,Opt-in romance,excluded,0,,0,0,,
+story:37,story,Memorable townsfolk,playable,0,,0,0,,
+story:38,story,Mascot ally,playable,3,"WORLD-01, WORLD-02, WORLD-10",20,0,origin-tour.harbour.pack,tests/origin-instruments.test.ts
+story:39,story,Everyone uses their talent,playable,0,,0,0,,
+story:40,story,Trust through moments,playable,0,,0,0,,
+story:41,story,A rival with a reason,playable,0,,0,0,,
+story:42,story,The rival appears often,playable,2,"WORLD-03, WORLD-13",13,0,secondink.nile.cord,tests/second-ink.test.ts
+story:43,story,Tiered gallery,playable,1,WORLD-05,6,0,secondink.coast.answer,tests/second-ink.test.ts
+story:44,story,A growing rival,playable,2,"WORLD-05, WORLD-08",13,0,secondink.coast.answer,tests/second-ink.test.ts
+story:45,story,Nature and society too,playable,0,,0,0,,
+story:46,story,Presence,playable,0,,0,0,,
+story:47,story,Arguing with the rival,playable,0,,0,0,,
+story:48,story,Fair clues,playable,8,"WORLD-01, WORLD-06, WORLD-11, WORLD-14, WORLD-15",46,0,grove.tracks,tests/walking-orchard.test.ts
+story:49,story,Redemption,playable,0,,0,0,,
+story:50,story,A satisfying climax,playable,0,,0,0,,
+story:51,story,Wordless storytelling,playable,0,,0,0,,
+story:52,story,Distinct cultures,playable,2,"WORLD-02, WORLD-09",15,0,m02.o7.kip,tests/hatch-sleeve.test.ts
+story:53,story,Daily routines,partial,0,,0,0,,
+story:54,story,Layers of history,playable,0,,0,0,,
+story:55,story,Material culture,playable,0,,0,0,,
+story:56,story,Landmarks with lore,playable,1,WORLD-09,8,0,rivernames.placename,tests/river-names.test.ts
+story:57,story,Varied moods,playable,0,,0,0,,
+story:58,story,Clear rules for the strange,playable,0,,0,0,,
+story:59,story,Touch the world,playable,0,,0,0,,
+story:60,story,Mood shifts,partial,0,,0,0,,
+story:61,story,Campfire breathers,playable,0,,0,0,,
+story:62,story,Episodes,playable,0,,0,0,,
+story:63,story,Lean main path,partial,0,,0,0,,
+story:64,story,Story-so-far recap,playable,0,,0,0,,
+story:65,story,Smooth flow,playable,0,,0,0,,
+story:66,story,Tension wave,partial,0,,0,0,,
+story:67,story,Player controls time,playable,0,,0,0,,
+story:68,story,Varied missions,playable,0,,0,0,,
+story:69,story,Answer before new mystery,playable,1,WORLD-08,6,0,supper.light,tests/supper-shadow.test.ts
+story:70,story,"Short required, deep optional",playable,0,,0,0,,
+story:71,story,No empty fetch quests,playable,0,,0,0,,
+story:72,story,Side stories echo the theme,playable,4,"WORLD-01, WORLD-03, WORLD-04, WORLD-13",30,0,mill-shift.nile.compared,tests/mill-shift.test.ts
+story:73,story,Small favour grows,playable,0,,0,0,,
+story:74,story,Linked side quests,playable,32,"WORLD-01, WORLD-03, WORLD-04, WORLD-05, WORLD-06, WORLD-07, WORLD-08, WORLD-09, WORLD-10, WORLD-11, WORLD-12, WORLD-13, WORLD-14, WORLD-15, WORLD-16",59,0,optics.presets,tests/lens-loan.test.ts
+story:75,story,Guild arcs,playable,3,"WORLD-01, WORLD-02, WORLD-14",28,0,middlehouse.plan,tests/open-house.test.ts
+story:76,story,Cozy quests,playable,0,,0,0,,
+story:77,story,Observation mysteries,playable,14,"WORLD-01, WORLD-02, WORLD-03, WORLD-05, WORLD-06, WORLD-08, WORLD-09, WORLD-10, WORLD-12, WORLD-15",88,0,wire.leading,tests/ferry-radio.test.ts
+story:78,story,Challenges with flair,playable,0,,0,0,,
+story:79,story,Rumours,playable,0,,0,0,,
+story:80,story,Rewards that show,playable,0,,0,0,,
+story:81,story,Story unlocks abilities,playable,0,,0,0,,
+story:82,story,Story in boss fights,playable,0,,0,0,,
+story:83,story,Item text,playable,4,"WORLD-05, WORLD-11, WORLD-13",20,0,stacks.counts,tests/turning-stacks.test.ts
+story:84,story,Play mirrors mood,playable,0,,0,0,,
+story:85,story,Easy retry,partial,3,"WORLD-02, WORLD-09",22,0,hatch.control,tests/hatch-sleeve.test.ts
+story:86,story,Home base grows,playable,2,"WORLD-01, WORLD-14",15,0,middlehouse.guests,tests/open-house.test.ts
+story:87,story,Non-fight skills pay off,playable,7,"WORLD-05, WORLD-09, WORLD-10, WORLD-11, WORLD-13, WORLD-15",63,0,stacks.signatures,tests/turning-stacks.test.ts
+story:88,story,Story mode,partial,0,,0,0,,
+story:89,story,Tutorials in story,playable,0,,0,0,,
+story:90,story,Relics feel rare,playable,0,,0,0,,
+story:91,story,Two layers,playable,31,"WORLD-01, WORLD-03, WORLD-04, WORLD-05, WORLD-06, WORLD-07, WORLD-08, WORLD-09, WORLD-10, WORLD-11, WORLD-12, WORLD-13, WORLD-14, WORLD-15, WORLD-16",99,0,coat.archive.compared1,tests/pocket-coat.test.ts
+story:92,story,Belonging,playable,0,,0,0,,
+story:93,story,Legacy,playable,0,,0,0,,
+story:94,story,Courage while unsure,playable,0,,0,0,,
+story:95,story,Empathy across divides,playable,12,"WORLD-01, WORLD-02, WORLD-06, WORLD-08, WORLD-09, WORLD-10, WORLD-12",85,0,hatch.return,tests/hatch-sleeve.test.ts
+story:96,story,Weight without shock,playable,0,,0,0,,
+story:97,story,Wonder,playable,0,,0,0,,
+story:98,story,Humour for all,playable,0,,0,0,,
+story:99,story,Inner shadows,playable,0,,0,0,,
+story:100,story,Earned hope,playable,0,,0,0,,
+story:101,story,Few words,playable,0,,0,0,,
+story:102,story,Distinct voices,playable,0,,0,0,,
+story:103,story,Glossary pop-ups,playable,0,,0,0,,
+story:104,story,Conversation log,playable,0,,0,0,,
+story:105,story,Skip summaries,partial,0,,0,0,,
+story:106,story,Expressive staging,partial,3,"WORLD-01, WORLD-10, WORLD-11",10,0,underpan.account,tests/underpan.test.ts
+story:107,story,Sayings,playable,1,WORLD-12,10,0,rivernames.postmark,tests/river-names.test.ts
+story:108,story,Simple words,playable,0,,0,0,,
+story:109,story,Silence and subtext,playable,0,,0,0,,
+story:110,story,Reading aids,playable,0,,0,0,,
+story:111,story,Chatter changes,playable,0,,0,0,,
+story:112,story,Visible repair,playable,3,"WORLD-09, WORLD-10",22,0,elbow.curtain,tests/giant-sleeve.test.ts
+story:113,story,Songs of your deeds,playable,0,,0,0,,
+story:114,story,Old faces return,playable,31,"WORLD-01, WORLD-02, WORLD-03, WORLD-04, WORLD-05, WORLD-06, WORLD-07, WORLD-08, WORLD-09, WORLD-10, WORLD-11, WORLD-12, WORLD-13, WORLD-14, WORLD-15, WORLD-16",209,0,stacks.bound,tests/turning-stacks.test.ts
+story:115,story,Factions warm or cool,partial,0,,0,0,,
+story:116,story,Keepsakes at home,playable,0,,0,0,,
+story:117,story,Companion reactions,playable,0,,0,0,,
+story:118,story,Safer roads,playable,0,,0,0,,
+story:119,story,Fair consequences,playable,14,"WORLD-01, WORLD-06, WORLD-09, WORLD-10, WORLD-11, WORLD-12, WORLD-13, WORLD-15",102,0,origin-tour.archive.pack,tests/origin-instruments.test.ts
+story:120,story,Letters from afar,playable,0,,0,0,,
+story:121,story,Iceberg lore,playable,0,,0,0,,
+story:122,story,Lively codex,playable,0,,0,0,,
+story:123,story,Myths in versions,playable,0,,0,0,,
+story:124,story,Secret places,playable,0,,0,0,,
+story:125,story,Replay foreshadowing,playable,0,,0,0,,
+story:126,story,Trope twists,playable,0,,0,0,,
+story:127,story,Relics with a story,playable,0,,0,0,,
+story:128,story,Bestiary lore,playable,0,,0,0,,
+story:129,story,Leitmotifs,playable,0,,0,0,,
+story:130,story,Edges of the map,partial,1,WORLD-09,5,0,sea.finish,tests/cartographers-story.test.ts
+story:131,story,Earned catharsis,playable,0,,0,0,,
+story:132,story,Timely humour,playable,0,,0,0,,
+story:133,story,Celebrations,playable,0,,0,0,,
+story:134,story,Real loss,playable,0,,0,0,,
+story:135,story,Big empowering moment,playable,0,,0,0,,
+story:136,story,Bittersweet growth,playable,0,,0,0,,
+story:137,story,Teamwork,playable,0,,0,0,,
+story:138,story,Suspense,playable,0,,0,0,,
+story:139,story,Mentors,playable,0,,0,0,,
+story:140,story,Whimsy,playable,0,,0,0,,
+story:141,story,Allies return,playable,0,,0,0,,
+story:142,story,Final showdown tests the theme,playable,0,,0,0,,
+story:143,story,Whole party helps,playable,0,,0,0,,
+story:144,story,Ending reflects choices,playable,7,"WORLD-07, WORLD-09, WORLD-10, WORLD-15, WORLD-16",42,0,origin-tour.archive.homecoming,tests/origin-instruments.test.ts
+story:145,story,Walkable epilogue,playable,0,,0,0,,
+story:146,story,Where are they now,playable,0,,0,0,,
+story:147,story,Post-game,partial,0,,0,0,,
+story:148,story,Mirror scene,playable,0,,0,0,,
+story:149,story,Credits with your choices,playable,0,,0,0,,
+story:150,story,A lingering thought,playable,0,,0,0,,

@@ -1,4 +1,4 @@
-import type { SpecimenReference } from '../domain/specimenReferences';
+import { compareCitations, type SpecimenReference } from '../domain/specimenReferences';
 import type { AdventureJournalView } from '../domain/adventureJournal';
 import { selectDiary, type DiarySelection } from '../domain/diarySelection';
 import { encyclopediaEncounterLabel, encyclopediaLinkLabel, personArticleCitation, isEncyclopediaURL } from '../domain/encyclopedia';
@@ -44,7 +44,13 @@ export function adventureExportSnapshot(view: AdventureJournalView, options: Adv
       prompt, ...(includePersonal && response !== undefined ? { response } : {}),
     })),
   } : {};
-  const references: SpecimenReference[] = view.references.map((reference) => ({
+  const cited = new Set<string>();
+  const references: SpecimenReference[] = [...view.references, ...(view.readings ?? [])].sort(compareCitations).filter(reference => {
+    const id = reference.url + '\n' + reference.text;
+    if (cited.has(id)) return false;
+    cited.add(id);
+    return true;
+  }).map((reference) => ({
     ...reference,
     runs: reference.runs.map(({ href, ...part }) => (href && safeJournalLink(href) ? { ...part, href } : part)),
   }));
@@ -61,7 +67,7 @@ export function adventureExportSnapshot(view: AdventureJournalView, options: Adv
       text: note.text, ...reflections(note.reflections),
     })),
     untaggedReflections: includePersonal ? (selected.untaggedReflections ?? []).map((entry) => ({
-      title: entry.title, details: details('Private reflection', entry.at, entry.mapId), ...reflections(entry.reflections),
+      title: entry.title, details: details('Diary reflection', entry.at, entry.mapId), ...reflections(entry.reflections),
     })) : [],
     portfolio: includePersonal ? (view.portfolioWriting ?? []).map((entry) => ({
       title: entry.title, text: entry.text,

@@ -1,0 +1,110 @@
+[
+  {
+    "number": 93,
+    "name": "Separate the changes needed together from a change that suffices on its own",
+    "uses": [
+      {
+        "objective": "mill-shift.yard.joint",
+        "action": "Keep the four punches fixed and stamp all four wheel and crew arrangements. Only the joint change raises the output on this strip.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "analytical",
+          "spatial"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "hearing.dropped-verb.checked1",
+        "action": "Read the two returns and use the opposite plans to test whether both desks reading the notice was sufficient for the transfer.",
+        "styles": [
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "reflective"
+        ],
+        "game": 267,
+        "story": 109
+      },
+      {
+        "objective": "hearing.empty-chair.checked1",
+        "action": "Trace the unlisted carer across a key loan and a repaired knot. Use the second source to test whether a family name is necessary to give a checkable account.",
+        "styles": [
+          "helper"
+        ],
+        "modes": [
+          "social",
+          "reflective"
+        ],
+        "game": 180,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 293,
+    "name": "Compare a worker’s deliberate invention with a rule governing whose work counts",
+    "uses": [
+      {
+        "objective": "mill-shift.press.compared",
+        "action": "Bind the same dates by wheel and rota, try both people in the lead, and commit a printed edition grounded in a worked settlement or mill run.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "linguistic",
+          "reading",
+          "social"
+        ],
+        "game": 234,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 689,
+    "name": "Set a missed possibility and an open future in different verb forms",
+    "uses": [
+      {
+        "objective": "mill-shift.press.edited-moods",
+        "action": "Print a counterfactual edition using had stayed and could have cut, then a prospective edition using comes tomorrow and can feed. Either can go to the three workers.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "writing",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 1127,
+    "name": "Test a numerical estimate alongside the institutional history of the shift",
+    "uses": [
+      {
+        "objective": "mill-shift.press.estimate",
+        "action": "Bind the four shifts by wheel and by the guild’s change to the rota. Try the two estimates against an off-rota reconstruction. The historical averages fit both groupings and cannot decide between them.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "analytical",
+          "reading",
+          "visual"
+        ],
+        "game": 234,
+        "story": 91
+      }
+    ]
+  }
+]

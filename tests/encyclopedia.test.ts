@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import matches from '../src/content/encyclopedia.json';
+import museumArticles from '../src/content/museum-articles.json';
 import { adventureJournalView } from '../src/domain/adventureJournal';
 import { encyclopediaForBiography, encyclopediaForCharacter, encyclopediaForDiaryEvent, encyclopediaForExhibit,
   encyclopediaLinkLabel, isEncyclopediaURL } from '../src/domain/encyclopedia';
@@ -60,7 +61,7 @@ describe('Encyclopedia links for actual encounters', () => {
     const restored = migrateCampaign(old).state;
     expect(view(d, restored).encyclopedia).toEqual(expect.arrayContaining([
       expect.objectContaining({ name: 'Bill Phillips', encounter: 'met' }),
-      expect.objectContaining({ name: 'Papyrus Sallier III', kind: 'related', encounter: 'inspected' }),
+      expect.objectContaining({ key: 'object:bm:ea10181-1', name: expect.stringContaining('Papyrus Sallier III'), kind: 'related', encounter: 'inspected' }),
     ]));
     expect(view(d, restored).encyclopedia.some(({ encounter }) => encounter === 'read')).toBe(false);
   });
@@ -128,7 +129,7 @@ describe('Encyclopedia links for actual encounters', () => {
     const records = view(d).encyclopedia;
     expect(records).toContainEqual(expect.objectContaining({ key: 'object:museo-egizio:papyrus-document-9',
       kind: 'article', url: 'https://en.wikipedia.org/wiki/Turin_Papyrus_Map' }));
-    expect(records).toContainEqual(expect.objectContaining({ key: 'object:OBJ-NILE-STRIKE',
+    expect(records).toContainEqual(expect.objectContaining({ key: 'object:museoegizio:cat.1880',
       kind: 'related', url: 'https://en.wikipedia.org/wiki/Deir_el-Medina' }));
     expect(view(d).references).toEqual([]);
     const guide = d.e.pack.exhibits.find(({ id }) => id === 'OBJ-DOOR-02')!;
@@ -162,6 +163,39 @@ describe('Encyclopedia links for actual encounters', () => {
     expect(decodeURI(link.url)).toBe(`https://${language}.wikipedia.org/wiki/${path}`);
     expect(encyclopediaLinkLabel(link)).toContain(`(${label})`);
     expect(isEncyclopediaURL(link.url, link.kind)).toBe(true);
+  });
+
+  it('binds every museum article to an individual holding and preserves its credit line', () => {
+    const d = new Driver();
+    const inventory = new Map(d.e.pack.exhibits.filter(e => e.specimen).map(e => [e.specimen!.key, e]));
+    const keys = new Set<string>();
+    for (const group of museumArticles) {
+      expect(group.wikidata).toMatch(/^Q[1-9]\d*$/);
+      for (const key of group.holdings) {
+        expect(keys.has(key), key).toBe(false);
+        keys.add(key);
+        const ex = inventory.get(key);
+        expect(ex, key).toBeDefined();
+        const link = encyclopediaForExhibit(ex!)!;
+        expect(link).toMatchObject({kind:'related', entity:'object', encounter:'inspected',
+          title:group.title, catalogueRole:group.relation});
+        expect(isEncyclopediaURL(link.url,link.kind), key).toBe(true);
+      }
+    }
+  });
+
+  it('keeps Hurd’s bookplate, Prendergast’s picture and their credits separate from meeting either artist', () => {
+    const d = new Driver();
+    d.s.mapId = 'night-register.archive';
+    for (const exhibit of ['OBJ-NIGHT-182775','OBJ-DATE-CMA-1926.17']) d.run({type:'InspectExhibit',exhibit});
+    const v = view(d);
+    expect(v.references).toHaveLength(0);
+    expect(v.encyclopedia).toHaveLength(2);
+    expect(v.encyclopedia.map(encyclopediaLinkLabel).sort()).toEqual([
+      'Related Wikipedia article · catalogued artist · Maurice Prendergast',
+      'Related Wikipedia article · catalogued artist · Nathaniel Hurd',
+    ]);
+    expect(v.encyclopedia.every(link=>link.encounter==='inspected')).toBe(true);
   });
 
   it('accepts article routes and explicit searches over the approved Wikipedia hosts only', () => {

@@ -930,6 +930,21 @@
         ],
         "game": 171,
         "story": 77
+      },
+      {
+        "objective": "supper.counter",
+        "action": "Set up one spoon behind the two silhouettes that the rhyme says always indicate two spoons. An arbitrarily long run of confirming trials with the pair cannot remove this counterexample.",
+        "styles": [
+          "explorer",
+          "challenger"
+        ],
+        "modes": [
+          "spatial",
+          "analytical",
+          "reflective"
+        ],
+        "game": 188,
+        "story": 77
       }
     ]
   },
@@ -1084,6 +1099,21 @@
           "analytical"
         ],
         "game": 198,
+        "story": 77
+      },
+      {
+        "objective": "supper.moved",
+        "action": "Hold the bar position fixed to obtain the same two chalk positions in different ways. Slide the bar and repeat both arrangements to find a reading that distinguishes them.",
+        "styles": [
+          "explorer",
+          "challenger"
+        ],
+        "modes": [
+          "spatial",
+          "analytical",
+          "reflective"
+        ],
+        "game": 188,
         "story": 77
       }
     ]
@@ -1476,6 +1506,21 @@
     "number": 299,
     "name": "Give the performed cue and the printed copy separate jobs",
     "uses": [
+      {
+        "objective": "field-loan.stage.issued",
+        "action": "Light the name in the stalls and sound the collection number in the balcony. Select the leading cue, follow the appropriate stair and meet someone whose seat changes what they perceive.",
+        "styles": [
+          "performer",
+          "companion"
+        ],
+        "modes": [
+          "auditory",
+          "spatial",
+          "visual"
+        ],
+        "game": 22,
+        "story": 15
+      },
       {
         "objective": "stage.finish",
         "action": "Use rehearsal and the audience’s response, then keep the performed pause and its public reading distinct on the program.",
@@ -1906,6 +1951,20 @@
     "number": 330,
     "name": "Test what one service word allows different crews to do",
     "uses": [
+      {
+        "objective": "origin-tour.traveller.pack",
+        "action": "Try two distinct readings of first at different clock stops. Specify who led the music, who left first and who returned before either of them.",
+        "styles": [
+          "strategist",
+          "explorer"
+        ],
+        "modes": [
+          "linguistic",
+          "spatial"
+        ],
+        "game": 206,
+        "story": 119
+      },
       {
         "objective": "coast.clear.share",
         "action": "Check the menders’ tagged row and the lookout’s gauge before putting both uses of clear where the relevant crews can find them.",

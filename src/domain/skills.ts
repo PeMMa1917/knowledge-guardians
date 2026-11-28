@@ -7,6 +7,8 @@
  */
 import type { ContentPack, Objective, PermanentRecord } from './types';
 
+export const microSkillId = (number: number): string => 'SK-MICRO-' + String(number).padStart(4, '0');
+
 export type SkillStage = 'unseen' | 'seen' | 'practised' | 'confident' | 'transferred';
 
 export const STAGE_LABEL: Record<SkillStage, string> = {

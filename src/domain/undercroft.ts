@@ -1,9 +1,7 @@
 /**
  * The Undercroft (Mika 2026-11-25: dungeons, traps, bosses). Under Elsbet's study is her records
- * vault. Records that nobody checked for ten years fed a Fray: the Hollow Archivist. Three fallacy
- * seals block the corridor; each one speaks a bad argument, and the player opens it by naming the
- * flaw. The 'boss' changes its argument in each of three phases. A wrong answer is explained and the
- * player tries again (no damage, no fail state; calm). Fictional; no real historical claims.
+ * vault. The campaign instruments and both handovers at each station are in vaultWork.ts.
+ * The original prompt data remains available for training and older command callers.
  * TOK link: bandwagon, false dilemma, cherry-picking, appeal to authority, confirmation bias, straw man.
  */
 export interface Choice { text: string; ok: boolean; why: string }
@@ -64,5 +62,8 @@ export const BOSS = {
 type Flags = Record<string, unknown>;
 export const sealOpen = (f: Flags, id: string): boolean => f[`trap.${id}.open`] === true;
 export const allSealsOpen = (f: Flags): boolean => SEALS.every((x) => sealOpen(f, x.id));
-export const bossPhase = (f: Flags): number => Number(f[`boss.${BOSS.id}.phase`] ?? 0);
+export function bossPhase(f:Flags):number{
+  const n=Number(f['boss.'+BOSS.id+'.phase']);
+  return Number.isInteger(n)&&n>=0 ? Math.min(n,f['undercroft.done']===true?3:2) : 0;
+}
 export const bossDone = (f: Flags): boolean => f['undercroft.done'] === true;

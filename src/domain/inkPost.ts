@@ -1,5 +1,6 @@
 // The post connects people through the Nexus archive. A historical speaker's
 // fictional lines and the sourced note about their work are separate nodes.
+import workshops from '../content/lamplight-stations.json';
 import { inkTrialInvitation, inkTrialNodes, inkTrialRecall } from './inkTrials';
 import letters from '../content/ink-post-letters.json';
 import watermarks from '../content/ink-post-watermarks.json';
@@ -80,6 +81,7 @@ function shelfNodes(station: Station): DialogueNode[] {
   });
   return [
     shelf('', station.intro, [
+      { text: workshops.find((w) => w.id === station.id)!.title + ' · call a guest to the lantern', next: 'lamplight.' + station.id + '.post' },
       { text: 'Unfold a bird from this roost', if: { any: outgoing.map((l) => missing(story(l) + '.delivery')) }, next: id + '.out' },
       { text: 'Catch a bird from another chapter', if: { any: incoming.map((l) => marked(story(l) + '.fold')) }, next: id + '.in' },
       { text: 'Hear what came home', if: { any: outgoing.map((l) => marked(story(l) + '.delivery')) }, next: id + '.back' },

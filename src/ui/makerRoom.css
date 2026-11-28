@@ -1,5 +1,6 @@
 .maker-room-tool {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: .65rem;
 }
 
@@ -9,7 +10,7 @@
   gap: .7rem;
 }
 
-.maker-strip { margin: 0; }
+.maker-strip { margin: 0; max-inline-size: 100%; min-inline-size: 0; }
 .maker-strip-cells {
   display: flex;
   gap: 3px;

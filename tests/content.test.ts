@@ -1,9 +1,16 @@
+import { isValidLook } from '../src/domain/appearance';
 import { describe, expect, it } from 'vitest';
 import { buildPack } from '../src/content';
 import { validateContent } from '../src/domain/validate';
 
 describe('content pack', () => {
   const pack = buildPack();
+  it('can draw every issued character sheet on both the map and the dialogue portrait', () => {
+    const sheets = import.meta.glob('/public/assets/art/generated/characters/*.png', {query:'?url'});
+    const broken = pack.characters.filter(({ sprite }) => sprite &&
+      (sprite.startsWith('custom:') ? !isValidLook(sprite) : !('/public/assets/art/generated/characters/' + sprite + '.png' in sheets)));
+    expect(broken.map(({ id, sprite }) => ({ id, sprite }))).toEqual([]);
+  });
   it('passes validation', () => {
     expect(validateContent(pack)).toEqual([]);
   });

@@ -23,7 +23,9 @@ describe('A Shore You Can Turn', () => {
     expect(BIG_ART[e.art]).toBe('big.turning.kunit-case');
     const placements = Object.values(MAPS).flatMap((map) => map.interactables.filter((prop) => prop.exhibit === e.id).map(() => map.id));
     expect(placements).toEqual(['sea.turning-room']);
-    expect(MAPS['sea.turning-room']).toBe(TURNING_ROOM);
+    expect(MAPS['sea.turning-room']).toMatchObject({
+      ...TURNING_ROOM, interactables: expect.arrayContaining(TURNING_ROOM.interactables),
+    });
     expect(MAPS['sea.chartroom'].interactables).toContain(TURNING_DOOR);
     expect(check(TURNING_DOOR.visibleIf, d.s)).toBe(false);
     d.s.objectivesDone.push('sea.arrival');

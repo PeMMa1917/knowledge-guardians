@@ -8,7 +8,7 @@
     "objective": "m01.o6.label"
    },
    "where": "The Nexus: label the pen display.",
-   "use": "A pen tip can write. Somewhere there is a journal waiting for a new entry."
+   "use": "A pen tip can write. Somewhere there is a journal waiting for a new entry. At the coat at the lost-property hatch, roll the ballpoint down both name seams."
   },
   {
    "id": "date-lens",
@@ -18,7 +18,7 @@
     "item": "tool.date-lens"
    },
    "where": "The Nexus: get the Date Lens.",
-   "use": "Your lens shows when ink was laid down. Try it on old writing."
+   "use": "Your lens shows when ink was laid down. Try it on old writing. At the coat at the lost-property hatch, lay the lens ring over the two dates."
   },
   {
    "id": "door-key",
@@ -29,7 +29,7 @@
     "eq": true
    },
    "where": "The Nexus: open the Timeline Door.",
-   "use": "Nexus locks are made by one maker. This plate may fit another Nexus lock."
+   "use": "Nexus locks are made by one maker. This plate may fit another Nexus lock. At the coat at the lost-property hatch, slide the brass plate behind the coat rail."
   },
   {
    "id": "moth-lamp",
@@ -40,7 +40,7 @@
     "eq": true
    },
    "where": "The Nexus: befriend a Loreling.",
-   "use": "It glows in the dark. Somewhere, a dark corner hides something."
+   "use": "It glows in the dark. Somewhere, a dark corner hides something. At the coat at the lost-property hatch, set the moth lamp on the floor and wait."
   },
   {
    "id": "so-what",
@@ -51,7 +51,7 @@
     "eq": true
    },
    "where": "The Nexus: finish the Alcove of Firsts.",
-   "use": "Hold it when someone leaves you a message. Ask: so what?"
+   "use": "Hold it when someone leaves you a message. Ask: so what? At the coat at the lost-property hatch, put the stone on the curling bottom corner."
   },
   {
    "id": "glass-piece",
@@ -62,7 +62,7 @@
     "eq": true
    },
    "where": "The Nexus: the round window.",
-   "use": "One piece of glass is still missing from a small round window somewhere."
+   "use": "One piece of glass is still missing from a small round window somewhere. At the coat at the lost-property hatch, turn the cut glass sideways through both pears."
   },
   {
    "id": "notice",
@@ -73,7 +73,7 @@
     "eq": true
    },
    "where": "Emberford: the Sign-Smith's notice board.",
-   "use": "Compare it with older notices. Did Emberford always write like this?"
+   "use": "Compare it with older notices. Did Emberford always write like this? At the pear on the price board, hold the market notice against the price tag."
   },
   {
    "id": "thread-knot",
@@ -84,7 +84,7 @@
     "eq": true
    },
    "where": "Emberford: the Citation Thread bridge.",
-   "use": "Look for cards tied the same way, and ask whoever is cited."
+   "use": "Look for cards tied the same way, and ask whoever is cited. At the fare in the council cloakroom, follow the citation thread back from the bill."
   },
   {
    "id": "check-weight",
@@ -95,7 +95,7 @@
     "eq": true
    },
    "where": "Emberford: the Weigh-House balance.",
-   "use": "One true weight checks the others. Hesper may know who made it."
+   "use": "One true weight checks the others. Hesper may know who made it. At the pear on the price board, put the guild weight on the counter scale."
   },
   {
    "id": "yarn",
@@ -106,7 +106,7 @@
     "eq": true
    },
    "where": "Emberford: the practice clue board.",
-   "use": "Red and gold yarn helps you read another person's clue board."
+   "use": "Red and gold yarn helps you read another person's clue board. At the part played by a sleeve, run the red and gold threads to the two cuffs."
   },
   {
    "id": "copper-pot",
@@ -117,7 +117,7 @@
     "eq": true
    },
    "where": "Emberford: the guild clerk's map.",
-   "use": "Someone in the market may recognise this pot. A cold stove may want it too."
+   "use": "Someone in the market may recognise this pot. A cold stove may want it too. At the pear on the price board, catch a drop from each cuff in the little pot."
   },
   {
    "id": "folded-map",
@@ -128,7 +128,7 @@
     "eq": true
    },
    "where": "Emberford: the mapmaker's table.",
-   "use": "It shows Emberford today. Compare it with an older map, and show Kip."
+   "use": "It shows Emberford today. Compare it with an older map, and show Kip. At the pear on the price board, walk Kip’s warm-step route under the hem of the awning."
   },
   {
    "id": "brass-cog",
@@ -139,7 +139,7 @@
     "eq": true
    },
    "where": "Emberford: Mara's brass sorter.",
-   "use": "A stopped clock somewhere may need it."
+   "use": "A stopped clock somewhere may need it. At the pear on the price board, mesh Mara’s loose cog with the ticket stamper."
   },
   {
    "id": "knot-rope",
@@ -150,7 +150,7 @@
     "eq": true
    },
    "where": "Emberford: the echo stone.",
-   "use": "Use it on a line on a wall."
+   "use": "Use it on a line on a wall. At the part played by a sleeve, pay the measuring knot out along the clothesline."
   },
   {
    "id": "soot-jar",
@@ -160,7 +160,7 @@
     "flagSet": "puzzle.founders-plaque.method"
    },
    "where": "Emberford: restore the Founders' Plaque.",
-   "use": "Soot shows dents in paper. Try it on a blank sheet that is not quite blank."
+   "use": "Soot shows dents in paper. Try it on a blank sheet that is not quite blank. At the fare in the council cloakroom, dust the inside handle with a pinch of soot."
   },
   {
    "id": "sign-splinter",
@@ -170,7 +170,12 @@
     "flagSet": "sd.corvan.outcome"
    },
    "where": "Emberford: the Showdown.",
-   "use": "Corvan may want to talk about his old sign."
+   "use": "Corvan remembers the old sign. Teodora can fit the splinter over the claim on her fourth stool in the theatre foyer. At the pear on the price board, fit the splinter under the gilt tag.",
+   "equip": {
+    "method": "Hold an old public claim beside its new wording.",
+    "hint": "Bring the splinter to the singer setting out the fourth stool in the theatre foyer.",
+    "art": "old-sign"
+   }
   },
   {
    "id": "rumour-shard",
@@ -181,7 +186,7 @@
     "eq": true
    },
    "where": "Emberford: trace the rumour.",
-   "use": "Show it to the tea seller. Rumours are also collected somewhere else."
+   "use": "Show it to the tea seller. Rumours are also collected somewhere else. At the fare in the council cloakroom, turn the shard until both notices are legible."
   },
   {
    "id": "well-rope",
@@ -191,7 +196,7 @@
     "flagSet": "well.reflected"
    },
    "where": "Emberford: the East Well side quest.",
-   "use": "Ask Efua who first cut the knots. Old buckets keep old ropes."
+   "use": "Ask Efua who first cut the knots. Old buckets keep old ropes. At the fare in the council cloakroom, set the worn reach of the rope beside the public hook."
   },
   {
    "id": "survey-slip",
@@ -202,7 +207,7 @@
     "eq": true
    },
    "where": "Emberford: the Bridge Toll Survey.",
-   "use": "Show Orrin how the council could ask. Old slips may show an old mistake."
+   "use": "Show Orrin how the council could ask. Old slips may show an old mistake. At the fare in the council cloakroom, fold the survey slip to match the signed return."
   },
   {
    "id": "ferry-chalk",
@@ -213,7 +218,7 @@
     "eq": true
    },
    "where": "Emberford: the Ferry Message slate.",
-   "use": "Say 'tavi' to Sefa. Chalk helps you trace notes written in the cant."
+   "use": "Say 'tavi' to Sefa. Chalk helps you trace notes written in the cant. At the part played by a sleeve, trace the ferryman’s chalk under the cast list."
   },
   {
    "id": "paper-frame",
@@ -224,7 +229,7 @@
     "eq": true
    },
    "where": "Emberford: Nell's easel in the market.",
-   "use": "Try the frame on the market players’ bill, Lark’s press proof, or the painting under the guild hall. Look for what the edge hid."
+   "use": "Try the frame on the market players’ bill, Lark’s press proof, or the painting under the guild hall. Look for what the edge hid. At the part played by a sleeve, frame the wet sleeve and then the hand above it."
   },
   {
    "id": "tiny-bell",
@@ -235,7 +240,7 @@
     "eq": true
    },
    "where": "Emberford: Maren's bell rope by the gatehouse.",
-   "use": "It rings one note. Another bell may answer it."
+   "use": "It rings one note. Another bell may answer it. At the part played by a sleeve, ring one note behind the drawn curtain."
   },
   {
    "id": "weather-glass",
@@ -246,7 +251,7 @@
     "eq": true
    },
    "where": "Emberford: Noa's forecast board by the east well.",
-   "use": "Compare it with another weather glass. Instruments drift."
+   "use": "Compare it with another weather glass. Instruments drift. At the part played by a sleeve, leave the weather glass under the roof while the cuff drips."
   },
   {
    "id": "seal",
@@ -257,7 +262,7 @@
     "eq": true
    },
    "where": "Emberford: finish the chapter.",
-   "use": "Compare it with another Guardian's mark, and ask Ise."
+   "use": "Compare it with another Guardian's mark, and ask Ise. At the fare in the council cloakroom, set the wax copy beside the price stamp."
   }
  ]
 }

@@ -12,7 +12,7 @@ import { artKeys } from '../src/ui/illustrations';
 import { Driver } from './driver';
 
 describe('The Reader Across the Landing', () => {
-  it('places each exhibit once and excludes the undated facsimile from the specimen count', () => {
+  it('places each exhibit once and distinguishes the Migel facsimile’s dated scan from the Perkins volume', () => {
     const d = new Driver();
     expect(MAPS['copies.reading-works']).toBe(READING_WORKS);
     expect(MAPS['copies.archive'].interactables).toContain(READING_WORKS_DOOR);
@@ -27,9 +27,11 @@ describe('The Reader Across the Landing', () => {
         .filter((target) => target.exhibit === entry.exhibit).map(() => map.id));
       expect(locations, entry.accession).toEqual([entry.slug === 'perkins-procede' ? 'copies.archive' : READING_WORKS.id]);
       const exhibit = d.e.pack.exhibits.find(({ id }) => id === entry.exhibit);
-      expect(exhibit).toMatchObject({ historicalLabel: 'documented', dateText: entry.date });
+      expect(exhibit).toMatchObject({ historicalLabel: 'documented', dateText: entry.slug==='braille'?expect.stringContaining(entry.date):entry.date });
       if (entry.slug === 'braille') {
-        expect(exhibit?.specimen).toBeUndefined();
+        expect(exhibit?.specimen).toMatchObject({key:entry.key,accession:'HV1669 .B73 1829',source:entry.sourceId});
+        expect(exhibit?.dateKind).toContain('5 March 2020');
+        expect(exhibit?.specimen?.key).not.toBe(PERKINS_KEY);
       } else {
         expect(exhibit?.specimen).toMatchObject({
           key: entry.key, accession: entry.accession, source: entry.sourceId, objective: entry.objective,

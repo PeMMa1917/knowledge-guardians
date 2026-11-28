@@ -22,7 +22,8 @@ describe('At the Door Before the Bell', () => {
     expect(travel.sources).toEqual(['HIS-DOOR-02', 'HIS-DOOR-03']);
     expect(century.summary).toContain('Elbridge S. Brooks');
     expect(century.summary).toContain('published by the Century Company');
-    expect(century.specimen).toBeUndefined();
+    expect(century.specimen).toMatchObject({key:'harvard:centurybookfory00revogoog',source:'HIS-DOOR-01'});
+    expect(century.specimen?.key).not.toBe(travel.specimen?.key);
     expect(travel.specimen?.people).toMatchObject([
       { name: 'Victor Hugo Green', role: 'Publisher of this edition', source: 'HIS-DOOR-02' },
       { name: 'James A. Jackson', role: 'Named on this copy’s cover', source: 'HIS-DOOR-02' },

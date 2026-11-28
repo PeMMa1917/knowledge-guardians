@@ -1,0 +1,110 @@
+.supper-screen {
+  position: relative;
+  margin: 0.6rem 0;
+  height: clamp(6rem, 20vh, 11rem);
+  overflow: hidden;
+  border: 0.45rem solid #6c4339;
+  background: radial-gradient(ellipse, #ffdc94, #c58660);
+  box-shadow: inset 0 0.4rem #71483d;
+}
+.supper-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 15px,
+    #52384716 15px 16px
+  );
+}
+.supper-screen[data-screen='dark'] {
+  background: #29263c;
+}
+.supper-screen[data-screen='chalk'] {
+  background: #334f50;
+}
+.supper-spoon {
+  position: absolute;
+  bottom: 15%;
+  height: 65%;
+  width: 5%;
+  min-width: 8px;
+  background: #392d38;
+  transform: translateX(-50%);
+  clip-path: polygon(
+    34% 0,
+    66% 0,
+    66% 8%,
+    85% 8%,
+    85% 20%,
+    100% 20%,
+    100% 38%,
+    85% 38%,
+    85% 47%,
+    64% 47%,
+    64% 100%,
+    36% 100%,
+    36% 47%,
+    15% 47%,
+    15% 38%,
+    0 38%,
+    0 20%,
+    15% 20%,
+    15% 8%,
+    34% 8%
+  );
+}
+.supper-spoon.pale {
+  opacity: 0.48;
+}
+.supper-screen[data-screen='chalk'] .supper-spoon {
+  background: #f5e4b6;
+  opacity: 1;
+}
+.supper-theatre fieldset {
+  margin: 0.4rem 0;
+  min-width: 0;
+}
+.supper-theatre button {
+  min-height: 44px;
+  margin: 0.15rem;
+  white-space: normal;
+}
+.supper-theatre button[aria-pressed='true'] {
+  outline: 2px solid currentColor;
+  outline-offset: -4px;
+  font-weight: bold;
+}
+@media (forced-colors: active) {
+  .supper-spoon {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+  .supper-screen,
+  .supper-screen[data-screen='chalk'] {
+    forced-color-adjust: none;
+    background: Canvas;
+  }
+  .supper-screen[data-screen='chalk'] .supper-spoon {
+    background: CanvasText;
+  }
+}
+
+.supper-screen[data-screen='chalk'] .supper-spoon::after {
+  content: '';
+  position: absolute;
+  inset: 3px 2px;
+  background: #334f50;
+  clip-path: inherit;
+}
+
+.supper-screen[data-depth='near'] .supper-spoon {
+  transform: translateX(-50%) scale(0.75);
+  transform-origin: center bottom;
+}
+
+@media (forced-colors: active) {
+  .supper-screen[data-screen='chalk'] .supper-spoon::after {
+    background: Canvas;
+  }
+}

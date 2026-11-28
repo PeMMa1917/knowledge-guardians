@@ -1,0 +1,210 @@
+[
+  {
+    "number": 841,
+    "name": "Keep the same connections while a route changes length",
+    "uses": [
+      {
+        "objective": "middlehouse.tape",
+        "action": "Keep the two travellers, room and stop fixed. Fold or stretch the east seam. Measure the same sequence of connected doors before and after and compare the distance on the tape.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "spatial",
+          "analytical"
+        ],
+        "game": 123,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 457,
+    "name": "Check a route drawn by eye against its permitted steps",
+    "uses": [
+      {
+        "objective": "middlehouse.plan",
+        "action": "Turn two rooms, read their opposed door ends, lay both the flat shoe and the cart on this particular floor and follow the route each one can actually traverse.",
+        "styles": [
+          "strategist",
+          "maker"
+        ],
+        "modes": [
+          "spatial",
+          "analytical"
+        ],
+        "game": 113,
+        "story": 75
+      }
+    ]
+  },
+  {
+    "number": 850,
+    "name": "Compare a view from above with the trip a neighbour can actually make",
+    "uses": [
+      {
+        "objective": "middlehouse.cart",
+        "action": "Walk with Jane Jacobs behind the soup cart, then push through the painted courtyard. A flat shoe can cross the middle sill across its grain. The loaded wheel has to find another opening.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "physical",
+          "social"
+        ],
+        "game": 187,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 747,
+    "name": "Notice who gets to enter and move around a room",
+    "uses": [
+      {
+        "objective": "middlehouse.cart",
+        "action": "Try the outward trip using a loaded handcart. Compare the entrance that looks open on a floor plan with the bodily work needed to deliver the soup.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "spatial",
+          "physical"
+        ],
+        "game": 187,
+        "story": 11
+      },
+      {
+        "objective": "middlehouse.night",
+        "action": "Return the kettle receipt and the lamp sightline to the people giving out keys. The opening meal, song or solitary seat changes who can stay without telling a story.",
+        "styles": [
+          "companion",
+          "helper"
+        ],
+        "modes": [
+          "social",
+          "reflective"
+        ],
+        "game": 162,
+        "story": 86
+      }
+    ]
+  },
+  {
+    "number": 452,
+    "name": "Read a building from a moving viewpoint",
+    "uses": [
+      {
+        "objective": "middlehouse.lamp",
+        "action": "Walk with Hadid below the harbour roof. Light two hooks in the same nine-room plan. See who is framed on each straight line and who is still able to walk through an unseen opening.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "spatial",
+          "visual"
+        ],
+        "game": 113,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 217,
+    "name": "Check an imagined need against another person’s actual position",
+    "uses": [
+      {
+        "objective": "middlehouse.night",
+        "action": "Neska wants to hear the story behind every guest. Follow the cart and light before giving the keys to a meal, a song or a guest who would rather be alone. Find what the neighbours make of that invitation at home.",
+        "styles": [
+          "helper",
+          "companion"
+        ],
+        "modes": [
+          "social",
+          "reflective"
+        ],
+        "game": 162,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 115,
+    "name": "Judge the same floor with more than one criterion",
+    "uses": [
+      {
+        "objective": "middlehouse.plan",
+        "action": "Trace the same route with shoe and wheel, then choose a use for the evening that the neighbours can revise after the physical trials.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "analytical",
+          "spatial"
+        ],
+        "game": 123,
+        "story": 75
+      },
+      {
+        "objective": "middlehouse.night",
+        "action": "Give the keys to the same floor according to the meal, the singer’s opening or a guest’s wish for quiet. The real cart stop and lamp receipt travel with the judgement.",
+        "styles": [
+          "helper",
+          "performer"
+        ],
+        "modes": [
+          "reflective",
+          "social"
+        ],
+        "game": 162,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 772,
+    "name": "Read a route diagram in relation to a traveller’s starting place",
+    "uses": [
+      {
+        "objective": "middlehouse.cart",
+        "action": "Ask a resident for a route thread at the mat. At Emberford use the same thread after moving the cart. The next permitted direction changes with the current room and the stop you request.",
+        "styles": [
+          "explorer",
+          "companion"
+        ],
+        "modes": [
+          "spatial",
+          "physical"
+        ],
+        "game": 68,
+        "story": 86
+      }
+    ]
+  },
+  {
+    "number": 66,
+    "name": "State what a method puts within reach",
+    "uses": [
+      {
+        "objective": "middlehouse.lamp",
+        "action": "Move the hook, leave the openings fixed, and use the difference between a straight sightline and a connected walk to choose whom one unshaded light can reach.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "analytical"
+        ],
+        "game": 113,
+        "story": 77
+      }
+    ]
+  }
+]

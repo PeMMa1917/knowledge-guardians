@@ -1,0 +1,1202 @@
+[
+  {
+    "friend": "archive-left",
+    "home": 26807,
+    "away": 20806
+  },
+  {
+    "friend": "archive-right",
+    "home": 74232,
+    "away": 73850
+  },
+  {
+    "friend": "archive-top",
+    "home": 133473,
+    "away": 58056
+  },
+  {
+    "friend": "archive-bottom",
+    "home": 1480,
+    "away": 61245
+  },
+  {
+    "friend": "archive-mono",
+    "home": 164929,
+    "away": 110263
+  },
+  {
+    "friend": "archive-contrast",
+    "home": 50272,
+    "away": 1705
+  },
+  {
+    "friend": "archive-soft",
+    "home": 43755,
+    "away": 43834
+  },
+  {
+    "friend": "archive-amber",
+    "home": 1573,
+    "away": 1564
+  },
+  {
+    "friend": "archive-accession",
+    "home": 46437,
+    "away": 50728
+  },
+  {
+    "friend": "archive-date",
+    "home": 59568,
+    "away": 227772
+  },
+  {
+    "friend": "archive-medium",
+    "home": 75511,
+    "away": 28690
+  },
+  {
+    "friend": "archive-maker",
+    "home": 227790,
+    "away": 206069
+  },
+  {
+    "friend": "archive-mirror",
+    "home": 41188,
+    "away": 119989
+  },
+  {
+    "friend": "archive-turn",
+    "home": 46214,
+    "away": 162056
+  },
+  {
+    "friend": "archive-grid",
+    "home": 7351,
+    "away": 6853
+  },
+  {
+    "friend": "archive-negative",
+    "home": 80,
+    "away": 50375
+  },
+  {
+    "friend": "nile-left",
+    "home": 226482,
+    "away": 231573
+  },
+  {
+    "friend": "nile-right",
+    "home": 82648,
+    "away": 50490
+  },
+  {
+    "friend": "nile-top",
+    "home": 212330,
+    "away": 127438
+  },
+  {
+    "friend": "nile-bottom",
+    "home": 50607,
+    "away": 61393
+  },
+  {
+    "friend": "nile-mono",
+    "home": 52282,
+    "away": 70421
+  },
+  {
+    "friend": "nile-contrast",
+    "home": 144606,
+    "away": 205798
+  },
+  {
+    "friend": "nile-soft",
+    "home": 53692,
+    "away": 209541
+  },
+  {
+    "friend": "nile-amber",
+    "home": 45218,
+    "away": 44385
+  },
+  {
+    "friend": "nile-accession",
+    "home": 60848,
+    "away": 205793
+  },
+  {
+    "friend": "nile-date",
+    "home": 66481,
+    "away": 131025
+  },
+  {
+    "friend": "nile-medium",
+    "home": 138593,
+    "away": 160790
+  },
+  {
+    "friend": "nile-maker",
+    "home": 206766,
+    "away": 55276
+  },
+  {
+    "friend": "nile-mirror",
+    "home": 207963,
+    "away": 217043
+  },
+  {
+    "friend": "nile-turn",
+    "home": 50498,
+    "away": 129358
+  },
+  {
+    "friend": "nile-grid",
+    "home": 76790,
+    "away": 60839
+  },
+  {
+    "friend": "nile-negative",
+    "home": 152407,
+    "away": 60844
+  },
+  {
+    "friend": "cold-left",
+    "home": 18443,
+    "away": 27805
+  },
+  {
+    "friend": "cold-right",
+    "home": 232386,
+    "away": 205790
+  },
+  {
+    "friend": "cold-top",
+    "home": 229508,
+    "away": 1780
+  },
+  {
+    "friend": "cold-bottom",
+    "home": 74240,
+    "away": 198173
+  },
+  {
+    "friend": "cold-mono",
+    "home": 44103,
+    "away": 171813
+  },
+  {
+    "friend": "cold-contrast",
+    "home": 1810,
+    "away": 177652
+  },
+  {
+    "friend": "cold-soft",
+    "home": 138936,
+    "away": 4890
+  },
+  {
+    "friend": "cold-amber",
+    "home": 43916,
+    "away": 81934
+  },
+  {
+    "friend": "cold-accession",
+    "home": 19417,
+    "away": 18125
+  },
+  {
+    "friend": "cold-date",
+    "home": 150752,
+    "away": 139278
+  },
+  {
+    "friend": "cold-medium",
+    "home": 76129,
+    "away": 224452
+  },
+  {
+    "friend": "cold-maker",
+    "home": 70974,
+    "away": 158748
+  },
+  {
+    "friend": "cold-mirror",
+    "home": 44258,
+    "away": 44611
+  },
+  {
+    "friend": "cold-turn",
+    "home": 43756,
+    "away": 45581
+  },
+  {
+    "friend": "cold-grid",
+    "home": 107093,
+    "away": 143859
+  },
+  {
+    "friend": "cold-negative",
+    "home": 74258,
+    "away": 62495
+  },
+  {
+    "friend": "coast-left",
+    "home": 27205,
+    "away": 28601
+  },
+  {
+    "friend": "coast-right",
+    "home": 41637,
+    "away": 164967
+  },
+  {
+    "friend": "coast-top",
+    "home": 164799,
+    "away": 107227
+  },
+  {
+    "friend": "coast-bottom",
+    "home": 50729,
+    "away": 256
+  },
+  {
+    "friend": "coast-mono",
+    "home": 75475,
+    "away": 23815
+  },
+  {
+    "friend": "coast-contrast",
+    "home": 98647,
+    "away": 1149
+  },
+  {
+    "friend": "coast-soft",
+    "home": 57544,
+    "away": 93014
+  },
+  {
+    "friend": "coast-amber",
+    "home": 60843,
+    "away": 205785
+  },
+  {
+    "friend": "coast-accession",
+    "home": 79417,
+    "away": 7196
+  },
+  {
+    "friend": "coast-date",
+    "home": 227765,
+    "away": 215247
+  },
+  {
+    "friend": "coast-medium",
+    "home": 45075,
+    "away": 76311
+  },
+  {
+    "friend": "coast-maker",
+    "home": 136542,
+    "away": 11650
+  },
+  {
+    "friend": "coast-mirror",
+    "home": 101436,
+    "away": 75224
+  },
+  {
+    "friend": "coast-turn",
+    "home": 214603,
+    "away": 81284
+  },
+  {
+    "friend": "coast-grid",
+    "home": 138479,
+    "away": 143743
+  },
+  {
+    "friend": "coast-negative",
+    "home": 30396,
+    "away": 129438
+  },
+  {
+    "friend": "fern-left",
+    "home": 979,
+    "away": 210450
+  },
+  {
+    "friend": "fern-right",
+    "home": 44451,
+    "away": 45445
+  },
+  {
+    "friend": "fern-top",
+    "home": 1607,
+    "away": 46300
+  },
+  {
+    "friend": "fern-bottom",
+    "home": 125603,
+    "away": 60841
+  },
+  {
+    "friend": "fern-mono",
+    "home": 22643,
+    "away": 27458
+  },
+  {
+    "friend": "fern-contrast",
+    "home": 125612,
+    "away": 138968
+  },
+  {
+    "friend": "fern-soft",
+    "home": 123253,
+    "away": 135988
+  },
+  {
+    "friend": "fern-amber",
+    "home": 107207,
+    "away": 198767
+  },
+  {
+    "friend": "fern-accession",
+    "home": 216806,
+    "away": 125614
+  },
+  {
+    "friend": "fern-date",
+    "home": 164946,
+    "away": 46663
+  },
+  {
+    "friend": "fern-medium",
+    "home": 228130,
+    "away": 214975
+  },
+  {
+    "friend": "fern-maker",
+    "home": 214909,
+    "away": 227332
+  },
+  {
+    "friend": "fern-mirror",
+    "home": 111611,
+    "away": 184248
+  },
+  {
+    "friend": "fern-turn",
+    "home": 150207,
+    "away": 227062
+  },
+  {
+    "friend": "fern-grid",
+    "home": 68,
+    "away": 50609
+  },
+  {
+    "friend": "fern-negative",
+    "home": 33888,
+    "away": 196544
+  },
+  {
+    "friend": "yard-left",
+    "home": 137710,
+    "away": 212186
+  },
+  {
+    "friend": "yard-right",
+    "home": 181413,
+    "away": 98205
+  },
+  {
+    "friend": "yard-top",
+    "home": 24004,
+    "away": 13561
+  },
+  {
+    "friend": "yard-bottom",
+    "home": 3152,
+    "away": 44379
+  },
+  {
+    "friend": "yard-mono",
+    "home": 52290,
+    "away": 73454
+  },
+  {
+    "friend": "yard-contrast",
+    "home": 214470,
+    "away": 223225
+  },
+  {
+    "friend": "yard-soft",
+    "home": 23813,
+    "away": 12956
+  },
+  {
+    "friend": "yard-amber",
+    "home": 75513,
+    "away": 45155
+  },
+  {
+    "friend": "yard-accession",
+    "home": 52951,
+    "away": 46480
+  },
+  {
+    "friend": "yard-date",
+    "home": 117679,
+    "away": 67702
+  },
+  {
+    "friend": "yard-medium",
+    "home": 165230,
+    "away": 158574
+  },
+  {
+    "friend": "yard-maker",
+    "home": 69819,
+    "away": 224450
+  },
+  {
+    "friend": "yard-mirror",
+    "home": 69591,
+    "away": 1202
+  },
+  {
+    "friend": "yard-turn",
+    "home": 9626,
+    "away": 164796
+  },
+  {
+    "friend": "yard-grid",
+    "home": 23875,
+    "away": 17584
+  },
+  {
+    "friend": "yard-negative",
+    "home": 227354,
+    "away": 175723
+  },
+  {
+    "friend": "press-left",
+    "home": 92140,
+    "away": 86058
+  },
+  {
+    "friend": "press-right",
+    "home": 4547,
+    "away": 65571
+  },
+  {
+    "friend": "press-top",
+    "home": 20526,
+    "away": 19577
+  },
+  {
+    "friend": "press-bottom",
+    "home": 40930,
+    "away": 6872
+  },
+  {
+    "friend": "press-mono",
+    "home": 173183,
+    "away": 169071
+  },
+  {
+    "friend": "press-contrast",
+    "home": 42689,
+    "away": 128002
+  },
+  {
+    "friend": "press-soft",
+    "home": 227712,
+    "away": 208195
+  },
+  {
+    "friend": "press-amber",
+    "home": 123449,
+    "away": 75846
+  },
+  {
+    "friend": "press-accession",
+    "home": 194350,
+    "away": 150449
+  },
+  {
+    "friend": "press-date",
+    "home": 28420,
+    "away": 30106
+  },
+  {
+    "friend": "press-medium",
+    "home": 241,
+    "away": 50347
+  },
+  {
+    "friend": "press-maker",
+    "home": 176894,
+    "away": 43926
+  },
+  {
+    "friend": "press-mirror",
+    "home": 92099,
+    "away": 140626
+  },
+  {
+    "friend": "press-turn",
+    "home": 48664,
+    "away": 54502
+  },
+  {
+    "friend": "press-grid",
+    "home": 127456,
+    "away": 117621
+  },
+  {
+    "friend": "press-negative",
+    "home": 76594,
+    "away": 17766
+  },
+  {
+    "friend": "chart-left",
+    "home": 136630,
+    "away": 212291
+  },
+  {
+    "friend": "chart-right",
+    "home": 176498,
+    "away": 46291
+  },
+  {
+    "friend": "chart-top",
+    "home": 74,
+    "away": 119295
+  },
+  {
+    "friend": "chart-bottom",
+    "home": 166431,
+    "away": 440
+  },
+  {
+    "friend": "chart-mono",
+    "home": 127978,
+    "away": 128040
+  },
+  {
+    "friend": "chart-contrast",
+    "home": 33747,
+    "away": 50374
+  },
+  {
+    "friend": "chart-soft",
+    "home": 215039,
+    "away": 227774
+  },
+  {
+    "friend": "chart-amber",
+    "home": 74015,
+    "away": 184910
+  },
+  {
+    "friend": "chart-accession",
+    "home": 59944,
+    "away": 224447
+  },
+  {
+    "friend": "chart-date",
+    "home": 75543,
+    "away": 26901
+  },
+  {
+    "friend": "chart-medium",
+    "home": 143824,
+    "away": 164934
+  },
+  {
+    "friend": "chart-maker",
+    "home": 136217,
+    "away": 58061
+  },
+  {
+    "friend": "chart-mirror",
+    "home": 52156,
+    "away": 66406
+  },
+  {
+    "friend": "chart-turn",
+    "home": 126138,
+    "away": 57056
+  },
+  {
+    "friend": "chart-grid",
+    "home": 136220,
+    "away": 33933
+  },
+  {
+    "friend": "chart-negative",
+    "home": 125678,
+    "away": 135405
+  },
+  {
+    "friend": "stage-left",
+    "home": 2750,
+    "away": 50902
+  },
+  {
+    "friend": "stage-right",
+    "home": 26915,
+    "away": 16687
+  },
+  {
+    "friend": "stage-top",
+    "home": 165042,
+    "away": 227781
+  },
+  {
+    "friend": "stage-bottom",
+    "home": 197722,
+    "away": 218022
+  },
+  {
+    "friend": "stage-mono",
+    "home": 33934,
+    "away": 82847
+  },
+  {
+    "friend": "stage-contrast",
+    "home": 128039,
+    "away": 82843
+  },
+  {
+    "friend": "stage-soft",
+    "home": 73588,
+    "away": 212730
+  },
+  {
+    "friend": "stage-amber",
+    "home": 86967,
+    "away": 91458
+  },
+  {
+    "friend": "stage-accession",
+    "home": 144587,
+    "away": 103984
+  },
+  {
+    "friend": "stage-date",
+    "home": 227378,
+    "away": 165384
+  },
+  {
+    "friend": "stage-medium",
+    "home": 3484,
+    "away": 166106
+  },
+  {
+    "friend": "stage-maker",
+    "home": 24845,
+    "away": 28527
+  },
+  {
+    "friend": "stage-mirror",
+    "home": 4050,
+    "away": 119726
+  },
+  {
+    "friend": "stage-turn",
+    "home": 19873,
+    "away": 19931
+  },
+  {
+    "friend": "stage-grid",
+    "home": 110721,
+    "away": 43840
+  },
+  {
+    "friend": "stage-negative",
+    "home": 1211,
+    "away": 164961
+  },
+  {
+    "friend": "market-left",
+    "home": 42476,
+    "away": 88615
+  },
+  {
+    "friend": "market-right",
+    "home": 1502,
+    "away": 1547
+  },
+  {
+    "friend": "market-top",
+    "home": 231675,
+    "away": 50350
+  },
+  {
+    "friend": "market-bottom",
+    "home": 1527,
+    "away": 1503
+  },
+  {
+    "friend": "market-mono",
+    "home": 130841,
+    "away": 50493
+  },
+  {
+    "friend": "market-contrast",
+    "home": 101688,
+    "away": 143672
+  },
+  {
+    "friend": "market-soft",
+    "home": 90595,
+    "away": 97198
+  },
+  {
+    "friend": "market-amber",
+    "home": 227425,
+    "away": 212288
+  },
+  {
+    "friend": "market-accession",
+    "home": 204071,
+    "away": 52541
+  },
+  {
+    "friend": "market-date",
+    "home": 181062,
+    "away": 132266
+  },
+  {
+    "friend": "market-medium",
+    "home": 17865,
+    "away": 20184
+  },
+  {
+    "friend": "market-maker",
+    "home": 42403,
+    "away": 33788
+  },
+  {
+    "friend": "market-mirror",
+    "home": 44514,
+    "away": 103332
+  },
+  {
+    "friend": "market-turn",
+    "home": 125209,
+    "away": 94907
+  },
+  {
+    "friend": "market-grid",
+    "home": 227344,
+    "away": 227293
+  },
+  {
+    "friend": "market-negative",
+    "home": 212097,
+    "away": 131771
+  },
+  {
+    "friend": "gate-left",
+    "home": 57001,
+    "away": 79863
+  },
+  {
+    "friend": "gate-right",
+    "home": 45081,
+    "away": 44100
+  },
+  {
+    "friend": "gate-top",
+    "home": 226511,
+    "away": 159644
+  },
+  {
+    "friend": "gate-bottom",
+    "home": 26874,
+    "away": 20034
+  },
+  {
+    "friend": "gate-mono",
+    "home": 39554,
+    "away": 9091
+  },
+  {
+    "friend": "gate-contrast",
+    "home": 24051,
+    "away": 26873
+  },
+  {
+    "friend": "gate-soft",
+    "home": 53837,
+    "away": 81362
+  },
+  {
+    "friend": "gate-amber",
+    "home": 44262,
+    "away": 1295
+  },
+  {
+    "friend": "gate-accession",
+    "home": 130889,
+    "away": 50528
+  },
+  {
+    "friend": "gate-date",
+    "home": 179930,
+    "away": 56873
+  },
+  {
+    "friend": "gate-medium",
+    "home": 45011,
+    "away": 44933
+  },
+  {
+    "friend": "gate-maker",
+    "home": 133464,
+    "away": 152417
+  },
+  {
+    "friend": "gate-mirror",
+    "home": 152408,
+    "away": 76793
+  },
+  {
+    "friend": "gate-turn",
+    "home": 46681,
+    "away": 50383
+  },
+  {
+    "friend": "gate-grid",
+    "home": 139214,
+    "away": 70386
+  },
+  {
+    "friend": "gate-negative",
+    "home": 26626,
+    "away": 21539
+  },
+  {
+    "friend": "dispatch-left",
+    "home": 50692,
+    "away": 160960
+  },
+  {
+    "friend": "dispatch-right",
+    "home": 154232,
+    "away": 228041
+  },
+  {
+    "friend": "dispatch-top",
+    "home": 57640,
+    "away": 43873
+  },
+  {
+    "friend": "dispatch-bottom",
+    "home": 205782,
+    "away": 216790
+  },
+  {
+    "friend": "dispatch-mono",
+    "home": 73486,
+    "away": 52316
+  },
+  {
+    "friend": "dispatch-contrast",
+    "home": 228032,
+    "away": 227766
+  },
+  {
+    "friend": "dispatch-soft",
+    "home": 62950,
+    "away": 91173
+  },
+  {
+    "friend": "dispatch-amber",
+    "home": 94913,
+    "away": 45104
+  },
+  {
+    "friend": "dispatch-accession",
+    "home": 136559,
+    "away": 227326
+  },
+  {
+    "friend": "dispatch-date",
+    "home": 46690,
+    "away": 98872
+  },
+  {
+    "friend": "dispatch-medium",
+    "home": 29022,
+    "away": 16334
+  },
+  {
+    "friend": "dispatch-maker",
+    "home": 193842,
+    "away": 4864
+  },
+  {
+    "friend": "dispatch-mirror",
+    "home": 214060,
+    "away": 62522
+  },
+  {
+    "friend": "dispatch-turn",
+    "home": 45503,
+    "away": 45368
+  },
+  {
+    "friend": "dispatch-grid",
+    "home": 135407,
+    "away": 205795
+  },
+  {
+    "friend": "dispatch-negative",
+    "home": 98214,
+    "away": 159566
+  },
+  {
+    "friend": "voices-left",
+    "home": 12328,
+    "away": 16366
+  },
+  {
+    "friend": "voices-right",
+    "home": 128623,
+    "away": 43837
+  },
+  {
+    "friend": "voices-top",
+    "home": 110976,
+    "away": 32756
+  },
+  {
+    "friend": "voices-bottom",
+    "home": 6813,
+    "away": 73682
+  },
+  {
+    "friend": "voices-mono",
+    "home": 13960,
+    "away": 22567
+  },
+  {
+    "friend": "voices-contrast",
+    "home": 32643,
+    "away": 53991
+  },
+  {
+    "friend": "voices-soft",
+    "home": 103968,
+    "away": 138935
+  },
+  {
+    "friend": "voices-amber",
+    "home": 43985,
+    "away": 44036
+  },
+  {
+    "friend": "voices-accession",
+    "home": 57495,
+    "away": 102117
+  },
+  {
+    "friend": "voices-date",
+    "home": 27595,
+    "away": 18438
+  },
+  {
+    "friend": "voices-medium",
+    "home": 1384,
+    "away": 71459
+  },
+  {
+    "friend": "voices-maker",
+    "home": 56740,
+    "away": 71369
+  },
+  {
+    "friend": "voices-mirror",
+    "home": 4803,
+    "away": 144951
+  },
+  {
+    "friend": "voices-turn",
+    "home": 181241,
+    "away": 228110
+  },
+  {
+    "friend": "voices-grid",
+    "home": 76230,
+    "away": 139237
+  },
+  {
+    "friend": "voices-negative",
+    "home": 16348,
+    "away": 75480
+  },
+  {
+    "friend": "island-left",
+    "home": 75875,
+    "away": 138467
+  },
+  {
+    "friend": "island-right",
+    "home": 1551,
+    "away": 1686
+  },
+  {
+    "friend": "island-top",
+    "home": 22496,
+    "away": 22925
+  },
+  {
+    "friend": "island-bottom",
+    "home": 159336,
+    "away": 75244
+  },
+  {
+    "friend": "island-mono",
+    "home": 227789,
+    "away": 140507
+  },
+  {
+    "friend": "island-contrast",
+    "home": 163365,
+    "away": 227022
+  },
+  {
+    "friend": "island-soft",
+    "home": 44521,
+    "away": 44198
+  },
+  {
+    "friend": "island-amber",
+    "home": 227071,
+    "away": 227196
+  },
+  {
+    "friend": "island-accession",
+    "home": 34923,
+    "away": 205797
+  },
+  {
+    "friend": "island-date",
+    "home": 195490,
+    "away": 41687
+  },
+  {
+    "friend": "island-medium",
+    "home": 1558,
+    "away": 1788
+  },
+  {
+    "friend": "island-maker",
+    "home": 34641,
+    "away": 50302
+  },
+  {
+    "friend": "island-mirror",
+    "home": 1553,
+    "away": 1794
+  },
+  {
+    "friend": "island-turn",
+    "home": 205788,
+    "away": 216789
+  },
+  {
+    "friend": "island-grid",
+    "home": 205791,
+    "away": 126579
+  },
+  {
+    "friend": "island-negative",
+    "home": 33033,
+    "away": 86117
+  },
+  {
+    "friend": "council-left",
+    "home": 197492,
+    "away": 2802
+  },
+  {
+    "friend": "council-right",
+    "home": 155357,
+    "away": 227323
+  },
+  {
+    "friend": "council-top",
+    "home": 4905,
+    "away": 4877
+  },
+  {
+    "friend": "council-bottom",
+    "home": 1314,
+    "away": 43825
+  },
+  {
+    "friend": "council-mono",
+    "home": 102634,
+    "away": 4881
+  },
+  {
+    "friend": "council-contrast",
+    "home": 21958,
+    "away": 21124
+  },
+  {
+    "friend": "council-soft",
+    "home": 194502,
+    "away": 2686
+  },
+  {
+    "friend": "council-amber",
+    "home": 70201,
+    "away": 9721
+  },
+  {
+    "friend": "council-accession",
+    "home": 92284,
+    "away": 212227
+  },
+  {
+    "friend": "council-date",
+    "home": 135641,
+    "away": 136181
+  },
+  {
+    "friend": "council-medium",
+    "home": 159344,
+    "away": 223729
+  },
+  {
+    "friend": "council-maker",
+    "home": 9698,
+    "away": 10881
+  },
+  {
+    "friend": "council-mirror",
+    "home": 226480,
+    "away": 137707
+  },
+  {
+    "friend": "council-turn",
+    "home": 79351,
+    "away": 183183
+  },
+  {
+    "friend": "council-grid",
+    "home": 212281,
+    "away": 212315
+  },
+  {
+    "friend": "council-negative",
+    "home": 181393,
+    "away": 66678
+  }
+]

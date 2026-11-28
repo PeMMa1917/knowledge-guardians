@@ -275,10 +275,13 @@
        "checkpoint": "Recruitment complete"
       }
      ],
+     "kq": { "id": "KQ-ROUTE-15", "action": "arrival-notebook" },
      "weave": {
       "concepts": [
        "responsibility"
       ],
+      "framework": ["scope"],
+      "aoks": ["HIS"],
       "atl": [
        "self-management"
       ]
@@ -1193,7 +1196,7 @@
   },
   {
    "id": "j.m01.done",
-   "text": "Recruitment complete. Warden Ise gave me the Field Annotation Pen and the Provenance Thread. Next: a field mission in Aethelgard.",
+   "text": "Ise handed me the Provenance Thread. She wants the next keeper to see the last hand named in the record. Kip asked me to leave room for the hands nobody wrote down. I can carry both reasons to Emberford.",
    "claimKind": "observation"
   },
   {
@@ -1724,21 +1727,94 @@
     {
      "text": "Goodbye.",
      "next": null
+    },
+    {
+     "text": "Give our older finding a place at the hatch today.",
+     "next": "ise.seal",
+     "if": {
+      "all": [
+       {
+        "flag": "chapter.done",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "hatch.custody"
+        }
+       }
+      ]
+     }
     }
    ]
   },
   {
    "id": "ise.seal",
    "speaker": "warden-ise",
-   "text": "Ise turns the small gold seal over in her fingers. She does not speak for a long moment. Then she puts it in her pocket. 'Later,' she says. 'Not today.'",
-   "effects": [
+   "text": "Ise turns the seal once in her palm. “We can say where you found it. Someone will see a name next to that ring and think we know who used it.” She reaches for her pocket, then opens her hand. “I used to do this part myself. Which caller should be able to use what you found?”",
+   "effects": [],
+   "options": [
     {
-     "setFlag": "ise.saw.seal",
-     "value": true
+     "text": "Hang the finding at the public hatch. Cover Kip’s name.",
+     "next": "hatch.ise.rail",
+     "effects": [
+      {
+       "setFlag": "ise.saw.seal",
+       "value": true
+      },
+      {
+       "setFlag": "hatch.custody",
+       "value": "rail"
+      },
+      {
+       "setFlag": "chapter.done",
+       "value": true
+      },
+      {
+       "journal": "j.hatch.rail"
+      }
+     ]
     },
     {
-     "setFlag": "chapter.done",
-     "value": true
+     "text": "Give the folded finding to a witness at the staffed desk.",
+     "next": "hatch.ise.desk",
+     "effects": [
+      {
+       "setFlag": "ise.saw.seal",
+       "value": true
+      },
+      {
+       "setFlag": "hatch.custody",
+       "value": "desk"
+      },
+      {
+       "setFlag": "chapter.done",
+       "value": true
+      },
+      {
+       "journal": "j.hatch.desk"
+      }
+     ]
+    },
+    {
+     "text": "Take the fold to the callers when the shift changes.",
+     "next": "hatch.ise.round",
+     "effects": [
+      {
+       "setFlag": "ise.saw.seal",
+       "value": true
+      },
+      {
+       "setFlag": "hatch.custody",
+       "value": "round"
+      },
+      {
+       "setFlag": "chapter.done",
+       "value": true
+      },
+      {
+       "journal": "j.hatch.round"
+      }
+     ]
     }
    ]
   },

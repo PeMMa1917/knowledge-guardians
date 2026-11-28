@@ -1,3 +1,5 @@
+import { touringInstrument } from '../content/originTours';
+import {isHistoricalBiography} from './historicalEncounters';
 /**
  * Runtime validation of content packs and saved campaign state.
  *
@@ -105,6 +107,10 @@ export function validateContent(pack: ContentPack): string[] {
     text(`source ${s.id} MLA container`, s.mla.container);
     if (s.mla.repository !== undefined) text(`source ${s.id} MLA repository`, s.mla.repository);
     if (!['page', 'artwork'].includes(s.mla.kind)) p.push(`source ${s.id}: unknown MLA source kind`);
+    if (s.mla.documentDate !== undefined) {
+      text(`source ${s.id} MLA document date`, s.mla.documentDate);
+      if (s.mla.kind !== 'page') p.push(`source ${s.id}: a document date belongs to a page entry`);
+    }
     if (s.mla.kind === 'page' && s.mla.workDate) p.push(`source ${s.id}: an artwork date belongs to the artwork entry`);
     if (s.mla.showAccessDate && !/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/.test(s.accessed)) {
       p.push(`source ${s.id}: access date must use YYYY-MM-DD`);
@@ -137,7 +143,7 @@ export function validateContent(pack: ContentPack): string[] {
       for (const person of e.specimen.people ?? []) {
         if (!person.name.trim() || !person.role.trim() || !sources.has(person.source)) p.push(`exhibit ${e.id}: incomplete or unsourced person ${person.name}`);
       }
-      if (pixelAsset && !/^specimens\/[a-z0-9][a-z0-9._-]*\.(png|webp|jpg)$/.test(pixelAsset)) {
+      if (pixelAsset && !/^specimens\/(?:[a-z0-9][a-z0-9_-]*\/)*[a-z0-9][a-z0-9._-]*\.(png|webp|jpg)$/.test(pixelAsset)) {
         p.push(`exhibit ${e.id}: specimen image must be a local asset`);
       }
     }
@@ -145,6 +151,9 @@ export function validateContent(pack: ContentPack): string[] {
   pack.items.forEach((i) => dup('item', i.id));
   pack.characters.forEach((c) => {
     dup('character', c.id);
+    for (const [room, node] of Object.entries(c.localGreeting ?? {})) {
+      if (!room || !nodes.has(node)) p.push(`character ${c.id}: invalid greeting in ${room}`);
+    }
     c.talk.forEach((t) => { nodes.has(t.node) || p.push(`character ${c.id}: unknown node ${t.node}`); cond(t.if, `character ${c.id}`); });
   });
   pack.journal.forEach((j) => {
@@ -197,6 +206,7 @@ export function validateContent(pack: ContentPack): string[] {
 
   pack.dialogue.forEach((n) => {
     dup('node', n.id); text(`node ${n.id}`, n.text);
+    if (n.biographyCard && !pack.cards.some(card => card.id === n.biographyCard && isHistoricalBiography(card))) p.push(`node ${n.id}: missing historical account ${n.biographyCard}`);
     if (n.citationSource && !citationSources.has(n.citationSource)) p.push(`node ${n.id}: unknown MLA source ${n.citationSource}`);
     if (n.motif !== undefined && !STORY_MOTIFS.includes(n.motif)) p.push(`node ${n.id}: unknown story motif ${n.motif}`);
     if (n.speaker !== 'narrator' && n.speaker !== 'player' && n.speaker !== 'lumen' && !n.speaker.startsWith('mentor:') && !chars.has(n.speaker)) p.push(`node ${n.id}: unknown speaker ${n.speaker}`);
@@ -251,6 +261,10 @@ export function validateContent(pack: ContentPack): string[] {
   (pack.skills ?? []).forEach((k) => { dup('skill', k.id); if (!domainIds.has(k.domain)) p.push(`skill ${k.id}: unknown domain ${k.domain}`); });
   pack.missions.forEach((m) => m.objectives.forEach((o) => (o.skills ?? []).forEach((k) => skillIds.has(k) || p.push(`objective ${o.id}: unknown skill ${k}`))));
   (pack.puzzles ?? []).forEach((z) => {
+    if ('handoffs' in z && (!z.handoffPrompt.trim() || new Set(z.handoffs.map((v) => v.label)).size < 2
+      || z.handoffs.some((v) => !v.label.trim() || !v.result.trim() || !v.reply.trim()))) {
+      p.push(`puzzle ${z.id}: each delivery needs an action, an immediate consequence and a later reply`);
+    }
     dup('puzzle', z.id); text(`puzzle ${z.id}`, z.intro); weave(z.weave, `puzzle ${z.id}`, true); eff(z.onComplete, `puzzle ${z.id}`);
     if (z.type === 'rounds') z.rounds.forEach((r, i) => { if (r.options.filter((o) => o.ok).length !== 1) p.push(`puzzle ${z.id} round ${i + 1}: needs exactly one correct option`); });
     else if (z.type === 'restore') {
@@ -273,7 +287,6 @@ export function validateContent(pack: ContentPack): string[] {
         const all = z.people.filter((x) => x.yes).length / z.people.length, fair = runSurvey(z, z.fair.wording, z.fair.sample);
         if (Math.abs(fair.yes / fair.total - all) > 0.15) p.push(`puzzle ${z.id}: the fair sample does not look like the whole town`);
       }
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'forecast') {
       if (z.days.length < 8) p.push(`puzzle ${z.id}: needs eight or more days`);
@@ -281,13 +294,11 @@ export function validateContent(pack: ContentPack): string[] {
       if (!z.choices.length || z.choices.some((c) => !(c > 0 && c < 100))) p.push(`puzzle ${z.id}: chances must be between 0 and 100`);
       if (z.days.some((d) => !(d.almanac > 0 && d.almanac < 1))) p.push(`puzzle ${z.id}: almanac chances must be between 0 and 1`);
       else if (brier(z.days.map((d) => d.almanac), z.days.map((d) => d.rain)) >= 0.25) p.push(`puzzle ${z.id}: the clues must help (the almanac must beat 'always 50%')`);
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'shepard') {
       if (!(z.steps >= 6 && z.octaves >= 4 && z.base >= 20 && z.base * 2 ** z.octaves <= 20000)) p.push(`puzzle ${z.id}: steps, base and octaves must be sensible and audible`);
       else if (JSON.stringify(shepardParts(0, z.steps, z.base, z.octaves)) !== JSON.stringify(shepardParts(z.steps, z.steps, z.base, z.octaves))) p.push(`puzzle ${z.id}: the last step must match the first`);
       if (z.guesses.length < 2) p.push(`puzzle ${z.id}: needs two or more answers to 'what did you hear?'`);
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'frame') {
       const ids = z.items.map((i) => i.id);
@@ -299,7 +310,6 @@ export function validateContent(pack: ContentPack): string[] {
         for (let x = 0; x + z.frame.w <= z.scene.w && !can; x++) for (let y = 0; y + z.frame.h <= z.scene.h && !can; y++) if (judgeFrame(z, b.id, x, y).ok) can = true;
         if (!can) p.push(`puzzle ${z.id} brief ${b.id}: no frame position works`);
       });
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'translate') {
       const needIds = z.parts.map((n) => n.id);
@@ -321,11 +331,11 @@ export function validateContent(pack: ContentPack): string[] {
         const plain = translateLine(z, z.words.map(() => 0));
         if (!plain.lost.length) p.push(`puzzle ${z.id}: the first rendering of every word must lose something`);
       }
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'echo') {
+      if (!z.timingSlip.label.trim() || [z.timingSlip.echo, z.timingSlip.reaction].some((times) =>
+        times.length < z.minTimes || times.some((n) => !Number.isFinite(n) || n <= 0))) p.push(`puzzle ${z.id}: needs a labelled timing record with both sets of observations`);
       if (!(z.distance > 5 && z.speed > 100 && z.minTimes >= 2)) p.push(`puzzle ${z.id}: distance, speed and minTimes must be sensible`);
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'sorter') {
       const ids = new Set(z.fruits.map((f) => f.id));
@@ -342,7 +352,7 @@ export function validateContent(pack: ContentPack): string[] {
       };
       pick(0, []);
       if (!found) p.push(`puzzle ${z.id}: no set of examples from the crate sorts the basket right`);
-      if (z.diagnose.filter((r) => r.honest).length !== 1 || z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair diagnosis and one fair reflection`);
+      if (z.inspections.length < 2 || z.inspections.some((v) => !v.label.trim() || !v.result.trim())) p.push(`puzzle ${z.id}: needs distinct inspection routes`);
     }
     else if (z.type === 'mapmaker') {
       const ids = new Set(z.layers.map((l) => l.id));
@@ -351,7 +361,6 @@ export function validateContent(pack: ContentPack): string[] {
         a.need.forEach((n) => ids.has(n) || p.push(`puzzle ${z.id} ${a.id}: unknown layer ${n}`));
       });
       if (z.layers.length <= z.maxLayers) p.push(`puzzle ${z.id}: the sheet must be too small for every layer`);
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'conjecture') {
       if (new Set(z.angles.map((a) => ((a % 360) + 360) % 360)).size !== z.angles.length) p.push(`puzzle ${z.id}: points must be at different angles`);
@@ -360,7 +369,6 @@ export function validateContent(pack: ContentPack): string[] {
         if (!f.general || 1 + f.chords + f.crossings !== panes(n)) p.push(`puzzle ${z.id}: the first ${n} points are not in general position`);
       }
       if (z.predictAt < 2 || z.predictAt > z.angles.length) p.push(`puzzle ${z.id}: predictAt must be a point the player can add`);
-      if (z.reflect.filter((r) => r.honest).length !== 1) p.push(`puzzle ${z.id}: needs exactly one fair reflection`);
     }
     else if (z.type === 'sightlines') {
       const spots = new Map(z.spots.map((x) => [x.id, x]));
@@ -516,7 +524,7 @@ export function validateContent(pack: ContentPack): string[] {
   function openable(o: string | undefined, where: string): void {
     if (!o) return;
     const [kind, id] = o.split(':');
-    const ok = kind === 'forge' || kind === 'assay'
+    const ok = (kind === 'fieldgame' && !!touringInstrument(id)) || kind === 'forge' || kind === 'assay'
       || (kind === 'showdown' && pack.showdowns.some((x) => x.id === id))
       || (kind === 'label' && kits.has(id))
       || (kind === 'lock' && pack.locks.some((x) => x.id === id))
@@ -547,8 +555,14 @@ export function validateContent(pack: ContentPack): string[] {
   // NONEWS-001: no news source types.
   pack.sources.forEach((src) => { if (/\bnews\b|newspaper|gazette/i.test(src.title)) p.push(`source ${src.id}: news sources are not allowed (NONEWS-001)`); });
   // Every objective needs four hint depths (spec 16.3).
+  const hintDepths = new Map<string, Set<number>>();
+  for (const hint of pack.hints) {
+    const depths = hintDepths.get(hint.objective) ?? new Set<number>();
+    depths.add(hint.depth);
+    hintDepths.set(hint.objective, depths);
+  }
   for (const o of objectives) {
-    const depths = new Set(pack.hints.filter((h) => h.objective === o).map((h) => h.depth));
+    const depths = hintDepths.get(o) ?? new Set<number>();
     for (const d of [1, 2, 3, 4] as const) if (!depths.has(d)) p.push(`objective ${o}: missing hint depth ${d}`);
   }
   // The Deep Dive (spec 59): every prompt can be answered two or more ways; daily sets are balanced.

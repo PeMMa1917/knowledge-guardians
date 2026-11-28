@@ -1,0 +1,242 @@
+[
+  {
+    "number": 905,
+    "name": "Recognise a mark introduced by preparing a specimen",
+    "uses": [
+      {
+        "objective": "optics.crease",
+        "action": "Keep the view still while changing from the fresh petal study to the pressed one. Match the squares in amber and blue. The centre crease appears in the pressed study. Show both tracings to the draughtsman.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "nature"
+        ],
+        "game": 45,
+        "story": 87
+      }
+    ]
+  },
+  {
+    "number": 704,
+    "name": "Work out what survives a change of viewpoint",
+    "uses": [
+      {
+        "objective": "optics.scratch",
+        "action": "Turn the cloth under its fixed holder, then lift the sleeve at the same angle. Only one line travels with the turning cloth. Separate the two movements before telling Mayle whose work she may be seeing.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "analytical"
+        ],
+        "game": 41,
+        "story": 83
+      },
+      {
+        "objective": "optics.registration",
+        "action": "Fit the close and whole lenses together. Place the close window back inside a wide tracing of the same study. Every shared square agrees, but the crop hid the river on either side.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "spatial",
+          "visual",
+          "analytical"
+        ],
+        "game": 45,
+        "story": 87
+      }
+    ]
+  },
+  {
+    "number": 325,
+    "name": "Use a drawing for a cue or test what it says about light",
+    "uses": [
+      {
+        "objective": "optics.drawings",
+        "action": "Try straight rays and expanding fronts at both openings. At a seat where the drawings make different predictions, repeat the observations. Give Nim an entrance cue or keep the drawings in competition for another performance.",
+        "styles": [
+          "strategist",
+          "performer"
+        ],
+        "modes": [
+          "analytical",
+          "reflective",
+          "spatial"
+        ],
+        "game": 45,
+        "story": 119
+      }
+    ]
+  },
+  {
+    "number": 601,
+    "name": "Compare a geometric guarantee with an inference from observation",
+    "uses": [
+      {
+        "objective": "optics.fold",
+        "action": "Trace any chosen square through four rotations of the ruled plate. Two applications of the coordinate rule reverse both coordinates. Applying the same pair again restores the starting square independently of the sample.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "analytical"
+        ],
+        "game": 45,
+        "story": 87
+      },
+      {
+        "objective": "optics.margins",
+        "action": "Bind the four-turn diagram beside repeated audience slips. The quarter-turn map settles where every square finishes. The crew’s readings at the wing remain revisable on another evening.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 41,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 371,
+    "name": "See what a measuring tool adds to a reading",
+    "uses": [
+      {
+        "objective": "optics.registration",
+        "action": "Choose the part the close lens admits and refit it into the full tracing. Take both to the actor so she can decide how far she can follow the seam.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "spatial",
+          "visual"
+        ],
+        "game": 45,
+        "story": 83
+      },
+      {
+        "objective": "optics.project",
+        "action": "Keep a chosen pair on loan at the receiving theatre. With the same amber tracing, the field and stage rotate a whole image while the small lens and sleeve give one patch both ways through scored glass.",
+        "styles": [
+          "performer",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "spatial"
+        ],
+        "game": 125,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 496,
+    "name": "Distinguish a successful prediction from an explanation",
+    "uses": [
+      {
+        "objective": "optics.drawings",
+        "action": "Observe a broad doorway where two unlike drawings agree. Change the opening at the same seat until they disagree and compare the observed slips. Choose between a workable cue and an additional explanatory test.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "social"
+        ],
+        "game": 41,
+        "story": 119
+      }
+    ]
+  },
+  {
+    "number": 710,
+    "name": "Give a reason for an artistic judgement from a particular seat",
+    "uses": [
+      {
+        "objective": "optics.audience",
+        "action": "Frame a joined river, dark pause or second window from the same pair of slips. Move the light between the rear and the side and stay for the porter and the understudy, who value different parts of the entrance.",
+        "styles": [
+          "performer",
+          "companion"
+        ],
+        "modes": [
+          "social",
+          "visual",
+          "reflective"
+        ],
+        "game": 45,
+        "story": 119
+      }
+    ]
+  },
+  {
+    "number": 948,
+    "name": "Recover a warranted observation after an illusion",
+    "uses": [
+      {
+        "objective": "optics.scratch",
+        "action": "A holder scratch looks like a strand of thread. Compare two angles and two sleeve positions on the same study. Find a mark the preparation accounts for and a different mark the cloth still explains.",
+        "styles": [
+          "challenger",
+          "explorer"
+        ],
+        "modes": [
+          "analytical",
+          "visual"
+        ],
+        "game": 41,
+        "story": 87
+      },
+      {
+        "objective": "optics.project",
+        "action": "Project an earlier tracing through a new combination of fittings. Reconcile the moved edge with the fixed one using the two positions printed at the rail.",
+        "styles": [
+          "performer",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "reading"
+        ],
+        "game": 41,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 252,
+    "name": "Test what a stable reading actually measures",
+    "uses": [
+      {
+        "objective": "optics.sources",
+        "action": "Attach the body and case records to different clips. Reading the box number twice would reliably identify the same case. Its number cannot identify the older microscope placed inside.",
+        "styles": [
+          "collector",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 41,
+        "story": 83
+      }
+    ]
+  }
+]

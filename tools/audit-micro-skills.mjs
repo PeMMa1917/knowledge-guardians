@@ -19,7 +19,7 @@ try {
   }
   const missing = SUPPLIED_SKILL_IDS.filter((id) => !scopes.has(id));
   const supplied = new Set(SUPPLIED_SKILL_IDS);
-  const absent = Array.from({ length: 1000 }, (_, i) => i + 1).filter((id) => !supplied.has(id));
+  const absent = Array.from({ length: 1200 }, (_, i) => i + 1).filter((id) => !supplied.has(id));
   const levels = Object.fromEntries(['dok', 'fink', 'solo', 'bloom'].map((axis) =>
     [axis, [...new Set(rows.flatMap((row) => row.thinking ? [row.thinking[axis]] : []))].sort()]));
   const report = {

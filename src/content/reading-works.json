@@ -144,7 +144,7 @@
     "dateKind": "The first Web page hosting period given for this exact NeXT computer in the Science Museum’s loan record.",
     "source": "https://artsandculture.google.com/asset/original-next-computer-used-by-sir-tim-berners-lee-to-design-the-world-wide-web-next/6QHcxbuGnQ4rng?hl=en",
     "locator": "Science Museum description of the CERN loan, date, creator and credit",
-    "observation": "The Science Museum describes this particular NeXT computer as the one Tim Berners-Lee used to design the Web and host the first Web page at CERN in December 1990. CERN identifies its NeXT machine as the first Web server.",
+    "observation": "The Science Museum describes this particular NeXT computer as the one Tim Berners-Lee used to design the Web and host the first Web page at CERN in December 1990. The World Wide Web Consortium’s timeline gives the network name of the first server at CERN.",
     "limit": "Other NeXT workstations are separate objects. The date describes early Web use of this machine, and does not date all networking or every change to the pages.",
     "alt": "Original schematic of a dark square computer with one pale label and a small link light.",
     "pad": "the keeper’s linked notices",

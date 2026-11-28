@@ -1,0 +1,65 @@
+[
+  {
+    "number": 96,
+    "name": "Find the separate decisions hidden in a pair of total choices",
+    "uses": [
+      {
+        "objective": "vault-work.twogates.left",
+        "action": "Try opening and closing all three shutters with their chain. Unhook them, move a shutter separately and leave a real routing arrangement for the three waiting people.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "spatial",
+          "physical",
+          "social"
+        ],
+        "game": 234,
+        "story": 72
+      }
+    ]
+  },
+  {
+    "number": 113,
+    "name": "Give a critic’s concern its strongest reading before acting on a dispute",
+    "uses": [
+      {
+        "objective": "vault-work.promise.left",
+        "action": "Open the words on both sides of the clipped instruction and listen from both chairs. Carry the keeper’s concern for lost trust and the writer’s concern for an absent witness into a decision about where the lamp belongs.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "linguistic",
+          "social",
+          "reflective"
+        ],
+        "game": 234,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 1069,
+    "name": "Separate a later inquiry’s hindsight from what the watch knew beforehand",
+    "uses": [
+      {
+        "objective": "weir-lamp.to",
+        "action": "Pin the original dry-year question beside the retrospective inquiry, hold their dates to the lamp and file a copy that dates the red line after the flood.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 15
+      }
+    ]
+  }
+]

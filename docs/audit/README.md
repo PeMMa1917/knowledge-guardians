@@ -1,5 +1,11 @@
 # Multi-persona audit
 
+The combination atlas gives reviewers the full member index, TOK anchor rules and evidence for ordered play. [Combination atlas](COMBINATION_ATLAS.md) · [Check off a combination](COMBINATION_CHECKLIST.html)
+
+The 28 November element audit covers every numbered design element, the supplied micro-skills, all fifteen chapters, and the 84 simulated review profiles. [Checkpoint findings](ELEMENTS_CHECKPOINT.md) · [Individual element register](element-evidence.csv)
+
+An earlier follow-up reviews the historical guest workshops, the night watches and class writing across 73 perspectives. [Review and chapter cases](LAMPLIGHT_AND_CLASS_WRITING.md)
+
 Mika asked on 26 November 2026 for a full critique of Knowledge Guardians from more than seventy points of view: students of many kinds, teachers, school leaders, the IB and its examiners, universities, philosophers, game makers and critics, players of every type, historians, Indigenous communities, accessibility and inclusion specialists, learning scientists, and others. The main focus is TOK. The other DP subjects help students see how areas of knowledge connect and differ, and give them concrete examples from subjects they know.
 
 The audit has three steps:
@@ -9,6 +15,8 @@ The audit has three steps:
 3. **List the disagreements.** When one persona wants a change that another thinks is wrong, the item goes to Mika to decide. These are the *contested changes*.
 
 Play, engagement and enjoyable learning stay the main goal. Other views can still change the game.
+
+[Action-by-action review and replay evidence](CHOICE_REVIEW.md)
 
 ## Files
 
@@ -37,7 +45,7 @@ Play, engagement and enjoyable learning stay the main goal. Other views can stil
 | Chapter | Audit written | Consensus fixes |
 | --- | --- | --- |
 | Whole game | [PERSONAS.md](PERSONAS.md) | C-001, C-002, C-003 done; others planned |
-| 1 Emberford and the Nexus | [CH01](chapters/CH01.md) | C-026, C-027 done; polish list C-021 started |
+| 1 Emberford and the Nexus | [CH01](chapters/CH01.md) | C-026 and C-027 done. The named C-021 checklist is complete. Five personal origin encounters remain under review. |
 | 2 The Nile archive | [CH02](chapters/CH02.md) | C-028 game-wide; plain titles; 5 two-reply moments; first field game (The Copyists' Ladder) |
 | 3 Preserved Lives | [CH03](chapters/CH03.md) | content note before human remains; plain titles; 3 two-reply moments |
 | 4 The Observatory Coast | [CH04](chapters/CH04.md) | plain bearing titles; 4 two-reply moments |

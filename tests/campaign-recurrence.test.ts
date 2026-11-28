@@ -24,6 +24,8 @@ describe('campaign recurrence', () => {
     d.run({ type: 'EnterNode', node: 'cold.open' });
     d.run({ type: 'SetFlag', flag: 'node.removed-in-an-old-build', value: true });
     const sameAsLoaded = JSON.parse(JSON.stringify(d.s.flags));
+    expect(conversationHistory(d.e.dialogueById, sameAsLoaded, { except: 'cold.open2', limit: 1 }).map(({ id }) => id)).toEqual(['cold.open']);
+    expect(conversationHistory(d.e.dialogueById, sameAsLoaded, { limit: 0 })).toEqual([]);
     expect(conversationHistory(pack.dialogue, sameAsLoaded).map(({ id }) => id)).toEqual(['cold.open2', 'cold.open']);
   });
 

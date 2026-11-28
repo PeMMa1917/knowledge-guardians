@@ -1,0 +1,677 @@
+[
+  {
+    "id": "archive",
+    "title": "The door that forgot its reader",
+    "hook": "Ise found a child's brass library key in the returns. It opens the little lamp beside the door. The child remembers a voice in the lamplight. Tonight you can bring a voice back to her.",
+    "bench": "the reader's lamp",
+    "at": [
+      3,
+      16
+    ],
+    "uses": [
+      {
+        "action": "Turn the shade towards the waiting bench",
+        "reply": "The child holds a place for her grandfather. Together they can examine the mark you left. The desk clerk has to bring his chair round."
+      },
+      {
+        "action": "Turn the shade towards the keyhole",
+        "reply": "A reader outside catches the pattern through the door. The child runs out to hear what the stranger thought it meant."
+      }
+    ],
+    "question": "Who could see your work from the other side of the door?",
+    "pair": {
+      "guests": [
+        "q101638",
+        "q5047158"
+      ],
+      "title": "The child with two keys",
+      "sights": [
+        "A rule on the library door says every child may come in. The smallest child cannot reach the handle.",
+        "Through the middle slit a school notebook fits under the handle like a step. Someone has written Tuesday on its spine.",
+        "A page from a child's Tuesday describes a day the annual speech never mentions."
+      ],
+      "choices": [
+        {
+          "action": "Lower the handle and leave the notebook to its owner",
+          "reply": "The youngest reader comes back alone. The clerk has to ask her which account of Tuesday ought to sit on the shelf."
+        },
+        {
+          "action": "Display Tuesday next to the rule",
+          "reply": "The clerk sees who was missing from the ceremony. The child still has to knock, and this time the clerk hears her."
+        }
+      ],
+      "question": "Who was missing from a promise addressed to everybody?"
+    },
+    "arrival": "The girl has brought a footstool. She sets it under the lamp herself. “Can I be the one who looks first?”"
+  },
+  {
+    "id": "nile",
+    "title": "The slip that came home wet",
+    "hook": "Imani's runner found a slip plastered to a ferry rope. Somebody had drawn a little roof over the ink to keep the name dry. The boat leaves again at dusk.",
+    "bench": "the ferry lantern",
+    "at": [
+      16,
+      9
+    ],
+    "uses": [
+      {
+        "action": "Slip the tracing under the ferry glass",
+        "reply": "Passengers can follow the mark while they wait. The boat takes the only lit copy away with it."
+      },
+      {
+        "action": "Hang the tracing where the runner turns back",
+        "reply": "The runner finds the family who left the slip. The next boat leaves before they finish talking."
+      }
+    ],
+    "question": "What part of a record needs to travel with its reader?",
+    "pair": {
+      "guests": [
+        "q192124",
+        "q475026"
+      ],
+      "title": "The procession in the wrong column",
+      "sights": [
+        "A carrier's name occurs in both copies of a message. Two seals mask a common route.",
+        "At the join both accounts pass the same corner. The verbs change precisely where the district clerk starts writing.",
+        "A neighbourhood drum calls people together. In the clerk's column the same people merely appear."
+      ],
+      "choices": [
+        {
+          "action": "Trace both accounts to the carrier",
+          "reply": "The runner carries one parcel back. The family can question the witness both copies depended on."
+        },
+        {
+          "action": "Pin the crowd's verb beside the clerk's",
+          "reply": "The little roof keeps both verbs dry. The runner asks the neighbours which one belongs on tomorrow's notice."
+        }
+      ],
+      "question": "Whose action disappears when two sources inherit the same description?"
+    },
+    "arrival": "Imani’s runner has tucked a second slip into a dry shoe. “If this one gets wet, I walk home barefoot.” She holds the lantern steady with her elbow."
+  },
+  {
+    "id": "cold",
+    "title": "A breath on the glass",
+    "hook": "Aster promised two sisters that their father's mark would still be here by morning. One sister sees it only when the glass fogs. The other brought a cloth.",
+    "bench": "the frost window",
+    "at": [
+      10,
+      13
+    ],
+    "uses": [
+      {
+        "action": "Clear one narrow window for a close look",
+        "reply": "One sister finds a detail with her fingertip against the glass. Her breath hides it from the queue behind her."
+      },
+      {
+        "action": "Catch the whole outline on the cold sheet",
+        "reply": "Both sisters stand back and see the outline. They have to lean in again to settle the smallest mark."
+      }
+    ],
+    "question": "Who could check the detail after the frost returned?",
+    "pair": {
+      "guests": [
+        "q7399969",
+        "q27455889"
+      ],
+      "title": "The space for a saucer",
+      "sights": [
+        "A ledger records how many people ate here. No line says whose hands set the table.",
+        "A chipped rim fills a gap exactly the size of a saucer. Its fit cannot give its owner a name.",
+        "A plan of the kitchen marks where small pieces of a saucer lay by the step."
+      ],
+      "choices": [
+        {
+          "action": "Show the rim beside the empty name space",
+          "reply": "A visitor sees the work omitted by the ledger and leaves the name open."
+        },
+        {
+          "action": "Follow the fragments back to the kitchen step",
+          "reply": "The sisters trace a lived space. They leave the list in the cold store for a second visit."
+        }
+      ],
+      "question": "What can an object restore to an account that it cannot name?"
+    },
+    "arrival": "One sister has polished a circle in the frost. The other has saved a patch the size of her thumb. There is room for your light at the edge of both."
+  },
+  {
+    "id": "coast",
+    "title": "An answer after the foghorn",
+    "hook": "Ruan's daughter lowered her own signal lamp into the mist. Something flashed back from a jetty the charts call empty. Her father quietly lit a second wick.",
+    "bench": "the jetty lantern",
+    "at": [
+      14,
+      13
+    ],
+    "uses": [
+      {
+        "action": "Aim the shutter at the jetty",
+        "reply": "A hand flashes an answer through the mist. The next watch finds the jetty, but the channel stays dark."
+      },
+      {
+        "action": "Turn the glass towards the incoming boat",
+        "reply": "The crew slows in time to see the mark. The distant keeper leaves a light burning for your return."
+      }
+    ],
+    "question": "Whose reply could the crew see from the water?",
+    "pair": {
+      "guests": [
+        "q234888",
+        "q1389108"
+      ],
+      "title": "A light outside the ring",
+      "sights": [
+        "The measured lights at the edge keep pace where the chart predicts a fall.",
+        "The same edge fits two chalk curves. The lines separate on the second wheel, which has yet to be observed.",
+        "Another rule changes how the pull is calculated in a weak field."
+      ],
+      "choices": [
+        {
+          "action": "Mark the second wheel before it turns",
+          "reply": "Ruan's daughter seals a prediction in the spare lamp. The next watch can open it against a fresh sighting."
+        },
+        {
+          "action": "Hang both curves behind the observed lights",
+          "reply": "The boat crew can see what the two accounts share. No one can identify the cause by that fit alone."
+        }
+      ],
+      "question": "Where would the next observation tell the two accounts apart?"
+    },
+    "arrival": "Ruan’s daughter counts to four in the dark. A pale square opens offshore on five. “Dad always stops counting on four.” She offers you the place she stood."
+  },
+  {
+    "id": "fern",
+    "title": "Tracks around an empty nest",
+    "hook": "Elian found his chalk line trodden flat. His assistant blames the visitors. A small set of prints comes from inside the rope. They kneel at different ends of the same trail.",
+    "bench": "the trail blind",
+    "at": [
+      12,
+      8
+    ],
+    "uses": [
+      {
+        "action": "Set a near window beside the small tracks",
+        "reply": "A watcher sees the direction of the toes. Anyone leaning in loses sight of the outer trail."
+      },
+      {
+        "action": "Raise a viewing strip above the rope",
+        "reply": "Walkers trace both paths from a distance. The smallest impression stays in shadow."
+      }
+    ],
+    "question": "Which detail would let someone question your first account of the trail?",
+    "pair": {
+      "guests": [
+        "q5333",
+        "q171969"
+      ],
+      "title": "The gap between the tracks",
+      "sights": [
+        "A series of small soft-edged pits crosses layer after layer on the tracing.",
+        "One band has no prints at all. Both sheets fit the silence, for different reasons.",
+        "An animal appears below the band and leaves no trace in the layer above."
+      ],
+      "choices": [
+        {
+          "action": "Walk the band to look for its edges",
+          "reply": "The assistant finds the layer thinning at the stream. A gap in this patch may not extend to the whole forest."
+        },
+        {
+          "action": "Keep the two histories in the blind",
+          "reply": "A visitor can trace gradual change and a sudden disappearance without settling which made this gap."
+        }
+      ],
+      "question": "When could local absence support a claim far beyond the trail?"
+    },
+    "arrival": "Elian’s assistant lets a beetle climb off the chalk. “He’s crossed our rope six times today. Nobody’s asked for his permit.” Something larger rustles under the blind."
+  },
+  {
+    "id": "yard",
+    "title": "A stamp for the night shift",
+    "hook": "Corra keeps the mark from her first inspection in her pocket. The night crew has found a mark that looks exactly like it on a piece she never saw.",
+    "bench": "the shift lamp",
+    "at": [
+      12,
+      8
+    ],
+    "uses": [
+      {
+        "action": "Keep the comparison on the inspector's bench",
+        "reply": "The two marks lie side by side under a steady light. A worker finishing late waits for Corra's key."
+      },
+      {
+        "action": "Put the comparison on the night cart",
+        "reply": "The crew takes it to the piece in question. The cart shakes, and the finest line needs a second look tomorrow."
+      }
+    ],
+    "question": "What could the night crew establish that a clerk at the bench could not?",
+    "pair": {
+      "guests": [
+        "q11641",
+        "q2540350"
+      ],
+      "title": "The rack that lost a mark",
+      "sights": [
+        "The loading instructions change row into a numbered slot. The ink numeral is clear.",
+        "Both sheets move the same object one place sideways. One shift happened in the instructions and the other when the clerk aligned two sets of coordinates.",
+        "Two charts put a single reference point on different grids."
+      ],
+      "choices": [
+        {
+          "action": "Keep the instruction with its translation",
+          "reply": "The night worker catches the slot change. The grid still needs its own reference mark."
+        },
+        {
+          "action": "Pin the two grids to one identifiable point",
+          "reply": "The second crew aligns the charts. Corra asks the clerk to trace the instruction before loading again."
+        }
+      ],
+      "question": "Which part of a chain did the final misplaced mark fail to identify?"
+    },
+    "arrival": "Corra takes the stamp out of her pocket and sets it face down. The night worker lays a bare hand beside it. Their thumbs have worn the same hollow."
+  },
+  {
+    "id": "press",
+    "title": "The print that let go",
+    "hook": "Lark's apprentice lifts a clean sheet. A line of tiny letters has stuck to the roller. The apprentice turns it by hand. Her missing line appears backwards in the light.",
+    "bench": "the proof frame",
+    "at": [
+      7,
+      11
+    ],
+    "uses": [
+      {
+        "action": "Turn the proof to face the press crew",
+        "reply": "The person who set the type catches a shift in the spacing. The queue sees the page only after the doors open."
+      },
+      {
+        "action": "Swing the proof out to the street",
+        "reply": "A street reader recognises what the crew missed. Rain freckles one edge before they draw it back inside."
+      }
+    ],
+    "question": "Who could detect a change once the page moved?",
+    "pair": {
+      "guests": [
+        "q473217",
+        "q201538"
+      ],
+      "title": "The guest in the margin",
+      "sights": [
+        "A figure at the edge of a drawing points back at the officials in the centre.",
+        "The two frames share a doorway. The visitor who gets to describe it changes when the frames exchange places.",
+        "A caption presents the traveller's description as if the people being described had supplied it themselves."
+      ],
+      "choices": [
+        {
+          "action": "Turn the caption so the drawn figure faces its author",
+          "reply": "The apprentice sees who is looking back. A reader asks whose description the street still lacks."
+        },
+        {
+          "action": "Leave room for a second account at the margin",
+          "reply": "One reader adds a location the visitor missed. The original drawing keeps its separate authorship."
+        }
+      ],
+      "question": "Who appears as a knower when the frame changes hands?"
+    },
+    "arrival": "Lark holds a mirror to the roller. The apprentice reads her own little line backwards and laughs. “I can do that quicker than he can read it the right way.”"
+  },
+  {
+    "id": "chart",
+    "title": "A light for the returning boat",
+    "hook": "Renna's brother has sent two bearings and no signature. Last time she joined the marks without asking where he stood. Tonight a lamp burns at each end of the chart table.",
+    "bench": "the pilot's chart light",
+    "at": [
+      9,
+      11
+    ],
+    "uses": [
+      {
+        "action": "Pin the tracing to the chart table",
+        "reply": "A second pilot can retrace the line. The brother has to remember it once he leaves the room."
+      },
+      {
+        "action": "Fit the tracing to the handboard",
+        "reply": "The boat crew carries it to the waterline. Its edge leaves out the most distant landmark."
+      }
+    ],
+    "question": "Which change of viewpoint could shift the reading?",
+    "pair": {
+      "guests": [
+        "q101740",
+        "q982656"
+      ],
+      "title": "Two ways to reach a neighbour",
+      "sights": [
+        "A short ruler follows three inlets that the long stride jumps.",
+        "The nearest house by coastline and the nearest household by obligations are on different sides of the inlet.",
+        "A thread from one household crosses the water twice to reach the person who brings its shopping."
+      ],
+      "choices": [
+        {
+          "action": "Give the pilot both scales at the landing",
+          "reply": "The pilot can estimate the journey. The household has to say which visit is urgent."
+        },
+        {
+          "action": "Begin with the household that needs the crossing",
+          "reply": "The boat serves the neighbour first. The pilot marks the extra distance against the tide."
+        }
+      ],
+      "question": "What does near measure when the route is also a relationship?"
+    },
+    "arrival": "Renna has set her brother’s tea beside the chart. A drop runs down the paper and joins two islands. She moves the cup. “There. I nearly made another shortcut.”"
+  },
+  {
+    "id": "stage",
+    "title": "The cue that nobody called",
+    "hook": "Edda heard a cue after everybody had left the stage. A dresser behind the curtain says she gave it with her sleeve. The actor in the front row swears he heard a voice.",
+    "bench": "the prompt lamp",
+    "at": [
+      11,
+      9
+    ],
+    "uses": [
+      {
+        "action": "Give the cue strip to the dresser",
+        "reply": "The next actor enters on the sleeve. The audience misses the gesture that made the entrance possible."
+      },
+      {
+        "action": "Open the shutter towards the front row",
+        "reply": "The first row knows when to answer. A performer in the wings must follow their faces."
+      }
+    ],
+    "question": "Who made the cue work without being seen?",
+    "pair": {
+      "guests": [
+        "q17581477",
+        "q262413"
+      ],
+      "title": "One audience with two backs",
+      "sights": [
+        "A gesture in the edge of a shot changes how the spoken line lands.",
+        "At the centre, both images move at once. A single spectator must choose which face to miss.",
+        "Two screens face one another across the room. A witness facing one has their back to the other."
+      ],
+      "choices": [
+        {
+          "action": "Let two audience members trade accounts",
+          "reply": "A second telling restores the unseen gesture. The witnesses disagree about its timing."
+        },
+        {
+          "action": "Run the cue again from the opposite seat",
+          "reply": "One spectator sees both moments in succession. The others cannot have their first surprise back."
+        }
+      ],
+      "question": "What did another witness make possible that a replay could not?"
+    },
+    "arrival": "Edda bows to an empty seat. The dresser slips her cuff over a nail. From the back row it sounds exactly like one person trying to clap quietly."
+  },
+  {
+    "id": "market",
+    "title": "A promise at closing time",
+    "hook": "Tellen once chased a customer to return a coin. Tonight the same customer has brought back his old scale weight. One edge is smooth from being lent round the market.",
+    "bench": "the weighing lantern",
+    "at": [
+      17,
+      15
+    ],
+    "uses": [
+      {
+        "action": "Keep the example at the common scale",
+        "reply": "Several stallholders can compare their measures. The customer must carry her basket back across the square."
+      },
+      {
+        "action": "Send it along the row of stalls",
+        "reply": "Each seller gets a turn. The last one asks who checked it after it left Tellen's hand."
+      }
+    ],
+    "question": "How could two people compare results after the measure moved?",
+    "pair": {
+      "guests": [
+        "q47426",
+        "q284025"
+      ],
+      "title": "Oil for the last crossing",
+      "sights": [
+        "The price board shows exactly when the innkeeper stopped buying oil.",
+        "The last token is in the hand of the traveller waiting for a neighbour. The board has no column for that relationship.",
+        "The midwife's need stays the same as the price rises. Two families are counting on her journey."
+      ],
+      "choices": [
+        {
+          "action": "Let the midwife reserve a measure",
+          "reply": "The next birth has light. Tellen has to explain to a stranger who can make a similar claim."
+        },
+        {
+          "action": "Post the remaining supply and invite neighbours to pool tokens",
+          "reply": "The street can act on the shortage. A traveller who knows nobody still needs somebody to notice her."
+        }
+      ],
+      "question": "Which need became visible only after somebody could answer back?"
+    },
+    "arrival": "The old customer rests the weight on Tellen’s open palm. “Close your fingers. Now it feels like mine.” A thin bright crescent shows between them."
+  },
+  {
+    "id": "gate",
+    "title": "A ribbon caught below the weir",
+    "hook": "Omi finds the children's waterline ribbon on the wrong side of the gate. Her ledger says the bank stayed dry. The children know exactly which shoes got wet.",
+    "bench": "the waterline gauge",
+    "at": [
+      12,
+      8
+    ],
+    "uses": [
+      {
+        "action": "Hang the strip at the keeper's gauge",
+        "reply": "The next shift can compare levels at one fixed point. The children have to bring their story uphill."
+      },
+      {
+        "action": "Fasten it to the lower footbridge",
+        "reply": "A family sees the mark on the way home. Omi needs a second mark to relate it to the gauge."
+      }
+    ],
+    "question": "What did the position of the mark let somebody claim?",
+    "pair": {
+      "guests": [
+        "q92824",
+        "q233950"
+      ],
+      "title": "What rang before the flood",
+      "sights": [
+        "A bell and a bank of open umbrellas precede each wet afternoon on the slate.",
+        "Moving the bell on the model makes one story fall apart. The dramatic sketch of the last flood still sticks in the keeper's mind.",
+        "The last crossing is painted in bright ink. Its ordinary dry neighbours barely show."
+      ],
+      "choices": [
+        {
+          "action": "Try the bell on a model dry day",
+          "reply": "The children watch the umbrellas turn without the level rising. The keeper redraws one arrow."
+        },
+        {
+          "action": "Restore the dry crossings to the record",
+          "reply": "A strong memory now has neighbours. The cause of the flood still needs a separate test."
+        }
+      ],
+      "question": "Which move checks the cause and which checks what we remembered to count?"
+    },
+    "arrival": "Omi is wringing out one small sock over her ledger. The figure for the dry bank has begun to run. “Let it,” says the child who wore it."
+  },
+  {
+    "id": "dispatch",
+    "title": "The second bell rope",
+    "hook": "Ade's dispatch bell rang while both his hands were full. A courier shows you a second cord running into the reading room. She wants it left where readers can reach it.",
+    "bench": "the dispatch lamp",
+    "at": [
+      14,
+      11
+    ],
+    "uses": [
+      {
+        "action": "Leave the finding at the operator's dial",
+        "reply": "Ade can send the same mark twice. The person in the reading room has to ask him for a turn."
+      },
+      {
+        "action": "Route the finding down the second cord",
+        "reply": "The reading room answers in its own time. Ade cannot see who pulled the cord from here."
+      }
+    ],
+    "question": "When did giving someone a reply change the meaning of the message?",
+    "pair": {
+      "guests": [
+        "q525037",
+        "q108184"
+      ],
+      "title": "The signal that costs a crossing",
+      "sights": [
+        "The detailed dial tells the courier which of three roads has closed. The little dial only tells her to wait.",
+        "The two readings lead to the same choice while only one ferry is running. They diverge as soon as another road opens.",
+        "A simple cue serves a familiar route. Its success depends on which routes are available."
+      ],
+      "choices": [
+        {
+          "action": "Leave the simple signal at the ferry rope",
+          "reply": "The courier acts quickly tonight. Ade adds a hook for the day a second crossing opens."
+        },
+        {
+          "action": "Carry the detailed dial to the junction",
+          "reply": "The next courier sees more routes. Someone must stand there long enough to read it."
+        }
+      ],
+      "question": "When does extra information change a decision someone can really make?"
+    },
+    "arrival": "Ade holds a cup in either hand. From behind the shelves the bell rings once. The courier grins. “Go on. Put both cups down and tell me it was you.”"
+  },
+  {
+    "id": "voices",
+    "title": "A chair behind the horn",
+    "hook": "Wren set a chair behind the listening horn for a guest who hates crowds. It is empty when the song starts, but somebody has left a handkerchief over the loudest opening.",
+    "bench": "the listening hood",
+    "at": [
+      12,
+      8
+    ],
+    "uses": [
+      {
+        "action": "Turn the hood towards one quiet chair",
+        "reply": "A visitor listens to the whole passage and chooses when to stand. A companion waits beyond the hood."
+      },
+      {
+        "action": "Lift the hood for a shared listening",
+        "reply": "Two visitors catch different details and can compare them. The guest at the back stays near the door."
+      }
+    ],
+    "question": "When did an extra listener change what could be heard?",
+    "pair": {
+      "guests": [
+        "q43302497",
+        "q16010963"
+      ],
+      "title": "An answer you can hold",
+      "sights": [
+        "The teller pauses just before a reply. The passage changes if the listener mistakes the pause for an ending.",
+        "The curve of a pot holds the same length of pause as the turn in a telling. The resemblance lets two people begin talking, though neither teaches the other's skill.",
+        "A hand slows at the shoulder of the vessel. A drawing preserves its outline and misses the pressure of the turn."
+      ],
+      "choices": [
+        {
+          "action": "Let a teller and a maker take turns",
+          "reply": "A listener hears the reply while watching the turn. Neither practice has to stand in for the other."
+        },
+        {
+          "action": "Give each guest a separate quiet hearing",
+          "reply": "Each can control the pace. Wren leaves the chairs close enough for a later conversation."
+        }
+      ],
+      "question": "Where did a comparison open a door, and where would it erase a difference?"
+    },
+    "arrival": "Wren slips the handkerchief away from the horn. A visitor in the last chair lifts one finger. Wren puts it back until the visitor is ready."
+  },
+  {
+    "id": "island",
+    "title": "The model missing one roof",
+    "hook": "Ivo built his sister's roof into the hillside model. She has lifted it off and left a note underneath. The path home disappears whenever the model is viewed from the door.",
+    "bench": "the turning plinth",
+    "at": [
+      12,
+      8
+    ],
+    "uses": [
+      {
+        "action": "Turn the model towards the doorway",
+        "reply": "Visitors find the roof immediately. The sister has to point out the hidden path by hand."
+      },
+      {
+        "action": "Let the first visitor turn the plinth",
+        "reply": "The path comes into view as the model turns. Two visitors disagree about where it started."
+      }
+    ],
+    "question": "What would you try from the other side of the model?",
+    "pair": {
+      "guests": [
+        "q234335",
+        "q1111386"
+      ],
+      "title": "The kitchen under the road",
+      "sights": [
+        "From above, the new road is the shortest way across the island.",
+        "The plan's clean line meets a kitchen door just as someone opens it to bring a chair onto the pavement.",
+        "At dusk the people around that chair do work that no traffic map records."
+      ],
+      "choices": [
+        {
+          "action": "Put the chair on the plan at full scale",
+          "reply": "Visitors can move the road and see the detour. A driver brings her own account of the longer trip."
+        },
+        {
+          "action": "Walk the proposed route before moving the line",
+          "reply": "Two households show the planners what the road would sever. Tomorrow's travellers still need a crossing."
+        }
+      ],
+      "question": "Whose loss shrinks when a planner changes scale?"
+    },
+    "arrival": "Ivo’s sister pockets her little wooden roof. “You can have it back when you can get me home.” She leaves one finger on the slope to mark where she is."
+  },
+  {
+    "id": "council",
+    "title": "The empty chair at the hearing",
+    "hook": "Hale saved one council chair for the person described in a report. The author turned up early and sat in it. Now both of them are at the door with a claim to the light.",
+    "bench": "the hearing lamp",
+    "at": [
+      12,
+      8
+    ],
+    "uses": [
+      {
+        "action": "Leave the lamp between the two chairs",
+        "reply": "Both speakers can reach the finding. Each must wait while the other turns it over."
+      },
+      {
+        "action": "Face the lamp towards the public rail",
+        "reply": "The people affected can point to the finding themselves. The speakers have to leave their places to see their hands."
+      }
+    ],
+    "question": "Who gained the power to challenge a claim when you moved the lamp?",
+    "pair": {
+      "guests": [
+        "q712288",
+        "q43302497"
+      ],
+      "title": "The minute headed Everyone",
+      "sights": [
+        "The minute names the whole town as the author of a single opinion. Two people at the hearing have signed different objections.",
+        "The overlap reveals a blank for the respondent's name. An exchange can belong to a tradition while its speakers disagree.",
+        "A reply gains its force from what another person has just said. The minutes omit the first voice."
+      ],
+      "choices": [
+        {
+          "action": "Seat both objectors by their own accounts",
+          "reply": "Visitors can hear disagreement inside a shared tradition. A later speaker can add another seat."
+        },
+        {
+          "action": "Give the reply its missing opening",
+          "reply": "The exchange becomes intelligible. Hale leaves a place to ask who had a chance to speak at all."
+        }
+      ],
+      "question": "When did the record allow a shared tradition to contain an argument?"
+    },
+    "arrival": "Hale sits on the step to make room. From down here he can see the notes people have tucked under the rail, each folded small enough to pass through a fist."
+  }
+]

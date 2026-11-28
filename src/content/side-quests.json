@@ -229,7 +229,7 @@
   {
    "id": "well.start",
    "speaker": "well-keeper",
-   "text": "I'm Efua Asante. I keep the east well. It's low, and the street is arguing: the forge, the season, bad luck. Everyone has an answer. Nobody has asked us what we need.",
+   "text": "Listen when the bucket lands. That second clack is the handle hitting stone. Last summer we never heard it. Now someone has written HESPER on the well cover. My sister took her kettle home empty.",
    "claimKind": "interpretation",
    "historicalLabel": "fictional-world",
    "options": [
@@ -288,7 +288,7 @@
   {
    "id": "well.needs",
    "speaker": "well-keeper",
-   "text": "Water for cooking by the evening, and an answer we all trust. Talk to the fruit seller, who blames the forge, and to Hesper, who uses the water. Then come back and we'll plan together.",
+   "text": "Water before the soup bell. And I want my sister to be able to fetch it without walking over somebody’s name. Ask the fruit seller what she saw. Hesper can tell you where she fills her barrel.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world"
   },
@@ -302,12 +302,12 @@
   {
    "id": "well.plan",
    "speaker": "well-keeper",
-   "text": "You've heard all three of us. So: what do we do? I want a plan we make together, not one handed to us.",
+   "text": "I’ve scraped the name off the lid. There’s still a pale H. We can leave the smithy working and keep a record, or take Hesper up on her three days. Which sheet shall I pin here?",
    "claimKind": "interpretation",
    "historicalLabel": "fictional-world",
    "options": [
     {
-     "text": "Measure both wells, east and west, and compare. The west well is far from the forge.",
+     "text": "Measure both wells at the same bell while Hesper works her usual shifts.",
      "effects": [
       {
        "setFlag": "well.plan",
@@ -315,18 +315,18 @@
       }
      ],
      "next": "well.plan.ok",
-     "tag": "Plan a fair test"
+     "tag": "Keep a watch"
     },
     {
-     "text": "Ask Hesper to use less water for three days, and watch the east well.",
+     "text": "Take Hesper up on her offer to use less water for three days.",
      "effects": [
       {
        "setFlag": "well.plan",
        "value": "trial"
       }
      ],
-     "next": "well.plan.ok",
-     "tag": "Plan a fair test"
+     "next": "well.plan.trial",
+     "tag": "Try a shorter draw"
     },
     {
      "text": "You decide. I'll just carry the buckets.",
@@ -345,19 +345,19 @@
   {
    "id": "well.plan.ok",
    "speaker": "well-keeper",
-   "text": "Agreed. Both are fair: they change one thing and watch. Start with the marks on the wells. There's a notched stick at each well. Read the notches at the east well by me, and at the west well beyond the smithy.",
+   "text": "I’ll copy the marks from both wells at dawn. Hesper keeps her usual shifts. Take today’s reading at each stick so we know where our watch began.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "well.reflect",
    "speaker": "well-keeper",
-   "text": "Both wells are low, by the same number of notches. So it's most likely the season, not the forge. What will you take from this?",
+   "text": "Four notches below each well’s own summer mark. My sister heard that and asked when the rain would come. I wish the sticks could tell her. What do you want in the margin before I send these to Orrin?",
    "claimKind": "interpretation",
    "historicalLabel": "fictional-world",
    "options": [
     {
-     "text": "Listening first changed the plan.",
+     "text": "Listening first told us which well feeds Hesper’s barrel.",
      "effects": [
       {
        "setFlag": "well.reflected",
@@ -367,7 +367,7 @@
      "next": "well.show"
     },
     {
-     "text": "A fair comparison settled an argument that shouting did not.",
+     "text": "Keep both summer marks. The same drop can have more than one cause.",
      "effects": [
       {
        "setFlag": "well.reflected",
@@ -377,7 +377,7 @@
      "next": "well.show"
     },
     {
-     "text": "The people here knew more than I did.",
+     "text": "The people who missed a turn at the bucket belong in this record too.",
      "effects": [
       {
        "setFlag": "well.reflected",
@@ -387,7 +387,7 @@
      "next": "well.show"
     },
     {
-     "text": "I'm not sure yet.",
+     "text": "I’m not sure how much either the forge or the weather mattered.",
      "effects": [
       {
        "setFlag": "well.reflected",
@@ -401,21 +401,31 @@
   {
    "id": "well.show",
    "speaker": "well-keeper",
-   "text": "Now tell the guildmaster, so the whole street hears the same thing, with the notches to show. And Guardian: this was a good way to help, but a game is not real service. Real projects happen with real people.",
+   "text": "Orrin has a hook for one covered jug at the hall. Take him the sticks and the sheet we picked. Someone needs to put water on that hook today.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "well.done",
    "speaker": "well-keeper",
-   "text": "The street is calmer. We're sharing water from the west well until the rains. Thank you for asking first.",
+   "text": "I still have the two sticks here. Orrin’s notice gives their readings. He’s kept a space below for the next person who gets here with an empty cup.",
    "claimKind": "observation",
-   "historicalLabel": "fictional-world"
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Leave the two sticks with Efua.",
+     "next": null
+    },
+    {
+     "text": "Choose a bell for tomorrow’s covered jug.",
+     "next": "well.jug"
+    }
+   ]
   },
   {
    "id": "well.fruit",
    "speaker": "fruit-seller",
-   "text": "The well? It's the forge, it must be! All that steam. ...Well, I suppose I've never looked at the west well. My family drinks from the east one, that's why I worry.",
+   "text": "I chalked the H. Just the H. I could see steam from Hesper’s roof and the bottom of my bucket in the same glance. I couldn’t see where she filled hers. My little one asked me who wrote the rest of her name.",
    "claimKind": "value",
    "historicalLabel": "fictional-world",
    "effects": [
@@ -428,7 +438,7 @@
   {
    "id": "well.hesper",
    "speaker": "smith-hesper",
-   "text": "I use water to quench, yes. Two buckets a day, from my own barrel that I fill from the west well. If you can show that my forge drains the east well, I'll change how I work.",
+   "text": "Two buckets from the west well go into my barrel. One for the morning heat, one for the last. I can do cold work for three days if we keep a count. After that someone is going to want their hinges.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world",
    "effects": [
@@ -441,13 +451,47 @@
   {
    "id": "well.orrin",
    "speaker": "guildmaster-orrin",
-   "text": "The wells? Tell me, and show me. ...Same notches on both sticks. Then it's the season. I'll post a notice: share the west well, and no more blaming the forge. Thank you for bringing the street together, not apart.",
+   "text": "I can fit both sticks on the notice. Four notches down from two summer marks. I had a line here naming the season. Pass me the scraper. What else did we actually see?",
    "claimKind": "observation",
    "historicalLabel": "fictional-world",
-   "effects": [
+   "options": [
     {
-     "setFlag": "well.shared",
-     "value": true
+     "if": {
+      "flag": "well.plan",
+      "eq": "measure"
+     },
+     "text": "Unroll the three dawn entries with the usual forge shifts.",
+     "next": "well.receipt.measure"
+    },
+    {
+     "if": {
+      "flag": "well.plan",
+      "eq": "trial"
+     },
+     "text": "Show the three short-draw days and the rain-jar slip.",
+     "next": "well.receipt.trial"
+    },
+    {
+     "if": {
+      "not": {
+       "any": [
+        {
+         "flag": "well.plan",
+         "eq": "measure"
+        },
+        {
+         "flag": "well.plan",
+         "eq": "trial"
+        }
+       ]
+      }
+     },
+     "text": "Lay the two dated stick readings on the desk.",
+     "next": "well.jug"
+    },
+    {
+     "text": "Fold the sheet away for now.",
+     "next": null
     }
    ]
   },
@@ -457,6 +501,104 @@
    "text": "Fresh fruit from the river farms! Yellow, red, green. Prices on the boxes, no arguing today.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "well.plan.trial",
+   "speaker": "smith-hesper",
+   "text": "I’ll hang the ladle upside down after my first bucket and leave the second on its peg. Start at the two depth sticks. Efua can put the rain jar out while I tell my apprentice why the hinges have to wait.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world"
+  },
+  {
+   "id": "well.receipt.measure",
+   "speaker": "well-keeper",
+   "text": "Three dawns. East went four, five, five notches below its mark. West went four, four, five. Hesper drew her usual two buckets each day. We can show when the readings diverged. No one measured how much the other houses drew.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "next": "well.jug"
+  },
+  {
+   "id": "well.receipt.trial",
+   "speaker": "smith-hesper",
+   "text": "Here’s the ladle tally. I drew one bucket each day. On the third morning both sticks stood one notch higher. Efua’s jar caught rain the night before. If you write that my cold forge raised the water, where will you put the rain?",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "next": "well.jug"
+  },
+  {
+   "id": "well.jug",
+   "speaker": "guildmaster-orrin",
+   "text": "We have one covered jug to set aside each day. The soup kettle needs it at dawn. The porters get here after the stalls have shut. I can keep it on the hook for either bell. Whose place am I keeping?",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Hang it for the soup kettle at dawn.",
+     "effects": [
+      {
+       "setFlag": "well.jug",
+       "value": "dawn"
+      },
+      {
+       "setFlag": "well.shared",
+       "value": true
+      }
+     ],
+     "next": "well.jug.dawn"
+    },
+    {
+     "text": "Seal it for the porters at the closing bell.",
+     "effects": [
+      {
+       "setFlag": "well.jug",
+       "value": "late"
+      },
+      {
+       "setFlag": "well.shared",
+       "value": true
+      }
+     ],
+     "next": "well.jug.late"
+    },
+    {
+     "text": "Leave the jug on the desk while I think.",
+     "next": null
+    }
+   ]
+  },
+  {
+   "id": "well.jug.dawn",
+   "speaker": "well-keeper",
+   "text": "My sister gets the kettle over the fire before the children arrive. At closing I find a porter turning the lid round on its empty hook. He asks me to write down his bell too.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep the dawn hook.",
+     "next": null
+    },
+    {
+     "text": "Take the hook back to Orrin and change its bell.",
+     "next": "well.jug"
+    }
+   ]
+  },
+  {
+   "id": "well.jug.late",
+   "speaker": "fruit-seller",
+   "text": "The porter came back expecting an empty hook. You should have seen him lift that lid. We served the broth late this morning. Tomorrow I’ll tell people before they queue.",
+   "claimKind": "observation",
+   "historicalLabel": "fictional-world",
+   "options": [
+    {
+     "text": "Keep the closing-bell hook.",
+     "next": null
+    },
+    {
+     "text": "Take the hook back to Orrin and change its bell.",
+     "next": "well.jug"
+    }
+   ]
   }
  ],
  "hints": [
@@ -494,19 +636,19 @@
    "id": "h.well.o2.plan.2",
    "objective": "well.o2.plan",
    "depth": 2,
-   "text": "A fair plan changes one thing and watches."
+   "text": "Leaving the forge running lets you watch its ordinary days. Hesper’s other offer changes her draw."
   },
   {
    "id": "h.well.o2.plan.3",
    "objective": "well.o2.plan",
    "depth": 3,
-   "text": "Talk to Efua and choose one of the two test plans."
+   "text": "Talk to Efua. Choose to keep watch or to take up Hesper’s offer."
   },
   {
    "id": "h.well.o2.plan.4",
    "objective": "well.o2.plan",
    "depth": 4,
-   "text": "Talk to Efua and choose 'Measure both wells…'."
+   "text": "Choose ‘Measure both wells’ for the watch. Choose ‘use less water’ for Hesper’s three-day trial."
   },
   {
    "id": "h.well.o3.act.1",
@@ -542,7 +684,7 @@
    "id": "h.well.o4.reflect.2",
    "objective": "well.o4.reflect",
    "depth": 2,
-   "text": "Any honest answer counts."
+   "text": "What would the sticks look like if more than one thing had lowered the water?"
   },
   {
    "id": "h.well.o4.reflect.3",
@@ -554,13 +696,13 @@
    "id": "h.well.o4.reflect.4",
    "objective": "well.o4.reflect",
    "depth": 4,
-   "text": "Talk to Efua and choose any answer."
+   "text": "Talk to Efua. Pick the margin entry you want Orrin to read."
   },
   {
    "id": "h.well.o5.show.1",
    "objective": "well.o5.show",
    "depth": 1,
-   "text": "The whole street should hear the same thing."
+   "text": "Orrin has room for both sticks on his notice and one jug on his hook."
   },
   {
    "id": "h.well.o5.show.2",
@@ -572,19 +714,19 @@
    "id": "h.well.o5.show.3",
    "objective": "well.o5.show",
    "depth": 3,
-   "text": "Show the guildmaster what you found."
+   "text": "Open the sheet for the plan you picked. Choose who can count on the covered jug."
   },
   {
    "id": "h.well.o5.show.4",
    "objective": "well.o5.show",
    "depth": 4,
-   "text": "Talk to Guildmaster Orrin by the guild hall."
+   "text": "At the guild hall, take Orrin through your record. Hang the jug for dawn or the closing bell."
   }
  ],
  "journal": [
   {
    "id": "j.well.done",
-   "text": "The East Well: we listened first, planned with the people, compared two wells, reflected and showed the guild. A good habit for real projects. Play is not CAS.",
+   "text": "I put both of Emberford’s readings on Orrin’s desk. Each well was four notches below its own summer mark when we began. We could give someone a turn at the jug while we kept looking for the cause.",
    "claimKind": "observation"
   }
  ]

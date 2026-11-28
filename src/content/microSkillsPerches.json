@@ -1,0 +1,65 @@
+[
+  {
+    "number": 90,
+    "name": "Keep an open record when a later case could change the claim",
+    "uses": [
+      {
+        "objective": "rum.o4.tell",
+        "action": "Read a dated failure beside three later checks. Replace the market’s claim about every future piece with a traceable correction for the kettle, night shift or margins of the register.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "social",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 1087,
+    "name": "Convert a loaf count into a load using the size of the loaf",
+    "uses": [
+      {
+        "objective": "emberford.tally.weigh",
+        "action": "Weigh both full trays and both trays after one delivery. Six small loaves and three large ones each start at six weight units. Removing one loaf changes the scale by a different amount.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "physical",
+          "analytical"
+        ],
+        "game": 73,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 1106,
+    "name": "Give a controlled field trial and a rehearsal different purposes",
+    "uses": [
+      {
+        "objective": "moth.return.desk",
+        "action": "Change one thing at the Archive perch to repeat a landing. Accompany the moth to the theatre and give a waiting child a ribbon or a pause. Rehearse the other cue to explore what the same entrance can express.",
+        "styles": [
+          "companion",
+          "performer"
+        ],
+        "modes": [
+          "physical",
+          "social",
+          "reflective"
+        ],
+        "game": 20,
+        "story": 38
+      }
+    ]
+  }
+]

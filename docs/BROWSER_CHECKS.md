@@ -1,5 +1,34 @@
 # Chromium release checks
 
+## Review a curriculum combination
+
+Open the offline [reviewer checklist](audit/COMBINATION_CHECKLIST.html). Choose a chapter and an anchored selection. A single check belongs to exactly one of 24 Bloom and DOK cells. Open a micro-skill as a row, pin it and use a combination number to try another selection. In the controlled browser checks, a checked cell survives a reload, keeps its note, transfers by JSON to another browser context and exports in a CSV. A new chapter and a neighbouring combination each open their own grid. [Checklist test](../tools/smoke-combination-checklist.mjs)
+
+## Return a coat and score the rain
+
+Run the journey with a local preview. The browser starts from a fresh campaign and operates the props and controls. The harness moves between named maps for travel. A fixture earns the brass key plate after the inventory-free opening. Independent domain checks cover each earned and unearned keepsake and every combination of entrance and settlement. [Browser journey](../tools/return-coat-journey.mjs) · [Coat, fare and landing tests](../tests/return-coat.test.ts) · [Four-beat score tests](../tests/rain-score.test.ts)
+
+```sh
+node tools/smoke-lamplight.mjs chromium http://127.0.0.1:4173 --return-coat
+node tools/smoke-combination-checklist.mjs firefox
+```
+
+## Curriculum checklist
+
+Chromium 156, Firefox 146 and WebKit 26 imported an edited chapter worksheet, previewed a conflicting edit, kept the previous note and recovered the final choice in a JSON export. All 15 original workbook sheets also round-tripped through CSV with their 173 reviewed cells, notes and action IDs. The 116,355 untouched starting rows produced no review records. The workbook verifier follows all 435 internal family links. The paged checklist rendered all 2,792,520 chapter and element checkbox positions in each of the three engines. Each control had the expected board, chapter, Bloom level, DOK and accessible name.
+
+At the pause, the separate 15-chapter guest recovery sweep on revision `4af552d` had completed 250 of 250 guests in Chromium, 250 of 250 in Firefox and 187 of 250 in WebKit. The latest hour-long wall holds were interrupted before the release-and-recovery check. These runs are outside the completed-hour totals.
+
+The review document runs from a downloaded HTML file and from a local web server. Its stress run uses a temporary reviewer profile. It addresses the 24 Bloom and DOK positions for each catalogue member in all 15 chapters, recovers a large fictional review ledger after reload, edits the same cell in two tabs and exports when both browser storage systems are unavailable. The check counts exercise the documentation interface. Implementation evidence comes from the separate action register.
+
+In Chromium 156, Firefox 146 and WebKit 26, each run addressed 2,792,520 worksheet positions and restored 28,800 fictional checked cells. The 8,715,841-byte JSON included one note and action ID per cell. A second tab changed a checked status while preserving the first tab’s note. With both storage systems disabled, a one-cell review still exported to JSON.
+
+```sh
+node tools/smoke-combination-checklist.mjs chromium --stress
+node tools/smoke-combination-checklist.mjs firefox --file --stress
+node tools/smoke-combination-checklist.mjs webkit --file --stress
+```
+
 ## Run the map and access smoke
 
 Build and serve a single checkout, then run the smoke against that preview with Node 22 or newer and Chromium installed.
@@ -358,3 +387,79 @@ The earlier integrated build clipped the words on two empty crates after the rev
 ### A reader changes desks during the same visit
 
 Run `node tools/smoke-worlds.mjs URL CHECKOUT cast` against a production build. The test supplies the signed maize folio and queues an approach to Neris. It files the folio through the Civic Callboard dialogue, checks both collision footprints and the abandoned click, and repeats with the Guardian on the new arrival tile. It also checks the authored order of two nearby Emberford characters. The stress mode includes this case. [Cast and movement checks](../tools/smoke-navigation.mjs)
+
+## Pocket screens and keyboard return
+
+The player opens each of the 21 journal sections, the journal frame and the map. The test inspects the width of the open panel, tabs through both ends of its focus order and dismisses it. It waits for map controls to finish loading. Twelve viewport sizes from 320 × 568 to 1920 × 1080 include phone landscape and both tablet orientations. Each size runs at ordinary and 175 percent game text. Chromium 156, Firefox 146 and WebKit 26 each completed all 552 panel checks with no recorded overflow, lost modal focus or page error. That gives 1,656 panel visits and 3,312 keyboard boundary transitions across these three Linux browser engines. Physical touch keyboards, screen readers and device-specific browser chrome still need direct testing. [Layout and focus journey](../tools/pocket-layout-journey.mjs)
+
+The test originally found clipped long buttons and a Tab escape from the glossary through a closed disclosure. The panel now allows long titles to wrap, narrow grid tracks to shrink and open controls to keep focus when their enclosing dialog cycles. Focus returns to the accessible launcher after closing.
+
+## A long adventure’s next turn
+
+The Guardian can have several thousand completed objectives. The engine now reuses a membership index while it scans a long completion list. New completions are visible during the same turn and a recovered save builds its own index. A regression checks new, late and rewound adventures, prerequisite chains, pinned objectives and the ordering of available jobs. [Long-campaign checks](../tests/long-campaign-objectives.test.ts)
+
+A controlled comparison ran the same 65 exhibit and conversation turns against both implementations in alternation. It compared every saved field, every permanent record and every emitted event after each run. Over five measured runs on this Linux test machine, median process CPU time per turn went from 9.51 to 3.13 ms with 1,800 objectives completed, and from 10.28 to 3.97 ms with 3,000. At 600 it went from 5.90 to 5.25 ms. At zero it went from 1.57 to 1.83 ms. These timings cover engine and guide work in a synthetic save. Native device frame rates require separate measurement. [Reproduce the comparison](../tools/bench-campaign-turns.mjs)
+
+## Art coverage through the folding house
+
+Chromium 156, Firefox 146 and WebKit 26 each visited all 154 rooms in the build with Opal’s folding house. For each of 8,159 placed object pictures, the browser resolved the drawing. All five guide forms rendered. This sweep checks the presence of art. Contrast, composition, representation and touch ergonomics need separate review. [Field artwork journey](../tools/field-art-journey.mjs)
+
+
+## The river in the curtain
+
+Chromium 156, Firefox 146 and WebKit 26 each visited the loan loft and rehearsal. A Guardian borrowed a pair of fittings, saved both loan presets, returned to Cajal and Huygens, projected the tracing and heard two people at the stage. Each engine reopened the saved edition and exported the dated Cambridge microscope and case records in the diary. The test used a prepared chapter entrance and keyboard actions at the physical stands. The integrated build immediately preceding the optics story passed all 2,790 tests in 341 files. [Lens loan journey](../tools/lens-loan-journey.mjs) · [Choice replay scope](audit/CHOICE_REVIEW.md)
+
+## The ferry singer and the changed crowd
+
+A fictional Guardian tuned a quiet coil, compared the first and prompted takes of the roof painter, checked the four audience frames, invited each missing shift and kept a private voice off the broadcast. Chromium sent a chorus, Firefox sent four beats of quiet and WebKit sent the second horn. All three reopened their edition after Continue, visited the resulting prop and downloaded the diary containing the three historical readings they had opened. The test stages chapter access and uses the real controls at the two stations. [Ferry journey](../tools/ferry-radio-journey.mjs)
+
+## Station controls at large text sizes
+
+The station journey starts from the map spawn, finds a reachable tile facing each visible control and opens the real station with the interaction key. It checks whether visible controls have names, whether a focused control stays inside the viewport, whether Tab stays in the dialog and whether Escape returns to play. It records the room, station, approach and any failing control. The fixture supplies the prerequisite story state for the station under review. It leaves entry prompts that a student has to accept in the interaction sequence. [Station walk](../tools/station-layout-journey.mjs)
+
+In Firefox at 320 × 568 with text at 175%, 353 focused visits passed after the clock sliders, adjustable benches, material samples and related controls were resized. On WebKit at the same size, a long native option extended the skiff’s scrollable dialog even while the selector itself was visible. The corrected native selectors passed all 24 targeted skiff, shift-coat and related visits. The Council spoon fixture also exposed a mismatch between its visible invitation and the three night choices the fiddle accepts. A saved choice outside those three now keeps the invitation closed. [Council regression](../tests/spare-moon.test.ts)
+
+## Two journeys with different public outcomes
+
+Chromium 156, Firefox 146 and WebKit 26 each played the island quarter house. All three stamped two different shifts, changed the moth’s instructions, recovered a saved run, walked through the hidden stair and exported the research behind the workshop. Firefox placed the board where Joss could read the time from his boat. In the Chromium arrangement, Siv could hear the slipway call but could not reach a dry seat during her break. WebKit gave Siv a view of the work marks while a pilot stayed behind for the call. Chromium also played the linked ferry broadcast before coming to Matel. [Quarter house journey](../tools/tide-clock-journey.mjs)
+
+The same three engines made four barrow runs in the walking orchard and tried all twelve spring, site and date views. Firefox kept the baths in shade and hung the poster comparison. WebKit cleared a route through the dance and showed the first-spade counts. Chromium set up the return project and showed the comparison after frost. Each visited both historical guests, used the cartway, checked what the volunteers allowed onto the cloth, and opened the exported Word file to verify its earned source links. [Walking orchard journey](../tools/walking-orchard-journey.mjs)
+
+### Picking up a class draft after reconnecting
+
+Chromium 156, Firefox 146 and WebKit 26 completed the fictional two-class journey on the reconnect change. A second device recovered the student's diary note, unfinished draft, reflection and scene writing. Both edits survived a competing save until the student chose an edition. The assigned teacher could read the accepted draft. A teacher in the other class could not fetch it. Photos stayed on the originating device and the individual portfolio entry retained its private setting. Eight focused recovery checks also cover an outstanding offline request, a later foreground event, page-exit delivery and an intervening revision. [Browser journey](../tools/smoke-classroom.mjs) · [Recovery checks](../tests/class-recovery.test.ts)
+
+### Three evenings in the inn
+
+The Chromium journey seated an earned creature, tested Tover’s supper floor, stretched its east seam and delivered the kettle to tea before leaving the light toward the loft. Firefox tried Neska’s song floor and heard the answer from Yilka’s garden. WebKit took the garden floor back to the tea table, where a quiet visitor put down a second spoon. Each journey went through both field handovers, met Jane Jacobs and Zaha Hadid, entered the landing the town had opened and inspected the references in the downloaded Word diary. The underlying route checks cover the nine floor-purpose and evening-use combinations. [Played route](../tools/open-house-journey.mjs) · [Household and route checks](../tests/open-house.test.ts)
+
+
+### Finding someone across chapters
+
+Chromium revisited Vera Rubin after the City of Copies, Firefox revisited Wangari Maathai after the Cold Store and WebKit revisited Zaha Hadid after the Living Forest. Each test delivered the first workshop, left a second tracing unfinished, reopened the game and used the Conversations tab to see both. Opening Ise’s page during a real conversation recovered the words actually heard. The book omitted a guest the Guardian had never called. [Played route](../tools/calling-book-journey.mjs)
+
+## Tritta and the moth with two tails
+
+From the ordinary entrance to a Night Register, the Guardian can meet Tritta and Agate, try a tool, sign an edition and walk to the person whose day it changed. An edition carried through another door keeps its own observations. The rival looks at signed work from distinct towns before choosing her next condition. [Browser journey](../tools/second-ink-journey.mjs)
+
+On 28 November, Chromium 156 played the bell from the Archive through the Market to the Council. Firefox 146 followed the cords through the Cold Store and the Print Register. WebKit 26 tried the sliding sheet through the Stage and Coast registers. The journeys exercised all three ways of publishing, the changing rival, a historical guest, a reopened save and the exported Word diary. The rules suite separately plays all nine tool/edition combinations in each of the fifteen registers and both levels of each counterproof. [Rules and receiving-room checks](../tests/second-ink.test.ts)
+
+## Taking a river address to its readers
+
+Firefox 146 traced streets with the arrow keys and carried the district edition. WebKit 26 used the directions list at 320 CSS pixels and carried the guide edition. Chromium 156 selected grid squares with a pointer and carried the window edition. Each tried a wet stair, backed up, completed both crossings, obtained the walkers’ responses and compared the apprentice’s slip with a stranger’s. At the second quay they reached different people. Each reopened its save and checked that its downloaded Word diary held the three separately earned source links. Earlier export checks had found the reading in the diary without its link in Word. A separate rules test starts with one source and checks that the other two stay out. [Browser journey](../tools/river-name-journey.mjs) · [Source visibility checks](../tests/river-names.test.ts)
+
+
+## The covered jug at the East Well
+
+Chromium 156, Firefox 146 and WebKit 26 entered Emberford with the market investigation unstarted. Each read both sticks before speaking to the keeper, heard the fruit seller and smith, chose an investigation, opened its three-day record, left the jug unassigned and returned to make a choice. Chromium pursued the ordinary shifts. Firefox and WebKit kept Hesper’s shorter draw and the rain on the same record. Each read both neighbours’ responses, met someone affected by the assigned bell, and changed tomorrow’s turn. The domain tests also cover a previously completed save, the two refusals, the one private portfolio entry and equal permanent credit. [Repeat the journey with the east-well option](../tools/east-well-journey.mjs)
+
+
+## Objective conditions on a travelled save
+
+On a journey with thousands of completed steps, a new clue may check earlier steps inside several nested conditions. A turn now shares its objective index with the mission, keepsake and individual step checks. Rewinding builds the index from the recovered save. A new completion becomes visible to later rules on the same turn.
+
+The alternating benchmark compared ordered events, permanent credit and complete save states after every command sequence. The median CPU time per command plus guide lookup on this host changed from 2.90 to 2.72 ms with 600 completed steps, from 3.14 to 2.57 ms with 1,800 and from 2.94 to 2.31 ms with 3,000. The empty-save figure was 1.58 and 1.55 ms. Browser paint and disk time are outside these measurements. The three previously timing-sensitive route files and the long-campaign regression passed 38 checks at their original time limit in a single-worker run. [Benchmark](../tools/bench-campaign-turns.mjs) · [Completion, ordering and rewind tests](../tests/long-campaign-objectives.test.ts)
+
+The quiet-claim walkthrough uses the mapped fixtures in Emberford and the Water Council, their keyboard controls and a return trip. Chromium 156 brought back a late spoken hearing, Firefox 146 a tally slot and WebKit 26 a messenger. Use `--claim-bell` with the Lamplight browser harness. The covered-jug prerequisite is set for this focused run. The preceding story has a separate `--east-well` walkthrough.
+
+The pocket theatre harness exercises all 30 cases, their control slides, premature sends, both sides of every working-sheet partnership and a resumed save. Firefox 146 completed the fifteen-district itinerary at 820 × 1080. The first browser pass found that the game's shared error handling added a second live announcement to the workbench. Both the theatre and the quiet-claim hatch now expose their own feedback region to that handler. The pocket theatre and hatch opt into the existing background world tick while a player is reading.

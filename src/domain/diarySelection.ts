@@ -117,6 +117,7 @@ export function selectDiary(view: AdventureJournalView, selection?: DiarySelecti
     return answered?.length ? [{ title, at, mapId, reflections: answered }] : [];
   }) : [];
   const keptSpecimens = new Set(entries.flatMap((entry) => entry.specimenReference ? [entry.specimenReference] : []));
+  const encounters = new Set(entries.map(entry => entry.event?.key));
   return { untaggedReflections, view: {
     ...view,
     entries,
@@ -124,6 +125,7 @@ export function selectDiary(view: AdventureJournalView, selection?: DiarySelecti
     portfolioWriting: includeStandalone ? view.portfolioWriting?.filter((writing) => within(writing.at)) : [],
     quests: [],
     references: view.references.filter(({ key }) => keptSpecimens.has(key)),
+    ...(view.readings && { readings: view.readings.filter(reading => reading.encounterKeys.some(key => encounters.has(key))) }),
     encyclopedia: matchedEncyclopedia(entries),
   } };
 }

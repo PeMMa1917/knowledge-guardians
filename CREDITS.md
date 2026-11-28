@@ -38,6 +38,8 @@ The art direction is "rich, colourful pixel art with lighting", inspired in gene
 
 Other art is **original** and drawn in code: exhibit pedestals, the evidence board, the blade, the catalogue, the assay table, the anvil, the portal, the fairy guide Lumen, icons and the large inspection pictures. See `src/ui/illustrations.ts`. Lighting, particles and glow are made in code too.
 
+The original four-direction sprite of Tallowheel belongs to the Knowledge Guardians project and is released under CC0 1.0. The six carved silhouettes on Fen’s turning trunk are part of the same original artwork. [Pixel drawing](tools/make_orchard_carrier.py)
+
 ## Music
 
 The campaign soundtrack and returning story phrase are original music created for Knowledge Guardians. The arrangements and instrument synthesis are defined in [`campaignScore.ts`](src/domain/campaignScore.ts), [`storyMotifs.ts`](src/domain/storyMotifs.ts) and [`campaignSynth.ts`](src/app/campaignSynth.ts).
@@ -117,3 +119,26 @@ Many games grew from TOK lessons in Mika's lesson folder (decision X-017 in [doc
 The historical sources for the real objects in the game are in [docs/SOURCES.md](docs/SOURCES.md) and in the chapter content. The game uses original pixel drawings and transforms collection images released under verified open licences. The Polar Store’s exact accession illustrations are original drawings based on catalogue descriptions. Per-image rights, catalogue and download links are in [the asset manifest](public/assets/credits.json).
 
 The sealed paper bird, open reply and four small instrument diagrams are original pixel illustrations drawn in code for this project. The four-beat bench plays synthesized notes through the existing instrument. [Folded-wing sprites](src/ui/illustrations.ts) · [Playable diagrams](src/ui/inkTrialDiagram.ts)
+
+## The Night Register
+
+The 1,020 images in `public/assets/specimens/night-register/` are pixel renditions of individual National Gallery of Art open-access collection images. Each numbered filename uses the Gallery's object ID. The catalogue preserves the artist or workshop credit, the work's title, date and accession. Each file's manifest entry links to its corresponding museum record and original IIIF image. The images retain their proportions within 64 pixels and use up to 40 colours. [Individual works and maker credits](src/content/night-register.json) · [Image sources and licences](public/assets/credits.json) · [Gallery open data](https://github.com/NationalGalleryOfArt/opendata)
+
+The sixteen field-creature silhouettes and fifteen coat palettes are original pixel drawings made for this game. [Portraits and field sprites](src/ui/nightCreature.ts)
+
+The Blue Shift Coat uses a hand-drawn pixel peg and coat, original instrument diagrams, and score and vibration cues synthesized by the game's instrument. The night keepers, their cases and readings are fictional. [Coat sprite](src/ui/illustrations.ts) · [Worktable and audio](src/ui/coatPocket.ts)
+
+The measuring cup, plumb plate and reed-nib reference slips at Hesper’s bench use original pixel diagrams drawn in code for Knowledge Guardians. [Instrument drawings](src/ui/makerIllustration.ts)
+
+
+The pay bowls, punch wheel and type case in the mill registers are original in-game pixel drawings. The scene uses fictional shift records. Historical reading for Ostrom, Pearl and Trouillot appears with their encounters in the journal. [Object drawings](src/ui/illustrations.ts) · [Register windows](src/content/millShift.ts)
+
+The small and enlarged Hōkūleʻa, the folding flock and its three stitched waterscapes are original Knowledge Guardians pixel illustrations drawn in code. The Society’s launch record informs the identification. [Graphics](src/ui/illustrations.ts) · [Polynesian Voyaging Society](https://hokulea.com/hokulea-44th/)
+
+The cocoa cart, twin carafes, rain flap, gutter, folded offers and chalkboard are original pixel drawings made for Knowledge Guardians. [Cart artwork](src/ui/firstCupArt.ts)
+
+The suitcase house, lamp, hinged floor and certificate drawings are original game artwork. The Peoria Tribe of Indians of Oklahoma publishes the history used on its leaf. The Eastern Shawnee Tribe of Oklahoma publishes the constitutional file used for its election certificate. The Absentee Shawnee Tribe of Indians of Oklahoma publishes the description of its own emblem. [Sources and locators](docs/SOURCES.md#two-leaves-at-lamp-quay) · [Artwork](src/ui/turningStacksArt.ts)
+
+The felt loan drawer, two-hook stair, projector frame and silver-thread curtain are original pixel drawings for the Survey Depot and House of Performance. [Loan loft artwork](src/ui/lensLoanArt.ts)
+
+The inn’s turnable floor, kettle, patched chairs, shuttered lamp and spoon-handled door use five original pixel drawings. Returning residents use the campaign’s existing creature portraits. [Inn illustrations](src/ui/openHouseArt.ts)

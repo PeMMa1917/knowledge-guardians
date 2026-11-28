@@ -1,0 +1,170 @@
+[
+  {
+    "number": 824,
+    "name": "Give mapmakers a say in the public coordinates",
+    "uses": [
+      {
+        "objective": "rivernames.mapmakers",
+        "action": "Read the Inuit Heritage Trust’s account of documenting and formally recognizing names. On the fictional quay let each walker alter a map layer, keep their signatures attached to the actual walked paths, try the public stamp at two waters and decide which geometry may leave.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "spatial",
+          "social",
+          "analytical"
+        ],
+        "game": 122,
+        "story": 52
+      }
+    ]
+  },
+  {
+    "number": 828,
+    "name": "Preserve what a place name says about changing water",
+    "uses": [
+      {
+        "objective": "rivernames.placename",
+        "action": "Take a pin to the high-water walker. She refuses to mark the low-water landing as the whole meaning. Compare the two separately credited programme leaves, then let the walkers attach the name to two agreed tide slips or an adjustable route.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "spatial",
+          "linguistic",
+          "social"
+        ],
+        "game": 209,
+        "story": 56
+      }
+    ]
+  },
+  {
+    "number": 1058,
+    "name": "Compare a co-learning account with the authority of the receiving quay",
+    "uses": [
+      {
+        "objective": "rivernames.partners",
+        "action": "Unfold Bartlett and the Marshalls’ account of learning together in its Mi’kmaw setting. Carry an address altered by both local readers to the receiving family. Give its neighbour or working pair a place to change the landing after an actual round.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "social",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 21,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 231,
+    "name": "Recover what a transmitted name can lose when speakers are absent",
+    "uses": [
+      {
+        "objective": "rivernames.postmark",
+        "action": "Compare a name written on two otherwise identical slips with a name accompanied by a hand sign. Give the same new marks to a stranger and an apprentice who has learned each landing from a speaker. Set the results beside the Kitikmeot Heritage Society’s own description of Inuinnaqtun mentoring and reference work.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "linguistic",
+          "spatial",
+          "social"
+        ],
+        "game": 193,
+        "story": 107
+      }
+    ]
+  },
+  {
+    "number": 630,
+    "name": "Read the same mark at address, block and district scales",
+    "uses": [
+      {
+        "objective": "rivernames.smallblock",
+        "action": "Set Rialla’s hand stamp over the lower block. Count still-possible receiving doors at ebb and flood, then compare what a district-scale mark permits a distant reader to infer.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "analytical"
+        ],
+        "game": 184,
+        "story": 56
+      }
+    ]
+  },
+  {
+    "number": 664,
+    "name": "Recognise a household from a seemingly less precise publication",
+    "uses": [
+      {
+        "objective": "rivernames.smallblock",
+        "action": "Keep the block stamp fixed when the river moves one receiving boat. See which single household stays identifiable even though the public mark lacks a name. Release a service address, a walk or a less precise mark.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "analytical",
+          "visual",
+          "social"
+        ],
+        "game": 184,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 18,
+    "name": "See which practices travel with a word",
+    "uses": [
+      {
+        "objective": "rivernames.postmark",
+        "action": "Send only the words Warm Mouth at both waters. A neighbour can recognize a gesture that a first-time visitor with exactly the same slip cannot place. Have the relief walker learn the sign at each landing.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "social",
+          "physical",
+          "linguistic"
+        ],
+        "game": 193,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 319,
+    "name": "Separate a signed route from the working chart",
+    "uses": [
+      {
+        "objective": "rivernames.quay",
+        "action": "Revisit the folded edition on the other quay. It carries the exact paths as signed. Rehearsing a shortcut at the home bench changes the working thread without editing the evidence in the existing packet.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "reading",
+          "analytical"
+        ],
+        "game": 77,
+        "story": 74
+      }
+    ]
+  }
+]

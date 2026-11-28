@@ -1,0 +1,738 @@
+[
+  {
+    "exhibit": "OBJ-DOOR-01",
+    "key": "harvard:centurybookfory00revogoog",
+    "institution": "Harvard University library copy, digitised in Internet Archive",
+    "accession": "centurybookfory00revogoog",
+    "source": "HIS-DOOR-01",
+    "objective": "fold.access.compare",
+    "title": "The Harvard copy of Brooks’s Century Book for Young Americans",
+    "date": "1894, publication of this copy’s edition",
+    "kind": "publication",
+    "shape": "dome",
+    "people": [
+      {
+        "name": "Elbridge Streeter Brooks",
+        "role": "Author",
+        "detail": "Brooks tells a story of young visitors learning about United States institutions. The book was issued under the auspices of the Sons of the American Revolution.",
+        "source": "HIS-DOOR-01"
+      }
+    ],
+    "scene": "A child has copied the dome onto a theatre ticket and cannot find the way in. The edition sends its visitors into the Capitol. The copy in your hand came from Harvard’s library.",
+    "handles": [
+      {
+        "name": "Turn to the dome",
+        "mark": "The illustration makes the building recognisable from a distance.",
+        "callback": "The child can recognise the building on a second street."
+      },
+      {
+        "name": "Open the visitors’ chapter",
+        "mark": "The text guides a particular party of young readers through an institution.",
+        "callback": "The actor has a party to portray, with someone responsible for the invitation."
+      },
+      {
+        "name": "Find the title credit",
+        "mark": "Brooks and the sponsoring society have different jobs on the title page.",
+        "callback": "The printer can give the author and the sponsor separate lines."
+      }
+    ],
+    "west": "The picture buyer recognises a dome. A picture cannot grant a visitor entry.",
+    "east": "The stage doorkeeper clears a space for an invited party. An audience member asks who was left off the list.",
+    "limit": "A published visit describes the path given to these readers. It cannot guarantee access for every visitor.",
+    "questions": {
+      "mark": "What could the child identify from the dome before opening the book?",
+      "person": "Who could tell me whether a visitor like this child could actually enter?",
+      "market": "A buyer recognises the picture. Which part of the visit still needs a witness?",
+      "theatre": "Whom would I put at the door if we staged Brooks’s invitation again?"
+    },
+    "areas": [
+      "HIS",
+      "HUM",
+      "POL"
+    ],
+    "subjects": [
+      "history",
+      "global-politics"
+    ]
+  },
+  {
+    "exhibit": "OBJ-DRAWER-01",
+    "key": "umich:calculdesprobab01bertgoog",
+    "institution": "University of Michigan library copy, digitised in Internet Archive",
+    "accession": "calculdesprobab01bertgoog",
+    "source": "HIS-DRAWER-01",
+    "objective": "drawer.cases.opened",
+    "title": "The Michigan copy of Bertrand’s Calcul des probabilités",
+    "date": "Paris, 1889",
+    "kind": "publication",
+    "shape": "drawers",
+    "people": [
+      {
+        "name": "Joseph Bertrand",
+        "role": "Author",
+        "detail": "His 1889 book sets out a problem about three boxes and the two drawers of each.",
+        "source": "HIS-DRAWER-01"
+      }
+    ],
+    "scene": "A fairground carpenter wants to build the medal boxes. The new announcer thinks the colour visible in one drawer tells her everything that is inside its box.",
+    "handles": [
+      {
+        "name": "Expose a single drawer",
+        "mark": "One gold face is visible. The other drawer in its box is still closed.",
+        "callback": "The announcer has seen one face and owes the crowd a look at the rule for opening it."
+      },
+      {
+        "name": "Set out the three pairs",
+        "mark": "Gold/gold, gold/silver and silver/silver are different pairs. A pair is one box.",
+        "callback": "The carpenter has the pairings needed to build the apparatus."
+      },
+      {
+        "name": "Trace a gold showing",
+        "mark": "One pair offers two ways of exposing gold. A mixed pair offers one.",
+        "callback": "The caller counts possible openings separately from possible boxes."
+      }
+    ],
+    "west": "The carpenter prices three pairs of drawers. The medal visible in one compartment cannot settle how it was selected.",
+    "east": "A child plays the announcer and thinks about which hand opened which drawer before calling the next colour.",
+    "limit": "The relative counts rely on the specified box and drawer selection rule.",
+    "questions": {
+      "mark": "What counted as one way of seeing gold when I opened a drawer?",
+      "person": "Would the keeper of the keys count the same cases as the person who saw the coin?",
+      "market": "Could a buyer use my count after changing how the drawer was chosen?",
+      "theatre": "How could two actors let the audience see the hidden choice in a draw?"
+    },
+    "areas": [
+      "MAT",
+      "TEC"
+    ],
+    "subjects": [
+      "math-ai",
+      "design-tech"
+    ]
+  },
+  {
+    "exhibit": "OBJ-NILE-SALLIER",
+    "key": "bm:ea10181-1",
+    "institution": "British Museum",
+    "accession": "EA10181,1",
+    "source": "HIS-NILE-02",
+    "objective": "nile.diplomacy",
+    "title": "The British Museum’s first sheet of Papyrus Sallier III",
+    "date": "1274–1186 BCE, museum exhibition range for the sheet",
+    "kind": "museum dating",
+    "shape": "papyrus-red",
+    "people": [
+      {
+        "name": "Ramesses II",
+        "role": "King depicted as the central actor in the Egyptian battle account",
+        "detail": "The Egyptian account celebrates the king’s actions at Qadesh. The named subject and the person who copied this sheet have different roles.",
+        "source": "HIS-NILE-01"
+      }
+    ],
+    "scene": "Two actors want the part of the victor. The Egyptian poem of the battle at Qadesh gives a royal voice a magnificent entrance. A peace treaty from a different occasion lies on another stand.",
+    "handles": [
+      {
+        "name": "Raise the battle passage",
+        "mark": "The royal account dramatises the king’s performance at Qadesh.",
+        "callback": "The first actor can give the boast a speaker."
+      },
+      {
+        "name": "Hang the sheet number",
+        "mark": "EA10181,1 identifies this British Museum sheet from the papyrus.",
+        "callback": "The attendant can call for a specific sheet."
+      },
+      {
+        "name": "Leave a gap for diplomacy",
+        "mark": "A military narrative and a later diplomatic agreement answer different questions.",
+        "callback": "The company has somewhere to put the separate treaty."
+      }
+    ],
+    "west": "The delivery clerk can sign for a British Museum sheet. The crate does not also contain a treaty.",
+    "east": "An actor speaks in a king’s voice. Another waits with a different account before the curtain comes down.",
+    "limit": "The royal poem alone cannot settle which side controlled the outcome.",
+    "questions": {
+      "mark": "Where on the museum sheet could another reader check what I pointed out?",
+      "person": "Whose account would I need before using this scene to describe both armies?",
+      "market": "Which part of the battle claim can Bew trace to this numbered sheet?",
+      "theatre": "How would the audience know when a performer had moved from the battle account to a later agreement?"
+    },
+    "areas": [
+      "HIS",
+      "LAN"
+    ],
+    "subjects": [
+      "history",
+      "lang-lit"
+    ]
+  },
+  {
+    "exhibit": "OBJ-NILE-STRIKE",
+    "key": "museoegizio:cat.1880",
+    "institution": "Museo Egizio, Turin",
+    "accession": "Cat. 1880",
+    "source": "HIS-NILE-04",
+    "objective": "nile.witness.compare",
+    "title": "The Turin Strike Papyrus in Museo Egizio, Cat. 1880",
+    "date": "Year 29 of Ramesses III, Twentieth Dynasty",
+    "kind": "regnal year recorded",
+    "shape": "papyrus-dark",
+    "people": [
+      {
+        "name": "Amunnakht",
+        "role": "Scribe identified by the museum",
+        "detail": "Museo Egizio credits the administrative account of the work stoppages to Amunnakht.",
+        "source": "HIS-NILE-04"
+      }
+    ],
+    "scene": "The grain counter says the grain arrived. A worker is still outside. Amunnakht’s papyrus records the sequence of stops, a delivery and renewed protest; the rest of the roll carries other records.",
+    "handles": [
+      {
+        "name": "Open at the first stop",
+        "mark": "The workers left their jobs after a ration failed to arrive.",
+        "callback": "One scene can begin before any grain is delivered."
+      },
+      {
+        "name": "Mark the renewed protest",
+        "mark": "Payment is followed by another stoppage. A delivery and a settlement are different events.",
+        "callback": "A second caller is needed after the payment scene."
+      },
+      {
+        "name": "Mark the change of entry",
+        "mark": "Other business occupies the same papyrus, including attendance and grain records.",
+        "callback": "The clerk can separate entries held by the same material support."
+      }
+    ],
+    "west": "The market puts the delivery on the grain board. A worker can still ask what happened next.",
+    "east": "The troupe brings the worker back after the ration scene. The part ends at a different moment than the clerk expected.",
+    "limit": "A record of payment addresses one transaction. It cannot speak for every worker.",
+    "questions": {
+      "mark": "Which two entries let me recognise a work stoppage and its renewal?",
+      "person": "Who appears in the record through a scribe’s wording?",
+      "market": "What would the price clerk need before working out how long a household went without its ration?",
+      "theatre": "Where would I leave a pause if the actor could speak only when the record supplied a voice?"
+    },
+    "areas": [
+      "HIS",
+      "HUM"
+    ],
+    "subjects": [
+      "history",
+      "economics"
+    ]
+  },
+  {
+    "exhibit": "OBJ-PRES-BINAK-X104841",
+    "key": "mv:x104841",
+    "institution": "Museums Victoria",
+    "accession": "X 104841",
+    "source": "HIS-BINAK-01",
+    "objective": "preserved.binak.sources",
+    "title": "Mikaela Rose Cottingham’s binak, Museums Victoria X 104841",
+    "date": "2011 in Date Made; 2012 in Date Produced and the heading",
+    "kind": "two catalogue fields",
+    "shape": "shallow-basket",
+    "people": [
+      {
+        "name": "Mikaela Rose Cottingham",
+        "role": "Wurundjeri maker",
+        "detail": "The maker describes learning to coil weave at a project workshop and trying other forms afterwards. The catalogue names her and the particular basket.",
+        "source": "HIS-BINAK-01"
+      }
+    ],
+    "scene": "A child wants to give the artist two birthdays because two dates appear beside the same shallow basket. The file lets them trace the words beside each year. The maker also tells how she learned.",
+    "handles": [
+      {
+        "name": "Lift the 2011 tab",
+        "mark": "Date Made records 2011 for this basket.",
+        "callback": "The ticket has a named date field as well as a year."
+      },
+      {
+        "name": "Lift the 2012 tab",
+        "mark": "The heading and Date Produced use 2012 for this same record.",
+        "callback": "A second label keeps its wording and year together."
+      },
+      {
+        "name": "Leave room for the maker",
+        "mark": "Cottingham describes trying another style at home after learning at a workshop.",
+        "callback": "A listener has a named contemporary maker and a route to her public account."
+      }
+    ],
+    "west": "Both years can travel with one basket. Keeping them on separate lines gives the next reader a way to investigate.",
+    "east": "The host introduces a particular Wurundjeri maker. The artist’s own public account is available to the next listener.",
+    "limit": "The museum fields describe this object. Its maker’s account has its own scope.",
+    "questions": {
+      "mark": "What did each of the two dates let me say about this binak?",
+      "person": "Which description of the basket would I want to check with Mikaela Rose Cottingham?",
+      "market": "Which date belongs on the counter receipt, and whose work might that date hide?",
+      "theatre": "How would I credit the maker before inviting the audience to look closely?"
+    },
+    "areas": [
+      "HIS",
+      "ART",
+      "IND"
+    ],
+    "subjects": [
+      "anthropology",
+      "visual-arts"
+    ]
+  },
+  {
+    "exhibit": "OBJ-DEPART-PERE",
+    "key": "ngaitahu:ms7-002",
+    "institution": "Auckland War Memorial Museum collection, described by the Ngāi Tahu Archive",
+    "accession": "Ngāi Tahu Archive MS7-002",
+    "source": "HIS-DEPART-04",
+    "objective": "departure.archive.checked",
+    "title": "The southern bays map recorded from Hoani Te Hau Pere and Hone Tututaua Pere",
+    "date": "25 November 1908, Kaiapoi meeting",
+    "kind": "recording occasion",
+    "shape": "bay-map",
+    "people": [
+      {
+        "name": "Hoani Te Hau Pere",
+        "role": "Place-name knowledge holder",
+        "detail": "Kā Huru Manu identifies Hoani and his father as sources for southern bays names and meanings.",
+        "source": "HIS-DEPART-04"
+      },
+      {
+        "name": "Hone Tututaua Pere",
+        "role": "Place-name knowledge holder",
+        "detail": "Hone supplied information with his son at Kaiapoi.",
+        "source": "HIS-DEPART-04"
+      },
+      {
+        "name": "Taare Parata",
+        "role": "Recorder",
+        "detail": "Parata took the descriptions from the two men and passed the map to Johannes Andersen.",
+        "source": "HIS-DEPART-04"
+      }
+    ],
+    "scene": "A map comes to the fair under the name of the man whose papers preserved it. Two people supplied the place knowledge, and another recorded their words. The apprentice has three name tabs and only one rail.",
+    "handles": [
+      {
+        "name": "Begin with father and son",
+        "mark": "Hone Tututaua Pere and Hoani Te Hau Pere supplied the names and meanings to Parata at Kaiapoi.",
+        "callback": "The announcer can name both knowledge holders."
+      },
+      {
+        "name": "Follow Parata’s pencil",
+        "mark": "Taare Parata recorded the information and shared it with Johannes Andersen.",
+        "callback": "The carrier and recorder can be credited separately from the two sources."
+      },
+      {
+        "name": "Unfold the later catalogue",
+        "mark": "The map was found among Andersen’s papers. The Ngāi Tahu account names the contributors.",
+        "callback": "The custodian’s file leads the next courier back to the public account."
+      }
+    ],
+    "west": "The delivery goes to the archive. The location of a map today cannot decide who knew those places.",
+    "east": "The announcer pauses between the knowledge holders and the recorder. Those different jobs are audible from the back.",
+    "limit": "These names belong to this particular account of the southern bays. The map supplies no permission to rename places.",
+    "questions": {
+      "mark": "Which pencil mark belongs to the act of recording a name?",
+      "person": "What did I learn from keeping the two tellers and the recorder in the same account?",
+      "market": "If a buyer asks who drew the line and who supplied the names, where would I point?",
+      "theatre": "How could three parts in a performance keep Hoani Te Hau Pere, Hone Tututaua Pere and Taare Parata audible?"
+    },
+    "areas": [
+      "HIS",
+      "HUM",
+      "IND",
+      "LAN"
+    ],
+    "subjects": [
+      "geography",
+      "anthropology"
+    ]
+  },
+  {
+    "exhibit": "OBJ-PLATE-FOUMBAN",
+    "key": "aprb:eap051-1-1-2-2",
+    "institution": "Archives du Palais des Rois Bamoun, Foumban; British Library EAP catalogue",
+    "accession": "EAP051/1/1/2/2",
+    "source": "HIS-PLATE-01",
+    "objective": "plate.metal.checked",
+    "title": "Njoya and his scribes’ signed leaf in the Foumban palace archive",
+    "date": "18 May 1922, date signed",
+    "kind": "signature",
+    "shape": "one-leaf",
+    "people": [
+      {
+        "name": "King Njoya",
+        "role": "Signatory",
+        "detail": "The archive describes his signature on an agreement with his scribes. It catalogues one leaf written on two sides.",
+        "source": "HIS-PLATE-01"
+      }
+    ],
+    "scene": "A carrier packs two boards for the two pages of the agreement. The local keeper has one leaf to hand over. Somewhere between the palace and the picture register, a second piece of paper has appeared.",
+    "handles": [
+      {
+        "name": "Turn the single leaf",
+        "mark": "Both written sides belong to one physical leaf.",
+        "callback": "The carrier needs a single support with a turning hinge."
+      },
+      {
+        "name": "Follow the signature",
+        "mark": "The archive identifies Njoya’s signature, in two pencil colours, on the dated agreement.",
+        "callback": "The listener can distinguish the signed date from the making of the digital record."
+      },
+      {
+        "name": "Look up the holding place",
+        "mark": "The palace archive holds the original. The EAP record describes the digital images.",
+        "callback": "The next dispatch has separate destinations for the leaf and for an image request."
+      }
+    ],
+    "west": "The carrier packs one hinged mount and a separate address for the digital record.",
+    "east": "The reader turns the sheet in the air instead of calling a second actor with a second document.",
+    "limit": "The catalogue’s image count is not a count of original leaves.",
+    "questions": {
+      "mark": "Which part of the account can I follow back to this single archived leaf?",
+      "person": "Whose labour might disappear if the signature did all the talking?",
+      "market": "How could Bew distinguish the person who signed the leaf from the office that keeps it?",
+      "theatre": "Whose name would I give the stage caller alongside the royal one?"
+    },
+    "areas": [
+      "HIS",
+      "LAN",
+      "POL"
+    ],
+    "subjects": [
+      "history",
+      "global-politics",
+      "lang-langlit"
+    ]
+  },
+  {
+    "exhibit": "OBJ-PLATE-BETE",
+    "key": "moma:104.2019.10",
+    "institution": "Museum of Modern Art, New York",
+    "accession": "104.2019.10",
+    "source": "HIS-PLATE-04",
+    "objective": "plate.council.checked",
+    "title": "Frédéric Bruly Bouabré’s «BOU» «10» from Alphabet Bété",
+    "date": "1990, date of this individual drawing",
+    "kind": "creation",
+    "shape": "number-board",
+    "people": [
+      {
+        "name": "Frédéric Bruly Bouabré",
+        "role": "Artist",
+        "detail": "MoMA records this individual work on board within his Alphabet Bété series.",
+        "source": "HIS-PLATE-04"
+      }
+    ],
+    "scene": "There are places in the alphabet procession for a whole series. A small drawing has arrived alone. A runner wants to cross out the entry for the other works because this one can fit in a pocket.",
+    "handles": [
+      {
+        "name": "Mount the single board",
+        "mark": "MoMA registers this 1990 drawing as 104.2019.10.",
+        "callback": "The registrar can identify exactly which drawing arrived."
+      },
+      {
+        "name": "Keep the series rail",
+        "mark": "Alphabet Bété is the setting for this drawing among other works.",
+        "callback": "The host can name the series without claiming to hold every member."
+      },
+      {
+        "name": "Turn the materials tab",
+        "mark": "Coloured pencil, pencil and ballpoint pen share the same board.",
+        "callback": "A drawing made with several tools still travels as one work."
+      }
+    ],
+    "west": "One board fits the parcel; the rest of the series keeps its own place in the catalogue.",
+    "east": "The herald introduces Bouabré’s particular drawing and leaves space for the other works.",
+    "limit": "One drawing cannot stand in for the entirety of a language, its speakers or the artist’s series.",
+    "questions": {
+      "mark": "What does the mount around this one board hide about its neighbours?",
+      "person": "When did I need Bouabré’s larger series to interpret a single sign?",
+      "market": "What would my receipt need to identify the board among the works in the series?",
+      "theatre": "How did seeing the single board first change what the audience expected from the whole series?"
+    },
+    "areas": [
+      "ART",
+      "LAN"
+    ],
+    "subjects": [
+      "visual-arts",
+      "lang-langlit"
+    ]
+  },
+  {
+    "exhibit": "OBJ-LINTEL-SEJARAH",
+    "key": "nlb:b20025340e",
+    "institution": "National Library, Singapore",
+    "accession": "B20025340E",
+    "source": "HIS-LINTEL-01",
+    "objective": "lintel.cold.checked",
+    "title": "Shellabear’s romanised Sejarah Malayu, National Library of Singapore B20025340E",
+    "date": "Singapore, 1898",
+    "kind": "publication",
+    "shape": "roman-book",
+    "people": [
+      {
+        "name": "William Girdlestone Shellabear",
+        "role": "Editor of this romanised edition",
+        "detail": "The American Mission Press published his romanised Malay edition in Singapore. The library distinguishes the earlier Jawi edition and other people’s translations.",
+        "source": "HIS-LINTEL-01"
+      }
+    ],
+    "scene": "The troupe needs a Malay page. One actor has seen the English title and assumes that every page in the case must be in English. Someone at the back recognises the script.",
+    "handles": [
+      {
+        "name": "Find the accession",
+        "mark": "B20025340E leads to the National Library’s particular copy of the 1898 edition.",
+        "callback": "The library request names one copy."
+      },
+      {
+        "name": "Compare language and script",
+        "mark": "The book is in Malay, printed in roman script. A change of script and a change of language are distinct.",
+        "callback": "A reader can say which part of the page they can pronounce."
+      },
+      {
+        "name": "Follow the printing credit",
+        "mark": "American Mission Press printed this edition in Singapore. A separate Jawi edition preceded it.",
+        "callback": "The printer and the earlier textual tradition have separate places in the introduction."
+      }
+    ],
+    "west": "The correct copy reaches the counter. A reader still has to decide what language and script they can read.",
+    "east": "Two actors can read the same language in different scripts. Neither is given a translation credit for changing the lettering.",
+    "limit": "This edition has a long textual history. Its editor cannot stand in for every narrator or translator.",
+    "questions": {
+      "mark": "What did the printed script let me infer, and what else would I need to identify the language?",
+      "person": "Whose work stands between this catalogued edition and a reader today?",
+      "market": "Which detail would let another buyer find this exact Singapore copy?",
+      "theatre": "How might hearing a passage change the first impression made by its printed letters?"
+    },
+    "areas": [
+      "HIS",
+      "LAN"
+    ],
+    "subjects": [
+      "history",
+      "lang-b"
+    ]
+  },
+  {
+    "exhibit": "OBJ-SEAM-GARJJAT",
+    "key": "modernamuseet:mom-2024-133",
+    "institution": "Moderna Museet, Stockholm",
+    "accession": "MOM/2024/133",
+    "source": "HIS-SEAM-02",
+    "objective": "seam.cold.checked",
+    "title": "Britta Marakatt-Labba’s 2024 hand-coloured Garjját print at Moderna Museet",
+    "date": "2024, date of this print",
+    "kind": "production of this impression",
+    "shape": "long-print",
+    "people": [
+      {
+        "name": "Britta Marakatt-Labba",
+        "role": "Artist",
+        "detail": "Moderna Museet credits her hand-coloured print. A separate record documents the earlier embroidery with the same title.",
+        "source": "HIS-SEAM-02"
+      }
+    ],
+    "scene": "The seamstress brought a needle for a work that arrived on paper. The title is familiar from a 1981 embroidery. The museum’s impression has a material, number and date of its own.",
+    "handles": [
+      {
+        "name": "Hold the paper mount",
+        "mark": "The 2024 work is a hand-coloured screenprint on paper.",
+        "callback": "The porter exchanges the textile roll for a flat mount."
+      },
+      {
+        "name": "Follow the two dates",
+        "mark": "The earlier embroidery and the 2024 print share a title and artist. They have different material histories.",
+        "callback": "The caller hangs two dates in the order in which the works were made."
+      },
+      {
+        "name": "Check the inventory",
+        "mark": "MOM/2024/133 identifies the Moderna Museet print.",
+        "callback": "The registrar can trace the museum holding without assigning it to the earlier embroidery."
+      }
+    ],
+    "west": "A flat mount reaches the counter. The same title could have sent the earlier work to the wrong handler.",
+    "east": "The dresser puts down the needle. The title card credits Marakatt-Labba while the materials card belongs to this particular print.",
+    "limit": "A shared title does not make two works interchangeable. This drawn case depicts the mount, leaving the artist’s composition to the source.",
+    "questions": {
+      "mark": "What on the mount helped me distinguish the print from the earlier embroidery?",
+      "person": "Which question about Garjját would I reserve for the artist?",
+      "market": "If a second work had the same title, what detail would keep this purchase traceable?",
+      "theatre": "What could a caller say about the two dates before showing the audience the image?"
+    },
+    "areas": [
+      "ART",
+      "HIS",
+      "IND"
+    ],
+    "subjects": [
+      "visual-arts",
+      "history"
+    ]
+  },
+  {
+    "exhibit": "OBJ-MET-ASTROLABE",
+    "key": "oxfordhsm:49687",
+    "institution": "History of Science Museum, University of Oxford",
+    "accession": "49687",
+    "source": "HIS-MET-EX-01",
+    "objective": "metal.exhibit.scope",
+    "title": "Musa’s spherical astrolabe, Oxford inventory 49687",
+    "date": "1480/1 CE",
+    "kind": "instrument date",
+    "shape": "rete",
+    "people": [
+      {
+        "name": "Musa",
+        "role": "Named instrument maker",
+        "detail": "The museum attributes the spherical astrolabe to Musa. It describes a skeletal rete with nineteen pointers for bright stars.",
+        "source": "HIS-MET-EX-01"
+      }
+    ],
+    "scene": "A lamplighter can turn the sky in one hand. An apprentice watching the instrument is about to tell the waiting crowd that she saw the sky itself turn.",
+    "handles": [
+      {
+        "name": "Turn the outer rete",
+        "mark": "One full turn of its stellar framework models the passage of a day.",
+        "callback": "The actor can keep the day turning while the inner sphere stays visible."
+      },
+      {
+        "name": "Light the star pointers",
+        "mark": "Nineteen pointers on the rete stand for selected bright stars.",
+        "callback": "The next watcher has a set of pointers, not an inventory of the entire sky."
+      },
+      {
+        "name": "Follow the ecliptic",
+        "mark": "The marked circle locates the Sun on its annual path within the model.",
+        "callback": "The keeper has separated a yearly position from the daily turn."
+      }
+    ],
+    "west": "The timekeeper can take an instrument reading. Someone still has to observe the actual sky to test a prediction.",
+    "east": "A performer turns the framework for the audience. The narrator names Musa’s model before anyone mistakes a hand movement for a celestial event.",
+    "limit": "A model can calculate positions within a system. Its operation alone cannot establish the whole system as physically true.",
+    "questions": {
+      "mark": "Which part moved when I turned the rete, and which part stayed still?",
+      "person": "Where did an instrument-maker’s decision enter my reading of the sky?",
+      "market": "What would a buyer need to check before using a named star to find a direction?",
+      "theatre": "How could an actor show how a pointer works without pretending it is the star itself?"
+    },
+    "areas": [
+      "NAT",
+      "MAT",
+      "TEC"
+    ],
+    "subjects": [
+      "physics",
+      "math-aa"
+    ]
+  },
+  {
+    "exhibit": "OBJ-SEA-RRA-00001826",
+    "key": "anmm:00001826",
+    "institution": "Australian National Maritime Museum",
+    "accession": "00001826",
+    "source": "HIS-CANOE-01",
+    "objective": "sea.name.sources",
+    "title": "Rra-Kalwanyimara at the Australian National Maritime Museum",
+    "date": "1987 commission, 1988 museum object date",
+    "kind": "commission and object date",
+    "shape": "dugout",
+    "people": [
+      {
+        "name": "Annie Karrakayn",
+        "role": "Named voice in the museum account",
+        "detail": "The museum attributes an explanation of the canoe’s name and Country to Annie Karrakayn. The public account identifies the canoe as Yanyuwa.",
+        "source": "HIS-CANOE-01"
+      }
+    ],
+    "scene": "The boat is already named when the harbour clerk rolls out a naming board. The museum gives a name connected to Country, a commission in 1987 and an object date of 1988.",
+    "handles": [
+      {
+        "name": "Keep the vessel name",
+        "mark": "The record names this canoe Rra-Kalwanyimara. Annie Karrakayn explains the connection with the Country it comes from.",
+        "callback": "The caller can use the vessel’s own name."
+      },
+      {
+        "name": "Put the commission first",
+        "mark": "The museum commissioned the canoe in 1987. It dates the object to 1988.",
+        "callback": "The carrier has two dates for different events."
+      },
+      {
+        "name": "Keep the object number",
+        "mark": "00001826 identifies this particular dugout. Its number and its name do different work.",
+        "callback": "The receipt leads back to the named Yanyuwa canoe and the museum account."
+      }
+    ],
+    "west": "The name is already on the boat. The clerk adds the museum number to the receipt without giving the vessel another name.",
+    "east": "The host credits Karrakayn’s public explanation. The audience can follow that account without being asked to perform a ceremony.",
+    "limit": "This public record speaks about a particular named vessel and community. It supplies no general rule for naming other peoples’ vessels.",
+    "questions": {
+      "mark": "Which detail on the receipt keeps this named vessel distinct from another canoe?",
+      "person": "Who could speak about the commission and who could speak about its present display?",
+      "market": "Which part of the vessel’s history travels in the catalogue number alone?",
+      "theatre": "What responsibility comes with introducing Rra-Kalwanyimara to an audience unfamiliar with its name?"
+    },
+    "areas": [
+      "HIS",
+      "IND"
+    ],
+    "subjects": [
+      "anthropology",
+      "history"
+    ]
+  },
+  {
+    "exhibit": "OBJ-BASKET-ZWL-100T",
+    "key": "nmah:2015.0071.1",
+    "institution": "National Museum of American History, Smithsonian Institution",
+    "accession": "2015.0071.1",
+    "source": "HIS-BASKET-01",
+    "objective": "market.basket.compare",
+    "title": "Zimbabwe’s 100-trillion-dollar banknote AA2986931 at the Smithsonian",
+    "date": "2008, printed date",
+    "kind": "issue represented by this note",
+    "shape": "banknote",
+    "people": [
+      {
+        "name": "G. Gono",
+        "role": "Governor named on the banknote",
+        "detail": "The museum transcribes the printed governor’s name and the Reserve Bank promise on this particular note.",
+        "source": "HIS-BASKET-01"
+      }
+    ],
+    "scene": "A family needs supper. The treasurer can offer the most zeros anyone here has ever seen. On the note, a serial number, a denomination and an issuer’s promise answer three different questions.",
+    "handles": [
+      {
+        "name": "Light the serial number",
+        "mark": "AA2986931 identifies this printed note within its issue.",
+        "callback": "The courier can sign for one piece of currency."
+      },
+      {
+        "name": "Count the denomination",
+        "mark": "The face value is one hundred trillion Zimbabwean dollars. A price for tonight’s meal would need a separate source.",
+        "callback": "The stallholder leaves a blank for the price and date."
+      },
+      {
+        "name": "Follow the printed promise",
+        "mark": "The Reserve Bank of Zimbabwe and governor’s name belong to the printed issue; the museum number belongs to subsequent custody.",
+        "callback": "A visitor can follow the issuer and the museum independently."
+      }
+    ],
+    "west": "The price list stays open even after the receipt names an exact note. The family can ask what could actually be bought.",
+    "east": "The treasurer can announce the denomination in one breath or read the issuer’s promise first. Neither line feeds the audience.",
+    "limit": "A very large nominal amount cannot establish a household’s purchasing power at a particular place and time.",
+    "questions": {
+      "mark": "Which marks identify this particular note, and which were printed on many notes?",
+      "person": "Whose account would I need to establish what someone could actually buy with it?",
+      "market": "What would I have to know on the day of purchase before using the face value to price an item?",
+      "theatre": "How would I stage an exchange so the audience could see the distance between a promise and a price?"
+    },
+    "areas": [
+      "HUM",
+      "HIS",
+      "POL"
+    ],
+    "subjects": [
+      "economics",
+      "history"
+    ]
+  }
+]

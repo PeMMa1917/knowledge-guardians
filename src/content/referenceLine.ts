@@ -160,6 +160,7 @@ export const referenceLineContent = {
     id: entry.source, title: `${entry.institution}, catalogue ${entry.accession}`,
     url: entry.kind === 'fossil' || entry.kind === 'plant' ? entry.exactSource : entry.catalogueUrl,
     locator: 'Exact collection record, item dates, description and image reference',
+    ...(entry.key==='cma:1955.320'?{mla:{kind:'artwork' as const,title:'Poivre d’inde',author:'Merian, Maria Sibylla',workDate:'1771',container:'The Cleveland Museum of Art'}}:{}),
     supports: entry.observation, accessed: '2026-11-26',
   })),
   exhibits: REFERENCE_CASES.map((entry) => ({

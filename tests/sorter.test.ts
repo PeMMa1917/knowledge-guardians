@@ -22,17 +22,29 @@ describe('The Brass Sorter (technology: learning from examples)', () => {
     expect(r.right).toBeLessThan(r.total);
     expect(r.farmsHurt.sort()).toEqual(['hana', 'hill']);
   });
-  it('training needs the diagnosis first, then a representative set, then the reflection', () => {
+  it('training needs the diagnosis first, then a representative set, then a delivery', () => {
     const d = new Driver();
-    expect(() => d.run({ type: 'PuzzleTrain', puzzle: P, examples: ['c-r1'] })).toThrow(/why/);
-    d.run({ type: 'PuzzleDiagnose', puzzle: P, index: rec.diagnose.findIndex((x) => x.honest) });
+    expect(() => d.run({ type: 'PuzzleTrain', puzzle: P, examples: ['c-r1'] })).toThrow(/Inspect/);
+    d.run({ type: 'PuzzleDiagnose', puzzle: P, index: 0 });
     d.run({ type: 'PuzzleTrain', puzzle: P, examples: ['c-r1', 'c-r5', 'c-r3', 'c-r4'] });
     expect(d.s.flags[`puzzle.${P}.trained`]).toBeUndefined();
     expect(() => d.run({ type: 'PuzzleTrain', puzzle: P, examples: ['c-r1', 'c-r2', 'c-r3', 'c-r4', 'c-r5', 'c-g1', 'c-g2'] })).toThrow(/only 6/);
     d.run({ type: 'PuzzleTrain', puzzle: P, examples: ['c-r1', 'c-r3', 'c-g1', 'c-g2', 'c-y1', 'c-y2'] });
     expect(d.s.flags[`puzzle.${P}.trained`]).toBeTypeOf('string');
-    d.run({ type: 'PuzzleReport', puzzle: P, index: rec.reflect.findIndex((x) => x.honest) });
+    d.run({ type: 'PuzzleReport', puzzle: P, index: 0 });
     expect(d.s.flags[`puzzle.${P}.done`]).toBe(true);
-    expect(conceptXP(d.p, pack).power).toBeGreaterThan(0);
+    const xp = conceptXP(d.p, pack).power;
+    expect(xp).toBeGreaterThan(0);
+    for (let index = 0; index < rec.handoffs.length; index++) {
+      d.run({type: 'PuzzleReport', puzzle: P, index});
+      expect(d.s.flags['puzzle.brass-sorter.handoff']).toBe(index);
+      expect(conceptXP(d.p, pack).power).toBe(xp);
+    }
+  });
+  it.each(rec.inspections.map((_, i) => i))('opens the tray after inspection %i without a graded answer', (index) => {
+    const d = new Driver();
+    d.run({type: 'PuzzleDiagnose', puzzle: P, index});
+    expect(d.s.flags['puzzle.brass-sorter.diagnosed']).toBe(true);
+    expect(d.s.adventureDiary.entries.some((e) => e.text.includes(rec.inspections[index].result))).toBe(true);
   });
 });

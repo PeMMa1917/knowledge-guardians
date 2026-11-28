@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { skyAt } from '../src/app/daylight';
+import { chapterLights, chapterTint, skyAt } from '../src/app/daylight';
 import { CAPTIONS, CaptionLog, captionFor } from '../src/app/captions';
 // @ts-ignore
 import { readFileSync } from 'node:fs';
@@ -28,6 +28,19 @@ describe('sound captions', () => {
 
 
 describe('day and evening (town maps)', () => {
+  it('gives each of the sixteen worlds its own light while keeping day and night distinguishable', () => {
+    const ids = Array.from({length:16}, (_, i) => 'WORLD-' + String(i + 1).padStart(2, '0'));
+    expect(Object.keys(chapterLights)).toEqual(ids);
+    for (const phase of [0, .35, .68, .8]) {
+      const sky = skyAt(phase).tint;
+      expect(new Set(ids.map(world => chapterTint(world, sky))).size).toBe(16);
+      expect(chapterTint('unknown', sky)).toBe(sky);
+    }
+    for (const world of ids) {
+      const day = chapterTint(world, skyAt(.35).tint), night = chapterTint(world, skyAt(.8).tint);
+      expect((day >> 16) - (night >> 16)).toBeGreaterThan(65);
+    }
+  });
   it('goes from a warm morning to a dark night and back', () => {
     expect(skyAt(0).tint).toBe(0xffe8c4);
     expect(skyAt(0.8).name).toBe('night');

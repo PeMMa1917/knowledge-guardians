@@ -1,0 +1,61 @@
+.petal-bench {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.65em;
+}
+.petal-bench p,
+.petal-bench h3 {
+  margin-block: 0.15em;
+}
+.petal-bench button[aria-pressed='true'] {
+  outline: 2px solid var(--gold);
+  outline-offset: -3px;
+}
+.petal-pair,
+.petal-shelf {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65em;
+}
+.petal-specimen,
+.petal-shelf span {
+  padding: 0.6em;
+  border: 2px solid #77938a;
+  border-radius: 0.4em;
+  overflow-wrap: anywhere;
+}
+.petal-crop {
+  max-width: 9em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0.35em 0;
+  gap: 1px;
+}
+.petal-crop span {
+  text-align: center;
+  line-height: 1.35;
+  border: 1px solid currentColor;
+}
+.petal-crop [data-tone='day'] {
+  background: #f4cc56;
+  color: #512e1b;
+}
+.petal-crop [data-tone='low'],
+.petal-crop [data-tone='high'][data-invert='true'] {
+  background: #382c59;
+  color: #efdeff;
+}
+.petal-crop [data-tone='high'],
+.petal-crop [data-tone='low'][data-invert='true'] {
+  background: #a1dcca;
+  color: #102c36;
+}
+.petal-crop [data-tone='middle'] {
+  background: #627fa2;
+  color: white;
+}
+@media (max-width: 440px) {
+  .petal-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

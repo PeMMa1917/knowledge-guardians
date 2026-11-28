@@ -3,6 +3,7 @@
   {
    "id": "KG-CH1-EE1",
    "title": "The Inventor's Share",
+   "knowledgeQuestion": "What can a patent, a surviving pen and a missing account each tell us about who deserves credit?",
    "world": "WORLD-01",
    "objectives": [
     {
@@ -270,6 +271,7 @@
   {
    "id": "KG-CH1-EE2",
    "title": "Who Holds the Pen?",
+   "knowledgeQuestion": "Whose work can a ledger establish, and whose work becomes visible when someone sings the same day back?",
    "world": "WORLD-02",
    "objectives": [
     {

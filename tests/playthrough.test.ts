@@ -504,7 +504,11 @@ describe('dialogue graph', () => {
         entries.push(neighbourInvitation(person.id, d.s.flags)!.node);
       }
     }
-    const stack = [...pack.characters.flatMap((c) => c.talk.map((t) => t.node)), ...pack.events.map((e) => e.node),
+    const localGreetings = Object.values(MAPS).flatMap(map => map.npcs.flatMap(npc => {
+      const node = pack.characters.find(c => c.id === npc.id)?.localGreeting?.[map.id];
+      return node ? [node] : [];
+    }));
+    const stack = [...localGreetings, ...pack.characters.flatMap((c) => c.talk.map((t) => t.node)), ...pack.events.map((e) => e.node),
       ...(pack.keepsakeTalks ?? []).map((t) => t.node), ...entries, ...propScenes];
     while (stack.length) {
       const id = stack.pop()!;

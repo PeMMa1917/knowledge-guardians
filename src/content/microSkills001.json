@@ -60,6 +60,21 @@
     "name": "Notice what a filing rule leaves out",
     "uses": [
       {
+        "objective": "origin-tour.archive.pack",
+        "action": "Move the one school model slip among School gifts, Pens and Models. Send two different people to look. A cross-reference can reach the original while an empty drawer can hide it.",
+        "styles": [
+          "strategist",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "spatial",
+          "social"
+        ],
+        "game": 19,
+        "story": 119
+      },
+      {
         "objective": "nexus.ribbon.checked",
         "action": "Put a patent grant and an object date on one dated ribbon or separate rails, then hear what the first reader assumes.",
         "styles": [

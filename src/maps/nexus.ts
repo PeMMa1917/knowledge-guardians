@@ -291,6 +291,13 @@ export const NEXUS: MapDef = {
       x: 16, y: 14, w: 1, h: 1, label: 'the reading shelf', walkThrough: true, art,
       visibleIf: { all: [{ flag: 'nexus.ferry.started', eq: true }, condition] },
     })),
+    { id: 'hatch-rail-reply', kind: 'scene', node: 'hatch.reply.rail', x: 19, y: 15, w: 1, h: 1, walkThrough: true,
+      label: 'The inside-out glove on the public rail', art: 'hatch.sleeve', visibleIf: { flag: 'hatch.custody', eq: 'rail' } },
+    { id: 'hatch-desk-reply', kind: 'scene', node: 'hatch.reply.desk', x: 8, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'Kip’s low stool at the witness desk', art: 'hatch.sleeve', visibleIf: { flag: 'hatch.custody', eq: 'desk' } },
+    { id: 'hatch-readers', kind: 'fieldgame', game: 'hatch-readers', x: 33, y: 14, w: 1, h: 1, walkThrough: true,
+      art: 'hatch.sleeve', label: 'Elsbet’s sleeve beside the installed Nile packet',
+      visibleIf: { all: [{ flagSet: 'hatch.edition' }, { flag: 'nile.returned', eq: true }] } },
     { id: 'nile-stone-case', kind: 'exhibit', exhibit: 'OBJ-NILE-STONE', x: 31, y: 17, w: 1, h: 1, walkThrough: true, label: 'the Singapore Stone fragment', art: 'nile.stone', visibleIf: { flag: 'nile.returned', eq: true } },
     { id: 'nile-badang-case', kind: 'exhibit', exhibit: 'OBJ-NILE-BADANG', x: 34, y: 17, w: 1, h: 1, walkThrough: true, label: 'the Badang account', art: 'nile.scroll', visibleIf: { flag: 'nile.returned', eq: true } },
     { id: 'nile-stone-label', kind: 'label', kit: 'nile-stone', x: 36, y: 17, w: 1, h: 1, walkThrough: true, label: 'the river records label stand', art: 'label-stand', visibleIf: { flag: 'nile.returned', eq: true } },
@@ -470,9 +477,9 @@ export const NEXUS: MapDef = {
     { id: 'alcove-firsts', kind: 'alcove', alcove: 'firsts', x: 27, y: 14, w: 1, h: 1, label: 'the Alcove of Firsts (exhibition)', art: 'alcove', visibleIf: { objective: 'm01.o6.label' } },
     { id: 'title-lock', kind: 'lock', lock: 'inventor', x: 37, y: 13, w: 1, h: 1, label: 'the Title Lock', art: 'title-lock', visibleIf: { objective: 'm01.o6.label' } },
     { id: 'claim-board', kind: 'label', kit: 'ee.inventor', x: 33, y: 16, w: 1, h: 1, label: "Tull's claim board", art: 'label-stand', visibleIf: { objective: 'ee1.o3.weigh' } },
-    // Lorelings (spec 36.1): three places to watch the Glimmermoth. They go when it is a friend.
+    // Lorelings (spec 36.1): three places to watch the Glimmermoth. Each stand can become its resting place, including on a return visit.
     ...([['lamp', 7, 8, 'the glimmer by the patent drawing'], ['desk', 4, 13, 'the glimmer at the reading table'], ['case', 22, 14, 'the glimmer by the glass cabinet']] as const)
-      .map(([sg, x, y, label]) => ({ id: `lor-${sg}`, kind: 'loreling' as const, loreling: 'glimmermoth', sighting: sg, x, y, w: 1, h: 1, label, visibleIf: { not: { flag: 'lor.glimmermoth.friend', eq: true } } })),
+      .map(([sg, x, y, label]) => ({ id: `lor-${sg}`, kind: 'loreling' as const, loreling: 'glimmermoth', sighting: sg, x, y, w: 1, h: 1, label })),
     // One knowledge-gated door (spec 12.23): it opens with the Date-Kind Lens and an understanding of date kinds.
     { id: 'timeline-door', kind: 'puzzle', puzzle: 'timeline-door', x: 5, y: 2, w: 1, h: 1, label: 'the Timeline Door', art: 'timeline-door',
       artOpen: { key: 'timeline-door.open', if: { flag: 'puzzle.timeline-door.done', eq: true } } },

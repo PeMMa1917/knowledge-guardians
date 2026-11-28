@@ -1,3 +1,53 @@
+import {markDiary} from './riverPostmark';
+import {riverDiary,riverTopics} from './riverNames';
+import {orchardDiary,orchardTopics,type OrchardCommand} from './walkingOrchard';
+import { rainDiary } from './rainScore';
+import { theatreDiary } from './pocketTheatre';
+import { bellDiary } from './claimBell';
+import { hatchDiary } from './hatchSleeve';
+import {inkDiary, inkWeave} from './secondInk';
+import {houseDiary,houseTopics,type HouseCommand} from './openHouse';
+import {clockDiary,clockTopics,type TideCommand} from './tideClock';
+import {wireDiary,wireTopics} from './ferryRadio';
+import {stackDiary,stackWeave} from './turningStacks';
+import {lensDiary,lensTopics} from './lensLoan';
+import {cupDiary,cupWeave} from './firstCup';
+import {almanacDiary,calendarCases,calendarTopics} from './streetAlmanac';
+import {courierDiary,courierTopics,courierCases} from './courierLift';
+import {elbowDiary,elbowWeave} from './giantSleeve';
+import {wagerDiary} from './petalWager';
+import {gearDiary} from './petalGears';
+import {petalDiary, flowerWeave} from './petalWindow';
+import { originInstrumentDiary, originWeave, origins } from './originInstruments';
+import { bakeryDiary } from './bakeryTrays';
+import { mothPerchDiary } from './mothPerches';
+import { billDiary, billWeave } from './ferryBill';
+import { mouldDiary } from './orchardMould';
+import { ferryDiary, ferryWeave } from './pictureFerry';
+import { chestDiary, beatDiary, chestWeave, performanceWeave, craftWeave } from './plumChest';
+import { shadowDiary, supperWeave } from './supperShadow';
+import {loanWeave} from './fieldLoan';
+import {stops as loanStops} from '../content/loanCrews';
+import {whistleDiary} from './whistleWatch';
+import {whistlePlaces,whistleWeave} from '../content/whistleWatch';
+import {birdDiary,birdWeave} from './birdSide';
+import {weirLampDiary} from './weirLamp';
+import {vaultDiary} from './vaultWork';
+import {vaultWeave,vaultStations,weirLampWeave} from '../content/vaultNight';
+import { millDiary } from './millShift';
+import { millSites, millWeave } from '../content/millShift';
+import { makerWeave } from '../content/makerMissions';
+import { makerTrialForReading, makerTrialForTool } from '../content/makerTrials';
+import { makerDiary } from './makerField';
+import { coatDiary } from './pocketCoat';
+import { coatWeave } from '../content/coatMissions';
+import { pocketStories } from '../content/pocketStories';
+import { nightDiary, nightSites } from './nightRegister';
+import { registerWeave } from '../content/nightCollection';
+import {lastBellDiary} from './lastBell';
+import {watches,watchReading,watchEnding} from './watchBell';
+import { guestInstrument, materialLine } from './lanternInstruments';
+import { LANTERN_SITES, lanternCase, lanternRead, lanternRef, lanternSource, lanternTopics, tracingBasis } from './lamplight';
 import { inkDiaryTopics } from './inkPost';
 import { neighbourJournalTopics } from './neighbours';
 import { moonBeatNames, moonPerformance } from './spareMoonMusic';
@@ -8,7 +58,7 @@ import { personalise } from './player';
 import { check } from './rules';
 import { LOYALTY } from './loyalty';
 import { DISPATCH_DESKS, dispatchFlag, dispatchSlip } from './tiles';
-import { specimenReferences, type SpecimenReference } from './specimenReferences';
+import { earnedResearchReadings, type ResearchReading, specimenReferences, type SpecimenReference } from './specimenReferences';
 import { encyclopediaForDiaryEvent, encyclopediaLinks, type EncyclopediaLink } from './encyclopedia';
 import { earlierViews } from '../content/earlierViewing';
 import { STAR_PATHS } from '../content/starPaths';
@@ -59,6 +109,7 @@ export interface AdventureJournalView {
   portfolioWriting?: readonly JournalPortfolioWriting[];
   quests: JournalQuest[];
   references: SpecimenReference[];
+  readings?: ResearchReading[];
   encyclopedia: EncyclopediaLink[];
 }
 
@@ -118,6 +169,92 @@ export function diaryDialogueChoice(pack: ContentPack, node: DialogueNode, optio
 }
 
 function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignState): EntryDraft | undefined {
+  if (cmd.type === 'WorkOriginInstrument') return originInstrumentDiary(next, cmd);
+  if (cmd.type === 'MoveBakeryTray') return bakeryDiary(next, cmd);
+  if (cmd.type==='TryMothPerch') return mothPerchDiary(cmd);
+  if (cmd.type==='DrawOrchardStylus') return mouldDiary(cmd);
+  if (cmd.type === 'HangFerryPrint' || cmd.type === 'OpenFerryBill' || cmd.type === 'HearFerryBill') return billDiary(previous, next, cmd);
+  if (cmd.type === 'WorkTurningStacks') return stackDiary(next,cmd);
+  if (cmd.type === 'TendWalkingOrchard') return orchardDiary(next,cmd);
+  if (cmd.type === 'FoldRiverPostmark') return markDiary(next,cmd);
+  if (cmd.type === 'WalkRiverNames') return riverDiary(next,cmd);
+  if (cmd.type === 'WorkCoatRain') return rainDiary(next,cmd);
+  if (cmd.type === 'WorkPocketTheatre') return theatreDiary(next,cmd);
+  if (cmd.type === 'WorkClaimBell') return bellDiary(next,cmd);
+  if (cmd.type === 'WorkHatchSleeve') return hatchDiary(next,cmd);
+  if (cmd.type === 'WorkSecondInk') return inkDiary(next,cmd);
+  if (cmd.type === 'FitMiddleDoor') return houseDiary(next,cmd);
+  if (cmd.type === 'WorkTideClock') return clockDiary(previous,next,cmd);
+  if (cmd.type === 'WorkFerryRadio') return wireDiary(next,cmd);
+  if (cmd.type === 'WorkLensLoan') return lensDiary(next,cmd);
+  if (cmd.type === 'WorkFirstCup') return cupDiary(next,cmd);
+  if (cmd.type === 'ArrangeStreetAlmanac') return almanacDiary(next,cmd);
+  if (cmd.type === 'WorkCourierLift') return courierDiary(next,cmd);
+  if(cmd.type==='WorkGiantSleeve')return elbowDiary(next,cmd);
+  if(cmd.type==='DrawPetalRibbon')return wagerDiary(next,cmd);
+  if(cmd.type==='WindPetalGear')return gearDiary(next,cmd);
+  if (cmd.type === 'WorkPetalWindow') return petalDiary(previous,next,cmd);
+  if (cmd.type === 'TurnPictureFerry') return ferryDiary(previous, next, cmd);
+  if (cmd.type==='WorkPlumChest') return chestDiary(previous,cmd);
+  if (cmd.type==='StrikeOrchardBeat') return beatDiary(previous,cmd);
+  if (cmd.type==='CastSupperShadow') return shadowDiary(cmd);
+  if(cmd.type==='PinBirdWatch') return birdDiary(cmd);
+  if(cmd.type==='WorkWhistle') return whistleDiary(next,cmd);
+  if(cmd.type==='UseWeirLamp') return weirLampDiary(next,cmd);
+  if (cmd.type === 'WorkVault') return vaultDiary(next,cmd);
+  if (cmd.type === 'WorkMillShift') return millDiary(next,cmd);
+  if (cmd.type === 'WorkMakerInstrument' || cmd.type === 'WorkTownReading') return makerDiary(next,cmd);
+  if (cmd.type === 'WorkCoatPocket') return coatDiary(cmd, previous, next);
+  if (cmd.type === 'WorkNightRegister') return nightDiary(cmd, previous, next);
+  if (cmd.type === 'WorkLastBell') return lastBellDiary(cmd, previous, next);
+  if (cmd.type === 'WorkNightWatch') {
+    const ref='night-watch.'+cmd.site;
+    const flag=ref+(cmd.stage==='try'?'.current':'.left');
+    if(previous.flags[flag]===next.flags[flag]) return;
+    return diaryEvent(ref+':'+cmd.stage+':'+cmd.setting, cmd.stage==='try'?'tool':'choice',ref,watches[cmd.site].title,
+      cmd.stage==='try'?'I tried the watch record. '+watchReading(cmd.site,cmd.setting):'I stayed for the handover. '+watchEnding(cmd.site,cmd.setting)+' '+watches[cmd.site].lead,{},'after-break');
+  }
+  if (cmd.type === 'TurnLanternGlass') {
+    const site = LANTERN_SITES.find((s) => s.id === cmd.site);
+    if (!site) return;
+    const ref = 'lamplight-pair.' + site.id;
+    const flag = cmd.stage === 'look' ? ref + '.seen.' + cmd.aperture : ref + '.mounted';
+    if (previous.flags[flag] === next.flags[flag]) return;
+    return cmd.stage === 'look'
+      ? diaryEvent('lantern-pair:' + site.id + ':look:' + cmd.aperture, 'tool', ref, site.pair.title,
+        'I turned the glass at ' + site.bench + '. ' + site.pair.sights[cmd.aperture])
+      : diaryEvent('lantern-pair:' + site.id + ':mount:' + cmd.choice, 'choice', ref, site.pair.title,
+        'I chose “' + site.pair.choices[cmd.choice].action + '”. ' + site.pair.choices[cmd.choice].reply);
+  }
+  if (cmd.type === 'WorkWithLantern') {
+    const ref = lanternRef(cmd.site, cmd.person), pair = lanternCase(ref);
+    if (!pair) return;
+    const { site, person } = pair, now = lanternRead(next, site, person), then = lanternRead(previous, site, person);
+    const key = 'lantern:' + ref + ':' + cmd.stage;
+    const sources = {sourceIds: [lanternSource(person)]};
+    if (cmd.stage === 'meet' && now.met && !then.met) return diaryEvent(key, 'conversation', ref, person.title,
+      'I called ' + person.name + ' to the post at ' + site.place + '. ' + person.name + ' said, “' + person.opening + '”', sources);
+    if (cmd.stage === 'recall') {
+      const earlier = tracingBasis(next, ref);
+      if (!earlier || (next.flags[ref + '.basis'] === previous.flags[ref + '.basis'] && now.pieces.join('') === then.pieces.join(''))) return;
+      return diaryEvent(key + ':' + earlier.site.id + ':' + earlier.value, 'tool', ref, person.title,
+        'I unpacked my tracing from ' + earlier.site.place + ' with ' + person.name + '. ' + materialLine(person.id, earlier.pieces), sources, 'after-break');
+    }
+    if (cmd.stage === 'pin' && now.pieces.join('') !== then.pieces.join('')) {
+      const piece = guestInstrument(person.id)!.pieces[cmd.piece];
+      return diaryEvent(key + ':' + now.pieces.join(''), 'tool', ref, person.title,
+        'I tried the ' + piece.label + ' with ' + person.name + '. ' + piece.reading, sources);
+    }
+    if (cmd.stage === 'trace' && now.trace !== undefined && now.trace !== then.trace) return diaryEvent(key + ':' + now.trace, 'tool', ref, person.title,
+      'With ' + person.name + ', I tried “' + person.folds[now.trace].action + '”. I carried our tracing towards ' + site.bench + '.', sources);
+    if (cmd.stage === 'use' && now.trace !== undefined && now.use !== undefined &&
+        (now.use !== then.use || next.flags['lamplight.' + site.id + '.shown'] !== previous.flags['lamplight.' + site.id + '.shown'])) {
+      return diaryEvent(key + ':' + now.trace + ':' + now.use, 'choice', ref, site.title,
+        'I met ' + person.name + ' again at ' + site.bench + '. “' + person.folds[now.trace].arrival + '” I chose “' +
+        site.uses[now.use].action + '”. ' + site.uses[now.use].reply + ' In our tracing: ' + materialLine(person.id, now.pieces), sources);
+    }
+    return;
+  }
   if (cmd.type === 'PlayMoonTune') {
     const site = moonPerformance(next);
     if (!site || next === previous) return;
@@ -251,9 +388,17 @@ function experienceDraft(pack: ContentPack, previous: CampaignState, cmd: Comman
         `${fairTest ? 'I changed one thing in a marking test and compared the new mark.' : 'I tried another setup at the marking bench.'} ${note}`,
         { outcome: fairTest ? 'checked' : 'tried' }, 'always');
     }
-    case 'puzzle':
-      return diaryEvent(`puzzle:${event.puzzle}`, 'tool', event.puzzle, pack.puzzles.find((row) => row.id === event.puzzle)?.title ?? 'A tool I used',
+    case 'puzzle': {
+      const job = pack.puzzles.find((row) => row.id === event.puzzle);
+      if (job && 'handoffs' in job && cmd.type === 'PuzzleReport') {
+        const delivery = job.handoffs[cmd.index];
+        if (previous.flags['puzzle.' + job.id + '.handoff'] === cmd.index) return;
+        return diaryEvent(`puzzle:${job.id}:handoff:${cmd.index}`, 'choice', job.id, job.title,
+          `I chose “${delivery.label}”. ${delivery.result}`, {}, 'after-break');
+      }
+      return diaryEvent(`puzzle:${event.puzzle}`, 'tool', event.puzzle, job?.title ?? 'A tool I used',
         `I used the puzzle tool and recorded what happened. ${event.text}`, { outcome: event.ok ? 'checked' : 'tried' }, 'always');
+    }
     case 'secret':
       return diaryEvent(`secret:${event.id}`, 'finding', event.id, event.name, `I found ${event.name}.`);
     case 'keepsake':
@@ -263,6 +408,10 @@ function experienceDraft(pack: ContentPack, previous: CampaignState, cmd: Comman
     case 'fieldgame':
       return diaryEvent(`field:${event.game}`, 'tool', event.game, event.name, `I finished the field game “${event.name}”.`, { outcome: 'checked' }, 'after-break');
     case 'loreling':
+      if (event.stage === 'home' && cmd.type === 'WelcomeMoth') {
+        return diaryEvent('moth-perch:home:' + cmd.perch, 'choice', event.loreling, 'Our resting place',
+          'I went back with my companion. ' + event.text, {outcome: event.ok ? 'checked' : 'tried'}, 'after-break');
+      }
       if (event.stage === 'watch' || event.stage === 'note' || event.stage === 'offer') {
         const key = event.ok && event.stage === 'offer' ? `loreling:${event.loreling}` : `loreling:${event.loreling}:${event.stage}`;
         return diaryEvent(key, 'tool', event.loreling, 'With a Loreling', event.text, { outcome: event.ok ? 'checked' : 'tried' }, 'after-break');
@@ -437,11 +586,90 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if (!event) return undefined;
     const [family] = event.key.split(':', 1);
     const specimen = family === 'specimen' ? exhibits.get(event.ref)?.specimen : undefined;
-    const objective = objectivesById.get(event.ref) ?? (specimen ? objectivesById.get(specimen.objective) : undefined);
+    if (family === 'mill') {
+      const site = millSites.find(key => event.ref.split('.')[1] === key);
+      if (site) return diaryTopics(millWeave(site));
+    }
+    if(family==='whistle'){const site=whistlePlaces.find(p=>event.ref==='whistle.'+p.id);if(site)return diaryTopics(whistleWeave(site.id));}
+    if(family==='field-loan'){const stop=loanStops.find(id=>event.key.startsWith('field-loan:'+id+':')); if(stop)return diaryTopics(loanWeave(stop));}
+    if (family === 'tally-tray') { const objective=objectivesById.get('emberford.tally.weigh')?.objective; if(objective?.weave) return diaryTopics(objective.weave); }
+    if (family==='moth-perch') { const moth=pack.lorelings.find(r=>r.id==='glimmermoth'); if(moth)return diaryTopics(moth.weave); }
+    if (family === 'origin-work') { const o = origins.find(x => x === event.ref); if (o) return diaryTopics(originWeave[o]); }
+    if (family === 'picture-bill') return diaryTopics(billWeave);
+    if(family==='trail-thread') { const weave=objectivesById.get(event.ref)?.objective.weave; if(weave)return diaryTopics(weave); }
+    if (family === 'turning-stacks') return diaryTopics(stackWeave);
+    if (family === 'walking-grove') return diaryTopics(orchardTopics(event.key.split(':')[1] as OrchardCommand['act']));
+    if (family === 'river-names') {
+      const topic=event.key.split(':')[1];
+      if(Object.hasOwn(riverTopics,topic)) return diaryTopics(riverTopics[topic as keyof typeof riverTopics]);
+    }
+    if (family === 'hatch-sleeve' || family === 'claim-bell' || family === 'pocket') {
+      const weave = objectivesById.get(event.ref)?.objective.weave;
+      if (weave) return diaryTopics(weave);
+    }
+    if (family === 'secondink') {
+      const topic=event.key.split(':')[1] as keyof typeof inkWeave;
+      if (inkWeave[topic]) return diaryTopics(inkWeave[topic]);
+    }
+    if (family === 'middlehouse') return diaryTopics(houseTopics(event.key.split(':')[1] as HouseCommand['act']));
+    if (family === 'tide-clock') return diaryTopics(clockTopics(event.key.split(':')[1] as TideCommand['act']));
+    if (family === 'ferry-wire') return diaryTopics(wireTopics(event.key.split(':')[1].split('.')[0]));
+  if (family === 'lens-loan') return diaryTopics(lensTopics(event.key.split(':')[1].split('.')[0]));
+    if (family === 'first-cup') return diaryTopics(cupWeave);
+    if (family === 'street-almanac') {
+      const c=calendarCases.find(c=>c.exhibit===event.ref);
+      if(c) return diaryTopics(calendarTopics(c));
+    }
+    if (family === 'courier') {
+      const record = courierCases.find(c => c.exhibit === event.ref);
+      const landing = event.key.split('.')[2];
+      if (record) return diaryTopics(courierTopics(record, landing === 'market' || landing === 'theatre' ? landing : undefined));
+    }
+    if (family === 'giant-elbow') return diaryTopics(objectivesById.get(event.ref)?.objective.weave ?? elbowWeave);
+    if (family === 'petal-window'||family === 'petal-gear'||family === 'petal-ribbon') return diaryTopics(flowerWeave);
+    if (family === 'picture-ferry') return diaryTopics(ferryWeave);
+    if (family === 'plum') {
+      if (event.ref === 'plum.drum') return diaryTopics(performanceWeave);
+      if (event.ref === 'plum.mould') return diaryTopics(craftWeave);
+      return diaryTopics(chestWeave);
+    }
+    if(family==='supper') return diaryTopics(supperWeave);
+    if(family==='birdside') return diaryTopics(birdWeave);
+    if(family==='weir-lamp') return diaryTopics(weirLampWeave);
+    if(family==='vault') { const station=vaultStations.find(id=>event.ref==='vault.'+id); if(station) return diaryTopics(vaultWeave(station)); }
+    if (family === 'maker-trial' || family === 'maker-field') {
+      const trial = makerTrialForTool(event.ref.slice('maker.'.length));
+      if (trial) return diaryTopics(makerWeave(trial.tool, family === 'maker-trial' ? 'fit' : event.key.includes(':limits:') ? 'compared-bounds' : 'recipient'));
+    }
+    if (family === 'sign' && event.ref.startsWith('maker-reply.')) {
+      const trial = makerTrialForReading(event.ref.split('.')[1]);
+      if (trial) return diaryTopics(makerWeave(trial.tool));
+    }
+    if (family === 'coat-tracing') {
+      const pair = lanternCase(event.ref);
+      if (pair && pocketStories[pair.site.id]) {
+        const work = coatWeave(pair.site.id);
+        return diaryTopics({...work, concepts:[...new Set([...work.concepts,...pair.person.weave.concepts as typeof work.concepts])],
+          aoks:[...new Set([...(work.aoks ?? []),...pair.person.weave.aoks as NonNullable<typeof work.aoks>])]});
+      }
+    }
+    if (family === 'coat') {
+      const site = event.key.split(':')[1];
+      if (Object.hasOwn(pocketStories,site)) return diaryTopics(coatWeave(site));
+    }
+    if (nightSites.some(site => site.room === event.ref)) return diaryTopics(registerWeave);
+    const watch = event.ref === 'night-watch.gate' || event.ref === 'night-watch.dispatch';
+    const objective = objectivesById.get(watch ? event.ref + '.handover' : event.ref)
+      ?? (specimen ? objectivesById.get(specimen.objective) : undefined);
     const completed = event.completedObjective ? objectivesById.get(event.completedObjective) : undefined;
+    const fieldReply = family === 'sign' ? /^field-reply\.([\w-]+)\.\d+$/.exec(event.ref) : null;
+    if (fieldReply) {
+      const weave = taggedTools.get('puzzle:' + fieldReply[1]);
+      if (weave) return diaryTopics(weave);
+    }
     const weave = objective?.objective.weave ?? taggedTools.get(`${family}:${event.ref}`) ?? completed?.objective.weave;
     if (weave) return diaryTopics(weave);
-    const neighbourhood = neighbourJournalTopics(event.ref) ?? inkDiaryTopics(event.ref);
+    const neighbourhood = neighbourJournalTopics(event.ref) ?? inkDiaryTopics(event.ref) ?? lanternTopics(event.ref);
     if (neighbourhood) return neighbourhood;
     const fieldConcept = family === 'field' ? FIELD_GAMES.find(({ id }) => id === event.ref)?.concept : undefined;
     const concept = CONCEPTS.find((id) => id === fieldConcept);
@@ -450,17 +678,20 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
   return {
     name: state.player.name,
     entries: entries.map((entry) => {
-      const encyclopedia = encyclopediaForDiaryEvent(pack, entry.event);
+      const historical = entry.event?.key.startsWith('lantern:') && !entry.event.sourceIds?.length ? lanternCase(entry.event.ref) : undefined;
+      const event = historical && entry.event ? {...entry.event, sourceIds:[lanternSource(historical.person)]} : entry.event;
+      const encyclopedia = encyclopediaForDiaryEvent(pack, event);
       const specimen = entry.event && exhibits.get(entry.event.ref)?.specimen;
       const specimenReference = specimen && entry.event?.sourceIds?.includes(specimen.source) ? specimen.key : undefined;
       const topics = linkedTopics(entry);
-      return { ...entry, ...(encyclopedia && { encyclopedia }), ...(topics && { topics }), ...(specimenReference && { specimenReference }),
+      return { ...entry, ...(event && {event}), ...(encyclopedia && { encyclopedia }), ...(topics && { topics }), ...(specimenReference && { specimenReference }),
         reflections: journalReflections(state.adventureDiary, entry.id, diaryQuestions(entry, state.adventureDiary.reflectionResponses?.[entry.id])) };
     }),
     notes,
     portfolioWriting: Object.entries(state.adventureDiary.portfolioWriting).flatMap(([id, writing]) => writing.text ? [{ id, ...writing }] : []),
     quests: [...quests.values()],
     references: specimenReferences(pack, state),
+    readings: earnedResearchReadings(pack, state),
     encyclopedia: encyclopediaLinks(pack, state),
   };
 }

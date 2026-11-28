@@ -1,3 +1,4 @@
+import { SUPPER_MARKET } from './supperRoom';
 import { MOON_EMBERFORD_CARRIER, MOON_ROAD_SONG } from './spareMoon';
 import { sefaDispatchDesk } from './sefaDispatch';
 import { EMBERFORD_PIGMENT_WINDOW } from './pigmentWindow';
@@ -110,6 +111,11 @@ const tallyReceivers: Interactable[] = [
     visibleIf: { all: [{ flag: 'emberford.tally', eq: 'weight' }, tallyPlaced('weight')] } },
 ];
 
+export const KIP_MARKET_POST = {
+  id: 'kip-arden', x: 21, y: 23, facing: 'left',
+  visibleIf: { flagSet: 'sd.corvan.outcome' },
+} as const;
+
 export const EMBERFORD: MapDef = {
   id: 'aethelgard.emberford',
   name: 'Aethelgard: Emberford market',
@@ -166,6 +172,7 @@ export const EMBERFORD: MapDef = {
   npcs: [
     MOON_EMBERFORD_CARRIER,
     ...CART_MEMORY_ACTORS,
+    KIP_MARKET_POST,
     { id: 'merchant-corvan', x: 25, y: 13, facing: 'down' },
     { id: 'smith-hesper', x: 7, y: 13, facing: 'right' },
     { id: 'guildmaster-orrin', x: 19, y: 7, facing: 'down' },
@@ -184,6 +191,7 @@ export const EMBERFORD: MapDef = {
     { id: 'singer-teodora', x: 16, y: 15, facing: 'down', visibleIf: { origin: 'singer' } },
   ],
   interactables: [
+    SUPPER_MARKET,
     MOON_ROAD_SONG,
     ...EMBERFORD_FIELD_ORDER,
     ...starStations('chronicler', [17, 20], [18, 20]),
@@ -421,12 +429,16 @@ export const EMBERFORD: MapDef = {
     { id: 'thread-workshop', kind: 'thread', thread: 'blade', node: 'workshop', x: 3, y: 13, w: 1, h: 1, label: "Hesper's workshop sheet", art: 'board-stand' },
     sefaDispatchDesk('guild', 12, 8),
     { id: 'record-book', kind: 'sign', x: 13, y: 8, w: 1, h: 1, label: "the guild's public record book", art: 'ledger', flag: 'rumour.record',
-      text: 'GUILD RECORD, WINTER. Test blade from Hesper\'s forge: cracked in the quench. Cause: the quench water was too cold. Action: Hesper warms the water. Three new test blades passed. This book is open to everyone.' },
+      text: 'GUILD RECORD, WINTER. One test piece from Hesper’s workshop cracked. Hesper signed a change in the register. Three later entries record three checks passed. The first entry gives no witness beyond the workshop. Public reading copy.' },
+    { id: 'rumour-chalk', kind: 'scene', node: 'rumour.chalk', x: 16, y: 19, w: 1, h: 1, walkThrough: true,
+      label: 'the four chalk marks beside the fruit stall', art: 'preserved.slip', visibleIf: {flag: 'rumour.v3', eq: true} },
     { id: 'east-well-ledger', kind: 'scene', node: 'well.records.guild', x: 14, y: 8, w: 1, h: 1, walkThrough: true,
       label: 'Noa’s two well leaves by the guild book', art: 'ledger', visibleIf: eastWellSlipAt('ledger'),
       artOpen: { key: 'preserved.display-paired', if: { flag: 'well.records.guild', eq: true } } },
     // The story (Lamp Wall): each knot the town unties lights a lamp; six open the old Guardian's cellar.
     { id: 'lamp-wall', kind: 'lamps', x: 14, y: 5, w: 1, h: 1, label: 'the Lamp Wall', art: 'lamp-wall.0' },
+    { id: 'hatch-round-reply', kind: 'scene', node: 'hatch.reply.round', x: 16, y: 22, w: 1, h: 1, walkThrough: true,
+      label: 'Ise’s short sleeve at the change of shift', art: 'hatch.sleeve', visibleIf: { flag: 'hatch.custody', eq: 'round' } },
     { id: 'cellar-door', kind: 'door', x: 12, y: 6, w: 1, h: 1, label: 'the cellar door', art: 'cellar-door', flag: 'study.entered',
       artOpen: { key: 'cellar-door.open', if: { num: 'lamps.lit', gte: 6 } }, openIf: { num: 'lamps.lit', gte: 6 }, to: { map: 'aethelgard.study', x: 9, y: 11 },
       text: 'An old oak door in the ground, beside the guild hall. It has no lock and no handle. Under the moss, words are cut into the wood: WHEN SIX LAMPS BURN AGAIN.' },
@@ -454,10 +466,12 @@ export const EMBERFORD: MapDef = {
     { id: 'waystone', kind: 'waystone', place: 'Emberford market', x: 15, y: 14, w: 1, h: 1, label: 'the Waystone (save and rest)', art: 'waystone' },
     { id: 'old-sign', kind: 'sign', x: 22, y: 23, w: 1, h: 1, label: "Corvan's old sign board", art: 'old-sign', visibleIf: { flagSet: 'sd.corvan.outcome' },
       text: "Corvan's old sign board leans against the portal stone. Most of the words are scratched out. Kip says there is something on the back. In one corner of the front is a tiny gold stamp, no bigger than a thumbnail. Kip does not know the mark. Lumen does not like how it shines." },
+    { id: 'claim-bell-well', kind: 'fieldgame', game: 'claim-bell-well', x: 31, y: 20, w: 1, h: 1, walkThrough: true,
+      label: 'the spare pot with a cup scratched on its side', art: 'bell.spare', visibleIf: { flag: 'well.shared', eq: true } },
     { id: 'rope-east', kind: 'sign', x: 31, y: 18, w: 1, h: 1, label: 'the notched depth stick at the east well', flag: 'well.east.read',
-      text: 'A tally stick with a notch for every hand of depth. The water is four notches below the summer mark.' },
+      text: 'The east stick has a small sun cut beside its summer mark. Today at dawn the water lay four hand-widths below that cut. Efua dated the line.' },
     { id: 'rope-west', kind: 'sign', x: 8, y: 22, w: 1, h: 1, label: 'the notched depth stick at the west well', flag: 'well.west.read',
-      text: 'A tally stick with a notch for every hand of depth. The water is four notches below the summer mark, the same as the east well.' },
+      text: 'On the west stick the dawn line sits four hand-widths below its own summer mark. The iron strap at the rim holds the stick at the same height each time.' },
     { id: 'sign-town', kind: 'sign', x: 17, y: 21, w: 1, h: 1, label: 'the town sign',
       text: 'EMBERFORD. Guild town of Aethelgard. Forge to the west, guild hall to the north, market in the square.' },
   ],

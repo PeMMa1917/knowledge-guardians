@@ -634,6 +634,20 @@
         ],
         "game": 206,
         "story": 68
+      },
+      {
+        "objective": "petal.ceiling",
+        "action": "Run both UV crops at gain four. Notice which distinct values now print at the same upper stop, then take both again at gain one to recover their difference.",
+        "styles": [
+          "strategist",
+          "maker"
+        ],
+        "modes": [
+          "analytical",
+          "spatial"
+        ],
+        "game": 267,
+        "story": 5
       }
     ]
   },

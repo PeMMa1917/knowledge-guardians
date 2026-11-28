@@ -97,7 +97,7 @@ describe('The Place and the Bell', () => {
       d.run({ type: 'CarrySpecimen', key: entry.key, carry: false });
     }
     expect(d.done('water.publish')).toBe(false);
-  });
+  }, 20_000); // Each route plays all 36 accession and return journeys in one campaign.
 
   it('lets another reference take a turn after the first is put back', () => {
     const d = new Driver();

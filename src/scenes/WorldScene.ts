@@ -1,3 +1,7 @@
+import {noteForExhibit,recordView} from '../domain/contentNotes';
+import type { TaskMode, TrialSound } from '../domain/taskScore';
+import { KIP_MARKET_POST } from '../maps/emberford';
+import { vaultReturnSquare } from '../maps/undercroft';
 /**
  * WorldScene: draws a map, moves the player and characters, and turns player
  * actions into domain commands. It DISPLAYS state; it does not decide rewards
@@ -6,13 +10,16 @@
  * Controls: arrows / WASD to walk, E / Space / Enter to interact,
  * click or tap to walk to a spot or a person (alternative control route).
  */
+import { nightByFriend } from '../domain/nightRegister';
+import { creaturePortrait } from '../ui/nightCreature';
+import { ensureFieldArt } from './fieldArt';
 import { ensureLook } from './looks';
 import { cloakThreads } from '../domain/appearance';
 import { EMOTES, EMOTE_ICONS } from '../domain/emotes';
 import { PLAYER_VOICES, babble, bark, voiceFor } from '../app/voice';
 import { FIELDS, decodeCrest } from '../domain/crest';
 import { bell, chime, clink, rain, shimmer } from '../app/ambience';
-import { CYCLE, raining, skyAt } from '../app/daylight';
+import { CYCLE, chapterTint, raining, skyAt } from '../app/daylight';
 import { lorelingForm } from '../domain/lorelings';
 import { caption } from '../app/captions';
 import { CampaignPlayback } from '../app/campaignPlayback';
@@ -73,6 +80,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private lightPools: Phaser.GameObjects.Image[] = [];
   /** Town day cycle: the grade rectangle, the fireflies, and the shared clock (seconds, kept across maps). */
   private grade: Phaser.GameObjects.Rectangle | null = null;
+  private fadeDeadline = 0;
+  private softWash = false;
+  private lampStrength = 1;
   private fireflies: Phaser.GameObjects.Particles.ParticleEmitter | null = null;
   private rainFx: Phaser.GameObjects.Particles.ParticleEmitter | null = null;
   private wasRaining = false;
@@ -137,7 +147,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.scale.on('resize', this.resizeCamera);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.scale.off('resize', this.resizeCamera));
     this.playMusic();
-    this.cameras.main.fadeIn(ctx.settings.reducedMotion ? 0 : 400, 10, 8, 24);
+    // Presentation fades follow real elapsed time, including on renderers that drop most frames.
+    this.fadeDeadline = performance.now() + 400;
+    if (!ctx.settings.reducedMotion) this.cameras.main.fadeIn(400, 10, 8, 24);
     ctx.controller.dispatch({ type: 'VisitPlace', name: this.map.name, via: data.via });
     // Arrival zone (e.g. "emberford") is recorded the moment the map opens.
     this.checkZones(true);
@@ -161,6 +173,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
     // Starfield behind the floating Nexus hall.
     if (m.ambience === 'archive') {
+      ensureFieldArt(this.textures, 'star');
       for (let i = 0; i < 160; i++) {
         const st = this.add.image(Phaser.Math.Between(-200, m.width * TILE + 200), Phaser.Math.Between(-200, m.height * TILE + 200), 'star').setDepth(-10).setAlpha(Phaser.Math.FloatBetween(0.2, 0.9));
         st.setScrollFactor(Phaser.Math.FloatBetween(0.3, 0.7));
@@ -170,12 +183,17 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
     // Floor into one render texture.
     const rt = this.add.renderTexture(0, 0, m.width * TILE, m.height * TILE).setOrigin(0).setDepth(-5);
-    for (let y = 0; y < m.height; y++) {
-      for (let x = 0; x < m.width; x++) {
-        const f = m.floor(x, y);
-        if (f) rt.drawFrame(STAMPS[f].sheet, f, x * TILE, y * TILE);
-        else block(x, y, 1, 1);
+    rt.beginDraw();
+    try {
+      for (let y = 0; y < m.height; y++) {
+        for (let x = 0; x < m.width; x++) {
+          const f = m.floor(x, y);
+          if (f) rt.batchDrawFrame(STAMPS[f].sheet, f, x * TILE, y * TILE);
+          else block(x, y, 1, 1);
+        }
       }
+    } finally {
+      rt.endDraw();
     }
 
     // Stamps.
@@ -204,7 +222,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         this.objArt.set(it.id, box);
         continue;
       }
-      if (it.art && this.textures.exists(it.art)) {
+      if (it.art && ensureFieldArt(this.textures, it.art)) {
         const tex = this.textures.get(it.art).getSourceImage() as HTMLCanvasElement;
         const cx = (it.x + it.w / 2) * TILE, by = (it.y + it.h) * TILE;
         const img = this.add.image(cx, by, it.art).setOrigin(0.5, 1).setDepth(by + 16); // sits on top of tables and counters
@@ -214,7 +232,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         if (record) {
           this.specimenProps.set(it.id, record);
           const asset = record.specimen.pixelAsset;
-          if (asset && !ownsSpecimen(ctx.controller.state, record.specimen.key)) this.drawMuseumObject(it.id, img, asset);
+          if (asset && !noteForExhibit(record.id) && !ownsSpecimen(ctx.controller.state, record.specimen.key)) this.drawMuseumObject(it.id, img, asset);
         }
         // The Fray (spec 2.11): a sickly gold glow on a label that says more than its support.
         if (it.kit) {
@@ -240,10 +258,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
     // Portal visuals.
     if (m.id === 'nexus.archive') {
+      ensureFieldArt(this.textures, 'portal-ring');
       this.portalRing = this.add.image(13 * TILE, 4 * TILE, 'portal-ring').setDepth(3 * TILE).setScale(1.2);
       if (!ctx.settings.reducedMotion) this.tweens.add({ targets: this.portalRing, angle: 360, duration: 9000, repeat: -1 });
     }
     if (m.id === 'aethelgard.emberford') {
+      ensureFieldArt(this.textures, 'portal-stone');
       this.add.image(19.5 * TILE + 8, 24 * TILE, 'portal-stone').setOrigin(0.5, 1).setDepth(24 * TILE);
       block(19, 23, 2, 1);
     }
@@ -258,20 +278,14 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       this.npcs.push(a);
       block(n.x, n.y, 1, 1);
     }
-    // Kip waits at the portal stone once the market Showdown has ended.
-    if (m.id === 'aethelgard.emberford' && s.companion === 'kip-arden' && s.flags['sd.corvan.outcome'] !== undefined) {
-      const a = this.makeActor('kip-arden', 21, 23, 'left');
-      this.npcs.push(a);
-      block(21, 23, 1, 1);
-    }
-
     this.conditionalCast = m.npcs.flatMap((place, order) => place.visibleIf
       ? [{ place, order, floorBlocked: this.blocked[place.y][place.x] }] : []);
     this.syncConditionalCast(false);
 
     const look = ensureLook(this, ctx.controller.state.player.look, this.threadColours());
     this.playerSheet = look;
-    let px = s.pos.x, py = s.pos.y;
+    const arrival = m.id === 'aethelgard.undercroft' ? vaultReturnSquare(s.pos,s.flags) : s.pos;
+    let px = arrival.x, py = arrival.y;
     if (px < 0 || py < 0 || this.blocked[py]?.[px] !== false) { px = m.spawn.x; py = m.spawn.y; }
     this.player = this.makeActor(look, px, py, s.facing, true);
     this.player.sprite.x = px * TILE + 8; this.player.sprite.y = py * TILE + 12;
@@ -282,7 +296,9 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
     // Lumen, the fairy guide.
     this.lumenGlow = this.add.image(0, 0, 'glow').setScale(0.25).setTint(LUMEN_COLOURS[ctx.settings.lumenColour] ?? 0xfff2b0).setAlpha(0.55).setBlendMode(Phaser.BlendModes.ADD);
-    this.lumen = this.add.image(0, 0, lumenArt(ctx.settings));
+    const lumenKey = lumenArt(ctx.settings);
+    ensureFieldArt(this.textures, lumenKey);
+    this.lumen = this.add.image(0, 0, lumenKey);
 
     this.buildAtmosphere();
     this.fitCamera();
@@ -306,9 +322,14 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
       const specimen = this.specimenProps.get(it.id);
       if (specimen && img instanceof Phaser.GameObjects.Image && ownsSpecimen(s, specimen.specimen.key)) {
+        this.displayedSpecimens.delete(it.id);
         const reading = s.flags[specimenReadingFlag(specimen.specimen.key)];
         const art = reading === 'source' ? 'fold.paired' : reading === 'use' ? 'fold.strip' : 'collection-stand';
-        if (img.texture.key !== art) img.setTexture(art).setDisplaySize(16, 24);
+        if (img.texture.key !== art && ensureFieldArt(this.textures, art)) img.setTexture(art).setDisplaySize(16, 24);
+        continue;
+      }
+      if(specimen && noteForExhibit(specimen.id) && img instanceof Phaser.GameObjects.Image){
+        this.paintDisplay(it.id,img,specimen);
         continue;
       }
       // A fallacy seal (Undercroft) stops blocking the corridor once it is opened.
@@ -318,18 +339,18 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       }
       if (img && it.artOpen && img instanceof Phaser.GameObjects.Image) {
         const key = ctx.controller.check(it.artOpen.if) ? it.artOpen.key : it.art!;
-        if (img.texture.key !== key && this.textures.exists(key)) img.setTexture(key);
+        if (img.texture.key !== key && ensureFieldArt(this.textures, key)) img.setTexture(key);
       }
       if (img && it.artBy && img instanceof Phaser.GameObjects.Image) {
         const v = ctx.controller.state.flags[it.artBy.flag];
         const key = (typeof v === 'string' && it.artBy.keys[v]) || it.art!;
-        if (img.texture.key !== key && this.textures.exists(key)) img.setTexture(key);
+        if (img.texture.key !== key && ensureFieldArt(this.textures, key)) img.setTexture(key);
       }
       // The Lamp Wall shows exactly how many lamps are lit.
       if (img && it.kind === 'lamps' && img instanceof Phaser.GameObjects.Image) {
         const n = Math.max(0, Math.min(16, Number(ctx.controller.state.flags['lamps.lit'] ?? 0)));
         const key = `lamp-wall.${n}`;
-        if (img.texture.key !== key && this.textures.exists(key)) img.setTexture(key);
+        if (img.texture.key !== key && ensureFieldArt(this.textures, key)) img.setTexture(key);
       }
     }
     this.syncConditionalCast(true);
@@ -381,7 +402,10 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.waitingForSpace = [];
     for (const member of this.conditionalCast) {
       const { place, actor } = member;
-      const present = place.id !== ctx.controller.state.companion && ctx.controller.check(place.visibleIf);
+      const marketPost = place === KIP_MARKET_POST;
+      // The current companion walks to his post once the conversation closes.
+      if (marketPost && this.follower?.id === place.id) continue;
+      const present = (marketPost || place.id !== ctx.controller.state.companion) && ctx.controller.check(place.visibleIf);
       if (present && !actor) {
         if (protectPlayer && this.playerOverlaps(place)) {
           this.waitingForSpace.push(place);
@@ -427,17 +451,20 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   }
 
   private paintDisplay(id: string, display: Phaser.GameObjects.Image, record?: SpecimenExhibit): void {
-    const key = record?.specimen.key;
+    const covered = record && recordView(record.id,ctx.controller.state.flags)!=='illustrated';
+    const key = covered ? 'closed.'+record.specimen.key : record?.specimen.key;
     if (this.displayedSpecimens.has(id) && this.displayedSpecimens.get(id) === key) return;
     this.displayedSpecimens.set(id, key);
-    display.setTexture('collection-stand').setDisplaySize(16, 24);
-    if (!record) return;
+    const stand = covered ? 'preserved.folder' : 'collection-stand';
+    ensureFieldArt(this.textures, stand);
+    display.setTexture(stand).setDisplaySize(16, 24);
+    if (!record || covered) return;
     const asset = record.specimen.pixelAsset;
     if (asset) {
       this.drawMuseumObject(id, display, asset, () => this.displayedSpecimens.get(id) === key);
     } else {
       const art = BIG_ART[record.art] ?? record.art;
-      if (!this.textures.exists(art)) return;
+      if (!ensureFieldArt(this.textures, art)) return;
       const source = this.textures.get(art).getSourceImage() as HTMLCanvasElement;
       const scale = 22 / Math.max(source.width, source.height);
       display.setTexture(art).setDisplaySize(source.width * scale, source.height * scale);
@@ -482,12 +509,18 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const effects = !ctx.settings.reducedEffects;
     const w = m.width * TILE, h = m.height * TILE;
     // Ambient colour grade (multiply) and light pools (additive).
-    const ambient = m.ambience === 'archive' ? 0xa29ce0 : m.ambience === 'study' ? 0xc9a77e : 0xffe8c4;
-    this.grade = this.add.rectangle(-200, -200, w + 400, h + 400, ambient).setOrigin(0).setDepth(200000).setBlendMode(Phaser.BlendModes.MULTIPLY).setAlpha(effects ? 1 : 0);
+    const ambient = chapterTint(m.world, m.ambience === 'archive' ? 0xa29ce0 : m.ambience === 'study' ? 0xc9a77e : 0xffe8c4);
+    const canvas = this.renderer.type === Phaser.CANVAS ? this.renderer as Phaser.Renderer.Canvas.CanvasRenderer : null;
+    // Phaser can substitute source-over for multiply in its Canvas renderer. An opaque tint then covers the entire floor.
+    this.softWash = !!canvas && canvas.blendModes[Phaser.BlendModes.MULTIPLY] !== 'multiply';
+    this.lampStrength = ctx.settings.highContrast ? .16 : canvas ? .38 : 1;
+    this.grade = this.add.rectangle(-200, -200, w + 400, h + 400, ambient).setOrigin(0).setDepth(200000)
+      .setBlendMode(this.softWash ? Phaser.BlendModes.NORMAL : Phaser.BlendModes.MULTIPLY);
+    this.setRoomLight(ambient);
     for (const l of m.lights) {
       const img = this.add.image(l.x * TILE, l.y * TILE, 'glow').setDepth(200001).setBlendMode(Phaser.BlendModes.ADD)
-        .setTint(l.color).setScale((l.r * 2) / 128).setAlpha(effects ? 0.6 : 0);
-      if (l.flicker && effects && !ctx.settings.reducedMotion) this.tweens.add({ targets: img, alpha: 0.4, scale: img.scale * 0.94, duration: Phaser.Math.Between(400, 900), yoyo: true, repeat: -1 });
+        .setTint(l.color).setScale((l.r * 2) / 128).setAlpha(effects ? .6 * this.lampStrength : 0);
+      if (l.flicker && effects && !ctx.settings.reducedMotion) this.tweens.add({ targets: img, alpha: .4 * this.lampStrength, scale: img.scale * 0.94, duration: Phaser.Math.Between(400, 900), yoyo: true, repeat: -1 });
       this.lightPools.push(img);
     }
     if (!effects) return;
@@ -537,10 +570,26 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     }
   }
 
+  private setRoomLight(tint: number): void {
+    if (!this.grade) return;
+    if (ctx.settings.reducedEffects || ctx.settings.highContrast) {
+      this.grade.setAlpha(0);
+      return;
+    }
+    if (this.softWash) {
+      // Use a translucent wash whose strength follows the lightness of the sky. The art stays visible at night.
+      const r = (tint >>> 16) & 255, g = (tint >>> 8) & 255, b = tint & 255;
+      const luminance = (.2126 * r + .7152 * g + .0722 * b) / 255;
+      this.grade.setFillStyle(Phaser.Display.Color.GetColor(r >> 1, g >> 1, b >> 1)).setAlpha(.09 + .4 * (1 - luminance));
+    } else {
+      this.grade.setFillStyle(tint).setAlpha(1);
+    }
+  }
+
   refreshLumen(): void {
     if (!this.lumen) return;
     const key = lumenArt(ctx.settings);
-    if (this.textures.exists(key)) this.lumen.setTexture(key);
+    if (ensureFieldArt(this.textures, key)) this.lumen.setTexture(key);
     this.lumenGlow?.setTint(LUMEN_COLOURS[ctx.settings.lumenColour] ?? 0xfff2b0);
     if (!ctx.settings.reducedEffects) this.lumenBurst();
   }
@@ -657,6 +706,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.soundtrack.follow(this.map.world, this.map.id, this.map.music, ctx.settings.musicVolume);
   }
 
+  setTaskMusic(mode: TaskMode): void { this.soundtrack?.setTask(mode); }
+  playTrialSound(kind: TrialSound): void {
+    this.soundtrack?.trial(kind, ctx.settings.sfxVolume);
+  }
+
   playSfx(key: string): void {
     caption(key);
     if (ctx.settings.sfxVolume <= 0 || !this.cache.audio.exists(key)) return;
@@ -682,8 +736,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const sky = skyAt(WorldScene.dayClock / CYCLE);
     // A grey-blue wash while it rains.
     const tint = this.rainDim > 0 ? Phaser.Display.Color.Interpolate.ColorWithColor(Phaser.Display.Color.ValueToColor(sky.tint), Phaser.Display.Color.ValueToColor(0x5a6a88), 100, Math.round(this.rainDim * 55)) : null;
-    this.grade.setFillStyle(tint ? Phaser.Display.Color.GetColor(tint.r, tint.g, tint.b) : sky.tint);
-    for (const l of this.lightPools) if (!this.tweens.isTweening(l)) l.setAlpha(sky.light);
+    this.setRoomLight(chapterTint(this.map.world, tint ? Phaser.Display.Color.GetColor(tint.r, tint.g, tint.b) : sky.tint));
+    for (const l of this.lightPools) if (!this.tweens.isTweening(l)) l.setAlpha(sky.light * this.lampStrength);
     if (this.fireflies) { if (sky.night > 0.5 && !this.fireflies.emitting) this.fireflies.start(); else if (sky.night <= 0.5 && this.fireflies.emitting) this.fireflies.stop(); }
     if (sky.name !== this.lastSky) {
       if (this.lastSky && sky.name === 'dusk') { bell(ctx.settings.sfxVolume); caption('amb.bell'); }
@@ -715,6 +769,8 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private fogChunk = '';
   private secretGlows: { id: string; img: Phaser.GameObjects.Image }[] = [];
   update(_t: number, dtMs: number): void {
+    const fade = this.cameras.main.fadeEffect;
+    if (fade.isRunning && performance.now() >= this.fadeDeadline) fade.update(_t, fade.duration);
     const dt = Math.min(dtMs, 100) / 1000;
     if (this.waitingForSpace.some((place) => !this.playerOverlaps(place))) this.refreshWorld();
     // Fog of war: clear the map around the player when they enter a new chunk.
@@ -833,9 +889,14 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const s = ctx.controller.state;
     if (!f || this.map.id !== 'aethelgard.emberford' || f.id !== 'kip-arden' || s.flags['sd.corvan.outcome'] === undefined) return;
     if (ctx.ui.isModalOpen()) return; // wait until the conversation closes
+    const waiting = this.conditionalCast.find(member => member.place === KIP_MARKET_POST);
+    if (!waiting || waiting.actor || this.playerOverlaps(waiting.place)) return;
     this.follower = null;
+    waiting.actor = f;
+    f.mapOrder = waiting.order;
     this.npcs.push(f);
-    const tx = 21 * TILE + 8, ty = 23 * TILE + 12;
+    const { x, y } = waiting.place;
+    const tx = x * TILE + 8, ty = y * TILE + 12;
     f.facing = 'left';
     const dist = Math.hypot(tx - f.sprite.x, ty - f.sprite.y);
     if (ctx.settings.reducedMotion || dist < 1) {
@@ -846,7 +907,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         onUpdate: () => this.place(f),
         onComplete: () => { f.sprite.anims.stop(); f.sprite.setFrame(this.idleFrame('left')); this.place(f); } });
     }
-    if (this.blocked[23]?.[21] !== undefined) this.blocked[23][21] = true;
+    this.blocked[y][x] = true;
   }
 
   private updateFollower(moving: boolean): void {
@@ -1002,8 +1063,12 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const x = this.player.sprite.x + 12, y = this.player.sprite.y + (guide ? 0 : -14);
     const glow = this.add.image(x, y, 'glow').setTint(0xfff0a0).setBlendMode(Phaser.BlendModes.ADD)
       .setAlpha(guide ? 0.3 : 0.85).setScale(0.18);
-    const sprite = this.add.sprite(x, y, guide?.sprite ?? 'moth.0');
-    if (!guide) sprite.play('moth.flap');
+    const friend = nightByFriend.get(want);
+    const coat = 'register-pet.' + want;
+    if (friend && !this.textures.exists(coat)) this.textures.addCanvas(coat, creaturePortrait(friend));
+    const spriteKey = friend ? coat : guide?.sprite ?? 'moth.0';
+    const sprite = this.add.sprite(x, y, ensureFieldArt(this.textures, spriteKey) ? spriteKey : 'moth.0');
+    if (!guide && !friend) sprite.play('moth.flap');
     this.pet = { id: want, sprite, glow, target: null, until: 0, next: this.time.now + 4000 };
   }
 
@@ -1018,11 +1083,13 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const rec = ctx.controller.pack.lorelings.find((l) => l.id === pet.id);
     const guide = rec?.fieldGuide;
     const form = rec ? lorelingForm(rec, ctx.controller.pack, ctx.controller.state.objectivesDone).form : 1;
-    if (!guide && !pet.target && now > pet.next && !ctx.ui.isModalOpen()) {
+    const scout=nightByFriend.has(pet.id) && ctx.controller.state.flags['night.bond.'+pet.id]==='scout' && this.map.id.startsWith('night-register.');
+    if (!guide && (!nightByFriend.has(pet.id) || scout) && !pet.target && now > pet.next && !ctx.ui.isModalOpen()) {
       pet.next = now + 7000;
       const px = this.player.sprite.x, py = this.player.sprite.y, range = (form >= 2 ? 11 : 7) * TILE;
       let best: Interactable | null = null, bd = range;
       for (const it of this.map.interactables) {
+        if (scout && (!it.exhibit || ctx.controller.state.flags['inspected.'+it.exhibit])) continue;
         if (!['exhibit', 'sign', 'puzzle', 'board', 'alcove', 'lock', 'label', 'assay', 'bench'].includes(it.kind)) continue;
         if (it.visibleIf && !ctx.controller.check(it.visibleIf)) continue;
         if (ctx.controller.state.flags[`used.${this.map.id}.${it.id}`] === true) continue;
@@ -1298,6 +1365,10 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       this.scene.restart({ walkingArrivalFrom, via: route ? { ...route, from } : undefined });
     };
     if (ctx.settings.reducedMotion) go();
-    else { this.cameras.main.fadeOut(500, 220, 240, 255); this.cameras.main.once('camerafadeoutcomplete', go); }
+    else {
+      this.fadeDeadline = performance.now() + 500;
+      this.cameras.main.once('camerafadeoutcomplete', go);
+      this.cameras.main.fadeOut(500, 220, 240, 255);
+    }
   }
 }

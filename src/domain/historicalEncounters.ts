@@ -13,7 +13,7 @@ export const biographyReadFlag = (card: string): string => `read.biography.${car
 export function historicalEncounters(pack: ContentPack, state: CampaignState) {
   const speakers = new Set(pack.dialogue.filter(({ id }) => state.flags[`node.${id}`] === true).map(({ speaker }) => speaker));
   return {
-    peopleMet: pack.characters.filter(({ id, mode }) => mode === 'historical' && speakers.has(id)),
+    peopleMet: pack.characters.filter(({ id, mode }) => mode === 'historical' && (speakers.has(id) || state.flags['lamplight.met.' + id] === true)),
     biographiesRead: pack.cards.filter(isHistoricalBiography)
       .filter(({ id }) => state.cards.includes(id) && state.flags[biographyReadFlag(id)] === true),
     exhibitsInspected: pack.exhibits.filter(({ id, historicalLabel, specimen }) => historicalLabel === 'documented'

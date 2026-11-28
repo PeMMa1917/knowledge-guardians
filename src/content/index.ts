@@ -1,8 +1,41 @@
+import { installReturnCoat } from './returnCoat';
+import { installPocketTheatre } from './pocketTheatre';
+import {installWalkingOrchard} from './walkingOrchard';
+import {installRiverNames} from './riverNames';
+import {installSecondInk} from './secondInk';
+import {installOpenHouse} from './openHouse';
+import {installQuarterClock} from './tideClock';
+import {installFerryRadio} from './ferryRadio';
+import {installTurningStacks} from './turningStacks';
+import {installLensLoan} from './lensLoan';
+import {installFirstCup} from './firstCup';
+import {installStreetAlmanac} from './streetAlmanac';
+import {installCourierLift} from './courierLift';
+import {giantContent,duchamp} from './giantSleeve';
+import {petalContent} from './petalGlasshouse';
+import { homecomingDialogue } from './originHomecomings';
+import { installOriginTours } from './originTours';
+import { bakeryContent } from './bakeryTrays';
+import { mothReturnContent } from './mothPerchReturns';
+import { pictureFerryContent, ferryLocalGreetings } from './pictureFerry';
+import { plumContent } from './plumOrchard';
+import { supperContent } from './supperShadow';
+import {addFieldLoans} from './fieldLoans';
+import {addCanoeProjection} from './canoeProjection';
+import {addSeaBirdWatch} from './seaBirdWatch';
+import { addTownHearings } from './hearings';
+import {addWhistleWatch} from './whistleWatch';
+import {addVaultMissions} from './vaultMissions';
+import {reviewChapterPractices} from './chapterPractice';
+import {addMillMissions} from './millMissions';
+import { addMakerMissions } from './makerMissions';
+import { addCoatMissions } from './coatMissions';
 /**
  * Builds the content pack for the first chapter from the JSON files in this
  * folder. To add content, edit the JSON and run `npm test`: the content tests
  * validate every reference (see docs/CONTENT_GUIDE.md).
  */
+import { installNightCollection } from './nightCollection';
 import type { ContentPack } from '../domain/types';
 import sources from './sources.json';
 import common from './common.json';
@@ -55,6 +88,8 @@ import vesperTrust from './vesper-trust.json';
 import quarters from './quarters.json';
 import dive from './dive.json';
 import story from './story.json';
+import claimBell from './claim-bell.json';
+import hatchMargin from './hatch-margin.json';
 import nile from './m03-nile.json';
 import scenes from './prop-scenes.json';
 import preservedRecords from './preserved-records.json';
@@ -200,6 +235,7 @@ import threadBend from './thread-bend.json';
 import sillBridge from './sill-bridge.json';
 import { underpanContent } from './underpan';
 import { firstClapContent } from './firstClap';
+import { installLamplight } from '../domain/lamplight';
 import { installInkPost } from '../domain/inkPost';
 import encyclopedia from './encyclopedia.json';
 import { neighbourDialogues } from '../domain/neighbours';
@@ -208,13 +244,13 @@ import publicVoices from './nexus-public-voices.json';
 
 export const CONTENT_VERSION = 5;
 
-const parts: any[] = [sources, common, blueTail, m01, fourthCorner, openingPractice, doorFold, shelfRoom, linkedNotes, drawerCases, nexusWayfinding, nexusReadingRests, nexusDateRibbon, nexusPrint, nexusPacking, nexusViewer, nexusHandle, nexusLostGauge, vindolanda, m02, emberfordSide, lanternfair, backbill, welcome, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, stiltfrog, fray, rumour, rumourWell, clueboard, memories, chapterVoices, quarters, dive, story, nile, scenes, coldFirstBell, preservedRecords, preserved, preservedScaleStrip, reconstruction, copper, preservedExhibition, observatory, opticsScreen, observatoryInland, observatoryArchive, waterLoop, departureStrip, ferryKettle, transferFaces, lintelFold, seamWitness, forest, forestAccounts, forestSide, observationSheet, forestReader, sharedCarry, metalworks, metalworksSide, metalRim, benchDebate, fittingViews, copies, copiesSide, copiesMargin, sameRed, citationRail, cartographers, cartographersSide, paperLanding, performance, performanceFrames, filmCuts, market, marketBasket, pairedAccessions, rook, water, latchCheck, harrowmere, lowerRail, vesper, vesperTrust, civic, civicAppeal, civicIncentive, serviceBoundary, voices, elsbetReel, island, islandMovement, islandSkiff, council, afterCouncil, handoverGallery, thinkerMozi, thinkerHaytham, seaStickCharts, seaTupaia, civicTuskegee, thinkerKhaldun];
+const parts: any[] = [sources, common, blueTail, m01, fourthCorner, openingPractice, doorFold, shelfRoom, linkedNotes, drawerCases, nexusWayfinding, nexusReadingRests, nexusDateRibbon, nexusPrint, nexusPacking, nexusViewer, nexusHandle, nexusLostGauge, vindolanda, m02, emberfordSide, lanternfair, backbill, welcome, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, stiltfrog, fray, rumour, rumourWell, clueboard, memories, chapterVoices, quarters, dive, story, hatchMargin, claimBell, nile, scenes, coldFirstBell, preservedRecords, preserved, preservedScaleStrip, reconstruction, copper, preservedExhibition, observatory, opticsScreen, observatoryInland, observatoryArchive, waterLoop, departureStrip, ferryKettle, transferFaces, lintelFold, seamWitness, forest, forestAccounts, forestSide, observationSheet, forestReader, sharedCarry, metalworks, metalworksSide, metalRim, benchDebate, fittingViews, copies, copiesSide, copiesMargin, sameRed, citationRail, cartographers, cartographersSide, paperLanding, performance, performanceFrames, filmCuts, market, marketBasket, pairedAccessions, rook, water, latchCheck, harrowmere, lowerRail, vesper, vesperTrust, civic, civicAppeal, civicIncentive, serviceBoundary, voices, elsbetReel, island, islandMovement, islandSkiff, council, afterCouncil, handoverGallery, thinkerMozi, thinkerHaytham, seaStickCharts, seaTupaia, civicTuskegee, thinkerKhaldun];
 const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'missions', 'hints', 'criteria', 'awards', 'items', 'offers', 'journal',
   'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks', 'glossary', 'questions', 'origins', 'alcoves', 'puzzles', 'skillDomains', 'skills', 'lorelings', 'lorelingAtlas', 'fray', 'clueBoards', 'memories', 'keepsakes', 'divePrompts', 'diveItems', 'knots', 'clues', 'keepsakeTalks', 'chronicle', 'secrets', 'communities'] as const;
 
 export function buildPack(): ContentPack {
   const pack: any = { id: 'chapter-1', contentVersion: CONTENT_VERSION };
-  const collectionRooms = [clearanceContent, beaterProof, datePegContent, relayContent, joinedCloth, asiaLabelContent, specimenWorkContent, polarStore, fernRecordContent,
+  const collectionRooms = [giantContent, petalContent, pictureFerryContent, bakeryContent(), mothReturnContent(), plumContent, supperContent, clearanceContent, beaterProof, datePegContent, relayContent, joinedCloth, asiaLabelContent, specimenWorkContent, polarStore, fernRecordContent,
     lanternWeaveContent, dateRegisterContent, passageContent, windowShop, readingWorksContent, storyArchiveContent, copyImprintContent,
     referenceProofs, parcelLedgerContent, numberLeafContent, surveyDepotContent, referenceLineContent, islandProofRackContent, turningTableContent, coastCopyContent, makerRoomContent, makerExactContent,
     timbuktuManuscriptContent, objectUseContent, leavittPlateContent, referenceStation, callboardContent, cueWorkshopContent,
@@ -227,19 +263,55 @@ export function buildPack(): ContentPack {
   for (const k of keys) pack[k] = [...parts, ...collectionRooms].flatMap((p) => p[k] ?? []);
   const content = pack as ContentPack;
   content.questions.push(...QUESTION_ROUTES.map(({ question }) => question));
+  const articles = new Map(encyclopedia.people.flatMap((article) => article.characters.map((id) => [id, article.title] as const)));
+  installInkPost(content, articles);
+  const loftArtist=content.characters.find(c=>c.id===duchamp);
+  if(loftArtist)loftArtist.localGreeting={...loftArtist.localGreeting,'stage.giants-elbow':'elbow.artist'};
+  installLamplight(content, articles);
+  installNightCollection(content);
+  ferryLocalGreetings(content);
+  const glasshouseNaturalist = content.characters.find(c=>c.id==='forest-naturalist');
+  if(glasshouseNaturalist) glasshouseNaturalist.localGreeting={...glasshouseNaturalist.localGreeting,'forest.petal-house':'petal.elian'};
+  installOriginTours(content);
+  homecomingDialogue(content);
+  addCoatMissions(content);
+  addMakerMissions(content);
+  addMillMissions(content);
+  addVaultMissions(content);
+  addWhistleWatch(content);
+  addTownHearings(content);
+  addSeaBirdWatch(content);
+  addCanoeProjection(content);
+  installCourierLift(content);
+  installStreetAlmanac(content);
+  installFirstCup(content);
+  installTurningStacks(content);
+  installFerryRadio(content);
+  installQuarterClock(content);
+  installPocketTheatre(content);
+  installWalkingOrchard(content);
+  installOpenHouse(content);
+  installSecondInk(content);
+  installRiverNames(content);
+  installLensLoan(content);
+  installReturnCoat(content);
+  addSpecimenPeople(content);
+  installEarlierViews(content);
+  addPublicationReturns(content);
+  addFieldLoans(content);
+  specimenEquipment(content);
   const ways = questionWaysByObjective();
   content.missions = content.missions.map((mission) => ({
     ...mission,
     objectives: mission.objectives.map((objective) => {
       const questionWays = ways.get(objective.id);
-      return questionWays ? { ...objective, questionWays } : objective;
+      if (!questionWays) return objective;
+      const existing = objective.questionWays ?? [];
+      const extra = questionWays.filter(way => !existing.some(link => link.id === way.id && link.action === way.action));
+      return extra.length ? { ...objective, questionWays: [...existing, ...extra] } : objective;
     }),
   }));
-  installInkPost(content, new Map(encyclopedia.people.flatMap((article) => article.characters.map((id) => [id, article.title] as const))));
-  addSpecimenPeople(content);
-  installEarlierViews(content);
-  addPublicationReturns(content);
-  specimenEquipment(content);
+  reviewChapterPractices(content);
   addMicroSkills(content);
   return content;
 }

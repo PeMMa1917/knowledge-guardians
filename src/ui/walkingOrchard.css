@@ -1,0 +1,98 @@
+.walking-orchard {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 40rem;
+  min-width: 0;
+  line-height: 1.48;
+  overflow-wrap: anywhere;
+}
+.walking-orchard :is(div, section, figure) {
+  min-width: 0;
+}
+.walking-orchard h3,
+.walking-orchard h4,
+.walking-orchard p {
+  margin: 0.45rem 0;
+}
+.grove-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+.walking-orchard button {
+  max-width: 100%;
+  white-space: normal;
+  text-align: start;
+}
+.walking-orchard button[aria-pressed='true'] {
+  outline: 2px solid #c5df94;
+  outline-offset: -3px;
+}
+.grove-books {
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  margin: 0.7rem 0;
+}
+.grove-ledger,
+.grove-screen {
+  border: 1px solid #93b79c;
+  border-radius: 0.45rem;
+  background: #293931;
+  color: #fff2d2;
+  padding: 0.6rem;
+}
+.grove-slots {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.2rem;
+  margin: 0.3rem 0 0.65rem;
+}
+.grove-slot {
+  display: grid;
+  text-align: center;
+  align-content: start;
+  background: #3f4b41;
+  line-height: 1.18;
+  padding: 0.2rem 0;
+}
+.grove-slot b {
+  line-height: 1.3;
+  color: #f3d7a4;
+}
+.grove-slot.living b {
+  color: #c0e49a;
+}
+.grove-slot.lost b {
+  color: #ffb6a4;
+}
+.grove-slot small {
+  font-size: 0.75em;
+}
+.grove-screen {
+  margin: 0.65rem 0;
+  background: #332b35;
+}
+.grove-screen figcaption {
+  font-weight: 700;
+}
+.grove-cutouts {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.28rem;
+  max-width: 13rem;
+  margin: 0.5rem auto;
+}
+.grove-cutouts i {
+  display: block;
+  aspect-ratio: 1;
+  background: #5b4a55;
+  border: 1px dashed #a68e97;
+}
+.grove-cutouts i.lit {
+  background: #f0c283;
+  border: 2px solid #fff0cb;
+}
+.grove-feedback:empty {
+  display: none;
+}

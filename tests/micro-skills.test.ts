@@ -23,8 +23,8 @@ describe('micro-skill links to played actions', () => {
   const rows = microSkillRows(pack, MICRO_SKILLS);
 
   it('indexes the actual source numbers and attaches every link to an existing objective and RPG example', () => {
-    expect(SUPPLIED_SKILL_IDS).toHaveLength(803);
-    expect(SUPPLIED_SKILL_IDS.filter((id) => id <= 200)).toEqual([78, 79, 80]);
+    expect(SUPPLIED_SKILL_IDS).toHaveLength(1200);
+    expect(SUPPLIED_SKILL_IDS).toEqual(Array.from({ length: 1200 }, (_, i) => i + 1));
     expect(new Set(MICRO_SKILLS.map(({ number }) => number)).size).toBe(MICRO_SKILLS.length);
     expect(rows.length).toBe(MICRO_SKILLS.reduce((sum, { uses }) => sum + uses.length, 0));
     const games = playableRows(gameTracker);
@@ -44,6 +44,13 @@ describe('micro-skill links to played actions', () => {
         expect(stories.has(use.story), `skill ${skill.number}, story element ${use.story}`).toBe(true);
       }
     }
+  });
+
+  it('counts side stories in their physical chapter even when the mission has a name instead of a chapter number', () => {
+    expect(rows.find(row => row.objective === 'quarter.leaves')?.chapter).toBe(14);
+    expect(rows.find(row => row.objective === 'wire.crowd')?.chapter).toBe(8);
+    expect(rows.find(row => row.objective === 'nile.way.compare')?.chapter).toBe(2);
+    expect([...new Set(rows.map(row => row.chapter))].sort((a,b)=>a-b)).toEqual(Array.from({length:15},(_,i)=>i+1));
   });
 
   it('uses evidence from each action for all combinations of axes instead of joining separate actions', () => {

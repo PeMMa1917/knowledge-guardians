@@ -1,0 +1,16 @@
+.calling-book {
+  margin-block: .6rem;
+  overflow-wrap: anywhere;
+}
+.calling-book > div {
+  padding-inline-start: .5rem;
+}
+.calling-book select {
+  display: block;
+  max-width: 100%;
+  margin-block: .3rem .6rem;
+  font: inherit;
+}
+.calling-book .lore-entry + .lore-entry {
+  margin-block-start: .6rem;
+}

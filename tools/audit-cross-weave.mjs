@@ -1,4 +1,25 @@
+import { keepsakeScenes } from './review-keepsake-scenes.mjs';
+import { reviewContexts } from './combination-context.mjs';
+import { returnCoatProofs } from './return-coat-evidence.mjs';
+import { activityAnchors } from './tok-activity-anchors.mjs';
+import { pocketProofs } from './pocket-theatre-evidence.mjs';
+import { reasoningRepertoire } from './reasoning-repertoire.mjs';
+import { bellProofs } from './claim-bell-evidence.mjs';
+import {riverNameProofs} from './river-name-evidence.mjs';
+import {hatchProofs} from './hatch-sleeve-evidence.mjs';
+import {secondInkProofs} from './second-ink-evidence.mjs';
+import {orchardProofs} from './walking-orchard-evidence.mjs';
+import { houseProofs } from './open-house-evidence.mjs';
+import { tideClockProofs } from './tide-clock-evidence.mjs';
+import {ferryRadioProofs} from './ferry-radio-evidence.mjs';
+import {lensProofs} from './lens-loan-evidence.mjs';
 /** Audit documented intersections of one authored action, one learning dimension and one RPG element. */
+import { originActions } from './origin-action-evidence.mjs';
+import {stacksProofs} from './turning-stacks-evidence.mjs';
+import {cupProofs} from './first-cup-evidence.mjs';
+import {almanacProofs} from './street-almanac-evidence.mjs';
+import { elbowProofs } from './giant-sleeve-evidence.mjs';
+import { coatProofs } from './coat-action-evidence.mjs';
 import { readFile } from 'node:fs/promises';
 import { once } from 'node:events';
 import { resolve } from 'node:path';
@@ -140,6 +161,459 @@ const copiesEvidenceInvestigations = [
 // Each row identifies a complete action and the intersection its trace actually supports.
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
+  ...returnCoatProofs, ...pocketProofs, ...bellProofs,
+  ...originActions,
+  ...elbowProofs,
+  ...stacksProofs,
+  ...lensProofs,
+  ...ferryRadioProofs,
+  ...orchardProofs,
+  ...tideClockProofs,
+  ...hatchProofs, ...riverNameProofs, ...secondInkProofs,
+  ...houseProofs,
+  ...cupProofs,
+  ...almanacProofs,
+  {
+    objective:'petal.windows',map:'forest.petal-house',target:'petal-window',source:'tests/petal-window.test.ts',
+    anchor:'separates the two identical daylight crops, the UV detector and the animal’s own landing',
+    action:'Keep both yellow crops at one gain and change the pane. Compare their ultraviolet distributions with the key. Open dated watches to learn where the visitors actually landed.',
+    reasoning:[{mode:'deductive',basis:'Unequal same-gain returns rule out an identical response in this band for the two measured crops.'}],
+    dimensions:['micro:754','area:NAT','concept:evidence','concept:perspective','framework:scope','subject:biology','subject:physics'],elements:['game:209','story:95'],
+  },
+  {
+    objective:'petal.ceiling',map:'forest.petal-house',target:'petal-window',source:'tests/petal-window.test.ts',
+    anchor:'returns from upper-stop clipping to detail at the same two crops',
+    action:'Raise the gain until both crops lose detail at the upper stop. Print them separately at lower gain and compare the returns with the clipped slips.',
+    reasoning:[{mode:'causal',basis:'Changing the gain at a fixed crop and band isolates one reason different returns can print alike.'}],
+    dimensions:['micro:903','area:NAT','concept:objectivity','framework:methods-and-tools','subject:physics'],elements:['game:267','story:5'],
+  },
+  {
+    objective:'petal.gears',map:'forest.petal-house',target:'petal-gears',source:'tests/petal-window.test.ts',
+    anchor:'preserves order, the interval and the count ratio under four distinct changes of scale',
+    action:'Operate both sides of the costume hooks, shade stamps, clock ribbon and square counters. Transfer the working mechanism after trying a different numbering scheme or starting point.',
+    reasoning:[{mode:'analogical',basis:'A single or paired counter drives proportional ribbons. Moving the zero on the stage clock preserves a difference but changes the quotient.'}],
+    dimensions:['micro:901','area:MAT','area:ART','framework:scope','framework:methods-and-tools','concept:interpretation','subject:math-ai','subject:dance'],elements:['game:194','story:119'],
+    comparison:{concepts:['interpretation'],framework:['methods-and-tools','scope'],areas:[
+      {id:'MAT',method:'Change the unit of both low-square counts and shift the origin of both clock readings, checking ratio and difference separately.',limit:'The ratio of the clock readings depends on the origin. The square counts refer only to the sampled crop.'},
+      {id:'ART',method:'Operate the dresser’s hooks and the ordinal leg rises. Change their arrangement or spacing while preserving their jobs in a performance.',limit:'Order cues the leg rises but supplies no equal distances between gestures.'}],
+      connection:'The mathematical transformation preserves a relationship that the choreographer can use while making other aspects of the gesture freely.'},
+  },
+  {
+    objective:'petal.ribbons',map:'stage.rehearsal',target:'petal-silk-ribbons',source:'tests/petal-window.test.ts',
+    anchor:'checks predictions against unopened landings and uses the same observations to expand a dancer’s repertoire',
+    action:'Pin a prediction or reserve a blank ribbon before each dated first landing. Keep the original ribbon as the watch opens, then choreograph a new gesture using the observation.',
+    reasoning:[{mode:'inductive',basis:'Two independent first landings can challenge a promise about where every first visitor goes. One compatible record leaves the next hour untested.'}],
+    dimensions:['micro:1117','area:ART','area:NAT','concept:explanation','concept:evidence','framework:scope','framework:methods-and-tools','subject:biology','subject:dance'],elements:['game:22','story:144'],
+    comparison:{concepts:['explanation','evidence'],framework:['scope','methods-and-tools'],areas:[
+      {id:'NAT',method:'Commit the Cuff or window-side prediction, or a blank ribbon, before opening either later watch. Check what each first visitor did.',limit:'One matching visitor leaves the prediction open to a new test. A blank ribbon provides no prediction to check.'},
+      {id:'ART',method:'Hold, echo or cross the observed landing, then change the gesture while keeping the observation.',limit:'An expressive gesture can help an audience see something new. It gives no independent prediction about another living animal.'}],
+      connection:'The new watch can disconfirm a prediction and at the same time give the company new ways to perform the event.'},
+  },
+
+  {
+    objective:'lor.o2.friend',map:'nexus.archive',target:'lor-desk',
+    source:'tests/first-chapter-perches.test.ts',anchor:'keeps the lit glass and worn cuff apart in all eighteen setups',
+    action:'Watch two Archive stands, change the lining under a fixed shutter and change the shutter above a fixed lining. Bright light can accompany both a landing and an empty perch. Repeat the comparison before reserving a place.',
+    reasoning:[{mode:'causal',basis:'Changing one part of the arrangement gives a keeper grounds to reject bright light alone as a sufficient explanation for landing at this stand.'}],
+    dimensions:['area:NAT','concept:evidence','concept:justification','framework:methods-and-tools','subject:biology'],elements:['game:20','story:38'],
+  },
+  {
+    objective:'moth.return.desk',map:'stage.foyer',target:'moth-work-desk',source:'tests/first-chapter-perches.test.ts',
+    anchor:'takes the %s resting place to a receiver, lets both outcomes stand and admits a later revision',
+    action:'Carry the moth from the controlled perch to the theatre rail. Try a tug that can be answered and a wait for the first gesture. The host speaks about what these two different trials ask of the same child.',
+    comparison:{concepts:['interpretation','explanation'],framework:['methods-and-tools'],areas:[
+      {id:'NAT',method:'Hold one setup constant and change one feature to distinguish two explanations of a landing.',limit:'Repeated observations concern these perches and this creature.'},
+      {id:'ART',method:'Rehearse a cue where a child can answer a ribbon, then give the child the first gesture in an open-ended pause.',limit:'A workable cue can express a different relationship without establishing a general law of performance.'}],
+      connection:'The same keeper can use a trial to narrow an explanation at the perch, then use alternatives to widen a performer’s expressive choices at the door.'},
+    dimensions:['micro:1106','area:NAT','area:ART','concept:interpretation','concept:explanation','framework:methods-and-tools','subject:theatre','subject:biology'],elements:['game:20','story:38'],
+  },
+  {
+    objective:'emberford.tally.weigh',map:'aethelgard.emberford',target:'emberford.tally',source:'tests/first-chapter-perches.test.ts',
+    anchor:'checks units at the six doors, on the scale and after removing one loaf',
+    action:'Put both full trays on the scale. Move a loaf from each to a stall. The same change in the number of loaves produces a change of one mass unit for a small loaf and two for a large one.',
+    reasoning:[{mode:'deductive',basis:'Given the measured weight per loaf in a tray, subtracting one such loaf fixes the units left on that tray. Equal starting loads alone do not fix the number of doors supplied.'}],
+    dimensions:['micro:1087','area:MAT','area:HUM','concept:interpretation','framework:scope','subject:math-ai','subject:business'],elements:['game:73','story:95'],
+  },
+  {
+    objective:'rum.o4.tell',map:'aethelgard.emberford',target:'villager-1',source:'tests/first-chapter-perches.test.ts',
+    anchor:'edition after separating four tellers from one source',
+    action:'Trace four chalk strokes through the market to one porter, compare their origin with a dated failure and three later checks, then choose who receives a correction that a future failure would not invalidate.',
+    reasoning:[{mode:'inductive',basis:'Three later checks supply evidence about a particular run. They cannot warrant a statement that no future piece will fail.'}],
+    dimensions:['micro:90','area:HUM','concept:evidence','concept:truth','framework:scope','framework:ethics','subject:psychology'],elements:['game:267','story:114'],
+  },
+  {
+    objective:'picture-ferry.crossed',map:'sea.picture-ferry',target:'picture-ferry-lamp',
+    source:'tests/picture-ferry.test.ts',anchor:'requires both windows at the chosen setting',
+    action:'Turn and reverse the three-sided sleeve, stand at both windows and decide whether the boat sails before a passenger can come aboard for the third leaf.',
+    reasoning:[{mode:'causal',basis:'With the rail face fixed, reversing the sleeve exchanges the unlit face and the bunk view. It changes what a passenger there can report.'}],
+    dimensions:['micro:114','concept:perspective','concept:power','framework:perspectives','area:ART'],elements:['game:209','story:95'],
+  },
+  {
+    objective:'picture-ferry.returned',map:'sea.harbour',target:'picture-ferry-passenger',
+    source:'tests/picture-ferry.test.ts',anchor:'takes every signed print ashore',
+    action:'Bring the particular print to the passenger. Open the folded leaf to supply the part they missed or listen to what they took from the lit window. The medical collection case separates an inscribed identity from an account of a person’s character.',
+    reasoning:[{mode:'pragmatic',basis:'Sharing the folded leaf can help a passenger trace a source. Listening first retains their view of the original crossing.'}],
+    dimensions:['micro:176','area:HIS','area:ART','concept:responsibility','framework:ethics'],elements:['game:22','story:119'],
+  },
+  {
+    objective:'picture-ferry.encore',map:'stage.gallery',target:'picture-ferry-evening-show',
+    source:'tests/picture-ferry.test.ts',anchor:'resumes halfway through the performance',
+    action:'Use a picture, source ticket and open question from three particular objects. Hear the three pages at the gallery in the order sent by the Guardian. Giving the opening to the bunk makes a question frame the following picture and credit.',
+    reasoning:[{mode:'analogical',basis:'Different objects can illuminate the same exhibition question by contributing a visible detail, a documented context or a limit, while the signed sheets keep their separate sources.'}],
+    dimensions:['micro:179','area:ART','concept:interpretation','framework:methods-and-tools','subject:theatre'],elements:['game:144','story:144'],
+  },
+  {
+    objective:'plum.hand',map:'stage.plum-loft',target:'plum-mould',
+    source:'tests/plum-orchard.test.ts',anchor:"expect(d.done('plum.hand')).toBe(true)",
+    action:'Draw Fen’s seven-notch stylus across the pair and ridge. A working grip masks the middle hollow on worn wood. Change only the pressure and find the hollow with a light draw. A heavy draw crosses it even on fresh wood.',
+    reasoning:[{mode:'causal',basis:'Hold the mould and the two profiles fixed while changing the hand pressure, then test the way the wider contact crosses the groove on the fresh mould.'}],
+    dimensions:['micro:741','concept:evidence','area:ART','area:NAT','theme:TEC','framework:methods-and-tools','subject:design-tech','subject:physics','question:KQ-ROUTE-23'],elements:['game:194','story:95'],
+  },
+  {
+    objective:'plum.verse',map:'stage.plum-loft',target:'plum-verse',
+    source:'tests/plum-orchard.test.ts',anchor:'returns two translations to the actor who can change the fruit and the beat',
+    action:'Stage a literal line, then fit a narrower fruit name to three drum knocks. Pass both to a second actor. The first rendering preserves a choice of fruit and the other helps the catcher meet the third beat.',
+    reasoning:[{mode:'pragmatic',basis:'What counts as a useful translation changes with the receiver’s job and the entrance cue the receiver has to catch.'}],
+    dimensions:['micro:855','area:ART','theme:LAN','concept:interpretation','framework:perspectives','subject:lit-perf','question:KQ-ROUTE-10'],elements:['game:186','story:95'],
+  },
+  {
+    objective:'plum.score',map:'stage.plum-loft',target:'plum-score',
+    source:'tests/plum-orchard.test.ts',anchor:'lets the same rest carry a count and a performer’s own timing',
+    action:'Strike the suspended rim and the floorboard in separate four-beat bars. Place the three wheel spokes beside the marks. Give the same rest to the waiting child, then return both readings to Fen.',
+    comparison:{concepts:['interpretation','values'],framework:['methods-and-tools'],areas:[
+      {id:'MAT',method:'Establish a repeating four-place pattern. Use the empty fourth position to count a single rest before the next entrance.',limit:'The count fixes the position of the next entrance without determining how a listener experiences the silence.'},
+      {id:'ART',method:'Perform the rest with the actor and the shell. Attend to what the same pause asks the different participants to feel and do.',limit:'The players can share an expressive decision without making it a universal duration or meaning for all performances.'}],
+      connection:'The company can meet on a common downbeat and leave the meaning of the waiting to each performer.'},
+    dimensions:['micro:608','micro:1110','area:ART','area:MAT','concept:interpretation','concept:values','framework:methods-and-tools','subject:music','subject:math-aa'],elements:['game:190','story:95'],
+  },
+  {
+    objective:'plum.book',map:'stage.plum-loft',target:'orchard-louis-braille',
+    source:'tests/plum-orchard.test.ts',anchor:'keeps Fen’s worn mould separate from the historical Perkins volume',
+    action:'Bring the Perkins first edition to the loft. Compare the same raised wooden tabs in a fresh and a worn mould. Hand the carver both impressions and the separate date and credit of Braille’s book.',
+    comparison:{concepts:['evidence'],framework:['scope','methods-and-tools'],areas:[
+      {id:'HIS',method:'Consult the account of the surviving 1829 Perkins volume. Use that edition’s physical record and date to identify which signs its author described.',limit:'The held volume does not record Fen’s workshop or the effect of her later mould.'},
+      {id:'ART',method:'Make two impressions from the same carved pair and ridge. Try to distinguish the features using each surface and give the next performer edges they can actually find.',limit:'The worn trial informs this prop design. It cannot establish the conditions of every historical reader.'}],
+      connection:'An edition’s evidence helps Fen choose which signs to compare. Her test can change her craftsmanship while keeping Braille’s design and authorship distinct.'},
+    dimensions:['area:HIS','area:ART','concept:evidence','framework:scope','framework:methods-and-tools','subject:design-tech','subject:music','subject:history'],elements:['game:194','story:95'],
+  },
+  {
+    objective:'supper.trace',map:'copies.supper-room',target:'supper-lamps',
+    source:'tests/supper-shadow.test.ts',anchor:'retains the lighting evidence discarded by chalk',
+    action:'Change the spoon count and change which lamps burn. One spoon with both side lamps and a pair with the centre lamp each leaves an edge four spaces to either side. The rival casts fit the original tracing.',
+    reasoning:[{mode:'abductive',basis:'Two different arrangements explain the same edge marks. The trace alone supplies no grounds for selecting one.'}],
+    dimensions:['micro:25','area:NAT','area:MAT','concept:evidence','concept:explanation','framework:methods-and-tools','subject:physics'],elements:['game:188','story:77'],
+  },
+  {
+    objective:'supper.light',map:'copies.supper-room',target:'supper-lamps',
+    source:'tests/supper-shadow.test.ts',anchor:"expect(d.done('supper.light')).toBe(true)",
+    action:'Switch from chalk to the live cloth while repeating the two arrangements. One arrangement lets some light reach either outline while the other blocks its sole source.',
+    reasoning:[{mode:'causal',basis:'Holding the bar and viewpoint fixed lets the player isolate the light the other wick contributes to each shadow.'}],
+    dimensions:['micro:50','area:NAT','concept:interpretation','framework:methods-and-tools','subject:physics'],elements:['game:188','story:69'],
+  },
+  {
+    objective:'supper.thursday',map:'copies.supper-room',target:'supper-curtain',
+    source:'tests/supper-shadow.test.ts',anchor:'requires independent traces at both bar stops before the Thursday caveat is available',
+    action:'Move the bar near the cloth and try both arrangements that gave the old outline. The two pairs now fall in different places. Take those readings to Otla and look for the original rail setting on the Thursday cloth.',
+    comparison:{concepts:['evidence'],framework:['scope'],areas:[
+      {id:'NAT',method:'Change the separation of the spoons and screen, then repeat both lamp arrangements.',limit:'The different edges distinguish the arrangements under the conditions of this new experiment.'},
+      {id:'HIS',method:'Check the surviving Thursday tracing and the cook’s account for the recorded position of the rail.',limit:'The earlier edge marks omit the rail setting and cannot identify a second diner.'}],
+      connection:'A repeatable way to distinguish two present setups gives Otla a precise question to ask of Thursday’s record. The missing setting leaves the historical inference open.'},
+    dimensions:['area:HIS','area:NAT','framework:scope','concept:evidence','concept:justification','subject:history','subject:physics'],elements:['game:188','story:77'],
+  },
+  {
+    objective:'field-loan.press.compared',map:'copies.landing',target:'field-loan.press.bench',
+    source:'tests/field-loans.test.ts',anchor:'keeps the %s loan attached to this object, position and receipt',
+    action:'Move a particular title, accession, or qualified date up to the left stop. Compare the characters that survive a narrow impression with the whole wording on a folded slip. Moving the type requires another matched pair.',
+    reasoning:[{mode:'deductive',basis:'With a fixed count of available type spaces and this starting point, every character outside the opening has to fall off the short slip.'}],
+    dimensions:['micro:193','area:HIS','theme:LAN','concept:evidence','concept:interpretation','framework:methods-and-tools'],elements:['game:234','story:29'],
+  },
+  {
+    objective:'field-loan.stage.questioned',map:'stage.foyer',target:'field-loan.stage.bench',
+    source:'tests/field-loans.test.ts',anchor:'expect(d.done(loanSite(stop) +',
+    action:'Give the usher an identified object, then ask whether a performance of it can warrant a historical claim. The near lamp and the distant bell allow different readers to report what reached them. Edda brings the catalogue limit back to the new staging.',
+    comparison:{concepts:['evidence'],framework:['methods-and-tools'],areas:[
+      {id:'ART',method:'Make the signal at a chosen beat and position. Attend to which of two seats perceives it.',limit:'A successful cue shows something about access during this staging.'},
+      {id:'HIS',method:'Locate the identified object in its own collection record and compare the curator’s limit with the new visual or sounding cue.',limit:'An identification and the limits attached to the surviving object cannot reconstruct every earlier performance or use.'}],
+      connection:'A performance can establish who receives a new cue. A historical claim about the object calls for a dated source and an explicit limit.'},
+    dimensions:['micro:2','area:ART','area:HIS','concept:evidence','concept:interpretation','framework:methods-and-tools','subject:theatre'],
+    elements:['game:21','story:29'],
+  },
+  {
+    objective:'field-loan.dispatch.issued',map:'civic.dispatch',target:'field-loan.dispatch.bench',
+    source:'tests/field-loans.test.ts',anchor:'admits all 295 earned objects in exactly two other worlds',
+    action:'Hang the identity on the strap and compare it with the limitation inside. Send a public reader through the hatch or keep both lines at a staffed desk. Follow the chosen passage to give a caller a quieter reply or a reliable opening bell.',
+    reasoning:[{mode:'pragmatic',basis:'The public slip reaches a waiting caller sooner. The desk can show both parts privately and costs the canal messenger a wait.'}],
+    dimensions:['micro:470','area:HUM','theme:POL','concept:responsibility','concept:power','framework:ethics','subject:global-politics'],
+    elements:['game:22','story:15'],
+  },
+  {
+    objective:'field-loan.fern.questioned',map:'forest.station',target:'field-loan.fern.bench',
+    source:'tests/field-loans.test.ts',anchor:'expect(d.done(loanSite(stop) +',
+    action:'Identify a natural or historical specimen and then change the watcher’s question. Pass the dated face and the return face through the wet sleeve and ask what can still be warranted from the surviving strip. The specific catalogue limit stays available.',
+    reasoning:[{mode:'causal',basis:'The field model keeps the text fixed while the sleeve, orientation and wax change which lines remain legible.'}],
+    dimensions:['micro:2','area:NAT','area:HIS','concept:evidence','framework:methods-and-tools','framework:scope','subject:geography'],
+    elements:['game:21','story:29'],
+  },
+  {
+    objective:'birdside.cloth',map:'sea.harbour',target:'birdside.cloth',
+    source:'tests/folding-flock.test.ts',anchor:'holds the observation side fixed across the two hours',
+    action:'Pin the same ledge for the same westward arrow at first and last light on separate watches. Unfold the rain strip and see how a peg still fixes a position when the observations cannot locate a roost.',
+    reasoning:[{mode:'deductive',basis:'Given the model’s stipulated departure at dawn and return at dusk, a westward path places its land endpoint on opposite sides at the two hours.'},{mode:'abductive',basis:'An unrecognised flight in rain provides several possible accounts. The peg records the proposed position without settling which account fits.'}],
+    comparison:{concepts:['evidence','certainty'],framework:['scope','methods-and-tools'],areas:[
+      {id:'MAT',method:'Hold the arrow and peg fixed, then reverse which endpoint counts as the start of the directed route.',limit:'The geometric relation can identify an endpoint only after the direction and the rule are specified.'},
+      {id:'NAT',method:'Check a particular flock at a stated hour. Compare its visible behaviour with the expected outbound or returning pattern.',limit:'The rain watch gives neither species identification nor a coherent direction. An abstract arrow cannot restore that missing observation.'}],
+      connection:'The same direction can support different claims about land. A mathematical implication in the paper model requires an observational premise to say anything about the actual birds.'},
+    dimensions:['area:NAT','area:MAT','concept:evidence','concept:certainty','framework:scope','framework:methods-and-tools','subject:biology','subject:math-ai'],elements:['game:121','game:234'],
+  },
+  {
+    objective:'birdside.paper',map:'sea.harbour',target:'birdside.folder',
+    source:'tests/folding-flock.test.ts',anchor:'checks a printed caption with the learner’s account',
+    action:'Try two public voyage dates against Renna’s claim about learning without writing. The dates leave it unresolved. Use Thompson’s account of his pencil to reset the caption.',
+    reasoning:[{mode:'deductive',basis:'If a general caption excludes all writing in this lesson, one described use of a pencil in this lesson contradicts it. A voyage date alone cannot answer the claim.'}],
+    dimensions:['area:HIS','theme:IND','concept:evidence','concept:culture','framework:scope','framework:perspectives'],elements:['game:108','story:112'],
+  },
+  {
+    objective:'birdside.projection.image',map:'stage.gallery',target:'birdside.projector',
+    source:'tests/folding-flock.test.ts',anchor:'opens each of four handovers only with the earned canoe',
+    action:'Try a second cutout with the same shadow. Expose the launch place and date or two dated voyages of the same identified canoe, and inspect the particular slide now standing beside the projection.',
+    reasoning:[{mode:'analogical',basis:'Two props can agree in silhouette. Matching their visible outlines does not carry the name or the chronology of one object to the other.'}],
+    comparison:{concepts:['interpretation','evidence'],framework:['scope','methods-and-tools'],areas:[
+      {id:'ART',method:'Frame a silhouette on glass and test a different cutout against the shadow. Choose the details a viewer can take away.',limit:'The silhouette can represent a kind of canoe while leaving the individual hulls indistinguishable.'},
+      {id:'HIS',method:'Attach a named launch at a specific place and date or compare two voyage entries for the same vessel.',limit:'The public launch does not identify the navigator in a later year. The voyage record cannot identify every teaching exchange.'}],
+      connection:'A spectator can recognise the form while misidentifying the historical vessel. A dated frame makes that particular identification open to checking.'},
+    dimensions:['micro:172','area:ART','area:HIS','concept:evidence','concept:interpretation','framework:scope','framework:methods-and-tools','subject:film','subject:history'],elements:['game:108','story:112'],
+  },
+  {
+    objective:'birdside.projection.range',map:'stage.gallery',target:'birdside.projector',
+    source:'tests/folding-flock.test.ts',anchor:'opens each of four handovers only with the earned canoe',
+    action:'Try the sweeping caption on two different learning histories. Leave the named learner in the programme or leave room for another historian to check a second crew’s teaching roles.',
+    reasoning:[{mode:'inductive',basis:'A named teaching case suggests another record worth comparing. It supplies no prevalence estimate for how navigators or their teachers learned.'}],
+    dimensions:['micro:136','area:HIS','theme:IND','framework:scope','concept:justification'],elements:['game:22','story:119'],
+  },
+  {
+    objective:'birdside.returned',map:'island.dock',target:'birdside.return',
+    source:'tests/folding-flock.test.ts',anchor:'opens each of four handovers only with the earned canoe',
+    action:'Equip the named canoe and try the earlier board or lamp from a lower pier. Waiting with a second person opens the Quiet Margin. Trading the lead opens the chalk walk and changes Sora’s account back home.',
+    reasoning:[{mode:'pragmatic',basis:'Either handover can make an instruction usable. Test who can reach the cord or read the upper row and who has to wait for the next boat.'}],
+    dimensions:['area:HUM','theme:POL','concept:responsibility','concept:values','framework:ethics','subject:design-tech'],elements:['game:22','story:119'],
+  },
+  {
+    objective:'hearing.empty-chair.amended',map:'preserved.archive',target:'agate-vale',
+    source:'tests/town-hearings.test.ts',anchor:'retains the two source editions in all eight repairs',
+    action:'Bring a market token decision to the family door. Offer a return hook or a witness bell and see how a visitor can enter a place but still have no opportunity to speak.',
+    dimensions:['area:HIS','area:HUM','concept:evidence','concept:power','framework:scope','framework:perspectives'],
+    elements:['game:180','story:114'],
+    reasoning:[{mode:'analogical',basis:'Being issued a ticket differs from being served. The distinction transfers to being admitted and being heard, although the gate and people differ.'}],
+    comparison:{concepts:['evidence','power'],framework:['scope','perspectives'],areas:[
+      {id:'HIS',method:'Date a visit and identify which part of the bedside account can be corroborated by a second person.',limit:'A family roll cannot establish that a relative witnessed the night.'},
+      {id:'HUM',method:'Track the practical effect of an access rule on two visitors with different schedules.',limit:'Counting admissions cannot establish that each visitor got a hearing.'}],
+      connection:'Fit a return hook or offer a bell. The visitor who returns can tell the keeper which part of the record needs a second witness.'},
+  },
+  {
+    objective:'hearing.missing-tooth.amended',map:'metalworks.yard',target:'agate-vale',
+    source:'tests/town-hearings.test.ts',anchor:'retains the two source editions in all eight repairs',
+    action:'Carry the distinction between a bedside key and a witnessed event to a jig. Split delivery provenance from the pull and put a second person in a position to sign or repeat it.',
+    dimensions:['area:HIS','area:NAT','concept:justification','concept:certainty','framework:scope','framework:methods-and-tools'],
+    elements:['game:267','story:114'],
+    reasoning:[{mode:'inductive',basis:'A marked spare that held informs the next inspection. The observation of a single spare does not license a rate for eighteen unseen teeth.'}],
+    comparison:{concepts:['justification','certainty'],framework:['scope','methods-and-tools'],areas:[
+      {id:'HIS',method:'Trace the distinct stamped ends through the delivery chain, as the dated key is traced to a named visitor.',limit:'A delivery history identifies the part to inspect without establishing its material behaviour.'},
+      {id:'NAT',method:'Compare the two teeth on the same pull, then let the late shift examine the setting.',limit:'One spare holding a pull cannot predict whether every tooth in another delivery will hold.'}],
+      connection:'Keep the dated tag with its owner and separately sign or repeat the pull. A follow-up can identify what was tested and which setting produced the reading.'},
+  },
+  {
+    objective:'hearing.dropped-verb.amended',map:'copies.press',target:'agate-vale',
+    source:'tests/town-hearings.test.ts',anchor:'retains the two source editions in all eight repairs',
+    action:'Use the wheel crews’ traced delivery to separate two jobs in a printed sentence. Set the collecting address below the counting docket or compare how two desks read the proof.',
+    dimensions:['area:ART','area:NAT','concept:interpretation','concept:explanation','framework:methods-and-tools','framework:perspectives'],
+    elements:['game:267','story:114'],
+    reasoning:[{mode:'causal',basis:'Changing the subject changes the assignment of the opening phrase on the proof. Returned time slips show whether changing the wording was enough to coordinate a collection.'}],
+    comparison:{concepts:['interpretation','explanation'],framework:['methods-and-tools','perspectives'],areas:[
+      {id:'NAT',method:'Trace the stamped delivery and test a named tooth at a defined setting before attributing a result to it.',limit:'Co-location in a tray cannot establish common origin or the same mechanical response.'},
+      {id:'ART',method:'Move the subject in a printer’s forme and compare two intended readers’ responses to the words.',limit:'A formally clear subject cannot establish that its two readers took the same action.'}],
+      connection:'Separately trace counting and collecting through the public proof. A named address helps a runner reach the next desk, and two independent replies can reveal a difference in dates.'},
+  },
+  {
+    objective:'hearing.last-cup.amended',map:'market.square',target:'agate-vale',
+    source:'tests/town-hearings.test.ts',anchor:'retains the two source editions in all eight repairs',
+    action:'Compare issued and used tickets or invite holders to explain an unused ticket privately. A buyer may leave without giving a reason, leaving the counted gap intact.',
+    dimensions:['area:MAT','area:HUM','concept:objectivity','concept:values','framework:scope','framework:ethics'],
+    elements:['game:180','story:114'],
+    reasoning:[{mode:'abductive',basis:'An unused ticket is compatible with a ferry shift and several other causes. An account can distinguish a particular case, while a refusal keeps the cause open.'},
+      {mode:'pragmatic',basis:'Separate strings show where to look without identifying buyers. A voluntary private account can reveal a particular obstacle but cannot describe people who declined.'}],
+    comparison:{concepts:['objectivity','values'],framework:['scope','ethics'],areas:[
+      {id:'MAT',method:'Compare the extra coin to four and ten, and distinguish counts of issued and used tickets.',limit:'Ratios require a named denominator. A difference in the totals carries no explanation of its cause.'},
+      {id:'HUM',method:'Compare the two workers’ schedules and seek a voluntary account of an unused ticket.',limit:'Privacy and the people who return limit the group about whom any explanation can be made.'}],
+      connection:'Two counting strings preserve the gap. At the quiet desk an individual can help explain one case or decline with their ticket intact.'},
+  },
+  ...coatProofs,
+  {
+    objective:'courier.rete.theatre',map:'stage.foyer',target:'courier-theatre',
+    source:'tests/courier-lift.test.ts',anchor:"expect(carriedMark(d.s, c, stop)).toEqual(c.handles[index])",
+    action:'Equip Musa’s 1480/81 spherical astrolabe. Tip the moving rete and the star pointers. Send one checked cue to Pella. The performer can lead with the physical model or the maker and act out a turn; the celestial observation remains to be made.',
+    comparison:{areas:[
+      {id:'NAT',method:'Use the pointer to connect an instrument reading with an observation of the sky.',limit:'Turning the rete demonstrates the model. That motion by itself is no observation of a star.'},
+      {id:'ART',method:'Choose an entrance and embody the moving framework for spectators at the theatre.',limit:'A vivid gesture can clarify the model while leaving its astronomical prediction untested.'}],
+      concepts:['interpretation'],framework:['methods-and-tools'],connection:'The audience follows the same motion that the observer would use. The stage demonstration establishes how to operate the model; a sky observation tests what the model predicts.'},
+    dimensions:['micro:79','concept:interpretation','framework:methods-and-tools','area:NAT','area:ART','subject:theatre','subject:physics'],elements:['game:21','story:114'],
+  },
+  {
+    objective:'courier.drawers.theatre',map:'stage.foyer',target:'courier-theatre',
+    source:'tests/courier-lift.test.ts',anchor:"expect(lastCourierOpening(d.s, c, 'market')).toBe('person')",
+    action:'Take the Michigan copy of Bertrand to the stage. Issue the gold showing or the paired-drawer mark. The announcer’s first visible move affects what a spectator can infer about the sampling procedure.',
+    comparison:{areas:[
+      {id:'MAT',method:'Keep the possible paired compartments and the selection of a visible face distinct when counting outcomes.',limit:'A view of the gold face alone does not specify how the drawer was chosen.'},
+      {id:'ART',method:'Stage the selection with a visible choosing hand or announce the colour before showing the mechanism.',limit:'Seeing what one actor did in this performance cannot determine a selection rule used on every occasion.'}],
+      concepts:['evidence'],framework:['perspectives'],connection:'The receiver’s opening controls which part of the procedure the spectator sees. The counting rule still depends on how the observation was selected.'},
+    dimensions:['micro:176','concept:evidence','framework:perspectives','area:MAT','area:ART','subject:math-ai','subject:theatre'],elements:['game:21','story:114'],
+  },
+  {
+    objective:'courier.banknote.market',map:'market.square',target:'courier-market',
+    source:'tests/courier-lift.test.ts',anchor:"expect(entry.event?.sourceIds).toEqual([c.source])",
+    action:'Give Bew the denomination, serial number or issuer’s promise from AA2986931. Choose whose evidence comes first. The receipt can identify the note. A historical price series would be necessary to infer what the household could buy.',
+    reasoning:[{mode:'deductive',basis:'Identifying a particular note and its printed denomination supplies no premise that fixes local purchasing power. A transaction or price at a specified place and time is still missing.'}],
+    comparison:{areas:[
+      {id:'HIS',method:'Use this note’s catalogue identity and printed number to distinguish it from another surviving issue.',limit:'A correctly identified object cannot establish the price of an entire household’s purchases.'},
+      {id:'HUM',method:'Relate a nominal monetary amount to observed prices at the relevant place and time.',limit:'The price series is absent at the counter, so the buyer leaves the amount of goods open.'}],
+      concepts:['evidence'],framework:['scope'],connection:'Holding the individual note fixes which currency artifact is in question and lets the buyer identify the extra evidence a claim about buying power needs.'},
+    dimensions:['micro:92','concept:evidence','framework:scope','area:HIS','area:HUM','subject:economics'],elements:['game:21','story:114'],
+  },
+  {
+    objective:'whistle.fern.sent',map:'forest.station',target:'whistle.fern.table',
+    source:'tests/whistle-watch.test.ts',anchor:'keeps two signatures with their own impressions',
+    action:'Overlay the bank tracing and the turned heel. Each person can sign only the impression their own work establishes. The local hands may retain both slips or invite a visitor to compare them at the original tray.',
+    reasoning:[{mode:'abductive',basis:'The turned heel fits the square interruption in the fan. Two overlapping impressions explain the apparent extra foot, without identifying the unseen animal or the time of passage.'}],
+    dimensions:['micro:15','concept:evidence','framework:scope','subject:biology','area:NAT'],elements:['game:267','story:29'],
+  },
+  {
+    objective:'whistle.stage.sent',map:'stage.rehearsal',target:'whistle.stage.table',
+    source:'tests/whistle-watch.test.ts',anchor:'tests open, listener-covered and both-names-covered reports',
+    action:'Return reviews under all three name covers. At a fixed cover listen from both seats. The back panel changes the audible result while the review arrangement changes who can ask whom about it.',
+    comparison:{concepts:['objectivity','perspective'],framework:['methods-and-tools','perspectives'],
+      areas:[{id:'ART',method:'Keep the two-note warning fixed and listen to the front and back of the rehearsal room. Read the heard timing back to the performer.',limit:'A prompt book establishes the two intended attacks. It cannot tell a performer whether the back row could hear the second.'},
+        {id:'HUM',method:'Vary which participant identities are shown on the reviewing slip. Retain each listener’s seat so accounts under different arrangements can be interpreted.',limit:'Hiding a written name changes access to provenance but can still identify the sole occupant of a particular seat. Two listeners cannot measure the prevalence of bias.'}],
+      connection:'A published review can protect a name while explaining the acoustic difference. Keeping the seat can help a repair technician and can also make the listener recognisable.'},
+    dimensions:['micro:544','concept:objectivity','concept:perspective','framework:methods-and-tools','framework:perspectives','area:ART','area:HUM','subject:music','subject:psychology'],elements:['game:234'],
+  },
+  {
+    objective:'whistle.island.recalled',map:'island.workshop',target:'whistle.island.table',
+    source:'tests/whistle-watch.test.ts',anchor:'recalls a printed ferry route',
+    action:'Fold the local nesting record under the public ferry sheet and test both frames. When the community withdraws the circulating route, sound the recall. The ferry shortcut closes and an in-person route remains.',
+    reasoning:[{mode:'pragmatic',basis:'A visitor can still reach a custodian after a copy is withdrawn. The two audience arrangements solve different access problems without assuming permission travels with cartographic precision.'}],
+    dimensions:['micro:825','concept:responsibility','framework:ethics','subject:geography','theme:IND'],elements:['game:234','story:15'],
+  },
+  {
+    objective:'vault-work.twogates.left',map:'aethelgard.undercroft',target:'seal-twogates',
+    source:'tests/vault-work.test.ts',anchor:'leaves any of eight arrangements',
+    action:'Record both states of the shared chain. Lift its link, move one shutter independently, and entrust the actual resulting admission arrangement to a visitor or the porter.',
+    reasoning:[{mode:'deductive',basis:'A mixed arrangement supplies a counterexample to the claim that all three callers must pass together or all wait.'}],
+    dimensions:['micro:96','concept:power','framework:scope','subject:global-politics'],elements:['game:234'],
+  },
+  {
+    objective:'vault-work.chosen.left',map:'aethelgard.undercroft',target:'seal-chosen',
+    source:'tests/vault-work.test.ts',anchor:'requires the unselected run of nights',
+    action:'Move a frame away from the three dry tabs. It uncovers an overtopped board and a torn gauge reading at specified dates. The ferry crew receives the book or a list of the omissions.',
+    reasoning:[{mode:'inductive',basis:'Three selected dry crossings make the general claim look strong. A wet night counters the generalisation, and the torn leaf reduces the basis for a numerical estimate.'}],
+    dimensions:['micro:302','concept:evidence','framework:methods-and-tools','subject:history'],elements:['game:267'],
+  },
+  {
+    objective:'vault-work.promise.left',map:'aethelgard.undercroft',target:'archivist',
+    source:'tests/vault-work.test.ts',anchor:'gives each chair a fair hearing',
+    action:'Unfold the conditions on Elsbet’s sentence and hear what each person fears from the other chair. The two readings change who gets a seat and who carries the lamp to the morning watch.',
+    dimensions:['micro:113','concept:perspective','framework:ethics','subject:theatre'],elements:['story:95'],
+  },
+  {
+    objective:'weir-lamp.to',map:'water.gatehouse',target:'weir-lamp-table',
+    source:'tests/vault-work.test.ts',anchor:'lets a returning keeper use a legacy lamp',
+    action:'Overlay the dry-year folder and the later inquiry. Find where the red pencil crosses the fold between dates, then let the watch or the families carry that limitation into the hearing.',
+    dimensions:['micro:1069','concept:interpretation','framework:methods-and-tools','subject:history'],elements:['game:267'],
+  },
+  {
+    objective:'weir-lamp.compared-first-peg',map:'water.gatehouse',target:'weir-lamp-table',
+    source:'tests/vault-work.test.ts',anchor:'carries the earlier forecast to both possible council recipients',
+    action:'Compare the preserved personal expectation made before the crossing leaves were opened with the red line drawn on the inquiry after the flood. Retain the two different ways of dating a judgement for the hearing.',
+    comparison:{concepts:['certainty','interpretation'],framework:['methods-and-tools','scope'],
+      areas:[{id:'HUM',method:'Record the player’s forecast in advance, reveal both outcomes, then record a new forecast while retaining the first.',limit:'This individual pair of predictions can expose a change for this watcher. It cannot establish a general psychological effect.'},
+        {id:'HIS',method:'Establish the relative dates of the watch’s question and the inquiry’s pencil from their placement on two dated sheets.',limit:'The later annotation dates the reader’s hindsight. Its presence cannot show who read the earlier question at the time.'}],
+      connection:'Each method restricts what can be attributed to an earlier knower. The recipient sees which information existed before the reveal and what was supplied after.'},
+    dimensions:['concept:certainty','concept:interpretation','framework:methods-and-tools','framework:scope','area:HUM','area:HIS','subject:psychology','subject:history'],elements:['game:267'],
+  },
+  {
+    objective: 'mill-shift.nile.compared', map: 'night-register.nile', target: 'mill-shift.nile',
+    source: 'tests/mill-shift.test.ts', anchor: 'reaches every conserved division of six counters',
+    action: 'Refill the same three bowls from the gate book and the signed piece book. The porter worked three bells and carries no stamp.',
+    reasoning: [{mode:'pragmatic',basis:'Giving time or stamped output standing affects who can pay for breakfast. Each split still spends the same six counters.'}],
+    dimensions: ['concept:power','concept:values','concept:evidence','framework:perspectives','framework:ethics','area:HUM','area:HIS'],
+    elements:['game:234','story:72'],
+  },
+  {
+    objective:'mill-shift.yard.joint',map:'night-register.yard',target:'mill-shift.yard',
+    source:'tests/mill-shift.test.ts',anchor:'keeps all sixteen punch strips independent under all four rigs',
+    action:'Keep four moves on the strip. Try each wheel alone and with a porter. On feed, turn, turn, turn, the notches rise from three to six only if both settings change.',
+    reasoning:[{mode:'deductive',basis:'A lone worker starts the three turns with three blanks. The single tooth can cut at most one per turn. Six cuts therefore require both extra feed and two teeth for this four-bell strip.'}],
+    dimensions:['micro:93','concept:explanation','concept:evidence','framework:methods-and-tools','area:MAT','subject:design-tech'],
+    elements:['game:234','story:91'],
+  },
+  {
+    objective:'mill-shift.press.estimate',map:'night-register.press',target:'mill-shift.press',
+    source:'tests/mill-shift.test.ts',anchor:'puts two equally fitting estimates beside a held-out reconstruction',
+    action:'Tie the four dated tickets by wheel, then rota. Compare the two estimates for a configuration absent from both sets of shifts against a personally tested four-bell strip.',
+    reasoning:[{mode:'inductive',basis:'The old group means are three and six. Their agreement on the observed shifts permits competing estimates for the unobserved crew and tool pairing.'},
+      {mode:'causal',basis:'The guild admitted a porter on the same date that an apprentice fitted the second tooth. Changing the pair in the working model tests separate effects under its rules.'}],
+    comparison:{
+      concepts:['interpretation','justification'], framework:['scope','methods-and-tools'],
+      areas:[{id:'HUM',method:'Use the observed output of the four paid shifts to estimate output for two new staffing and technology combinations.',limit:'Both grouping rules recover the same old averages. Neither supplies an independent historical change in staffing.'},
+        {id:'HIS',method:'Read the dated guild decision and the apprentice’s fitting beside the pay register to establish when the changes were admitted.',limit:'The signed papers date both changes together. They supply neither the unrun shift nor all the people whose work was unstamped.'}],
+      connection:'Publish a dated statement, a conditional reconstruction or a future proposal. The printed copy distinguishes the counted history from the Guardian’s newly made strip.'},
+    dimensions:['micro:1127','concept:interpretation','concept:justification','area:HIS','area:HUM','framework:scope','framework:methods-and-tools','subject:economics','subject:history'],
+    elements:['game:234','story:91'],
+  },
+  {
+    objective:'mill-shift.press.edited-moods',map:'night-register.press',target:'mill-shift.press',
+    source:'tests/mill-shift.test.ts',anchor:'puts two equally fitting estimates beside a held-out reconstruction',
+    action:'Print a missed possibility and an open future in separate editions. The workers keep the version they opened before a later edition is sent.',
+    dimensions:['micro:689','subject:lang-langlit','concept:interpretation','framework:scope'],elements:['game:234','story:15'],
+  },
+  {
+    objective: 'maker.rain-gauge.compared-bounds', map: 'aethelgard.emberford', target: 'reading-rain',
+    source: 'tests/maker-field.test.ts', anchor: 'puts two independent edges on the same field slip',
+    action: 'Shade the catch and the calibration ring separately. Retain both margins on the slip for the bridge watch and reopen the one-limit edition.',
+    reasoning: [{mode:'deductive',basis:'Given two possible errors bounded by half a millimetre, the central value of nine can differ by up to one in either direction. The range makes no probability claim about the next flood.'}],
+    dimensions: ['micro:621','concept:certainty','framework:methods-and-tools','question:KQ-ROUTE-08'],elements: ['game:234'],
+  },
+  {
+    objective: 'maker.plumb-line.compared-bounds', map: 'aethelgard.emberford', target: 'reading-tower',
+    source: 'tests/maker-field.test.ts', anchor: 'puts two independent edges on the same field slip',
+    action: 'Set the present line against the notch beneath Maren’s grandmother’s button. Open both edge margins and deliver the allowable change to the morning shift.',
+    reasoning: [{mode:'deductive',basis:'Two agreeing centre readings with a half-width error on each can hide one finger-width of change in either direction.'}],
+    dimensions: ['micro:621','concept:certainty','framework:methods-and-tools','question:KQ-ROUTE-08'],elements: ['game:234'],
+  },
+  {
+    objective: 'maker.reed-pen.recipient', map: 'aethelgard.emberford', target: 'reading-flood',
+    source: 'tests/maker-field.test.ts', anchor: 'works at each mounting on both reference orders',
+    action: 'Take the surviving strokes from the worn post and hear Venn place his father’s entry beside them. Pass on the gap or mount the signed recollection alongside it. The two versions have different readers.',
+    dimensions:['concept:evidence','concept:interpretation','framework:perspectives','question:KQ-ROUTE-07'],elements:['game:234'],
+  },
+  {
+    objective: 'night-register.archive.caption', map: 'night-register.archive', target: 'night-case-26807',
+    source: 'tests/night-register.test.ts', anchor: 'expect(missingCaption(d.s, w.site)).toBe(w)',
+    action: 'Follow the pencil marks to the mount of Ruth M. Barnes’s Needle Book. A neighbouring case does not fit. Match the accession before deciding whether the label travels on the sleeve or stays where another reader can find it.',
+    dimensions: ['micro:1003', 'concept:evidence', 'framework:methods-and-tools'], elements: ['game:267', 'story:48'],
+  },
+  {
+    objective: 'night-register.nile.memory-folders', map: 'night-register.nile', target: 'night-register.nile.desk',
+    source: 'tests/night-register.test.ts', anchor: "expect(traceMemory(d.s, dest, 'home')).toContain(a.replies[1])",
+    action: 'Hear what Imani did with a reading, unseal the edition Button carried, then consult the revised desk in the Archive. Dates, witnesses and recipients explain how the original handover and the later account can both be accurate.',
+    dimensions: ['micro:1115', 'concept:interpretation', 'framework:perspectives'], elements: ['game:158', 'story:15'],
+    reasoning: [{ mode: 'abductive', basis: 'The courier version still records the low reading frame after the Archive starts sending copies upstairs. A later change at the desk explains the discrepancy while preserving what the two witnesses actually received.' }],
+  },
+  {
+    objective: 'night.work.20806', map: 'night-register.gate', target: 'night-case-20806',
+    source: 'tools/night-register-journey.mjs', anchor: "panel.getByText('Both frames open together here.'",
+    action: 'Bring Button to Dana Bartlett’s Water Barrel or Runlet. Use the same edge tool as for the Needle Book and leave a reading. Open the pair together at the perch to examine what the shared classification leaves out about materials and makers.',
+    dimensions: ['concept:interpretation', 'framework:methods-and-tools', 'subject:visual-arts'], elements: ['game:20', 'story:31'],
+    reasoning: [{ mode: 'analogical', basis: 'Apply the same crop to a second drawing in the shared classification. Compare each with its own whole frame and medium before carrying a claim from one drawing to the other.' }],
+  },
   ...nexusEvidenceInvestigations,
   ...emberfordEvidenceInvestigations,
   ...copiesEvidenceInvestigations,
@@ -589,6 +1063,108 @@ const proofRows = [
     elements: ['game:271'],
   },
   {
+    objective:'night-watch.gate.handover', map:'water.gatehouse', target:'lamplight.gate.bench',
+    source:'tests/lamplight.test.ts', anchor:'3 dry-night calls and 0 missed',
+    action:'Move the bell clip across the same six nights and weigh missed floods against unnecessary calls before choosing who bears the cost of tonight’s watch.',
+    dimensions:['micro:1061','micro:1083','concept:evidence','concept:responsibility','framework:ethics','area:MAT'],
+    elements:['game:234'], reasoning:[{mode:'pragmatic',basis:'Each threshold changes who loses sleep and who must watch the steps. The decision uses these costs.'}],
+  },
+  {
+    objective:'night-watch.dispatch.handover', map:'civic.dispatch', target:'lamplight.dispatch.bench',
+    source:'tests/lamplight.test.ts', anchor:'4 of 6 households',
+    action:'Stretch the cord across the four replies and again across all six addresses. Decide who goes to the two unconfirmed doors.',
+    dimensions:['micro:1092','concept:certainty','concept:evidence','framework:scope','area:MAT'],
+    elements:['game:234'], reasoning:[{mode:'deductive',basis:'Four responses establish at most four confirmed households. Two households remain unconfirmed under either staffing choice.'}],
+  },
+  {
+    objective: 'survey.o1.report', map: 'aethelgard.emberford', target: 'survey-box',
+    source: 'tests/survey.test.ts', anchor: "wording: 'plain', sample: 'houses'",
+    action: 'Run Venn’s plain wording along the household route. Inspect who answered, then send the results to a second hearing, the west bank, a public route or a reading of both questions.',
+    dimensions: ['micro:1015', 'concept:evidence', 'framework:scope', 'area:HUM'], elements: ['game:114'],
+  },
+  {
+    objective: 'ferry.o1.send', map: 'aethelgard.emberford', target: 'ferry-slate',
+    source: 'tests/translate.test.ts', anchor: 'picks: [1, 1, 1, 1]',
+    action: 'Use the limited space on Sefa’s slate to preserve who must bring the ropes, the slow rise, who can use the ford and when to arrive. Put the finished wording in a particular listener’s hands.',
+    dimensions: ['micro:1154', 'concept:interpretation', 'framework:perspectives', 'theme:LAN'],
+    elements: ['game:158'],
+  },
+  {
+    objective: 'bells.o1.check', map: 'aethelgard.emberford', target: 'bell-rope',
+    source: 'tests/bells.test.ts', anchor: "action: 'compare'",
+    action: 'Record how the sequence sounded to a listener, compare the first and last tuning-glass bands and give another listener a way to test the join.',
+    dimensions: ['micro:1077', 'concept:evidence', 'concept:certainty', 'framework:methods-and-tools', 'area:NAT', 'area:HUM'],
+    elements: ['game:234'],
+    comparison: {
+      concepts: ['evidence', 'certainty'], framework: ['methods-and-tools'],
+      areas: [
+        { id: 'NAT', method: 'Compare the pitch bands and relative amplitudes at the two ends of the cycle.', limit: 'The displayed match establishes the simulated endpoints. It cannot tell how a person perceived the intervening steps.' },
+        { id: 'HUM', method: 'Let the listener report their experience before they inspect the endpoint comparison.', limit: 'One report establishes neither the universal response of listeners nor the physical frequencies of the bells.' },
+      ],
+      connection: 'Both observations survive the handover. At the two-listener bench Maren seats people who heard different things beside the same recorded bands.',
+    },
+  },
+  {
+    objective: 'last-bell.voices.sleeve', map: 'voices.listening', target: 'lamplight.voices.bench',
+    source: 'tools/last-bell-journey.mjs', anchor: "button('Follow W–17')",
+    action: 'Follow the shelf mark that survived on the chalk strip. Read the matching cylinder sleeve and identify the permission attached to this particular recording.',
+    dimensions: ['micro:1016', 'concept:evidence', 'framework:methods-and-tools'], elements: ['story:48'],
+  },
+  {
+    objective: 'last-bell.voices.left', map: 'voices.listening', target: 'lamplight.voices.bench',
+    source: 'tests/last-bell.test.ts', anchor: 'can hear six different cuts',
+    action: 'Wind the single chalked groove and the complete testimony. The next sentence identifies the kitchen bell. Decide how the witness’s full voice or her unsigned account can reach the next listener.',
+    dimensions: ['micro:1010', 'micro:1157', 'concept:interpretation', 'framework:scope', 'question:KQ-ROUTE-07'],
+    elements: ['game:287', 'story:48'],
+  },
+  {
+    objective: 'last-bell.island.left', map: 'island.workshop', target: 'lamplight.island.bench',
+    source: 'tests/last-bell.test.ts', anchor: 'expect(relayRun(choice, false).beats).toEqual([2, 2])',
+    action: 'Close the model tower’s shutter, try the one runner on either lane, then open the shutter on the same route. Track which household receives the warning by the fourth beat.',
+    dimensions: ['micro:1090', 'concept:explanation', 'framework:methods-and-tools', 'question:KQ-ROUTE-05'],
+    elements: ['game:158', 'game:234'],
+    reasoning: [{ mode: 'causal', basis: 'Hold the runner’s route fixed and move only the shutter. In this model the tower reaches both houses at beat two in clear air. Fog removes that shared relay.' }],
+  },
+  {
+    objective: 'last-bell.island.field-check', map: 'island.workshop', target: 'lamplight.island.bench',
+    source: 'tests/last-bell.test.ts', anchor: 'expect(relayRun(choice, true, true).beats)',
+    action: 'Carry both crossing times back from the hinged plank. Retest the chosen fog route at the plinth before giving the crew an amended chart.',
+    dimensions: ['micro:1080', 'micro:1086', 'concept:evidence', 'framework:methods-and-tools', 'question:KQ-ROUTE-04'],
+    elements: ['game:234'],
+  },
+  {
+    objective: 'last-bell.council.left', map: 'council.hall', target: 'lamplight.council.bench',
+    source: 'tests/last-bell.test.ts', anchor: 'gives both chairs a hearing with records',
+    action: 'Give the floor to the witness, runner or clerk and hear another speak to the first account. Decide who can summon the next meeting. The signed minute keeps the two sources in their chosen order.',
+    dimensions: ['micro:1142', 'micro:1158', 'concept:power', 'framework:perspectives', 'question:KQ-ROUTE-01'],
+    elements: ['game:114'],
+  },
+  {
+    objective: 'last-bell.council.left', map: 'council.hall', target: 'lamplight.council.bench',
+    source: 'tools/last-bell-journey.mjs', anchor: 'line getting to our door',
+    action: 'Put the kitchen cylinder and runner’s chart on the desk in both orders. Hear Joss use the account to propose a route and the girl explain what a line reaching the house leaves unknown.',
+    dimensions: ['area:HIS', 'area:MAT', 'concept:evidence', 'concept:justification', 'framework:scope', 'framework:methods-and-tools'],
+    elements: ['game:114'],
+    comparison: {
+      concepts: ['evidence', 'justification'], framework: ['scope', 'methods-and-tools'],
+      areas: [
+        { id: 'HIS', method: 'Recover the referent from the witness’s complete account and compare it with the chalked fragment.',
+          limit: 'The girl can identify the bell she heard beside the stove. She cannot establish what happened at the tower.' },
+        { id: 'MAT', method: 'Trace the warning through the selected shutter and runner settings and use the bridge times to establish which stops the model reaches by the fourth beat.',
+          limit: 'A route reaching a household by the deadline cannot establish that a particular person heard the warning on that night.' },
+      ],
+      connection: 'The spoken exchange changes when the record order reverses. The signed minute preserves both records and the specific limit identified by the second speaker.',
+    },
+  },
+  {
+    objective: 'last-bell.council.reopened', map: 'council.hall', target: 'lamplight.council.bench',
+    source: 'tests/last-bell.test.ts', anchor: 'requires the four field records for either second hearing',
+    action: 'Reopen the minute with Maro’s flood tally, Ro’s missing replies, the witness’s publication choice and Joss’s revised route. Give the households control of the trial design or offer the two houses comparable roles measuring the crossing.',
+    dimensions: ['micro:1180', 'micro:1200', 'concept:responsibility', 'framework:ethics', 'question:KQ-ROUTE-07'],
+    elements: ['game:114', 'story:15'],
+    reasoning: [{ mode: 'pragmatic', basis: 'Giving households a choice of contact makes the trial accessible to different witnesses. A paired timed walk yields a comparable measurement. Choose which purpose the next shift can serve first.' }],
+  },
+  {
     objective: 'council.publish', map: 'council.gallery', target: 'council-reader',
     source: 'tests/council-story.test.ts', anchor: 'checks the two readings and keeps the $policy docket',
     action: 'Check the working and stopped watches against the drum at two marks. Check the signed repair seal before choosing a repeated shift check or a dated record with a fallback.',
@@ -652,7 +1228,7 @@ export function essayTitleInventory(sources) {
   });
 }
 
-function makeDimensions({ pack, curriculum, levels, topics, exhibition, micro, suppliedMicro, microSkillId, titleSources }) {
+function makeDimensions({ pack, curriculum, levels, topics, exhibition, micro, suppliedMicro, microSkillId, titleSources, reviewNames }) {
   const group = (kind, items) => items.map(([value, name]) => ({ id: listId(kind, value), kind, name }));
   const named = (values) => Object.entries(values).map(([id, name]) => [id, name]);
   const names = (values) => values.map((id) => [id, id]);
@@ -687,8 +1263,9 @@ function makeDimensions({ pack, curriculum, levels, topics, exhibition, micro, s
     ...questions,
     ...essayTitleInventory(titleSources),
     ...group('reasoning', [...reasoningModes]),
-    ...Array.from({ length: 1000 }, (_, i) => i + 1).map((number) => ({
-      id: listId('micro', number), kind: 'micro', name: microNames.get(number) ?? `#${number}`,
+    ...reasoningRepertoire,
+    ...suppliedMicro.map((number) => ({
+      id: listId('micro', number), kind: 'micro', name: microNames.get(number) ?? reviewNames[number],
       supplied: supplied.has(number), skillId: microSkillId(number),
     })),
   ];
@@ -761,6 +1338,11 @@ export function collectProofs({ objectives, maps, elements, dimensions, rows, so
     for (const id of linked) {
       const dimension = dimensionById.get(id);
       if (!dimension || dimension.supplied === false) throw Error(`Unavailable dimension ${id} in proof for ${row.objective}.`);
+      if (['bias','fallacy','deception'].includes(dimension.kind)) {
+        const witness=row.patternPractice?.find(p=>p.id===id);
+        if (!witness || !witness.basis?.trim() || !witness.excerpt?.trim() || !trace.includes(witness.excerpt) || !witness.case)
+          throw Error('Unresolved reasoning pattern '+id+' in '+row.objective);
+      }
       if (dimension.kind === 'question') {
         const question = id.slice('question:'.length);
         if (![place.step.kq, ...(place.step.questionWays ?? [])].some((link) => link?.id === question)) {
@@ -850,19 +1432,21 @@ function authoredLinks(objectives, micro, elements) {
   }));
 }
 
-async function loadAudit() {
+export async function loadAudit({ activities = false } = {}) {
   const server = await createServer({
     root, configFile: false, optimizeDeps: { noDiscovery: true, include: [] },
     server: { middlewareMode: true, watch: null, hmr: false, ws: false },
   });
   try {
     const [{ buildPack }, { MAPS }, curriculum, levels, topics, { QUESTION_ROUTES }, { MICRO_SKILLS, microSkillId },
-      { SUPPLIED_SKILL_IDS }, game, story, titleSources] =
+      { SUPPLIED_SKILL_IDS, NEW_SKILL_NAMES }, {nightFriends}, reviewNames, game, story, titleSources] =
       await Promise.all([
         server.ssrLoadModule('/src/content/index.ts'), server.ssrLoadModule('/src/maps/index.ts'),
         server.ssrLoadModule('/src/domain/curriculum.ts'), server.ssrLoadModule('/src/domain/learningLevels.ts'),
         server.ssrLoadModule('/tools/tok-floor.ts'), server.ssrLoadModule('/src/content/questionEncounters.ts'),
         server.ssrLoadModule('/src/content/microSkillEvidence.ts'), server.ssrLoadModule('/src/domain/microSkillAudit.ts'),
+        server.ssrLoadModule('/src/domain/nightRegister.ts'),
+        readFile(resolve(root,'tools/micro-skill-review-names.json'),'utf8').then(JSON.parse),
         readFile(resolve(root, 'docs/GAME_ELEMENTS.md'), 'utf8'), readFile(resolve(root, 'docs/STORY_ELEMENTS.md'), 'utf8'),
         readFile(resolve(root, 'tools/prescribed-title-sources.json'), 'utf8').then(JSON.parse),
       ]);
@@ -874,13 +1458,17 @@ async function loadAudit() {
     }));
     const elements = [...parseCatalogue(game, 'game', 288), ...parseCatalogue(story, 'story', 150)];
     const dimensions = makeDimensions({ pack, curriculum, levels, topics, exhibition: QUESTION_ROUTES,
-      micro: MICRO_SKILLS, suppliedMicro: SUPPLIED_SKILL_IDS, microSkillId, titleSources });
+      micro: [...NEW_SKILL_NAMES, ...MICRO_SKILLS], suppliedMicro: SUPPLIED_SKILL_IDS, microSkillId, titleSources, reviewNames });
     if (new Set(dimensions.map(({ id }) => id)).size !== dimensions.length) throw Error('Duplicate learning dimension IDs.');
     const sourceText = new Map(await Promise.all(distinct(proofRows.map(({ source }) => source)).map(async (file) =>
       [file, await readFile(resolve(root, file), 'utf8')])));
     const proofs = collectProofs({ objectives, maps: MAPS, elements, dimensions, rows: proofRows, sourceText, dialogue: pack.dialogue });
     const candidates = authoredLinks(objectives, MICRO_SKILLS, elements);
-    return { worlds, elements, dimensions, proofs, candidates };
+    return { worlds, elements, dimensions, proofs, candidates, bloomLevels: levels.BLOOM, ...(activities ? {
+      keepsakeActions: keepsakeScenes(pack, MAPS, sourceText.get('tests/return-coat.test.ts')),
+      contexts: reviewContexts(pack,levels,QUESTION_ROUTES,nightFriends), activities: activityAnchors(pack,levels,topics), questionNames: Object.fromEntries(pack.questions.map(q=>[q.id,q.text])),
+      glossary: Object.fromEntries(pack.glossary.map(g=>[g.id,{term:g.term,history:g.history??null}])),
+    } : {}) };
   } finally {
     await server.close();
   }
@@ -892,7 +1480,7 @@ const limitations = [
   'Vocabulary and etymology use the current glossary IDs as a bounded inventory. Each needs an explicit action proof. The glossary does not define all TOK vocabulary.',
   'Seven past essay sets have verified source metadata. These 42 title ordinals establish access to those sources. Any gameplay adaptation needs its own reviewed action proof. Extended Essay and CAS are practice opportunities only.',
   'The 35 exhibition question families are a labeled subset of the knowledge-question IDs and enter the denominator once.',
-  'The 197 unsupplied micro-skill numbers are reported as source-unavailable. Their descriptions and action links are unknown.',
+  'All 1,200 numbered micro-skill definitions were supplied. A source definition counts toward the inventory; only reviewed, reachable actions count toward the target.',
   'Thinking taxonomies and player or encounter preferences have their own separate semantics and reports. They do not multiply this intersection census.',
   'A reasoning or cross-area entry describes the action available to players. It does not assert their reasoning, or infer an area comparison from co-occurring tags.',
 ];

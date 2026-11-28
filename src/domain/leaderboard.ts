@@ -1,3 +1,5 @@
+import {normalizeLeaderboardAlias,normalizeScoreValue} from '../../shared/scoreValues.mjs';
+export {normalizeLeaderboardAlias} from '../../shared/scoreValues.mjs';
 /** Local period totals and separate, player-authorized school score files. */
 import { AOK_NAMES, CONCEPT_NAMES } from './curriculum';
 import { dayOf } from './ledger';
@@ -140,13 +142,6 @@ const validTimestamp = (value: unknown): value is string =>
   typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value)
   && Number.isFinite(Date.parse(value)) && new Date(value).toISOString() === value;
 
-export function normalizeLeaderboardAlias(value: string): string | null {
-  const alias = value.normalize('NFC').trim().replace(/\s+/gu, ' ');
-  if (Array.from(alias).length < 2 || Array.from(alias).length > 24
-    || !/^[\p{L}\p{N}][\p{L}\p{M}\p{N} _.'-]*$/u.test(alias)) return null;
-  return alias;
-}
-
 export function leaderboardSharing(record: LeaderboardRecord, value: string | null, newId: () => string): LeaderboardRecord {
   const current = record.sharing;
   if (value === null && !current?.enabled) return record;
@@ -206,11 +201,9 @@ export function readLeaderboard(raw: unknown): { ok: true; file: LeaderboardFile
   for (const metric of LEADERBOARD_METRICS) {
     if (!Object.hasOwn(values, metric.id)) continue;
     const value = values[metric.id];
-    if (value !== null && (!validNumber(value) || (metric.id === 'map-discovery' && value > 100)
-      || (metric.id === 'game:forecast-brier' && value > 1)
-      || (!['map-discovery', 'game:forecast-brier'].includes(metric.id) && !Number.isInteger(value)))) return damaged;
-    clean[metric.id] = typeof value === 'number' && ['map-discovery', 'game:forecast-brier'].includes(metric.id)
-      ? Number(value.toFixed(metric.id === 'map-discovery' ? 3 : 4)) : value;
+    const normalized=normalizeScoreValue(metric.id,value);
+    if(value!==null && normalized===null) return damaged;
+    clean[metric.id]=normalized;
   }
   if (!Object.keys(clean).length) return damaged;
   return { ok: true, file: { ...file, kind: 'scores', alias, period: period as LeaderboardPeriod, from, through,
@@ -235,15 +228,20 @@ export function rankLeaderboard(files: readonly LeaderboardFile[], period: Leade
     const prior = entries.get(file.id);
     if (!prior || prior.through < file.through || (prior.through === file.through && prior.exportedAt < file.exportedAt)) entries.set(file.id, file);
   }
-  const ordered = [...entries.values()].flatMap(file => {
+  const list = [...entries.values()].flatMap(file => {
     const value = file.values[metric];
     return typeof value === 'number' ? [{ id: file.id, alias: file.alias, value, availableFrom: file.availableFrom, through: file.through }] : [];
-  }).sort((a, b) => (setting.direction === 'higher' ? b.value - a.value : a.value - b.value)
-    || a.alias.localeCompare(b.alias) || a.id.localeCompare(b.id));
-  let rank = 0;
-  return ordered.map((row, index) => {
-    if (index === 0 || ordered[index - 1].value !== row.value) rank = index + 1;
-    return { ...row, rank };
+  });
+  return rankScoreRows(list,setting.direction);
+}
+
+export function rankScoreRows<T extends {alias:string; value:number; id?:string}>(rows:readonly T[],direction:LeaderboardMetric['direction']):Array<T&{rank:number}> {
+  const ordered=[...rows].sort((a,b)=>(direction==='higher'?b.value-a.value:a.value-b.value)
+    ||a.alias.localeCompare(b.alias)||(a.id??'').localeCompare(b.id??''));
+  let rank=0;
+  return ordered.map((row,index)=>{
+    if(index===0 || ordered[index-1].value!==row.value)rank=index+1;
+    return {...row,rank};
   });
 }
 

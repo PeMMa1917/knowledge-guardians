@@ -30,4 +30,25 @@ describe('optional sound bootstrap', () => {
     expect(events.emit.mock.invocationCallOrder[0]).toBeLessThan(load.audio.mock.invocationCallOrder[0]);
     expect(load.start).toHaveBeenCalledOnce();
   });
+  it('reports a missing required picture and can preload again without starting a duplicate world', () => {
+    const listeners = new Map<string, (file: {type:string;key:string}) => void>();
+    const load = {
+      on: vi.fn((name,fn) => listeners.set(name,fn)), once: vi.fn(), off: vi.fn(),
+      image: vi.fn(), spritesheet: vi.fn(), audio: vi.fn(), start: vi.fn(),
+    };
+    const events = {emit:vi.fn()};
+    const scene = Object.assign(new BootScene(), {
+      load, game:{events}, scale:{width:390,height:844}, add:{rectangle:vi.fn()},
+      children:{removeAll:vi.fn()}, textures:{exists:()=>true}, anims:{exists:()=>true,create:vi.fn(),generateFrameNumbers:vi.fn()},
+    });
+    scene.preload();
+    listeners.get('loaderror')!({type:'image',key:'ow'});
+    scene.create();
+    expect(events.emit.mock.calls).toEqual([['boot-failed']]);
+    expect(load.audio).not.toHaveBeenCalled();
+    scene.preload();
+    scene.create();
+    expect(events.emit.mock.calls).toEqual([['boot-failed'],['boot-complete']]);
+  });
+
 });

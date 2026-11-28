@@ -8,7 +8,7 @@ Each item has the decision, then **How to build it**: notes that keep the decisi
 
 | ID | Topic | Decision | Status |
 | --- | --- | --- | --- |
-| X-001 | Leaderboards and streaks | Keep. Each student can choose not to show on a leaderboard and to hide the streak. | Daily, weekly and monthly streak displays have independent opt-ins. Leaderboard sharing is voluntary. Hosted rankings remain open. |
+| X-001 | Leaderboards and streaks | Keep. Each student can choose not to show on a leaderboard and to hide the streak. | Daily, weekly and monthly streak displays have independent opt-ins. Leaderboard sharing is voluntary. The draft hosted build has 31 activities with four periods. Publishing a nickname and a selected score to the class is optional. A student can remove every posted score in one action. |
 | X-002 | Exam practice | A "training gym" outside the story. No exam practice in the story. | done |
 | X-003 | Timers | Optional timed replay of a field game after the first play. | done |
 | X-004 | Romance | No romance. | rule |
@@ -63,6 +63,9 @@ Each item has the decision, then **How to build it**: notes that keep the decisi
 **Decision.** No romance. Friendships only. This was already a rule.
 
 ## X-005 Difficult real history
+
+At five stands in mixed rooms, readers can leave a record covered, read an account of its contents, or open the illustration. The two petitions from Yirrkala have separate invitations and separate settings. On the Taku print, cropping and comparing the whole picture also work in the text view. The journal distinguishes the number in the catalogue title from evidence present in the photograph. [Five exhibits and their institutions](../../src/content/exhibit-notes.json)
+
 
 **Decision.** Include hard cases. Avoiding them is itself a choice, and suggests that they did not happen or do not matter. Include them as objects and testimony with content notes, and as part of the game in respectful, serious play, with links to reliable sources.
 

@@ -34,6 +34,12 @@ This document tells you how the code fits together. Read [AGENTS.md](../AGENTS.m
 
 The important rule: **game rules live only in `src/domain/`**. The UI and the scenes send commands and show results. They do not change state directly. This makes the rules testable without a browser (`tests/playthrough.test.ts` plays every route).
 
+## Entering an adventure
+
+The initial HTML and a small stylesheet render a readable title as soon as the page arrives. The menu then opens the saved slots, device settings and optional class sign-in. Character creation starts loading the Phaser world while the player chooses a name and appearance. Continue and recovery load it on request. An unavailable map picture keeps the current selection visible and provides a retry before a new campaign or checkpoint is written. Effects and music can finish loading after the map is ready. [Entry](../src/arrival.ts) · [World startup](../src/app/worldRuntime.ts) · [Download interruption journey](../tools/smoke-arrival.mjs)
+
+WebKit can retain a failed module request across a normal refresh. The reload control requests a fresh revision of same-origin game chunks. The release page installs the corresponding module URLs before any import so the world and its interface use one controller. [Hosting build](../vite.config.ts)
+
 ## Commands and events
 
 Every player action is a typed command (see `Command` in `src/domain/engine.ts`):
@@ -111,7 +117,7 @@ Both slots are written in one `localStorage` key (`kg.slots`) in one write, with
 
 ## Teacher view
 
-`teacher.html` is a second Vite entry (see `vite.config.ts`). It has no server.
+`teacher.html` is a second Vite entry (see `vite.config.ts`). Its progress-file view works locally. The class writing panel uses the same-origin Worker and D1. Teachers read a projection of diary writing scoped to their currently assigned class. A student’s personal recovery package, photo album and portfolio sharing follow the storage rules in the [hosting plan](ACCOUNTS_AND_HOSTING.md).
 
 1. In the game, the student opens Menu, "Share with my teacher". The game makes a progress JSON file: objectives, awards, XP, moments, met concepts, ATL, subjects and areas of knowledge, open misconception signals, and **only** the portfolio entries that the student shared. Notes and the journal are not in the file.
 2. The teacher opens `teacher.html` and adds the files. `src/teacher/report.ts` (pure, tested in `tests/teacher.test.ts`) checks each file, keeps the latest file per student, and makes the class summary.

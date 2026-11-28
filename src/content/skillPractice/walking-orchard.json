@@ -1,0 +1,242 @@
+[
+  {
+    "number": 11,
+    "name": "Keep the grounds for a public claim in view",
+    "uses": [
+      {
+        "objective": "grove.promise",
+        "action": "Hang the dated reading on one hook and the two-coin proposal on another. Keep either hook in place while replacing the other. A demand to spend the evening does not supply the evidence for the count.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "analytical"
+        ],
+        "game": 162,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 24,
+    "name": "Give an ambiguous word a working observation",
+    "uses": [
+      {
+        "objective": "grove.springs",
+        "action": "Open all twelve dated bed views. Compare what the word living selects on planting night and after frost, then light both springs at the same date.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "nature",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 31,
+    "name": "Separate what happened from what should happen",
+    "uses": [
+      {
+        "objective": "grove.promise",
+        "action": "Send any of three checked readings with any of three purchases. Spending the evening on shade, a dance or another visit is a separate decision from what the panes show.",
+        "styles": [
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "social"
+        ],
+        "game": 162,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 55,
+    "name": "Test how much a simple cause can explain",
+    "uses": [
+      {
+        "objective": "grove.wheel",
+        "action": "Run a bare tub and a growing sapling across chalk with the same boot. Hang up the boot and run both loads again. The moving cart can account for the prints without identifying a night caller.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "physical",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 56,
+    "name": "Use the same steps to compare changing conditions",
+    "uses": [
+      {
+        "objective": "grove.wheel",
+        "action": "Keep the load when changing the heel, then keep the heel when changing the load. Four separately retained trials let a second person inspect the same effect.",
+        "styles": [
+          "strategist",
+          "maker"
+        ],
+        "modes": [
+          "spatial",
+          "physical"
+        ],
+        "game": 234,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 58,
+    "name": "Read the same change from another person’s position",
+    "uses": [
+      {
+        "objective": "grove.turn",
+        "action": "Take both turns in the installed square. A nursery carter and a caller use the same roof, procession or return bench for different ends. Choose who directs its next use.",
+        "styles": [
+          "helper",
+          "companion"
+        ],
+        "modes": [
+          "social",
+          "reflective"
+        ],
+        "game": 21,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 60,
+    "name": "Locate the value decision in a public threshold",
+    "uses": [
+      {
+        "objective": "grove.shade",
+        "action": "For a grower who lends only the total, try a grouping with enough people. The counting rule passes it, but the permission rule still keeps the detail inside. Carry the roll closed or fold to the permitted count.",
+        "styles": [
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "social"
+        ],
+        "game": 234,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 95,
+    "name": "Catch one word moving between two meanings",
+    "uses": [
+      {
+        "objective": "grove.springs",
+        "action": "The old lantern’s living trees were tubs counted at planting. The new lantern counts witnessed leaves. Superimpose the mismatched posters, then compare two planting panes and two frost panes.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 48
+      }
+    ]
+  },
+  {
+    "number": 109,
+    "name": "Distinguish a persuasive image from a warranted reading",
+    "uses": [
+      {
+        "objective": "grove.promise",
+        "action": "Try the dramatic poster, then hang a pair of matched dates above the same coins. Each published pane carries its own stated limit, including the evidence the parade cannot supply.",
+        "styles": [
+          "performer",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "reflective"
+        ],
+        "game": 162,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 311,
+    "name": "Track who still has no return record",
+    "uses": [
+      {
+        "objective": "grove.springs",
+        "action": "At each of the three beds distinguish closed pages, actual losses and missing spring returns. Count the witnesses on both dates before treating the seven new leaf marks as a rise or fall.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "nature",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 664,
+    "name": "Assess what a grouped count can disclose",
+    "uses": [
+      {
+        "objective": "grove.shade",
+        "action": "Try a dozen invented volunteers behind three shutters. Open them together, compare one mark with a group of three, and reserve only permitted aggregates, or a fully closed roll.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 908,
+    "name": "Compare two seasons under a common measure",
+    "uses": [
+      {
+        "objective": "grove.springs",
+        "action": "Join matched spade and frost readings, keeping lost tubs and unknown entries distinct. Twelve and seven in the original posters do not establish five losses.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "nature",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 77
+      }
+    ]
+  }
+]

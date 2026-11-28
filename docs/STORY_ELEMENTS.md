@@ -1,11 +1,13 @@
 # Story elements in Knowledge Guardians
 
+Use the combination atlas to look up several narrative elements alongside mechanics and TOK anchors. [Combination atlas](audit/COMBINATION_ATLAS.md)
+
 This tracker maps every numbered story element in the supplied *Universal RPG Blueprint* to the campaign. Each example is a place, action or consequence that can be found in the current build, or a stated gap linked to its nearest authored material. The [game systems and player preferences](GAME_ELEMENTS.md) have a separate tracker.
 
 | Status | Meaning | Story elements |
 | --- | --- | ---: |
-| ✓ Playable | At least one authored scene demonstrates the core adapted idea. | 130 |
-| ◐ Partial | The story uses the idea in limited form. The remaining work is named. | 19 |
+| ✓ Playable | At least one authored scene demonstrates the core adapted idea. | 135 |
+| ◐ Partial | The story uses the idea in limited form. The remaining work is named. | 14 |
 | ○ Planned | The corresponding scene or system is open. | 0 |
 | ✗ Excluded | The original aspect is outside the classroom design. | 1 |
 
@@ -76,9 +78,9 @@ These are examples, not a measure of whether every player will find, enjoy or in
 | # | Story element | Adaptation and current scope | Status | Reference |
 | ---: | --- | --- | :---: | --- |
 | 41 | A rival with a reason | Vesper: Harrowmere was hurt by a confident Nexus label. | ✓ | [harrowmere.json](../src/content/harrowmere.json), [vesper.json](../src/content/vesper.json) |
-| 42 | The rival appears often | Letters recur across chapters, Nellis carries a disputed record and Vesper appears in the House and Council. Broader recurring Seal agents remain open. | ◐ | [letters.ts](../src/domain/letters.ts), [archive-handoff.test.ts](../tests/archive-handoff.test.ts), [performance-vesper.test.ts](../tests/performance-vesper.test.ts) |
-| 43 | Tiered gallery | Corvan, the Hollow Archivist and Vesper test different ways of challenging a story. A similarly structured adversary in every chapter remains open. | ◐ | [undercroft.ts](../src/domain/undercroft.ts), [playthrough.test.ts](../tests/playthrough.test.ts), [performance-vesper.test.ts](../tests/performance-vesper.test.ts) |
-| 44 | A growing rival | Vesper acknowledges changes in the player’s decisions. There is no mechanical rivalry that grows with the player’s skill. | ◐ | [letters.ts](../src/domain/letters.ts), [letters.test.ts](../tests/letters.test.ts), [performance-vesper.test.ts](../tests/performance-vesper.test.ts) |
+| 42 | The rival appears often | Meet Agate and her runner at fifteen registers. Vesper’s old commissions surface in the moth’s folds. Each town gives its own reason for using or questioning the Seal. | ✓ | [The moth with two tails](../tests/second-ink.test.ts) |
+| 43 | Tiered gallery | Each chapter has its own disputed notice. The ordinary commission can open immediately. A counterproof after two other towns changes the method’s conditions. A response after four asks for independent work with a second tool. | ✓ | [The moth with two tails](../tests/second-ink.test.ts) |
+| 44 | A growing rival | Agate remembers which method a Guardian actually used in distinct towns. Familiarity with knots, marks or shifts brings a different counterexample. Signing the same notice repeatedly cannot advance the challenge. | ✓ | [The moth with two tails](../tests/second-ink.test.ts) |
 | 45 | Nature and society too | Crossings: floods, geese, machines, crowds, rules. | ✓ | [crossings.ts](../src/domain/crossings.ts), [water-story.test.ts](../tests/water-story.test.ts) |
 | 46 | Presence | Vesper has a distinct look and dialogue. The recurring tune changes arrangement during the encounter. | ✓ | [vesper.json](../src/content/vesper.json), [storyMotifs.ts](../src/domain/storyMotifs.ts) |
 | 47 | Arguing with the rival | Vesper's letters make a fair point; the Council lets you answer. | ✓ | [performance-vesper.test.ts](../tests/performance-vesper.test.ts), [vesper.json](../src/content/vesper.json) |
@@ -124,7 +126,7 @@ These are examples, not a measure of whether every player will find, enjoy or in
 | 72 | Side stories echo the theme | Reading rests and Civic arrival trays show how an official count can omit the people or timing behind it. Ket’s street bell, cord and bench leave different guests waiting. | ✓ | [opening-rests.test.ts](../tests/opening-rests.test.ts), [civic-story.test.ts](../tests/civic-story.test.ts), [crossings.ts](../src/domain/crossings.ts) |
 | 73 | Small favour grows | A small keepsake in Elsbet’s study opens a ferry route. The lamb case later contributes to Wynn’s account. | ✓ | [story.test.ts](../tests/story.test.ts), [ballad.ts](../src/domain/ballad.ts), [crossings.ts](../src/domain/crossings.ts) |
 | 74 | Linked side quests | Crossing `leadsTo` links, epilogue vignettes and ballad verses. "The Runner’s Second Line" changes the receiving conversation in "A Place for the Next Name" across Chapters 2 and 3. | ✓ | [archive-handoff.test.ts](../tests/archive-handoff.test.ts), [lanternfair.test.ts](../tests/lanternfair.test.ts), [witness-strips.test.ts](../tests/witness-strips.test.ts) |
-| 75 | Guild arcs | The Communities of Emberford track local trust. A multi-part vocation with ranks across chapters remains open. | ◐ | [communities.ts](../src/domain/communities.ts), [emberford.ts](../src/maps/emberford.ts) |
+| 75 | Guild arcs | Neska’s guild recognises a floor keeper, a runner, a neighbour with both keys and the keeper who gave the house away for an evening. The actual Emberford stop and harbour light determine what goes home. | ✓ | [Guild work](../src/domain/openHouse.ts), [rank and return checks](../tests/open-house.test.ts) |
 | 76 | Cozy quests | Quarters, dyes, the hearth, Juno's dice table. | ✓ | [quarters.ts](../src/domain/quarters.ts), [hearth.ts](../src/domain/hearth.ts), [fieldgames.ts](../src/domain/fieldgames.ts) |
 | 77 | Observation mysteries | Clue boards, the flood post, the tide engine. | ✓ | [clueboard.ts](../src/domain/clueboard.ts), [emberford.ts](../src/maps/emberford.ts), [observatory.test.ts](../tests/observatory.test.ts) |
 | 78 | Challenges with flair | Showdown spectators react to how an argument changes. The goat and other crossings give low-stakes alternatives. | ✓ | [showdown.ts](../src/domain/showdown.ts), [playthrough.test.ts](../tests/playthrough.test.ts), [crossings.ts](../src/domain/crossings.ts) |
@@ -140,7 +142,7 @@ These are examples, not a measure of whether every player will find, enjoy or in
 | 83 | Item text | The notable keepsakes carry a short history and can reveal a different view of a clue in Elsbet’s study. | ✓ | [story.json](../src/content/story.json), [quarters.json](../src/content/quarters.json) |
 | 84 | Play mirrors mood | The Lamp Wall responds visually to repairs, and the theme changes from the opening to the Council. | ✓ | [WorldScene.ts](../src/scenes/WorldScene.ts), [storyMotifs.ts](../src/domain/storyMotifs.ts) |
 | 85 | Easy retry | Waystones and Recovery support returning to a previous place; many tool trials can be repeated directly. Checkpoints before every major confrontation remain open. | ◐ | [saves.test.ts](../tests/saves.test.ts), [saves.ts](../src/domain/saves.ts) |
-| 86 | Home base grows | Players can furnish quarters and see new records and passageways in the Nexus. A home hub filled by returning companions remains open. | ◐ | [quarters.ts](../src/domain/quarters.ts), [nexus.ts](../src/maps/nexus.ts) |
+| 86 | Home base grows | Any of 240 earned companions can come home to the sill, mat or hearth. A traveller leaves a place waiting. After a public handover, a new landing opens with the actual supper or music stop and the chosen light. | ✓ | [Household](../src/ui/openHouse.ts), [landing](../src/maps/openHouse.ts) |
 | 87 | Non-fight skills pay off | Knowledge and companions open crossing ways. | ✓ | [crossings.test.ts](../tests/crossings.test.ts), [roles.ts](../src/domain/roles.ts) |
 | 88 | Story mode | Calm mode, layered hints and accessible inputs support deliberate play. Distinct story and advanced modes for the whole campaign remain open. | ◐ | [settings.ts](../src/app/settings.ts), [lumen.test.ts](../tests/lumen.test.ts) |
 | 89 | Tutorials in story | The cold open; Dov's stall teaches the counting frame. | ✓ | [opening-notebook.test.ts](../tests/opening-notebook.test.ts), [fieldgames.ts](../src/domain/fieldgames.ts) |
@@ -154,7 +156,7 @@ These are examples, not a measure of whether every player will find, enjoy or in
 | 92 | Belonging | Recruit to Guardian; found family at the hearth. | ✓ | [m01-nexus.json](../src/content/m01-nexus.json), [hearth.ts](../src/domain/hearth.ts) |
 | 93 | Legacy | Elsbet leaves a distinction between what can get a person through a shift and what the next person must be able to check. The player can carry the signed listening index to Vesper. | ✓ | [story.json](../src/content/story.json), [voices-elsbet.json](../src/content/voices-elsbet.json), [vesper.json](../src/content/vesper.json) |
 | 94 | Courage while unsure | "Before the Curtain"; the night surge. | ✓ | [crossings.ts](../src/domain/crossings.ts), [voices-last-lamp.test.ts](../tests/voices-last-lamp.test.ts) |
-| 95 | Empathy across divides | Different ways of naming a route and hearing a short instruction let readers at the quay and stair explain what their approach leaves out. | ✓ | [crossings.ts](../src/domain/crossings.ts), [voices-story.test.ts](../tests/voices-story.test.ts) |
+| 95 | Empathy across divides | At the quay and stair, two readers explain what their approach leaves out. In the travelling orchard a drummer and a young shell share three beats but depend on different surfaces for the call. | ✓ | [crossings.ts](../src/domain/crossings.ts), [voices-story.test.ts](../tests/voices-story.test.ts) |
 | 96 | Weight without shock | Harrowmere's loss, told with care. | ✓ | [harrowmere.json](../src/content/harrowmere.json), [vesper.json](../src/content/vesper.json) |
 | 97 | Wonder | Opening beneath the stars leads into a living archive; Star Pictures makes familiar lights part of a different kind of map. | ✓ | [nexus.ts](../src/maps/nexus.ts), [compendiumGames.ts](../src/domain/compendiumGames.ts) |
 | 98 | Humour for all | Puns, the goat, Kip's "essay", Madame Quandary. | ✓ | [hearth.ts](../src/domain/hearth.ts), [crossings.ts](../src/domain/crossings.ts) |
@@ -241,3 +243,7 @@ These are examples, not a measure of whether every player will find, enjoy or in
 - Recurring chapter characters need more decisions and consequences beyond the current cast. A catalogue of character names or lines cannot show a full arc.
 - Full daily schedules, a return-to-character card and broader late faction responses could give more reasons to revisit the same room.
 - A walkable mirror scene and a post-ending challenge remain open. The Journal’s aftermath and illustrated credits currently revisit the player’s earlier choices.
+
+### A recurring clue that changes owner
+
+The hook at Ise's desk, the thumbprint between Tovrie's panes and the chalk mark outside Hale's seating plan each preserve the presence of a person the formal list missed. Players can encounter the clues in different orders. The signed register names the actual keepers whose receipts made the ending possible. A courier can help a player return to a first account after its author has changed their mind. [Fifteen local mysteries](../src/content/nightKeepers.ts) · [Persistent endings](../src/domain/nightRegister.ts)

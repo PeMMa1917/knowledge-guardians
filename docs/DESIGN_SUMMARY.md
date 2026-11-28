@@ -1,5 +1,7 @@
 # Design summary
 
+Every activity needs a TOK anchor and a question with room for different answers. Explore the evidence by chapter. [Combination atlas](audit/COMBINATION_ATLAS.md)
+
 This is the public summary of version 3 of the Knowledge Guardians design, expanded from version 2.10. The project owner maintains the full specification privately. The rules for authored content and implementation are in [AGENTS.md](../AGENTS.md).
 
 ## The idea

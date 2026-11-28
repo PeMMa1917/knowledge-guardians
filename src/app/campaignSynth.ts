@@ -1,5 +1,5 @@
 /** Deterministic stereo synthesis of the original campaign scores. No browser or file access. */
-import { arrangeScore, type ScoreVoice, type WorldScore } from '../domain/campaignScore';
+import { arrangeScore, type ScoreLoop, type ScoreVoice, type WorldScore } from '../domain/campaignScore';
 
 interface Voice {
   harmonics: readonly number[];
@@ -52,7 +52,10 @@ export interface CampaignPcm {
 
 /** The shorter attacks and longer releases are part of the timbres, including the loop boundary. */
 export function renderCampaignScore(score: WorldScore): CampaignPcm {
-  const loop = arrangeScore(score);
+  return renderScoreLoop(arrangeScore(score));
+}
+
+export function renderScoreLoop(loop: ScoreLoop): CampaignPcm {
   const length = Math.round(loop.duration * SAMPLE_RATE);
   const left = new Float32Array(length);
   const right = new Float32Array(length);

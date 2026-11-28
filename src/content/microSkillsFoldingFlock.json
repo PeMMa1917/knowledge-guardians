@@ -1,0 +1,56 @@
+[
+  {
+    "number": 136,
+    "name": "Test how far a named case can support a wider claim",
+    "uses": [
+      {
+        "objective": "birdside.lesson-range",
+        "action": "Lay the learner’s pencil beside the teacher’s different apprenticeship. Leave a line for a second account, or print a comparison question that another historian could test.",
+        "styles": [
+          "challenger",
+          "helper"
+        ],
+        "modes": [
+          "analytical",
+          "reading"
+        ],
+        "game": 108,
+        "story": 112
+      },
+      {
+        "objective": "birdside.projection.range",
+        "action": "After comparing an anonymous silhouette with a dated view, give the programme a claim about one learner or leave a second frame for another crew’s account. See how the audience can use that choice.",
+        "styles": [
+          "performer",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "reflective"
+        ],
+        "game": 22,
+        "story": 119
+      }
+    ]
+  },
+  {
+    "number": 172,
+    "name": "Replace a generic picture with a situated object",
+    "uses": [
+      {
+        "objective": "birdside.projection.image",
+        "action": "Fit a second stock cutout to the same silhouette, then expose the launch at Kualoa/Hakipuʻu or the separately dated voyages on that canoe. The selected slide remains on view.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "spatial"
+        ],
+        "game": 108,
+        "story": 112
+      }
+    ]
+  }
+]
