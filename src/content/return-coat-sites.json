@@ -1,0 +1,227 @@
+[
+  {
+    "id": "hook",
+    "map": "nexus.archive",
+    "world": "WORLD-01",
+    "name": "The coat at the lost-property hatch",
+    "x": 11,
+    "y": 13,
+    "cx": 14,
+    "cy": 13,
+    "speaker": "kip-arden",
+    "opening": "Kip is wearing his red coat when the lost-property hatch gives it back to him. Same crooked green pear instead of a second button. The spare drips on your shoe. “Guardian. Please tell me you saw that before I start explaining it.”",
+    "returnLine": "Kip hangs the coats a hand apart. “One of them cost me my ferry fare. Which would be annoying enough even if it was the nice one.” He fishes a damp ticket out of the lining.",
+    "clue": "Two red cuffs. One has a green pear missing a bite. The other has the missing bite in exactly the same place. The owner line underneath reads K. ARDEN.",
+    "question": "What does a copied mark let a keeper claim about the person who handled it?",
+    "concepts": [
+      "evidence",
+      "interpretation",
+      "responsibility"
+    ],
+    "framework": [
+      "scope",
+      "methods-and-tools",
+      "ethics"
+    ],
+    "aoks": [
+      "HIS",
+      "TEC"
+    ],
+    "subjects": [
+      "history",
+      "design-tech"
+    ],
+    "trials": [
+      [
+        "print",
+        "hem",
+        "Let the wet cuff touch the blank sleeve.",
+        "kip-arden",
+        "Another chipped pear blooms on the blank sleeve. Kip tries to rub it off and gets a pear on his thumb. “You can have my autograph. Apparently you can have twelve.” The experiment explains the mark. He still owns exactly one coat.",
+        "I rolled the wet cuff onto a blank one. Kip ended up with a green pear on his thumb and exactly one coat to his name."
+      ],
+      [
+        "fare",
+        "book",
+        "Take the short walk to the ferry window with Kip.",
+        "warden-ise",
+        "The fare came off at noon. Ise shows you the little stroke she made to guarantee that somebody would pay. A clerk carried the wearer’s name across it. “That stroke is mine,” she says. “Kip, will you ask for the ticket or shall I?” He holds out his hand for the slip.",
+        "I walked to the ferry window with Kip. The mark that moved the fare belonged to Ise. Kip wanted to ask for his own ticket."
+      ]
+    ],
+    "callbacks": {
+      "hook": "Kip waves his dry cuff through the quiet opening. A green mitten receives a coat. He waits for a face to appear and then holds the curtain closed for its owner.",
+      "book": "Ise has cut a second slot for a guarantor. Kip feeds his own ticket through the first one. The returned brass fare warms in his fist. He lets Ise come halfway to the ferry.",
+      "stage": "A small audience is waiting at the hatch. Kip charges his excellent impression of an outraged pear precisely one brass bit. It goes into the mending tin. There is already a queue for coats."
+    }
+  },
+  {
+    "id": "market",
+    "map": "aethelgard.emberford",
+    "world": "WORLD-02",
+    "name": "The pear on the price board",
+    "x": 19,
+    "y": 22,
+    "cx": 20,
+    "cy": 24,
+    "speaker": "scholar-sefa",
+    "opening": "A dripping red coat is trying to buy a ferry ticket. Nobody is inside it. Sefa has looped a string through the cuff and is making it wave one small coin. A child howls with laughter. Then the clerk takes the coin. “Ah,” Sefa says. “That part was real.”",
+    "returnLine": "Sefa tips her stool towards you. “If you can spare a minute, Guardian, I owe a friend a fare. If you can spare two, I owe him the choice of how we tell it.”",
+    "clue": "A repair offer peeps out beneath the coat price. Across the square the awning ends one pace short of the ferry window. A returning worker would get a shoulder wet.",
+    "question": "Whose labour or debt can the same price slip make visible?",
+    "concepts": [
+      "values",
+      "power",
+      "perspective"
+    ],
+    "framework": [
+      "perspectives",
+      "ethics",
+      "scope"
+    ],
+    "aoks": [
+      "HUM",
+      "POL"
+    ],
+    "subjects": [
+      "economics",
+      "lang-langlit"
+    ],
+    "trials": [
+      [
+        "cross",
+        "book",
+        "Carry a single coat across the till twice.",
+        "scholar-sefa",
+        "Two fares land in the box. Sefa lifts the one coat high enough for the back of the queue. “Had I sung you two notes you would have heard two notes. Who heard two people?” The clerk gives the second bit back.",
+        "I took one coat across the till twice. There were two fares for one crossing and one coat in my hands."
+      ],
+      [
+        "awning",
+        "hem",
+        "Walk the dry way and the quick way with the empty sleeve.",
+        "smith-hesper",
+        "Your shoulder is dry on the long walk. The short way leaves a dark crescent on the cuff. Hesper sits down on the kerb. “Did that walk for a friend who couldn’t take the stairs. Never occurred to me what the coat would say about me after.”",
+        "I tried the long dry walk and the short wet one. A wet shoulder can belong to somebody carrying a coat for a friend."
+      ]
+    ],
+    "callbacks": {
+      "hook": "Sefa is darning at the quiet opening. A coat comes through with a child’s sideways stitches. She ties off the loose end and leaves the crooked row exactly where it was.",
+      "book": "Hesper stands guarantor while the clerk refunds Kip. The queue curls around her unattended stall. Sefa holds up a sign with a price on one side and “gone to help somebody” on the other.",
+      "stage": "Sefa lets the child make the coat wave for the first show. Four coins buy thread and one buys the child a pear. The next worker gets a receipt for mending with the name line cut off."
+    }
+  },
+  {
+    "id": "stage",
+    "map": "stage.foyer",
+    "world": "WORLD-10",
+    "name": "The part played by a sleeve",
+    "x": 12,
+    "y": 10,
+    "cx": 11,
+    "cy": 13,
+    "speaker": "optics-nim",
+    "opening": "Before the curtain rises, a sleeve reaches out alone and catches three drops of rain. The child beside you claps. Behind the curtain an understudy whispers, “Please don’t clap yet. I’ve lost the person who does the rain.”",
+    "returnLine": "Nim hangs a spare red coat on the speaking tube. Vesper’s gift note is still there. “For the person who brings the first one back.” Her own name is pencilled in below the sponge operator’s, in very small letters. “See that little bulb by the rail? She left me two drops. Come and try her part.”",
+    "clue": "A sleeve, a bulb full of water and a slit in the black cloth. The standing audience can see two of those three things. A child at floor height can see the other one.",
+    "question": "What can a staged event establish about something witnessed outside a theatre?",
+    "concepts": [
+      "truth",
+      "explanation",
+      "objectivity"
+    ],
+    "framework": [
+      "methods-and-tools",
+      "perspectives",
+      "scope"
+    ],
+    "aoks": [
+      "ART",
+      "NAT"
+    ],
+    "subjects": [
+      "theatre",
+      "physics"
+    ],
+    "trials": [
+      [
+        "act",
+        "hem",
+        "Take the sponge so Nim can miss her cue on purpose.",
+        "optics-nim",
+        "Nim enters early. You wait. For two whole beats her cuff stays dry under the painted cloud. She looks up at it, astonished. The back row laughs in a way she could never have rehearsed. Then you squeeze. Three drops.",
+        "I worked the sponge while Nim chose her entrance. Delaying three drops changed the joke and gave the two of us different views of the rain."
+      ],
+      [
+        "part",
+        "book",
+        "Trade the cast list for the wardrobe book.",
+        "optics-nim",
+        "Nim finds her name in two columns and one day’s pay in the envelope. “Two jobs. One me.” She chalks the sponge operator’s name on the cast list before anybody can use the show to balance Kip’s bill.",
+        "I held the cast list beside the wardrobe book. Nim had two jobs under one name. The rain keeper had a job that barely appeared at all."
+      ]
+    ],
+    "callbacks": {
+      "hook": "Nim slips offstage with the red coat and comes back in shirtsleeves. Someone else goes home warm. The audience thinks the coat has vanished. For tonight Nim lets the trick belong to that person.",
+      "book": "The wardrobe now names two paid jobs. Nim shares her entrance cue with the keeper who does the rain. Their first try soaks her shoes. She laughs instead of starting the scene again.",
+      "stage": "A wardrobe ticket comes with each seat at the new coat show. Nim gives the sponge keeper the final bow. At the door a woman asks for a coat and no performance. Nim puts one aside for her."
+    }
+  },
+  {
+    "id": "council",
+    "map": "council.hall",
+    "world": "WORLD-16",
+    "name": "The fare in the council cloakroom",
+    "x": 12,
+    "y": 10,
+    "cx": 14,
+    "cy": 12,
+    "speaker": "warden-ise",
+    "opening": "At the council a red cuff has been called as a witness. It hangs over the chair reserved for Kip. Ise lifts it clear. “Let the boy sit down. We can question the coat standing up.” For half a breath the whole chamber is laughing, including Kip.",
+    "returnLine": "Ise uncaps her pen and waits. The hand holding the receipt is shaking a little. It belongs to Vesper. “I wrote *two coats*,” Vesper says. “Somebody copied *two wearers*. I liked how busy my cloakroom looked. I let it stand.”",
+    "clue": "A stamped pear, two fare slips and a narrow opening behind the chair. The council has enough chairs for every named borrower. The cloakroom has one more wet hook.",
+    "question": "What should a community make public when a useful record can also name the wrong person?",
+    "concepts": [
+      "responsibility",
+      "power",
+      "justification"
+    ],
+    "framework": [
+      "ethics",
+      "scope",
+      "perspectives"
+    ],
+    "aoks": [
+      "HUM",
+      "HIS",
+      "POL"
+    ],
+    "subjects": [
+      "global-politics",
+      "history"
+    ],
+    "trials": [
+      [
+        "mask",
+        "book",
+        "Cover the two names and ask what can still be refunded.",
+        "vesper-quill",
+        "Vesper covers the ink with a cuff. The till still holds two bits for one crossing. “That is enough for a refund,” they say. When Kip asks whose spare it was, Vesper takes the hand away. “It doesn’t tell us that.”",
+        "I covered the names at the council till. We could account for an extra fare while leaving the borrower’s identity open."
+      ],
+      [
+        "hinge",
+        "lining",
+        "Take the empty chair through the cloakroom door.",
+        "warden-ise",
+        "The chair fits through sideways. A borrower waiting behind it could reach the inside hook all along. Ise lets Kip steer it back. “I wrote the rule from the tall side of that desk,” she says. “I would like another seat.”",
+        "I brought the empty chair through the narrow door sideways. The inside hook was within reach from a seat."
+      ]
+    ],
+    "callbacks": {
+      "hook": "Vesper brings a bundle to the nameless hook at dawn. One red coat comes back three sizes smaller. Someone is mending for a child. The council has a count of dry coats and no list of children.",
+      "book": "The council prints two different lines for the wearer and the person who will answer for a charge. Vesper uses their own name on the second. For the first time the little pear stands in a box by itself.",
+      "stage": "The council gives the wardrobe its first week of fares. Kip puts a chair by the side door for people who want warmth without an audience. The first person to use it is Vesper."
+    }
+  }
+]

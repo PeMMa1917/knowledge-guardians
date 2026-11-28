@@ -1,5 +1,13 @@
 # Voice sheets
 
+## The lost-property rail
+
+Kip Arden knows what it costs to miss a ferry. He makes a joke about his autograph when his thumb prints a pear, and asks for the ticket himself when Ise offers to speak for him. On the private side of the hatch he can fit a child’s toy into a pocket. The important word in that exchange is the borrower’s second “yellow”.
+
+Ise signs for another passenger because somebody once signed for her. She remembers the feel of the pen better than the face of the person who handed it over. Her change of mind begins with letting a seated borrower show her the height of the latch. Sefa tries the clerk with a puppet coat and a real coin. A child laughs. The clerk takes the coin. The awkward second beat matters to everything Sefa says afterwards.
+
+Nim knows exactly when to break a hush on stage and worries everybody will see her miss an entrance. The rain keeper once reached out to steady her. Nim wants that private kindness to survive a public curtain call. Vesper knows two coats went on the rail. She admits why she allowed a busier story to be told. Give the Guardian time to take up either woman’s offer of help. [Lines, responses and later shifts](../src/content/returnCoat.ts)
+
 ## Opal Fenn and Tallis Vale
 
 ### Opal Fenn (`stacks-opal`)

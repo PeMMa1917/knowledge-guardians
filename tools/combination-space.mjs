@@ -150,6 +150,28 @@ export function unrankCombination(entries, length, rank, options = {}) {
   }
   return out;
 }
+/** Choose additions to an already anchored board in catalogue order, without listing earlier sets. */
+export function additionalMembers(pool, size, rank) {
+  const total = choose(pool.length, size);
+  rank = BigInt(rank);
+  if (rank < 0n || rank >= total)
+    throw Error('Choose a number inside this combination range.');
+  const selection = [];
+  let need = size;
+  let including = choose(pool.length - 1, need - 1);
+  for (let i = 0; need && i < pool.length; i++) {
+    const left = pool.length - i - 1;
+    if (rank < including) {
+      selection.push(pool[i]);
+      if (--need === 0) break;
+      including = (including * BigInt(need)) / BigInt(left);
+    } else {
+      rank -= including;
+      including = (including * BigInt(left - need + 1)) / BigInt(left);
+    }
+  }
+  return selection;
+}
 /** One ordered beat can contain many simultaneous facts. Two ordered beats require two distinct actions. */
 export function matchesOrder(asked, observed, { contiguous = false } = {}) {
   if (!asked.length || asked.some((group) => !group.length)) return false;

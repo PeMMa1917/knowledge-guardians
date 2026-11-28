@@ -12,7 +12,7 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | [Knowledge framework](#family-framework) | 4 |
 | [Areas of knowledge](#family-area) | 5 |
 | [Core and optional themes](#family-theme) | 6 |
-| [Knowledge questions](#family-question) | 792 |
+| [Knowledge questions](#family-question) | 798 |
 | [DP subjects](#family-subject) | 30 |
 | [Approaches to learning](#family-atl) | 5 |
 | [Approaches to teaching](#family-att) | 6 |
@@ -1330,6 +1330,12 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `question:mission-3df63350aae60908` | How far can one group’s agreement speak for people at another landing? | Mission question |
 | `question:mission-7b35aab54bc0ae26` | How can a reader tell which marks belong to the specimen, the tools or the preparation? | Mission question |
 | `question:mission-0bf5b9dbe59d91e0` | When does a model useful for a performance also give us grounds for explaining what happened? | Mission question |
+| `question:mission-eb6260fed9e5eed8` | What does a copied mark let a keeper claim about the person who handled it? | Mission question |
+| `question:mission-d66a5ca64a335b4f` | Whose labour or debt can the same price slip make visible? | Mission question |
+| `question:mission-ce5b0f89c69c176c` | What can a staged event establish about something witnessed outside a theatre? | Mission question |
+| `question:mission-0f7a8ce37d11b225` | What should a community make public when a useful record can also name the wrong person? | Mission question |
+| `question:mission-a1b80f7f90ff2152` | Which causes can a listener distinguish when different actions sound alike? | Mission question |
+| `question:mission-03ed1474f24b9cad` | Who gets credit for a piece of theatre when the audience can only hear the result? | Mission question |
 | `question:mission-5beb04558b6e6f16` | How does the format of an account affect which parts of it a reader can check? | Mission question |
 | `question:mission-d64376114bb9f92c` | How does changing the audience’s position change what a performance can show? | Mission question |
 | `question:mission-e53167fec3358575` | Who has access to a reason when its conclusion is easy to pass on? | Mission question |

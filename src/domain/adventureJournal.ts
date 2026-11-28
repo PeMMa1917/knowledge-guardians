@@ -1,6 +1,7 @@
 import {markDiary} from './riverPostmark';
 import {riverDiary,riverTopics} from './riverNames';
 import {orchardDiary,orchardTopics,type OrchardCommand} from './walkingOrchard';
+import { rainDiary } from './rainScore';
 import { theatreDiary } from './pocketTheatre';
 import { bellDiary } from './claimBell';
 import { hatchDiary } from './hatchSleeve';
@@ -177,6 +178,7 @@ function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignS
   if (cmd.type === 'TendWalkingOrchard') return orchardDiary(next,cmd);
   if (cmd.type === 'FoldRiverPostmark') return markDiary(next,cmd);
   if (cmd.type === 'WalkRiverNames') return riverDiary(next,cmd);
+  if (cmd.type === 'WorkCoatRain') return rainDiary(next,cmd);
   if (cmd.type === 'WorkPocketTheatre') return theatreDiary(next,cmd);
   if (cmd.type === 'WorkClaimBell') return bellDiary(next,cmd);
   if (cmd.type === 'WorkHatchSleeve') return hatchDiary(next,cmd);

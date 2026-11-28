@@ -1,5 +1,18 @@
 # Chromium release checks
 
+## Review a curriculum combination
+
+Open the offline [reviewer checklist](audit/COMBINATION_CHECKLIST.html). Choose a chapter and an anchored selection. A single check belongs to exactly one of 24 Bloom and DOK cells. Open a micro-skill as a row, pin it and use a combination number to try another selection. In the controlled browser checks, a checked cell survives a reload, keeps its note, transfers by JSON to another browser context and exports in a CSV. A new chapter and a neighbouring combination each open their own grid. [Checklist test](../tools/smoke-combination-checklist.mjs)
+
+## Return a coat and score the rain
+
+Run the journey with a local preview. The browser starts from a fresh campaign and operates the props and controls. The harness moves between named maps for travel. A fixture earns the brass key plate after the inventory-free opening. Independent domain checks cover each earned and unearned keepsake and every combination of entrance and settlement. [Browser journey](../tools/return-coat-journey.mjs) · [Coat, fare and landing tests](../tests/return-coat.test.ts) · [Four-beat score tests](../tests/rain-score.test.ts)
+
+```sh
+node tools/smoke-lamplight.mjs chromium http://127.0.0.1:4173 --return-coat
+node tools/smoke-combination-checklist.mjs firefox
+```
+
 ## Run the map and access smoke
 
 Build and serve a single checkout, then run the smoke against that preview with Node 22 or newer and Chromium installed.

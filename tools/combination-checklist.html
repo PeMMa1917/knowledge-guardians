@@ -15,7 +15,7 @@ td input{width:1.2rem;height:1.2rem;vertical-align:middle;accent-color:var(--tea
 small,.muted{font-size:.88rem;color:#405950}details{margin:.7rem 0}summary{cursor:pointer;font-weight:600}output{display:block;margin:.5rem 0;overflow-wrap:anywhere}.result{border-left:3px solid var(--line);padding:.4rem .65rem;margin:.6rem 0}
 code{overflow-wrap:anywhere}.pad{margin-top:.65rem}[hidden]{display:none!important}
 @media(max-width:51rem){.cols{grid-template-columns:minmax(0,1fr);gap:0}main{padding:.7rem}section{padding:.8rem}}
-@media print{#builder,#transfer,.edit,#editPanel,#inspect{display:none}body,main{background:white;margin:0;padding:0}.cols{display:block}section{break-inside:avoid}}
+@media print{#builder,#navigator,#transfer,.edit,#editPanel,#inspect{display:none}body,main{background:white;margin:0;padding:0}.cols{display:block}section{break-inside:avoid}}
 </style>
 <main><header><h1>Combination checklist</h1><p>Knowledge Guardians · Curriculum and story review</p></header>
 <div class="cols">
@@ -23,8 +23,9 @@ code{overflow-wrap:anywhere}.pad{margin-top:.65rem}[hidden]{display:none!importa
 <div class="row"><div><label for="chapter">Chapter</label><select id="chapter"></select></div><div><label for="design">Design scope</label><select id="design"><option value="joint">Narrative and gameplay</option><option value="any">Any TOK-anchored selection</option><option value="story-only">Narrative only</option><option value="game-only">Game only</option></select></div></div>
 <div class="row pad"><div><label for="family">Element family</label><select id="family"></select></div><div><label for="search">Search by name or ID</label><input id="search" type="search"></div></div>
 <label for="matches" class="pad">Matching elements</label><select id="matches" size="6" style="width:100%"></select><small id="matchCount"></small>
-<div class="row"><button id="add">Add selected element</button><button id="focus">Find its reviewed boards</button></div>
-<h3 class="pad">Selected elements</h3><div class="chips" id="chips"></div>
+<div class="row"><button id="add">Add selected element</button><button id="focus">Find its reviewed boards</button><button id="findAction">Find this element in play</button></div>
+<div id="playMatches" aria-live="polite"></div><div id="activityMatches"></div>
+<div class="row pad"><h3>Selected elements</h3><button id="newSelection">Start a new selection</button></div><div class="chips" id="chips"></div>
 <label for="sequence">Order of play</label><select id="sequence"><option value="set">Together in one action</option><option value="order">In a particular sequence</option></select>
 <div id="stepBox" hidden><label for="steps">Ordered actions</label><small>Use IDs. Group simultaneous elements with commas and separate actions with &gt;. An ID can recur.</small><textarea id="steps" rows="3"></textarea></div>
 <p id="valid" class="muted" aria-live="polite"></p>
@@ -38,7 +39,12 @@ code{overflow-wrap:anywhere}.pad{margin-top:.65rem}[hidden]{display:none!importa
 <p>Keep the current chapter and combination fixed. Each row adds one member. Each checkbox records an independent review for that exact combination. Open a row to add evidence.</p>
 <div class="row"><div><label for="matrixKind">Checklist family</label><select id="matrixKind"></select></div><div><label for="matrixSearch">Find a skill or other member</label><input type="search" id="matrixSearch"></div></div>
 <div id="matrixTable" tabindex="0" style="overflow:auto" aria-label="Scrollable member review table"></div>
-<div class="row pad"><button id="prevRows">Previous rows</button><button id="nextRows">Next rows</button><output id="rowCounts"></output></div></details></section>
+<div class="row pad"><button id="prevRows">Previous rows</button><button id="nextRows">Next rows</button><button id="familyCSV">Export family grid CSV</button><output id="rowCounts"></output></div></details></section>
+<section><details id="navigator"><summary>Browse possible combinations by number</summary>
+<p>Pin your current TOK selection. Choose the families and how many more distinct elements to add. Each number opens one possible combination for review in the selected chapter.</p>
+<button id="pin">Pin current selection</button><p id="baseDescription" class="muted"></p>
+<div class="row"><div><label for="pool">Element families to add</label><select id="pool" multiple size="5"></select><small>Leave empty to include all eligible families. Use Ctrl or Command to select several.</small></div><div><label for="extraCount">Number of additional elements</label><input id="extraCount" type="number" step="1" min="0" value="1"><label for="combinationNumber">Combination number (starts at 1)</label><input id="combinationNumber" type="text" inputmode="numeric" value="1"></div></div>
+<p id="spaceSize" aria-live="polite"></p><div class="row"><button id="previousSet">Previous combination</button><button id="useSet">Open this combination</button><button id="nextSet">Next combination</button></div></details></section>
 <section id="history"><h2>Saved reviews</h2><p class="muted">Each board has its own 24 cells. Checks stay with the exact combination, chapter and order you reviewed.</p><label for="savedBoards">Reopen a board</label><select id="savedBoards"></select> <button id="openSaved">Open board</button><div id="memberReview"></div></section>
 <section id="transfer"><h2>Take your checklist with you</h2><p>Edits are saved in this browser when storage is available. Export JSON to continue on another device or send a copy to a reviewer. CSV includes every cell on your saved boards.</p>
 <div class="row"><button id="json">Export JSON</button><button id="csv">Export CSV</button><button id="print">Print this board</button><label for="load">Import checklist JSON <input id="load" type="file" accept="application/json,.json"></label></div>

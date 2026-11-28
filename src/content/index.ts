@@ -1,3 +1,4 @@
+import { installReturnCoat } from './returnCoat';
 import { installPocketTheatre } from './pocketTheatre';
 import {installWalkingOrchard} from './walkingOrchard';
 import {installRiverNames} from './riverNames';
@@ -293,6 +294,7 @@ export function buildPack(): ContentPack {
   installSecondInk(content);
   installRiverNames(content);
   installLensLoan(content);
+  installReturnCoat(content);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);

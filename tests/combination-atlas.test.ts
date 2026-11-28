@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 // @ts-expect-error audit tools run as native JavaScript.
-import { matchesOrder, requirements, spaceCount, unrankCombination } from '../tools/combination-space.mjs';
+import { additionalMembers, matchesOrder, requirements, spaceCount, unrankCombination } from '../tools/combination-space.mjs';
 // @ts-expect-error audit tools run as native JavaScript.
 import { buildAtlas, lookup } from '../tools/combination-atlas.mjs';
 // @ts-expect-error audit tools run as native JavaScript.
@@ -48,6 +48,18 @@ describe('documented TOK combination space', () => {
         expect(addressed).toEqual(atSize.map((x) => x.join(',')).sort());
       }
     }
+  });
+  it('addresses every anchored extension exactly once, including empty and very large ranks', () => {
+    const ids=members.map(m=>m.id);
+    for(let length=0;length<=ids.length;length++){
+      const expected=allSets.filter(s=>s.length===length);
+      const got=expected.map((_,i)=>additionalMembers(ids,length,BigInt(i)).join(','));
+      expect(got.sort()).toEqual(expected.map(s=>s.join(',')).sort());
+    }
+    expect(()=>additionalMembers(ids,2,-1n)).toThrow();
+    const pool=Array.from({length:1200},(_,i)=>String(i+1));
+    expect(additionalMembers(pool,12,309752320478994335005794n)).toHaveLength(12);
+    expect(additionalMembers(pool,1,1199n)).toEqual(['1200']);
   });
   it('requires either area or theme and honours finite lengths for revisits', () => {
     expect(

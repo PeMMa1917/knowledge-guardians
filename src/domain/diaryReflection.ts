@@ -51,6 +51,13 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
     if(key.startsWith('walking-grove:track:'))return {tracks:'Which part of the night could this mark explain, and which part still needs a witness?'};
     return {date:'What changed when I brought the two springs up to the same date?',missing:'Which empty space in the book would I try to fill first, and why?'};
   }
+  if (key.startsWith('coat-rain:')) {
+    const act=key.split(':')[2];
+    if (act==='wonder'||act==='hands') return {credit:'Who could recognise the keeper’s work under the billing I chose?',transfer:'Where else have I seen someone’s work vanish from a credit?'};
+    if (act==='stalls'||act==='wings') return {seat:'What could somebody in the other seat reasonably believe about that sound?'};
+    if (act==='try-other') return {setting:'What could I reproduce from the programme, and what did our room have to supply?'};
+    return {test:'Which change to a gesture could test my explanation of a tap?'};
+  }
   if (key.startsWith('pocket:')) {
     const story=theatreById.get(key.split(':')[1]);
     if(story) return {perspective:story.questions[0],transfer:story.questions[1]};

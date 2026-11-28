@@ -112,6 +112,67 @@ const theatreLens = {
 };
 // Each pair gives two defensible readings or uses of the same physical evidence.
 const otherCases = {
+  'returned-coat.hook.print': [
+    'area:HIS',
+    'The pear looks personal enough to let a friend recognise a cuff.',
+    'The same mark transfers to a blank sleeve. A keeper needs a separate account of who wore it.',
+  ],
+  'returned-coat.hook.fare': [
+    'area:HIS',
+    'The name on the ticket identifies the person whose money was taken.',
+    'The guarantee stroke identifies a different person who agreed to answer for a charge.',
+  ],
+  'returned-coat.market.cross': [
+    'area:HUM',
+    'Two fare marks can be a useful count of transactions.',
+    'A borrower can pass the till twice with one coat and one body.',
+  ],
+  'returned-coat.market.awning': [
+    'area:HUM',
+    'The short route reaches the ferry sooner.',
+    'The sheltered route keeps the sleeve dry. Hesper also carried a coat on somebody else’s behalf.',
+  ],
+  'returned-coat.stage.act': [
+    'area:ART',
+    'From the audience the cuff appears to rain when Nim enters.',
+    'The sponge keeper can delay the shower, which leaves the earlier drop in the Nexus unexplained.',
+  ],
+  'returned-coat.stage.part': [
+    'area:ART',
+    'A cast list names a part the audience sees.',
+    'A pay envelope and wardrobe book make work behind the curtain visible.',
+  ],
+  'returned-coat.rain.lining.twocauses': [
+    'area:NAT',
+    'A third-beat tap can come from the one drop the hem has held since the first beat.',
+    'A direct squeeze at the third beat gives the borrower the same sound.',
+  ],
+  'returned-coat.rain.stage.twocauses': [
+    'area:NAT',
+    'The audience has a repeatable sound in the programme.',
+    'The keeper can show two ways of making it with different hands.',
+  ],
+  'returned-coat.rain.lining': [
+    'area:ART',
+    'A named bow can keep the surprise for the waiting borrower.',
+    'An open demonstration gives the worker a chance to teach the next company.',
+  ],
+  'returned-coat.rain.stage': [
+    'area:ART',
+    'The keeper’s bow can acknowledge her part and preserve the theatrical effect.',
+    'Giving the keeper the demonstration lets the touring company learn from her directly.',
+  ],
+  'returned-coat.council.mask': [
+    'theme:POL',
+    'Both marks are enough to establish an extra fare for one crossing.',
+    'The identity of the wearer remains open even after the fare can be refunded.',
+  ],
+  'returned-coat.council.hinge': [
+    'theme:POL',
+    'A standing keeper can reach the high hook.',
+    'A seated borrower has a separate working route through the inside opening.',
+  ],
+
   'claimbell.issue': [
     'theme:POL',
     'A porter can speak at the open bell and keep his wrist to himself.',
@@ -274,6 +335,20 @@ export function buildAtlas(audit) {
     const beat = add(r, [lens], { id: objective, views });
     if (objective.startsWith('claimbell.')) bell.push(beat.id);
   }
+  routes.push({
+    id: 'two-coats-ferry',
+    title: 'From the wet sleeve to the fare window',
+    beats: ['returned-coat.hook.print', 'returned-coat.hook.fare'],
+    source: 'tools/return-coat-journey.mjs',
+    note: 'The Guardian transfers the pear to a clean sleeve before following Kip to the ferry clerk. Two separate operations open the hearing with no keepsake required.',
+  });
+  routes.push({
+    id: 'rain-score-foyer',
+    title: 'From a second explanation to the keeper’s curtain call',
+    beats: ['returned-coat.rain.stage.twocauses', 'returned-coat.rain.stage'],
+    source: 'tools/return-coat-journey.mjs',
+    note: 'The Guardian receives the first score from the coat rail, reproduces its sound with a different gesture in the foyer and issues the keeper’s working demonstration.',
+  });
   routes.push({
     id: 'claim-bell',
     title: 'The bell for a quiet claim',

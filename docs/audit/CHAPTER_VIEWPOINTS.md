@@ -28,6 +28,72 @@ Choose who gets the first turn after the apparent crowd has shrunk to one author
 
 Find this at `aethelgard.emberford`, using `travelling-pocket-theatre`. evaluate · DOK 3. [Review](../../tests/pocket-theatre.test.ts)
 
+### returned-coat.hook.print
+
+*Which part did I observe and which part am I prepared to infer?*
+
+Use Kip’s sleeve to put the same chipped pear on clean cloth. A shared mark alone cannot identify a wearer.
+
+- The pear looks personal enough to let a friend recognise a cuff.
+- The same mark transfers to a blank sleeve. A keeper needs a separate account of who wore it.
+
+Find this at `nexus.archive`, using `return-coat-hook-work`. analyse · DOK 2. [Review](../../tests/return-coat.test.ts)
+
+### returned-coat.hook.fare
+
+*Which part did I observe and which part am I prepared to infer?*
+
+Walk the disputed fare to the window. Separate Ise’s guarantor stroke from the copied name of a wearer.
+
+- The name on the ticket identifies the person whose money was taken.
+- The guarantee stroke identifies a different person who agreed to answer for a charge.
+
+Find this at `nexus.archive`, using `return-coat-hook-work`. analyse · DOK 2. [Review](../../tests/return-coat.test.ts)
+
+### returned-coat.market.cross
+
+*Which part did I observe and which part am I prepared to infer?*
+
+Take one coat across the till twice. The second bit can be refunded while the number of borrowers stays open.
+
+- Two fare marks can be a useful count of transactions.
+- A borrower can pass the till twice with one coat and one body.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-work`. analyse · DOK 2. [Review](../../tests/return-coat.test.ts)
+
+### returned-coat.market.awning
+
+*Which part did I observe and which part am I prepared to infer?*
+
+Carry the sleeve along the quick and sheltered routes. Compare their marks with Hesper’s account of carrying for somebody else.
+
+- The short route reaches the ferry sooner.
+- The sheltered route keeps the sleeve dry. Hesper also carried a coat on somebody else’s behalf.
+
+Find this at `aethelgard.emberford`, using `return-coat-market-work`. analyse · DOK 2. [Review](../../tests/return-coat.test.ts)
+
+### returned-coat.rain.lining.twocauses
+
+*Which part did I observe and which part am I prepared to infer?*
+
+Build a tap from a stored drop, then make the same sound with a direct squeeze at the cloakroom hatch.
+
+- A third-beat tap can come from the one drop the hem has held since the first beat.
+- A direct squeeze at the third beat gives the borrower the same sound.
+
+Find this at `nexus.coat-lining`, using `indoor-rain-rig`. analyse · DOK 2. [Review](../../tests/rain-score.test.ts)
+
+### returned-coat.rain.lining
+
+*Which part did I observe and which part am I prepared to infer?*
+
+Issue the quiet rail’s score after watching the worker and listening at the hatch. The visiting company receives the score and billing.
+
+- A named bow can keep the surprise for the waiting borrower.
+- An open demonstration gives the worker a chance to teach the next company.
+
+Find this at `nexus.coat-lining`, using `indoor-rain-rig`. create · DOK 2. [Review](../../tests/rain-score.test.ts)
+
 ### claimbell.issue
 
 *Whose priorities did we build into this rule or performance?*
@@ -250,6 +316,50 @@ A memorable missed cue, a child’s colour vote and the height of the rope compe
 
 Find this at `stage.foyer`, using `travelling-pocket-theatre`. evaluate · DOK 3. [Review](../../tests/pocket-theatre.test.ts)
 
+### returned-coat.stage.act
+
+*Which part did I observe and which part am I prepared to infer?*
+
+Hold the sponge through Nim’s entrance. Release the drops later. A repeatable backstage shower leaves the first wet coat an open case.
+
+- From the audience the cuff appears to rain when Nim enters.
+- The sponge keeper can delay the shower, which leaves the earlier drop in the Nexus unexplained.
+
+Find this at `stage.foyer`, using `return-coat-stage-work`. analyse · DOK 2. [Review](../../tests/return-coat.test.ts)
+
+### returned-coat.stage.part
+
+*Which part did I observe and which part am I prepared to infer?*
+
+Trade the cast sheet for the wardrobe book. Two entries document two different jobs, even though one envelope went to Nim.
+
+- A cast list names a part the audience sees.
+- A pay envelope and wardrobe book make work behind the curtain visible.
+
+Find this at `stage.foyer`, using `return-coat-stage-work`. analyse · DOK 2. [Review](../../tests/return-coat.test.ts)
+
+### returned-coat.rain.stage.twocauses
+
+*Which part did I observe and which part am I prepared to infer?*
+
+Reproduce a four-beat sound in the theatre stalls while changing the hand and gesture that cause the tap.
+
+- The audience has a repeatable sound in the programme.
+- The keeper can show two ways of making it with different hands.
+
+Find this at `stage.foyer`, using `indoor-rain-rig`. analyse · DOK 2. [Review](../../tests/rain-score.test.ts)
+
+### returned-coat.rain.stage
+
+*Which part did I observe and which part am I prepared to infer?*
+
+Write the foyer’s rain part, check what visitors can hear, then issue a version that gives the keeper a bow or the stage.
+
+- The keeper’s bow can acknowledge her part and preserve the theatrical effect.
+- Giving the keeper the demonstration lets the touring company learn from her directly.
+
+Find this at `stage.foyer`, using `indoor-rain-rig`. create · DOK 2. [Review](../../tests/rain-score.test.ts)
+
 ### elbow.curtain
 
 *What can a measuring pattern settle when two people have to share a part?*
@@ -432,6 +542,28 @@ Choose who controls a key after a single counterexample to universal access. A l
 - Leave the chair on the public rota. The neighbourhood can see who takes the late duty. A named volunteer still needs to turn up.
 
 Find this at `council.hall`, using `travelling-pocket-theatre`. evaluate · DOK 3. [Review](../../tests/pocket-theatre.test.ts)
+
+### returned-coat.council.mask
+
+*Which part did I observe and which part am I prepared to infer?*
+
+Cover both names on the refund slip and compare the till against one crossing. The fare can be audited without identifying the borrower.
+
+- Both marks are enough to establish an extra fare for one crossing.
+- The identity of the wearer remains open even after the fare can be refunded.
+
+Find this at `council.hall`, using `return-coat-council-work`. analyse · DOK 2. [Review](../../tests/return-coat.test.ts)
+
+### returned-coat.council.hinge
+
+*Which part did I observe and which part am I prepared to infer?*
+
+Turn the empty chair sideways and try the inside hook. The same rule looks different to a seated borrower and a standing keeper.
+
+- A standing keeper can reach the high hook.
+- A seated borrower has a separate working route through the inside opening.
+
+Find this at `council.hall`, using `return-coat-council-work`. analyse · DOK 2. [Review](../../tests/return-coat.test.ts)
 
 ### last-bell.council.reopened
 

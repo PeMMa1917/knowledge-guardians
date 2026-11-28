@@ -2,6 +2,12 @@
 
 The combination atlas includes joint bundles, multiple members of one family, ordered actions, mission questions and the 24 Bloom × DOK cells. [Combination atlas](docs/audit/COMBINATION_ATLAS.md) · [Check off a combination](docs/audit/COMBINATION_CHECKLIST.html)
 
+## 28 November • Checking a skill in play
+
+The combination checklist can pin an exact selection, browse additional elements by number and open a registered action directly in its Bloom and DOK cell. Its 15 chapters share a catalogue of 2,806 members. Reviews, action IDs and notes remain separate for every chapter, sequence and cognitive cell. The register documents 116 actions and 33 ordered journeys. [Reviewer instructions](docs/audit/COMBINATION_ATLAS.md)
+
+Kip’s duplicate coat can turn up in four places. The Guardian can try eight different checks, take one of twelve later shifts and use any of the 24 early keepsakes to earn a particular response from a person at another rail. The new quiet landing and the theatre exchange four-beat rain scores. The player can write two different parts that produce the same sound, then give the rain keeper a bow or her own demonstration. [Story and review routes](docs/audit/RETURN_COAT.md)
+
 ## 28 November • Late-campaign checks
 
 Opening a scene can check objectives that a student finished many chapters ago. Mission conditions and guide lookups now share the live completion index during a turn. In the controlled 3,000-step fixture, the median CPU time per turn and guide lookup fell from 2.94 to 2.31 ms with identical events, credit and recovery state. [Timings and tests](docs/BROWSER_CHECKS.md#objective-conditions-on-a-travelled-save)

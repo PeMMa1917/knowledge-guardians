@@ -8,7 +8,37 @@ In the Nile hall, a stitcher thinks everyone in the audience will spot her blue 
 
 [Download or open the offline combination checklist](COMBINATION_CHECKLIST.html). On GitHub, open the file and choose **Download raw file**, then open the downloaded HTML in a browser. It works without a server. Select a chapter, search by skill number or any other member, add the relevant TOK anchors and choose a narrative and game element. Select **In a particular sequence** when order matters. Open a worked example to try a complete board.
 
-Each exact selection has six Bloom rows and four DOK columns in each chapter. Tick a cell to record a review. Use **Note** beside it to record the player action, what the two people stood to gain or lose and where another reviewer can reproduce it. Enter one action ID per line to track the ten-action target separately for that cell. Existing source evidence appears under the grid. Only an explicit reviewer check marks a cell. The **Find its reviewed boards** control finds records involving any particular micro-skill or other member. **Check a whole family** lays out each skill or other member as a row against the current anchors, with all 24 review cells across the row. Search by ID to go straight to any micro-skill. Export JSON to share, back up or continue the ledger on another device. Export CSV for a spreadsheet with all 24 cells of the current and saved boards.
+Each exact selection has six Bloom rows and four DOK columns in each chapter. Tick a cell to record a review. Use **Note** beside it to record the player action, what the two people stood to gain or lose and where another reviewer can reproduce it. Enter one action ID per line to track the ten-action target separately for that cell. Existing source evidence appears under the grid. Only an explicit reviewer check marks a cell. The **Find its reviewed boards** control finds records involving any particular micro-skill or other member. **Check a whole family** lays out each skill or other member as a row against the current anchors, with all 24 review cells across the row. Search by ID to go straight to any micro-skill. **Export family grid CSV** produces a spreadsheet of every matching member in the selected family, including its exact anchors and 24 review statuses. Export JSON to share, back up or continue the ledger on another device. Export CSV for a spreadsheet with all 24 cells of the current and saved boards.
+
+### Review all the ways a skill can appear
+
+For a review of one micro-skill, pin the skill with a key concept, a framework part and an area or theme. Use **Any TOK-anchored selection** to start before choosing the story and mechanic. Use **Check a whole family** to compare narrative elements side by side against those anchors. To examine combinations involving several members, open **Browse possible combinations by number**, choose one or more families, and enter the number of additional elements. Keep the same pinned selection as you move between possible combinations. You can share a checked board, its exact membership and its notes in a JSON export. A catalogue update can introduce new numbers. Saved boards follow their stable element IDs.
+
+For example, use **The stitcher’s sling**, then pin it and choose **Micro-skills** with one addition. Combination 1,200 opens the last supplied micro-skill against that same sling. Its six-by-four grid starts open. For ordered journeys, open the desired board and group its members into the steps in which a player actually meets them. Reversing the steps creates a separate review.
+
+**Find this element in play** searches the published action evidence across chapters. Pick a result to open the exact combination and its observed Bloom and DOK cell. The note editor offers the player action, both perspectives, the map, a source test and the action ID. Edit or save the note and decide whether to tick the cell. The same search shows the linked objectives for the selected chapter. Open one as a starting point and add the story and game elements you observe. Only the separate action register supplies a tested trace and an observed cognitive cell.
+
+### What qualifies for a check
+
+Choose the Bloom row for the thinking the student must do and the DOK column for how demanding that thinking is in this encounter. Write down one observable action or decision before inferring a student's reasoning. Two students who reach different endings can demonstrate the same demand. A second playthrough, interview or transfer task can supply evidence of what happened for a particular student.
+
+| Bloom level | Observable example at the coat rail |
+| --- | --- |
+| Remember | Find the pear-shaped repair Kip described and identify it on a sleeve. |
+| Understand | Show a companion how a wet print can appear on a second sleeve. |
+| Apply | Use the same transfer test on a fresh piece of cloth. |
+| Analyse | Compare when the pear was copied with when the fare was charged. |
+| Evaluate | Decide whether the fare record warrants naming a second wearer. Identify what else would change the decision. |
+| Create | Design a way for the next keeper to log a loan, preserve the borrower’s privacy and return a disputed fare. |
+
+| DOK | Evidence to look for |
+| --- | --- |
+| 1 · Recall or reproduction | The student finds, recalls or performs a familiar operation with a predictable procedure. |
+| 2 · Skills and concepts | The student selects and uses a method, sorts relevant observations or interprets a pattern in context. |
+| 3 · Strategic thinking | The student weighs plausible accounts, tests a consequential assumption or defends and revises a decision using evidence. |
+| 4 · Extended thinking | The student plans sustained work across contexts, integrates differing accounts, tests a design and revises it in light of what others experience. |
+
+These examples guide a review. Some describe opportunities to build or observe in a future playtest. A “Create” verb, time spent playing or a second map alone cannot establish DOK 4. Keep a cell open when the specified cognitive demand is absent.
 
 ## What belongs in a combination
 

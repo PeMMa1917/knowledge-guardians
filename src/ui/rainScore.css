@@ -1,0 +1,53 @@
+.rain-score {
+  max-width: 38rem;
+}
+.rain-rig,
+.rain-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+.rain-rig {
+  flex-wrap: nowrap;
+}
+.rain-rig img {
+  width: 3.5rem;
+  height: 3.5rem;
+  image-rendering: pixelated;
+}
+.rain-rig p {
+  margin: 0.35rem 0;
+}
+.rain-seat {
+  font-weight: 700;
+}
+.rain-beats {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.35rem;
+  padding: 0;
+  margin: 0.45rem 0;
+}
+.rain-beats li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.45rem;
+  border: 1px solid currentColor;
+  border-radius: 0.3rem;
+  overflow-wrap: anywhere;
+}
+.rain-actions {
+  margin: 0.45rem 0;
+}
+.rain-comparison {
+  border-inline-start: 0.2rem solid currentColor;
+  padding-inline-start: 0.6rem;
+}
+@media (max-width: 420px) {
+  .rain-beats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -34,6 +34,13 @@ export function activityAnchors(pack, levels, topics) {
         mission: mission.id,
         world: mission.world,
         concepts,
+        skills: (step.skills ?? []).map((k) =>
+          /^SK-MICRO-(\d+)$/.test(k)
+            ? 'micro:' + Number(k.slice(9))
+            : 'skill:' + k,
+        ),
+        subjects: step.weave?.subjects ?? [],
+        atl: step.weave?.atl ?? [],
         framework,
         derivedFramework: derived,
         areas,

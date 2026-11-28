@@ -654,8 +654,8 @@ export interface Keepsake {
 /** The Lamp Wall (storyline): one lamp for each of Emberford's knots that the player helps untie. */
 export interface Knot { id: string; name: string; who: string; lit: string; if: Condition }
 /** A clue object: a base description, and new views that a keepsake reveals (a perspective or a pathway). */
-export interface ClueView { keepsake: string; text: string; effects?: Effect[] }
-export interface ClueRecord { id: string; name: string; text: string; views: ClueView[]; onRead?: Effect[]; study?: boolean }
+export interface ClueView { keepsake: string; label?: string; text: string; effects?: Effect[] }
+export interface ClueRecord { id: string; name: string; text: string; views: ClueView[]; earnedViewsOnly?: boolean; onRead?: Effect[]; study?: boolean }
 /** A dialogue option that appears with a character once the player holds a keepsake. */
 /** The story so far (Journal): one beat shown once its condition holds. `{lamps}` is the number of lamps lit. */
 export interface ChronicleBeat { id: string; title: string; text: string; if?: Condition }

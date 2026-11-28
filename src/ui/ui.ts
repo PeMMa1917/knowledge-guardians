@@ -4913,8 +4913,8 @@ export class UI implements UIApi {
           if (ev.some((e) => e.kind === 'error')) return;
           this.sfx('sfx.sparkle'); render(v.keepsake);
           ctx.world?.refreshWorld();
-        } }, `Use ${low(k?.name ?? v.keepsake)}`));
-        else box.append(h('p', { class: 'fine clue-missing' }, `Something here would mean more with a keepsake you have not found yet${k ? ` (${k.where.replace(/\.$/, '')})` : ''}.`));
+        } }, v.label ?? `Use ${low(k?.name ?? v.keepsake)}`));
+        else if (!cl.earnedViewsOnly) box.append(h('p', { class: 'fine clue-missing' }, `Something here would mean more with a keepsake you have not found yet${k ? ` (${k.where.replace(/\.$/, '')})` : ''}.`));
       }
       box.append(h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': !fresh, onclick: () => this.closeModal() }, 'Close')));
     };

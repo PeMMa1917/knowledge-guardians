@@ -1,8 +1,9 @@
+import { returnCoatCognition } from './return-coat-evidence.mjs';
 import { pocketCognition } from './pocket-theatre-evidence.mjs';
 // Each row names the specific part of a tested action that earns this pairing.
 // The demanding project around a step cannot raise the depth of a routine recall.
 export const cognitiveActions = [
-  ...pocketCognition,
+  ...returnCoatCognition, ...pocketCognition,
   { objective:'claimbell.issue', story:11, game:114, dimensions:['etymology:claim','vocabulary:claim','micro:370','concept:perspective','framework:perspectives'],
     bloom:'create',dok:3,demand:'Design an entrance and a shift after trying both claimants and at least two methods of calling for a turn.',
     consequence:'The sealed times and entrance travel to the council. The player must try the rule there as signed.' },

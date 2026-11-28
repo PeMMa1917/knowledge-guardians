@@ -1,3 +1,4 @@
+import { returnCoatProofs } from './return-coat-evidence.mjs';
 import { activityAnchors } from './tok-activity-anchors.mjs';
 import { pocketProofs } from './pocket-theatre-evidence.mjs';
 import { reasoningRepertoire } from './reasoning-repertoire.mjs';
@@ -158,7 +159,7 @@ const copiesEvidenceInvestigations = [
 // Each row identifies a complete action and the intersection its trace actually supports.
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
-  ...pocketProofs, ...bellProofs,
+  ...returnCoatProofs, ...pocketProofs, ...bellProofs,
   ...originActions,
   ...elbowProofs,
   ...stacksProofs,

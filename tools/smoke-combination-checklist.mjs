@@ -74,26 +74,22 @@ try {
   const second = await browser.newContext(),
     p2 = await second.newPage();
   await p2.goto(url);
-  await p2
-    .locator('#load')
-    .setInputFiles({
-      name: 'review.json',
-      mimeType: 'application/json',
-      buffer: content,
-    });
+  await p2.locator('#load').setInputFiles({
+    name: 'review.json',
+    mimeType: 'application/json',
+    buffer: content,
+  });
   await p2.getByText(/Checklist imported/).waitFor();
   assert(
     await p2
       .getByRole('checkbox', { name: 'Reviewed analyse DOK 2', exact: true })
       .isChecked(),
   );
-  await p2
-    .locator('#load')
-    .setInputFiles({
-      name: 'bad.json',
-      mimeType: 'application/json',
-      buffer: Buffer.from('{"version":99}'),
-    });
+  await p2.locator('#load').setInputFiles({
+    name: 'bad.json',
+    mimeType: 'application/json',
+    buffer: Buffer.from('{"version":99}'),
+  });
   await p2.getByText(/Import failed/).waitFor();
   assert(
     await p2
@@ -125,6 +121,15 @@ try {
     exact: true,
   });
   await matrixCell.check();
+  const familyFile = page.waitForEvent('download');
+  await page.locator('#familyCSV').click();
+  const familyText = await readFile(await (await familyFile).path(), 'utf8');
+  assert(
+    familyText.includes('micro:1200') &&
+      familyText.includes('"Reviewed"') &&
+      familyText.includes('create · DOK 4'),
+  );
+  assert.equal(familyText.split('\r\n').length, 2);
   await page.locator('#matrixTable button').click();
   assert(
     await page
@@ -137,6 +142,56 @@ try {
       .isChecked(),
     false,
   );
+  await page.locator('#example1').evaluate((e) => e.click());
+  await page.locator('#navigator summary').click();
+  await page.locator('#pool').selectOption('micro');
+  await page.locator('#combinationNumber').fill('1200');
+  await page.locator('#useSet').click();
+  assert(
+    (await page.locator('#boardDesc').textContent()).includes('micro:1200'),
+  );
+  assert(
+    await page
+      .getByRole('checkbox', { name: 'Reviewed create DOK 4', exact: true })
+      .isChecked(),
+  );
+  await page.locator('#previousSet').click();
+  assert(
+    (await page.locator('#boardDesc').textContent()).includes('micro:1199'),
+  );
+  assert(
+    !(await page
+      .getByRole('checkbox', { name: 'Reviewed create DOK 4', exact: true })
+      .isChecked()),
+  );
+  await page.locator('#nextSet').click();
+  assert(await page.locator('#nextSet').isDisabled());
+  await page.locator('#combinationNumber').fill('1201');
+  assert(await page.locator('#useSet').isDisabled());
+  await page.locator('#family').selectOption('micro');
+  await page.locator('#search').fill('micro:129');
+  await page.locator('#findAction').click();
+  await page.locator('#knownAction').selectOption('returned-coat.hook.print');
+  await page.getByRole('button', { name: 'Review selected action' }).click();
+  assert.equal(await page.locator('#chapter').inputValue(), '1');
+  assert((await page.locator('#note').inputValue()).includes('pear'));
+  assert((await page.locator('#actionIds').inputValue()).length > 0);
+  assert.equal(
+    await page
+      .getByRole('checkbox', { name: 'Reviewed analyse DOK 2', exact: true })
+      .isChecked(),
+    false,
+  );
+  await page.locator('#search').fill('micro:129');
+  await page.locator('#findAction').click();
+  const linkedObjective=page.locator('#objectiveLeads option').filter({hasText:'returned-coat.hook.print'});
+  assert.equal(await linkedObjective.count(),1);
+  await page.locator('#objectiveLeads').selectOption(await linkedObjective.getAttribute('value'));
+  await page
+    .getByRole('button', { name: 'Build a review from this objective' })
+    .click();
+  assert((await page.locator('#boardDesc').innerText()).includes('micro:129'));
+  assert.equal(await page.locator('#grid input:checked').count(), 0);
   assert.deepEqual(errors, []);
   console.log(
     engine,

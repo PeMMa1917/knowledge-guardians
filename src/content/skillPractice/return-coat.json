@@ -1,0 +1,172 @@
+[
+  {
+    "number": 129,
+    "name": "Find a mark that fits more than one explanation",
+    "uses": [
+      {
+        "objective": "returned-coat.hook.print",
+        "action": "Use Kip’s sleeve to put the same chipped pear on clean cloth. A shared mark alone cannot identify a wearer.",
+        "styles": [
+          "explorer",
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "social",
+          "analytical"
+        ],
+        "game": 170,
+        "story": 5
+      }
+    ]
+  },
+  {
+    "number": 140,
+    "name": "Follow a mark to the person who put it there",
+    "uses": [
+      {
+        "objective": "returned-coat.hook.fare",
+        "action": "Walk the disputed fare to the window. Separate Ise’s guarantor stroke from the copied name of a wearer.",
+        "styles": [
+          "explorer",
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "social",
+          "analytical"
+        ],
+        "game": 77,
+        "story": 31
+      }
+    ]
+  },
+  {
+    "number": 155,
+    "name": "Read a tally alongside the action it counted",
+    "uses": [
+      {
+        "objective": "returned-coat.market.cross",
+        "action": "Take one coat across the till twice. The second bit can be refunded while the number of borrowers stays open.",
+        "styles": [
+          "explorer",
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "social",
+          "analytical"
+        ],
+        "game": 22,
+        "story": 69
+      }
+    ]
+  },
+  {
+    "number": 58,
+    "name": "Walk two positions with the same object",
+    "uses": [
+      {
+        "objective": "returned-coat.market.awning",
+        "action": "Carry the sleeve along the quick and sheltered routes. Compare their marks with Hesper’s account of carrying for somebody else.",
+        "styles": [
+          "explorer",
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "social",
+          "analytical"
+        ],
+        "game": 170,
+        "story": 117
+      },
+      {
+        "objective": "returned-coat.council.hinge",
+        "action": "Turn the empty chair sideways and try the inside hook. The same rule looks different to a seated borrower and a standing keeper.",
+        "styles": [
+          "explorer",
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "social",
+          "analytical"
+        ],
+        "game": 170,
+        "story": 117
+      }
+    ]
+  },
+  {
+    "number": 490,
+    "name": "Separate a repeatable event from a past event",
+    "uses": [
+      {
+        "objective": "returned-coat.stage.act",
+        "action": "Hold the sponge through Nim’s entrance. Release the drops later. A repeatable backstage shower leaves the first wet coat an open case.",
+        "styles": [
+          "explorer",
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "social",
+          "analytical"
+        ],
+        "game": 170,
+        "story": 5
+      }
+    ]
+  },
+  {
+    "number": 310,
+    "name": "Use a record made for a different job",
+    "uses": [
+      {
+        "objective": "returned-coat.stage.part",
+        "action": "Trade the cast sheet for the wardrobe book. Two entries document two different jobs, even though one envelope went to Nim.",
+        "styles": [
+          "explorer",
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "social",
+          "analytical"
+        ],
+        "game": 77,
+        "story": 31
+      }
+    ]
+  },
+  {
+    "number": 549,
+    "name": "Protect a person while leaving the claim checkable",
+    "uses": [
+      {
+        "objective": "returned-coat.council.mask",
+        "action": "Cover both names on the refund slip and compare the till against one crossing. The fare can be audited without identifying the borrower.",
+        "styles": [
+          "explorer",
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "social",
+          "analytical"
+        ],
+        "game": 271,
+        "story": 11
+      }
+    ]
+  }
+]

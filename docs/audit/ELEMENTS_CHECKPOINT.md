@@ -2,6 +2,14 @@
 
 The combination atlas adds the full register of mission questions and same-action or ordered-route lookups. [Combination atlas](COMBINATION_ATLAS.md)
 
+## Current combination review
+
+The working checklist has 2,806 members in 22 families, including 1,200 numbered micro-skills, 47 further skills and 798 registered or mission-specific knowledge questions. Start from one member, find its reviewed actions, or pin it with the required TOK anchors and browse combinations by number. Each exact combination, sequence and chapter has 24 independent cells. The public evidence register contains 116 specific actions and 33 ordered journeys. An unreviewed cell is available for a reviewer to investigate. [Open the checklist](COMBINATION_CHECKLIST.html) · [Inventory](COMBINATION_MEMBERS.md) · [Review method](COMBINATION_ATLAS.md)
+
+There are 4,253 objectives across 913 missions with a concept, a framework link and an area or theme under the documented anchor rules. These structural links alone establish neither cognitive depth nor ten distinct opportunities at a requested cell. At the cloakroom and theatre, two different gestures can make the same sound. A reviewer can reproduce that comparison, or investigate whose hands an audience can see, before checking the corresponding cell. [Coat-rail activities](RETURN_COAT.md)
+
+## Earlier checkpoint
+
 **Review checkpoint 9c2cb1f, 28 November 2026.** The draft builds and the game contains fifteen playable chapters. A player can spend a first hour on the modeled story route encountering all twelve key concepts and all four framework parts. The wider promise of ten different actions for every learning and design element in every world remains open. The largest gaps concern practice across settings, variation in repeat visits, and evidence from students and communities. [Audited code](https://github.com/PeMMa1917/knowledge-guardians/tree/9c2cb1f9481bf83fc60558f5954c5e0f006fefc2) · [Draft pull request](https://github.com/PeMMa1917/knowledge-guardians/pull/11)
 
 ## What a reviewer can inspect

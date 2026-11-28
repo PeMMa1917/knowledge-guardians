@@ -1,0 +1,78 @@
+[
+  {
+    "number": 270,
+    "name": "Test two causes for the same observable result",
+    "uses": [
+      {
+        "objective": "returned-coat.rain.lining.twocauses",
+        "action": "Build a tap from a stored drop, then make the same sound with a direct squeeze at the cloakroom hatch.",
+        "styles": [
+          "maker",
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "physical",
+          "analytical",
+          "social"
+        ],
+        "game": 190,
+        "story": 5
+      },
+      {
+        "objective": "returned-coat.rain.stage.twocauses",
+        "action": "Reproduce a four-beat sound in the theatre stalls while changing the hand and gesture that cause the tap.",
+        "styles": [
+          "maker",
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "physical",
+          "analytical",
+          "social"
+        ],
+        "game": 190,
+        "story": 5
+      }
+    ]
+  },
+  {
+    "number": 449,
+    "name": "Compare a written cue with the performance it permits",
+    "uses": [
+      {
+        "objective": "returned-coat.rain.lining",
+        "action": "Issue the quiet rail’s score after watching the worker and listening at the hatch. The visiting company receives the score and billing.",
+        "styles": [
+          "maker",
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "physical",
+          "analytical",
+          "social"
+        ],
+        "game": 247,
+        "story": 24
+      },
+      {
+        "objective": "returned-coat.rain.stage",
+        "action": "Write the foyer’s rain part, check what visitors can hear, then issue a version that gives the keeper a bow or the stage.",
+        "styles": [
+          "maker",
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "physical",
+          "analytical",
+          "social"
+        ],
+        "game": 247,
+        "story": 24
+      }
+    ]
+  }
+]

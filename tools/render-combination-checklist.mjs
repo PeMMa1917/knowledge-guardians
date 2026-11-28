@@ -14,7 +14,29 @@ export async function renderChecklist(atlas) {
     s.replace(/^import .*?;\s*$/gm, '').replace(/^export /gm, '');
   const script = [space, ledger, ui].map(plain).join('\n');
   // Content can contain literal HTML. Use a raw JSON data block, escaped before embedding.
+  // Objectives are starting points for a playtest. Their tags never mark a cognitive cell.
+  const registered = new Set(atlas.members.map((m) => m.id));
+  const leads = atlas.activities.map((a) => {
+    const context = [
+      ...a.concepts.map((x) => 'concept:' + x),
+      ...a.framework.map((x) => 'framework:' + x),
+      ...a.areas.map((x) => 'area:' + x),
+      ...a.themes.map((x) => 'theme:' + x),
+      ...a.atl.map((x) => 'atl:' + x),
+      ...a.subjects.map((x) => 'subject:' + x),
+      ...a.skills,
+      ...a.questionIds,
+    ].filter((x) => registered.has(x));
+    return [
+      a.id,
+      a.chapter,
+      a.title,
+      [...new Set(context)],
+      a.derivedFramework.map((x) => 'framework:' + x),
+    ];
+  });
   const compact = {
+    leads,
     members: atlas.members,
     beats: atlas.beats,
     routes: atlas.routes,

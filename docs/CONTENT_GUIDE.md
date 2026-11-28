@@ -270,7 +270,7 @@ A dialogue node or option can have `"open"`: `showdown:<id>`, `label:<kit>`, `fo
 
 ## Add a keepsake
 
-Keepsakes are in `src/content/quarters.json`. Each has an `id` (short lowercase words with hyphens), a `name`, a one-line `text`, a condition `if` (the deed that earns it) and `where` (the hint shown while it is locked), and a `use` hint (what it might do in the world). A keepsake must matter: give it a view of a clue in the old Guardian's study, or a keepsake talk with a person, in `src/content/story.json` (the content check fails otherwise). Draw its 12 x 12 icon in `ICONS` in `src/ui/quarters.ts`; without one, a plain box is shown. Keepsakes are cosmetic: never give XP for them.
+Keepsakes are in `src/content/quarters.json`. Each has an `id` (short lowercase words with hyphens), a `name`, a one-line `text`, a condition `if` (the deed that earns it) and `where` (the hint shown while it is locked), and a `use` hint (what it might do in the world). A keepsake must matter: give it a view of a clue in the old Guardian's study, or a keepsake talk with a person, in `src/content/story.json` (the content check fails otherwise). Draw its 12 x 12 icon in `ICONS` in `src/ui/quarters.ts`; without one, a plain box is shown. Keepsakes can open a physical passage, reveal a clue or give someone elsewhere a new dialogue option. Describe the particular object in use and what its recipient does with the result. The same judgement earns equal permanent credit with any inventory. See [the lost-property route](audit/RETURN_COAT.md) for 24 paired uses and replies.
 
 ## Add a lamp, a study clue or a keepsake talk (the storyline)
 

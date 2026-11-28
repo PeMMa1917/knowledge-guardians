@@ -45,6 +45,8 @@ get('family').append(option('', 'All families'));
 for (const [k, name] of Object.entries(atlas.families))
   get('family').append(option(k, name));
 function search() {
+  get('playMatches').replaceChildren();
+  get('activityMatches').replaceChildren();
   const q = get('search').value.trim().toLocaleLowerCase(),
     kind = get('family').value;
   const filtered = atlas.members.filter(
@@ -122,10 +124,24 @@ function add() {
     refreshBoard();
   }
 }
+get('newSelection').onclick = () => {
+  draft = [];
+  get('steps').value = '';
+  get('sequence').value = 'set';
+  refreshBoard();
+  get('search').focus();
+};
 get('add').onclick = add;
+get('matches').onchange = () => {
+  get('playMatches').replaceChildren();
+  get('activityMatches').replaceChildren();
+};
 get('matches').ondblclick = add;
 for (const k of ['sequence', 'chapter', 'design'])
-  get(k).onchange = refreshBoard;
+  get(k).onchange = () => {
+    refreshBoard();
+    get('activityMatches').replaceChildren();
+  };
 get('steps').oninput = refreshBoard;
 function record(bloom, dok, changes, target = board) {
   if (!target) return;
@@ -173,6 +189,7 @@ function grid() {
       cb.setAttribute('aria-label', 'Reviewed ' + b + ' DOK ' + d);
       cb.onchange = () => {
         record(b, d, { checked: cb.checked });
+        renderMatrix();
         tell(cb.checked ? 'Review checked.' : 'Review unchecked.');
       };
       const edit = el(
@@ -221,6 +238,122 @@ get('saveNote').onclick = () => {
 };
 get('closeNote').onclick = () => {
   get('editPanel').hidden = true;
+};
+function openBeat(beat) {
+  show({ chapter: beat.chapter, ids: beat.members });
+  openNote(beat.bloom, beat.dok);
+  const prior = records.get(cellKey(board, beat.bloom, beat.dok));
+  if (!prior?.evidence)
+    get('note').value = [
+      beat.act,
+      ...beat.views,
+      beat.consequence,
+      beat.map + ' · ' + beat.target,
+      beat.source + ' · ' + beat.anchor,
+    ].join('\n');
+  const actions = new Set(prior?.actions ?? []);
+  actions.add(beat.actionId);
+  get('actionIds').value = [...actions].join('\n');
+  get('note').focus();
+}
+function objectiveLeads(id) {
+  const box = get('activityMatches');
+  box.replaceChildren();
+  const chapter = Number(get('chapter').value);
+  const all = atlas.leads.filter(
+    ([, ch, , members, derived]) =>
+      ch === chapter && (members.includes(id) || derived.includes(id)),
+  );
+  if (!all.length) {
+    box.append(
+      el('p', 'No linked objective in chapter ' + chapter + ' for ' + id + '.'),
+    );
+    return;
+  }
+  const heading = el(
+    'label',
+    all.length +
+      ' linked ' +
+      (all.length === 1 ? 'objective' : 'objectives') +
+      ' to inspect in chapter ' +
+      chapter,
+  );
+  const list = el('select', '');
+  list.id = 'objectiveLeads';
+  heading.htmlFor = list.id;
+  for (const [i, a] of all.entries())
+    list.append(option(i, a[2] + ' · ' + a[0]));
+  const action = el('button', 'Build a review from this objective');
+  const help = el(
+    'small',
+    'These are curriculum links. Verify the student’s action and choose the Bloom and DOK cell during review.',
+  );
+  action.onclick = () => {
+    const [ref, ch, title, members, inferred] = all[Number(list.value)];
+    const first = (prefix) => members.find((m) => m.startsWith(prefix + ':'));
+    const ids = [
+      ...new Set(
+        [
+          id,
+          first('concept'),
+          first('framework') ?? inferred[0],
+          first('area') ?? first('theme'),
+          first('question'),
+        ].filter(Boolean),
+      ),
+    ];
+    show({ chapter: ch, ids });
+    tell(
+      'Opened ' +
+        ref +
+        ' · ' +
+        title +
+        (inferred.length
+          ? ' · Framework inferred from the objective’s concepts.'
+          : ''),
+    );
+  };
+  box.append(heading, list, action, help);
+}
+get('findAction').onclick = () => {
+  const member = get('matches').value;
+  if (!member) return;
+  objectiveLeads(member);
+  const matches = atlas.beats.filter((b) => b.members.includes(member));
+  const list = get('playMatches');
+  list.replaceChildren();
+  if (!matches.length) {
+    list.append(
+      el(
+        'p',
+        'No action in the published evidence register names ' +
+          member +
+          ' yet. You can still build and review a combination that includes it.',
+      ),
+    );
+    return;
+  }
+  const label = el('label', 'Registered actions for ' + describe(member));
+  const choices = el('select', '');
+  choices.id = 'knownAction';
+  label.htmlFor = choices.id;
+  for (const beat of matches)
+    choices.append(
+      option(
+        beat.id,
+        'Ch ' +
+          beat.chapter +
+          ' · ' +
+          beat.bloom +
+          ' / DOK ' +
+          beat.dok +
+          ' · ' +
+          beat.act,
+      ),
+    );
+  const review = el('button', 'Review selected action');
+  review.onclick = () => openBeat(beatMap.get(choices.value));
+  list.append(label, choices, review);
 };
 function renderProof() {
   const box = get('proof');
@@ -275,6 +408,9 @@ function renderProof() {
       el('p', b.consequence),
       el('small', b.target + ' · ' + b.source + ' · ' + b.anchor),
     );
+    const review = el('button', 'Open this action’s exact review cell');
+    review.onclick = () => openBeat(b);
+    d.append(review);
     box.append(d);
   }
 }
@@ -372,6 +508,19 @@ get('json').onclick = () =>
     JSON.stringify(saveLedger(records), null, 2),
     'application/json',
   );
+function downloadCSV(filename, rows) {
+  const quote = (x) =>
+    '"' +
+    String(x)
+      .replace(/^(\s*[=+@-])/, "'$1")
+      .replaceAll('"', '""') +
+    '"';
+  download(
+    filename,
+    '\uFEFF' + rows.map((r) => r.map(quote).join(',')).join('\r\n'),
+    'text/csv;charset=utf-8',
+  );
+}
 get('csv').onclick = () => {
   const rows = [
     [
@@ -408,17 +557,7 @@ get('csv').onclick = () => {
           r?.updated ?? '',
         ]);
       }
-  const quote = (x) =>
-    '"' +
-    String(x)
-      .replace(/^(\s*[=+@-])/, "'$1")
-      .replaceAll('"', '""') +
-    '"';
-  download(
-    'knowledge-guardians-checklist.csv',
-    '\uFEFF' + rows.map((r) => r.map(quote).join(',')).join('\r\n'),
-    'text/csv;charset=utf-8',
-  );
+  downloadCSV('knowledge-guardians-checklist.csv', rows);
 };
 get('print').onclick = () => window.print();
 get('load').onchange = async () => {
@@ -444,13 +583,27 @@ function renderMatrix() {
   const wrap = get('matrixTable');
   wrap.replaceChildren();
   if (!get('matrix').open) return;
+  get('familyCSV').disabled = true;
   if (!board || board.steps) {
+    get('rowCounts').textContent = '';
+    get('nextRows').disabled = get('prevRows').disabled = true;
     wrap.textContent =
       'Build a simultaneous combination above to review a family. For ordered journeys, assign the member to a specific action in the main grid.';
     return;
   }
   const kind = get('matrixKind').value,
     query = get('matrixSearch').value.toLowerCase().trim();
+  const scope = get('design').value;
+  if (
+    (scope === 'story-only' && kind === 'game') ||
+    (scope === 'game-only' && kind === 'story')
+  ) {
+    wrap.textContent = 'This family is outside the selected design scope.';
+    get('rowCounts').textContent = '';
+    get('prevRows').disabled = true;
+    get('nextRows').disabled = true;
+    return;
+  }
   const matching = atlas.members.filter(
     (m) =>
       m.kind === kind &&
@@ -458,6 +611,40 @@ function renderMatrix() {
         t.toLowerCase().includes(query),
       ),
   );
+  get('familyCSV').disabled = !matching.length;
+  get('familyCSV').onclick = () => {
+    const rows = [
+      [
+        'Chapter',
+        'Focus ID',
+        'Focus name',
+        'Exact combination',
+        ...levels.flatMap((l) => depths.map((d) => l + ' · DOK ' + d)),
+      ],
+    ];
+    for (const member of matching) {
+      const model = {
+        chapter: board.chapter,
+        ids: [...new Set([...board.ids, member.id])].sort(),
+      };
+      rows.push([
+        model.chapter,
+        member.id,
+        member.name,
+        model.ids.join(', '),
+        ...levels.flatMap((l) =>
+          depths.map((d) =>
+            records.get(cellKey(model, l, d))?.checked ? 'Reviewed' : 'Open',
+          ),
+        ),
+      ]);
+    }
+    downloadCSV(
+      'knowledge-guardians-chapter-' + board.chapter + '-' + kind + '.csv',
+      rows,
+    );
+    tell('Exported ' + matching.length + ' rows with 24 review cells each.');
+  };
   matrixPage = Math.min(
     matrixPage,
     Math.max(0, Math.ceil(matching.length / 12) - 1),
@@ -536,6 +723,95 @@ get('nextRows').onclick = () => {
   matrixPage++;
   renderMatrix();
 };
+
+let pinned = null;
+for (const [k, label] of Object.entries(atlas.families))
+  get('pool').append(option(k, label));
+function pinCurrent() {
+  if (!board || board.steps) {
+    get('baseDescription').textContent =
+      'Choose a simultaneous combination with the required TOK anchors, then pin it here.';
+    pinned = null;
+  } else {
+    pinned = { ids: [...board.ids], scope: get('design').value };
+    get('baseDescription').textContent =
+      'Pinned elements · ' + pinned.ids.join(', ');
+  }
+  get('combinationNumber').value = '1';
+  previewRange();
+}
+function range() {
+  if (!pinned) throw Error('Pin a selection to browse its combinations.');
+  const kinds = new Set([...get('pool').selectedOptions].map((o) => o.value));
+  const fixed = new Set(pinned.ids);
+  const pool = atlas.members
+    .filter(
+      (m) =>
+        !fixed.has(m.id) &&
+        (!kinds.size || kinds.has(m.kind)) &&
+        !(pinned.scope === 'story-only' && m.kind === 'game') &&
+        !(pinned.scope === 'game-only' && m.kind === 'story'),
+    )
+    .map((m) => m.id);
+  const input = get('extraCount').value.trim();
+  const n = Number(input);
+  if (!/^\d+$/.test(input) || !Number.isSafeInteger(n) || n > pool.length)
+    throw Error(
+      'Choose between 0 and ' + pool.length + ' additional elements.',
+    );
+  const total = choose(pool.length, n);
+  const digits = get('combinationNumber').value.trim();
+  const number = /^\d+$/.test(digits) ? BigInt(digits) : 0n;
+  return { pool, n, total, number };
+}
+function previewRange() {
+  let spec;
+  try {
+    spec = range();
+    get('spaceSize').textContent =
+      spec.total.toLocaleString('en-US') +
+      ' possible combinations. ' +
+      (spec.number < 1n || spec.number > spec.total
+        ? 'Choose a number in this range.'
+        : 'Each combination has 24 independent review cells per chapter.');
+  } catch (err) {
+    get('spaceSize').textContent = err.message;
+  }
+  const valid = spec && spec.number >= 1n && spec.number <= spec.total;
+  get('previousSet').disabled = !valid || spec.number === 1n;
+  get('nextSet').disabled = !valid || spec.number === spec.total;
+  get('useSet').disabled = !valid;
+}
+function openNumber(offset) {
+  const r = range(),
+    number = r.number + offset;
+  if (number < 1n || number > r.total) return;
+  get('combinationNumber').value = String(number);
+  const extra = additionalMembers(r.pool, r.n, number - 1n);
+  const scope = pinned.scope;
+  show({
+    chapter: Number(get('chapter').value),
+    ids: [...pinned.ids, ...extra],
+  });
+  if (get('design').value !== scope) {
+    get('design').value = scope;
+    refreshBoard();
+  }
+  previewRange();
+  tell('Opened combination ' + number + ' in chapter ' + board.chapter + '.');
+}
+get('navigator').ontoggle = () => {
+  if (get('navigator').open && !pinned) pinCurrent();
+};
+get('pin').onclick = pinCurrent;
+get('pool').onchange = get('extraCount').oninput = () => {
+  get('combinationNumber').value = '1';
+  previewRange();
+};
+get('combinationNumber').oninput = previewRange;
+get('previousSet').onclick = () => openNumber(-1n);
+get('nextSet').onclick = () => openNumber(1n);
+get('useSet').onclick = () => openNumber(0n);
 
 search();
 get('example1').click();

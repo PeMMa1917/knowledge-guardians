@@ -1,5 +1,13 @@
 # Story bible: the whole campaign (chapters 1 to 15)
 
+## Two coats for one fare
+
+Kip is still wearing his red coat when the lost-property hatch gives it back. On both coats the second button is a green pear with one bite missing. He laughs until he sees the fare taken from his purse. Ise remembers promising to cover a stranger’s crossing. Vesper remembers writing down two coats and letting somebody else enter two wearers. She needed the cloakroom to look busy enough to stay open. Kip would like the money back without becoming the boy everyone has to recognise at the ferry.
+
+The mystery has four entrances. A cuff makes its own duplicate in the Nexus. A wet coat buys a real ticket in Emberford. In the theatre, an understudy can catch rain only as long as somebody else stays at work. At the council, a chair turned sideways can settle a question that a standing witness answered quite honestly. An object from another adventure can give each of these people something new to try.
+
+The Guardian can put the next coat within reach behind a curtain, appoint a guarantor or pay the wardrobe through performances. The curtain makes a private fitting possible. Ise’s signature gets a fare refunded. Nim’s first paying audience keeps several people warm. Each solution gives someone a new job and leaves someone else waiting. Return to find out who took the next shift. [Four entrances and twelve later shifts](../src/content/return-coat-sites.json) · [Keepsakes and their recipients](audit/RETURN_COAT.md)
+
 ## The house with six names
 
 Opal Fenn’s mother worked the ferry and never made it to the town exhibition before closing time. Opal built a room that could travel to her. When its brass heading knocked a contributor’s name off the wall, Opal hid the hinge pin. Her uncle Tallis kept taking the weight of the heading from behind the case. Each mistook the other’s silence for a request to keep the show going.
