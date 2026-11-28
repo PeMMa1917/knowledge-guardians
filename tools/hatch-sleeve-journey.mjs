@@ -37,10 +37,18 @@ export async function playHatchSleeve({ page, engine, use, waitMap, close }) {
     kg.controller.dispatch({ type: 'SetFlag', flag: 'sd.corvan.outcome', value: 'narrowed' });
     kg.world.refreshWorld();
   });
+  await page.bringToFront();
   await page.waitForFunction(() => {
     const w = kg.world,
       a = w.npcs.filter((n) => n.id === 'kip-arden');
     return a.length === 1 && a[0].sprite.x === 21 * 16 + 8 && a[0].sprite.y === 23 * 16 + 12;
+  }, undefined, {polling: 100, timeout: 90000}).catch(async error => {
+    const post = await page.evaluate(() => ({
+      facing:kg.world.player.facing, actors:kg.world.npcs.filter(n=>n.id==='kip-arden').map(n=>[n.sprite.x,n.sprite.y]),
+      follower:kg.world.follower?.id, modal:document.querySelector('[role=dialog]')?.getAttribute('aria-label'),
+      hidden:document.hidden, map:kg.world.map.id, outcome:kg.controller.state.flags['sd.corvan.outcome'],
+    }));
+    throw new Error('Kip did not reach his post: '+JSON.stringify(post), {cause:error});
   });
   if (companion !== 'kip-arden')
     assert.equal(await page.evaluate(() => kg.world.follower?.id ?? null), companion);
@@ -102,7 +110,12 @@ export async function playHatchSleeve({ page, engine, use, waitMap, close }) {
   await use('hatch-readers');
   await act('receive');
   await act('visitor');
-  await close();
+  await page.keyboard.press('Escape');
+  const neighbours = d.filter({hasText: 'Keep walking'});
+  await neighbours.waitFor();
+  assert.equal(await neighbours.locator('.two-replies-row .two-reply').count(), 2);
+  await press(neighbours.getByRole('button', { name: 'Keep walking' }));
+  await d.waitFor({ state: 'hidden' });
   await page.reload({ waitUntil: 'domcontentloaded' });
   await press(page.getByRole('button', { name: /^Continue\b/ }).first());
   await waitMap('nexus.archive');

@@ -2,7 +2,7 @@
 
 Knowledge Guardians has fifteen playable chapters and a post-Council return. The next round should measure what students encounter, what they can carry into a new setting, and which story choices they want to pursue. [Browser checks](BROWSER_CHECKS.md) · [Learning design](LEARNING_DESIGN.md)
 
-Across 60 executable chapter routes, 41 reach six concepts, two framework parts, an area of knowledge and an optional theme in the first estimated 30 minutes. Twenty-four sustain that floor in every 30-minute window. In the 20-minute test, the counts are 29 and six. The current micro-skill audit records 1,241 links between playable actions and 551 of the 1,200 supplied skills. For 136 skills the highest available stage is Practised. Six can reach Confident. Time real sessions on the routes with gaps and ask students to use the same method on an unfamiliar object. [Learning audit](LEARNING_DESIGN.md#the-20--and-30-minute-opportunity-floor) · [Micro-skills audit](TOK_MICRO_SKILLS.md)
+Across 60 executable chapter routes, all 60 reach six concepts, two framework parts, an area of knowledge and an optional theme in every complete estimated 30-minute window. At 20 minutes, 31 reach the floor in the first window and 13 sustain it throughout their trace. At 9c2cb1f the micro-skill audit records 1,434 links between playable actions and 614 of the 1,200 supplied skills. For 165 skills the highest available stage is Practised. Ten can reach Confident. Time real sessions on the routes with gaps and ask students to use the same method on an unfamiliar object. [Learning audit](LEARNING_DESIGN.md#the-20--and-30-minute-opportunity-floor) · [Micro-skills audit](TOK_MICRO_SKILLS.md)
 
 | Priority | Work to do | How to check the improvement |
 | --- | --- | --- |
@@ -24,18 +24,14 @@ Use the platform evidence to prepare the requested persona review after the game
 
 ## Where the shorter visits lose breadth
 
-The story route has seven gaps under the 20-minute rule. The puzzler route has four under the 30-minute rule. The ranges below give the modeled minute at the **end** of a rolling window. Adjacent gaps are grouped by place. A classroom observer can use the landmarks even when a learner plays at a different pace.
+The 504-minute modeled story now sustains the floor in every complete 20- and 30-minute window. A player's choices and pace can give a different result. On this revision, other modeled itineraries fall short of the 20-minute floor for 84 minutes of the social route, 572 minutes of the explorer route, 67 minutes of the puzzle route and 82 minutes of the cozy route. The longer all-cases itinerary has 3,096 such minutes. [All six routes and the threshold](audit/ELEMENTS_CHECKPOINT.md#how-quickly-a-student-encounters-tok)
 
-| Route and window end | What drops below target | What to watch in play |
-| --- | --- | --- |
-| Story, minutes 74–83, from the Weigh-House to Oskar’s maps | An optional theme throughout and the concept count from minute 76 to 78 | Let the player decide who gets the dry frame. Watch whether they notice whose route disappears when Oskar changes the map’s audience. |
-| Story, minutes 103–112, leaving Elsbet’s study | Concept and optional-theme breadth, with framework breadth also low from minute 108 | Ask the player to show another person how a keepsake changed their reading of the letter. Check whether they can distinguish the words Elsbet left from what the Guardian inferred. |
-| Story, minutes 132–134 and 137–139, and puzzler, minutes 207–212, after the Nile packet | The earlier story interval and the puzzler interval lack an optional theme. The later story interval is short of concepts. | Watch which slip a learner puts first and what Ise does with it. Ask who would need the second slip before acting on that first account. |
-| Puzzler, minutes 103–116, from the bell stair and easel to the lintel | An optional theme | Have one player leave Nell’s whole scene with a seller and another display it behind Bram’s crop. Later, ask each to identify who got to change what visitors saw. |
-| Puzzler, minutes 166–177, around the cellar letter | An optional theme | After the ballad and trade encounters, watch which source the player voluntarily takes back to the letter and whether it changes their reading. |
-| Puzzler, minutes 273–274, at the headland gauge | An optional theme | Return after the next bell. Ask the player to distinguish the instrument reading from the claim the quay can print about it. |
-
-These are proposed participant observations. The automated intervals can be reproduced with `node tools/audit-tok-floor.mjs --json`. [Timing rules](../tools/tok-floor.ts)
+| At the table with a student | What to observe |
+| --- | --- |
+| Let the Guardian take Kip’s rubbing or his signed hour. Visit a caller after choosing who keeps it. | Does the student notice what the caller can learn from the wrapper and what remains uncertain about the person who pressed the seal? |
+| In Elsbet’s study, try the board and brass with the tooth present and missing. Read both accounts. | Can a new listener explain why silence can count as evidence in one setup and leave the historical question open in another? |
+| Meet an early social, exploration or quiet-play group at the East Well. | Two wells can drop together for different reasons. Observe what evidence the student asks for before accepting blame, and who has to wait for water. |
+| After the Nile packet reaches the archive, let a visitor use the chosen sleeve. | Ask who can check an attribution on the late shift and whether an accessible display has left a different reader without a way to act. |
 
 ## Choices to watch in the next classroom playtest
 

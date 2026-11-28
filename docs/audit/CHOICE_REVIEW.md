@@ -1,5 +1,9 @@
 # Reviewing a choice in the room where it happens
 
+The 28 November checkpoint indexes 12,790 choices and 8,314 placed interactions. All choices have a room entrance in the graph. The 84 simulated perspectives produce 1,772,736 possible choice or placement inspections. The reader links an option to its guard, dialogue destination and later map readers so a reviewer can play the particular case. [Current audit](ELEMENTS_CHECKPOINT.md)
+
+### Earlier replay at 86e04e2
+
 Revision 86e04e2 has 12,403 individual dialogue options under review. Each has at least one entrance through a room, a character, a scene, a field station or an event available on that map. The graph includes acquired keepsakes and the generated exit a player can use while a keepsake is offered. It also indexes 8,180 placed interactables across 155 rooms. A station is counted once per placement. Internal controls in a station can have additional pathways.
 
 The replay entered every one of the 12,403 source nodes for the selected options, chose the option through the engine and verified its exact destination. It checked all 6,876 conditional options when their condition held and when it failed. Denied choices left the flags and permanent awards alone. Every opening produced a diary entry. All 12,374 deliberate choices also produced their own entries. The remaining 29 were navigation controls for leaving a keepsake conversation. A separate scan found no simultaneously selectable, identically labelled options among the same-node pairs for which the fixture builder could produce a witness.

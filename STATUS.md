@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 28 November • Review checkpoint
+
+The game-content commit 9c2cb1f is preserved in draft PR #11. Its element audit covers all 438 numbered story and game elements. It records 614 supplied micro-skills with playable action links and two learning, design and world combinations with ten distinct action proofs. The 504-minute modeled story itinerary meets the 20- and 30-minute opportunity floor. Other routes still have gaps. [Checkpoint findings](docs/audit/ELEMENTS_CHECKPOINT.md) · [Individual element register](docs/audit/element-evidence.csv)
+
 ## 28 November • The cricket in the sleeve
 
 Kip can take the impression of a found seal or sign the hour he found it. Ise can hang it at a public hatch, keep it at a staffed desk or carry it on a round. Each decision leads to a different caller. In Elsbet’s study the Guardian can open the two original accounts, test the brass catch and publish a sleeve for the readers of the installed Nile packet. An interrupted conversation with Kip now preserves the one seal.

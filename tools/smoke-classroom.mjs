@@ -71,7 +71,10 @@ async function resume(p) {
     }));
     throw new Error('Class recovery did not reach the recap: ' + JSON.stringify(screen), { cause });
   }
-  await recap.getByRole('button', {name:'Continue playing', exact:true}).click();
+  const keepPlaying = recap.getByRole('button', {name:'Continue playing', exact:true});
+  await keepPlaying.focus();
+  await keepPlaying.press('Enter');
+  await recap.waitFor({state:'hidden'});
 }
 async function journal(p) {
   await p.evaluate(() => kg.ui.openJournal('notes'));
