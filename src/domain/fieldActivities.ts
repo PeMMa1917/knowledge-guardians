@@ -5,7 +5,6 @@ type Setup = (seed:number, position:number)=>FieldTool;
 const advance=(progress:number,text:string,done=false):FieldResult=>({progress,text,done});
 const tool=(title:string,prompt:string,controls:string[],help:string,move:FieldTool['move']):FieldTool=>({title,prompt,controls,help,move});
 const countBits=(mask:number)=>mask.toString(2).split('1').length-1;
-const sides=['left','centre','right'];
 const tones=['low','middle','high'];
 
 // Players can return to a viewpoint. Only visits that add a viewpoint fill the sheet.
@@ -40,7 +39,7 @@ function ferry(seed:number,position:number,lens:boolean):FieldTool {
   return view;
 }
 const games:Setup[]=[
-  (seed,p)=>{
+  (seed)=>{
     const mark=2+seed%5;
     return tool('Trim the carrier','The load pulls '+mark+' divisions towards the quay. Put a counterweight on the opposite arm.',Array.from({length:7},(_,i)=>(i+1)+' divisions'),'Match the pull on the two arms.',
       i=>advance(i+1,i+1===mark?'The pointer holds at the centre. The porter can lift the latch.':(i+1<mark?'The load':'The counterweight')+' still pulls the arm down by '+Math.abs(mark-i-1)+'.',i+1===mark));
@@ -48,7 +47,7 @@ const games:Setup[]=[
   (s,p)=>{const seq=[s%3,(s+1)%3,(s+2)%3];return relay('Ring the bell stair','Three landings call '+seq.map(i=>tones[i]).join(' · ')+'. Ring back from this end.',tones.map(t=>'Ring '+t),seq,p,'Boots sound on all three landings. The carrier has a clear way up.');},
   (_,p)=>collect('Conduct the pauses','Perform one line three ways. Listen for where the waiting actor moves.', ['Rest before the first word','Rest before the name','Rest after the name'],
     ['A hand rises before anyone has been named.','The back row turns to the person being named.','The named actor has time to answer.'],3,p),
-  (s,p)=>twoDecisions('Play the evidence cards','The witness saw the crate arrive. The book records when it was paid for. Play one card on the public claim.', ['Play the arrival','Play the payment'],
+  (_,p)=>twoDecisions('Play the evidence cards','The witness saw the crate arrive. The book records when it was paid for. Play one card on the public claim.', ['Play the arrival','Play the payment'],
     ['The arrival card supports a place and a time. Its maker’s name is blank.','The payment proves a buyer signed. The goods could have arrived later.'],
     ['Limit the claim to the card','Invite the other witness'],[['The card dates the arrival. The buyer has to wait.','The clerk adds a purchase entry alongside the sighting.'],['The card dates the purchase. The empty arrival space stays visible.','The witness can date the crate without guessing who paid.']],p),
   (s,p)=>{
@@ -59,7 +58,7 @@ const games:Setup[]=[
   },
   (s,p)=>{const seq=[s%3,(s+2)%3,(s+1)%3],edges=['reed','shell','star'];return relay('Lay a path through the marsh','The marker posts carry '+seq.map(i=>edges[i]).join(', ')+'. Match each tile to the post so the water can drain.',edges.map(x=>'Lay the '+x+' tile'),seq,p,'Water slips between the joints. The walker can take the whole path.');},
   (s,p)=>{const alphabet=['sun','reed','fish'],seq=[s%3,(s+2)%3];return relay('Turn the custom cipher','Here the sign after a mark is spoken. The strip shows '+seq.map(i=>alphabet[(i+2)%3]).join(' then ')+'. The local ring reads sun, reed, fish, then sun.',alphabet,seq,p,'The keeper opens the cabinet. In the other port this same strip would sound different.');},
-  (s,p)=>{const k=1+s%4;return tool('Set the agreement lock','The gate slip allows marks '+k+' to '+(k+2)+'. The return slip allows '+(k+2)+' to '+(k+4)+'.',Array.from({length:8},(_,i)=>'Set mark '+(i+1)),'Find the mark inside both intervals.',i=>advance(i+1,i+1===k+2?'Both pins drop. The two witnesses can share this mark.':'One pin remains raised. Try a mark both slips allow.',i+1===k+2));},
+  (s)=>{const k=1+s%4;return tool('Set the agreement lock','The gate slip allows marks '+k+' to '+(k+2)+'. The return slip allows '+(k+2)+' to '+(k+4)+'.',Array.from({length:8},(_,i)=>'Set mark '+(i+1)),'Find the mark inside both intervals.',i=>advance(i+1,i+1===k+2?'Both pins drop. The two witnesses can share this mark.':'One pin remains raised. Try a mark both slips allow.',i+1===k+2));},
   (s,p)=>tool('Run the controlled trial',(p?'The first run is pinned above the second tray.':'Start from two untested trays.')+' Both have one tile under the same lamp.',
     ['Run the untouched pair','Tilt one tray','Move both lamp and tilt'],'Record the baseline and then change one condition.',
     i=> i===0?advance(1,'Both shadows reach division '+(s%5+2)+'.'):i===1&&p===1?advance(2,'Only the tilt changed. The second shadow moves two marks.',true):advance(p,i===2?'The shadows differ. Two changes could account for it.':'There is no baseline pinned up yet.')),
@@ -131,7 +130,7 @@ const games:Setup[]=[
     [['The hinge is visible beside the silhouette. The show can carry on.','The keeper watches a convincing bow from your seat.'],['The audience glimpses a working hand while the bow continues.','You feel the caught string and can tell the actor when it happened.']],p),
   (s,p)=>collect('Find the first echo','Compare the call against a movable felt curtain.', ['Call with the wall bare','Hang felt on the near wall','Hang felt on the far wall'],
     ['Two taps return after '+(s%3+1)+' and '+(s%3+4)+' beats.','The early tap is muffled.','The later tap fades. The first is still clear.'],2,p),
-  (s,p)=>tool('Weave the source band','Threads on the shuttle: '+countBits(p)+'. The blue and striped slips descend from the same ledger.',
+  (_,p)=>tool('Weave the source band','Threads on the shuttle: '+countBits(p)+'. The blue and striped slips descend from the same ledger.',
     ['Weave the blue ledger','Weave the striped copy','Weave the porter’s separate account','Lift the band'],'Choose traces from independent origins so that the band carries more than one account.',
     i=>i===3?advance(p,(p&3)&&(p&4)?'The ledger and the porter each hold the band.':'Most of the pull still rests on a single witness.',!!((p&3)&&(p&4))):advance(p|1<<i,'A thread remains tied to its original slip.')),
   (s,p)=>{const low=1+s%3, high=low+2,values=[low-1,low,low+1,high,high+1];return tool('Pin the forecast range','The trial counts were '+low+', '+(low+1)+' and '+high+'. '+(p?'The lower pin sits at '+values[p-1]+'. Place the upper pin.':'Place the lower pin.'),
