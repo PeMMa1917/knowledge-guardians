@@ -695,15 +695,32 @@ William Bland can lend the Guardian a copy edge or help trace the surviving ston
 - **Speaks** Measures what she can lift. Shows her knot and star when talking about a promise.
 - **Why** She found a second serial number on a microscope at the depot. This time the thing she is carrying is a curtain her father helped make. [The porter in both rooms](../src/content/lensLoan.ts)
 
-### Oda Kett and Tavi Pell
+### Oda Kett (`wire-oda`)
+
+- **Believes** A familiar voice on the ferry can make a passenger feel someone is waiting.
+- **Worries** A recording might keep her wife at the microphone through the summer she asked to have off.
+- **Speaks** She stops a spool by touch, waits for it to settle and says exactly which take she used.
+- **Why** A missed entrance once gave her a reason to borrow a performance. The passengers began coming back for it.
 
 Oda can find a splice with her thumb in the dark. She can fill a missed entrance without letting the passengers hear her hurry. Her wife asked for a summer away from the microphone. Oda borrowed an old performance for one Friday and then could not bring herself to drop it. At the second hearing, give her one concrete action to do with her hands before she speaks. The outcome determines whether she offers the last bar to the crowd, turns down her own spool or waits for an echo from the far bank.
+
+### Tavi Pell (`wire-tavi`)
+
+- **Believes** Somebody should take the trouble to find the people a count leaves outside.
+- **Worries** A broken receiver sounds much like a silent quay inside his headphones.
+- **Speaks** He sets a teaspoon by the lead, names the hour, then goes to the pier himself.
+- **Why** Siv taught him to coil rope. A passenger's unanswered call gave him a reason to learn how to repair receivers.
 
 Tavi Pell counts the slips after he coils the leads. Siv taught him rope work. He can repair a receiver and still mistake an empty winding for an empty pier. His teaspoon makes a warm seat for a paper moth. He offers to go back in person after he hears how the timing of his call kept people from answering. His correction to the painter is to give her both takes.
 
 At the island Joss speaks as a runner who has promised to get people home. His covered and exposed passengers have different reasons to want the horn moved. The visit from W. E. B. Du Bois brings the collaborative visual work at Atlanta University into the account. His station compares which hands made a picture, who supplied the observations and whom the picture can address. [Studio and island conversations](../src/content/ferryRadio.ts)
 
-### Matel Mear
+### Matel Mear (`quarter-matel`)
+
+- **Believes** A shortened shift should still leave a person a place on the dock.
+- **Worries** The clock will conceal someone’s missed break as easily as she conceals the shake in her hand.
+- **Speaks** She speaks privately to a broken wheel and asks someone else to hold the light.
+- **Why** After years of piecework she became responsible for a clock that could schedule two people on opposite shifts.
 
 Matel was paid by the patch before the dock gave her a clock to keep. She treats broken equipment as a co-worker who deserves a discreet word. In company she hides a tremor by asking someone else to hold the lantern. Alone she can take the clock to pieces and put it back together by feel. Her mistake was promising two people on opposite shifts that she would always be there. She can accept the Guardian seeing her hand shake. She has a harder time letting Siv do unpaid work to prove the dock forgot her break. At the rail Matel discovers that Joss kept his foot in the boat so she could come down in her own time.
 
@@ -713,6 +730,25 @@ Lovelace speaks in operations. She wants to know what goes into the machine befo
 
 Gresa sings alto because she can keep a tune while someone else goes looking for their note. The boots on her cart belonged to her father. She defends the little lie that lets him hear them coming home. When he walks beside the chair she has pushed all winter, she has to let go of his sleeve. Pella calls the dance and knows exactly when an empty beat will cost somebody money. The Guardian who has seen the three freight charges can open the sisters’ old fee story with her again. At the nursery, Pella catches herself about to give a carter’s cue and leaves Gresa the entrance. [Home and field conversations](../src/content/walkingOrchard.ts)
 
-### Neska Vell, Tover Heth and Yilka An
+### Neska Vell (`door-neska`)
+
+- **Believes** Knowing something about a guest helps her give them a home.
+- **Worries** The demand for a story at the threshold has sent people away before she learned their names.
+- **Speaks** She counts knocks, tastes cold tea and leaves listeners time to knock back.
+- **Why** Her mother charged one song for a bed. Neska started asking for two when the house got busy.
+
+### Tover Heth (`door-tover`)
+
+- **Believes** The person carrying supper can tell you something the person who drew the stairs cannot.
+- **Worries** He will be onstage while someone downstairs needs him to hold a door again.
+- **Speaks** He tests an arrangement with the weight of a kettle and the rattle of a button.
+- **Why** On the night he first sang in public, his father carried a pot upstairs alone.
+
+### Yilka An (`door-yilka`)
+
+- **Believes** Lighting a way home includes leaving the person at home control over their blind.
+- **Worries** A well-placed light for a spectator might illuminate somebody who never agreed to be watched.
+- **Speaks** She measures with a moving hand and lets the owner decide when the cord comes loose.
+- **Why** Making lamps for the choir taught her how the same window looks from the street and from the dark room behind it.
 
 Neska used to earn her supper by getting a ballad out of every guest. She sincerely wants to remember people. At the door, the same habit makes every guest pay for a bed with a piece of themselves. She counts knocks, tastes the tea long after it goes cold and eventually sits outside the house she used to run. Tover speaks in handles, corners and bowls. His family knows him as both a singer and the child who once missed a lift on the stairs. His father’s button rattles in the test kettle. The child who finds it in her soup gets the last laugh. Yilka builds roof lamps for the choir. She can understand another person’s wish for a dark room without giving anyone the story behind her own tied blind. She asks permission with her hands and will leave the fishmonger in charge of his department.
