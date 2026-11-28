@@ -1,4 +1,5 @@
 // These are actions on the fictional rehearsal equipment. No target describes a property of the historical object.
+import { chosenRoute, crewTools, patternTools, routeCase } from './keeperRoutes';
 import { fieldActivity, type FieldTool } from './fieldActivities';
 import { benchFor, type Bench } from './workInstruments';
 import type { CampaignState, Effect } from './types';
@@ -15,14 +16,25 @@ export function shapeOf(o:WorkOrder):Shape {
   const shapes=alternatives[group];
   return shapes[(t[1]+t[2])%shapes.length];
 }
-export function methodId(o:WorkOrder):string {
-  return o.group===0?'field-'+o.ticket[1]:shapeOf(o);
+export function methodId(o:WorkOrder,s?:CampaignState):string {
+  const form=o.ticket[1], route=s && chosenRoute(o,s);
+  const game=route?route.form:o.group===0?form:o.group===3?crewTools[form]:o.group===4?patternTools[form]:undefined;
+  if(game!==undefined)return 'field-'+game;
+  return routeCase(o)?'request-'+o.group+'-'+form:shapeOf(o);
 }
 export function workTool(o:WorkOrder,s:CampaignState):FieldTool {
   const t=o.ticket, seed=t[0]*11+o.chapter*7+t[2]*3, key='work.'+o.chapter+'.'+o.group+'.'+t[0];
   const progress=Number(s.flags[key+'.position']??0);
-  const older=s.flags[key+'.position']!==undefined && !s.flags[key+'.instrument'];
-  if(o.group===0 && !older)return fieldActivity(t[1],seed,progress);
+  const version=s.flags[key+'.instrument'];
+  const legacy=s.flags[key+'.position']!==undefined && (o.group===0?!version:version!==2);
+  if(!legacy) {
+    const story=routeCase(o),route=chosenRoute(o,s);
+    if(story && !route)return {title:o.group===1?'A favour for '+t[3]:'Choose a lead with '+t[3],prompt:story.need,
+      controls:story.routes.map(r=>r.action),help:'Choose whose work to take on. You can return here to try the other route.',
+      move:i=>({progress:0,done:false,text:story.routes[i].action+'.'})};
+    const id=methodId(o,s);
+    if(id.startsWith('field-'))return fieldActivity(Number(id.slice(6)),seed,progress);
+  }
   const put=(next:number,done:boolean,text:string)=>({progress:next,done,text});
   switch(shapeOf(o)){
     case 'trim': {
@@ -85,8 +97,13 @@ export function performWork(o:WorkOrder,s:CampaignState,i:number,key:string):{ef
   if(!Number.isInteger(i)||i<0||i>=tool.controls.length)throw Error('Choose a control on this instrument.');
   if(s.flags[key+'.worked'])throw Error('This rehearsal is complete. Its result is already on the order.');
   const result=tool.move(i);
+  const story=routeCase(o);
+  if(story && !chosenRoute(o,s) && (s.flags[key+'.position']===undefined || s.flags[key+'.instrument']===2)){
+    return {title:tool.controls[i],text:result.text,effects:[{setFlag:key+'.instrument',value:2},
+      {setFlag:key+'.route',value:i},{setFlag:key+'.position',value:0},{setFlag:key+'.result',value:result.text}]};
+  }
   return {title:tool.controls[i],text:result.text,effects:[
-    ...(s.flags[key+'.position']===undefined?[{setFlag:key+'.instrument',value:1}]:[]),
+    ...(s.flags[key+'.position']===undefined?[{setFlag:key+'.instrument',value:2}]:[]),
     {setFlag:key+'.position',value:result.progress},{setFlag:key+'.result',value:result.text},
     ...(result.done?[{setFlag:key+'.worked',value:true as const}]:[])]};
 }
