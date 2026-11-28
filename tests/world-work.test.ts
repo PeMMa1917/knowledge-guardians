@@ -20,13 +20,13 @@ function perform(s:CampaignState,o:WorkOrder,action:WorkCommand['action'],value=
 }
 // Search the controls visible at each step. An inaccessible ferry, stuck fitting or missed cue fails this walk.
 function rehearse(o:WorkOrder):CampaignState {
-  const queue=[at(o)],seen=new Set<number>([0]),k=ticketKey(o);
+  const queue=[at(o)],seen=new Set<string>(['none:0']),k=ticketKey(o);
   for(let i=0;i<queue.length;i++){
     const state=queue[i],tool=workTool(o,state);
     for(const j of tool.controls.keys()){
       const next=perform(state,o,'work',j);
       if(next.flags[k+'.worked'])return next;
-      const pos=Number(next.flags[k+'.position']);
+      const pos=String(next.flags[k+'.route']??'none')+':'+Number(next.flags[k+'.position']);
       if(!seen.has(pos)){queue.push(next);seen.add(pos);}
     }
   }
@@ -87,7 +87,7 @@ it('preserves a revised order in a second world and protects unfinished work, fo
 
 it('offers fresh mechanisms, restores free choices inside an act and opens local missions on direct arrival',()=>{
   const orders=rows(1,0).map(ticket=>({chapter:1,group:0,ticket}));const s=at(orders[0]);
-  expect(new Set(newLeads(s,orders).map(methodId)).size).toBe(3);
+  expect(new Set(newLeads(s,orders).map(o=>methodId(o))).size).toBe(3);
   const fresh=newLeads(s,orders)[0];s.flags['work.recent']=methodId(fresh);s.flags[ticketKey(fresh)+'.edition']=0;
   expect(newLeads(s,orders).every(o=>methodId(o)!==methodId(fresh))).toBe(true);
   const d=new Driver();expect(corridorOpen(d.s,15)).toBe(false);d.s.flags['nile.returned']=true;
@@ -102,4 +102,42 @@ it('finishes an older in-progress field rehearsal before starting the new instru
   expect(workTool(o,s).title).toBe('Keep a watch');
   s=perform(s,o,'work',1);expect(s.flags[k+'.worked']).toBe(true);
   s=perform(s,o,'restart');expect(workTool(o,s).title).toBe('Earn the small creature’s company');
+});
+
+it('makes both promises playable for every favour and major route, and keeps the posted promise during a revision',()=>{
+  for(const group of [1,2]){
+    const seen=new Set<number>();
+    for(const ticket of rows(1,group)){
+      if(seen.has(ticket[1]))continue;
+      seen.add(ticket[1]);
+      const o={chapter:1,group,ticket},k=ticketKey(o),s=at(o);
+      const first=perform(s,o,'work',0),other=perform(s,o,'work',1);
+      expect(workTool(o,first).title).not.toBe(workTool(o,other).title);
+      // Drive each promised activity using its controls, including switches between work phases.
+      let state=s;
+      for(const route of [0,1]){
+        state=perform(state,o,'work',route);
+        const queue=[state],positions=new Set([0]);
+        let done:CampaignState|undefined;
+        for(let at=0;at<queue.length&&!done;at++){
+          const current=queue[at];
+          for(const i of workTool(o,current).controls.keys()){
+            const next=perform(current,o,'work',i);
+            if(next.flags[k+'.worked']){done=next;break;}
+            const pos=Number(next.flags[k+'.position']);
+            if(!positions.has(pos)){positions.add(pos);queue.push(next);}
+          }
+        }
+        expect(done,ticketKey(o)+' branch '+route).toBeTruthy();state=done!;
+        if(needsPrediction(o)&&state.flags[k+'.prediction']===undefined)state=perform(state,o,'predict',1);
+        state=perform(perform(state,o,'test',0),o,'test',1);
+        state=perform(state,o,'issue',0);
+        expect(state.flags[k+'.posted-route']).toBe(route);
+        expect(revision(state,o)).toBe(route+1);
+        state=perform(state,o,'restart');
+        expect(state.flags[k+'.posted-route']).toBe(route);
+      }
+    }
+    expect(seen.size).toBe(group===1?30:12);
+  }
 });

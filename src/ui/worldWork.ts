@@ -2,6 +2,8 @@ import type { GameController } from '../app/controller';
 import { corridorOpen, PASSAGES } from '../domain/corridor';
 import { sagaChapter } from '../domain/corridorSagas';
 import { TEMPLES } from '../domain/temples';
+import { nextInvitation, type KeeperInvitation } from '../domain/workInvitations';
+import {chosenRoute} from '../domain/keeperRoutes';
 import scenes from '../content/workshop-stories.json';
 import { workTool } from '../domain/workMethods';
 import { revision, rivalVoice, canIssue, disposition, needsPrediction, requiredReadings, newLeads, workAction, groupNames,reading,readingKey,returnKey,ruleFor,issued,isIssued,ticketKey,type Ticket,type WorkOrder,type WorkCommand } from '../domain/worldWork';
@@ -17,8 +19,8 @@ export function loadOrders(chapter:number,group:number) {
   return load().then(m=>m.default);
 }
 
-export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:number)=>void) {
-  const home=sagaChapter(c.state),room=c.state.mapId;
+export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:number)=>void, invitation?:KeeperInvitation) {
+  const home=invitation?.chapter??sagaChapter(c.state),room=c.state.mapId;
   const box=h('div',{}),body=h('div',{}),notice=h('p',{role:'status','aria-live':'polite'});
   box.append(body,notice);
   let page=0,group=0,rows:Ticket[]=[],query='',epoch=0;
@@ -42,9 +44,11 @@ export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:
       (next??body.querySelector<HTMLElement>('[data-work-step]'))?.focus();
     }
     const control=(act:WorkCommand['action'],value:number,label:string)=>h('button',{type:'button',onclick:()=>take(act,value,label)},label);
-    body.replaceChildren(h('button',{type:'button',onclick:list},'Back to work orders'),h('h2',{},forms[o.group][t[1]]+' · '+t[4]),
+    body.replaceChildren(invitation?h('button',{type:'button',onclick:()=>void open(1)},'See this keeper’s requests'):h('button',{type:'button',onclick:list},'Back to work orders'),h('h2',{},forms[o.group][t[1]]+' · '+t[4]),
       h('p',{},t[3]+' · '+t[5]),h('p',{},scenes.beginnings[(t[13]-1)%scenes.beginnings.length]),h('p',{},lead[0]),
       h('h3',{tabindex:'-1','data-work-step':true},tool.title));
+    const route=chosenRoute(o,s);
+    if(route)body.append(h('p',{},route.action+'.'));
     if(!done){
       body.append(h('p',{},tool.prompt));
       if(tool.chart){
@@ -99,6 +103,7 @@ export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:
       const i=Number(issued(s,o));
       body.append(h('p',{},disposition(o,i).cost),h('p',{},'Received by '+v[s.flags[key+'.late']?4:3]+'. '+scenes.keeps[(t[15]+i)%scenes.keeps.length]),
         h('details',{},h('summary',{},'At the end of the shift'),h('p',{},v[2])));
+      const settled=chosenRoute(o,s,true);if(settled)body.append(h('blockquote',{},settled.returnLine));
       if(t[7].length)body.append(h('p',{},'The order is addressed to '+t[7].map(n=>PASSAGES[n-1].name).join(' · ')+'. Its keeper will take it under Incoming work.'));
       for(const dest of t[7])if(corridorOpen(s,dest))body.append(h('button',{onclick:()=>travel(dest)},'Carry the order to '+PASSAGES[dest-1].name));
       if(t[12] && o.chapter<=14 && c.state.objectivesDone.includes(PASSAGES[o.chapter-1].finish))
@@ -116,7 +121,7 @@ export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:
   }
   function list(){
     const visible=rows.filter(t=>!query||[t[3],t[4],t[5],forms[group][t[1]]].some(x=>x.toLowerCase().includes(query)));
-    const top=h('div',{}),results=h('div',{});body.replaceChildren(h('button',{onclick:menu},'All work shelves'),h('h2',{},groupNames[group]),top,results);
+    const top=h('div',{}),results=h('div',{});body.replaceChildren(...(invitation?[]:[h('button',{onclick:menu},'All work shelves')]),h('h2',{},groupNames[group]),top,results);
     const filter=h('input',{type:'search','aria-label':'Find a keeper, object or activity',value:query});
     top.append(h('label',{},'Find a keeper, object or activity ',filter),h('button',{onclick:()=>{query=filter.value.trim().toLowerCase();page=0;list()}},'Find'));
     filter.onkeydown=(ev)=>{if(ev.key==='Enter'){query=filter.value.trim().toLowerCase();page=0;list();}};
@@ -132,7 +137,7 @@ export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:
     const seq=++epoch;body.replaceChildren(h('p',{role:'status'},'Opening the work shelf…'));
     try{
       const result=await loadOrders(home,g);if(epoch!==seq||!current())return;
-      group=g;rows=result;page=0;query='';notice.textContent='';list();
+      group=g;rows=invitation?result.filter(t=>invitation.orders.includes(t[0])):result;page=0;query='';notice.textContent='';list();
     }catch{if(epoch===seq)body.replaceChildren(h('p',{role:'alert'},'The shelf could not open.'),h('button',{onclick:()=>open(g)},'Try again'),h('button',{onclick:menu},'Back'));}
   }
   async function inbox(){
@@ -150,14 +155,28 @@ export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:
         for(const t of book){
           const o={chapter,group:g,ticket:t};if(!t[7].includes(home)||!isIssued(c.state,o))continue;
           const edition=Number(issued(c.state,o));count++;
-          const reply=h('p',{},c.state.flags[returnKey(o,home)]===revision(c.state,o)?disposition(o,edition).cost:'');
+          const reply=h('p',{},c.state.flags[returnKey(o,home)]===revision(c.state,o)?[disposition(o,edition).cost,chosenRoute(o,c.state,true)?.returnLine].filter(Boolean).join(' '):'');
           body.append(h('div',{class:'lore-entry'},h('h3',{},t[4]),h('p',{},'From '+t[3]+' in '+PASSAGES[chapter-1].name+'. '+disposition(o,edition).label+'.'),
-            h('button',{onclick:()=>{if(action(o,'receive'))reply.textContent=disposition(o,edition).cost;}},'Receive this edition'),reply));
+            h('button',{onclick:()=>{if(action(o,'receive'))reply.textContent=notice.textContent;}},'Receive this edition'),reply));
         }
       }
       if(!count && seq===epoch)body.append(h('p',{},'The shelf is empty. Orders addressed to this world will be here when you arrive.'));
     }catch{if(seq===epoch)body.append(h('p',{role:'alert'},'A receiving book could not open.'),h('button',{onclick:inbox},'Try again'));}
   }
   function menu(){epoch++;notice.textContent='';body.replaceChildren(h('h2',{},'Work orders'), ...groupNames.map((g,i)=>h('button',{onclick:()=>open(i)},g)),h('button',{onclick:inbox},'Incoming work'));}
-  menu();return box;
+  if(invitation){
+    const seq=++epoch;
+    body.append(h('p',{role:'status'},'The keeper is finding the request…'));
+    const fetchVisit=()=>loadOrders(home,1).then(book=>{
+      if(epoch!==seq||!current())return;
+      group=1;rows=book.filter(t=>invitation.orders.includes(t[0]));
+      const ticket=rows.find(t=>t[0]===nextInvitation(c.state,invitation));
+      if(!ticket)throw Error('Missing keeper request');
+      launch({chapter:home,group,ticket});
+    }).catch(()=>{
+      if(epoch===seq&&current())body.replaceChildren(h('p',{role:'alert'},'The request could not open.'),h('button',{onclick:fetchVisit},'Try again'));
+    });
+    void fetchVisit();
+  }else menu();
+  return box;
 }

@@ -11,7 +11,7 @@ Activate the travelling case shelf in a main hall. Open “Browse field games, r
 | Local story patterns | 816 | 12,240 |
 | Travelling saga stops on the separate shelf | 48 | 720 |
 
-The five work shelves use 40 field-game forms, 30 side-quest forms, 12 main approaches, 36 mission forms and 42 pattern forms. Each of the forty field forms has its own playable instrument. A circuit changes the lamps when a wired pair is switched. A grower can shade one seed row while holding its partner steady. The remaining shelves use eight general rehearsal shapes and twelve evidence instruments. These encounters share controls, openings and character lines. The counts above describe different orders and stops. They cannot establish how often a class will experience repetition. The older main missions retain their own play systems.
+The five work shelves use 40 field-game forms, 30 side-quest forms, 12 main approaches, 36 mission forms and 42 pattern forms. Each of the forty field forms has its own playable instrument. A circuit changes the lamps when a wired pair is switched. A grower can shade one seed row while holding its partner steady. Thirty forms of favour and twelve main approaches each offer two routes, with a different instrument and a different reply. All thirty-six crew assignments use a field instrument that suits the job. Story patterns draw on the field instruments and eight general rehearsal shapes. Twelve evidence instruments can support an order. These encounters share controls, openings and character lines. The counts above describe different orders and stops. They cannot establish how often a class will experience repetition. The older main missions retain their own play systems.
 
 ## Following an order
 
@@ -20,6 +20,10 @@ In the first hall, choose the Tompion repeater case. Load the fictional carrier 
 Some comparative orders require a forecast and two readings. An inaccurate forecast can go in the diary and the keeper can still issue a decision. Some rivals will have their objection travel with the finding if heard after a rehearsal. The guardian’s gift can reveal the otherwise untested third setting. Twelve Civic Machine source rows had empty object labels. Their orders use named fictional slips, markers and fittings from the local workplace.
 
 An issued order with a destination enters the receiving world's “Incoming work” shelf. Opening the crossing uses that world's normal arrival state. All destinations respect the act and Council gates. Revising the disposition makes a previous receipt visibly out of date. Each shelf loads separately.
+
+## The people who ask
+
+175 fictional keepers make 938 invitations to 901 distinct requests across 235 keeper-and-chapter combinations. The speaker and the room determine which requests appear. A keeper resumes a request already under way before picking a fresh one. The shelf still carries the wider catalogue. In *The Apology*, one person might repair the split stand with their neighbour. Another can put the neighbour in charge of when to speak. The recipient hears which promise was kept.
 
 ## Evidence
 

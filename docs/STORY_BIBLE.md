@@ -1,5 +1,9 @@
 # Story bible: the whole campaign (chapters 1 to 15)
 
+## What the keeper asked for
+
+Someone who wants to apologise can offer a speech, a bit of glue or the chance to choose when a conversation begins. In the old-debt story, two keepers can agree on the morning tally and still disagree about the evening work. These small obligations can start when the player speaks to the person in the room. A second edition can carry the other choice. [Keeper stories and their replies](../src/content/keeper-favours.json) · [Approaches to the main case](../src/content/keeper-main-routes.json)
+
 ## Work carried between halls
 
 A keeper may bring the Guardian a hasty seal, a torn leaf or a badly balanced carrier. Opening an order introduces the keeper and the thing at stake. Players can give a witness a public seat or a screen, follow a material trace, pilot a ferry, cover a shift or repair a joint. A third observation can cost a runner the early departure. Hearing a rival out opens a settlement that sends their reservation with the player's instructions. The dispatcher signs in a different name until the Guardian has heard the Water Commons testimony. A keeper at the far end can receive a revision. [Rival voices](../src/content/workshop-rivals.json) · [Case scenes](../src/content/workshop-stories.json)

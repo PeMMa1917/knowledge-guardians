@@ -1,0 +1,452 @@
+[
+  {
+    "need": "A neighbour has one free hand and a parcel that takes two. The last ferry sounds its first bell.",
+    "routes": [
+      {
+        "action": "Carry the parcel",
+        "form": 25,
+        "returnLine": "I had a hand free to hold my little boy. He wanted to carry the receipt himself."
+      },
+      {
+        "action": "Walk ahead to the landing",
+        "form": 11,
+        "returnLine": "They held the boat for us. The next family had to run."
+      }
+    ]
+  },
+  {
+    "need": "The keeper promised to cover a friend’s market shift. A second promise falls on the same afternoon.",
+    "routes": [
+      {
+        "action": "Keep the stall",
+        "form": 12,
+        "returnLine": "The takings bought our supper. My friend still has my apron."
+      },
+      {
+        "action": "Teach the work call to a stand-in",
+        "form": 26,
+        "returnLine": "I heard my signal from another pair of hands today. I could finally go home."
+      }
+    ]
+  },
+  {
+    "need": "A stamp would let the apprentice sell before nightfall. The agent has never handled the apprentice’s work.",
+    "routes": [
+      {
+        "action": "Try the agent’s press",
+        "form": 14,
+        "returnLine": "The stamp got us into the fair. Tomorrow the buyer wants the trial slip too."
+      },
+      {
+        "action": "Put the apprentice at the public bench",
+        "form": 8,
+        "returnLine": "She made her own demonstration. The last two customers had already left."
+      }
+    ]
+  },
+  {
+    "need": "A visitor commissions a small case. Their sketch shows where the audience stood, but nobody has measured the wall.",
+    "routes": [
+      {
+        "action": "Survey the available wall",
+        "form": 39,
+        "returnLine": "The case fits. We shifted a stool and made room for somebody to turn around."
+      },
+      {
+        "action": "Build a model the visitor can turn",
+        "form": 34,
+        "returnLine": "The visitor found a better angle. I had to cut one new hinge."
+      }
+    ]
+  },
+  {
+    "need": "The runner has a reason for taking the long way home. A borrowed notice needs to be read at two doors.",
+    "routes": [
+      {
+        "action": "Learn the route with the runner",
+        "form": 11,
+        "returnLine": "The second door was open. You can hear a whole extra voice from that step."
+      },
+      {
+        "action": "Make a notice that can travel without the runner",
+        "form": 35,
+        "returnLine": "Both households were able to lift their own slip. The runner got a morning off."
+      }
+    ]
+  },
+  {
+    "need": "An old keeper wants company on the last walk of a working life. They keep stopping in places no map records.",
+    "routes": [
+      {
+        "action": "Follow the pauses in the walk",
+        "form": 2,
+        "returnLine": "We made three stops. One was just to smell the bakery again."
+      },
+      {
+        "action": "Sketch what the keeper sees at each stop",
+        "form": 15,
+        "returnLine": "My daughter recognised the way from the angle of the last window."
+      }
+    ]
+  },
+  {
+    "need": "Two families recognise the parcel on the lost shelf. Both remember the same tear in the wrapper.",
+    "routes": [
+      {
+        "action": "Trace the wrapper’s layers",
+        "form": 18,
+        "returnLine": "The older paper came from our house. The newer repair came from theirs."
+      },
+      {
+        "action": "Set up a hearing at the collection rail",
+        "form": 3,
+        "returnLine": "They agreed on a place to keep it. The next borrower must ask both families."
+      }
+    ]
+  },
+  {
+    "need": "The room has a warm corner where the night porter eats. The new sign will hide it.",
+    "routes": [
+      {
+        "action": "Repair the room around the occupied seat",
+        "form": 19,
+        "returnLine": "My spoon still fits on the sill. Visitors can see what you mended."
+      },
+      {
+        "action": "Find a second pool of light",
+        "form": 24,
+        "returnLine": "We moved the reading lamp. I share supper with the last reader now."
+      }
+    ]
+  },
+  {
+    "need": "The apprentice has made a piece in the teacher’s style. The teacher wants visitors to recognise the apprentice’s hand.",
+    "routes": [
+      {
+        "action": "Hang the practice pieces in sequence",
+        "form": 35,
+        "returnLine": "They saw the join I used to get wrong. One visitor asked me to show it again."
+      },
+      {
+        "action": "Let the apprentice run the live trial",
+        "form": 8,
+        "returnLine": "My hands shook on the first run. They stayed for the second."
+      }
+    ]
+  },
+  {
+    "need": "A weaver needs a lens. Its lender needs a sailcloth patch. Neither can close their stall to make the exchange.",
+    "routes": [
+      {
+        "action": "Send a marked crate around the stalls",
+        "form": 25,
+        "returnLine": "My lens came with the weaver’s seal still tied to it."
+      },
+      {
+        "action": "Hold a trading shift for the three makers",
+        "form": 12,
+        "returnLine": "We argued out a price ourselves. It cost a whole morning and one good joke."
+      }
+    ]
+  },
+  {
+    "need": "Three households have kept different pieces of a demonstration. None wants to be the only one who gives theirs up.",
+    "routes": [
+      {
+        "action": "Mount the parts at a shared bench",
+        "form": 19,
+        "returnLine": "The visitors can turn the hinge. My piece comes home each evening."
+      },
+      {
+        "action": "Make a picture of each part in its own home",
+        "form": 39,
+        "returnLine": "The village saw the whole arrangement. We kept the originals on our own shelves."
+      }
+    ]
+  },
+  {
+    "need": "A complaint filed years ago has surfaced under a fresh heading. The person who wrote it lives next door to the clerk.",
+    "routes": [
+      {
+        "action": "Follow the original sheets",
+        "form": 29,
+        "returnLine": "I can show where my sentence stopped. The clerk has pinned up the later addition."
+      },
+      {
+        "action": "Offer both people a place behind the screen",
+        "form": 27,
+        "returnLine": "We finally spoke. I still want my complaint on record."
+      }
+    ]
+  },
+  {
+    "need": "At night an empty archive chair casts a person’s shadow across the census rail.",
+    "routes": [
+      {
+        "action": "Keep watch through the quiet shift",
+        "form": 16,
+        "returnLine": "I saw which foot touched the board. The person on the day shift slept through it."
+      },
+      {
+        "action": "Rehearse the census lamp from both sides",
+        "form": 27,
+        "returnLine": "We reproduced the shadow in daylight. Somebody will still have to see what happens tonight."
+      }
+    ]
+  },
+  {
+    "need": "The festival can afford one table. A family wants it for supper and a maker wants to show the village how a tool works.",
+    "routes": [
+      {
+        "action": "Put supper first and cook both batches",
+        "form": 9,
+        "returnLine": "We ate together. The maker took a smaller audience after the plates came off."
+      },
+      {
+        "action": "Give the maker an early demonstration",
+        "form": 17,
+        "returnLine": "Four children stayed to help fold the table and supper had to start late."
+      }
+    ]
+  },
+  {
+    "need": "A pilot can guide you past the edge of the printed chart. A neighbour uses the same place to gather reeds.",
+    "routes": [
+      {
+        "action": "Walk the boundary with the neighbour",
+        "form": 33,
+        "returnLine": "We left the reed bed off the racing line. Somebody has to guide visiting boats."
+      },
+      {
+        "action": "Take the pilot’s overlapping views",
+        "form": 39,
+        "returnLine": "The blank has a shoreline now. The neighbour asked us to leave the landing unnamed."
+      }
+    ]
+  },
+  {
+    "need": "Two estranged friends have written on opposite sides of a sheet. Each wants the other to read first.",
+    "routes": [
+      {
+        "action": "Carry the sheet with both margins",
+        "form": 14,
+        "returnLine": "They saw where the paper had worn thin from turning it over."
+      },
+      {
+        "action": "Ask both to make a band from their letters",
+        "form": 29,
+        "returnLine": "My thread crosses theirs. We still have to decide who keeps the band."
+      }
+    ]
+  },
+  {
+    "need": "A paper-winged creature has missed its usual return to the windowsill. The keeper’s child has left the latch undone.",
+    "routes": [
+      {
+        "action": "Sit at its old perch",
+        "form": 22,
+        "returnLine": "It came back when the room emptied. My child has left a second perch outside."
+      },
+      {
+        "action": "Watch the other entrances",
+        "form": 16,
+        "returnLine": "It has a whole route we never saw. I can shut the latch again."
+      }
+    ]
+  },
+  {
+    "need": "The crew’s old meeting song has two endings. Two relatives are waiting at different doors.",
+    "routes": [
+      {
+        "action": "Play both endings at the stair",
+        "form": 1,
+        "returnLine": "I found the door where my sister was singing an answer."
+      },
+      {
+        "action": "Guide the two parties with flags",
+        "form": 26,
+        "returnLine": "We met halfway. For a minute we forgot which of us was late."
+      }
+    ]
+  },
+  {
+    "need": "A mentor has prepared a trial using the wrong light on purpose. Their apprentice thinks a poor first result will cost them the job.",
+    "routes": [
+      {
+        "action": "Let the apprentice change the lamp",
+        "form": 32,
+        "returnLine": "I got to question the equipment in front of the person who bought it."
+      },
+      {
+        "action": "Ask the mentor to calibrate beside them",
+        "form": 0,
+        "returnLine": "We balanced it together. My mentor told the rest of the shift about the first run."
+      }
+    ]
+  },
+  {
+    "need": "A line on the quay grows sharper every time it is repeated. The first speaker is worried about the last listener.",
+    "routes": [
+      {
+        "action": "Follow the line through the presses",
+        "form": 14,
+        "returnLine": "I found the copy that dropped my hesitation. I can mend it at the press."
+      },
+      {
+        "action": "Let the two listeners repeat the line in different places",
+        "form": 28,
+        "returnLine": "The echo changed a word all by itself. We owe one another a better hearing."
+      }
+    ]
+  },
+  {
+    "need": "An old debt was measured in days of work. The two ledgers count a day from different bells.",
+    "routes": [
+      {
+        "action": "Count the shared shifts",
+        "form": 23,
+        "returnLine": "We agree on the mornings. There are still two evenings to settle."
+      },
+      {
+        "action": "Take a day at the stall in payment",
+        "form": 12,
+        "returnLine": "One shift is settled. The next worker has a clean receipt."
+      }
+    ]
+  },
+  {
+    "need": "The keeper means to apologise. The person waiting by the door would rather work with them than hear a speech.",
+    "routes": [
+      {
+        "action": "Repair the cracked stand together",
+        "form": 19,
+        "returnLine": "We have a stand that stays upright. We found time for two sentences while the glue set."
+      },
+      {
+        "action": "Let the waiting person choose the moment",
+        "form": 17,
+        "returnLine": "They came when the room was quiet. Nobody clapped, which helped."
+      }
+    ]
+  },
+  {
+    "need": "Rain is coming through the high window. The dry corner fits the papers or the late crew’s coats.",
+    "routes": [
+      {
+        "action": "Move the papers in a balanced crate",
+        "form": 25,
+        "returnLine": "The papers are dry. We took turns wringing out the coats."
+      },
+      {
+        "action": "Give the crew the dry corner and reroute the lamps",
+        "form": 24,
+        "returnLine": "People could keep working. There is a tide mark on the lowest folder."
+      }
+    ]
+  },
+  {
+    "need": "The keeper misses the first signal and asks for one more entrance. The audience has already turned away.",
+    "routes": [
+      {
+        "action": "Give the understudy a different cue",
+        "form": 2,
+        "returnLine": "It was a quieter entrance. This time I could see the whole back row."
+      },
+      {
+        "action": "Rewind the working music box",
+        "form": 37,
+        "returnLine": "We found the pin that caught. The next actor will hear it too."
+      }
+    ]
+  },
+  {
+    "need": "A witness can identify the maker’s mark by touch. They will come only if someone stays to mind the stall.",
+    "routes": [
+      {
+        "action": "Take the witness’s shift",
+        "form": 12,
+        "returnLine": "I got to put my own hand on the mark. My customers still had a place to go."
+      },
+      {
+        "action": "Take the mark to the witness in a tactile record",
+        "form": 38,
+        "returnLine": "I could read the cord at my stall. Somebody must keep the original safe for another check."
+      }
+    ]
+  },
+  {
+    "need": "A child has pointed out a mark below the adults’ sightline. The person who made the sign is here.",
+    "routes": [
+      {
+        "action": "Frame the sign from the child’s height",
+        "form": 15,
+        "returnLine": "The adults had to kneel to see why I was pointing."
+      },
+      {
+        "action": "Let the sign maker set a new light",
+        "form": 24,
+        "returnLine": "My little brother saw it without anyone lifting him up."
+      }
+    ]
+  },
+  {
+    "need": "One neighbour measures the common step by wheel. The other counts the paces of a person carrying a basket.",
+    "routes": [
+      {
+        "action": "Roll the wheel together",
+        "form": 31,
+        "returnLine": "We can repeat the number. Nobody has settled the question of carrying a full basket."
+      },
+      {
+        "action": "Walk it with the two route charts",
+        "form": 11,
+        "returnLine": "We chose a different route for the heavy baskets. The measured step is still there."
+      }
+    ]
+  },
+  {
+    "need": "A donor wants their gift in the first glass case. The family that kept it first wants one quiet visit alone.",
+    "routes": [
+      {
+        "action": "Make a reversible display",
+        "form": 19,
+        "returnLine": "The family could take the stand apart before the first visitor arrived."
+      },
+      {
+        "action": "Give both accounts room on the wall",
+        "form": 35,
+        "returnLine": "Visitors ask who kept the gift before the donor had it. The family will choose when to answer."
+      }
+    ]
+  },
+  {
+    "need": "A petition has one mark from each household. A visitor says people signed before they heard the last line.",
+    "routes": [
+      {
+        "action": "Return the words through the signing queue",
+        "form": 14,
+        "returnLine": "Two households changed their marks. They were glad to hear the full line."
+      },
+      {
+        "action": "Let each household tie a fresh count",
+        "form": 38,
+        "returnLine": "We can check the count by hand. The petition missed the early sitting."
+      }
+    ]
+  },
+  {
+    "need": "The last verse belongs to a singer who has lost their voice. The new choir wants to start on time.",
+    "routes": [
+      {
+        "action": "Arrange the entrance around the singer’s rest",
+        "form": 2,
+        "returnLine": "I kept my place in the tune even though somebody else sang the note."
+      },
+      {
+        "action": "Let the music box carry the missed bar",
+        "form": 37,
+        "returnLine": "They played it again after rehearsal. I showed the maker where the note had bent."
+      }
+    ]
+  }
+]

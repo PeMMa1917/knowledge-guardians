@@ -1,6 +1,8 @@
 import { sagaChapter } from './corridorSagas';
 import { benches,benchFor } from './workInstruments';
 import { performWork, methodId } from './workMethods';
+import {availableOnSite} from './workInvitations';
+import {chosenRoute} from './keeperRoutes';
 import rivals from '../content/workshop-rivals.json';
 import { TEMPLES } from './temples';
 import type { CampaignState, Effect } from './types';
@@ -56,7 +58,8 @@ export function newLeads(s:CampaignState, orders:WorkOrder[],limit=3):WorkOrder[
 }
 
 export function workAction(s:CampaignState,cmd:WorkCommand):{effects:Effect[];title:string;text:string}{
-  const o=cmd.order,t=o.ticket,site=sagaChapter(s);
+  const o=cmd.order,t=o.ticket;
+  const site=sagaChapter(s) || (Array.isArray(t) && availableOnSite(s.mapId,o.chapter,o.group,t[0])?o.chapter:0);
   if(!Array.isArray(t) || !Number.isInteger(o.chapter) || o.chapter<1 || o.chapter>15 || !Number.isInteger(t[0]) || t[0]<1 ||
     t[0]>[300,300,200,400,864][o.group] || !benchFor(o.group,t[1]) || !site)throw Error('Use a work order from this shelf.');
   const rule=ruleFor(o),key=ticketKey(o),i=cmd.value;
@@ -64,11 +67,11 @@ export function workAction(s:CampaignState,cmd:WorkCommand):{effects:Effect[];ti
   if(cmd.action==='receive'){
     if(site===o.chapter || !t[7].includes(site) || !isIssued(s,o))throw Error('Carry an issued order to one of its other worlds.');
     const edition=Number(issued(s,o));
-    return {effects:[flag(returnKey(o,site),revision(s,o))],title:'Received at the other bench',text:disposition(o,edition).cost};
+    return {effects:[flag(returnKey(o,site),revision(s,o))],title:'Received at the other bench',text:[disposition(o,edition).cost,chosenRoute(o,s,true)?.returnLine].filter(Boolean).join(' ')};
   }
   if(site!==o.chapter)throw Error('Return to the keeper who began this case.');
   if(cmd.action==='work')return performWork(o,s,i,key);
-  if(cmd.action==='restart')return {effects:[flag(key+'.instrument',1),flag(key+'.position',0),flag(key+'.worked',false),flag(key+'.result', '')],title:'A fresh rehearsal',text:'The keeper has reset the apparatus. Any issued instructions still stand until you replace them.'};
+  if(cmd.action==='restart')return {effects:[flag(key+'.instrument',2),flag(key+'.route',-1),flag(key+'.position',0),flag(key+'.worked',false),flag(key+'.result', '')],title:'A fresh rehearsal',text:'The keeper has reset the apparatus. Any issued instructions still stand until you replace them.'};
   if(cmd.action==='hear'){
     const agent=rivalVoice(o,s);
     if(!agent || !s.flags[key+'.worked'])throw Error('Finish the rehearsal and find the agent named on the ticket.');
@@ -92,7 +95,10 @@ export function workAction(s:CampaignState,cmd:WorkCommand):{effects:Effect[];ti
   }
   if(cmd.action!=='issue' || !canIssue(s,o) || (needsPrediction(o)&&s.flags[readingKey(o,1)]===undefined) ||
     (i===2 && !s.flags[key+'.heard-agent']))throw Error('Complete the rehearsal and its evidence before issuing that order.');
-  const {label,cost}=disposition(o,i),shape=methodId(o);
+  const {label,cost}=disposition(o,i),shape=methodId(o,s);
+  const route=Number(s.flags[key+'.route']??-1);
+  const changed=issued(s,o)!==i || Number(s.flags[key+'.posted-route']??-1)!==route;
+  const answer=chosenRoute(o,s)?.returnLine;
   const recent=[shape,...String(s.flags['work.recent']??'').split(',').filter(value=>value&&value!==shape)].slice(0,3);
-  return {effects:[flag(key+'.edition',i),flag(key+'.revision',revision(s,o)+(issued(s,o)===i?0:1)),flag('work.recent',recent.join(','))],title:label,text:cost};
+  return {effects:[flag(key+'.edition',i),flag(key+'.posted-route',route),flag(key+'.revision',revision(s,o)+(changed?1:0)),flag('work.recent',recent.join(','))],title:label,text:answer?cost+' '+answer:cost};
 }

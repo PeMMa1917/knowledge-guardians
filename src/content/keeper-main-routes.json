@@ -1,0 +1,182 @@
+[
+  {
+    "need": "The file names a maker, a clerk and a buyer. Three people can honestly call this the first copy.",
+    "routes": [
+      {
+        "action": "Start where the materials came from",
+        "form": 18,
+        "returnLine": "We can place the earliest layer. A name has still to be earned."
+      },
+      {
+        "action": "Start where the first signature appears",
+        "form": 29,
+        "returnLine": "We know who signed. I have left the earlier hand its own space."
+      }
+    ]
+  },
+  {
+    "need": "The maker wants a trial in front of the queue. The usher worries the far end will see only the applause.",
+    "routes": [
+      {
+        "action": "Move the equipment into the square",
+        "form": 8,
+        "returnLine": "Four visitors repeated the trial. The evening delivery had to wait."
+      },
+      {
+        "action": "Set up a second viewing position",
+        "form": 15,
+        "returnLine": "The last person in line could finally see what I was pointing at."
+      }
+    ]
+  },
+  {
+    "need": "Two witnesses held the lamp at different times. Each took home a different shadow.",
+    "routes": [
+      {
+        "action": "Reconstruct the first witness’s angle",
+        "form": 27,
+        "returnLine": "We can make that shadow again. There is still room for a second account."
+      },
+      {
+        "action": "Follow the witness who came back at dusk",
+        "form": 16,
+        "returnLine": "The later light changed the mark. The morning witness believed what they saw."
+      }
+    ]
+  },
+  {
+    "need": "The cabinet is too tall for someone sitting down. That person is the only visitor who recognises the mark.",
+    "routes": [
+      {
+        "action": "Rehang the lights",
+        "form": 24,
+        "returnLine": "The old case stayed in service. We rewired it for a seated reader."
+      },
+      {
+        "action": "Build a mount that turns",
+        "form": 19,
+        "returnLine": "The next visitor turned the mount themselves. The keeper had to catch the hinge."
+      }
+    ]
+  },
+  {
+    "need": "The agent can put one sheet on the first boat. Three families expect a decision before evening.",
+    "routes": [
+      {
+        "action": "Send a qualified working copy",
+        "form": 14,
+        "returnLine": "They could act today. The agent agreed to fetch us if the condition failed."
+      },
+      {
+        "action": "Buy a second slot by running the stall",
+        "form": 12,
+        "returnLine": "Both sheets went. We gave the trader a shift of work in exchange."
+      }
+    ]
+  },
+  {
+    "need": "A Warden can correct the record quietly. The person who relied on it must still find out what changed.",
+    "routes": [
+      {
+        "action": "Deliver a correction to the first household",
+        "form": 11,
+        "returnLine": "I heard it from a person before I saw the new notice."
+      },
+      {
+        "action": "Hinge the old wording under the new",
+        "form": 35,
+        "returnLine": "I can see what changed without asking anyone to confess."
+      }
+    ]
+  },
+  {
+    "need": "The circle wants the working materials laid out. A name on one of the slips was given in confidence.",
+    "routes": [
+      {
+        "action": "Make a public band of the independent traces",
+        "form": 29,
+        "returnLine": "People could pull on the source threads. The private name stayed folded."
+      },
+      {
+        "action": "Give the consenting witness the public seat",
+        "form": 17,
+        "returnLine": "They said only what they had agreed to share. The questions went to them."
+      }
+    ]
+  },
+  {
+    "need": "The last stamp bought a quicker passage. Its owner denies paying for the first one.",
+    "routes": [
+      {
+        "action": "Count back through the stamped bundles",
+        "form": 23,
+        "returnLine": "The total ends at the agent’s desk. The first payment is still unsigned."
+      },
+      {
+        "action": "Try the seal in the original clasp",
+        "form": 34,
+        "returnLine": "The notch fitted two handles. The stamp can travel further than its owner."
+      }
+    ]
+  },
+  {
+    "need": "Half the chorus remembers a pause. The other half remembers a note. Both can guide the next crew home.",
+    "routes": [
+      {
+        "action": "Rehearse the pause",
+        "form": 2,
+        "returnLine": "The rest let the boat complete its turn before the call."
+      },
+      {
+        "action": "Lift the changed pin from the tune",
+        "form": 37,
+        "returnLine": "The returning bar was once a different pitch. We kept both versions."
+      }
+    ]
+  },
+  {
+    "need": "The chart and the ground agree on the chapel. Beyond the bend they seem to describe different shores.",
+    "routes": [
+      {
+        "action": "Survey the shore from overhead",
+        "form": 39,
+        "returnLine": "We matched the roofs. The river has been busy since the first drawing."
+      },
+      {
+        "action": "Measure along the bank with the porter",
+        "form": 31,
+        "returnLine": "The extra bend cost the cart half a turn. The old route made sense on foot."
+      }
+    ]
+  },
+  {
+    "need": "The meeting has one open chair. People at both ends want the Guardian to speak first.",
+    "routes": [
+      {
+        "action": "Put both accounts on the same wall",
+        "form": 35,
+        "returnLine": "Nobody needed the chair to see the disagreement. We still had to give someone the floor."
+      },
+      {
+        "action": "Ask the audience to test the claim aloud",
+        "form": 36,
+        "returnLine": "A visitor took the chair and qualified the claim. The crowd stayed to hear it."
+      }
+    ]
+  },
+  {
+    "need": "The keeper leaves an empty space in the plan. Someone new to this room might see a way the staff have missed.",
+    "routes": [
+      {
+        "action": "Co-design a signal with the next visitor",
+        "form": 26,
+        "returnLine": "The visitor taught the signal back to us. We will have to ask newcomers how it reads."
+      },
+      {
+        "action": "Turn the unfamiliar glass yourself",
+        "form": 32,
+        "returnLine": "The unusual light disclosed another edge. We left the lens where the next visitor could move it."
+      }
+    ]
+  }
+]

@@ -1,3 +1,4 @@
+import { invitationFor, invitationChapter, type KeeperInvitation } from '../domain/workInvitations';
 import { templePanel, templeJournal, threadPanel } from './temple';
 import { arrivalLine, corridorOpen, PASSAGES, ribbon, openDestinations, delegations } from '../domain/corridor';
 import { titleActions, type TitleAction } from './titleActions';
@@ -1533,6 +1534,7 @@ export class UI implements UIApi {
       : id.startsWith('ink.') && speaker && 'mode' in speaker && speaker.mode === 'historical'
         ? h('img', { class: 'portrait ink-portrait', src: artURL('ink-post.bird'), alt: '' })
       : characterPortrait(speaker?.sprite);
+    const invitation=invitationFor(c.state.mapId,n.speaker);
     const opts = c.engine.visibleOptions(id, c.state);
     const optionList = h('div', { class: 'options' });
     if (opts.length) {
@@ -1577,6 +1579,7 @@ export class UI implements UIApi {
       'speechSynthesis' in window ? h('button', { class: 'mini speak', type: 'button', 'aria-label': 'Read this line aloud', onclick: () => this.speak(spoken) }, '🔊 Read aloud') : '',
       h('div', { class: 'chips' }, n.claimKind ? claimChip(n.claimKind) : null, n.historicalLabel ? histChip(n.historicalLabel) : null),
       extra ?? '', optionList,
+      invitation && !n.open ? h('button',{type:'button',onclick:()=>this.openWorkOrders(invitation)},'Take on a request with '+speaker?.name) : '',
       guideObjective ? localGuide(c, MAPS[c.state.mapId]?.world ?? '', guideObjective) : '',
       speaker && 'mode' in speaker ? callingBook(c, line => this.dialogueMemory(line), speaker) : '',
       earlier.length ? h('details', { class: 'dialogue-recall', ontoggle: (event:Event) => {
@@ -3688,20 +3691,7 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
-    if (id === 'world-work') {
-      const controller = ctx.controller, map = controller.state.mapId;
-      const box = this.openModal('saga-panel wide', 'Work orders', this.closeBtn(), h('p', {role:'status'}, 'Opening the work shelf…'));
-      void import('./worldWork').then(module => {
-        if (!box.isConnected || ctx.controller !== controller || controller.state.mapId !== map) return;
-        box.replaceChildren(this.closeBtn(), module.workPanel(controller, chapter => {
-          this.closeModal(false);
-          ctx.world?.changeMap('temple.' + chapter, 6, 8, {route:{id:'workshop-temple',label:'the keeper’s temple passage'}});
-        }, chapter => this.crossFromShelf(chapter)));
-      }).catch(() => {
-        if (box.isConnected) box.replaceChildren(this.closeBtn(), h('p', {role:'alert'}, 'The work shelf could not open.'), h('button', {onclick:()=>this.openFieldGame(id)}, 'Try again'));
-      });
-      return;
-    }
+    if (id === 'world-work') { this.openWorkOrders(); return; }
     if (id === 'travelling-cases') {
       const controller=ctx.controller,map=controller.state.mapId;
       const chapter=PASSAGES.findIndex(p=>p.hall===map)+1;
@@ -3740,9 +3730,23 @@ export class UI implements UIApi {
     try { this.mountFieldGame(id); } finally { this.openingFieldGame = undefined; }
   }
 
+  private openWorkOrders(invitation?:KeeperInvitation):void {
+      const controller = ctx.controller, map = controller.state.mapId;
+      const box = this.openModal('saga-panel wide', 'Work orders', this.closeBtn(), h('p', {role:'status'}, 'Opening the work shelf…'));
+      void import('./worldWork').then(module => {
+        if (!box.isConnected || ctx.controller !== controller || controller.state.mapId !== map) return;
+        box.replaceChildren(this.closeBtn(), module.workPanel(controller, chapter => {
+          this.closeModal(false);
+          ctx.world?.changeMap('temple.' + chapter, 6, 8, {route:{id:'workshop-temple',label:'the keeper’s temple passage'}});
+        }, chapter => this.crossFromShelf(chapter), invitation));
+      }).catch(() => {
+        if (box.isConnected) box.replaceChildren(this.closeBtn(), h('p', {role:'alert'}, 'The work shelf could not open.'), h('button', {onclick:()=>this.openWorkOrders(invitation)}, 'Try again'));
+      });
+  }
+
   private crossFromShelf(chapter: number): void {
     const state = ctx.controller.state;
-    if (!PASSAGES.some(p => p.hall === state.mapId) || !corridorOpen(state, chapter)) return;
+    if ((!PASSAGES.some(p => p.hall === state.mapId) && !invitationChapter(state.mapId)) || !corridorOpen(state, chapter)) return;
     const destination = PASSAGES[chapter-1];
     const landing = MAPS[destination.hall];
     if (!landing || landing.id === state.mapId) return;
