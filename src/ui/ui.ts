@@ -1,3 +1,4 @@
+import { keeperLifeEntry } from '../domain/keeperLife';
 import {rivalPostPanel} from './rivalPost';
 import { invitationFor, invitationChapter, type KeeperInvitation } from '../domain/workInvitations';
 import { templePanel, templeJournal, threadPanel } from './temple';
@@ -1554,6 +1555,12 @@ export class UI implements UIApi {
     }
     const visit = visiting && neighbourInvitation(visiting, c.state.flags);
     if (visit) optionList.append(h('button', { onclick: () => this.showNode(visit.node) }, visit.text));
+    if (!this.activeEvent && speaker && 'mode' in speaker && speaker.mode === 'fictional' &&
+        !id.startsWith('offshift.') && !n.open && (visiting || !n.next)) {
+      const life = keeperLifeEntry(n.speaker, c.state);
+      optionList.append(h('button', { type: 'button', onclick: () => this.showNode(life) },
+        c.state.flags['offshift.' + n.speaker] ? 'Return to the promise' : 'Stay after the shift'));
+    }
     const roost = visiting && inkInvitation(visiting, c.state.mapId);
     if (roost) optionList.append(h('button', { onclick: () => this.showNode(roost.node) }, roost.text));
     const cornerObjective = id.startsWith('corner.') && c.state.flags['corner.found'] && !c.state.objectivesDone.includes('corner.receive')

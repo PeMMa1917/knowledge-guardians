@@ -1,0 +1,2282 @@
+{
+  "warden-ise": {
+    "want": "I want Kip to come back through that door even on a day he has nothing to report.",
+    "need": "Keep a chair free for a runner with empty hands",
+    "values": "hospitality",
+    "belief": "A promise still costs us something after the witness goes home.",
+    "method": "Hold Ise’s spare key while she meets the last runner",
+    "speech": "Leaves a pause after offering someone a seat.",
+    "thread": "Wardens",
+    "reply": "He sat for twenty minutes. Said nothing. Took the good biscuit on his way out."
+  },
+  "curator-dace": {
+    "want": "Give me one visitor who looks twice. Five seconds will do if she comes back.",
+    "need": "Stand at the case at a child's height",
+    "values": "attention",
+    "belief": "A good caption can earn a second look after the crowd has gone.",
+    "method": "Tilt Dace’s smallest card towards the door",
+    "speech": "Changes the listener's height before describing the view.",
+    "thread": "Elsbet’s circle",
+    "reply": "Down there you see the underside of the bird. I spent a month writing about its wings."
+  },
+  "clerk-venn": {
+    "want": "I promised my daughter she could stamp the date today. Now I have two dates and one pad.",
+    "need": "Leave a space for the day the letter arrived",
+    "values": "accountability",
+    "belief": "A cancelled stamp still tells you a clerk was here.",
+    "method": "Hold the paper while Tobiah tries the date wheel",
+    "speech": "Puts two dates in one sentence and leaves space between them.",
+    "thread": "Wardens",
+    "reply": "She turned the date wheel backwards first. Nobody's taught her yet which way time is meant to go."
+  },
+  "kip-arden": {
+    "want": "I want one supper where nobody introduces me as the boy who found the mistake.",
+    "need": "Save Kip a seat under his ordinary name",
+    "values": "belonging",
+    "belief": "You can ask a difficult question and still be invited back.",
+    "method": "Wear the questioner's ribbon for Kip through supper",
+    "speech": "Makes a joke about his fame before he admits it weighs on him.",
+    "thread": "Elsbet’s circle",
+    "reply": "My name was on a cup. Just Kip. Tea tasted like tea again."
+  },
+  "merchant-corvan": {
+    "want": "I built that stall so my daughter could take over. I did not expect her to ask what was true on it.",
+    "need": "Sit with Corvan while his daughter reads the old label",
+    "values": "livelihood",
+    "belief": "A trader has to be there the next morning to hear what a buyer found.",
+    "method": "Turn the bowl over on Corvan’s counter",
+    "speech": "Names the purchaser he must face the next morning.",
+    "thread": "Gilded Seal",
+    "reply": "She turned the card over and asked me to spell my own name. That's where we started."
+  },
+  "smith-hesper": {
+    "want": "I would like my apprentice to make a mark I can't make for her.",
+    "need": "Hold the tongs while the apprentice makes the first blow",
+    "values": "craft",
+    "belief": "You learn what the steel will take just before you learn what you can do to it.",
+    "method": "Lend Hesper a cold piece for a trial stroke",
+    "speech": "Puts the tongs in another hand before explaining the stroke.",
+    "thread": "Elsbet’s circle",
+    "reply": "That little ding? First blow she hasn't looked up to ask me about."
+  },
+  "guildmaster-orrin": {
+    "want": "I want the last worker on a job to get into my ledger before the page turns.",
+    "need": "Keep the ledger open through closing time",
+    "values": "fair pay",
+    "belief": "A neat total can hide the last pair of hands.",
+    "method": "Read Orrin the names from the back of the wage slips",
+    "speech": "Waits to turn a page until the last worker can be named.",
+    "thread": "Wardens",
+    "reply": "The last name is still wet. He got to sign it himself."
+  },
+  "scholar-sefa": {
+    "want": "The street sings my first verse. I would love to hear what they made of the second.",
+    "need": "Leave a rest for the neighbour who sings differently",
+    "values": "continuity",
+    "belief": "A song can keep its history through a change people remember making.",
+    "method": "Sing the reply from the other side of Sefa’s door",
+    "speech": "Treats a neighbour's altered tune as an invitation to sing back.",
+    "thread": "Elsbet’s circle",
+    "reply": "She came in a whole beat late. We're keeping her beat on Thursdays."
+  },
+  "villager-1": {
+    "want": "I keep one cup turned down for a porter who never gets a whole break.",
+    "need": "Take the kettle off while the porter sits",
+    "values": "rest",
+    "belief": "People tell a different story once they have put the load down.",
+    "method": "Pour the last cup before the crowd comes back",
+    "speech": "Measures a pause by how long it takes to finish a cup.",
+    "thread": "Wardens",
+    "reply": "Look at that. A porter and a teacup both sitting perfectly still."
+  },
+  "villager-2": {
+    "want": "I want to remember what I saw before I remember what the caption said.",
+    "need": "Leave the notebook shut for a moment",
+    "values": "independence",
+    "belief": "My first sketch changes as soon as someone gives me the expected word.",
+    "method": "Hold the visitor’s place beside the case",
+    "speech": "Starts with the sketch she made before she read the caption.",
+    "thread": "Elsbet’s circle",
+    "reply": "I missed a crack in the glaze when I was busy drawing a crack in the glaze."
+  },
+  "archivist-tull": {
+    "want": "I know where the page fell out. I'd like the next reader to see the hole before someone fills it.",
+    "need": "Put a slip at the break in the binding",
+    "values": "transparency",
+    "belief": "A catalogue earns trust by keeping track of its empty places.",
+    "method": "Fetch Noor a loose ribbon to mark the gap",
+    "speech": "Names the tear in a binding before the words beside it.",
+    "thread": "Wardens",
+    "reply": "The ribbon sticks out like a tongue. My youngest will find the gap before I do."
+  },
+  "translator-ama": {
+    "want": "I'd like my colleague to hear how that grand word sounds at a kitchen table.",
+    "need": "Invite a neighbour to read Ama’s plain wording",
+    "values": "hospitality",
+    "belief": "A translation begins another conversation at somebody's door.",
+    "method": "Carry the two phrasings to the visitors’ bench",
+    "speech": "Tries a kitchen word in a neighbour's mouth.",
+    "thread": "Elsbet’s circle",
+    "reply": "My neighbour used a kitchen word. Everybody in the room knew it. I want it in my next draft."
+  },
+  "translator-lio": {
+    "want": "I would like the person who wrote “first” to stay and explain first at what.",
+    "need": "Leave the author’s two claims on separate slips",
+    "values": "credit",
+    "belief": "Two words can agree about a date and disagree about credit.",
+    "method": "Turn Lio’s paired labels so both edges show",
+    "speech": "Lays competing readings down as two short spoken clauses.",
+    "thread": "Elsbet’s circle",
+    "reply": "Two slips fit nicely in one envelope. I was afraid we'd have to throw one away."
+  },
+  "fruit-seller": {
+    "want": "The apricots are mine. The rumour hanging above them arrived with a customer.",
+    "need": "Let Mara open the stall without repeating the rumour",
+    "values": "reputation",
+    "belief": "A warning can travel in the time it takes to hand back change.",
+    "method": "Trace the first coin passed under Mara’s notice",
+    "speech": "Turns a public rumour into private talk about the day's fruit.",
+    "thread": "Gilded Seal",
+    "reply": "We talked about pears. I hadn't realised how much I missed talking about pears."
+  },
+  "well-keeper": {
+    "want": "My neighbours want an answer before they carry their buckets to the other well.",
+    "need": "Take one bucket round both wells with Efua",
+    "values": "water access",
+    "belief": "A low bucket tells me something. Hearing it twice from one rope tells me less.",
+    "method": "Hold the rope at Efua’s chalk mark",
+    "speech": "Talks in the rhythm of carrying a full bucket back.",
+    "thread": "Elsbet’s circle",
+    "reply": "Feel that handle? On the way back from the second well it cuts a different groove."
+  },
+  "keeper-oduya": {
+    "want": "I'd like the name on a receipt to mean the same thing to its family as it does to our office.",
+    "need": "Ask the family how they used the receipt",
+    "values": "continuity",
+    "belief": "Some debts get remembered after the form that made them is gone.",
+    "method": "Lay Ruth’s ledger beside the loose family slip",
+    "speech": "Asks what a receipt once held before quoting its total.",
+    "thread": "Wardens",
+    "reply": "The family folded it round a seed. I had been holding their whole spring by a corner."
+  },
+  "visitor-sol": {
+    "want": "One week I want to come home with somebody's second attempt. The hall has enough firsts.",
+    "need": "Look for a corrected line beneath the plaque",
+    "values": "curiosity",
+    "belief": "A return visit is a fair test of a famous first.",
+    "method": "Keep Sol’s place at the quiet end of the rail",
+    "speech": "Reads the little correction out from under the formal words.",
+    "thread": "Elsbet’s circle",
+    "reply": "See the tiny line underneath? Somebody else came here troubled enough to look."
+  },
+  "cataloguer-bela": {
+    "want": "I want the card to find its reader even if the reader doesn't know our word for it.",
+    "need": "Try a borrower's search term with Bela",
+    "values": "access",
+    "belief": "A catalogue can lose a book while the book stays on its shelf.",
+    "method": "Cross-reference two of Bela’s drawer tabs",
+    "speech": "Repeats the borrower's awkward search term with respect.",
+    "thread": "Wardens",
+    "reply": "His word was “thing for pulling.” My catalogue of levers had let him down."
+  },
+  "runner-tamar": {
+    "want": "I want to give my aunt the warning in the words she would use on the river.",
+    "need": "Walk the message back to its first listener",
+    "values": "care",
+    "belief": "A runner hears where a sentence snags before the office does.",
+    "method": "Let Tamar say the farm name before unfolding the order",
+    "speech": "Retraces a message one listener and one doorway at a time.",
+    "thread": "Elsbet’s circle",
+    "reply": "She remembered the messenger's cough. It gave us the minute and the doorway."
+  },
+  "apprentice-ren": {
+    "want": "I'd like to bring Hesper one ticket that stays legible through a wet shift.",
+    "need": "Test the clip with a damp spare ticket",
+    "values": "reliability",
+    "belief": "A clean ticket on a dry desk proves very little about a shift at the forge.",
+    "method": "Turn the curled edge back under Ren’s clip",
+    "speech": "Worries a fastening with a thumb while talking.",
+    "thread": "Wardens",
+    "reply": "It sticks to the wet thumb. Imagine discovering that with a ferry pulling away."
+  },
+  "singer-teodora": {
+    "want": "I can keep the high note. I need someone to remember why the workers breathed there.",
+    "need": "Take the place of the worker who had to lift",
+    "values": "shared labour",
+    "belief": "The rest in a work song belongs to somebody's shoulders.",
+    "method": "Beat time for Teodora at the lifting bar",
+    "speech": "Breaks a work song where a loaded worker needs breath.",
+    "thread": "Elsbet’s circle",
+    "reply": "There's no spare breath on that note with the beam on your shoulder."
+  },
+  "corner-aro": {
+    "want": "I want a hanging that opens for the shortest runner in the crew.",
+    "need": "Kneel to the runner’s sightline with Aro",
+    "values": "access",
+    "belief": "Cloth only gives its true length while somebody takes its weight.",
+    "method": "Take the bottom corner of Aro’s hanging",
+    "speech": "Changes pronouns when a child trades places with an adult.",
+    "thread": "Wardens",
+    "reply": "Down here that cross looks like an arrow. I've been waving people straight into the queue."
+  },
+  "corner-junel": {
+    "want": "I'd like the repair to be visible to the person who has to mend it next winter.",
+    "need": "Let Junel trace the hidden stitch onto a loose tab",
+    "values": "stewardship",
+    "belief": "A stitch can be beautiful and still leave the next worker a puzzle.",
+    "method": "Pull gently on Junel’s two different seams",
+    "speech": "Treats thread and tab as things that can answer separately.",
+    "thread": "Elsbet’s circle",
+    "reply": "I can turn the tab without ever pulling the old thread. I'll teach my sister that."
+  },
+  "nima-fenner": {
+    "want": "My dividing trays go out of sight the moment they're doing their job.",
+    "need": "Let a visitor lift one divider and put it back",
+    "values": "recognition",
+    "belief": "A clear division is work somebody did with their hands.",
+    "method": "Take the weight off Nima’s tray rail",
+    "speech": "Gives a practical instruction then asks someone else to undo it.",
+    "thread": "Wardens",
+    "reply": "The little girl put it back upside down. She spotted something on the underside I had missed."
+  },
+  "porter-idris": {
+    "want": "Give me a load slip that still makes sense halfway up the south hill.",
+    "need": "Carry the light end over the first rise",
+    "values": "fair work",
+    "belief": "The road measures cost in shoulders as well as marks.",
+    "method": "Swap Idris’s two bundles between the carrying poles",
+    "speech": "Counts a slope by the pull on the other carrier.",
+    "thread": "Elsbet’s circle",
+    "reply": "This end gets heavy just there, doesn't it? Now the rise is in both our stories."
+  },
+  "stallkeeper-hana": {
+    "want": "I'd like the people who like the cloth to see the colour where they'll actually wear it.",
+    "need": "Hang a swatch outside the market awning",
+    "values": "honesty",
+    "belief": "Shade can make a sincere promise sound like a trick.",
+    "method": "Hold Hana’s trial fold under the lantern",
+    "speech": "Takes colour words out to the edge of the awning.",
+    "thread": "Gilded Seal",
+    "reply": "In the daylight it's plum. We sold four grey scarves under that awning yesterday."
+  },
+  "ferry-tova": {
+    "want": "I want a passenger from upriver to recognise the landing before I have to shout.",
+    "need": "Keep the upriver name beside the posted name",
+    "values": "local memory",
+    "belief": "The river's bend gives a place its name long before a sign goes up.",
+    "method": "Say the bend's call from Tova’s low ferry seat",
+    "speech": "Gives the same river bend both its spoken names.",
+    "thread": "Elsbet’s circle",
+    "reply": "An old pilot used each name in a single sentence. Apparently the bend takes both."
+  },
+  "nile-iman": {
+    "want": "I want Nasir to eat before his second shift. The cat has already managed two breakfasts.",
+    "need": "Cover the returns desk while Imani takes the empty plate back",
+    "values": "care",
+    "belief": "An archive is a place where somebody still has to feed the cat.",
+    "method": "Follow the cat’s paper collar back to the door",
+    "speech": "Talks about institutional duty in the language of a borrowed plate.",
+    "thread": "Wardens",
+    "reply": "I took the plate back. We were both embarrassed. Tomorrow I'm taking two spoons."
+  },
+  "nile-nasir": {
+    "want": "I'd like the copy to go back with the crease that tells me how Imani held it.",
+    "need": "Lay the working sheet flat without smoothing the crease",
+    "values": "attention",
+    "belief": "A copy can carry a person's habit of reading as well as their words.",
+    "method": "Match Nasir’s leaf to the returning fold",
+    "speech": "Calls attention to a mark a neat hand might smooth away.",
+    "thread": "Elsbet’s circle",
+    "reply": "The crease follows the drafter's elbow. Try laying your hand there."
+  },
+  "nile-leila": {
+    "want": "My readers come between shifts. I want them to have a way back into a half-read line.",
+    "need": "Keep a marker at the workers’ last stopping place",
+    "values": "time",
+    "belief": "An unfinished reading can be the price of showing up for work.",
+    "method": "Hold Leila’s place while the shift bell rings",
+    "speech": "Places a work break in the middle of an official description.",
+    "thread": "Wardens",
+    "reply": "They went straight to that mark this morning. Didn't have to begin their working lives again."
+  },
+  "nile-marek": {
+    "want": "I want a cart route a real carrier could still use when my model is put away.",
+    "need": "Invite the carrier to try the model backwards",
+    "values": "practicality",
+    "belief": "A model starts earning its keep on the return trip.",
+    "method": "Put Marek’s second load on the outward track",
+    "speech": "Invites a listener to run the demonstration the other way.",
+    "thread": "Elsbet’s circle",
+    "reply": "Going backwards, the model blocks the carrier's good hand. I never put a hand inside my drawing."
+  },
+  "handoff-nellis": {
+    "want": "A gold stamp got me this job. I want to bring one answer back in my own handwriting.",
+    "need": "Give Nellis the pen for the return line",
+    "values": "agency",
+    "belief": "A quick courier can still afford one honest sentence about what was missed.",
+    "method": "Take the stamped envelope to Nellis’s second desk",
+    "speech": "Waits for a returning worker to supply the closing verb.",
+    "thread": "Gilded Seal",
+    "reply": "My name fits the return line. It's the first part of this trip I got to write."
+  },
+  "baker-della": {
+    "want": "Six stalls want the same hot loaf. I can only put one batch through this oven at dawn.",
+    "need": "Stay with Della while the last stall opens",
+    "values": "fairness",
+    "belief": "Warm bread makes the order of delivery part of the bargain.",
+    "method": "Run Della’s first tray to the furthest stall",
+    "speech": "Starts gossip at the last stall in the row.",
+    "thread": "Gilded Seal",
+    "reply": "Everyone told me the last stall was shut. She had been out fetching a stool."
+  },
+  "clearbay-marret": {
+    "want": "I want the duty book to say which keeper actually stood in the bay.",
+    "need": "Leave Marret a space for the substitute’s initials",
+    "values": "recognition",
+    "belief": "A rota remembers the plan better than it remembers the worker.",
+    "method": "Read the load time from Marret’s used glove",
+    "speech": "Tells a substitute by the way they initial the sheet.",
+    "thread": "Wardens",
+    "reply": "Three little initials. He's gone back to work with the biggest grin I've seen him wear."
+  },
+  "clearbay-tarin": {
+    "want": "I'd like the visitor to leave with a number they could repeat with their own arms.",
+    "need": "Keep the volunteer position marked on the floor",
+    "values": "repeatability",
+    "belief": "The load changes character between the shelf and the carrier.",
+    "method": "Hold Tarin’s trial weight at the visitor’s mark",
+    "speech": "Names the empty position as carefully as the performer.",
+    "thread": "Elsbet’s circle",
+    "reply": "The newcomer stood exactly on the mark. Our regulars suddenly had to find words for the step."
+  },
+  "preserved-registrar": {
+    "want": "I'd like my replacement to know which drawers are empty for a reason.",
+    "need": "Leave one empty drawer labelled for a returning family",
+    "values": "custody",
+    "belief": "A registrar who fills every blank has used up somebody else's turn.",
+    "method": "Lift Aster’s blank card against the lamp",
+    "speech": "Speaks to someone who might come back through the door.",
+    "thread": "Wardens",
+    "reply": "Someone knocked on that empty drawer with a whole pocketful of addresses."
+  },
+  "preserved-royal-keeper": {
+    "want": "I want my grandmother's name back on the file, even if it has to come in pencil.",
+    "need": "Leave room for Odile’s family to disagree tomorrow",
+    "values": "kinship",
+    "belief": "A pencilled family name can be evidence worth caring for.",
+    "method": "Steady the tissue while Odile traces the margin",
+    "speech": "Lets the name of a relative interrupt the filing language.",
+    "thread": "Elsbet’s circle",
+    "reply": "My aunt and I can disagree over lunch now. Before, her answer would have shut the file."
+  },
+  "preserved-coast-keeper": {
+    "want": "I want the person reading my site file to know where my boots were when I wrote it.",
+    "need": "Mark the edge of the view Luz could actually see",
+    "values": "place",
+    "belief": "A site mark is a promise about where someone stood.",
+    "method": "Walk the short line between Luz’s two labels",
+    "speech": "Describes the edge of the visible scene before its centre.",
+    "thread": "Elsbet’s circle",
+    "reply": "I could see the sleeve. That's as far as I'll put my name to."
+  },
+  "preserved-inquiry-keeper": {
+    "want": "I want the family at the inquiry desk to be able to come back without retelling the worst part.",
+    "need": "Keep Pilar’s first appointment slip with the second",
+    "values": "dignity",
+    "belief": "A question asked twice can cost the visitor twice as much.",
+    "method": "Draw a return mark on Pilar’s desk card",
+    "speech": "Keeps the first appointment audible when giving the second time.",
+    "thread": "Wardens",
+    "reply": "The first slip says I arrived in time. My second trip was never a second chance."
+  },
+  "coast-signalkeeper": {
+    "want": "I want the last boat in to see which patch belongs on my glass.",
+    "need": "Let the shore crew borrow Ruan’s spare eyepiece",
+    "values": "safety",
+    "belief": "A pale shape that follows the glass has given its first piece of evidence.",
+    "method": "Turn the patched eyepiece against the quay light",
+    "speech": "Carries a signal in speech from a high post to the quay.",
+    "thread": "Elsbet’s circle",
+    "reply": "From their side our red lamp vanishes behind the roof. I'm taking the eyepiece over tomorrow."
+  },
+  "coast-forecaster": {
+    "want": "I'd like to issue a forecast with room for the weather to surprise me in public.",
+    "need": "Post Neri’s early range beside the later one",
+    "values": "honesty",
+    "belief": "A prediction earns its date when the weather has a chance to answer.",
+    "method": "Level the empty gauge before Neri reads the sky",
+    "speech": "Leaves the old range sounding beside the new prediction.",
+    "thread": "Wardens",
+    "reply": "Both ranges fit on the board. A fisherman tapped the earlier one and asked what changed."
+  },
+  "coast-fold-keeper": {
+    "want": "Visitors like our readings. I want them to meet the people who hauled the post into the yard.",
+    "need": "Ask the Marl Fold porter to introduce the gauge",
+    "values": "credit",
+    "belief": "A mark belongs to the work that made it possible to see.",
+    "method": "Hold Talla’s post at the porter’s shoulder",
+    "speech": "Lets a local porter pronounce the place beneath the instrument.",
+    "thread": "Elsbet’s circle",
+    "reply": "Listen to how she says the bend's name. I didn't know the instrument had a neighbour."
+  },
+  "ferry-cook": {
+    "want": "I want the late boat to smell supper before its passengers hear the market has closed.",
+    "need": "Save a place at Enna’s landing pot",
+    "values": "hospitality",
+    "belief": "An empty seat at closing time can still belong to a passenger.",
+    "method": "Carry a warm bowl down to the lower landing",
+    "speech": "Offers a hot meal before she offers her gauge reading.",
+    "thread": "Wardens",
+    "reply": "We ate on the landing before we argued about the gauge. Even the argument got warmer."
+  },
+  "forest-naturalist": {
+    "want": "I want to recognise the bird that answered before I count the answer as another bird.",
+    "need": "Wait with Elian for a call from a different place",
+    "values": "patience",
+    "belief": "The gully will lend you a second bird whenever you want one.",
+    "method": "Close the blind on the return echo",
+    "speech": "Listens between two calls from different trees.",
+    "thread": "Elsbet’s circle",
+    "reply": "There. Same pitch, other tree. My listening spot has grown a branch."
+  },
+  "forest-steward": {
+    "want": "I'd like the crew to see the bit of the recording when my hand was turning the spool.",
+    "need": "Keep Ayla’s pause in the public playback",
+    "values": "candour",
+    "belief": "Silence on a moving spool can be the recorder's work.",
+    "method": "Hold the spindle while Ayla changes her grip",
+    "speech": "Gives a silence its full length in a public account.",
+    "thread": "Elsbet’s circle",
+    "reply": "The room let that pause finish. It felt much longer and much more like mine."
+  },
+  "metal-inspector": {
+    "want": "I want the apprentice to see the balance move when the porter opens the door.",
+    "need": "Keep the sample on the pan through the next opening",
+    "values": "fair testing",
+    "belief": "The room can put a hand on a scale without anybody touching it.",
+    "method": "Swing Corra’s workshop door through its full arc",
+    "speech": "Repeats the reading as a door opens on the sample.",
+    "thread": "Wardens",
+    "reply": "That little tremble at opening is the bit they pay me to notice."
+  },
+  "metal-steward": {
+    "want": "I owe a buyer an explanation for what their coil weighed while it was hanging.",
+    "need": "Let Bea hand the corrected charge to the buyer",
+    "values": "restitution",
+    "belief": "A ledger can be perfectly added and still use the wrong hook.",
+    "method": "Set Bea’s coil on the lower support",
+    "speech": "Reads a charge out on the customer's side of the counter.",
+    "thread": "Wardens",
+    "reply": "I gave it to him myself. He asked about the arithmetic and then about my lunch."
+  },
+  "ressa-morn": {
+    "want": "I would like the late keeper to get their share of the evening, even if I finish early.",
+    "need": "Leave the second bell free on Ressa’s rota",
+    "values": "reciprocity",
+    "belief": "A spare hour is only spare for the person whose name is on it.",
+    "method": "Clip Ressa’s two return slips on different pegs",
+    "speech": "Treats an interval between bells as somebody's time.",
+    "thread": "Elsbet’s circle",
+    "reply": "I took my second bell sitting down. I hadn't heard the courtyard in years."
+  },
+  "copies-presskeeper": {
+    "want": "I need the apprentice to hear me say which missing letter belonged to my press.",
+    "need": "Stand beside Lark while the apprentice tests the type",
+    "values": "credit",
+    "belief": "A press fault can look like a spelling mistake in somebody else's hand.",
+    "method": "Run Lark’s loose letter through a clean proof",
+    "speech": "Says the letter first as cut and then as printed.",
+    "thread": "Wardens",
+    "reply": "The apprentice's backward S printed the right way round. Mine didn't."
+  },
+  "copies-lendingkeeper": {
+    "want": "I would like the borrower’s correction to survive the next person closing the book.",
+    "need": "Give Mina a fold that can be opened with one hand",
+    "values": "participation",
+    "belief": "A loan brings back things a catalogue never lent out.",
+    "method": "Hinge the reader’s slip over Mina’s margin",
+    "speech": "Explains a fold to someone with a hand already occupied.",
+    "thread": "Elsbet’s circle",
+    "reply": "Our borrower opened it with a baby on her hip. She even managed to laugh at the drawing."
+  },
+  "sea-cartographer": {
+    "want": "I want the names on my chart to stay apart from the height of a seated pilot.",
+    "need": "Look from Renna’s boat before moving the lettering",
+    "values": "access",
+    "belief": "A chart tested on a wall has yet to cross any water.",
+    "method": "Trace the two names from the lowest ferry seat",
+    "speech": "Moves names along the line a sailor actually sees.",
+    "thread": "Elsbet’s circle",
+    "reply": "From the boat the name sits on a roof. I promised that family a new strip."
+  },
+  "sea-harbourkeeper": {
+    "want": "I'd like to know when my own wake is the signal I heard from the shore.",
+    "need": "Take the return run with Sora after the quay goes quiet",
+    "values": "attention",
+    "belief": "A returning echo can arrive after the reason for it has moved on.",
+    "method": "Hold the listening post as Sora turns the boat",
+    "speech": "Waits for the harbour crowd to leave before naming its noises.",
+    "thread": "Elsbet’s circle",
+    "reply": "The dark landing sounds busy after everyone goes. The rope does half the talking."
+  },
+  "stage-director": {
+    "want": "I want to call an entrance without having to pull my actors around by the elbows.",
+    "need": "Give the understudy room to pick up Edda’s cue",
+    "values": "agency",
+    "belief": "A repeatable cue leaves an actor free to do something unexpected.",
+    "method": "Walk Edda’s cue from the wings to the back row",
+    "speech": "Makes the understudy a partner in giving the cue.",
+    "thread": "Wardens",
+    "reply": "She came in on the squeak of my shoe. Tomorrow I can take the night off."
+  },
+  "stage-host": {
+    "want": "I'd like the person who came in late to tell me where our performance began for them.",
+    "need": "Leave Hari’s last gallery seat unreserved",
+    "values": "inclusion",
+    "belief": "The opening of a show happens at more than one door.",
+    "method": "Carry the cue card behind Hari’s last usher",
+    "speech": "Talks to the person who arrives without a reservation.",
+    "thread": "Elsbet’s circle",
+    "reply": "A stranger sat there and knew the song. I didn't even have to ask her name."
+  },
+  "thirdfold-nera": {
+    "want": "The first thing I heard was the basket line. I'd like a programme that lets me begin there.",
+    "need": "Leave Nera’s late-entry fold in the folio",
+    "values": "belonging",
+    "belief": "Coming late changes the account you can honestly give.",
+    "method": "Open the folio where Nera actually took her seat",
+    "speech": "Returns to a sentence through the late-entry fold.",
+    "thread": "Wardens",
+    "reply": "The last arrival found her own line. Nobody had to whisper a welcome over the scene."
+  },
+  "film-door-reader": {
+    "want": "I need to know which raised hand means come in. Last time I waited through my whole scene.",
+    "need": "Stand on the stripe with Delwen before the cue",
+    "values": "clarity",
+    "belief": "A hand signal takes its meaning from which side of the doorway you're on.",
+    "method": "Repeat the usher’s wave from outside the stage door",
+    "speech": "Calls a cue with both feet on the stripe.",
+    "thread": "Elsbet’s circle",
+    "reply": "From the stripe you see the hand a beat late. My knees knew before my ears did."
+  },
+  "market-assayer": {
+    "want": "I'd like a buyer coming around the bend to see the unit before the price.",
+    "need": "Take Tellen’s practice board to the corner of the road",
+    "values": "fair dealing",
+    "belief": "A fair price can mislead if its unit comes into view too late.",
+    "method": "Turn the unit tab towards the approaching buyer",
+    "speech": "Gives results from the road as well as the assay table.",
+    "thread": "Wardens",
+    "reply": "That corner catches the wrong end of the board. I'll take the chalk there in the morning."
+  },
+  "market-clerk": {
+    "want": "I want the stallholder to see where yesterday's quote stopped and this morning's weighing began.",
+    "need": "Keep Dagny’s clock slip beside the public price",
+    "values": "accountability",
+    "belief": "A price written without its hour can borrow authority from a different sale.",
+    "method": "Set the trial basket back on Dagny’s empty pan",
+    "speech": "Says aloud when a price was true.",
+    "thread": "Wardens",
+    "reply": "Our best price lasted exactly one ferry. The time belongs on the ticket."
+  },
+  "rook-tamsin": {
+    "want": "I would like once to hear a witness finish before I've found the flaw in their first sentence.",
+    "need": "Let Rook keep the source check for the second hearing",
+    "values": "fair hearing",
+    "belief": "Doubt can protect a listener and still cost a witness their turn.",
+    "method": "Hold Rook’s pencil until the witness draws breath",
+    "speech": "Uses a second hearing to make room for an awkward source.",
+    "thread": "Elsbet’s circle",
+    "reply": "I went back. The source asked for the small print. Good thing we still had it."
+  },
+  "water-keeper": {
+    "want": "I want the family by the lower gate to know when we started counting the minute.",
+    "need": "Wait by Omi’s wet step for the first water",
+    "values": "responsibility",
+    "belief": "A minute measured at a wheel can end before it reaches a thirsty person.",
+    "method": "Send the same cup down both of Omi’s channels",
+    "speech": "Counts the time from the cheer to the water arriving.",
+    "thread": "Wardens",
+    "reply": "The water reached my heel after the cheer. I am glad somebody stayed to feel it."
+  },
+  "water-scribe": {
+    "want": "My working record needs room for the bucket that went to a household with no row.",
+    "need": "Carry Sena’s spare slip to the last house",
+    "values": "representation",
+    "belief": "A full column of ticks can leave a neighbour thirsty.",
+    "method": "Put the unmarked cup beside Sena’s six named rows",
+    "speech": "Brings the last house into an otherwise neat official sentence.",
+    "thread": "Wardens",
+    "reply": "There was a lit window at that last house. You can't see it from the clerk's desk."
+  },
+  "vesper-quill": {
+    "want": "I want them to get the first warning. I want a reason to come back with the second.",
+    "need": "Keep Vesper’s return passage open after the bell",
+    "values": "timeliness",
+    "belief": "People must sometimes act before they can afford a complete account.",
+    "method": "Carry Vesper’s unsigned correction beside the stamp",
+    "speech": "Offers a crisp usable promise, then risks adding what it cost.",
+    "thread": "Gilded Seal",
+    "reply": "I thought you'd have the bolt across by now. I've brought the bits I usually leave out."
+  },
+  "tavia-rell": {
+    "want": "I want the person up on the Headland to read the slip from where my cart stops.",
+    "need": "Walk Tavia’s short route from below",
+    "values": "place",
+    "belief": "A directional word can send two honest carriers different ways.",
+    "method": "Turn Tavia’s work catch towards the low quay",
+    "speech": "Measures a route in climbs when speaking to someone below.",
+    "thread": "Elsbet’s circle",
+    "reply": "From below, the short way is three ladders. Who called it short?"
+  },
+  "civic-operator": {
+    "want": "Give me a route the north steps and canal families can both recognise as serving them.",
+    "need": "Let Ade ride the last round without a tally board",
+    "values": "service",
+    "belief": "A library window measures a visit only when somebody can reach it.",
+    "method": "Push Ade’s practice cart past the boundary house",
+    "speech": "Lets the round finish before putting a number to it.",
+    "thread": "Wardens",
+    "reply": "I forgot to count the stops. I remember the girl's tune at every single one."
+  },
+  "civic-clerk": {
+    "want": "I want to meet the reader whose parcel was crossed out before it left the desk.",
+    "need": "Walk with Lin to the door with two numbers",
+    "values": "repair",
+    "belief": "A dispatch tick records a clerk's action before it records a reader's experience.",
+    "method": "Return Lin’s folded slip to its incoming hook",
+    "speech": "Reads two door numbers in front of the person who uses them.",
+    "thread": "Elsbet’s circle",
+    "reply": "Two numbers, one front step and a woman who answers to neither number."
+  },
+  "parcel-carrier": {
+    "want": "I want the first seed row left wide enough for the barrow when it's really full.",
+    "need": "Give Tarin one loaded turn between the rails",
+    "values": "practicality",
+    "belief": "A trial with an empty barrow can promise a width that hands cannot use.",
+    "method": "Load the far handle on Tarin’s practice barrow",
+    "speech": "Describes the loaded turn as two separate movements.",
+    "thread": "Wardens",
+    "reply": "With a load you have to take the turn twice. That's a whole different timetable."
+  },
+  "parcel-bridge": {
+    "want": "I want the outgoing bridge crew to shake the hand that actually took its keys.",
+    "need": "Leave Velaine’s middle shift on the handover board",
+    "values": "responsibility",
+    "belief": "Custody can change within a single bell.",
+    "method": "Match the worn key notch to Velaine’s second tag",
+    "speech": "Puts the missing middle shift back between opening and closing.",
+    "thread": "Wardens",
+    "reply": "My name isn't the only thing in that middle shift. There's a jam none of the others saw."
+  },
+  "voices-steward": {
+    "want": "I would like to keep the breath the speaker trusted me with, even when a visitor wants the whole reel.",
+    "need": "Let Wren give the family the rewind handle",
+    "values": "consent",
+    "belief": "Permission can end in the middle of a perfectly audible sentence.",
+    "method": "Stop Wren’s reel at the marked breath",
+    "speech": "Hands over the playback control before offering an interpretation.",
+    "thread": "Elsbet’s circle",
+    "reply": "She played back the bit I hate. Then she heard her sister sneeze and we both laughed."
+  },
+  "voices-clerk": {
+    "want": "I need the dry mat where the reader stops, even if that is not where the arrow ends.",
+    "need": "Stand with Eren at the edge of the wet glass",
+    "values": "care",
+    "belief": "A notice earns its direction from the next person's footing.",
+    "method": "Lift Eren’s sign and try the approach from below",
+    "speech": "Keeps the edge of wet glass in the middle of a direction.",
+    "thread": "Wardens",
+    "reply": "My boot was on dry stone and my sightline wasn't. The wet edge deserves its own mark."
+  },
+  "island-planner": {
+    "want": "I want the passenger with the loaded sack to have a little wooden foot in my model too.",
+    "need": "Leave Ivo one space for an assumption he forgot",
+    "values": "inclusion",
+    "belief": "A model that can carry me may still drop the person next in line.",
+    "method": "Put the loaded foot on Ivo’s trial board",
+    "speech": "Makes an audible space for the assumption just discovered.",
+    "thread": "Elsbet’s circle",
+    "reply": "A blank box! The first honest thing I've drawn since breakfast."
+  },
+  "island-dockhand": {
+    "want": "I want to hand the dock key to someone who knows which boat actually made the turn.",
+    "need": "Take a returning passenger’s mark for Joss",
+    "values": "navigation",
+    "belief": "A landing docket cannot tell which way a boat was facing without a pilot.",
+    "method": "Turn the little skiff at Joss’s landing peg",
+    "speech": "Asks the returning passenger to give the landing its mark.",
+    "thread": "Wardens",
+    "reply": "The return mark is shaky. It belongs to a person old enough to have taught me this crossing."
+  },
+  "island-caller": {
+    "want": "I want a visitor who cannot copy my step to have their own way into the dance.",
+    "need": "Let Rella watch the welcome from the waiting boat",
+    "values": "welcome",
+    "belief": "A welcome begins with the person who is still outside its circle.",
+    "method": "Answer Rella’s landing step with a hand signal",
+    "speech": "Tells a welcome from the spot where someone has to wait.",
+    "thread": "Elsbet’s circle",
+    "reply": "From the water our welcome looks rather like an order to go away."
+  },
+  "council-keeper": {
+    "want": "I'd like to let the slower witness finish before I bring the trial watch down.",
+    "need": "Keep Hale’s next seat open after the last bell",
+    "values": "patience",
+    "belief": "A timed hearing can make an honest speaker look unsure.",
+    "method": "Hold Hale’s watch face down for one reply",
+    "speech": "Keeps talking past the last workshop bell.",
+    "thread": "Wardens",
+    "reply": "We waited. A boy came back for the hinge he'd been ashamed of making."
+  },
+  "council-reader": {
+    "want": "Give me a bell rail whose last repair can be felt without looking up the docket.",
+    "need": "Ask Essi’s apprentice to find the repaired notch",
+    "values": "stewardship",
+    "belief": "If a fix cannot be found, somebody has to do the same work again.",
+    "method": "Trace the new sleeve on Essi’s bell rail",
+    "speech": "Lets the apprentice name the hidden notch by feel.",
+    "thread": "Wardens",
+    "reply": "My apprentice found it by touch. I'd been standing too far back for years."
+  },
+  "lia-vann": {
+    "want": "I want the clerk to ask what I saw carrying the case through the door.",
+    "need": "Let Lia give the first account before showing the list",
+    "values": "recognition",
+    "belief": "A porter sees the underside that a cabinet hides.",
+    "method": "Take Lia’s end of the empty case",
+    "speech": "Offers the story without the printed list in her hand.",
+    "thread": "Elsbet’s circle",
+    "reply": "I got the story out without trying to match the order of the names on your list."
+  },
+  "elbow-pip": {
+    "want": "I want my sister's puppet to have an entrance that doesn't depend on me whispering.",
+    "need": "Leave Pip’s rehearsal mark where Vee can see it",
+    "values": "independence",
+    "belief": "A cue should survive the builder leaving the room.",
+    "method": "Work Pip’s puppet from the audience side",
+    "speech": "Leaves a rehearsal mark as a private aside to a twin.",
+    "thread": "Elsbet’s circle",
+    "reply": "Vee saw it from the side. We have a cue we can both reach now."
+  },
+  "elbow-vee": {
+    "want": "I'd like to sell the first ice before the final puppet melts in my hand.",
+    "need": "Take Vee’s puppet shift while the ice cart stops",
+    "values": "livelihood",
+    "belief": "A good illusion has a melting point the audience never sees.",
+    "method": "Pack the little ice tray against Vee’s sleeve",
+    "speech": "Changes abruptly from puppet voices to the needs of an ice cart.",
+    "thread": "Gilded Seal",
+    "reply": "The ice made it to the sickroom. My puppet managed quite nicely without my wrist."
+  },
+  "petal-dancer": {
+    "want": "I want one child to notice my mother's hand move when the wire bee washes its eyes.",
+    "need": "Let Viri sit in the audience for one performance",
+    "values": "inheritance",
+    "belief": "A trick learnt by hand has a history the poster cannot show.",
+    "method": "Hold the spare glove while Viri shows the first gesture",
+    "speech": "Mimes a tiny movement before she gives it a name.",
+    "thread": "Elsbet’s circle",
+    "reply": "My own little theatre has a blind corner. You'll never guess who usually sits there."
+  },
+  "picture-boy": {
+    "want": "I want whoever sleeps in the low bunk to be able to call me without waking the whole ferry.",
+    "need": "Try Bo’s bell lying down",
+    "values": "care",
+    "belief": "A bell nobody can reach when they need it has only made a pretty noise.",
+    "method": "Lower the bunk cord to Bo’s waiting palm",
+    "speech": "Tests the sound of an alarm from the sleeper's position.",
+    "thread": "Wardens",
+    "reply": "I heard your bell through the floor. That means we can wake the sleeper gently."
+  },
+  "plum-fen": {
+    "want": "I want the broken wheel back in time to play the small drum at supper.",
+    "need": "Take Fen’s drumstick while the wheel comes off",
+    "values": "workmanship",
+    "belief": "A cart and a drum can lose their beat for the same loose spoke.",
+    "method": "Tap Fen’s spare rim for the dull note",
+    "speech": "Sets the beat down to put a hand under a wheel.",
+    "thread": "Elsbet’s circle",
+    "reply": "A wheel rolls best to a drummer who has a free hand to catch it."
+  },
+  "plum-tallowheel": {
+    "want": "I want to hear my child's first drum solo without having to shout the count for them.",
+    "need": "Carry Tallowheel’s last orchard basket",
+    "values": "care",
+    "belief": "A child can keep time before an adult gives the beat a name.",
+    "method": "Set the smallest drum where the child can reach it",
+    "speech": "Calls his own supper the last orchard delivery.",
+    "thread": "Wardens",
+    "reply": "That last basket was my supper. I always call it the delivery so nobody insists on paying."
+  },
+  "plum-pia": {
+    "want": "I want the audience to wait for one plum to fall of its own accord.",
+    "need": "Stand with Pia through one empty bar",
+    "values": "attention",
+    "belief": "A long wait can change a performance more than a new note.",
+    "method": "Mark where Pia’s first plum actually lands",
+    "speech": "Lets a whole musical bar pass before answering.",
+    "thread": "Elsbet’s circle",
+    "reply": "I thought the bar was empty until someone in the stalls took a breath."
+  },
+  "otla-rusk": {
+    "want": "I want to sit down to my own supper while somebody else runs the shadow curtain.",
+    "need": "Take Otla’s cue from the soup spoon",
+    "values": "rest",
+    "belief": "The guest who stirs the pot sees a different show from the guest at the table.",
+    "method": "Hold the curtain over Otla’s warming pan",
+    "speech": "Taps out a kitchen cue before calling it a cue.",
+    "thread": "Wardens",
+    "reply": "An old cook kept the beat. First time in weeks my hands got to enjoy the song."
+  },
+  "clearance-reader-tavi": {
+    "want": "I would like the low-rail reading to be on the slip before someone lifts the case.",
+    "need": "Take Tavi’s reading from a seated position",
+    "values": "access",
+    "belief": "The upper edge can hide a mark that is plain at a child's height.",
+    "method": "Tilt the Cold Store slip towards Tavi’s knee",
+    "speech": "Reads metal from a chair and says when it dazzles.",
+    "thread": "Elsbet’s circle",
+    "reply": "At chair height the brass shines straight into my eyes. Nobody wrote that down."
+  },
+  "clearance-reader-jase": {
+    "want": "I want the wide rail to keep one handspan free for the neighbour who needs both hands.",
+    "need": "Move Jase’s spare case back one place",
+    "values": "access",
+    "belief": "A broad shelf can become a narrow passage by lunchtime.",
+    "method": "Walk Jase’s rail carrying a full-width tray",
+    "speech": "Speaks of the extra handspan around a heavy case.",
+    "thread": "Wardens",
+    "reply": "That step back gave the young porter a turn to catch the heel of the case."
+  },
+  "peg-reader-irven": {
+    "want": "I want the fish seller to see which old name makes the right turn at Seagrass Steps.",
+    "need": "Take Irven’s market chair for a tide",
+    "values": "local authority",
+    "belief": "A place name has to work for someone carrying something heavy.",
+    "method": "Try Irven’s turn with the market basket",
+    "speech": "Asks for a chair in the vocabulary of a tide.",
+    "thread": "Elsbet’s circle",
+    "reply": "I ate sitting up. Those are two different achievements on a market day."
+  },
+  "peg-receiver-mireth": {
+    "want": "I need to open the dock roll in rain without making the first date disappear.",
+    "need": "Keep Mireth’s spare sleeve dry under the table",
+    "values": "continuity",
+    "belief": "The first drop lands where a hand has already worn the wax thin.",
+    "method": "Turn Mireth’s cover so rain runs off the fold",
+    "speech": "Finds a dry sleeve for someone before the drum starts.",
+    "thread": "Wardens",
+    "reply": "I put the dry sleeve over her arm before the drum began. You should have seen her bow."
+  },
+  "label-loft-keeper": {
+    "want": "I want the return copy to show the dock as a pilot saw it at low tide.",
+    "need": "Let Nellin’s second sheet stay beside the clean copy",
+    "values": "perspective",
+    "belief": "A clean copy at high water can hide the reason for a rough line.",
+    "method": "Slide Nellin’s low-water edge into the dock mount",
+    "speech": "Speaks more freely beside a scratched preliminary copy.",
+    "thread": "Elsbet’s circle",
+    "reply": "I can point to the word we argued about. Arguing with the paper is rather easier now."
+  },
+  "specimen-work-vera": {
+    "want": "I want a new clerk to hear the practice balance before a buyer is watching.",
+    "need": "Give Vera one unhurried rehearsal shift",
+    "values": "learning",
+    "belief": "The first sound a trainee hears in public is usually the queue.",
+    "method": "Set a harmless practice weight on Vera’s pan",
+    "speech": "Measures generosity by the length of an unhurried rehearsal.",
+    "thread": "Wardens",
+    "reply": "We had time to miss a cue on purpose. The sky stayed up."
+  },
+  "specimen-work-sali": {
+    "want": "I want the family who lent us water to see what happened to every cup.",
+    "need": "Reserve a cup for Sali’s returning lender",
+    "values": "responsibility",
+    "belief": "A water trial can spend the thing a family came to collect.",
+    "method": "Count the water in Sali’s two return vessels",
+    "speech": "Saves the lender a cup with their name unspoken.",
+    "thread": "Wardens",
+    "reply": "She came back for the cup. The loan was the third thing we talked about."
+  },
+  "specimen-work-tobin": {
+    "want": "I want the prop label to say which marks came from last night's show.",
+    "need": "Leave Tobin’s rehearsal scratches on the spare prop",
+    "values": "honesty",
+    "belief": "A convincing prop can acquire a history in a single performance.",
+    "method": "Turn the prop’s worn face towards Tobin’s stage light",
+    "speech": "Invites the next performer to trace the old scratch first.",
+    "thread": "Elsbet’s circle",
+    "reply": "He found his first scratch and put a second right beside it. That prop has learnt the part."
+  },
+  "polar-keeper-anwen": {
+    "want": "I want the cold case opened without tearing the paper that has stuck to its lid.",
+    "need": "Keep Anwen’s readers back for one thaw",
+    "values": "preservation",
+    "belief": "A good opening leaves evidence of what held the lid shut.",
+    "method": "Ease the tissue from Anwen’s case with the support still under it",
+    "speech": "Lets the temperature answer before inviting the next reader.",
+    "thread": "Wardens",
+    "reply": "The thaw made the little blank oval darker. Nobody's thumb was anywhere near it."
+  },
+  "polar-runner-quillan": {
+    "want": "I'd like a visitor to try the route to the Polar Store with my full practice load.",
+    "need": "Take Quillan’s second trip after the shift changes",
+    "values": "fair work",
+    "belief": "A route tested empty says little about a carrier halfway there.",
+    "method": "Swap the trial crate onto Quillan’s broad strap",
+    "speech": "Starts the account again with the afternoon runner.",
+    "thread": "Elsbet’s circle",
+    "reply": "The afternoon runner ties the sack upside down. Same route, different evidence."
+  },
+  "polar-reader-orsa": {
+    "want": "I would like the person who sends the crate to meet the one who signs for it wet.",
+    "need": "Leave Orsa’s arrival slip beside the dispatch slip",
+    "values": "accountability",
+    "belief": "An intact seal and a dry parcel are two different promises.",
+    "method": "Weigh Orsa’s returning packing cloth",
+    "speech": "Never says a departure and an arrival in the same breath.",
+    "thread": "Wardens",
+    "reply": "Departure says yes. Arrival still says perhaps. I can live with both slips on the nail."
+  },
+  "fern-record-nemi": {
+    "want": "I want somebody to look at the fern’s underside before they copy my careful label.",
+    "need": "Leave Nemi’s leaf turned up for the next reader",
+    "values": "curiosity",
+    "belief": "One fern can give two views without growing another frond.",
+    "method": "Lift Nemi’s tracing from its paper hinge",
+    "speech": "Invites the next reader to turn the leaf over.",
+    "thread": "Elsbet’s circle",
+    "reply": "My neighbour read the underside first. He's already changed what he thinks the stain is."
+  },
+  "fern-record-lio": {
+    "want": "I want the bridge crew to hear the practice call from down here on the low rail.",
+    "need": "Hold Lio’s place beneath the bridge while the crew rings",
+    "values": "inclusion",
+    "belief": "An instruction can cross a bridge without reaching the person under it.",
+    "method": "Tap Lio’s rail below the top beam",
+    "speech": "Hears the bridge signal as someone standing underneath would.",
+    "thread": "Elsbet’s circle",
+    "reply": "Below the bridge the bell seems to come from the water. I finally understand the delay."
+  },
+  "lantern-weave-nell": {
+    "want": "I want a visitor in the daylight queue to notice a mark before the sun takes it.",
+    "need": "Stay with Nell through a change of light",
+    "values": "attention",
+    "belief": "A picture has visiting hours even when the door stays open.",
+    "method": "Angle Nell’s daylight card towards the last person in line",
+    "speech": "Waits until the light changes before naming a colour.",
+    "thread": "Gilded Seal",
+    "reply": "There's the second colour. All my impatient visitors went home with the first."
+  },
+  "lantern-weave-hem": {
+    "want": "Give me enough shade for a reader to see where the source sheet ends.",
+    "need": "Let Hem leave the old source drawer open",
+    "values": "custody",
+    "belief": "A source laid flat over its neighbour can make one look like part of the other.",
+    "method": "Slide Hem’s shade over the seam between the leaves",
+    "speech": "Opens a drawer to let its smell jog a printer's memory.",
+    "thread": "Wardens",
+    "reply": "The old drawer still smells of glue. That helped our returning printer place the year."
+  },
+  "register-reader-eneth": {
+    "want": "I want the first pilot off the boat to find a source that somebody can still name.",
+    "need": "Keep a chalk space for Eneth’s returning pilot",
+    "values": "local memory",
+    "belief": "A porch open to all boats needs more than one name for a landing.",
+    "method": "Put the porch chart beside Eneth’s pilot slate",
+    "speech": "Leaves a pilot room to draw a fresh mark in chalk.",
+    "thread": "Elsbet’s circle",
+    "reply": "She drew in a rock nobody remembered losing. Tomorrow we'll go out and look."
+  },
+  "register-runner-caren": {
+    "want": "I would like the tide date on my roll to reach the quay before the wet ink smears.",
+    "need": "Take Caren’s roll by the two dry ends",
+    "values": "reliability",
+    "belief": "A dated map can lose its most important figure to a thumb.",
+    "method": "Wind Caren’s dock roll around the clean peg",
+    "speech": "Addresses the two dry ends of a rolled sheet separately.",
+    "thread": "Wardens",
+    "reply": "Two dry hands at the ends. At last I can show you the middle without flattening it."
+  },
+  "register-clerk-elwen": {
+    "want": "I want each sample back in the tray a neighbour actually handled.",
+    "need": "Leave a space for Elwen’s disputed return",
+    "values": "order",
+    "belief": "A label on a loose tray tends to follow the tray when people swap jobs.",
+    "method": "Set Elwen’s empty tray beneath the handover slip",
+    "speech": "Gives a disputed return a place to be answered.",
+    "thread": "Wardens",
+    "reply": "I'd hated seeing a blank beside my name. Today someone wrote a question there."
+  },
+  "passage-halen": {
+    "want": "I want the ferry signal readable from the waiting line along the shoal rail.",
+    "need": "Walk the back of Halen’s queue at low light",
+    "values": "safety",
+    "belief": "A signal repeated by a stranger can change before it reaches the quay.",
+    "method": "Hang Halen’s second flag at the lower rail",
+    "speech": "Directs a night queue from where the last person can see.",
+    "thread": "Wardens",
+    "reply": "From the back of the queue our neat arrows point at somebody's coat."
+  },
+  "passage-clio": {
+    "want": "I want the reference band to open flat without breaking the binder’s old signature.",
+    "need": "Give Clio time to loosen one stitch",
+    "values": "craft",
+    "belief": "What a binding covers can matter as much as what its pages show.",
+    "method": "Hold Clio’s reference band at the thread hole",
+    "speech": "Counts stitches softly back from a tight binding.",
+    "thread": "Elsbet’s circle",
+    "reply": "One stitch! Underneath was the end of the word I'd been too frightened to look for."
+  },
+  "window-guide-talden": {
+    "want": "I want this harbour window fitted so the late crew can set its own sightline.",
+    "need": "Take Talden’s place before tightening the last screw",
+    "values": "access",
+    "belief": "A window fitted for the fitter can exclude the person who uses it.",
+    "method": "Turn Talden’s test shutter from the visitor’s mark",
+    "speech": "Changes the listener's hand position before asking about a screw.",
+    "thread": "Elsbet’s circle",
+    "reply": "You could feel the screw tug sideways. With this hand on the rail it finally makes sense."
+  },
+  "window-recorder-cado": {
+    "want": "I want a station entry that leaves room for what lay outside the frame.",
+    "need": "Keep Cado’s second viewing mark on the floor",
+    "values": "scope",
+    "belief": "A witness can report everything they saw and still leave out half a harbour.",
+    "method": "Align Cado’s record with the outer sill",
+    "speech": "Gives two watchers separate marks to stand on.",
+    "thread": "Wardens",
+    "reply": "Two watchers now have a place to put their feet. Their sketches still differ."
+  },
+  "reading-works-vara": {
+    "want": "I'd like the pilot to set a real parcel on my model landing.",
+    "need": "Lend Vara one working load after the demonstration",
+    "values": "practicality",
+    "belief": "A model can succeed because the person testing it knows its trick.",
+    "method": "Move Vara’s landing marker under load",
+    "speech": "Waits for the working load before describing the joint.",
+    "thread": "Elsbet’s circle",
+    "reply": "It holds at the demonstration weight. At working weight it whispers first."
+  },
+  "reading-works-kori": {
+    "want": "I want the packing crew to say when the proof changed hands, even on a quiet day.",
+    "need": "Keep Kori’s first return box open for the proof reader",
+    "values": "traceability",
+    "belief": "A return journey needs its own reader when a crate has been opened.",
+    "method": "Compare the edge marks on Kori’s two box slips",
+    "speech": "Hears the returning reader out before shutting a box.",
+    "thread": "Wardens",
+    "reply": "The reader found the dropped line while the sender was still at the hatch."
+  },
+  "story-frame-keeper": {
+    "want": "I want my shortest caption to keep the actor who made the gesture in the story.",
+    "need": "Listen to Oriel’s long version before cutting the line",
+    "values": "credit",
+    "belief": "A shortened caption can accidentally make a witness the author.",
+    "method": "Read Oriel’s caption back from the theatre doorway",
+    "speech": "Calls the first cut in a long account by a relative's name.",
+    "thread": "Elsbet’s circle",
+    "reply": "You heard my uncle in the long one. He always was the first thing an editor cut."
+  },
+  "number-leaf-lella": {
+    "want": "I want a first-time runner to make the turn without having to look up at me.",
+    "need": "Ask Lella’s trainee to lead the way back",
+    "values": "independence",
+    "belief": "A guide has succeeded when the learner can turn around and guide them.",
+    "method": "Carry the low practice board at the trainee’s height",
+    "speech": "Follows a trainee's route without calling out the next turn.",
+    "thread": "Elsbet’s circle",
+    "reply": "She took a different alley back. Next time she's going to teach the outward walk too."
+  },
+  "number-leaf-omrin": {
+    "want": "I want the correction to be as easy to find as my original finding.",
+    "need": "Let Omrin keep the old wording in reach",
+    "values": "repair",
+    "belief": "A correction hidden in a better drawer can still fail its first reader.",
+    "method": "Tie Omrin’s correction card to the first catalogue peg",
+    "speech": "Keeps the old phrase close while reading the revision.",
+    "thread": "Wardens",
+    "reply": "I don't have to defend that old phrase to let somebody see what got changed."
+  },
+  "depot-keeper-eland": {
+    "want": "I want every tool on loan to come home with the condition in which it worked.",
+    "need": "Leave Eland’s loan label room for a failed trial",
+    "values": "responsibility",
+    "belief": "A depot lends a method with an instrument, whether it remembers to say so or not.",
+    "method": "Try the returning gauge against Eland’s depot mark",
+    "speech": "Praises a failed test that comes back with its borrowed equipment.",
+    "thread": "Wardens",
+    "reply": "A line for the failed trial! Our borrowers may finally believe they can bring things back."
+  },
+  "depot-visitor-mayle": {
+    "want": "I'd like to see the curtain from my mother's seat this time.",
+    "need": "Take Mayle’s porter strap at the end of rehearsal",
+    "values": "kinship",
+    "belief": "What a cloth shows depends on who gets the evening off to see it.",
+    "method": "Lift the borrowed frame onto Mayle’s depot stand",
+    "speech": "Measures rehearsal by the mark a strap leaves on a porter.",
+    "thread": "Elsbet’s circle",
+    "reply": "The porter strap leaves a purple stripe. Odd what a rehearsal leaves off its report."
+  },
+  "reference-line-deva": {
+    "want": "I want the pattern shop to show the small difference that kept one apprentice's work from fitting.",
+    "need": "Keep Deva’s rejected pattern out of the scrap bin",
+    "values": "craft",
+    "belief": "A close fit can teach more than a perfect fit if the trace is left visible.",
+    "method": "Set the two pattern edges on Deva’s light board",
+    "speech": "Calls the discarded pattern a thing someone can still use.",
+    "thread": "Elsbet’s circle",
+    "reply": "A girl picked the failed pattern over the pretty one. Said she could see how it was made."
+  },
+  "reference-line-noll": {
+    "want": "I want the two lanes to have the same starting load before anyone calls one faster.",
+    "need": "Give Noll time to reset the short lane",
+    "values": "fair testing",
+    "belief": "A shortcut can be measured fairly only if the starting line travels with it.",
+    "method": "Walk Noll’s marked load from both starting pegs",
+    "speech": "Takes time to see a lane from the shortest runner's height.",
+    "thread": "Wardens",
+    "reply": "First runner through found a shortcut. I hadn't seen the floor from down there."
+  },
+  "object-use-aven": {
+    "want": "I want a loft hand on the ground to be able to open the crate alone.",
+    "need": "Take Aven’s packed crate down to the receiving bench",
+    "values": "service",
+    "belief": "Packing is only half done until the other person can undo it.",
+    "method": "Test the new loop in Aven’s carrying sling",
+    "speech": "Judges a packing job from the receiving bench.",
+    "thread": "Wardens",
+    "reply": "At the receiving bench the lid opens against the rail. Fine thing to find out before loading."
+  },
+  "object-use-veya": {
+    "want": "I want a fair swap to leave both sides a way to check what changed hands.",
+    "need": "Stand in the buyer’s place at Veya’s exchange bench",
+    "values": "reciprocity",
+    "belief": "An exchange receipt has two owners even when only one has a pen.",
+    "method": "Match Veya’s two halves of the tally",
+    "speech": "Moves to the buyer's side to talk about a visible price.",
+    "thread": "Gilded Seal",
+    "reply": "I can see my elbow blocks the price. I owe yesterday's buyer a word."
+  },
+  "object-use-coru": {
+    "want": "I would like the join to show which piece was replaced at the bay.",
+    "need": "Leave Coru’s repair line uncovered for an afternoon",
+    "values": "stewardship",
+    "belief": "A repair can keep a tool in service without having to disappear.",
+    "method": "Turn Coru’s practice joint across the grain",
+    "speech": "Treats a seam as something visitors can read with a finger.",
+    "thread": "Elsbet’s circle",
+    "reply": "Two children traced the seam before they read the label. The repair has found an audience."
+  },
+  "object-use-sivra": {
+    "want": "I want the trace on the gallery wall to keep the direction of the hand that made it.",
+    "need": "Give Sivra a chance to draw from the other end",
+    "values": "honesty",
+    "belief": "A traced mark can look intentional after the hand that slipped has gone.",
+    "method": "Follow Sivra’s line back to its starting burr",
+    "speech": "Draws towards a familiar piling from the unfamiliar side.",
+    "thread": "Elsbet’s circle",
+    "reply": "The pilot's end has one extra piling. My neat near view just blotted it out."
+  },
+  "coast-olwen-veer": {
+    "want": "I want a practice plate that can be read when the Headland wind shakes its frame.",
+    "need": "Stand with Olwen through a gust before marking the result",
+    "values": "care",
+    "belief": "A steady hand indoors can borrow certainty from a quiet room.",
+    "method": "Hold Olwen’s practice plate at its loose corner",
+    "speech": "Leaves a forecast sentence open through the next gust.",
+    "thread": "Wardens",
+    "reply": "The gust lifted a corner a second before the line moved. We have a better warning."
+  },
+  "reference-keeper-cerin": {
+    "want": "I need the fitter on the second shift to find the reference stop with gloves on.",
+    "need": "Give Cerin the spare gloves for a blind fit",
+    "values": "reliability",
+    "belief": "A correct reference point can be useless if a hand cannot locate it.",
+    "method": "Seat Cerin’s gauge against the worn stop",
+    "speech": "Puts on spare gloves to speak as the next worker.",
+    "thread": "Wardens",
+    "reply": "In the gloves you feel the burr on the inside. Bare fingers slid right over it."
+  },
+  "reference-observer-loen": {
+    "want": "I want the night shift to inherit the time of the change, not only the final number.",
+    "need": "Leave Loen's two shift times on the same slip",
+    "values": "continuity",
+    "belief": "An accurate reading without its hour can belong to the wrong crew.",
+    "method": "Turn Loen’s log to the handover crease",
+    "speech": "Places the kettle's boiling between two recorded shift times.",
+    "thread": "Wardens",
+    "reply": "Same slip, both times, and one kettle that boiled while we were waiting."
+  },
+  "callboard-reader": {
+    "want": "I'd like to run the call with my own name on it before it is crossed off as delivered.",
+    "need": "Let Neris read the callboard from the stair",
+    "values": "agency",
+    "belief": "A call seen by a runner has yet to reach the person named on it.",
+    "method": "Take Neris’s return line up the civic steps",
+    "speech": "Calls a name from the stair before trusting the callboard.",
+    "thread": "Elsbet’s circle",
+    "reply": "Down the stair our evening call sounds like the end of a different name."
+  },
+  "callboard-keeper": {
+    "want": "I want visitors to see exactly what I signed for, even when my name only just fits.",
+    "need": "Give Orella another line beneath the visitors’ stamp",
+    "values": "accountability",
+    "belief": "A signature cannot certify the page that was under the one I saw.",
+    "method": "Hold the visiting sheet clear of Orella’s lower copy",
+    "speech": "Makes room for a visitor's pencil under the formal stamp.",
+    "thread": "Wardens",
+    "reply": "Our next visitor wrote “why?” underneath the stamp. I’ve sharpened a pencil for the answer."
+  },
+  "second-reading-linnet": {
+    "want": "I want the borrowed bell back with its harbour note intact.",
+    "need": "Let Linnet ring the loan bell before the Council starts",
+    "values": "memory",
+    "belief": "A changed tone can carry a history that the loan docket never requested.",
+    "method": "Listen from Linnet’s old position at the end of the rail",
+    "speech": "Rings the little loan bell before the large public one.",
+    "thread": "Elsbet’s circle",
+    "reply": "Somebody came back with the little bell before the big hearing had even opened."
+  },
+  "field-store-aven": {
+    "want": "I'd like the practice tray to spill here before a neighbour’s drinking water is in it.",
+    "need": "Give Aven one empty return run",
+    "values": "responsibility",
+    "belief": "A dry run saves water only when somebody records the spill.",
+    "method": "Tilt Aven’s spare tray over the common basin",
+    "speech": "Listens for the rattle on the empty return.",
+    "thread": "Wardens",
+    "reply": "An empty run rattles in a different place. My first delivery of the day is to the fitter."
+  },
+  "store-odal": {
+    "want": "I want the cloth sample judged after someone has folded and unfolded it.",
+    "need": "Leave Odal’s crease on the handling sample",
+    "values": "craft",
+    "belief": "A fabric keeps a visitor's touch longer than it keeps the shop light.",
+    "method": "Fold Odal’s test strip against the original seam",
+    "speech": "Uses a borrower's crease as the start of a handling direction.",
+    "thread": "Elsbet’s circle",
+    "reply": "The crease leads right to the thumb. I let the next borrower start from that end."
+  },
+  "store-osma": {
+    "want": "I'd like the two bearings read at the same bell before the watchers argue about the ship.",
+    "need": "Wait beside Osma for the next shared signal",
+    "values": "precision",
+    "belief": "Two honest bearings can put a moving boat in a place it never reached.",
+    "method": "Turn Osma’s paired sight cards towards the bell",
+    "speech": "Waits for both shifts to finish signalling before claiming a job.",
+    "thread": "Wardens",
+    "reply": "After the two signals there's a moment where neither shift owns the job. I stayed for it."
+  },
+  "store-taev": {
+    "want": "I want the stores docket to show which parcel had already been opened.",
+    "need": "Keep Taev’s torn packing band beside the seal",
+    "values": "custody",
+    "belief": "A full inventory can hide an interruption between two signatures.",
+    "method": "Match Taev’s cut band to the receiving notch",
+    "speech": "Keeps a torn band in the story after the package is resealed.",
+    "thread": "Wardens",
+    "reply": "That band tore before the stamp was set. The parcel has had a longer day than we thought."
+  },
+  "store-zyra": {
+    "want": "I want my surface copy to show the place where the original turns away from the light.",
+    "need": "Let Zyra change the rake of the lamp",
+    "values": "perspective",
+    "belief": "A flat copy asks its reader to imagine depth it can no longer show.",
+    "method": "Tip Zyra’s rubbing across the raised edge",
+    "speech": "Changes a lamp angle before giving a second description.",
+    "thread": "Elsbet’s circle",
+    "reply": "A low light makes yesterday's groove pop right out. My hand fits it."
+  },
+  "glass-keeper": {
+    "want": "I want the hinge to yield to a visitor with only one hand free.",
+    "need": "Try Quena’s mount with the other hand occupied",
+    "values": "access",
+    "belief": "A latch is part of what an exhibit lets a visitor know.",
+    "method": "Lift Quena’s practice lid from the lower grip",
+    "speech": "Addresses the one free thumb on a loaded carrier.",
+    "thread": "Elsbet’s circle",
+    "reply": "One arm full, one thumb free. I can turn the mount without dropping my lunch."
+  },
+  "glass-rail-reader": {
+    "want": "I want the reading between my rounds to count even if I never make it to the front rail.",
+    "need": "Hold Osyth’s carrier cart for one page",
+    "values": "time",
+    "belief": "A hurried reader deserves a way to get back to the same sentence.",
+    "method": "Mark Osyth’s sightline from the broad rail",
+    "speech": "Talks in borrowed intervals of a porter's reading time.",
+    "thread": "Wardens",
+    "reply": "I read a whole page without checking the wheel. I'd forgotten what the writer was saying."
+  },
+  "glass-pocket-reader": {
+    "want": "I'd like the little desk by the coats to have a lamp of its own.",
+    "need": "Keep Rennel’s last chair free when the hooks fill up",
+    "values": "welcome",
+    "belief": "A small desk can admit a reader the grand room turns away.",
+    "method": "Try the coat-hook label under Rennel’s reading lamp",
+    "speech": "Reserves the closing line for the crew who arrive after the hooks fill.",
+    "thread": "Elsbet’s circle",
+    "reply": "Late crew sat together for once. They have an entirely different name for that cue."
+  },
+  "shore-reply-velna": {
+    "want": "I want the outgoing register to say which flag the boat could actually see.",
+    "need": "Ask Velna’s far watcher to call it back",
+    "values": "verification",
+    "belief": "Sending a signal and receiving a signal are two different events in my book.",
+    "method": "Read the reflected flag from Velna’s shed window",
+    "speech": "Repeats the word the far watcher actually heard.",
+    "thread": "Wardens",
+    "reply": "The far watcher called my half-heard word back correctly. It was the gesture she missed."
+  },
+  "shore-reply-miri": {
+    "want": "I want to give my own first reading before anyone tells me what Velna meant.",
+    "need": "Keep the signal key closed while Miri answers",
+    "values": "independence",
+    "belief": "Agreement after seeing the key says less about what reached me.",
+    "method": "Hold up Miri’s return flag before comparing slips",
+    "speech": "Lets a reply from memory precede the signal key.",
+    "thread": "Elsbet’s circle",
+    "reply": "I answered without the key. My reply was a street name I'd never seen written down."
+  },
+  "ferry-window-nessa": {
+    "want": "I'd like the ferry model to teach the turn even when I step out of the room.",
+    "need": "Give Nessa’s apprentice the model tiller",
+    "values": "learning",
+    "belief": "A model route deserves a trial by someone who did not build the bank.",
+    "method": "Move Nessa’s practice boat in from the other approach",
+    "speech": "Passes the model tiller to a learner before naming the current.",
+    "thread": "Elsbet’s circle",
+    "reply": "Our new pilot let go as the model turned. Turns out the tiller pulls left on its own."
+  },
+  "ferry-window-merrit": {
+    "want": "I would like to take the second approach without my teacher moving my wrist.",
+    "need": "Let Merrit make one slow turn unaided",
+    "values": "agency",
+    "belief": "If a guiding hand makes the turn I still have to learn it myself.",
+    "method": "Take the passenger seat in Merrit’s practice skiff",
+    "speech": "Counts an unaided half-turn as a victory worth describing.",
+    "thread": "Elsbet’s circle",
+    "reply": "Slowly round, all by myself. I'd take that one turn over a whole lap of applause."
+  },
+  "oracle-keeper": {
+    "want": "I want the apprentice printer to know what the old press used to do before we mend it.",
+    "need": "Set aside Nerin’s last flawed impression",
+    "values": "credit",
+    "belief": "A fault that is removed without a sample can be blamed on the last worker.",
+    "method": "Take a dry pull from Nerin’s loose plate",
+    "speech": "Reads improvement from the first imperfect impression.",
+    "thread": "Wardens",
+    "reply": "You can see which corner I fixed. The clean sheet never could tell that part."
+  },
+  "oracle-reader": {
+    "want": "I want the maintenance crew sent to the loose hinge before the next bell.",
+    "need": "Give Thessa a route that includes the last return",
+    "values": "service",
+    "belief": "A short route can leave a long queue at the one stop it skips.",
+    "method": "Walk Thessa’s repair order in reverse",
+    "speech": "Keeps the homebound porter in a route description.",
+    "thread": "Wardens",
+    "reply": "We met our own carrier coming home. He was holding a tool nobody had logged going out."
+  },
+  "badge-keeper": {
+    "want": "I want the name beside a badge to lead back to something a worker can still show.",
+    "need": "Let Brenna’s quieter apprentice tell the story first",
+    "values": "recognition",
+    "belief": "A badge that remembers only a name has lost most of its work.",
+    "method": "Find the working sample behind Brenna’s ribbon",
+    "speech": "Asks the quieter worker to begin the story before the supervisor.",
+    "thread": "Elsbet’s circle",
+    "reply": "Her version starts three hours earlier. I'd only seen the job once it came past my bench."
+  },
+  "schedule-eome": {
+    "want": "I'd like the cloth room to return the lender's fold as carefully as its colour.",
+    "need": "Leave Eome space for the old fold in the new mount",
+    "values": "custody",
+    "belief": "A fold can be evidence of use even when it looks untidy on a wall.",
+    "method": "Turn Eome’s cloth under the shaded pane",
+    "speech": "Uses an old fold to recognise a lender's way of holding cloth.",
+    "thread": "Wardens",
+    "reply": "The lender ran her finger straight to the fold. She knew it before she saw the colour."
+  },
+  "schedule-enel": {
+    "want": "My favourite jug has a chip exactly where my brother used to put his thumb. The stand hides it.",
+    "need": "Let Enel choose which side of the jug faces out",
+    "values": "touch",
+    "belief": "Somebody held this before somebody collected it.",
+    "method": "Fit a felt wedge beneath Enel’s jug",
+    "speech": "Places the remembered thumb against a chipped rim.",
+    "thread": "Elsbet’s circle",
+    "reply": "There. That's where his thumb went. I'd forgotten how small a mark it was."
+  },
+  "schedule-karth": {
+    "want": "The wheel that sticks is the only one my boy can take apart by himself.",
+    "need": "Set aside a sticking wheel for the young fitter",
+    "values": "independence",
+    "belief": "A machine that misbehaves can show a learner where to start.",
+    "method": "Turn Karth’s axle with the casing open",
+    "speech": "Calls a sticking wheel a beginning for a young fitter.",
+    "thread": "Gilded Seal",
+    "reply": "He asked for a second look at the stiff wheel. Last week he wouldn't touch it."
+  },
+  "schedule-veira": {
+    "want": "I'd like to print the smudged sheet. That's where my mother tried three words for home.",
+    "need": "Give the printer a space for the rubbed-out words",
+    "values": "revision",
+    "belief": "An early word can let us hear someone looking for the later one.",
+    "method": "Ink Veira’s proof from the softer side",
+    "speech": "Reads erased words aloud before the clean word for home.",
+    "thread": "Elsbet’s circle",
+    "reply": "Mother read all three words and chose a fourth. Still room on the proof."
+  },
+  "jig-shop-nesta": {
+    "want": "Somebody tell the apprentice her thumb found the wobble before my jig did.",
+    "need": "Put the apprentice’s chalk mark beside the shop stamp",
+    "values": "recognition",
+    "belief": "A fit has to hold for the hand that will actually use it.",
+    "method": "Pass Nesta’s joint to the smallest hand on shift",
+    "speech": "Praises a thumb's discovery before the stamp on a jig.",
+    "thread": "Wardens",
+    "reply": "The girl signed the chalk mark. Her handwriting wobbled just as much as my first jig."
+  },
+  "curtain-ethren": {
+    "want": "I practised the call at breakfast. Our kettle answered before anybody else did.",
+    "need": "Give Ethren one quiet run before the bells",
+    "values": "understanding",
+    "belief": "If a crew hears two different orders, the louder voice hasn't settled it.",
+    "method": "Walk the length of Ethren’s call carrying an empty tray",
+    "speech": "Hears the kettle as an unusually prompt member of a crew.",
+    "thread": "Elsbet’s circle",
+    "reply": "I heard the end of my own call. In a crowd I never knew I'd been swallowing it."
+  },
+  "memory-cart-edrin": {
+    "want": "My old cart left a rut right there. The new rail sends strangers into it.",
+    "need": "Keep the turn clear while Edrin finds the old wheel track",
+    "values": "safe passage",
+    "belief": "Feet remember a load differently from an empty pavement.",
+    "method": "Push the borrowed cart round Edrin’s outside turn",
+    "speech": "Recalls a bend by the weight once on the cart.",
+    "thread": "Gilded Seal",
+    "reply": "Two tracks, one wheel. It got round because the carter leaned out there."
+  },
+  "memory-cart-nella": {
+    "want": "I wear out my left boot first. Nobody who traces my route on paper guesses why.",
+    "need": "Walk alongside Nella at her own pace",
+    "values": "access",
+    "belief": "A path drawn straight can cost someone a second journey.",
+    "method": "Trade places at the rail where Nella changes sides",
+    "speech": "Makes the wear on a boot part of a route description.",
+    "thread": "Wardens",
+    "reply": "You slowed at the puddle before I said a word. My left boot thanks you."
+  },
+  "dispatch-stats-orla": {
+    "want": "My sister's letters all came down the freight rail. I learned to hear her paper arrive.",
+    "need": "Keep the dispatch slot free for one thin envelope",
+    "values": "care",
+    "belief": "A wrong tray can deliver joy and still need fixing.",
+    "method": "Run Orla’s empty envelope down both dispatch rails",
+    "speech": "Hears an envelope slap before asking who sent it.",
+    "thread": "Elsbet’s circle",
+    "reply": "There it is. Hear that little slap? I could sort her letter with my eyes shut."
+  },
+  "price-drawers-sella": {
+    "want": "The papers in my left pocket promise supper. I'm still waiting on the ones in my right.",
+    "need": "Hold a place at Sella’s table until the delivery comes",
+    "values": "follow-through",
+    "belief": "A promise and a meal weigh differently to the person waiting.",
+    "method": "Pin the actual delivery slip outside Sella’s pocket",
+    "speech": "Moves between promises and meals by way of two real pockets.",
+    "thread": "Gilded Seal",
+    "reply": "We shared the last potato. That was worth eight entries in my promise book."
+  },
+  "script-irwen": {
+    "want": "I lost my voice on the last verse. A girl in the back finished it in a tune I didn't know.",
+    "need": "Let the girl give Irwen the tune before the next reading",
+    "values": "reciprocity",
+    "belief": "A verse belongs a little to the person who brings it safely home.",
+    "method": "Tap the rest where Irwen stopped singing",
+    "speech": "Leaves the last note available to a singer at the back.",
+    "thread": "Elsbet’s circle",
+    "reply": "She taught me the bit her mother hums while onions brown. It belongs in the reading now."
+  },
+  "script-rennick": {
+    "want": "My daughter asked which side of a stage door counts as the theatre. I owe her a better answer.",
+    "need": "Leave Rennick’s daughter a seat on the working side",
+    "values": "inclusion",
+    "belief": "The people who hear the show through a door get a different show.",
+    "method": "Ease Rennick’s door until the same line carries both ways",
+    "speech": "Speaks from the working side of a stage door.",
+    "thread": "Wardens",
+    "reply": "She counted eleven people working through the scene. Two actors on the other side."
+  },
+  "script-cetra": {
+    "want": "I can do my teacher's voice so well that sometimes the little ones ask when I'm coming on.",
+    "need": "Save Cetra a turn in her own speaking voice",
+    "values": "authorship",
+    "belief": "Lending somebody your voice is a choice you get to take back.",
+    "method": "Draw the curtain between Cetra’s two tellings",
+    "speech": "Switches out of a borrowed voice for a childhood story.",
+    "thread": "Elsbet’s circle",
+    "reply": "I told them about losing a tooth. They all wanted the next bit in that voice."
+  },
+  "script-talven": {
+    "want": "My best friend liked the ending we cut. He's the only person I can't face at the edition desk.",
+    "need": "Make two spaces at the desk for Talven and his friend",
+    "values": "friendship",
+    "belief": "An earlier ending can outlive the page we give to the printer.",
+    "method": "Turn Talven’s folded proof to the cut ending",
+    "speech": "Invites an unhappy reader to take the other chair at the desk.",
+    "thread": "Gilded Seal",
+    "reply": "My friend still wants the old ending. He lent me a pencil all the same."
+  },
+  "correspondence-mera": {
+    "want": "The first letter I ever sent came back with a red thumb on it. I still wonder whose.",
+    "need": "Give Mera a minute to write the return address in full",
+    "values": "answerability",
+    "belief": "A letter should be able to find the hand that sent it.",
+    "method": "Lay Mera’s finished envelopes with their backs showing",
+    "speech": "Follows the print of a red thumb backward along a delivery.",
+    "thread": "Wardens",
+    "reply": "The runner could actually find me to ask about the red print. That changes our ending."
+  },
+  "correspondence-ansel": {
+    "want": "Two names come out alike when the floor is busy. Yesterday I answered for a man I'd never met.",
+    "need": "Keep a finger on each name until both runners answer",
+    "values": "identity",
+    "belief": "A handoff is a meeting, even when the names sound the same.",
+    "method": "Read Ansel’s two receipts back to their separate bearers",
+    "speech": "Waits for both bearers of a similar name to answer.",
+    "thread": "Elsbet’s circle",
+    "reply": "Each one answered. Their voices sound nothing alike once you let them speak."
+  },
+  "forest-hook-sorell": {
+    "want": "I want that muddy bootmark on the slate for another day. It's my father's first walk since winter.",
+    "need": "Save Sorell a corner for the print before the slate is wiped",
+    "values": "memory",
+    "belief": "An ordinary trail mark can matter long after the trail dries.",
+    "method": "Trace around Sorell’s wet heel mark with a stick of chalk",
+    "speech": "Gives a bootprint a whole afternoon on the public slate.",
+    "thread": "Wardens",
+    "reply": "The print is safe round the edge. Father drew his walking stick beside it."
+  },
+  "shutter-ilin": {
+    "want": "I know which shutter squeaks. The girl who oils them knows which one never opens.",
+    "need": "Take Ilin on the oiling round before the visitors arrive",
+    "values": "attention",
+    "belief": "Silence can mean a hinge works or that nobody gets to use it.",
+    "method": "Unhook Ilin’s silent shutter from the yard side",
+    "speech": "Listens to the hinge that never needs oil.",
+    "thread": "Elsbet’s circle",
+    "reply": "That shutter hasn't been opened for a season. Somebody had painted the catch shut."
+  },
+  "shutter-tavin": {
+    "want": "They remember the parcel that fell. I'd like them to remember the runner who caught it.",
+    "need": "Set Tavin’s tray down beside the runner’s bench",
+    "values": "gratitude",
+    "belief": "A safe arrival can hide a very narrow escape.",
+    "method": "Balance Tavin’s empty tray where the parcel slipped",
+    "speech": "Names the person who caught a parcel before the person who dropped it.",
+    "thread": "Gilded Seal",
+    "reply": "The catcher came to sit beside me. I've learnt the name I should've shouted."
+  },
+  "shutter-merra": {
+    "want": "I copied the letter in a fine clear hand. My aunt says it doesn't sound like her any more.",
+    "need": "Give the aunt a quiet turn to read Merra’s copy aloud",
+    "values": "voice",
+    "belief": "A pause can travel in a voice and go missing in a tidy copy.",
+    "method": "Tap Merra’s desk at the aunt’s original line breaks",
+    "speech": "Restores an aunt's pauses to the sound of a clean copy.",
+    "thread": "Elsbet’s circle",
+    "reply": "Auntie put all the stops back as she read. Listen to the air after the last word."
+  },
+  "open-place-blythe": {
+    "want": "I took the long steps so the copy would stay dry. Now the docket calls me late.",
+    "need": "Wait with Blythe for the porter who saw the rain",
+    "values": "fairness",
+    "belief": "Arrival time alone won't tell you which thing the runner saved.",
+    "method": "Spread Blythe’s dry sheet next to the wet wrapping",
+    "speech": "Tells the long walk by its dry envelope.",
+    "thread": "Wardens",
+    "reply": "The porter knew how hard it rained. The docket now has a damp thumb beside the time."
+  },
+  "open-place-ione": {
+    "want": "My grandson thinks carrying the canal key means I own the water. He's saving for his own.",
+    "need": "Leave Ione time to show him the people waiting at both gates",
+    "values": "stewardship",
+    "belief": "The hand with the key borrows other people's trust.",
+    "method": "Turn Ione’s key from the bank where the queue begins",
+    "speech": "Explains a key by counting the queues on both banks.",
+    "thread": "Gilded Seal",
+    "reply": "He saw both queues. This afternoon he's making keys out of twigs for everyone."
+  },
+  "open-place-edvin": {
+    "want": "I set out four chairs. The fifth witness saw me count them and went home.",
+    "need": "Keep a place at Edvin’s desk for a witness returning late",
+    "values": "welcome",
+    "belief": "A hearing can lose a voice before its first word.",
+    "method": "Carry Edvin’s spare chair through the public door",
+    "speech": "Counts the chair nobody set out when naming the witnesses.",
+    "thread": "Wardens",
+    "reply": "The fifth witness came through the door twice. The second time she stayed."
+  },
+  "facing-sella": {
+    "want": "One empty hook means a missing coat. The other means a child finally got a part.",
+    "need": "Let Sella keep the two empty hooks apart",
+    "values": "opportunity",
+    "belief": "An absence needs a story before it can stand for anything.",
+    "method": "Hang Sella’s rehearsal tags underneath the bare hooks",
+    "speech": "Lets two empty hooks tell different backstage stories.",
+    "thread": "Elsbet’s circle",
+    "reply": "One hook is a worry and one is an opening night. Nice to see them finally get their labels."
+  },
+  "auda-wick": {
+    "want": "My bell can be heard on both banks. The letter in my pocket changes what it means on just one.",
+    "need": "Cover the bell rope while Auda crosses with the letter",
+    "values": "responsibility",
+    "belief": "Hearing a signal and knowing what to do may happen on different days.",
+    "method": "Ring Auda’s small handbell from the far bank",
+    "speech": "Lets a letter change the meaning of the bell she rings.",
+    "thread": "Wardens",
+    "reply": "I got back in time to hear my own bell from the steps. I've delivered both halves now."
+  },
+  "noll-wick": {
+    "want": "I used to fill every gap on the landing. Last night someone sang my rest back to me.",
+    "need": "Stand beside Noll through the quiet bar",
+    "values": "room to answer",
+    "belief": "A rest belongs to whoever dares come in after it.",
+    "method": "Draw Noll’s silent bow through one whole turn",
+    "speech": "Leaves a gap another player can sing across.",
+    "thread": "Elsbet’s circle",
+    "reply": "Your empty hands stayed up. The girl who sang the rest thought you were conducting."
+  },
+  "ket-ribble": {
+    "want": "At my table the loaf comes round twice. There's a boy who only ever takes the second offer.",
+    "need": "Save Ket’s last heel for the second round",
+    "values": "hospitality",
+    "belief": "A person can be hungry while the first plate passes untouched.",
+    "method": "Carry Ket’s bread past the door a second time",
+    "speech": "Makes the second offer sound as ordinary as the first.",
+    "thread": "Wardens",
+    "reply": "Second round. He took the heel and gave me his opinion of the crust."
+  },
+  "fen-clove": {
+    "want": "I tell the night story from memory because the scale master's handwriting still frightens me.",
+    "need": "Sit with Fen while the old scale book is open",
+    "values": "courage",
+    "belief": "Telling it aloud lets me hear where I borrow somebody else's certainty.",
+    "method": "Let Fen weigh the counterweight before weighing a tale",
+    "speech": "Tests an inherited ledger against the sound of a spoken tale.",
+    "thread": "Gilded Seal",
+    "reply": "That old book has soup on the corner. My master used to eat over it too."
+  },
+  "register-tovrie": {
+    "want": "The warm print fades faster in company. I wanted to show it to a person who travels slowly.",
+    "need": "Keep the warm tile beside the late visitor’s seat",
+    "values": "patience",
+    "belief": "A trace can last long enough for one witness and vanish before another.",
+    "method": "Shield Tovrie’s marked tile with an upturned cup",
+    "speech": "Follows a fading print at the speed of the slowest visitor.",
+    "thread": "Elsbet’s circle",
+    "reply": "The print stayed warm until she reached us. She said it looked very like a shy moon."
+  },
+  "register-orren-bell": {
+    "want": "Between the flash and the bell I always count my little brother in. He knows by now.",
+    "need": "Count the quiet beats with Orren at the far rail",
+    "values": "companionship",
+    "belief": "Sharing a signal means finding out when the last person receives it.",
+    "method": "Lift Orren’s ribbon as soon as the light arrives",
+    "speech": "Counts quiet beats in a sibling's familiar rhythm.",
+    "thread": "Wardens",
+    "reply": "Three to the rail. Four to the sheds. My brother's got a job counting with me now."
+  },
+  "register-vellune": {
+    "want": "Everyone draws the front of my nest. I was a chick once. I remember the way out.",
+    "need": "Leave the back opening clear while Vellune watches",
+    "values": "freedom",
+    "belief": "Shelter has to give its occupant a way to leave.",
+    "method": "Turn Vellune’s little nest so its two doors show",
+    "speech": "Offers a sheltered listener a clear way back out.",
+    "thread": "Wardens",
+    "reply": "The smallest bird used the back door twice. Never even looked at the front."
+  },
+  "register-bayette": {
+    "want": "My father carved his initial backwards. Copies get it right more often than he did.",
+    "need": "Save Bayette the first crooked impression",
+    "values": "affection",
+    "belief": "A beautifully corrected mark can lose the hand that made it.",
+    "method": "Press Bayette’s stamp into a scrap facing away from the mirror",
+    "speech": "Cherishes the backward letter in a family stamp.",
+    "thread": "Elsbet’s circle",
+    "reply": "Dad laughed. Said at last I'd got his mistake exactly right."
+  },
+  "register-ostel": {
+    "want": "I lent them my horizon. They sent it back with the fishing huts rubbed off.",
+    "need": "Keep Ostel’s hut on the returned strip",
+    "values": "home",
+    "belief": "A straight line on a chart may cross somebody's front step.",
+    "method": "Lift Ostel’s skyline strip against the harbour window",
+    "speech": "Brings a fishing roof back into the straight skyline.",
+    "thread": "Gilded Seal",
+    "reply": "That's the roof of our old net shed. Neat skyline, terrible place for a straight line."
+  },
+  "register-brannic": {
+    "want": "I clap from behind the door for the stagehands. The leading player thinks I'm his aunt.",
+    "need": "Hold the stage door for Brannic until the hands have bowed",
+    "values": "recognition",
+    "belief": "You cannot tell who received a thank-you by counting the noise.",
+    "method": "Listen with Brannic on both sides of the applause",
+    "speech": "Claps through the door for people out of sight.",
+    "thread": "Wardens",
+    "reply": "The hands bowed and the leading player clapped with me. I may have acquired a nephew."
+  },
+  "register-sessa-vale": {
+    "want": "When the baskets come home empty I want to know if we sold all the fruit or never had any.",
+    "need": "Wait beside Sessa until the pickers return",
+    "values": "livelihood",
+    "belief": "The same empty basket can bring very different news to a household.",
+    "method": "Hang Sessa’s basket beside its morning loading card",
+    "speech": "Waits for the pickers to explain an empty basket.",
+    "thread": "Elsbet’s circle",
+    "reply": "Baskets came back empty with a sprig in each. They'd had a fine morning."
+  },
+  "register-maro": {
+    "want": "I bought my sister a ribbon she could see from the lane. The bell rang and the wind took it sideways.",
+    "need": "Stand at the bend where Maro’s sister waits",
+    "values": "access",
+    "belief": "A signal works for the person who can receive it from there.",
+    "method": "Carry Maro’s ribbon to the bend before pulling the cord",
+    "speech": "Reads a signal from the turn where a sister watches.",
+    "thread": "Wardens",
+    "reply": "She could see it at the bend. From our end it looked as if it had hardly moved."
+  },
+  "register-ro": {
+    "want": "Another window! My landlord groaned. Then he saw which child couldn't see over the sill.",
+    "need": "Keep the small visitor’s line of sight open for Ro",
+    "values": "belonging",
+    "belief": "A view changes with the body that comes to it.",
+    "method": "Slide Ro’s little window down to the low sill",
+    "speech": "Installs a window at the height of the newest spectator.",
+    "thread": "Gilded Seal",
+    "reply": "Her very first sight was of the window cleaner. They waved solemnly at each other."
+  },
+  "liri-pell": {
+    "want": "A good fitter leaves room for a glove. Nobody taught me that until winter bit my knuckle.",
+    "need": "Let Liri try the handle in a winter glove",
+    "values": "craft",
+    "belief": "The tool has to fit on the day the job is hardest.",
+    "method": "Cover Liri’s gauge hand with the thick mitten",
+    "speech": "Talks winter tools through a pair of gloves.",
+    "thread": "Elsbet’s circle",
+    "reply": "I can get my knuckles round it now. Winter's going to have to find another joke."
+  },
+  "tessel-fen": {
+    "want": "I mended the ferry path so my mother could bring the wide cart. The fine new board blocks her turn.",
+    "need": "Give Tessel room to turn the loaded handcart",
+    "values": "common ground",
+    "belief": "A board can guide the walker and bar the porter in the same breath.",
+    "method": "Roll Tessel’s cart around the foot of the notice",
+    "speech": "Describes the turning circle of the widest family cart.",
+    "thread": "Gilded Seal",
+    "reply": "Mother took the turn in one try. Left two magnificent wet arcs for the surveyor."
+  },
+  "aven-dorr": {
+    "want": "The first order I signed was the one I'd begged my own foreperson to change. My hand remembered the position.",
+    "need": "Keep an apprentice’s stool at Aven’s next shift meeting",
+    "values": "accountability",
+    "belief": "A signature can turn yesterday's complaint into tomorrow's instruction.",
+    "method": "Turn Aven’s old rota round to the apprentice’s side",
+    "speech": "Reads a foreperson's signature in an apprentice's voice.",
+    "thread": "Wardens",
+    "reply": "An apprentice pointed out the longest shift on the rota. It was my own."
+  },
+  "agate-vale": {
+    "want": "I repaired the grand chair. The quiet witness chose the broken one by the door.",
+    "need": "Sit by Agate while she mends the chair the witness chose",
+    "values": "dignity",
+    "belief": "Comfort includes being able to leave a room with dignity.",
+    "method": "Measure Agate’s loose chair leg on the hearing floor",
+    "speech": "Asks which seat the witness can leave easily.",
+    "thread": "Elsbet’s circle",
+    "reply": "She's taken the seat by the door again. This time she left her coat on the peg."
+  },
+  "courier-bew": {
+    "want": "A crate marked light is still my back's problem if the last shipper guessed.",
+    "need": "Give Bew time to ask the loader about the bottom crate",
+    "values": "care",
+    "belief": "Freight words are promises to the next pair of arms.",
+    "method": "Lift one end of Bew’s crate before moving the tally",
+    "speech": "Weighs the clerk's words in the loader's hands.",
+    "thread": "Wardens",
+    "reply": "It was the bottom plank that was heavy. The loader remembered the repair."
+  },
+  "courier-pella": {
+    "want": "I can call thunder in three voices. What I want is one person to whisper when I've missed my cue.",
+    "need": "Wait in Pella’s wing with the soft warning cue",
+    "values": "trust",
+    "belief": "Making a loud room work sometimes takes a quiet correction.",
+    "method": "Tap Pella’s prompt rail with one finger",
+    "speech": "Listens for a soft rail tap before the loud cue.",
+    "thread": "Elsbet’s circle",
+    "reply": "Your tap went straight down my shoe. I went on without having to look at the wings."
+  },
+  "almanac-rix": {
+    "want": "I print invitations and drum the parade. The people who can't read my card can follow me right past their own turning.",
+    "need": "Hold Rix’s corner until the last guest turns",
+    "values": "inclusion",
+    "belief": "An invitation has to reach the person it was meant to welcome.",
+    "method": "Beat Rix’s turn signal from inside the side street",
+    "speech": "Drums directions from inside the street where a guest must turn.",
+    "thread": "Gilded Seal",
+    "reply": "The last guest led me back by a lane I've drummed past every spring."
+  },
+  "almanac-jori": {
+    "want": "I made a lantern that paints the pavement blue. The girl upstairs only sees the unpainted side.",
+    "need": "Bring Jori’s lamp up to the girl’s landing",
+    "values": "perspective",
+    "belief": "A picture has another audience on the other side of the glass.",
+    "method": "Turn Jori’s pane slowly beside the upstairs window",
+    "speech": "Gives a second colour from the other side of the pane.",
+    "thread": "Elsbet’s circle",
+    "reply": "Upstairs the whole lantern was the colour of a lemon. She drew her own picture."
+  },
+  "cup-cen": {
+    "want": "I cut the cocoa price into the sign in winter. My wrists hurt at the thought of changing it in spring.",
+    "need": "Cover the counter while Cen cuts a space for a loose price",
+    "values": "repair",
+    "belief": "The cost of changing a sign can quietly decide what it says.",
+    "method": "Slide a new wooden numeral into Cen’s cocoa board",
+    "speech": "Feels a price change in the wrists of the sign cutter.",
+    "thread": "Gilded Seal",
+    "reply": "The new price fits in the old sign. Now my hands can go back to making cocoa."
+  },
+  "cup-kit": {
+    "want": "A loose cart wheel and a late actor make the very same noise behind the curtain. Never tell a fitter that.",
+    "need": "Wait with Kit until the next sound has a face",
+    "values": "humility",
+    "belief": "Knowing the cue by heart doesn't tell you what made it today.",
+    "method": "Roll Kit’s unladen cart past the backstage cloth",
+    "speech": "Lets a cart wheel and an actor both answer the cue.",
+    "thread": "Elsbet’s circle",
+    "reply": "The sound was the young actor pushing the cart. We were both right for half a second."
+  },
+  "stacks-opal": {
+    "want": "I make cabinets that travel. My father measures a good cupboard by the number of storms it stays shut.",
+    "need": "Give Opal and her father turns at the same latch",
+    "values": "durability",
+    "belief": "A safe latch has to open for the hand that comes after the storm.",
+    "method": "Tilt Opal’s sample cabinet as if the ferry were turning",
+    "speech": "Asks a ferry passenger to open the cabinet latch.",
+    "thread": "Wardens",
+    "reply": "Father opened my latch smiling. I've never before seen a cupboard pass a family inspection."
+  },
+  "stacks-tallis": {
+    "want": "My niece asked why the lamp always finds the hero. I used to rig the rope. I ought to answer her.",
+    "need": "Keep the lamp on Tallis’s niece while she asks her question",
+    "values": "visibility",
+    "belief": "Somebody chooses the person everybody sees first.",
+    "method": "Hand Tallis the side pulley for the second pool of light",
+    "speech": "Gives a pool of stage light to the hand on the pulley.",
+    "thread": "Gilded Seal",
+    "reply": "My niece gave her pool of light to the woman on the pulley. That's a director for you."
+  },
+  "wire-oda": {
+    "want": "I have my mother's ferry song down to the last note. When she laughed the needle skipped.",
+    "need": "Give Oda her own turn to tell what happened in the gap",
+    "values": "memory",
+    "belief": "The part a recorder loses may be what a listener came to keep.",
+    "method": "Play Oda’s silent groove at the old ferry bench",
+    "speech": "Hears laughter in the skipped groove of a recording.",
+    "thread": "Elsbet’s circle",
+    "reply": "Mother sneezed after she laughed. I had completely forgotten until you let me tell it."
+  },
+  "wire-tavi": {
+    "want": "My legs have retired. My hands still jump when the receiving wheel gives its first click.",
+    "need": "Give Tavi the first turn at a seated height",
+    "values": "continuity",
+    "belief": "A retired runner still knows what a late handoff feels like.",
+    "method": "Slow Tavi’s wheel until each splice can be felt",
+    "speech": "Finds the first click of the wheel with a seated hand.",
+    "thread": "Wardens",
+    "reply": "The first click came through my hand before either of us heard it. Still got it."
+  },
+  "quarter-matel": {
+    "want": "I patched sails before I kept hours. My tide clock keeps excellent time in a room without a boat.",
+    "need": "Walk Matel from the clock face to the actual waterline",
+    "values": "calibration",
+    "belief": "A correct clock can give a boat the wrong instruction.",
+    "method": "Pin Matel’s strip of sailcloth at today's water mark",
+    "speech": "Reads the tide clock with a scrap of old sailcloth.",
+    "thread": "Elsbet’s circle",
+    "reply": "At the steps the sea was already in. The clock will get a second line of numbers."
+  },
+  "grove-gresa-oker": {
+    "want": "I sing alto while I push saplings uphill. The little one at the back is the only one that gets the whole song.",
+    "need": "Turn Gresa’s cart so the smallest sapling faces the yard",
+    "values": "tenderness",
+    "belief": "Carrying living things makes the rehearsal wait its turn.",
+    "method": "Hold Gresa’s back wheel through the last low note",
+    "speech": "Tells a song in the order the cart's saplings hear it.",
+    "thread": "Wardens",
+    "reply": "The little tree made the turn without losing a leaf. So did my song."
+  },
+  "door-neska": {
+    "want": "I put every guest to bed. Last night one asked which ballad I sing to get myself home.",
+    "need": "Save Neska a chair after the last guest goes upstairs",
+    "values": "reciprocity",
+    "belief": "A keeper needs somebody to keep the end of a song for her.",
+    "method": "Pick up Neska’s answering line beside the night door",
+    "speech": "Offers an answering line from the far side of a night door.",
+    "thread": "Wardens",
+    "reply": "I hadn't realised my homeward song had a second part until you took it."
+  },
+  "door-tover": {
+    "want": "I carry soup till it's gone. I sing till my breath is gone. Yesterday I tried to do both down the stairs.",
+    "need": "Take one end of Tover’s pot at the steep stair",
+    "values": "limits",
+    "belief": "A generous offer still has to leave hands free for the work.",
+    "method": "Wait for Tover’s next breath before lifting the soup",
+    "speech": "Waits for a breath before asking somebody to lift the pot.",
+    "thread": "Gilded Seal",
+    "reply": "Two pairs of hands. One whole pot reached supper. I had breath left for the low note."
+  },
+  "door-yilka": {
+    "want": "From my roof the harbour looks empty. I could hear the children under the awning the whole time.",
+    "need": "Make room beside Yilka for a listener from the quay",
+    "values": "attention",
+    "belief": "What the roof conceals can be common knowledge down on the stones.",
+    "method": "Shade Yilka’s lamp and listen below the awning",
+    "speech": "Gives the roof view time to answer the quay sound.",
+    "thread": "Elsbet’s circle",
+    "reply": "A boy on the quay named three boats I couldn't see. He'll be up here with me next watch."
+  },
+  "moth-runner-tritta": {
+    "want": "My moth will settle on any cap except the one I have just mended for it. There's gratitude for you.",
+    "need": "Give Tritta’s moth a choice of two perches",
+    "values": "agency",
+    "belief": "A creature can accept your company without accepting your plan.",
+    "method": "Let Tritta’s two-tailed moth investigate the loose seam",
+    "speech": "Lets a stubborn moth have the last word on a cap.",
+    "thread": "Wardens",
+    "reply": "She picked the unmended cap. Then she slept in my pocket all the way home."
+  },
+  "river-emlet": {
+    "want": "I know the smell of a flour sack that's been in the post cart. Try putting that on a receipt.",
+    "need": "Keep Emlet’s sample sack beside the baker’s till",
+    "values": "experience",
+    "belief": "A remembered smell can tell you where to start asking for a receipt.",
+    "method": "Open Emlet’s clean flour bag beside the posted one",
+    "speech": "Reads a flour sack with a postman's remembered nose.",
+    "thread": "Elsbet’s circle",
+    "reply": "The baker recognised that smell. He'd carried my old post bag as a boy."
+  },
+  "river-rialla": {
+    "want": "Pendlow thinks I sort the letters by address. His I know by the smear of butter on the flap.",
+    "need": "Give Rialla her brother’s unopened letter at the mooring",
+    "values": "kinship",
+    "belief": "Familiar hands leave traces a stranger could read differently.",
+    "method": "Put Rialla’s two look-alike envelopes under the quay lamp",
+    "speech": "Knows a brother's butter mark before opening the letter.",
+    "thread": "Elsbet’s circle",
+    "reply": "Butter on the flap. An invitation to breakfast inside. It could hardly have been anything else."
+  },
+  "river-pendlow": {
+    "want": "The oven skate sleeps against my warmest tin. If I'm late with the boat bread, everybody blames my sister.",
+    "need": "Save Pendlow a warm tin away from the delivery baskets",
+    "values": "loyalty",
+    "belief": "The person at the mooring is the last person to see what delayed the boat.",
+    "method": "Move Pendlow’s bread rack while the skate keeps its warm patch",
+    "speech": "Keeps one tin warm for a creature outside the delivery rota.",
+    "thread": "Wardens",
+    "reply": "Skate asleep, rolls delivered, sister on time. I shall write that on the tin."
+  },
+  "optics-nim": {
+    "want": "I still sew a spare button inside every lead coat. One day I'd like to be wearing it when it comes off.",
+    "need": "Hold Nim’s place in the light while the button is sewn",
+    "values": "opportunity",
+    "belief": "An understudy can know what a part needs before anybody hears the voice.",
+    "method": "Pass Nim the wardrobe needle from the audience side",
+    "speech": "Feels for a spare button before stepping into a lead's light.",
+    "thread": "Gilded Seal",
+    "reply": "The button held through my bow. Nobody noticed. Imagine how properly pleased I am."
+  },
+  "temple.1.agent": {
+    "want": "I painted the Y last night. I promised the boy he'd get to put in the two dots above the stall door.",
+    "need": "Leave Mabry and the boy a brush each",
+    "values": "earned trust",
+    "belief": "A child who can reach the receipt can decide whether to trust the stamp.",
+    "method": "Let Mabry try the brass on the unstamped side",
+    "speech": "Measures the cost of gold in letters on a stall sign.",
+    "thread": "Gilded Seal",
+    "reply": "He painted one yellow dot and one blue. I shall be asked about them for the rest of my working life."
+  },
+  "temple.1.guardian": {
+    "want": "There's still a dark patch by the little bowl. It's just where a short customer stands.",
+    "need": "Lower Brannoc’s spare lamp for the smallest visitor",
+    "values": "access",
+    "belief": "A visitor's height changes the reach of my light.",
+    "method": "Hold Brannoc’s second wick under the brass lip",
+    "speech": "Counts what the light can reach from a child's height.",
+    "thread": "Elsbet’s circle",
+    "reply": "The boy saw his face in the bowl. He puffed his cheeks out at it. That's a successful inspection."
+  },
+  "temple.2.agent": {
+    "want": "I'd like my dad to read the broken line aloud without trying to mend it in his head.",
+    "need": "Sit with Wystan’s father over the torn line",
+    "values": "kinship",
+    "belief": "A gap that somebody can point to is easier to live with than a word they must pretend to see.",
+    "method": "Put Wystan’s untrimmed slip on the reading desk",
+    "speech": "Makes his father's next public reading the scale of a decision.",
+    "thread": "Wardens",
+    "reply": "Dad said “here's where it went.” Nobody laughed. One of the visitors pulled up a chair."
+  },
+  "temple.2.guardian": {
+    "want": "I keep a little pin for the first child who notices the dates are on different leaves.",
+    "need": "Save Marrow a lower pin on the display",
+    "values": "chronology",
+    "belief": "Two bits of reed can touch for centuries without sharing a birthday.",
+    "method": "Pass Marrow the later roll from the bottom shelf",
+    "speech": "Describes archival rank as the physical height of a reed hook.",
+    "thread": "Elsbet’s circle",
+    "reply": "The child noticed the space before either date. I had pinned my own eye too high."
+  },
+  "temple.3.agent": {
+    "want": "I want my sister to see her whole name on something she can take home.",
+    "need": "Give Osric a broad envelope and time to address it",
+    "values": "belonging",
+    "belief": "A cramped line tells you the clerk had little space. It tells you nothing about the size of a life.",
+    "method": "Open Osric’s family slip at the uncut edge",
+    "speech": "Fits a bureaucratic space around a sister's handwriting.",
+    "thread": "Wardens",
+    "reply": "She wrote very big indeed this time. We had to put the stamp on the other side."
+  },
+  "temple.3.guardian": {
+    "want": "I promised to stay till the seed comes up. My legs could still do with an afternoon away.",
+    "need": "Take a watch at Mossgrave’s sister’s seed tray",
+    "values": "patience",
+    "belief": "A thing that sleeps leaves an observer with very little to count.",
+    "method": "Set Mossgrave’s two dated slips beside the seed tray",
+    "speech": "Holds open the length of a season for a seed.",
+    "thread": "Elsbet’s circle",
+    "reply": "There was nothing green when I got back. I was glad we'd both seen that day."
+  },
+  "temple.4.agent": {
+    "want": "At the next bell I want a little girl on the quay to ask me her question herself.",
+    "need": "Walk Astor to the quay before the teacher arrives",
+    "values": "respect",
+    "belief": "A forecast changes when the person asking tells you what they need to save.",
+    "method": "Set Astor’s vane at the height of the quay rail",
+    "speech": "Starts with what a child needs to carry off the quay.",
+    "thread": "Gilded Seal",
+    "reply": "She was worried about her wooden pony getting wet. I know just the shelf."
+  },
+  "temple.4.guardian": {
+    "want": "I really did draw the child a graph. I wish I'd taken her shoes upstairs first.",
+    "need": "Carry the little pair of shoes up Halcy’s stair",
+    "values": "practical care",
+    "belief": "A range alone cannot choose a dry landing.",
+    "method": "Mark Halcy’s flood line beside the lowest step",
+    "speech": "Translates the water range into a place for a pair of shoes.",
+    "thread": "Wardens",
+    "reply": "A shoe fits on that step with a little room for a marble. Our graph had neither."
+  },
+  "temple.5.agent": {
+    "want": "My brother's listening post has a crooked rung. I don't want them to repair it before he comes home.",
+    "need": "Keep the carpenter’s mark beside Gale’s count",
+    "values": "loyalty",
+    "belief": "Counting calls is a separate job from identifying callers.",
+    "method": "Listen with Gale underneath the listening post",
+    "speech": "Counts calls with one ear on the post a brother built.",
+    "thread": "Wardens",
+    "reply": "He made it crooked so my foot would fit. He'd forgotten. My foot hadn't."
+  },
+  "temple.5.guardian": {
+    "want": "I'd like to count a whole dawn with somebody who never knew my sister's voice.",
+    "need": "Share the silent watch beside Ninefold",
+    "values": "remembrance",
+    "belief": "One bird can lend a whole wood its voice without growing a second throat.",
+    "method": "Watch Ninefold’s two reeds during one sustained call",
+    "speech": "Lets two counts stand beside a memory of a sister.",
+    "thread": "Elsbet’s circle",
+    "reply": "You heard one. I heard one and missed one. Best morning I've had in weeks."
+  },
+  "temple.6.agent": {
+    "want": "Her method is on the page. Tonight I'd like her to walk through the door first.",
+    "need": "Hold Harl’s guild door for the unnamed worker",
+    "values": "recognition",
+    "belief": "A method can travel into a book while its maker is kept outside.",
+    "method": "Mark Harl’s comparison strip with its maker’s initials",
+    "speech": "Asks whose feet can follow a method into the guild.",
+    "thread": "Gilded Seal",
+    "reply": "They asked who she was. She answered by asking them for the tongs."
+  },
+  "temple.6.guardian": {
+    "want": "I want the apprentice to hear what my elbow sounds like before the forge gets warm.",
+    "need": "Leave Grisel’s first cold strike out of the tally",
+    "values": "honesty",
+    "belief": "An instrument can change between a worker's breakfast and dinner.",
+    "method": "Warm Grisel’s spare clamp before calling the next strike",
+    "speech": "Uses the morning note of an unreliable elbow to puncture certainty.",
+    "thread": "Elsbet’s circle",
+    "reply": "She heard my bad note and brought me a cup of tea. We tested the hammer afterwards."
+  },
+  "temple.7.agent": {
+    "want": "I'd like the press to sleep long enough for the people who set the type to eat together.",
+    "need": "Take Liesl’s turn at the idle press during supper",
+    "values": "livelihood",
+    "belief": "A printer's name tells you who stood at the press. The line may have come a great deal further.",
+    "method": "Turn Liesl’s amended sheet against the light",
+    "speech": "Counts a silent press in missed suppers.",
+    "thread": "Gilded Seal",
+    "reply": "They ate standing up from habit. Next time I shall hide the composing sticks."
+  },
+  "temple.7.guardian": {
+    "want": "We have two perfectly good memories of one cup of coffee. Who will buy us another cup?",
+    "need": "Set two cups beside Mirro and Orrim’s unturned page",
+    "values": "companionship",
+    "belief": "Even a shared accident may leave different stains on the two sides.",
+    "method": "Help the twins trace the coffee ring to its edge",
+    "speech": "Borrows a twin's memory and asks for the other side of the page.",
+    "thread": "Elsbet’s circle",
+    "reply": "My brother takes sugar. I don't. There's one part of the story we can still tell apart."
+  },
+  "temple.8.agent": {
+    "want": "I'd like to hear our returning boat call my grandmother's reef by the little name she used.",
+    "need": "Leave a quiet turn on Penrose’s radio",
+    "values": "safe passage",
+    "belief": "One brief name saves breath. A second can guide a different boat home.",
+    "method": "Carry Penrose’s chart to the sheltered side of the radio",
+    "speech": "Gives a radio call in the breath left to a returning pilot.",
+    "thread": "Gilded Seal",
+    "reply": "There it was between two calls for rope. I'd been listening for a grand announcement."
+  },
+  "temple.8.guardian": {
+    "want": "I am saving my sister a place on the chart where there is room to write in her hand.",
+    "need": "Keep Saltmark’s clean chart open on the low table",
+    "values": "authorship",
+    "belief": "Local pilots leave room to turn in a gap a printer wants to fill.",
+    "method": "Follow Saltmark’s unprinted bend with a finger",
+    "speech": "Reads the listening history behind a printed reef.",
+    "thread": "Elsbet’s circle",
+    "reply": "She drew a little fish before she wrote a word. We're leaving the fish."
+  },
+  "temple.9.agent": {
+    "want": "I promised a caller an evening when she could just sit and clap.",
+    "need": "Take Lucan’s handbell while the caller finds a seat",
+    "values": "rest",
+    "belief": "A full house and a listening house make different silences.",
+    "method": "Walk Lucan’s empty aisle after the house lights rise",
+    "speech": "Hears an audience's held breath in empty chairs.",
+    "thread": "Wardens",
+    "reply": "She clapped in the wrong place on purpose. I could recognise her anywhere."
+  },
+  "temple.9.guardian": {
+    "want": "The next chair I save is for the child who only knows the play from behind the kitchen wall.",
+    "need": "Move the Prompter’s spare cushion to the front rail",
+    "values": "inclusion",
+    "belief": "A cue heard through plaster belongs to a different performance.",
+    "method": "Replay the whispered cue from the Prompter’s working side",
+    "speech": "Speaks to the spectator who watched thirty years from the wings.",
+    "thread": "Elsbet’s circle",
+    "reply": "The child could say the whole play. Had never seen the blue coat. Started laughing at once."
+  },
+  "temple.10.agent": {
+    "want": "One Saturday I'd like my mother to open her flour jar and find a loaf already waiting.",
+    "need": "Carry Cass’s flour while her mother counts the empty jar",
+    "values": "solidarity",
+    "belief": "A relief price should tell the relief worker what is missing as well as what is paid.",
+    "method": "Weigh Cass’s wicker before it goes on sale",
+    "speech": "Prices a relief decision from two household jars.",
+    "thread": "Wardens",
+    "reply": "She put half the loaf in the other jar. You can't beat her at this game."
+  },
+  "temple.10.guardian": {
+    "want": "My scale has a beautiful brass cover. I've never once had to lift it with a baby on my hip.",
+    "need": "Let Quarta bring the basket to the buyer’s end",
+    "values": "equity",
+    "belief": "The reading ought to survive the everyday way somebody actually buys a loaf.",
+    "method": "Turn Quarta’s scale so both hands can reach the tare",
+    "speech": "Compares an even-handed balance with the cost of a loaf.",
+    "thread": "Elsbet’s circle",
+    "reply": "I had to put it down. The mother had been balancing everything on one little finger."
+  },
+  "temple.11.agent": {
+    "want": "I would like my sister to answer just the last note. The rest of the song can wait.",
+    "need": "Stand with Dorran through an unanswered verse",
+    "values": "reconciliation",
+    "belief": "A silent bank may be keeping time with you or asking you to stop.",
+    "method": "Carry Dorran’s first call across the weir without a vote slip",
+    "speech": "Lets a sung reply travel to the far bank in its own time.",
+    "thread": "Wardens",
+    "reply": "She opened her window. I managed to come home without calling that an answer."
+  },
+  "temple.11.guardian": {
+    "want": "Three of us have spent a week on this meeting. Lull would like one afternoon to go fishing.",
+    "need": "Mind the three cups while Lull takes a turn on the bank",
+    "values": "consent",
+    "belief": "A neighbour's silence cannot sign a standing order for them.",
+    "method": "Turn the absent guardian’s cup sideways during the count",
+    "speech": "Three voices take turns disagreeing about the meaning of a cup.",
+    "thread": "Elsbet’s circle",
+    "reply": "Lull came back with an empty pail and an opinion. Brisk wrote them down separately."
+  },
+  "temple.12.agent": {
+    "want": "I want our west-street postie to get home early for once. Our timetable says he already does.",
+    "need": "Take Nyle’s last delivery with the west-street postie",
+    "values": "workload",
+    "belief": "A route that looks quick at a desk can still spend someone's whole evening.",
+    "method": "Walk Nyle’s last block before moving the starting peg",
+    "speech": "Describes quiet streets from an unheard resident's doorstep.",
+    "thread": "Gilded Seal",
+    "reply": "We got home late. The postie had supper waiting for both of us. He'd done the sums."
+  },
+  "temple.12.guardian": {
+    "want": "I'd like the woman at the blue door to sign her own house into my model.",
+    "need": "Bring Ledgerlock’s little street out to the actual doorstep",
+    "values": "participation",
+    "belief": "The person who can open the door knows a detail my gears can't record.",
+    "method": "Fit Ledgerlock’s blue door from the resident’s side",
+    "speech": "Names the turn of every gear before admitting a house needs a name.",
+    "thread": "Elsbet’s circle",
+    "reply": "She turned the doorstep round. Our machine had had her stepping through the wall."
+  },
+  "temple.13.agent": {
+    "want": "I want my family to leave a page closed for an afternoon without anyone guessing why.",
+    "need": "Let Tolly’s family put away its page in peace",
+    "values": "privacy",
+    "belief": "A blank left by the teller belongs to a different person than a blank left by the keeper.",
+    "method": "Offer Tolly’s spare slip to the original speaker",
+    "speech": "Opens a family page only as far as its owners allow.",
+    "thread": "Wardens",
+    "reply": "They used the clean table to shell peas. A whole afternoon that belongs to nobody's catalogue."
+  },
+  "temple.13.guardian": {
+    "want": "I want the owner of that breath to laugh at a different part of a recording for once.",
+    "need": "Wait for Hollin to hand the listening key back",
+    "values": "permission",
+    "belief": "A familiar voice is still somebody else's to lend.",
+    "method": "Play Hollin’s approved excerpt from the listener’s seat",
+    "speech": "Waits for permission in the middle of identifying a voice.",
+    "thread": "Elsbet’s circle",
+    "reply": "They played the wrong verse deliberately. First time I've heard the owner laugh on both sides of the box."
+  },
+  "temple.14.agent": {
+    "want": "I'd like the child at the front to be the one who asks the lecturer where her model ends.",
+    "need": "Hold Sabine’s pointer until the young questioner is ready",
+    "values": "curiosity",
+    "belief": "A powerful model can keep the modeller's oldest question outside its frame.",
+    "method": "Stand Sabine’s model beside the unmodelled house",
+    "speech": "Remembers who brought the question after a lecture is over.",
+    "thread": "Gilded Seal",
+    "reply": "The lecturer sat down on the floor. Apparently the child was the only one at the right height."
+  },
+  "temple.14.guardian": {
+    "want": "My mother wants to pick the demonstration apple. She's never seen a blue ribbon worth eating.",
+    "need": "Save Tansy’s smallest tree for a family visit",
+    "values": "belonging",
+    "belief": "The prize row and the row that fed a family can answer different questions.",
+    "method": "Place Tansy’s sample tray under the smallest tree",
+    "speech": "Tells a prize row and a family tree apart by their apples.",
+    "thread": "Wardens",
+    "reply": "She chose the crooked apple. It was the only one she could get in her coat pocket."
+  }
+}

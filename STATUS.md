@@ -14,6 +14,8 @@ At 112 locations, 175 fictional keepers now offer their own requests during ordi
 
 The rivals’ post links fourteen opponents in seven two-world mysteries. Either address can start a case. The next holder sees which traces went public and which stayed with a witness. Matched traces can change the testimony at the existing Council hearing. [Cases and their witnesses](docs/STORY_BIBLE.md#the-rivals-post)
 
+All 228 fictional speakers have personal scenes after their shifts. Each remembers whether the Guardian covered a need or worked alongside them. The first promise can change trust once. It can be revisited in a later conversation. [Profiles and dialogue](docs/VOICES.md#when-the-shift-ends)
+
 ## Chapter downloads and the historical cast
 
 The fresh menu opens with about 4.7 kB of compressed JavaScript. The playable Nexus loads its own map, dialogue and guide, and later rooms request their story sections and artwork as needed. A saved game can reopen directly in its chapter. The published map, dialogue and hint checks cover all 164 rooms across the Nexus and fifteen chapters. [Download measurements and browser journeys](docs/BROWSER_CHECKS.md#chapter-downloads)
