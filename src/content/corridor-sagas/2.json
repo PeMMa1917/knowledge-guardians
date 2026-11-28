@@ -1,0 +1,290 @@
+[
+ {
+  "saga": 3,
+  "person": "Leila",
+  "object": "British Museum’s first sheet of Papyrus Sallier III",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 4,
+  "person": "Nellis Haig",
+  "object": "Gujarat silk patolu sari",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 7,
+  "person": "Agate Vale",
+  "object": "Byzantine deep plate",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 10,
+  "person": "Tessel Fen",
+  "object": "Lake Shore",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 13,
+  "person": "Leila",
+  "object": "Von Storch Breaker, Del. & Hudson Canal Co.",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 15,
+  "person": "Nellis Haig",
+  "object": "Hudson River, Logging",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 16,
+  "person": "Agate Vale",
+  "object": "High Bridge in Tivoli",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 20,
+  "person": "Tessel Fen",
+  "object": "Venetian Capriccio with Boats Unloading",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 22,
+  "person": "Leila",
+  "object": "keepers’ practice swatch",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 24,
+  "person": "Nellis Haig",
+  "object": "Bukhara munisak",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 27,
+  "person": "Agate Vale",
+  "object": "Portrait plate from Faenza",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 30,
+  "person": "Tessel Fen",
+  "object": "Silver Sauce Boat",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 33,
+  "person": "Leila",
+  "object": "Cherry Blossoms in Full Bloom Along the Sumida River [Sumida-gawa...",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 35,
+  "person": "Nellis Haig",
+  "object": "Blue Salt Boat",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 37,
+  "person": "Agate Vale",
+  "object": "View of the Mill and Bridge on the Noordwest Buitensingel in The...",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 39,
+  "person": "Tessel Fen",
+  "object": "Moonlit Landscape with Bridge",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 41,
+  "person": "Leila",
+  "object": "Turin Mine Map",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 45,
+  "person": "Nellis Haig",
+  "object": "Shahr-i Sabz khalat",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 46,
+  "person": "Agate Vale",
+  "object": "Sceaux Plate of Walnuts",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 49,
+  "person": "Tessel Fen",
+  "object": "Street and Bridge at Simoda",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 51,
+  "person": "Leila",
+  "object": "New York Harbor with Pilot Boat \"George Washington\"",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 54,
+  "person": "Nellis Haig",
+  "object": "Steam Boats",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 58,
+  "person": "Agate Vale",
+  "object": "Fortune and Virtue Sailing a Boat [reverse]",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 59,
+  "person": "Tessel Fen",
+  "object": "Old Man by a River",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 63,
+  "person": "Leila",
+  "object": "Iznik floral spandrel",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 64,
+  "person": "Nellis Haig",
+  "object": "Mandaya dagmay",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 66,
+  "person": "Agate Vale",
+  "object": "Visigothic belt buckle",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 70,
+  "person": "Tessel Fen",
+  "object": "Warwick Castle on the River Avon",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 72,
+  "person": "Leila",
+  "object": "Personification of the River Arno [reverse]",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 74,
+  "person": "Nellis Haig",
+  "object": "Carbondale, Section 1, Del. & Hudson Canal Co.",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 77,
+  "person": "Agate Vale",
+  "object": "Grand Canal Looking Toward the Salute and the Dogana",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 80,
+  "person": "Tessel Fen",
+  "object": "Red River Dog Sled",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 82,
+  "person": "Leila",
+  "object": "Jug with running animals",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 84,
+  "person": "Nellis Haig",
+  "object": "Teapot with Begonias",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 86,
+  "person": "Agate Vale",
+  "object": "Cloisonné-mounted belt",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 90,
+  "person": "Tessel Fen",
+  "object": "Wooded Upland Landscape with a Bridge",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 92,
+  "person": "Leila",
+  "object": "Cottage by a River",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 94,
+  "person": "Nellis Haig",
+  "object": "Pont-y-Pair over the River Conway above Llanrwst in the County of...",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 98,
+  "person": "Agate Vale",
+  "object": "Plate - \"Erie Canal\"",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 100,
+  "person": "Tessel Fen",
+  "object": "Plate 20. Source of the Laramie River",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 103,
+  "person": "Leila",
+  "object": "Damascus brass bowl",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 105,
+  "person": "Nellis Haig",
+  "object": "Cloisonné napkin ring",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 108,
+  "person": "Agate Vale",
+  "object": "Jiahu crane-bone flute",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 110,
+  "person": "Tessel Fen",
+  "object": "Silver Pap Boat",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 113,
+  "person": "Leila",
+  "object": "Fruit Dish - \"Brooklyn Ferry\"",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 114,
+  "person": "Nellis Haig",
+  "object": "Boating Party",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 117,
+  "person": "Agate Vale",
+  "object": "Mountain Lake with Monks in a Boat",
+  "place": "Royal Records Room"
+ },
+ {
+  "saga": 119,
+  "person": "Tessel Fen",
+  "object": "Falls of the Snake River",
+  "place": "Royal Records Room"
+ }
+]

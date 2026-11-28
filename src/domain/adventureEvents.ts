@@ -1,3 +1,4 @@
+import {sagaMove,sagaName} from './corridorSagas';
 import {templeAction} from './temples';
 import {tiedThread} from './trailThread';
 import {equippedLoan,loanReading,readerAnswer,readerLetters,selectedLoan,setupLabels} from './fieldLoan';
@@ -77,6 +78,10 @@ export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, ne
       return diaryEvent(key+cmd.setting,'tool',ref,desk.controls[cmd.setting],
         'I tried '+loan.record.name+' at '+desk.place+'. '+result.strips.map(row=>row.label+' · '+row.text).join(' / ')+'. '+result.observation,
         {sourceIds:[loan.record.specimen.source]},{fixedToolPrefix:key});
+    }
+    case 'SagaMove': {
+      const result=sagaMove(previous,cmd);
+      return diaryEvent('saga:'+cmd.saga+':'+previous.mapId+':'+cmd.move+':'+cmd.choice,'choice','saga.'+cmd.saga,sagaName(cmd.saga),result.title+'. '+result.text);
     }
     case 'TempleAction': {
       const result=templeAction(previous,cmd);

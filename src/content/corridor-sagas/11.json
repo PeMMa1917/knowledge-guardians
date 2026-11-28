@@ -1,0 +1,290 @@
+[
+ {
+  "saga": 3,
+  "person": "Weirkeeper Omi",
+  "object": "La chaumière au puits",
+  "place": "the Route Gallery"
+ },
+ {
+  "saga": 5,
+  "person": "Clerk Sena",
+  "object": "Relief with enthroned ruler",
+  "place": "the Bearing Room"
+ },
+ {
+  "saga": 6,
+  "person": "Osma Verr",
+  "object": "Avenue of Fountains",
+  "place": "the Fibre Gallery"
+ },
+ {
+  "saga": 9,
+  "person": "Tarin",
+  "object": "Mahantango Valley Farm",
+  "place": "the Material Stores"
+ },
+ {
+  "saga": 12,
+  "person": "Emlet Garth",
+  "object": "Woman's Skirt",
+  "place": "Field Store"
+ },
+ {
+  "saga": 15,
+  "person": "Tritta",
+  "object": "Marsh Farm in Early Spring",
+  "place": "Council Yard"
+ },
+ {
+  "saga": 18,
+  "person": "Cen Aster",
+  "object": "Blind Man with a Staff and Water-flask, Led by a Dog [reverse]",
+  "place": "Old Weir"
+ },
+ {
+  "saga": 19,
+  "person": "Aven Beck",
+  "object": "Blanket or Cover",
+  "place": "Beneath the Pegs"
+ },
+ {
+  "saga": 21,
+  "person": "Taev Harn",
+  "object": "Silver Hot Water Urn",
+  "place": "the Ribbon That Did Not Ring · Night Register"
+ },
+ {
+  "saga": 25,
+  "person": "Velaine",
+  "object": "Harlequin and Scaramouche Create a \"Fountain\"",
+  "place": "the Letter Quay"
+ },
+ {
+  "saga": 28,
+  "person": "Rialla Mallow",
+  "object": "Curtain panel",
+  "place": "Dry Service Lane"
+ },
+ {
+  "saga": 29,
+  "person": "Agate Vale",
+  "object": "Plate with border of grotesques on an orange ground; in the...",
+  "place": "Lower Channel and Seed Rows"
+ },
+ {
+  "saga": 32,
+  "person": "Kit Oriel",
+  "object": "Fall of Satan",
+  "place": "the Glancing Room"
+ },
+ {
+  "saga": 34,
+  "person": "Odal Mett",
+  "object": "Scarf End",
+  "place": "the Route Gallery"
+ },
+ {
+  "saga": 38,
+  "person": "Zyra Bess",
+  "object": "Chapterhouse, Fountains Abbey",
+  "place": "the Bearing Room"
+ },
+ {
+  "saga": 40,
+  "person": "Pendlow Mallow",
+  "object": "Father Hennepin and Companions at the Falls of St. Anthony.  May 1",
+  "place": "the Fibre Gallery"
+ },
+ {
+  "saga": 42,
+  "person": "Maro",
+  "object": "Water Transport Jar",
+  "place": "the Material Stores"
+ },
+ {
+  "saga": 45,
+  "person": "Weirkeeper Omi",
+  "object": "Winter Trees, Reflected in a Pond",
+  "place": "Field Store"
+ },
+ {
+  "saga": 47,
+  "person": "Clerk Sena",
+  "object": "Fall of Man [obverse]",
+  "place": "Council Yard"
+ },
+ {
+  "saga": 50,
+  "person": "Osma Verr",
+  "object": "Basket",
+  "place": "Old Weir"
+ },
+ {
+  "saga": 51,
+  "person": "Tarin",
+  "object": "Philodendron tripartitum from Parque Recreativo del Este",
+  "place": "Beneath the Pegs"
+ },
+ {
+  "saga": 55,
+  "person": "Emlet Garth",
+  "object": "Rocky Wooded Landscape with a Figure by a Stream",
+  "place": "the Ribbon That Did Not Ring · Night Register"
+ },
+ {
+  "saga": 58,
+  "person": "Tritta",
+  "object": "Vase with Small Neck and Round Bottom",
+  "place": "the Letter Quay"
+ },
+ {
+  "saga": 59,
+  "person": "Cen Aster",
+  "object": "Sida cordifolia from Tepeagua",
+  "place": "Dry Service Lane"
+ },
+ {
+  "saga": 62,
+  "person": "Aven Beck",
+  "object": "Two Hunters and a Stream at Forest Edge",
+  "place": "Lower Channel and Seed Rows"
+ },
+ {
+  "saga": 65,
+  "person": "Taev Harn",
+  "object": "Marovany",
+  "place": "the Glancing Room"
+ },
+ {
+  "saga": 68,
+  "person": "Velaine",
+  "object": "Solenophora obscura from El Cortecito campsite",
+  "place": "the Route Gallery"
+ },
+ {
+  "saga": 70,
+  "person": "Rialla Mallow",
+  "object": "Houses in Provence: The Riaux Valley near L'Estaque",
+  "place": "the Bearing Room"
+ },
+ {
+  "saga": 73,
+  "person": "Agate Vale",
+  "object": "Handle with the Head of a Woman",
+  "place": "the Fibre Gallery"
+ },
+ {
+  "saga": 74,
+  "person": "Kit Oriel",
+  "object": "Cynometra bauhiniifolia from Tropical Education Center trail",
+  "place": "the Material Stores"
+ },
+ {
+  "saga": 77,
+  "person": "Odal Mett",
+  "object": "Spring and Summer",
+  "place": "Field Store"
+ },
+ {
+  "saga": 80,
+  "person": "Zyra Bess",
+  "object": "Aquamanile (Handwasher) in the Form of a Cheetah",
+  "place": "Council Yard"
+ },
+ {
+  "saga": 81,
+  "person": "Pendlow Mallow",
+  "object": "Beilschmiedia pendula from Montaña La Ho",
+  "place": "Old Weir"
+ },
+ {
+  "saga": 85,
+  "person": "Maro",
+  "object": "Landscape with Old Trees by Water",
+  "place": "Beneath the Pegs"
+ },
+ {
+  "saga": 88,
+  "person": "Weirkeeper Omi",
+  "object": "Comb with Scrolls and Birds",
+  "place": "the Ribbon That Did Not Ring · Night Register"
+ },
+ {
+  "saga": 90,
+  "person": "Clerk Sena",
+  "object": "Remijia from East slope of Mount Ayanganna",
+  "place": "the Letter Quay"
+ },
+ {
+  "saga": 93,
+  "person": "Osma Verr",
+  "object": "Woodland Stream",
+  "place": "Dry Service Lane"
+ },
+ {
+  "saga": 94,
+  "person": "Tarin",
+  "object": "Plaque with Two Portuguese Merchants",
+  "place": "Lower Channel and Seed Rows"
+ },
+ {
+  "saga": 96,
+  "person": "Emlet Garth",
+  "object": "Dictyota pulchella from Survey Site 1",
+  "place": "the Glancing Room"
+ },
+ {
+  "saga": 99,
+  "person": "Tritta",
+  "object": "Eliezer and Rebecca at the Well",
+  "place": "the Route Gallery"
+ },
+ {
+  "saga": 101,
+  "person": "Cen Aster",
+  "object": "Nose Ring",
+  "place": "the Bearing Room"
+ },
+ {
+  "saga": 105,
+  "person": "Aven Beck",
+  "object": "Ernodesmis verticillata from Station SD#16",
+  "place": "the Fibre Gallery"
+ },
+ {
+  "saga": 107,
+  "person": "Taev Harn",
+  "object": "Twelve Stones, and the Waters of the Jordan are Divided",
+  "place": "the Material Stores"
+ },
+ {
+  "saga": 109,
+  "person": "Velaine",
+  "object": "Lusterware Plate with Bird Motif",
+  "place": "Field Store"
+ },
+ {
+  "saga": 111,
+  "person": "Rialla Mallow",
+  "object": "Tenagodus modestus from Western coast of Dominica",
+  "place": "Council Yard"
+ },
+ {
+  "saga": 114,
+  "person": "Agate Vale",
+  "object": "Waterfall near Williams College",
+  "place": "Old Weir"
+ },
+ {
+  "saga": 117,
+  "person": "Kit Oriel",
+  "object": "Intaglio with an Athlete Set in a Ring",
+  "place": "Beneath the Pegs"
+ },
+ {
+  "saga": 119,
+  "person": "Odal Mett",
+  "object": "Vallentinia gabriellae from Bernier Cave",
+  "place": "the Ribbon That Did Not Ring · Night Register"
+ }
+]

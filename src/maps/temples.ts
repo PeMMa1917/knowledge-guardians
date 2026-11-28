@@ -36,3 +36,11 @@ export function guardianRooms(base:Record<string,MapDef>):MapDef[] {
     };
   });
 }
+
+const sagaDesks=[[12,15],[12,9],[14,13],[13,17],[12,13],[12,13],[12,11],[12,11],[12,11],[17,18],[12,13],[13,12],[12,13],[12,13],[12,13]];
+export function sagaDesk(mapId:string):Interactable[] {
+  const i=PASSAGES.findIndex(p=>p.hall===mapId);
+  if(i<0)return [];
+  const [x,y]=sagaDesks[i];
+  return [{id:'travelling-cases',kind:'fieldgame',game:'travelling-cases',label:'the travelling case shelf',art:'ledger',x,y,w:1,h:1,walkThrough:true}];
+}

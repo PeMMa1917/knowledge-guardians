@@ -1,0 +1,290 @@
+[
+ {
+  "saga": 3,
+  "person": "Brenna Reedfast",
+  "object": "Letter",
+  "place": "the Bell Loft"
+ },
+ {
+  "saga": 4,
+  "person": "Pella",
+  "object": "Plaque: Ibn al-Haytham and the Book of Optics",
+  "place": "the Next Keeper’s Bench"
+ },
+ {
+  "saga": 8,
+  "person": "Jori Wicks",
+  "object": "Pastoral Landscape with Ruins and a Ford",
+  "place": "the old Guardian's study"
+ },
+ {
+  "saga": 10,
+  "person": "Yilka An",
+  "object": "Patterned blade on Corvan's stall",
+  "place": "Aethelgard · Ferry Packing Room"
+ },
+ {
+  "saga": 13,
+  "person": "Merrit Dole",
+  "object": "James Cox’s cabinet clock",
+  "place": "Nexus · The quiet side of the coat rail"
+ },
+ {
+  "saga": 14,
+  "person": "Enna Bridgel",
+  "object": "Japanese astronomical clock",
+  "place": "the Half-Light Room"
+ },
+ {
+  "saga": 18,
+  "person": "Tover Heth",
+  "object": "Bordier Frères calendar watch",
+  "place": "Emberford market"
+ },
+ {
+  "saga": 20,
+  "person": "Apprentice Ren Takahashi",
+  "object": "proposed reading of Tupaia’s chart",
+  "place": "Elsbet’s loan annex"
+ },
+ {
+  "saga": 23,
+  "person": "Stall-keeper Hana Novak",
+  "object": "Amerapoora: Wooden Bridge",
+  "place": "the Inn under the Mat"
+ },
+ {
+  "saga": 25,
+  "person": "Porter Idris Bello",
+  "object": "Luxor, vue du temple cote ouest",
+  "place": "the Key Under the Saucer · Night Register"
+ },
+ {
+  "saga": 28,
+  "person": "Well keeper Efua Asante",
+  "object": "Forum, Rome",
+  "place": "Ledger Room"
+ },
+ {
+  "saga": 30,
+  "person": "Tea seller",
+  "object": "Timbisha jar-shaped basket",
+  "place": "Sill Bridge"
+ },
+ {
+  "saga": 33,
+  "person": "Guildmaster Orrin Pell",
+  "object": "Meissen porcelain tea caddy",
+  "place": "the old ferry landing"
+ },
+ {
+  "saga": 35,
+  "person": "Corvan Hale",
+  "object": "American leather satchel",
+  "place": "a room over the parade"
+ },
+ {
+  "saga": 36,
+  "person": "Edrin Moss",
+  "object": "Muhammad Isma’il Isfahani mirror case and satin pouch",
+  "place": "the Bell Loft"
+ },
+ {
+  "saga": 39,
+  "person": "Omrin Fenn",
+  "object": "Title Page",
+  "place": "the Next Keeper’s Bench"
+ },
+ {
+  "saga": 43,
+  "person": "Ilin Wold",
+  "object": "Bookplate of Hilprand Brandenburg of Bibrach",
+  "place": "the old Guardian's study"
+ },
+ {
+  "saga": 45,
+  "person": "Nell Quinter",
+  "object": "Meine Seele",
+  "place": "Aethelgard · Ferry Packing Room"
+ },
+ {
+  "saga": 48,
+  "person": "Auda Wick",
+  "object": "Writing Table with Mechanical Fittings",
+  "place": "Nexus · The quiet side of the coat rail"
+ },
+ {
+  "saga": 49,
+  "person": "Cataloguer Bela Varga",
+  "object": "Half Figure of a Saint with Chalice and Book",
+  "place": "the Half-Light Room"
+ },
+ {
+  "saga": 53,
+  "person": "Sol, a visitor",
+  "object": "\"A Girl Reading. Pietro Magni, Sculptor\"",
+  "place": "Emberford market"
+ },
+ {
+  "saga": 54,
+  "person": "Archive visitor",
+  "object": "Workshop model of Loud's design",
+  "place": "Elsbet’s loan annex"
+ },
+ {
+  "saga": 58,
+  "person": "Clerk Tobiah Venn",
+  "object": "Landscape with Two Pines",
+  "place": "the Inn under the Mat"
+ },
+ {
+  "saga": 60,
+  "person": "Warden Ise Marrow",
+  "object": "Plimpton 322, the Old Babylonian clay tablet at Columbia",
+  "place": "the Key Under the Saucer · Night Register"
+ },
+ {
+  "saga": 63,
+  "person": "Tavin Reedhook",
+  "object": "Jewelled American pendant watch",
+  "place": "Ledger Room"
+ },
+ {
+  "saga": 64,
+  "person": "Ethren Moor",
+  "object": "Tiffany and Lenzkirch mantel clock",
+  "place": "Sill Bridge"
+ },
+ {
+  "saga": 68,
+  "person": "Agate Vale",
+  "object": "Charles Bloud’s diptych sundial",
+  "place": "the old ferry landing"
+ },
+ {
+  "saga": 70,
+  "person": "Thessa Dovetail",
+  "object": "Lépine clock with Arabic calendar inscriptions",
+  "place": "a room over the parade"
+ },
+ {
+  "saga": 71,
+  "person": "Brenna Reedfast",
+  "object": "Entrance of Amoy Harbour",
+  "place": "the Bell Loft"
+ },
+ {
+  "saga": 75,
+  "person": "Pella",
+  "object": "Rue du Caire",
+  "place": "the Next Keeper’s Bench"
+ },
+ {
+  "saga": 76,
+  "person": "Jori Wicks",
+  "object": "View Down Brattle Street from the Southworth & Hawes Studio at 5...",
+  "place": "the old Guardian's study"
+ },
+ {
+  "saga": 79,
+  "person": "Yilka An",
+  "object": "Yosemite Falls from Glacier Point",
+  "place": "Aethelgard · Ferry Packing Room"
+ },
+ {
+  "saga": 81,
+  "person": "Merrit Dole",
+  "object": "English waist-hung agate case",
+  "place": "Nexus · The quiet side of the coat rail"
+ },
+ {
+  "saga": 85,
+  "person": "Enna Bridgel",
+  "object": "Chinese lotus traveling box",
+  "place": "the Half-Light Room"
+ },
+ {
+  "saga": 86,
+  "person": "Tover Heth",
+  "object": "Worcester covered dessert basket",
+  "place": "Emberford market"
+ },
+ {
+  "saga": 90,
+  "person": "Apprentice Ren Takahashi",
+  "object": "Book of Architecture containing Designs for Buildings and Ornaments",
+  "place": "Elsbet’s loan annex"
+ },
+ {
+  "saga": 93,
+  "person": "Stall-keeper Hana Novak",
+  "object": "School Time",
+  "place": "the Inn under the Mat"
+ },
+ {
+  "saga": 94,
+  "person": "Porter Idris Bello",
+  "object": "Second Livre de Trophés Culs de Lampes et Devises: Title Page",
+  "place": "the Key Under the Saucer · Night Register"
+ },
+ {
+  "saga": 98,
+  "person": "Well keeper Efua Asante",
+  "object": "Saint Jerome Reading",
+  "place": "Ledger Room"
+ },
+ {
+  "saga": 99,
+  "person": "Tea seller",
+  "object": "Molded dish with book-motifs",
+  "place": "Sill Bridge"
+ },
+ {
+  "saga": 103,
+  "person": "Guildmaster Orrin Pell",
+  "object": "Old Lady with a Book",
+  "place": "the old ferry landing"
+ },
+ {
+  "saga": 104,
+  "person": "Corvan Hale",
+  "object": "National Museum of Singapore’s surviving Singapore Stone fragment,...",
+  "place": "a room over the parade"
+ },
+ {
+  "saga": 106,
+  "person": "Edrin Moss",
+  "object": "Plaque: Mary Wollstonecraft and A Vindication of the Rights of Woman",
+  "place": "the Bell Loft"
+ },
+ {
+  "saga": 109,
+  "person": "Omrin Fenn",
+  "object": "Specimens of Polyautography:  Landscape with an Oak Tree",
+  "place": "the Next Keeper’s Bench"
+ },
+ {
+  "saga": 111,
+  "person": "Ilin Wold",
+  "object": "Marchand’s enamelled watch",
+  "place": "the old Guardian's study"
+ },
+ {
+  "saga": 115,
+  "person": "Nell Quinter",
+  "object": "Latz and Stollewerck tall-case clock",
+  "place": "Aethelgard · Ferry Packing Room"
+ },
+ {
+  "saga": 118,
+  "person": "Auda Wick",
+  "object": "Forfaict clock-watch with alarm",
+  "place": "Nexus · The quiet side of the coat rail"
+ },
+ {
+  "saga": 120,
+  "person": "Cataloguer Bela Varga",
+  "object": "Forestville acorn clock",
+  "place": "the Half-Light Room"
+ }
+]

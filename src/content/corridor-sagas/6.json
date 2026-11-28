@@ -1,0 +1,290 @@
+[
+ {
+  "saga": 3,
+  "person": "Agate Vale",
+  "object": "Wat-Sa-Pua, a Demerara instrument",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 4,
+  "person": "Steward Bea",
+  "object": "Hammer and Compass",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 8,
+  "person": "Tritta",
+  "object": "Wafer Iron",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 10,
+  "person": "Deva Tern",
+  "object": "Ostracode image from Chimbote",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 11,
+  "person": "Hesper Lyle",
+  "object": "Hand Iron",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 15,
+  "person": "Agate Vale",
+  "object": "Regnard Frères’s one-fifth copying lathe model",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 16,
+  "person": "Steward Bea",
+  "object": "Sixte-Simon Rion’s covered chocolate pot",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 19,
+  "person": "Tritta",
+  "object": "Cast Iron Balcony Rail",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 22,
+  "person": "Deva Tern",
+  "object": "Japanese saw set",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 24,
+  "person": "Hesper Lyle",
+  "object": "Edo covered iron tea kettle",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 27,
+  "person": "Agate Vale",
+  "object": "Four-wheeled Carro, Heraldic Symbol of the Carrara Family [reverse]",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 29,
+  "person": "Steward Bea",
+  "object": "John Mischker’s reversible micrometer",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 31,
+  "person": "Tritta",
+  "object": "Chantilly porcelain teapot",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 35,
+  "person": "Deva Tern",
+  "object": "Plate 70: Worm, Centipede, Millipede, and Other Long Creatures",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 38,
+  "person": "Hesper Lyle",
+  "object": "Twelfth-century pottery mold",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 40,
+  "person": "Agate Vale",
+  "object": "Roswell Gleason’s coffee urn",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 42,
+  "person": "Steward Bea",
+  "object": "Plaster Mill",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 44,
+  "person": "Tritta",
+  "object": "Paraguayan lace collar",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 48,
+  "person": "Deva Tern",
+  "object": "James P. Smith",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 49,
+  "person": "Hesper Lyle",
+  "object": "Days with Celebrities: Mr. Millais",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 53,
+  "person": "Agate Vale",
+  "object": "Part and counterpart of a Paleosquilla fossil",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 54,
+  "person": "Steward Bea",
+  "object": "Smith Family",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 57,
+  "person": "Tritta",
+  "object": "One-half model of a segmental turning lathe",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 60,
+  "person": "Deva Tern",
+  "object": "John Chartier’s silver coffee pot",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 62,
+  "person": "Hesper Lyle",
+  "object": "Portrait of a Weaving Mill Woman",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 64,
+  "person": "Agate Vale",
+  "object": "Holtzapffel set of eighteen screw-thread plug gauges",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 68,
+  "person": "Steward Bea",
+  "object": "Muromachi iron kettle with crane design",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 69,
+  "person": "Tritta",
+  "object": "Venus at the Forge of Vulcan",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 72,
+  "person": "Deva Tern",
+  "object": "Josiah Lyman’s triangular drafting-scale patent model",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 75,
+  "person": "Hesper Lyle",
+  "object": "Chinese export porcelain teapot",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 77,
+  "person": "Agate Vale",
+  "object": "Woman Ironing",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 80,
+  "person": "Steward Bea",
+  "object": "Ryūryūkyo Shinsai’s Tools for the Carpenter",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 83,
+  "person": "Tritta",
+  "object": "Blue molded glass cream jug",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 85,
+  "person": "Deva Tern",
+  "object": "U.S. Thread Company Mills, Willimantic, Connecticut",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 87,
+  "person": "Hesper Lyle",
+  "object": "Pouch (Bolsa) from Choclla",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 90,
+  "person": "Agate Vale",
+  "object": "Mill near Brighton",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 91,
+  "person": "Steward Bea",
+  "object": "Charles Adams Wheeler",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 95,
+  "person": "Tritta",
+  "object": "Diatom slide from Puerto Cabello",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 96,
+  "person": "Deva Tern",
+  "object": "Andiron: Vulcan with His Anvil",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 99,
+  "person": "Hesper Lyle",
+  "object": "D. Malloch & Son smoothing plane",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 103,
+  "person": "Agate Vale",
+  "object": "Musa’s spherical astrolabe, Oxford inventory 49687",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 104,
+  "person": "Steward Bea",
+  "object": "Charles Stewart Butler and Lawrence Smith Butler",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 107,
+  "person": "Tritta",
+  "object": "W. Crosland’s pattern-book swatch guillotine",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 110,
+  "person": "Deva Tern",
+  "object": "John Edwards’s hot water jug and stand",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 112,
+  "person": "Hesper Lyle",
+  "object": "Mrs. Paul Smith Palmer and Her Twins",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 114,
+  "person": "Agate Vale",
+  "object": "Emory A. Angell’s loom temple patent model",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 116,
+  "person": "Steward Bea",
+  "object": "Wedgwood stoneware teapot",
+  "place": "Trade Hall"
+ },
+ {
+  "saga": 120,
+  "person": "Tritta",
+  "object": "Giant Wheel",
+  "place": "Trade Hall"
+ }
+]

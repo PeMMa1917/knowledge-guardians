@@ -92,6 +92,7 @@ import { dailyPrompts, diveDepth, diveItems, judgeDive } from './dive';
 import { TIME_MAX, TIME_MIN, answerRound, runSurvey, translateLine, judgeFrame, readForecasts, checkOrder, judgeSight, panes, readTimes, echoReadings, runSorter, tryMap, peelLayer, restoreWith, weighRound } from './puzzles';
 import { judgeYarn, viewBoard, type Tone } from './clueboard';
 import { checkOffer, cleanPetName } from './lorelings';
+import { sagaMove, type SagaMove } from './corridorSagas';
 import { templeAction, type TempleCommand } from './temples';
 import { corridorArrival, letterPostscript } from './corridor';
 import { objectiveSkillUse, recordSkillUse } from './skills';
@@ -239,6 +240,7 @@ export type Command =
   | { type: 'Purchase'; offer: string }
   | { type: 'RequestHint'; objective: string }
   | ThreadCommand
+  | SagaMove
   | TempleCommand
   | { type: 'SetFlag'; flag: string; value: string | number | boolean }
   | { type: 'AddNote'; text: string; kind?: DiaryNoteKind; fromDraft?: boolean }
@@ -538,6 +540,9 @@ export class Engine {
         }
         case 'UntieJournalThread':
           s=apply([{setFlag:threadKey,value:false},{setFlag:threadFaceKey,value:false}],s,out);
+          break;
+        case 'SagaMove':
+          s = apply(sagaMove(s,cmd).effects,s,out);
           break;
         case 'TempleAction':
           s = apply(templeAction(s,cmd).effects,s,out);
