@@ -1,0 +1,83 @@
+.quarter-clock,
+.quarter-clock section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.55rem;
+}
+.quarter-clock p,
+.quarter-clock h3,
+.quarter-map {
+  margin: 0.25rem 0;
+}
+.quarter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.quarter-clock button,
+.quarter-clock fieldset {
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+.quarter-clock button[aria-pressed='true'] {
+  box-shadow: inset 0 0 0 2px var(--gold);
+}
+.quarter-map {
+  border: 0.14rem solid #9a8267;
+  background: #202d45;
+  color: #f7f1df;
+  padding: 0.5rem;
+}
+.quarter-map figcaption {
+  font-weight: 700;
+  border-block-end: 0.35rem solid var(--tide-light);
+  padding-block-end: 0.35rem;
+}
+.quarter-piers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+}
+.quarter-quay {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #8badad;
+  padding: 0.3rem;
+}
+.quarter-quay.here {
+  border-color: #f6ce79;
+  background: #364251;
+}
+.quarter-art {
+  font-size: 1.35em;
+  color: #f7dca1;
+  letter-spacing: 0.15em;
+}
+.quarter-program {
+  padding-inline-start: 1.6rem;
+}
+.quarter-program li {
+  margin-block: 0.45rem;
+}
+.quarter-next {
+  font-weight: 700;
+}
+.quarter-feedback:not(:empty) {
+  border-inline-start: 3px solid var(--cyan);
+  padding: 0.4rem;
+}
+@media (max-width: 28rem) {
+  .quarter-piers {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .quarter-quay {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 0.4rem;
+  }
+  .quarter-quay small {
+    grid-column: 1/-1;
+  }
+}

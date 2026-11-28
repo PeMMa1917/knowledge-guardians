@@ -1,3 +1,4 @@
+import worldChapters from '../content/world-chapters.json';
 import { returnVisits } from '../content/chapterPractice';
 import type { ContentPack, Weave } from '../domain/types';
 
@@ -32,7 +33,7 @@ export function teacherContentFrom(pack: ContentPack) {
       id,
       title,
       knowledgeQuestion,
-      chapter: Math.max(1, Number(world.slice(6)) - 1),
+      chapter: worldChapters[world as keyof typeof worldChapters],
       objectives: objectives.map(({ id, title, essential, weave }) => ({
         id,
         title,

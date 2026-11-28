@@ -46,6 +46,13 @@ describe('micro-skill links to played actions', () => {
     }
   });
 
+  it('counts side stories in their physical chapter even when the mission has a name instead of a chapter number', () => {
+    expect(rows.find(row => row.objective === 'quarter.leaves')?.chapter).toBe(14);
+    expect(rows.find(row => row.objective === 'wire.crowd')?.chapter).toBe(8);
+    expect(rows.find(row => row.objective === 'nile.way.compare')?.chapter).toBe(2);
+    expect([...new Set(rows.map(row => row.chapter))].sort((a,b)=>a-b)).toEqual(Array.from({length:15},(_,i)=>i+1));
+  });
+
   it('uses evidence from each action for all combinations of axes instead of joining separate actions', () => {
     expect(axisGroups()).toHaveLength(247);
     const tagged = rows.filter(({ thinking }) => thinking);

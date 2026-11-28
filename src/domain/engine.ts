@@ -1,3 +1,4 @@
+import {tideEffects,type TideCommand} from './tideClock';
 import {wireEffects,type WireCommand} from './ferryRadio';
 import {lensEffects,type LensCommand} from './lensLoan';
 import {threadKey,threadFaceKey,trailMarkers,type ThreadCommand} from './trailThread';
@@ -103,7 +104,7 @@ import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand
 
 export type Command =
   | ChestCommand | BeatCommand | MouldCommand | PerchCommand | WelcomeCommand | BakeryCommand
-  | ElbowCommand | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | CupCommand | WireCommand | LensCommand | StackCommand | AlmanacCommand | CourierCommand | BillCommand | FerryCommand
+  | ElbowCommand | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | CupCommand | TideCommand | WireCommand | LensCommand | StackCommand | AlmanacCommand | CourierCommand | BillCommand | FerryCommand
   | ShadowCommand
   | FieldLoanCommand
   | BirdCommand
@@ -662,6 +663,8 @@ export class Engine {
           break;
         case 'WorkTurningStacks':
           s = apply(stackEffects(s,cmd),s,out); break;
+        case 'WorkTideClock':
+          s = apply(tideEffects(s,cmd),s,out); break;
         case 'WorkFerryRadio':
           s = apply(wireEffects(s,cmd),s,out); break;
         case 'WorkLensLoan':

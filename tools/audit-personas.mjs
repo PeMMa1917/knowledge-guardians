@@ -23,13 +23,8 @@
  */
 import { createServer } from 'vite';
 
-/** World id to chapter number, matching STATUS.md. WORLD-01 and WORLD-02 are chapter 1. */
-export const WORLD_CHAPTER = {
-  'WORLD-01': 1, 'WORLD-02': 1, 'WORLD-03': 2, 'WORLD-04': 3, 'WORLD-05': 4,
-  'WORLD-06': 5, 'WORLD-07': 6, 'WORLD-08': 7, 'WORLD-09': 8, 'WORLD-10': 9,
-  'WORLD-11': 10, 'WORLD-12': 11, 'WORLD-13': 12, 'WORLD-14': 13, 'WORLD-15': 14,
-  'WORLD-16': 15,
-};
+import worldChapters from '../src/content/world-chapters.json' with { type: 'json' };
+export const WORLD_CHAPTER = worldChapters;
 
 const SHAPES = {
   compare: /\b(two|both|same|compare|each|either|side by side|against|pair|paired)\b/i,

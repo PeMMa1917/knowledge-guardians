@@ -1,3 +1,4 @@
+import {clockDiary,clockTopics,type TideCommand} from './tideClock';
 import {wireDiary,wireTopics} from './ferryRadio';
 import {stackDiary,stackWeave} from './turningStacks';
 import {lensDiary,lensTopics} from './lensLoan';
@@ -165,6 +166,7 @@ function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignS
   if (cmd.type==='DrawOrchardStylus') return mouldDiary(cmd);
   if (cmd.type === 'HangFerryPrint' || cmd.type === 'OpenFerryBill' || cmd.type === 'HearFerryBill') return billDiary(previous, next, cmd);
   if (cmd.type === 'WorkTurningStacks') return stackDiary(next,cmd);
+  if (cmd.type === 'WorkTideClock') return clockDiary(previous,next,cmd);
   if (cmd.type === 'WorkFerryRadio') return wireDiary(next,cmd);
   if (cmd.type === 'WorkLensLoan') return lensDiary(next,cmd);
   if (cmd.type === 'WorkFirstCup') return cupDiary(next,cmd);
@@ -578,6 +580,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     if (family === 'picture-bill') return diaryTopics(billWeave);
     if(family==='trail-thread') { const weave=objectivesById.get(event.ref)?.objective.weave; if(weave)return diaryTopics(weave); }
     if (family === 'turning-stacks') return diaryTopics(stackWeave);
+    if (family === 'tide-clock') return diaryTopics(clockTopics(event.key.split(':')[1] as TideCommand['act']));
     if (family === 'ferry-wire') return diaryTopics(wireTopics(event.key.split(':')[1].split('.')[0]));
   if (family === 'lens-loan') return diaryTopics(lensTopics(event.key.split(':')[1].split('.')[0]));
     if (family === 'first-cup') return diaryTopics(cupWeave);

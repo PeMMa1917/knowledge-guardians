@@ -702,3 +702,9 @@ Oda can find a splice with her thumb in the dark. She can fill a missed entrance
 Tavi Pell counts the slips after he coils the leads. Siv taught him rope work. He can repair a receiver and still mistake an empty winding for an empty pier. His teaspoon makes a warm seat for a paper moth. He offers to go back in person after he hears how the timing of his call kept people from answering. His correction to the painter is to give her both takes.
 
 At the island Joss speaks as a runner who has promised to get people home. His covered and exposed passengers have different reasons to want the horn moved. The visit from W. E. B. Du Bois brings the collaborative visual work at Atlanta University into the account. His station compares which hands made a picture, who supplied the observations and whom the picture can address. [Studio and island conversations](../src/content/ferryRadio.ts)
+
+### Matel Mear
+
+Matel was paid by the patch before the dock gave her a clock to keep. She treats broken equipment as a co-worker who deserves a discreet word. In company she hides a tremor by asking someone else to hold the lantern. Alone she can take the clock to pieces and put it back together by feel. Her mistake was promising two people on opposite shifts that she would always be there. She can accept the Guardian seeing her hand shake. She has a harder time letting Siv do unpaid work to prove the dock forgot her break. At the rail Matel discovers that Joss kept his foot in the boat so she could come down in her own time.
+
+Lovelace speaks in operations. She wants to know what goes into the machine before anybody describes the result. Upstairs the instruction strip is the one part of the record she could already reconstruct. When a worker puts a reason on the back, she waits for permission before handing it on. [Quarter House dialogue](../src/content/tideClock.ts)

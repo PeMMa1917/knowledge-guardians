@@ -1,3 +1,4 @@
+import {installQuarterClock} from './tideClock';
 import {installFerryRadio} from './ferryRadio';
 import {installTurningStacks} from './turningStacks';
 import {installLensLoan} from './lensLoan';
@@ -254,14 +255,6 @@ export function buildPack(): ContentPack {
   for (const k of keys) pack[k] = [...parts, ...collectionRooms].flatMap((p) => p[k] ?? []);
   const content = pack as ContentPack;
   content.questions.push(...QUESTION_ROUTES.map(({ question }) => question));
-  const ways = questionWaysByObjective();
-  content.missions = content.missions.map((mission) => ({
-    ...mission,
-    objectives: mission.objectives.map((objective) => {
-      const questionWays = ways.get(objective.id);
-      return questionWays ? { ...objective, questionWays } : objective;
-    }),
-  }));
   const articles = new Map(encyclopedia.people.flatMap((article) => article.characters.map((id) => [id, article.title] as const)));
   installInkPost(content, articles);
   const loftArtist=content.characters.find(c=>c.id===duchamp);
@@ -286,12 +279,24 @@ export function buildPack(): ContentPack {
   installFirstCup(content);
   installTurningStacks(content);
   installFerryRadio(content);
+  installQuarterClock(content);
   installLensLoan(content);
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);
   addFieldLoans(content);
   specimenEquipment(content);
+  const ways = questionWaysByObjective();
+  content.missions = content.missions.map((mission) => ({
+    ...mission,
+    objectives: mission.objectives.map((objective) => {
+      const questionWays = ways.get(objective.id);
+      if (!questionWays) return objective;
+      const existing = objective.questionWays ?? [];
+      const extra = questionWays.filter(way => !existing.some(link => link.id === way.id && link.action === way.action));
+      return extra.length ? { ...objective, questionWays: [...existing, ...extra] } : objective;
+    }),
+  }));
   reviewChapterPractices(content);
   addMicroSkills(content);
   return content;

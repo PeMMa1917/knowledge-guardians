@@ -1,3 +1,4 @@
+import { tideClockProofs } from './tide-clock-evidence.mjs';
 import {ferryRadioProofs} from './ferry-radio-evidence.mjs';
 import {lensProofs} from './lens-loan-evidence.mjs';
 /** Audit documented intersections of one authored action, one learning dimension and one RPG element. */
@@ -153,6 +154,7 @@ const proofRows = [
   ...stacksProofs,
   ...lensProofs,
   ...ferryRadioProofs,
+  ...tideClockProofs,
   ...cupProofs,
   ...almanacProofs,
   {

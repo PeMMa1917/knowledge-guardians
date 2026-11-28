@@ -845,3 +845,8 @@ The theatre adapts Huygens’s construction of a new front from secondary wavele
 ## The ferry radio and the Paris exhibition
 
 The Library of Congress identifies the 1900 Paris exhibition and the visual work of W. E. B. Du Bois and the Atlanta University collaborators. Princeton Architectural Press credits the contributors to the charts. The ferry, its song and its two sets of passenger slips are fictional. The abstract rates can be checked from the four displayed denominators. OpenStax supplies a separately credited reference about sampling. Readers can earn the three records through different conversations and export the records that have entered their diary. [Library of Congress](https://blogs.loc.gov/inside_adams/2015/02/du-bois-in-paris-exposition-universelle-1900/) · [Published chart collection](https://papress.com/products/w-e-b-du-boiss-data-portraits-visualizing-black-america) · [OpenStax](https://openstax.org/books/introductory-statistics-2e/pages/1-2-data-sampling-and-variation-in-data-and-sampling)
+
+
+## Lovelace at the island pier
+
+The Computer History Museum describes Lovelace’s appended notes on the proposed Analytical Engine. In Note A of the 1843 translation she considers the representation of musical relations by symbols. A player can encounter both sources through her visits. Matel’s wages, the paper moth and the island schedule are part of the Guardian’s story. [The Babbage Engine](https://www.computerhistory.org/babbage/adalovelace/) · [Lovelace’s notes](https://www.fourmilab.ch/babbage/sketch.html)

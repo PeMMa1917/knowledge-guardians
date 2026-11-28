@@ -35,6 +35,13 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
   if(key.startsWith('trail-thread:')) return key.endsWith(':voice')
     ? {voice:'Whose account do I want to hear on my return, and what might they have missed?'}
     : {object:'Which detail would I look for next time, and what might it help me reconsider?'};
+  if(key.startsWith('tideclock:')){
+    if(key.startsWith('tideclock:compare:') || key.startsWith('tideclock:trace:'))
+      return {criterion:'Which person’s request changes what counts as a good place for the same board?',distance:'What do the plank counts tell me, and what would I need to ask someone who used the pier?'};
+    if(/:(try|issue|read|place|proposal):/.test(key))return {'shift':'Who had time to use this arrangement, and who would still need someone else to speak for them?','return':'What would you move after walking the plan at the other hour?'};
+    if(/:(step|round|reorder|reverse):/.test(key))return {'procedure':'Which part of the moth’s record came from your instructions?','missing':'Where could someone have been working while this strip went past?'};
+    return {'time':'Which part of this hearing would survive another turn of the clock?','place':'What might a person on a different pier hear at that same moment?'};
+  }
   if(key.startsWith('ferry-wire:')){
     const act=key.split(':')[1].split('.')[0];
     if(act==='align')return {ear:'What lets me identify a reused recording?',limit:'What can those matching sounds tell me about the word itself?'};

@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 28 November • The quarter that comes back
+
+Matel sewed copper feet onto the moth Siv once drew on a wage envelope. At the island the creature can walk, listen and stamp an entire watch. Trials that leave one worker out can still run exactly as instructed. Two shifts can change where the dry bench goes. A player who keeps the early and late hearings can step behind the clock into the earlier ferry studio. [Matel and Lovelace](src/content/tideClock.ts) · [Six arrangements and two traced leaves](tests/tide-clock.test.ts)
+
 ## 28 November • A kettle falls on two nights
 
 Oda promised her wife a summer away from the ferry microphone. Tavi catches the same kettle in two broadcasts. Players can tune six voices, try a leading word on the same listener, and see what happens to the headline when a different shift answers. At the island, the singer and the runner react to the programme that was actually sent. A private voice can change whom the boat visits next. [Studio and island](src/content/ferryRadio.ts) · [The counts, permissions and twelve editions](docs/audit/NIGHT_REGISTER.md#two-nights-on-the-ferry-wire)

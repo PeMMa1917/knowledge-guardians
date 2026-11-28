@@ -1,3 +1,4 @@
+import worldChapters from '../content/world-chapters.json';
 import newSkills from '../content/research-practice-catalog.json';
 import type { ContentPack } from './types';
 import type { MicroSkillEvidence } from '../content/microSkillEvidence';
@@ -20,7 +21,7 @@ export function microSkillRows(pack: ContentPack, evidence: readonly MicroSkillE
       name: skill.name,
       ...use,
       mission: place.mission.id,
-      chapter: Number(/^KG-CH(\d+)-/.exec(place.mission.id)?.[1] ?? 0),
+      chapter: worldChapters[place.mission.world as keyof typeof worldChapters],
       world: place.mission.world,
       thinking: place.step.weave?.thinking,
     }];

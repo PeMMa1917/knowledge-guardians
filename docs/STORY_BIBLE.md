@@ -537,3 +537,10 @@ Rain makes the cart leave Lantern Square. The chapter eleven weir brings buyers 
 A singer on leave has taken the dented kettle away with her. Her wife Oda keeps hearing it fall on the ferry wire. The Guardian can follow a paper moth to a quiet coil, go straight to the open rail or visit the painter under the roof. Oda has used an old take to fill a hole in the ferry show. Her friend Tavi has tried to settle the missing word by counting whoever could answer his call. Helping one means finding out what happened to the people the other never heard.
 
 When the programme crosses the water, the student chooses what the dock hears. Joss gets his shift home under any of the three editions. Oda gets to decide whether to wait through a rest, share a tune or leave the second horn to the other bank. The uncredited listener can stay out of the recording and still change the time of the next hearing. [Studio and ferry](../src/content/ferryRadio.ts) · [Twelve editions](../tests/ferry-radio.test.ts)
+
+
+## The quarter that comes back
+
+When a broadcast reaches Two-Tide Dock, Matel Mear has just sewn one copper foot backwards. The paper moth was once somebody’s drawing on her first wage envelope. Matel can repair a split sail with cold fingers and once swore she would always make time for anybody on her pier. Her clock gives her the same quarter over and over. The two people she promised to meet still never stop at the same hour.
+
+Siv gets one break at the slipway. Joss reads the time with one boot on the mooring. Ivo wants to keep a page out of the spray. Move a bench, a board and a horn, and the same plan changes all three journeys. Walk at two different hours to take each rubbing. In the kitchen upstairs Matel finds a teaspoon baked into her bread. Mara has been stirring the tea with bread crust. [Matel’s two rooms](../src/content/tideClock.ts) · [The six tide marks](../src/domain/tideClock.ts)

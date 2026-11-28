@@ -134,3 +134,7 @@ At Fern Station a Guardian first changes the recorder’s sightline, then separa
 ## Five starting neighbours
 
 A departure order can establish who left first. A conductor standing at the back of the same procession may still give the first musical cue. At Teodora’s four stools a rest in a performance can give a new singer an entrance while a historian must preserve the gap in the family’s account. These two comparisons bring the reviewed cross-area total to 37. Ten new action records identify the controls, receivers and consequences checked by the origin tests. The full intersection audit finds two cells at ten separate proven uses, with 1,337 further cells below ten. [Evidence records](../tools/origin-action-evidence.mjs) · [Route tests](../tests/origin-instruments.test.ts)
+
+## The Quarter House and the two tracings
+
+The island clock adds five observed actions. Two allow an explicit comparison of mathematical and human-science methods. One distinguishes the deterministic path of a clockwork moth from the people the chosen sampling path can miss. The other holds two traced plans still while changing whose access criterion is applied. The player can measure a plank distance and hear why that distance matters to a particular worker. The current audit identifies 54 such comparisons across the campaign and 1,980 intersections with one to nine independent examples. Two intersections reach ten. [Action traces](../tools/tide-clock-evidence.mjs) · [Reproducible census](../tools/audit-cross-weave.mjs)

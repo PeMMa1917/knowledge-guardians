@@ -1,3 +1,4 @@
+import {quarterPanel} from './tideClock';
 import {ferryRadioPanel} from './ferryRadio';
 import {turningStacksPanel,signatureLamp} from './turningStacks';
 import {lensLoanPanel} from './lensLoan';
@@ -78,6 +79,8 @@ interface Panel<T> {
 export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
   ['stacks-signature',{title:'The names under the count',open:signatureLamp}],
   ['turning-stacks',{title:'The house with six names',open:turningStacksPanel}],
+  ['quarter-house',{title:'The quarter that comes back',open:(c,sound)=>quarterPanel(c,sound,false)}],
+  ['quarter-plan',{title:'A place at the end of the pier',open:(c,sound)=>quarterPanel(c,sound,true)}],
   ['ferry-wire-studio',{title:'The last word on the water',open:(c,sound)=>ferryRadioPanel(c,sound,false)}],
   ['ferry-wire-island',{title:'Four beats of quiet',open:(c,sound)=>ferryRadioPanel(c,sound,true)}],
   ['optics-loft',{title:'The drawer with two places',open:(c,sound)=>lensLoanPanel(c,sound,false)}],
