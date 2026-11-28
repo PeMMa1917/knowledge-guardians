@@ -144,6 +144,62 @@ const proofRows = [
   ...emberfordEvidenceInvestigations,
   ...copiesEvidenceInvestigations,
   {
+    objective: 'ink.q41585.landed', map: 'nexus.archive', target: 'ink-post.archive',
+    source: 'tests/ink-post.test.ts', anchor: "Play out a short proof on the tiles",
+    action: "Play out a short proof on the tiles. A spectator can check each move. The line settles one claim about these rules.",
+    reasoning: [{ mode: 'deductive', basis: "The spectator can check each legal move against the displayed rules. Changing an initial rule requires a fresh argument for the conclusion." }],
+    dimensions: ["concept:certainty", "concept:justification", "micro:261"], elements: ['game:21', 'story:114'],
+  },
+  {
+    objective: 'ink.q83163.landed', map: 'nile.hall', target: 'ink-post.nile',
+    source: 'tests/ink-post.test.ts', anchor: "Stitch in a small worked case",
+    action: "Stitch in a small worked case. The finder can check the first few terms before deciding whether to chase the rest.",
+    reasoning: [{ mode: 'inductive', basis: "The finder checks the pattern against early terms and decides whether to pursue the rest. Agreement in that finite sample leaves later terms open." }],
+    dimensions: ["concept:certainty", "concept:justification", "micro:263"], elements: ['game:21', 'story:114'],
+  },
+  {
+    objective: 'ink.q381783.landed', map: 'stage.rehearsal', target: 'ink-post.stage',
+    source: 'tests/ink-post.test.ts', anchor: "Map ash against paths and walls",
+    action: "Map ash against paths and walls. One patch lies in a walking lane. That gives the crew a second explanation to examine.",
+    reasoning: [{ mode: 'abductive', basis: "The location of ash in a walking lane makes another cause plausible. Its position alone cannot distinguish a hearth from redistributed ash." }],
+    dimensions: ["concept:explanation", "concept:evidence", "micro:270"], elements: ['game:21', 'story:114'],
+  },
+  {
+    objective: 'ink.q7967775.landed', map: 'island.workshop', target: 'ink-post.island',
+    source: 'tests/ink-post.test.ts', anchor: "Let the child move the ball's shadow",
+    action: "Let the child move the ball's shadow. The little eclipse crosses the table. It explains the alignment while leaving real distances open.",
+    reasoning: [{ mode: 'causal', basis: "Moving the ball in the lamp model moves the shadow. The resulting local eclipse explains alignment, with the real distances still unknown." }],
+    comparison: {
+      areas: [
+        { id: "NAT", method: "Move a ball relative to a lamp and watch the shadow change.", limit: "The lamp and table do not reproduce astronomical scale." },
+        { id: "MAT", method: "Compare the alignment of the observer, light and ball from two positions.", limit: "An alignment diagram alone gives no distance to the actual bodies." },
+      ], concepts: ["explanation"], framework: ["methods-and-tools"],
+      connection: "Use the geometry to locate an illuminated observer, then use the model to test what that position would see.",
+    },
+    dimensions: ["concept:perspective", "concept:explanation", "micro:503", "area:NAT", "area:MAT", "framework:methods-and-tools"], elements: ['game:21', 'story:114'],
+  },
+  {
+    objective: 'ink.q7259.landed', map: 'council.hall', target: 'ink-post.council',
+    source: 'tests/ink-post.test.ts', anchor: "Thread the same pattern through a music roll",
+    action: "Thread the same pattern through a music roll. The mechanism repeats the arrangement as sound. It needs a musician to assign the pitches.",
+    reasoning: [{ mode: 'analogical', basis: "The weaver transfers an ordered repeat to a score. The arrangement survives the transfer. Pitch requires a new convention supplied by the musician." }],
+    comparison: {
+      areas: [
+        { id: "MAT", method: "Track the repeat when the same ordered pattern drives a different mechanism.", limit: "An ordering alone assigns no pitches." },
+        { id: "ART", method: "Give the marks musical intervals and listen for the repeated arrangement.", limit: "The chosen encoding belongs to this rendering and leaves other scores possible." },
+      ], concepts: ["interpretation"], framework: ["scope"],
+      connection: "The arrangement can travel from one medium to the other. Its musical meaning depends on a mapping that the loom cannot supply.",
+    },
+    dimensions: ["concept:interpretation", "concept:explanation", "micro:874", "area:MAT", "area:ART", "framework:scope"], elements: ['game:21', 'story:114'],
+  },
+  {
+    objective: 'ink.q153761.landed', map: 'forest.station', target: 'ink-post.fern',
+    source: 'tests/ink-post.test.ts', anchor: "Give each shift a seal for repairs",
+    action: "Give each shift a seal for repairs. The clerk can see who noticed a leak. A visitor working between shifts needs somebody to vouch for her.",
+    reasoning: [{ mode: 'pragmatic', basis: "A shift seal makes repairs traceable. A worker between shifts still needs a neighbour to vouch for her. The practical cost puts a limit on this way of distributing responsibility." }],
+    dimensions: ["concept:responsibility", "concept:values", "micro:233"], elements: ['game:21', 'story:114'],
+  },
+  {
     objective: 'first-clap.measure', map: 'stage.gallery', target: 'first-clap-seated',
     source: 'tests/first-clap.test.ts', anchor: "use(d, 'seated', 'Stand up')",
     action: 'Lower the gallery seat under your weight and stand up again. The clap follows the change in the seat, even with your hands still. The mechanism cannot identify who attended the childhood performance.',

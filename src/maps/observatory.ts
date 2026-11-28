@@ -176,7 +176,9 @@ export const OBSERVATORY_STATION: MapDef = {
   width: stationWidth, height: stationHeight, music: 'music.town', ambience: 'town',
   background: 0x416b7c, floor: stationFloor,
   blocks: [], zones: [], spawn: { x: 11, y: 13 },
-  npcs: [{ id: 'coast-forecaster', x: 10, y: 7, facing: 'down' }],
+  npcs: [{ id: 'coast-forecaster', x: 10, y: 7, facing: 'down' },
+    // Ibn al-Haytham, a thinker to meet (X-012, X-015). Content: src/content/thinker-haytham.json.
+    { id: 'ibn-al-haytham', x: 7, y: 7, facing: 'right', visibleIf: { flagSet: 'coast.notice' } }],
   stamps: [
     { stamp: 'tower', x: 10, y: 1 }, { stamp: 'long-table', x: 14, y: 6 },
     { stamp: 'bench', x: 4, y: 7 }, { stamp: 'bush', x: 20, y: 10 },
@@ -218,6 +220,17 @@ export const OBSERVATORY_STATION: MapDef = {
     sign('coast-station-recheck', 20, 9, 'the headland’s next reading', 'coast.gauge',
       'Two finger-widths at the headland. Same gauge, same interval, one bell later. No second quay reading has reached the station.',
       { flag: 'coast.gauge.recheck', visibleIf: { flagSet: 'coast.notice' } }),
+    { id: 'field-bats', kind: 'fieldgame', game: 'bats', x: 20, y: 3, w: 1, h: 1, label: 'the night lamp on the headland (The Bat Keeper)', art: 'old-sign' },
+    // Ibn al-Haytham's tests of the station manual (KG-CH4-T01).
+    sign('haytham-test-ring', 4, 4, "the brass sighting ring", 'coast.gauge',
+      "Lookouts hold the brass ring at arm's length and count the notches the moon fills. The log has two nights. Moon rising over the roof line: three notches. Moon high over the sea, the same night: three notches.",
+      { flag: 'thinker.haytham.test.ring', visibleIf: { flag: 'thinker.haytham.quest', eq: true } }),
+    sign('haytham-test-tube', 16, 3, "the rolled chart tube", 'preserved.slip',
+      "A lookout has left a note in the tube: 'Looked at the rising moon through this, so I could not see the roof or the hills. It looked small, like it does at midnight. Took the tube away and it was huge again.'",
+      { flag: 'thinker.haytham.test.tube', visibleIf: { flag: 'thinker.haytham.quest', eq: true } }),
+    sign('haytham-test-book', 12, 2, "the founder's notebook", 'ledger',
+      "The founder's notebook, in a careful hand: 'The moon is greater at its rising, being nearer the earth, as all the old books say.' There are pages of tide heights with dates and gauge marks. For the moon there is no measurement at all.",
+      { flag: 'thinker.haytham.test.book', visibleIf: { flag: 'thinker.haytham.quest', eq: true } }),
     timbuktuReceiver('headland'),
     { id: 'coast-shadow-board', kind: 'fieldgame', game: 'coast-shadow-board', x: 6, y: 10, w: 1, h: 1,
       label: 'Neri’s two-lamp trial board', art: 'coast.clear-frame', walkThrough: true, visibleIf: opticalCase },

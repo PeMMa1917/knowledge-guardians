@@ -196,6 +196,7 @@ export const COPIES_LANDING: MapDef = {
     { stamp: 'flowers-white', x: 1, y: 9 }, { stamp: 'flowers-small', x: 3, y: 5 },
   ],
   interactables: [
+    { id: 'field-relay', kind: 'fieldgame', game: 'relay', x: 23, y: 2, w: 1, h: 1, label: 'the first signal tower (The Sketch Relay)', art: 'old-sign' },
     ...COPIES_WELCOME,
     ...WITNESS_CLIP_LANDING,
     ...TWO_CALLS_LANDING,

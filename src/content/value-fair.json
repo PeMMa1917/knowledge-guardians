@@ -1,0 +1,26 @@
+{
+ "tokens": 10,
+ "keep": 3,
+ "claims": [
+  { "id": "scale", "text": "Every stall weighs on the town's checked scale." },
+  { "id": "local", "text": "Hill farmers may sell by their own basket measure." },
+  { "id": "posted", "text": "Every price is posted before anyone bargains." },
+  { "id": "fast", "text": "The market opens at dawn, even if the weights inspector is late." },
+  { "id": "records", "text": "Every sale over ten coins is written in the market book." }
+ ],
+ "clashes": [
+  { "a": "scale", "b": "local", "line": "Both rules stand, and they disagree about every sack the hill farmers bring. The meeting will have to come back to this." },
+  { "a": "fast", "b": "scale", "line": "Both rules stand. On mornings when the inspector is late, the stalls open with scales nobody has checked." }
+ ],
+ "others": [
+  { "who": "Assayer Tellen", "bids": { "scale": 4, "posted": 3, "records": 3, "local": 0, "fast": 0 },
+    "why": "Tellen puts everything on rules a stranger could check. 'A market is only fair if a buyer who knows nobody can still trust it.'" },
+  { "who": "Clerk Dagny", "bids": { "local": 3, "fast": 3, "posted": 2, "scale": 2, "records": 0 },
+    "why": "Dagny puts nothing on the market book. 'Half the hill families cannot read it, and the other half do not want the town counting their sales.'" }
+ ],
+ "values": [
+  { "id": "trust", "text": "That a stranger can trust what they are sold.", "reply": "Tellen nods. 'Then you will want proof that everyone can check. Be ready for the people who feel checked.'" },
+  { "id": "people", "text": "That people keep their own ways of measuring.", "reply": "Dagny smiles. 'Then you will need to explain the basket to every stranger who buys from it. That is work too.'" },
+  { "id": "living", "text": "That traders can make a living today.", "reply": "Tellen and Dagny both nod. 'Today,' says Dagny. 'And next year, when a buyer comes back angry?' asks Tellen. A living depends on both."}
+ ]
+}

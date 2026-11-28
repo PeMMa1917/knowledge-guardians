@@ -1,0 +1,195 @@
+{
+ "_note": "C-016: after some weighed judgements, someone affected pushes back, and the player answers. Every answer gets a reply; none is marked right (OPEN-001). Rules in src/domain/pushbacks.ts.",
+ "pushbacks": [
+  {
+   "id": "forest.moss",
+   "flag": "forest.moss.result",
+   "speaker": "forest-naturalist",
+   "heading": "Elian stops you on the bridge",
+   "byValue": {
+    "ribbon": "Elian taps one of your ribbons. 'Keep to the stones. So now the trail says boots wear the green away. We counted four pegs on one trail. The edges could dry faster. Walkers could pick bare ground. Your ribbon turns a lead into a cause, and every walker who reads it will believe it.'",
+    "mark": "Elian frowns at the two small ties. 'You found fewer green squares by the path, twice, and you put up nothing a walker will read. If boots are doing it, the moss pays while we wait for a second trail. Being careful has a cost too, and the moss is the one paying it.'"
+   },
+   "answers": [
+    {
+     "id": "hold",
+     "text": "Keep it, and say why",
+     "reply": "Elian listens to the end. 'All right. You weighed it and you can say what you weighed. Write that on the sheet, so the next group knows it was a choice and not a finding.'"
+    },
+    {
+     "id": "change",
+     "text": "Change it",
+     "reply": "Elian nods slowly. 'Changing your mind because someone pushed is not always wisdom. Changing it because you heard a reason you had missed is. Which was it?'"
+    },
+    {
+     "id": "ask",
+     "text": "Ask what would change Elian's mind",
+     "reply": "'A second trail,' Elian says at once. 'Four more pegs where nobody walks the edge. If the edges are still bare there, it is not the boots. Help me set them, and we will both have to accept what they show.'"
+    }
+   ]
+  },
+  {
+   "id": "sea.chart",
+   "flag": "sea.response",
+   "speaker": "sea-harbourkeeper",
+   "heading": "A skiff crew at the chart wall",
+   "byValue": {
+    "shore": "Sora brings over a skiff crew in wet boots. Their steerer points at the chart. 'The shore plan is first and big, and the shoal is a little box in the corner. We have steered by the old chart for twenty years. A reader skims the big one. Put the danger where the eye goes first.'",
+    "water": "Sora brings over a skiff crew in wet boots. Their steerer points at the two charts. 'Two charts side by side, and neither says which to trust at low water. We have steered by the old chart for twenty years. Now you make us choose on the quay, with the tide going out.'"
+   },
+   "answers": [
+    {
+     "id": "hold",
+     "text": "Keep the wall as it is, and say why",
+     "reply": "The steerer folds their arms, then nods. 'You thought about it. Fine. Put one line under it that says who should read which chart. We will tell the others.'"
+    },
+    {
+     "id": "change",
+     "text": "Change the wall for the crews",
+     "reply": "Sora watches you move the sheets. 'The first readers we asked were people on dry land. These are the people who will be on the water. That is a reason to change.'"
+    },
+    {
+     "id": "ask",
+     "text": "Ask what the old chart taught them",
+     "reply": "The steerer laughs. 'That the old chart is wrong at the north end, and we all know where. It is not on any paper. Write that down, and you have a better chart than either of these.'"
+    }
+   ]
+  },
+  {
+   "id": "water.order",
+   "flag": "water.response",
+   "speaker": "water-scribe",
+   "heading": "The crew who lost water",
+   "byValue": {
+    "fields": "Clerk Sena comes up the bank, and the lower channel crew follow. Their leader speaks first. 'Seven to the rows, three to us. The rows stay green, and our seed beds dry out first. Nobody on the council works the lower channel. Did anyone ask what three buckets means down here?'",
+    "split": "Clerk Sena comes up the bank, and both crews follow. 'Five and five,' says the row crew's leader. 'Fair on paper. But now both crews are short, and nobody has enough to do the work properly. Fair can also mean that everybody loses a little, and nobody wins anything.'",
+    "channel": "Clerk Sena comes up the bank, and the row crew follow. Their leader speaks first. 'Seven to the channel so it can keep two in reserve. Reserve for what? Our rows need that water this week, not some week that may never come.'"
+   },
+   "answers": [
+    {
+     "id": "hold",
+     "text": "Keep the order, and say why",
+     "reply": "The crew leader listens. 'I still do not like it. But you said who loses, out loud, and you wrote it down. That is more than the last council did.'"
+    },
+    {
+     "id": "change",
+     "text": "Offer to change the order",
+     "reply": "Sena raises a hand. 'Careful. If the order changes every time one crew pushes, the loudest crew wins. Change it for a reason, and write the reason next to the change.'"
+    },
+    {
+     "id": "ask",
+     "text": "Ask what they would need to accept it",
+     "reply": "The crew leader thinks. 'A date. Tell us when the order will be looked at again, and who will measure our side. Then we can live with it until then.'"
+    }
+   ]
+  },
+  {
+   "id": "coast.revised",
+   "flag": "coast.updated",
+   "speaker": "coast-signalkeeper",
+   "heading": "A crew that acted on the first notice",
+   "byValue": {
+    "true": "Signalkeeper Ruan brings a boat crew to the notice board. 'We read the first notice and pulled the boats up at dawn,' says one of them. 'A whole morning lost. Now you change the notice. Next time, how do we know which notice to believe?'"
+   },
+   "answers": [
+    {
+     "id": "hold",
+     "text": "Explain why the notice changed",
+     "reply": "The crew member listens. 'So the first notice was right for what you knew then. I can live with that, if the notice always says when it was written and what it was based on.'"
+    },
+    {
+     "id": "change",
+     "text": "Promise not to change notices so fast",
+     "reply": "Ruan shakes their head. 'Then the next notice will stay wrong for longer. A notice that never changes is not more trustworthy. It is only more stubborn.'"
+    },
+    {
+     "id": "ask",
+     "text": "Ask what would help them trust a change",
+     "reply": "'Tell us how sure you are,' says the crew member. 'Not just the warning. If it says \"likely\", we pull up half. If it says \"certain\", we pull up all.'"
+    }
+   ]
+  },
+  {
+   "id": "copies.walk",
+   "flag": "copies.response",
+   "speaker": "copies-lendingkeeper",
+   "heading": "A reader who walked to the closed hall",
+   "byValue": {
+    "reprint": "Mina brings a reader to the counter, still in walking shoes. 'A full reprint, beside the claim. It is very clear. I walked to the hall on Tuesday because the old copy said it was open. Who tells the people who already walked? And who is responsible for that walk?'",
+    "strip": "Mina brings a reader to the counter, still in walking shoes. 'A correction strip on each old copy. I read my copy last week and walked to the hall on Tuesday. A strip on a copy I already read does not reach me. Who is responsible for that walk?'"
+   },
+   "answers": [
+    {
+     "id": "hold",
+     "text": "Keep the correction, and say why",
+     "reply": "The reader listens. 'So you fixed the copies, and the copies were the error. Fine. Then say so on the correction: what was wrong, since when, and who it may have sent the wrong way.'"
+    },
+    {
+     "id": "change",
+     "text": "Add a notice for people who already acted",
+     "reply": "Mina nods slowly. 'A correction that reaches only new readers is half a correction. A notice at the hall door costs us a sheet of paper. We should have thought of it first.'"
+    },
+    {
+     "id": "ask",
+     "text": "Ask what would make it right for them",
+     "reply": "'Not much,' says the reader. 'Say it was the copy's mistake and not mine. People who walked for nothing want to know they did not misread.'"
+    }
+   ]
+  },
+  {
+   "id": "stage.side",
+   "flag": "stage.response",
+   "speaker": "stage-host",
+   "heading": "A note from the side gallery",
+   "byValue": {
+    "pause": "Hari hands you a note from the side gallery. 'From where we sat, the silence came while the keeper's back was turned to us. We did not see a pause. We saw someone hiding something. You chose the order for the front rows.'",
+    "move": "Hari hands you a note from the side gallery. 'From where we sat, the crate moved first and blocked the doorway. We never saw the keeper's face in the silence. The scene you staged is not the scene we saw.'"
+   },
+   "answers": [
+    {
+     "id": "hold",
+     "text": "Keep the order, and say why",
+     "reply": "Hari reads your answer back. 'So the front rows see the scene as you meant it, and the side sees another scene. That is honest. Put it in the programme: what you see depends on where you sit.'"
+    },
+    {
+     "id": "change",
+     "text": "Restage it for the side gallery too",
+     "reply": "Edda raises an eyebrow. 'Then the front rows lose something. Every staging chooses a best seat. The question is whether you chose it on purpose.'"
+    },
+    {
+     "id": "ask",
+     "text": "Ask what the side gallery made of the scene",
+     "reply": "Hari grins. 'Their reading is better than ours, in a way. They thought the keeper was hiding a secret. We never meant that. Now I cannot stop seeing it.'"
+    }
+   ]
+  },
+  {
+   "id": "civic.route",
+   "flag": "civic.response",
+   "speaker": "civic-clerk",
+   "heading": "A reader from the street that lost its visit",
+   "byValue": {
+    "rank": "Lin brings a reader from Canal Walk to the notice. 'All four windows to the bigger queue. That queue is bigger because the desk is near it. We walk an hour each way. Of course fewer of us stand in your line. Your count counts the people who could come.'",
+    "reserve": "Lin brings a reader from Canal Walk to the notice. 'One window each, then the rest to the bigger count. Better. But our one window is first thing in the morning, when the canal boats are out and none of us can come.'",
+    "even": "Lin brings a reader from Canal Walk to the notice. 'Two windows each. Fair on the map. But there are three times as many of us waiting. Fair to the districts is not the same as fair to the people in them.'"
+   },
+   "answers": [
+    {
+     "id": "hold",
+     "text": "Keep the rule, and say why",
+     "reply": "The reader thinks about it. 'You tested it and you can show the test. All right. But put our street's count next to yours, so the next rule starts from both.'"
+    },
+    {
+     "id": "change",
+     "text": "Change the rule for Canal Walk",
+     "reply": "Lin hesitates. 'If we change it for the street that came to complain, the streets that did not come lose again. Change it, yes, but count them too.'"
+    },
+    {
+     "id": "ask",
+     "text": "Ask what a fair count would look like to them",
+     "reply": "'Count the people who want to come,' says the reader, 'not only the ones who already got here. Ask at the canal, not at the desk.'"
+    }
+   ]
+  }
+ ]
+}

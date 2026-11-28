@@ -1,0 +1,600 @@
+{
+ "sources": [
+  {
+   "id": "HIS-STICK-LOC",
+   "title": "Library of Congress, Worlds Revealed blog: The Unique Seafaring Charts of the Marshall Islands (2021)",
+   "url": "https://blogs.loc.gov/maps/2021/11/the-unique-seafaring-charts-of-the-marshall-islands/",
+   "locator": "Sections on chart types and on Korent Joel",
+   "supports": "Korent Joel, a cargo-ship captain and one of the last traditional navigators, died in 2017. The rebbelib covers the whole chain, the meddo one section, and the mattang shows how islands disturb swells. Charts were memorised ashore; each could be read only by its maker.",
+   "accessed": "2026-11-27"
+  },
+  {
+   "id": "HIS-STICK-SIO",
+   "title": "Smithsonian Ocean: Navigating the Waters with Micronesian Stick Charts (2020)",
+   "url": "https://ocean.si.edu/human-connections/history-cultures/navigating-waters-micronesian-stick-charts",
+   "locator": "Whole article",
+   "supports": "The mattang is a teaching chart; the charts were not taken to sea; navigators called ri-metos held the knowledge.",
+   "accessed": "2026-11-27"
+  },
+  {
+   "id": "HIS-STICK-WAM",
+   "title": "Waan Aelõñ in Majel (Canoes of the Marshall Islands): navigation posts, 2014 to 2015",
+   "url": "https://www.canoesmarshallislands.com/category/navigation/",
+   "locator": "Posts on the Aur voyages and on Korent Joel",
+   "supports": "Korent Joel learned from his grandfather on Rongelap and took Alson Kelen as a student because they are family. Joseph Genz reports that the knowledge is still under traditional chiefly control. Korent described the dilep. The scientists' instruments may not have been sensitive enough.",
+   "accessed": "2026-11-27"
+  },
+  {
+   "id": "HIS-STICK-SMAG",
+   "title": "Smithsonian Magazine: Science and Tradition Are Resurrecting the Lost Art of Wave Piloting",
+   "url": "https://www.smithsonianmag.com/arts-culture/science-and-tradition-are-resurrecting-lost-art-wave-piloting-180958005/",
+   "locator": "Whole article",
+   "supports": "Buoys did not pick up the sensations Korent used. A physicist suggested the dilep may be about the motion of the vessel. Waan Aelõñ in Majel began in 1989 and teaches canoe building and sailing.",
+   "accessed": "2026-11-27"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.sea.stick.kinds",
+   "title": "Marshall Islands stick charts: three kinds",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-STICK-LOC",
+    "HIS-STICK-SIO"
+   ],
+   "text": "Marshallese navigators made charts from the ribs of palm fronds tied with coconut fibre, with shells for islands. Museums describe three kinds. The mattang is a teaching chart of how swells bend and bounce around an island. The rebbelib shows a whole chain of atolls. The meddo shows one part of a chain. The charts were studied and memorised ashore. They did not go to sea.",
+   "limits": "The museum and library accounts do not agree on the meddo's exact use, or on whether a mattang's shells stand for real islands. Each chart could be read fully only by the person who made it."
+  },
+  {
+   "id": "card.sea.stick.voyage",
+   "title": "Korent Joel and the voyages to Aur",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-STICK-WAM",
+    "HIS-STICK-LOC",
+    "HIS-STICK-SMAG"
+   ],
+   "text": "Korent Joel (died 2017) was a cargo-ship captain and one of the last traditional Marshallese navigators. He learned from his grandfather on Rongelap. He described a dilep: a line of heaped swells between two atolls that a navigator feels through the canoe. On canoe voyages from Majuro to Aur, scientists' buoys did not pick up what he described, and a physicist suggested the feeling may come from how the boat moves.",
+   "limits": "The scientists say their instruments may not have been sensitive enough. The navigators and the scientists describe the sea in different terms, and neither account has been fully put into the other's terms."
+  },
+  {
+   "id": "card.sea.stick.held",
+   "title": "Knowledge held with permission",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-STICK-WAM",
+    "HIS-STICK-SMAG"
+   ],
+   "text": "Joseph Genz, an anthropologist who worked with Korent Joel from 2005, reports that navigation knowledge is still under traditional chiefly control, with rules on how it is passed on. Korent took Alson Kelen as a student because they are family. Korent also said it mattered to him that a scientist should check what he knew. Waan Aelõñ in Majel, led by Alson Kelen, has taught young Marshallese to build and sail canoes since 1989.",
+   "limits": "The rule about chiefly control is reported by an outside researcher who worked with the navigators. This game does not teach how to read the swells. That knowledge belongs to Marshallese navigators to share."
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "sea.stick.kinds",
+   "speaker": "narrator",
+   "historicalLabel": "documented",
+   "claimKind": "observation",
+   "text": "On a lit shelf: a photograph of a Marshall Islands stick chart, palm-frond ribs tied in curves, with small shells at some joins. Renna's card beside it says this kind of chart was learned ashore and left ashore.",
+   "options": [
+    {
+     "text": "Keep this record.",
+     "next": "sea.stick.kinds.kept",
+     "if": {
+      "not": {
+       "flag": "sea.stick.kinds",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "sea.stick.kinds",
+       "value": true
+      },
+      {
+       "addCard": "card.sea.stick.kinds"
+      }
+     ]
+    },
+    {
+     "text": "Leave it on the shelf."
+    }
+   ]
+  },
+  {
+   "id": "sea.stick.kinds.kept",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The record goes into your folder, with its sources."
+  },
+  {
+   "id": "sea.stick.voyage",
+   "speaker": "narrator",
+   "historicalLabel": "documented",
+   "claimKind": "observation",
+   "text": "A folder of voyage notes from the Marshall Islands, with a photograph of a canoe under sail and a chase boat behind it. One page has a navigator's account of a line of swells. The page beside it has the buoy readings, which show nothing there.",
+   "options": [
+    {
+     "text": "Keep this record.",
+     "next": "sea.stick.voyage.kept",
+     "if": {
+      "not": {
+       "flag": "sea.stick.voyage",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "sea.stick.voyage",
+       "value": true
+      },
+      {
+       "addCard": "card.sea.stick.voyage"
+      }
+     ]
+    },
+    {
+     "text": "Leave it on the shelf."
+    }
+   ]
+  },
+  {
+   "id": "sea.stick.voyage.kept",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The record goes into your folder, with its sources."
+  },
+  {
+   "id": "sea.stick.held",
+   "speaker": "narrator",
+   "historicalLabel": "documented",
+   "claimKind": "observation",
+   "text": "A short letter clipped to the case: a museum asks how much of a navigator's teaching it may print. The reply names a canoe school in Majuro and says some of this knowledge passes only by family and permission.",
+   "options": [
+    {
+     "text": "Keep this record.",
+     "next": "sea.stick.held.kept",
+     "if": {
+      "not": {
+       "flag": "sea.stick.held",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "sea.stick.held",
+       "value": true
+      },
+      {
+       "addCard": "card.sea.stick.held"
+      }
+     ]
+    },
+    {
+     "text": "Leave it on the shelf."
+    }
+   ]
+  },
+  {
+   "id": "sea.stick.held.kept",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The record goes into your folder, with its sources."
+  },
+  {
+   "id": "sea.stick.desk",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "interpretation",
+   "text": "Renna's new display card for the stick chart is blank. Sora has pinned a note: 'Visitors will read this card, not the folders. Whatever it says is what they will think the chart knows.'",
+   "options": [
+    {
+     "text": "Put the navigator's account and the buoy readings side by side. Say how each one was gathered.",
+     "next": "sea.stick.desk.two",
+     "if": {
+      "all": [
+       {
+        "flag": "sea.stick.kinds",
+        "eq": true
+       },
+       {
+        "flag": "sea.stick.voyage",
+        "eq": true
+       },
+       {
+        "flag": "sea.stick.held",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "sea.stick.label"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "sea.stick.label",
+       "value": "two"
+      }
+     ]
+    },
+    {
+     "text": "Call it a teaching chart that stays ashore. Say the map is learned in the body, at sea.",
+     "next": "sea.stick.desk.ashore",
+     "if": {
+      "all": [
+       {
+        "flag": "sea.stick.kinds",
+        "eq": true
+       },
+       {
+        "flag": "sea.stick.voyage",
+        "eq": true
+       },
+       {
+        "flag": "sea.stick.held",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "sea.stick.label"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "sea.stick.label",
+       "value": "ashore"
+      }
+     ]
+    },
+    {
+     "text": "Print what is public, and leave a marked space for knowledge that Marshallese navigators hold and may share.",
+     "next": "sea.stick.desk.gap",
+     "if": {
+      "all": [
+       {
+        "flag": "sea.stick.kinds",
+        "eq": true
+       },
+       {
+        "flag": "sea.stick.voyage",
+        "eq": true
+       },
+       {
+        "flag": "sea.stick.held",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "sea.stick.label"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "sea.stick.label",
+       "value": "gap"
+      }
+     ]
+    },
+    {
+     "text": "Leave the card blank for now."
+    }
+   ]
+  },
+  {
+   "id": "sea.stick.desk.two",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You write the card and pin it under the chart. Renna and Sora both come to read it."
+  },
+  {
+   "id": "sea.stick.desk.ashore",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You write the card and pin it under the chart. Renna and Sora both come to read it."
+  },
+  {
+   "id": "sea.stick.desk.gap",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You write the card and pin it under the chart. Renna and Sora both come to read it."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH8-I01",
+   "world": "WORLD-09",
+   "title": "The Chart That Stays Ashore",
+   "knowledgeQuestion": "When an instrument does not detect what a skilled knower feels, what does that show?",
+   "stake": "The Lantern House is making a new display. If the card says the sticks are the map, visitors will think the knowledge is in the sticks.",
+   "available": {
+    "flagSet": "sea.response"
+   },
+   "objectives": [
+    {
+     "id": "sea.stick.kinds",
+     "title": "Read what the stick chart is for.",
+     "essential": false,
+     "done": {
+      "flag": "sea.stick.kinds",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "interpretation",
+       "culture"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "IND",
+       "NAT",
+       "HIS"
+      ],
+      "subjects": [
+       "geography",
+       "physics",
+       "anthropology"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "understand",
+       "fink": "human",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "sea.stick.voyage",
+     "title": "Read the voyage notes: what the navigator felt and what the buoys showed.",
+     "essential": false,
+     "done": {
+      "flag": "sea.stick.voyage",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "perspective",
+       "certainty"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "IND",
+       "NAT",
+       "HIS"
+      ],
+      "subjects": [
+       "geography",
+       "physics",
+       "anthropology"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "human",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "sea.stick.held",
+     "title": "Read who may share this knowledge.",
+     "essential": false,
+     "done": {
+      "flag": "sea.stick.held",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "responsibility",
+       "power",
+       "culture"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "IND",
+       "NAT",
+       "HIS"
+      ],
+      "subjects": [
+       "geography",
+       "physics",
+       "anthropology"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "human",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "sea.stick.label",
+     "title": "Write the display card for the stick chart.",
+     "essential": false,
+     "done": {
+      "flagSet": "sea.stick.label"
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "responsibility",
+       "interpretation",
+       "justification"
+      ],
+      "atl": [
+       "research",
+       "thinking",
+       "communication"
+      ],
+      "aoks": [
+       "IND",
+       "NAT",
+       "HIS"
+      ],
+      "subjects": [
+       "geography",
+       "physics",
+       "anthropology"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "human",
+       "solo": "relational"
+      }
+     },
+     "onComplete": [
+      {
+       "journal": "j.sea.stick"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "hint.sea.stick.kinds.1",
+   "objective": "sea.stick.kinds",
+   "depth": 1,
+   "text": "The Lantern House has a new case by the west wall."
+  },
+  {
+   "id": "hint.sea.stick.kinds.2",
+   "objective": "sea.stick.kinds",
+   "depth": 2,
+   "text": "The case shows a chart made from ribs of palm fronds and shells."
+  },
+  {
+   "id": "hint.sea.stick.kinds.3",
+   "objective": "sea.stick.kinds",
+   "depth": 3,
+   "text": "Look at the lit shelf near the top left of the room."
+  },
+  {
+   "id": "hint.sea.stick.kinds.4",
+   "objective": "sea.stick.kinds",
+   "depth": 4,
+   "text": "Read the stick chart shelf and keep the record."
+  },
+  {
+   "id": "hint.sea.stick.voyage.1",
+   "objective": "sea.stick.voyage",
+   "depth": 1,
+   "text": "Two accounts of one stretch of sea sit in one folder."
+  },
+  {
+   "id": "hint.sea.stick.voyage.2",
+   "objective": "sea.stick.voyage",
+   "depth": 2,
+   "text": "One account is a navigator's. One is from instruments."
+  },
+  {
+   "id": "hint.sea.stick.voyage.3",
+   "objective": "sea.stick.voyage",
+   "depth": 3,
+   "text": "The folder is on the shelf at the top right of the room."
+  },
+  {
+   "id": "hint.sea.stick.voyage.4",
+   "objective": "sea.stick.voyage",
+   "depth": 4,
+   "text": "Read the voyage folder and keep the record."
+  },
+  {
+   "id": "hint.sea.stick.held.1",
+   "objective": "sea.stick.held",
+   "depth": 1,
+   "text": "Not all knowledge is free to print."
+  },
+  {
+   "id": "hint.sea.stick.held.2",
+   "objective": "sea.stick.held",
+   "depth": 2,
+   "text": "A letter is clipped to the case on the east side."
+  },
+  {
+   "id": "hint.sea.stick.held.3",
+   "objective": "sea.stick.held",
+   "depth": 3,
+   "text": "It is below the voyage shelf."
+  },
+  {
+   "id": "hint.sea.stick.held.4",
+   "objective": "sea.stick.held",
+   "depth": 4,
+   "text": "Read the letter and keep the record."
+  },
+  {
+   "id": "hint.sea.stick.label.1",
+   "objective": "sea.stick.label",
+   "depth": 1,
+   "text": "Renna's display card is still blank."
+  },
+  {
+   "id": "hint.sea.stick.label.2",
+   "objective": "sea.stick.label",
+   "depth": 2,
+   "text": "The card is on the small desk at the left of the room."
+  },
+  {
+   "id": "hint.sea.stick.label.3",
+   "objective": "sea.stick.label",
+   "depth": 3,
+   "text": "Each of the three cards says something true. Each leaves something out."
+  },
+  {
+   "id": "hint.sea.stick.label.4",
+   "objective": "sea.stick.label",
+   "depth": 4,
+   "text": "Use the desk when you have read all three records."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.sea.stick",
+   "kind": "quest",
+   "title": "The Chart That Stays Ashore",
+   "text": "I read about Marshall Islands stick charts, which were learned ashore and left ashore. A navigator felt a line of swells that the buoys did not show. Some of this knowledge passes only by family and permission. I wrote a display card that says what the chart can and cannot tell a visitor."
+  }
+ ]
+}

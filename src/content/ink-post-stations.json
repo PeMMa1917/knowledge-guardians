@@ -1,0 +1,377 @@
+[
+  {
+    "id": "archive",
+    "place": "Archive Hall",
+    "map": "nexus.archive",
+    "at": [
+      6,
+      13
+    ],
+    "host": "warden-ise",
+    "to": "nile",
+    "intro": "I found a paper bird nesting in the returns slot. It pinched my seal and left its own footprint in the wax. The letters under its wing open from either end.",
+    "request": "One envelope keeps slipping out of the catalogue. I used to send such things back. Now I would like to know who is waiting at the other end.",
+    "deliveries": [
+      {
+        "action": "Give the bird the reading-room key",
+        "reply": "The late readers got in. I had to explain the empty hook where my key usually hangs."
+      },
+      {
+        "action": "Fold a pocket copy for the person who asked",
+        "reply": "The reader took the fold home. Somebody else came in today asking to hear the same thing."
+      }
+    ],
+    "reflection": "Who could use your record without needing the keeper's key?",
+    "world": "WORLD-01"
+  },
+  {
+    "id": "nile",
+    "place": "Nile Archive hall",
+    "map": "nile.hall",
+    "at": [
+      10,
+      8
+    ],
+    "host": "nile-iman",
+    "to": "voices",
+    "intro": "Count the beaks in the wax. One bird came back with two return addresses. I used to call that a filing error. Then I recognised my own handwriting.",
+    "request": "I have space for one line on the public slip. My private drawer has room for a whole life. Each has failed somebody before.",
+    "deliveries": [
+      {
+        "action": "Hang a slip on the public hook",
+        "reply": "A carrier found the entry at the hook. We had to tell the rest of the queue why so much had been left off it."
+      },
+      {
+        "action": "Leave a fuller account with the drawer keeper",
+        "reply": "The keeper could answer a second question. A stranger who came after closing found a locked drawer."
+      }
+    ],
+    "reflection": "What might get lost when somebody turns your finding into a one-line label?",
+    "world": "WORLD-03"
+  },
+  {
+    "id": "cold",
+    "place": "Cold Store",
+    "map": "preserved.archive",
+    "at": [
+      14,
+      12
+    ],
+    "host": "preserved-registrar",
+    "to": "stage",
+    "intro": "The frost has left a blank shape exactly as wide as a folded letter. A warm thumbprint points out of the case. The paper bird looks affronted at the suggestion it has thumbs.",
+    "request": "I promised a visitor she could bring her grandfather to see this. The case glass fogs over if two people lean close together.",
+    "deliveries": [
+      {
+        "action": "Make space for two at the case",
+        "reply": "They read together and disagreed about the last detail. The queue waited while they went back for a second look."
+      },
+      {
+        "action": "Let a working fold travel to their bench",
+        "reply": "He could turn the fold in his own hands. His granddaughter came back to check which marks belonged to the case."
+      }
+    ],
+    "reflection": "Which detail would you want somebody to see in place before taking your word for it?",
+    "world": "WORLD-04"
+  },
+  {
+    "id": "coast",
+    "place": "Slate Harbour",
+    "map": "observatory.harbour",
+    "at": [
+      12,
+      16
+    ],
+    "host": "coast-signalkeeper",
+    "to": "island",
+    "intro": "A paper bird has beaten the signal boat into harbour. Its underside is dry. My daughter thinks it flew under the rain. I think somebody carried it, and kept quiet.",
+    "request": "The next watch has time for one good signal. The watcher after them will have time for the whole account. I have a boat on both tides.",
+    "deliveries": [
+      {
+        "action": "Hoist a short signal for the next watch",
+        "reply": "The first boat saw the mark and changed course. The second watch wanted the details the flag could never carry."
+      },
+      {
+        "action": "Put the whole reading in the night watch box",
+        "reply": "The second crew could repeat the check. The first had already sailed with the old signal."
+      }
+    ],
+    "reflection": "Which part of the account would survive a signal seen from the water?",
+    "world": "WORLD-05"
+  },
+  {
+    "id": "fern",
+    "place": "Fern Station",
+    "map": "forest.station",
+    "at": [
+      11,
+      12
+    ],
+    "host": "forest-naturalist",
+    "to": "market",
+    "intro": "A folded beak pokes out of my field book. Every time I draw it, it moves one leaf farther from the path. Yesterday it left a note in somebody else's hand.",
+    "request": "A visitor wants to follow your observation to its source. There are three boots on a patch where I meant to leave only one.",
+    "deliveries": [
+      {
+        "action": "Move the listening bench back to the path",
+        "reply": "People can stay longer and the ground gets a rest. A detail at the far edge needs another way of showing it."
+      },
+      {
+        "action": "Book one small guided visit",
+        "reply": "We could stop at exactly the right patch. A late visitor had to trust somebody else's sketch."
+      }
+    ],
+    "reflection": "What would a second observer change simply by coming to look?",
+    "world": "WORLD-06"
+  },
+  {
+    "id": "yard",
+    "place": "Metalworks Sample Yard",
+    "map": "metalworks.yard",
+    "at": [
+      11,
+      12
+    ],
+    "host": "metal-inspector",
+    "to": "chart",
+    "intro": "The empty mould chirps when I tap it. The letter inside has a seam where the signature ought to be. A maker on the night shift is looking for it.",
+    "request": "The day crew wants a pattern it can copy. The apprentice wants to see where your hand changed the pattern. I know whose name vanishes if we rush.",
+    "deliveries": [
+      {
+        "action": "Cut a template for the day crew",
+        "reply": "A second workbench could start at once. The apprentice keeps a rejected piece to show what the template leaves out."
+      },
+      {
+        "action": "Leave the joint exposed for the apprentice",
+        "reply": "An apprentice found a new way to fit it. The morning crew waited for her to finish before passing it on."
+      }
+    ],
+    "reflection": "What could you learn by following the maker's hand instead of the finished outline?",
+    "world": "WORLD-07"
+  },
+  {
+    "id": "press",
+    "place": "Print Workshop",
+    "map": "copies.press",
+    "at": [
+      11,
+      10
+    ],
+    "host": "copies-presskeeper",
+    "to": "council",
+    "intro": "A sheet has come through my press upside down. The letters are still the right way up. Whatever folded it wants a reader more than it wants a printer.",
+    "request": "One copy has to go out with the van. I have a clean front page and a whole back page covered in changes. My father always printed the front.",
+    "deliveries": [
+      {
+        "action": "Run the amended line on the front",
+        "reply": "Everyone saw the change. A reader who had kept yesterday's sheet came in to ask why we changed it."
+      },
+      {
+        "action": "Bind both editions on one hinge",
+        "reply": "The reader can trace the change in either direction. The courier could carry fewer of the thicker copies."
+      }
+    ],
+    "reflection": "Where did the meaning move when you changed how the finding was printed?",
+    "world": "WORLD-08"
+  },
+  {
+    "id": "chart",
+    "place": "Lantern House",
+    "map": "sea.chartroom",
+    "at": [
+      13,
+      12
+    ],
+    "host": "sea-cartographer",
+    "to": "coast",
+    "intro": "At low tide this paper bird points inland. At high tide it points at the hand holding it. My pilot says the map is fine and the compass has taken things personally.",
+    "request": "The next pilot knows these waters by hand. A visitor has only the chart. One of them will take your reply out past the lamp.",
+    "deliveries": [
+      {
+        "action": "Give the pilot a mark to feel in the dark",
+        "reply": "The pilot can check it without light. In daylight the visitor asks which way up to hold it."
+      },
+      {
+        "action": "Fit a turning frame for the visitor",
+        "reply": "The visitor matches the frame to the harbour. The pilot has to set a lantern down to read it."
+      }
+    ],
+    "reflection": "Which part of the reply depends on where its reader is standing?",
+    "world": "WORLD-09"
+  },
+  {
+    "id": "stage",
+    "place": "Rehearsal Room",
+    "map": "stage.rehearsal",
+    "at": [
+      13,
+      12
+    ],
+    "host": "stage-director",
+    "to": "press",
+    "intro": "A prop bird has missed two entrances and hit a third one before I gave the cue. When I unfolded its wing I found a line nobody in my cast had written.",
+    "request": "A voice from the back row heard something our front row missed. I can give them a turn on stage or carry their mark into the next performance.",
+    "deliveries": [
+      {
+        "action": "Call the back row onto the stage",
+        "reply": "Someone who never takes a bow tried the cue. The next actor had to learn a new entrance."
+      },
+      {
+        "action": "Keep an empty seat and a score for the understudy",
+        "reply": "The understudy could repeat the cue after the house went dark. The audience never learned whose idea it was."
+      }
+    ],
+    "reflection": "Whose contribution would have disappeared if you had watched only the stage?",
+    "world": "WORLD-10"
+  },
+  {
+    "id": "market",
+    "place": "Lantern Square",
+    "map": "market.square",
+    "at": [
+      18,
+      19
+    ],
+    "host": "market-assayer",
+    "to": "dispatch",
+    "intro": "A paper bird is balanced against a brass weight. The scales say it weighs exactly one unsent letter. I recognise the handwriting. I'd rather you opened it.",
+    "request": "The price board reaches everyone who can stop to read it. The market runner reaches one person who cannot leave a stall today.",
+    "deliveries": [
+      {
+        "action": "Hang the finding on the price board",
+        "reply": "More traders saw it. A stallholder who could not leave her stock heard the shortened version second-hand."
+      },
+      {
+        "action": "Let the runner take it to the stall",
+        "reply": "She sent the runner back with a correction. The outer stalls heard about it a bell later."
+      }
+    ],
+    "reflection": "Who had to pay in time to make use of your decision?",
+    "world": "WORLD-11"
+  },
+  {
+    "id": "gate",
+    "place": "Old Weir",
+    "map": "water.gatehouse",
+    "at": [
+      11,
+      12
+    ],
+    "host": "water-keeper",
+    "to": "fern",
+    "intro": "The bird came up against the current. I pulled it out for the paper's sake and it bit my cuff. On the inside it says somebody upstream has been waiting.",
+    "request": "The early shift can change the gate today. The people who live below it get here after work. I used to think the schedule was neutral.",
+    "deliveries": [
+      {
+        "action": "Peg the reply where the next shift starts",
+        "reply": "The early crew made a change before the water rose. Those downstream wanted more time to consider it."
+      },
+      {
+        "action": "Keep a chair for the downstream hearing",
+        "reply": "A neighbour found a cost we'd missed. The first shift had to leave the old setting in place another day."
+      }
+    ],
+    "reflection": "Who would feel the effect before they had a chance to speak?",
+    "world": "WORLD-12"
+  },
+  {
+    "id": "dispatch",
+    "place": "Library Dispatch",
+    "map": "civic.dispatch",
+    "at": [
+      10,
+      12
+    ],
+    "host": "civic-operator",
+    "to": "gate",
+    "intro": "The sorter sends every feather to lost property. One paper feather has come back nine times, each time with a little more writing on it.",
+    "request": "My machine has one slot for an answer. A visitor has a story that fits halfway in. I can bypass the slot for one reader or change how the next batch is handled.",
+    "deliveries": [
+      {
+        "action": "Open the hand-delivery drawer",
+        "reply": "One reader got the complete account in time. The next unusual reply will need a keeper again."
+      },
+      {
+        "action": "Fit a return tab to the sorter",
+        "reply": "The next reader can send a bad fit back. Today's reader waits while we fit the tab."
+      }
+    ],
+    "reflection": "What did the machine's categories make easy to miss?",
+    "world": "WORLD-13"
+  },
+  {
+    "id": "voices",
+    "place": "Listening Room",
+    "map": "voices.listening",
+    "at": [
+      11,
+      12
+    ],
+    "host": "voices-steward",
+    "to": "yard",
+    "intro": "The bird at the listening horn sings in a voice I used to know. I have resisted unfolding its throat. I can ask it to sing, or I can wait for it to offer.",
+    "request": "The room wants an encore. The listener at the back has asked to hear the account once without an audience. I owe something to both of them.",
+    "deliveries": [
+      {
+        "action": "Give the listener a private turn",
+        "reply": "She came back with a careful correction and kept her name out of the book. The audience heard the older version first."
+      },
+      {
+        "action": "Ask for permission to hold an open listening",
+        "reply": "People caught different words together. One guest stayed away rather than be heard by the crowd."
+      }
+    ],
+    "reflection": "Which part of what you heard would you ask permission to carry farther?",
+    "world": "WORLD-14"
+  },
+  {
+    "id": "island",
+    "place": "Plan Workshop",
+    "map": "island.workshop",
+    "at": [
+      11,
+      12
+    ],
+    "host": "island-planner",
+    "to": "cold",
+    "intro": "Somebody folded a plan into a bird before the ink dried. The crease now runs through three houses. The people in the houses would like to know if this is official.",
+    "request": "The model is due on the dock. A neighbour has found one place it fails. I want the crew to see the crack before they mistake the model for a promise.",
+    "deliveries": [
+      {
+        "action": "Leave a moving joint at the crack",
+        "reply": "The next crew can vary the joint for themselves. A single clean outline would have been faster to follow."
+      },
+      {
+        "action": "Carry a second small model to the dock",
+        "reply": "The two models predict different outcomes. A deckhand has to decide which assumption suits this tide."
+      }
+    ],
+    "reflection": "Which assumption did another person need in order to use your model?",
+    "world": "WORLD-15"
+  },
+  {
+    "id": "council",
+    "place": "Time Hall",
+    "map": "council.hall",
+    "at": [
+      11,
+      12
+    ],
+    "host": "council-keeper",
+    "to": "archive",
+    "intro": "The last envelope arrived back at the council before anyone here sent it. There is a fine beak-shaped hole where our final seal would go.",
+    "request": "My bell ends a hearing. It cannot end what happened. I can give somebody a place in the minutes or give the case a way back onto this table.",
+    "deliveries": [
+      {
+        "action": "Set a named place in the minutes",
+        "reply": "The next council knows who spoke. It takes another meeting for someone new to add an objection."
+      },
+      {
+        "action": "Leave the return bell within reach",
+        "reply": "Someone rings after closing with a question we missed. The old keeper has to admit the hearing was never quite finished."
+      }
+    ],
+    "reflection": "What would make you reopen a decision you could already defend?",
+    "world": "WORLD-16"
+  }
+]

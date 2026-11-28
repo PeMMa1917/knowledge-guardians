@@ -107,6 +107,12 @@ import islandMovement from './island-movement.json';
 import islandSkiff from './island-skiff.json';
 import council from './m16-council.json';
 import afterCouncil from './after-council.json';
+import thinkerMozi from './thinker-mozi.json';
+import thinkerHaytham from './thinker-haytham.json';
+import seaStickCharts from './sea-stick-charts.json';
+import seaTupaia from './sea-tupaia.json';
+import civicTuskegee from './civic-tuskegee.json';
+import thinkerKhaldun from './thinker-khaldun.json';
 import handoverGallery from './handover-gallery.json';
 import observatoryInland from './observatory-inland.json';
 import observatoryArchive from './observatory-archive.json';
@@ -194,13 +200,15 @@ import threadBend from './thread-bend.json';
 import sillBridge from './sill-bridge.json';
 import { underpanContent } from './underpan';
 import { firstClapContent } from './firstClap';
+import { installInkPost } from '../domain/inkPost';
+import encyclopedia from './encyclopedia.json';
 import { neighbourDialogues } from '../domain/neighbours';
 import { spareMoonContent } from './spareMoon';
 import publicVoices from './nexus-public-voices.json';
 
 export const CONTENT_VERSION = 5;
 
-const parts: any[] = [sources, common, blueTail, m01, fourthCorner, openingPractice, doorFold, shelfRoom, linkedNotes, drawerCases, nexusWayfinding, nexusReadingRests, nexusDateRibbon, nexusPrint, nexusPacking, nexusViewer, nexusHandle, nexusLostGauge, vindolanda, m02, emberfordSide, lanternfair, backbill, welcome, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, stiltfrog, fray, rumour, rumourWell, clueboard, memories, chapterVoices, quarters, dive, story, nile, scenes, coldFirstBell, preservedRecords, preserved, preservedScaleStrip, reconstruction, copper, preservedExhibition, observatory, opticsScreen, observatoryInland, observatoryArchive, waterLoop, departureStrip, ferryKettle, transferFaces, lintelFold, seamWitness, forest, forestAccounts, forestSide, observationSheet, forestReader, sharedCarry, metalworks, metalworksSide, metalRim, benchDebate, fittingViews, copies, copiesSide, copiesMargin, sameRed, citationRail, cartographers, cartographersSide, paperLanding, performance, performanceFrames, filmCuts, market, marketBasket, pairedAccessions, rook, water, latchCheck, harrowmere, lowerRail, vesper, vesperTrust, civic, civicAppeal, civicIncentive, serviceBoundary, voices, elsbetReel, island, islandMovement, islandSkiff, council, afterCouncil, handoverGallery];
+const parts: any[] = [sources, common, blueTail, m01, fourthCorner, openingPractice, doorFold, shelfRoom, linkedNotes, drawerCases, nexusWayfinding, nexusReadingRests, nexusDateRibbon, nexusPrint, nexusPacking, nexusViewer, nexusHandle, nexusLostGauge, vindolanda, m02, emberfordSide, lanternfair, backbill, welcome, firsts, ee, side, glossary, questions, origins, exhibition, puzzles, skills, lorelings, stiltfrog, fray, rumour, rumourWell, clueboard, memories, chapterVoices, quarters, dive, story, nile, scenes, coldFirstBell, preservedRecords, preserved, preservedScaleStrip, reconstruction, copper, preservedExhibition, observatory, opticsScreen, observatoryInland, observatoryArchive, waterLoop, departureStrip, ferryKettle, transferFaces, lintelFold, seamWitness, forest, forestAccounts, forestSide, observationSheet, forestReader, sharedCarry, metalworks, metalworksSide, metalRim, benchDebate, fittingViews, copies, copiesSide, copiesMargin, sameRed, citationRail, cartographers, cartographersSide, paperLanding, performance, performanceFrames, filmCuts, market, marketBasket, pairedAccessions, rook, water, latchCheck, harrowmere, lowerRail, vesper, vesperTrust, civic, civicAppeal, civicIncentive, serviceBoundary, voices, elsbetReel, island, islandMovement, islandSkiff, council, afterCouncil, handoverGallery, thinkerMozi, thinkerHaytham, seaStickCharts, seaTupaia, civicTuskegee, thinkerKhaldun];
 const keys = ['sources', 'cards', 'exhibits', 'characters', 'dialogue', 'missions', 'hints', 'criteria', 'awards', 'items', 'offers', 'journal',
   'labelKits', 'showdowns', 'threads', 'moments', 'misconceptions', 'portfolio', 'events', 'locks', 'glossary', 'questions', 'origins', 'alcoves', 'puzzles', 'skillDomains', 'skills', 'lorelings', 'lorelingAtlas', 'fray', 'clueBoards', 'memories', 'keepsakes', 'divePrompts', 'diveItems', 'knots', 'clues', 'keepsakeTalks', 'chronicle', 'secrets', 'communities'] as const;
 
@@ -227,6 +235,7 @@ export function buildPack(): ContentPack {
       return questionWays ? { ...objective, questionWays } : objective;
     }),
   }));
+  installInkPost(content, new Map(encyclopedia.people.flatMap((article) => article.characters.map((id) => [id, article.title] as const))));
   addSpecimenPeople(content);
   installEarlierViews(content);
   addPublicationReturns(content);

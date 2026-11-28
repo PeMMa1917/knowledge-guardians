@@ -94,7 +94,26 @@ Many games grew from TOK lessons in Mika's lesson folder (decision X-017 in [doc
 | The Careful Dig | Excavation as a choice about what later people can know | Mika's TOK lesson folder |
 | Star Pictures | Measured star positions and the different pictures people draw between them | Mika's TOK lesson folder |
 | The Copyists' Ladder | A word ladder that shows the difference between a pattern and a proof | Mika's TOK lesson folder; the lesson credits an activity shared by Ric Sims. Word ladders ("doublets") were invented by Lewis Carroll in 1877. |
+| The Pattern Book | Who may use a people's designs: consent, credit and who profits | Mika's TOK lesson folder |
+| The Primer Page | Choosing the picture and words for a history textbook page | Mika's TOK lesson folder |
+| The Reassembly Line | A card game where students rebuild a split argument | Mika's TOK lesson folder |
+| The Festival Dilemma | Friends who each advise on one problem from a different ethical view | Mika's TOK lesson folder |
+| The Fog Chart | A battleship grid of knowledge claims, where each hit reveals a claim and its support | Mika's TOK lesson folder |
+| The Token Drawer | Who gets remembered: tokens left with children at the Foundling Hospital in London | Mika's TOK lesson folder |
+| The Collage Wall | Can a picture tell the truth: a collage, an 1819 parliamentary debate about child chimney sweeps, and poems of the time, read together | Mika's TOK lesson folder |
+| The River Crossing Inquiry | A story where people rank who acted worst and each ranking shows a way of judging (the story is fully rewritten as a flood night, with no sexual content) | Mika's TOK lesson folder |
+| The Labyrinth Lens | Lens toggles that show hidden paths (the scoring of nuanced or dogmatic answers was left out) | Mika's TOK lesson folder |
+| The Survey Bell | Ethics limits on research with people, and who decides | Mika's TOK lesson folder |
+| The Time Mirror | How a past self would see the present (a time mirror) | Mika's TOK lesson folder |
+| The Bat Keeper | Thomas Nagel's question "What is it like to be a bat?" (1974) | Mika's TOK lesson folder. Bat facts: London Bat Group; Maryland Department of Natural Resources. |
+| The Value Fair | An auction of beliefs, played with tokens (never money) | Mika's TOK lesson folder |
+| The Lens Table | A historical lenses card game: lens, event, question and object cards that change how an event looks | Mika's TOK lesson folder |
+| The Sketch Relay | Drawing a concept for others to guess, passed along a chain | Mika's TOK lesson folder |
+| The Assay Trial | Telling minerals apart by streak and density, and what a test cannot tell apart | Original design. Streak colours and densities are standard mineral data. |
+| The Three Trees | A "triangle of trees" as a shape the viewer chooses (is mathematics invented or discovered?) | Mika's TOK lesson folder |
 
 ## Historical sources
 
 The historical sources for the real objects in the game are in [docs/SOURCES.md](docs/SOURCES.md) and in the chapter content. The game uses original pixel drawings and transforms collection images released under verified open licences. The Polar Store’s exact accession illustrations are original drawings based on catalogue descriptions. Per-image rights, catalogue and download links are in [the asset manifest](public/assets/credits.json).
+
+The sealed paper bird, open reply and four small instrument diagrams are original pixel illustrations drawn in code for this project. The four-beat bench plays synthesized notes through the existing instrument. [Folded-wing sprites](src/ui/illustrations.ts) · [Playable diagrams](src/ui/inkTrialDiagram.ts)

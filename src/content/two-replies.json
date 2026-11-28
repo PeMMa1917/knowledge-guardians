@@ -786,6 +786,795 @@
      "text": "Honest, and slow. The first person at the next bell waits at the scale, and the person behind them leaves. Every check has a cost, and the queue pays it."
     }
    ]
+  },
+  {
+   "id": "water.response.fields",
+   "after": {
+    "flag": "water.response",
+    "eq": "fields"
+   },
+   "heading": "Two views on seven buckets for the rows",
+   "replies": [
+    {
+     "speaker": "water-keeper",
+     "text": "The rows feed the most people for the longest time. Seven there and three below does the most good with ten buckets. Call it a consequences view if you like: I count what each bucket does."
+    },
+    {
+     "speaker": "water-scribe",
+     "text": "The lower crew agreed to the drought plan on a promise of a fair share. Three is not fair, whatever it grows. I keep to duty here: a promise made in the agreement holds even when breaking it would do more good."
+    }
+   ]
+  },
+  {
+   "id": "water.response.split",
+   "after": {
+    "flag": "water.response",
+    "eq": "split"
+   },
+   "heading": "Two views on five and five",
+   "replies": [
+    {
+     "speaker": "water-scribe",
+     "text": "An even split keeps the agreement's spirit: both crews carry the drought together, and both can see that they did. People keep a rule they can see is fair."
+    },
+    {
+     "speaker": "water-keeper",
+     "text": "Even is not the same as fair. The rows need six to stay alive; at five, a bucket of field work dies and the crew loses the whole round. A split that looks fair can waste water both sides needed."
+    }
+   ]
+  },
+  {
+   "id": "water.response.channel",
+   "after": {
+    "flag": "water.response",
+    "eq": "channel"
+   },
+   "heading": "Two views on a reserve in the lower channel",
+   "replies": [
+    {
+     "speaker": "water-keeper",
+     "text": "A reserve of two is care for the next bell: if the intake slips, someone still has water. The weir should never run at the edge."
+    },
+    {
+     "speaker": "water-scribe",
+     "text": "A reserve kept below is water the rows do not get today, decided by the people closest to the channel. A reserve is a choice about who waits. The register should say whose fields paid for it."
+    }
+   ]
+  },
+  {
+   "id": "civic.response.rank",
+   "after": {
+    "flag": "civic.response",
+    "eq": "rank"
+   },
+   "heading": "Two views on following the larger queue",
+   "replies": [
+    {
+     "speaker": "civic-clerk",
+     "text": "Sixteen people waited at Canal Walk, fifteen at North Steps. A rule that follows the count is a rule anyone can check. Nobody has to trust my judgement, only the tally."
+    },
+    {
+     "speaker": "civic-operator",
+     "text": "Sixteen against fifteen, and North Steps gets nothing. The count only holds people who could reach a desk in the workday. A rule can be easy to check and still shut out the people the count never saw."
+    }
+   ]
+  },
+  {
+   "id": "civic.response.reserve",
+   "after": {
+    "flag": "civic.response",
+    "eq": "reserve"
+   },
+   "heading": "Two views on a window in each district",
+   "replies": [
+    {
+     "speaker": "civic-operator",
+     "text": "One window each means every street is on the first schedule. Then the count decides the rest. Access first, numbers second."
+    },
+    {
+     "speaker": "civic-clerk",
+     "text": "A reserved window is a judgement we made, not one the count made. Next year another district asks for one, and we have no rule to say no, only how we felt this time."
+    }
+   ]
+  },
+  {
+   "id": "civic.response.even",
+   "after": {
+    "flag": "civic.response",
+    "eq": "even"
+   },
+   "heading": "Two views on two windows each",
+   "replies": [
+    {
+     "speaker": "civic-clerk",
+     "text": "Two and two is simple and the same for everyone. A rule people can predict is a rule people can plan around."
+    },
+    {
+     "speaker": "civic-operator",
+     "text": "The same for everyone is not the same as fair to everyone. North Steps has a stair and no ramp, and two windows there serve fewer people than two windows on the flat. Equal shares of a service are not equal access to it."
+    }
+   ]
+  },
+  {
+   "id": "voices.response.paired",
+   "after": {
+    "flag": "voices.response",
+    "eq": "paired"
+   },
+   "heading": "Two views on the carriers' wording",
+   "replies": [
+    {
+     "speaker": "voices-steward",
+     "text": "The crews' words carry how they remember the walk. Put them beside a plain direction, and a newcomer learns the way and the people who made it."
+    },
+    {
+     "speaker": "voices-clerk",
+     "text": "Two lines on one sign, and a carrier with full hands reads neither. A remembered walk is precious. It still belongs in the archive with its date, not on a sign people must act on in a hurry."
+    }
+   ]
+  },
+  {
+   "id": "voices.response.guide",
+   "after": {
+    "flag": "voices.response",
+    "eq": "guide"
+   },
+   "heading": "Two views on the short route guide",
+   "replies": [
+    {
+     "speaker": "voices-clerk",
+     "text": "A short line gets a carrier to the lamp. The full account stays in the archive, dated and signed, for anyone who wants it."
+    },
+    {
+     "speaker": "voices-steward",
+     "text": "A short line in the archive's voice, and the crews' words disappear from the walk they made. In ten years, people will think the archive named the path."
+    }
+   ]
+  },
+  {
+   "id": "voices.quote.queue",
+   "after": {
+    "flag": "voices.quote.layout",
+    "eq": "queue"
+   },
+   "heading": "Two views on the excerpt by the queue",
+   "replies": [
+    {
+     "speaker": "voices-steward",
+     "text": "People wait at the desk with nothing to do. An excerpt there meets them where they are, and some will come back to hear the whole account."
+    },
+    {
+     "speaker": "voices-clerk",
+     "text": "An excerpt away from its record is a quote without its permission and its date. Read in a queue, it becomes the whole story for most people."
+    }
+   ]
+  },
+  {
+   "id": "voices.quote.desk",
+   "after": {
+    "flag": "voices.quote.layout",
+    "eq": "desk"
+   },
+   "heading": "Two views on the excerpt at the reading slot",
+   "replies": [
+    {
+     "speaker": "voices-clerk",
+     "text": "At the slot, the excerpt sits with its record and its permission. Anyone who reads it can check where it came from."
+    },
+    {
+     "speaker": "voices-steward",
+     "text": "And only the people who reach the slot will read it. A voice kept safely where few people go is safe, and mostly unheard."
+    }
+   ]
+  },
+  {
+   "id": "council.response.rail",
+   "after": {
+    "flag": "council.response",
+    "eq": "rail"
+   },
+   "heading": "Two views on a rail comparison every shift",
+   "replies": [
+    {
+     "speaker": "council-reader",
+     "text": "Check the watch against the rail at the start of every shift, and nobody has to trust a seal they did not see made. Each crew knows for itself."
+    },
+    {
+     "speaker": "council-keeper",
+     "text": "Every shift, someone stands at the rail before loading, and the carriers wait. A test that must be repeated by everyone, every time, stops being a test people share. Knowledge we cannot pass on is knowledge we keep relearning."
+    }
+   ]
+  },
+  {
+   "id": "council.response.record",
+   "after": {
+    "flag": "council.response",
+    "eq": "record"
+   },
+   "heading": "Two views on the dated repair record",
+   "replies": [
+    {
+     "speaker": "council-keeper",
+     "text": "A dated seal lets one crew rely on a test another crew carried out, as long as it says when it runs out. That is how most knowledge works: we trust a check we did not make, with its limits written on it."
+    },
+    {
+     "speaker": "council-reader",
+     "text": "A seal is only as good as the people who read the date. By the third shift, nobody looks. A watch that only agrees with its own record is the problem this hall was built to fix."
+    }
+   ]
+  },
+  {
+   "id": "island.response.ridge",
+   "after": {
+    "flag": "island.response",
+    "eq": "ridge"
+   },
+   "heading": "Two views on the ridge cart",
+   "replies": [
+    {
+     "speaker": "island-planner",
+     "text": "The trial gave us a last arrival and a crossing count for the ridge. It is the route we measured, so it is the route we can plan on."
+    },
+    {
+     "speaker": "island-dockhand",
+     "text": "We measured one dry trial with a fresh crew. A loaded cart on the ridge in the afternoon is a different route with the same name. A plan built on one run is a hope with numbers on it."
+    }
+   ]
+  },
+  {
+   "id": "island.response.ferry",
+   "after": {
+    "flag": "island.response",
+    "eq": "ferry"
+   },
+   "heading": "Two views on the ferry from the upper landing",
+   "replies": [
+    {
+     "speaker": "island-dockhand",
+     "text": "The ferry carries all eight crates at once, and my crew knows that water. When a route has worked for years, that is evidence too."
+    },
+    {
+     "speaker": "island-planner",
+     "text": "Years of good crossings, and none of them with eight crates on a fair day. Experience is evidence for the conditions it came from. The trial is the only number we have for this load."
+    }
+   ]
+  },
+  {
+   "id": "island.response.marsh",
+   "after": {
+    "flag": "island.response",
+    "eq": "marsh"
+   },
+   "heading": "Two views on the marsh path",
+   "replies": [
+    {
+     "speaker": "island-planner",
+     "text": "The first pair reaches the rail crew soonest by the marsh, so the rail crew can start. Getting work moving early buys time for every later problem."
+    },
+    {
+     "speaker": "island-dockhand",
+     "text": "Soonest for the first pair. The marsh path was never in the trial. If it floods at the turn of the tide, the first pair arrives wet and late, and the plan has nothing to say about it."
+    }
+   ]
+  },
+  {
+   "id": "forest.trees",
+   "after": {
+    "flag": "field.trees.done",
+    "eq": true
+   },
+   "heading": "Two views on the grove's triangle",
+   "replies": [
+    {
+     "speaker": "forest-naturalist",
+     "text": "I came to the grove sure the triangle was simply there. Now I think the grove gave us the distances and we brought the triangle. A count is the same: the birds are real, but what counts as one crossing is ours."
+    },
+    {
+     "speaker": "forest-steward",
+     "text": "My mother's triangle is still my triangle. Choosing it did not make it less true. People who meet under the same three trees for fifty years have found something, even if someone else could have chosen other trees."
+    }
+   ]
+  },
+  {
+   "id": "water.mozi.judged",
+   "after": {
+    "flagSet": "thinker.mozi.judged"
+   },
+   "heading": "Two views on Mozi's three tests",
+   "replies": [
+    {
+     "speaker": "water-keeper",
+     "text": "I like his tests. The runnel told me more in two mornings than the saying told me in twenty years. If one person on the channel saves four buckets, I will walk it myself."
+    },
+    {
+     "speaker": "water-scribe",
+     "text": "The tests are good, but look who wrote the ledgers. Keepers. The crews who lost their water never wrote a line in them. A test of the past is only as wide as the people the past let speak."
+    }
+   ]
+  },
+  {
+   "id": "coast.haytham.judged",
+   "after": {
+    "flagSet": "thinker.haytham.judged"
+   },
+   "heading": "Two views on changing the station manual",
+   "replies": [
+    {
+     "speaker": "coast-forecaster",
+     "text": "Then the manual gets a note in the margin today, with the ring readings beside it. A wrong line that stays in print teaches every new lookout the same mistake."
+    },
+    {
+     "speaker": "coast-signalkeeper",
+     "text": "Slowly. Lookouts trust that book because it does not change every week. Change one line and they will wonder about every page. Tell them why it changed, in their own log, before you touch the print."
+    }
+   ]
+  },
+  {
+   "id": "metal.assay",
+   "after": {
+    "flag": "field.assay.done",
+    "eq": true
+   },
+   "heading": "Two views on the sample labels",
+   "replies": [
+    {
+     "speaker": "metal-inspector",
+     "text": "The tests go on the label, every one, with the margin. A buyer who can read \"streak red-brown, density 5.3 ± 0.2\" can check us. A buyer who reads \"matched\" can only trust us."
+    },
+    {
+     "speaker": "metal-steward",
+     "text": "And most buyers will not read a line of numbers. Put the tests on the back. On the front, write where the stone came from and who sent it. That is what people ask me at the door."
+    }
+   ]
+  },
+  {
+   "id": "sea.stick.two",
+   "after": {
+    "flag": "sea.stick.label",
+    "eq": "two"
+   },
+   "heading": "Two views on the stick chart card",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "The buoys and the navigator side by side, each with its method. Good. A visitor can see that the instrument found nothing, and also why that may not mean nothing is there."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "Side by side looks fair, but the buoy readings come with numbers and graphs, and the navigator's account comes with words. Visitors trust numbers. The two will not look equal on the wall, even if they are."
+    }
+   ]
+  },
+  {
+   "id": "sea.stick.ashore",
+   "after": {
+    "flag": "sea.stick.label",
+    "eq": "ashore"
+   },
+   "heading": "Two views on the stick chart card",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "Now the card says what the chart is for. People will stop thinking the sticks are the map. That is the most common mistake I hear at this case."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "And what will they think the body learns at sea? You have pointed at knowledge, then given them nothing of it. Some will think it was never real."
+    }
+   ]
+  },
+  {
+   "id": "sea.stick.gap",
+   "after": {
+    "flag": "sea.stick.label",
+    "eq": "gap"
+   },
+   "heading": "Two views on the stick chart card",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "A marked space. I would never leave an empty part of a chart without saying why. This says why."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "I like it, but a space can look like we lost something. Name the canoe school in Majuro beside it, so people know the knowledge is alive and who holds it."
+    }
+   ]
+  },
+  {
+   "id": "civic.tuskegee.consent",
+   "after": {
+    "flag": "civic.tuskegee.rule",
+    "eq": "consent"
+   },
+   "heading": "Two views on the first rule for study records",
+   "replies": [
+    {
+     "speaker": "civic-operator",
+     "text": "Consent first. If those men had been told, and asked, nothing else in the folders could have happened the way it did."
+    },
+    {
+     "speaker": "civic-clerk",
+     "text": "A signature can be got by a promise of a hot meal. The rule needs to say what they were told, in words they used, not only that a form was signed."
+    }
+   ]
+  },
+  {
+   "id": "civic.tuskegee.names",
+   "after": {
+    "flag": "civic.tuskegee.rule",
+    "eq": "names"
+   },
+   "heading": "Two views on the first rule for study records",
+   "replies": [
+    {
+     "speaker": "civic-operator",
+     "text": "The names, yes. The folders turned men into patient numbers. A rule that keeps names keeps people in the record."
+    },
+    {
+     "speaker": "civic-clerk",
+     "text": "And the two counts side by side will worry some readers. Good. A record that shows where it disagrees with the families is more honest than one that hides it."
+    }
+   ]
+  },
+  {
+   "id": "civic.tuskegee.stop",
+   "after": {
+    "flag": "civic.tuskegee.rule",
+    "eq": "stop"
+   },
+   "heading": "Two views on the first rule for study records",
+   "replies": [
+    {
+     "speaker": "civic-operator",
+     "text": "This is the one that would have mattered most after 1943. Someone needed to have the duty to stop it, written down."
+    },
+    {
+     "speaker": "civic-clerk",
+     "text": "The people who could stop it were the people running it. The rule has to name someone outside the study, or it changes nothing."
+    }
+   ]
+  },
+  {
+   "id": "nile.khaldun.judged",
+   "after": {
+    "flagSet": "thinker.khaldun.judged"
+   },
+   "heading": "Two views on changing the chronicle",
+   "replies": [
+    {
+     "speaker": "nile-marek",
+     "text": "Grain, water, road length. I trust those more than any chronicle. A scribe can add a stroke. A well cannot water more people than it can."
+    },
+    {
+     "speaker": "nile-nasir",
+     "text": "I copy for a living, and I tell you: the copyist who added that stroke may have been told to. A bigger army pleased someone. Ask who wanted the number, not only whether it fits."
+    }
+   ]
+  },
+  {
+   "id": "copies.relay",
+   "after": {
+    "flag": "field.relay.done",
+    "eq": true
+   },
+   "heading": "Two views on the tower keys",
+   "replies": [
+    {
+     "speaker": "copies-presskeeper",
+     "text": "Keys on the wall are a press's oldest trick. Agree the marks once, then copy freely. The towers will read the same storm the same way for a hundred years."
+    },
+    {
+     "speaker": "copies-lendingkeeper",
+     "text": "For a hundred years, to the people who learned the key. A traveller from upriver will see an arrow and read it their own way. Every key makes an inside and an outside."
+    }
+   ]
+  },
+  {
+   "id": "sea.tupaia.proposal",
+   "after": {
+    "flag": "sea.tupaia.label",
+    "eq": "proposal"
+   },
+   "heading": "Two views on the label for Tupaia's chart",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "Good. A chart reading is a claim like any other. Show it with its critics and let the visitor see the argument."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "But visitors will remember the clever reading and forget the critics. For two hundred years people remembered the wrong reading. Will the same thing happen again?"
+    }
+   ]
+  },
+  {
+   "id": "sea.tupaia.unread",
+   "after": {
+    "flag": "sea.tupaia.label",
+    "eq": "unread"
+   },
+   "heading": "Two views on the label for Tupaia's chart",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "An honest label. I have read charts with rules I did not know, and I called them wrong too. The mistake was mine."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "Unread is safe for us. But it leaves the old story standing: that the chart makes no sense. Someone will fill that silence."
+    }
+   ]
+  },
+  {
+   "id": "sea.tupaia.voyagers",
+   "after": {
+    "flag": "sea.tupaia.label",
+    "eq": "voyagers"
+   },
+   "heading": "Two views on the label for Tupaia's chart",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "They know the sea. We know the copies. That seems the right way round."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "Then we must ask them, and pay them, and wait for an answer. A label that says 'Pacific navigators will write this' is a promise. Keep it."
+    }
+   ]
+  },
+  {
+   "id": "stage.lens",
+   "after": {
+    "flag": "field.lens.done",
+    "eq": true
+   },
+   "heading": "Two views on the night the curtain stayed down",
+   "replies": [
+    {
+     "speaker": "stage-director",
+     "text": "Every programme note is a lens table someone played in private. I would rather print the cards we chose, so the reader can see which ones we left face down."
+    },
+    {
+     "speaker": "stage-host",
+     "text": "Nobody reads a programme that long. People want one sentence. Our job is to choose the sentence that does the least harm, and say so if anyone asks."
+    }
+   ]
+  },
+  {
+   "id": "market.fair",
+   "after": {
+    "flag": "field.fair.done",
+    "eq": true
+   },
+   "heading": "Two views on the token table",
+   "replies": [
+    {
+     "speaker": "market-assayer",
+     "text": "The tokens show it plainly. Rules are not found lying in the square. People who had the time made them. I want the market book so the people without time can check us later."
+    },
+    {
+     "speaker": "market-clerk",
+     "text": "And the people without time are the ones the book will count. A rule that protects strangers can still watch neighbours. I spent my tokens on the hill families because nobody else would."
+    }
+   ]
+  },
+  {
+   "id": "coast.bats",
+   "after": {
+    "flag": "field.bats.done",
+    "eq": true
+   },
+   "heading": "Two views on the night log",
+   "replies": [
+    {
+     "speaker": "coast-forecaster",
+     "text": "Write the settings, the places and the catch. That is a record anyone can check tomorrow night. The rest is poetry, and poetry does not go in a station log."
+    },
+    {
+     "speaker": "coast-signalkeeper",
+     "text": "I wrote 'not written' on purpose. A log that never mentions what it cannot hold teaches the next keeper that it holds everything."
+    }
+   ]
+  },
+  {
+   "id": "council.mirror",
+   "after": {
+    "flag": "field.mirror.done",
+    "eq": true
+   },
+   "heading": "Two views on Elsbet's mirror",
+   "replies": [
+    {
+     "speaker": "council-keeper",
+     "text": "Every record should work like that mirror. Keep the first line, date the new one, and let a reader see the change. A record that hides its old mistakes teaches nobody."
+    },
+    {
+     "speaker": "council-reader",
+     "text": "Some first lines did harm. A family does not need to read the old wrong label every time it reads the right one. Keeping is not always kind."
+    }
+   ]
+  },
+  {
+   "id": "civic.survey",
+   "after": {
+    "flag": "field.survey.done",
+    "eq": true
+   },
+   "heading": "Two views on the survey bell",
+   "replies": [
+    {
+     "speaker": "civic-operator",
+     "text": "A city that does not study itself plans lanes by guesswork, and guesswork favours whoever shouts loudest. I want the study. I want it with its price written on the front."
+    },
+    {
+     "speaker": "civic-clerk",
+     "text": "Write the price, yes. And write what the data may never be used for. A record kept for lanes will be very tempting to someone who wants to steer people."
+    }
+   ]
+  },
+  {
+   "id": "island.maze",
+   "after": {
+    "flag": "field.maze.done",
+    "eq": true
+   },
+   "heading": "Two views on the three maps",
+   "replies": [
+    {
+     "speaker": "island-planner",
+     "text": "The plan was wrong about one bridge. One. It was right about every other path. I will mark the bridge, and I will keep trusting the plan for what it is good at."
+    },
+    {
+     "speaker": "island-dockhand",
+     "text": "The plan is what the island was meant to be. My paths are what it is. When they disagree, ask the people who walk it, not the people who drew it."
+    }
+   ]
+  },
+  {
+   "id": "water.river",
+   "after": {
+    "flag": "field.river.done",
+    "eq": true
+   },
+   "heading": "Two views on the flood night at Reed Ford",
+   "replies": [
+    {
+     "speaker": "water-keeper",
+     "text": "I wanted the village to agree on one order. It never did. Now I think the arguing was the useful part: every reason someone gave went into the new rule."
+    },
+    {
+     "speaker": "water-scribe",
+     "text": "The arguing was useful because the log was honest. If Ravel's line about the keel had been lost, half the village would still be blaming the wrong person for the wrong reason."
+    }
+   ]
+  },
+  {
+   "id": "voices.collage",
+   "after": {
+    "flag": "field.collage.done",
+    "eq": true
+   },
+   "heading": "Two views on the sweeps' wall",
+   "replies": [
+    {
+     "speaker": "voices-steward",
+     "text": "I would put a blank card on that wall, in the middle, with the children's names if we can find them in the parish books. A gap you can see is more honest than a wall that looks full."
+    },
+    {
+     "speaker": "voices-clerk",
+     "text": "A blank card invites people to fill it in with what they imagine. I would rather keep the four real cards and write the gap on the label, in plain words."
+    }
+   ]
+  },
+  {
+   "id": "preserved.tokens",
+   "after": {
+    "flag": "field.tokens.done",
+    "eq": true
+   },
+   "heading": "Two views on the token drawer",
+   "replies": [
+    {
+     "speaker": "preserved-registrar",
+     "text": "The hospital left the name off to protect the mothers, and it worked. A record that keeps less can be kinder. I would not call that billet a failure."
+    },
+    {
+     "speaker": "preserved-inquiry-keeper",
+     "text": "Kinder to the mothers, perhaps. The children grew up not knowing a token had been left for them. When we decide what a record leaves out, we should ask the person it leaves out."
+    }
+   ]
+  },
+  {
+   "id": "sea.fog",
+   "after": {
+    "flag": "field.fog.done",
+    "eq": true
+   },
+   "heading": "Two views on the fog chart",
+   "replies": [
+    {
+     "speaker": "sea-cartographer",
+     "text": "A chart is a promise to strangers who will steer by it at night. I would rather print less and be sure of every line I print."
+    },
+    {
+     "speaker": "sea-harbourkeeper",
+     "text": "The ferry crew's ten years are worth more than one of our soundings. A chart that leaves out what people know by living it is not more careful. It is just smaller."
+    }
+   ]
+  },
+  {
+   "id": "water.festival",
+   "after": {
+    "flag": "field.festival.done",
+    "eq": true
+   },
+   "heading": "Two views on Tess's question",
+   "replies": [
+    {
+     "speaker": "water-keeper",
+     "text": "Odette is the only one nothing moved. On a council, I want one Odette. Someone has to say the rule out loud, or the rest of us bend it a little every year."
+    },
+    {
+     "speaker": "water-scribe",
+     "text": "One Odette, yes. But Lio was the only one who asked what Tess and Maren would be to each other next week. A council that forgets that writes rules nobody keeps."
+    }
+   ]
+  },
+  {
+   "id": "nile.reassembly",
+   "after": {
+    "flag": "field.reassembly.done",
+    "eq": true
+   },
+   "heading": "Two views on the torn notices",
+   "replies": [
+    {
+     "speaker": "nile-marek",
+     "text": "Glue the strips down and be done. A notice that needs a keeper to explain it is not finished. If the limit matters, write it bigger."
+    },
+    {
+     "speaker": "nile-nasir",
+     "text": "Glue makes it look settled. I would rather pin the strips, so the limit can change when the river does, without anyone pretending the old notice was always this one."
+    }
+   ]
+  },
+  {
+   "id": "stage.primer",
+   "after": {
+    "flag": "field.primer.done",
+    "eq": true
+   },
+   "heading": "Two views on page twelve",
+   "replies": [
+    {
+     "speaker": "stage-director",
+     "text": "A primer is a stage. You choose the one scene that holds the whole story, and you commit to it. A page that tries to show everything shows nothing."
+    },
+    {
+     "speaker": "stage-host",
+     "text": "A primer is a seat, and every child sits in the same one. I would put a small line under it, always: this is one view of the bridge. Ask someone who was there."
+    }
+   ]
+  },
+  {
+   "id": "market.pattern",
+   "after": {
+    "flag": "field.pattern.done",
+    "eq": true
+   },
+   "heading": "Two views on the willow-stitch",
+   "replies": [
+    {
+     "speaker": "market-clerk",
+     "text": "I would put the weavers' rule in the market book, so no trader can say they did not know. A rule people can read protects the makers who are not at the stall that day."
+    },
+    {
+     "speaker": "market-assayer",
+     "text": "Written down, it will be measured and argued over, word by word. The Mixe community did not need a market book to know their blouse. I would ask the weavers, every time, and write down only what they want written."
+    }
+   ]
   }
  ]
 }

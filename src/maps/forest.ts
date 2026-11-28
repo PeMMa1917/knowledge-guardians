@@ -204,6 +204,8 @@ export const FOREST_TRAIL: MapDef = {
   interactables: [
     WORK_SCHEDULE_TRAIL,
     ...HOOK_TRAIL,
+    // Chapter 5's signature game (audit fix C-004). Rules in src/domain/threeTrees.ts.
+    { id: 'field-trees', kind: 'fieldgame', game: 'trees', x: 25, y: 3, w: 1, h: 1, label: 'the old grove (The Three Trees)', art: 'old-sign' },
     { id: 'field-dig', kind: 'fieldgame', game: 'dig', x: 11, y: 15, w: 1, h: 1, label: 'Marisol\'s dig at the old charcoal camp (The Careful Dig)', art: 'ledger' },
     { id: 'stiltfrog-watch-low', kind: 'fieldgame', game: 'stiltfrog-watch-low', x: 11, y: 5, w: 1, h: 1, walkThrough: true,
       label: 'the low cloth flap at the reed hollow', art: 'stiltfrog.window-low', visibleIf: forestArrived },

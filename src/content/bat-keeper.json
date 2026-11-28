@@ -1,0 +1,20 @@
+{
+ "_sources": "London Bat Group, Echolocation and bat detectors (https://londonbats.org.uk/bat-cave/echolocation-and-bat-detectos/); Maryland Department of Natural Resources, Bat Echolocation (https://dnr.maryland.gov/wildlife/pages/plants_wildlife/bats/batelocu.aspx). Accessed 2026-11-27.",
+ "dial": [
+  { "khz": 20, "hear": "A slow, loud 'chip... chop... chip... chop', high above the lamp.", "bat": "noctule", "name": "a noctule, flying high over the headland" },
+  { "khz": 35, "hear": "Regular, dry clicks, low over the rain pool by the steps.", "bat": "daubenton", "name": "a Daubenton's bat, skimming the pool" },
+  { "khz": 45, "hear": "Irregular wet 'smacks', round and round the lamp.", "bat": "common-pip", "name": "a common pipistrelle, circling the lamp" },
+  { "khz": 55, "hear": "The same kind of smacks, but now at a higher setting. A second kind of bat shares the lamp.", "bat": "soprano-pip", "name": "a soprano pipistrelle, circling the lamp" },
+  { "khz": 80, "hear": "Nothing. Whatever is out here tonight is not calling at this setting." }
+ ],
+ "buzz": "Then, at 45, the smacks speed up and run together into a long buzz, like someone blowing a raspberry. Then nothing. Ruan says quietly: 'That was a moth.'",
+ "found": 3,
+ "views": [
+  { "id": "facts", "text": "We know what it does: it calls, and it hears the echoes. That is all we can say.",
+    "reply": "Neri, from the doorway: 'And that is a lot. We know the setting, the place, the catch. Science does not need to feel like the bat to know about the bat.'" },
+  { "id": "imagine", "text": "Something like seeing with sound. But that is my picture, not the bat's.",
+    "reply": "Ruan nods. 'Seeing with sound is a human sentence. It helps. It is also exactly the thing the bat does not have: words, and eyes to borrow them from.'" },
+  { "id": "never", "text": "We cannot know at all. Even the detector turns its calls into our sounds.",
+    "reply": "Ruan taps the detector. 'True: this box makes its call into something for my ears. But I still knew a moth was caught. Not knowing everything is not the same as knowing nothing.'" }
+ ]
+}

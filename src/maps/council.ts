@@ -54,6 +54,7 @@ export const COUNCIL_HALL: MapDef = {
     { stamp: 'council-bench', x: 21, y: 13 }, { stamp: 'market-planter', x: 7, y: 14 },
   ],
   interactables: [
+    { id: 'field-mirror', kind: 'fieldgame', game: 'mirror', x: 6, y: 5, w: 1, h: 1, label: 'Elsbet’s covered mirror (The Time Mirror)', art: 'old-sign' },
     SECOND_READING_DOOR, MOON_COUNCIL_SONG,
     loadingReceiver('bench', 24, 16),
     OPEN_PLACE_COUNCIL_INTAKE,

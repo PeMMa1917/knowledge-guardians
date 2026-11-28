@@ -1,3 +1,5 @@
+import { inkInvitation } from '../domain/inkPost';
+import { inkTrialDiagram } from './inkTrialDiagram';
 import { neighbourInvitation } from '../domain/neighbours';
 import { MOON_INSTRUMENT } from '../domain/spareMoonMusic';
 import { spareMoonMusicPanel } from './spareMoonMusic';
@@ -85,8 +87,26 @@ import { OFFER_LINE, shouldOfferHelp } from '../domain/lumenOffer';
 import { IDEA_CREDITS } from '../domain/ideaCredits';
 import { gymPanel } from './gymPanel';
 import { ladderPanel } from './ladderPanel';
+import { treesPanel } from './treesPanel';
+import { assayPanel } from './assayPanel';
+import { relayPanel } from './relayPanel';
+import { lensPanel } from './lensPanel';
+import { riverPanel } from './riverPanel';
+import { collagePanel } from './collagePanel';
+import { tokenPanel } from './tokenPanel';
+import { fogPanel } from './fogPanel';
+import { festivalPanel } from './festivalPanel';
+import { reassemblyPanel } from './reassemblyPanel';
+import { primerPanel } from './primerPanel';
+import { patternPanel } from './patternPanel';
+import { fairPanel } from './fairPanel';
+import { batPanel } from './batPanel';
+import { mirrorPanel } from './mirrorPanel';
+import { surveyPanel } from './surveyPanel';
+import { labyrinthPanel } from './labyrinthPanel';
 import { contentNoteFor, noteSeenFlag } from '../domain/contentNotes';
 import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
+import { pendingPushback, pushAnswerFlag, pushSeenFlag } from '../domain/pushbacks';
 import { flushResearch, recordResearch } from '../app/research';
 import { ROWS, SECTIONS, startTrial, step, tileWords, type Tile } from '../domain/provingFloor';
 import { THINKERS, VIEWS as TOK_VIEWS, adviceLabel, meetFlags, thinkerFlag, thinkersFor, viewsMet } from '../domain/thinkers';
@@ -624,6 +644,7 @@ export class UI implements UIApi {
     this.refreshHud();
     if (this.pendingChapterEnd) { this.pendingChapterEnd = false; this.chapterEnd(); return; }
     if (this.showTwoReplies()) return;
+    if (this.showPushback()) return;
     if (this.queue.length) {
       setTimeout(() => {
         // A dialogue can replace its panel before this callback runs.
@@ -649,6 +670,37 @@ export class UI implements UIApi {
       h('div', { class: 'two-replies-row' }, voice(entry.replies[0]), voice(entry.replies[1])),
       h('p', { class: 'fine' }, 'Two people, two good reasons. Neither one is the answer. Which reasons do you find stronger, and why?'),
       h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep walking')));
+    this.sfx('sfx.page');
+    return true;
+  }
+
+  /** C-016: after a weighed judgement, someone affected pushes back and the player answers. Returns true if a panel opened. */
+  private showPushback(): boolean {
+    const c = ctx.controller;
+    if (!c.state || this.modal) return false;
+    const found = pendingPushback(c.state.flags);
+    if (!found) return false;
+    const { entry, text } = found;
+    c.dispatch({ type: 'SetFlag', flag: pushSeenFlag(entry.id), value: true });
+    const who = c.pack.characters.find((x) => x.id === entry.speaker);
+    const body = h('div', { class: 'pushback' });
+    const show = (answer: string | null): void => {
+      const a = entry.answers.find((x) => x.id === answer);
+      body.replaceChildren(
+        h('div', { class: 'two-reply' },
+          h('span', { class: 'portrait', style: { backgroundImage: `url(assets/art/generated/characters/${who?.sprite}.png)` }, 'aria-hidden': 'true' }),
+          h('div', {}, h('strong', {}, who?.name ?? entry.speaker), h('p', {}, text))),
+        ...(a
+          ? [h('p', { class: 'clue-view fresh', role: 'status' }, a.reply),
+            h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep walking'))]
+          : [h('p', { class: 'fine' }, 'How do you answer? There is no right answer, only reasons.'),
+            h('div', { class: 'row' }, ...entry.answers.map((x) => h('button', { type: 'button', onclick: () => {
+              c.dispatch({ type: 'SetFlag', flag: pushAnswerFlag(entry.id), value: x.id }); this.sfx('sfx.page'); show(x.id);
+            } }, x.text)))]));
+      (body.querySelector('[data-autofocus]') as HTMLElement | null)?.focus();
+    };
+    show(null);
+    this.openModal('two-replies', entry.heading, this.closeBtn(), h('h2', {}, entry.heading), body);
     this.sfx('sfx.page');
     return true;
   }
@@ -1355,6 +1407,8 @@ export class UI implements UIApi {
     const portrait = n.speaker === 'lumen'
       ? h('img', { class: 'portrait lumen-portrait', src: artURL(lumenArt(ctx.settings)), alt: '' })
       : n.speaker === 'narrator' ? null
+      : id.startsWith('ink.') && speaker && 'mode' in speaker && speaker.mode === 'historical'
+        ? h('img', { class: 'portrait ink-portrait', src: artURL('ink-post.bird'), alt: '' })
       : String((speaker as any)?.sprite ?? '').startsWith('custom:')
         ? h('span', { class: 'portrait custom', 'aria-hidden': 'true' }, previewLook((speaker as any).sprite, 3))
         : h('span', { class: 'portrait', style: { backgroundImage: `url(assets/art/generated/characters/${(speaker as any)?.sprite}.png)` }, 'aria-hidden': 'true' });
@@ -1376,6 +1430,8 @@ export class UI implements UIApi {
     }
     const visit = visiting && neighbourInvitation(visiting, c.state.flags);
     if (visit) optionList.append(h('button', { onclick: () => this.showNode(visit.node) }, visit.text));
+    const roost = visiting && inkInvitation(visiting, c.state.mapId);
+    if (roost) optionList.append(h('button', { onclick: () => this.showNode(roost.node) }, roost.text));
     const cornerObjective = id.startsWith('corner.') && c.state.flags['corner.found'] && !c.state.objectivesDone.includes('corner.receive')
       ? c.state.objectivesDone.includes('corner.compare') ? 'corner.receive' : 'corner.compare'
       : undefined;
@@ -1383,7 +1439,7 @@ export class UI implements UIApi {
     const guideObjective = guidedCase
       ? c.engine.visibleObjectives(c.state).find((step) => !step.complete && step.id.startsWith(guidedCase))?.id
       : id === 'stage.call.stand' ? 'stage.call.audience' : cornerObjective;
-    const extra = id === 'sefa.free' ? this.freeQuestion() : null;
+    const extra = id === 'sefa.free' ? this.freeQuestion() : inkTrialDiagram(id, ctx.settings.sfxVolume);
     const earlier = conversationHistory(c.pack.dialogue, c.state.flags).filter((line) => line.id !== id).slice(0, 5);
     const source = n.citationSource ? c.pack.sources.find((entry) => entry.id === n.citationSource) : undefined;
     const citation = source ? mlaCitation(source) : [];
@@ -3313,11 +3369,15 @@ export class UI implements UIApi {
     box.append(this.closeBtn(), h('h2', {}, "The Guardian's Ledger"),
       h('p', { class: 'fine' }, 'Your own record, kept on this device. It is not a grade, and nobody ranks it. Time counts only while you are really playing.'),
       h('div', { class: 'ledger-tiles' }, tile('Today', L.today), tile('Last 7 days', L.week), tile('This month', L.month), tile('All time', L.total)),
-      ctx.settings.showStreak === false ? h('p', { class: 'fine' }, 'Your streak is hidden (Menu, Settings). It is still kept.') : h('div', { class: 'ledger-streak' },
+      !ctx.settings.showStreak ? '' : h('div', { class: 'ledger-streak' },
         h('span', { class: 'flame-big', 'aria-hidden': 'true' }),
         h('span', {}, h('strong', {}, `${L.streak}-day streak`), ` · best ${L.bestStreak} · `,
           h('span', { title: 'Every 7 active days in a row earn a shield. A missed day uses a shield, so a rest day keeps your streak.' }, `${'🛡'.repeat(L.shields)}${'·'.repeat(MAX_SHIELDS - L.shields)} freeze shields`)),
         h('span', { class: 'fine' }, ' A day counts after 5 active minutes or any XP. Rest days are good for learning too.')),
+      ctx.settings.showWeekStreak ? h('p', { class: 'ledger-streak' }, h('strong', {}, L.weekStreak + '-week streak'),
+        'One active day counts a week. A new week starts on Monday.') : '',
+      ctx.settings.showMonthStreak ? h('p', { class: 'ledger-streak' }, h('strong', {}, L.monthStreak + '-month streak'),
+        'One active day counts a calendar month.') : '',
       h('h3', {}, 'Activity, last 12 weeks'), cal,
       h('div', { class: 'ledger-split' },
         h('div', {}, h('h3', {}, 'Concept web'), webEl),
@@ -3727,6 +3787,40 @@ export class UI implements UIApi {
     else if (id === 'trade') this.openTrade();
     else if (id === 'ladder') this.openModal('bench-panel wide', "The Copyists' Ladder", this.closeBtn(),
       ladderPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('ladder'), () => this.closeModal()));
+    else if (id === 'maze') this.openModal('bench-panel wide', 'The Labyrinth Lens', this.closeBtn(),
+      labyrinthPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('maze'), () => this.closeModal()));
+    else if (id === 'survey') this.openModal('bench-panel wide', 'The Survey Bell', this.closeBtn(),
+      surveyPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('survey'), () => this.closeModal()));
+    else if (id === 'mirror') this.openModal('bench-panel wide', 'The Time Mirror', this.closeBtn(),
+      mirrorPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('mirror'), () => this.closeModal()));
+    else if (id === 'bats') this.openModal('bench-panel wide', 'The Bat Keeper', this.closeBtn(),
+      batPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('bats'), () => this.closeModal()));
+    else if (id === 'fair') this.openModal('bench-panel wide', 'The Value Fair', this.closeBtn(),
+      fairPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('fair'), () => this.closeModal()));
+    else if (id === 'pattern') this.openModal('bench-panel wide', 'The Pattern Book', this.closeBtn(),
+      patternPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('pattern'), () => this.closeModal()));
+    else if (id === 'primer') this.openModal('bench-panel wide', 'The Primer Page', this.closeBtn(),
+      primerPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('primer'), () => this.closeModal()));
+    else if (id === 'reassembly') this.openModal('bench-panel wide', 'The Reassembly Line', this.closeBtn(),
+      reassemblyPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('reassembly'), () => this.closeModal()));
+    else if (id === 'festival') this.openModal('bench-panel wide', 'The Festival Dilemma', this.closeBtn(),
+      festivalPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('festival'), () => this.closeModal()));
+    else if (id === 'fog') this.openModal('bench-panel wide', 'The Fog Chart', this.closeBtn(),
+      fogPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('fog'), () => this.closeModal()));
+    else if (id === 'tokens') this.openModal('bench-panel wide', 'The Token Drawer', this.closeBtn(),
+      tokenPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('tokens'), () => this.closeModal()));
+    else if (id === 'collage') this.openModal('bench-panel wide', 'The Collage Wall', this.closeBtn(),
+      collagePanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('collage'), () => this.closeModal()));
+    else if (id === 'river') this.openModal('bench-panel wide', 'The River Crossing Inquiry', this.closeBtn(),
+      riverPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('river'), () => this.closeModal()));
+    else if (id === 'lens') this.openModal('bench-panel wide', 'The Lens Table', this.closeBtn(),
+      lensPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('lens'), () => this.closeModal()));
+    else if (id === 'relay') this.openModal('bench-panel wide', 'The Sketch Relay', this.closeBtn(),
+      relayPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('relay'), () => this.closeModal()));
+    else if (id === 'assay') this.openModal('bench-panel wide', 'The Assay Trial', this.closeBtn(),
+      assayPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('assay'), () => this.closeModal()));
+    else if (id === 'trees') this.openModal('bench-panel wide', 'The Three Trees', this.closeBtn(),
+      treesPanel(ctx.controller, (key) => this.sfx(key), () => this.finishField('trees'), () => this.closeModal()));
   }
 
   /** Star Pictures: draw your own picture, see two traditions, measure, then choose what the chart says. */
@@ -5839,7 +5933,9 @@ export class UI implements UIApi {
       check('dyslexiaSpacing', 'Wider letter and line spacing'),
       check('guidePrompts', 'Lumen may show short prompts without being asked'),
       check('lumenOffers', 'When you seem stuck, the lantern glows and Lumen offers help. The hint shows only when you click'),
-      check('showStreak', 'Show my day streak in the Ledger'),
+      check('showStreak', 'Show my daily streak in the Ledger'),
+      check('showWeekStreak', 'Show my weekly streak in the Ledger'),
+      check('showMonthStreak', 'Show my monthly streak in the Ledger'),
       check('calmMode', 'Calm mode: surprise events warn first, and you can choose "Later"'),
       check('zenMode', 'Zen mode: no turn limit in Showdowns (the crowd waits), surprise events always ask first, and nothing can be failed'),
       check('glossary', 'Smart glossary: underline key words in conversations, so you can tap them for an explanation'),

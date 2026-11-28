@@ -1,0 +1,4966 @@
+[
+  {
+    "id": "q2731767",
+    "character": "ink-q2731767",
+    "name": "Gārgī Vāchaknavī",
+    "station": "archive",
+    "title": "The thread behind the ceiling",
+    "context": "In the Bṛhadāraṇyaka Upaniṣad, Gārgī questions Yājñavalkya about what underlies the world.",
+    "opening": "The silk ceiling sags each time somebody says it rests on something else. I have one question left before the floor fills with silk. Where shall we put our fingers?",
+    "folds": [
+      {
+        "action": "Follow one thread to its peg",
+        "arrival": "A child pulled the peg free. Now we know what held that corner. The rest of the ceiling still hangs."
+      },
+      {
+        "action": "Leave the last thread loose",
+        "arrival": "The loose end is long enough for the smallest visitor to reach. She asks what holds the peg."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "justification",
+        "explanation"
+      ],
+      "aoks": [
+        "MAT",
+        "HIS",
+        "REL"
+      ],
+      "subjects": [
+        "philosophy",
+        "classics"
+      ]
+    },
+    "practice": 581,
+    "question": "Which part of the ceiling could you still explain if the peg fell out?"
+  },
+  {
+    "id": "q183144",
+    "character": "ink-q183144",
+    "name": "Epictetus",
+    "station": "council",
+    "title": "The kettle at the gate",
+    "context": "Epictetus taught Stoic philosophy. Arrian recorded accounts of his teaching.",
+    "opening": "My kettle boils just as the gate shuts. The guard cannot move the bell. I can still decide whose cup to warm.",
+    "folds": [
+      {
+        "action": "Share the water through the bars",
+        "arrival": "Two cold hands meet round one cup. The gate stays locked. In the morning the guard asks for a second cup."
+      },
+      {
+        "action": "Carry the kettle to the queue",
+        "arrival": "The back of the line gets tea. By the time the guard comes out there is none left for him."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "responsibility",
+        "values"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS"
+      ],
+      "subjects": [
+        "philosophy",
+        "psychology"
+      ]
+    },
+    "practice": 259,
+    "question": "Where did your kettle give someone a choice they could actually use?"
+  },
+  {
+    "id": "q2896591",
+    "character": "ink-q2896591",
+    "name": "Zera Yacob",
+    "station": "press",
+    "title": "The margin that talks back",
+    "context": "The Hatata, a work of philosophical inquiry in Geʽez, is traditionally attributed to Zera Yacob. Its authorship has been debated.",
+    "opening": "Someone filed a question under my name. The scribe swears the ink is mine. Good ink. Very poor reason to agree with it.",
+    "folds": [
+      {
+        "action": "Cover the signature and read it again",
+        "arrival": "Without a famous name to lean on, the argument kept one listener and lost two. The quiet one asked for the page."
+      },
+      {
+        "action": "Bind the objection beside the page",
+        "arrival": "The binding bulges. A reader can now find the objection even if they came looking for an authority."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "truth",
+        "justification"
+      ],
+      "aoks": [
+        "HIS",
+        "HUM",
+        "REL"
+      ],
+      "subjects": [
+        "philosophy",
+        "world-religions"
+      ]
+    },
+    "practice": 257,
+    "question": "Would you trust the same margin if somebody else had signed it?"
+  },
+  {
+    "id": "q183074",
+    "character": "ink-q183074",
+    "name": "Sor Juana Inés de la Cruz",
+    "station": "voices",
+    "title": "A key in the gutter",
+    "context": "Sor Juana wrote poetry and a defence of women's intellectual work in New Spain.",
+    "opening": "The shelf has a lock and the poem fits under the door. My friend on the other side wants the book. She also wants to keep her job.",
+    "folds": [
+      {
+        "action": "Slip a verse under the door",
+        "arrival": "Someone has sung it back with the last line changed. I want to hear that line again."
+      },
+      {
+        "action": "Lend her the key until dawn",
+        "arrival": "She found a second book I had never read. Neither of us heard the morning bell."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "responsibility"
+      ],
+      "aoks": [
+        "ART",
+        "HIS",
+        "LAN"
+      ],
+      "subjects": [
+        "lang-lit",
+        "history"
+      ]
+    },
+    "practice": 224,
+    "question": "Who has to stay awake tonight for that key to be useful?"
+  },
+  {
+    "id": "q231690",
+    "character": "ink-q231690",
+    "name": "B. R. Ambedkar",
+    "station": "dispatch",
+    "title": "A thumbprint without a seat",
+    "context": "Ambedkar chaired the drafting committee for India's Constitution and wrote about caste and exclusion.",
+    "opening": "They have counted every hand in the room. The people waiting outside are asking who wrote the rule about rooms.",
+    "folds": [
+      {
+        "action": "Move the hearing to the steps",
+        "arrival": "A weaver can speak between shifts. Rain blurs the clerk’s record of her last sentence."
+      },
+      {
+        "action": "Give the absentees the next signature",
+        "arrival": "The draft rests overnight. By morning the excluded workers have changed the very first line."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "perspective"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS",
+        "POL"
+      ],
+      "subjects": [
+        "global-politics",
+        "history"
+      ]
+    },
+    "practice": 443,
+    "question": "Whose thumbprint could appear on the record without its owner ever getting a turn?"
+  },
+  {
+    "id": "q219368",
+    "character": "ink-q219368",
+    "name": "Judith Butler",
+    "station": "stage",
+    "title": "The usher's coat",
+    "context": "Judith Butler's work examines how repeated acts help establish social expectations around gender.",
+    "opening": "Wear the usher’s coat and everyone hands you a ticket. My friend wore it to keep warm. Now people are obeying a rule nobody remembers making.",
+    "folds": [
+      {
+        "action": "Trade coats in sight of the queue",
+        "arrival": "The queue follows the coat halfway across the room. One patron stays with the friend who knows her name."
+      },
+      {
+        "action": "Let each door invent its greeting",
+        "arrival": "Visitors learn two ways to arrive. The usher asks what happens to people who have to use both doors."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "culture",
+        "interpretation"
+      ],
+      "aoks": [
+        "HUM",
+        "ART",
+        "LAN"
+      ],
+      "subjects": [
+        "anthropology",
+        "theatre"
+      ]
+    },
+    "practice": 520,
+    "question": "What did the usher learn when the coat moved to another pair of shoulders?"
+  },
+  {
+    "id": "q11104",
+    "character": "ibn-al-haytham",
+    "name": "Ibn al-Haytham",
+    "station": "coast",
+    "title": "The window that borrowed a tree",
+    "context": "Ibn al-Haytham investigated vision and light in the Book of Optics.",
+    "opening": "A tree has appeared upside down on the shutter. My assistant wants the branch put back outside before the housekeeper notices.",
+    "folds": [
+      {
+        "action": "Slide a card across the opening",
+        "arrival": "The tree disappears one strip at a time. The housekeeper has started moving the card herself."
+      },
+      {
+        "action": "Move the screen toward the pinhole",
+        "arrival": "The little tree grows sharp enough to count a fork. Nobody has moved the tree outside."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "explanation"
+      ],
+      "aoks": [
+        "NAT",
+        "ART",
+        "TEC"
+      ],
+      "subjects": [
+        "physics",
+        "visual-arts"
+      ]
+    },
+    "practice": 505,
+    "question": "How could someone across the island check that the tree outside was still there?"
+  },
+  {
+    "id": "q8750",
+    "character": "ink-q8750",
+    "name": "Michael Faraday",
+    "station": "yard",
+    "title": "A twitch with no signature",
+    "context": "Faraday investigated electromagnetic induction and gave public demonstrations of science.",
+    "opening": "Watch the needle while I move the magnet. The apprentice watching my face sees a fine performance and misses the twitch.",
+    "folds": [
+      {
+        "action": "Turn the dial toward the apprentice",
+        "arrival": "She catches a second twitch while I look away. For once the observation belongs to her."
+      },
+      {
+        "action": "Leave a pencil on the moving paper",
+        "arrival": "The scratch waits for the late shift. They can see when it moved but still need someone who saw what I did."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "objectivity"
+      ],
+      "aoks": [
+        "NAT",
+        "ART",
+        "TEC"
+      ],
+      "subjects": [
+        "physics",
+        "design-tech"
+      ]
+    },
+    "practice": 338,
+    "question": "Which movement would the pencil keep if the apprentice blinked?"
+  },
+  {
+    "id": "q296898",
+    "character": "ink-q296898",
+    "name": "George Washington Carver",
+    "station": "fern",
+    "title": "The second row of beans",
+    "context": "At Tuskegee, Carver taught agricultural methods including crop rotation.",
+    "opening": "At the fair they want my tallest plant. A farmer asks what the soil will be like after the fair is gone.",
+    "folds": [
+      {
+        "action": "Take both beds on the fair map",
+        "arrival": "The modest plants get a place beside the show row. A farmer recognizes ground much like his own."
+      },
+      {
+        "action": "Mark where next year's crop will go",
+        "arrival": "The empty row draws laughter until a grower asks to borrow the plan for another season."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "responsibility"
+      ],
+      "aoks": [
+        "NAT",
+        "HUM"
+      ],
+      "subjects": [
+        "biology",
+        "ess"
+      ]
+    },
+    "practice": 332,
+    "question": "What would you plant next to the beans to check what helped them?"
+  },
+  {
+    "id": "q450317",
+    "character": "ink-q450317",
+    "name": "Chien-Shiung Wu",
+    "station": "coast",
+    "title": "The looking-glass mitten",
+    "context": "Wu led the experimental work that demonstrated parity violation in beta decay.",
+    "opening": "Two gloves fit a mirror beautifully. My assistant has copied the picture onto the instrument and called the pair a test. Which trace shall travel?",
+    "folds": [
+      {
+        "action": "Send the two raw traces facing the same way",
+        "arrival": "The difference survives the turn. A reader can find exactly which mark spoiled the apparent symmetry."
+      },
+      {
+        "action": "Pack the mirror beside the traces",
+        "arrival": "A visitor turns the glass and catches herself making the same assumption my assistant made."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "objectivity",
+        "certainty"
+      ],
+      "aoks": [
+        "NAT",
+        "MAT"
+      ],
+      "subjects": [
+        "physics",
+        "math-aa"
+      ]
+    },
+    "practice": 503,
+    "question": "What must both observers agree to face before their traces can be compared?"
+  },
+  {
+    "id": "q462843",
+    "character": "ink-q462843",
+    "name": "Tu Youyou",
+    "station": "cold",
+    "title": "A word worn thin",
+    "context": "Tu Youyou drew on historical Chinese medical texts in research that led to artemisinin.",
+    "opening": "Three copies of a remedy disagree on a verb. A clerk has already rubbed one away to make the shelf tidy. I can still see the dent.",
+    "folds": [
+      {
+        "action": "Lift the dent into the margin",
+        "arrival": "The old reading can be compared again. Nobody has to trust the clerk’s memory of the erased word."
+      },
+      {
+        "action": "Put the three copies out of order",
+        "arrival": "A reader follows the wording instead of the newest cover. She finds two pages descend from the same copy."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "evidence"
+      ],
+      "aoks": [
+        "HIS",
+        "NAT",
+        "LAN"
+      ],
+      "subjects": [
+        "history",
+        "biology"
+      ]
+    },
+    "practice": 337,
+    "question": "Which copy changed the way you read the worn word?"
+  },
+  {
+    "id": "q7352852",
+    "character": "ink-q7352852",
+    "name": "Robin Wall Kimmerer",
+    "station": "fern",
+    "title": "The bare patch beside the moss",
+    "context": "Kimmerer is a botanist and member of the Citizen Potawatomi Nation whose writing brings plant ecology into conversation with reciprocity.",
+    "opening": "I came looking for green and passed a brown patch without a glance. Then my boot crushed the moss beside it. Moving my boot and changing what I expect to see are two different repairs.",
+    "folds": [
+      {
+        "action": "Move the viewing cord back",
+        "arrival": "A wider circle of moss survives the week. The smallest leaf needs a borrowed lens."
+      },
+      {
+        "action": "Invite the caretaker to set the path",
+        "arrival": "The path bends around wet ground I had overlooked. The caretaker keeps the authority to close it."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "responsibility",
+        "perspective"
+      ],
+      "aoks": [
+        "NAT",
+        "HUM",
+        "IND"
+      ],
+      "subjects": [
+        "biology",
+        "ess"
+      ]
+    },
+    "practice": 413,
+    "question": "Who gets to say when the moss has had enough visitors?"
+  },
+  {
+    "id": "q816430",
+    "character": "ink-q816430",
+    "name": "Ben Barres",
+    "station": "cold",
+    "title": "The faint cells",
+    "context": "Barres studied the roles of glia in the nervous system.",
+    "opening": "Everyone crowded round the bright drawing at my talk. The faint shapes barely made it into the programme. They take up most of my working day.",
+    "folds": [
+      {
+        "action": "Trace the faint layer on its own sheet",
+        "arrival": "The support cells fill a whole page. Their positions make sense when a reader lowers it onto the bright drawing."
+      },
+      {
+        "action": "Give the second lamp to the assistant",
+        "arrival": "A second pair of eyes finds a gap I had filled in from habit. We leave the gap visible."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "perspective"
+      ],
+      "aoks": [
+        "NAT",
+        "ART",
+        "TEC"
+      ],
+      "subjects": [
+        "biology",
+        "visual-arts"
+      ]
+    },
+    "practice": 526,
+    "question": "What did the second lamp let the assistant see for themself?"
+  },
+  {
+    "id": "q202943",
+    "character": "ink-q202943",
+    "name": "Brahmagupta",
+    "station": "market",
+    "title": "An empty purse with a balance",
+    "context": "Brahmagupta wrote rules for arithmetic with zero, debts and fortunes.",
+    "opening": "Our two traders have no coins between them. One still owes the other three. The clerk has painted identical purses on their doors.",
+    "folds": [
+      {
+        "action": "Hang a debt bead below the beam",
+        "arrival": "The empty pans look alike until the bead swings below one. Its owner can tell who still owes whom."
+      },
+      {
+        "action": "Walk the ledger backward to the loan",
+        "arrival": "The clerk sees both purses empty and the loan still alive. He keeps the earlier line with the new one."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "justification"
+      ],
+      "aoks": [
+        "MAT",
+        "HUM"
+      ],
+      "subjects": [
+        "math-aa",
+        "economics"
+      ]
+    },
+    "practice": 604,
+    "question": "Who would count the purse as empty even with a debt hanging below it?"
+  },
+  {
+    "id": "q9038",
+    "character": "ink-q9038",
+    "name": "Al-Khwārizmī",
+    "station": "nile",
+    "title": "A length missing from the cloth",
+    "context": "Al-Khwarizmi wrote an influential treatise on solving equations.",
+    "opening": "Half the awning is folded inside a seam. The tailor will cut today if I can give her a rule that travels farther than this stall.",
+    "folds": [
+      {
+        "action": "Unfold the seam on the bench",
+        "arrival": "The tailor sees the hidden length. She takes a pattern home that fits this particular awning."
+      },
+      {
+        "action": "Balance strips on both sides of a peg",
+        "arrival": "The apprentice applies the same move to a different bolt. He still needs the tailor to say where the seam begins."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "justification"
+      ],
+      "aoks": [
+        "MAT",
+        "HUM",
+        "TEC"
+      ],
+      "subjects": [
+        "math-aa",
+        "design-tech"
+      ]
+    },
+    "practice": 446,
+    "question": "Which length of cloth did the seam hide from your first measurement?"
+  },
+  {
+    "id": "q7099",
+    "character": "ink-q7099",
+    "name": "Emmy Noether",
+    "station": "island",
+    "title": "The wheel with no privileged spoke",
+    "context": "Noether established a connection between continuous symmetries and conservation laws in physics.",
+    "opening": "The miller painted one spoke gold to show us where the law lives. We turned the wheel. The gold is now at the bottom and the mill still works.",
+    "folds": [
+      {
+        "action": "Scrape a chalk ring round the turning hub",
+        "arrival": "Every spoke crosses the same ring. The miller’s daughter wants to know what survives a different kind of turn."
+      },
+      {
+        "action": "Lay tracing paper over two turns",
+        "arrival": "The spokes exchange places under the tracing. The axle stays put and the gold mark finally earns a rest."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "truth",
+        "explanation"
+      ],
+      "aoks": [
+        "MAT",
+        "NAT"
+      ],
+      "subjects": [
+        "math-aa",
+        "physics"
+      ]
+    },
+    "practice": 503,
+    "question": "What still lined up when the wheel came round again?"
+  },
+  {
+    "id": "q83163",
+    "character": "ink-q83163",
+    "name": "Srinivasa Ramanujan",
+    "station": "archive",
+    "title": "Numbers in a coat pocket",
+    "context": "Ramanujan's notebooks preserve extensive results in number theory, often without the derivations.",
+    "opening": "My coat has a page of patterns and a hole in the pocket. The person who picks it up may have the result and none of the steps.",
+    "folds": [
+      {
+        "action": "Stitch in a small worked case",
+        "arrival": "The finder can check the first few terms before deciding whether to chase the rest."
+      },
+      {
+        "action": "Send the surprising line with a blank margin",
+        "arrival": "Someone fills the margin with a route I never took. Another line stays stubbornly empty."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "certainty",
+        "justification"
+      ],
+      "aoks": [
+        "MAT",
+        "ART",
+        "LAN"
+      ],
+      "subjects": [
+        "math-aa",
+        "lang-langlit"
+      ]
+    },
+    "practice": 263,
+    "question": "How far would you trust the surprising line on the strength of one worked case?"
+  },
+  {
+    "id": "q1771279",
+    "character": "ink-q1771279",
+    "name": "Maryam Mirzakhani",
+    "station": "chart",
+    "title": "A loop that refuses to untie",
+    "context": "Mirzakhani studied the geometry and dynamics of curved surfaces.",
+    "opening": "I drew a walk on this curved sheet. The ferryman flattened it for his pocket and now my walker seems to step through a wall.",
+    "folds": [
+      {
+        "action": "Run a cord along the curved walk",
+        "arrival": "The ferryman feels where the walk returns. His flat map still squeezes the last bend."
+      },
+      {
+        "action": "Cut a window in a second sheet",
+        "arrival": "The two drawings meet at the window. Each shows a stretch the other makes hard to see."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "perspective"
+      ],
+      "aoks": [
+        "MAT",
+        "NAT"
+      ],
+      "subjects": [
+        "math-aa",
+        "geography"
+      ]
+    },
+    "practice": 492,
+    "question": "Where did flattening the walk change the loop you were trying to follow?"
+  },
+  {
+    "id": "q60056205",
+    "character": "ink-q60056205",
+    "name": "Autumn Kent",
+    "station": "chart",
+    "title": "A knot with two shadows",
+    "context": "Kent researches knots, surfaces and three-dimensional geometry.",
+    "opening": "On the wall this loop crosses itself six times. Turn the lantern and it crosses four. My young rigger has put two prices on the very same rope.",
+    "folds": [
+      {
+        "action": "Rotate the lamp with the ends tied",
+        "arrival": "The rigger keeps four shadows and one knot. Her new price tag has room for a drawing angle."
+      },
+      {
+        "action": "Pass a bead along the whole loop",
+        "arrival": "The bead goes home without jumping a strand. The easiest crossing to draw was the hardest one to follow."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "objectivity",
+        "perspective"
+      ],
+      "aoks": [
+        "MAT",
+        "ART"
+      ],
+      "subjects": [
+        "math-aa",
+        "visual-arts"
+      ]
+    },
+    "practice": 503,
+    "question": "Which feature of the knot survived turning the lamp?"
+  },
+  {
+    "id": "q9372",
+    "character": "ink-q9372",
+    "name": "Sima Qian",
+    "station": "nile",
+    "title": "The runaway's missing page",
+    "context": "Sima Qian's Records of the Grand Historian tells history through several forms, including individual biographies.",
+    "opening": "The clerk left enough room for a ruler’s life and half a line for the runner who carried the news. The runner remembers the rain best.",
+    "folds": [
+      {
+        "action": "Bind the runner's account at the front",
+        "arrival": "Readers enter the city wet and late. Some ask which ruler was waiting at the gate."
+      },
+      {
+        "action": "Thread the two lives by the same afternoon",
+        "arrival": "One date leads to two different rooms. The runner’s rain explains a delay that looks deliberate in the palace."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "evidence"
+      ],
+      "aoks": [
+        "HIS",
+        "HUM"
+      ],
+      "subjects": [
+        "history",
+        "geography"
+      ]
+    },
+    "practice": 533,
+    "question": "If only one page escaped, whose afternoon would survive with it?"
+  },
+  {
+    "id": "q179284",
+    "character": "ink-q179284",
+    "name": "Anna Komnene",
+    "station": "council",
+    "title": "The family's chair",
+    "context": "Anna Komnene wrote the Alexiad, a history centred on the reign of her father Alexios I.",
+    "opening": "My father’s chair makes the best place to see the gate. It also makes me his daughter telling the story. A visitor has noticed both things.",
+    "folds": [
+      {
+        "action": "Set another chair by the servants' door",
+        "arrival": "The second witness saw who waited outside. The gate was hidden from that angle."
+      },
+      {
+        "action": "Mark the first sightline on the plan",
+        "arrival": "A stranger can judge just how much I could see. It feels rather exposed to leave my chair there."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "objectivity",
+        "perspective"
+      ],
+      "aoks": [
+        "HIS",
+        "ART"
+      ],
+      "subjects": [
+        "history",
+        "theatre"
+      ]
+    },
+    "practice": 491,
+    "question": "Which part of the room could the family chair never show its occupant?"
+  },
+  {
+    "id": "q521729",
+    "character": "ink-q521729",
+    "name": "Cheikh Anta Diop",
+    "station": "cold",
+    "title": "The drawer filed under nowhere",
+    "context": "Diop drew on multiple disciplines to investigate African history.",
+    "opening": "The colonial index begins this river kingdom's history with a traveller’s visit. Local dates were filed as notes about his voyage. The drawer sticks where somebody forced them in.",
+    "folds": [
+      {
+        "action": "Refit the drawer round the local dates",
+        "arrival": "Neighbours open it at their own beginning. An overseas reader asks for a slip between the two calendars."
+      },
+      {
+        "action": "Hang the excavated layer beside the written date",
+        "arrival": "The mismatch is small enough to overlook on paper. On the wall it starts an argument worth staying for."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "evidence"
+      ],
+      "aoks": [
+        "HIS",
+        "HUM",
+        "POL"
+      ],
+      "subjects": [
+        "history",
+        "geography"
+      ]
+    },
+    "practice": 250,
+    "question": "Which date became visible when the drawer was filed differently?"
+  },
+  {
+    "id": "q7517038",
+    "character": "ink-q7517038",
+    "name": "Silvia Rivera Cusicanqui",
+    "station": "voices",
+    "title": "Two colours still wet",
+    "context": "Rivera Cusicanqui worked with oral history in Bolivia and developed the idea of ch'ixi as a way of thinking about difference that persists.",
+    "opening": "The printer promises me one perfect colour if I let him stir long enough. The two narrators want to see where their threads touch.",
+    "folds": [
+      {
+        "action": "Twist the colours into one cord",
+        "arrival": "From across the hall it looks grey. Up close you can still follow each strand to its own end."
+      },
+      {
+        "action": "Stretch the strands across opposite seats",
+        "arrival": "A listener moves between the seats. She hears an overlap neither speaker had noticed."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "culture",
+        "interpretation"
+      ],
+      "aoks": [
+        "ART",
+        "HIS",
+        "IND"
+      ],
+      "subjects": [
+        "visual-arts",
+        "anthropology"
+      ]
+    },
+    "practice": 232,
+    "question": "What could a listener hear from opposite seats that a single twisted cord might hide?"
+  },
+  {
+    "id": "q7648438",
+    "character": "ink-q7648438",
+    "name": "Susan Stryker",
+    "station": "press",
+    "title": "The box under the chosen name",
+    "context": "Stryker has worked as a historian and archivist of transgender lives.",
+    "opening": "A singer requests a box by her stage name. The old index knows a different name. She would like strangers to find her work without finding everything else.",
+    "folds": [
+      {
+        "action": "Give her the pencil for the public index",
+        "arrival": "Her chosen entry leads to the songs. She keeps the other slip folded inside her coat."
+      },
+      {
+        "action": "Bind a private cross-reference",
+        "arrival": "A trusted keeper can reunite the records. A stranger has to ask, and may never learn why."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "responsibility",
+        "power"
+      ],
+      "aoks": [
+        "HIS",
+        "ART",
+        "LAN"
+      ],
+      "subjects": [
+        "history",
+        "music"
+      ]
+    },
+    "practice": 549,
+    "question": "Who needs to find the older record, and who gets to decide how?"
+  },
+  {
+    "id": "q1396630",
+    "character": "ink-q1396630",
+    "name": "Te Rangi Hīroa",
+    "station": "chart",
+    "title": "A paddle drawn from above",
+    "context": "Te Rangi Hīroa, of Ngāti Mutunga descent, studied material culture and served as director of the Bishop Museum.",
+    "opening": "The cabinet shows every carved line. A canoe builder turns the drawing sideways and asks where a thumb goes. I have a spare sheet.",
+    "folds": [
+      {
+        "action": "Trace a grip with the builder's leave",
+        "arrival": "A smudge of charcoal tells the next visitor where pressure falls. The handle in the case stays untouched."
+      },
+      {
+        "action": "Set the drawing at paddling height",
+        "arrival": "The builder stands in front of it and changes the angle. A sitting visitor asks for a lower stand too."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "evidence"
+      ],
+      "aoks": [
+        "HUM",
+        "ART",
+        "IND"
+      ],
+      "subjects": [
+        "anthropology",
+        "design-tech"
+      ]
+    },
+    "practice": 614,
+    "question": "What did placing the paddle at shoulder height reveal about the drawing?"
+  },
+  {
+    "id": "q1395135",
+    "character": "ink-q1395135",
+    "name": "Julio C. Tello",
+    "station": "cold",
+    "title": "The pots the catalogue separated",
+    "context": "Peruvian archaeologist Julio C. Tello investigated Chavín and Paracas, among other sites and cultures.",
+    "opening": "The cabinet clerk likes straight rows of colour. I need the space between two vessels on the old ground plan. We cannot lift the floor again.",
+    "folds": [
+      {
+        "action": "Join their cases with the excavation plan",
+        "arrival": "A reader finds the gap where the vessels once stood. Two similar rims turn out to come from different places."
+      },
+      {
+        "action": "Leave one space empty in the row",
+        "arrival": "Visitors ask what belongs there. The keeper unfolds the plan before answering."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "evidence"
+      ],
+      "aoks": [
+        "HIS",
+        "ART"
+      ],
+      "subjects": [
+        "history",
+        "visual-arts"
+      ]
+    },
+    "practice": 375,
+    "question": "What would it cost to fill the gap with the nearest-looking pot?"
+  },
+  {
+    "id": "q220480",
+    "character": "ink-q220480",
+    "name": "Zora Neale Hurston",
+    "station": "voices",
+    "title": "The story with a laughing pause",
+    "context": "Hurston collected folklore and paid close attention to the settings in which stories were told.",
+    "opening": "I can take the words down beautifully. My pencil cannot tell you who laughed before the last line or why the teller waited for it.",
+    "folds": [
+      {
+        "action": "Keep the pause in the performance",
+        "arrival": "The new audience laughs in a different place. The teller gets to set the pace again."
+      },
+      {
+        "action": "Ask the teller to place the laugh in the margin",
+        "arrival": "The teller draws an arrow to a person, not a word. The reader needs to know who was in the room."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "culture",
+        "interpretation"
+      ],
+      "aoks": [
+        "ART",
+        "HUM",
+        "LAN"
+      ],
+      "subjects": [
+        "lit-perf",
+        "anthropology"
+      ]
+    },
+    "practice": 450,
+    "question": "Did the pause belong to the teller, the audience, or their moment together?"
+  },
+  {
+    "id": "q238890",
+    "character": "ink-q238890",
+    "name": "Kathleen Kenyon",
+    "station": "nile",
+    "title": "A line of earth no wider than a finger",
+    "context": "Kenyon used stratigraphic excavation at Jericho.",
+    "opening": "The tray is full of lovely finds. My best clue is a dark line in the wall that the next scoop will take away.",
+    "folds": [
+      {
+        "action": "Draw the wall before filling the tray",
+        "arrival": "The drawing keeps the order of the layers. The waiting crew loses the last patch of daylight."
+      },
+      {
+        "action": "Leave a narrow strip standing",
+        "arrival": "A second visitor can feel where the soil changes. The strip hides a little of what lies behind it."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "certainty"
+      ],
+      "aoks": [
+        "HIS",
+        "NAT"
+      ],
+      "subjects": [
+        "history",
+        "geography"
+      ]
+    },
+    "practice": 388,
+    "question": "Which question about the trench could a later visitor still investigate?"
+  },
+  {
+    "id": "q231111",
+    "character": "ink-q231111",
+    "name": "Mary Leakey",
+    "station": "fern",
+    "title": "Footsteps after rain",
+    "context": "Leakey directed investigations of the preserved hominin tracks at Laetoli in Tanzania.",
+    "opening": "Three tracks cross the soft patch. The painter has already given their makers faces. The length of a step is all I promised.",
+    "folds": [
+      {
+        "action": "Cast the interval between two prints",
+        "arrival": "The empty space goes into the case too. A walker tries a shorter stride and gets a different story."
+      },
+      {
+        "action": "Project outlines with the figures left out",
+        "arrival": "Visitors walk the spacing themselves. One child asks how fast the mud was drying."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "justification",
+        "explanation"
+      ],
+      "aoks": [
+        "NAT",
+        "ART"
+      ],
+      "subjects": [
+        "biology",
+        "sehs"
+      ]
+    },
+    "practice": 567,
+    "question": "What could two prints tell you even if you left the walkers out of the picture?"
+  },
+  {
+    "id": "q6450162",
+    "character": "ink-q6450162",
+    "name": "Kwang-chih Chang",
+    "station": "cold",
+    "title": "The house beyond the fine bowl",
+    "context": "Chang studied early Chinese societies through archaeology, including settlements and their relationships.",
+    "opening": "The collector’s light falls exactly on the painted bowl. My map reaches the small houses where nobody owned one. The light has a hinge.",
+    "folds": [
+      {
+        "action": "Swing the lamp over the house plan",
+        "arrival": "The bowl becomes one household among many. Its painting is suddenly much harder to see."
+      },
+      {
+        "action": "Draw a walking route from bowl to doorway",
+        "arrival": "A visitor follows the clay back to a house. Another asks whose doorway never got a marker."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "evidence"
+      ],
+      "aoks": [
+        "HIS",
+        "HUM"
+      ],
+      "subjects": [
+        "history",
+        "geography"
+      ]
+    },
+    "practice": 526,
+    "question": "Whose movements around the bowl would the display case conceal?"
+  },
+  {
+    "id": "q189725",
+    "character": "ink-q189725",
+    "name": "Pāṇini",
+    "station": "press",
+    "title": "The rule that ate its neighbour",
+    "context": "Pāṇini's Aṣṭādhyāyī describes Sanskrit using a system of interacting grammatical rules.",
+    "opening": "A single sound changes at the join between two words. The printer applied my rules in reverse order and the result still looks terribly official.",
+    "folds": [
+      {
+        "action": "Slide one rule strip over the other",
+        "arrival": "The apprentice sees which instruction gets to the join first. She saves both strips for the next form."
+      },
+      {
+        "action": "Keep the unjoined words on a flap",
+        "arrival": "A reader lifts the flap and finds the original sounds. The printed line alone had hidden them."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "interpretation"
+      ],
+      "aoks": [
+        "MAT",
+        "HUM",
+        "LAN"
+      ],
+      "subjects": [
+        "classics",
+        "computer-science"
+      ]
+    },
+    "practice": 261,
+    "question": "Which join changed when the rule strips exchanged places?"
+  },
+  {
+    "id": "q9294",
+    "character": "ibn-khaldun",
+    "name": "Ibn Khaldūn",
+    "station": "market",
+    "title": "The loaf for an impossible army",
+    "context": "Ibn Khaldun's Muqaddimah considers how the conditions of social life affect the plausibility of historical reports.",
+    "opening": "A chronicler has filled a valley with more people than the storekeeper can feed. He says the number came from an excellent book.",
+    "folds": [
+      {
+        "action": "Build a stack for a day's bread",
+        "arrival": "The stack fills the storeroom before it feeds the claimed crowd. The baker asks where the missing road would go."
+      },
+      {
+        "action": "Trace the count back through its copies",
+        "arrival": "Five witnesses shrink to a single borrowed numeral. That still leaves the size of the crowd open."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "justification"
+      ],
+      "aoks": [
+        "HIS",
+        "MAT"
+      ],
+      "subjects": [
+        "history",
+        "math-ai"
+      ]
+    },
+    "practice": 332,
+    "question": "What would another loaf establish that a second copy of the headcount could not?"
+  },
+  {
+    "id": "q158060",
+    "character": "ink-q158060",
+    "name": "W. E. B. Du Bois",
+    "station": "market",
+    "title": "The chart that never meets its street",
+    "context": "Du Bois combined social inquiry, maps and data graphics to study and communicate racial inequality.",
+    "opening": "The bars fit beautifully. Outside, a woman points to the boundary that cuts her yard in two. Both halves have become different colours.",
+    "folds": [
+      {
+        "action": "Walk the chart's boundary",
+        "arrival": "The yard is one place underfoot. The seam in the graphic now has an address."
+      },
+      {
+        "action": "Put her account beside the bar",
+        "arrival": "The reader can hear what a tidy average costs one household. The overall pattern is still there to inspect."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "objectivity",
+        "power"
+      ],
+      "aoks": [
+        "HUM",
+        "MAT",
+        "POL"
+      ],
+      "subjects": [
+        "geography",
+        "math-ai"
+      ]
+    },
+    "practice": 630,
+    "question": "Where on her street did the chart stop describing her day?"
+  },
+  {
+    "id": "q14900709",
+    "character": "ink-q14900709",
+    "name": "Mamie Phipps Clark",
+    "station": "stage",
+    "title": "Two toys and a watchful room",
+    "context": "Mamie Phipps Clark studied children's racial identification and the effects of segregation.",
+    "opening": "The adults want me to name what a child feels from the toy they reached for. The child was watching us the whole time. My own notebook is part of the room.",
+    "folds": [
+      {
+        "action": "Record where the adults stood",
+        "arrival": "The reach stays in the record, along with the audience that could have changed it."
+      },
+      {
+        "action": "Give the child a private second turn",
+        "arrival": "The second choice differs. Nobody puts either choice beside the child's name."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "responsibility"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS"
+      ],
+      "subjects": [
+        "psychology",
+        "history"
+      ]
+    },
+    "practice": 631,
+    "question": "How might the adults’ places have changed what the child felt able to do?"
+  },
+  {
+    "id": "q153761",
+    "character": "ink-q153761",
+    "name": "Elinor Ostrom",
+    "station": "gate",
+    "title": "A key that belongs to the ditch",
+    "context": "Ostrom studied how communities make and sustain rules for shared resources.",
+    "opening": "Our neighbours know which gate sticks. The survey gives the key to a distant clerk because his desk is always occupied.",
+    "folds": [
+      {
+        "action": "Hang the key by the user roster",
+        "arrival": "The last water user can open the gate. Two neighbours volunteer to settle a dispute about the roster."
+      },
+      {
+        "action": "Give each shift a seal for repairs",
+        "arrival": "The clerk can see who noticed a leak. A visitor working between shifts needs somebody to vouch for her."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "responsibility",
+        "values"
+      ],
+      "aoks": [
+        "HUM",
+        "NAT",
+        "POL"
+      ],
+      "subjects": [
+        "global-politics",
+        "ess"
+      ]
+    },
+    "practice": 233,
+    "question": "Who could repair the ditch if its key holder missed a shift?"
+  },
+  {
+    "id": "q453592",
+    "character": "ink-q453592",
+    "name": "Raewyn Connell",
+    "station": "dispatch",
+    "title": "The chair called ordinary",
+    "context": "Connell's work examines how institutions produce gender hierarchies and which voices shape social theory.",
+    "opening": "The manual says a good foreman sounds like this. That voice has got awfully comfortable in the only chair at the table.",
+    "folds": [
+      {
+        "action": "Turn the chair toward the night crew",
+        "arrival": "The manual's example has to answer questions from people who never wrote it."
+      },
+      {
+        "action": "Leave the chair empty for one shift",
+        "arrival": "A quiet worker organises the next cart without taking the seat. The recorder has trouble naming what she did."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "culture"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS",
+        "POL"
+      ],
+      "subjects": [
+        "business",
+        "anthropology"
+      ]
+    },
+    "practice": 528,
+    "question": "Whose working day disappears when the chair faces the usual way?"
+  },
+  {
+    "id": "q762",
+    "character": "ink-q762",
+    "name": "Leonardo da Vinci",
+    "station": "yard",
+    "title": "The hinge that draws a wing",
+    "context": "Leonardo used drawing to investigate movement, anatomy and mechanisms.",
+    "opening": "My paper bird opens beautifully on the table. At the window a real bird folds its wing a different way. I rather like my hinge. That is the trouble.",
+    "folds": [
+      {
+        "action": "Trace the living wing's second fold",
+        "arrival": "The old hinge no longer fits the tracing. The apprentice keeps both in the notebook."
+      },
+      {
+        "action": "Build a paper joint that can slip",
+        "arrival": "The paper bends where I did not plan. A working hinge has taught us something a pretty sketch concealed."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "evidence"
+      ],
+      "aoks": [
+        "ART",
+        "NAT"
+      ],
+      "subjects": [
+        "visual-arts",
+        "biology"
+      ]
+    },
+    "practice": 269,
+    "question": "Where did the paper hinge have to give for the wing to move?"
+  },
+  {
+    "id": "q11621076",
+    "character": "ink-q11621076",
+    "name": "Katsushika Ōi",
+    "station": "stage",
+    "title": "The lantern behind the sleeve",
+    "context": "Ōi was an Edo-period Japanese artist known in particular for her treatment of light.",
+    "opening": "The apprentice painted the face first. Now the lantern is lit and the shadow of a sleeve has become the centre of the room.",
+    "folds": [
+      {
+        "action": "Move the lantern behind the screen",
+        "arrival": "The face disappears into shade. Its owner can finally watch without being watched."
+      },
+      {
+        "action": "Paint the edge where the light stops",
+        "arrival": "The sleeve stays still. A visitor can tell how high the lantern hangs from the edge alone."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "interpretation"
+      ],
+      "aoks": [
+        "ART",
+        "NAT"
+      ],
+      "subjects": [
+        "visual-arts",
+        "physics"
+      ]
+    },
+    "practice": 505,
+    "question": "Which edge belonged to the sleeve and which to the lantern?"
+  },
+  {
+    "id": "q219634",
+    "character": "ink-q219634",
+    "name": "Claude Cahun",
+    "station": "stage",
+    "title": "Who pressed the shutter",
+    "context": "Cahun worked with Marcel Moore on images that explored identity and performance.",
+    "opening": "Two people made this portrait. One stood in the clothes. One waited behind the shutter. The catalogue has room for a single name.",
+    "folds": [
+      {
+        "action": "Turn the mirror toward the camera stand",
+        "arrival": "The reflection includes the work behind the image. The sitter loses the perfectly blank background."
+      },
+      {
+        "action": "Write the credit on a reversible mount",
+        "arrival": "Flip the portrait and a collaborator comes into view. Some visitors never think to turn it."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "perspective"
+      ],
+      "aoks": [
+        "ART",
+        "HIS"
+      ],
+      "subjects": [
+        "film",
+        "visual-arts"
+      ]
+    },
+    "practice": 599,
+    "question": "Who else had a hand in the picture outside the frame?"
+  },
+  {
+    "id": "q5588",
+    "character": "ink-q5588",
+    "name": "Frida Kahlo",
+    "station": "stage",
+    "title": "The mirror nailed above the bed",
+    "context": "Kahlo made self-portraits drawing on her life and physical experiences in Mexico.",
+    "opening": "The portrait stand expects a sitter to come to it. My bed has other plans. A mirror and a strong pair of arms might let the painting start here.",
+    "folds": [
+      {
+        "action": "Tilt the mirror over the pillow",
+        "arrival": "The face looks straight out from a body at rest. A viewer asks where the artist stood."
+      },
+      {
+        "action": "Bring the canvas within reach of the bed",
+        "arrival": "A crooked first stroke stays where my hand could reach. The gallery has to lower its usual hook."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "culture"
+      ],
+      "aoks": [
+        "ART",
+        "HUM"
+      ],
+      "subjects": [
+        "visual-arts",
+        "psychology"
+      ]
+    },
+    "practice": 478,
+    "question": "How did moving the canvas change what the painter could decide?"
+  },
+  {
+    "id": "q453890",
+    "character": "ink-q453890",
+    "name": "Emily Kame Kngwarreye",
+    "station": "fern",
+    "title": "An invitation with an edge",
+    "context": "Anmatyerr artist Emily Kam Kngwarray made paintings closely connected to Alhalker Country.",
+    "opening": "The visitor wants one sentence to carry away from a canvas. We have a public title to share. Nobody promised him every story the painting holds.",
+    "folds": [
+      {
+        "action": "Give him the public title to take home",
+        "arrival": "He returns to look at the surface. The title keeps its connection to the artist and place."
+      },
+      {
+        "action": "Leave the speaking time with the custodian",
+        "arrival": "A smaller group comes back at the offered hour. The custodian chooses what can travel beyond the room."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "culture",
+        "responsibility"
+      ],
+      "aoks": [
+        "ART",
+        "HUM",
+        "IND"
+      ],
+      "subjects": [
+        "visual-arts",
+        "anthropology"
+      ]
+    },
+    "practice": 661,
+    "question": "What can a visitor take home when the custodian keeps the speaking time?"
+  },
+  {
+    "id": "q1323876",
+    "character": "ink-q1323876",
+    "name": "El Anatsui",
+    "station": "yard",
+    "title": "Cloth that clinks",
+    "context": "El Anatsui makes large flexible sculptures assembled from small metal components, including bottle closures.",
+    "opening": "The shipping crate wants this metal hanging folded exactly as it was last time. The installer has a low doorway and a good pair of hands.",
+    "folds": [
+      {
+        "action": "Let the installer set a new fold",
+        "arrival": "A sweep of bottle caps catches the light in a place the earlier room never had."
+      },
+      {
+        "action": "Keep a crease from the previous hall",
+        "arrival": "One ridge travels from wall to wall. The new installer finds another fold to carry its weight."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "responsibility"
+      ],
+      "aoks": [
+        "ART",
+        "HUM",
+        "TEC"
+      ],
+      "subjects": [
+        "design-tech",
+        "visual-arts"
+      ]
+    },
+    "practice": 637,
+    "question": "Which crease would you miss if the cloth came with a single hanging diagram?"
+  },
+  {
+    "id": "q272411",
+    "character": "mozi",
+    "name": "Mozi",
+    "station": "gate",
+    "title": "The bridge for someone's cousin",
+    "context": "Mozi's ethical arguments include impartial concern for people's welfare.",
+    "opening": "There is timber for one bridge. I know the people on the left bank. Today the stranger on the right bank needs to cross just as badly.",
+    "folds": [
+      {
+        "action": "Test the same load on each crossing",
+        "arrival": "The carpenter sees two equal weights and two different lengths of rope. Equal concern still leaves work to do."
+      },
+      {
+        "action": "Lend the boards by crossing time",
+        "arrival": "Both banks get a turn. A family with the wrong shift has to ask the others to change the timetable."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "values",
+        "justification"
+      ],
+      "aoks": [
+        "HUM",
+        "MAT"
+      ],
+      "subjects": [
+        "philosophy",
+        "economics"
+      ]
+    },
+    "practice": 516,
+    "question": "Who loses a crossing while the test load is on the boards?"
+  },
+  {
+    "id": "q11903",
+    "character": "ink-q11903",
+    "name": "Hypatia of Alexandria",
+    "station": "archive",
+    "title": "The circle that moved in the copy",
+    "context": "Hypatia taught mathematics and philosophy in Alexandria.",
+    "opening": "The student copied the proof carefully. Her circle slipped sideways. The conclusion survived. I would like to know what her hand preserved.",
+    "folds": [
+      {
+        "action": "Turn the proof until the letters move",
+        "arrival": "The letters lose their familiar seats. The same relations keep the student's conclusion standing."
+      },
+      {
+        "action": "Leave her drawing beside the neat one",
+        "arrival": "The crooked diagram is the one another pupil can reconstruct. The polished one still makes the pattern easier to see."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "truth",
+        "justification"
+      ],
+      "aoks": [
+        "MAT",
+        "ART"
+      ],
+      "subjects": [
+        "math-aa",
+        "visual-arts"
+      ]
+    },
+    "practice": 333,
+    "question": "What in the circle still held when the labels turned away from you?"
+  },
+  {
+    "id": "q39837",
+    "character": "ink-q39837",
+    "name": "Ibn Rushd",
+    "station": "press",
+    "title": "Two hands on one commentary",
+    "context": "Ibn Rushd wrote extensive philosophical commentaries, including commentaries on Aristotle.",
+    "opening": "The printer put my explanation in the same type as the older argument. I know which sentence I added. A stranger will have to guess.",
+    "folds": [
+      {
+        "action": "Cut a narrow window for the older line",
+        "arrival": "Readers can put a finger on the claim before they reach my gloss. My longer objection spills onto the next page."
+      },
+      {
+        "action": "Give each voice its own hinge",
+        "arrival": "The pages fold together for a quick reading and pull apart when someone wants to know who said what."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "evidence"
+      ],
+      "aoks": [
+        "HIS",
+        "HUM",
+        "LAN"
+      ],
+      "subjects": [
+        "classics",
+        "philosophy"
+      ]
+    },
+    "practice": 522,
+    "question": "Who can answer for each line if you close the commentary's hinge?"
+  },
+  {
+    "id": "q595486",
+    "character": "ink-q595486",
+    "name": "Anton Wilhelm Amo",
+    "station": "voices",
+    "title": "A pinprick in two columns",
+    "context": "Amo wrote about the relation between mind and body in eighteenth-century European philosophy.",
+    "opening": "The table has columns for the body and the mind. A visitor felt the pinprick once. I would like two accounts without making her go through it twice.",
+    "folds": [
+      {
+        "action": "Let the visitor place the first token",
+        "arrival": "She marks the experience before the observer marks a reaction. The two tokens land a moment apart."
+      },
+      {
+        "action": "Draw the observer's sightline",
+        "arrival": "The watcher could see a hand move. Only the visitor could say how the movement felt."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "evidence"
+      ],
+      "aoks": [
+        "NAT",
+        "HUM"
+      ],
+      "subjects": [
+        "biology",
+        "philosophy"
+      ]
+    },
+    "practice": 504,
+    "question": "Which part of the pinprick account could only the visitor supply?"
+  },
+  {
+    "id": "q164797",
+    "character": "ink-q164797",
+    "name": "Paulo Freire",
+    "station": "dispatch",
+    "title": "The notice that talks at people",
+    "context": "Freire developed a dialogical approach to education rooted in learners' circumstances.",
+    "opening": "My sign has very clear instructions and an absolutely silent audience. A fish seller has a name for this corner that appears on none of my maps.",
+    "folds": [
+      {
+        "action": "Let the seller name the first stop",
+        "arrival": "The new route begins where the market actually meets. The official gate moves to the second line."
+      },
+      {
+        "action": "Trade places at the noticeboard",
+        "arrival": "I try to follow my own notice carrying her basket. She takes the chalk out of my hand at the difficult turn."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "perspective"
+      ],
+      "aoks": [
+        "HUM",
+        "ART",
+        "LAN"
+      ],
+      "subjects": [
+        "geography",
+        "lang-b"
+      ]
+    },
+    "practice": 443,
+    "question": "Who could change tomorrow's route after the seller took your place?"
+  },
+  {
+    "id": "q570103",
+    "character": "ink-q570103",
+    "name": "Kwasi Wiredu",
+    "station": "voices",
+    "title": "The word left at the crossing",
+    "context": "Wiredu examined philosophical concepts across languages, including Akan and English.",
+    "opening": "Three speakers nodded at the translation. Later I learned they meant two rather different things by agreeing. Our meeting has one bell left.",
+    "folds": [
+      {
+        "action": "Ask for the word in an everyday exchange",
+        "arrival": "One speaker uses it to end a quarrel. Another uses it to invite a reply. The translator saves both exchanges."
+      },
+      {
+        "action": "Leave a hinge in the translated line",
+        "arrival": "The hinge opens onto the original expression. The next interpreter has a place to put a new reading."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "culture"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS",
+        "LAN"
+      ],
+      "subjects": [
+        "philosophy",
+        "lang-b"
+      ]
+    },
+    "practice": 524,
+    "question": "When did the everyday exchange call for a different word at the crossing?"
+  },
+  {
+    "id": "q468609",
+    "character": "ink-q468609",
+    "name": "Paul B. Preciado",
+    "station": "dispatch",
+    "title": "The pass with two boxes",
+    "context": "Preciado examines how institutions and technologies organise experiences of bodies and gender.",
+    "opening": "The gatekeeper can describe every traveller except the one at the desk. Our printed pass offers two boxes. The traveller needs a key, not a public inquiry.",
+    "folds": [
+      {
+        "action": "Issue a key against the task alone",
+        "arrival": "The visitor gets to the workshop. The old ledger can no longer claim it knows everyone who passed."
+      },
+      {
+        "action": "Let the visitor write the pass label",
+        "arrival": "The visitor chooses a word and keeps a copy. Others waiting in line can hear the conversation."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "responsibility"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS",
+        "POL"
+      ],
+      "subjects": [
+        "digital-society",
+        "global-politics"
+      ]
+    },
+    "practice": 520,
+    "question": "What does the visitor need the pass to do that its boxes fail to record?"
+  },
+  {
+    "id": "q270085",
+    "character": "ink-q270085",
+    "name": "Shen Kuo",
+    "station": "coast",
+    "title": "The shell above the sea",
+    "context": "Shen Kuo discussed what fossils and landforms could suggest about earlier environments.",
+    "opening": "There is a shell in a mountain wall. The innkeeper would like a tide chart for tonight. I am wondering about a much older shore.",
+    "folds": [
+      {
+        "action": "Draw the layers around the shell",
+        "arrival": "The shell acquires neighbours that a single display case erased. The innkeeper keeps tonight's tide chart separate."
+      },
+      {
+        "action": "Walk the ridge for a second exposure",
+        "arrival": "The next wall bears another trace. The walk has cost a morning and earned a second place to check."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "certainty"
+      ],
+      "aoks": [
+        "NAT",
+        "HIS"
+      ],
+      "subjects": [
+        "geography",
+        "history"
+      ]
+    },
+    "practice": 271,
+    "question": "What would a second ridge have to show to change your reading of the shell?"
+  },
+  {
+    "id": "q742233",
+    "character": "ink-q742233",
+    "name": "Carlos Juan Finlay",
+    "station": "gate",
+    "title": "The map with no dates",
+    "context": "Carlos Finlay proposed a role for mosquitoes in the transmission of yellow fever.",
+    "opening": "The town remembers a season of fever. Its map puts all the sick houses on one neat afternoon. Families recall quite different weeks.",
+    "folds": [
+      {
+        "action": "Add a turning wheel for dates",
+        "arrival": "The reader can see a sequence the flat map buried. Several houses have only an approximate week."
+      },
+      {
+        "action": "Invite families to mark gaps privately",
+        "arrival": "The map loses a few exact-looking dates. The story of how the town noticed trouble becomes more credible."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "evidence"
+      ],
+      "aoks": [
+        "NAT",
+        "HUM"
+      ],
+      "subjects": [
+        "biology",
+        "geography"
+      ]
+    },
+    "practice": 518,
+    "question": "Whose absence would still go unmarked on the date wheel?"
+  },
+  {
+    "id": "q150526",
+    "character": "ink-q150526",
+    "name": "Santiago Ramón y Cajal",
+    "station": "cold",
+    "title": "The line between two nerve cells",
+    "context": "Ramón y Cajal used microscopy and drawing to investigate the structure of the nervous system.",
+    "opening": "I can draw a line so fine it looks unbroken. The lens gives me two edges and a space too small to settle by eye.",
+    "folds": [
+      {
+        "action": "Lift the connecting line onto tracing paper",
+        "arrival": "The reader can remove the proposed connection. The edges I actually saw stay in the drawing."
+      },
+      {
+        "action": "Sketch two separate fields of view",
+        "arrival": "A repeated shape shows up in both fields. A tempting join in the first drawing vanishes in the second."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "interpretation"
+      ],
+      "aoks": [
+        "NAT",
+        "ART",
+        "TEC"
+      ],
+      "subjects": [
+        "biology",
+        "visual-arts"
+      ]
+    },
+    "practice": 332,
+    "question": "Which stretch of the connecting line came from your pencil?"
+  },
+  {
+    "id": "q4794782",
+    "character": "ink-q4794782",
+    "name": "Janaki Ammal",
+    "station": "fern",
+    "title": "The plant with three names",
+    "context": "Janaki Ammal investigated plant chromosomes and cultivated plants, including sugarcane.",
+    "opening": "The gardener, the seller and the cabinet all know this plant. Each label gets it through a different door. Only one tag will fit on the cutting.",
+    "folds": [
+      {
+        "action": "Tie the grower's name to the cutting",
+        "arrival": "The person who tended the plant can recognise it. The cabinet keeper asks for a cross-reference."
+      },
+      {
+        "action": "Fit a folding tag to the pot",
+        "arrival": "The collector opens it and finds three names with their users. The small print sends her looking for a lens."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "culture",
+        "interpretation"
+      ],
+      "aoks": [
+        "NAT",
+        "HUM",
+        "LAN"
+      ],
+      "subjects": [
+        "biology",
+        "lang-ab-initio"
+      ]
+    },
+    "practice": 227,
+    "question": "Which name would help the grower find this same plant again?"
+  },
+  {
+    "id": "q100948",
+    "character": "ink-q100948",
+    "name": "Rachel Carson",
+    "station": "fern",
+    "title": "The quiet morning",
+    "context": "Carson wrote about the ecological effects of pesticides and the relationships between living things.",
+    "opening": "A visitor has described the meadow as perfectly empty. I heard him arrive at noon. The dawn listener is still sitting in the grass.",
+    "folds": [
+      {
+        "action": "Send a dawn and noon listening strip",
+        "arrival": "Two quiet moments have different sounds. The visitor asks for the date beside each one."
+      },
+      {
+        "action": "Keep a silent space on the sound roll",
+        "arrival": "People stop waiting for narration long enough to hear a distant bird. One morning cannot settle a season."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "certainty"
+      ],
+      "aoks": [
+        "NAT",
+        "ART"
+      ],
+      "subjects": [
+        "ess",
+        "music"
+      ]
+    },
+    "practice": 319,
+    "question": "What else might leave the dawn strip quiet?"
+  },
+  {
+    "id": "q2925049",
+    "character": "ink-q2925049",
+    "name": "Fe del Mundo",
+    "station": "gate",
+    "title": "The little chair in the clinic",
+    "context": "Fe del Mundo worked on children's health and founded a children's hospital in the Philippines.",
+    "opening": "The register says the child never returned. The parent remembers three visits to a room with no register. There is only one little chair in the new waiting room.",
+    "folds": [
+      {
+        "action": "Take the register to the outer bench",
+        "arrival": "A family waiting outside gets counted. The nurse has farther to walk with it."
+      },
+      {
+        "action": "Invite a parent to draw the journey",
+        "arrival": "The map has six stops where the register had one appointment. The chair goes beside the longest wait."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "responsibility",
+        "evidence"
+      ],
+      "aoks": [
+        "NAT",
+        "HUM"
+      ],
+      "subjects": [
+        "geography",
+        "psychology"
+      ]
+    },
+    "practice": 311,
+    "question": "Where on the way to the clinic would a missing visit become invisible?"
+  },
+  {
+    "id": "q28189",
+    "character": "ink-q28189",
+    "name": "Abdus Salam",
+    "station": "island",
+    "title": "Two lanterns behind one screen",
+    "context": "Salam contributed to the theoretical unification of electromagnetic and weak interactions.",
+    "opening": "The workshop shows two different patterns of light. I suspect they belong to the same frame, but the spare shutters have not arrived.",
+    "folds": [
+      {
+        "action": "Build a frame that holds both diagrams",
+        "arrival": "A visitor finds the common marks. The frame also shows precisely where the two diagrams still differ."
+      },
+      {
+        "action": "Reserve a slot for the missing test",
+        "arrival": "The empty slot makes the prediction visible to a critic before any new result can fill it."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "certainty",
+        "explanation"
+      ],
+      "aoks": [
+        "NAT",
+        "MAT"
+      ],
+      "subjects": [
+        "physics",
+        "math-aa"
+      ]
+    },
+    "practice": 496,
+    "question": "What could a new test settle that fitting the diagrams together could not?"
+  },
+  {
+    "id": "q11490",
+    "character": "ink-q11490",
+    "name": "Lynn Conway",
+    "station": "yard",
+    "title": "The pattern another shop can build",
+    "context": "Conway helped change how integrated circuits could be designed and taught.",
+    "opening": "The plan fits the chip. The craftsperson fits the pieces. When the plan is passed on, whose work has a name and whose has become invisible?",
+    "folds": [
+      {
+        "action": "Label the boundary between the two workshops",
+        "arrival": "A second builder can locate a mismatch without blaming the person who drew the whole design."
+      },
+      {
+        "action": "Send a small reusable design tile",
+        "arrival": "The next workshop fits the tile into another job. It has to ask which assumptions travelled with it."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "explanation"
+      ],
+      "aoks": [
+        "NAT",
+        "MAT",
+        "TEC"
+      ],
+      "subjects": [
+        "computer-science",
+        "design-tech"
+      ]
+    },
+    "practice": 277,
+    "question": "Which workshop would first notice a missing instruction on the design tile?"
+  },
+  {
+    "id": "q115590",
+    "character": "ink-q115590",
+    "name": "Madhava of Sangamagrama",
+    "station": "chart",
+    "title": "The circle that takes all night",
+    "context": "Madhava is associated with the Kerala mathematical tradition and infinite series used in geometric calculation.",
+    "opening": "My cord comes closer to the rim with each new piece. The navigator needs a circle before the lantern goes out.",
+    "folds": [
+      {
+        "action": "Mark the gap after three pieces",
+        "arrival": "The navigator can judge whether this approximation suits tonight's trip. The missing length stays visible."
+      },
+      {
+        "action": "Give the next watcher the unfinished rule",
+        "arrival": "The next shift can improve the rim. Tonight's navigator must make do with the shorter cord."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "certainty",
+        "values"
+      ],
+      "aoks": [
+        "MAT",
+        "NAT"
+      ],
+      "subjects": [
+        "math-ai",
+        "physics"
+      ]
+    },
+    "practice": 255,
+    "question": "What does the gap after three pieces let the next watcher estimate?"
+  },
+  {
+    "id": "q7259",
+    "character": "ink-q7259",
+    "name": "Ada Lovelace",
+    "station": "press",
+    "title": "A tune in the pattern cards",
+    "context": "Lovelace's notes on the Analytical Engine considered operations on symbols beyond ordinary arithmetic.",
+    "opening": "The loom can carry a pattern for flowers. I wonder what the marks could stand for if the next person wants notes instead.",
+    "folds": [
+      {
+        "action": "Thread the same pattern through a music roll",
+        "arrival": "The mechanism repeats the arrangement as sound. It needs a musician to assign the pitches."
+      },
+      {
+        "action": "Leave the meaning key beside the loom",
+        "arrival": "A weaver reads flowers and a musician reads intervals. Both can point to the same repeat."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "explanation"
+      ],
+      "aoks": [
+        "MAT",
+        "ART",
+        "TEC"
+      ],
+      "subjects": [
+        "computer-science",
+        "music"
+      ]
+    },
+    "practice": 874,
+    "question": "What does the loom need from a musician before its pattern becomes a tune?"
+  },
+  {
+    "id": "q184535",
+    "character": "ink-q184535",
+    "name": "Sofia Kovalevskaya",
+    "station": "island",
+    "title": "The top under the table",
+    "context": "Kovalevskaya made mathematical contributions to the study of rotating bodies.",
+    "opening": "The spinning top rolls under the table just when our curve gets interesting. The child who found it knows how it wobbled but has no graph.",
+    "folds": [
+      {
+        "action": "Trace the wobble beside the drawn curve",
+        "arrival": "The trace meets the prediction for part of a turn. A scratch on the top explains where they part."
+      },
+      {
+        "action": "Give the child the release cord",
+        "arrival": "A new starting angle changes the whole dance. The curve is useful again once its starting condition is marked."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "certainty"
+      ],
+      "aoks": [
+        "MAT",
+        "NAT"
+      ],
+      "subjects": [
+        "math-aa",
+        "physics"
+      ]
+    },
+    "practice": 320,
+    "question": "Who saw a difference between the release and the drawn curve?"
+  },
+  {
+    "id": "q7251",
+    "character": "ink-q7251",
+    "name": "Alan Turing",
+    "station": "dispatch",
+    "title": "The reply through the curtain",
+    "context": "Turing proposed the imitation game in discussing machine intelligence.",
+    "opening": "Two replies have come from behind the curtain. One is witty. One is slow. The audience thinks it can tell who is there before asking either anything interesting.",
+    "folds": [
+      {
+        "action": "Swap the order in which replies are read",
+        "arrival": "The favourite changes seats without changing a word. The audience starts to listen for better evidence."
+      },
+      {
+        "action": "Let both questioners ask a follow-up",
+        "arrival": "The follow-ups uncover a misunderstanding. They still leave open what it would mean to understand."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "justification"
+      ],
+      "aoks": [
+        "HUM",
+        "MAT",
+        "TEC"
+      ],
+      "subjects": [
+        "computer-science",
+        "philosophy"
+      ]
+    },
+    "practice": 532,
+    "question": "What changed when a questioner could ask a second question?"
+  },
+  {
+    "id": "q11740",
+    "character": "ink-q11740",
+    "name": "Katherine Johnson",
+    "station": "coast",
+    "title": "The number that brings them home",
+    "context": "Johnson calculated and checked trajectories for US space missions.",
+    "opening": "Three desks give me the same landing point. They all used the same sheet of figures. The pilot wants to know whether that makes three checks.",
+    "folds": [
+      {
+        "action": "Rebuild one step on a clean sheet",
+        "arrival": "One independent line now meets the machine's curve. We know exactly how much was checked."
+      },
+      {
+        "action": "Draw a band around the landing point",
+        "arrival": "The crew sees the range it should prepare for. Nobody mistakes a pencil dot for a promise."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "certainty",
+        "justification"
+      ],
+      "aoks": [
+        "MAT",
+        "NAT",
+        "TEC"
+      ],
+      "subjects": [
+        "math-ai",
+        "physics"
+      ]
+    },
+    "practice": 329,
+    "question": "Which uncertainty would matter most to the crew waiting at the landing point?"
+  },
+  {
+    "id": "q32538394",
+    "character": "ink-q32538394",
+    "name": "June Huh",
+    "station": "island",
+    "title": "The orchard of linked paths",
+    "context": "June Huh works on connections between combinatorics and algebraic geometry.",
+    "opening": "The gardener draws trees. I draw connections. We are trying to tell whether two patterns that look different admit the same arrangements.",
+    "folds": [
+      {
+        "action": "Twist the paths without untying them",
+        "arrival": "The orchard changes shape while every neighbour stays connected. The labels survive the move."
+      },
+      {
+        "action": "Count arrangements on the smallest corner",
+        "arrival": "The gardener catches a repeating count. Whether it extends to the whole orchard remains a live question."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "truth",
+        "explanation"
+      ],
+      "aoks": [
+        "MAT",
+        "NAT"
+      ],
+      "subjects": [
+        "math-aa",
+        "geography"
+      ]
+    },
+    "practice": 424,
+    "question": "What would have to stay connected before you could use the small corner to reason about the orchard?"
+  },
+  {
+    "id": "q177081",
+    "character": "ink-q177081",
+    "name": "Ban Zhao",
+    "station": "nile",
+    "title": "The chapter at the edge of the roll",
+    "context": "Ban Zhao contributed to completing the Book of Han.",
+    "opening": "The last compiler left a list unfinished. An easy hand could make my additions look like his. I know his system well enough to do it.",
+    "folds": [
+      {
+        "action": "Change the heading where the hands change",
+        "arrival": "The new section keeps the old arrangement. A reader can tell where my judgement entered it."
+      },
+      {
+        "action": "Leave the unfinished line visible",
+        "arrival": "The break tells a family history of the work. A hurried reader must turn farther to find the completed entry."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "responsibility",
+        "interpretation"
+      ],
+      "aoks": [
+        "HIS",
+        "ART",
+        "LAN"
+      ],
+      "subjects": [
+        "history",
+        "classics"
+      ]
+    },
+    "practice": 522,
+    "question": "Who deserves a credit at the join between the two hands?"
+  },
+  {
+    "id": "q11826",
+    "character": "ink-q11826",
+    "name": "Al-Biruni",
+    "station": "chart",
+    "title": "A mountain and two sightlines",
+    "context": "Al-Biruni investigated astronomical and geographical measurement, including the dimensions of the Earth.",
+    "opening": "The mountain does not move when we change our instruments. Our readings do. The travelling party has room for a sketch or another instrument case.",
+    "folds": [
+      {
+        "action": "Fold the two sightlines into a single sketch",
+        "arrival": "A distant reader can reconstruct the angle. A crease has to stand in for the mountain."
+      },
+      {
+        "action": "Put a second observer at the lower station",
+        "arrival": "The observers disagree by a small amount. That difference gives the next party a tolerable range."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "evidence"
+      ],
+      "aoks": [
+        "MAT",
+        "NAT"
+      ],
+      "subjects": [
+        "geography",
+        "physics"
+      ]
+    },
+    "practice": 338,
+    "question": "What could comparing two stations settle about the mountain?"
+  },
+  {
+    "id": "q773828",
+    "character": "ink-q773828",
+    "name": "C. L. R. James",
+    "station": "stage",
+    "title": "The scorebook missed the crowd",
+    "context": "James's Beyond a Boundary examines cricket through society, history and personal experience.",
+    "opening": "Every run made the scorebook. The boundary rope divided the spectators too. You will miss half this match if you take only the score away.",
+    "folds": [
+      {
+        "action": "Seat the storyteller at the rope",
+        "arrival": "The match sounds different from either side. The score still tells when the cheer rose."
+      },
+      {
+        "action": "Pin a crowd ticket to the scorecard",
+        "arrival": "The price of a seat travels with the final number. A reader asks who watched from the street."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "culture",
+        "perspective"
+      ],
+      "aoks": [
+        "HIS",
+        "ART"
+      ],
+      "subjects": [
+        "sehs",
+        "lang-lit"
+      ]
+    },
+    "practice": 526,
+    "question": "Which part of the match would disappear if only the scorecard survived?"
+  },
+  {
+    "id": "q696748",
+    "character": "ink-q696748",
+    "name": "Wang Gungwu",
+    "station": "chart",
+    "title": "A home address across water",
+    "context": "Wang Gungwu has written extensively on migration and the histories of Chinese communities overseas.",
+    "opening": "The clerk is stamping a family's registration paper. One home port, he says. They make a living between three. One port would make his index quick and one part of their life disappear.",
+    "folds": [
+      {
+        "action": "Thread the three ports in travelling order",
+        "arrival": "A child follows the route to a grandparent the single label had lost."
+      },
+      {
+        "action": "File the family at the port they name",
+        "arrival": "Their chosen home stays legible. A second family making the same voyage chooses differently."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "culture",
+        "perspective"
+      ],
+      "aoks": [
+        "HIS",
+        "HUM"
+      ],
+      "subjects": [
+        "geography",
+        "history"
+      ]
+    },
+    "practice": 762,
+    "question": "Whose idea of home did the port filing system preserve?"
+  },
+  {
+    "id": "q6836249",
+    "character": "ink-q6836249",
+    "name": "Michel-Rolph Trouillot",
+    "station": "voices",
+    "title": "The silence before the shelf",
+    "context": "Trouillot examined how power shapes the production of histories and silences.",
+    "opening": "The keeper wants to know which record was lost. I want to know who never had a record made about them in the first place.",
+    "folds": [
+      {
+        "action": "Follow the empty space back to the intake desk",
+        "arrival": "The first silence occurred before the box existed. A better shelf alone could never repair it."
+      },
+      {
+        "action": "Keep the unanswered request with the box",
+        "arrival": "Visitors can hear what the archive cannot supply. The family decides whether to leave a name."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "evidence"
+      ],
+      "aoks": [
+        "HIS",
+        "HUM",
+        "POL"
+      ],
+      "subjects": [
+        "history",
+        "global-politics"
+      ]
+    },
+    "practice": 288,
+    "question": "At which desk did the silence first enter the box?"
+  },
+  {
+    "id": "q1339859",
+    "character": "ink-q1339859",
+    "name": "Ennigaldi-Nanna",
+    "station": "nile",
+    "title": "The curator's second label",
+    "context": "Ennigaldi-Nanna is associated with a collection of antiquities and collection labels at Ur.",
+    "opening": "An old brick has turned up with an old description. A trainee has dated the brick from the label. I have two clay stands and one small lamp.",
+    "folds": [
+      {
+        "action": "Put the label on its own stand",
+        "arrival": "The brick and its explanation acquire separate histories. A visitor asks who assembled them."
+      },
+      {
+        "action": "Shine the lamp across both surfaces",
+        "arrival": "The different marks become easy to see. The trainee makes two rubbings instead of one."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "interpretation"
+      ],
+      "aoks": [
+        "HIS",
+        "ART",
+        "LAN"
+      ],
+      "subjects": [
+        "history",
+        "classics"
+      ]
+    },
+    "practice": 291,
+    "question": "Which part of what you learned came from the curator's label itself?"
+  },
+  {
+    "id": "q7977193",
+    "character": "ink-q7977193",
+    "name": "We'wha",
+    "station": "yard",
+    "title": "The cloth in the wrong drawer",
+    "context": "We'wha was a Zuni lhamana and a skilled weaver and potter.",
+    "opening": "Visitors see the finished weave. One visitor reaches for a meaning nobody has offered to share. The loom is mine to demonstrate; the drawer can stay shut.",
+    "folds": [
+      {
+        "action": "Let the maker choose a public technique",
+        "arrival": "People see how tension changes the cloth. The closed drawer keeps the boundary the maker set."
+      },
+      {
+        "action": "Bring a second plain practice band",
+        "arrival": "A learner can handle the practice weave and return the original to its keeper."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "culture",
+        "responsibility"
+      ],
+      "aoks": [
+        "ART",
+        "HUM",
+        "IND"
+      ],
+      "subjects": [
+        "visual-arts",
+        "anthropology"
+      ]
+    },
+    "practice": 474,
+    "question": "How could someone learn from the practice band and still respect what the maker kept?"
+  },
+  {
+    "id": "q780206",
+    "character": "ink-q780206",
+    "name": "Ella Cara Deloria",
+    "station": "voices",
+    "title": "A relation hidden by the translation",
+    "context": "Ella Cara Deloria studied and documented Dakota language and kinship.",
+    "opening": "The interpreter has given two relatives the same English label. It will get a parcel there. It will not tell the guest how to address the person who opens it.",
+    "folds": [
+      {
+        "action": "Let the host introduce the guest",
+        "arrival": "The parcel arrives after the proper greeting. The guest remembers a relationship that never fit on the tag."
+      },
+      {
+        "action": "Leave the kin term with a spoken example",
+        "arrival": "The interpreter can hear the word in company. A stranger still needs an introduction."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "culture",
+        "interpretation"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS",
+        "IND",
+        "LAN"
+      ],
+      "subjects": [
+        "anthropology",
+        "lang-b"
+      ]
+    },
+    "practice": 232,
+    "question": "What changed in the welcome when the host introduced the guest?"
+  },
+  {
+    "id": "q275622",
+    "character": "ink-q275622",
+    "name": "Dorothy Garrod",
+    "station": "cold",
+    "title": "The ledge above the trench",
+    "context": "Garrod investigated archaeological sequences at Mount Carmel.",
+    "opening": "The tray looks as if every fragment came from one room. Our notebooks call it three visits to the same patch of ground.",
+    "folds": [
+      {
+        "action": "Stand the section drawing upright",
+        "arrival": "A layer becomes a place in a sequence again. The prettiest fragment loses its privileged spot."
+      },
+      {
+        "action": "Return the finds to a scaled floor mat",
+        "arrival": "The crew sees where two layers overlapped. One uncertain piece sits beside the mat."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "explanation"
+      ],
+      "aoks": [
+        "HIS",
+        "NAT"
+      ],
+      "subjects": [
+        "history",
+        "geography"
+      ]
+    },
+    "practice": 375,
+    "question": "Which position of the find would disappear in a list of names?"
+  },
+  {
+    "id": "q407741",
+    "character": "ink-q407741",
+    "name": "Yuri Knorozov",
+    "station": "press",
+    "title": "The glyph that borrowed a sound",
+    "context": "Knorozov identified a phonetic component in the writing of the ancient Maya.",
+    "opening": "A painted sign looks like a creature. In this neighbouring line its sound may be doing the work. My printer wants one creature for the glossary.",
+    "folds": [
+      {
+        "action": "Print the two settings side by side",
+        "arrival": "A reader tries a sound across both lines. The creature alone never supplied that test."
+      },
+      {
+        "action": "Leave a sliding cover over the image",
+        "arrival": "With the picture covered, the surrounding signs still give a clue. One reading remains uncertain."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "justification"
+      ],
+      "aoks": [
+        "ART",
+        "HIS",
+        "LAN"
+      ],
+      "subjects": [
+        "classics",
+        "visual-arts"
+      ]
+    },
+    "practice": 567,
+    "question": "Which setting would you want to see before assigning the glyph a sound?"
+  },
+  {
+    "id": "q1326832",
+    "character": "ink-q1326832",
+    "name": "Epeli Hauʻofa",
+    "station": "chart",
+    "title": "The blue space between homes",
+    "context": "Hauʻofa's writing invited readers to see Oceanian islands as connected through the sea.",
+    "opening": "The clerk has shaded the sea as empty space between little dots of land. My friends have filled that space with journeys and family visits.",
+    "folds": [
+      {
+        "action": "Run the route cord across the blue",
+        "arrival": "The farthest dots become neighbours along a regular voyage. A traveller asks about the wind on the return."
+      },
+      {
+        "action": "Begin the map on a moving deck",
+        "arrival": "The islands move around the traveller's position. The same sea now has several centres."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "culture"
+      ],
+      "aoks": [
+        "HIS",
+        "HUM"
+      ],
+      "subjects": [
+        "geography",
+        "lang-lit"
+      ]
+    },
+    "practice": 531,
+    "question": "What became a destination when you began the map on a deck?"
+  },
+  {
+    "id": "q64597567",
+    "character": "ink-q64597567",
+    "name": "Shadreck Chirikure",
+    "station": "yard",
+    "title": "The fence around the furnace",
+    "context": "Chirikure's archaeological work includes African metallurgy, heritage and Great Zimbabwe.",
+    "opening": "The old furnace is in the register. The people who recognise its working marks are outside the fence. There is a chair on only one side.",
+    "folds": [
+      {
+        "action": "Take a drawing beyond the fence",
+        "arrival": "A local craftsperson adds a detail the plan missed and chooses which detail to keep private."
+      },
+      {
+        "action": "Move the meeting to the gate",
+        "arrival": "The specialists can compare interpretations in person. The visit takes longer than the curator planned."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "responsibility"
+      ],
+      "aoks": [
+        "HIS",
+        "NAT"
+      ],
+      "subjects": [
+        "history",
+        "design-tech"
+      ]
+    },
+    "practice": 279,
+    "question": "Who could question the drawing when the meeting moved to the gate?"
+  },
+  {
+    "id": "q1808076",
+    "character": "ink-q1808076",
+    "name": "Laurent Clerc",
+    "station": "stage",
+    "title": "The speech with the lights off",
+    "context": "Laurent Clerc was a Deaf teacher who helped establish a school for Deaf students in Hartford.",
+    "opening": "The director wants darkness for the big speech. In the dark my hands vanish from the front row. The audience still deserves the surprise.",
+    "folds": [
+      {
+        "action": "Light the signing space from the side",
+        "arrival": "The hands remain clear while the set disappears. One watcher sees a detail the voice alone never carries."
+      },
+      {
+        "action": "Bring the speaker into the audience circle",
+        "arrival": "People can face the hands directly. The director has to restage the final entrance."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "culture"
+      ],
+      "aoks": [
+        "ART",
+        "HUM",
+        "LAN"
+      ],
+      "subjects": [
+        "theatre",
+        "lang-b"
+      ]
+    },
+    "practice": 478,
+    "question": "Which seat gives a signer and a listener a clear line of sight to each other?"
+  },
+  {
+    "id": "q131117",
+    "character": "ink-q131117",
+    "name": "Maria Montessori",
+    "station": "archive",
+    "title": "The shelf my pupil cannot reach",
+    "context": "Montessori developed educational environments in which children could choose and manipulate materials independently.",
+    "opening": "A little builder knows exactly which shape she needs. I have put it on a handsome shelf a handspan too high. She keeps being praised for asking me.",
+    "folds": [
+      {
+        "action": "Lower one shelf to her reach",
+        "arrival": "She finishes the tower and takes it down without me. I finally see which piece she reaches for next."
+      },
+      {
+        "action": "Give her a tray to arrange herself",
+        "arrival": "Her order makes sense to her hands. The next builder rearranges it again."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "evidence"
+      ],
+      "aoks": [
+        "HUM",
+        "MAT"
+      ],
+      "subjects": [
+        "psychology",
+        "design-tech"
+      ]
+    },
+    "practice": 443,
+    "question": "What can the pupil now choose without waiting for someone taller?"
+  },
+  {
+    "id": "q180819",
+    "character": "ink-q180819",
+    "name": "Lev Vygotsky",
+    "station": "archive",
+    "title": "The bridge with a borrowed finger",
+    "context": "Vygotsky investigated learning through social interaction and the support of more capable partners.",
+    "opening": "The two ends meet while my finger holds the arch. The child wants to show her brother the trick when I have gone.",
+    "folds": [
+      {
+        "action": "Slide my support out one block at a time",
+        "arrival": "She catches the sag herself and changes the base. Her brother sees the arch stand on the second try."
+      },
+      {
+        "action": "Let her coach my clumsy hands",
+        "arrival": "I build it badly enough to need her words. She finds a way to explain the one move she could not name."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "responsibility"
+      ],
+      "aoks": [
+        "HUM",
+        "NAT"
+      ],
+      "subjects": [
+        "psychology",
+        "design-tech"
+      ]
+    },
+    "practice": 79,
+    "question": "At which block could the learner stop borrowing your finger?"
+  },
+  {
+    "id": "q193670",
+    "character": "ink-q193670",
+    "name": "Frantz Fanon",
+    "station": "dispatch",
+    "title": "The waiting room with two entrances",
+    "context": "Fanon was a psychiatrist and writer who examined the lived effects of colonialism.",
+    "opening": "The register uses the same polite words at both doors. Walk through them and you wait in quite different rooms. Someone has to carry that difference back.",
+    "folds": [
+      {
+        "action": "Sit in each queue for a turn",
+        "arrival": "The time slips bear different waits under the same heading. A clerk asks who gets to choose a door."
+      },
+      {
+        "action": "Let visitors mark the route they actually took",
+        "arrival": "The plan fills with detours absent from the official map. Some visitors fold their slips to keep them private."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "perspective"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS",
+        "POL"
+      ],
+      "subjects": [
+        "psychology",
+        "global-politics"
+      ]
+    },
+    "practice": 443,
+    "question": "Which distance on the floor mattered more than the number of seats?"
+  },
+  {
+    "id": "q132489",
+    "character": "ink-q132489",
+    "name": "Amartya Sen",
+    "station": "market",
+    "title": "The ticket no one can spend",
+    "context": "Sen's capability approach draws attention to what people are actually able to do and to be.",
+    "opening": "We handed out identical ferry tickets. One passenger cannot reach the stairs. The treasurer has recorded a perfectly equal gift.",
+    "folds": [
+      {
+        "action": "Walk the trip with the folded ticket",
+        "arrival": "The ticket stays unused at the first step. The treasurer sees what the fare column left out."
+      },
+      {
+        "action": "Give the passenger the route pencil",
+        "arrival": "The new line reaches a ramp. It is longer and requires the last ferry to wait."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "values",
+        "responsibility"
+      ],
+      "aoks": [
+        "HUM",
+        "MAT"
+      ],
+      "subjects": [
+        "economics",
+        "geography"
+      ]
+    },
+    "practice": 443,
+    "question": "What could still keep the passenger from spending a perfectly valid ticket?"
+  },
+  {
+    "id": "q682037",
+    "character": "ink-q682037",
+    "name": "Deirdre McCloskey",
+    "station": "market",
+    "title": "The trader's small adjective",
+    "context": "McCloskey has studied rhetoric and persuasion in economics.",
+    "opening": "The pitch has a number and a wonderfully persuasive adjective. Our buyer remembers the adjective as though it had been measured.",
+    "folds": [
+      {
+        "action": "Chalk the number without the sales pitch",
+        "arrival": "The stall looks plainer. The buyer asks what the number measures before paying."
+      },
+      {
+        "action": "Give the rival trader the same figures",
+        "arrival": "The rival tells a different story with an identical total. The buyer can now hear the rhetorical choice."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "evidence"
+      ],
+      "aoks": [
+        "HUM",
+        "ART",
+        "LAN"
+      ],
+      "subjects": [
+        "economics",
+        "lang-langlit"
+      ]
+    },
+    "practice": 513,
+    "question": "What work was the trader's small adjective doing beside the number?"
+  },
+  {
+    "id": "q232810",
+    "character": "ink-q232810",
+    "name": "Temple Grandin",
+    "station": "gate",
+    "title": "The shadow across the passage",
+    "context": "Grandin worked on livestock handling facilities with attention to how animals perceive their surroundings.",
+    "opening": "The yard measures the width of this passage and declares it clear. At ground level a strip of shadow stops the animals short.",
+    "folds": [
+      {
+        "action": "Walk the route at their eye level",
+        "arrival": "The dark stripe fills the view. The keeper moves a lamp and watches the next crossing."
+      },
+      {
+        "action": "Record where the herd first hesitates",
+        "arrival": "Several pauses fall at one place. One animal passes smoothly, complicating a neat explanation."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "explanation"
+      ],
+      "aoks": [
+        "NAT",
+        "HUM"
+      ],
+      "subjects": [
+        "biology",
+        "design-tech"
+      ]
+    },
+    "practice": 505,
+    "question": "What changed about the passage when you looked from the herd's height?"
+  },
+  {
+    "id": "q232505",
+    "character": "ink-q232505",
+    "name": "Enheduanna",
+    "station": "nile",
+    "title": "The name on the other face",
+    "context": "The disk from Ur names Enheduanna. Her historical office and the attribution of particular texts involve different kinds of evidence.",
+    "opening": "The carved disk has two faces. The guide shows the procession, calls the speaker anonymous and moves on. My name is on the side facing the wall.",
+    "folds": [
+      {
+        "action": "Turn the stand so the dedication can be seen",
+        "arrival": "The named priestess becomes visible. The inscription supports an identity, while attribution of a poem still needs its own evidence."
+      },
+      {
+        "action": "Set a reading mirror behind the disk",
+        "arrival": "The scene and name stay together. The reader has to learn how to follow a reversed line."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "interpretation"
+      ],
+      "aoks": [
+        "HIS",
+        "ART",
+        "REL"
+      ],
+      "subjects": [
+        "history",
+        "lang-lit"
+      ]
+    },
+    "practice": 522,
+    "question": "What did seeing the dedication establish about the disk, and what remains open about the poem?"
+  },
+  {
+    "id": "q5600",
+    "character": "ink-q5600",
+    "name": "Mimar Sinan",
+    "station": "yard",
+    "title": "The whisper under the dome",
+    "context": "Sinan designed major Ottoman buildings, including mosques with large domes.",
+    "opening": "A builder shows me the dome's perfect outline. A child underneath hears her own whisper return from the wrong side of the hall.",
+    "folds": [
+      {
+        "action": "Walk a whisper round the floor",
+        "arrival": "Two listeners hear different returns under the same roof. The drawing gains a pair of listening places."
+      },
+      {
+        "action": "Hang a thread from the centre",
+        "arrival": "The shape finds its centre. The whisper comes back elsewhere and the builder keeps both marks."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "explanation"
+      ],
+      "aoks": [
+        "MAT",
+        "ART"
+      ],
+      "subjects": [
+        "physics",
+        "music"
+      ]
+    },
+    "practice": 526,
+    "question": "Which listener could hear the whisper from a place you never stood?"
+  },
+  {
+    "id": "q212657",
+    "character": "ink-q212657",
+    "name": "Artemisia Gentileschi",
+    "station": "stage",
+    "title": "The hand holding the lamp",
+    "context": "Gentileschi painted figures taking decisive action and used strong contrasts of light and shade.",
+    "opening": "My sitter is painted with one hand hidden. A patron has already decided she is helpless. The light can still move before the paint dries.",
+    "folds": [
+      {
+        "action": "Bring the working hand into light",
+        "arrival": "A viewer notices the strength in its grip. The face now keeps a secret the brighter version gave away."
+      },
+      {
+        "action": "Keep the hand hidden and shift the gaze",
+        "arrival": "The sitter looks back at the viewer. Two visitors disagree about who holds the power in the room."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "power"
+      ],
+      "aoks": [
+        "ART",
+        "HIS"
+      ],
+      "subjects": [
+        "visual-arts",
+        "history"
+      ]
+    },
+    "practice": 637,
+    "question": "Who appears to direct the scene after you move the light?"
+  },
+  {
+    "id": "q231121",
+    "character": "ink-q231121",
+    "name": "Yayoi Kusama",
+    "station": "island",
+    "title": "The dot beyond the frame",
+    "context": "Kusama's work includes repeated dot patterns and installations using mirrors.",
+    "opening": "The keeper counted every dot on a panel and declared the work finished. I can see the pattern escaping into the polished floor.",
+    "folds": [
+      {
+        "action": "Place a mirror at the edge",
+        "arrival": "The count stretches away from the panel. A visitor steps aside to find where the repetition begins."
+      },
+      {
+        "action": "Leave a single unmarked corner",
+        "arrival": "The little patch changes how the whole field feels. A child starts counting the spaces between dots."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "certainty"
+      ],
+      "aoks": [
+        "ART",
+        "MAT"
+      ],
+      "subjects": [
+        "visual-arts",
+        "math-aa"
+      ]
+    },
+    "practice": 503,
+    "question": "What would count as the edge of the pattern from the visitor's position?"
+  },
+  {
+    "id": "q2662098",
+    "character": "ink-q2662098",
+    "name": "Ibrahim El-Salahi",
+    "station": "press",
+    "title": "A line halfway into a letter",
+    "context": "El-Salahi explored relationships between Arabic calligraphy and modern painting.",
+    "opening": "The printer asks whether the mark is writing or a drawing. His trays have one compartment for each. My line has already crossed the divider.",
+    "folds": [
+      {
+        "action": "Print the line across the fold",
+        "arrival": "A reader turns the sheet sideways and sees the letter again. The fold stays in the picture."
+      },
+      {
+        "action": "Let two readers hang it differently",
+        "arrival": "One hanging favours rhythm, the other a familiar stroke. A third visitor can walk between them."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "culture",
+        "interpretation"
+      ],
+      "aoks": [
+        "ART",
+        "HIS",
+        "LAN"
+      ],
+      "subjects": [
+        "visual-arts",
+        "lang-b"
+      ]
+    },
+    "practice": 232,
+    "question": "Where would a second reader put the hinge between a line and a letter?"
+  },
+  {
+    "id": "q158056",
+    "character": "ink-q158056",
+    "name": "Nam June Paik",
+    "station": "coast",
+    "title": "The television watching itself",
+    "context": "Paik worked with video, including installations using closed-circuit television.",
+    "opening": "This screen watches a camera pointed at the screen. My assistant waves from outside the loop and is offended that nobody waves back.",
+    "folds": [
+      {
+        "action": "Tilt the camera toward the assistant",
+        "arrival": "The visitor enters the picture. The endless tunnel shortens to make room."
+      },
+      {
+        "action": "Delay the feed by one beat",
+        "arrival": "A visitor sees a wave after her own hand is still. The camera has made a small past she can watch."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "perspective"
+      ],
+      "aoks": [
+        "ART",
+        "NAT",
+        "TEC"
+      ],
+      "subjects": [
+        "film",
+        "physics"
+      ]
+    },
+    "practice": 638,
+    "question": "Which part of the picture did the delay change for the assistant?"
+  },
+  {
+    "id": "q47780",
+    "character": "ink-q47780",
+    "name": "Zaha Hadid",
+    "station": "island",
+    "title": "The ramp in the paper city",
+    "context": "Hadid developed architectural designs known for unconventional spatial forms.",
+    "opening": "The building committee chose my sweeping ramp from the plan. A model visitor meets a blank wall at the turn. The people with a vote saw it from above. Who gets to test it from below?",
+    "folds": [
+      {
+        "action": "Push a bead along the inside turn",
+        "arrival": "The bead catches at one point the overhead drawing flatters. A builder leaves space there."
+      },
+      {
+        "action": "Cut the wall at the model's eye line",
+        "arrival": "The view opens for a small traveller. The sweep loses a length of uninterrupted wall."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "values"
+      ],
+      "aoks": [
+        "ART",
+        "MAT"
+      ],
+      "subjects": [
+        "design-tech",
+        "math-ai"
+      ]
+    },
+    "practice": 747,
+    "question": "Where would a person on the ramp see something different from the model maker?"
+  },
+  {
+    "id": "q6391838",
+    "character": "ink-q6391838",
+    "name": "Kent Monkman",
+    "station": "cold",
+    "title": "The borrowed pose",
+    "context": "Cree artist Kent Monkman reworks imagery and conventions from European and North American history painting.",
+    "opening": "The gallery loves the composition. A Cree artist can recognise whose version of history the pose once served. There is room for someone else to look back.",
+    "folds": [
+      {
+        "action": "Reverse the line of the spectators' gaze",
+        "arrival": "The figure once shown as scenery now studies the visitors. The old composition is still recognisable."
+      },
+      {
+        "action": "Place the earlier picture within sight",
+        "arrival": "Visitors see what the new scene is answering. Some have to turn round twice."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "interpretation"
+      ],
+      "aoks": [
+        "ART",
+        "HIS",
+        "IND"
+      ],
+      "subjects": [
+        "visual-arts",
+        "history"
+      ]
+    },
+    "practice": 525,
+    "question": "Who can look back when the spectators change places?"
+  },
+  {
+    "id": "q188903",
+    "character": "ink-q188903",
+    "name": "Mencius",
+    "station": "gate",
+    "title": "The child at the rail",
+    "context": "Mencius used the example of a child in danger to explore the beginnings of moral concern.",
+    "opening": "Someone reached out before any rule was read. Our clerk wants to turn that instant into a law for every crossing. The child is safe and listening.",
+    "folds": [
+      {
+        "action": "Let the helper describe the instant",
+        "arrival": "What moved a hand can be heard. It still leaves open what the gate ought to require of strangers."
+      },
+      {
+        "action": "Test the rule on a quiet crossing",
+        "arrival": "A guard follows the rule and finds nobody in danger. The child asks whether care can wait for a bell."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "values",
+        "justification"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS"
+      ],
+      "subjects": [
+        "philosophy",
+        "psychology"
+      ]
+    },
+    "practice": 516,
+    "question": "How could you tell whether the quiet crossing called for the same act?"
+  },
+  {
+    "id": "q28959",
+    "character": "ink-q28959",
+    "name": "Han Feizi",
+    "station": "council",
+    "title": "The tally that flatters its keeper",
+    "context": "Han Fei wrote about laws, incentives, officials and political authority.",
+    "opening": "The gatekeeper who counts departures also wins the prize for an empty queue. His count is impeccable. Two people wait round the corner.",
+    "folds": [
+      {
+        "action": "Give arrivals their own tally stick",
+        "arrival": "The two tallies cross at the gate and part round the corner. The keeper can explain the difference."
+      },
+      {
+        "action": "Change what the gatekeeper gets to report",
+        "arrival": "Waiting time replaces the vanishing line. A visitor who leaves early is still easy to miss."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "objectivity"
+      ],
+      "aoks": [
+        "HUM",
+        "MAT",
+        "POL"
+      ],
+      "subjects": [
+        "business",
+        "global-politics"
+      ]
+    },
+    "practice": 546,
+    "question": "Which arrivals never reach the keeper's tally?"
+  },
+  {
+    "id": "q9546",
+    "character": "ink-q9546",
+    "name": "Al-Ghazālī",
+    "station": "archive",
+    "title": "The wick after the spark",
+    "context": "Al-Ghazali examined what repeated observations can establish about causal necessity.",
+    "opening": "Every time the spark comes the wick catches. The lamp tender says he has seen necessity with his own eyes. I ask him to point to what he actually saw.",
+    "folds": [
+      {
+        "action": "Keep a strip for each observed sequence",
+        "arrival": "The order repeats reliably. The tender leaves room for a word about what binds the events."
+      },
+      {
+        "action": "Give a second watcher an unlit wick",
+        "arrival": "The watcher can describe the expectation before anything happens. The expectation and the flame occupy different moments."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "certainty",
+        "explanation"
+      ],
+      "aoks": [
+        "NAT",
+        "HUM",
+        "REL"
+      ],
+      "subjects": [
+        "philosophy",
+        "world-religions"
+      ]
+    },
+    "practice": 411,
+    "question": "What did watching the unlit wick add to the sequence you already had?"
+  },
+  {
+    "id": "q132524",
+    "character": "ink-q132524",
+    "name": "Ayn Rand",
+    "station": "market",
+    "title": "The maker's name at the hinge",
+    "context": "Rand wrote about individual creative achievement, self-interest and political authority.",
+    "opening": "The council wants to put its crest over a maker's signature on a public gate. The maker wants the work seen and the decision to remain hers.",
+    "folds": [
+      {
+        "action": "Leave the signature on the working hinge",
+        "arrival": "Every opening shows who designed it. The neighbours who kept the gate working request space for their names."
+      },
+      {
+        "action": "Let the maker set the terms of display",
+        "arrival": "The gate stays closed for a meeting. The maker chooses what taking public credit should commit her to."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "values",
+        "responsibility"
+      ],
+      "aoks": [
+        "ART",
+        "HUM"
+      ],
+      "subjects": [
+        "philosophy",
+        "design-tech"
+      ]
+    },
+    "practice": 599,
+    "question": "Who must ask permission if the hinge goes on public display?"
+  },
+  {
+    "id": "q157309",
+    "character": "ink-q157309",
+    "name": "Simone Weil",
+    "station": "voices",
+    "title": "The minute with no answer",
+    "context": "Weil explored attention as an ethical practice in relation to other people.",
+    "opening": "A woman has waited all morning to speak. Everyone has prepared a solution for her. She has not yet finished her first sentence.",
+    "folds": [
+      {
+        "action": "Set down the clerk's response slip",
+        "arrival": "The silence lasts long enough for her real request. It is smaller and harder than the prepared answer."
+      },
+      {
+        "action": "Give her the next speaking bell",
+        "arrival": "The others can go back to work. She controls when the room returns to listen."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "values",
+        "perspective"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS"
+      ],
+      "subjects": [
+        "philosophy",
+        "psychology"
+      ]
+    },
+    "practice": 587,
+    "question": "What room did leaving the response slip blank give the speaker?"
+  },
+  {
+    "id": "q81244",
+    "character": "ink-q81244",
+    "name": "Karl Popper",
+    "station": "coast",
+    "title": "A prediction written in pencil",
+    "context": "Popper argued for testing scientific claims against observations that could count against them.",
+    "opening": "The forecaster always rubs out the pencil line after the tide comes in. Every surviving forecast fits beautifully. Tonight we have one dry envelope.",
+    "folds": [
+      {
+        "action": "Seal a prediction before the bell",
+        "arrival": "Tomorrow's mismatch survives in the envelope. The forecaster can now revise a method with a reason."
+      },
+      {
+        "action": "Mark a result that would make us stop",
+        "arrival": "The crew agrees on a warning mark ahead of time. A result just below it becomes their hardest case."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "justification",
+        "certainty"
+      ],
+      "aoks": [
+        "NAT",
+        "MAT"
+      ],
+      "subjects": [
+        "physics",
+        "math-ai"
+      ]
+    },
+    "practice": 260,
+    "question": "Which result would make you reopen the prediction you sealed?"
+  },
+  {
+    "id": "q184980",
+    "character": "ink-q184980",
+    "name": "Thomas Kuhn",
+    "station": "coast",
+    "title": "The speck every chart scrubbed away",
+    "context": "Kuhn examined how exemplars, anomalies and changing frameworks shape scientific practice.",
+    "opening": "Apprentices all clean the same speck from the sky chart. The new watcher has circled it. She knows the old chart well enough to fear being laughed at.",
+    "folds": [
+      {
+        "action": "Keep a run of the uncleaned charts",
+        "arrival": "The speck moves in a pattern over the week. The old chart still works for most of the sky."
+      },
+      {
+        "action": "Lend the new watcher one telescope hour",
+        "arrival": "A different way of sorting the sightings takes shape. Another project loses its hour."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "power"
+      ],
+      "aoks": [
+        "NAT",
+        "HIS"
+      ],
+      "subjects": [
+        "physics",
+        "history"
+      ]
+    },
+    "practice": 271,
+    "question": "What did keeping the uncleaned charts cost the next watcher?"
+  },
+  {
+    "id": "q3507232",
+    "character": "ink-q3507232",
+    "name": "Sylvia Wynter",
+    "station": "dispatch",
+    "title": "The painted outline called everyone",
+    "context": "Wynter examined how historically specific ideas about humanity come to be treated as universal.",
+    "opening": "A form asks whether every visitor fits the painted outline. Its maker drew himself. At the desk a whole queue is learning what the word everyone costs.",
+    "folds": [
+      {
+        "action": "Let a visitor trace the maker's outline",
+        "arrival": "The supposed universal shape gains a maker and a date. More people can ask how it became the rule."
+      },
+      {
+        "action": "Remove the outline from the doorway",
+        "arrival": "Visitors pass freely. The old form goes into an archive where someone can still ask whom it excluded."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "culture"
+      ],
+      "aoks": [
+        "HIS",
+        "HUM",
+        "POL"
+      ],
+      "subjects": [
+        "anthropology",
+        "history"
+      ]
+    },
+    "practice": 520,
+    "question": "Who had to change shape to fit the painted doorway?"
+  },
+  {
+    "id": "q937",
+    "character": "ink-q937",
+    "name": "Albert Einstein",
+    "station": "chart",
+    "title": "Two clocks along the quay",
+    "context": "Einstein examined simultaneity and clock synchronisation in special relativity.",
+    "opening": "The quay master promises that both bells sounded together. The messenger who compared them had to travel between the towers. That journey belongs in the drawing.",
+    "folds": [
+      {
+        "action": "Mark the path the signals travelled",
+        "arrival": "The drawing now tells a reader how the clocks were compared. A fast reply and a slow one leave different marks."
+      },
+      {
+        "action": "Put a listener midway between the towers",
+        "arrival": "The listener can give an account from one place. A moving passenger wants to know which clock governs her ticket."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "objectivity"
+      ],
+      "aoks": [
+        "NAT",
+        "MAT"
+      ],
+      "subjects": [
+        "physics",
+        "math-aa"
+      ]
+    },
+    "practice": 253,
+    "question": "Which clock reading depends on where the listener stood?"
+  },
+  {
+    "id": "q7085",
+    "character": "ink-q7085",
+    "name": "Niels Bohr",
+    "station": "island",
+    "title": "Two windows for one lamp",
+    "context": "Bohr developed the principle of complementarity in quantum physics.",
+    "opening": "The instruments fit the bench one at a time. A visitor wants both readings printed as though the lamp faced both arrangements at once.",
+    "folds": [
+      {
+        "action": "Hinge the two bench diagrams together",
+        "arrival": "The reader can switch arrangements. Each drawing keeps the conditions that gave its reading."
+      },
+      {
+        "action": "Put a label on the empty instrument slot",
+        "arrival": "The absence explains why the second reading cannot be reported for this run. A second run can still be made."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "explanation"
+      ],
+      "aoks": [
+        "NAT",
+        "MAT",
+        "TEC"
+      ],
+      "subjects": [
+        "physics",
+        "math-aa"
+      ]
+    },
+    "practice": 359,
+    "question": "What would you need to learn before you could put the two views in one diagram?"
+  },
+  {
+    "id": "q199654",
+    "character": "ink-q199654",
+    "name": "Barbara McClintock",
+    "station": "fern",
+    "title": "The kernels that broke the neat row",
+    "context": "McClintock investigated changing patterns of inheritance in maize.",
+    "opening": "My maize drawing has a patch of unexpected colour. The cleaner offers to repaint it to match the others. That little patch is the reason I saved the ear.",
+    "folds": [
+      {
+        "action": "Map every patch before sorting",
+        "arrival": "The pattern survives the harvest. A second ear gives the reader something to compare."
+      },
+      {
+        "action": "Keep one whole ear with its field note",
+        "arrival": "The case holds less variety. It keeps a connection the prettier row of loose kernels had lost."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "explanation"
+      ],
+      "aoks": [
+        "NAT",
+        "ART"
+      ],
+      "subjects": [
+        "biology",
+        "visual-arts"
+      ]
+    },
+    "practice": 203,
+    "question": "Which kernel would go missing if you sorted before you mapped the ear?"
+  },
+  {
+    "id": "q234583",
+    "character": "ink-q234583",
+    "name": "Lynn Margulis",
+    "station": "fern",
+    "title": "The passenger inside the cell",
+    "context": "Margulis developed the endosymbiotic account of the origins of structures in eukaryotic cells.",
+    "opening": "The illustrator drew the cell as a single kingdom. A little structure inside it has a history the kingdom's neat border hides.",
+    "folds": [
+      {
+        "action": "Draw a second family line inside the border",
+        "arrival": "Two histories now fit in one cell. The artist needs a different kind of line to say where the evidence runs out."
+      },
+      {
+        "action": "Put the competing diagrams under a flap",
+        "arrival": "The older picture stays available for comparison. A student can point to the detail that changed the explanation."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "evidence"
+      ],
+      "aoks": [
+        "NAT",
+        "HIS"
+      ],
+      "subjects": [
+        "biology",
+        "history"
+      ]
+    },
+    "practice": 492,
+    "question": "What observation would help you decide between the two family lines?"
+  },
+  {
+    "id": "q44461",
+    "character": "ink-q44461",
+    "name": "Richard Dawkins",
+    "station": "fern",
+    "title": "The ledger that counts generations",
+    "context": "Dawkins popularised a gene-centred view of evolution.",
+    "opening": "One book follows individual creatures. Another follows a trait across a family. A small change looks like a triumph in one book and vanishes from the other.",
+    "folds": [
+      {
+        "action": "Follow the trait across three family branches",
+        "arrival": "The trait persists after one branch ends. The reader must decide what the chosen unit made visible."
+      },
+      {
+        "action": "Carry both books to the same observation",
+        "arrival": "The field watcher can describe one action at two scales. Neither ledger contains the whole animal."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "perspective"
+      ],
+      "aoks": [
+        "NAT",
+        "MAT"
+      ],
+      "subjects": [
+        "biology",
+        "math-ai"
+      ]
+    },
+    "practice": 424,
+    "question": "Which claim survives when both books describe the same observation?"
+  },
+  {
+    "id": "q535129",
+    "character": "ink-q535129",
+    "name": "Joan Roughgarden",
+    "station": "gate",
+    "title": "The fish outside the caption",
+    "context": "Roughgarden studied the diversity of animal sexual behaviour and debated explanations for it.",
+    "opening": "The keeper's caption gives the fish two fixed roles. The careful observer at the tank has seen behaviour that crosses the printed line.",
+    "folds": [
+      {
+        "action": "Make room for the uncaptioned observation",
+        "arrival": "The keeper can recognise a new pattern on the next visit. The original caption is now something to test."
+      },
+      {
+        "action": "Write a second caption for another group",
+        "arrival": "The two captions work in different settings. A visitor who tries to generalise has to name the setting first."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "evidence"
+      ],
+      "aoks": [
+        "NAT",
+        "HUM"
+      ],
+      "subjects": [
+        "biology",
+        "psychology"
+      ]
+    },
+    "practice": 271,
+    "question": "Whose later observation would make you reopen the caption?"
+  },
+  {
+    "id": "q48472405",
+    "character": "ink-q48472405",
+    "name": "Chanda Prescod-Weinstein",
+    "station": "coast",
+    "title": "The faintest visitor on the graph",
+    "context": "Prescod-Weinstein studies particle physics and cosmology and writes about participation in science.",
+    "opening": "Our plot leaves room for a possible particle. The person who found the gap in our assumptions had to borrow her hour at the board. I want the empty space and the hour remembered.",
+    "folds": [
+      {
+        "action": "Keep the empty band on the graph",
+        "arrival": "A future observation can narrow the band. The legend says plainly that nobody has detected the proposed particle here."
+      },
+      {
+        "action": "Send the calculation with its working credits",
+        "arrival": "The critic knows whom to ask about a mistaken assumption. The invisible labour gains a name."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "certainty",
+        "power"
+      ],
+      "aoks": [
+        "NAT",
+        "MAT"
+      ],
+      "subjects": [
+        "physics",
+        "math-aa"
+      ]
+    },
+    "practice": 595,
+    "question": "Who can check the empty band if the working credits travel with it?"
+  },
+  {
+    "id": "q470531",
+    "character": "ink-q470531",
+    "name": "Seki Takakazu",
+    "station": "yard",
+    "title": "The wooden tablet under the total",
+    "context": "Seki made important contributions to algebra in the Japanese wasan tradition.",
+    "opening": "The carpenter can repeat my number. She wants the arrangement that lets her use the method on a different frame.",
+    "folds": [
+      {
+        "action": "Fit the rows into a sliding tray",
+        "arrival": "She changes a coefficient and keeps the arrangement. A scratch tells her which row she moved."
+      },
+      {
+        "action": "Leave the worked frame beside the new one",
+        "arrival": "The carpenter sees the correspondence at a glance. A frame with another joint will need a fresh comparison."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "justification"
+      ],
+      "aoks": [
+        "MAT",
+        "ART",
+        "TEC"
+      ],
+      "subjects": [
+        "math-aa",
+        "design-tech"
+      ]
+    },
+    "practice": 446,
+    "question": "What would a later counter learn from the frame that the total hides?"
+  },
+  {
+    "id": "q7967775",
+    "character": "ink-q7967775",
+    "name": "Wang Zhenyi",
+    "station": "coast",
+    "title": "An eclipse in the back room",
+    "context": "Wang Zhenyi studied astronomy and used physical demonstrations to explain eclipses.",
+    "opening": "Clouds covered the sky on demonstration day. I have a lamp, a ball and a round table. The child nearest the lamp sees something I cannot.",
+    "folds": [
+      {
+        "action": "Let the child move the ball's shadow",
+        "arrival": "The little eclipse crosses the table. It explains the alignment while leaving real distances open."
+      },
+      {
+        "action": "Mark two viewing positions on the floor",
+        "arrival": "One watcher stands in shadow, one in light. The disagreement finally has an address."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "explanation"
+      ],
+      "aoks": [
+        "NAT",
+        "MAT"
+      ],
+      "subjects": [
+        "physics",
+        "math-ai"
+      ]
+    },
+    "practice": 503,
+    "question": "Whose view would change if the ball stayed still and only the observer moved?"
+  },
+  {
+    "id": "q41585",
+    "character": "ink-q41585",
+    "name": "David Hilbert",
+    "station": "council",
+    "title": "The rulebook before the first move",
+    "context": "Hilbert explored axiom systems, mathematical proof and the foundations of mathematics.",
+    "opening": "The token game has lovely precise rules. I want to know what follows from them before the potter spends a week carving pieces.",
+    "folds": [
+      {
+        "action": "Play out a short proof on the tiles",
+        "arrival": "A spectator can check each move. The line settles one claim about these rules."
+      },
+      {
+        "action": "Pin the starting rules above the board",
+        "arrival": "The next player changes one rule in plain sight. A conclusion that once held now needs another proof."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "certainty",
+        "justification"
+      ],
+      "aoks": [
+        "MAT",
+        "HUM"
+      ],
+      "subjects": [
+        "math-aa",
+        "philosophy"
+      ]
+    },
+    "practice": 261,
+    "question": "Which move stops being justified if you lift one starting rule from the board?"
+  },
+  {
+    "id": "q155887",
+    "character": "ink-q155887",
+    "name": "L. E. J. Brouwer",
+    "station": "archive",
+    "title": "A bridge you can actually build",
+    "context": "Brouwer developed intuitionism with an emphasis on mathematical construction.",
+    "opening": "The keeper says that assuming there is no crossing leads to a contradiction. So there must be a crossing. I have a traveller with one plank who needs to know how to build it.",
+    "folds": [
+      {
+        "action": "Place the first plank and show the next move",
+        "arrival": "The traveller can reproduce the crossing. Each plank costs another step of work."
+      },
+      {
+        "action": "Mark exactly what the existence claim gives",
+        "arrival": "The map promises a crossing and shows no footpath yet. The traveller asks the keeper to keep searching."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "truth",
+        "justification"
+      ],
+      "aoks": [
+        "MAT",
+        "HUM"
+      ],
+      "subjects": [
+        "math-aa",
+        "philosophy"
+      ]
+    },
+    "practice": 454,
+    "question": "When is being told a bridge exists enough for somebody who needs to cross?"
+  },
+  {
+    "id": "q41390",
+    "character": "ink-q41390",
+    "name": "Kurt Gödel",
+    "station": "council",
+    "title": "The seal that certifies every seal",
+    "context": "Gödel established incompleteness results for certain formal systems strong enough to express arithmetic.",
+    "opening": "The office has asked its rulebook to vouch for everything the book can do. It is a much bigger request than checking the clerk’s last sum.",
+    "folds": [
+      {
+        "action": "Set the checked sum apart from the grand promise",
+        "arrival": "The clerk can defend this result. The margin beside the promise is still open."
+      },
+      {
+        "action": "Move the check to another rulebook",
+        "arrival": "A second office can ask questions the first cannot settle internally. Now the second book's assumptions are visible too."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "certainty",
+        "justification"
+      ],
+      "aoks": [
+        "MAT",
+        "HUM"
+      ],
+      "subjects": [
+        "math-aa",
+        "philosophy"
+      ]
+    },
+    "practice": 595,
+    "question": "What reason do you have to trust the second rulebook's seal?"
+  },
+  {
+    "id": "q452116",
+    "character": "ink-q452116",
+    "name": "Julia Robinson",
+    "station": "island",
+    "title": "The machine promised every answer",
+    "context": "Robinson contributed to the work that ultimately answered Hilbert's tenth problem about a general decision procedure.",
+    "opening": "The machine seller promises a method for every equation on the rack. The little equations it has solved fill his window. I have brought him the word every.",
+    "folds": [
+      {
+        "action": "Separate the solved cards from the universal claim",
+        "arrival": "His stack of successes stays impressive. It no longer carries a guarantee about every future card."
+      },
+      {
+        "action": "Hang a question about the promised procedure",
+        "arrival": "The buyer can inspect what the seller promises will always terminate. One tedious calculation becomes a question about a whole class."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "certainty",
+        "justification"
+      ],
+      "aoks": [
+        "MAT",
+        "NAT",
+        "TEC"
+      ],
+      "subjects": [
+        "math-aa",
+        "computer-science"
+      ]
+    },
+    "practice": 263,
+    "question": "Which promise about tomorrow's cards goes beyond today's solved pile?"
+  },
+  {
+    "id": "q77141",
+    "character": "ink-q77141",
+    "name": "Alexander Grothendieck",
+    "station": "chart",
+    "title": "The map folded around a family of maps",
+    "context": "Grothendieck developed new structural approaches in algebraic geometry.",
+    "opening": "The navigator wants me to repair one chart. I have noticed a family resemblance that could repair the next chart too. Her boat leaves today.",
+    "folds": [
+      {
+        "action": "Repair the one chart at the torn fold",
+        "arrival": "The boat can leave with a working chart. The resemblance waits as a pencil note for the next maker."
+      },
+      {
+        "action": "Build a frame for comparing the family",
+        "arrival": "A shared shape emerges across the charts. The boat must borrow a chart while the frame dries."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "values"
+      ],
+      "aoks": [
+        "MAT",
+        "NAT"
+      ],
+      "subjects": [
+        "math-aa",
+        "geography"
+      ]
+    },
+    "practice": 500,
+    "question": "What difference between two maps survives repairing just one fold?"
+  },
+  {
+    "id": "q11099812",
+    "character": "ink-q11099812",
+    "name": "Ron Eglash",
+    "station": "chart",
+    "title": "The pattern seen from the hill",
+    "context": "Eglash has studied recursive mathematical designs and their social contexts.",
+    "opening": "A visitor sees a repeating layout and says he knows how it was made. The people who laid it out are still here and can choose what to tell him.",
+    "folds": [
+      {
+        "action": "Ask the makers which part may be modelled",
+        "arrival": "One public pattern travels with its place and permission. A private detail stays on the hill."
+      },
+      {
+        "action": "Try the proposed rule on a practice layout",
+        "arrival": "The little model resembles the view. Its success cannot tell us what the original makers intended."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "culture",
+        "responsibility"
+      ],
+      "aoks": [
+        "MAT",
+        "HUM"
+      ],
+      "subjects": [
+        "math-aa",
+        "anthropology"
+      ]
+    },
+    "practice": 333,
+    "question": "Where should the makers be able to stop you from extending the pattern?"
+  },
+  {
+    "id": "q26825",
+    "character": "ink-q26825",
+    "name": "Herodotus",
+    "station": "nile",
+    "title": "Three travellers at one bend",
+    "context": "Herodotus recorded different accounts and discussed the sources of his inquiries.",
+    "opening": "All three know the river bend. One went there, one spoke to a pilot, one had heard the pilot quoted. The clerk has drawn three identical boats.",
+    "folds": [
+      {
+        "action": "Draw the journey of each account",
+        "arrival": "The third boat turns out to share a passenger with the second. The direct witness adds a detail the others lack."
+      },
+      {
+        "action": "Keep the accounts beside their tellers",
+        "arrival": "The voices remain distinct. The reader must do a little work to see where two tellings share a source."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "interpretation"
+      ],
+      "aoks": [
+        "HIS",
+        "HUM",
+        "LAN"
+      ],
+      "subjects": [
+        "history",
+        "geography"
+      ]
+    },
+    "practice": 215,
+    "question": "Which part of the journey did each traveller have grounds to report?"
+  },
+  {
+    "id": "q41683",
+    "character": "ink-q41683",
+    "name": "Thucydides",
+    "station": "council",
+    "title": "The speech after the doors shut",
+    "context": "Thucydides discussed the difficulty of reporting the exact words of speeches in his history.",
+    "opening": "The council wants the exact words from a meeting where nobody kept notes. I can reconstruct an argument. I cannot recover a voice from the boards.",
+    "folds": [
+      {
+        "action": "Mark the speech as a reconstruction",
+        "arrival": "The argument is available for debate. Its fine phrases no longer pass as a transcript."
+      },
+      {
+        "action": "Pin the witnesses' fragments to the door",
+        "arrival": "Readers hear some rough words with firm origins. A part of the council's reasoning remains out of earshot."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "truth",
+        "interpretation"
+      ],
+      "aoks": [
+        "HIS",
+        "ART",
+        "LAN"
+      ],
+      "subjects": [
+        "history",
+        "theatre"
+      ]
+    },
+    "practice": 619,
+    "question": "Where did the witness's words end and your reconstruction begin?"
+  },
+  {
+    "id": "q34933",
+    "character": "ink-q34933",
+    "name": "Eric Hobsbawm",
+    "station": "press",
+    "title": "The tradition with a receipt",
+    "context": "Hobsbawm studied how traditions presented as long-standing can have relatively recent histories.",
+    "opening": "The festival claims the ribbon has always been blue. The dyer's oldest bill is for green. The dancers love the blue ribbon dearly.",
+    "folds": [
+      {
+        "action": "Sew the dated receipt inside the hem",
+        "arrival": "The dancers can keep the blue and show when the change happened. Someone asks who paid for the first blue dye."
+      },
+      {
+        "action": "Ask three dancers to tie their remembered colours",
+        "arrival": "The line brightens with incompatible memories. The archive gains a question about when a custom begins."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "culture",
+        "certainty"
+      ],
+      "aoks": [
+        "HIS",
+        "ART"
+      ],
+      "subjects": [
+        "history",
+        "dance"
+      ]
+    },
+    "practice": 289,
+    "question": "Which part of the dance might the receipt date, and which would need another witness?"
+  },
+  {
+    "id": "q85102",
+    "character": "ink-q85102",
+    "name": "Gerda Lerner",
+    "station": "nile",
+    "title": "A register of those allowed to sign",
+    "context": "Lerner developed women's history and examined how historical records can exclude women's experiences.",
+    "opening": "The volume is full of signatures. A laundress who kept the house running appears only on the washing bill. One shelf has room for both.",
+    "folds": [
+      {
+        "action": "Bind the bill beside the signatures",
+        "arrival": "A worker enters the story through payment. The bill still cannot say what she wanted."
+      },
+      {
+        "action": "Reserve an index entry for the missing names",
+        "arrival": "A future find has somewhere to land. A gap stops looking like an absence of work."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "evidence"
+      ],
+      "aoks": [
+        "HIS",
+        "HUM"
+      ],
+      "subjects": [
+        "history",
+        "economics"
+      ]
+    },
+    "practice": 310,
+    "question": "What did finding the bill change about the list of people who could sign?"
+  },
+  {
+    "id": "q16885749",
+    "character": "ink-q16885749",
+    "name": "Linda Tuhiwai Smith",
+    "station": "fern",
+    "title": "The visit with no return address",
+    "context": "Linda Tuhiwai Smith, of Ngāti Awa and Ngāti Porou, writes about research accountability and Indigenous self-determination.",
+    "opening": "The question sheet gives researchers a way in. The people who share what they know want a way to call us back and change how it is used.",
+    "folds": [
+      {
+        "action": "Give the hosts the return key",
+        "arrival": "A host asks to withdraw one detail. The public account gets shorter and the relationship survives."
+      },
+      {
+        "action": "Agree where the findings will come home",
+        "arrival": "The first reading takes place with the people concerned. A distant audience waits its turn."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "responsibility"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS",
+        "IND"
+      ],
+      "subjects": [
+        "anthropology",
+        "global-politics"
+      ]
+    },
+    "practice": 474,
+    "question": "What would count as returning the findings to the people who made the visit possible?"
+  },
+  {
+    "id": "q377638",
+    "character": "ink-q377638",
+    "name": "Niall Ferguson",
+    "station": "market",
+    "title": "A second road for yesterday",
+    "context": "Ferguson has explored counterfactual approaches to history.",
+    "opening": "The town says the only possible road led to the factory. A competing plan survives with a builder’s price. I want to know which assumptions give the unbuilt road a chance.",
+    "folds": [
+      {
+        "action": "Lay the costed plan over the old map",
+        "arrival": "The unused road crosses a real marsh. The alternative has gained a constraint as well as a shape."
+      },
+      {
+        "action": "Give a planner one changed assumption",
+        "arrival": "An altered wage makes the road plausible. The audience can tell exactly where the imagined history begins."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "certainty",
+        "explanation"
+      ],
+      "aoks": [
+        "HIS",
+        "HUM"
+      ],
+      "subjects": [
+        "history",
+        "economics"
+      ]
+    },
+    "practice": 486,
+    "question": "What did changing one assumption cost the second road?"
+  },
+  {
+    "id": "q180099",
+    "character": "ink-q180099",
+    "name": "Margaret Mead",
+    "station": "voices",
+    "title": "The audience at the interview",
+    "context": "Mead studied adolescence in Samoa. Her account and its interpretation have been widely debated.",
+    "opening": "The visitor asks for one sentence about growing up on an island. A young person speaks differently to a friend than to a visiting adult. Both occasions belong in the record.",
+    "folds": [
+      {
+        "action": "Restore the interview's audience to the account",
+        "arrival": "The next reader sees who was listening. A casual answer no longer has to speak for a whole island."
+      },
+      {
+        "action": "Invite separate accounts on the speakers' terms",
+        "arrival": "The accounts differ. Nobody is asked to perform a culture's single authorised childhood."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "perspective",
+        "interpretation"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS"
+      ],
+      "subjects": [
+        "anthropology",
+        "psychology"
+      ]
+    },
+    "practice": 450,
+    "question": "Who could safely answer with an audience present, and who needed another setting?"
+  },
+  {
+    "id": "q352603",
+    "character": "ink-q352603",
+    "name": "Derek Freeman",
+    "station": "voices",
+    "title": "The return voyage for a disputed account",
+    "context": "Freeman disputed Mead's interpretation of her Samoan fieldwork. His critique is also contested.",
+    "opening": "The archive has two descriptions from different visits. The publisher wants a winner. The dates, speakers and questions do not line up so neatly.",
+    "folds": [
+      {
+        "action": "Put the dates along the shoreline",
+        "arrival": "The gap between visits becomes visible. The later account cannot simply erase the earlier setting."
+      },
+      {
+        "action": "Match only interviews with comparable questions",
+        "arrival": "The comparison shrinks to fewer records. Its remaining disagreement becomes much clearer."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "evidence",
+        "justification"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS"
+      ],
+      "subjects": [
+        "anthropology",
+        "history"
+      ]
+    },
+    "practice": 819,
+    "question": "Which two accounts could you fairly compare once you lined up their dates?"
+  },
+  {
+    "id": "q381783",
+    "character": "ink-q381783",
+    "name": "Lewis Binford",
+    "station": "cold",
+    "title": "The ash beside the doorway",
+    "context": "Binford advocated testing explanations for archaeological patterns against material evidence.",
+    "opening": "The guide calls every dark patch a hearth. A tidy theory ought to risk losing an argument with this particular floor.",
+    "folds": [
+      {
+        "action": "Map ash against paths and walls",
+        "arrival": "One patch lies in a walking lane. That gives the crew a second explanation to examine."
+      },
+      {
+        "action": "Make a prediction for the next patch",
+        "arrival": "The next patch can count against the hearth story. The guide leaves his old label on a removable clip."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "evidence"
+      ],
+      "aoks": [
+        "HIS",
+        "NAT"
+      ],
+      "subjects": [
+        "history",
+        "geography"
+      ]
+    },
+    "practice": 270,
+    "question": "Where would you look for ash if the doorway had been used differently?"
+  },
+  {
+    "id": "q140575",
+    "character": "ink-q140575",
+    "name": "Zahi Hawass",
+    "station": "nile",
+    "title": "A crate with two claim slips",
+    "context": "Hawass has held leadership roles in Egyptian archaeology and advocated the return of Egyptian antiquities.",
+    "opening": "A shipping crate has an export stamp and a request for its return. Both papers fit under the cord. The family outside wants to know who gets to open it.",
+    "folds": [
+      {
+        "action": "Attach the custody trail to the latch",
+        "arrival": "The room can trace the changes of hands. A legal stamp still leaves a question about consent."
+      },
+      {
+        "action": "Give the requesting community the first hearing",
+        "arrival": "The crate waits. The assembly hears a claim that was missing from the shipping ledger."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "responsibility"
+      ],
+      "aoks": [
+        "HIS",
+        "HUM",
+        "POL"
+      ],
+      "subjects": [
+        "history",
+        "global-politics"
+      ]
+    },
+    "practice": 550,
+    "question": "Whose claim would a perfect custody record still leave unanswered?"
+  },
+  {
+    "id": "q556140",
+    "character": "ink-q556140",
+    "name": "Ian Hodder",
+    "station": "cold",
+    "title": "The bowl turned to the wall",
+    "context": "Hodder emphasised context and interpretation in archaeology.",
+    "opening": "The measurements identify the bowl. They leave out the doorway it faced and the people who placed it there. The geometry alone cannot settle its meaning.",
+    "folds": [
+      {
+        "action": "Walk from doorway to bowl on the plan",
+        "arrival": "The placement takes on a possible meaning. The interpreter marks where the inference starts."
+      },
+      {
+        "action": "Try a second arrangement of the same pieces",
+        "arrival": "The same measurements support a different story. A new field note might choose between them."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "evidence"
+      ],
+      "aoks": [
+        "HIS",
+        "ART"
+      ],
+      "subjects": [
+        "history",
+        "theatre"
+      ]
+    },
+    "practice": 375,
+    "question": "Which piece of the bowl arrangement did your second walk put in doubt?"
+  },
+  {
+    "id": "q1174579",
+    "character": "ink-q1174579",
+    "name": "David Graeber",
+    "station": "market",
+    "title": "The unpaid bowl of soup",
+    "context": "Graeber examined debt and the social meanings of exchange.",
+    "opening": "The clerk has called every transfer in the kitchen a sale. A neighbour remembers a gift, a debt and a favour that nobody expected repaid.",
+    "folds": [
+      {
+        "action": "Give the three bowls different return slips",
+        "arrival": "A gift comes back without a price. The clerk must say which transfers his ledger measures."
+      },
+      {
+        "action": "Trace one bowl through the next supper",
+        "arrival": "It changes hands again. What began as help has become an obligation in somebody else's account."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "values",
+        "interpretation"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS"
+      ],
+      "subjects": [
+        "economics",
+        "anthropology"
+      ]
+    },
+    "practice": 324,
+    "question": "Which bowl would lose part of its story if every meal counted as a loan?"
+  },
+  {
+    "id": "q1325",
+    "character": "ink-q1325",
+    "name": "Friedrich Hayek",
+    "station": "market",
+    "title": "The price at the far stall",
+    "context": "Hayek examined how prices convey dispersed information.",
+    "opening": "The price rises before word of the broken cart reaches the square. A buyer needs the signal now. The carter needs someone to hear why it rose.",
+    "folds": [
+      {
+        "action": "Pass the changed price down the row",
+        "arrival": "The next stall adjusts in time. The number travels faster than news of the carter."
+      },
+      {
+        "action": "Pin the carter's message beside the price",
+        "arrival": "A buyer can judge a local cause. Two outer stalls receive the message after closing."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "perspective"
+      ],
+      "aoks": [
+        "HUM",
+        "MAT"
+      ],
+      "subjects": [
+        "economics",
+        "math-ai"
+      ]
+    },
+    "practice": 340,
+    "question": "What information reached the far stall before the carter could?"
+  },
+  {
+    "id": "q234793",
+    "character": "ink-q234793",
+    "name": "Joan Robinson",
+    "station": "gate",
+    "title": "The well with one buyer",
+    "context": "Robinson analysed imperfect competition, including markets with a single buyer.",
+    "opening": "The wage board shows that everyone accepted the offered rate. The only other employer lies beyond an impassable ford. The ink has made agreement look effortless.",
+    "folds": [
+      {
+        "action": "Put the ford on the wage chart",
+        "arrival": "Readers can see the cost of walking away. Acceptance means something different on this side of the water."
+      },
+      {
+        "action": "Invite a second workshop to post an offer",
+        "arrival": "Workers gain another figure to compare. Only those able to travel can take it."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "evidence"
+      ],
+      "aoks": [
+        "HUM",
+        "MAT"
+      ],
+      "subjects": [
+        "economics",
+        "geography"
+      ]
+    },
+    "practice": 443,
+    "question": "What other route to work would give a worker a different bargaining position?"
+  },
+  {
+    "id": "q213195",
+    "character": "ink-q213195",
+    "name": "B. F. Skinner",
+    "station": "archive",
+    "title": "The bell that taught the keeper",
+    "context": "Skinner studied how consequences affect the likelihood of behaviour.",
+    "opening": "The bird rings a bell and gets a seed. The keeper hears the bell and gets up every time. Which one has trained the other?",
+    "folds": [
+      {
+        "action": "Tally the keeper's movements",
+        "arrival": "The supposedly idle observer has a striking pattern. The bird's part is still visible."
+      },
+      {
+        "action": "Change when the empty bell rings",
+        "arrival": "Some responses persist after the old pairing stops. The keeper asks how long the observation should last."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "objectivity"
+      ],
+      "aoks": [
+        "HUM",
+        "NAT"
+      ],
+      "subjects": [
+        "psychology",
+        "biology"
+      ]
+    },
+    "practice": 518,
+    "question": "Which keeper movement might be answering the bell by habit?"
+  },
+  {
+    "id": "q9049",
+    "character": "ink-q9049",
+    "name": "Noam Chomsky",
+    "station": "press",
+    "title": "The sentence nobody rehearsed",
+    "context": "Chomsky studied how grammatical systems can generate and constrain new sentences.",
+    "opening": "The child has made a sentence nobody in the room has taught her. She knows it sounds odd to put the last piece first. The printer wants a box of memorised lines.",
+    "folds": [
+      {
+        "action": "Give her fresh pieces to combine",
+        "arrival": "New combinations appear with familiar structure. The box needs more than a list of rehearsed lines."
+      },
+      {
+        "action": "Listen for the combinations she avoids",
+        "arrival": "The gaps suggest a rule. The next child may give an example that changes it."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "justification",
+        "explanation"
+      ],
+      "aoks": [
+        "HUM",
+        "MAT",
+        "LAN"
+      ],
+      "subjects": [
+        "lang-langlit",
+        "computer-science"
+      ]
+    },
+    "practice": 424,
+    "question": "Which new combination would tell you most about the child's rule?"
+  },
+  {
+    "id": "q666678",
+    "character": "ink-q666678",
+    "name": "Daniel Everett",
+    "station": "voices",
+    "title": "The pause lost in the grammar",
+    "context": "Everett has written about language and culture from his research with Pirahã speakers. His theoretical claims remain debated.",
+    "opening": "My tidy rule travels easily. A conversation on the riverbank does not. A speaker has offered one public example to carry back, with the setting attached.",
+    "folds": [
+      {
+        "action": "Keep the setting in the recording",
+        "arrival": "The pause makes sense to someone who knows what just passed on the river. A distant listener needs the context too."
+      },
+      {
+        "action": "Test the rule on another invited example",
+        "arrival": "The rule fits one exchange and strains at another. The speakers keep authority over what may be shared."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "culture",
+        "explanation"
+      ],
+      "aoks": [
+        "HUM",
+        "HIS",
+        "LAN"
+      ],
+      "subjects": [
+        "anthropology",
+        "lang-b"
+      ]
+    },
+    "practice": 631,
+    "question": "Who gets to say whether another setting makes a fair comparison for the pause?"
+  },
+  {
+    "id": "q6409990",
+    "character": "ink-q6409990",
+    "name": "Kimberlé Crenshaw",
+    "station": "dispatch",
+    "title": "The seam between two complaint desks",
+    "context": "Crenshaw developed intersectionality in examining limits of approaches to discrimination that consider only one axis at a time.",
+    "opening": "One desk files by job. Another files by group. A worker turned away by both can describe precisely where their two rules cross.",
+    "folds": [
+      {
+        "action": "Overlay the two desks' refusal slips",
+        "arrival": "A pattern appears only in the overlap. The worker decides whether her name travels with it."
+      },
+      {
+        "action": "Bring both clerks to one hearing",
+        "arrival": "Each clerk hears what the other desk assumed it handled. Other claimants wait longer for an appointment."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "perspective"
+      ],
+      "aoks": [
+        "HUM",
+        "MAT",
+        "POL"
+      ],
+      "subjects": [
+        "global-politics",
+        "math-ai"
+      ]
+    },
+    "practice": 80,
+    "question": "Which complaint can fall through the seam even if each desk counts its own slips correctly?"
+  },
+  {
+    "id": "q32729",
+    "character": "ink-q32729",
+    "name": "Ha-Joon Chang",
+    "station": "yard",
+    "title": "The ladder in the old tariff book",
+    "context": "Chang has examined the history of industrial policy and development.",
+    "opening": "The workshop handbook says every town climbed by trading freely. In its binding I found a receipt for the wall around the first workshop.",
+    "folds": [
+      {
+        "action": "Put the dated receipt beside the advice",
+        "arrival": "The old workshop's starting conditions become visible. The reader can ask when its advice began to apply."
+      },
+      {
+        "action": "Compare two workshops at the same age",
+        "arrival": "Different protections appear in the early ledgers. A later success no longer settles the earlier question."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "explanation",
+        "evidence"
+      ],
+      "aoks": [
+        "HIS",
+        "HUM",
+        "POL"
+      ],
+      "subjects": [
+        "history",
+        "economics"
+      ]
+    },
+    "practice": 508,
+    "question": "Would today's advice have worked for the workshop named on the old receipt?"
+  },
+  {
+    "id": "q61064",
+    "character": "ink-q61064",
+    "name": "Wassily Kandinsky",
+    "station": "stage",
+    "title": "The chord with no painted violin",
+    "context": "Kandinsky explored abstract painting and connections between colour and music.",
+    "opening": "The visitor asks what my blue shape is a picture of. A musician in the doorway has already answered it with a low note.",
+    "folds": [
+      {
+        "action": "Let the musician answer in sound",
+        "arrival": "The shape keeps its outline. People disagree about whether the note made it warmer or heavier."
+      },
+      {
+        "action": "Hang the shape without a title for one turn",
+        "arrival": "Visitors arrange themselves at different distances. The title comes back to a room with several readings."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "perspective"
+      ],
+      "aoks": [
+        "ART",
+        "HUM"
+      ],
+      "subjects": [
+        "music",
+        "visual-arts"
+      ]
+    },
+    "practice": 637,
+    "question": "What did the musician add that a title beside the shape would miss?"
+  },
+  {
+    "id": "q171128",
+    "character": "ink-q171128",
+    "name": "Diego Rivera",
+    "station": "dispatch",
+    "title": "The wall on the workers' route",
+    "context": "Rivera's murals often placed working people within public depictions of history.",
+    "opening": "The patron sees the mural from across the square. Workers pass it at arm's length. They get a shoulder where he gets a scene.",
+    "folds": [
+      {
+        "action": "Walk the wall at shift change",
+        "arrival": "The painter finds a detail visible only to someone walking home. The overall composition still belongs to the square."
+      },
+      {
+        "action": "Put a worker's gesture at the corner",
+        "arrival": "A passer-by recognises a task in a single hand. The distant patron asks why the hand looks so large."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "power",
+        "perspective"
+      ],
+      "aoks": [
+        "ART",
+        "HIS",
+        "POL"
+      ],
+      "subjects": [
+        "visual-arts",
+        "history"
+      ]
+    },
+    "practice": 478,
+    "question": "What does the worker see on a shift change that a visitor standing still would pass over?"
+  },
+  {
+    "id": "q5912",
+    "character": "model-record-maker-stoppages",
+    "name": "Marcel Duchamp",
+    "station": "press",
+    "title": "The ordinary thing on the plinth",
+    "context": "Duchamp's readymades included Fountain, the urinal submitted under the name R. Mutt in 1917. The work called attention to the role of selection and exhibition.",
+    "opening": "A slip about Fountain lies on the plinth. The porter brings an ordinary thing from our cupboard and asks what made a urinal an artwork in that other room. Try a title, or take a turn at arranging the view.",
+    "folds": [
+      {
+        "action": "Leave the title while the object changes rooms",
+        "arrival": "The porter follows the title to an empty plinth. A visitor goes looking for the object."
+      },
+      {
+        "action": "Let the porter choose the viewing angle",
+        "arrival": "From the workbench it looks useful again. A second visitor argues that the choice of angle is part of the work."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "values"
+      ],
+      "aoks": [
+        "ART",
+        "HUM"
+      ],
+      "subjects": [
+        "visual-arts",
+        "philosophy"
+      ]
+    },
+    "practice": 736,
+    "question": "What changed for the porter when the same object moved rooms?"
+  },
+  {
+    "id": "q273087",
+    "character": "ink-q273087",
+    "name": "Augusta Savage",
+    "station": "yard",
+    "title": "The sculpture that cannot pay for bronze",
+    "context": "Savage made sculpture and taught artists during the Harlem Renaissance. Some major works survive through records.",
+    "opening": "The plaster catches a boy's expression exactly. The commission can pay for an opening but scarcely for a lasting cast. A cheering crowd will not keep plaster dry.",
+    "folds": [
+      {
+        "action": "Shelter the plaster and invite small groups",
+        "arrival": "Fewer people see the work today. Tomorrow a young sculptor can study the original surface."
+      },
+      {
+        "action": "Make a record of the work in the square",
+        "arrival": "The crowd can see it at full scale. The record travels after the fragile material has gone."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "values",
+        "power"
+      ],
+      "aoks": [
+        "ART",
+        "HIS"
+      ],
+      "subjects": [
+        "visual-arts",
+        "history"
+      ]
+    },
+    "practice": 475,
+    "question": "Who can encounter the sculpture through the square record, and what would they miss?"
+  },
+  {
+    "id": "q1791520",
+    "character": "ink-q1791520",
+    "name": "Lygia Clark",
+    "station": "island",
+    "title": "The hinge a visitor finishes",
+    "context": "Clark made hinged works called Bichos that viewers could manipulate.",
+    "opening": "The guard tries to put the hinged sculpture back in its proper shape. The last visitor left it balanced like a small animal waking up.",
+    "folds": [
+      {
+        "action": "Give the next visitor the hinge",
+        "arrival": "The shape changes again. The guard begins keeping track of decisions instead of searching for a final pose."
+      },
+      {
+        "action": "Keep one pose until its maker returns",
+        "arrival": "Another visitor studies the balance. She must wait before discovering what her own hands might make."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "responsibility"
+      ],
+      "aoks": [
+        "ART",
+        "MAT"
+      ],
+      "subjects": [
+        "design-tech",
+        "visual-arts"
+      ]
+    },
+    "practice": 637,
+    "question": "Whose decision survives if the hinge keeps its last pose overnight?"
+  },
+  {
+    "id": "q314966",
+    "character": "ink-q314966",
+    "name": "Ousmane Sembène",
+    "station": "stage",
+    "title": "The projectionist's missing voice",
+    "context": "Sembène made films for African audiences using languages including Wolof.",
+    "opening": "The reels arrived. The language on the poster belongs to the office that paid for the print. The people outside want to hear themselves in the hall.",
+    "folds": [
+      {
+        "action": "Host the screening in the audience's chosen language",
+        "arrival": "The jokes land at different moments. A visitor asks for another way into the dialogue."
+      },
+      {
+        "action": "Pair the screening with a local storyteller",
+        "arrival": "The teller brings the remote scene close. The director and teller can disagree about what a cut means."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "culture",
+        "power"
+      ],
+      "aoks": [
+        "ART",
+        "HUM",
+        "LAN"
+      ],
+      "subjects": [
+        "film",
+        "lang-b"
+      ]
+    },
+    "practice": 232,
+    "question": "Which meaning can change when a storyteller takes part in the screening?"
+  },
+  {
+    "id": "q2900288",
+    "character": "ink-q2900288",
+    "name": "Betye Saar",
+    "station": "cold",
+    "title": "The box that looks back",
+    "context": "Saar's assemblages rework found materials and confront racial stereotypes.",
+    "opening": "The collector recognises the old advertisement in the box and smiles before seeing what the artist has done to it. There is a moment when the smile changes.",
+    "folds": [
+      {
+        "action": "Hang the box at the viewer's eye level",
+        "arrival": "A visitor catches her own expression in the glass. The inherited image is harder to pass without a second look."
+      },
+      {
+        "action": "Show the source image on a separate flap",
+        "arrival": "The viewer chooses whether to uncover the hurtful original. The transformation in the assemblage has a visible history."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "responsibility"
+      ],
+      "aoks": [
+        "ART",
+        "HIS"
+      ],
+      "subjects": [
+        "visual-arts",
+        "history"
+      ]
+    },
+    "practice": 525,
+    "question": "What can a viewer learn from opening the source flap after looking into the box?"
+  },
+  {
+    "id": "q740036",
+    "character": "ink-q740036",
+    "name": "Genesis Breyer P-Orridge",
+    "station": "coast",
+    "title": "The scrape that became a refrain",
+    "context": "P-Orridge worked across experimental music and performance, including the use of industrial sounds.",
+    "opening": "The technician marked a scrape as a fault and cleaned it out of the mix. To the performer it was where the room began to sing back.",
+    "folds": [
+      {
+        "action": "Loop the scrape at rehearsal volume",
+        "arrival": "The audience hears the rhythm inside a discarded sound. The technician keeps a clean take too."
+      },
+      {
+        "action": "Move the microphone to the listening seats",
+        "arrival": "The room enters the recording. A perfect repeat of yesterday’s performance is now quite impossible."
+      }
+    ],
+    "weave": {
+      "concepts": [
+        "interpretation",
+        "evidence"
+      ],
+      "aoks": [
+        "ART",
+        "NAT",
+        "TEC"
+      ],
+      "subjects": [
+        "music",
+        "physics"
+      ]
+    },
+    "practice": 638,
+    "question": "Whose seat would make the scrape sound like a cue instead of an accident?"
+  }
+]

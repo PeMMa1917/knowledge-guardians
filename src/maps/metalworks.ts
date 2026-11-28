@@ -59,6 +59,7 @@ export const METALWORKS_YARD = workshop({
     { stamp: 'barrel', x: 4, y: 9 }, { stamp: 'bench', x: 17, y: 12 },
   ],
   interactables: [
+    { id: 'field-assay', kind: 'fieldgame', game: 'assay', x: 7, y: 5, w: 1, h: 1, label: 'Corra’s sample bench (The Assay Trial)', art: 'old-sign' },
     ...METALWORKS_VINDOLANDA_YARD,
     ...METALWORKS_PLATE_YARD,
     ...METALWORKS_FITTING_YARD,

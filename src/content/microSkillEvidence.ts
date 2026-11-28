@@ -1,3 +1,5 @@
+import letters from './ink-post-letters.json';
+import postSkills from './ink-post-skills.json';
 import type { ContentPack } from '../domain/types';
 
 export const MICRO_SKILL_DOMAIN = 'MICRO';
@@ -16,7 +18,16 @@ export type MicroSkillUse = {
 export type MicroSkillEvidence = { number: number; name: string; uses: MicroSkillUse[] };
 
 const sources = import.meta.glob<MicroSkillEvidence[]>('./microSkills*.json', { eager: true, import: 'default' });
-export const MICRO_SKILLS = Object.values(sources).flat().sort((a, b) => a.number - b.number);
+const postUses = new Map<number, MicroSkillUse[]>();
+for (const letter of letters) {
+  const uses = postUses.get(letter.practice) ?? [];
+  uses.push({ objective: 'ink.' + letter.id + '.landed', action: letter.title + ' · '
+    + letter.folds.map((fold) => fold.action).join(' / ') + '. Hear the effect of the chosen action at the receiving post.',
+    styles: ['explorer', 'helper'], modes: ['reading', 'linguistic'], game: 21, story: 114 });
+  postUses.set(letter.practice, uses);
+}
+export const MICRO_SKILLS: MicroSkillEvidence[] = [...Object.values(sources).flat(), ...postSkills.map((s) => ({ ...s, uses: [] }))]
+  .map((s) => ({ ...s, uses: [...s.uses, ...(postUses.get(s.number) ?? [])] })).sort((a, b) => a.number - b.number);
 
 /** Identifier stays stable as an illustrative use gains new approaches. */
 export const microSkillId = (number: number): string => `SK-MICRO-${String(number).padStart(4, '0')}`;

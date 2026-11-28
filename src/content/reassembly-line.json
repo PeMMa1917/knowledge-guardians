@@ -1,0 +1,35 @@
+{
+ "intro": "The wind has been at the river notice board. Marek holds a handful of torn strips. 'Three notices, all in pieces, and the ferry crowd is waiting to read them. Each notice had a claim, the evidence for it, and a line saying where it stops. Put them back together.'",
+ "notices": [
+  { "id": "ferry", "about": "the ferry" },
+  { "id": "well", "about": "the north well" },
+  { "id": "flood", "about": "the flood" }
+ ],
+ "pieces": [
+  { "id": "c-ferry", "kind": "claim", "notice": "ferry", "text": "The ferry leaves at dawn every day." },
+  { "id": "c-well", "kind": "claim", "notice": "well", "text": "The north well is safe to drink from." },
+  { "id": "c-flood", "kind": "claim", "notice": "flood", "text": "The flood will reach the bottom step by the new moon." },
+  { "id": "e-ferry", "kind": "evidence", "notice": "ferry", "text": "The ferry log shows a dawn crossing on 28 of the last 30 days." },
+  { "id": "e-well", "kind": "evidence", "notice": "well", "text": "Two tests this month found the water clear and sweet." },
+  { "id": "e-flood", "kind": "evidence", "notice": "flood", "text": "In each of the last five years, the flood reached the bottom step within ten days of the first rise." },
+  { "id": "e-rumour", "kind": "evidence", "notice": null, "text": "Everyone on the quay says so." },
+  { "id": "l-ferry", "kind": "limit", "notice": "ferry", "text": "The log does not say why the other two days had no crossing." },
+  { "id": "l-well", "kind": "limit", "notice": "well", "text": "Both tests were made before the river rose." },
+  { "id": "l-flood", "kind": "limit", "notice": "flood", "text": "This year's first rise was smaller than in any of those five years." }
+ ],
+ "rumour": "Marek holds the strip up to the light. 'Everyone on the quay says so. That tells us who believes it. It does not tell us why. Put it aside.'",
+ "wrong": "Nasir lays the two strips side by side. 'This one is about {a}, and that one is about {b}. They tore from different notices.'",
+ "fixed": "The notice about {about} holds together again: what it says, why, and where it stops.",
+ "orderAsk": "Nasir smooths the three notices flat. 'One more thing. On the board, which line goes at the top? The crowd reads the top line and walks on.'",
+ "orders": [
+  { "id": "claim", "text": "The claim at the top" },
+  { "id": "limit", "text": "The limit at the top" },
+  { "id": "evidence", "text": "The evidence at the top" }
+ ],
+ "orderReplies": {
+  "claim": { "marek": "'Good. People need to know what we are telling them. The limit is there for anyone who reads to the end.'", "nasir": "'And most people will not read to the end. They will carry the claim away without its limit, and the well will be safe until somebody is sick.'" },
+  "limit": { "marek": "'Then nobody knows what the notice is about until the second line. A warning nobody understands warns nobody.'", "nasir": "'But the limit is what changes since last week. The river rose. That is the news a reader needs first.'" },
+  "evidence": { "marek": "'Fair. Start from what we saw, and let the reader make the claim. That is how I would want to be told.'", "nasir": "'It is fair, and it is slow. A ferry crowd will read \"28 of the last 30 days\" and not know what question it answers.'" }
+ },
+ "close": "The three notices go back up, pinned at all four corners this time. Marek ties down a spare strip at the bottom: 'If you know something these notices do not, write it here.'"
+}

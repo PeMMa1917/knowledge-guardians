@@ -30,6 +30,7 @@ import { NILE_MAKERS_ROOM } from './makerRoom';
 import { OBJECT_USE_WORKSHOPS } from './objectUse';
 import { REFERENCE_STATION } from './referenceStation';
 import { CIVIC_CALLBOARD } from './civicCallboard';
+import { QUIET_RECORDS } from './quietRecords';
 import { CUE_WORKSHOP } from './cueWorkshop';
 import { MODEL_RECORD_ROOM } from './modelRecords';
 import { SECOND_READING_STORE } from './secondReading';
@@ -45,6 +46,7 @@ import { FERRY_PACKING_ROOM } from './ferryPacking';
 import { WORK_SCHEDULE_MAPS } from './workSchedule';
 import { BEARING_ROOM, BEARING_RETURN_ROOM } from './bearingBay';
 import { JIG_SHOP_MAP } from './jigShop';
+import { inkPostAt } from './inkPost';
 import { earlierViewingAt } from './earlierViewing';
 import { publicationReturnsAt } from './publicationReturns';
 import { blueTailAt } from './blueTail';
@@ -171,6 +173,7 @@ const campaignMaps: Record<string, MapDef> = {
   [WATER_SERVICE_LANE.id]: WATER_SERVICE_LANE,
   [CIVIC_DISPATCH.id]: CIVIC_DISPATCH,
   [CIVIC_CALLBOARD.id]: CIVIC_CALLBOARD,
+  [QUIET_RECORDS.id]: QUIET_RECORDS,
   [CIVIC_STEPS.id]: CIVIC_STEPS,
   [CIVIC_CANAL.id]: CIVIC_CANAL,
   [VOICES_LISTENING.id]: VOICES_LISTENING,
@@ -193,6 +196,6 @@ const campaignMaps: Record<string, MapDef> = {
 };
 
 export const MAPS: Record<string, MapDef> = Object.fromEntries(Object.values(campaignMaps).map((map) => {
-  const returns = [...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id)];
+  const returns = [...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id), ...inkPostAt(map.id)];
   return [map.id, returns.length ? { ...map, interactables: [...map.interactables, ...returns] } : map];
 }));

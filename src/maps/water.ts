@@ -60,7 +60,9 @@ export const WATER_GATEHOUSE: MapDef = {
   }),
   blocks: [[18, 0, 3, 9], [18, 11, 3, 2], [18, 15, 3, 5]], zones: [],
   spawn: { x: 12, y: 12 },
-  npcs: [{ id: 'water-keeper', x: 13, y: 7, facing: 'down' }],
+  npcs: [{ id: 'water-keeper', x: 13, y: 7, facing: 'down' },
+    // Mozi, the first thinker the player meets in the world (X-012, X-015). Content: src/content/thinker-mozi.json.
+    { id: 'mozi', x: 6, y: 7, facing: 'right', visibleIf: { flagSet: 'water.response' } }],
   stamps: [
     { stamp: 'water-weir', x: 16, y: 3 }, { stamp: 'market-home', x: 7, y: 2 },
     { stamp: 'water-lantern', x: 12, y: 6 }, { stamp: 'water-lantern', x: 23, y: 11 },
@@ -86,6 +88,16 @@ export const WATER_GATEHOUSE: MapDef = {
       flag: 'harrowmere.found', visibleIf: { objective: 'water.drought' },
       text: "Under a stack of drought orders is a much older card, in the Nexus style. 'WEIR AT HARROWMERE. This weir is safe in all floods.' The Nexus mark is in the corner, and a signature: I. Marrow. Under the main line, someone scraped a second line away. Lumen holds a little light close. You can read three words: 'tested only in...'. Weirkeeper Omi, behind you, says nothing for a long time." },
     ...WATER_LOWER_RAIL,
+    // Mozi's three tests (KG-CH11-T01): the past, what people saw and heard, and use.
+    sign('mozi-test-past', 5, 5, 'the drought ledger shelf', 'ledger',
+      'Six drought summers are written here. In four of them the gate opened before the bell, and each time the ledger notes "no one on the channel": water ran out of a break in the night and the far fields got least. In the other two the gate also opened early, but a keeper walked the channel, and the far fields were full by noon.',
+      { flag: 'thinker.mozi.test.past', visibleIf: { flag: 'thinker.mozi.quest', eq: true } }),
+    sign('mozi-test-people', 23, 4, 'the crews\u2019 bench', 'preserved.display-paired',
+      'Two crews have signed this slate. Tamsin of the lower fields: "Early water runs past us while we sleep. By the time we wake, it is in the ditch." Oruj of the far fields: "Early water is the only water that reaches us before the heat. Last week Omi walked the channel at dawn and nothing was lost that I saw."',
+      { flag: 'thinker.mozi.test.people', visibleIf: { flag: 'thinker.mozi.quest', eq: true } }),
+    sign('mozi-test-use', 27, 6, 'Omi\u2019s trial runnel', 'water.split',
+      'Omi\u2019s crew poured twelve buckets into the trial runnel before the bell on two mornings. With nobody watching, seven reached the far gauge. With one person walking the runnel and closing a break, eleven reached it. After the bell, in the heat, ten reached it.',
+      { flag: 'thinker.mozi.test.use', visibleIf: { flag: 'thinker.mozi.quest', eq: true } }),
     sign('water-weir-directory', 10, 11, 'the weir path sign', 'water.waypost',
       'The gate lever is by the upper crossing. The council yard lies east of that crossing. The lower path goes to the seed rows and channel marker.'),
     sign('water-draft-split', 15, 10, 'the draft split claim', 'preserved.slip',
@@ -147,6 +159,7 @@ export const WATER_COUNCIL: MapDef = {
   ],
   interactables: [
     FIELD_STORE_DOOR,
+    { id: 'field-river', kind: 'fieldgame', game: 'river', x: 3, y: 13, w: 1, h: 1, label: 'Omi’s ford log bench (The River Crossing Inquiry)', art: 'old-sign' },
     ...PORTER_COUNCIL,
     ...MATERIAL_YARD_PROPS,
     ...COUNCIL_BOUNDARY,
@@ -222,6 +235,7 @@ export const WATER_LOWER_CHANNEL: MapDef = {
     { stamp: 'crates', x: 3, y: 8 }, { stamp: 'barrel', x: 19, y: 14 },
   ],
   interactables: [
+    { id: 'field-festival', kind: 'fieldgame', game: 'festival', x: 13, y: 2, w: 1, h: 1, label: 'the lantern wall (The Festival Dilemma)', art: 'old-sign' },
     ...LOWER_BOUNDARY,
     ...CATCHMENT_LOWER,
     MATERIAL_CHANNEL_RECEIVER,

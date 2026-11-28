@@ -105,18 +105,18 @@ export function adventureDocx(view: AdventureJournalView, options: AdventureExpo
     blocks.push(paragraph('My open questions', 'Heading2'));
     for (const question of questions) blocks.push(paragraph(`• ${question}`));
   }
+  const cited = (runs: NonNullable<(typeof encyclopedia)[number]['citation']>) => styledParagraph(runs.map((part) => part.href
+    ? hyperlink(part.text, part.href, part.cite) : wordProse(part.text, { italic: part.cite })).join(''), 'WorksCited');
   if (references.length) {
     blocks.push(paragraph('Works Cited', 'Heading1'));
     for (const reference of references) {
-      const runs = reference.runs.map((part) => part.href ? hyperlink(part.text, part.href, part.cite)
-        : wordProse(part.text, { italic: part.cite }));
-      blocks.push(paragraph(reference.label, 'JournalDetails'), styledParagraph(runs.join(''), 'WorksCited'));
+      blocks.push(paragraph(reference.label, 'JournalDetails'), cited(reference.runs));
     }
   }
   if (encyclopedia.length) {
     blocks.push(paragraph('Wikipedia links from my adventure', 'Heading1'));
     for (const link of encyclopedia) {
-      blocks.push(paragraph(link.label, 'JournalDetails'), styledParagraph(hyperlink(link.title, link.url), 'Normal'));
+      blocks.push(paragraph(link.label, 'JournalDetails'), link.citation ? cited(link.citation) : styledParagraph(hyperlink(link.title, link.url), 'Normal'));
     }
   }
   const document = `${xmlHeader}<w:document xmlns:w="${WORD}" xmlns:r="${OFFICE_REL}"><w:body>${blocks.join('')}

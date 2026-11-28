@@ -1,0 +1,101 @@
+{
+ "note": "Before you look: this wall is about real children who were made to climb inside chimneys in Britain, about two hundred years ago. Some were hurt or died. Nothing here shows an injury, but some visitors find it hard. You can look now, or close the wall and come back later. Nothing is lost.",
+ "cards": [
+  {
+   "id": "print",
+   "name": "The street print",
+   "date": "1804",
+   "text": "A coloured print of a small sweep with a soot bag and brush, walking past the gates of the Foundling Hospital in London. A brass plate on his cap carries his master's name, as the law required. It was one of thirty-one London street scenes sold by a publisher.",
+   "source": "HIS-SWEEP-PRINT"
+  },
+  {
+   "id": "poem",
+   "name": "The poem",
+   "date": "1789",
+   "text": "William Blake's 'The Chimney Sweeper', from Songs of Innocence. A sweep speaks: his mother died when he was very young, and his father sold him. In the poem another boy dreams that an angel lets the sweeps out of black coffins. This hand-coloured copy was printed about 1825.",
+   "source": "HIS-SWEEP-POEM"
+  },
+  {
+   "id": "debate",
+   "name": "The debate record",
+   "date": "1819",
+   "text": "The House of Lords record of a bill to stop children climbing chimneys. Lord Lauderdale said machines could not sweep every chimney in London and that fires would rise. Lord Harrowby said the bill would give the machines time. The bill was lost, 20 votes to 37.",
+   "source": "HIS-SWEEP-LORDS"
+  },
+  {
+   "id": "machine",
+   "name": "The machine print",
+   "date": "undated",
+   "text": "An engraving lettered 'Mr Geo. Smart's apparatus for cleansing chimneys': a brush on jointed rods, pushed up from the fireplace, so that nobody climbs.",
+   "source": "HIS-SWEEP-MACHINE"
+  }
+ ],
+ "joins": {
+  "poem.print": "The poem's boy was sold. The print's boy wears a plate with his master's name. Joined, they show a child who is known by who owns his work, not by his own name.",
+  "debate.print": "The print was sold as a London street scene in 1804. Fifteen years later, the Lords voted down a bill to stop children climbing. Joined, they show that a picture can make something familiar without making it change.",
+  "machine.print": "Two prints: a boy, and a brush on rods. Joined, they show that a buyer in 1804 could look at the boy as a London type, while another engraver was already showing a way to do the work without him.",
+  "debate.poem": "In the poem, a father sells his son to a sweep. In the Commons debate a month before the Lords vote, a member told of a boy sold by his father to a master sweep. Joined, a poem and a record agree about something neither could prove alone.",
+  "machine.poem": "The poem frees the sweeps with an angel in a dream. The engraving frees them with a brush on rods. Joined, they show two kinds of answer, a hope and a tool. In 1819 the Lords took up neither.",
+  "debate.machine": "Lord Auckland told the Lords of a trial at the Commons: one machine swept 19 of 61 chimneys, then 60 of 61 with someone watching how it was used. Lord Lauderdale answered with another report, which said no machine could yet replace the boys. Joined, they show two pieces of evidence pointing two ways, and the vote went with the doubt."
+ },
+ "missing": "Wren stands back from the wall. 'Four cards, and every one was made by an adult who never climbed. Even the poem is Blake speaking as a sweep. The children's own words are the card this wall does not have.'",
+ "asks": [
+  {
+   "id": "print",
+   "text": "The street print",
+   "reply": "Eren nods. 'It shows what a sweep looked like to a buyer passing in the street. That is real evidence. It is evidence of the buyer's eye as much as the boy's life.'"
+  },
+  {
+   "id": "poem",
+   "text": "The poem",
+   "reply": "Wren says, 'A poem can say what it felt like when no record will. Blake chose the words, so we hear him too. Many people say that this is how art knows things.'"
+  },
+  {
+   "id": "debate",
+   "text": "The debate record",
+   "reply": "Eren taps the vote. 'It shows what powerful people knew and chose. Every word was said aloud, on the record. Not one word is a child's.'"
+  },
+  {
+   "id": "machine",
+   "text": "The machine print",
+   "reply": "Wren smiles a little. 'It tells you climbing was not the only way. That is a strong thing to know: it means the harm was a choice.'"
+  },
+  {
+   "id": "none",
+   "text": "None of them, alone",
+   "reply": "Eren and Wren look at each other. 'Then you will need the joins,' says Eren. 'And the joins still leave a gap,' says Wren. 'Keep the gap on the label.'"
+  }
+ ],
+ "sources": [
+  {
+   "id": "HIS-SWEEP-PRINT",
+   "title": "London Museum: Sweep Soot O (Foundling Hospital), coloured engraving, 1804",
+   "url": "https://londonmuseum.org.uk/collections/v/object-94713/sweep-soot-o-foundling-hospital"
+  },
+  {
+   "id": "HIS-SWEEP-POEM",
+   "title": "The Metropolitan Museum of Art: Songs of Innocence, The Chimney Sweeper, William Blake",
+   "url": "https://www.metmuseum.org/art/collection/search/347918"
+  },
+  {
+   "id": "HIS-SWEEP-LORDS",
+   "title": "UK Parliament, Hansard: Chimney Sweepers Regulation Bill, House of Lords, 15 March 1819",
+   "url": "https://api.parliament.uk/historic-hansard/lords/1819/mar/15/chimney-sweepers-regulation-bill"
+  },
+  {
+   "id": "HIS-SWEEP-COMMONS",
+   "title": "UK Parliament, Hansard: Chimney Sweepers' Regulation Bill, House of Commons, 17 February 1819",
+   "url": "https://api.parliament.uk/historic-hansard/commons/1819/feb/17/chimney-sweepers-regulation-bill"
+  },
+  {
+   "id": "HIS-SWEEP-MACHINE",
+   "title": "Wellcome Collection: Chimney sweeps at work, and their brushes, engraving by Mutlow after Blunt",
+   "url": "https://wellcomecollection.org/works/a7v7y4e5"
+  },
+  {
+   "id": "HIS-SWEEP-BOY",
+   "title": "London Museum: Sweep Boy, watercolour by Henry George Hine, 1851",
+   "url": "https://www.londonmuseum.org.uk/collections/v/object-93045/sweep-boy/"
+  }
+ ]
+}

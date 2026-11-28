@@ -8,6 +8,7 @@ import { CIVIC_BENCH_DEBATE } from './benchDebate';
 import { CIVIC_BOUNDARY } from './serviceBoundary';
 import { CIVIC_DATE_REGISTER_PROPS, CIVIC_DATE_REGISTER_READERS } from './dateRegister';
 import { CIVIC_CALLBOARD_DOOR } from './civicCallboard';
+import { QUIET_RECORDS_DOOR } from './quietRecords';
 import { MATERIAL_CANAL_REVISIT } from './materialStores';
 import { CATCHMENT_CANAL } from './catchment';
 import { CIVIC_SPARE_SEAT } from './spareSeat';
@@ -83,6 +84,7 @@ export const CIVIC_DISPATCH: MapDef = {
     ...starStations('oracle', [20, 14], [21, 14]),
     ...CIVIC_DATE_REGISTER_PROPS,
     CIVIC_CALLBOARD_DOOR,
+    QUIET_RECORDS_DOOR,
     door('civic-steps-path', 3, 11, 'the west passage to North Steps', { map: 'civic.steps', x: 12, y: 14 }),
     door('civic-canal-path', 25, 11, 'the east passage to Canal Walk', { map: 'civic.canal', x: 5, y: 10 }),
     door('civic-nexus-return', 13, 16, 'the crossing back to the Nexus', { map: 'nexus.archive', x: 28, y: 12 }, 'preserved.door'),

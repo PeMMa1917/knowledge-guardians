@@ -3,13 +3,47 @@
  "notes": [
   {
    "id": "human-remains.preserved",
-   "maps": ["preserved.royal", "preserved.coast"],
+   "maps": [
+    "preserved.royal",
+    "preserved.coast"
+   ],
    "heading": "Before you go in: human remains",
    "text": "This room holds records about people who died long ago, and about how their bodies were cared for after death. The records concern real people and real communities, and some of the dead have living descendants. Some visitors find this hard. You can go in now, or step back to the Cold Store and come back later. Nothing is lost.",
-   "stepBack": { "map": "preserved.archive", "label": "the Cold Store" },
+   "stepBack": {
+    "map": "preserved.archive",
+    "label": "the Cold Store"
+   },
    "sources": [
-    { "title": "UNESCO World Heritage List: Settlement and Artificial Mummification of the Chinchorro Culture", "url": "https://whc.unesco.org/en/list/1634" },
-    { "title": "National Museum of Egyptian Civilization, Cairo (the royal mummies)", "url": "https://nmec.gov.eg/" }
+    {
+     "title": "UNESCO World Heritage List: Settlement and Artificial Mummification of the Chinchorro Culture",
+     "url": "https://whc.unesco.org/en/list/1634"
+    },
+    {
+     "title": "National Museum of Egyptian Civilization, Cairo (the royal mummies)",
+     "url": "https://nmec.gov.eg/"
+    }
+   ]
+  },
+  {
+   "id": "medical-harm.tuskegee",
+   "maps": [
+    "civic.quiet-records"
+   ],
+   "heading": "Before you go in: a study that harmed people",
+   "text": "This room holds records of a real medical study, from 1932 to 1972, in which Black men in Alabama were not told they had syphilis and were not given a cure. The men have living descendants who keep their names. The records show racism and harm by a government. Some visitors find this hard. You can go in now, or step back to Library Dispatch and come back later. Nothing is lost.",
+   "stepBack": {
+    "map": "civic.dispatch",
+    "label": "Library Dispatch"
+   },
+   "sources": [
+    {
+     "title": "Centers for Disease Control and Prevention: About the Untreated Syphilis Study at Tuskegee",
+     "url": "https://www.cdc.gov/tuskegee/about/index.html"
+    },
+    {
+     "title": "Voices for Our Fathers Legacy Foundation (the men's descendants)",
+     "url": "https://www.voicesforfathers.org/"
+    }
    ]
   }
  ]

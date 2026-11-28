@@ -14,6 +14,7 @@ Play, engagement and enjoyable learning stay the main goal. Other views can stil
 
 | File | What it holds |
 | --- | --- |
+| [FOLDED_WING.md](FOLDED_WING.md) | Follow-up review of 140 historical correspondents, with 73 modeled perspectives, tested decisions and remaining concerns. |
 | [PERSONAS.md](PERSONAS.md) | Every persona: who they are, what they value, and their game-wide likes, concerns and solutions. |
 | [chapters/](chapters/) | One file per chapter. Each encounter has the persona notes that are specific to it, then the agreed fixes and the open disagreements. |
 | [CONSENSUS.md](CONSENSUS.md) | The agreed fixes, numbered `C-###`, with their status and where they are in the code. |
@@ -46,7 +47,11 @@ Play, engagement and enjoyable learning stay the main goal. Other views can stil
 | 8 The Cartographers’ Sea | [CH08](chapters/CH08.md) | 4 two-reply moments; Tupaia's chart planned |
 | 9 The House of Performance | [CH09](chapters/CH09.md) | 4 two-reply moments |
 | 10 The Market of Measures | [CH10](chapters/CH10.md) | 4 two-reply moments |
-| 11 to 15 | next | next |
+| 11 The Water Commons | [CH11](chapters/CH11.md) | 3 two-reply moments with named ethical views |
+| 12 The Civic Machine | [CH12](chapters/CH12.md) | 3 two-reply moments |
+| 13 The Archive of Voices | [CH13](chapters/CH13.md) | 4 two-reply moments |
+| 14 The Island of Models | [CH14](chapters/CH14.md) | 3 two-reply moments |
+| 15 The Council of Inquiry | [CH15](chapters/CH15.md) | 2 two-reply moments |
 
 ## How to use this audit (for developers)
 

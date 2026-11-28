@@ -1,0 +1,587 @@
+{
+ "sources": [
+  {
+   "id": "HIS-TUSK-CDC",
+   "title": "Centers for Disease Control and Prevention: About the Untreated Syphilis Study at Tuskegee",
+   "url": "https://www.cdc.gov/tuskegee/about/index.html",
+   "locator": "Whole page, updated September 2024",
+   "supports": "The study ran from 1932 to 1972 with 600 Black men, 399 with syphilis and 201 without. There is no evidence of informed consent. A 1974 settlement paid $10 million. President Clinton apologised in 1997.",
+   "accessed": "2026-11-27"
+  },
+  {
+   "id": "HIS-TUSK-CDCT",
+   "title": "Centers for Disease Control and Prevention: The Untreated Syphilis Study at Tuskegee Timeline",
+   "url": "https://www.cdc.gov/tuskegee/about/timeline.html",
+   "locator": "Timeline entries 1932 to 2009",
+   "supports": "The men were told they were treated for 'bad blood' and were promised free exams, meals and burial insurance. Penicillin was the treatment of choice by 1943 and was not given. An advisory panel in 1972 found the study ethically unjustified. Health benefits were later extended to wives, widows and children.",
+   "accessed": "2026-11-27"
+  },
+  {
+   "id": "HIS-TUSK-VFOF",
+   "title": "Voices for Our Fathers Legacy Foundation: The Story",
+   "url": "https://www.voicesforfathers.org/the-story",
+   "locator": "Narrative, timeline and the list of names",
+   "supports": "The foundation was formed in 2010 by the children and descendants of the men. It keeps a list of the men's names, headed as 625 men. It names Peter Buxtun, a former Public Health Service employee, as the person who raised concerns and took the study to the press.",
+   "accessed": "2026-11-27"
+  }
+ ],
+ "cards": [
+  {
+   "id": "card.civic.tuskegee.told",
+   "title": "What the men were told",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-TUSK-CDC",
+    "HIS-TUSK-CDCT"
+   ],
+   "text": "From 1932 to 1972, the United States Public Health Service ran a study of 600 Black men near Tuskegee, Alabama: 399 with syphilis and 201 without. The men were told they were being treated for 'bad blood', a local term for several illnesses. They were promised free medical exams, free meals and burial insurance. The men with syphilis were not told their diagnosis, and there is no evidence that anyone asked for their informed consent.",
+   "limits": "The official records were kept by the people who ran the study. They show what the researchers recorded, not what the men understood or felt."
+  },
+  {
+   "id": "card.civic.tuskegee.withheld",
+   "title": "A cure that was not given",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-TUSK-CDCT",
+    "HIS-TUSK-VFOF"
+   ],
+   "text": "By the 1940s, penicillin was the standard treatment for syphilis. The men in the study were not given it. The study went on for about 25 more years. In 1972 a news report made it public, and a government advisory panel called it ethically unjustified. The study ended later that year. The descendants' foundation names Peter Buxtun, who had worked for the Public Health Service, as the person who raised concerns and went to the press.",
+   "limits": "The sources give different years for when penicillin became the standard: the CDC says 1943, and the descendants' foundation gives 1945 and 1947. Every date says it was decades before the study stopped."
+  },
+  {
+   "id": "card.civic.tuskegee.after",
+   "title": "What came after, and who keeps the names",
+   "claimKind": "observation",
+   "historicalLabel": "documented",
+   "sources": [
+    "HIS-TUSK-CDC",
+    "HIS-TUSK-CDCT",
+    "HIS-TUSK-VFOF"
+   ],
+   "text": "A class action in 1973 led to a $10 million settlement in 1974. A health benefit programme gave care to the men, and later to their wives, widows and children. In 1997 President Clinton apologised for the government, and a national centre for bioethics was set up at Tuskegee University. In 2010 the men's children and descendants formed the Voices for Our Fathers Legacy Foundation, which keeps a list of the men's names.",
+   "limits": "The government records count 600 men. The descendants' list is headed 625 men. The game shows both counts, with who keeps each one, and does not decide between them."
+  }
+ ],
+ "dialogue": [
+  {
+   "id": "civic.tuskegee.told",
+   "speaker": "narrator",
+   "historicalLabel": "documented",
+   "claimKind": "observation",
+   "text": "A grey folder labelled with the study's official name. Inside: a printed appointment card that promises a free exam and a hot meal, and a typed page of patient numbers.",
+   "options": [
+    {
+     "text": "Keep this record.",
+     "next": "civic.tuskegee.told.kept",
+     "if": {
+      "not": {
+       "flag": "civic.tuskegee.told",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "civic.tuskegee.told",
+       "value": true
+      },
+      {
+       "addCard": "card.civic.tuskegee.told"
+      }
+     ]
+    },
+    {
+     "text": "Leave it on the shelf."
+    }
+   ]
+  },
+  {
+   "id": "civic.tuskegee.told.kept",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The record goes into your folder, with its sources."
+  },
+  {
+   "id": "civic.tuskegee.withheld",
+   "speaker": "narrator",
+   "historicalLabel": "documented",
+   "claimKind": "observation",
+   "text": "A second folder. Its first page is a list of treatments, with dates. A later page is a letter about keeping the study going. Clipped to the back is a copy of the panel's finding.",
+   "options": [
+    {
+     "text": "Keep this record.",
+     "next": "civic.tuskegee.withheld.kept",
+     "if": {
+      "not": {
+       "flag": "civic.tuskegee.withheld",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "civic.tuskegee.withheld",
+       "value": true
+      },
+      {
+       "addCard": "card.civic.tuskegee.withheld"
+      }
+     ]
+    },
+    {
+     "text": "Leave it on the shelf."
+    }
+   ]
+  },
+  {
+   "id": "civic.tuskegee.withheld.kept",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The record goes into your folder, with its sources."
+  },
+  {
+   "id": "civic.tuskegee.after",
+   "speaker": "narrator",
+   "historicalLabel": "documented",
+   "claimKind": "observation",
+   "text": "A plain box with a printed list of names inside the lid. A note from the people who keep it says these were their fathers and grandfathers.",
+   "options": [
+    {
+     "text": "Keep this record.",
+     "next": "civic.tuskegee.after.kept",
+     "if": {
+      "not": {
+       "flag": "civic.tuskegee.after",
+       "eq": true
+      }
+     },
+     "effects": [
+      {
+       "setFlag": "civic.tuskegee.after",
+       "value": true
+      },
+      {
+       "addCard": "card.civic.tuskegee.after"
+      }
+     ]
+    },
+    {
+     "text": "Leave it on the shelf."
+    }
+   ]
+  },
+  {
+   "id": "civic.tuskegee.after.kept",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "The record goes into your folder, with its sources."
+  },
+  {
+   "id": "civic.tuskegee.desk",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "claimKind": "value",
+   "text": "Keeper Ade and Route Clerk Lin are writing the Civic Machine's first rule for records of studies on people. The line for the rule is blank. Ade says the three folders on this shelf are why the rule is needed.",
+   "options": [
+    {
+     "text": "Every record of a study must show what the people in it were told, and that they agreed.",
+     "next": "civic.tuskegee.desk.consent",
+     "if": {
+      "all": [
+       {
+        "flag": "civic.tuskegee.told",
+        "eq": true
+       },
+       {
+        "flag": "civic.tuskegee.withheld",
+        "eq": true
+       },
+       {
+        "flag": "civic.tuskegee.after",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "civic.tuskegee.rule"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "civic.tuskegee.rule",
+       "value": "consent"
+      }
+     ]
+    },
+    {
+     "text": "A study record keeps people's names and the count their families keep, beside the official numbers.",
+     "next": "civic.tuskegee.desk.names",
+     "if": {
+      "all": [
+       {
+        "flag": "civic.tuskegee.told",
+        "eq": true
+       },
+       {
+        "flag": "civic.tuskegee.withheld",
+        "eq": true
+       },
+       {
+        "flag": "civic.tuskegee.after",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "civic.tuskegee.rule"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "civic.tuskegee.rule",
+       "value": "names"
+      }
+     ]
+    },
+    {
+     "text": "A study record must say who can stop the study, and what would make them stop it.",
+     "next": "civic.tuskegee.desk.stop",
+     "if": {
+      "all": [
+       {
+        "flag": "civic.tuskegee.told",
+        "eq": true
+       },
+       {
+        "flag": "civic.tuskegee.withheld",
+        "eq": true
+       },
+       {
+        "flag": "civic.tuskegee.after",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "civic.tuskegee.rule"
+        }
+       }
+      ]
+     },
+     "effects": [
+      {
+       "setFlag": "civic.tuskegee.rule",
+       "value": "stop"
+      }
+     ]
+    },
+    {
+     "text": "Leave the line blank for now."
+    }
+   ]
+  },
+  {
+   "id": "civic.tuskegee.desk.consent",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You write the rule on the line. Ade reads it once and Lin reads it twice."
+  },
+  {
+   "id": "civic.tuskegee.desk.names",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You write the rule on the line. Ade reads it once and Lin reads it twice."
+  },
+  {
+   "id": "civic.tuskegee.desk.stop",
+   "speaker": "narrator",
+   "historicalLabel": "fictional-world",
+   "text": "You write the rule on the line. Ade reads it once and Lin reads it twice."
+  }
+ ],
+ "missions": [
+  {
+   "id": "KG-CH12-H01",
+   "world": "WORLD-13",
+   "title": "The Men Who Were Not Told",
+   "knowledgeQuestion": "Can a record be accurate in every number and still be a record of a wrong?",
+   "stake": "The Civic Machine is writing its first rule for records of studies on people. If the rule only asks for accurate numbers, it would have passed the study in these folders.",
+   "available": {
+    "flagSet": "civic.response"
+   },
+   "objectives": [
+    {
+     "id": "civic.tuskegee.told",
+     "title": "Read what the men in the study were told.",
+     "essential": false,
+     "done": {
+      "flag": "civic.tuskegee.told",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "responsibility",
+       "truth"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "HIS",
+       "POL"
+      ],
+      "subjects": [
+       "biology",
+       "history",
+       "global-politics"
+      ],
+      "framework": [
+       "scope",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "understand",
+       "fink": "caring",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "civic.tuskegee.withheld",
+     "title": "Read what the study kept from the men.",
+     "essential": false,
+     "done": {
+      "flag": "civic.tuskegee.withheld",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "evidence",
+       "responsibility",
+       "power"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "HIS",
+       "POL"
+      ],
+      "subjects": [
+       "biology",
+       "history",
+       "global-politics"
+      ],
+      "framework": [
+       "methods-and-tools",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "caring",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "civic.tuskegee.after",
+     "title": "Read what came after, and who keeps the men's names.",
+     "essential": false,
+     "done": {
+      "flag": "civic.tuskegee.after",
+      "eq": true
+     },
+     "weave": {
+      "concepts": [
+       "perspective",
+       "values",
+       "power"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "HIS",
+       "POL"
+      ],
+      "subjects": [
+       "biology",
+       "history",
+       "global-politics"
+      ],
+      "framework": [
+       "perspectives",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "analyse",
+       "fink": "caring",
+       "solo": "relational"
+      }
+     }
+    },
+    {
+     "id": "civic.tuskegee.rule",
+     "title": "Write the first rule for records of studies on people.",
+     "essential": false,
+     "done": {
+      "flagSet": "civic.tuskegee.rule"
+     },
+     "weave": {
+      "concepts": [
+       "values",
+       "responsibility",
+       "justification"
+      ],
+      "atl": [
+       "research",
+       "thinking"
+      ],
+      "aoks": [
+       "NAT",
+       "HIS",
+       "POL"
+      ],
+      "subjects": [
+       "biology",
+       "history",
+       "global-politics"
+      ],
+      "framework": [
+       "ethics",
+       "scope"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "caring",
+       "solo": "relational"
+      }
+     },
+     "onComplete": [
+      {
+       "journal": "j.civic.tuskegee"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "hints": [
+  {
+   "id": "hint.civic.tuskegee.told.1",
+   "objective": "civic.tuskegee.told",
+   "depth": 1,
+   "text": "The Quiet Records Room is off Library Dispatch."
+  },
+  {
+   "id": "hint.civic.tuskegee.told.2",
+   "objective": "civic.tuskegee.told",
+   "depth": 2,
+   "text": "There are three folders on its shelves."
+  },
+  {
+   "id": "hint.civic.tuskegee.told.3",
+   "objective": "civic.tuskegee.told",
+   "depth": 3,
+   "text": "The grey folder is on the left."
+  },
+  {
+   "id": "hint.civic.tuskegee.told.4",
+   "objective": "civic.tuskegee.told",
+   "depth": 4,
+   "text": "Read the grey folder and keep the record."
+  },
+  {
+   "id": "hint.civic.tuskegee.withheld.1",
+   "objective": "civic.tuskegee.withheld",
+   "depth": 1,
+   "text": "The second folder is about a treatment."
+  },
+  {
+   "id": "hint.civic.tuskegee.withheld.2",
+   "objective": "civic.tuskegee.withheld",
+   "depth": 2,
+   "text": "It is on the middle shelf."
+  },
+  {
+   "id": "hint.civic.tuskegee.withheld.3",
+   "objective": "civic.tuskegee.withheld",
+   "depth": 3,
+   "text": "Look at the dates in it."
+  },
+  {
+   "id": "hint.civic.tuskegee.withheld.4",
+   "objective": "civic.tuskegee.withheld",
+   "depth": 4,
+   "text": "Read the second folder and keep the record."
+  },
+  {
+   "id": "hint.civic.tuskegee.after.1",
+   "objective": "civic.tuskegee.after",
+   "depth": 1,
+   "text": "The last record is a box, not a folder."
+  },
+  {
+   "id": "hint.civic.tuskegee.after.2",
+   "objective": "civic.tuskegee.after",
+   "depth": 2,
+   "text": "It is on the right."
+  },
+  {
+   "id": "hint.civic.tuskegee.after.3",
+   "objective": "civic.tuskegee.after",
+   "depth": 3,
+   "text": "Two counts of the men are inside."
+  },
+  {
+   "id": "hint.civic.tuskegee.after.4",
+   "objective": "civic.tuskegee.after",
+   "depth": 4,
+   "text": "Read the box and keep the record."
+  },
+  {
+   "id": "hint.civic.tuskegee.rule.1",
+   "objective": "civic.tuskegee.rule",
+   "depth": 1,
+   "text": "The rule line is on the desk in the middle of the room."
+  },
+  {
+   "id": "hint.civic.tuskegee.rule.2",
+   "objective": "civic.tuskegee.rule",
+   "depth": 2,
+   "text": "Read all three records first."
+  },
+  {
+   "id": "hint.civic.tuskegee.rule.3",
+   "objective": "civic.tuskegee.rule",
+   "depth": 3,
+   "text": "Each rule would have caught something different."
+  },
+  {
+   "id": "hint.civic.tuskegee.rule.4",
+   "objective": "civic.tuskegee.rule",
+   "depth": 4,
+   "text": "Use the desk and choose a rule. Ade and Lin will each answer."
+  }
+ ],
+ "journal": [
+  {
+   "id": "j.civic.tuskegee",
+   "kind": "quest",
+   "title": "The Men Who Were Not Told",
+   "text": "I read records of the study at Tuskegee, Alabama (1932 to 1972), where 600 Black men were not told their diagnosis and were not given a cure. The records were accurate about many numbers and still hid the most important thing. I wrote a first rule for records of studies on people."
+  }
+ ]
+}

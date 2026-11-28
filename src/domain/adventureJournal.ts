@@ -1,3 +1,4 @@
+import { inkDiaryTopics } from './inkPost';
 import { neighbourJournalTopics } from './neighbours';
 import { moonBeatNames, moonPerformance } from './spareMoonMusic';
 import { crossingOf, crossingWay } from './crossings';
@@ -32,6 +33,11 @@ export interface JournalQuest {
   title: string;
   question: string;
   steps: string[];
+  /** The chapter world, so the journal can group quests into pathways (C-010). */
+  world: string;
+  /** Steps done and steps in all, so the journal can show a good place to stop (C-010). */
+  done: number;
+  total: number;
 }
 
 export interface JournalNote extends DiaryNoteDetails {
@@ -400,7 +406,10 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
   for (const objective of objectives) {
     if (objective.complete) continue;
     const mission = objective.mission;
-    const quest = quests.get(mission.id) ?? { id: mission.id, title: mission.title, question: mission.knowledgeQuestion, steps: [] };
+    const quest = quests.get(mission.id) ?? {
+      id: mission.id, title: mission.title, question: mission.knowledgeQuestion, steps: [], world: mission.world,
+      done: mission.objectives.filter((o) => state.objectivesDone.includes(o.id)).length, total: mission.objectives.length,
+    };
     quest.steps.push(objective.title);
     quests.set(mission.id, quest);
   }
@@ -432,7 +441,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
     const completed = event.completedObjective ? objectivesById.get(event.completedObjective) : undefined;
     const weave = objective?.objective.weave ?? taggedTools.get(`${family}:${event.ref}`) ?? completed?.objective.weave;
     if (weave) return diaryTopics(weave);
-    const neighbourhood = neighbourJournalTopics(event.ref);
+    const neighbourhood = neighbourJournalTopics(event.ref) ?? inkDiaryTopics(event.ref);
     if (neighbourhood) return neighbourhood;
     const fieldConcept = family === 'field' ? FIELD_GAMES.find(({ id }) => id === event.ref)?.concept : undefined;
     const concept = CONCEPTS.find((id) => id === fieldConcept);
