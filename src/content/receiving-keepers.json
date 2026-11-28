@@ -1,0 +1,197 @@
+[
+  {
+    "arrival": "Kip finds a smear of flour where the address should be.",
+    "routes": [
+      {
+        "action": "Let the baker handle the card",
+        "reply": "The baker finds a pinch of rye in the fold. At the bread cart that means the morning delivery."
+      },
+      {
+        "action": "Save it for the child with the baskets",
+        "reply": "The child counts two handles and recognises the basket that went home empty."
+      }
+    ]
+  },
+  {
+    "arrival": "Imani loosens the string. A second hand tied the last knot.",
+    "routes": [
+      {
+        "action": "Read it at the copying desk",
+        "reply": "The young copyist separates the hand that wrote from the hand that wrapped the order."
+      },
+      {
+        "action": "Follow the cord to the landing",
+        "reply": "The runner recognises the return knot. The boat that brought it had already changed crews."
+      }
+    ]
+  },
+  {
+    "arrival": "Odile has left an extra place on the cold tray.",
+    "routes": [
+      {
+        "action": "File the slip where the family can lift it",
+        "reply": "The family turns the slip over. A mark under the fold brings another name into their account."
+      },
+      {
+        "action": "Warm the wrapping under the glass",
+        "reply": "A pale impression appears where the wrapping touched the original. The registrar saves both sheets."
+      }
+    ]
+  },
+  {
+    "arrival": "Ruan sets the order below the bell window. The paper trembles twice.",
+    "routes": [
+      {
+        "action": "Ask the crew beneath the roof",
+        "reply": "They heard both sounds. Their entry identifies the second as a return from the warehouse wall."
+      },
+      {
+        "action": "Give the launch crew a dry copy",
+        "reply": "The boat carries a copy low enough for the coxswain to see without leaving the tiller."
+      }
+    ]
+  },
+  {
+    "arrival": "Ayla hears a rustle behind the watcher as the packet opens.",
+    "routes": [
+      {
+        "action": "Leave the keeper in the blind",
+        "reply": "The keeper can hear the second call from another perch. The drawing names both positions."
+      },
+      {
+        "action": "Turn the count over to the walkers",
+        "reply": "On the moving walk the same high note travels with the recorder. The two marks stay regular."
+      }
+    ]
+  },
+  {
+    "arrival": "Corra turns the docket until the clamp scar catches the light.",
+    "routes": [
+      {
+        "action": "Give the apprentice a cold sample",
+        "reply": "The apprentice repeats the fit before anyone warms the clamp. Its first mark sits outside the shop stamp."
+      },
+      {
+        "action": "Reserve the next working heat",
+        "reply": "The night fitter tries the joint under a real load. The glowing fit leaves a narrower mark."
+      }
+    ]
+  },
+  {
+    "arrival": "Mina finds a ghost letter on the inside of the wrapping.",
+    "routes": [
+      {
+        "action": "Keep the printer’s impression beside the leaf",
+        "reply": "The printer recognises the reversed shape. Her note names which side first touched the ink."
+      },
+      {
+        "action": "Lend the fold to the person who reads one-handed",
+        "reply": "The borrower releases a corner that reveals an earlier correction. The next copy keeps the loose tab."
+      }
+    ]
+  },
+  {
+    "arrival": "Sora sights down the fold of the chart. A line vanishes behind the pier.",
+    "routes": [
+      {
+        "action": "Send it round with the inshore pilot",
+        "reply": "The inshore pilot adds a familiar turn that the wharf hides from view."
+      },
+      {
+        "action": "Ask the far-reef boat to bring it back",
+        "reply": "The boat comes back on a different tide. Its chart shows exactly where the sound dropped out."
+      }
+    ]
+  },
+  {
+    "arrival": "Hari sets a chair where the late visitor can still hear.",
+    "routes": [
+      {
+        "action": "Run the cue from the wings",
+        "reply": "The caller hears the cue at once. A curtain catches the gesture before the audience sees it."
+      },
+      {
+        "action": "Play the entrance from the last seat",
+        "reply": "The usher sees the entrance and hears the stagehand's feet first. The order goes back with both times."
+      }
+    ]
+  },
+  {
+    "arrival": "Dagny empties the basket onto a length of dark cloth.",
+    "routes": [
+      {
+        "action": "Let the weaver bring her own basket",
+        "reply": "The buyer can try the order in wicker that has been used all season. It weighs more after the rain."
+      },
+      {
+        "action": "Leave an empty basket underneath the pan",
+        "reply": "The market clerk can show each buyer what the container contributed to the total."
+      }
+    ]
+  },
+  {
+    "arrival": "Omi gives the packet a cup to keep it off the wet sill.",
+    "routes": [
+      {
+        "action": "Wait with the crew at the lower step",
+        "reply": "The caller's voice reaches the last house after the gate starts moving. The crew marks the delay."
+      },
+      {
+        "action": "Give the upper bank the answering cup",
+        "reply": "The upper caller waits for the cup to turn. A household that once stayed silent gets the first reply."
+      }
+    ]
+  },
+  {
+    "arrival": "Lin sets the parcel down on the turn the printed route calls straight.",
+    "routes": [
+      {
+        "action": "Send a walker to the blue doorstep",
+        "reply": "The walker comes back with two house numbers and one worn step. The route diagram gets a hinge."
+      },
+      {
+        "action": "Let the porter take the long turn",
+        "reply": "The porter's cart needs the width the engine model left out. The closing street receives the revised turn."
+      }
+    ]
+  },
+  {
+    "arrival": "Wren puts the family key beside the listening index.",
+    "routes": [
+      {
+        "action": "Give the key to the speaker’s household",
+        "reply": "The family provides a time when a listener can ask to hear the passage. The original stays on their shelf."
+      },
+      {
+        "action": "Leave a listening appointment in the index",
+        "reply": "Another listener finds the date and the name of the person who can choose what plays."
+      }
+    ]
+  },
+  {
+    "arrival": "Ivo shades the smallest row while the crate waits beside the jetty.",
+    "routes": [
+      {
+        "action": "Let the gardener adjust the shade",
+        "reply": "The gardener moves just the edge of the cloth. The smallest row changes before the rest of the model."
+      },
+      {
+        "action": "Hand the working model to the returning carrier",
+        "reply": "The carrier tries it on the sloping deck. A loose tree rolls into the plot that the drawing omitted."
+      }
+    ]
+  },
+  {
+    "arrival": "Hale turns the second receiver toward the witness rail.",
+    "routes": [
+      {
+        "action": "Seat the witness beside the receiver",
+        "reply": "The witness can stop the reel at the part their neighbour remembers. The pause enters the hearing."
+      },
+      {
+        "action": "Give the visitors the two listening slips",
+        "reply": "Each visitor compares both times at their own pace. Someone carries the earlier slip to the second sitting."
+      }
+    ]
+  }
+]

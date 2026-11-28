@@ -654,3 +654,7 @@ The Scrapers, Single Bell, True Measure, Mirror Court and Gilded Seal each have 
 ## The travelling cases
 
 A case belongs to people in several towns. The family expecting a loan back has a fair claim on its return. A shift that still needs the loan has a fair reason to ask for tomorrow. Let the next keeper receive the consequences of the Guardian’s instruction. The twelve families include the travelling refrain, a route drawn from opposite ends, the creature beside the satchel, a promised shift, and a Fray that grows when a visitor hears a finding as a guarantee. The first and last places on the actual route meet again in the closing account. [Case families](../src/content/corridor-sagas/families.json)
+
+## The supper table in the Nexus
+
+Kip sides with the Wardens over a chipped cup. Ise made a repair that held for ten years. Hesper wants to carry the same cup to a busy repair stool. Elsewhere Sefa and Rook cannot agree on whether singing a verse at dinner gives a friend permission to put it in the listening archive. Each pair of the four companions can meet after the Guardian has spoken to both. Their personal promises and the standing of their allies change the conversation. The player can pack a parcel for a later hall. Choosing differently at the next supper allows the recipient to try the other suggestion. [The six conversations](../src/content/supper-talk.json)

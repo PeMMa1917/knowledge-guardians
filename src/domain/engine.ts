@@ -1,3 +1,4 @@
+import { supperMove, type SupperCommand } from './companionSupper';
 import {markEffects,type MarkCommand} from './riverPostmark';
 import {riverEffects,type RiverCommand} from './riverNames';
 import {orchardEffects,type OrchardCommand} from './walkingOrchard';
@@ -242,6 +243,7 @@ export type Command =
   | { type: 'Purchase'; offer: string }
   | { type: 'RequestHint'; objective: string }
   | ThreadCommand
+  | SupperCommand
   | SagaMove
   | WorkCommand
   | RivalCommand
@@ -544,6 +546,9 @@ export class Engine {
         }
         case 'UntieJournalThread':
           s=apply([{setFlag:threadKey,value:false},{setFlag:threadFaceKey,value:false}],s,out);
+          break;
+        case 'CompanionSupper':
+          s=apply(supperMove(this.pack,this.dialogueById,s,cmd).effects,s,out);
           break;
         case 'RivalPost':
           s=apply(rivalMove(s,cmd).effects,s,out);

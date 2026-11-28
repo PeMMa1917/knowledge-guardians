@@ -1,3 +1,5 @@
+import { receivingKeepers, receivedTrail, receivingChoice, receiptAccount } from '../domain/orderReceipts';
+import { supperParcels } from './supperTable';
 import type { GameController } from '../app/controller';
 import { corridorOpen, PASSAGES } from '../domain/corridor';
 import { sagaChapter } from '../domain/corridorSagas';
@@ -157,9 +159,25 @@ export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:
         for(const t of book){
           const o={chapter,group:g,ticket:t};if(!t[7].includes(home)||!isIssued(c.state,o))continue;
           const edition=Number(issued(c.state,o));count++;
-          const reply=h('p',{},c.state.flags[returnKey(o,home)]===revision(c.state,o)?[disposition(o,edition).cost,chosenRoute(o,c.state,true)?.returnLine].filter(Boolean).join(' '):'');
-          body.append(h('div',{class:'lore-entry'},h('h3',{},incomingTitles.get(t[0])!),h('p',{},'From '+t[3]+' in '+PASSAGES[chapter-1].name+'. '+disposition(o,edition).label+'.'),
-            h('button',{onclick:()=>{if(action(o,'receive'))reply.textContent=notice.textContent;}},'Receive this edition'),reply));
+          const envelope=h('div',{class:'lore-entry'}),local=receivingKeepers[home-1];
+          function showReceipt(){
+            const s=c.state,r=revision(s,o),key=ticketKey(o),received=s.flags[returnKey(o,home)]===r;
+            envelope.replaceChildren(h('h3',{},incomingTitles.get(t[0])!),h('p',{},'From '+t[3]+' in '+PASSAGES[chapter-1].name+'. '+disposition(o,edition).label+'.'));
+            if(!received){
+              envelope.append(h('button',{onclick:()=>{if(action(o,'receive')){showReceipt();envelope.querySelector('button')?.focus();}}},'Receive this edition'));
+              return;
+            }
+            const selected=receivingChoice(s,key,home,r),trail=receivedTrail(s,key,r,t[7]);
+            envelope.append(h('p',{},[disposition(o,edition).cost,chosenRoute(o,s,true)?.returnLine].filter(Boolean).join(' ')),h('p',{},local.arrival));
+            for(const [j,m] of local.routes.entries())envelope.append(h('button',{'aria-pressed':String(j===selected),onclick:()=>{
+              if(action(o,'handoff',j)){showReceipt();envelope.querySelector<HTMLButtonElement>('[aria-pressed="true"]')?.focus();}
+            }},m.action));
+            if(selected===undefined)return;
+            envelope.append(h('p',{},receiptAccount(s,key,home,r,trail,selected)),h('p',{},'The parcel has passed through '+trail.map(n=>PASSAGES[n-1].name).join(' → ')+'.'));
+            for(const n of t[7])if(n!==home && corridorOpen(s,n))
+              envelope.append(h('button',{onclick:()=>travel(n)},'Carry this edition on to '+PASSAGES[n-1].name));
+          }
+          showReceipt();body.append(envelope);
         }
       }
       if(!count && seq===epoch)body.append(h('p',{},'The shelf is empty. Orders addressed to this world will be here when you arrive.'));
@@ -170,7 +188,7 @@ export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:
     const shift=hallShift(home);
     const local=h('details',{},h('summary',{},'Overheard in the hall'),h('p',{},shift.humour));
     local.addEventListener('toggle',()=>{if(local.open)c.dispatch({type:'ReadWorldSign',id:'hall-aside-'+home,title:'Overheard in '+PASSAGES[home-1].name,text:shift.humour});});
-    body.replaceChildren(h('h2',{},'Work orders'),h('p',{},shift.opening),local, ...groupNames.map((g,i)=>h('button',{onclick:()=>open(i)},g)),h('button',{onclick:inbox},'Incoming work'));}
+    body.replaceChildren(h('h2',{},'Work orders'),h('p',{},shift.opening),local,...supperParcels(c,home), ...groupNames.map((g,i)=>h('button',{onclick:()=>open(i)},g)),h('button',{onclick:inbox},'Incoming work'));}
   if(invitation){
     const seq=++epoch;
     body.append(h('p',{role:'status'},'The keeper is finding the request…'));

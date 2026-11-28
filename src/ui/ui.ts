@@ -1,3 +1,4 @@
+import { supperTable } from './supperTable';
 import { keeperLifeEntry, offersKeeperVisit } from '../domain/keeperLife';
 import {rivalPostPanel} from './rivalPost';
 import { invitationFor, invitationChapter, type KeeperInvitation } from '../domain/workInvitations';
@@ -5183,6 +5184,7 @@ export class UI implements UIApi {
     box.append(this.closeBtn(), h('h2', {}, 'My quarters'),
       h('p', {}, 'Your own room in the Nexus. The ceiling is your Star Chart: each concept ring you fill adds a star, and a full ring joins its stars into a constellation. The shelves hold keepsakes from the places you have helped.'),
       h('div', { class: 'room-wrap' }, canvas),
+      supperTable(c),
       h('p', { class: 'fine' }, `Star Chart: ${stars} of ${rings.length * 5} stars lit.`),
       h('div', { class: 'room-picks' }, pick('Walls', 'wall', WALLS), pick('Floor', 'floor', FLOORS), pick('Rug', 'rug', RUGS), pick('Lamp', 'lamp', LAMPS), pick('Window view', 'view', VIEWS), pick('Plant', 'plant', PLANTS), pick('Companion', 'pet', PETS)),
       h('details', {}, h('summary', {}, 'Places for returning companions'), housePanel(c, key => this.sfx(key), 'roost', () => { describe(); paint(0); })),
