@@ -85,6 +85,8 @@ A student can return to the title, open **Manage class adventure**, and choose *
 
 The fictional-account journey includes a second online edit made while the first two editions are on screen. It verifies that the student sees the new words, that the selected draft reaches the assigned teacher and that a teacher in the other class cannot fetch it. [Browser journey](../tools/smoke-classroom.mjs) · [Concurrent revision checks](../tests/class-recovery.test.ts)
 
+When a student returns to the game or reconnects while an earlier save is still waiting for a response, the client waits for that write and then retries with the latest words. An incompatible online revision opens the two-copy review. Small writes requested while leaving a page retain the browser’s background-delivery option. Larger drafts remain in local storage and retry when the student returns.
+
 ### Optional class leaderboards
 
 A student in a class adventure can open **Menu → Leaderboard**, select one of 31 activities and choose today, this week, this month or year to date. Opening a board simply reads the current class’s posted results. Before writing a nickname or posting, the screen identifies the audience. The post button sends the displayed value for that activity and period. Changing the nickname on a subsequent post updates the nickname on all that student’s class scores. A higher or lower score can replace an earlier result. Equal results share a place. Counts of TOK practice describe activity and carry no assessment mark.

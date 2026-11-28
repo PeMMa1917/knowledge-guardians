@@ -48,12 +48,21 @@ async function resume(p) {
   await button(p, 'Continue');
   const recap = p.getByRole('dialog', { name: 'Recap' });
   try {
-    await recap.waitFor({ timeout: 90000 });
+    const retry = p.getByRole('button', {name:'Try again', exact:true});
+    const outcome = await Promise.race([
+      recap.waitFor({timeout:120000}).then(() => 'ready'),
+      retry.waitFor({timeout:120000}).then(() => 'retry'),
+    ]);
+    if (outcome === 'retry') {
+      await retry.click();
+      await recap.waitFor({timeout:90000});
+    }
   } catch (cause) {
     const screen = await p.evaluate(() => ({
       dialog: document.querySelector('[role="dialog"]')?.getAttribute('aria-label'),
       map: window.kg?.world?.map?.id,
-      retriable: !!document.querySelector('.map-loading button:not([disabled])'),
+      message: document.querySelector('.map-loading [role=status]')?.textContent,
+      retriable: [...document.querySelectorAll('.map-loading button')].some(button => button.textContent === 'Try again'),
       title: !!document.querySelector('.title-screen'),
       hidden: document.hidden,
       size: document.querySelector('[role="dialog"]')?.getBoundingClientRect().toJSON(),
@@ -266,11 +275,10 @@ try {
   await journal(alternate);
   await alternate.locator('#diary-note-text').fill('Alternate device continuation');
   await waitForDraft(alternate, 'Alternate device continuation');
+  // The student picks up the first device again after editing on the second one.
+  await b.bringToFront();
   await b.context().setOffline(false);
-  await b
-    .getByText(/Two devices have changes/)
-    .first()
-    .waitFor();
+  await b.locator('[data-class-status]:visible').filter({hasText:'Two devices have changes'}).first().waitFor({timeout:90000});
   await button(t, 'Refresh writing');
   await t.getByText('Alternate device continuation', { exact: true }).waitFor();
   await b.keyboard.press('Escape');

@@ -41,6 +41,57 @@ describe('class recovery on a returning device', () => {
           : Response.json({ revision, package: data, updated: null }),
       ),
     );
+  it('retries the latest local draft when reconnect arrives before an offline write settles', async () => {
+    const store = new ClassSave(who);
+    store.storeScene('folio', 'A page for the lantern', 'First words', 'nexus.archive');
+    let rejectOffline!: (error: Error) => void;
+    const received: string[] = [];
+    vi.stubGlobal('fetch', vi.fn(async (_url: string, options: RequestInit) => {
+      const body = JSON.parse(options.body as string);
+      const text = body.writing.find((entry: {text: string}) => entry.text.includes('words'))?.text;
+      received.push(text);
+      if (received.length === 1) return new Promise<Response>((_, reject) => { rejectOffline = reject; });
+      return Response.json({revision: 1});
+    }));
+    const offline = store.sync();
+    store.storeScene('folio', 'A page for the lantern', 'Latest words', 'nexus.archive');
+    const reconnect = store.sync();
+    rejectOffline(new TypeError('The fictional device was offline.'));
+    await Promise.all([offline, reconnect]);
+    expect(received).toEqual(['First words','Latest words']);
+    expect(JSON.parse(storage.get(key)!)).toMatchObject({revision:1,dirty:false});
+  });
+  it('preserves the page-exit request when a focus event arrives behind the same pending write', async () => {
+    const store = new ClassSave(who);
+    store.storeScene('folio', 'South door', 'A little space at the end');
+    const modes: boolean[] = [];
+    let fail!: () => void;
+    vi.stubGlobal('fetch', vi.fn(async (_url: string, request: RequestInit) => {
+      modes.push(request.keepalive === true);
+      if (modes.length === 1) await new Promise<void>((_, reject) => { fail = () => reject(new TypeError('Offline')); });
+      return Response.json({revision: 1});
+    }));
+    const first = store.sync(), exit = store.sync(true), focus = store.sync();
+    fail();
+    await Promise.all([first, exit, focus]);
+    expect(modes).toEqual([false, true]);
+    expect(JSON.parse(storage.get(key)!)).toMatchObject({revision: 1, dirty: false});
+  });
+  it('stops repeated reconnects at one conflicting write and keeps both editions for review', async () => {
+    const store = new ClassSave(who);
+    store.storeScene('folio', 'A page for the lantern', 'Local words', 'nexus.archive');
+    let respond!: (response: Response) => void;
+    const put = vi.fn(() => new Promise<Response>(resolve => {respond=resolve;}));
+    vi.stubGlobal('fetch', put);
+    const first = store.sync(), concurrent = store.sync();
+    respond(Response.json({error:'A second device wrote first.'},{status:409}));
+    await Promise.all([first, concurrent]);
+    await store.sync();
+    expect(put).toHaveBeenCalledTimes(1);
+    expect(store.needsComparison).toBe(true);
+    expect(JSON.parse(storage.get(key)!)).toMatchObject({revision:0,dirty:true});
+    expect(store.sceneDraft('folio')).toBe('Local words');
+  });
   it('preserves a clean local copy when an online backup rolls back until the student chooses', async () => {
     const account = new ClassSave(who);
     account.set(KEY_SLOTS, serialisePair(emptyPair()));

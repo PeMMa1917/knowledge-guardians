@@ -127,6 +127,7 @@ export class ClassSave implements KeyValueStore {
   private readonly path: string;
   private timer?: number;
   private running?: Promise<void>;
+  private retryRequested: { onExit: boolean } | undefined;
   private stopped = false;
   private paused = false;
   private conflict = false;
@@ -312,15 +313,30 @@ export class ClassSave implements KeyValueStore {
     classroom = this;
     window.addEventListener('online', this.retry);
     window.addEventListener('focus', this.retry);
+    document.addEventListener('visibilitychange', this.visibleAgain);
     this.retry();
   }
+  private visibleAgain = () => {
+    if (document.visibilityState === 'visible') this.retry();
+  };
   private retry = () => {
     void this.sync();
   };
   async sync(onExit = false) {
-    if (this.running) return this.running;
     if (this.stopped || this.paused) return;
-    this.running = this.upload(onExit).finally(() => {
+    if (this.running) {
+      // A reconnect can arrive before an offline request settles. Honour it after the existing write.
+      this.retryRequested = { onExit: onExit || this.retryRequested?.onExit === true };
+      return this.running;
+    }
+    const drain = async () => {
+      do {
+        const keepalive = this.retryRequested?.onExit ?? onExit;
+        this.retryRequested = undefined;
+        await this.upload(keepalive);
+      } while (this.retryRequested && !this.stopped && !this.paused);
+    };
+    this.running = drain().finally(() => {
       this.running = undefined;
     });
     return this.running;
@@ -380,6 +396,7 @@ export class ClassSave implements KeyValueStore {
     window.clearTimeout(this.timer);
     window.removeEventListener('online', this.retry);
     window.removeEventListener('focus', this.retry);
+    document.removeEventListener('visibilitychange', this.visibleAgain);
     classroom = undefined;
   }
 }
