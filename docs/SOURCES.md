@@ -850,3 +850,9 @@ The Library of Congress identifies the 1900 Paris exhibition and the visual work
 ## Lovelace at the island pier
 
 The Computer History Museum describes Lovelace’s appended notes on the proposed Analytical Engine. In Note A of the 1843 translation she considers the representation of musical relations by symbols. A player can encounter both sources through her visits. Matel’s wages, the paper moth and the island schedule are part of the Guardian’s story. [The Babbage Engine](https://www.computerhistory.org/babbage/adalovelace/) · [Lovelace’s notes](https://www.fourmilab.ch/babbage/sketch.html)
+
+## The walking orchard
+
+Wangari Maathai’s 2004 Nobel lecture describes hearing rural Kenyan women identify the work and resources they needed. The Green Belt Movement gives its own account of its environmental and community work. Paulo Freire’s Brazilian educational practice is introduced through a separately credited reading on dialogue and investigation drawn from lived situations. Each historical guest can return to the square and respond to what the Guardian helped build. [Wangari Maathai’s lecture](https://www.nobelprize.org/prizes/peace/2004/maathai/lecture/) · [The Green Belt Movement](https://www.greenbeltmovement.org/what-we-do/) · [Freire Institute](https://www.freire.org/concepts-used-by-paulo-freire/)
+
+The counting cloth uses twelve invented volunteer slips. The three borrowers, their permissions and the minimum group size of three belong to the fictional nursery. The MLA source offered after a grower’s count or closed roll is prepared links to general research on disclosure risk. [National Institute of Standards and Technology](https://www.nist.gov/publications/de-identifying-government-datasets-techniques-and-governance)

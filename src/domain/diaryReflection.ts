@@ -35,6 +35,13 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
   if(key.startsWith('trail-thread:')) return key.endsWith(':voice')
     ? {voice:'Whose account do I want to hear on my return, and what might they have missed?'}
     : {object:'Which detail would I look for next time, and what might it help me reconsider?'};
+  if(key.startsWith('walking-grove:')){
+    if(/:(request|shutter|light|reserve):/.test(key)) return {permission:'Which part of the count did its grower agree to lend?',group:'Could a detail still single someone out after their name is folded away?'};
+    if(/:(hang|pledge|visit|answer):/.test(key))return {turn:'Who had to do the work after I put the two coins on the hook?',values:'Could someone accept my reading and choose a different evening?'};
+    if(/:(load|boot|roll|account):/.test(key))return {control:'Which one change brought the heel into both sets of prints?',limit:'What would it take to show who actually pulled the tubs that night?'};
+    if(key.startsWith('walking-grove:track:'))return {tracks:'Which part of the night could this mark explain, and which part still needs a witness?'};
+    return {date:'What changed when I brought the two springs up to the same date?',missing:'Which empty space in the book would I try to fill first, and why?'};
+  }
   if(key.startsWith('tideclock:')){
     if(key.startsWith('tideclock:compare:') || key.startsWith('tideclock:trace:'))
       return {criterion:'Which person’s request changes what counts as a good place for the same board?',distance:'What do the plank counts tell me, and what would I need to ask someone who used the pier?'};

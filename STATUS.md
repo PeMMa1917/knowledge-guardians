@@ -833,3 +833,7 @@ A five-by-five travelling reading room opens on Canal Walk and at Lamp Quay. Opa
 ## 28 November • A readable workshop on a narrow screen
 
 On a 320-pixel screen at 175% text, the clock, warm room, maker tools, object stands and stores give their controls space to wrap. A long cargo name on the skiff stays inside the dialog on WebKit. The night fiddle appears when the saved story names an evening it can actually play. [Browser checks](docs/BROWSER_CHECKS.md#station-controls-at-large-text-sizes)
+
+## 28 November • The orchard that got up
+
+At Fern Station, a lone bootprint follows twelve trees out of their beds. Try a bare tub and a living sapling on Gresa’s chalk lane. Reopen two springs on the same dates. At the little theatre, three growers lend different parts of a rota. One evening later, the Guardian’s coins buy shade, a road through the dance, or a second visit after frost. In the Civic square, a carter and a stage caller can hand the next turn to different people. All nine outcomes travel home. Wangari Maathai and Paulo Freire join both visits. [Story and playable rules](src/domain/walkingOrchard.ts) · [Branch and source checks](tests/walking-orchard.test.ts)

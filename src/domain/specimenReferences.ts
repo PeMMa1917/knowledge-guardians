@@ -75,6 +75,11 @@ export function earnedResearchReadings(pack: ContentPack, state: CampaignState):
       // A conversation can cite a holding that is separately earned elsewhere in the game.
       if (source && event.sourceIds.includes(source) && !collectionSources.has(source)) credit(source, event.key);
     }
+    if (event.kind === 'tool' && event.ref === 'walking-grove'
+      && event.key.startsWith('walking-grove:reserve:') && typeof state.flags['grove.draftWindow'] === 'string'
+      && event.sourceIds.includes('HIS-GROVE-ROTA')) {
+      credit('HIS-GROVE-ROTA', event.key);
+    }
     if (event.key === 'lens-loan:fitCard' && pairedCambridgeReadings) {
       for (const id of ['HIS-DEPOT-Z408A', 'HIS-DEPOT-Z408J']) {
         if (event.sourceIds.includes(id)) credit(id, event.key);

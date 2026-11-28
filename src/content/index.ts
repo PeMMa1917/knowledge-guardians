@@ -1,3 +1,4 @@
+import {installWalkingOrchard} from './walkingOrchard';
 import {installQuarterClock} from './tideClock';
 import {installFerryRadio} from './ferryRadio';
 import {installTurningStacks} from './turningStacks';
@@ -280,6 +281,7 @@ export function buildPack(): ContentPack {
   installTurningStacks(content);
   installFerryRadio(content);
   installQuarterClock(content);
+  installWalkingOrchard(content);
   installLensLoan(content);
   addSpecimenPeople(content);
   installEarlierViews(content);

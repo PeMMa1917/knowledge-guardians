@@ -124,3 +124,7 @@ The supplied lesson on Indigenous knowledge and history asks how to handle compe
 ### Who gets the first cup?
 
 The quantitative and human-science lessons meet at a cocoa cart. A mathematical estimate depends on equal portions and an ideal mixing rule. The street instrument lets Kit test a measured offset. Daniel Kahneman and Amos Tversky help keep two small crews’ offers traceable to the tickets they actually saw, including the invitations that drew no offer. What does the posted price do to a neighbour who turns away before the first cup is poured? The answer changes the public sign the Guardian can put up. [Original studies and limits of the game model](../SOURCES.md#the-first-cup)
+
+### A tub that draws a footprint
+
+The example and boundary work in the technology handout becomes a chalk lane. The Guardian tries a living sapling and an empty tub while changing only the boot. The exhibition lesson about an object’s particular contribution becomes a face on a dated glass pane. The privacy and public-interest tension in the politics unit becomes a grower who lends a group total while retaining control of the work rota. The carter and stage caller can spend the same two coins differently after seeing the same evidence. [Nursery and shutters](../../src/ui/walkingOrchard.ts) · [Nine readings and purchases](../../tests/walking-orchard.test.ts)

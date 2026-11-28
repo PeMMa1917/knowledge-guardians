@@ -1,3 +1,5 @@
+import {grovePanel} from './walkingOrchard';
+import {beds,bedName} from '../domain/walkingOrchard';
 import {quarterPanel} from './tideClock';
 import {ferryRadioPanel} from './ferryRadio';
 import {turningStacksPanel,signatureLamp} from './turningStacks';
@@ -79,6 +81,10 @@ interface Panel<T> {
 export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
   ['stacks-signature',{title:'The names under the count',open:signatureLamp}],
   ['turning-stacks',{title:'The house with six names',open:turningStacksPanel}],
+  ...beds.map((bed):[string,{title:string;open:GamePanel}]=>['grove-bed-'+bed,{title:bedName[bed]+' nursery glass',open:(c,sound)=>grovePanel(c,sound,'nursery',bed)}]),
+  ['grove-shutters',{title:'The counting cloth',open:(c,sound)=>grovePanel(c,sound,'shutters')}],
+  ['grove-promise',{title:'An evening for the orchard',open:(c,sound)=>grovePanel(c,sound,'promise')}],
+  ['grove-square',{title:'The third turn of the orchard',open:(c,sound)=>grovePanel(c,sound,'square')}],
   ['quarter-house',{title:'The quarter that comes back',open:(c,sound)=>quarterPanel(c,sound,false)}],
   ['quarter-plan',{title:'A place at the end of the pier',open:(c,sound)=>quarterPanel(c,sound,true)}],
   ['ferry-wire-studio',{title:'The last word on the water',open:(c,sound)=>ferryRadioPanel(c,sound,false)}],
