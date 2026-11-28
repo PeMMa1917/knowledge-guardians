@@ -43,7 +43,7 @@ export function corridorOpen(s: CampaignState, chapter: number, completed?: Read
   if (chapter <= 10) return [3,4,5,6,7,8].filter(done).length >= 3;
   if (chapter === 11) return done(9) && done(10);
   if (chapter <= 14) return done(11);
-  return PASSAGES.slice(0,14).every((_, i) => done(i + 1));
+  return PASSAGES.slice(0,14).every((_, i) => done(i + 1) && s.flags['temple.gift.' + (i + 1)] === true);
 }
 
 export function routeOrder(s: CampaignState): number[] {

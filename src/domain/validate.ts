@@ -185,7 +185,7 @@ export function validateContent(pack: ContentPack): string[] {
     if ('origin' in c && !origins.has(c.origin)) p.push(`${where}: unknown origin ${c.origin}`);
     if ('trust' in c && !chars.has(c.trust)) p.push(`${where}: unknown character ${c.trust}`);
     if ('corridor' in c && (!Number.isInteger(c.corridor) || c.corridor < 1 || c.corridor > 15)) p.push(where + ': unknown chapter door');
-    const known = ['corridor', 'flag', 'flagSet', 'num', 'item', 'marks', 'card', 'objective', 'origin', 'trust'];
+    const known = ['faction', 'corridor', 'flag', 'flagSet', 'num', 'item', 'marks', 'card', 'objective', 'origin', 'trust'];
     if (!Object.keys(c).some((k) => known.includes(k))) p.push(`${where}: unknown condition ${JSON.stringify(c)}`);
   }
   function eff(list: Effect[] | undefined, where: string): void {

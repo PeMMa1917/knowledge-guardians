@@ -1,0 +1,1936 @@
+{
+  "characters": [
+    {
+      "id": "temple.1.agent",
+      "name": "Mabry Brassey",
+      "role": "Gilded Seal",
+      "mode": "fictional",
+      "sprite": "custom:pale.black.teal.indigo.none.gold",
+      "talk": [
+        {
+          "node": "temple.1.talk.agent"
+        }
+      ]
+    },
+    {
+      "id": "temple.1.guardian",
+      "name": "Brannoc the Lampwright",
+      "role": "Guardian of Lantern Undercroft",
+      "mode": "fictional",
+      "sprite": "custom:olive.white.plum.brown.headband.red.curls.darkframes.none",
+      "talk": [
+        {
+          "node": "temple.1.talk.guardian"
+        }
+      ]
+    },
+    {
+      "id": "temple.2.agent",
+      "name": "Wystan Greer",
+      "role": "Scrapers",
+      "mode": "fictional",
+      "sprite": "custom:deep.brown.madder.charcoal.scarf.green.long.lightframes.none",
+      "talk": [
+        {
+          "node": "temple.2.talk.agent"
+        }
+      ]
+    },
+    {
+      "id": "temple.2.guardian",
+      "name": "Marrow Reedfold",
+      "role": "Guardian of Hall of Three Records",
+      "mode": "fictional",
+      "sprite": "custom:light.black.violet.olive.both.white.covered.none.none",
+      "talk": [
+        {
+          "node": "temple.2.talk.guardian"
+        }
+      ]
+    },
+    {
+      "id": "temple.3.agent",
+      "name": "Osric Coldry",
+      "role": "Scrapers",
+      "mode": "fictional",
+      "sprite": "custom:warm.grey.slate.wine.headband.cyan.short.darkframes.none",
+      "talk": [
+        {
+          "node": "temple.3.talk.agent"
+        }
+      ]
+    },
+    {
+      "id": "temple.3.guardian",
+      "name": "Mossgrave",
+      "role": "Guardian of Frost Vault",
+      "mode": "fictional",
+      "sprite": "custom:tan.auburn.slate.sand.none.rose.bun.none.none",
+      "talk": [
+        {
+          "node": "temple.3.talk.guardian"
+        }
+      ]
+    },
+    {
+      "id": "temple.4.agent",
+      "name": "Astor Quaile",
+      "role": "Mirror Court",
+      "mode": "fictional",
+      "sprite": "custom:dark.brown.woad.wine.headband.cyan.short.none.cane",
+      "talk": [
+        {
+          "node": "temple.4.talk.agent"
+        }
+      ]
+    },
+    {
+      "id": "temple.4.guardian",
+      "name": "Halcy Brightwater",
+      "role": "Guardian of Tide Dome",
+      "mode": "fictional",
+      "sprite": "custom:warm.blonde.gold.indigo.scarf.gold.curls.darkframes.none",
+      "talk": [
+        {
+          "node": "temple.4.talk.guardian"
+        }
+      ]
+    },
+    {
+      "id": "temple.5.agent",
+      "name": "Gale Pryce",
+      "role": "True Measure",
+      "mode": "fictional",
+      "sprite": "custom:brown.grey.orange.brown.both.red.long.lightframes.none",
+      "talk": [
+        {
+          "node": "temple.5.talk.agent"
+        }
+      ]
+    },
+    {
+      "id": "temple.5.guardian",
+      "name": "Ninefold",
+      "role": "Guardian of Root Hall",
+      "mode": "fictional",
+      "sprite": "custom:pale.grey.weld.charcoal.none.green.covered.none.none",
+      "talk": [
+        {
+          "node": "temple.5.talk.guardian"
+        }
+      ]
+    },
+    {
+      "id": "temple.6.agent",
+      "name": "Harl Tagg",
+      "role": "True Measure",
+      "mode": "fictional",
+      "sprite": "custom:olive.black.green.olive.headband.white.bun.none.none",
+      "talk": [
+        {
+          "node": "temple.6.talk.agent"
+        }
+      ]
+    },
+    {
+      "id": "temple.6.guardian",
+      "name": "Grisel Anvilsong",
+      "role": "Guardian of Quench Forge",
+      "mode": "fictional",
+      "sprite": "custom:deep.white.red.sand.scarf.rose",
+      "talk": [
+        {
+          "node": "temple.6.talk.guardian"
+        }
+      ]
+    },
+    {
+      "id": "temple.7.agent",
+      "name": "Liesl Marrable",
+      "role": "Gilded Seal",
+      "mode": "fictional",
+      "sprite": "custom:light.brown.walnut.wine.both.cyan.curls.darkframes.none",
+      "talk": [
+        {
+          "node": "temple.7.talk.agent"
+        }
+      ]
+    },
+    {
+      "id": "temple.7.guardian",
+      "name": "Mirro and Orrim",
+      "role": "Guardian of Press of Echoes",
+      "mode": "fictional",
+      "sprite": "custom:tan.black.blue.indigo.none.gold.long.lightframes.none",
+      "talk": [
+        {
+          "node": "temple.7.talk.guardian"
+        }
+      ]
+    },
+    {
+      "id": "temple.8.agent",
+      "name": "Penrose Abernathy",
+      "role": "True Measure",
+      "mode": "fictional",
+      "sprite": "custom:dark.auburn.cream.brown.headband.red.covered.none.none",
+      "talk": [
+        {
+          "node": "temple.8.talk.agent"
+        }
+      ]
+    },
+    {
+      "id": "temple.8.guardian",
+      "name": "Old Saltmark",
+      "role": "Guardian of Blank Lighthouse",
+      "mode": "fictional",
+      "sprite": "custom:warm.brown.teal.charcoal.scarf.green.bun.none.none",
+      "talk": [
+        {
+          "node": "temple.8.talk.guardian"
+        }
+      ]
+    },
+    {
+      "id": "temple.9.agent",
+      "name": "Lucan Fairweather",
+      "role": "Mirror Court",
+      "mode": "fictional",
+      "sprite": "custom:brown.blonde.plum.olive.both.white",
+      "talk": [
+        {
+          "node": "temple.9.talk.agent"
+        }
+      ]
+    },
+    {
+      "id": "temple.9.guardian",
+      "name": "The Prompter",
+      "role": "Guardian of Dark Stage",
+      "mode": "fictional",
+      "sprite": "custom:pale.grey.madder.sand.none.rose.curls.darkframes.none",
+      "talk": [
+        {
+          "node": "temple.9.talk.guardian"
+        }
+      ]
+    },
+    {
+      "id": "temple.10.agent",
+      "name": "Cass Mott",
+      "role": "Gilded Seal",
+      "mode": "fictional",
+      "sprite": "custom:olive.grey.violet.wine.headband.cyan.long.lightframes.wheelchair",
+      "talk": [
+        {
+          "node": "temple.10.talk.agent"
+        }
+      ]
+    },
+    {
+      "id": "temple.10.guardian",
+      "name": "Dame Quarta Evenhand",
+      "role": "Guardian of Balance Hall",
+      "mode": "fictional",
+      "sprite": "custom:deep.black.slate.indigo.scarf.gold.covered.none.none",
+      "talk": [
+        {
+          "node": "temple.10.talk.guardian"
+        }
+      ]
+    },
+    {
+      "id": "temple.11.agent",
+      "name": "Dorran Sluys",
+      "role": "Single Bell",
+      "mode": "fictional",
+      "sprite": "custom:light.white.woad.brown.both.red.bun.none.none",
+      "talk": [
+        {
+          "node": "temple.11.talk.agent"
+        }
+      ]
+    },
+    {
+      "id": "temple.11.guardian",
+      "name": "Lull, Brisk and Swirl",
+      "role": "Guardian of Spring Steps",
+      "mode": "fictional",
+      "sprite": "custom:tan.brown.gold.charcoal.none.green",
+      "talk": [
+        {
+          "node": "temple.11.talk.guardian"
+        }
+      ]
+    },
+    {
+      "id": "temple.12.agent",
+      "name": "Nyle Ostry",
+      "role": "Single Bell",
+      "mode": "fictional",
+      "sprite": "custom:dark.black.orange.olive.headband.white.curls.darkframes.none",
+      "talk": [
+        {
+          "node": "temple.12.talk.agent"
+        }
+      ]
+    },
+    {
+      "id": "temple.12.guardian",
+      "name": "Ledgerlock",
+      "role": "Guardian of Clockwork Hall",
+      "mode": "fictional",
+      "sprite": "custom:warm.auburn.weld.sand.scarf.rose.long.lightframes.none",
+      "talk": [
+        {
+          "node": "temple.12.talk.guardian"
+        }
+      ]
+    },
+    {
+      "id": "temple.13.agent",
+      "name": "Tolly Fadden",
+      "role": "Scrapers",
+      "mode": "fictional",
+      "sprite": "custom:brown.brown.green.wine.both.cyan.covered.none.none",
+      "talk": [
+        {
+          "node": "temple.13.talk.agent"
+        }
+      ]
+    },
+    {
+      "id": "temple.13.guardian",
+      "name": "Hollin Softvoice",
+      "role": "Guardian of Listening Well",
+      "mode": "fictional",
+      "sprite": "custom:pale.blonde.red.indigo.none.gold.bun.none.none",
+      "talk": [
+        {
+          "node": "temple.13.talk.guardian"
+        }
+      ]
+    },
+    {
+      "id": "temple.14.agent",
+      "name": "Sabine Orrell",
+      "role": "Mirror Court",
+      "mode": "fictional",
+      "sprite": "custom:olive.grey.walnut.brown.headband.red",
+      "talk": [
+        {
+          "node": "temple.14.talk.agent"
+        }
+      ]
+    },
+    {
+      "id": "temple.14.guardian",
+      "name": "Tansy Littlemore",
+      "role": "Guardian of Model Garden",
+      "mode": "fictional",
+      "sprite": "custom:deep.grey.blue.charcoal.scarf.green.curls.darkframes.cane",
+      "talk": [
+        {
+          "node": "temple.14.talk.guardian"
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "temple.1.talk.agent",
+      "speaker": "temple.1.agent",
+      "text": "I bought my stall board one letter at a time. Today I could afford the Y in my name.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Invite Mabry Brassey to stand beside the trial.",
+          "next": "temple.1.reply.agent",
+          "effects": [
+            {
+              "setFlag": "temple.1.witness.agent",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.1.reply.agent",
+      "speaker": "temple.1.agent",
+      "text": "Gold scatters cold light across the wall. No writing appears underneath it. I will put my name beside that.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.1.talk.guardian",
+      "speaker": "temple.1.guardian",
+      "text": "I can give light a weight, almost. I cannot weigh what it cost the boy to ask for his coin back.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Hold the lamp for Mabry while she shows the buyer",
+          "next": "temple.1.reply.guardian",
+          "effects": [
+            {
+              "setFlag": "temple.1.witness.guardian",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.1.reply.guardian",
+      "speaker": "temple.1.guardian",
+      "text": "Mabry turns the bowl herself. For once the person who sold the story has to stand in its light.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.2.talk.agent",
+      "speaker": "temple.2.agent",
+      "text": "My father reads our case to visitors. I wanted him to get through a day without anyone laughing.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Invite Wystan Greer to stand beside the trial.",
+          "next": "temple.2.reply.agent",
+          "effects": [
+            {
+              "setFlag": "temple.2.witness.agent",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.2.reply.agent",
+      "speaker": "temple.2.agent",
+      "text": "Its last mark trails off the edge. The copyist never saw the end of the older roll. I will put my name beside that.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.2.talk.guardian",
+      "speaker": "temple.2.guardian",
+      "text": "I used to give the oldest reed the highest hook. Rain gets to the oldest reed first, too.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Leave the later slip on Marrow’s high hook",
+          "next": "temple.2.reply.guardian",
+          "effects": [
+            {
+              "setFlag": "temple.2.witness.guardian",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.2.reply.guardian",
+      "speaker": "temple.2.guardian",
+      "text": "Wystan’s father can find the correction without a younger hand turning the roll for him.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.3.talk.agent",
+      "speaker": "temple.3.agent",
+      "text": "My little sister practised our name every night. She thought it would fit if she wrote small enough.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Invite Osric Coldry to stand beside the trial.",
+          "next": "temple.3.reply.agent",
+          "effects": [
+            {
+              "setFlag": "temple.3.witness.agent",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.3.reply.agent",
+      "speaker": "temple.3.agent",
+      "text": "The blank has four square corners. A slip was lifted out after the page was numbered. I will put my name beside that.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.3.talk.guardian",
+      "speaker": "temple.3.guardian",
+      "text": "Nobody told me how long a seed can sleep. I am still waiting for one my sister planted.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Let the family lift the pane themselves",
+          "next": "temple.3.reply.guardian",
+          "effects": [
+            {
+              "setFlag": "temple.3.witness.guardian",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.3.reply.guardian",
+      "speaker": "temple.3.guardian",
+      "text": "Odile sets a tea towel across the envelope. Mossgrave warms one corner for her alone.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.4.talk.agent",
+      "speaker": "temple.4.agent",
+      "text": "They used to ask my teacher what I had said while I stood beside him.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Invite Astor Quaile to stand beside the trial.",
+          "next": "temple.4.reply.agent",
+          "effects": [
+            {
+              "setFlag": "temple.4.witness.agent",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.4.reply.agent",
+      "speaker": "temple.4.agent",
+      "text": "The near berth dries before the slower boat can turn. I will put my name beside that.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.4.talk.guardian",
+      "speaker": "temple.4.guardian",
+      "text": "I once told a child every height the water might reach. She was asking where to leave her shoes.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Set a peg where the child can leave her shoes",
+          "next": "temple.4.reply.guardian",
+          "effects": [
+            {
+              "setFlag": "temple.4.witness.guardian",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.4.reply.guardian",
+      "speaker": "temple.4.guardian",
+      "text": "Astor makes a safe shelf for today. Tomorrow’s tide keeps both its shadows.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.5.talk.agent",
+      "speaker": "temple.5.agent",
+      "text": "If my numbers look soft, they will cut down my listening post. My brother built it high enough for me.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Invite Gale Pryce to stand beside the trial.",
+          "next": "temple.5.reply.agent",
+          "effects": [
+            {
+              "setFlag": "temple.5.witness.agent",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.5.reply.agent",
+      "speaker": "temple.5.agent",
+      "text": "One bird casts two shadows across the forked lamp. The moths count themselves until somebody laughs. I will put my name beside that.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.5.talk.guardian",
+      "speaker": "temple.5.guardian",
+      "text": "We counted my sister twice. It felt like having her back. Please keep the two numbers where we can see them.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Give the dawn watcher a second slate",
+          "next": "temple.5.reply.guardian",
+          "effects": [
+            {
+              "setFlag": "temple.5.witness.guardian",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.5.reply.guardian",
+      "speaker": "temple.5.guardian",
+      "text": "Gale opens a line for a reply heard off the edge of the first count. The two watchers will meet at dusk.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.6.talk.agent",
+      "speaker": "temple.6.agent",
+      "text": "I could get her method into the guild book. I could not get her through its front door.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Invite Harl Tagg to stand beside the trial.",
+          "next": "temple.6.reply.agent",
+          "effects": [
+            {
+              "setFlag": "temple.6.witness.agent",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.6.reply.agent",
+      "speaker": "temple.6.agent",
+      "text": "Changing just the cooling bath leaves a bend in only one slip. I will put my name beside that.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.6.talk.guardian",
+      "speaker": "temple.6.guardian",
+      "text": "My elbow rings false when it is cold. I once failed a perfectly good hammer before breakfast.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Put Grisel’s cold and warm strikes on the docket",
+          "next": "temple.6.reply.guardian",
+          "effects": [
+            {
+              "setFlag": "temple.6.witness.guardian",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.6.reply.guardian",
+      "speaker": "temple.6.guardian",
+      "text": "The guild copies two conditions onto its label. Harl sets a stool at the bench for the traveller.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.7.talk.agent",
+      "speaker": "temple.7.agent",
+      "text": "If the press sleeps tonight, three families go without a shift tomorrow.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Invite Liesl Marrable to stand beside the trial.",
+          "next": "temple.7.reply.agent",
+          "effects": [
+            {
+              "setFlag": "temple.7.witness.agent",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.7.reply.agent",
+      "speaker": "temple.7.agent",
+      "text": "A shop nick repeats on both copies. The nick places the shop but cannot tell the twins apart. I will put my name beside that.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.7.talk.guardian",
+      "speaker": "temple.7.guardian",
+      "text": "I remember spilling the coffee. So does my brother. Would you turn the paper over for us?",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Keep the two corrections facing each other",
+          "next": "temple.7.reply.guardian",
+          "effects": [
+            {
+              "setFlag": "temple.7.witness.guardian",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.7.reply.guardian",
+      "speaker": "temple.7.guardian",
+      "text": "The twins give one another the clean sides to sign. Liesl hangs both at the public press.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.8.talk.agent",
+      "speaker": "temple.8.agent",
+      "text": "When our boat radio failed I could say only one name clearly. I wanted one word every crew could hear.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Invite Penrose Abernathy to stand beside the trial.",
+          "next": "temple.8.reply.agent",
+          "effects": [
+            {
+              "setFlag": "temple.8.witness.agent",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.8.reply.agent",
+      "speaker": "temple.8.agent",
+      "text": "It clears the shoal on a falling tide. The far bank shares its printed name with the landing. I will put my name beside that.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.8.talk.guardian",
+      "speaker": "temple.8.guardian",
+      "text": "The first printed chart I ever saw had my sister’s reef on it. Somebody must have listened.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Leave space for the surveyor and the singer to sign",
+          "next": "temple.8.reply.guardian",
+          "effects": [
+            {
+              "setFlag": "temple.8.witness.guardian",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.8.reply.guardian",
+      "speaker": "temple.8.guardian",
+      "text": "Penrose reads each name back to its speaker. The two people disagree about where the reef ends.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.9.talk.agent",
+      "speaker": "temple.9.agent",
+      "text": "An empty house sounds like somebody drawing a very long breath and never letting it go.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Invite Lucan Fairweather to stand beside the trial.",
+          "next": "temple.9.reply.agent",
+          "effects": [
+            {
+              "setFlag": "temple.9.witness.agent",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.9.reply.agent",
+      "speaker": "temple.9.agent",
+      "text": "A crate hides the actor’s hand from the balcony. The first row saw a wave. I will put my name beside that.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.9.talk.guardian",
+      "speaker": "temple.9.guardian",
+      "text": "I watched from the wings for thirty years before anyone offered me a seat. Which chair did they keep for you?",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Trade the prompt mask for the last spectator’s ticket",
+          "next": "temple.9.reply.guardian",
+          "effects": [
+            {
+              "setFlag": "temple.9.witness.guardian",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.9.reply.guardian",
+      "speaker": "temple.9.guardian",
+      "text": "Lucan sits in the seat he used to describe to other people. He crosses a word off the programme.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.10.talk.agent",
+      "speaker": "temple.10.agent",
+      "text": "My mother taught me to keep the coins for flour apart from the coins for someone worse off. This week both jars are empty.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Invite Cass Mott to stand beside the trial.",
+          "next": "temple.10.reply.agent",
+          "effects": [
+            {
+              "setFlag": "temple.10.witness.agent",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.10.reply.agent",
+      "speaker": "temple.10.agent",
+      "text": "Its double base weighs as much as a handful of grain. I will put my name beside that.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.10.talk.guardian",
+      "speaker": "temple.10.guardian",
+      "text": "My left hand and my right agree to a grain. They have never had to buy a loaf.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Hand the check basket to the customer",
+          "next": "temple.10.reply.guardian",
+          "effects": [
+            {
+              "setFlag": "temple.10.witness.guardian",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.10.reply.guardian",
+      "speaker": "temple.10.guardian",
+      "text": "Cass waits while a child steadies the brass hands. The queue watches the wicker tip the empty pan.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.11.talk.agent",
+      "speaker": "temple.11.agent",
+      "text": "My sister and I used to sing across the weir. After the last public meeting she stopped answering.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Invite Dorran Sluys to stand beside the trial.",
+          "next": "temple.11.reply.agent",
+          "effects": [
+            {
+              "setFlag": "temple.11.witness.agent",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.11.reply.agent",
+      "speaker": "temple.11.agent",
+      "text": "The lower cup is short. Water soaks into the dry bank on its way down. I will put my name beside that.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.11.talk.guardian",
+      "speaker": "temple.11.guardian",
+      "text": "Lull fell asleep at the meeting. Brisk called it agreement. Swirl kept his cup upside down till morning.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Let the smallest crew sound the next turn",
+          "next": "temple.11.reply.guardian",
+          "effects": [
+            {
+              "setFlag": "temple.11.witness.guardian",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.11.reply.guardian",
+      "speaker": "temple.11.guardian",
+      "text": "The upstream crew hears its own gate discussed from downstream. Dorran leaves both meeting dates posted.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.12.talk.agent",
+      "speaker": "temple.12.agent",
+      "text": "Our street is quiet for the first time in years. I forgot quiet could sound exactly like being left out.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Invite Nyle Ostry to stand beside the trial.",
+          "next": "temple.12.reply.agent",
+          "effects": [
+            {
+              "setFlag": "temple.12.witness.agent",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.12.reply.agent",
+      "speaker": "temple.12.agent",
+      "text": "The household goes west on the list and waits for a cart that never comes. I will put my name beside that.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.12.talk.guardian",
+      "speaker": "temple.12.guardian",
+      "text": "I can show every turn of my wheels. I still need a person to tell me whose house this is.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Walk the missed doorstep with its resident",
+          "next": "temple.12.reply.guardian",
+          "effects": [
+            {
+              "setFlag": "temple.12.witness.guardian",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.12.reply.guardian",
+      "speaker": "temple.12.guardian",
+      "text": "Nyle pencils in both entrances and initials the route change. The library arrives from the quieter street.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.13.talk.agent",
+      "speaker": "temple.13.agent",
+      "text": "I hid my own family’s page first. After that, every empty space looked like a little kindness.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Invite Tolly Fadden to stand beside the trial.",
+          "next": "temple.13.reply.agent",
+          "effects": [
+            {
+              "setFlag": "temple.13.witness.agent",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.13.reply.agent",
+      "speaker": "temple.13.agent",
+      "text": "A second cane answers the first. The walker had company for this part. I will put my name beside that.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.13.talk.guardian",
+      "speaker": "temple.13.guardian",
+      "text": "I know that pause. I cannot tell you whose it is until they say I may.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Let the family choose the public pause",
+          "next": "temple.13.reply.guardian",
+          "effects": [
+            {
+              "setFlag": "temple.13.witness.guardian",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.13.reply.guardian",
+      "speaker": "temple.13.guardian",
+      "text": "Tolly keeps the private voice with the family. Visitors can still find the point at which the public take ends.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.14.talk.agent",
+      "speaker": "temple.14.agent",
+      "text": "People remember my face after a lecture. I wish somebody remembered the question I brought with me.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Invite Sabine Orrell to stand beside the trial.",
+          "next": "temple.14.reply.agent",
+          "effects": [
+            {
+              "setFlag": "temple.14.witness.agent",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.14.reply.agent",
+      "speaker": "temple.14.agent",
+      "text": "The low field keeps a crop. The higher bed dries before the fair. I will put my name beside that.",
+      "historicalLabel": "fictional-world"
+    },
+    {
+      "id": "temple.14.talk.guardian",
+      "speaker": "temple.14.guardian",
+      "text": "I was going to put the blue ribbon on that row. My mother says the smallest tree is the only one that looks like home.",
+      "historicalLabel": "fictional-world",
+      "options": [
+        {
+          "text": "Leave the shade cloth in the gardener’s hands",
+          "next": "temple.14.reply.guardian",
+          "effects": [
+            {
+              "setFlag": "temple.14.witness.guardian",
+              "value": true
+            }
+          ]
+        },
+        {
+          "text": "Leave room for another witness."
+        }
+      ]
+    },
+    {
+      "id": "temple.14.reply.guardian",
+      "speaker": "temple.14.guardian",
+      "text": "Sabine helps the gardener lift the cloth. Visitors can run either season and read who planted each row.",
+      "historicalLabel": "fictional-world"
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-GUARDIAN",
+      "world": "WORLD-02",
+      "title": "Lantern Undercroft",
+      "knowledgeQuestion": "What can a pattern on the surface tell us about how something was made, and what can it not tell us?",
+      "available": {
+        "flag": "visited.map.temple.1",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "temple.1.kept",
+          "title": "Settle the case at Lantern Undercroft and take up Lamplight.",
+          "essential": false,
+          "done": {
+            "flag": "temple.gift.1",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "culture"
+            ],
+            "framework": [
+              "perspectives"
+            ],
+            "aoks": [
+              "HIS"
+            ],
+            "atl": [
+              "self-management"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH2-GUARDIAN",
+      "world": "WORLD-03",
+      "title": "Hall of Three Records",
+      "knowledgeQuestion": "How do we share a record without handing on more certainty than it can support?",
+      "available": {
+        "flag": "visited.map.temple.2",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "temple.2.kept",
+          "title": "Settle the case at Hall of Three Records and take up Trace Thread.",
+          "essential": false,
+          "done": {
+            "flag": "temple.gift.2",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "evidence"
+            ],
+            "atl": [
+              "thinking",
+              "research"
+            ],
+            "aoks": [
+              "HIS"
+            ],
+            "subjects": [
+              "history"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH3-GUARDIAN",
+      "world": "WORLD-04",
+      "title": "Frost Vault",
+      "knowledgeQuestion": "How can a public record name what it knows and still leave room for a missing link?",
+      "available": {
+        "flag": "visited.map.temple.3",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "temple.3.kept",
+          "title": "Settle the case at Frost Vault and take up Keeping Frost.",
+          "essential": false,
+          "done": {
+            "flag": "temple.gift.3",
+            "eq": true
+          },
+          "weave": {
+            "framework": [
+              "perspectives",
+              "ethics"
+            ],
+            "concepts": [
+              "power"
+            ],
+            "atl": [
+              "communication"
+            ],
+            "aoks": [
+              "HIS",
+              "LAN"
+            ],
+            "subjects": [
+              "history"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH4-GUARDIAN",
+      "world": "WORLD-05",
+      "title": "Tide Dome",
+      "knowledgeQuestion": "When should a change in evidence change what we tell other people?",
+      "available": {
+        "flag": "visited.map.temple.4",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "temple.4.kept",
+          "title": "Settle the case at Tide Dome and take up Weather Eye.",
+          "essential": false,
+          "done": {
+            "flag": "temple.gift.4",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "perspective"
+            ],
+            "atl": [
+              "self-management"
+            ],
+            "aoks": [
+              "NAT"
+            ],
+            "subjects": [
+              "geography"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH5-GUARDIAN",
+      "world": "WORLD-06",
+      "title": "Root Hall",
+      "knowledgeQuestion": "What changes when we watch the same place from another position or listen to someone who works there?",
+      "available": {
+        "flag": "visited.map.temple.5",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "temple.5.kept",
+          "title": "Settle the case at Root Hall and take up Many Eyes.",
+          "essential": false,
+          "done": {
+            "flag": "temple.gift.5",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "perspective"
+            ],
+            "atl": [
+              "self-management"
+            ],
+            "aoks": [
+              "NAT"
+            ],
+            "subjects": [
+              "biology"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH6-GUARDIAN",
+      "world": "WORLD-07",
+      "title": "Quench Forge",
+      "knowledgeQuestion": "How far can a material test support a story about where two things came from?",
+      "available": {
+        "flag": "visited.map.temple.6",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "temple.6.kept",
+          "title": "Settle the case at Quench Forge and take up True Temper.",
+          "essential": false,
+          "done": {
+            "flag": "temple.gift.6",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "perspective"
+            ],
+            "atl": [
+              "self-management"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "subjects": [
+              "economics"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH7-GUARDIAN",
+      "world": "WORLD-08",
+      "title": "Press of Echoes",
+      "knowledgeQuestion": "What does a claim become when it travels without its limits or its source?",
+      "available": {
+        "flag": "visited.map.temple.7",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "temple.7.kept",
+          "title": "Settle the case at Press of Echoes and take up Original Sight.",
+          "essential": false,
+          "done": {
+            "flag": "temple.gift.7",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "perspective"
+            ],
+            "atl": [
+              "self-management"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "subjects": [
+              "digital-society"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH8-GUARDIAN",
+      "world": "WORLD-09",
+      "title": "Blank Lighthouse",
+      "knowledgeQuestion": "What can a map’s empty spaces lead people to assume?",
+      "available": {
+        "flag": "visited.map.temple.8",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "temple.8.kept",
+          "title": "Settle the case at Blank Lighthouse and take up Blank Chart.",
+          "essential": false,
+          "done": {
+            "flag": "temple.gift.8",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "perspective"
+            ],
+            "atl": [
+              "self-management"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "subjects": [
+              "geography"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH9-GUARDIAN",
+      "world": "WORLD-10",
+      "title": "Dark Stage",
+      "knowledgeQuestion": "How does the timing of an action shape the reason an audience sees in it?",
+      "available": {
+        "flag": "visited.map.temple.9",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "temple.9.kept",
+          "title": "Settle the case at Dark Stage and take up Stage Whisper.",
+          "essential": false,
+          "done": {
+            "flag": "temple.gift.9",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "perspective"
+            ],
+            "atl": [
+              "self-management"
+            ],
+            "aoks": [
+              "ART"
+            ],
+            "subjects": [
+              "theatre"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH10-GUARDIAN",
+      "world": "WORLD-11",
+      "title": "Balance Hall",
+      "knowledgeQuestion": "What must we hold alike to make a comparison that someone else can use?",
+      "available": {
+        "flag": "visited.map.temple.10",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "temple.10.kept",
+          "title": "Settle the case at Balance Hall and take up Fair Weight.",
+          "essential": false,
+          "done": {
+            "flag": "temple.gift.10",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "perspective"
+            ],
+            "atl": [
+              "self-management"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "subjects": [
+              "economics"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH11-GUARDIAN",
+      "world": "WORLD-12",
+      "title": "Spring Steps",
+      "knowledgeQuestion": "How can a shared rule stay fair when a measurement and the conditions change?",
+      "available": {
+        "flag": "visited.map.temple.11",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "temple.11.kept",
+          "title": "Settle the case at Spring Steps and take up Common Current.",
+          "essential": false,
+          "done": {
+            "flag": "temple.gift.11",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "perspective"
+            ],
+            "atl": [
+              "self-management"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "subjects": [
+              "geography"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH12-GUARDIAN",
+      "world": "WORLD-13",
+      "title": "Clockwork Hall",
+      "knowledgeQuestion": "How do the people we count and the rules we use shape the service others can reach?",
+      "available": {
+        "flag": "visited.map.temple.12",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "temple.12.kept",
+          "title": "Settle the case at Clockwork Hall and take up Open Gears.",
+          "essential": false,
+          "done": {
+            "flag": "temple.gift.12",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "perspective"
+            ],
+            "atl": [
+              "self-management"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "subjects": [
+              "geography"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH13-GUARDIAN",
+      "world": "WORLD-14",
+      "title": "Listening Well",
+      "knowledgeQuestion": "How can a public sign carry a local account and help someone who arrives by another path?",
+      "available": {
+        "flag": "visited.map.temple.13",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "temple.13.kept",
+          "title": "Settle the case at Listening Well and take up Second Ear.",
+          "essential": false,
+          "done": {
+            "flag": "temple.gift.13",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "perspective"
+            ],
+            "atl": [
+              "self-management"
+            ],
+            "aoks": [
+              "HIS",
+              "LAN"
+            ],
+            "subjects": [
+              "history",
+              "lang-langlit"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH14-GUARDIAN",
+      "world": "WORLD-15",
+      "title": "Model Garden",
+      "knowledgeQuestion": "When does a change at one landing make the original route plan too narrow?",
+      "available": {
+        "flag": "visited.map.temple.14",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "temple.14.kept",
+          "title": "Settle the case at Model Garden and take up Small World.",
+          "essential": false,
+          "done": {
+            "flag": "temple.gift.14",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "perspective"
+            ],
+            "atl": [
+              "self-management"
+            ],
+            "aoks": [
+              "HUM"
+            ],
+            "subjects": [
+              "geography"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.temple.1.kept.1",
+      "objective": "temple.1.kept",
+      "depth": 1,
+      "text": "A boy holds a gold stamp under the dead lamp. Mabry quietly puts the refund money back inside her sleeve."
+    },
+    {
+      "id": "h.temple.1.kept.2",
+      "objective": "temple.1.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Turn the stamped face to the wick."
+    },
+    {
+      "id": "h.temple.1.kept.3",
+      "objective": "temple.1.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Slide the stallholder’s dated receipt into the lamp."
+    },
+    {
+      "id": "h.temple.1.kept.4",
+      "objective": "temple.1.kept",
+      "depth": 4,
+      "text": "Bring both readings to Brannoc the Lampwright at the centre. Hang the receipt where buyers can lift it or choose another settlement."
+    },
+    {
+      "id": "h.temple.2.kept.1",
+      "objective": "temple.2.kept",
+      "depth": 1,
+      "text": "Marrow catches a loose reed in the door. Someone has rubbed a date from the paper where the fold hid it."
+    },
+    {
+      "id": "h.temple.2.kept.2",
+      "objective": "temple.2.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Unroll the storekeeper’s copy."
+    },
+    {
+      "id": "h.temple.2.kept.3",
+      "objective": "temple.2.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Hold the later delivery slip against the gap."
+    },
+    {
+      "id": "h.temple.2.kept.4",
+      "objective": "temple.2.kept",
+      "depth": 4,
+      "text": "Bring both readings to Marrow Reedfold at the centre. Leave both rolls on separate pins or choose another settlement."
+    },
+    {
+      "id": "h.temple.3.kept.1",
+      "objective": "temple.3.kept",
+      "depth": 1,
+      "text": "A warm thumbprint blooms over a blank name in the ice. Mossgrave tries to close the lid on Odile’s hand."
+    },
+    {
+      "id": "h.temple.3.kept.2",
+      "objective": "temple.3.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Catch the impression on the cold pane."
+    },
+    {
+      "id": "h.temple.3.kept.3",
+      "objective": "temple.3.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Warm the flap with the family seal."
+    },
+    {
+      "id": "h.temple.3.kept.4",
+      "objective": "temple.3.kept",
+      "depth": 4,
+      "text": "Bring both readings to Mossgrave at the centre. Mark the missing slip on the public file or choose another settlement."
+    },
+    {
+      "id": "h.temple.4.kept.1",
+      "objective": "temple.4.kept",
+      "depth": 1,
+      "text": "Halcy’s tide globe spills a second blue shadow across the harbour plan. Astor has painted only one line on the bell card."
+    },
+    {
+      "id": "h.temple.4.kept.2",
+      "objective": "temple.4.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Advance the tide wheel a notch."
+    },
+    {
+      "id": "h.temple.4.kept.3",
+      "objective": "temple.4.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Draw the wind vane across the same hour."
+    },
+    {
+      "id": "h.temple.4.kept.4",
+      "objective": "temple.4.kept",
+      "depth": 4,
+      "text": "Bring both readings to Halcy Brightwater at the centre. Call the earliest safe tide by bell or choose another settlement."
+    },
+    {
+      "id": "h.temple.5.kept.1",
+      "objective": "temple.5.kept",
+      "depth": 1,
+      "text": "Ninefold lands on the tally board in the shape of a question mark. Gale’s neat last column has no space for a call without a sighting."
+    },
+    {
+      "id": "h.temple.5.kept.2",
+      "objective": "temple.5.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Count shadows at dusk."
+    },
+    {
+      "id": "h.temple.5.kept.3",
+      "objective": "temple.5.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Turn the screen to the dawn reeds."
+    },
+    {
+      "id": "h.temple.5.kept.4",
+      "objective": "temple.5.kept",
+      "depth": 4,
+      "text": "Bring both readings to Ninefold at the centre. Add a column for heard-only calls or choose another settlement."
+    },
+    {
+      "id": "h.temple.6.kept.1",
+      "objective": "temple.6.kept",
+      "depth": 1,
+      "text": "A hot sample rolls under Grisel’s boot. Harl’s form lists a guild recipe. The smith who taught it worked outside the gate."
+    },
+    {
+      "id": "h.temple.6.kept.2",
+      "objective": "temple.6.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Quench twin slips with the same weight."
+    },
+    {
+      "id": "h.temple.6.kept.3",
+      "objective": "temple.6.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Repeat the cool bath in a different clamp."
+    },
+    {
+      "id": "h.temple.6.kept.4",
+      "objective": "temple.6.kept",
+      "depth": 4,
+      "text": "Bring both readings to Grisel Anvilsong at the centre. Leave room for the traveller’s account in the register or choose another settlement."
+    },
+    {
+      "id": "h.temple.7.kept.1",
+      "objective": "temple.7.kept",
+      "depth": 1,
+      "text": "The twin printers catch opposite ends of a falling proof. Each recognises their own coffee ring. Liesl has already sold the next edition."
+    },
+    {
+      "id": "h.temple.7.kept.2",
+      "objective": "temple.7.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Match the torn edge to the first forme."
+    },
+    {
+      "id": "h.temple.7.kept.3",
+      "objective": "temple.7.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Overlay the forgotten author’s correction."
+    },
+    {
+      "id": "h.temple.7.kept.4",
+      "objective": "temple.7.kept",
+      "depth": 4,
+      "text": "Bring both readings to Mirro and Orrim at the centre. Print the correction on the next run or choose another settlement."
+    },
+    {
+      "id": "h.temple.8.kept.1",
+      "objective": "temple.8.kept",
+      "depth": 1,
+      "text": "Old Saltmark sings a name beyond the edge of Penrose’s survey. An apprentice has already tied a mooring rope to the wrong blue peg."
+    },
+    {
+      "id": "h.temple.8.kept.2",
+      "objective": "temple.8.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Steer by the printed sounding."
+    },
+    {
+      "id": "h.temple.8.kept.3",
+      "objective": "temple.8.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Steer by the pilot’s sung turn."
+    },
+    {
+      "id": "h.temple.8.kept.4",
+      "objective": "temple.8.kept",
+      "depth": 4,
+      "text": "Bring both readings to Old Saltmark at the centre. Mark both names with the depth and date or choose another settlement."
+    },
+    {
+      "id": "h.temple.9.kept.1",
+      "objective": "temple.9.kept",
+      "depth": 1,
+      "text": "Lucan hands out a programme headed REFUSAL. From the last seat the empty chair looks like a deliberate insult."
+    },
+    {
+      "id": "h.temple.9.kept.2",
+      "objective": "temple.9.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Move the mask from prompt corner to balcony."
+    },
+    {
+      "id": "h.temple.9.kept.3",
+      "objective": "temple.9.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Light the aisle behind the empty chair."
+    },
+    {
+      "id": "h.temple.9.kept.4",
+      "objective": "temple.9.kept",
+      "depth": 4,
+      "text": "Bring both readings to The Prompter at the centre. Let the ushers print both sightlines or choose another settlement."
+    },
+    {
+      "id": "h.temple.10.kept.1",
+      "objective": "temple.10.kept",
+      "depth": 1,
+      "text": "Quarta sets three baskets on the brass hands. Cass puts a seal over the place where the wicker weight should go."
+    },
+    {
+      "id": "h.temple.10.kept.2",
+      "objective": "temple.10.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Weigh the empty nesting basket."
+    },
+    {
+      "id": "h.temple.10.kept.3",
+      "objective": "temple.10.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Swap wicker while keeping the grain."
+    },
+    {
+      "id": "h.temple.10.kept.4",
+      "objective": "temple.10.kept",
+      "depth": 4,
+      "text": "Bring both readings to Dame Quarta Evenhand at the centre. Settle today’s sale by the tare or choose another settlement."
+    },
+    {
+      "id": "h.temple.11.kept.1",
+      "objective": "temple.11.kept",
+      "depth": 1,
+      "text": "Brisk carries three cups through the spring and brings back two full. Dorran’s upstream and downstream crews signed on different days."
+    },
+    {
+      "id": "h.temple.11.kept.2",
+      "objective": "temple.11.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Split one turn equally at the head gate."
+    },
+    {
+      "id": "h.temple.11.kept.3",
+      "objective": "temple.11.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Let the last crew call the gate change."
+    },
+    {
+      "id": "h.temple.11.kept.4",
+      "objective": "temple.11.kept",
+      "depth": 4,
+      "text": "Bring both readings to Lull, Brisk and Swirl at the centre. Bring both crews to the wet bank or choose another settlement."
+    },
+    {
+      "id": "h.temple.12.kept.1",
+      "objective": "temple.12.kept",
+      "depth": 1,
+      "text": "Ledgerlock lifts a brass foot over the district line and stalls. Nyle’s rule has no square for a doorstep shared by two streets."
+    },
+    {
+      "id": "h.temple.12.kept.2",
+      "objective": "temple.12.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Run the rule from the east entrance."
+    },
+    {
+      "id": "h.temple.12.kept.3",
+      "objective": "temple.12.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Move the starting peg to the west entrance."
+    },
+    {
+      "id": "h.temple.12.kept.4",
+      "objective": "temple.12.kept",
+      "depth": 4,
+      "text": "Bring both readings to Ledgerlock at the centre. Keep both route names and one shared stop or choose another settlement."
+    },
+    {
+      "id": "h.temple.13.kept.1",
+      "objective": "temple.13.kept",
+      "depth": 1,
+      "text": "Hollin lifts a hand at a footstep nobody else picked out. Tolly has clipped a family voice to the public copy of a walk."
+    },
+    {
+      "id": "h.temple.13.kept.2",
+      "objective": "temple.13.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Listen from the bridge stair."
+    },
+    {
+      "id": "h.temple.13.kept.3",
+      "objective": "temple.13.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Follow the listener’s access slip."
+    },
+    {
+      "id": "h.temple.13.kept.4",
+      "objective": "temple.13.kept",
+      "depth": 4,
+      "text": "Bring both readings to Hollin Softvoice at the centre. Keep the voice in the family room or choose another settlement."
+    },
+    {
+      "id": "h.temple.14.kept.1",
+      "objective": "temple.14.kept",
+      "depth": 1,
+      "text": "Tansy fits the last paper tree into the garden. Sabine brings a ribbon from a famous visitor. The model harvest fails on the shaded side."
+    },
+    {
+      "id": "h.temple.14.kept.2",
+      "objective": "temple.14.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Run the dry slope with the same rain."
+    },
+    {
+      "id": "h.temple.14.kept.3",
+      "objective": "temple.14.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Add the narrow shade cloth and rerun."
+    },
+    {
+      "id": "h.temple.14.kept.4",
+      "objective": "temple.14.kept",
+      "depth": 4,
+      "text": "Bring both readings to Tansy Littlemore at the centre. Invite the gardener to demonstrate the shade or choose another settlement."
+    }
+  ]
+}

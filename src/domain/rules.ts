@@ -2,6 +2,7 @@
  * Condition checks and effect application. Pure functions on plain data.
  * No `eval`, no content-supplied code (spec 22.2).
  */
+import { threadStanding } from './temples';
 import { corridorOpen } from './corridor';
 import type { CampaignState, Condition, Effect, FlagValue } from './types';
 
@@ -11,6 +12,7 @@ export function check(c: Condition | undefined, s: CampaignState, completed?: Re
   if ('all' in c) return c.all.every((x) => check(x, s, completed));
   if ('any' in c) return c.any.some((x) => check(x, s, completed));
   if ('not' in c) return !check(c.not, s, completed);
+  if ('faction' in c) return threadStanding(s)[c.faction] >= c.atLeast;
   if ('corridor' in c) return corridorOpen(s, c.corridor, completed);
   if ('eq' in c) return s.flags[c.flag] === c.eq;
   if ('in' in c) return c.in.includes(s.flags[c.flag] as FlagValue);

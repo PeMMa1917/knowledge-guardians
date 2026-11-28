@@ -2,7 +2,7 @@
 
 ## Routes through the corridor
 
-Returning the Nile dispatch opens six Nexus doors. Any three of their completed cases open the House of Performance and the Market of Measures. The two cases lead to Water Commons. Civic Machine, Archive of Voices and Island of Models then open together. All fourteen earlier worlds must finish before the Council opens.
+Returning the Nile dispatch opens six Nexus doors. Any three of their completed cases open the House of Performance and the Market of Measures. The two cases lead to Water Commons. Civic Machine, Archive of Voices and Island of Models then open together. The Council waits for all fourteen cases and all fourteen guardian gifts. Each gift has a second use in another world, and each temple has two instruments the player can try in either order.
 
 The ribbon beside the Nexus entrance and the journal’s Story page preserve visit order. Six keepsakes unlock twelve conversations in the other Act II worlds. Vesper’s new letters remember the route at delivery.
 

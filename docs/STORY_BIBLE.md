@@ -628,3 +628,11 @@ The covered jug has an owner for this shift. A second pot brings a different que
 A stitched pocket connects two folded streets. A guardian may rehearse an ending, keep their first judgement open, try the two slides in either order and send either public ending. The sheet lights a different working scene in a second town. Bringing a reply home gives the people affected by the first decision another turn. Nothing obliges the guardian to take up either street when opening the suitcase.
 
 The manager in the Tuesday street ordered the qualification folded under. At the listening-room reel an incomplete sentence can be restored, yet whoever cut it left no such instruction. The runner has a ticket of his own. Wren has a key to return. The stories allow honest error, an inviting illusion with a bow, and deliberate distortion with an accountable maker.
+
+## The Still Index
+
+At Coldwater Fork two villages heard different flood warnings. Aurelian Ashlock remembers the waiting better than the warnings and wants the next child to hear one clear answer. The note beside Ise’s signature at Water Commons gives the player a reason to question that remedy. Vesper discovers who funded the press and can still choose what to do with it.
+
+In every temple a keeper gives up a certainty of their own. Corra’s trial shim and Grisel’s cooling bath serve different stories in Metalworks. In the temple, the visitor can give the traveller room in the register, bring the guild outside to demonstrate the jaws, or stand witness with Grisel first. The disposition survives the return trip. True Temper then exposes a pressure error in the City of Copies.
+
+The Scrapers, Single Bell, True Measure, Mirror Court and Gilded Seal each have a local advocate whose work protects something. Five leaders can stand as witnesses after the player makes a specific offer. At the Council, the two receivers from Coldwater Fork give the player five ways to dispose of the Index. The selected settlement can be revisited. [Temple cases](../src/content/guardian-temples.json) · [Faction invitations](../src/domain/factionScenes.ts)
