@@ -3,7 +3,7 @@ import {PASSAGES,corridorOpen} from '../src/domain/corridor';
 import {apply,emptyOutputs} from '../src/domain/rules';
 import {sagaChapter} from '../src/domain/corridorSagas';
 import {canIssue,disposition,isIssued,issued,needsPrediction,newLeads,reading,returnKey,revision,rivalVoice,ruleFor,ticketKey,workAction,type Ticket,type WorkOrder,type WorkCommand} from '../src/domain/worldWork';
-import {shapeOf,workTool} from '../src/domain/workMethods';
+import {methodId,shapeOf,workTool} from '../src/domain/workMethods';
 import {workDiaryTopics,workTopicStamp} from '../src/domain/workTopics';
 import {commandDiaryEvent} from '../src/domain/adventureEvents';
 import {Driver} from './driver';
@@ -87,9 +87,9 @@ it('preserves a revised order in a second world and protects unfinished work, fo
 
 it('offers fresh mechanisms, restores free choices inside an act and opens local missions on direct arrival',()=>{
   const orders=rows(1,0).map(ticket=>({chapter:1,group:0,ticket}));const s=at(orders[0]);
-  expect(new Set(newLeads(s,orders).map(shapeOf)).size).toBe(3);
-  const fresh=newLeads(s,orders)[0];s.flags['work.recent']=shapeOf(fresh);s.flags[ticketKey(fresh)+'.edition']=0;
-  expect(newLeads(s,orders).every(o=>shapeOf(o)!==shapeOf(fresh))).toBe(true);
+  expect(new Set(newLeads(s,orders).map(methodId)).size).toBe(3);
+  const fresh=newLeads(s,orders)[0];s.flags['work.recent']=methodId(fresh);s.flags[ticketKey(fresh)+'.edition']=0;
+  expect(newLeads(s,orders).every(o=>methodId(o)!==methodId(fresh))).toBe(true);
   const d=new Driver();expect(corridorOpen(d.s,15)).toBe(false);d.s.flags['nile.returned']=true;
   for(const n of [6,3,8,4,7,5]){expect(corridorOpen(d.s,n)).toBe(true);d.s.mapId=PASSAGES[n-1].hall;d.run({type:'VisitPlace',name:PASSAGES[n-1].name});
     expect(sagaChapter(d.s)).toBe(n);expect(d.s.flags[PASSAGES[n-1].arrived]).toBe(true);}

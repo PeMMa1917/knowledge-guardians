@@ -1,6 +1,6 @@
 import { sagaChapter } from './corridorSagas';
 import { benches,benchFor } from './workInstruments';
-import { performWork, shapeOf } from './workMethods';
+import { performWork, methodId } from './workMethods';
 import rivals from '../content/workshop-rivals.json';
 import { TEMPLES } from './temples';
 import type { CampaignState, Effect } from './types';
@@ -45,8 +45,8 @@ export function newLeads(s:CampaignState, orders:WorkOrder[],limit=3):WorkOrder[
   const chosen:WorkOrder[]=[];
   while(chosen.length<limit && options.length) {
     function score(o:WorkOrder){
-      const shape=shapeOf(o);
-      return (recent.includes(shape)?2:0)+(chosen.some(p=>shapeOf(p)===shape)?8:0)+(chosen.some(p=>p.ticket[3]===o.ticket[3])?4:0);
+      const shape=methodId(o);
+      return (recent.includes(shape)?2:0)+(chosen.some(p=>methodId(p)===shape)?8:0)+(chosen.some(p=>p.ticket[3]===o.ticket[3])?4:0);
     }
     let best=0;
     for(let j=1;j<options.length;j++)if(score(options[j])<score(options[best]))best=j;
@@ -92,7 +92,7 @@ export function workAction(s:CampaignState,cmd:WorkCommand):{effects:Effect[];ti
   }
   if(cmd.action!=='issue' || !canIssue(s,o) || (needsPrediction(o)&&s.flags[readingKey(o,1)]===undefined) ||
     (i===2 && !s.flags[key+'.heard-agent']))throw Error('Complete the rehearsal and its evidence before issuing that order.');
-  const {label,cost}=disposition(o,i),shape=shapeOf(o);
+  const {label,cost}=disposition(o,i),shape=methodId(o);
   const recent=[shape,...String(s.flags['work.recent']??'').split(',').filter(value=>value&&value!==shape)].slice(0,3);
   return {effects:[flag(key+'.edition',i),flag(key+'.revision',revision(s,o)+(issued(s,o)===i?0:1)),flag('work.recent',recent.join(','))],title:label,text:cost};
 }

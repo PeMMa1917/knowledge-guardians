@@ -1,4 +1,5 @@
 // These are actions on the fictional rehearsal equipment. No target describes a property of the historical object.
+import { fieldActivity, type FieldTool } from './fieldActivities';
 import { benchFor, type Bench } from './workInstruments';
 import type { CampaignState, Effect } from './types';
 import type { WorkOrder } from './worldWork';
@@ -14,13 +15,13 @@ export function shapeOf(o:WorkOrder):Shape {
   const shapes=alternatives[group];
   return shapes[(t[1]+t[2])%shapes.length];
 }
-interface Tool {
-  title:string; prompt:string; controls:string[]; help:string;
-  move:(input:number)=>{progress:number;done:boolean;text:string};
+export function methodId(o:WorkOrder):string {
+  return o.group===0?'field-'+o.ticket[1]:shapeOf(o);
 }
-export function workTool(o:WorkOrder,s:CampaignState):Tool {
+export function workTool(o:WorkOrder,s:CampaignState):FieldTool {
   const t=o.ticket, seed=t[0]*11+o.chapter*7+t[2]*3, key='work.'+o.chapter+'.'+o.group+'.'+t[0];
   const progress=Number(s.flags[key+'.position']??0);
+  if(o.group===0)return fieldActivity(t[1],seed,progress);
   const put=(next:number,done:boolean,text:string)=>({progress:next,done,text});
   switch(shapeOf(o)){
     case 'trim': {
@@ -33,7 +34,7 @@ export function workTool(o:WorkOrder,s:CampaignState):Tool {
       const width=3,goal=8,shoal=[1,3,4,5,7][seed%5];
       const names=['North','East','South','West'], moves=[-3,1,3,-1];
       const coord=(n:number)=>String.fromCharCode(65+n%3)+(1+Math.floor(n/3));
-      return {title:'Pilot the returning ferry',prompt:'You are at '+coord(progress)+'. Reach C3. A submerged post blocks '+coord(shoal)+'. Columns A to C run west to east. Rows 1 to 3 run north to south.',
+      return {chart:{cell:progress,post:shoal},title:'Pilot the returning ferry',prompt:'You are at '+coord(progress)+'. Reach C3. A submerged post blocks '+coord(shoal)+'. Columns A to C run west to east. Rows 1 to 3 run north to south.',
         controls:names,help:'The ferry starts at A1. Go around the post. A bump leaves you on the same square.',
         move:i=>{const next=progress+moves[i];if(next<0||next>8||(i===1&&progress%width===2)||(i===3&&progress%width===0)||next===shoal)return put(progress,false,'The pole meets the bank or the post. The ferry stays at '+coord(progress)+'.');
           return put(next,next===goal,next===goal?'The last passenger catches the ring at C3.':'The bow reaches '+coord(next)+'.');}};
