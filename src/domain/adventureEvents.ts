@@ -1,3 +1,4 @@
+import { firstHallScene } from './hallStories';
 import { supperMove } from './companionSupper';
 import {rivalMove} from './rivalPost';
 import {workTopicStamp} from './workTopics';
@@ -107,9 +108,11 @@ export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, ne
     }
     case 'VisitPlace': {
       const mapId = next.mapId;
+      const scene = firstHallScene(previous);
+      const arrival = scene ? ' ' + scene : '';
       if (cmd.via) return diaryEvent(`route:${cmd.via.from}:${cmd.via.id}:${mapId}`, 'route', cmd.via.id, cmd.name,
-        cmd.via.from === mapId ? `I used ${cmd.via.label} at ${cmd.name}.` : `I arrived at ${cmd.name} by ${cmd.via.label}.`, {}, 'after-break');
-      if (!previous.flags[`visited.map.${mapId}`]) return diaryEvent(`place:${mapId}`, 'arrival', mapId, cmd.name, `I arrived at ${cmd.name}.`);
+        (cmd.via.from === mapId ? `I used ${cmd.via.label} at ${cmd.name}.` : `I arrived at ${cmd.name} by ${cmd.via.label}.`) + arrival, {}, 'after-break');
+      if (!previous.flags[`visited.map.${mapId}`]) return diaryEvent(`place:${mapId}`, 'arrival', mapId, cmd.name, `I arrived at ${cmd.name}.` + arrival);
       break;
     }
     case 'HearWorldMemory': {

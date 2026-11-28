@@ -1,3 +1,5 @@
+import hallVisits from '../src/content/hall-visitors.json';
+import { PASSAGES } from '../src/domain/corridor';
 import { describe, expect, it } from 'vitest';
 import { MAPS } from '../src/maps';
 import { check } from '../src/domain/rules';
@@ -197,4 +199,28 @@ describe('Chapter layouts after the Nile Archive', () => {
       }
     }
   });
+});
+
+it('leaves a walking route from the door to each visiting keeper, even if every visiting place is occupied', () => {
+  for (const chapter of new Set(hallVisits.flatMap(trip => [trip.home, trip.away]))) {
+    const room = MAPS[PASSAGES[chapter - 1].hall];
+    const floor = walkable(room);
+    const queue = [room.spawn];
+    const reached = new Set([room.spawn.x + ',' + room.spawn.y]);
+    const neighbours = (x: number, y: number) => [[x - 1, y], [x + 1, y], [x, y - 1], [x, y + 1]];
+    for (let i = 0; i < queue.length; i++) {
+      const place = queue[i];
+      for (const [x, y] of neighbours(place.x, place.y)) {
+        const key = x + ',' + y;
+        if (x < 0 || y < 0 || x >= room.width || y >= room.height || !floor(x, y) || reached.has(key)) continue;
+        reached.add(key);
+        queue.push({x, y});
+      }
+    }
+    for (const trip of hallVisits.filter(t => t.home === chapter || t.away === chapter)) {
+      const [x, y] = trip.home === chapter ? trip.origin : trip.visit;
+      expect(room.npcs.filter(n => n.x === x && n.y === y).map(n => n.id)).toEqual([trip.person]);
+      expect(neighbours(x, y).some(([a,b]) => reached.has(a + ',' + b)), room.name + ' ' + trip.person).toBe(true);
+    }
+  }
 });

@@ -2,6 +2,7 @@ import type { GameController } from '../app/controller';
 import { corridorOpen, PASSAGES } from '../domain/corridor';
 import { sagaAfterword,sagaChapter,sagaDecision,sagaFamily,sagaName,sagaRead,sagaRoute,sagaTrail,type SagaStage } from '../domain/corridorSagas';
 import { h } from './dom';
+import visits from '../content/hall-visitors.json';
 
 const sheets=import.meta.glob<{default:SagaStage[]}>('../content/corridor-sagas/[0-9]*.json');
 export async function chapterSagas(n:number) {
@@ -54,5 +55,24 @@ export function sagaPanel(c:GameController,stages:SagaStage[], travel:(chapter:n
       if (stop !== n && corridorOpen(s,stop)) body.append(h('button',{onclick:()=>travel(stop)},'Follow the case to '+PASSAGES[stop-1].name));
     }
   }
-  drawList();return h('div',{},body,status);
+  drawList();
+  const notes = h('details', {}, h('summary', {}, 'Keepers on the road'));
+  for (const trip of visits) {
+    const key = 'journeyman.' + trip.person;
+    const flags = c.state.flags;
+    const outbound = flags[key + '.travelling'] === true;
+    if (!outbound && (flags[key + '.reply'] === undefined || flags[key + '.reported'])) continue;
+    const chapter = outbound ? trip.away : trip.home;
+    const destination = PASSAGES[chapter - 1];
+    const name = c.pack.characters.find(person => person.id === trip.person)!.name;
+    const line = name + (outbound ? ' is waiting in ' : ' has come home to ') + destination.name + '.';
+    const entry = h('section', {}, h('h3', {}, trip.title), h('p', {}, line));
+    if (chapter !== n) {
+      if (corridorOpen(c.state, chapter))
+        entry.append(h('button', { type: 'button', onclick: () => travel(chapter) }, 'Visit ' + name + ' in ' + destination.name));
+      else entry.append(h('p', {}, 'Their visit can wait until this crossing opens.'));
+    }
+    notes.append(entry);
+  }
+  return h('div', {}, body, status, ...(notes.childElementCount > 1 ? [notes] : []));
 }

@@ -860,3 +860,10 @@ Warden Ise can show you what a promise cost or let you save a chair for a runner
 - **Worries** A name on a badge will conceal what the worker contributed.
 - **Speaks** Asks the quieter worker to begin the story before the supervisor.
 - **Why** A real worker can show the act that a badge commemorates.
+
+### Orla at the dispatch desk (`dispatch-stats-orla`)
+
+- **Believes** A journey time only means something if the clerk can tell you what went in the sack.
+- **Worries** Her sister's letter will set a speed record that somebody else has to meet carrying a full load.
+- **Speaks** Shares a good piece of gossip, then makes you promise to weigh it. She has a second use in mind for most things, including her gold sticker.
+- **Why** Orla knows how easily the angle of a loaded cart can turn a short route into a long afternoon.

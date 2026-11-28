@@ -658,3 +658,9 @@ A case belongs to people in several towns. The family expecting a loan back has 
 ## The supper table in the Nexus
 
 Kip sides with the Wardens over a chipped cup. Ise made a repair that held for ten years. Hesper wants to carry the same cup to a busy repair stool. Elsewhere Sefa and Rook cannot agree on whether singing a verse at dinner gives a friend permission to put it in the listening archive. Each pair of the four companions can meet after the Guardian has spoken to both. Their personal promises and the standing of their allies change the conversation. The player can pack a parcel for a later hall. Choosing differently at the next supper allows the recipient to try the other suggestion. [The six conversations](../src/content/supper-talk.json)
+
+## Keepers on the road
+
+Orla's sister sends a letter by freight and beats the letter train. The clerk wants to celebrate. Orla wants to know whether a porter with a loaded sack can make the same turn. A player can follow her from the Nile Archive to Civic Machine, decide what to put on the dispatch hooks and go home to hear what became of the gold sticker.
+
+Ama takes a recipe to the Archive of Voices. Aro brings a hanging down to a seated reader at the Nile Archive. Tavia tests a route with a cart that has to turn. Marret follows the names missing from a shift. Tarin takes a heavy load through an arch that somebody described as clear. Junel listens for the seam that swallowed a word, and Ressa needs to find out whether two promised hours off can actually happen at the same time. Each journey can wait while the Guardian follows another story. The travelling case shelf remembers where the keeper went and carries the player there when the crossing opens. [Eight character journeys](../src/content/hall-visitors.json)
