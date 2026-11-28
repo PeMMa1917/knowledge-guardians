@@ -35,6 +35,15 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
   if(key.startsWith('trail-thread:')) return key.endsWith(':voice')
     ? {voice:'Whose account do I want to hear on my return, and what might they have missed?'}
     : {object:'Which detail would I look for next time, and what might it help me reconsider?'};
+  if(key.startsWith('ferry-wire:')){
+    const act=key.split(':')[1].split('.')[0];
+    if(act==='align')return {ear:'What lets me identify a reused recording?',limit:'What can those matching sounds tell me about the word itself?'};
+    if(act==='pin'||act==='balance')return {mix:'Whose share of the count changed between nights?',frame:'Who might need the pooled count and who needs the two stops separately?'};
+    if(act==='issue'||act==='quote')return {public:'Which part of a hearing did the listener allow me to repeat?',silence:'Whose place did my edition leave open?'};
+    if(act==='invite'||act==='file')return {clock:'Whose shift was missing at the hour I chose?',next:'What time would let somebody else answer?'};
+    if(act==='hear'||act==='receive')return {cost:'Who got a better hearing from this edition?',return:'What could I change for the next ferry?'};
+    return {voice:'Who supplied the last word on this line?',method:'What would change if I kept the listener and changed only my question?'};
+  }
   if(key.startsWith('turning-stacks:')){
     if(key.startsWith('turning-stacks:headline.'))return {notice:'What did the new first line make easiest to notice?',fixed:'Which count and denominator stayed the same?'};
     if(key.startsWith('turning-stacks:signature.'))return {work:'What work did those signatures accomplish on this page?',scope:'Whose choices are still private?'};

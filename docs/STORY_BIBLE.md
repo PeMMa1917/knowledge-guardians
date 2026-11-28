@@ -531,3 +531,9 @@ The last owner took the picture above the stove. Cen bought the cart but kept th
 Rain makes the cart leave Lantern Square. The chapter eleven weir brings buyers who stand across the water. At the chapter twelve North Steps the buyer can see a sign before there is time to speak. A starting number offers certainty to one and a reason to turn back to another. A second visit can change the counter. The notes two mill workers send with their bids complicate what Kahneman’s groups and Tversky’s spoons made visible. The dent in the cup pays off when a stranger is allowed to explain why she stopped.
 
 **Conflict map** · Weather moves a seller, her old sign moves prospective customers, and a faulty street dial gives Kit an offset she can actually correct. Cen can face the written offers or the corrected dial towards the street. Her disagreement with Kit about what a passing stranger can know need never be settled.
+
+### The night the kettle rang twice
+
+A singer on leave has taken the dented kettle away with her. Her wife Oda keeps hearing it fall on the ferry wire. The Guardian can follow a paper moth to a quiet coil, go straight to the open rail or visit the painter under the roof. Oda has used an old take to fill a hole in the ferry show. Her friend Tavi has tried to settle the missing word by counting whoever could answer his call. Helping one means finding out what happened to the people the other never heard.
+
+When the programme crosses the water, the student chooses what the dock hears. Joss gets his shift home under any of the three editions. Oda gets to decide whether to wait through a rest, share a tune or leave the second horn to the other bank. The uncredited listener can stay out of the recording and still change the time of the next hearing. [Studio and ferry](../src/content/ferryRadio.ts) · [Twelve editions](../tests/ferry-radio.test.ts)

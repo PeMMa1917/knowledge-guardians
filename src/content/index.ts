@@ -1,3 +1,4 @@
+import {installFerryRadio} from './ferryRadio';
 import {installTurningStacks} from './turningStacks';
 import {installLensLoan} from './lensLoan';
 import {installFirstCup} from './firstCup';
@@ -284,6 +285,7 @@ export function buildPack(): ContentPack {
   installStreetAlmanac(content);
   installFirstCup(content);
   installTurningStacks(content);
+  installFerryRadio(content);
   installLensLoan(content);
   addSpecimenPeople(content);
   installEarlierViews(content);

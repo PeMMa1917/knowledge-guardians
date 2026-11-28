@@ -1,3 +1,4 @@
+import {ferryRadioPanel} from './ferryRadio';
 import {turningStacksPanel,signatureLamp} from './turningStacks';
 import {lensLoanPanel} from './lensLoan';
 import {firstCupPanel} from './firstCup';
@@ -77,6 +78,8 @@ interface Panel<T> {
 export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
   ['stacks-signature',{title:'The names under the count',open:signatureLamp}],
   ['turning-stacks',{title:'The house with six names',open:turningStacksPanel}],
+  ['ferry-wire-studio',{title:'The last word on the water',open:(c,sound)=>ferryRadioPanel(c,sound,false)}],
+  ['ferry-wire-island',{title:'Four beats of quiet',open:(c,sound)=>ferryRadioPanel(c,sound,true)}],
   ['optics-loft',{title:'The drawer with two places',open:(c,sound)=>lensLoanPanel(c,sound,false)}],
   ['optics-curtain',{title:'Where the understudy waits',open:(c,sound)=>lensLoanPanel(c,sound,true)}],
   ['first-cup-shop',{title:'Who gets the first cup?',open:(c,sound)=>firstCupPanel(c,sound,false)}],

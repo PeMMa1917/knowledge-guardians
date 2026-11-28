@@ -10,12 +10,12 @@ describe('reading while the painted room keeps time', () => {
     wake() { this.running = true; },
     tick: vi.fn(),
   });
-  it('keeps world ticks available behind the diary, preserves reduced motion and restores full rate on exit', () => {
+  it.each(['journal wide', 'reading-bench'])('keeps world ticks available behind %s, preserves reduced motion and restores full rate on exit', (panel) => {
     vi.useFakeTimers({toFake:['setTimeout','clearTimeout','queueMicrotask']});
     const game = clock();
     let hidden = false;
     const pace = paceReadingRoom(game, () => true, () => hidden, () => true);
-    paceForPanel('journal wide'); vi.runAllTicks();
+    paceForPanel(panel); vi.runAllTicks();
     vi.advanceTimersByTime(1000);
     expect(game.tick).toHaveBeenCalledTimes(4);
     hidden = true;

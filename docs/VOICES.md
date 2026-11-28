@@ -694,3 +694,11 @@ William Bland can lend the Guardian a copy edge or help trace the surviving ston
 - **Worries** A curator will put her father’s name beside somebody else’s stitch. Her company has also grown used to leaving both ends of its barrow to her.
 - **Speaks** Measures what she can lift. Shows her knot and star when talking about a promise.
 - **Why** She found a second serial number on a microscope at the depot. This time the thing she is carrying is a curtain her father helped make. [The porter in both rooms](../src/content/lensLoan.ts)
+
+### Oda Kett and Tavi Pell
+
+Oda can find a splice with her thumb in the dark. She can fill a missed entrance without letting the passengers hear her hurry. Her wife asked for a summer away from the microphone. Oda borrowed an old performance for one Friday and then could not bring herself to drop it. At the second hearing, give her one concrete action to do with her hands before she speaks. The outcome determines whether she offers the last bar to the crowd, turns down her own spool or waits for an echo from the far bank.
+
+Tavi Pell counts the slips after he coils the leads. Siv taught him rope work. He can repair a receiver and still mistake an empty winding for an empty pier. His teaspoon makes a warm seat for a paper moth. He offers to go back in person after he hears how the timing of his call kept people from answering. His correction to the painter is to give her both takes.
+
+At the island Joss speaks as a runner who has promised to get people home. His covered and exposed passengers have different reasons to want the horn moved. The visit from W. E. B. Du Bois brings the collaborative visual work at Atlanta University into the account. His station compares which hands made a picture, who supplied the observations and whom the picture can address. [Studio and island conversations](../src/content/ferryRadio.ts)

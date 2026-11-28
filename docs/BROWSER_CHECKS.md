@@ -379,3 +379,7 @@ Chromium 156, Firefox 146 and WebKit 26 each visited all 154 rooms in the build 
 ## The river in the curtain
 
 Chromium 156, Firefox 146 and WebKit 26 each visited the loan loft and rehearsal. A Guardian borrowed a pair of fittings, saved both loan presets, returned to Cajal and Huygens, projected the tracing and heard two people at the stage. Each engine reopened the saved edition and exported the dated Cambridge microscope and case records in the diary. The test used a prepared chapter entrance and keyboard actions at the physical stands. The integrated build immediately preceding the optics story passed all 2,790 tests in 341 files. [Lens loan journey](../tools/lens-loan-journey.mjs) · [Choice replay scope](audit/CHOICE_REVIEW.md)
+
+## The ferry singer and the changed crowd
+
+A fictional Guardian tuned a quiet coil, compared the first and prompted takes of the roof painter, checked the four audience frames, invited each missing shift and kept a private voice off the broadcast. Chromium sent a chorus, Firefox sent four beats of quiet and WebKit sent the second horn. All three reopened their edition after Continue, visited the resulting prop and downloaded the diary containing the three historical readings they had opened. The test stages chapter access and uses the real controls at the two stations. [Ferry journey](../tools/ferry-radio-journey.mjs)

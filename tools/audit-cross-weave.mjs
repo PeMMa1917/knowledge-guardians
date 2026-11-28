@@ -1,3 +1,4 @@
+import {ferryRadioProofs} from './ferry-radio-evidence.mjs';
 import {lensProofs} from './lens-loan-evidence.mjs';
 /** Audit documented intersections of one authored action, one learning dimension and one RPG element. */
 import { originActions } from './origin-action-evidence.mjs';
@@ -151,6 +152,7 @@ const proofRows = [
   ...elbowProofs,
   ...stacksProofs,
   ...lensProofs,
+  ...ferryRadioProofs,
   ...cupProofs,
   ...almanacProofs,
   {

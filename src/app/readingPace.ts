@@ -1,6 +1,6 @@
 /** DOM writing, speech, input and sound keep their own clocks while the painted room is in the background. */
 type WorldClock = { running: boolean; sleep(): void; wake(seamless: boolean): void; tick(): void };
-const readingPanels = new Set(['journal', 'class-save', 'recap', 'dialogue', 'two-replies', 'menu', 'settings', 'bag', 'map-panel', 'exhibit', 'sign']);
+const readingPanels = new Set(['reading-bench', 'journal', 'class-save', 'recap', 'dialogue', 'two-replies', 'menu', 'settings', 'bag', 'map-panel', 'exhibit', 'sign']);
 let panel = '';
 let changed: (() => void) | undefined;
 

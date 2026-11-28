@@ -572,7 +572,7 @@ export class UI implements UIApi {
     }
     const wrap = h('div', { class: 'modal-wrap', onclick: (e: MouseEvent) => { if (e.target === wrap && !cls.includes('dialogue')) this.closeModal(); } }, box);
     this.modal = wrap;
-    paceForPanel(cls);
+    paceForPanel(box.querySelector('[data-reading-bench]') ? 'reading-bench' : cls);
     if (this.timedRun) wrap.append(this.timedRun.clock);
     this.root.append(wrap);
     this.isolateModalBackground();

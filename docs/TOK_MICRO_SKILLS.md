@@ -1,5 +1,7 @@
 # Micro-skills in the campaign
 
+The ferry stories link the sampling hour, a leading word, permission to quote, a repeated sound and a musical rest to decisions at two different stops. The current ledger records 1,375 uses across 602 of 1,200 supplied skills. Of these, 376 have an evidenced use in more than one world. [Ferry practice records](../src/content/skillPractice/ferry-radio.json)
+
 Della lets the Guardian weigh both trays before and after leaving one loaf at a door. That action develops skill 1087 in a situation where counting alone could leave a family out. Hana’s dated correction has to allow for a failure somebody might see tomorrow (90). At rehearsal a repeatable moth trial and an understudy’s open cue give the same Guardian two reasons to try again (1106). [Actions and their evidence](../src/content/microSkillsPerches.json)
 
 The travelling orchard gives a literal translation and a three-beat translation to the same actor. She can catch a different fruit or change the timing. The drummer hears a shared rest both as a fixed count and as a wait for an answer. Fen’s stylus also lets the Guardian adjust the hand pressure that hides or reveals the hollow between two carved bumps. These actions supply evidence for skills 608, 741, 855 and 1110. [Orchard encounters](../src/content/microSkillsOrchard.json)
