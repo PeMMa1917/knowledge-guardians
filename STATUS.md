@@ -1,5 +1,11 @@
 # Status and next steps
 
+## 28 November • The moth with two tails
+
+Tritta brings fifteen unsigned notices to the Night Registers. One promises a pilot that someone will be at the lower stair. Another gives a child a permanent place on a public print. A Guardian can move a proof sheet, trace witnesses or open the same shutter at a different bell, then follow the notice to the people living with the decision. Agate remembers the instrument used in other towns. A signed slip kept in the moth’s pocket preserves the observations and the recipient of that edition. [Play through the registers](docs/BROWSER_CHECKS.md#tritta-and-the-moth-with-two-tails)
+
+The registered campaign now has 871 missions, 4,060 objectives and 1,281 field-game stands in 161 rooms. The three browsers each played a different instrument and itinerary. The rules checks covered each of the nine tool and publication combinations in every register. The teacher reporting build also completed with a local module loader. With the same content in both builds the teacher script, stylesheet and three HTML entry pages had identical bytes. [Action and learning evidence](docs/CROSS_WEAVE_AUDIT.md#what-the-moth-can-carry)
+
 ## 28 November • Finding a person again
 
 The Conversations tab now keeps a page for each person the Guardian has met. A page shows what went up at each workshop, how its recipient answered, any unfinished tracing and the words the Guardian actually heard. Chromium recovered Vera Rubin’s pages, Firefox recovered Wangari Maathai’s and WebKit recovered Zaha Hadid’s. Each journey also met Ise and opened her page in a live conversation. The inventory on this revision contains 856 missions, 3,925 objectives and 161 rooms. [Calling book](tools/calling-book-journey.mjs)

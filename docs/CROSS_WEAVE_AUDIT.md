@@ -145,3 +145,9 @@ The walking orchard brings the verified catalogue to 608 of 1,200 supplied micro
 ## A house that changes length
 
 The inn adds six played activities and two explicit disciplinary comparisons. A graph can establish which rooms the cart can reach. Jane Jacobs and the child waiting with a spoon approach that same door by following what people actually do. A straight sightline through the harbour differs from the scene it frames for a moving viewer. The concertina seam changes the measured walk while all nine rooms retain their neighbours. The current ledger records 609 of 1,200 supplied micro-skills, 1,406 uses and 382 skills with uses in more than one world. Fifty-eight actions compare areas through their distinct methods. Across 10,729,248 intersections, two have ten independent actions and 2,298 have between one and nine. [Test-linked actions](../tools/open-house-evidence.mjs)
+
+## What the moth can carry
+
+Moving the sheet can answer a question about the surface that held a mark. Ōi and Bayette still have a separate decision about putting a child’s footprint into a public image. Following the cords at the grain registry can reveal that two desks share a witness. The number of slips at the desks still matters to the runners. The travelling slip preserves the two observations actually issued and who received them. [Seven reviewed actions](../tools/second-ink-evidence.mjs)
+
+The register now has 1,424 authored links for 610 of the 1,200 supplied micro-skills. Of those skills, 384 have links in multiple worlds. The cross-area review has 59 actions. Of the 10,729,248 tracked world, learning and design combinations, two have ten distinct action proofs and 2,393 have between one and nine. These figures describe available play. Learner outcomes require observation with students. [Skill register](../tools/audit-micro-skills.mjs) · [Coverage rules](../tools/audit-cross-weave.mjs)

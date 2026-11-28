@@ -4,8 +4,8 @@ This tracker maps each numbered item in the supplied *Ultimate Universal RPG Com
 
 | Status | Meaning | Numbered items |
 | --- | --- | ---: |
-| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 127 |
-| ◐ Partial | A reachable analogue covers part of the idea, or operates in a narrower setting. The gap is stated. | 109 |
+| ✓ Playable | At least one playable example demonstrates the core adapted idea. | 128 |
+| ◐ Partial | A reachable analogue covers part of the idea, or operates in a narrower setting. The gap is stated. | 108 |
 | ○ Planned | The example identifies a possible design or integration point. The feature is not playable. | 25 |
 | ✗ Excluded | The classroom, privacy or nonviolent game rules exclude the original system. | 27 |
 
