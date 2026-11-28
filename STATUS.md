@@ -16,6 +16,8 @@ The rivals’ post links fourteen opponents in seven two-world mysteries. Either
 
 All 228 fictional speakers have personal scenes after their shifts. Each remembers whether the Guardian covered a need or worked alongside them. The first promise can change trust once. It can be revisited in a later conversation. [Profiles and dialogue](docs/VOICES.md#when-the-shift-ends)
 
+The route test counts 725,760 possible orders for first completing the fourteen pre-Council cases. Every work order has a distinct visible title within its world. All fifteen halls stage their own departure, late handoff, reveal, spoken costs and overheard joke. [Route and title checks](docs/audit/WORLD_WORK.md#following-a-case-between-halls)
+
 ## Chapter downloads and the historical cast
 
 The fresh menu opens with about 4.7 kB of compressed JavaScript. The playable Nexus loads its own map, dialogue and guide, and later rooms request their story sections and artwork as needed. A saved game can reopen directly in its chapter. The published map, dialogue and hint checks cover all 164 rooms across the Nexus and fifteen chapters. [Download measurements and browser journeys](docs/BROWSER_CHECKS.md#chapter-downloads)

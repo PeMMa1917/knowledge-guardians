@@ -1,3 +1,4 @@
+import { hallCost, hallShift } from './hallStories';
 import { sagaChapter } from './corridorSagas';
 import { benches,benchFor } from './workInstruments';
 import { performWork, methodId } from './workMethods';
@@ -91,7 +92,7 @@ export function workAction(s:CampaignState,cmd:WorkCommand):{effects:Effect[];ti
     const seen=[0,1,2].filter(j=>s.flags[readingKey(o,j)]!==undefined);
     const late=seen.length>=2 && !seen.includes(i), value=reading(o,i);
     return {effects:[flag(readingKey(o,i),value),...(late?[flag(key+'.late',true)]:[])],title:rule.controls[i],
-      text:value+' '+rule.unit+'.'+(late?' The first runner has left. The evening crew will carry the result.':'')};
+      text:value+' '+rule.unit+'.'+(late?' '+hallShift(o.chapter).late:'')};
   }
   if(cmd.action!=='issue' || !canIssue(s,o) || (needsPrediction(o)&&s.flags[readingKey(o,1)]===undefined) ||
     (i===2 && !s.flags[key+'.heard-agent']))throw Error('Complete the rehearsal and its evidence before issuing that order.');
@@ -100,5 +101,5 @@ export function workAction(s:CampaignState,cmd:WorkCommand):{effects:Effect[];ti
   const changed=issued(s,o)!==i || Number(s.flags[key+'.posted-route']??-1)!==route;
   const answer=chosenRoute(o,s)?.returnLine;
   const recent=[shape,...String(s.flags['work.recent']??'').split(',').filter(value=>value&&value!==shape)].slice(0,3);
-  return {effects:[flag(key+'.edition',i),flag(key+'.posted-route',route),flag(key+'.revision',revision(s,o)+(changed?1:0)),flag('work.recent',recent.join(','))],title:label,text:answer?cost+' '+answer:cost};
+  return {effects:[flag(key+'.edition',i),flag(key+'.posted-route',route),flag(key+'.revision',revision(s,o)+(changed?1:0)),flag('work.recent',recent.join(','))],title:label,text:[cost,hallCost(o.chapter,i),answer].filter(Boolean).join(' ')};
 }

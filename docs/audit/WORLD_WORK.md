@@ -28,3 +28,10 @@ An issued order with a destination enters the receiving world's “Incoming work
 ## Evidence
 
 The automated walk applies the public game controls to all 30,240 local orders, finds a working path through each instrument and delivers every addressed order. It checks every local world for eight rehearsal shapes and a maximum share below 40% for any one shape in this collection. Separate checks cover forecast order, missing gifts, rival access, revisions, saved state, journal topics and repeat avoidance. These checks cover feasibility and measured variety. Student playtesting is still needed to assess pacing and emotional engagement. [Forty field instruments](../../src/domain/fieldActivities.ts) · [Work orders](../../tests/world-work.test.ts) · [Travelling cases](../../tests/corridor-sagas.test.ts)
+
+
+## Following a case between halls
+
+There are 725,760 legal orders in which to complete the fourteen cases before Council. This count includes finishing unused Act II doors after later acts have opened. It counts first completions, so taking a direct crossing or revisiting a favourite bench does not inflate it. The route test follows every reachable set of completed cases and checks which doors stay open. [Completion order test](../../tests/corridor-completion-orders.test.ts)
+
+Work orders with the same short title now name a keeper, place or physical clue to tell them apart. Search results, in-person invitations and incoming deliveries use the same shelf titles. Each of the fifteen halls has a distinct departure, a cost voiced by the people who bear it and an aside worth overhearing. A third distinct measurement misses the first departure. Repeating one measurement leaves the runner in place. [Hall scripts](../../src/content/hall-beats.json) · [Title and story checks](../../tests/hall-stories.test.ts)
