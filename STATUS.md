@@ -1,5 +1,11 @@
 # Status and next steps
 
+## Chapter downloads and the historical cast
+
+The fresh menu opens with about 4.7 kB of compressed JavaScript. The playable Nexus loads its own map, dialogue and guide, and later rooms request their story sections and artwork as needed. A saved game can reopen directly in its chapter. The published map, dialogue and hint checks cover all 164 rooms across the Nexus and fifteen chapters. [Download measurements and browser journeys](docs/BROWSER_CHECKS.md#chapter-downloads)
+
+The 250 recurring workshop guests have dated biographical records. Sixty replaced guests have new identities, encounters and tools. Seven shared workshop mysteries now draw on the replacements’ own work. The Garjját and wayfinding cases also gained separate historical biographies. Returning players retain their written diary and earned receipts. Replacement quests begin as new meetings. [Historical sources](docs/SOURCES.md#people-who-speak-through-the-folded-wing-post)
+
 A reviewer can bring a chapter’s edited spreadsheet back into the offline checklist. The import identifies the chapter, previews differences and preserves earlier evidence when a sheet leaves the note blank. [Workbook instructions](docs/audit/COMBINATION_ATLAS.md#work-in-a-spreadsheet)
 
 The curriculum review now follows 24 keepsakes from use at one coat rail to the reply each opens in another world. Each step has a separate cognitive cell and a reproducible test. The register also identifies a tested example of every key concept and each of the six reasoning modes. [Evidence by family](docs/audit/COMBINATION_REVIEW_STATUS.md#which-elements-have-a-documented-action)

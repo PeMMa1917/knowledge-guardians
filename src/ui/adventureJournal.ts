@@ -7,7 +7,7 @@ import { CONCEPTS, type DiaryNoteKind } from '../domain/types';
 import { AOK_NAMES, CONCEPT_NAMES } from '../domain/curriculum';
 import { FRAMEWORK, type FrameworkPart } from '../domain/learningLevels';
 import { DIARY_AREAS, DIARY_THEMES, hasDiaryTopics, selectDiary, type DiarySelection, type DiaryTime } from '../domain/diarySelection';
-import { MAPS } from '../maps';
+import { MAPS } from 'virtual:kg-chapters';
 import { adventureDocx, ADVENTURE_DOCX_TYPE } from './adventureDocx';
 import type { AdventureExportOptions } from './adventureExport';
 import { printAdventureJournal } from './adventurePrint';

@@ -59,15 +59,16 @@ describe("Sora’s spare key", () => {
       );
       expect(
         encyclopediaLinks(copy.e.pack, copy.s).map((l) => l.title),
-      ).toEqual([learner ? "Nainoa Thompson" : "Mau Piailug"]);
+      ).toEqual(learner ? [] : ["Mau Piailug"]);
       read(copy, learner ? "crew’s voyage" : "learner’s account");
+      read(copy, "artist who designed");
       expect(
         encyclopediaForDiaryEvent(copy.e.pack, {
           kind: "conversation",
-          key: "conversation:birdside.memory",
-          ref: "birdside.memory",
+          key: "conversation:birdside.kane",
+          ref: "birdside.kane",
         })?.title,
-      ).toBe("Nainoa Thompson");
+      ).toBe("Herb Kawainui Kāne");
       expect(pick(copy, home, "Renna printed")).toBe("birdside.paper");
       expect(pick(copy, "birdside.paper", "voyage dates")).toBe(
         "birdside.dates-limit",
@@ -89,7 +90,7 @@ describe("Sora’s spare key", () => {
         "birdside.offer",
       );
       for (const [id, title] of [
-        ["memory", "Nainoa Thompson"],
+        ["kane", "Herb Kawainui Kāne"],
         ["voyage", "Mau Piailug"],
       ]) {
         const card = copy.e.pack.cards.find(

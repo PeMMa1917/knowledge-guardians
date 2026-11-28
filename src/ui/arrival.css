@@ -34,3 +34,7 @@ html { font-size: calc(100% * var(--text-scale, 1)); background: #120f24; color:
   .arrival h1 { color: CanvasText; }
   .arrival summary, .arrival a { color: LinkText; }
 }
+.arrival-actions { width: min(26em, 100%); display: grid; gap: .4em; margin-bottom: .75em; }
+.arrival-actions button { text-align: left; cursor: pointer; }
+.arrival-actions strong, .arrival-actions small { display: block; }
+.arrival-actions small { color: #f6eedb; }

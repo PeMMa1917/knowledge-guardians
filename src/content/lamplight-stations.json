@@ -111,26 +111,26 @@
     "question": "Who could check the detail after the frost returned?",
     "pair": {
       "guests": [
-        "q7399969",
-        "q27455889"
+        "q2865928",
+        "q6263549"
       ],
-      "title": "The space for a saucer",
+      "title": "The father's second mark",
       "sights": [
-        "A ledger records how many people ate here. No line says whose hands set the table.",
-        "A chipped rim fills a gap exactly the size of a saucer. Its fit cannot give its owner a name.",
-        "A plan of the kitchen marks where small pieces of a saucer lay by the step."
+        "The paper sleeve on the pane reads ‘unsigned’. Under the older fold Schomburg finds the name of a workers’ reading room.",
+        "Gilbert measures the distance between the fog marks. The sisters each traced a different face of the glass.",
+        "Aster has one dry drawer. Both sisters want their father’s work there by morning."
       ],
       "choices": [
         {
-          "action": "Show the rim beside the empty name space",
-          "reply": "A visitor sees the work omitted by the ledger and leaves the name open."
+          "action": "File the sleeve under the readers’ room as well",
+          "reply": "The younger sister finds a second sleeve under its old name. It gives the pane a history. The maker’s name is still open."
         },
         {
-          "action": "Follow the fragments back to the kitchen step",
-          "reply": "The sisters trace a lived space. They leave the list in the cold store for a second visit."
+          "action": "Make a measured tracing from each face",
+          "reply": "Laid back to back, the marks almost meet. The elder sister can show exactly where the two tracings disagree without rubbing either away."
         }
       ],
-      "question": "What can an object restore to an account that it cannot name?"
+      "question": "What could someone reconstruct from the record you left?"
     },
     "arrival": "One sister has polished a circle in the frost. The other has saved a patch the size of her thumb. There is room for your light at the edge of both."
   },
@@ -157,25 +157,25 @@
     "pair": {
       "guests": [
         "q234888",
-        "q1389108"
+        "q110181"
       ],
-      "title": "A light outside the ring",
+      "title": "The lamp on the empty jetty",
       "sights": [
-        "The measured lights at the edge keep pace where the chart predicts a fall.",
-        "The same edge fits two chalk curves. The lines separate on the second wheel, which has yet to be observed.",
-        "Another rule changes how the pull is calculated in a weak field."
+        "Leavitt covers the dates on Ruan’s plates. The returning flash keeps the same interval on three nights.",
+        "Rubin lines up the lamps by distance along the jetty. The outermost reflection moves even when the inner ones stand still.",
+        "Ruan’s daughter remembers one night when her lamp went out. Nobody wrote down the time."
       ],
       "choices": [
         {
-          "action": "Mark the second wheel before it turns",
-          "reply": "Ruan's daughter seals a prediction in the spare lamp. The next watch can open it against a fresh sighting."
+          "action": "Match the flash to a clock through a full interval",
+          "reply": "The girl gives the watch a time to look again. A break in the clouds makes the next expected flash disappear."
         },
         {
-          "action": "Hang both curves behind the observed lights",
-          "reply": "The boat crew can see what the two accounts share. No one can identify the cause by that fit alone."
+          "action": "Send two watchers to sight across the moving patch",
+          "reply": "Their lines cross at a swinging float. That explains tonight’s wandering light. The girl keeps her earlier plates."
         }
       ],
-      "question": "Where would the next observation tell the two accounts apart?"
+      "question": "Which feature would let tomorrow’s watch distinguish a repeating signal from a moving reflection?"
     },
     "arrival": "Ruan’s daughter counts to four in the dark. A pale square opens offshore on five. “Dad always stops counting on four.” She offers you the place she stood."
   },
@@ -247,25 +247,25 @@
     "pair": {
       "guests": [
         "q11641",
-        "q2540350"
+        "q230650"
       ],
-      "title": "The rack that lost a mark",
+      "title": "Corra's borrowed stamp",
       "sights": [
-        "The loading instructions change row into a numbered slot. The ink numeral is clear.",
-        "Both sheets move the same object one place sideways. One shift happened in the instructions and the other when the clerk aligned two sets of coordinates.",
-        "Two charts put a single reference point on different grids."
+        "Hopper feeds the work order through two copies of the stamping instructions. Only one copy turns a faint line into a cross.",
+        "Cannon sorts the night pieces without their makers’ names. Three faint lines fall between the two trays.",
+        "Corra’s old inspection stamp matches the printed cross. The next shift has already laid her coat aside."
       ],
       "choices": [
         {
-          "action": "Keep the instruction with its translation",
-          "reply": "The night worker catches the slot change. The grid still needs its own reference mark."
+          "action": "Run one blank through both sets of instructions",
+          "reply": "The mark appears on a blank Corra never touched. The foreperson withdraws her charge and asks who copied the line."
         },
         {
-          "action": "Pin the two grids to one identifiable point",
-          "reply": "The second crew aligns the charts. Corra asks the clerk to trace the instruction before loading again."
+          "action": "Make a third tray for uncertain marks",
+          "reply": "The crew keeps the pieces and Corra works beside them. At first light the extra tray shows which batch deserves another inspection."
         }
       ],
-      "question": "Which part of a chain did the final misplaced mark fail to identify?"
+      "question": "What did the repeated mark establish about the process, and what did it establish about a person?"
     },
     "arrival": "Corra takes the stamp out of her pocket and sets it face down. The night worker lays a bare hand beside it. Their thumbs have worn the same hollow."
   },
@@ -381,26 +381,26 @@
     "question": "Who made the cue work without being seen?",
     "pair": {
       "guests": [
-        "q17581477",
-        "q262413"
+        "q450382",
+        "q464394"
       ],
-      "title": "One audience with two backs",
+      "title": "The cue after curtain",
       "sights": [
-        "A gesture in the edge of a shot changes how the spoken line lands.",
-        "At the centre, both images move at once. A single spectator must choose which face to miss.",
-        "Two screens face one another across the room. A witness facing one has their back to the other."
+        "On Deren’s strip the dresser’s raised sleeve flows straight into the actor’s bow. The floor changes under the actor’s foot.",
+        "Farrokhzad asks the dresser where she would begin the reel. She points to the child laughing just before the gesture.",
+        "Edda can play the strip once before the train leaves. The dresser has never seen herself from the front row."
       ],
       "choices": [
         {
-          "action": "Let two audience members trade accounts",
-          "reply": "A second telling restores the unseen gesture. The witnesses disagree about its timing."
+          "action": "Match the step across the cut and project both floors",
+          "reply": "The audience sees one smooth bow span two takes. Edda writes the second floor into the cue sheet so tomorrow’s actor can reproduce it."
         },
         {
-          "action": "Run the cue again from the opposite seat",
-          "reply": "One spectator sees both moments in succession. The others cannot have their first surprise back."
+          "action": "Let the dresser choose where the screening begins",
+          "reply": "The laugh comes first. The dresser sees why her sister heard a joke in the gesture. The distant actor still remembers a cue."
         }
       ],
-      "question": "What did another witness make possible that a replay could not?"
+      "question": "Whose intention became legible through your edit, and who could reasonably read it differently?"
     },
     "arrival": "Edda bows to an empty seat. The dresser slips her cuff over a nail. From the back row it sounds exactly like one person trying to clap quietly."
   },
@@ -427,25 +427,25 @@
     "pair": {
       "guests": [
         "q47426",
-        "q284025"
+        "q180989"
       ],
-      "title": "Oil for the last crossing",
+      "title": "The unspent lantern coin",
       "sights": [
-        "The price board shows exactly when the innkeeper stopped buying oil.",
-        "The last token is in the hand of the traveller waiting for a neighbour. The board has no column for that relationship.",
-        "The midwife's need stays the same as the price rises. Two families are counting on her journey."
+        "At Friedman’s price peg one lantern stays on the counter after the evening rush.",
+        "Addams walks home with the last customer. Her wage arrives tomorrow and the cheap lantern has already gone.",
+        "Tellen keeps the unspent coin. His ledger counts everyone who paid and nobody who turned away."
       ],
       "choices": [
         {
-          "action": "Let the midwife reserve a measure",
-          "reply": "The next birth has light. Tellen has to explain to a stranger who can make a similar claim."
+          "action": "Move the peg for one market bell and tally departures",
+          "reply": "The cheaper lantern sells. Tellen can see a response to the price, but the tally gives him no names to visit tomorrow."
         },
         {
-          "action": "Post the remaining supply and invite neighbours to pool tokens",
-          "reply": "The street can act on the shortage. A traveller who knows nobody still needs somebody to notice her."
+          "action": "Keep the peg and let neighbours reserve tomorrow’s wick",
+          "reply": "A carer who leaves before payday gets a light. The reserve book records a need the till missed, and Tellen has to carry the cost overnight."
         }
       ],
-      "question": "Which need became visible only after somebody could answer back?"
+      "question": "Whose need could your record show even on a night when no money changed hands?"
     },
     "arrival": "The old customer rests the weight on Tellen’s open palm. “Close your fingers. Now it feels like mine.” A thin bright crescent shows between them."
   },
@@ -471,26 +471,26 @@
     "question": "What did the position of the mark let somebody claim?",
     "pair": {
       "guests": [
-        "q92824",
+        "q37103",
         "q233950"
       ],
-      "title": "What rang before the flood",
+      "title": "The night the bell stayed quiet",
       "sights": [
-        "A bell and a bank of open umbrellas precede each wet afternoon on the slate.",
-        "Moving the bell on the model makes one story fall apart. The dramatic sketch of the last flood still sticks in the keeper's mind.",
-        "The last crossing is painted in bright ink. Its ordinary dry neighbours barely show."
+        "Nightingale lays a dark wedge over every night someone sick had to leave bed for a false alarm.",
+        "Kahneman hands Maro two tickets for the same bell setting. One ticket counts sleepers spared and the other counts warnings missed.",
+        "Maro’s sister takes the first watch. Her father has finally fallen asleep beside the bell cord."
       ],
       "choices": [
         {
-          "action": "Try the bell on a model dry day",
-          "reply": "The children watch the umbrellas turn without the level rising. The keeper redraws one arrow."
+          "action": "Lay both tickets beside a chart of all six nights",
+          "reply": "The family sees which nights the bell missed. Her sister chooses a setting for the next watch and leaves the chart where her father can question it."
         },
         {
-          "action": "Restore the dry crossings to the record",
-          "reply": "A strong memory now has neighbours. The cause of the flood still needs a separate test."
+          "action": "Trade seats and choose again from the other ticket",
+          "reply": "Her sister changes her vote when she has to wake their father herself. Maro writes down who bears each cost before touching the clip."
         }
       ],
-      "question": "Which move checks the cause and which checks what we remembered to count?"
+      "question": "Which change in judgement came from another description of the same nights?"
     },
     "arrival": "Omi is wringing out one small sock over her ledger. The figure for the dry bank has begun to run. “Let it,” says the child who wore it."
   },
@@ -517,25 +517,25 @@
     "pair": {
       "guests": [
         "q525037",
-        "q108184"
+        "q181529"
       ],
-      "title": "The signal that costs a crossing",
+      "title": "The cord in the reading room",
       "sights": [
-        "The detailed dial tells the courier which of three roads has closed. The little dial only tells her to wait.",
-        "The two readings lead to the same choice while only one ferry is running. They diverge as soon as another road opens.",
-        "A simple cue serves a familiar route. Its success depends on which routes are available."
+        "Blackwell opens the courier’s two envelopes. One signal distinguishes three landings, the other only says whether to cross.",
+        "Simon times the walk from the desk. A reader who waits for the third landing to be named will miss the departing ferry.",
+        "Ade’s hands are full of returned books. Only the reader at the far cord can ring in time."
       ],
       "choices": [
         {
-          "action": "Leave the simple signal at the ferry rope",
-          "reply": "The courier acts quickly tonight. Ade adds a hook for the day a second crossing opens."
+          "action": "Give the detailed signal to the reader at the far cord",
+          "reply": "The reader rings early for the near landing and keeps the other two in the log. Ade gives up being the only one trusted with the envelopes."
         },
         {
-          "action": "Carry the detailed dial to the junction",
-          "reply": "The next courier sees more routes. Someone must stand there long enough to read it."
+          "action": "Agree on a stopping rule for the two-word signal",
+          "reply": "The courier leaves as soon as one reachable landing is confirmed. She makes the boat and records which option she never had time to compare."
         }
       ],
-      "question": "When does extra information change a decision someone can really make?"
+      "question": "When did another distinction change the decision someone could actually make?"
     },
     "arrival": "Ade holds a cup in either hand. From behind the shelves the bell rings once. The courier grins. “Go on. Put both cups down and tell me it was you.”"
   },

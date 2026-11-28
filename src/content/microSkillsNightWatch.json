@@ -38,8 +38,8 @@
     "name": "Anchor a claim to the date of its source",
     "uses": [
       {
-        "objective": "lamplight.yard.q32729.received",
-        "action": "Compare the dated workshop receipt with later advice and decide which stage of development the other workshop may compare.",
+        "objective": "lamplight.yard.q982374.received",
+        "action": "Compare prices in pairs. The purchasing power of one crate becomes visible.",
         "styles": [
           "explorer",
           "helper"
@@ -126,8 +126,8 @@
         "story": 29
       },
       {
-        "objective": "lamplight.cold.q7399969.received",
-        "action": "Keep the documented ledger entry visible while arranging clearly possible scenes around its gap.",
+        "objective": "lamplight.cold.q2865928.received",
+        "action": "Add a subject cross-reference. The collection answers a question its first index could not.",
         "styles": [
           "explorer",
           "helper"
@@ -206,8 +206,8 @@
     "name": "Identify values behind standards of justification",
     "uses": [
       {
-        "objective": "lamplight.gate.q284025.received",
-        "action": "Decide what justifies a place on the last ferry when order of arrival conflicts with a promise.",
+        "objective": "lamplight.gate.q180989.received",
+        "action": "Move one session to the later hour. Attendance can test the explanation about timing.",
         "styles": [
           "explorer",
           "helper"
@@ -226,8 +226,8 @@
     "name": "Compare explanatory strength with confidence",
     "uses": [
       {
-        "objective": "lamplight.coast.q1389108.received",
-        "action": "Take a proposed account of the galaxy’s rotation to a second galaxy or seal a fresh prediction.",
+        "objective": "lamplight.coast.q110181.received",
+        "action": "Line the exposures up by date. The interval can be checked directly.",
         "styles": [
           "explorer",
           "helper"
@@ -406,8 +406,8 @@
     "name": "Distinguish truth from a persuasive explanation",
     "uses": [
       {
-        "objective": "lamplight.gate.q92824.received",
-        "action": "Test the competing bell and cloud stories against a dry trial before carrying the causal account onward.",
+        "objective": "lamplight.gate.q37103.received",
+        "action": "Put the scale beside the diagram. The area can be read as a measurement.",
         "styles": [
           "explorer",
           "helper"
@@ -426,8 +426,8 @@
     "name": "Trace responsibilities attached to cultural knowledge",
     "uses": [
       {
-        "objective": "lamplight.fern.q16885749.received",
-        "action": "Put hosts in charge of the return key or arrange the findings’ return before setting an account loose.",
+        "objective": "lamplight.fern.q4877178.received",
+        "action": "Return a copy with space for corrections. The speaker can challenge the transcription later.",
         "styles": [
           "explorer",
           "helper"
@@ -466,8 +466,8 @@
     "name": "Connect authority with accountability to affected people",
     "uses": [
       {
-        "objective": "lamplight.fern.q132253334.received",
-        "action": "Hand over the first question or secure a return visit so a host can change what the investigator has authority to do.",
+        "objective": "lamplight.fern.q1101944.received",
+        "action": "Set the account beside the plan. The visitor can test the proposed setting.",
         "styles": [
           "explorer",
           "helper"
@@ -500,8 +500,8 @@
     "name": "Compare the values behind two interpretations",
     "uses": [
       {
-        "objective": "lamplight.yard.q160115.received",
-        "action": "Frame the individual seed against the workshop and decide what attention the makers receive in the account.",
+        "objective": "lamplight.yard.q442628.received",
+        "action": "Walk the route in reverse. The stone frames a different approach.",
         "styles": [
           "explorer",
           "helper"
@@ -520,8 +520,8 @@
     "name": "Trace three interacting concepts in one case",
     "uses": [
       {
-        "objective": "lamplight.cold.q7399969.received",
-        "action": "Compare the ledger, loose slip and visible gap to decide how evidence, interpretation and responsibility constrain the story.",
+        "objective": "lamplight.cold.q2865928.received",
+        "action": "Add a subject cross-reference. The collection answers a question its first index could not.",
         "styles": [
           "explorer",
           "helper"
@@ -668,8 +668,8 @@
     "name": "Separate measurable risk from uncertainty with unknown odds",
     "uses": [
       {
-        "objective": "lamplight.coast.q108184.received",
-        "action": "Move a rule drawn from a familiar shoal into an unknown inlet and decide how far it can travel with the lookout.",
+        "objective": "lamplight.coast.q181529.received",
+        "action": "Set a workable threshold before looking. The ferryman can explain when to stop.",
         "styles": [
           "explorer",
           "helper"
@@ -688,8 +688,8 @@
     "name": "Revisit a provisional scientific claim as evidence arrives",
     "uses": [
       {
-        "objective": "lamplight.yard.q88608397.received",
-        "action": "Keep the observed graph, the reviewer’s question and the possible future use distinct in what the next reader receives.",
+        "objective": "lamplight.yard.q7487.received",
+        "action": "Overlay the predicted and observed spots. A mismatch gives the model a concrete test.",
         "styles": [
           "explorer",
           "helper"
@@ -722,8 +722,8 @@
     "name": "Compare plans across several plausible futures",
     "uses": [
       {
-        "objective": "lamplight.market.q377638.received",
-        "action": "Change an assumption on yesterday’s road plan or lay its cost alongside the historical route.",
+        "objective": "lamplight.market.q156585.received",
+        "action": "Draw a chain of transmission. The two accounts may have a common source.",
         "styles": [
           "explorer",
           "helper"
@@ -924,8 +924,8 @@
     "name": "Read political and social histories of the same event",
     "uses": [
       {
-        "objective": "lamplight.council.q2744161.received",
-        "action": "Place the reign heading beside local street work and a local calendar to see whose history the sequence records.",
+        "objective": "lamplight.council.q2722635.received",
+        "action": "Group the coins by wear before weighing. The comparison controls one source of variation.",
         "styles": [
           "explorer",
           "helper"
@@ -964,8 +964,8 @@
     "name": "Weigh museum storage against living community use",
     "uses": [
       {
-        "objective": "lamplight.nile.q140575.received",
-        "action": "Weigh the custody slip against a community request at the crate and choose who gets the first hearing.",
+        "objective": "lamplight.nile.q329705.received",
+        "action": "File the copy beside the number. The next reader can compare drawing and stone.",
         "styles": [
           "explorer",
           "helper"
@@ -1004,8 +1004,8 @@
     "name": "Balance assertive wording with room for uncertainty",
     "uses": [
       {
-        "objective": "lamplight.cold.q7399969.received",
-        "action": "Place two possible scenes beside a documented gap or light the gap without filling it in.",
+        "objective": "lamplight.cold.q2865928.received",
+        "action": "Add a subject cross-reference. The collection answers a question its first index could not.",
         "styles": [
           "explorer",
           "helper"
@@ -1064,8 +1064,8 @@
     "name": "Distinguish an imagined case from real-world evidence",
     "uses": [
       {
-        "objective": "lamplight.market.q377638.received",
-        "action": "Lay the imagined change beside the actual route before choosing how the next traveller may use either.",
+        "objective": "lamplight.market.q156585.received",
+        "action": "Draw a chain of transmission. The two accounts may have a common source.",
         "styles": [
           "explorer",
           "helper"

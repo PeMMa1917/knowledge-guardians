@@ -1,6 +1,6 @@
 import type { GameController } from '../app/controller';
 import { tiedThread, trailMarkers, threadRecap, type ThreadFace } from '../domain/trailThread';
-import { MAPS } from '../maps';
+import { MAPS } from 'virtual:kg-chapters';
 import { h } from './dom';
 
 /** Prepare the list of open steps only when the journal ribbon is unfolded. */

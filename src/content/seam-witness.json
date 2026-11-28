@@ -304,6 +304,10 @@
           ]
         },
         {
+          "text": "Open the poet’s book beside the cloth.",
+          "next": "seam.cold.valkeapaa"
+        },
+        {
           "text": "Leave the cloth in its present position."
         }
       ]
@@ -940,6 +944,20 @@
       "text": "Pilar can show our reply beside the cloth. It gives the view people used, the thing our crew actually carried, and where the older marks stay.",
       "historicalLabel": "fictional-world",
       "claimKind": "observation"
+    },
+    {
+      "id": "seam.cold.valkeapaa",
+      "speaker": "narrator",
+      "text": "Nils-Aslak Valkeapää brought historical photographs and poetry together in The Sun, My Father. The photographs can be read in another sequence, but the poet chose which image a reader meets after each page turn.",
+      "citationSource": "HIS-SEAM-VALKEAPAA",
+      "biographyCard": "card.seam.valkeapaa",
+      "historicalLabel": "documented",
+      "options": [
+        {
+          "text": "Lay the book back beside the jig.",
+          "next": "seam.cold.jig"
+        }
+      ]
     }
   ],
   "hints": [
@@ -1116,6 +1134,20 @@
       "locator": "Public Ittoqqortoormiit exhibition account and its reference to Arke’s separate 2003 publication.",
       "supports": "The Nuuk museum describes Arke’s research around her family’s history in Ittoqqortoormiit. That site and associated work stay distinct from the 1990 photographs near Narsaq.",
       "accessed": "2026-11-26"
+    },
+    {
+      "id": "HIS-SEAM-VALKEAPAA",
+      "title": "Nils-Aslak Valkeapää",
+      "url": "https://en.wikipedia.org/wiki/Nils-Aslak_Valkeap%C3%A4%C3%A4",
+      "accessed": "2026-11-28",
+      "locator": "Life and literary work",
+      "supports": "Valkeapää (1943–2001) combined poetry and photographs in The Sun, My Father.",
+      "mla": {
+        "kind": "page",
+        "title": "Nils-Aslak Valkeapää",
+        "container": "Wikipedia",
+        "showAccessDate": true
+      }
     }
   ],
   "cards": [
@@ -1130,14 +1162,7 @@
         "HIS-SEAM-02",
         "HIS-SEAM-03"
       ],
-      "limits": "The title links works by the same maker. Each has its own date and material record. These records leave the precise physical construction of the 1981 embroidery to a separate examination.",
-      "person": {
-        "name": "Britta Marakatt-Labba",
-        "life": "Garjját records dated 1981 and 2024",
-        "place": "Idivuoma, Sápmi",
-        "era": "Late twentieth and early twenty-first centuries",
-        "continent": "Europe"
-      }
+      "limits": "The title links works by the same maker. Each has its own date and material record. These records leave the precise physical construction of the 1981 embroidery to a separate examination."
     },
     {
       "id": "card.seam.point",
@@ -1156,6 +1181,24 @@
         "place": "Nuugaarsuk Point near Narsaq, Kalaallit Nunaat",
         "era": "Late twentieth century",
         "continent": "North America"
+      }
+    },
+    {
+      "id": "card.seam.valkeapaa",
+      "title": "The order of the photographs",
+      "claimKind": "interpretation",
+      "historicalLabel": "documented",
+      "sources": [
+        "HIS-SEAM-VALKEAPAA"
+      ],
+      "text": "Nils-Aslak Valkeapää brought historical photographs and poetry together in The Sun, My Father. The photographs can be read in another sequence, but the poet chose which image a reader meets after each page turn.",
+      "limits": "The poet’s sequencing supports a reading of this book. It cannot settle the meaning of another artist’s print.",
+      "person": {
+        "name": "Nils-Aslak Valkeapää",
+        "life": "1943–2001",
+        "place": "Sápmi",
+        "era": "Twentieth century",
+        "continent": "Europe"
       }
     }
   ],

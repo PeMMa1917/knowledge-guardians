@@ -1,54 +1,40 @@
+import { chapterDelivery } from './tools/chapterDelivery';
 import { createServer, defineConfig, type Plugin } from 'vite';
 import { ModuleRunner, createNodeImportMeta } from 'vite/module-runner';
 
+// Share one validated authoring snapshot between the teacher and student publications.
+async function assembleCampaign() {
+  const loader = await createServer({configFile:false, optimizeDeps:{noDiscovery:true,include:[]}, server:{middlewareMode:true,watch:null,hmr:false,ws:false}});
+  const environment = loader.environments.ssr;
+  const runner = new ModuleRunner({hmr:false,createImportMeta:createNodeImportMeta,transport:{invoke:payload=>environment.hot.handleInvoke(payload)}});
+  try {
+    const {buildPack} = await runner.import('/src/content/index.ts');
+    const {MAPS:maps} = await runner.import('/src/maps/index.ts');
+    const {validateContent} = await runner.import('/src/domain/validate.ts');
+    const {teacherContentFrom} = await runner.import('/src/teacher/content.ts');
+    const pack = buildPack();
+    const problems = validateContent(pack);
+    if (problems.length) throw new Error(problems.join('\n'));
+    return {pack,maps,teacher:teacherContentFrom(pack),files:[...environment.moduleGraph.fileToModulesMap.keys()]};
+  } finally { try {await runner.close();} finally {await loader.close();} }
+}
+let snapshot: ReturnType<typeof assembleCampaign> | undefined;
+const publication = () => snapshot ??= assembleCampaign();
 function teacherContent(): Plugin {
   const id = 'virtual:kg-teacher-content';
-  const virtual = '\0' + id;
-  const projection = '/src/teacher/content.ts';
-  const campaign = '/src/content/index.ts';
-  let root = '';
   let production = false;
   return {
-    name: 'knowledge-guardians-teacher-content',
-    configResolved(config) {
-      root = config.root;
-      production = config.command === 'build';
-    },
-    resolveId(source) {
-      if (source === id) return virtual;
-    },
+    name:'knowledge-guardians-teacher-content',
+    configResolved(config) {production = config.command === 'build';},
+    buildStart() {snapshot=undefined;},
+    resolveId(source) {if(source===id) return '\0'+id;},
     async load(source) {
-      if (source !== virtual) return;
-      if (!production) {
-        // Development keeps HMR connected to the same campaign records as the game.
-        return `import { buildPack } from '${campaign}';
-          import { teacherContentFrom } from '${projection}';
-          export const teacherContent = teacherContentFrom(buildPack());`;
-      }
-      // Evaluate the two pure modules at build time. The teacher page then needs
-      // only the reporting data, and Vite can omit the full campaign download there.
-      const loader = await createServer({ root, configFile: false, optimizeDeps: { noDiscovery: true, include: [] }, server: { middlewareMode: true, watch: null, hmr: false, ws: false } });
-      // This build and its content loader share one process. A remote transport's
-      // reply deadline can expire on a busy build host while a local transform is still running.
-      const environment = loader.environments.ssr;
-      const runner = new ModuleRunner({
-        hmr: false,
-        createImportMeta: createNodeImportMeta,
-        transport: { invoke: (payload) => environment.hot.handleInvoke(payload) },
-      });
-      try {
-        const { buildPack } = await runner.import(campaign);
-        const { teacherContentFrom } = await runner.import(projection);
-        const { validateContent } = await runner.import('/src/domain/validate.ts');
-        const pack = buildPack();
-        const problems = validateContent(pack);
-        if (problems.length) this.error('The assembled campaign failed validation.\n' + problems.join('\n'));
-        for (const file of loader.environments.ssr.moduleGraph.fileToModulesMap.keys()) this.addWatchFile(file);
-        return `export const teacherContent = ${JSON.stringify(teacherContentFrom(pack))};`;
-      } finally {
-        try { await runner.close(); } finally { await loader.close(); }
-      }
-    },
+      if(source!=='\0'+id) return;
+      if(!production) return `import {buildPack} from '/src/content/index.ts'; import {teacherContentFrom} from '/src/teacher/content.ts'; export const teacherContent=teacherContentFrom(buildPack());`;
+      const result=await publication();
+      for(const file of result.files) this.addWatchFile(file);
+      return 'export const teacherContent='+JSON.stringify(result.teacher)+';';
+    }
   };
 }
 
@@ -122,7 +108,7 @@ function recoverDownloads(): Plugin {
 // base './' lets the build run from any folder or a GitHub Pages sub-path.
 export default defineConfig({
   base: './',
-  plugins: [teacherContent(), recoverDownloads()],
+  plugins: [teacherContent(), chapterDelivery(publication), recoverDownloads()],
   build: { target: 'es2022', chunkSizeWarningLimit: 2000, rollupOptions: { input: { main: 'index.html', teacher: 'teacher.html' } } },
   test: { environment: 'node', include: ['tests/**/*.test.ts'] },
 } as any);

@@ -992,25 +992,25 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `question:mission-99c44e9ef74a2c5d` | Would you trust the same margin if somebody else had signed it? | Mission question |
 | `question:mission-76bfbfba1d3af379` | Who has to stay awake tonight for that key to be useful? | Mission question |
 | `question:mission-34a365941f13e41a` | Whose thumbprint could appear on the record without its owner ever getting a turn? | Mission question |
-| `question:mission-de1b3dba292cdcda` | What did the usher learn when the coat moved to another pair of shoulders? | Mission question |
+| `question:mission-9572a91480175b54` | Who gets to reverse a decision about a name? | Mission question |
 | `question:mission-5b4263f8605c91d4` | How could someone across the island check that the tree outside was still there? | Mission question |
 | `question:mission-9e2c364f9fa8a267` | Which movement would the pencil keep if the apprentice blinked? | Mission question |
 | `question:mission-b004054ab07a5bb6` | What would you plant next to the beans to check what helped them? | Mission question |
 | `question:mission-be23f461c86f2e9e` | What must both observers agree to face before their traces can be compared? | Mission question |
-| `question:mission-5701a1086e4eda5d` | Which copy changed the way you read the worn word? | Mission question |
-| `question:mission-322982e7b1a8f3cf` | Who gets to say when the moss has had enough visitors? | Mission question |
+| `question:mission-5361678e2ee77a79` | What evidence would you need to give someone credit? | Mission question |
+| `question:mission-69bdd685f3a0117d` | What disappears from a seed record when its field mark is lost? | Mission question |
 | `question:mission-bf74ab6e60f08d4e` | What did the second lamp let the assistant see for themself? | Mission question |
 | `question:mission-9e719f5bfdad13f3` | Who would count the purse as empty even with a debt hanging below it? | Mission question |
 | `question:mission-b5878cfd3c23ba52` | Which length of cloth did the seam hide from your first measurement? | Mission question |
 | `question:mission-8dfe2f28d99c6fdc` | What still lined up when the wheel came round again? | Mission question |
 | `question:mission-8154924a147d5f88` | How far would you trust the surprising line on the strength of one worked case? | Mission question |
 | `question:mission-7e6c2e723dc1f2ed` | Where did flattening the walk change the loop you were trying to follow? | Mission question |
-| `question:mission-18cb1f744b886aa0` | Which feature of the knot survived turning the lamp? | Mission question |
+| `question:mission-d70eb40923227247` | Which observation could distinguish two solids with the same outline? | Mission question |
 | `question:mission-327748dc0bf20069` | If only one page escaped, whose afternoon would survive with it? | Mission question |
 | `question:mission-d7c34db5cbf4bef6` | Which part of the room could the family chair never show its occupant? | Mission question |
 | `question:mission-a3aba866be5f3dd7` | Which date became visible when the drawer was filed differently? | Mission question |
-| `question:mission-436f5a7459f14bb7` | What could a listener hear from opposite seats that a single twisted cord might hide? | Mission question |
-| `question:mission-91378eeb12c67832` | Who needs to find the older record, and who gets to decide how? | Mission question |
+| `question:mission-0fdc7f838c2dd320` | Whose activity did the line make difficult to see? | Mission question |
+| `question:mission-c7bef58425e84c29` | What can a catalogue say about a closed letter? | Mission question |
 | `question:mission-5cdde7c759eedbbc` | What did placing the paddle at shoulder height reveal about the drawing? | Mission question |
 | `question:mission-1935b51f200ae1ef` | What would it cost to fill the gap with the nearest-looking pot? | Mission question |
 | `question:mission-e90517bc7c0f9e2a` | Did the pause belong to the teller, the audience, or their moment together? | Mission question |
@@ -1022,20 +1022,20 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `question:mission-849722e9707dc4f1` | Where on her street did the chart stop describing her day? | Mission question |
 | `question:mission-e11444b106da9693` | How might the adults’ places have changed what the child felt able to do? | Mission question |
 | `question:mission-c0713f2ce61d78ec` | Who could repair the ditch if its key holder missed a shift? | Mission question |
-| `question:mission-9e0f812a9640e5a9` | Whose working day disappears when the chair faces the usual way? | Mission question |
+| `question:mission-674a5a2461936533` | Which observation would make your interpretation of the toast less certain? | Mission question |
 | `question:mission-c2dad44a313c13c0` | Where did the paper hinge have to give for the wing to move? | Mission question |
 | `question:mission-d282fca431e6e2b6` | Which edge belonged to the sleeve and which to the lantern? | Mission question |
 | `question:mission-ee4b7553d5538e08` | Who else had a hand in the picture outside the frame? | Mission question |
 | `question:mission-1dba5e217b472660` | How did moving the canvas change what the painter could decide? | Mission question |
 | `question:mission-a1f01bbaa1c5e48f` | What can a visitor take home when the custodian keeps the speaking time? | Mission question |
-| `question:mission-1d11dabadadf70d7` | Which crease would you miss if the cloth came with a single hanging diagram? | Mission question |
+| `question:mission-b068e3e0d8fa425e` | What does a fixed sculpture let you infer about movement? | Mission question |
 | `question:mission-f7663394dd782ab5` | Who loses a crossing while the test load is on the boards? | Mission question |
 | `question:mission-26d674f9be84f667` | What in the circle still held when the labels turned away from you? | Mission question |
 | `question:mission-7cd748b3519fbdc3` | Who can answer for each line if you close the commentary's hinge? | Mission question |
 | `question:mission-87bcda9ebc076cc9` | Which part of the pinprick account could only the visitor supply? | Mission question |
 | `question:mission-edffa3b6eee9040f` | Who could change tomorrow's route after the seller took your place? | Mission question |
 | `question:mission-340aa4cd7cc179c6` | When did the everyday exchange call for a different word at the crossing? | Mission question |
-| `question:mission-8e6d89a1d2d14fef` | What does the visitor need the pass to do that its boxes fail to record? | Mission question |
+| `question:mission-54e760b4dae39481` | What authority should a printed spelling have over a performance? | Mission question |
 | `question:mission-cd2577af39c713c4` | What would a second ridge have to show to change your reading of the shell? | Mission question |
 | `question:mission-c4c6504c52c62c1d` | Whose absence would still go unmarked on the date wheel? | Mission question |
 | `question:mission-118d96b8a889df98` | Which stretch of the connecting line came from your pencil? | Mission question |
@@ -1049,11 +1049,11 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `question:mission-42ee9b287b0f84b8` | Who saw a difference between the release and the drawn curve? | Mission question |
 | `question:mission-64945264ad01835c` | What changed when a questioner could ask a second question? | Mission question |
 | `question:mission-f30a96a3f4fe2847` | Which uncertainty would matter most to the crew waiting at the landing point? | Mission question |
-| `question:mission-f5025b273aa4f3ba` | What would have to stay connected before you could use the small corner to reason about the orchard? | Mission question |
+| `question:mission-0d85f8ced3201bfc` | When does a long list of examples become a proof? | Mission question |
 | `question:mission-6404f4d502fda578` | Who deserves a credit at the join between the two hands? | Mission question |
 | `question:mission-90b937299f3582f9` | What could comparing two stations settle about the mountain? | Mission question |
 | `question:mission-18dfe1ee963b53e3` | Which part of the match would disappear if only the scorecard survived? | Mission question |
-| `question:mission-eb56cbb15673b608` | Whose idea of home did the port filing system preserve? | Mission question |
+| `question:mission-7f6c0492c90a024b` | Who will encounter only the shortened version? | Mission question |
 | `question:mission-30a543d45c1d141f` | At which desk did the silence first enter the box? | Mission question |
 | `question:mission-d66b3086d79cd8e9` | Which part of what you learned came from the curator's label itself? | Mission question |
 | `question:mission-70b037614afee9eb` | How could someone learn from the practice band and still respect what the maker kept? | Mission question |
@@ -1061,22 +1061,22 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `question:mission-42de7cbcffaccb53` | Which position of the find would disappear in a list of names? | Mission question |
 | `question:mission-8666efe26c7a58a2` | Which setting would you want to see before assigning the glyph a sound? | Mission question |
 | `question:mission-09f6ff0a32bb7a04` | What became a destination when you began the map on a deck? | Mission question |
-| `question:mission-bc8c6ed56f7cb41b` | Who could question the drawing when the meeting moved to the gate? | Mission question |
+| `question:mission-11ede338e45b7d84` | Which part of this evidence can another observer still check tomorrow? | Mission question |
 | `question:mission-1147e55e0781bfee` | Which seat gives a signer and a listener a clear line of sight to each other? | Mission question |
 | `question:mission-94ba4a059f01580c` | What can the pupil now choose without waiting for someone taller? | Mission question |
 | `question:mission-3b0fb6a9b9d38f83` | At which block could the learner stop borrowing your finger? | Mission question |
 | `question:mission-5c6bafa10830dd06` | Which distance on the floor mattered more than the number of seats? | Mission question |
-| `question:mission-ecdbf8e1ffac856e` | What could still keep the passenger from spending a perfectly valid ticket? | Mission question |
-| `question:mission-b36dcd2c231dd9e8` | What work was the trader's small adjective doing beside the number? | Mission question |
-| `question:mission-02dc36f76db4cb1e` | What changed about the passage when you looked from the herd's height? | Mission question |
+| `question:mission-5ce8c3c2595dd0a9` | Where should the boundary of an economic account fall? | Mission question |
+| `question:mission-9dc8ce941969b566` | What would change your confidence in an estimate? | Mission question |
+| `question:mission-50d1a13a42e00f55` | Which further observation would count against yours? | Mission question |
 | `question:mission-f08775d2dc56a795` | What did seeing the dedication establish about the disk, and what remains open about the poem? | Mission question |
 | `question:mission-7a4f5b962bd4ea35` | Which listener could hear the whisper from a place you never stood? | Mission question |
 | `question:mission-c2c52e98abac2ec6` | Who appears to direct the scene after you move the light? | Mission question |
 | `question:mission-a6cfef4ebb92b3e9` | What would count as the edge of the pattern from the visitor's position? | Mission question |
-| `question:mission-efe8f21e65c648a9` | Where would a second reader put the hinge between a line and a letter? | Mission question |
+| `question:mission-f0f577de648792d6` | What would persuade you that a mark was intentional? | Mission question |
 | `question:mission-0a83b722e1ec796a` | Which part of the picture did the delay change for the assistant? | Mission question |
 | `question:mission-cda467632a54f4c0` | Where would a person on the ramp see something different from the model maker? | Mission question |
-| `question:mission-455e88d3f099537b` | Who can look back when the spectators change places? | Mission question |
+| `question:mission-094ac8c27b7b48cf` | Who could speak to a meaning the image alone cannot establish? | Mission question |
 | `question:mission-c3e8cfbf0c9b78b1` | How could you tell whether the quiet crossing called for the same act? | Mission question |
 | `question:mission-bdfd5870d4c31b5c` | Which arrivals never reach the keeper's tally? | Mission question |
 | `question:mission-b3aef58e4749937d` | What did watching the unlit wick add to the sequence you already had? | Mission question |
@@ -1084,14 +1084,14 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `question:mission-fded45e2177de0e4` | What room did leaving the response slip blank give the speaker? | Mission question |
 | `question:mission-65430fa9e582edee` | Which result would make you reopen the prediction you sealed? | Mission question |
 | `question:mission-1ce0ed950f6e646d` | What did keeping the uncleaned charts cost the next watcher? | Mission question |
-| `question:mission-57814dc09f24ed53` | Who had to change shape to fit the painted doorway? | Mission question |
+| `question:mission-486fd7e785ef6c71` | What limits the range of plausible readings? | Mission question |
 | `question:mission-f3beba3058b98c75` | Which clock reading depends on where the listener stood? | Mission question |
 | `question:mission-273617f1780f91c1` | What would you need to learn before you could put the two views in one diagram? | Mission question |
 | `question:mission-f3c9464e99ba272a` | Which kernel would go missing if you sorted before you mapped the ear? | Mission question |
 | `question:mission-d8c230c495cf81f8` | What observation would help you decide between the two family lines? | Mission question |
-| `question:mission-9d1150e98562d8e1` | Which claim survives when both books describe the same observation? | Mission question |
-| `question:mission-b4808d45d94ac9d4` | Whose later observation would make you reopen the caption? | Mission question |
-| `question:mission-7abe86e0d56d3c9c` | Who can check the empty band if the working credits travel with it? | Mission question |
+| `question:mission-4fa30040dc711e2f` | Which missing observations matter to this boundary? | Mission question |
+| `question:mission-b8748c0d693f9e9f` | Which difference between observations should the next observer control? | Mission question |
+| `question:mission-8663237756a256f0` | When does a faint signal justify a claim of absence? | Mission question |
 | `question:mission-67e7958cb739a90e` | What would a later counter learn from the frame that the total hides? | Mission question |
 | `question:mission-0ae03d9f19aa63e0` | Whose view would change if the ball stayed still and only the observer moved? | Mission question |
 | `question:mission-9faff1258f84117f` | Which move stops being justified if you lift one starting rule from the board? | Mission question |
@@ -1099,26 +1099,26 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `question:mission-0923452d9d324f7b` | What reason do you have to trust the second rulebook's seal? | Mission question |
 | `question:mission-1485d8740fa79b7b` | Which promise about tomorrow's cards goes beyond today's solved pile? | Mission question |
 | `question:mission-8d77b93e3b1c2413` | What difference between two maps survives repairing just one fold? | Mission question |
-| `question:mission-99db0b607fbd98ee` | Where should the makers be able to stop you from extending the pattern? | Mission question |
+| `question:mission-16d69bb89d9b2854` | What would another builder need in order to reproduce the corner? | Mission question |
 | `question:mission-7ad6f1e1745d610b` | Which part of the journey did each traveller have grounds to report? | Mission question |
 | `question:mission-b683fe5b593a1c36` | Where did the witness's words end and your reconstruction begin? | Mission question |
 | `question:mission-5460d38c35dd270b` | Which part of the dance might the receipt date, and which would need another witness? | Mission question |
 | `question:mission-75983eb041069554` | What did finding the bill change about the list of people who could sign? | Mission question |
-| `question:mission-aa504d2b4db49d5d` | What would count as returning the findings to the people who made the visit possible? | Mission question |
-| `question:mission-1b6bb4f0ad2d5af8` | What did changing one assumption cost the second road? | Mission question |
+| `question:mission-28638970a6da09bb` | Who can still correct the record once it enters a collection? | Mission question |
+| `question:mission-12e22fb6853c1359` | What makes two accounts independent? | Mission question |
 | `question:mission-99d02ff048560ff5` | Who could safely answer with an audience present, and who needed another setting? | Mission question |
 | `question:mission-398d3aacdc30ed6f` | Which two accounts could you fairly compare once you lined up their dates? | Mission question |
 | `question:mission-3cbc76abfe0ac985` | Where would you look for ash if the doorway had been used differently? | Mission question |
-| `question:mission-edf89fa7e81b9511` | Whose claim would a perfect custody record still leave unanswered? | Mission question |
-| `question:mission-437522e41b2e774c` | Which piece of the bowl arrangement did your second walk put in doubt? | Mission question |
+| `question:mission-6b0a59f72755ff77` | Which detail lets another reader challenge a catalogue entry? | Mission question |
+| `question:mission-ba84d0f7f131fbde` | When is preserving access to evidence worth delaying an investigation? | Mission question |
 | `question:mission-f3ea68b24c66fe98` | Which bowl would lose part of its story if every meal counted as a loan? | Mission question |
 | `question:mission-8f896b1bf8d4d39d` | What information reached the far stall before the carter could? | Mission question |
 | `question:mission-f148259eaa2d6257` | What other route to work would give a worker a different bargaining position? | Mission question |
 | `question:mission-016a817e0d11085d` | Which keeper movement might be answering the bell by habit? | Mission question |
-| `question:mission-ed34f5551c366e88` | Which new combination would tell you most about the child's rule? | Mission question |
-| `question:mission-5ffa54e8fbe41e4f` | Who gets to say whether another setting makes a fair comparison for the pause? | Mission question |
-| `question:mission-2ce6cf2e46c66c2b` | Which complaint can fall through the seam even if each desk counts its own slips correctly? | Mission question |
-| `question:mission-cc0baa5af8762ca0` | Would today's advice have worked for the workshop named on the old receipt? | Mission question |
+| `question:mission-805f1edbe5f3552b` | Whose words can a reconstruction claim to preserve? | Mission question |
+| `question:mission-485105a263856901` | Which difference in sound carries a difference in meaning? | Mission question |
+| `question:mission-53911c3378cda681` | What does a filing system make a researcher overlook? | Mission question |
+| `question:mission-f494e9c5d859acbc` | Which comparison explains what the workshop can actually buy? | Mission question |
 | `question:mission-1ab0403b3b8af481` | What did the musician add that a title beside the shape would miss? | Mission question |
 | `question:mission-f2e4e7df243912d3` | What does the worker see on a shift change that a visitor standing still would pass over? | Mission question |
 | `question:mission-cc8424247eaf4cc0` | What changed for the porter when the same object moved rooms? | Mission question |
@@ -1134,100 +1134,100 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `question:mission-c01c916600c4e8f7` | When did the pupil gain authority over what happened next? | Mission question |
 | `question:mission-b8dd0a2c3939e49e` | Which old feature earns its place after the repair? | Mission question |
 | `question:mission-f9097cd979333946` | Who can now choose how to learn? | Mission question |
-| `question:mission-05ba8daa765db6bd` | Which part of being present did the wire carry? | Mission question |
+| `question:mission-e3cd390ccce4cf0d` | What should a credit for making this sound include? | Mission question |
 | `question:mission-8da18c9a735317e8` | What could one tooth establish without a living animal? | Mission question |
 | `question:mission-f230c1af645c7905` | How far would you extend one afternoon's rate? | Mission question |
 | `question:mission-51b95ecbc03c9bc9` | Which people were invisible to the ward count? | Mission question |
 | `question:mission-dc1314fec370afa5` | What would let a second person check the break in this account? | Mission question |
 | `question:mission-dc8080d7003cb64c` | Which result would make the shelf worth rebuilding? | Mission question |
 | `question:mission-31a09489cc3d4648` | Who gets to call the planting a success, and when? | Mission question |
-| `question:mission-3b1535bb729b6b60` | Which uncertainty could move the plotted position without erasing the dips? | Mission question |
-| `question:mission-a936069a5fc0e94f` | What would make a rejected proposal worth revisiting? | Mission question |
+| `question:mission-946c315cf8d6c7a0` | What makes a provisional classification worth keeping? | Mission question |
+| `question:mission-0ea99f55795bcd37` | Why can matching one feature leave a model uncertain? | Mission question |
 | `question:mission-29caec71ffd09b4e` | What does the direction of the gap tell the engraver? | Mission question |
 | `question:mission-c05ebe1b78c19e7c` | Which part of the drawing belongs to the way the plate was held? | Mission question |
 | `question:mission-ec02519f4e0b6b39` | Which new reading would bring the two forecasts closer? | Mission question |
 | `question:mission-77105a61e0a073c1` | What promise belongs to the casting rule rather than this single net? | Mission question |
 | `question:mission-10e04f5d9aad8a28` | For whom does extra information change the better decision? | Mission question |
-| `question:mission-794a3fb9c0f168e6` | Where would an average hide the feature that matters? | Mission question |
-| `question:mission-f7fabf2d91bb0141` | At which step does the crate stop being a model you can trust? | Mission question |
+| `question:mission-63a2bc227d5ad9d0` | Which change tells you something about the model’s reliability? | Mission question |
+| `question:mission-8ca479cd355c317c` | When is an irregular trace evidence about the system? | Mission question |
 | `question:mission-f3faed1392f6970e` | Which claim could the drawing carry across a language boundary? | Mission question |
 | `question:mission-b0b3ca477baf8945` | At what timescale does the captain's choice disappear? | Mission question |
 | `question:mission-c4428b1056c21d9d` | How much of a person's identity could this record carry? | Mission question |
 | `question:mission-73ec252cbd720653` | Which inference depends on knowing who could address whom? | Mission question |
 | `question:mission-572e7515192597b1` | What does learning who wanted the map change about using it? | Mission question |
-| `question:mission-bf34eacab1e1200e` | Whose life makes the proposed period look continuous? | Mission question |
+| `question:mission-eef391daf0207871` | Which difference can you attribute to the mint? | Mission question |
 | `question:mission-40c28163971243f0` | Who should control the link between two names? | Mission question |
 | `question:mission-5a23bc2de17508ce` | What evidence would the pencilled name actually require? | Mission question |
 | `question:mission-b8b3257b81b869e0` | Which new carving would distinguish the two accounts? | Mission question |
 | `question:mission-7821779a321d5937` | When does an exchange route justify a claim of common origin? | Mission question |
 | `question:mission-78247b21e3c1ea33` | Which part of the gesture could never be seen in a list of movements? | Mission question |
 | `question:mission-8c3a7eaefdcfb059` | When does the price of fuel explain a choice, and when does it fall short? | Mission question |
-| `question:mission-86e768ea0045ae54` | What would move a possible grip closer to a supported account? | Mission question |
-| `question:mission-632c145867daa920` | At which decision did the hosts gain power over the inquiry? | Mission question |
+| `question:mission-4a3ca7381f0bb385` | When can two layers be treated as the same episode? | Mission question |
+| `question:mission-3e662cd179801b23` | What makes a reconstruction accountable to its sources? | Mission question |
 | `question:mission-3de383c3d5f6cd5f` | What would give one reading of the slip more weight? | Mission question |
 | `question:mission-8ac7ca1179691234` | Which choice belonged to her under the constraint? | Mission question |
 | `question:mission-f4a79a3edfea4baf` | Which boundary makes the trade figure look prosperous? | Mission question |
 | `question:mission-bcb7997aff41008d` | Which change in preference can the wording explain? | Mission question |
-| `question:mission-d055e24cc8180bf6` | Which feature of the setting did the simple rule need? | Mission question |
+| `question:mission-2f4efcde80208714` | What makes a stopping rule defensible here? | Mission question |
 | `question:mission-cc2f420a916f6f6d` | What could examining a chain of transmission change for its reader? | Mission question |
-| `question:mission-e69f5c1bd7daf122` | Which question can this long series answer for the witness? | Mission question |
-| `question:mission-0cccc497e141e579` | Who gets the power to define safety by deciding where counting stops? | Mission question |
-| `question:mission-01817eafa5322e7b` | Where should a reader stop extending a first-person account? | Mission question |
+| `question:mission-278b56edcdb37c55` | How could a detail become more plausible as it becomes less faithful? | Mission question |
+| `question:mission-2cad23d6b4f940ae` | Which missing account would change your explanation of the exchange? | Mission question |
+| `question:mission-75c6af2c487a1e22` | What does it mean for two tellings to be versions of one story? | Mission question |
 | `question:mission-58fab1eaead297d8` | Which convention made the painted foot look in need of correction? | Mission question |
 | `question:mission-ddd9b9b48da48f01` | What did the standard body make easy to count? | Mission question |
 | `question:mission-5462e109631185fc` | Whose future labour belongs in the building decision? | Mission question |
 | `question:mission-be5268879d469a0b` | Which part of this painting belongs to the space in front of it? | Mission question |
-| `question:mission-acfebbd7b43e4aac` | Whose contribution disappears when the total becomes the subject? | Mission question |
-| `question:mission-1f907f3f59baa737` | At which point does the subject retain control of their own account? | Mission question |
+| `question:mission-a8d4af5d497c4f6a` | Can a single view describe a work intended to be walked through? | Mission question |
+| `question:mission-6d0f0a6fff51bd2d` | Who shares authorship of a posed portrait? | Mission question |
 | `question:mission-d71bd6413fd9978d` | When did being seen change the gift? | Mission question |
 | `question:mission-dd7a7fd5dec65c2b` | Which property mattered to the person using the bowl? | Mission question |
 | `question:mission-ea780bee20766f41` | When could someone reasonably say we understood the trouble? | Mission question |
 | `question:mission-91ce270bbb35b7a6` | Which change came from the desk and which from the window? | Mission question |
 | `question:mission-5af32c758401a819` | When was the choice real for each person? | Mission question |
-| `question:mission-e74680585b8ac90d` | Who had to translate the old invitation? | Mission question |
+| `question:mission-eae8e6321ec4e40f` | What allows different viewpoints to count as accounts of a shared world? | Mission question |
 | `question:mission-7c5efc892f57a7b6` | What could a listener test that the printed phrase concealed? | Mission question |
 | `question:mission-6df549bbc57d43a0` | Who gets to say where this account ends? | Mission question |
 | `question:mission-5bdedad806c51e01` | Whose thought became visible once it had an author? | Mission question |
-| `question:mission-b882d4d6577d9dc4` | Which meaning came from the words and which from their delivery? | Mission question |
+| `question:mission-7d05af0459014326` | What can an edit change while leaving every word in place? | Mission question |
 | `question:mission-a9630c2c30b71036` | Which detail makes a straight arrow inadequate? | Mission question |
 | `question:mission-e8833950b1ae16ad` | What could your arrangement distinguish? | Mission question |
 | `question:mission-8cf2d0b8e95d00c3` | Where did the evidence itself run out? | Mission question |
 | `question:mission-5ab8bf9d7db4fc16` | Which cost travelled with the harvest? | Mission question |
 | `question:mission-e57b7400aca194ac` | Which part belongs to observation and which to the model? | Mission question |
-| `question:mission-bc52467878988410` | What finding would make you change the rule? | Mission question |
-| `question:mission-ddbb02db4a908589` | Whose definition of success shaped the seed shelf? | Mission question |
-| `question:mission-0ebb3ff2ea912eca` | What did being heard add to being counted? | Mission question |
+| `question:mission-e93362d3f6901424` | What assumption makes this group of stars a fair comparison? | Mission question |
+| `question:mission-90a84fc0b8f90c7b` | What happens to a comparison when an uncertain locality is treated as certain? | Mission question |
+| `question:mission-99f5e3d39893169f` | How can two observers establish that their records are synchronized? | Mission question |
 | `question:mission-b7ada5ba7650d76a` | Which part of the solution travels without the original drawing? | Mission question |
 | `question:mission-2302f6ca77581826` | What was preserved while the labels moved? | Mission question |
 | `question:mission-d7e20abd71995a1e` | What would convince someone who needs to build it? | Mission question |
 | `question:mission-e475f23e92a2a74c` | Why does matching rooms say something counting to the end cannot? | Mission question |
 | `question:mission-c7ea396b5bd3c880` | Where did the mistake first become visible? | Mission question |
 | `question:mission-852ebf18a98f13ba` | What does the unit decide before the walk even starts? | Mission question |
-| `question:mission-16a5c4c27df1caac` | Which observation would distinguish the two explanations? | Mission question |
-| `question:mission-4a3fd49446b8e451` | What did the successful guesses leave untested? | Mission question |
-| `question:mission-714243fb7d193539` | Which loss was worth the quieter recording? | Mission question |
+| `question:mission-06ec30c4b80ccf57` | Which part of a diagram carries its strongest claim? | Mission question |
+| `question:mission-5ca683a75d54a1b1` | Which new example would distinguish recognition from a shortcut? | Mission question |
+| `question:mission-540b09d4671b2bdd` | What makes a decomposition informative? | Mission question |
 | `question:mission-c730c9cf76cbe142` | Where did two voices turn into one source? | Mission question |
 | `question:mission-c004be13a4b524df` | Which claim did authenticating the paper actually establish? | Mission question |
 | `question:mission-6b7f51e179306618` | What history became possible when the calendar widened? | Mission question |
 | `question:mission-fed40d312accdda9` | What agency does a verb give its subject? | Mission question |
 | `question:mission-c9dd81a271649d50` | Which judgement arose from where the story stopped? | Mission question |
-| `question:mission-aa7641c403cfd052` | How could a visitor tell what you imagined? | Mission question |
-| `question:mission-6077d1d30195fdff` | Whose permission would matter for a wider audience? | Mission question |
+| `question:mission-68acaeb37d1def2f` | When is silence in a search evidence about the index? | Mission question |
+| `question:mission-151486d39ecffcd1` | Who can substantiate an explanation for a changed heading? | Mission question |
 | `question:mission-81bcb95497be7b6e` | What did the furniture assert without a label? | Mission question |
 | `question:mission-d569e52fb1da32b5` | Which similarities still called for an explanation? | Mission question |
 | `question:mission-2dc51e81c21c02c5` | Which details resisted the pattern? | Mission question |
 | `question:mission-f4058ffeffb9dde8` | What would separate an object's journey from a person's? | Mission question |
 | `question:mission-036276d5c2a419ec` | Which link in the argument needs independent support? | Mission question |
-| `question:mission-d28799656a8f5603` | Who had the authority to move the frame? | Mission question |
-| `question:mission-d41205776d2ed3d6` | Which lives did the two records allow you to see? | Mission question |
+| `question:mission-a39684c73b0a3891` | What can an observer infer from an object alone? | Mission question |
+| `question:mission-0a47222338f3f7a6` | Which part of a plan could be checked in the trench today? | Mission question |
 | `question:mission-3cdf8c5ea40add0c` | Where could a pattern be felt by someone who never chose it? | Mission question |
 | `question:mission-c7b878b4ea5a372c` | What would an observer miss by counting movements alone? | Mission question |
 | `question:mission-e04537f85adfb5fe` | When did a sensible household choice change at town scale? | Mission question |
 | `question:mission-f3fcc272985ecfbf` | Why could both maps be faithful and disagree? | Mission question |
 | `question:mission-bf33ea27531bd117` | Which information did the price carry, and which need escaped it? | Mission question |
 | `question:mission-0449afe8fb5efa8e` | Whose interests helped a description become a stereotype? | Mission question |
-| `question:mission-590f6dcd7d2a2651` | What could a fair rule learn from the relationship? | Mission question |
-| `question:mission-239c28f1fa9443b8` | What evidence would show that access actually changed? | Mission question |
+| `question:mission-f4923c0e7b12aa32` | Which alternative explanation would change what the settlement should do? | Mission question |
+| `question:mission-c2e02b054514e152` | Who is absent from records produced by this form? | Mission question |
 | `question:mission-ab3f16148c31601f` | What kind of attention did the room invite? | Mission question |
 | `question:mission-2bfb0c6eade9c7f5` | What did the lighting persuade you to believe? | Mission question |
 | `question:mission-d6f88fa171cee026` | How did the order of looking become an interpretation? | Mission question |
@@ -1235,8 +1235,8 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `question:mission-75e9cffb97be416f` | What was lost when the label asked for a single origin? | Mission question |
 | `question:mission-602c3bbb7b02f088` | When did a useful presence become an uncomfortable one? | Mission question |
 | `question:mission-900d4e01c268dbc7` | What knowledge could the measurement carry only partly? | Mission question |
-| `question:mission-0dc146f92874b55a` | What did your position make impossible to witness alone? | Mission question |
-| `question:mission-474b9c39e04c442b` | Who controlled what the audience could understand? | Mission question |
+| `question:mission-366c9993371c8384` | What ethical responsibility comes with putting two moments together? | Mission question |
+| `question:mission-c2b50b9b8e377b32` | Which continuity belongs to the dancer and which to the edit? | Mission question |
 | `question:mission-863929bf3c2f8338` | Whose work becomes visible when a record changes hands? | Mission question |
 | `question:mission-52af6f24ffa450ae` | Who could act on the shorter label? What would a person still have to ask? | Mission question |
 | `question:mission-9a67516ecdf3678d` | Which journey could vanish twice, once in the office and once in the archive? | Mission question |
@@ -3250,24 +3250,24 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `character:ink-q2896591` | Zera Yacob | Historical guest |
 | `character:ink-q183074` | Sor Juana Inés de la Cruz | Historical guest |
 | `character:ink-q231690` | B. R. Ambedkar | Historical guest |
-| `character:ink-q219368` | Judith Butler | Historical guest |
+| `character:ink-q57592` | Magnus Hirschfeld | Historical guest |
 | `character:ink-q8750` | Michael Faraday | Historical guest |
 | `character:ink-q296898` | George Washington Carver | Historical guest |
 | `character:ink-q450317` | Chien-Shiung Wu | Historical guest |
-| `character:ink-q462843` | Tu Youyou | Historical guest |
-| `character:ink-q7352852` | Robin Wall Kimmerer | Historical guest |
+| `character:ink-q16059113` | Alice Ball | Historical guest |
+| `character:ink-q4985668` | Waheenee (Buffalo Bird Woman) | Historical guest |
 | `character:ink-q816430` | Ben Barres | Historical guest |
 | `character:ink-q202943` | Brahmagupta | Historical guest |
 | `character:ink-q9038` | Al-Khwārizmī | Historical guest |
 | `character:ink-q7099` | Emmy Noether | Historical guest |
 | `character:ink-q83163` | Srinivasa Ramanujan | Historical guest |
 | `character:ink-q1771279` | Maryam Mirzakhani | Historical guest |
-| `character:ink-q60056205` | Autumn Kent | Historical guest |
+| `character:ink-q441991` | Alicia Boole Stott | Historical guest |
 | `character:ink-q9372` | Sima Qian | Historical guest |
 | `character:ink-q179284` | Anna Komnene | Historical guest |
 | `character:ink-q521729` | Cheikh Anta Diop | Historical guest |
-| `character:ink-q7517038` | Silvia Rivera Cusicanqui | Historical guest |
-| `character:ink-q7648438` | Susan Stryker | Historical guest |
+| `character:ink-q970449` | María Rostworowski | Historical guest |
+| `character:ink-q6685787` | Lou Sullivan | Historical guest |
 | `character:ink-q1396630` | Te Rangi Hīroa | Historical guest |
 | `character:ink-q1395135` | Julio C. Tello | Historical guest |
 | `character:ink-q220480` | Zora Neale Hurston | Historical guest |
@@ -3278,19 +3278,19 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `character:ink-q158060` | W. E. B. Du Bois | Historical guest |
 | `character:ink-q14900709` | Mamie Phipps Clark | Historical guest |
 | `character:ink-q153761` | Elinor Ostrom | Historical guest |
-| `character:ink-q453592` | Raewyn Connell | Historical guest |
+| `character:ink-q234570` | Harriet Martineau | Historical guest |
 | `character:ink-q762` | Leonardo da Vinci | Historical guest |
 | `character:ink-q11621076` | Katsushika Ōi | Historical guest |
 | `character:ink-q219634` | Claude Cahun | Historical guest |
 | `character:ink-q5588` | Frida Kahlo | Historical guest |
 | `character:ink-q453890` | Emily Kame Kngwarreye | Historical guest |
-| `character:ink-q1323876` | El Anatsui | Historical guest |
+| `character:ink-q4885605` | Ben Enwonwu | Historical guest |
 | `character:ink-q11903` | Hypatia of Alexandria | Historical guest |
 | `character:ink-q39837` | Ibn Rushd | Historical guest |
 | `character:ink-q595486` | Anton Wilhelm Amo | Historical guest |
 | `character:ink-q164797` | Paulo Freire | Historical guest |
 | `character:ink-q570103` | Kwasi Wiredu | Historical guest |
-| `character:ink-q468609` | Paul B. Preciado | Historical guest |
+| `character:ink-q1096967` | Claude McKay | Historical guest |
 | `character:ink-q270085` | Shen Kuo | Historical guest |
 | `character:ink-q742233` | Carlos Juan Finlay | Historical guest |
 | `character:ink-q150526` | Santiago Ramón y Cajal | Historical guest |
@@ -3304,11 +3304,11 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `character:ink-q184535` | Sofia Kovalevskaya | Historical guest |
 | `character:ink-q7251` | Alan Turing | Historical guest |
 | `character:ink-q11740` | Katherine Johnson | Historical guest |
-| `character:ink-q32538394` | June Huh | Historical guest |
+| `character:ink-q315387` | Frank P. Ramsey | Historical guest |
 | `character:ink-q177081` | Ban Zhao | Historical guest |
 | `character:ink-q11826` | Al-Biruni | Historical guest |
 | `character:ink-q773828` | C. L. R. James | Historical guest |
-| `character:ink-q696748` | Wang Gungwu | Historical guest |
+| `character:ink-q343932` | Wang Tao | Historical guest |
 | `character:ink-q6836249` | Michel-Rolph Trouillot | Historical guest |
 | `character:ink-q1339859` | Ennigaldi-Nanna | Historical guest |
 | `character:ink-q7977193` | We'wha | Historical guest |
@@ -3316,22 +3316,22 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `character:ink-q275622` | Dorothy Garrod | Historical guest |
 | `character:ink-q407741` | Yuri Knorozov | Historical guest |
 | `character:ink-q1326832` | Epeli Hauʻofa | Historical guest |
-| `character:ink-q64597567` | Shadreck Chirikure | Historical guest |
+| `character:ink-q5082948` | Thurstan Shaw | Historical guest |
 | `character:ink-q1808076` | Laurent Clerc | Historical guest |
 | `character:ink-q131117` | Maria Montessori | Historical guest |
 | `character:ink-q180819` | Lev Vygotsky | Historical guest |
 | `character:ink-q193670` | Frantz Fanon | Historical guest |
-| `character:ink-q132489` | Amartya Sen | Historical guest |
-| `character:ink-q682037` | Deirdre McCloskey | Historical guest |
-| `character:ink-q232810` | Temple Grandin | Historical guest |
+| `character:ink-q10240` | Dadabhai Naoroji | Historical guest |
+| `character:ink-q446574` | Anna Schwartz | Historical guest |
+| `character:ink-q6759414` | Margaret Floy Washburn | Historical guest |
 | `character:ink-q232505` | Enheduanna | Historical guest |
 | `character:ink-q5600` | Mimar Sinan | Historical guest |
 | `character:ink-q212657` | Artemisia Gentileschi | Historical guest |
 | `character:ink-q231121` | Yayoi Kusama | Historical guest |
-| `character:ink-q2662098` | Ibrahim El-Salahi | Historical guest |
+| `character:ink-q966300` | Skunder Boghossian | Historical guest |
 | `character:ink-q158056` | Nam June Paik | Historical guest |
 | `character:ink-q47780` | Zaha Hadid | Historical guest |
-| `character:ink-q6391838` | Kent Monkman | Historical guest |
+| `character:ink-q653404` | Norval Morrisseau | Historical guest |
 | `character:ink-q188903` | Mencius | Historical guest |
 | `character:ink-q28959` | Han Feizi | Historical guest |
 | `character:ink-q9546` | Al-Ghazālī | Historical guest |
@@ -3339,14 +3339,14 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `character:ink-q157309` | Simone Weil | Historical guest |
 | `character:ink-q81244` | Karl Popper | Historical guest |
 | `character:ink-q184980` | Thomas Kuhn | Historical guest |
-| `character:ink-q3507232` | Sylvia Wynter | Historical guest |
+| `character:ink-q450741` | Stuart Hall | Historical guest |
 | `character:ink-q937` | Albert Einstein | Historical guest |
 | `character:ink-q7085` | Niels Bohr | Historical guest |
 | `character:ink-q199654` | Barbara McClintock | Historical guest |
 | `character:ink-q234583` | Lynn Margulis | Historical guest |
-| `character:ink-q44461` | Richard Dawkins | Historical guest |
-| `character:ink-q535129` | Joan Roughgarden | Historical guest |
-| `character:ink-q48472405` | Chanda Prescod-Weinstein | Historical guest |
+| `character:ink-q160627` | Alfred Russel Wallace | Historical guest |
+| `character:ink-q724591` | Ernest Everett Just | Historical guest |
+| `character:ink-q234909` | Cecilia Payne-Gaposchkin | Historical guest |
 | `character:ink-q470531` | Seki Takakazu | Historical guest |
 | `character:ink-q7967775` | Wang Zhenyi | Historical guest |
 | `character:ink-q41585` | David Hilbert | Historical guest |
@@ -3354,26 +3354,26 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `character:ink-q41390` | Kurt Gödel | Historical guest |
 | `character:ink-q452116` | Julia Robinson | Historical guest |
 | `character:ink-q77141` | Alexander Grothendieck | Historical guest |
-| `character:ink-q11099812` | Ron Eglash | Historical guest |
+| `character:ink-q2472797` | Ubiratan D'Ambrosio | Historical guest |
 | `character:ink-q26825` | Herodotus | Historical guest |
 | `character:ink-q41683` | Thucydides | Historical guest |
 | `character:ink-q34933` | Eric Hobsbawm | Historical guest |
 | `character:ink-q85102` | Gerda Lerner | Historical guest |
-| `character:ink-q16885749` | Linda Tuhiwai Smith | Historical guest |
-| `character:ink-q377638` | Niall Ferguson | Historical guest |
+| `character:ink-q4877178` | Beatrice Medicine | Historical guest |
+| `character:ink-q156585` | Marc Bloch | Historical guest |
 | `character:ink-q180099` | Margaret Mead | Historical guest |
 | `character:ink-q352603` | Derek Freeman | Historical guest |
 | `character:ink-q381783` | Lewis Binford | Historical guest |
-| `character:ink-q140575` | Zahi Hawass | Historical guest |
-| `character:ink-q556140` | Ian Hodder | Historical guest |
+| `character:ink-q329705` | Ahmed Kamal | Historical guest |
+| `character:ink-q733878` | Mortimer Wheeler | Historical guest |
 | `character:ink-q1174579` | David Graeber | Historical guest |
 | `character:ink-q1325` | Friedrich Hayek | Historical guest |
 | `character:ink-q234793` | Joan Robinson | Historical guest |
 | `character:ink-q213195` | B. F. Skinner | Historical guest |
-| `character:ink-q9049` | Noam Chomsky | Historical guest |
-| `character:ink-q666678` | Daniel Everett | Historical guest |
-| `character:ink-q6409990` | Kimberlé Crenshaw | Historical guest |
-| `character:ink-q32729` | Ha-Joon Chang | Historical guest |
+| `character:ink-q13230` | Ferdinand de Saussure | Historical guest |
+| `character:ink-q445239` | Mary Haas | Historical guest |
+| `character:ink-q7154879` | Pauli Murray | Historical guest |
+| `character:ink-q982374` | Raúl Prebisch | Historical guest |
 | `character:ink-q61064` | Wassily Kandinsky | Historical guest |
 | `character:ink-q171128` | Diego Rivera | Historical guest |
 | `character:ink-q273087` | Augusta Savage | Historical guest |
@@ -3388,100 +3388,100 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `character:lantern-q19587071` | Im Yunjidang | Historical guest |
 | `character:lantern-q165792` | Edmund Burke | Historical guest |
 | `character:lantern-q101638` | Mary Wollstonecraft | Historical guest |
-| `character:lantern-q740884` | Sandy Stone | Historical guest |
+| `character:lantern-q29544` | Delia Derbyshire | Historical guest |
 | `character:lantern-q171969` | Georges Cuvier | Historical guest |
 | `character:lantern-q5333` | Charles Lyell | Historical guest |
 | `character:lantern-q76432` | Rudolf Virchow | Historical guest |
 | `character:lantern-q529` | Louis Pasteur | Historical guest |
 | `character:lantern-q148109` | Subrahmanyan Chandrasekhar | Historical guest |
 | `character:lantern-q46795` | Wangari Maathai | Historical guest |
-| `character:lantern-q2540350` | Jessica Mink | Historical guest |
-| `character:lantern-q88608397` | Katalin Karikó | Historical guest |
+| `character:lantern-q230650` | Annie Jump Cannon | Historical guest |
+| `character:lantern-q7487` | Dorothy Hodgkin | Historical guest |
 | `character:lantern-q316304` | Liu Hui | Historical guest |
 | `character:lantern-q7103` | Sophie Germain | Historical guest |
 | `character:lantern-q379999` | Harold Jeffreys | Historical guest |
 | `character:lantern-q539544` | Jerzy Neyman | Historical guest |
 | `character:lantern-q525037` | David Blackwell | Historical guest |
-| `character:lantern-q38636` | Karen Uhlenbeck | Historical guest |
-| `character:lantern-q23721911` | Maryna Viazovska | Historical guest |
+| `character:lantern-q450269` | Olga Ladyzhenskaya | Historical guest |
+| `character:lantern-q452158` | Mary Cartwright | Historical guest |
 | `character:lantern-q473217` | Felipe Guaman Poma de Ayala | Historical guest |
 | `character:lantern-q185105` | Fernand Braudel | Historical guest |
 | `character:lantern-q266185` | Natalie Zemon Davis | Historical guest |
 | `character:lantern-q501880` | Bernard Lewis | Historical guest |
 | `character:lantern-q201538` | Edward Said | Historical guest |
-| `character:lantern-q2744161` | Romila Thapar | Historical guest |
+| `character:lantern-q2722635` | D. D. Kosambi | Historical guest |
 | `character:lantern-q929268` | Leslie Feinberg | Historical guest |
 | `character:lantern-q276177` | Gertrude Caton-Thompson | Historical guest |
 | `character:lantern-q269002` | Tatiana Proskouriakoff | Historical guest |
 | `character:lantern-q10501504` | Su Bingqi | Historical guest |
 | `character:lantern-q310956` | Clifford Geertz | Historical guest |
 | `character:lantern-q334842` | Marvin Harris | Historical guest |
-| `character:lantern-q4194733` | Zuraina Majid | Historical guest |
-| `character:lantern-q132253334` | Sonya Atalay | Historical guest |
+| `character:lantern-q5183334` | H. D. Sankalia | Historical guest |
+| `character:lantern-q1101944` | Arthur C. Parker | Historical guest |
 | `character:lantern-q9215` | Sigmund Freud | Historical guest |
 | `character:lantern-q154723` | Viktor Frankl | Historical guest |
 | `character:lantern-q984416` | Celso Furtado | Historical guest |
 | `character:lantern-q233950` | Daniel Kahneman | Historical guest |
-| `character:lantern-q108184` | Gerd Gigerenzer | Historical guest |
+| `character:lantern-q181529` | Herbert A. Simon | Historical guest |
 | `character:lantern-q242376` | Fatema Mernissi | Historical guest |
-| `character:lantern-q212730` | Steven Pinker | Historical guest |
-| `character:lantern-q340234` | Achille Mbembe | Historical guest |
-| `character:lantern-q24572747` | A. Revathi | Historical guest |
+| `character:lantern-q471927` | Frederic Bartlett | Historical guest |
+| `character:lantern-q1394990` | Walter Rodney | Historical guest |
+| `character:lantern-q3519662` | A. K. Ramanujan | Historical guest |
 | `character:lantern-q466627` | Tarsila do Amaral | Historical guest |
 | `character:lantern-q4724` | Le Corbusier | Historical guest |
 | `character:lantern-q560101` | Hassan Fathy | Historical guest |
 | `character:lantern-q466654` | Pacita Abad | Historical guest |
-| `character:lantern-q160115` | Ai Weiwei | Historical guest |
-| `character:lantern-q146776` | Zanele Muholi | Historical guest |
+| `character:lantern-q442628` | Isamu Noguchi | Historical guest |
+| `character:lantern-q962958` | Seydou Keïta | Historical guest |
 | `character:lantern-q256506` | Rābiʿa al-ʿAdawiyya | Historical guest |
 | `character:lantern-q9397` | Zhu Xi | Historical guest |
 | `character:lantern-q378462` | Wang Yangming | Historical guest |
 | `character:lantern-q35802` | Baruch Spinoza | Historical guest |
 | `character:lantern-q7197` | Simone de Beauvoir | Historical guest |
-| `character:lantern-q28918` | Luce Irigaray | Historical guest |
+| `character:lantern-q60025` | Hannah Arendt | Historical guest |
 | `character:lantern-q43302497` | Sophie Bosede Oluwole | Historical guest |
 | `character:lantern-q60894584` | Viola Cordova | Historical guest |
 | `character:lantern-q712288` | Paulin Hountondji | Historical guest |
-| `character:lantern-q7765045` | Julia Serano | Historical guest |
+| `character:lantern-q463319` | Audre Lorde | Historical guest |
 | `character:lantern-q39599` | Christiaan Huygens | Historical guest |
 | `character:lantern-q935` | Isaac Newton | Historical guest |
 | `character:lantern-q185007` | Rita Levi-Montalcini | Historical guest |
 | `character:lantern-q154824` | Norman Borlaug | Historical guest |
 | `character:lantern-q234888` | Vera Rubin | Historical guest |
-| `character:lantern-q1389108` | Mordehai Milgrom | Historical guest |
-| `character:lantern-q235451` | Vandana Shiva | Historical guest |
-| `character:lantern-q6777103` | Martine Rothblatt | Historical guest |
+| `character:lantern-q110181` | Henrietta Swan Leavitt | Historical guest |
+| `character:lantern-q214926` | Nikolai Vavilov | Historical guest |
+| `character:lantern-q49034` | Hedy Lamarr | Historical guest |
 | `character:lantern-q35900` | Omar Khayyam | Historical guest |
 | `character:lantern-q7091` | Évariste Galois | Historical guest |
 | `character:lantern-q76410` | Leopold Kronecker | Historical guest |
 | `character:lantern-q76420` | Georg Cantor | Historical guest |
 | `character:lantern-q11641` | Grace Hopper | Historical guest |
 | `character:lantern-q101740` | Benoit Mandelbrot | Historical guest |
-| `character:lantern-q92824` | Judea Pearl | Historical guest |
-| `character:lantern-q92894` | Geoffrey Hinton | Historical guest |
-| `character:lantern-q275604` | Ingrid Daubechies | Historical guest |
+| `character:lantern-q37103` | Florence Nightingale | Historical guest |
+| `character:lantern-q93018` | Frank Rosenblatt | Historical guest |
+| `character:lantern-q8772` | Joseph Fourier | Historical guest |
 | `character:lantern-q192124` | Al-Ṭabarī | Historical guest |
 | `character:lantern-q77184` | Leopold von Ranke | Historical guest |
 | `character:lantern-q5047158` | Carter G. Woodson | Historical guest |
 | `character:lantern-q475026` | Ranajit Guha | Historical guest |
 | `character:lantern-q434818` | Hayden White | Historical guest |
-| `character:lantern-q7399969` | Saidiya Hartman | Historical guest |
-| `character:lantern-q106288014` | Jules Gill-Peterson | Historical guest |
+| `character:lantern-q2865928` | Arturo Alfonso Schomburg | Historical guest |
+| `character:lantern-q16000225` | Michael Dillon | Historical guest |
 | `character:lantern-q141037` | Edward Burnett Tylor | Historical guest |
 | `character:lantern-q76857` | Franz Boas | Historical guest |
 | `character:lantern-q128126` | Claude Lévi-Strauss | Historical guest |
 | `character:lantern-q221084` | Marija Gimbutas | Historical guest |
 | `character:lantern-q434391` | Niède Guidon | Historical guest |
-| `character:lantern-q3048398` | Eduardo Viveiros de Castro | Historical guest |
-| `character:lantern-q27455889` | Theresa Singleton | Historical guest |
+| `character:lantern-q228822` | Ruth Benedict | Historical guest |
+| `character:lantern-q6263549` | John Wesley Gilbert | Historical guest |
 | `character:lantern-q15948` | Émile Durkheim | Historical guest |
 | `character:lantern-q9387` | Max Weber | Historical guest |
 | `character:lantern-q9317` | John Maynard Keynes | Historical guest |
 | `character:lantern-q982656` | Fei Xiaotong | Historical guest |
 | `character:lantern-q47426` | Milton Friedman | Historical guest |
 | `character:lantern-q7660347` | Syed Hussein Alatas | Historical guest |
-| `character:lantern-q284025` | Carol Gilligan | Historical guest |
-| `character:lantern-q22279356` | Viviane Namaste | Historical guest |
+| `character:lantern-q180989` | Jane Addams | Historical guest |
+| `character:lantern-q2278761` | Sylvia Rivera | Historical guest |
 | `character:lantern-q305477` | Sen no Rikyū | Historical guest |
 | `character:lantern-q42207` | Caravaggio | Historical guest |
 | `character:lantern-q41554` | Nicolas Poussin | Historical guest |
@@ -3489,8 +3489,8 @@ Each identifier selects a distinct member of the authoring space. The rows follo
 | `character:lantern-q465342` | Wifredo Lam | Historical guest |
 | `character:lantern-q234335` | Jane Jacobs | Historical guest |
 | `character:lantern-q16010963` | Ladi Kwali | Historical guest |
-| `character:lantern-q262413` | Shirin Neshat | Historical guest |
-| `character:lantern-q17581477` | Wu Tsang | Historical guest |
+| `character:lantern-q464394` | Forugh Farrokhzad | Historical guest |
+| `character:lantern-q450382` | Maya Deren | Historical guest |
 | `character:register-tovrie` | Tovrie | Fictional character |
 | `character:register-orren-bell` | Orren Bell | Fictional character |
 | `character:register-vellune` | Vellune | Fictional character |

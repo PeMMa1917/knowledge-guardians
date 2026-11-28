@@ -153,6 +153,13 @@ const hints = [
 export function addSeaBirdWatch(pack: ContentPack): void {
   pack.sources.push(
     {
+      id: "HIS-PVS-KANE", title: "Herb Kawainui Kāne",
+      url: "https://en.wikipedia.org/wiki/Herb_Kawainui_K%C4%81ne", accessed: "2026-11-28",
+      locator: "Hōkūleʻa and the Polynesian Voyaging Society",
+      supports: "Artist and historian Herb Kawainui Kāne (1928–2011) helped design Hōkūleʻa.",
+      mla: {kind: "page", title: "Herb Kawainui Kāne", container: "Wikipedia", showAccessDate: true},
+    },
+    {
       id: launch,
       title:
         "Polynesian Voyaging Society · Hōkūleʻa’s launch at Kualoa/Hakipuʻu",
@@ -232,20 +239,27 @@ export function addSeaBirdWatch(pack: ContentPack): void {
     },
     {
       id: "card.birdside.memory",
-      person: {
-        name: "Nainoa Thompson",
-        place: "Hawaiʻi",
-        life: "Navigator on the 1980 round trip",
-        era: "20th–21st centuries",
-        continent: "Oceania",
-      },
       title: "The learner’s pencil",
-      text: "Thompson recalls that in 1979 Piailug asked him to write things down. Models, time on the water and close observation were also part of his learning.",
+      text: "Nainoa Thompson recalls that in 1979 Piailug asked him to write things down. Models, time on the water and close observation were also part of his learning.",
       limits:
         "A learner can describe a particular lesson. His account does not set a single way of learning for everyone from Hawaiʻi or Satawal.",
       claimKind: "observation",
       historicalLabel: "documented",
       sources: [memory],
+    },
+    {
+      id:"card.birdside.kane",
+      person: {
+        name: "Herb Kawainui Kāne",
+        place: "Hawaiʻi",
+        life: "1928–2011 · artist and canoe designer",
+        era: "20th–21st centuries",
+        continent: "Oceania",
+      },
+      title:"The canoe before the crossing",
+      text:"Hawaiian artist and historian Herb Kawainui Kāne helped design Hōkūleʻa and co-founded the Polynesian Voyaging Society.",
+      limits:"A designer can document a vessel’s intended form. The navigator and crew give a different kind of evidence about a passage.",
+      claimKind:"observation", historicalLabel:"documented", sources:["HIS-PVS-KANE"],
     },
     {
       id: "card.birdside.voyage",
@@ -342,6 +356,7 @@ export function addSeaBirdWatch(pack: ContentPack): void {
         text: "Open the learner’s account of the pencil.",
         next: "birdside.memory",
       },
+      { text: "Look for the artist who designed the canoe.", next:"birdside.kane" },
       { text: "Open the crew’s voyage history.", next: "birdside.voyage" },
       {
         text: "Look at what Renna printed about writing.",
@@ -373,10 +388,13 @@ export function addSeaBirdWatch(pack: ContentPack): void {
     [back],
     {
       citationSource: memory,
-      biographyCard: "card.birdside.memory",
+      effects:[{addCard:"card.birdside.memory"}],
       historicalLabel: "documented",
     },
   );
+  say("kane","narrator","Before this canoe could leave the beach, someone had to draw it. Artist and historian Herb Kawainui Kāne helped design Hōkūleʻa and co-founded the Polynesian Voyaging Society. Compare the design with the crew’s account of sailing her.",[back],{
+    biographyCard:"card.birdside.kane",citationSource:"HIS-PVS-KANE",historicalLabel:"documented",
+  });
   say(
     "voyage",
     "narrator",

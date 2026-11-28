@@ -236,23 +236,23 @@
     }
   },
   {
-    "id": "q740884",
-    "character": "lantern-q740884",
-    "name": "Sandy Stone",
-    "title": "The voice folded into the wire",
-    "opening": "Somebody at the far desk insists the voice on our line belongs to the instrument. I can hear the woman choosing when to interrupt.",
-    "context": "Sandy Stone worked in sound engineering, media studies and transgender studies.",
+    "id": "q29544",
+    "character": "lantern-q29544",
+    "name": "Delia Derbyshire",
+    "title": "The tune inside a strip of tape",
+    "opening": "The composer’s notes are here. The sound the listener will remember still has to be made. Roll the tape past the join with me.",
+    "context": "At the BBC Radiophonic Workshop, Derbyshire realized electronic music by manipulating recorded sounds, including the original Doctor Who theme.",
     "folds": [
       {
-        "action": "Pass the speaker the return switch",
-        "arrival": "She cuts in halfway through her description. The audience has to wait for her choice of words."
+        "action": "Shorten the silence at the join",
+        "arrival": "The phrase changes without changing its pitches."
       },
       {
-        "action": "Reveal the relay desk to the listener",
-        "arrival": "The listener meets the operator who was making the pauses possible."
+        "action": "Listen to the isolated layers in turn",
+        "arrival": "The listener can hear what the realization contributes."
       }
     ],
-    "question": "Which part of being present did the wire carry?",
+    "question": "What should a credit for making this sound include?",
     "weave": {
       "concepts": [
         "perspective",
@@ -265,7 +265,7 @@
       ],
       "subjects": [
         "music",
-        "digital-society"
+        "film"
       ]
     }
   },
@@ -470,23 +470,23 @@
     }
   },
   {
-    "id": "q2540350",
-    "character": "lantern-q2540350",
-    "name": "Jessica Mink",
-    "title": "The blink beside Uranus",
-    "opening": "The chart says the star was hidden once. The trace carries several little dips beside the large one. My colleague is already packing the instruments away.",
-    "context": "Jessica Mink has worked on astronomical software and the interpretation of observations.",
+    "id": "q230650",
+    "character": "lantern-q230650",
+    "name": "Annie Jump Cannon",
+    "title": "A place for the smudged star",
+    "opening": "A thousand plates have a place in my drawers. This blurred one has two plausible neighbours. Look at the lines that still show.",
+    "context": "Cannon classified stellar spectra and helped establish the spectral sequence used in the Henry Draper Catalogue.",
     "folds": [
       {
-        "action": "Line the dips up by their times",
-        "arrival": "The spaced interruptions survive the alignment. Their cause still needs an account."
+        "action": "Place the plate between its nearest standards",
+        "arrival": "The next reader sees the competing matches."
       },
       {
-        "action": "Mark the uncertain star position separately",
-        "arrival": "The chart reader can adjust the sky coordinates without wiping out the original trace."
+        "action": "File a provisional class with a reason",
+        "arrival": "A future plate can settle a specific doubt."
       }
     ],
-    "question": "Which uncertainty could move the plotted position without erasing the dips?",
+    "question": "What makes a provisional classification worth keeping?",
     "weave": {
       "concepts": [
         "objectivity",
@@ -504,23 +504,23 @@
     }
   },
   {
-    "id": "q88608397",
-    "character": "lantern-q88608397",
-    "name": "Katalin Karikó",
-    "title": "The grant in the bottom drawer",
-    "opening": "My proposal has crossed this desk a few times. A short graph survived the last refusal. I need a reader who will say exactly what it can support.",
-    "context": "Katalin Karikó studied messenger RNA and shared the 2023 Nobel Prize in Physiology or Medicine.",
+    "id": "q7487",
+    "character": "lantern-q7487",
+    "name": "Dorothy Hodgkin",
+    "title": "The shadow with no outline",
+    "opening": "The dots belong to a diffraction pattern. A neat outline drawn round them would be a picture of the paper. Turn our model and compare the pattern it predicts.",
+    "context": "Hodgkin determined molecular structures using X-ray crystallography, including the structure of vitamin B12.",
     "folds": [
       {
-        "action": "Send the graph with its narrow claim",
-        "arrival": "The next reader can examine one finding without accepting the entire programme."
+        "action": "Overlay the predicted and observed spots",
+        "arrival": "A mismatch gives the model a concrete test."
       },
       {
-        "action": "Keep the reviewer's objection attached",
-        "arrival": "A new collaborator identifies the test the two correspondents were actually disputing."
+        "action": "Keep two candidate arrangements on the bench",
+        "arrival": "The next observation can distinguish them."
       }
     ],
-    "question": "What would make a rejected proposal worth revisiting?",
+    "question": "Why can matching one feature leave a model uncertain?",
     "weave": {
       "concepts": [
         "justification",
@@ -706,23 +706,23 @@
     }
   },
   {
-    "id": "q38636",
-    "character": "lantern-q38636",
-    "name": "Karen Uhlenbeck",
-    "title": "The film over the wire loop",
-    "opening": "A modeller calls the stretched film smooth everywhere. At one corner the lines of our drawing bunch until they nearly vanish. I want to keep that corner.",
-    "context": "Karen Uhlenbeck studied geometric analysis and the behaviour of mathematical fields.",
+    "id": "q450269",
+    "character": "lantern-q450269",
+    "name": "Olga Ladyzhenskaya",
+    "title": "The eddy between two grids",
+    "opening": "Both grids give the pool an eddy. One makes it enormous. Tighten the mesh before the town draws its bridge from my picture.",
+    "context": "Ladyzhenskaya studied partial differential equations, including mathematical questions about fluid flow.",
     "folds": [
       {
-        "action": "Enlarge the crowded corner of the sketch",
-        "arrival": "A tiny region now carries much of the change. The rest of the film still looks quiet."
+        "action": "Refine the grid and keep the wall fixed",
+        "arrival": "A change isolates the effect of resolution."
       },
       {
-        "action": "Fit a new outline to the same loop",
-        "arrival": "The film settles differently. Which features depended on the frame becomes visible."
+        "action": "Change the wall condition on both grids",
+        "arrival": "A shared response points to a different assumption."
       }
     ],
-    "question": "Where would an average hide the feature that matters?",
+    "question": "Which change tells you something about the model’s reliability?",
     "weave": {
       "concepts": [
         "explanation",
@@ -739,23 +739,23 @@
     }
   },
   {
-    "id": "q23721911",
-    "character": "lantern-q23721911",
-    "name": "Maryna Viazovska",
-    "title": "The orange crate with too many dimensions",
-    "opening": "My orange seller can show us a tight stack. My proof lives in a space her stall cannot hold. I'd like her to keep the useful part of her picture.",
-    "context": "Maryna Viazovska solved the sphere-packing problem in eight dimensions.",
+    "id": "q452158",
+    "character": "lantern-q452158",
+    "name": "Mary Cartwright",
+    "title": "The beat the dial forgot",
+    "opening": "A tiny turn of the dial and the trace stops repeating as I expected. Keep the old tracing. A surprising pattern is worth trying twice.",
+    "context": "Cartwright and J. E. Littlewood studied nonlinear oscillations arising from radio engineering.",
     "folds": [
       {
-        "action": "Build the stall's best small stack",
-        "arrival": "The seller can feel the empty spaces. A bigger-dimensional claim still needs its own argument."
+        "action": "Repeat the setting from the same starting mark",
+        "arrival": "A second trace tests repeatability."
       },
       {
-        "action": "Mark the step that needs the higher dimension",
-        "arrival": "A visitor can use the oranges as a beginning without asking them to finish the proof."
+        "action": "Lay neighbouring settings side by side",
+        "arrival": "The change across settings becomes visible."
       }
     ],
-    "question": "At which step does the crate stop being a model you can trust?",
+    "question": "When is an irregular trace evidence about the system?",
     "weave": {
       "concepts": [
         "certainty",
@@ -940,23 +940,23 @@
     }
   },
   {
-    "id": "q2744161",
-    "character": "lantern-q2744161",
-    "name": "Romila Thapar",
-    "title": "The dynasty heading across the street",
-    "opening": "Our binder divides the city into two rulers' reigns. A trading family keeps the same account across the join. I would like the fold to open both ways.",
-    "context": "Romila Thapar studies early India using texts alongside other forms of historical evidence.",
+    "id": "q2722635",
+    "character": "lantern-q2722635",
+    "name": "D. D. Kosambi",
+    "title": "The coin too light for its name",
+    "opening": "The inscription gives these coins one name. Their weights tell a less tidy story. Leave the worn edges where the reader can see them.",
+    "context": "Kosambi combined textual study, field observations and numismatic evidence in his work on Indian history.",
     "folds": [
       {
-        "action": "Run the family account across the chapter break",
-        "arrival": "A continuity that the change of ruler hides becomes readable."
+        "action": "Group the coins by wear before weighing",
+        "arrival": "The comparison controls one source of variation."
       },
       {
-        "action": "Leave the reign heading and add a street chronology",
-        "arrival": "The election of a new official and a household's changing debts now keep different time."
+        "action": "Plot the weights beside their find places",
+        "arrival": "A geographical pattern becomes testable."
       }
     ],
-    "question": "Whose life makes the proposed period look continuous?",
+    "question": "Which difference can you attribute to the mint?",
     "weave": {
       "concepts": [
         "evidence",
@@ -1175,23 +1175,23 @@
     }
   },
   {
-    "id": "q4194733",
-    "character": "lantern-q4194733",
-    "name": "Zuraina Majid",
-    "title": "The flake that fitted a hand",
-    "opening": "A small stone from the valley has been filed as a rough leftover. Lay the worn edge against the sequence of tools and it becomes much harder to dismiss.",
-    "context": "Siti Zuraina Abdul Majid led archaeological work in Malaysia's Lenggong Valley.",
+    "id": "q5183334",
+    "character": "lantern-q5183334",
+    "name": "H. D. Sankalia",
+    "title": "The layer the trench missed",
+    "opening": "The first trench gave us a neat sequence. The second one ends in river gravel. Join the drawings only as far as the evidence reaches.",
+    "context": "Indian archaeologist H. D. Sankalia investigated prehistoric sites and led excavations at sites including Nevasa.",
     "folds": [
       {
-        "action": "Set the flake into its excavation sequence",
-        "arrival": "The keeper can compare working traces with their neighbours in the layer."
+        "action": "Leave a break between the sections",
+        "arrival": "The reader sees where correlation is uncertain."
       },
       {
-        "action": "Invite a worker to draw the grip without using the original",
-        "arrival": "A plausible grip appears. The drawing stays distinct from the ancient maker's intention."
+        "action": "Follow the layer into a third section",
+        "arrival": "A new exposure can test the proposed connection."
       }
     ],
-    "question": "What would move a possible grip closer to a supported account?",
+    "question": "When can two layers be treated as the same episode?",
     "weave": {
       "concepts": [
         "justification",
@@ -1208,23 +1208,23 @@
     }
   },
   {
-    "id": "q132253334",
-    "character": "lantern-q132253334",
-    "name": "Sonya Atalay",
-    "title": "The key that must come home",
-    "opening": "The visiting team has offered to send a report after it leaves. The people who showed us the place want a say in the first question. I am listening.",
-    "context": "Sonya Atalay writes about archaeology undertaken in partnership with communities.",
+    "id": "q1101944",
+    "character": "lantern-q1101944",
+    "name": "Arthur C. Parker",
+    "title": "The label and the longhouse",
+    "opening": "A visitor has copied the case number into her book. Now she wants to know how anybody used the object. Bring the floor plan over.",
+    "context": "Seneca archaeologist and museum professional Arthur C. Parker wrote about Haudenosaunee history and helped shape museum education.",
     "folds": [
       {
-        "action": "Give the hosts the question card before the visit",
-        "arrival": "They change what the visitors plan to look for. The appointment remains theirs to cancel."
+        "action": "Set the account beside the plan",
+        "arrival": "The visitor can test the proposed setting."
       },
       {
-        "action": "Write the return visit into the agreement",
-        "arrival": "Some findings stay local until the hosts have seen what is being said."
+        "action": "Keep the catalogue number on the reconstruction",
+        "arrival": "A reader can return from the model to the object."
       }
     ],
-    "question": "At which decision did the hosts gain power over the inquiry?",
+    "question": "What makes a reconstruction accountable to its sources?",
     "weave": {
       "concepts": [
         "responsibility",
@@ -1376,23 +1376,23 @@
     }
   },
   {
-    "id": "q108184",
-    "character": "lantern-q108184",
-    "name": "Gerd Gigerenzer",
-    "title": "The short rule in a squall",
-    "opening": "The lookout knows one quick cue that usually gets us home. The new instrument needs three readings. I will trust either if you tell me what coast we are on.",
-    "context": "Gerd Gigerenzer studies simple decision rules and how well they fit particular environments.",
+    "id": "q181529",
+    "character": "lantern-q181529",
+    "name": "Herbert A. Simon",
+    "title": "The ferry that cannot wait for the best bid",
+    "opening": "The ferryman can compare one more offer before the tide turns. We could spend an hour finding the perfect crossing and miss every boat.",
+    "context": "Simon studied decision-making under limits of time, information and computational capacity.",
     "folds": [
       {
-        "action": "Use the lookout's cue on familiar water",
-        "arrival": "The warning comes in time. A visitor asks where that cue ceases to work."
+        "action": "Set a workable threshold before looking",
+        "arrival": "The ferryman can explain when to stop."
       },
       {
-        "action": "Move the same cue to the unfamiliar inlet",
-        "arrival": "A different current breaks the shortcut. The crew asks what made it reliable at home."
+        "action": "Spend the last minute comparing one more offer",
+        "arrival": "The possible gain comes with a visible cost."
       }
     ],
-    "question": "Which feature of the setting did the simple rule need?",
+    "question": "What makes a stopping rule defensible here?",
     "weave": {
       "concepts": [
         "justification",
@@ -1443,23 +1443,23 @@
     }
   },
   {
-    "id": "q212730",
-    "character": "lantern-q212730",
-    "name": "Steven Pinker",
-    "title": "The long graph at the town gate",
-    "opening": "The chart of many years slopes down. Someone standing beside it remembers the worst week of their life. I want a way to read both at their proper scales.",
-    "context": "Steven Pinker has written on language, cognition and how people reason.",
+    "id": "q471927",
+    "character": "lantern-q471927",
+    "name": "Frederic Bartlett",
+    "title": "The missing bend in the retelling",
+    "opening": "My third listener has straightened the road. It makes a splendid story. The first teller drew a bend exactly where the trouble began.",
+    "context": "Bartlett studied remembering as reconstruction, including changes in stories across successive retellings.",
     "folds": [
       {
-        "action": "Open the chart at two different time windows",
-        "arrival": "The long decline and a short, severe reversal appear together."
+        "action": "Line up the tellings by date",
+        "arrival": "The change can be located without accusing a teller."
       },
       {
-        "action": "Place the witness's dated week on the graph",
-        "arrival": "A real loss now has an address in the series. The series still bears on a broader claim."
+        "action": "Ask each listener to draw the route",
+        "arrival": "The sketches reveal a different part of the recollection."
       }
     ],
-    "question": "Which question can this long series answer for the witness?",
+    "question": "How could a detail become more plausible as it becomes less faithful?",
     "weave": {
       "concepts": [
         "explanation",
@@ -1476,23 +1476,23 @@
     }
   },
   {
-    "id": "q340234",
-    "character": "lantern-q340234",
-    "name": "Achille Mbembe",
-    "title": "The district outside the safety count",
-    "opening": "The capital counts safety at its well-lit entrance. Someone lives where the last lamp goes out. I need a record that can reach them without exposing their address.",
-    "context": "Achille Mbembe has written about colonial power and its effects on everyday life.",
+    "id": "q1394990",
+    "character": "lantern-q1394990",
+    "name": "Walter Rodney",
+    "title": "The cargo listed at one end",
+    "opening": "The manifest tells me what arrived at the port. Someone has already called it a complete account of the journey. Find the ledger at the other end.",
+    "context": "Guyanese historian Walter Rodney investigated the history of West Africa and relationships between African and European economic development.",
     "folds": [
       {
-        "action": "Trace where the counting stations stop",
-        "arrival": "A population appears outside the recorded boundary. Its experience still requires its own account."
+        "action": "Join the manifest to the labour account",
+        "arrival": "A value appears that the port did not count."
       },
       {
-        "action": "Let residents choose the scale of the public map",
-        "arrival": "The public can see a pattern while individual doorways remain private."
+        "action": "Trace who could set each price",
+        "arrival": "The exchange acquires a political history."
       }
     ],
-    "question": "Who gets the power to define safety by deciding where counting stops?",
+    "question": "Which missing account would change your explanation of the exchange?",
     "weave": {
       "concepts": [
         "power",
@@ -1510,23 +1510,23 @@
     }
   },
   {
-    "id": "q24572747",
-    "character": "lantern-q24572747",
-    "name": "A. Revathi",
-    "title": "The part of the story kept in my own hand",
-    "opening": "The reader wants my life to supply a key to everybody else's. I can hand over one page and still keep the pen.",
-    "context": "A. Revathi is a writer and performer whose autobiographical work describes life in India's hijra community.",
+    "id": "q3519662",
+    "character": "lantern-q3519662",
+    "name": "A. K. Ramanujan",
+    "title": "The refrain that came home altered",
+    "opening": "My two storytellers reach the river on different evenings. The audience knows both versions. Give each river its own place on the cloth.",
+    "context": "Ramanujan translated poetry from several Indian languages and wrote about multiple tellings of the Ramayana.",
     "folds": [
       {
-        "action": "Let the narrator choose the public page",
-        "arrival": "A reader encounters one particular account. A second person declines to have it stand for them."
+        "action": "Set the two endings beside their opening lines",
+        "arrival": "Each ending can be read within its own telling."
       },
       {
-        "action": "Leave space for a separately signed account",
-        "arrival": "A new speaker supplies a different route through the same street."
+        "action": "Keep the performer’s gesture in the margin",
+        "arrival": "The transcript preserves a clue that print might lose."
       }
     ],
-    "question": "Where should a reader stop extending a first-person account?",
+    "question": "What does it mean for two tellings to be versions of one story?",
     "weave": {
       "concepts": [
         "perspective",
@@ -1677,23 +1677,23 @@
     }
   },
   {
-    "id": "q160115",
-    "character": "lantern-q160115",
-    "name": "Ai Weiwei",
-    "title": "A seed with a worker's thumbprint",
-    "opening": "The label praises a field of identical porcelain seeds. A maker can pick out small differences where her hand worked the surface. I want her credit to travel with the heap.",
-    "context": "Ai Weiwei has worked with installations, everyday objects and documentary images.",
+    "id": "q442628",
+    "character": "lantern-q442628",
+    "name": "Isamu Noguchi",
+    "title": "A stone you meet on the way back",
+    "opening": "Everybody draws the stone from the entrance. My favourite view is the one a child sees after rounding it. Try the path at her height.",
+    "context": "Noguchi designed sculpture, gardens and public spaces, often treating movement through a site as part of the work.",
     "folds": [
       {
-        "action": "Invite a maker to choose the seed shown close up",
-        "arrival": "A visitor can see a particular hand in a work usually described by its huge total."
+        "action": "Walk the route in reverse",
+        "arrival": "The stone frames a different approach."
       },
       {
-        "action": "Keep the wide view and trace one workshop",
-        "arrival": "The scale stays visible and one part of its labour can be followed home."
+        "action": "Sketch the view from the bench",
+        "arrival": "The plan gains a viewpoint the overhead drawing omits."
       }
     ],
-    "question": "Whose contribution disappears when the total becomes the subject?",
+    "question": "Can a single view describe a work intended to be walked through?",
     "weave": {
       "concepts": [
         "power",
@@ -1710,23 +1710,23 @@
     }
   },
   {
-    "id": "q146776",
-    "character": "lantern-q146776",
-    "name": "Zanele Muholi",
-    "title": "The portrait with a return address",
-    "opening": "My sitter wants the picture seen and wants a say in where it goes tomorrow. A form that permits everything does not express either wish very well.",
-    "context": "Zanele Muholi has worked with portrait photography to document Black LGBTQIA+ lives in South Africa.",
+    "id": "q962958",
+    "character": "lantern-q962958",
+    "name": "Seydou Keïta",
+    "title": "The sitter picks the chair",
+    "opening": "The chair I offered my sitter makes a splendid diagonal. She has picked another one. Take both proofs to the light before you write her caption.",
+    "context": "Malian photographer Seydou Keïta operated a portrait studio in Bamako and worked with sitters, clothing, props and patterned backdrops.",
     "folds": [
       {
-        "action": "Let the sitter choose the first room",
-        "arrival": "Neighbours can encounter the portrait in the context the sitter chose."
+        "action": "Give the sitter the proofs",
+        "arrival": "The chosen portrait reflects the sitter’s judgement."
       },
       {
-        "action": "Give the sitter a way to change the caption later",
-        "arrival": "The exhibition can be corrected without asking the sitter to give up the whole image."
+        "action": "Keep a note of the studio arrangement",
+        "arrival": "A future viewer can see how the portrait was made."
       }
     ],
-    "question": "At which point does the subject retain control of their own account?",
+    "question": "Who shares authorship of a posed portrait?",
     "weave": {
       "concepts": [
         "perspective",
@@ -1911,23 +1911,23 @@
     }
   },
   {
-    "id": "q28918",
-    "character": "lantern-q28918",
-    "name": "Luce Irigaray",
-    "title": "A pronoun in wax",
-    "opening": "Our invitation says that he may enter. The clerk says that includes everybody. The girl with the invitation in her hand is still outside.",
-    "context": "Luce Irigaray has examined the relationship between language and sexual difference.",
+    "id": "q60025",
+    "character": "lantern-q60025",
+    "name": "Hannah Arendt",
+    "title": "The table with different seats",
+    "opening": "We share this table. From your seat the crack looks like two lines. From mine it looks like one. Give the meeting both drawings.",
+    "context": "Arendt wrote about political action, plurality and the public world in The Human Condition.",
     "folds": [
       {
-        "action": "Ask each guest to sign their own line",
-        "arrival": "The first signatures fill a corner the clerk thought was decoration."
+        "action": "Turn the drawings towards their neighbours",
+        "arrival": "Disagreement becomes something the group can investigate."
       },
       {
-        "action": "Start the invitation with the guest's voice",
-        "arrival": "The girl reads it aloud. The keeper has to listen before answering."
+        "action": "Keep the seats marked on the plan",
+        "arrival": "A later visitor can reconstruct the viewpoints."
       }
     ],
-    "question": "Who had to translate the old invitation?",
+    "question": "What allows different viewpoints to count as accounts of a shared world?",
     "weave": {
       "concepts": [
         "perspective",
@@ -2047,23 +2047,23 @@
     }
   },
   {
-    "id": "q7765045",
-    "character": "lantern-q7765045",
-    "name": "Julia Serano",
-    "title": "Borrowed emphasis",
-    "opening": "The announcer can repeat my words perfectly and still make the crowd laugh in a place I never laughed. Shall we lend her the microphone?",
-    "context": "Julia Serano has written about gender, language and the treatment of femininity.",
+    "id": "q463319",
+    "character": "lantern-q463319",
+    "name": "Audre Lorde",
+    "title": "The line the editor left quiet",
+    "opening": "The editor moved a line break and carried my last word into a smoother sentence. Read both versions aloud. Where does the listener have to wait?",
+    "context": "Poet and essayist Audre Lorde explored difference, language and the political uses of silence and speech.",
     "folds": [
       {
-        "action": "Let the speaker cue the pauses",
-        "arrival": "The audience hears a quiet sentence through to its end."
+        "action": "Restore the pause and read it to a listener",
+        "arrival": "A response can test the poet’s account of the effect."
       },
       {
-        "action": "Replay the two readings together",
-        "arrival": "A listener catches where the laugh entered. The speaker gets to turn the replay off."
+        "action": "Print both versions on a proof sheet",
+        "arrival": "A reader can locate the editorial intervention."
       }
     ],
-    "question": "Which meaning came from the words and which from their delivery?",
+    "question": "What can an edit change while leaving every word in place?",
     "weave": {
       "concepts": [
         "perspective",
@@ -2246,23 +2246,23 @@
     }
   },
   {
-    "id": "q1389108",
-    "character": "lantern-q1389108",
-    "name": "Mordehai Milgrom",
-    "title": "The rule at the edge",
-    "opening": "My rule fits the slow pull at the edge of this galaxy. The keeper wants to engrave it in brass before trying it anywhere else.",
-    "context": "Mordehai Milgrom proposed modified Newtonian dynamics to investigate galaxy rotation.",
+    "id": "q110181",
+    "character": "lantern-q110181",
+    "name": "Henrietta Swan Leavitt",
+    "title": "The plate with the late visitor",
+    "opening": "The bright dot I marked yesterday has dimmed. One plate would make it an unreliable lantern. Stack the nights in order and see what it keeps.",
+    "context": "Leavitt found a relationship between period and brightness among Cepheid variables in the Small Magellanic Cloud.",
     "folds": [
       {
-        "action": "Lay a second galaxy beneath the tracing",
-        "arrival": "Parts align and parts slip. We gain a place to press the rule harder."
+        "action": "Line the exposures up by date",
+        "arrival": "The interval can be checked directly."
       },
       {
-        "action": "Mark a prediction on a clean sheet",
-        "arrival": "Tomorrow's measurements can surprise us. Tonight the sheet has an empty corner."
+        "action": "Sort the stars by period",
+        "arrival": "A relationship with brightness emerges across stars."
       }
     ],
-    "question": "What finding would make you change the rule?",
+    "question": "What assumption makes this group of stars a fair comparison?",
     "weave": {
       "concepts": [
         "explanation",
@@ -2279,23 +2279,23 @@
     }
   },
   {
-    "id": "q235451",
-    "character": "lantern-q235451",
-    "name": "Vandana Shiva",
-    "title": "Seeds with surnames",
-    "opening": "The exchange labels every seed with its yield. A grower brought one because it ripens before the family moves uphill. There is no space for that on the tag.",
-    "context": "Vandana Shiva has campaigned on seed diversity and farmers' control of seeds.",
+    "id": "q214926",
+    "character": "lantern-q214926",
+    "name": "Nikolai Vavilov",
+    "title": "The seed packet with no village",
+    "opening": "I have a generous packet and a miserable label. Another packet has six seeds and a careful locality. Which question can each packet still answer?",
+    "context": "Vavilov collected crop diversity and studied geographical patterns in the origins and variation of cultivated plants.",
     "folds": [
       {
-        "action": "Give the grower a season wheel",
-        "arrival": "Another family spots a harvest window the yield table hid."
+        "action": "Restore the locality from the field ledger",
+        "arrival": "The sample can rejoin the geographical comparison."
       },
       {
-        "action": "Reserve a jar for seeds kept in different fields",
-        "arrival": "The shelf uses more space. A late frost leaves the village another choice."
+        "action": "Keep the uncertain packet in a separate tray",
+        "arrival": "It remains available without acquiring a guessed origin."
       }
     ],
-    "question": "Whose definition of success shaped the seed shelf?",
+    "question": "What happens to a comparison when an uncertain locality is treated as certain?",
     "weave": {
       "concepts": [
         "culture",
@@ -2313,23 +2313,23 @@
     }
   },
   {
-    "id": "q6777103",
-    "character": "lantern-q6777103",
-    "name": "Martine Rothblatt",
-    "title": "The empty frequency",
-    "opening": "Our radio map has a beautiful circle of coverage. A listener in the valley has heard nothing all week. I promised her a voice on the map.",
-    "context": "Martine Rothblatt worked in satellite communications and later founded a biotechnology company.",
+    "id": "q49034",
+    "character": "lantern-q49034",
+    "name": "Hedy Lamarr",
+    "title": "The duet with a missing bar",
+    "opening": "Our two paper scores agree until the page turn. My melody goes on alone. Try matching the marks without ever hearing the tune.",
+    "context": "Lamarr and George Antheil co-invented a frequency-hopping communication concept and received a US patent in 1942.",
     "folds": [
       {
-        "action": "Trace the listener's route with a receiver",
-        "arrival": "The circle breaks behind a ridge and returns on the next slope."
+        "action": "Align the strips at a common mark",
+        "arrival": "The readers recover a shared point in the score."
       },
       {
-        "action": "Give the valley a turn at the transmitter",
-        "arrival": "The town hears a voice it had counted as silence. A different village waits for its turn."
+        "action": "Mark the missing interval explicitly",
+        "arrival": "The two patterns can be compared beyond the gap."
       }
     ],
-    "question": "What did being heard add to being counted?",
+    "question": "How can two observers establish that their records are synchronized?",
     "weave": {
       "concepts": [
         "power",
@@ -2546,23 +2546,23 @@
     }
   },
   {
-    "id": "q92824",
-    "character": "lantern-q92824",
-    "name": "Judea Pearl",
-    "title": "The bell and the umbrellas",
-    "opening": "Umbrellas appear whenever the warning bell rings. The caretaker thinks ringing the bell fills the reservoir. Help me decide which lever to draw.",
-    "context": "Judea Pearl developed graphical approaches to causal inference.",
+    "id": "q37103",
+    "character": "lantern-q37103",
+    "name": "Florence Nightingale",
+    "title": "The wedge that ate the winter",
+    "opening": "The longest wedge has frightened the committee. Before they act, give them the scale and the number of people at risk.",
+    "context": "Nightingale used statistical diagrams to communicate patterns of mortality and argue for sanitary reform.",
     "folds": [
       {
-        "action": "Move the bell on a dry afternoon in the model",
-        "arrival": "The umbrellas turn and the reservoir stays low."
+        "action": "Put the scale beside the diagram",
+        "arrival": "The area can be read as a measurement."
       },
       {
-        "action": "Draw the cloud above both levers",
-        "arrival": "The diagram explains the old pattern. A broken cloud gauge could still mislead us."
+        "action": "Compare rates across two periods",
+        "arrival": "The committee can ask whether changing numbers at risk explain the difference."
       }
     ],
-    "question": "Which observation would distinguish the two explanations?",
+    "question": "Which part of a diagram carries its strongest claim?",
     "weave": {
       "concepts": [
         "justification",
@@ -2579,23 +2579,23 @@
     }
   },
   {
-    "id": "q92894",
-    "character": "lantern-q92894",
-    "name": "Geoffrey Hinton",
-    "title": "The sorter with a soft spot",
-    "opening": "The sorter recognises winter coats with uncanny success until the backdrop changes. My assistant has been painting the same grey sky behind every coat.",
-    "context": "Geoffrey Hinton studies how neural networks learn representations from examples.",
+    "id": "q93018",
+    "character": "lantern-q93018",
+    "name": "Frank Rosenblatt",
+    "title": "The sorter that learned the border",
+    "opening": "My machine calls every bordered card a boat. All our practice boats happened to have borders. Draw me the card that will expose its habit.",
+    "context": "Rosenblatt developed the perceptron, an early model of pattern classification.",
     "folds": [
       {
-        "action": "Swap two backdrops and leave the coats",
-        "arrival": "The same coat changes bins. The assistant sees a shortcut nobody intended."
+        "action": "Try a boat without a border",
+        "arrival": "Success now depends on something beyond the frame."
       },
       {
-        "action": "Keep the scene and cover the garment",
-        "arrival": "The machine still guesses from the sky. This time there is no coat to excuse it."
+        "action": "Put a border round an empty card",
+        "arrival": "A false recognition exposes the shortcut."
       }
     ],
-    "question": "What did the successful guesses leave untested?",
+    "question": "Which new example would distinguish recognition from a shortcut?",
     "weave": {
       "concepts": [
         "certainty",
@@ -2613,23 +2613,23 @@
     }
   },
   {
-    "id": "q275604",
-    "character": "lantern-q275604",
-    "name": "Ingrid Daubechies",
-    "title": "The scratch in the song",
-    "opening": "There is a scratch just before the singer takes a breath. The restorer can smooth both away in one stroke. I would miss the breath.",
-    "context": "Ingrid Daubechies developed wavelets used to analyse signals at different scales.",
+    "id": "q8772",
+    "character": "lantern-q8772",
+    "name": "Joseph Fourier",
+    "title": "The note hidden in the chord",
+    "opening": "Our little bell sounds like one thing. The tracing looks like several waves riding together. Lay a transparent wave on it and see what remains.",
+    "context": "Fourier described how periodic functions could be represented by sums of trigonometric components and applied his analysis to heat.",
     "folds": [
       {
-        "action": "Move a narrow listening window along the note",
-        "arrival": "The scratch shows up at one instant. The sustained note is harder to judge."
+        "action": "Add one component at a time",
+        "arrival": "The changing residue shows what each wave accounts for."
       },
       {
-        "action": "Compare coarse and fine versions of the same bar",
-        "arrival": "The hiss fades at one scale. At another we can hear where the singer turns."
+        "action": "Compare two reconstructions of the same note",
+        "arrival": "A close fit need not settle which description is most useful."
       }
     ],
-    "question": "Which loss was worth the quieter recording?",
+    "question": "What makes a decomposition informative?",
     "weave": {
       "concepts": [
         "interpretation",
@@ -2814,23 +2814,23 @@
     }
   },
   {
-    "id": "q7399969",
-    "character": "lantern-q7399969",
-    "name": "Saidiya Hartman",
-    "title": "The missing line in the ledger",
-    "opening": "This ledger counts a person and records almost nothing of her life. I cannot make a clerk's silence into her words. I am unwilling to leave her as a number.",
-    "context": "Saidiya Hartman has explored how to write about lives only partially visible in archives of slavery.",
+    "id": "q2865928",
+    "character": "lantern-q2865928",
+    "name": "Arturo Alfonso Schomburg",
+    "title": "The pamphlet behind the catalogue card",
+    "opening": "The speaker says there is no record. I have a pamphlet in a drawer filed under the printer’s name. Help the next reader find it from the subject.",
+    "context": "Puerto Rican-born collector Schomburg assembled a major collection documenting Black history and culture.",
     "folds": [
       {
-        "action": "Leave a lit space beside the entry",
-        "arrival": "The silence becomes visible and nobody supplies her voice for her."
+        "action": "Add a subject cross-reference",
+        "arrival": "The collection answers a question its first index could not."
       },
       {
-        "action": "Place two explicitly possible scenes on loose slips",
-        "arrival": "Readers can imagine lives beyond the ledger. The slips lift away from the documented line."
+        "action": "Preserve the printer’s heading as well",
+        "arrival": "A researcher can still reconstruct how the pamphlet circulated."
       }
     ],
-    "question": "How could a visitor tell what you imagined?",
+    "question": "When is silence in a search evidence about the index?",
     "weave": {
       "concepts": [
         "responsibility",
@@ -2847,23 +2847,23 @@
     }
   },
   {
-    "id": "q106288014",
-    "character": "lantern-q106288014",
-    "name": "Jules Gill-Peterson",
-    "title": "A name under the blotter",
-    "opening": "A young person's letter survives because an office kept it. Permission to read a file and permission to display a life have come apart.",
-    "context": "Jules Gill-Peterson researches histories of transgender lives and childhood.",
+    "id": "q16000225",
+    "character": "lantern-q16000225",
+    "name": "Michael Dillon",
+    "title": "The name on the proof sheet",
+    "opening": "My manuscript and the printer’s proof do not give the same account of who is speaking. Lay the title pages together before anyone writes a life from the difference.",
+    "context": "Dillon wrote Self: A Study in Ethics and Endocrinology and an autobiography that appeared posthumously.",
     "folds": [
       {
-        "action": "Cover the name and show the office stamp",
-        "arrival": "Visitors see how records were made. The writer can stay out of the window."
+        "action": "Keep each heading with its date",
+        "arrival": "The reader can follow a change without inventing a motive."
       },
       {
-        "action": "Trace the filing route without opening the letter",
-        "arrival": "The power of the office is visible. The writer's own words remain unheard."
+        "action": "Index the author’s own account beside the edition",
+        "arrival": "A later reader can compare the framing."
       }
     ],
-    "question": "Whose permission would matter for a wider audience?",
+    "question": "Who can substantiate an explanation for a changed heading?",
     "weave": {
       "concepts": [
         "responsibility",
@@ -3047,23 +3047,23 @@
     }
   },
   {
-    "id": "q3048398",
-    "character": "lantern-q3048398",
-    "name": "Eduardo Viveiros de Castro",
-    "title": "The visitor's perch",
-    "opening": "Our drawing gives the visitor one place to stand. The people who told the story have asked where we stood to hear it. They also want part of it left off the wall.",
-    "context": "Eduardo Viveiros de Castro writes about perspectivism in dialogue with particular Amazonian ethnographies.",
+    "id": "q228822",
+    "character": "lantern-q228822",
+    "name": "Ruth Benedict",
+    "title": "The cup at the wrong ceremony",
+    "opening": "A visitor borrowed my sketch of a cup and called it a complete explanation. The cup was being passed between people. Put the people back in the sketch.",
+    "context": "Benedict wrote Patterns of Culture and explored how practices acquire meaning within cultural configurations.",
     "folds": [
       {
-        "action": "Move the viewer's marker onto the drawing",
-        "arrival": "Visitors see the position from which the first account was heard."
+        "action": "Draw the order of the exchange",
+        "arrival": "The object acquires a social setting."
       },
       {
-        "action": "Invite the teller to choose the edge of the display",
-        "arrival": "One section stays private. The authorised part acquires a speaker and a setting."
+        "action": "Compare the observer’s account with the participant’s",
+        "arrival": "The interpretation gains a second voice."
       }
     ],
-    "question": "Who had the authority to move the frame?",
+    "question": "What can an observer infer from an object alone?",
     "weave": {
       "concepts": [
         "perspective",
@@ -3081,23 +3081,23 @@
     }
   },
   {
-    "id": "q27455889",
-    "character": "lantern-q27455889",
-    "name": "Theresa Singleton",
-    "title": "The shard beside the back step",
-    "opening": "The big house has a fine inventory. The fragments from behind the kitchen tell of people the inventory barely names. The ground has kept different company from the ledger.",
-    "context": "Theresa Singleton studies material traces of slavery and African diaspora communities.",
+    "id": "q6263549",
+    "character": "lantern-q6263549",
+    "name": "John Wesley Gilbert",
+    "title": "A wall under the survey line",
+    "opening": "The survey peg is secure. The wall does not follow the line we gave it on yesterday’s drawing. Walk the corner with me before the copyist inks it.",
+    "context": "Gilbert, an African American classicist and archaeologist, participated in excavations at Eretria in Greece.",
     "folds": [
       {
-        "action": "Fit a kitchen fragment to a cooking place",
-        "arrival": "A work space comes into focus. We still cannot name its user."
+        "action": "Redraw the exposed corner to scale",
+        "arrival": "The measured segment can be distinguished from the extension."
       },
       {
-        "action": "Lay the excavation plan beneath the house list",
-        "arrival": "A visitor follows the missing workers into the picture. The plan cannot speak for them."
+        "action": "Mark the continuation with a broken line",
+        "arrival": "The next excavator can test a visible hypothesis."
       }
     ],
-    "question": "Which lives did the two records allow you to see?",
+    "question": "Which part of a plan could be checked in the trench today?",
     "weave": {
       "concepts": [
         "evidence",
@@ -3314,23 +3314,23 @@
     }
   },
   {
-    "id": "q284025",
-    "character": "lantern-q284025",
-    "name": "Carol Gilligan",
-    "title": "The last ferry token",
-    "opening": "The rule gives the token to the first arrival. The first arrival is holding a place for someone who cannot wait in line. Both are watching my hand.",
-    "context": "Carol Gilligan wrote about care, relationships and the development of moral reasoning.",
+    "id": "q180989",
+    "character": "lantern-q180989",
+    "name": "Jane Addams",
+    "title": "The timetable beyond the settlement door",
+    "opening": "The evening class has six empty chairs. Somebody has written “lack of interest” across the register. Bring me the factory timetable before we bind that book.",
+    "context": "Addams co-founded Hull House in Chicago, where residents investigated urban working and living conditions and organized social reform.",
     "folds": [
       {
-        "action": "Let the pair tell us whom they rely on",
-        "arrival": "A need emerges that the line could not record. The boatman must hold the boat."
+        "action": "Move one session to the later hour",
+        "arrival": "Attendance can test the explanation about timing."
       },
       {
-        "action": "Set the queue rule beside a carefully named exception",
-        "arrival": "The next traveller can ask for the same consideration. Someone must hear their case."
+        "action": "Ask workers to mark their available hours",
+        "arrival": "The schedule gains evidence from the people affected."
       }
     ],
-    "question": "What could a fair rule learn from the relationship?",
+    "question": "Which alternative explanation would change what the settlement should do?",
     "weave": {
       "concepts": [
         "values",
@@ -3347,23 +3347,23 @@
     }
   },
   {
-    "id": "q22279356",
-    "character": "lantern-q22279356",
-    "name": "Viviane Namaste",
-    "title": "The locked clinic door",
-    "opening": "A register says the service exists. A visitor has come three times and found the wrong name on the form every time. I need to see the journey between street and desk.",
-    "context": "Viviane Namaste has researched how institutions shape transgender people's access to services.",
+    "id": "q2278761",
+    "character": "lantern-q2278761",
+    "name": "Sylvia Rivera",
+    "title": "The address box on the help slip",
+    "opening": "The new help slip wants a permanent address. The person waiting beside me is here precisely because she has nowhere to sleep. Try getting her request through that box.",
+    "context": "Rivera was a New York activist who worked with Marsha P. Johnson in Street Transvestite Action Revolutionaries and advocated for unhoused young people.",
     "folds": [
       {
-        "action": "Trace the visit with the visitor's permission",
-        "arrival": "One small field blocks the next step. The visitor chooses where the account stops."
+        "action": "Add a way to leave a message",
+        "arrival": "The request can move while the person chooses a contact."
       },
       {
-        "action": "Ask the desk to complete its own forms",
-        "arrival": "The clerk encounters the mismatch in person. Some barriers remain invisible from inside."
+        "action": "Count requests turned away at the desk",
+        "arrival": "The official total gains an important missing category."
       }
     ],
-    "question": "What evidence would show that access actually changed?",
+    "question": "Who is absent from records produced by this form?",
     "weave": {
       "concepts": [
         "power",
@@ -3613,23 +3613,23 @@
     }
   },
   {
-    "id": "q262413",
-    "character": "lantern-q262413",
-    "name": "Shirin Neshat",
-    "title": "The audience between two screens",
-    "opening": "A voice begins on one wall while a second image slips past on the other. Whichever way a guest turns, something happens behind them.",
-    "context": "Shirin Neshat has worked in photography, film and installations using multiple projections.",
+    "id": "q464394",
+    "character": "lantern-q464394",
+    "name": "Forugh Farrokhzad",
+    "title": "The cut before the laughter",
+    "opening": "The same shot feels different when I move the sound a little. Before we settle the sequence, let the people on screen finish their moment.",
+    "context": "Iranian poet and filmmaker Farrokhzad directed The House Is Black, a documentary set in a leprosy colony.",
     "folds": [
       {
-        "action": "Seat a pair facing opposite walls",
-        "arrival": "They need each other to reconstruct the moment. Their timing disagrees."
+        "action": "Play the longer shot before the cut",
+        "arrival": "The viewer has more time to observe the exchange."
       },
       {
-        "action": "Leave the room open for a second pass",
-        "arrival": "A visitor returns and hears the silence differently. Some cannot stay that long."
+        "action": "Shift the voice against the same image",
+        "arrival": "The editor’s part in the apparent connection becomes audible."
       }
     ],
-    "question": "What did your position make impossible to witness alone?",
+    "question": "What ethical responsibility comes with putting two moments together?",
     "weave": {
       "concepts": [
         "perspective",
@@ -3642,28 +3642,28 @@
       ],
       "subjects": [
         "film",
-        "theatre"
+        "lang-lit"
       ]
     }
   },
   {
-    "id": "q17581477",
-    "character": "lantern-q17581477",
-    "name": "Wu Tsang",
-    "title": "The subtitle that arrives late",
-    "opening": "The camera follows the speaker. A friend at the edge makes the gesture that changes what the words mean. The subtitle has room for half a breath.",
-    "context": "Wu Tsang works in film, performance and collaborative installation.",
+    "id": "q450382",
+    "character": "lantern-q450382",
+    "name": "Maya Deren",
+    "title": "A footstep between two rooms",
+    "opening": "My dancer lifts a foot in one room and puts it down in another. The audience follows the step. Try finding the instant at which the room changes.",
+    "context": "Filmmaker Maya Deren experimented with movement, repetition and cinematic space in films including A Study in Choreography for Camera.",
     "folds": [
       {
-        "action": "Hold the frame on the friend",
-        "arrival": "A viewer sees the gesture before hearing the explanation."
+        "action": "Match the dancer’s movement across the cut",
+        "arrival": "The viewer follows one gesture through different spaces."
       },
       {
-        "action": "Let the performers choose the cut together",
-        "arrival": "The pause survives. The subtitle comes late and must be read in a different rhythm."
+        "action": "Hold the second room before the foot lands",
+        "arrival": "The audience has time to notice the discontinuity."
       }
     ],
-    "question": "Who controlled what the audience could understand?",
+    "question": "Which continuity belongs to the dancer and which to the edit?",
     "weave": {
       "concepts": [
         "interpretation",
@@ -3676,7 +3676,7 @@
       ],
       "subjects": [
         "film",
-        "lang-langlit"
+        "lang-lit"
       ]
     }
   }
