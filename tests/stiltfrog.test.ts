@@ -5,7 +5,7 @@ import { artKeys } from '../src/ui/illustrations';
 import { Driver } from './driver';
 
 function visit(d: Driver, site: 'sea' | 'forest') {
-  d.s.objectivesDone.push(site === 'sea' ? 'copies.revise' : 'coast.revise');
+  d.resumeAfter(site === 'sea' ? 'copies.revise' : 'coast.revise');
   d.run({ type: 'SetFlag', flag: `${site}.arrived`, value: true });
   d.s.mapId = site === 'sea' ? 'sea.shoal' : 'forest.trail';
   expect(d.done(`${site}.arrival`)).toBe(true);

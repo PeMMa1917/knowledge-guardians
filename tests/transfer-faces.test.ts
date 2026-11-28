@@ -38,7 +38,7 @@ function scene(d: Driver, id: string, ...choices: string[]) {
 
 function start() {
   const d = new Driver();
-  d.resumeAfter('forest.finish', 'island.finish');
+  d.resumeAfter('forest.finish');
   d.s.flags['metal.response'] = 'ledger';
   d.s.flags['council.revision'] = 'mark';
   enter(d, 'metalworks-door');
@@ -116,6 +116,7 @@ describe('Two-Face Frame field investigation', () => {
     expect(available(d, 'metal-plate-flat')).toBe(loan);
     expect(available(d, 'metal-plate-turn')).toBe(!loan);
     enter(d, 'metal-nexus-return');
+    d.resumeAfter('island.finish');
     enter(d, 'council-door');
     d.s.objectivesDone.push('council.arrival');
     enter(d, 'council-gallery-path');

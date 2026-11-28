@@ -38,10 +38,19 @@ export class Driver {
       node = this.run({ type: 'ChooseDialogueOption', node, index: choice.index }).nextNode ?? null;
     }
   }
-  /** Resume an old linear-route fixture with the preceding chapters actually completed. */
+  /** Seed a prepared return route without finishing the optional cases under test. */
   resumeAfter(...objectives: string[]) {
-    const last = Math.max(...objectives.map(id => PASSAGES.findIndex(p => p.finish === id)));
-    const done = new Set([...this.s.objectivesDone, ...PASSAGES.slice(0,last+1).map(p=>p.finish), ...objectives]);
+    const done = new Set([...this.s.objectivesDone, ...objectives]);
+    for (const id of objectives) {
+      const chapter = PASSAGES.findIndex(p => p.finish === id) + 1;
+      let previous: number[] = [];
+      if (chapter >= 3 && chapter <= 7) previous = [2];
+      if (chapter === 8 || chapter === 9) previous = [2,3,5,6];
+      if (chapter === 10) previous = [9];
+      if (chapter === 12 || chapter === 13) previous = [11];
+      if (chapter === 14) previous = Array.from({length:13},(_,i)=>i+1);
+      for (const n of previous) done.add(PASSAGES[n-1].finish);
+    }
     this.s.objectivesDone = [...done];
   }
   moves(...mv: ShowdownMove[]) { for (const m of mv) { if (this.s.showdown?.outcome) break; this.run({ type: 'ShowdownMove', move: m }); } }

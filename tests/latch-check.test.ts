@@ -32,7 +32,7 @@ function arrive(d: Driver, site: Site) {
   const { site: parent, room, main } = rooms[site];
   d.s.mapId = parent;
   expect(prop(d, `${site}-latch-door`).visible).toBe(false);
-  if (site === 'water') d.s.objectivesDone.push('market.finish');
+  if (site === 'water') d.resumeAfter('market.finish');
   d.run({ type: 'SetFlag', flag: main, value: true });
   use(d, `${site}-latch-door`);
   expect(d.s.mapId).toBe(room);
