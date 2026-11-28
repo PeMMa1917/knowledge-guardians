@@ -40,8 +40,8 @@ export interface KeyValueStore {
   set(key: string, value: string): void;
 }
 
-export const KEY_SLOTS = 'kg.slots';
-export const KEY_PERMANENT = 'kg.permanent';
+import {KEY_SLOTS, KEY_PERMANENT} from './saveKeys';
+export {KEY_SLOTS, KEY_PERMANENT};
 
 export function emptyPair(): SlotPair {
   return { revision: 0, continue: null, recovery: null };

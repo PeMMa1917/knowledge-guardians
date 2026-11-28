@@ -765,9 +765,13 @@ The reviewed set covers 1,066 documented exhibits, including 1,018 registered sp
 
 ## People who speak through the folded-wing post
 
-The 140 supplied names are recorded with distinct Wikidata identities and English Wikipedia article titles in the encounter registry. Each corresponding `HIS-INK-` record has a narrow biographical claim, an article URL and an access date of 27 November 2026. For example, the source for Gārgī supports her questioning of Yājñavalkya in the Bṛhadāraṇyaka Upaniṣad. Her paper bird and the silk ceiling are an authored scene. Marcel Duchamp, Mozi, Ibn Khaldun and Ibn al-Haytham each use the same character and article identity in their other encounters.
+The 140 correspondence slots use deceased historical figures. Their names are recorded with distinct Wikidata identities and English Wikipedia article titles in the encounter registry. Each corresponding `HIS-INK-` record has a narrow biographical claim, an article URL and an access date of 27 November 2026. For example, the source for Gārgī supports her questioning of Yājñavalkya in the Bṛhadāraṇyaka Upaniṣad. Her paper bird and the silk ceiling are an authored scene. Marcel Duchamp, Mozi, Ibn Khaldun and Ibn al-Haytham each use the same character and article identity in their other encounters.
 
 The individual source sits under the wax seal in play. Meeting a historical speaker makes their article available in the diary and its Word and print exports. An institutional object citation still depends on the object being earned. The Indigenous scholars and makers have individually attributed accounts. Permissions for community knowledge or a representation on a community’s behalf need direct consultation. [Identifiers and articles](../src/content/encyclopedia.json) · [Biographical claims and original dialogue](../src/content/ink-post-letters.json) · [Credit formatting](../src/domain/mla.ts)
+
+The 250 recurring guests and the additional featured biographies have a dated cast register. Each encyclopedia entry uses the article title and Wikidata ID for the same individual. Where a community or museum account supplies the biography, the register points to the source on the card. Ancient figures can have an attested period in place of an uncertain death year. [Dated cast register](../src/content/historical-lifetimes.json)
+
+The Garjját case credits Britta Marakatt-Labba for her artwork. Its related reading features Sámi poet and artist Nils-Aslak Valkeapää. The voyage account credits Nainoa Thompson for his recollection of Mau Piailug. Its related reading features Hōkūleʻa co-designer Herb Kawainui Kāne. Each reading has its own discovery record. [Garjját case](../src/content/seam-witness.json) · [Voyage account](../src/content/seaBirdWatch.ts)
 
 ## The Night Register collection
 

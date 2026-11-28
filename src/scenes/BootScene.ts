@@ -2,6 +2,7 @@ import { BASE_SHEET_KEY, BASE_SHEET_URL } from './looks';
 import Phaser from 'phaser';
 import { STAMPS, CHAR_FRAME } from './art';
 import { ensureFieldArt } from './fieldArt';
+import type { MapDef } from '../maps/types';
 import { glowCanvas } from '../ui/illustrations';
 
 // These tracks are only needed if the browser cannot play a generated score.
@@ -73,6 +74,55 @@ export class BootScene extends Phaser.Scene {
     return result;
   }
 
+  private readonly pendingSheets = new Map<string, Promise<void>>();
+
+  private registerFrames(sheet: string): void {
+    const texture = this.textures.get(sheet);
+    for (const [name, stamp] of Object.entries(STAMPS)) {
+      if (stamp.sheet === sheet && !texture.has(name)) {
+        texture.add(name, 0, stamp.x * 16, stamp.y * 16, stamp.w * 16, stamp.h * 16);
+      }
+    }
+  }
+
+  private loadSheet(sheet: string): Promise<void> {
+    if (this.textures.exists(sheet)) return Promise.resolve();
+    const pending = this.pendingSheets.get(sheet);
+    if (pending) return pending;
+    const job = new Promise<void>((resolve, reject) => {
+      const event = Phaser.Loader.Events.FILE_KEY_COMPLETE + 'image-' + sheet;
+      const ready = () => {
+        this.load.off(Phaser.Loader.Events.FILE_LOAD_ERROR, failed);
+        this.registerFrames(sheet);
+        resolve();
+      };
+      const failed = (file: Phaser.Loader.File) => {
+        if (file.key !== sheet || file.type !== 'image') return;
+        this.load.off(event, ready);
+        this.load.off(Phaser.Loader.Events.FILE_LOAD_ERROR, failed);
+        reject(new Error('The map picture could not be loaded: ' + sheet));
+      };
+      this.load.once(event, ready);
+      this.load.on(Phaser.Loader.Events.FILE_LOAD_ERROR, failed);
+      this.load.image(sheet, 'assets/art/generated/' + sheet + '_tiles.png');
+      this.load.start();
+    }).finally(() => this.pendingSheets.delete(sheet));
+    this.pendingSheets.set(sheet, job);
+    return job;
+  }
+
+  async loadRoomPictures(map: MapDef): Promise<void> {
+    const sheets = new Set<string>();
+    const add = (stamp: string | null) => { if (stamp) sheets.add(STAMPS[stamp].sheet); };
+    for (let y = 0; y < map.height; y++)
+      for (let x = 0; x < map.width; x++) add(map.floor(x, y));
+    for (const prop of map.stamps) {
+      add(prop.stamp);
+      prop.anim?.forEach(add);
+    }
+    await Promise.all(Array.from(sheets, sheet => this.loadSheet(sheet)));
+  }
+
   preload(): void {
     const bar = this.add.rectangle(this.scale.width / 2, this.scale.height / 2, 4, 6, 0x9fe8ff);
     const showProgress = (p: number) => { bar.width = Math.max(4, p * 300); };
@@ -80,12 +130,6 @@ export class BootScene extends Phaser.Scene {
     this.load.once(Phaser.Loader.Events.COMPLETE, () => this.load.off('progress', showProgress));
     this.load.image('ow', 'assets/art/armm1998/Overworld.png');
     this.load.image('in', 'assets/art/armm1998/Inner.png');
-    this.load.image('market', 'assets/art/generated/market_tiles.png');
-    this.load.image('water', 'assets/art/generated/water_tiles.png');
-    this.load.image('civic', 'assets/art/generated/civic_tiles.png');
-    this.load.image('voices', 'assets/art/generated/voices_tiles.png');
-    this.load.image('island', 'assets/art/generated/island_tiles.png');
-    this.load.image('council', 'assets/art/generated/council_tiles.png');
     this.load.image(BASE_SHEET_KEY, BASE_SHEET_URL); // base for custom player looks
     for (const id of CHARACTER_SHEETS) {
       this.load.spritesheet(`char.${id}`, `assets/art/generated/characters/${id}.png`, { frameWidth: CHAR_FRAME.w, frameHeight: CHAR_FRAME.h });
@@ -101,11 +145,8 @@ export class BootScene extends Phaser.Scene {
       this.game.events.emit('boot-failed');
       return;
     }
-    // Named frames for every stamp on the tile sheets.
-    for (const [name, s] of Object.entries(STAMPS)) {
-      const tex = this.textures.get(s.sheet);
-      if (!tex.has(name)) tex.add(name, 0, s.x * 16, s.y * 16, s.w * 16, s.h * 16);
-    }
+    this.registerFrames('ow');
+    this.registerFrames('in');
     // These two frames are needed when registering the shared animation.
     for (const key of ['moth.0', 'moth.1', 'shadow']) ensureFieldArt(this.textures, key);
     if (!this.textures.exists('glow')) this.textures.addCanvas('glow', glowCanvas(128));

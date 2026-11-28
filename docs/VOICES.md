@@ -1,5 +1,9 @@
 # Voice sheets
 
+## Historical workshop guests
+
+The folded-wing post has 140 correspondents and the lantern workshops add 110 guests. Cast a deceased person with a dated biographical source and write the action around something specific to their work. In the sample yard, for instance, Grace Hopper can trace the instruction that produces a mark and Annie Jump Cannon can preserve a third tray for uncertain specimens. Either route helps Corra, but leaves the next shift with different evidence. A replacement receives a new encounter identity. [Correspondents](../src/content/ink-post-letters.json) · [Lantern voices](../src/content/lamplight-voices.json) · [Paired scenes](../src/content/lamplight-stations.json)
+
 ## The lost-property rail
 
 Kip Arden knows what it costs to miss a ferry. He makes a joke about his autograph when his thumb prints a pear, and asks for the ticket himself when Ise offers to speak for him. On the private side of the hatch he can fit a child’s toy into a pocket. The important word in that exchange is the borrower’s second “yellow”.

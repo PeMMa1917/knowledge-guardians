@@ -1,3 +1,4 @@
+import { titleActions, type TitleAction } from './titleActions';
 import {callingBook} from './callingBook';
 import {paintHousehold,housePanel} from './openHouse';
 import {chairNames,household} from '../domain/openHouse';
@@ -77,7 +78,7 @@ import { LUMEN_COLOURS, LUMEN_FORMS, THEMES, lumenArt, saveSettings, type Settin
 import { PRONOUN_SETS, cleanPronouns, personalise } from '../domain/player';
 import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads, DYE_KEYS, OUTFIT, PRESET_LOOKS, SKIN, TROUSERS, decodeLook, encodeLook, type LookChoice } from '../domain/appearance';
 import { previewLook } from '../scenes/looks';
-import { MAPS } from '../maps';
+import { origins, MAPS, pendingNode, pendingHint, prepareCore } from 'virtual:kg-chapters';
 import { lorelingForm } from '../domain/lorelings';
 import { chordFigure, circlePoints, echoDelay, echoDistance, panes, echoReadings, runSorter, framed, shepardParts, brier, calibration, readForecasts, runSurvey, sightBlock, tiltOf, timeStats, translateLine, type SorterRun } from '../domain/puzzles';
 import { audioNow, chime, clapEcho, playNotes, playShepard } from '../app/ambience';
@@ -535,7 +536,7 @@ export class UI implements UIApi {
   private toastBox!: HTMLElement;
   private saveFeedback: HTMLElement | null = null;
   private lumenBubble!: HTMLElement;
-  private readonly prepareWorld: () => Promise<void>;
+  private readonly prepareWorld: (mapId?: string) => Promise<void>;
   private readonly onStart: () => void;
   private pendingChapterEnd = false;
   private seenObjectives = new Set<string>();
@@ -546,7 +547,7 @@ export class UI implements UIApi {
   private activeEventNode: string | null = null;
   private stopStoryCue: (() => void) | null = null;
 
-  constructor(root: HTMLElement, prepareWorld: () => Promise<void>, onStart: () => void) {
+  constructor(root: HTMLElement, prepareWorld: (mapId?: string) => Promise<void>, onStart: () => void) {
     this.prepareWorld = prepareWorld;
     this.root = root;
     this.onStart = onStart;
@@ -878,23 +879,31 @@ export class UI implements UIApi {
       c.saves.permanentLoadProblem ? h('p', { class: 'warn', role: 'alert' }, c.saves.permanentLoadProblem) : null,
       c.contentProblems.length ? h('p', { class: 'warn', role: 'alert' }, `Content problems: ${c.contentProblems.join('; ')}`) : null,
       h('div', { class: 'menu' },
-        cont ? h('button', { 'data-autofocus': true, onclick: () => this.enterWhenReady(() => { discardPendingJournalWriting(c); c.loadContinue(); this.startPlaying(true); }) }, h('strong', {}, 'Continue'), h('small', {}, fmt(cont))) : null,
+        cont ? h('button', { 'data-autofocus': true, onclick: () => this.enterWhenReady(() => { discardPendingJournalWriting(c); c.loadContinue(); this.startPlaying(true); }, cont.state) }, h('strong', {}, 'Continue'), h('small', {}, fmt(cont))) : null,
         rec ? h('button', { 'data-autofocus': !cont, onclick: () => this.confirmRecovery() }, h('strong', {}, 'Checkpoint recovery'), h('small', {}, fmt(rec))) : null,
-        h('button', { 'data-autofocus': !cont && !rec, onclick: () => this.characterCreation() }, h('strong', {}, 'New game'), h('small', {}, cont || rec ? 'Starts a new campaign. Your awards stay.' : 'Begin as a new recruit')),
-        h('button', { onclick: () => this.openModal('class-save','Class adventure',this.closeBtn(),h('h2',{},'Class adventure'),classPanel(store=>{
-          this.closeModal(false);
-          ctx.controller = new ClassroomController(store);
-          ctx.controller.onEvents(ev=>this.handleEvents(ev));
-          this.showTitle();
-        })) }, h('strong', {}, classroom ? 'Manage class adventure' : 'Class sign-in')),
-        h('button', { onclick: () => this.openSettings() }, h('strong', {}, 'Settings'), h('small', {}, 'Text size, motion, sound, guide prompts')),
-        h('button', { onclick: () => this.openCredits() }, h('strong', {}, 'Credits and sources'), h('small', {}, 'Who made the art, music and sounds, and the historical sources')),
+        ...titleActions(action=>this.openTitleAction(action),!!(cont || rec),!!classroom),
       ),
       h('p', { class: 'fine' }, classroom ? classroom.who.display + ' · ' + classroom.who.className + ' · ' + classroom.status : 'Local adventure. Progress is saved in this browser. Class sign-in is optional.'),
       h('a', { class:'school-link', href:'./schools.html' }, 'For schools and families'),
     );
     this.root.append(box);
-    setTimeout(() => box.querySelector<HTMLElement>('[data-autofocus]')?.focus(), 0);
+    setTimeout(() => { if (box.isConnected && !this.isModalOpen()) box.querySelector<HTMLElement>('[data-autofocus]')?.focus(); }, 0);
+  }
+
+  openTitleAction(action:TitleAction):void {
+    switch (action) {
+      case 'new': this.characterCreation(); break;
+      case 'settings': this.openSettings(); break;
+      case 'credits': this.openCampaign(()=>this.openCredits()); break;
+      case 'class':
+        this.openModal('class-save','Class adventure',this.closeBtn(),h('h2',{},'Class adventure'),classPanel(store=>{
+          this.closeModal(false);
+          ctx.controller = new ClassroomController(store);
+          ctx.controller.onEvents(ev=>this.handleEvents(ev));
+          this.showTitle();
+        }));
+        break;
+    }
   }
 
   private confirmRecovery(): void {
@@ -906,20 +915,20 @@ export class UI implements UIApi {
       h('p', {}, `This makes "${rec.label}" (${rec.location}, ${new Date(rec.savedAt).toLocaleString()}) your current game. Your current Continue save will be replaced.`),
       h('p', {}, 'Awards, concept XP and badges you already earned are kept.'),
       h('div', { class: 'row' },
-        h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.enterWhenReady(() => { if (c.loadRecovery()) { discardPendingJournalWriting(c); this.startPlaying(true); } }) }, 'Restore'),
+        h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.enterWhenReady(() => { if (c.loadRecovery()) { discardPendingJournalWriting(c); this.startPlaying(true); } }, rec.state) }, 'Restore'),
         h('button', { onclick: () => this.closeModal() }, 'Cancel')));
     void box;
   }
 
   private characterCreation(): void {
-    void this.prepareWorld().catch(() => { /* The Begin button can retry while the chosen look is still here. */ });
+    void Promise.all([this.prepareWorld(), prepareCore()]).catch(() => { /* Begin retries with the chosen look intact. */ });
     clear(this.root); this.root.append(this.toastBox);
     const lookPick = this.lookPicker(PLAYER_LOOKS[0]);
     const name = h('input', { id: 'pname', maxlength: '24', value: '', placeholder: 'Your Guardian name', autocomplete: 'off', 'data-autofocus': true }) as HTMLInputElement;
     const pron = this.pronounPicker(PRONOUN_SETS[0].p);
     let origin: string | null = null;
     const originBox = h('div', { class: 'origins', role: 'radiogroup', 'aria-label': 'Origin' },
-      ...ctx.controller.pack.origins.map((o) => {
+      ...origins.map((o) => {
         const b = h('button', { class: 'origin', role: 'radio', 'aria-checked': 'false', onclick: () => {
           origin = o.id; originBox.querySelectorAll('.origin').forEach((x) => x.setAttribute('aria-checked', 'false')); b.setAttribute('aria-checked', 'true');
         } }, h('strong', {}, o.name), h('small', {}, o.background), h('small', { class: 'link' }, o.link));
@@ -1088,13 +1097,13 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.closeModal() }, 'Cancel')));
   }
 
-  private enterWhenReady(enter: () => void): void {
+  private enterWhenReady(enter: () => void, saved?: import('../domain/types').CampaignState): void {
     const status = h('p', {role: 'status'}, 'Opening the map…');
     const back = h('button', {type:'button', 'data-autofocus':true, onclick:()=>this.closeModal()}, 'Back');
     const box = this.openModal('map-loading', 'Opening the map', h('h2',{},'Opening the map'), status, back);
     const tryOpening = async () => {
       try {
-        await this.prepareWorld();
+        await this.prepareWorld(saved?.mapId ?? 'nexus.archive');
       } catch {
         if (!box.isConnected) return;
         status.textContent = 'The map could not finish loading. Check your connection and try again.';
@@ -1254,6 +1263,7 @@ export class UI implements UIApi {
     const c = ctx.controller;
     const cur = c.engine.currentObjective(c.state);
     if (!cur) { this.lumenSay('Nothing urgent. Explore, read your journal, or talk to people again.'); return; }
+    if (this.waitForContent(pendingHint(cur.id),'hint',()=>this.askLumen())) return;
     const ev = c.dispatch({ type: 'RequestHint', objective: cur.id });
     const hint = ev.find((e) => e.kind === 'hint') as Extract<GameEvent, { kind: 'hint' }> | undefined;
     ctx.world?.lumenBurst();
@@ -1471,8 +1481,29 @@ export class UI implements UIApi {
     this.showNode(node, true, characterId);
   }
 
+  private openCampaign(enter: () => void): void {
+    this.waitForContent(prepareCore(), 'campaign', enter, () => this.openCampaign(enter));
+  }
+
+  private waitForContent(loading: Promise<void> | undefined, subject: string, resume: () => void, retry = resume): boolean {
+    if (!loading) return false;
+    const title = 'Opening the ' + subject;
+    const box = this.openModal('map-loading', title, this.closeBtn(), h('p', { role: 'status' }, title + '…'));
+    void loading.then(() => {
+      if (!box.isConnected) return;
+      this.closeModal(false);
+      resume();
+    }).catch(() => {
+      if (!box.isConnected) return;
+      box.replaceChildren(this.closeBtn(), h('p', { role: 'alert' }, 'The ' + subject + ' could not finish loading.'),
+        h('button', { onclick: retry }, 'Try again'), h('button', { onclick: reloadGame }, 'Reload the game'));
+    });
+    return true;
+  }
+
   private showNode(id: string, enter = true, visiting?: string): void {
     const c = ctx.controller;
+    if (this.waitForContent(pendingNode(id),'story',()=>this.showNode(id,enter,visiting))) return;
     const firstHearing = enter && c.state.flags[`node.${id}`] !== true;
     if (enter) {
       const events = c.dispatch({ type: 'EnterNode', node: id });
@@ -1535,8 +1566,10 @@ export class UI implements UIApi {
       extra ?? '', optionList,
       guideObjective ? localGuide(c, MAPS[c.state.mapId]?.world ?? '', guideObjective) : '',
       speaker && 'mode' in speaker ? callingBook(c, line => this.dialogueMemory(line), speaker) : '',
-      earlier.length ? h('details', { class: 'dialogue-recall' }, h('summary', {}, 'Earlier dialogue'),
-        ...earlier.map((line) => this.dialogueMemory(line))) : '');
+      earlier.length ? h('details', { class: 'dialogue-recall', ontoggle: (event:Event) => {
+        const details=event.currentTarget as HTMLDetailsElement;
+        if (details.open && details.childElementCount===1) details.append(...earlier.map(line=>this.dialogueMemory(line)));
+      } }, h('summary', {}, 'Earlier dialogue')) : '');
     if (n.motif && firstHearing) this.playStoryCue(n.motif);
     if (!ctx.settings.readAloud && ctx.settings.talkSounds && n.speaker !== 'narrator') babble(n.text, voiceFor(n.speaker), ctx.settings.sfxVolume);
     if (ctx.settings.readAloud) this.speak(`${spoken}${citation.length ? '' : '.'} ${opts.map((o, i) => `Option ${i + 1}: ${o.option.text}`).join('. ')}`);
@@ -1553,6 +1586,17 @@ export class UI implements UIApi {
     const c = ctx.controller;
     const name = node.speaker === 'lumen' ? 'Lumen' : node.speaker === 'player' ? c.state.player.name
       : c.pack.characters.find((character) => character.id === node.speaker)?.name;
+    const load = pendingNode(node.id);
+    if (load) {
+      const entry = h('div', { class: 'lore-entry', role: 'status' }, 'Opening the earlier line…');
+      const showLine = () => {
+        if (entry.isConnected) entry.replaceWith(this.dialogueMemory(node, includeMotif));
+      };
+      void load.then(showLine).catch(() => {
+        entry.replaceChildren(h('button', { onclick: showLine }, 'Retry earlier line'));
+      });
+      return entry;
+    }
     const text = personalise(node.text, c.state.player);
     const motif = node.motif;
     return h('div', { class: 'lore-entry' }, name ? h('strong', {}, name) : '', h('p', {}, text),
@@ -3059,7 +3103,7 @@ export class UI implements UIApi {
       // The epilogue: where are they now, the mirror scene and the lingering thought.
       body.append(h('h3', {}, 'Where are they now'), ...vignettesFor(s).map((v) => h('div', { class: 'lore-entry' }, h('h3', {}, v.who), h('p', {}, v.text))),
         h('h3', {}, 'The same bench'), h('p', {}, mirror(s)), h('h3', {}, 'Last words'), ...lingering(s).map((t) => h('p', {}, t)),
-        h('button', { type: 'button', onclick: () => this.openCredits() }, 'Credits from your journey'));
+        h('button', { type: 'button', onclick: () => this.openCampaign(()=>this.openCredits()) }, 'Credits from your journey'));
     } else if (tab === 'conversations') {
       body.append(callingBook(c, line => this.dialogueMemory(line,true)));
       const heard = conversationHistory(c.engine.dialogueById, s.flags);
@@ -3357,7 +3401,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
         h('button', { onclick: () => this.openControls() }, 'Controls'),
         c.canRecover() ? h('button', { onclick: () => this.confirmRecovery() }, 'Checkpoint recovery…') : null,
-        h('button', { onclick: () => this.openCredits() }, 'Credits and sources')));
+        h('button', { onclick: () => this.openCampaign(()=>this.openCredits()) }, 'Credits and sources')));
   }
 
   private openLeaderboard(): void {
@@ -3744,14 +3788,17 @@ export class UI implements UIApi {
       const place = id.slice(CLEARANCE_GROUP.length + 1);
       this.openModal('bench-panel wide', 'The viewing rails', this.closeBtn(), clearanceGallery(ctx.controller, place, () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(BADGE_ANNEX_PREFIX)) {
+      if (id === BADGE_ANNEX_PREFIX + 'press' && this.waitForContent(pendingNode('oracle.press'), 'story', () => this.openFieldGame(id))) return;
       this.openModal('bench-panel wide', 'The Badge Annex', this.closeBtn(),
         badgeAnnexPanel(ctx.controller, id.slice(BADGE_ANNEX_PREFIX.length), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(FACING_CUE_PREFIX)) {
       this.openModal('bench-panel wide', 'The Step Across the Line', this.closeBtn(), facingCuePanel(
         ctx.controller, id.slice(FACING_CUE_PREFIX.length), () => ctx.world?.refreshWorld(), () => this.sfx('sfx.click')));
     } else if (id.startsWith(CURTAIN_PREFIX)) {
+      const station = id.slice(CURTAIN_PREFIX.length);
+      if (this.waitForContent(pendingNode('curtain.run.' + station), 'story', () => this.openFieldGame(id))) return;
       this.openModal('bench-panel wide', 'The Call behind the Curtain', this.closeBtn(), curtainCallPanel(
-        ctx.controller, id.slice(CURTAIN_PREFIX.length), () => ctx.world?.refreshWorld(), () => this.sfx('sfx.click')));
+        ctx.controller, station, () => ctx.world?.refreshWorld(), () => this.sfx('sfx.click')));
     } else if (id.startsWith(BEATER_GAME)) {
       this.openModal('bench-panel wide', 'Both Faces at the Same Stop', this.closeBtn(), beaterProofPanel(ctx.controller,
         id.slice(BEATER_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()),

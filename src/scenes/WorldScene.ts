@@ -31,7 +31,7 @@ import { LUMEN_COLOURS, lumenArt } from '../app/settings';
 import Phaser from 'phaser';
 import type { BootScene } from './BootScene';
 import { ctx, type WorldApi, type WorldTransition } from '../app/context';
-import { MAPS } from '../maps';
+import { room, prepareMap } from 'virtual:kg-chapters';
 import type { Interactable, MapDef } from '../maps/types';
 import { STAMPS, TILE } from './art';
 import { CHUNK, explored, isRevealed, revealAround } from '../domain/fog';
@@ -92,6 +92,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
   private portalRing: Phaser.GameObjects.Image | null = null;
   private stepTimer = 0;
   private transitioning = false;
+  private mapGeneration = 0;
   private objArt = new Map<string, { setVisible(v: boolean): unknown }>();
   private specimenProps = new Map<string, SpecimenExhibit>();
   private displayedSpecimens = new Map<string, string | undefined>();
@@ -109,6 +110,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
 
   create(data: { walkingArrivalFrom?: string; via?: { from: string; id: string; label: string } } = {}): void {
     ctx.world = this;
+    this.mapGeneration++;
     // Reset per-map fields (the scene object is reused when the map changes).
     if (!this.textures.exists('mark.new')) {
       // Pixel speech mark, drawn in code (original art).
@@ -125,7 +127,11 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.transitioning = false; this.paused = false;
     this.objArt = new Map(); this.pet = null; this.photo = null; this.frayGlows = new Map(); this.threadGfx = null; this.gapMark = null; this.exploreAcc = 0;
     const s = ctx.controller.state;
-    this.map = MAPS[s.mapId] ?? MAPS['nexus.archive'];
+    this.map = room(s.mapId);
+    if (s.mapId !== this.map.id) {
+      s.mapId = this.map.id;
+      s.pos = { ...this.map.spawn };
+    }
     this.buildMap();
     const kb = this.input.keyboard!;
     // Letter keys come from the player's key map (settings); arrows, Space and Enter always work.
@@ -1359,16 +1365,28 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.playSfx('sfx.sparkle');
     const from = this.map.id;
     const walkingArrivalFrom = throughZone ? from : undefined;
+    const controller = ctx.controller;
+    const generation = this.mapGeneration;
+    const active = () => this.mapGeneration === generation && ctx.world === this && ctx.controller === controller && controller.state.mapId === from && this.scene.isActive();
     const go = () => {
-      const s = ctx.controller.state;
+      if (!active()) return;
+      const s = controller.state;
       s.mapId = mapId; s.pos = { x, y }; s.facing = 'down';
       this.scene.restart({ walkingArrivalFrom, via: route ? { ...route, from } : undefined });
     };
-    if (ctx.settings.reducedMotion) go();
-    else {
-      this.fadeDeadline = performance.now() + 500;
-      this.cameras.main.once('camerafadeoutcomplete', go);
-      this.cameras.main.fadeOut(500, 220, 240, 255);
-    }
+    const boot = this.game.scene.getScene('boot') as BootScene;
+    void prepareMap(mapId).then(() => boot.loadRoomPictures(room(mapId))).then(() => {
+      if (!active()) return;
+      if (ctx.settings.reducedMotion) go();
+      else {
+        this.fadeDeadline = performance.now() + 500;
+        this.cameras.main.once('camerafadeoutcomplete', go);
+        this.cameras.main.fadeOut(500, 220, 240, 255);
+      }
+    }).catch(() => {
+      if (!active()) return;
+      this.transitioning = false;
+      ctx.ui.toast('The next map could not finish loading. Try the crossing again.', 'error');
+    });
   }
 }

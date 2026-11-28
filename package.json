@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "audit:collectibles": "node tools/audit-collectible-use.mjs --require-all",
+    "check:chapters": "node tools/check-chapter-delivery.mjs",
     "validate:content": "vitest run tests/content.test.ts",
     "assets:variants": "python3 tools/make_character_variants.py",
     "assets:check": "node tools/check-assets.mjs"
