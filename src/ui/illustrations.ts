@@ -1,3 +1,22 @@
+import { returnCoatArt } from './returnCoatArt';
+import {riverArt} from './riverNamesArt';
+import {groveArt} from './walkingOrchardArt';
+import { theatreArt } from './pocketTheatreArt';
+import { bellArt } from './claimBellArt';
+import { hatchArt } from './hatchSleeveArt';
+import {secondInkArt} from './secondInkArt';
+import {houseArt} from './openHouseArt';
+import {quarterArt} from './tideClockArt';
+import {radioArt} from './ferryRadioArt';
+import {stackArt} from './turningStacksArt';
+import {lensArt} from './lensLoanArt';
+import {cupArt} from './firstCupArt';
+import {almanacArt,almanacLargeArt} from './streetAlmanacArt';
+import {courierArt,largeCourierArt} from './courierLiftArt';
+import {elbowArt} from './giantSleeveArt';
+import { hearingPictures } from './hearingPictures';
+import { UNDERPAN_ART } from './underpanArt';
+import { SPARE_MOON_ART } from './spareMoonArt';
 import { FOURTH_CORNER_ART } from './fourthCornerArt';
 import { BLUE_TAIL_ART } from './blueTailArt';
 /**
@@ -49,6 +68,11 @@ function pedestal(g: Ctx, x: number, y: number, w: number) {
 }
 
 const DRAW: Record<string, [number, number, (g: Ctx) => void]> = {
+  ...courierArt,
+  ...returnCoatArt, ...theatreArt, ...bellArt, ...hatchArt, ...riverArt, ...secondInkArt, ...houseArt, ...groveArt, ...quarterArt, ...radioArt, ...lensArt, ...cupArt, ...stackArt,
+  ...almanacArt,
+  ...SPARE_MOON_ART,
+  ...UNDERPAN_ART,
   ...FOURTH_CORNER_ART,
   ...BLUE_TAIL_ART,
   'collection-stand': [16, 24, (g) => {
@@ -308,6 +332,15 @@ function moth(g: Ctx, f: number, ox = 0, oy = 0, k = 1) {
 DRAW['moth.0'] = [12, 8, (g) => moth(g, 0)];
 DRAW['moth.1'] = [12, 8, (g) => moth(g, 1)];
 DRAW['moth.big'] = [48, 32, (g) => moth(g, 0, 0, 0, 4)];
+for (const [perch, sign] of [['moon.perch','moon.sign'], ['moon.perch-open','moon.open']]) {
+  DRAW[perch] = [18, 24, (g) => {
+    g.save();
+    g.translate(0, 4);
+    SPARE_MOON_ART[sign][2](g);
+    g.restore();
+    moth(g, 0, 6, 0);
+  }];
+}
 
 function straightedgeTray(g: Ctx, keeper: boolean) {
   R(g, '#473748', 1, 11, 23, 4);
@@ -616,10 +649,118 @@ DRAW['workbench'] = [16, 24, (g) => {
   R(g, '#c98d60', 2, 9, 3, 4); R(g, '#8b8f99', 7, 6, 1, 7); R(g, '#4a4d55', 6, 12, 3, 1); R(g, '#b98d55', 11, 8, 1, 5); R(g, '#2a2440', 11, 12, 1, 1);
 }];
 // The Undercroft: a fallacy seal (a barrier of gold-violet runes) and the Hollow Archivist (dust and pages, a KEEPER label for a face).
-DRAW['fray-seal'] = [16, 64, (g) => {
-  R(g, '#3a2b5e', 2, 0, 12, 64); R(g, '#56408a', 4, 0, 8, 64);
-  for (let y = 4; y < 60; y += 9) { R(g, '#e8c040', 6, y, 4, 1); R(g, '#e8c040', 7, y + 1, 2, 3); R(g, '#c9a2ff', 5, y + 5, 6, 1); }
-  R(g, '#e8c040', 2, 0, 12, 1); R(g, '#e8c040', 2, 63, 12, 1);
+for (const [id, blocks] of Object.entries(hearingPictures)) {
+  DRAW['hearing.'+id] = [16,24,g=>{
+    for (const [x,y,width,height,colour] of blocks) R(g,colour,x,y,width,height);
+  }];
+}
+DRAW['birdside.canoe'] = [16,24,g=>{
+  R(g,'#4d342b',3,15,11,2); R(g,'#ad7652',2,14,12); R(g,'#664231',1,17,12,2); R(g,'#f3b887',1,16,11);
+  R(g,'#c3a46f',4,15,1,3); R(g,'#c3a46f',11,15,1,3);
+  for(const [x,b] of [[4,13],[10,12]]) {
+    R(g,'#5a463c',x,5,1,10);
+    for(let i=0;i<6;i++) R(g,'#f7dfaf',x+1,b-i,1+Math.floor(i/2),1);
+    R(g,'#fff1cf',x+4,b-6,1,2);
+  }
+}];
+DRAW['big.birdside.canoe'] = [48,32,g=>{
+  const outline='#4c322b', wood='#ad6845', cord='#c9ab83', cloth='#f1d2a2';
+  for(const [x,y] of [[5,23],[1,27]]) {
+    R(g,outline,x,y,2,2); R(g,outline,x+2,y+1,2,2); R(g,outline,x+4,y+2,33,2);
+    R(g,outline,x+37,y+1,4,2); R(g,outline,x+40,y-1,2,2);
+    R(g,wood,x+3,y+1,32,1); R(g,'#d49a68',x+9,y+1,24);
+  }
+  for(const x of [10,19,29,37]) {R(g,cord,x,24,2,4);R(g,'#66493a',x,27,2);}
+  R(g,'#b78759',12,22,20,3); R(g,'#654333',14,22,16);
+  for(const [x,y,rows] of [[12,20,13],[29,19,11]]) {
+    R(g,outline,x,y-rows-3,1,rows+6);
+    for(let i=0;i<rows;i++) {
+      const width=Math.min(7,1+Math.floor(i*.66));
+      R(g,cloth,x+1,y-i,width);
+      if(i>3)R(g,'#c89f72',x+width,y-i);
+    }
+    R(g,'#fff0cb',x+6,y-rows,2,2);
+  }
+}];
+// A stitched model of two ledges. Every watch keeps west on the left and the same buoy in the middle.
+for (const watch of ['dawn','dusk','squall'] as const) {
+  DRAW['birdside.'+watch] = [112,32,g=>{
+    const rain=watch==='squall', dusk=watch==='dusk';
+    const sky=rain?'#879697':dusk?'#bc99b2':'#e3ba8a';
+    const light=rain?'#afbcba':dusk?'#e5b499':'#fbe2a4';
+    const water=rain?'#536d77':dusk?'#555f80':'#558695';
+    R(g,sky,0,0,112,17); R(g,light,0,14,112,4); R(g,water,0,18,112,14);
+    if(!rain) {
+      const x=dusk?16:86;
+      R(g,light,x,7,7,5); R(g,light,x+1,6,5,7);
+      R(g,dusk?'#88748d':'#cea889',32,6,12,2); R(g,dusk?'#88748d':'#cea889',35,4,6,2);
+    }
+    for(let row=0;row<8;row++) {
+      const n=10-row;
+      R(g,'#53565e',0,15+row,n+4); R(g,'#474e58',112-n-5,15+row,n+5);
+      if(row<3){R(g,'#83856d',0,14+row,9-row);R(g,'#798675',103+row,14+row,9-row);}
+    }
+    for(let y=21;y<32;y+=4)for(let x=(y*3)%13;x<108;x+=17)R(g,light,x,y,4);
+    R(g,'#4d3940',55,15,2,7);R(g,'#f2cc7c',54,18,4,2); R(g,'#514651',53,21,6);
+    if(!rain) {
+      for(const [x,y] of [[31,10],[45,7],[63,10],[75,6]]) {
+        R(g,'#403b48',x,y,2);R(g,'#f5e7ce',x+1,y-1,3);
+        R(g,'#403b48',x+3,y,2);R(g,'#faf0d9',x+5,y-2,1,2);R(g,'#403b48',x+6,y-3,2);
+      }
+    } else {
+      for(let x=3;x<111;x+=9)for(let y=1;y<23;y+=7) {
+        R(g,'#a8b7b8',x+(y%3),y,1,2);R(g,'#a8b7b8',x+(y%3)-1,y+2);
+      }
+      R(g,'#354753',30,11,3);R(g,'#354753',33,10,2);R(g,'#354753',72,9,2);R(g,'#354753',70,8,2);
+    }
+    for(let x=1;x<112;x+=5){R(g,'#d9c3a3',x,0,3);R(g,'#d9c3a3',x,31,3);}
+  }];
+}
+
+DRAW['birdside.cloth'] = [16,24,g=>{
+  R(g,'#483c34',1,14,14,5); R(g,'#b5885c',2,18,2,5); R(g,'#b5885c',12,18,2,5);
+  R(g,'#e1c397',1,11,14,5); R(g,'#548596',1,14,14,2); R(g,'#6b5362',8,11,1,5);
+  for(const x of [2,9]) {R(g,'#473c47',x,11,2);R(g,'#473c47',x+2,12,2);R(g,'#473c47',x+4,11);}
+}];
+
+DRAW['loan.matchpress'] = [16,24,g=>{
+  R(g,'#322a34',2,17,13,4);R(g,'#9b6352',3,18,11,2);R(g,'#a99272',3,7,2,11);
+  R(g,'#d1ae7a',2,6,12,2);R(g,'#634852',9,7,2,8);R(g,'#cfa06b',6,14,8,2);
+  R(g,'#ffe3aa',5,16,8,2);R(g,'#474155',7,17,5);R(g,'#f1c776',7,4,6,1);R(g,'#7c5d57',9,4,2,3);
+}];
+DRAW['loan.balcony'] = [16,24,g=>{
+  R(g,'#493248',1,18,14,2);R(g,'#76516a',2,20,2,3);R(g,'#76516a',12,20,2,3);
+  R(g,'#6d4055',2,11,7,7);R(g,'#f4ce75',3,12,4,4);R(g,'#ffe7a3',4,13,2,2);
+  R(g,'#d59f53',10,13,3,4);R(g,'#f4ce75',9,16,5,2);R(g,'#594362',11,11,1,3);R(g,'#a385a7',10,18,4);
+}];
+DRAW['loan.pockets'] = [16,24,g=>{
+  R(g,'#523c41',3,9,10,7);R(g,'#956149',4,10,8,5);R(g,'#342e3c',1,14,14,7);R(g,'#955a44',2,15,12,5);
+  R(g,'#d9ad76',3,16,5,3);R(g,'#633d37',4,16,3);R(g,'#654c66',9,15,4,5);R(g,'#e0ccb0',10,14,3,3);
+  R(g,'#c19355',5,6,6);R(g,'#936440',4,7,1,3);R(g,'#936440',11,7,1,3);
+}];
+DRAW['loan.fieldroll'] = [16,24,g=>{
+  R(g,'#3d4c48',2,12,11,7);R(g,'#9b9768',3,11,10,7);R(g,'#ece0a8',4,12,8,4);
+  R(g,'#6d7459',5,13,3);R(g,'#7f8867',6,15,4);R(g,'#504d3e',2,16,11,4);R(g,'#b39767',3,17,10,2);
+  R(g,'#7d614d',8,11,2,9);R(g,'#dfbc70',7,14,4,2);R(g,'#63a3aa',12,6,1,3);R(g,'#98c7be',11,8,2);
+}];
+// Agate's beech chair, with a wool repair over the tall right-hand joint.
+DRAW['hearing-chair'] = [16,24,(g)=>{
+  R(g,'#553321',3,3,2,19); R(g,'#553321',11,2,2,19);
+  R(g,'#a66a39',3,3,10,2); R(g,'#cf9654',4,5,8,1);
+  R(g,'#905833',4,8,8,2); R(g,'#453727',2,13,12,4);
+  R(g,'#c6945c',3,13,10,2); R(g,'#966537',2,15,12,2);
+  R(g,'#6c432a',2,17,2,6); R(g,'#573621',12,17,2,6);
+  R(g,'#ab6463',10,7,4,2); R(g,'#e3aaa0',11,9,2,1);
+}];
+DRAW['whistle.notched'] = [16,16,(g)=>{
+  R(g,'#644333',2,7,12,6);R(g,'#e4b956',1,6,12,4);R(g,'#ffe9a3',2,6,9,1);
+  R(g,'#43354a',5,6,2,2);R(g,'#8e6951',11,8,4,4);R(g,'#dac17a',12,9,2,1);
+  R(g,'#baa6bd',13,12,1,2);R(g,'#baa6bd',9,14,4,1);
+}];
+DRAW['fray-seal'] = [16, 80, (g) => {
+  R(g, '#3a2b5e', 2, 0, 12, 80); R(g, '#56408a', 4, 0, 8, 80);
+  for (let y = 4; y < 76; y += 9) { R(g, '#e8c040', 6, y, 4, 1); R(g, '#e8c040', 7, y + 1, 2, 3); R(g, '#c9a2ff', 5, y + 5, 6, 1); }
+  R(g, '#e8c040', 2, 0, 12, 1); R(g, '#e8c040', 2, 79, 12, 1);
 }];
 DRAW['hollow-archivist'] = [24, 36, (g) => {
   R(g, '#4a4458', 6, 8, 12, 26); R(g, '#6b6478', 7, 9, 10, 24); R(g, '#3a3446', 3, 14, 4, 14); R(g, '#3a3446', 17, 14, 4, 14);
@@ -679,6 +820,31 @@ DRAW['clue.glass'] = [16, 24, (g) => { R(g, '#7a5230', 5, 2, 6, 20); R(g, '#cfe3
 DRAW['clue.floodmark'] = [16, 24, (g) => { R(g, '#5b5f69', 0, 0, 16, 24); R(g, '#6f737d', 1, 1, 14, 22); R(g, '#3a5a7a', 0, 12, 16, 1); R(g, '#efe1bd', 6, 9, 4, 2); R(g, '#8a7f66', 7, 10, 2, 1); R(g, '#7a8a6a', 0, 13, 16, 11); }];
 DRAW['clue.slips'] = [16, 24, (g) => { R(g, '#5b3b22', 1, 8, 14, 16); R(g, '#7a5230', 2, 9, 12, 6); R(g, '#efe1bd', 3, 6, 3, 4); R(g, '#efe1bd', 7, 5, 3, 5); R(g, '#efe1bd', 11, 6, 2, 4); R(g, '#c9a24a', 7, 18, 2, 1); }];
 DRAW['clue.scales'] = [16, 24, (g) => { smallTable(g); R(g, '#c9a24a', 7, 4, 2, 10); R(g, '#c9a24a', 2, 4, 12, 1); R(g, '#e9cf7a', 1, 8, 4, 1); R(g, '#e9cf7a', 11, 8, 4, 1); R(g, '#8a6a2a', 2, 5, 1, 3); R(g, '#8a6a2a', 13, 5, 1, 3); }];
+DRAW['mill-shift.nile'] = [16, 24, g => {
+  smallTable(g);
+  for (const x of [1,6,11]) {
+    R(g,'#835b49',x,11,4,3); R(g,'#e3a861',x,10,4,1);
+    R(g,'#ffe3a0',x+1,8,2,2);
+  }
+}];
+DRAW['mill-shift.yard'] = [16, 24, g => {
+  smallTable(g); R(g,'#603e39',2,7,3,8); R(g,'#a69c85',5,5,7,9);
+  R(g,'#d0b16a',6,4,2,3); R(g,'#d0b16a',10,4,2,3);
+  R(g,'#342c3b',7,8,3,3); R(g,'#bf8054',8,9,7,2); R(g,'#e4bd88',13,8,2,4);
+}];
+DRAW['mill-shift.press'] = [16, 24, g => {
+  smallTable(g); paper(g,2,6,12,10);
+  for(const y of [8,11,14]){R(g,'#514355',3,y,5,1);R(g,'#997d76',9,y,3,1);}
+  R(g,'#ba6c58',10,13,3,3);
+}];
+DRAW['coat.peg'] = [16, 24, (g) => {
+  R(g, '#825d44', 7, 1, 2, 22); R(g, '#d7ad75', 5, 3, 6, 2);
+  R(g, '#263449', 4, 6, 8, 15); R(g, '#526e92', 3, 6, 10, 5);
+  R(g, '#405c7a', 1, 9, 3, 6); R(g, '#405c7a', 12, 9, 3, 6);
+  R(g, '#577a99', 4, 10, 4, 10); R(g, '#486786', 9, 10, 3, 10);
+  R(g, '#efcf97', 7, 6, 2, 2); R(g, '#ac945f', 8, 11, 1, 1);
+  R(g, '#a3c6d3', 4, 14, 3, 1); R(g, '#e1c58e', 10, 15, 2, 1);
+}];
 DRAW['clue.caseboard'] = [16, 24, (g) => { R(g, '#7a5230', 0, 2, 16, 14); R(g, '#c9a27a', 1, 3, 14, 12); paper(g, 2, 4, 4, 3); paper(g, 10, 5, 4, 3); paper(g, 5, 10, 4, 3); R(g, '#c0392b', 5, 7, 1, 3); R(g, '#f1c40f', 9, 8, 2, 1); }];
 DRAW['clue.roundwin'] = [16, 24, (g) => roundWindow(g, false)];
 DRAW['clue.drafts'] = [16, 24, (g) => { smallTable(g); paper(g, 1, 9, 6, 5); paper(g, 5, 8, 6, 6); paper(g, 9, 9, 6, 5); R(g, '#2a2440', 6, 10, 4, 1); R(g, '#c0392b', 6, 12, 3, 1); }];
@@ -686,6 +852,18 @@ DRAW['clue.jar'] = [16, 24, (g) => { smallTable(g); R(g, '#9fc7cf', 4, 4, 8, 10)
 DRAW['clue.stove'] = [16, 24, (g) => { R(g, '#3b3b42', 2, 8, 12, 14); R(g, '#4a4d55', 2, 8, 12, 2); R(g, '#1d1a1a', 5, 13, 6, 5); R(g, '#3b3b42', 6, 0, 3, 8); R(g, '#2a2a33', 3, 22, 2, 2); R(g, '#2a2a33', 11, 22, 2, 2); }];
 DRAW['clue.bucket'] = [16, 24, (g) => { R(g, '#6b4a2a', 3, 12, 10, 11); R(g, '#8a6a2a', 3, 14, 10, 1); R(g, '#8a6a2a', 3, 19, 10, 1); R(g, '#5b5f69', 4, 8, 1, 4); R(g, '#5b5f69', 11, 8, 1, 4); R(g, '#5b5f69', 5, 7, 6, 1); R(g, '#d8c08a', 13, 13, 2, 9); R(g, '#b98d55', 13, 16, 2, 1); }];
 DRAW['clue.corner'] = [16, 24, (g) => { R(g, '#0f0c0a', 0, 6, 16, 18); R(g, '#1d1612', 2, 10, 12, 12); R(g, '#2a2440', 9, 16, 3, 2); }];
+// The roost carries an unsigned wing. A second ink mark appears after a reply.
+for (const reply of [false, true]) {
+  DRAW[reply ? 'ink-post.reply' : 'ink-post.bird'] = [16, 24, (g) => {
+    smallTable(g);
+    R(g, '#543453', 2, 10, 11, 5); R(g, '#efd6aa', 3, 9, 8, 4);
+    R(g, '#fff0c9', 2, 6, 2, 4); R(g, '#f6dfb5', 4, 7, 2, 4);
+    R(g, '#d3ae8c', 6, 8, 2, 3); R(g, '#a57971', 8, 10, 2, 2);
+    R(g, '#fff0c9', 10, 6, 3, 5); R(g, '#382939', 12, 7, 1, 1);
+    R(g, '#edb559', 13, 8, 2, 1); R(g, '#a84343', 5, 12, 2, 2);
+    if (reply) { R(g, '#88d9ca', 9, 13, 3, 2); R(g, '#e9fff5', 9, 13, 1, 1); }
+  }];
+}
 DRAW['clue.letter'] = [16, 24, (g) => { R(g, '#8b8f99', 2, 16, 12, 6); paper(g, 4, 10, 8, 7); R(g, '#c0392b', 7, 13, 2, 2); R(g, '#8a7f66', 5, 11, 5, 1); R(g, '#ffd25a', 3, 9, 1, 1); R(g, '#ffd25a', 12, 9, 1, 1); }];
 
 // Archive icons. These are stylised props; the evidence panels identify them as illustrations.
@@ -2780,7 +2958,31 @@ DRAW['council.letter'] = [20, 24, (g) => {
   R(g, '#758d97', 3, 5, 14, 2);
   for (const y of [9, 11, 13]) R(g, '#84796c', 4, y, 10 - y % 3, 1);
 }];
+
+for (const position of ['empty', 'masked', 'open', 'wide', 'hinge']) {
+  DRAW[`lower-rail.${position}`] = [16, 24, (g) => {
+    R(g, '#4e372d', 6, 13, 4, 9);
+    R(g, '#7f5c42', 3, 20, 10, 2);
+    R(g, '#624535', 1, 3, 14, 13);
+    R(g, '#bf9e65', 2, 4, 12, 1);
+    if (position !== 'empty') {
+      paper(g, 3, 5, 10, 10);
+      R(g, '#53433c', 5, 7, 6, 1);
+      R(g, '#53433c', 5, 9, 5, 1);
+      R(g, '#57736f', 5, 12, 6, 1);
+    }
+    if (position === 'empty' || position === 'masked') R(g, '#936746', 1, 11, 14, 3);
+    if (position === 'wide') R(g, '#d3a76b', 0, 14, 16, 2);
+    if (position === 'hinge') {
+      R(g, '#987a59', 13, 5, 2, 10);
+      R(g, '#d3a76b', 12, 3, 3, 2);
+    }
+    R(g, '#f1cc84', 2, 12, 1, 1);
+    R(g, '#f1cc84', 13, 12, 1, 1);
+  }];
+}
 const cache = new Map<string, HTMLCanvasElement>();
+const imageURLs = new Map<string, string>();
 
 export function drawArt(key: string): HTMLCanvasElement | null {
   if (cache.has(key)) return cache.get(key)!;
@@ -2793,7 +2995,13 @@ export function drawArt(key: string): HTMLCanvasElement | null {
 }
 
 export function artURL(key: string): string {
-  return drawArt(key)?.toDataURL() ?? '';
+  const cached = imageURLs.get(key);
+  if (cached !== undefined) return cached;
+  const canvas = drawArt(key);
+  if (!canvas) return '';
+  const url = canvas.toDataURL();
+  imageURLs.set(key, url);
+  return url;
 }
 
 export function artKeys(): string[] { return Object.keys(DRAW); }
@@ -2894,7 +3102,7 @@ DRAW['big.drawer-cases'] = [40, 28, (g) => {
 }];
 
 /** Map exhibit art keys (small) to large inspection pictures. */
-Object.assign(DRAW, POLAR_ART, WINDOW_ART, READING_WORKS_ART, STORY_ARCHIVE_ART, NUMBER_LEAF_ART, DEPOT_ART, REFERENCE_STATION_ART,
+Object.assign(DRAW, elbowArt, POLAR_ART, WINDOW_ART, READING_WORKS_ART, STORY_ARCHIVE_ART, NUMBER_LEAF_ART, DEPOT_ART, REFERENCE_STATION_ART,
   MODEL_RECORD_ART, SECOND_READING_ART, SHORE_REPLY_ART, JIG_SHOP_ART, MEMORY_CART_ART, PRICE_DRAWERS_ART);
 Object.assign(DRAW, REFERENCE_PROOF_ART, PASSAGE_DOCUMENTARY_ART);
 Object.assign(DRAW, MAKER_ROOM_ART);
@@ -2966,6 +3174,9 @@ DRAW['big.correspondence.crowther-book'] = [96, 64, (g) => {
 }];
 
 export const BIG_ART: Record<string, string> = {
+  ...largeCourierArt,
+  ...almanacLargeArt,
+  'birdside.canoe': 'big.birdside.canoe',
   'correspondence.crowther-book': 'big.correspondence.crowther-book',
   'callboard.gage-mount': 'big.callboard.gage-mount',
   'maker-exact-jiahu': 'maker-exact-jiahu', 'maker-exact-disk': 'maker-exact-disk',
@@ -3029,3 +3240,77 @@ for (const view of ['sheet', 'detail'] as const) {
     }];
   }
 }
+
+// The travelling orchard uses the same plum, brass and green wood as its working chest.
+DRAW['plum.chest'] = [22,22,g=>{
+  R(g,'#52384b',2,8,18,12); R(g,'#c49467',3,9,15,9); R(g,'#e4bc80',5,5,13,4);
+  R(g,'#815d51',16,8,5,9); R(g,'#e9ca8c',6,9,2,10); R(g,'#e9ca8c',13,9,2,10);
+  R(g,'#733e5c',8,11,5,5); R(g,'#efa477',9,11,2,1); R(g,'#85af85',10,9,2,2);
+}];
+DRAW['plum.drum'] = [22,24,g=>{
+  R(g,'#56394c',2,8,18,12); R(g,'#ab6662',4,8,14,10); R(g,'#d2ad7b',2,7,18,3);
+  R(g,'#f4d79a',5,6,12,2); R(g,'#6d504e',3,18,17,3);
+  for (const x of [5,10,15]) { R(g,'#f3ca89',x,10,1,6); R(g,'#835260',x+1,10,1,6); }
+  R(g,'#765d4b',1,22,20,2);
+}];
+DRAW['plum.tree'] = [23,27,g=>{
+  R(g,'#795846',10,7,3,19); R(g,'#9c7450',5,11,12,2); R(g,'#446959',2,5,18,7);
+  R(g,'#66916c',4,2,13,8); R(g,'#93ad79',6,1,8,3);
+  for(const [x,y] of [[5,9],[13,6],[16,12]]){R(g,'#6c4658',x,y,4,5);R(g,'#db8c85',x,y,2,2);}
+}];
+DRAW['plum.cart'] = [27,22,g=>{
+  for (const x of [4,18]) {
+    R(g,'#614454',x+1,14,5,7); R(g,'#ab7961',x,16,7,3); R(g,'#e6be83',x+2,16,3,3);
+  }
+  R(g,'#78544d',3,10,20,5); R(g,'#c99a64',5,10,16,3); R(g,'#d6ae7a',22,8,5,2);
+  R(g,'#67485f',7,4,11,6); R(g,'#ae7072',9,4,7,4); R(g,'#eed38d',6,3,13,2);
+}];
+DRAW['plum.seats'] = [26,20,g=>{
+  R(g,'#825e4d',3,11,20,4); R(g,'#c59c6f',4,10,18,3); R(g,'#745341',5,15,3,4); R(g,'#745341',18,15,3,4);
+  for (const x of [4,19]) { R(g,'#724b55',x,4,3,7); R(g,'#ddaa79',x,5,2,2); }
+  R(g,'#63805f',8,5,7,2); R(g,'#95a573',11,3,2,3); R(g,'#eac16b',10,6,4,3);
+}];
+DRAW['plum.mould'] = [23,17,g=>{
+  R(g,'#634c48',1,6,21,10); R(g,'#c8a878',2,4,19,8);
+  R(g,'#7e5852',4,6,2,2); R(g,'#7e5852',8,6,2,2); R(g,'#7e5852',13,6,6,2);
+  R(g,'#584963',4,13,14,2); R(g,'#e1c681',14,12,2,4);
+}];
+
+// The night ferry's paper cutouts use the same teal hull and silver crescent as Bo’s sleeve.
+DRAW['picture-ferry.boat'] = [29,22,g=>{
+  R(g,'#315557',3,13,23,4); R(g,'#b47851',5,17,19,2); R(g,'#479689',6,12,16,3);
+  R(g,'#8bc6ac',10,6,10,6); R(g,'#305461',11,7,4,4); R(g,'#ffcc70',16,7,3,4);
+  R(g,'#a8d8c8',7,16,4,2); R(g,'#749caf',11,18,10,2); R(g,'#dfbb7a',4,12,2,2);
+  R(g,'#e6eacf',21,2,4,5); R(g,'#e6eacf',23,6,3,1); R(g,'#284954',23,2,2,3);
+}];
+DRAW['picture-ferry.lamp'] = [22,24,g=>{
+  R(g,'#554655',2,18,19,4); R(g,'#b88956',4,17,15,3); R(g,'#967343',5,5,12,13);
+  R(g,'#507c7b',6,6,10,10); R(g,'#f6d78a',7,7,4,8); R(g,'#83c8b8',12,7,3,8);
+  R(g,'#e6be6c',8,3,7,2); R(g,'#b98751',15,12,5,2); R(g,'#f0c984',19,11,2,5);
+}];
+DRAW['picture-ferry.ticket'] = [19,18,g=>{
+  R(g,'#846f64',3,3,13,12); R(g,'#ecce92',4,4,12,11); R(g,'#508d87',5,5,3,8);
+  R(g,'#9d7557',10,6,4,1); R(g,'#9d7557',10,8,3,1); R(g,'#936554',11,11,2,2);
+}];
+DRAW['picture-ferry.window'] = [22,20,g=>{
+  R(g,'#92694c',2,2,18,15); R(g,'#ead198',3,3,16,13); R(g,'#254b57',5,5,12,9);
+  R(g,'#d9e5c9',8,6,5,4); R(g,'#254b57',10,6,3,2); R(g,'#5faaa0',7,11,8,1);
+}];
+DRAW['petal.glass'] = [25,23,g=>{
+  R(g,'#48747b',3,10,19,11);R(g,'#94c9ae',5,8,15,11);R(g,'#a1d7c0',7,5,11,3);
+  R(g,'#724f56',2,19,21,2);R(g,'#596563',11,7,2,12);R(g,'#76a79e',5,12,15,1);
+  R(g,'#f2c461',6,14,4,2);R(g,'#f2c461',15,14,4,2);R(g,'#91754d',8,16,1,3);R(g,'#91754d',17,16,1,3);
+}];
+DRAW['petal.crop'] = [24,20,g=>{
+  R(g,'#714854',1,3,22,14);R(g,'#485568',3,5,18,10);
+  for(const x of [4,14]){R(g,'#e9b957',x+1,6,4,7);R(g,'#ffe197',x,8,6,3);}
+  R(g,'#845c68',6,8,2,2);R(g,'#845c68',15,8,4,3);R(g,'#ac8963',10,16,4,3);
+}];
+DRAW['petal.ledge'] = [25,18,g=>{
+  R(g,'#5a555a',1,11,23,3);R(g,'#b89062',2,10,21,2);R(g,'#697f6b',4,13,2,4);R(g,'#697f6b',18,13,2,4);
+  for(const x of [5,16]){R(g,'#648168',x+2,5,1,5);R(g,'#f2bc5a',x,4,5,3);R(g,'#ffda88',x+2,3,2,5);}
+}];
+DRAW['petal.glove'] = [20,22,g=>{
+  R(g,'#6e4558',4,11,10,7);R(g,'#b27557',5,8,7,8);R(g,'#ffc879',5,4,2,6);R(g,'#e4b375',8,3,2,7);R(g,'#ddb978',11,6,2,5);
+  R(g,'#94b3af',14,5,4,2);R(g,'#f0ca71',14,8,4,2);R(g,'#dba454',12,10,4,2);R(g,'#916958',5,18,7,2);
+}];

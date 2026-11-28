@@ -1,0 +1,98 @@
+.pocket-interior {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
+}
+.pocket-interior h3,
+.pocket-interior h4,
+.pocket-interior p {
+  margin-block: 0.2rem;
+}
+.pocket-interior > button {
+  justify-self: start;
+}
+.pocket-interior fieldset {
+  min-width: 0;
+  border: 1px solid currentColor;
+  border-radius: 0.45rem;
+  padding: 0.55rem;
+  margin: 0;
+}
+.pocket-interior legend {
+  font-weight: 700;
+  padding-inline: 0.3rem;
+}
+.pocket-row {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.pocket-theatre button {
+  white-space: normal;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.pocket-theatre button[aria-pressed='true'] {
+  outline: 2px solid currentColor;
+  outline-offset: -4px;
+}
+.pocket-theatre button[aria-pressed='true']::before {
+  content: '◆ ';
+}
+.pocket-lid,
+.pocket-stage,
+.pocket-letter {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem;
+}
+.pocket-theatre img {
+  flex: none;
+  width: 2.8rem;
+  height: 2.8rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+.pocket-stage {
+  border: 0.28rem double currentColor;
+  border-radius: 0.35rem;
+  min-block-size: 5.5rem;
+}
+.pocket-stage img {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+.pocket-stage[data-pane='1'] img,
+.pocket-stage[data-pane='3'] img {
+  transform: scaleX(-1);
+}
+.pocket-stage[data-pane='2'],
+.pocket-stage[data-pane='3'] {
+  border-style: dashed;
+}
+.pocket-rigging {
+  display: grid;
+  gap: 0.5rem;
+}
+.pocket-feedback:not(:empty),
+.pocket-receipt {
+  border-inline-start: 3px solid currentColor;
+  padding-inline-start: 0.7rem;
+}
+.pocket-feedback:empty {
+  margin: 0;
+}
+.pocket-interior summary {
+  cursor: pointer;
+  padding: 0.35rem;
+}
+@media (max-width: 360px) {
+  .pocket-stage {
+    align-items: start;
+  }
+  .pocket-stage img {
+    width: 2rem;
+    height: 2rem;
+  }
+}

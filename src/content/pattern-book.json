@@ -1,0 +1,40 @@
+{
+ "intro": "Clerk Dagny has a visitor at the stall: Arnou, a cloth trader from the coast, with a strip of willow-stitch from the Fenmarket weavers pinned to a board. 'I want to print this on a thousand scarves. It is a beautiful old pattern. Old patterns belong to everybody, don't they?' Dagny slides a heavy book across the counter. 'Before anyone prints anything, read the pattern book. Then we ask the weavers.'",
+ "cases": [
+  { "id": "navajo", "people": "The Navajo Nation (Diné)", "text": "The Diné Development Corporation holds the NAVAJO trademark for the Navajo Nation, on more than 80 kinds of goods, from jewellery to tableware. From 2009 a large clothing company sold goods named 'Navajo' with patterns like Navajo designs. The Navajo Nation went to court. The case was settled out of court, and the terms were kept private.", "tool": "A trademark and a court case: the law treats the name as the Nation's to license.", "source": "HIS-PAT-NAVAJO" },
+  { "id": "maasai", "people": "The Maasai of Kenya and Tanzania", "text": "Maasai elders have worked with a non-profit and with lawyers who gave their time free, to plan how the Maasai could control the use of their name and image, which companies have used in advertising without any benefit to the Maasai. In a separate project, Maasai community members trained to record their own elders' knowledge. One of them, John Ole Tingoi, said the community wants to control what is theirs.", "tool": "A plan to control their own brand, and their own recording of their own knowledge.", "source": "HIS-PAT-MAASAI" },
+  { "id": "mixe", "people": "The Mixe community of Santa María Tlahuitoltepec, Oaxaca", "text": "In 2015 the community's authorities said a famous fashion designer had sold a blouse that copied their traditional dress. The designer's piece sold for about 290 US dollars; the community's own garment cost about 40. The mayor called it taking a cultural heritage for someone else's profit, and the community spoke out in public.", "tool": "A public statement by the community's own authorities.", "source": "HIS-PAT-MIXE" }
+ ],
+ "elder": "Elder Yeva of the Fenmarket weavers comes to the stall, a shawl over one arm. 'Willow-stitch is not old, it is ours. Our grandmothers made it, and we still make it. We decide together, at the weavers' council, who may use it and how. Make us an offer, and we will answer.'",
+ "terms": [
+  { "id": "consent", "label": "Who agrees", "options": [
+   { "id": "council", "text": "Ask the weavers' council" },
+   { "id": "one", "text": "Ask one weaver who agrees" },
+   { "id": "none", "text": "No need to ask: the pattern is old" } ] },
+  { "id": "credit", "label": "Whose name goes on it", "options": [
+   { "id": "every", "text": "\"Willow-stitch, by the Fenmarket weavers\" on every scarf" },
+   { "id": "sign", "text": "The weavers named on the shop sign" },
+   { "id": "none", "text": "No names" } ] },
+  { "id": "share", "label": "Who gains", "options": [
+   { "id": "sale", "text": "A share of every sale to the weavers' fund" },
+   { "id": "fee", "text": "One payment, once" },
+   { "id": "none", "text": "Nothing: printing it spreads their fame" } ] }
+ ],
+ "answers": {
+  "consent.one": "Yeva frowns. 'One weaver cannot give away what all of us hold. That is like one sailor selling the ship.'",
+  "consent.none": "Yeva's voice goes flat. 'Then there is nothing to discuss. You did not ask us, so you have not asked.'",
+  "credit.sign": "'A sign stays at one shop. The scarves go everywhere. Our name should go where the pattern goes.'",
+  "credit.none": "'Without our name, in ten years people will say the coast invented willow-stitch.'",
+  "share.fee": "'One payment for a thousand scarves, and the next thousand, and the next? We would rather share in what it earns.'",
+  "share.none": "Yeva almost laughs. 'Fame does not mend a roof.'"
+ },
+ "accept": "Yeva reads the offer twice and folds it into her shawl. 'This we can take to the council. They may still say no. But you asked the right way.'",
+ "buy": { "text": "Suggest Arnou buy scarves from the weavers instead", "reply": "Arnou blinks, then laughs. 'Sell their scarves, not my copies? Fewer scarves, higher price.' Yeva smiles for the first time. 'And every one made by a hand that knows the pattern.'" },
+ "close": "Dagny closes the pattern book. 'Three peoples, three ways of saying the same thing: ask, name, share. And every one of them had to say it loudly, more than once.'",
+ "sources": [
+  { "id": "HIS-PAT-NAVAJO", "title": "Northern Arizona University, Institute for Public and Professional Ethics in Leadership: Navajo Nation and Urban Outfitters case study", "url": "https://in.nau.edu/ethics/ethics-cases/navajo-nation-and-urban-outfitters/" },
+  { "id": "HIS-PAT-MAASAI", "title": "WIPO: Digitizing Traditional Culture in Kenya (video transcript)", "url": "https://www.wipo.int/tk/en/folklore/tc_kenya_transcript.html" },
+  { "id": "HIS-PAT-MAASAI-MIPI", "title": "Strathmore University CIPIT: The Maasai Intellectual Property Initiative", "url": "https://cipit.strathmore.edu/the-maasai-intellectual-property-initiative-why-should-others-do-pro-bono-ip-work-for-kenya/" },
+  { "id": "HIS-PAT-MIXE", "title": "Global Voices: Mexican Indigenous Community Accuses Famous Designer of Plagiarism (2015)", "url": "https://globalvoices.org/2015/06/07/mexican-indigenous-community-accuses-famous-designer-of-plagiarism/" }
+ ]
+}

@@ -120,7 +120,7 @@
       "objectives": [
         {
           "id": "pigment-window.controlled",
-          "title": "Compare a lamp change and a custody change with a fixed reference",
+          "title": "Change only the lamp, then only the time in storage, against one fixed colour mark",
           "done": {
             "all": [
               {
@@ -182,7 +182,7 @@
         },
         {
           "id": "pigment-window.received",
-          "title": "Check the revised proof at the Lending Hall Landing",
+          "title": "Take the new colour proof to the Lending Hall Landing and see if customers can use it",
           "done": {
             "all": [
               {

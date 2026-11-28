@@ -1,0 +1,42 @@
+[
+  {
+    "letter": "q11104", "kind": "pinhole", "invitation": "Unfold the pocket darkroom",
+    "controls": [["Close the shutter", "Open the shutter"], ["Slide the screen farther away", "Slide the screen closer"]],
+    "readings": [
+      "The shutter is open. The top of the tree throws its light below the hole. On the near screen the image is small and upside down.",
+      "The shutter covers the hole. The tree is still standing outside. There is no tree on the near screen.",
+      "The open hole lets the same rays travel farther. They meet the far screen farther apart. The upside-down tree fills more paper.",
+      "The far screen stays dark behind the closed shutter. Moving the screen changes where the rays could land. It cannot let them in."
+    ]
+  },
+  {
+    "letter": "q7967775", "kind": "eclipse", "invitation": "Set the ball between the lamp and the reading screen",
+    "controls": [["Roll the ball off centre", "Bring the ball back to centre"], ["Stand at the edge of the screen", "Stand at the centre of the screen"]],
+    "readings": [
+      "You stand directly behind the ball. It cuts off the lamp. The side of the screen beside you is still lit.",
+      "From the centre you see the lamp again. The ball's shadow moved sideways. A watcher standing there would give a different report.",
+      "From the side you can see the lamp. The centre mark is dark although you are standing in light.",
+      "At the side mark you now stand behind the moved ball. The centre is clear. Both reports describe the same arrangement."
+    ]
+  },
+  {
+    "letter": "q202943", "kind": "ledger", "invitation": "Slide the beads on the trader’s purse cord",
+    "controls": [["Add two coins to the purse", "Put the two coins back"], ["Tie a three-coin debt to the cord", "Untie the debt"]],
+    "readings": [
+      "The purse is empty and the cord carries no debt. The keeper starts at zero.",
+      "Two coins are in the purse. The cord has no debt knots. The owner's balance stands two beads above zero.",
+      "An empty purse hangs over three debt knots. You can point to a balance below zero without putting a negative coin in anybody's hand.",
+      "Two coins, three owed. The owner can pay out the coins and still owe one. Counting only the purse would give the visitor a very different answer."
+    ]
+  },
+  {
+    "letter": "q740036", "kind": "loop", "invitation": "Splice the scrape into a pocket sound reel",
+    "controls": [["Bring in the room knock", "Lift out the room knock"], ["Slip the reel by one beat", "Set the downbeat back"]],
+    "readings": [
+      "The little reel marks a low scrape, a higher ring, then two empty beats. The lamp pulses at the start of the strip.",
+      "A knock enters on the third beat. The fourth beat stays empty. The room has become part of the phrase.",
+      "The scrape starts on the second beat and the ring on the third. The lamp hasn't moved. The same two sounds lean against it differently.",
+      "Scrape, ring and knock start one beat late. The knock lands just before the lamp restarts. The gap has moved to the front."
+    ]
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "number": 115,
+    "name": "Weigh two workable plans by named criteria",
+    "uses": [
+      {
+        "objective": "quarter.leaves",
+        "action": "Trace two walks onto different leaves. Hold the same pair against the pilot’s need to read the time and the scribe’s need to keep the sheet dry. Their distances can favour different leaves.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "analytical",
+          "visual"
+        ],
+        "game": 162,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 850,
+    "name": "Compare a plan viewed from above with access on the pier",
+    "uses": [
+      {
+        "objective": "quarter.plan",
+        "action": "Lay out the three fittings and walk the proposed floor at the deck crew’s break and the late mooring. An arrangement has to be tried with both before the fittings reach the dock.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "spatial",
+          "social"
+        ],
+        "game": 162,
+        "story": 119
+      }
+    ]
+  },
+  {
+    "number": 311,
+    "name": "Find the people left out by the time of a call",
+    "uses": [
+      {
+        "objective": "quarter.watch",
+        "action": "Catch the break at the slip and the late tying-up on the rail. A cast across the whole fictional tide preserves different people only at their actual times.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "analytical"
+        ],
+        "game": 282,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 644,
+    "name": "Find what an automatic observer passed by",
+    "uses": [
+      {
+        "objective": "quarter.moth",
+        "action": "Put the stamp first on a clean pad, try it, then assign a whole watch. Compare the card with a pier that you visited by hand. The machine’s obedience cannot rescue an unheard observation.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "physical",
+          "analytical"
+        ],
+        "game": 192,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 3,
+    "name": "Distinguish knowing a procedure from reporting its result",
+    "uses": [
+      {
+        "objective": "quarter.moth",
+        "action": "Work an ordered visit by hand and read the resulting card. Change an instruction and watch how the same written moves can lead to a quiet or occupied pier at different times.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "physical",
+          "reading"
+        ],
+        "game": 224,
+        "story": 87
+      }
+    ]
+  },
+  {
+    "number": 604,
+    "name": "Compare what a formal rule computes with what it can establish about people",
+    "uses": [
+      {
+        "objective": "quarter.moth",
+        "action": "Wind the three-foot strip, inspect the recorded places and bring the card back to Lovelace. Its instructions determine its visits. The people elsewhere still have their own accounts.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "analytical",
+          "social"
+        ],
+        "game": 192,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 259,
+    "name": "Use competing practical demands to decide what to issue",
+    "uses": [
+      {
+        "objective": "quarter.after",
+        "action": "Meet the fittings upstairs. Siv and Joss each try the same floor and describe a different cost of putting the bench, board or horn in another place. Their later invitations depend on hearing them there.",
+        "styles": [
+          "helper",
+          "companion"
+        ],
+        "modes": [
+          "social",
+          "reflective"
+        ],
+        "game": 162,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 56,
+    "name": "Use a consistent comparison when people value different outcomes",
+    "uses": [
+      {
+        "objective": "quarter.leaves",
+        "action": "Keep each walked layout on its own rubbing. Evaluate both with the same starting post and plank rule before switching from the pilot to the scribe or deckhand.",
+        "styles": [
+          "strategist",
+          "explorer"
+        ],
+        "modes": [
+          "analytical",
+          "spatial"
+        ],
+        "game": 162,
+        "story": 119
+      }
+    ]
+  }
+]

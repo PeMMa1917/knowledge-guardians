@@ -902,6 +902,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "ethics"],
       "concepts": [
        "evidence",
        "culture",
@@ -945,6 +946,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "truth",
@@ -999,6 +1001,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "explanation",
        "culture",
@@ -1036,6 +1039,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "ethics"],
       "concepts": [
        "culture",
        "responsibility",
@@ -1095,6 +1099,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "methods-and-tools"],
       "concepts": [
        "perspective",
        "evidence",
@@ -1132,6 +1137,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "perspectives"],
       "concepts": [
        "responsibility",
        "values",

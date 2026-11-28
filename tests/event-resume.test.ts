@@ -13,6 +13,17 @@ function offer(d: Driver): string {
 }
 
 describe('event resolution and reload', () => {
+  it('keeps an invitation available in its own place and releases the deck after walking elsewhere',()=>{
+    const d=new Driver();
+    const pending=offer(d), ev=pack.events.find(e=>e.id===pending)!;
+    d.run({type:'VisitPlace',name:'Still at the Archive'});
+    expect(d.s.events.pending).toBe(pending);
+    d.s.mapId=['council.gallery','market.square','water.gatehouse','stage.foyer'].find(id=>!ev.maps.includes(id))!;
+    d.run({type:'VisitPlace',name:'An afternoon appointment'});
+    expect(d.s.events.pending).toBeNull();
+    expect(d.s.events.seen).not.toContain(pending);
+    expect(d.s.events.next).toBe(240);
+  });
   it('keeps the saved offer without issuing a second due command, then resolves it just once', () => {
     const d = new Driver();
     const pending = offer(d);

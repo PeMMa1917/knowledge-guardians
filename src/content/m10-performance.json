@@ -42,6 +42,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "objectivity",
@@ -80,6 +81,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "methods-and-tools"],
       "concepts": [
        "perspective",
        "culture",
@@ -115,6 +117,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "ethics"],
       "concepts": [
        "values",
        "power",
@@ -128,7 +131,8 @@
       ],
       "aoks": [
        "ART",
-       "HUM"
+       "HUM",
+       "LAN"
       ],
       "subjects": [
        "theatre",
@@ -168,6 +172,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "perspectives"],
       "concepts": [
        "perspective",
        "interpretation",
@@ -179,7 +184,8 @@
       ],
       "aoks": [
        "ART",
-       "HUM"
+       "HUM",
+       "LAN"
       ],
       "subjects": [
        "theatre",
@@ -203,6 +209,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "perspectives"],
       "concepts": [
        "truth",
        "perspective",
@@ -822,13 +829,13 @@
   {
    "id": "stage.director.welcome",
    "speaker": "stage-director",
-   "text": "A keeper says, ‘Leave it by the door.’ A worker at the threshold replies, ‘I can wait.’ Between them the keeper moves a crate and the room goes quiet for a beat. Run our two rehearsals. Keep the words in place and see where your eye goes.",
+   "text": "“Leave it by the door.” Edda shoves a crate across the stage. “I can wait,” says the worker. A board claps in the empty house. Edda loses her place. “Again, please. Same words. Watch what the silence does when I move the crate.”",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "stage.director.compare",
    "speaker": "stage-director",
-   "text": "The printer’s draft says the worker has a new line. Both rehearsals end with ‘I can wait.’ The line stays put. It is the silence that moves around the crate move. How should we mark the change for the cast?",
+   "text": "The printer’s draft says the worker has a new line. Both rehearsals end with ‘I can wait.’ The line stays put. In one rehearsal the silence falls before the crate moves. In the other, it falls after. How should we mark the change for the cast?",
    "historicalLabel": "fictional-world",
    "claimKind": "observation",
    "options": [
@@ -920,13 +927,13 @@
   {
    "id": "stage.director.after",
    "speaker": "stage-director",
-   "text": "The cast kept its lines and movement. Hari has recorded where a person watching from the side might lose sight of the crate. I’ll use that when we arrange the next scene.",
+   "text": "“I stood where Hari stands. From there I directed an invisible crate for a full minute.” Edda stands on tiptoe, fails to see it again, and laughs. “When we set the next scene, he gets the first look.”",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "stage.host.welcome",
    "speaker": "stage-host",
-   "text": "People at the front see both actors and the full crate move. A post changes what people at the side can see. Check the blocking plan in rehearsal and our view note here. We hear the same dialogue from both.",
+   "text": "“Take my seat.” Hari ducks behind the gallery post. “All I see is the tail of her coat. Listen, though. Every word gets through.” The blocking plan is back in rehearsal. He keeps a folded programme in the back row.",
    "historicalLabel": "fictional-world"
   },
   {

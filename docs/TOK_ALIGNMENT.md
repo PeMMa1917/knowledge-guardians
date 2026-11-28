@@ -1,5 +1,7 @@
 # Learning design review
 
+The atlas connects registered and mission questions to distinct decisions and reports which routes still need evidence. [Combination atlas](audit/COMBINATION_ATLAS.md)
+
 The current course guide sets the aims. Examiner reports show where students have struggled to put those aims into practice. The teacher-support material and DP teaching guidance inform how the game offers practice and feedback. The curriculum review report describes future work. Use it to ask design questions about diverse contexts, language and links across subjects.
 
 This review draws on the supplied guide’s aims and assessment objectives, the May 2025 essay and exhibition reports, recurring observations in the subject-report collection, the examiner notes on the exhibition examples, and the guidance on teaching and learning. The reference files stay outside the repository.

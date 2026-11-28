@@ -1,0 +1,99 @@
+.coat-panel {
+  max-width: 52rem;
+  margin-inline: auto;
+  line-height: 1.5;
+}
+.coat-panel h3,
+.coat-panel h4 {
+  margin: 0.6rem 0;
+}
+.coat-panel section > section,
+.coat-panel > div > section {
+  margin-block: 0.9rem;
+  padding-block-start: 0.6rem;
+  border-block-start: 1px solid #706487;
+}
+.coat-panel p {
+  margin: 0.45rem 0;
+}
+.coat-panel button {
+  margin: 0.2rem 0.3rem 0.2rem 0;
+  white-space: normal;
+  text-align: start;
+  min-height: 2.65rem;
+}
+.coat-panel details {
+  margin-block: 0.65rem;
+}
+.coat-panel summary {
+  cursor: pointer;
+  padding-block: 0.25rem;
+}
+.coat-panel .coat-live:empty {
+  display: none;
+}
+.coat-live {
+  color: #f9dc98;
+}
+.coat-fitting {
+  display: grid;
+  grid-template-columns: minmax(7rem, 2fr) minmax(9rem, 3fr);
+  align-items: center;
+  gap: 0.5rem;
+  margin-block: 0.45rem;
+}
+.coat-fitting select {
+  width: 100%;
+  max-width: 100%;
+  font: inherit;
+  padding: 0.35rem;
+  min-height: 2.65rem;
+}
+.coat-paper {
+  background: #f3e6c6;
+  color: #2d2637;
+  padding: 0.75rem 1rem;
+  border-inline-start: 0.32rem solid #59778c;
+  overflow-wrap: anywhere;
+}
+.coat-paper .coat-face {
+  white-space: pre-line;
+  font-weight: 700;
+}
+.coat-bars {
+  display: grid;
+  gap: 0.12rem;
+  margin-block: 0.5rem;
+}
+.coat-bars > div {
+  display: grid;
+  grid-template-columns: minmax(5em, 2fr) 4fr minmax(2em, 1fr);
+  align-items: center;
+  gap: 0.4rem;
+}
+.coat-track {
+  height: 0.5rem;
+  background: #dbcfb4;
+}
+.coat-track i {
+  display: block;
+  height: 100%;
+  background: #465d73;
+}
+@media (max-width: 38rem) {
+  .coat-fitting {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+  }
+  .coat-paper {
+    padding: 0.55rem;
+  }
+}
+.coat-panel .coat-enclosure {
+  border-inline-start: 3px dashed var(--gold, #d4b267);
+  margin-block: 0.75rem;
+  padding-inline-start: 0.75rem;
+}
+.coat-panel .coat-enclosure .coat-paper {
+  padding: 0.6rem 0.8rem;
+}

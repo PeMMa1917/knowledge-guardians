@@ -87,6 +87,7 @@ export type Condition =
   | { card: string }
   | { objective: string }
   | { origin: string }              // the player's chosen origin (spec 35.1)
+  | { trust: string; gte?: number; lte?: number } // a character's trust in the player (relations), decision X-007
   | { all: Condition[] }
   | { any: Condition[] }
   | { not: Condition };
@@ -94,7 +95,7 @@ export type Condition =
 export type Effect =
   | { setFlag: string; value: FlagValue }
   | { addNum: string; by: number }
-  | { giveItem: string; qty?: number }
+  | { giveItem: string; qty?: number; ifMissing?: true }
   | { takeItem: string; qty?: number }
   | { addMarks: number }
   | { addCard: string }
@@ -122,8 +123,10 @@ export interface SourceRecord {
     title: string;
     container: string;
     author?: string;          // filed surname first, as it appears in the entry
+    documentDate?: string;    // date of the document published in an online collection
     workDate?: string;        // original creation date of an artwork
     repository?: string;      // physical collection when the online container is separate
+    publication?: { volume:string; issue:string; year:string; pages:string };
     showAccessDate?: boolean;
   };
 }
@@ -162,6 +165,7 @@ export interface ExhibitRecord {
     pixelAsset?: string;    // optional local licensed image within assets/specimens/
     people?: { name: string; role: string; detail: string; source: string }[];
     /** A new interaction or route made possible by carrying and equipping the object. */
+    fieldUse?: string;
     revisit?: { map: string; prop: string; method: string; hint: string };
   };
   /** Optional label kit that repairs this exhibit's label (Hall of Firsts). */
@@ -183,6 +187,8 @@ export interface DialogueNode {
   id: string;
   speaker: string;            // character id, "narrator", "lumen" or "mentor:<name>"
   text: string;
+  /** The player actually reads this person's documented account on entering the scene. */
+  biographyCard?: string;
   citationSource?: string;    // a SourceRecord with an MLA entry to print below this line
   claimKind?: ClaimKind;
   historicalLabel?: HistoricalLabel;
@@ -200,6 +206,8 @@ export interface CharacterRecord {
   role: string;
   sprite: string;             // file id in public/assets/art/generated/characters
   mode: 'fictional' | 'historical';
+  /** A resident can be on a different shift when encountered in a second room. */
+  localGreeting?: Record<string, string>;
   /** Dialogue entry points, first matching condition wins. */
   talk: { if?: Condition; node: string }[];
 }
@@ -503,6 +511,11 @@ export interface AlcoveRecord {
 }
 
 /** A word puzzle (Sign-Smith lock or Citation Thread bridge; see puzzles.ts). */
+export interface FieldHandoff {
+  handoffPrompt: string;
+  handoffs: { label: string; result: string; reply: string }[];
+}
+
 export type PuzzleRecord = {
   id: string;
   title: string;
@@ -542,57 +555,57 @@ export type PuzzleRecord = {
    * where the pattern breaks, the player makes a prediction (never graded). Then the
    * player says what the break shows.
    */
-  | { type: 'conjecture'; angles: number[]; claim: string; predictAt: number; predictions: { text: string; reply: string }[]; reflect: { text: string; honest: boolean; why: string }[]; proof: string[] }
+  | (FieldHandoff & { type: 'conjecture'; angles: number[]; claim: string; predictAt: number; predictions: { text: string; reply: string }[]; proof: string[] })
   /**
    * A mapmaker's table (a model is not the thing): the sheet holds only a few layers. The
    * player makes a map for each person, who uses it on a short trip. Any map that gives
-   * the person what they need works. Then the player says which map is "true".
+   * the person what they need works. The player chooses which map takes the public frame.
    */
-  | { type: 'mapmaker'; maxLayers: number; layers: { id: string; label: string }[]; audiences: { id: string; name: string; wants: string; need: string[]; success: string; lost: string }[]; reflect: { text: string; honest: boolean; why: string }[] }
+  | (FieldHandoff & { type: 'mapmaker'; maxLayers: number; layers: { id: string; label: string }[]; audiences: { id: string; name: string; wants: string; need: string[]; success: string; lost: string }[] })
   /**
    * A learning sorter (technology AOK): a brass machine sorts fruit by copying the examples
-   * it was given. First the player sees it sort with a narrow set of examples and says why
-   * it failed; then the player chooses examples; then the player reflects.
+   * it was given. First the player sees it sort with a narrow set of examples and inspects where
+   * it failed; then the player changes the examples and chooses who gets to check the next batch.
    */
-  | { type: 'sorter'; slots: number; fruits: SorterFruit[]; crate: string[]; basket: string[]; start: string[]; diagnose: { text: string; honest: boolean; why: string }[]; reflect: { text: string; honest: boolean; why: string }[]; farms: Record<string, string> }
+  | (FieldHandoff & { type: 'sorter'; slots: number; fruits: SorterFruit[]; crate: string[]; basket: string[]; start: string[]; inspections: { label: string; result: string }[]; farms: Record<string, string> })
   /**
    * An echo measurement (natural sciences; error and uncertainty): clap, press when the
    * echo returns, and work out the distance. Then measure your own reaction time, and
    * see how a delay that is always there pushes every result the same way.
    */
-  | { type: 'echo'; distance: number; speed: number; minTimes: number; reflect: { text: string; honest: boolean; why: string }[] }
+  | (FieldHandoff & { type: 'echo'; distance: number; speed: number; minTimes: number; timingSlip: {label: string; echo: number[]; reaction: number[]} })
   /**
    * A survey (human sciences): the wording of a question and who is asked both change the
    * answer. Every person has a fixed view; a leading question flips people whose view is
    * not firm. The player runs surveys, compares them, then chooses a fair report.
    */
-  | { type: 'survey'; groups: Record<string, string>; people: SurveyPerson[]; wordings: { id: string; text: string; lean: 'none' | 'yes' | 'no' }[]; samples: { id: string; label: string; people: string[] }[]; fair: { wording: string; sample: string }; reflect: { text: string; honest: boolean; why: string }[] }
+  | (FieldHandoff & { type: 'survey'; groups: Record<string, string>; people: SurveyPerson[]; wordings: { id: string; text: string; lean: 'none' | 'yes' | 'no' }[]; samples: { id: string; label: string; people: string[] }[]; fair: { wording: string; sample: string } })
   /**
    * A translation relay (language AOK): a message in the ferryfolk's cant must reach the
    * council in English. Some cant words mark a difference that English does not mark in one
    * word. The player picks a rendering for each word within the crier's word limit. Many
    * translations work: a translation works when it keeps every difference the reader needs.
    */
-  | { type: 'translate'; speaker: string; source: string; frame: string; budget: number; words: TranslateWord[]; parts: { id: string; name: string; lost: string }[]; reflect: { text: string; honest: boolean; why: string }[] }
+  | (FieldHandoff & { type: 'translate'; speaker: string; source: string; frame: string; budget: number; words: TranslateWord[]; parts: { id: string; name: string; lost: string }[] })
   /**
    * The painter's frame (the arts): one wide, true scene; people ask for posters. Where the
    * player puts the frame decides what the poster says. Every poster is true, and none of
    * them shows the whole scene. An item is in the frame when its centre is inside it.
    */
-  | { type: 'frame'; scene: { w: number; h: number }; frame: { w: number; h: number }; items: FrameItem[]; briefs: FrameBrief[]; reflect: { text: string; honest: boolean; why: string }[] }
+  | (FieldHandoff & { type: 'frame'; scene: { w: number; h: number }; frame: { w: number; h: number }; items: FrameItem[]; briefs: FrameBrief[] })
   /**
    * The endless bell stair (perception; natural and human sciences): a Shepard scale. Each
    * step sounds higher, but after `steps` steps the notes are the same as at the start. The
    * player listens, says what they heard (never graded), then compares with a measurement.
    */
-  | { type: 'shepard'; steps: number; base: number; octaves: number; guesses: { text: string; reply: string }[]; reflect: { text: string; honest: boolean; why: string }[] }
+  | (FieldHandoff & { type: 'shepard'; steps: number; base: number; octaves: number; guesses: { text: string; reply: string }[] })
   /**
    * The forecast board (certainty; natural sciences and mathematics): for each day the player
    * reads the clues and says how likely rain is. The days are fixed, never random. At the end
    * the board compares the player's forecasts with 'always 50%' and the almanac. The score is
-   * shown, never graded: only the reflection has a fair answer.
+   * shown before the player chooses a recipient for the record.
    */
-  | { type: 'forecast'; choices: number[]; notes: string[]; days: ForecastDay[]; reflect: { text: string; honest: boolean; why: string }[] }
+  | (FieldHandoff & { type: 'forecast'; choices: number[]; notes: string[]; days: ForecastDay[] })
   | { type: 'sightlines'; grid: { w: number; h: number }; blocks: SightBlock[]; spots: SightSpot[]; witnesses: Witness[]; reports: { text: string; honest: boolean; why: string; delivery?: string }[] }
 );
 
@@ -641,8 +654,8 @@ export interface Keepsake {
 /** The Lamp Wall (storyline): one lamp for each of Emberford's knots that the player helps untie. */
 export interface Knot { id: string; name: string; who: string; lit: string; if: Condition }
 /** A clue object: a base description, and new views that a keepsake reveals (a perspective or a pathway). */
-export interface ClueView { keepsake: string; text: string; effects?: Effect[] }
-export interface ClueRecord { id: string; name: string; text: string; views: ClueView[]; onRead?: Effect[]; study?: boolean }
+export interface ClueView { keepsake: string; label?: string; text: string; effects?: Effect[] }
+export interface ClueRecord { id: string; name: string; text: string; views: ClueView[]; earnedViewsOnly?: boolean; onRead?: Effect[]; study?: boolean }
 /** A dialogue option that appears with a character once the player holds a keepsake. */
 /** The story so far (Journal): one beat shown once its condition holds. `{lamps}` is the number of lamps lit. */
 export interface ChronicleBeat { id: string; title: string; text: string; if?: Condition }
@@ -653,7 +666,7 @@ export interface Community { id: string; name: string; who: string[]; knows: str
 export interface KeepsakeTalk { id: string; character: string; keepsake: string; text: string; node: string; if?: Condition }
 
 /** World memory (spec 47, C1): a short line a person says when the player passes, once the condition holds. */
-export interface MemoryLine { id: string; character: string; if: Condition; line: string }
+export interface MemoryLine { id: string; character: string; if: Condition; line: string; supersedes?: string }
 
 /** A practice clue board for a Showdown (spec 47, C1). */
 export interface ClueBoardRecord {
@@ -733,7 +746,11 @@ export interface ContentPack {
   awards: AwardRecord[];
   items: ItemRecord[];
   offers: Offer[];
-  journal: { id: string; text: string; claimKind?: ClaimKind }[];
+  journal: {
+    id: string; text: string; claimKind?: ClaimKind;
+    /** Choose the wording from a completed action when the Guardian records it. */
+    readings?: { when: Condition; text: string }[];
+  }[];
   labelKits: LabelKit[];
   showdowns: ShowdownRecord[];
   locks: TitleLockRecord[];

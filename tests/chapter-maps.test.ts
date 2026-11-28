@@ -52,9 +52,13 @@ it('keeps always available interactions from sharing an identical physical targe
 
 it('leaves the Emberford portal post clear for Kip after the market Showdown', () => {
   const map = MAPS['aethelgard.emberford'];
-  // WorldScene moves Kip to this post when the player must collect the gold seal.
-  const post = { x: 21, y: 23 };
-  const isWalkable = walkable(map);
+  const post = map.npcs.find(npc => npc.id === 'kip-arden')!;
+  expect([post.x,post.y]).toEqual([21,23]);
+  const d = new Driver();
+  expect(check(post.visibleIf, d.s)).toBe(false);
+  d.s.flags['sd.corvan.outcome']='narrowed';
+  expect(check(post.visibleIf, d.s)).toBe(true);
+  const isWalkable = walkable({ ...map, npcs: map.npcs.filter(npc => npc !== post) });
   expect(isWalkable(post.x, post.y)).toBe(true);
   expect(isWalkable(post.x, post.y - 1)).toBe(true);
   expect(map.npcs.some(({ id, x, y }) => id !== 'kip-arden' && x === post.x && y === post.y)).toBe(false);

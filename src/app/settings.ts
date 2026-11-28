@@ -11,6 +11,12 @@ export interface Settings {
   musicVolume: number;        // 0..1
   sfxVolume: number;          // 0..1
   guidePrompts: boolean;      // unsolicited Lumen prompts
+  /** Lumen offers help after a long time with no progress (decision X-011). The hint shows only after a click. */
+  lumenOffers: boolean;
+  /** Show the day streak in the Ledger (decision X-001). Off hides it; the streak is still kept. */
+  showStreak: boolean;
+  showWeekStreak: boolean;
+  showMonthStreak: boolean;
   highContrast: boolean;
   dyslexiaSpacing: boolean;
   /** Calm mode (spec 93.3): events warn first and can be delayed. Nothing is ever timed. */
@@ -54,7 +60,7 @@ export const LUMEN_COLOURS: Record<Settings['lumenColour'], number> = { gold: 0x
 
 export const DEFAULTS: Settings = {
   textScale: 1, reducedMotion: false, reducedEffects: false, musicVolume: 0.5, sfxVolume: 0.7,
-  guidePrompts: true, highContrast: false, dyslexiaSpacing: false, calmMode: false, zenMode: false, glossary: true, readAloud: false,
+  guidePrompts: true, lumenOffers: true, showStreak: false, showWeekStreak: false, showMonthStreak: false, highContrast: false, dyslexiaSpacing: false, calmMode: false, zenMode: false, glossary: true, readAloud: false,
   colourSafe: false, keys: DEFAULT_KEYS, talkSounds: true, captions: false, playerVoice: 'mid', theme: 'archive', lumenColour: 'gold', lumenForm: 'fairy',
 };
 

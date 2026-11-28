@@ -94,7 +94,7 @@ function objectives(entry: PriceCase): Objective[] {
       thinking: { dok: 3, bloom: 'analyse', fink: 'application', solo: 'relational' },
     },
   }, {
-    id: entry.returned, title: `See a customer use ${entry.accession} in Emberford`, essential: false,
+    id: entry.returned, title: `See a customer use “${entry.title}” in Emberford`, essential: false,
     visible: { objective: entry.checked },
     done: { all: [{ objective: entry.checked }, { flag: `${entry.flag}.received`, eq: true }] },
     weave: {

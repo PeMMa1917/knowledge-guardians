@@ -647,7 +647,7 @@
     "title": "The Place on the Crate",
     "stake": "The host needs something readable at the entrance. A research visitor needs enough room for two regional comparisons and a purchase receipt.",
     "knowledgeQuestion": "What follows from where an object was bought, and what would need other evidence?",
-    "preview": "The Met’s cotton-and-wool hanging was bought in Ghana in the 1870s. Its exact origin remains open. Hari has a fictional cloth and a sale tag for a rehearsal display. The cloth has two kinds of marks. Check the hook and the folded comparison sheet before printing the place line.",
+    "preview": "The Met’s hanging was bought in Ghana in the 1870s. Its maker may have been Mende, Vai, or Temne. Hari’s rehearsal cloth has a one-line entrance tag and room for the full comparison at the bench. Check what the receipt and the cloth can each carry before mounting either.",
     "arrangeLabel": "Hari’s short tag and three-panel support",
     "trials": [
       {
@@ -664,13 +664,13 @@
         "checkedArt": "preserved.display-paired",
         "action": "Let down one fold and compare the strips side by side.",
         "preview": "Each sketch marks a join, but their title strips cite different collections. The cloth being tested stays on its own pole.",
-        "result": "One detail on the cloth resembles the first sketch and another resembles the second. There is no signed making record. The match gives a reader places to investigate."
+        "result": "One detail resembles the first sketch and another resembles the second. The matches give a reader leads. The catalogue keeps Mende, Vai, and Temne as separate possibilities for the historical maker."
       }
     ],
     "branches": [
       {
         "key": "tag",
-        "choice": "Put a short purchase tag at the entrance.",
+        "choice": "Hang the purchase tag at the entrance and point to the open maker line.",
         "delivery": "the hanging’s purchase tag at the entrance",
         "art": "copies.strip",
         "doneArt": "stage.programme",
@@ -678,22 +678,22 @@
         "y": 14,
         "opening": "A visitor can read a single line before the bell. “Ghana tells me where it was bought. Where can I see the rest?”",
         "action": "Face the purchase tag toward the visitor and point to the study copy.",
-        "result": "The tag serves the entrance queue without assigning an origin. Readers who want to compare weaving move to the research table later."
+        "result": "The visitor reads the Ghana purchase line before the bell and follows your arrow to look up the maker. The doorway tag leaves the maker open. The research copy keeps the Mende, Vai, and Temne alternatives visible."
       },
       {
         "key": "study",
-        "choice": "Mount the purchase receipt and two comparison strips at the long bench.",
+        "choice": "Reserve the long bench for the receipt, the strips and the possible attributions.",
         "delivery": "the cloth comparison between two readers",
         "art": "preserved.display-paired",
         "doneArt": "preserved.display-records",
         "x": 24,
         "y": 12,
         "opening": "Two readers have enough bench space to walk around the hanging sketch. They put the purchase tag down before choosing a comparison.",
-        "action": "Mount the receipt beside both separate comparison strips.",
-        "result": "The two readers can follow different leads with the purchase kept in its own place. The entrance keeps a small arrow while it waits for a shorter copy."
+        "action": "Mount the receipt and both strips beside the separate attribution line.",
+        "result": "One reader starts with the receipt and the other with a strip. Both see that Mende, Vai, and Temne are three possible maker contexts. The entrance has only the arrow while these readers have the full bench."
       }
     ],
-    "journal": "The receipt located a purchase. Similarities gave a reader a research lead while the place of making remained open.",
+    "journal": "The Ghana receipt located a purchase. I kept Mende, Vai, and Temne open as distinct maker possibilities when I set out the tag or comparison.",
     "concepts": [
       "evidence",
       "culture",

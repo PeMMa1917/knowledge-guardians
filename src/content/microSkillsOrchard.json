@@ -1,0 +1,101 @@
+[
+  {
+    "number": 608,
+    "name": "Compare a fixed count with two performances of the same score",
+    "uses": [
+      {
+        "objective": "plum.score",
+        "action": "Align three wheel spokes and a rest, then play the figure through a suspended rim and a floorboard. Fen can agree on a one-beat value while the shell gives the silence a different emotional meaning.",
+        "styles": [
+          "performer",
+          "explorer"
+        ],
+        "modes": [
+          "auditory",
+          "analytical",
+          "reflective"
+        ],
+        "game": 190,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 741,
+    "name": "Adjust craft pressure using the material’s response",
+    "uses": [
+      {
+        "objective": "plum.hand",
+        "action": "Run the notched stylus over the same tabs under light, working and heavy pressure. Ease up when the hollow fills in, and hand Fen a grip that distinguishes two profiles on worn wood.",
+        "styles": [
+          "maker",
+          "explorer"
+        ],
+        "modes": [
+          "spatial",
+          "analytical",
+          "visual"
+        ],
+        "game": 194,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 855,
+    "name": "Stage two translations of a verse and hear what changes",
+    "uses": [
+      {
+        "objective": "plum.verse",
+        "action": "Lay a literal line and a three-pulse line against the same fall of a fruit. The first leaves the fruit unnamed and arrives late. The second lands the prop on the beat and specifies a plum.",
+        "styles": [
+          "maker",
+          "performer"
+        ],
+        "modes": [
+          "linguistic",
+          "auditory",
+          "reading"
+        ],
+        "game": 186,
+        "story": 95
+      },
+      {
+        "objective": "plum.pia",
+        "action": "Take both renderings to the actor in the forest. Change fruit or timing and let the child in the audience supply a new word. Rehearse again to reverse the choice.",
+        "styles": [
+          "helper",
+          "performer"
+        ],
+        "modes": [
+          "linguistic",
+          "social",
+          "physical"
+        ],
+        "game": 186,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 1110,
+    "name": "Distinguish the count of a rest from what a performer values in it",
+    "uses": [
+      {
+        "objective": "plum.score",
+        "action": "Fit the gap to the last empty beat on Fen’s wheel. Hear what waiting for a child to answer does to the same silence. Fen keeps a common entrance and each player’s reason for the wait.",
+        "styles": [
+          "companion",
+          "strategist"
+        ],
+        "modes": [
+          "analytical",
+          "auditory",
+          "reflective"
+        ],
+        "game": 202,
+        "story": 95
+      }
+    ]
+  }
+]

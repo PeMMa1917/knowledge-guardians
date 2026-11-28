@@ -26,10 +26,13 @@
        "checkpoint": "Arrived in Emberford"
       }
      ],
+     "kq": { "id": "KQ-ROUTE-20", "action": "arrival-notebook" },
      "weave": {
       "concepts": [
        "culture"
       ],
+      "framework": ["perspectives"],
+      "aoks": ["HIS"],
       "atl": [
        "self-management"
       ]
@@ -292,11 +295,35 @@
      "weave": {
       "concepts": [
        "evidence",
-       "power"
+       "certainty",
+       "interpretation",
+       "justification",
+       "perspective"
       ],
       "atl": [
        "thinking"
-      ]
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "perspectives"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "design-tech"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
      },
      "kq": {
       "id": "KQ-NEW-005",
@@ -331,12 +358,38 @@
      ],
      "weave": {
       "concepts": [
-       "responsibility"
+       "evidence",
+       "power",
+       "responsibility",
+       "perspective",
+       "values",
+       "justification"
       ],
       "atl": [
        "self-management",
        "communication"
-      ]
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "aoks": [
+       "HIS",
+       "POL",
+       "LAN"
+      ],
+      "subjects": [
+       "global-politics",
+       "history",
+       "lang-langlit"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      }
      }
     }
    ]
@@ -634,7 +687,7 @@
      "map": "aethelgard.emberford",
      "x": 25,
      "y": 11,
-     "text": "The thread starts at the blade. It glows faintly: Corvan Hale holds it now, and his sign makes the claim.",
+     "text": "Corvan holds the blade now. His sign hangs above it. Kip shields the chalk with a sleeve. “When it rains, who will remember whose words those were?”",
      "card": "card.corvan-claim"
     },
     {
@@ -643,7 +696,7 @@
      "map": "aethelgard.emberford",
      "x": 21,
      "y": 7,
-     "text": "The thread runs into the guild ledger. The entry reads: 'One patterned blade. Lyle workshop to Corvan Hale. This season.' The clerk files it by the last transfer. The date tells the guild which sale to settle.",
+     "text": "The guild ledger lists a sale from the Lyle workshop to Corvan this season. Kip traces the column with his nail. “My aunt gets paid on that date. It could sit on the shelf a year first.”",
      "card": "card.guild-ledger"
     },
     {
@@ -652,7 +705,7 @@
      "map": "aethelgard.emberford",
      "x": 3,
      "y": 13,
-     "text": "The thread ends on Hesper's workshop sheet: two steels, stacked, welded, twisted and folded, this season. She records when the work was done so she can trace a repair. The two dates can agree and answer different questions.",
+     "text": "Hesper has dated her workshop sheet this season. “If somebody brings this back, I need the day it left my hands.” Her date and the clerk’s happen to match. One records her work, the other a sale.",
      "card": "card.workshop-diagram"
     }
    ],
@@ -688,7 +741,7 @@
    "title": "Market Showdown: the sign on the blade",
    "place": "Emberford market square",
    "opponent": "merchant-corvan",
-   "intro": "Traders and buyers gather around the fountain. Corvan stands by his stall with his sign: TRUE WOOTZ OF ANCIENT DAMASCUS. Hesper watches from the forge road.",
+   "intro": "A buyer folds her purse shut. Hesper stands at the edge of the fountain. Corvan smooths a crease in his father’s sign.",
    "valueShowdown": false,
    "crowd": {
     "player": 35,
@@ -897,7 +950,7 @@
    ],
    "outcomes": {
     "exposed": {
-     "text": "Every link breaks in front of the crowd, and the gold mark has nothing under it. Corvan takes the sign down, red in the face. Two buyers ask him for their money back.",
+     "text": "Corvan takes down the sign. Two buyers ask for refunds. Hesper steps beside him to help find their receipts.",
      "effects": [
       {
        "setFlag": "sign.state",
@@ -914,7 +967,7 @@
      ]
     },
     "narrowed": {
-     "text": "Corvan rubs out his sign and writes: 'Pattern-welded. Lyle workshop. This season.' After a moment he adds: 'Good steel, though.'",
+     "text": "Corvan writes “Lyle workshop, this season.” He dips the brush again. “May I keep the bit about good steel?”",
      "effects": [
       {
        "setFlag": "sign.state",
@@ -927,7 +980,7 @@
      ]
     },
     "won-over": {
-     "text": "Corvan laughs: 'All right, Guardian. You were fair to me.' He writes a new sign with Hesper's name on it, and asks her to sign it too.",
+     "text": "Corvan leaves room below his own name. Hesper takes the brush. The first letter wobbles. He holds the board steady.",
      "effects": [
       {
        "setFlag": "sign.state",
@@ -944,7 +997,7 @@
      ]
     },
     "split": {
-     "text": "The crowd is divided. Corvan keeps his sign for now, but adds a small note at the bottom: 'Maker: Lyle workshop.'",
+     "text": "Half the square drifts away. Corvan keeps his sign and pins “Maker: Lyle workshop” where a child can read it.",
      "effects": [
       {
        "setFlag": "sign.state",
@@ -957,7 +1010,7 @@
      ]
     },
     "lost-ground": {
-     "text": "The crowd follows the bold sign for today. Nobody buys the blade, though. Hesper says: 'You asked the right questions. You can ask them again.'",
+     "text": "The gold sign draws the crowd. Nobody opens a purse. Hesper saves you a dry corner of the workshop sheet for tomorrow.",
      "effects": [
       {
        "setFlag": "sign.state",
@@ -1008,7 +1061,7 @@
   { "id": "j.hesper.checked-drawer", "claimKind": "observation", "text": "In the Nexus drawer I found Hesper’s repair tab next to a separately dated receipt. Anyone at the counter could ask for the pair while the shop finished its work." },
   {
    "id": "j.m02.start",
-   "text": "Arrived in Emberford, a guild town in Aethelgard. Aethelgard is a game world: nothing here is a historical record unless it says 'Documented'.",
+   "text": "I stepped into Emberford between a price board and a workshop door. Corvan has a surface pattern buyers can see. Hesper keeps the maker’s records. Where I go first could change whose account I carry back to the square.",
    "claimKind": "observation"
   },
   {
@@ -1143,10 +1196,32 @@
    ]
   },
   {
+   "id": "corvan.mend",
+   "speaker": "merchant-corvan",
+   "text": "He looks at you for a long moment. 'You broke my sign in front of half the town. Now you want to write the new one?' He rubs the empty board. 'Fine. Something a buyer can check. Pattern-welded, Lyle workshop, this season. Short. If it does not sell, I will tell everyone whose idea it was.' For the first time since the market, he almost smiles.",
+   "effects": [
+    { "relation": "merchant-corvan", "by": 2 },
+    { "setFlag": "corvan.trust.mended", "value": true }
+   ],
+   "options": [
+    { "text": "Leave the stall.", "next": null }
+   ]
+  },
+  {
    "id": "corvan.after.down",
    "speaker": "merchant-corvan",
    "text": "No sign today. I need time to think about what I write next. You were right about the steel. You did not have to be so loud about it.",
    "options": [
+    {
+     "text": "Offer to help him write a sign that is true and still sells.",
+     "if": {
+      "all": [
+       { "trust": "merchant-corvan", "lte": -1 },
+       { "not": { "flagSet": "corvan.trust.mended" } }
+      ]
+     },
+     "next": "corvan.mend"
+    },
     {
      "text": "Ask whether anyone left with the old sign’s words.",
      "if": {
@@ -1848,10 +1923,11 @@
   {
    "id": "kip.seal",
    "speaker": "kip-arden",
-   "text": "Look. Corvan threw his old sign board out here. Turn it over. There's a little gold seal pressed into the back. A ring with a mark I don't know.",
+   "text": "Kip is on his knees beside Corvan’s discarded sign. A tiny wax cricket sits in the thumb-sized nick. Every time he lifts the board it stops chirping. “Help me turn it. Look what was underneath.” A gold seal has stuck to the back.",
    "effects": [
     {
-     "giveItem": "item.gold-seal"
+     "giveItem": "item.gold-seal",
+     "ifMissing": true
     }
    ],
    "next": "kip.seal2"
@@ -1859,23 +1935,48 @@
   {
    "id": "kip.seal2",
    "speaker": "lumen",
-   "text": "I don't know this mark. I am not saying that to be mysterious. It is not in anything I was given.",
+   "text": "Lumen’s light follows a ring pressed into the wood. “The seal fits the ring. My archive has no name for the hand that pressed it.” The cricket puts its feet back on the board and starts up again.",
    "next": "kip.seal3"
   },
   {
    "id": "kip.seal3",
    "speaker": "kip-arden",
-   "text": "Same gold as Corvan's 'mark of quality'. Let's show Warden Ise. She has been in the Nexus for a very long time.",
-   "effects": [
-    {
-     "setFlag": "seal.found",
-     "value": true
-    }
-   ],
+   "text": "Kip has one wax wrapper. “We could carry the shape. Or I could put my name and the hour inside. I was here when we found it. I was at supper when it was put up.” He sounds disappointed with himself. The cricket settles in the nick.",
+   "effects": [],
    "options": [
     {
-     "text": "Let's take it to Ise.",
-     "next": null
+     "text": "Let's take it to Ise. Press the wrapper round the nick.",
+     "next": "hatch.kip.nick",
+     "effects": [
+      {
+       "setFlag": "hatch.wrapper",
+       "value": "nick"
+      },
+      {
+       "setFlag": "seal.found",
+       "value": true
+      },
+      {
+       "journal": "j.hatch.nick"
+      }
+     ]
+    },
+    {
+     "text": "Put the hour inside the fold. Let Kip sign where he found it.",
+     "next": "hatch.kip.hour",
+     "effects": [
+      {
+       "setFlag": "hatch.wrapper",
+       "value": "hour"
+      },
+      {
+       "setFlag": "seal.found",
+       "value": true
+      },
+      {
+       "journal": "j.hatch.hour"
+      }
+     ]
     },
     {
      "text": "It's just a tiny seal. Not worth showing Ise.",
@@ -1896,7 +1997,45 @@
   {
    "id": "kip.end",
    "speaker": "kip-arden",
-   "text": "Did you see Ise's face? I have never seen her lost for words. I wonder what the Nexus will send us next."
+   "text": "Kip keeps working the seal’s shape into the palm of his mitten. “Ise stopped halfway to her pocket. Did you see? She usually puts things there before anyone can ask.”",
+   "options": [
+    {
+     "text": "Show me the wrapper we pressed.",
+     "next": "hatch.kip.nick",
+     "if": {
+      "flag": "hatch.wrapper",
+      "eq": "nick"
+     }
+    },
+    {
+     "text": "Read me the hour again.",
+     "next": "hatch.kip.hour",
+     "if": {
+      "flag": "hatch.wrapper",
+      "eq": "hour"
+     }
+    },
+    {
+     "text": "Leave Kip with his mitten."
+    },
+    {
+     "text": "Take a first rubbing from the discarded sign today.",
+     "next": "kip.seal3",
+     "if": {
+      "all": [
+       {
+        "flag": "chapter.done",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "hatch.wrapper"
+        }
+       }
+      ]
+     }
+    }
+   ]
   },
   {
    "id": "tea.start",
@@ -1952,6 +2091,30 @@
      "if": {
       "flag": "rumour.done",
       "eq": true
+     }
+    },
+    {
+     "text": "Read the tag on your kettle.",
+     "next": "rumour.after.kettle",
+     "if": {
+      "flag": "rumour.edition",
+      "eq": "kettle"
+     }
+    },
+    {
+     "text": "Did the night shift hear back?",
+     "next": "rumour.after.quiet",
+     "if": {
+      "flag": "rumour.edition",
+      "eq": "quiet"
+     }
+    },
+    {
+     "text": "Look at the folded account.",
+     "next": "rumour.after.margin",
+     "if": {
+      "flag": "rumour.edition",
+      "eq": "margin"
      }
     },
     {
@@ -2184,7 +2347,7 @@
   {
    "id": "ev.well.end",
    "speaker": "well-keeper",
-   "text": "Hm. If the west well, far from the forge, is low too, it's the season. I'll go and look, and I'll take my neighbour."
+   "text": "I’d go to Hesper first. If she fills her barrel from the other well, I need to know that before I write her name anywhere. Two sticks can tell us which levels moved. I’ll keep the weather and the bucket tally beside them."
   },
   {
    "id": "ev.memory",
@@ -2283,7 +2446,43 @@
    "id": "kip.small",
    "speaker": "kip-arden",
    "claimKind": "interpretation",
-   "text": "Tiny? The blade was big and shiny, and it told us less than this. Small things keep secrets better. Come on."
+   "text": "“A thumb fits in there. Hesper says someone used to check whether the night hatch was open by touch. What if the board has had two jobs?” Kip waits. For once he has finished one question before starting the next.",
+   "options": [
+    {
+     "text": "Let's take it to Ise. Press the wrapper round the nick.",
+     "next": "hatch.kip.nick",
+     "effects": [
+      {
+       "setFlag": "hatch.wrapper",
+       "value": "nick"
+      },
+      {
+       "setFlag": "seal.found",
+       "value": true
+      },
+      {
+       "journal": "j.hatch.nick"
+      }
+     ]
+    },
+    {
+     "text": "Put the hour inside the fold. Let Kip sign where he found it.",
+     "next": "hatch.kip.hour",
+     "effects": [
+      {
+       "setFlag": "hatch.wrapper",
+       "value": "hour"
+      },
+      {
+       "setFlag": "seal.found",
+       "value": true
+      },
+      {
+       "journal": "j.hatch.hour"
+      }
+     ]
+    }
+   ]
   },
   {
    "id": "copy.start",

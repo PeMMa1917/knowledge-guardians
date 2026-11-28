@@ -4,7 +4,7 @@
  * Serve that checkout's dist directory, then run with Node 22 or newer and Chromium:
  *   node tools/smoke-worlds.mjs http://127.0.0.1:4173 /path/to/checkout
  * The second argument defaults to the working directory. The optional third argument selects
- * "maps", "access", "collections", "stress", "portal", "cast", "focus", "soak", "events", "guidance" or "fieldgames".
+ * "maps", "access", "collections", "stress", "portal", "cast", "focus", "soak", "events", "guidance", "ink" or "fieldgames".
  * CHROMIUM can name a different binary. KG_SOAK_MINUTES sets the real-time soak length (default 60).
  *
  * The script starts a new game and uses debug entry at each registered spawn. Its traversal
@@ -22,8 +22,8 @@ import { smokeCallboardReader, smokeFerryFocus, smokeInteractionEscape, smokeNav
 import { smokeGuidance } from './smoke-guidance.mjs';
 
 const [url, directory = '.', mode = 'all'] = process.argv.slice(2);
-if (!url || !['all', 'maps', 'access', 'collections', 'stress', 'portal', 'cast', 'focus', 'soak', 'events', 'guidance', 'fieldgames'].includes(mode)) {
-  throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access|collections|stress|portal|cast|focus|soak|events|guidance|fieldgames]');
+if (!url || !['all', 'maps', 'access', 'collections', 'stress', 'portal', 'cast', 'focus', 'soak', 'events', 'guidance', 'ink', 'fieldgames'].includes(mode)) {
+  throw new Error('Usage: node tools/smoke-worlds.mjs URL [built checkout] [all|maps|access|collections|stress|portal|cast|focus|soak|events|guidance|ink|fieldgames]');
 }
 const root = resolve(directory);
 const waitScale = Number(process.env.KG_BROWSER_WAIT_SCALE ?? 1);
@@ -461,7 +461,10 @@ async function smokeMap(browser, map) {
   return { colours, steps: result.next.length };
 }
 
-const maps = ['all', 'maps', 'access', 'stress'].includes(mode) ? await readRegistry() : [];
+// KG_SMOKE_MAPS=id1,id2 limits the walk to some maps (handy after a change to one world).
+const onlyMaps = process.env.KG_SMOKE_MAPS?.split(',').filter(Boolean);
+const maps = (['all', 'maps', 'access', 'stress'].includes(mode) ? await readRegistry() : [])
+  .filter((map) => !onlyMaps || onlyMaps.includes(map.id));
 const profile = await mkdtemp(join(tmpdir(), 'kg-browser-smoke-'));
 const chromium = spawn(process.env.CHROMIUM ?? 'chromium', [
   '--headless', '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu',
@@ -486,11 +489,14 @@ try {
   await until(() => browser.evaluate(() => window.kg?.world?.map?.id === 'nexus.archive'), 'new Guardian in the Nexus');
   await until(() => browser.evaluate(() => !!document.querySelector('[role="dialog"].dialogue')), 'cold-opening dialogue');
   if (mode === 'all' || mode === 'access') await smokeManualSpeech(browser);
-  await browser.evaluate(() => {
+  // Content notes (C-014) open a panel on first entry; mark them seen so the walk is not blocked.
+  const noteFlags = JSON.parse(await readFile(new URL('../src/content/content-notes.json', import.meta.url), 'utf8')).notes.map((n) => `note.${n.id}.seen`);
+  await browser.evaluate((flags) => {
     window.kg.settings.reducedMotion = true;
     window.kg.settings.reducedEffects = true;
+    for (const flag of flags) window.kg.controller.dispatch({ type: 'SetFlag', flag, value: true });
     window.kg.ui.closeModal();
-  });
+  }, noteFlags);
 
   let passed = 0;
   for (const map of mode === 'all' || mode === 'maps' ? maps : []) {
@@ -519,6 +525,10 @@ try {
   if (mode === 'fieldgames') {
     const { smokeFieldGames } = await import('./smoke-fieldgames.mjs');
     await smokeFieldGames(browser, { button, press, until });
+  }
+  if (mode === 'ink') {
+    const { smokeInkPost } = await import('./smoke-ink-post.mjs');
+    await smokeInkPost(browser, { button, press, until });
   }
   if (mode === 'collections') await smokeCollections(browser, { button, press, until });
   if (mode === 'stress') await smokeNavigation(browser, { press, until }, maps);

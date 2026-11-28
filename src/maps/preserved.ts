@@ -1,3 +1,4 @@
+import { mothVisit } from './mothPerchReturns';
 /** Fictional Guardian archive. Its rooms contain documentary evidence and original schematic illustrations. */
 import type { Condition } from '../domain/types';
 import { COLD_CLEAR_BAY } from './clearBay';
@@ -79,6 +80,8 @@ export const PRESERVED_ARCHIVE = room({
     { stamp: 'plant-tall', x: 2, y: 13 }, { stamp: 'plant-tall', x: 26, y: 13 },
   ],
   interactables: [
+    ...mothVisit('case',15,7),
+    { id: 'field-tokens', kind: 'fieldgame', game: 'tokens', x: 22, y: 6, w: 1, h: 1, label: 'Aster’s long drawer (The Token Drawer)', art: 'old-sign' },
     ...COLD_CLEAR_BAY,
     CLEARANCE_DOOR,
     ...BEATER_COLD_STORE,
@@ -250,6 +253,9 @@ export const PRESERVED_COAST = room({
     slip('preserved-coast', 'context', 17, 8, 'the context note', { flag: 'thread.preserved-coast.conditions', eq: true }),
     notice('preserved-coast-guide', 10, 12, 'the room’s reading guide', 'preserved.folder',
       'Read the sites case on the west side. Then start with the site note below it. The next slip asks what the surroundings can do. The last slip asks what people did.'),
+    // C-023: who looks after the sites today. Source: UNESCO World Heritage Centre, property 1634 (HIS-PRES-04).
+    notice('preserved-coast-custodians', 3, 6, 'the card on who looks after the sites now', 'preserved.folder',
+      'Who looks after these sites today. UNESCO names Chile’s National Monuments Council, which supervises the three sites and must approve any change, and a local body, the Chinchorro Marka Corporation, which runs the management system. UNESCO says the people of Arica, and any community with a link to the sites, should share in decisions, and that questions about how the dead are treated are still open. This card gives the institutions’ words. The community’s own words are not on it yet.'),
   ],
   lights: [
     { x: 6, y: 6, r: 61, color: 0xaad1cf }, { x: 18, y: 6, r: 61, color: 0xffdb97 },

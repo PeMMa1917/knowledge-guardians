@@ -24,14 +24,17 @@ describe("The Painter's Frame (the arts)", () => {
     expect(bad.extra).toContain('seller');
     expect(() => judgeFrame(rec, 'guild', 25, 0)).toThrow(/canvas/);
   });
-  it('the reflection needs all three posters, then gives perspective credit', () => {
+  it('the delivery needs all three posters, then gives perspective credit', () => {
     const d = new Driver();
-    const honest = rec.reflect.findIndex((r) => r.honest);
+    const delivery = rec.handoffs.length - 1;
     d.run({ type: 'PuzzleFrame', puzzle: P, brief: 'guild', x: 0, y: 7 });
-    expect(() => d.run({ type: 'PuzzleReport', puzzle: P, index: honest })).toThrow(/everyone/);
+    expect(() => d.run({ type: 'PuzzleReport', puzzle: P, index: delivery })).toThrow(/everyone/);
     d.run({ type: 'PuzzleFrame', puzzle: P, brief: 'fund', x: 17, y: 2 });
     d.run({ type: 'PuzzleFrame', puzzle: P, brief: 'council', x: 19, y: 6 });
-    d.run({ type: 'PuzzleReport', puzzle: P, index: honest });
+    for (let index = 0; index < rec.handoffs.length; index++) {
+      d.run({type: 'PuzzleReport', puzzle: P, index});
+      expect(d.s.flags[`puzzle.${P}.handoff`]).toBe(index);
+    }
     expect(d.s.flags[`puzzle.${P}.done`]).toBe(true);
     expect(conceptXP(d.p, pack).perspective).toBeGreaterThan(0);
   });

@@ -1,3 +1,4 @@
+import {matchingWork,type ChapterFilters} from '../src/teacher/chapterMap';
 import { describe, expect, it } from 'vitest';
 import { buildPack } from '../src/content';
 import { teacherContentFrom } from '../src/teacher/content';
@@ -16,7 +17,30 @@ describe('teacher view (spec 94, 95)', () => {
     expect(pack.missions.map((mission) => mission.id)).toEqual(campaign.missions.map((mission) => mission.id));
     expect(pack.missions.flatMap(({ objectives }) => objectives.map(({ id, essential }) => ({ id, essential }))))
       .toEqual(campaign.missions.flatMap(({ objectives }) => objectives.map(({ id, essential }) => ({ id, essential }))));
-    expect(Object.keys(pack).sort()).toEqual(['awards', 'misconceptions', 'missions', 'skillDomains', 'skills']);
+    expect(Object.keys(pack).sort()).toEqual(['awards', 'misconceptions', 'missions', 'returnVisits', 'skillDomains', 'skills', 'strands']);
+  });
+  it('places each public return visit in its real chapter and joins filters on the same action',()=>{
+    const f: ChapterFilters={chapter:'',concept:'',area:'',framework:'',subject:'',dok:'',bloom:'',fink:'',solo:''};
+    const all=matchingWork(pack,f);
+    const first=all.find(row=>row.id==='m01.o6.label')!;
+    expect(first.tags.thinking?.dok).toBe(3);
+    const chapters=new Set<number>();
+    for(const visit of pack.returnVisits){
+      const row=all.find(row=>row.id===visit.objective)!;
+      expect(row.chapter).toBe(Math.max(1,visit.world-1));
+      expect(row.tags.subjects?.length).toBeGreaterThan(0);
+      expect(row.tags.framework?.length).toBeGreaterThan(0);
+      expect(row.tags.thinking).toBeDefined();
+      expect(campaign.missions.flatMap(m=>m.objectives).find(o=>o.id===row.id)?.essential).toBe(true);
+      chapters.add(row.chapter);
+    }
+    expect(chapters.size).toBe(15);
+    const chosen={...f,chapter:'7',concept:'interpretation',subject:'economics',framework:'methods-and-tools',area:'HIS',dok:'3',bloom:'evaluate',fink:'integration',solo:'relational'};
+    const works=matchingWork(pack,chosen);
+    expect(works.some(row=>row.id==='mill-shift.press.estimate')).toBe(true);
+    expect(works.every(row=>row.chapter===7 && row.tags.subjects?.includes('economics') && row.weave.concepts.includes('interpretation'))).toBe(true);
+    expect(matchingWork(pack,{...chosen,chapter:'17'})).toEqual([]);
+    expect(pack.missions.find(m=>m.id==='KG-MILL-YARD')?.chapter).toBe(6);
   });
   it('rejects files that are not progress files, with a reason', () => {
     expect(readProgress({ hello: 1 }).ok).toBe(false);

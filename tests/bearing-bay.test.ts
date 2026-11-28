@@ -77,6 +77,8 @@ describe('Where the Two Sights Meet', () => {
     move(d, record.slug, { kind: 'receive', route });
     expect(check(receiver.artOpen?.if, d.s)).toBe(true);
     expect(d.done(record.objective)).toBe(true);
+    const received = d.s.adventureDiary.entries.find((entry) => entry.id === `quest:${record.objective}`);
+    expect(received?.text).toContain(route === 'quay' ? 'at the west dock' : 'to Marl Fold');
     const revisit = BEARING_RETURN_ROOM.interactables.find(({ id }) => id === record.returnProp)!;
     d.run({ type: 'ClaimSpecimen', exhibit: record.exhibit });
     expect(check(revisit.visibleIf, d.s)).toBe(false);
@@ -91,6 +93,9 @@ describe('Where the Two Sights Meet', () => {
     move(d, record.slug, { kind: 'fit', fix });
     expect(d.done(record.returnObjective)).toBe(true);
     expect(readBearing(record.slug, d.s.flags).fitted).toBe(fix);
+    const diary = d.s.adventureDiary.entries.find((entry) => entry.id === `quest:${record.returnObjective}`);
+    expect(diary?.text).toContain(fix === 'wait' ? record.waitResult : record.sideResult);
+    expect(diary?.text).not.toContain(fix === 'wait' ? record.sideResult : record.waitResult);
     expect(revisit.artBy?.keys[fix]).toBe(fix === 'side' ? 'bearing.side' : 'bearing.pair');
     d.run({ type: 'EquipPerspective', keepsake: null });
     expect(check(revisit.visibleIf, d.s)).toBe(false);

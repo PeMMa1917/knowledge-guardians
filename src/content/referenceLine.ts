@@ -134,7 +134,7 @@ const kinds: Record<string, Pick<Weave, 'concepts' | 'aoks' | 'subjects'>> = {
 };
 
 const objectives: Objective[] = REFERENCE_CASES.map((entry) => ({
-  id: entry.objective, title: `Use a workshop model for ${entry.accession}.`, essential: false, visible: { card: entry.card },
+  id: entry.objective, title: `Use a workshop model for “${entry.title}”.`, essential: false, visible: { card: entry.card },
   done: { all: [{ card: entry.card }, referenceMounted(entry), { any: [
     referenceProcessed(entry, 'compact'), { all: [referenceProcessed(entry, 'paired'), referenceMatched(entry)] },
   ] }] },
@@ -160,6 +160,7 @@ export const referenceLineContent = {
     id: entry.source, title: `${entry.institution}, catalogue ${entry.accession}`,
     url: entry.kind === 'fossil' || entry.kind === 'plant' ? entry.exactSource : entry.catalogueUrl,
     locator: 'Exact collection record, item dates, description and image reference',
+    ...(entry.key==='cma:1955.320'?{mla:{kind:'artwork' as const,title:'Poivre d’inde',author:'Merian, Maria Sibylla',workDate:'1771',container:'The Cleveland Museum of Art'}}:{}),
     supports: entry.observation, accessed: '2026-11-26',
   })),
   exhibits: REFERENCE_CASES.map((entry) => ({

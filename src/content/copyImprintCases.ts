@@ -103,6 +103,6 @@ export const copyImprintContent: ImprintContent = {
   hints: IMPRINT_CASES.flatMap(proofs),
   journal: IMPRINT_CASES.map((record) => ({
     id: `j.${record.stem}`, claimKind: 'observation',
-    text: `I pulled two copies of ${record.accession} under the same source frame and changed the ink. ${record.limit}`,
+    text: record.creditSlip?.journal ?? `I pulled two copies of ${record.accession} under the same source frame and changed the ink. ${record.limit}`,
   })),
 };

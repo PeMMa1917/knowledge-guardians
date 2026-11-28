@@ -1,3 +1,8 @@
+import {silkSeats,silkRibbons,travellingArtist} from './petalHouse';
+import { mothVisit } from './mothPerchReturns';
+import { ferryPlaybills } from './pictureFerry';
+import { plumStair, roadPerformance } from './plumLoft';
+import { FIRST_CLAP_GALLERY, FIRST_CLAP_REHEARSAL } from './firstClap';
 /** Fictional theatre with separate backstage and audience sightlines. */
 import type { Condition } from '../domain/types';
 import { SCRIPT_RAIL_ENTRANCE, SCRIPT_RAIL_GALLERY } from './scriptRail';
@@ -74,6 +79,7 @@ export const STAGE_FOYER = room({
     { stamp: 'plant-tall', x: 19, y: 13 }, { stamp: 'long-table', x: 12, y: 5 },
   ],
   interactables: [
+    ...mothVisit('desk',12,9),
     SCRIPT_RAIL_ENTRANCE,
     ...STAGE_FOYER_BACKBILL,
     ...LEAF_FRAME_FOYER,
@@ -116,7 +122,10 @@ export const STAGE_FOYER = room({
 export const STAGE_REHEARSAL = room({
   id: 'stage.rehearsal', name: 'House of Performance: Rehearsal Room', width: 28, height: 17,
   background: 0x352a3f, spawn: { x: 12, y: 12 },
-  npcs: [{ id: 'stage-director', x: 12, y: 6, facing: 'down' }],
+  npcs: [
+    travellingArtist('silk',18,9), { id: 'stage-director', x: 12, y: 6, facing: 'down' },
+    {id:'elbow-vee', x:22, y:8, facing:'right', visibleIf:{flagSet:'elbow.printed'}},
+  ],
   stamps: [
     { stamp: 'banners', x: 6, y: 1 }, { stamp: 'banners', x: 19, y: 1 },
     { stamp: 'cabinet', x: 3, y: 4 }, { stamp: 'crates', x: 22, y: 4 },
@@ -124,6 +133,11 @@ export const STAGE_REHEARSAL = room({
     { stamp: 'rug-green', x: 12, y: 9 }, { stamp: 'plant-tall', x: 5, y: 13 },
   ],
   interactables: [
+    silkSeats,silkRibbons,
+    plumStair,
+    { id: 'field-primer', kind: 'fieldgame', game: 'primer', x: 20, y: 4, w: 1, h: 1, label: 'the printer’s proof table (The Primer Page)', art: 'old-sign' },
+    { id: 'field-lens', kind: 'fieldgame', game: 'lens', x: 16, y: 5, w: 1, h: 1, label: 'the green card table (The Lens Table)', art: 'old-sign' },
+    ...FIRST_CLAP_REHEARSAL,
     ...STAGE_REHEARSAL_FRAMES,
     ...STAGE_FILM_REHEARSAL,
     STAGE_SHEET_REHEARSAL,
@@ -176,6 +190,8 @@ export const STAGE_GALLERY = room({
     { stamp: 'plant-tall', x: 3, y: 14 }, { stamp: 'plant-tall', x: 23, y: 14 },
   ],
   interactables: [
+    ...ferryPlaybills,
+    ...FIRST_CLAP_GALLERY,
     ...SCRIPT_RAIL_GALLERY,
     ...STAGE_GALLERY_BACKBILL,
     ...GALLERY_SEAM,
@@ -193,6 +209,7 @@ export const STAGE_GALLERY = room({
     notice('stage-vantage', 18, 7, 'the audience sightlines note', 'stage.cues',
       'From the front bench the crate move is easy to see. A post hides part of it from the side seats. Both seats can hear the lines and the silence between them.',
       { flag: 'stage.vantage' }),
+    roadPerformance,
     { id: 'stage-side-call', kind: 'scene', node: 'stage.call.stand', x: 17, y: 8, w: 1, h: 1,
       label: 'Hari’s test-bell call slip beside the sightline note', art: 'preserved.slip', walkThrough: true,
       visibleIf: { all: [{ objective: 'stage.arrival' }, { flag: 'stage.vantage', eq: true }, { not: { flagSet: 'stage.call.mode' } }] } },

@@ -21,7 +21,7 @@ describe('The Unfinished Round Window (a pattern is not a proof)', () => {
     // A regular hexagon is not: three long diagonals meet in the centre (30 panes).
     expect(chordFigure([0, 60, 120, 180, 240, 300]).general).toBe(false);
   });
-  it('asks for a prediction before the sixth point, never grades it, then needs the fair reflection', () => {
+  it('asks for a prediction before the sixth point, never grades it, then needs a workshop delivery', () => {
     const d = new Driver();
     for (let i = 0; i < 5; i++) d.run({ type: 'PuzzleAddPoint', puzzle: P });
     expect(() => d.run({ type: 'PuzzleAddPoint', puzzle: P })).toThrow(/prediction/);
@@ -29,9 +29,10 @@ describe('The Unfinished Round Window (a pattern is not a proof)', () => {
     const o = d.run({ type: 'PuzzlePredict', puzzle: P, index: 0 });
     expect(o.events.find((e) => e.kind === 'puzzle')).toMatchObject({ ok: true });
     d.run({ type: 'PuzzleAddPoint', puzzle: P });
-    d.run({ type: 'PuzzleReport', puzzle: P, index: rec.reflect.findIndex((r) => !r.honest) });
-    expect(d.s.flags[`puzzle.${P}.done`]).toBeUndefined();
-    d.run({ type: 'PuzzleReport', puzzle: P, index: rec.reflect.findIndex((r) => r.honest) });
+    for (let index = 0; index < rec.handoffs.length; index++) {
+      d.run({type: 'PuzzleReport', puzzle: P, index});
+      expect(d.s.flags[`puzzle.${P}.handoff`]).toBe(index);
+    }
     expect(d.s.flags[`puzzle.${P}.done`]).toBe(true);
     expect(conceptXP(d.p, pack).certainty).toBeGreaterThan(0);
   });

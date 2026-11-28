@@ -17,7 +17,7 @@ export const WARM_CASES = data.map((record) => ({
 export type WarmCase = (typeof WARM_CASES)[number];
 
 const objectives: Objective[] = WARM_CASES.map((record) => ({
-  id: record.objective, title: `Try both supports for ${record.accession} and collect a service receipt.`,
+  id: record.objective, title: `Try both supports for “${record.title}” and collect a service receipt.`,
   done: { all: [
     ...WARM_FIXTURES.map((fixture): Condition => ({ flag: warmTrace(record.stem, fixture), eq: true })),
     { flag: warmHandoff(record.stem), in: [...WARM_FIXTURES] },

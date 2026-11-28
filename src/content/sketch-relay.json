@@ -1,0 +1,26 @@
+{
+ "message": "A storm is coming from the west. Bring the boats in.",
+ "pick": 5,
+ "copyists": ["Tam at the first tower", "Oyelaran at the second tower"],
+ "parts": [
+  { "id": "lightning", "name": "a lightning bolt", "bold": 5, "reads": "storm" },
+  { "id": "arrow", "name": "an arrow pointing east, away from the west", "bold": 5, "reads": "arrow" },
+  { "id": "cloud", "name": "a heavy cloud", "bold": 4, "reads": "bad weather" },
+  { "id": "boat", "name": "a boat", "bold": 3, "reads": "boats" },
+  { "id": "hand", "name": "a hand pulling a rope", "bold": 2, "reads": "pull" },
+  { "id": "sun", "name": "a sun with a line through it", "bold": 1, "reads": "no fair weather" }
+ ],
+ "keys": [
+  { "id": "arrow", "text": "Paint on every tower: an arrow shows where danger comes FROM.",
+    "line": "Lark paints a small arrow and a storm cloud at its tail on every tower wall. 'Now the arrow says where it comes from. Everyone learns it once.'" },
+  { "id": "rope", "text": "Paint on every tower: a hand on a rope means BRING THE BOATS IN.",
+    "line": "Mina paints a large, bold hand and rope beside the tower doors. 'Big enough that no one leaves it out, and everyone knows what it asks.'" },
+  { "id": "lightning", "text": "Paint on every tower: lightning means a storm, so bring the boats in.",
+    "line": "Lark paints a lightning bolt over a boat pulled up on the shore. 'One sign, two meanings. Quick to copy. Let us hope nobody needs the second meaning without the first.'" }
+ ],
+ "trust": [
+  { "id": "drawing", "text": "The drawing. Bold, simple marks got through.", "reply": "Lark nods. 'Bold marks survive copying. But your bold arrow went the wrong way the first time. Bold is not the same as clear.'" },
+  { "id": "key", "text": "The key on the tower walls. We agreed what the marks mean.", "reply": "Mina smiles. 'A picture is not a language until people agree on it. Every reader of a copy leans on an agreement they cannot see.'" },
+  { "id": "both", "text": "Both. The marks carried it, but only because we agreed what they meant.", "reply": "Lark and Mina look at each other. 'That is the job of this whole city,' says Lark. 'Copies carry marks. People carry the meaning.'" }
+ ]
+}

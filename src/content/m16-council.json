@@ -77,7 +77,7 @@
   {
    "id": "council.keeper.welcome",
    "speaker": "council-keeper",
-   "text": "The loading shutter has a narrow opening before the bell. One watch has to tell people when to be ready. The draft says a match at a glance is enough. Check the two records in the Letter Gallery, and bring the repair seal and rail record to the watch.",
+   "text": "Hale has put his lunch tin in the loading shutter. It snaps shut hard enough to dent the lid. “Yesterday that was somebody’s handcart. My watch agreed with the rail when I looked. I signed it through.” He passes you the repair seal. “The Letter Gallery holds the rail record. Try them both against the watch before I sign anything else.”",
    "historicalLabel": "fictional-world"
   },
   {
@@ -1125,6 +1125,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "perspective",
@@ -1187,6 +1188,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "truth",
        "evidence",
@@ -1203,7 +1205,8 @@
       "aoks": [
        "NAT",
        "MAT",
-       "HUM"
+       "HUM",
+       "TEC"
       ],
       "subjects": [
        "physics",
@@ -1231,6 +1234,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "ethics"],
       "concepts": [
        "responsibility",
        "values",
@@ -1282,6 +1286,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "methods-and-tools"],
       "concepts": [
        "evidence",
        "perspective",
@@ -1317,6 +1322,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "ethics"],
       "concepts": [
        "power",
        "values",

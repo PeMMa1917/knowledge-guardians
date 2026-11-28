@@ -10,7 +10,8 @@ const RECIPIENT = { bell: 'Sora at the harbour bell', trace: 'Renna at Lantern H
 
 function clipCard(record: RelayCase, clip: RelayClip) {
   return h('div', { class: `relay-clip relay-${clip}` }, h('strong', {}, CLIP_NAME[clip]),
-    h('span', {}, clip === 'record' ? `${record.institution} · ${record.accession}` : record.detail));
+    h('span', {}, clip === 'record' ? `${record.institution} · ${record.accession}` : record.detail),
+    clip === 'record' && record.creditClip ? h('span', {}, record.creditClip.recordedMaker) : null);
 }
 
 export function specimenRelayPanel(place: string, controller: GameController, sound: (key: string) => void, refreshWorld: () => void): HTMLElement {
@@ -86,13 +87,14 @@ export function specimenRelayPanel(place: string, controller: GameController, so
       if (state.delivery?.channel !== channel) continue;
       const first = state.delivery.first;
       const staged = weaveLine(first, channel === 'bell' && !state.callback ? 'gust' : 'still');
-      const entry = h('article', { class: 'relay-reply clue-view', 'data-relay-case': record.slug }, h('h3', {}, record.name),
+      const title = !staged.arrived.includes('record') ? record.creditClip?.uncreditedTitle ?? record.name : record.name;
+      const entry = h('article', { class: 'relay-reply clue-view', 'data-relay-case': record.slug }, h('h3', {}, title),
         channel === 'bell' ? h('p', { class: 'fine' }, 'From the first slip at the bell') : null,
         h('p', {}, channel === 'trace' ? record.trace : first === 'record' ? record.bellSource : record.bellDetail),
         ...staged.arrived.map((clip) => clipCard(record, clip)),
       );
       if (state.checked) {
-        entry.append(h('p', { class: 'fine' }, `The checked copy keeps the observation with accession ${record.accession}.`));
+        entry.append(h('p', { class: 'fine' }, record.creditClip?.reunited ?? `The checked copy keeps the observation with accession ${record.accession}.`));
       } else if (staged.held.length) {
         const missing = CLIP_NAME[staged.held[0]].toLowerCase();
         entry.append(h('p', { class: 'fine' }, `The ${missing} is still at the other end.`),

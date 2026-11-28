@@ -986,6 +986,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "ethics"],
       "concepts": [
        "perspective",
        "culture",
@@ -1089,6 +1090,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "certainty",
@@ -1217,6 +1219,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "objectivity",
        "explanation",
@@ -1260,6 +1263,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "perspectives"],
       "concepts": [
        "truth",
        "power",
@@ -1299,6 +1303,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "ethics"],
       "concepts": [
        "truth",
        "responsibility",
@@ -1311,7 +1316,8 @@
       ],
       "aoks": [
        "HUM",
-       "MAT"
+       "MAT",
+       "LAN"
       ],
       "subjects": [
        "geography",

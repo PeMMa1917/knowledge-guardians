@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Knowledge Guardians · Combination checklist</title>
+<style>
+:root{color-scheme:light;--ink:#122e35;--teal:#08584f;--line:#b4c9c1;--soft:#e8f2ed;--paper:#fffefa}*{box-sizing:border-box}
+body{margin:0;background:#f2f3eb;color:var(--ink);font:16px/1.5 Inter,system-ui,sans-serif}main{max-width:78rem;margin:auto;padding:1.5rem clamp(.8rem,3vw,2.5rem) 3rem}
+header{border-bottom:3px solid var(--teal);padding:.5rem 0 1rem}h1,h2,h3,p{margin:.2rem 0 .65rem}h1{font:600 clamp(1.8rem,4vw,3.4rem)/1.12 Georgia,serif;letter-spacing:-.025em}
+h2{font:600 1.55rem/1.24 Georgia,serif}h3{font-size:1rem}section{background:var(--paper);border:1px solid var(--line);border-radius:.45rem;padding:1.1rem;margin-top:1rem;min-width:0}
+label{display:block;font-weight:650}button,input,textarea,select{font:inherit;color:var(--ink);max-width:100%;border:1px solid #798c84;border-radius:.28rem;background:white;padding:.38rem .52rem}
+button{cursor:pointer}button:hover{background:var(--soft)}:focus-visible{outline:3px solid #176bca;outline-offset:2px}
+.row{display:flex;gap:.65rem;align-items:end;flex-wrap:wrap}.row>div{flex:1;min-width:min(13rem,100%)}.row input,.row select,textarea{width:100%}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.18fr);gap:1rem;align-items:start}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem;margin:.6rem 0}.chips button{font-size:.85rem;background:var(--soft)}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}th,td{text-align:left;border-bottom:1px solid var(--line);padding:.36rem .2rem}
+td input{width:1.2rem;height:1.2rem;vertical-align:middle;accent-color:var(--teal)}.edit{font-size:.79rem;margin:.15rem;padding:.12rem .25rem}.primary{background:var(--teal);color:white}.primary:hover{background:#093c36}
+small,.muted{font-size:.88rem;color:#405950}details{margin:.7rem 0}summary{cursor:pointer;font-weight:600}output{display:block;margin:.5rem 0;overflow-wrap:anywhere}.result{border-left:3px solid var(--line);padding:.4rem .65rem;margin:.6rem 0}
+code{overflow-wrap:anywhere}.pad{margin-top:.65rem}[hidden]{display:none!important}
+@media(max-width:51rem){.cols{grid-template-columns:minmax(0,1fr);gap:0}main{padding:.7rem}section{padding:.8rem}}
+.printOnly{display:none}
+@media print{@page{size:A4;margin:1.5cm}main>section,main>p,#builder,#boardAddress,.edit,#editPanel,#inspect{display:none}body,main{background:white;margin:0;padding:0}.cols{display:block}#reviewBoard{border:0;margin:0;padding:0}#printEvidence{display:block;margin-top:1rem}#printEvidence p{white-space:pre-wrap;overflow-wrap:anywhere}#grid tr,#printEvidence article{break-inside:avoid}h3{break-after:avoid}}
+</style>
+<main><header><h1>Combination checklist</h1><p>Knowledge Guardians · Curriculum and story review</p></header>
+<p id="storageNotice" role="status" hidden></p>
+<div class="cols">
+<section id="builder"><h2>Build a review</h2>
+<div class="row"><div><label for="chapter">Chapter</label><select id="chapter"></select></div><div><label for="design">Design scope</label><select id="design"><option value="joint">Narrative and gameplay</option><option value="any">Any TOK-anchored selection</option><option value="story-only">Narrative only</option><option value="game-only">Game only</option></select></div></div>
+<div class="row pad"><div><label for="family">Element family</label><select id="family"></select></div><div><label for="search">Search by name or ID</label><input id="search" type="search"></div></div>
+<label for="matches" class="pad">Matching elements</label><select id="matches" size="6" style="width:100%"></select><div class="row"><small id="matchCount" aria-live="polite"></small><button id="priorMembers">Previous elements</button><button id="moreMembers">More elements</button></div>
+<div class="row"><button id="add">Add selected element</button><button id="focus">Review this element across chapters</button><button id="findAction">Find this element in play</button></div>
+<div id="memberReview"></div><div id="playMatches" aria-live="polite"></div><div id="activityMatches"></div>
+<div class="row pad"><h3>Selected elements</h3><button id="newSelection">Start a new selection</button></div><div class="chips" id="chips"></div>
+<label for="sequence">Order of play</label><select id="sequence"><option value="set">Together in one action</option><option value="order">In a particular sequence</option></select>
+<div id="stepBox" hidden><label for="steps">Ordered actions</label><small>Use IDs. Group simultaneous elements with commas and separate actions with &gt;. An ID can recur.</small><textarea id="steps" rows="3"></textarea><details><summary>Try an order by number</summary><label for="orderNumber">Order number (starts at 1)</label><input id="orderNumber" type="text" inputmode="numeric" value="1"><button id="openOrder">Use this order</button><p id="orderRange" aria-live="polite"></p><small>Each selected element appears in a separate successive action. You can edit the resulting steps to group elements or revisit them.</small></details></div>
+<p id="valid" class="muted" aria-live="polite"></p>
+<details><summary>Open a worked example</summary><div class="row pad"><button id="example1">The stitcher’s sling</button><button id="example2">A hearing rule travels</button><button id="example3">Sling, then decision</button></div></details>
+</section>
+<section id="reviewBoard"><h2 id="boardTitle">Review grid</h2><p id="boardDesc"></p><p id="boardProgress" class="muted" role="status"></p><div id="grid"></div>
+<details id="boardAddress"><summary>Bookmark or open an exact review</summary>
+<p>The reference opens the same chapter, elements and order. Export checklist JSON to include your checks and notes.</p>
+<button id="makeReference">Get a reference to this review</button>
+<label for="reviewRef">Review reference</label><textarea id="reviewRef" rows="2"></textarea>
+<button id="openReference">Open reference</button> <a id="bookmark" hidden>Open or bookmark this board</a></details>
+<div id="editPanel" hidden><h3 id="cellTitle" class="pad"></h3><details id="criteria"><summary>What would count at this Bloom level and DOK?</summary><p id="criteriaTitle"></p><p id="criteriaDetail"></p><details><summary>Works cited</summary><ul id="rubricSources"></ul></details></details><label for="note">Review evidence</label><small>Record the location, the player’s action, the knowledge question, the differing perspectives and what changed. Include a test or source when available.</small><textarea id="note" rows="4"></textarea><label for="actionIds">Distinct action IDs</label><small>One per line. Track progress toward ten different actions in this chapter.</small><textarea id="actionIds" rows="2"></textarea><button id="saveNote" class="primary">Save evidence</button> <button id="closeNote">Close editor</button></div>
+<div id="printEvidence" class="printOnly"></div><div id="inspect"><h3 class="pad">Evidence from play</h3><div id="proof"></div></div></section>
+</div>
+<section><details id="matrix"><summary>Check a whole family against these same elements</summary>
+<p>Keep the current chapter and combination fixed. Each row adds one member. Each checkbox records an independent review for that exact combination. Open a row to add evidence.</p>
+<div class="row"><div><label for="matrixKind">Checklist family</label><select id="matrixKind"></select></div><div><label for="matrixSearch">Find a skill or other member</label><input type="search" id="matrixSearch"></div></div>
+<div id="matrixTable" tabindex="0" style="overflow:auto" aria-label="Scrollable member review table"></div>
+<div class="row pad"><button id="prevRows">Previous rows</button><button id="nextRows">Next rows</button><button id="familyCSV">Export family grid CSV</button><output id="rowCounts"></output></div></details></section>
+<section><details id="navigator"><summary>Browse possible combinations by number</summary>
+<p>Pin your current TOK selection. Choose the families and how many more distinct elements to add. Each number opens one possible combination for review in the selected chapter.</p>
+<button id="pin">Pin current selection</button><p id="baseDescription" class="muted"></p>
+<div class="row"><div><label for="pool">Element families to add</label><select id="pool" multiple size="5"></select><small>Leave empty to include all eligible families. Use Ctrl or Command to select several.</small></div><div><label for="extraCount">Number of additional elements</label><input id="extraCount" type="number" step="1" min="0" value="1"><label for="combinationNumber">Combination number (starts at 1)</label><input id="combinationNumber" type="text" inputmode="numeric" value="1"></div></div>
+<p id="spaceSize" aria-live="polite"></p><div class="row"><button id="previousSet">Previous combination</button><button id="useSet">Open this combination</button><button id="nextSet">Next combination</button></div></details></section>
+<section id="history"><h2>Saved reviews</h2><button id="documented">Include documented implementation checks</button><p class="muted">Each board has its own 24 cells. Checks stay with the exact combination, chapter and order you reviewed.</p><label for="savedBoards">Reopen a board</label><select id="savedBoards"></select> <button id="openSaved">Open board</button> <button id="priorSaved">Previous boards</button> <button id="moreSaved">More boards</button> <span id="savedRange" aria-live="polite"></span></section>
+<section id="transfer"><h2>Take your checklist with you</h2><p>Edits are saved in this browser when storage is available. Export JSON to continue on another device or send a copy to a reviewer. CSV includes every cell on your saved boards.</p>
+<div class="row"><button id="json">Export JSON</button><button id="csv">Export CSV</button><button id="print">Print this board</button><label for="load">Import checklist JSON <input id="load" type="file" accept="application/json,.json"></label></div>
+<details id="worksheetImport"><summary>Bring back an edited Excel chapter</summary>
+<p>Save one chapter sheet as CSV UTF-8, with its headings. The preview identifies its chapter and any changes to existing reviews. Empty cells preserve earlier work.</p>
+<label for="sheetChapter">Chapter for an older worksheet <select id="sheetChapter"><option value="">Read from file</option></select></label>
+<label for="sheetFile">Chapter worksheet <input id="sheetFile" type="file" accept=".csv,.tsv,text/csv,text/tab-separated-values"></label>
+<p id="sheetPreview" role="status"></p>
+<label id="sheetConflict" hidden><input id="sheetReplace" type="checkbox"> Use the worksheet values where existing reviews differ</label>
+<button id="sheetApply" disabled>Import these worksheet reviews</button></details>
+<output id="message" role="status"></output></section></main>
+<script type="application/json" id="atlasData">__ATLAS_DATA__</script>
+<script>__CHECKLIST_CODE__</script></html>

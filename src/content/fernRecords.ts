@@ -125,7 +125,7 @@ function weave(kind: string): Weave {
 }
 
 const objectives: Objective[] = FERN_RECORDS.map((entry) => ({
-  id: entry.objective, title: `Check the keeper’s reply for ${entry.accession}.`,
+  id: entry.objective, title: `Check the keeper’s reply for “${entry.title}”.`,
   visible: { card: entry.card }, essential: false, weave: weave(entry.kind),
   done: { all: [{ card: entry.card }, fernRecordPrepared(entry), { any: routes.map((route) => fernRecordDelivered(entry, route)) }] },
 }));

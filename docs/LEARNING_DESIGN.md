@@ -1,5 +1,7 @@
 # Learning design: concepts, framework and levels of thinking
 
+For combinations of learning, story and game elements across each Bloom level and depth of knowledge, use the atlas. [Combination atlas](audit/COMBINATION_ATLAS.md)
+
 Mika's rule (2026-11-26): the 12 TOK key concepts and the four parts of the knowledge framework must show up very often, in varied ways, in every part of the game. The thinking each encounter asks for must vary: Webb's depth of knowledge (DOK), Bloom's levels, Fink's dimensions of significant learning, and SOLO levels. Students never see these tags, and nothing in the game is an exam. Developer tests are fine.
 
 ## Where the tags live
@@ -60,6 +62,8 @@ The Last Turn now gives Emberford players an optional response to the first gap.
 
 Never add a tag that the play does not support. Add play.
 
+A receiving task can make an area of the framework visible in the diary. Rehearsing the same line with two cue orders belongs under methods and tools. Choosing whose movement the audience will notice foregrounds perspectives and ethics. At the Civic Machine, running the same scheduling rule against different request slips examines the method. Deciding who gets the four windows calls for an ethical judgment. A visit to either room alone earns neither record. [Rehearsal and diary example](../tests/performance-story.test.ts)
+
 ## The 20- and 30-minute opportunity floor
 
 The floor is six different key concepts, two explicitly authored framework parts, one area of knowledge and one optional theme in a rolling window. The report checks 20 and 30 minutes separately. It counts an action when the modeled player completes it, and keeps absent and unrecognized tags visible. The report distinguishes a tag supported by one authored action from a tag supported by multiple actions. Retaking the same action counts once for that comparison. The executable traces also list the gameplay formats used in each opening window. The cumulative first-hour report shows breadth across the five areas and five optional themes as well as the concepts and framework. [Floor implementation](../tools/tok-floor.ts)
@@ -68,6 +72,8 @@ The floor is six different key concepts, two explicitly authored framework parts
 node tools/audit-tok-floor.mjs
 npm test -- tests/tok-coverage.test.ts --mode tok-floor
 ```
+
+The current 504-minute story itinerary meets the target in every rolling 30-minute window. Its first estimated hour includes all twelve concepts, all four framework parts, two areas and two optional themes. At the shorter 20-minute window it spends 22 modeled minutes below target. The other five itineraries still have gaps at 30 minutes. The puzzler has 30 minutes below target, cozy has 45, social has 72, explorer has 286 and the explorer who files every case has 2,627. These estimates use the authored duration of each action. The next classroom check is to time a learner’s route and ask what they can do with a new object at the end. [Route measurements](../tools/audit-tok-floor.mjs)
 
 The itineraries give the first print and reading-rest decisions extra weight. A carrier and cart driver have different uses for the red mark, and the separate printing sheets let the next worker check how it moved. Hall stewards use the reading-rest register to allocate the next delivery, so the player's choice leaves an unmet request in view. Each of the six modeled openings now meets both first-window floors. In the first estimated hour, each has all 12 concepts and four framework parts, two to four areas of knowledge, and two to three optional themes.
 

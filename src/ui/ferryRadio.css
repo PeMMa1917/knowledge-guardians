@@ -1,0 +1,77 @@
+.wire-studio {
+  display: grid;
+  gap: 0.6rem;
+  min-width: 0;
+}
+.wire-studio details {
+  margin: 0.3rem 0;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--gold-dim);
+  border-radius: 0.35rem;
+}
+.wire-studio summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.wire-studio button {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+.wire-studio button[aria-pressed='true'] {
+  box-shadow: inset 0 0 0 2px var(--gold);
+}
+.wire-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.4rem 0;
+}
+.wire-wheel {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.wire-picture {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+.wire-slips {
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.45rem;
+}
+.wire-reading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.2rem;
+}
+.wire-bar {
+  border: 1px solid #e5bd81;
+  border-radius: 2px;
+  background: #302c3e;
+  min-height: 0.65rem;
+}
+.wire-bar::before {
+  content: '';
+  display: block;
+  width: var(--fill);
+  background: #8fd4ca;
+  height: 0.65rem;
+}
+.wire-calls article {
+  padding: 0.5rem;
+  margin: 0.4rem 0;
+  border-left: 3px solid #8fc5bc;
+}
+.wire-calls h4,
+.wire-wheel h4 {
+  margin: 0.25rem 0;
+}
+.wire-feedback:not(:empty) {
+  border: 1px solid var(--gold-dim);
+  padding: 0.45rem;
+}

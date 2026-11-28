@@ -18,7 +18,7 @@ export type ClearanceCase = (typeof CLEARANCE_CASES)[number];
 
 const objectives: Objective[] = CLEARANCE_CASES.map((record) => ({
   id: record.objective,
-  title: `Check the viewing reply for ${record.accession}.`,
+  title: `Hear what a viewer says about “${record.catalogueTitle}”.`,
   visible: { card: record.card },
   essential: false,
   done: { all: [
@@ -75,7 +75,7 @@ export const clearanceContent = {
       ...(`cma:${record.accession}` === BEATER_KEY ? {
         revisit: { map: BEATER_PRESS_MAP, prop: BEATER_PRESS_PROP,
           method: 'Compare two local proof faces at the same stop.',
-          hint: 'Equip the working copy and look for the plain two-face block in the Reconstruction Workroom.' },
+          hint: 'Equip the Hawaiian tapa cloth beater and look for the plain two-face block in the Reconstruction Workroom.' },
       } : {}),
     },
   })),

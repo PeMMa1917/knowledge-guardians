@@ -38,6 +38,8 @@ The art direction is "rich, colourful pixel art with lighting", inspired in gene
 
 Other art is **original** and drawn in code: exhibit pedestals, the evidence board, the blade, the catalogue, the assay table, the anvil, the portal, the fairy guide Lumen, icons and the large inspection pictures. See `src/ui/illustrations.ts`. Lighting, particles and glow are made in code too.
 
+The original four-direction sprite of Tallowheel belongs to the Knowledge Guardians project and is released under CC0 1.0. The six carved silhouettes on Fen’s turning trunk are part of the same original artwork. [Pixel drawing](tools/make_orchard_carrier.py)
+
 ## Music
 
 The campaign soundtrack and returning story phrase are original music created for Knowledge Guardians. The arrangements and instrument synthesis are defined in [`campaignScore.ts`](src/domain/campaignScore.ts), [`storyMotifs.ts`](src/domain/storyMotifs.ts) and [`campaignSynth.ts`](src/app/campaignSynth.ts).
@@ -77,6 +79,66 @@ All sound effects were converted to mono 96 kbit/s MP3 with ffmpeg. The sound di
 | [Lexend](https://www.lexend.com/) through [@fontsource/lexend](https://fontsource.org/fonts/lexend) | Bonnie Shaver-Troup, Thomas Jockin and others | SIL Open Font License 1.1 |
 | [Vite](https://vite.dev/), [Vitest](https://vitest.dev/), [TypeScript](https://www.typescriptlang.org/) (development only) | their authors | MIT / Apache 2.0 |
 
+## Ideas behind the games
+
+Many games grew from TOK lessons in Mika's lesson folder (decision X-017 in [docs/audit/DECISIONS.md](docs/audit/DECISIONS.md)). This table names where each idea came from. It never quotes a lesson or a handout: every game is paraphrased and rebuilt to fit the world. The same list is in the game (Menu, Credits and sources) and in `src/domain/ideaCredits.ts`.
+
+| Game | Idea | Source |
+|---|---|---|
+| Dov's Three Doors | The Monty Hall problem | Mika's TOK lesson folder. The puzzle was set by Steve Selvin in a 1975 letter to The American Statistician and made famous by Marilyn vos Savant's Parade column in 1990. It is named after Monty Hall, host of the TV show Let's Make a Deal. |
+| The Ferry Guest Book | The birthday problem | Mika's TOK lesson folder. The problem is often credited to the mathematician Richard von Mises (1939). |
+| The Proving Floor | Guessing a rule from examples and testing it on new cases (induction) | Original to Knowledge Guardians. The idea is close to the rule-discovery task that Peter Wason described in 1960. |
+| The Weigh-House Slate | Questioning the order of operations | Mika's TOK lesson folder |
+| The Missing Word | Euphemism, and how a chosen word shapes what people notice | Mika's TOK lesson folder |
+| Lanterns and Bones | The gambler's fallacy, and how many rolls it takes to tell a loaded die | Mika's TOK lesson folder |
+| The Ballad of the Guardian | How a story changes each time it is retold | Mika's TOK lesson folder |
+| The Spare Tag | Different kinds of value for the same object | Mika's TOK lesson folder |
+| The Careful Dig | Excavation as a choice about what later people can know | Mika's TOK lesson folder |
+| Star Pictures | Measured star positions and the different pictures people draw between them | Mika's TOK lesson folder |
+| The Copyists' Ladder | A word ladder that shows the difference between a pattern and a proof | Mika's TOK lesson folder; the lesson credits an activity shared by Ric Sims. Word ladders ("doublets") were invented by Lewis Carroll in 1877. |
+| The Pattern Book | Who may use a people's designs: consent, credit and who profits | Mika's TOK lesson folder |
+| The Primer Page | Choosing the picture and words for a history textbook page | Mika's TOK lesson folder |
+| The Reassembly Line | A card game where students rebuild a split argument | Mika's TOK lesson folder |
+| The Festival Dilemma | Friends who each advise on one problem from a different ethical view | Mika's TOK lesson folder |
+| The Fog Chart | A battleship grid of knowledge claims, where each hit reveals a claim and its support | Mika's TOK lesson folder |
+| The Token Drawer | Who gets remembered: tokens left with children at the Foundling Hospital in London | Mika's TOK lesson folder |
+| The Collage Wall | Can a picture tell the truth: a collage, an 1819 parliamentary debate about child chimney sweeps, and poems of the time, read together | Mika's TOK lesson folder |
+| The River Crossing Inquiry | A story where people rank who acted worst and each ranking shows a way of judging (the story is fully rewritten as a flood night, with no sexual content) | Mika's TOK lesson folder |
+| The Labyrinth Lens | Lens toggles that show hidden paths (the scoring of nuanced or dogmatic answers was left out) | Mika's TOK lesson folder |
+| The Survey Bell | Ethics limits on research with people, and who decides | Mika's TOK lesson folder |
+| The Time Mirror | How a past self would see the present (a time mirror) | Mika's TOK lesson folder |
+| The Bat Keeper | Thomas Nagel's question "What is it like to be a bat?" (1974) | Mika's TOK lesson folder. Bat facts: London Bat Group; Maryland Department of Natural Resources. |
+| The Value Fair | An auction of beliefs, played with tokens (never money) | Mika's TOK lesson folder |
+| The Lens Table | A historical lenses card game: lens, event, question and object cards that change how an event looks | Mika's TOK lesson folder |
+| The Sketch Relay | Drawing a concept for others to guess, passed along a chain | Mika's TOK lesson folder |
+| The Assay Trial | Telling minerals apart by streak and density, and what a test cannot tell apart | Original design. Streak colours and densities are standard mineral data. |
+| The Three Trees | A "triangle of trees" as a shape the viewer chooses (is mathematics invented or discovered?) | Mika's TOK lesson folder |
+
 ## Historical sources
 
 The historical sources for the real objects in the game are in [docs/SOURCES.md](docs/SOURCES.md) and in the chapter content. The game uses original pixel drawings and transforms collection images released under verified open licences. The Polar Store’s exact accession illustrations are original drawings based on catalogue descriptions. Per-image rights, catalogue and download links are in [the asset manifest](public/assets/credits.json).
+
+The sealed paper bird, open reply and four small instrument diagrams are original pixel illustrations drawn in code for this project. The four-beat bench plays synthesized notes through the existing instrument. [Folded-wing sprites](src/ui/illustrations.ts) · [Playable diagrams](src/ui/inkTrialDiagram.ts)
+
+## The Night Register
+
+The 1,020 images in `public/assets/specimens/night-register/` are pixel renditions of individual National Gallery of Art open-access collection images. Each numbered filename uses the Gallery's object ID. The catalogue preserves the artist or workshop credit, the work's title, date and accession. Each file's manifest entry links to its corresponding museum record and original IIIF image. The images retain their proportions within 64 pixels and use up to 40 colours. [Individual works and maker credits](src/content/night-register.json) · [Image sources and licences](public/assets/credits.json) · [Gallery open data](https://github.com/NationalGalleryOfArt/opendata)
+
+The sixteen field-creature silhouettes and fifteen coat palettes are original pixel drawings made for this game. [Portraits and field sprites](src/ui/nightCreature.ts)
+
+The Blue Shift Coat uses a hand-drawn pixel peg and coat, original instrument diagrams, and score and vibration cues synthesized by the game's instrument. The night keepers, their cases and readings are fictional. [Coat sprite](src/ui/illustrations.ts) · [Worktable and audio](src/ui/coatPocket.ts)
+
+The measuring cup, plumb plate and reed-nib reference slips at Hesper’s bench use original pixel diagrams drawn in code for Knowledge Guardians. [Instrument drawings](src/ui/makerIllustration.ts)
+
+
+The pay bowls, punch wheel and type case in the mill registers are original in-game pixel drawings. The scene uses fictional shift records. Historical reading for Ostrom, Pearl and Trouillot appears with their encounters in the journal. [Object drawings](src/ui/illustrations.ts) · [Register windows](src/content/millShift.ts)
+
+The small and enlarged Hōkūleʻa, the folding flock and its three stitched waterscapes are original Knowledge Guardians pixel illustrations drawn in code. The Society’s launch record informs the identification. [Graphics](src/ui/illustrations.ts) · [Polynesian Voyaging Society](https://hokulea.com/hokulea-44th/)
+
+The cocoa cart, twin carafes, rain flap, gutter, folded offers and chalkboard are original pixel drawings made for Knowledge Guardians. [Cart artwork](src/ui/firstCupArt.ts)
+
+The suitcase house, lamp, hinged floor and certificate drawings are original game artwork. The Peoria Tribe of Indians of Oklahoma publishes the history used on its leaf. The Eastern Shawnee Tribe of Oklahoma publishes the constitutional file used for its election certificate. The Absentee Shawnee Tribe of Indians of Oklahoma publishes the description of its own emblem. [Sources and locators](docs/SOURCES.md#two-leaves-at-lamp-quay) · [Artwork](src/ui/turningStacksArt.ts)
+
+The felt loan drawer, two-hook stair, projector frame and silver-thread curtain are original pixel drawings for the Survey Depot and House of Performance. [Loan loft artwork](src/ui/lensLoanArt.ts)
+
+The inn’s turnable floor, kettle, patched chairs, shuttered lamp and spoon-handled door use five original pixel drawings. Returning residents use the campaign’s existing creature portraits. [Inn illustrations](src/ui/openHouseArt.ts)

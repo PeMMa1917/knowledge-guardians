@@ -1,3 +1,41 @@
+import {callingBook} from './callingBook';
+import {paintHousehold,housePanel} from './openHouse';
+import {chairNames,household} from '../domain/openHouse';
+import {courierLiftPanel} from './courierLift';
+import { touringInstrument } from '../content/originTours';
+import { scores as originScores } from '../domain/originInstruments';
+import { originInstrument } from './originInstrument';
+import { paceForPanel } from '../app/readingPace';
+import { mothReturns } from '../content/mothPerchReturns';
+import { bakeryPanel } from './bakeryTrays';
+import { mothPerchPanel } from './mothPerches';
+import { perches as mothPerches, type Perch } from '../domain/mothPerches';
+import { readingControls } from './readingControls';
+import { taskMode, trialSound } from '../domain/taskScore';
+import { fieldGamePanels, fieldStationPanel } from './fieldGamePanels';
+import { journalNavigation } from './journalNavigation';
+import { wordHistory } from './diaryWords';
+import {whistlePanel} from './whistleWatch';
+import {whistlePlaces} from '../content/whistleWatch';
+import {weirLampPanel} from './weirLamp';
+import {vaultIndex,vaultPanel} from './vaultWork';
+import {vaultPhaseStation} from '../domain/vaultWork';
+import {vaultWork,type VaultStation} from '../content/vaultNight';
+import { millPanel } from './millShift';
+import { millSite } from '../domain/millShift';
+import { reloadGame } from '../app/reloadGame';
+import { coatPanel } from './coatPocket';
+import { nightByExhibit, nightSites } from '../domain/nightRegister';
+import { nightCase, nightDesk, nightPerch } from './nightRegister';
+import { GameController as ClassroomController } from '../app/controller';
+import {classroom} from '../classroom/client';
+import {classPanel,writingNotice,sceneEditor} from '../classroom/student';
+import { lamplightPanel } from './lamplightPanel';
+import { inkInvitation } from '../domain/inkPost';
+import { inkTrialDiagram } from './inkTrialDiagram';
+import { neighbourInvitation } from '../domain/neighbours';
+import { MOON_INSTRUMENT } from '../domain/spareMoonMusic';
+import { spareMoonMusicPanel } from './spareMoonMusic';
 import type { GlossaryEntry } from '../domain/types';
 import { CLEAR_BAY_GAME } from '../domain/clearBay';
 import { clearBayPanel } from './clearBay';
@@ -19,6 +57,7 @@ import { VOICE_SOURCES, VOICE_VIEWS, voiceReading, type VoiceView } from '../dom
 import { ISLAND_CRATES, ISLAND_LANDINGS, ISLAND_ROUTES, islandPlan, type IslandLanding, type IslandRoute } from '../domain/islandPlan';
 import { COUNCIL_TRIALS, councilClock, type CouncilTrial } from '../domain/councilClock';
 import { buildScoutBoard } from './scoutRoutes';
+import { journalText } from '../domain/adventureJournal';
 import { adventureJournalTab } from './adventureJournal';
 import { leaderboardPanel } from './leaderboard';
 import type { LeaderboardFile } from '../domain/leaderboard';
@@ -39,7 +78,7 @@ import { ACCENT, ACCESSORIES, AIDS, GLASSES, STYLES, HAIR, LABELS, cloakThreads,
 import { previewLook } from '../scenes/looks';
 import { MAPS } from '../maps';
 import { lorelingForm } from '../domain/lorelings';
-import { chordFigure, circlePoints, echoDelay, echoDistance, panes, readTimes, runSorter, framed, shepardParts, brier, calibration, readForecasts, runSurvey, sightBlock, tiltOf, timeStats, translateLine, type SorterRun } from '../domain/puzzles';
+import { chordFigure, circlePoints, echoDelay, echoDistance, panes, echoReadings, runSorter, framed, shepardParts, brier, calibration, readForecasts, runSurvey, sightBlock, tiltOf, timeStats, translateLine, type SorterRun } from '../domain/puzzles';
 import { audioNow, chime, clapEcho, playNotes, playShepard } from '../app/ambience';
 import { MOTIFS, SONG_MAX, openMotifs, readSong, songNotes } from '../domain/musicbox';
 import { CHARGES, DEFAULT_CREST, DIVISIONS, FIELDS, MOTTOS, SHAPES, crestPixels, decodeCrest, encodeCrest, type Crest } from '../domain/crest';
@@ -72,11 +111,24 @@ import { DISPATCH_DESKS, DISPATCH_GAME } from '../domain/tiles';
 import { SEFA_TABLE, sefaDeskPanel, sefaStitching } from './sefaDispatch';
 import { TRUST_RANKS, rankOf, trustOf } from '../domain/communities';
 import { RECIPES, RESOURCES, cannotCraft, resCount, type Resource } from '../domain/craft';
+import { makerBench, makerField } from './makerField';
+import { fieldReceipt,makerRecipient } from '../domain/makerField';
+import { makerTrials, makerTrialForReading } from '../content/makerTrials';
 import { READINGS, cannotRead, readingOf, toolOf } from '../domain/readings';
 import { approvalOf, approvalRank } from '../domain/approval';
 import { ROLES, fitsRole, roleOf } from '../domain/roles';
-import { BOSS, SEALS, allSealsOpen, bossDone, bossPhase } from '../domain/undercroft';
+import { BOSS, allSealsOpen, bossDone } from '../domain/undercroft';
 import { FIELD_GAMES } from '../domain/fieldgames';
+import { OFFER_LINE, shouldOfferHelp } from '../domain/lumenOffer';
+import { IDEA_CREDITS } from '../domain/ideaCredits';
+import { gymPanel } from './gymPanel';
+import { contentNoteFor, noteSeenFlag, noteForExhibit, recordView, recordViewFlag, type ExhibitNote, type RecordView } from '../domain/contentNotes';
+import { pendingTwoReplies, seenFlag } from '../domain/twoReplies';
+import { pendingPushback, pushAnswerFlag, pushSeenFlag } from '../domain/pushbacks';
+import { flushResearch, recordResearch } from '../app/research';
+import { ROWS, SECTIONS, startTrial, step, tileWords, type Tile } from '../domain/provingFloor';
+import { THINKERS, VIEWS as TOK_VIEWS, adviceLabel, meetFlags, thinkerFlag, thinkersFor, viewsMet } from '../domain/thinkers';
+import { bestFlag, canTimedReplay, clockText, elapsedSeconds, resultText, timedResult } from '../domain/timedReplay';
 import { routingBoard } from './routingBoards';
 import { counterReplayBoard } from './counterReplayBoard';
 import { islandSkiffPanel } from './islandSkiff';
@@ -100,7 +152,6 @@ import { PRISM_GROUP } from '../content/prismViewer';
 import { prismViewerPanel } from './prismViewer';
 import { ALIGN_GROUP } from '../content/mapAlignment';
 import { mapAlignmentPanel } from './mapAlignment';
-import { scriptRailPanel } from './scriptRail';
 import { twoCallsPanel } from './twoCalls';
 import { localGuide, workFeedback } from './localGuide';
 import { COAST_COPY_DESK, COAST_COPY_READER, COAST_COPY_POCKET } from '../content/coastCopy';
@@ -109,20 +160,12 @@ import { bearingBayPanel } from './bearingBay';
 import { loadingBayPanel } from './loadingBay';
 import { cueWorkshopPanel } from './cueWorkshop';
 import { datePegPanel } from './datePeg';
-import { LANTERN_WEAVE } from '../content/lanternWeave';
-import { lanternWeavePanel } from './lanternWeave';
 import { shutterBoardPanel } from './shutterBoard';
 import { DATE_REGISTER_GROUP } from '../content/dateRegisterCases';
 import { dateRegisterPanel } from './dateRegister';
 import { STORY_FRAME_GROUP } from '../content/storyArchive';
 import { storyFramePanel } from './storyFrames';
-import { NUMBER_LEAF_GROUP } from '../content/numberLeaves';
 import { parcelLedgerPanel } from './parcelLedger';
-import { numberLeavesPanel } from './numberLeaves';
-import { IMPRINT_GROUP } from '../content/copyImprintCases';
-import { REFERENCE_PROOF } from '../domain/referenceProofs';
-import { copyImprint } from './copyImprint';
-import { referenceProofPanel } from './referenceProofs';
 import { MAKER_EXACT, MAKER_TOOL } from '../domain/makerRoom';
 import { makerRoom } from './makerRoom';
 import { makerExact } from './makerExact';
@@ -151,8 +194,6 @@ import { SILL_CLOCK } from '../domain/sillBridge';
 import { sillBridgePanel, sillGuideObjective } from './sillBridge';
 import { PORTER_TOOL } from '../domain/porterPace';
 import { porterPacePanel } from './porterPace';
-import { WARM_TOOL } from '../domain/warmRoom';
-import { warmRoomPanel } from './warmRoom';
 import { BEND_TOOL, type BendSite } from '../domain/stripBend';
 import { stripBendPanel } from './stripBend';
 import { loyaltyOf } from '../domain/loyalty';
@@ -170,25 +211,14 @@ import { canClaimSpecimen, carriesSpecimen, carriedSpecimenCount, hasSpecimen, i
   SPECIMEN_SHELF, specimenEquipped, specimenFromTool, specimenReadingFlag } from '../domain/specimenGear';
 import { specimenCase, specimenThumbnail, specimenVault } from './specimenVault';
 import { journalEvidence, specimenReferences, type SpecimenReference } from '../domain/specimenReferences';
-import { timbuktuHorizonPanel } from './timbuktuHorizon';
-import { objectUsePanel } from './objectUse';
 import { callboardPanel } from './callboardPanel';
-import { MODEL_RECORD_GROUP } from '../content/modelRecords';
-import { modelRecordPanel } from './modelRecords';
 import { TIME_TOOL } from '../domain/timeRoom';
-import { PACKING_TOOL } from '../domain/ferryPacking';
-import { ferryPackingPanel } from './ferryPacking';
 import { timeRoomPanel } from './timeRoom';
-import { materialStorePanel } from './materialStores';
 import { GLASS_RACK_PREFIX } from '../content/glassRack';
 import { glassRackPanel } from './glassRack';
-import { STAR_GAME } from '../domain/starPaths';
-import { starChart, starField } from './starPaths';
+import { starChart } from './starPaths';
 import { BADGE_ANNEX_PREFIX } from '../content/badgeRoom';
 import { badgeAnnexPanel } from './badgeAnnex';
-import { workSchedulePanel } from './workSchedule';
-import { EARLIER_VIEWING } from '../content/earlierViewing';
-import { earlierViewingPanel } from './earlierViewing';
 import { BEATER_GAME } from '../domain/beaterProof';
 import { beaterProofPanel } from './beaterProof';
 import { JOINED_CLOTH_GAME, JOINED_CLOTH_OBJECTIVE } from '../domain/joinedCloth';
@@ -202,7 +232,7 @@ import { SLATE, boatGuests, dayName, doorPrize, evalClear, pellOpens, rng as fai
 import { BARTER, DYES, TOWN_COSTS, WOAD_BLUE, ferryPrice, ownsDye, townPrice } from '../domain/trade';
 import { RUMOURS, RUMOUR_DESKS, type RumourDesk, VERDICTS, currentRumour, missingRumourSources, sourcesChecked } from '../domain/rumours';
 import { TALENTS, cannotLearn, hasTalent, insight, spent } from '../domain/talents';
-import { WARES, honestLabels, lockedOption, owns, priceFor } from '../domain/shop';
+import { WARES, honestLabels, lockedOption, owns, priceFor, wareAvailable } from '../domain/shop';
 import { calendarGrid, fmtTime, ledgerSums, shade, MAX_SHIELDS } from '../domain/ledger';
 
 const HIST_LABEL_TEXT: Record<HistoricalLabel, [string, string]> = {
@@ -246,6 +276,11 @@ function crestCanvas(c: Crest, px: number, scale: number): HTMLCanvasElement {
 
 function chip(text: string, title: string, cls: string): HTMLElement {
   return h('span', { class: `chip ${cls}`, title, 'aria-label': `${text}: ${title}` }, text);
+}
+function characterPortrait(sprite?: string): HTMLElement | null {
+  if (!sprite) return null;
+  if (sprite.startsWith('custom:')) return h('span', {class: 'portrait custom', 'aria-hidden':'true'}, previewLook(sprite, 3));
+  return h('span', {class:'portrait', 'aria-hidden':'true', style:{backgroundImage:`url(assets/art/generated/characters/${sprite}.png)`}});
 }
 export function histChip(l: HistoricalLabel): HTMLElement { return chip(HIST_LABEL_TEXT[l][0], HIST_LABEL_TEXT[l][1], `hist-${l}`); }
 export function claimChip(k: ClaimKind): HTMLElement { return chip(CLAIM_TEXT[k][0], CLAIM_TEXT[k][1], `claim-${k}`); }
@@ -490,15 +525,18 @@ export class UI implements UIApi {
   private hudDock!: HTMLElement;
   private modal: HTMLElement | null = null;
   private titleModalOpener: HTMLElement | null = null;
+  private stepBackFromNote?: () => void;
   private releaseTrap: (() => void) | null = null;
   private releaseModalBackground: (() => void) | null = null;
-  private releaseStitching: (() => void) | null = null;
+  private openingFieldGame?: string;
+  private releasePanelActivity: (() => void) | null = null;
   private promptEl!: HTMLElement;
   private toastBox!: HTMLElement;
   private saveFeedback: HTMLElement | null = null;
   private readonly leaderboardFiles: LeaderboardFile[] = [];
   private lumenBubble!: HTMLElement;
-  private onStart: () => void;
+  private readonly prepareWorld: () => Promise<void>;
+  private readonly onStart: () => void;
   private pendingChapterEnd = false;
   private seenObjectives = new Set<string>();
   private fullRings = new Set<string>();
@@ -508,7 +546,8 @@ export class UI implements UIApi {
   private activeEventNode: string | null = null;
   private stopStoryCue: (() => void) | null = null;
 
-  constructor(root: HTMLElement, onStart: () => void) {
+  constructor(root: HTMLElement, prepareWorld: () => Promise<void>, onStart: () => void) {
+    this.prepareWorld = prepareWorld;
     this.root = root;
     this.onStart = onStart;
     this.toastBox = h('div', { class: 'toasts', role: 'status', 'aria-live': 'polite' });
@@ -526,6 +565,7 @@ export class UI implements UIApi {
   private openModal(cls: string, label: string, ...content: (Node | string)[]): HTMLElement {
     const active = document.activeElement;
     const opener = active instanceof HTMLElement && active.matches('.title-screen button') ? active : this.titleModalOpener;
+    this.stepBackFromNote = undefined;
     this.dismissModal(false, true);
     this.titleModalOpener = opener;
     const box = h('div', { class: `panel ${cls}`, role: 'dialog', 'aria-modal': 'true', 'aria-label': label }, ...content);
@@ -535,9 +575,12 @@ export class UI implements UIApi {
     }
     const wrap = h('div', { class: 'modal-wrap', onclick: (e: MouseEvent) => { if (e.target === wrap && !cls.includes('dialogue')) this.closeModal(); } }, box);
     this.modal = wrap;
+    paceForPanel(box.querySelector('[data-reading-bench]') ? 'reading-bench' : cls);
+    if (this.timedRun) wrap.append(this.timedRun.clock);
     this.root.append(wrap);
     this.isolateModalBackground();
     this.releaseTrap = trapFocus(box);
+    ctx.world?.setTaskMusic(taskMode(cls,this.openingFieldGame,state?.mapId));
     this.setPrompt(null);
     return box;
   }
@@ -580,13 +623,18 @@ export class UI implements UIApi {
       this.modal.querySelector('[role="dialog"].event')
       || (this.activeEvent && this.modal.querySelector('[role="dialog"].dialogue'))
     );
+    const stepBack = this.stepBackFromNote;
+    this.stepBackFromNote = undefined;
     this.releaseTrap?.();
     this.releaseTrap = null;
-    this.releaseStitching?.();
-    this.releaseStitching = null;
+    this.releasePanelActivity?.();
+    this.releasePanelActivity = null;
     this.modal.remove();
     this.modal = null;
-    if (replacing) { this.refreshHud(); return; }
+    if (replacing) return;
+    paceForPanel();
+    ctx.world?.setTaskMusic('roam');
+    this.stopTimedReplay();
     this.releaseModalBackground?.();
     const opener = this.titleModalOpener;
     this.titleModalOpener = null;
@@ -606,13 +654,67 @@ export class UI implements UIApi {
       canvas.focus();
     }
     this.refreshHud();
+    if (stepBack) { stepBack(); return; }
     if (this.pendingChapterEnd) { this.pendingChapterEnd = false; this.chapterEnd(); return; }
+    if (this.showTwoReplies()) return;
+    if (this.showPushback()) return;
     if (this.queue.length) {
       setTimeout(() => {
         // A dialogue can replace its panel before this callback runs.
         if (!this.modal) this.queue.shift()?.();
       }, 0);
     }
+  }
+
+  /** Decision X-008: after a key choice, two characters who disagree each reply. Returns true if a panel opened. */
+  private showTwoReplies(): boolean {
+    const c = ctx.controller;
+    if (!c.state || this.modal) return false;
+    const entry = pendingTwoReplies(c.state.flags, (cond) => c.check(cond));
+    if (!entry) return false;
+    c.dispatch({ type: 'SetFlag', flag: seenFlag(entry.id), value: true });
+    const voice = (r: { speaker: string; text: string }) => {
+      const who = c.pack.characters.find((x) => x.id === r.speaker);
+      return h('div', { class: 'two-reply' },
+        characterPortrait(who?.sprite),
+        h('div', {}, h('strong', {}, who?.name ?? r.speaker), h('p', {}, r.text)));
+    };
+    this.openModal('two-replies', entry.heading, this.closeBtn(), h('h2', {}, entry.heading),
+      h('div', { class: 'two-replies-row' }, voice(entry.replies[0]), voice(entry.replies[1])),
+      h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep walking')));
+    this.sfx('sfx.page');
+    return true;
+  }
+
+  /** C-016: after a weighed judgement, someone affected pushes back and the player answers. Returns true if a panel opened. */
+  private showPushback(): boolean {
+    const c = ctx.controller;
+    if (!c.state || this.modal) return false;
+    const found = pendingPushback(c.state.flags);
+    if (!found) return false;
+    const { entry, text } = found;
+    c.dispatch({ type: 'SetFlag', flag: pushSeenFlag(entry.id), value: true });
+    const who = c.pack.characters.find((x) => x.id === entry.speaker);
+    const body = h('div', { class: 'pushback' });
+    const show = (answer: string | null): void => {
+      const a = entry.answers.find((x) => x.id === answer);
+      body.replaceChildren(
+        h('div', { class: 'two-reply' },
+          characterPortrait(who?.sprite),
+          h('div', {}, h('strong', {}, who?.name ?? entry.speaker), h('p', {}, text))),
+        ...(a
+          ? [h('p', { class: 'clue-view fresh', role: 'status' }, a.reply),
+            h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Keep walking'))]
+          : [h('p', { class: 'fine' }, 'How do you answer? There is no right answer, only reasons.'),
+            h('div', { class: 'row' }, ...entry.answers.map((x) => h('button', { type: 'button', onclick: () => {
+              c.dispatch({ type: 'SetFlag', flag: pushAnswerFlag(entry.id), value: x.id }); this.sfx('sfx.page'); show(x.id);
+            } }, x.text)))]));
+      (body.querySelector('[data-autofocus]') as HTMLElement | null)?.focus();
+    };
+    show(null);
+    this.openModal('two-replies', entry.heading, this.closeBtn(), h('h2', {}, entry.heading), body);
+    this.sfx('sfx.page');
+    return true;
   }
 
   /** Run now if nothing is open; otherwise run when the open panel closes. */
@@ -776,13 +878,20 @@ export class UI implements UIApi {
       c.saves.permanentLoadProblem ? h('p', { class: 'warn', role: 'alert' }, c.saves.permanentLoadProblem) : null,
       c.contentProblems.length ? h('p', { class: 'warn', role: 'alert' }, `Content problems: ${c.contentProblems.join('; ')}`) : null,
       h('div', { class: 'menu' },
-        cont ? h('button', { 'data-autofocus': true, onclick: () => { discardPendingJournalWriting(c); c.loadContinue(); this.startPlaying(true); } }, h('strong', {}, 'Continue'), h('small', {}, fmt(cont))) : null,
+        cont ? h('button', { 'data-autofocus': true, onclick: () => this.enterWhenReady(() => { discardPendingJournalWriting(c); c.loadContinue(); this.startPlaying(true); }) }, h('strong', {}, 'Continue'), h('small', {}, fmt(cont))) : null,
         rec ? h('button', { 'data-autofocus': !cont, onclick: () => this.confirmRecovery() }, h('strong', {}, 'Checkpoint recovery'), h('small', {}, fmt(rec))) : null,
         h('button', { 'data-autofocus': !cont && !rec, onclick: () => this.characterCreation() }, h('strong', {}, 'New game'), h('small', {}, cont || rec ? 'Starts a new campaign. Your awards stay.' : 'Begin as a new recruit')),
+        h('button', { onclick: () => this.openModal('class-save','Class adventure',this.closeBtn(),h('h2',{},'Class adventure'),classPanel(store=>{
+          this.closeModal(false);
+          ctx.controller = new ClassroomController(store);
+          ctx.controller.onEvents(ev=>this.handleEvents(ev));
+          this.showTitle();
+        })) }, h('strong', {}, classroom ? 'Manage class adventure' : 'Class sign-in')),
         h('button', { onclick: () => this.openSettings() }, h('strong', {}, 'Settings'), h('small', {}, 'Text size, motion, sound, guide prompts')),
         h('button', { onclick: () => this.openCredits() }, h('strong', {}, 'Credits and sources'), h('small', {}, 'Who made the art, music and sounds, and the historical sources')),
       ),
-      h('p', { class: 'fine' }, 'Local demo: progress is saved in this browser only. No account. No AI service. Works offline after the first load.'),
+      h('p', { class: 'fine' }, classroom ? classroom.who.display + ' · ' + classroom.who.className + ' · ' + classroom.status : 'Local adventure. Progress is saved in this browser. Class sign-in is optional.'),
+      h('a', { class:'school-link', href:'./schools.html' }, 'For schools and families'),
     );
     this.root.append(box);
     setTimeout(() => box.querySelector<HTMLElement>('[data-autofocus]')?.focus(), 0);
@@ -797,12 +906,13 @@ export class UI implements UIApi {
       h('p', {}, `This makes "${rec.label}" (${rec.location}, ${new Date(rec.savedAt).toLocaleString()}) your current game. Your current Continue save will be replaced.`),
       h('p', {}, 'Awards, concept XP and badges you already earned are kept.'),
       h('div', { class: 'row' },
-        h('button', { class: 'primary', 'data-autofocus': true, onclick: () => { if (c.loadRecovery()) { discardPendingJournalWriting(c); this.closeModal(); this.startPlaying(true); } } }, 'Restore'),
+        h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.enterWhenReady(() => { if (c.loadRecovery()) { discardPendingJournalWriting(c); this.startPlaying(true); } }) }, 'Restore'),
         h('button', { onclick: () => this.closeModal() }, 'Cancel')));
     void box;
   }
 
   private characterCreation(): void {
+    void this.prepareWorld().catch(() => { /* The Begin button can retry while the chosen look is still here. */ });
     clear(this.root); this.root.append(this.toastBox);
     const lookPick = this.lookPicker(PLAYER_LOOKS[0]);
     const name = h('input', { id: 'pname', maxlength: '24', value: '', placeholder: 'Your Guardian name', autocomplete: 'off', 'data-autofocus': true }) as HTMLInputElement;
@@ -817,9 +927,11 @@ export class UI implements UIApi {
       }));
     const start = () => {
       const n = name.value.trim() || 'Recruit';
-      discardPendingJournalWriting(ctx.controller);
-      ctx.controller.newGame(n.slice(0, 24), lookPick.value(), { pronouns: pron.value(), origin });
-      this.startPlaying(false);
+      this.enterWhenReady(() => {
+        discardPendingJournalWriting(ctx.controller);
+        ctx.controller.newGame(n.slice(0, 24), lookPick.value(), { pronouns: pron.value(), origin });
+        this.startPlaying(false);
+      });
     };
     name.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.repeat) start(); });
     const box = h('div', { class: 'title-screen create' },
@@ -974,6 +1086,32 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.closeModal() }, 'Cancel')));
   }
 
+  private enterWhenReady(enter: () => void): void {
+    const status = h('p', {role: 'status'}, 'Opening the map…');
+    const back = h('button', {type:'button', 'data-autofocus':true, onclick:()=>this.closeModal()}, 'Back');
+    const box = this.openModal('map-loading', 'Opening the map', h('h2',{},'Opening the map'), status, back);
+    const tryOpening = async () => {
+      try {
+        await this.prepareWorld();
+      } catch {
+        if (!box.isConnected) return;
+        status.textContent = 'The map could not finish loading. Check your connection and try again.';
+        const retry = h('button', {type:'button', onclick:()=>{
+          retry.disabled = true;
+          status.textContent = 'Opening the map…';
+          void tryOpening();
+        }}, 'Try again');
+        box.replaceChildren(h('h2',{},'Opening the map'), status, retry, back, h('button',{type:'button',onclick:reloadGame},'Reload the game'));
+        retry.focus();
+        return;
+      }
+      if (!box.isConnected) return;
+      this.closeModal(false);
+      enter();
+    };
+    void tryOpening();
+  }
+
   private startPlaying(returning: boolean): void {
     const pc = ctx.controller;
     this.stopStoryCue?.(); this.stopStoryCue = null;
@@ -985,12 +1123,13 @@ export class UI implements UIApi {
     this.activeEventNode = null;
     this.onStart();
     if (returning) {
-      this.showRecap();
+      // The world opens an unanswered room invitation on arrival, including after a reload.
+      if (!contentNoteFor(pc.state.mapId, pc.state.flags)) this.showRecap();
       const pending = pc.state.events.pending;
       if (pending) {
         const event = pc.pack.events.find(({ id }) => id === pending);
         if (event?.maps.includes(pc.state.mapId) && !pc.state.events.seen.includes(pending)) {
-          this.whenFree(() => this.showEvent(pending));
+          this.offerEvent(pending);
         } else {
           pc.dispatch({ type: 'DelayEvent' });
         }
@@ -1012,6 +1151,12 @@ export class UI implements UIApi {
 
   private buildHud(): void {
     this.hud = h('div', { class: 'hud' });
+    // Field controls use native button activation. Phaser also observes Enter and Space on the window.
+    const nativeButton = (event: KeyboardEvent) => {
+      if ((event.key === 'Enter' || event.key === ' ') && event.target instanceof HTMLElement && event.target.closest('button')) event.stopPropagation();
+    };
+    this.hud.addEventListener('keydown', nativeButton);
+    this.hud.addEventListener('keyup', nativeButton);
     this.promptEl = h('button', { class: 'prompt', hidden: true, onclick: () => (ctx.world as any)?.tryInteract?.() });
     this.lumenBubble = h('div', { class: 'lumen-bubble', hidden: true, role: 'status', 'aria-live': 'polite' });
     this.hudDock = h('div', { class: 'hud-dock' }, this.lumenBubble, this.promptEl);
@@ -1034,10 +1179,14 @@ export class UI implements UIApi {
         h('ul', {}, ...objs.filter((o) => o.mission === m).map((o) => h('li', { class: o.complete ? 'done' : '' }, h('span', { 'aria-hidden': 'true' }, o.complete ? '✓ ' : '◇ '), h('span', { class: 'sr' }, o.complete ? 'Done: ' : 'To do: '), o.title))))),
       objs.length && objs.every((o) => o.complete) ? h('div', {}, h('h2', {}, 'Chapter complete'), h('p', {}, 'Explore freely, or open the menu.')) : null);
     const km = ctx.settings.keys;
+    const focused = this.hud.querySelector<HTMLButtonElement>('.hud-buttons button:focus');
+    const pending = s.events.pending && !this.activeEvent && (ctx.settings.calmMode || ctx.settings.zenMode)
+      ? c.pack.events.find(ev=>ev.id===s.events.pending && ev.maps.includes(s.mapId)) : undefined;
     const bar = h('nav', { class: 'hud-buttons', 'aria-label': 'Game menu' },
       h('span', { class: 'marks', title: 'Marks (campaign money)' }, h('img', { src: artURL('icon.card'), alt: '' }), ` ${s.marks} marks`),
       s.flags['title.worn'] ? h('span', { class: 'marks worn-title', title: 'Your title (choose in Journal, Awards)' }, `${s.player.name}, ${s.flags['title.worn']}`) : '',
-      h('button', { onclick: () => this.askLumen(), title: `Ask Lumen for a hint (${km.hint})` }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '' }), ' Hint ', h('kbd', {}, km.hint)),
+      h('button', { class: this.helpOffered ? 'lumen-offer' : '', onclick: () => this.askLumen(), title: this.helpOffered ? `Lumen has an idea for this step (${km.hint})` : `Ask Lumen for a hint (${km.hint})` }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '' }), ' Hint ', h('kbd', {}, km.hint)),
+      pending ? h('button', {class:'field-invitation',type:'button',title:pending.title,onclick:()=>this.showEvent(pending.id)}, 'Invitation') : null,
       h('button', { onclick: () => this.openJournal(), title: `Journal (${km.journal})` }, 'Journal ', h('kbd', {}, km.journal)),
       h('button', { onclick: () => this.openJournal('portfolio'), title: `Portfolio (${km.portfolio})` }, 'Portfolio ', h('kbd', {}, km.portfolio)),
       h('button', { onclick: () => this.openBag(), title: `Bag (${km.bag})` }, 'Bag ', h('kbd', {}, km.bag)),
@@ -1049,6 +1198,15 @@ export class UI implements UIApi {
     this.hud.prepend(tracker);
     this.hudDock.querySelector('.hud-buttons')?.remove();
     this.hudDock.append(bar);
+    if(focused && document.activeElement===document.body && !this.modal) {
+      const controls=[...bar.querySelectorAll('button')];
+      (controls.find(b=>b.textContent===focused.textContent && b.title===focused.title) ?? controls[0])?.focus({preventScroll:true});
+    }
+    // Progress resets the "stuck" clock for Lumen's offer (decision X-011).
+    const doneCount = objs.filter((o) => o.complete).length;
+    if (doneCount !== this.progressCount) { this.progressCount = doneCount; this.lastProgress = Date.now(); this.helpOffered = false; this.offerSpent = false; }
+    this.offerTimer ??= window.setInterval(() => { this.checkHelpOffer(); }, 10_000);
+    this.researchTimer ??= window.setInterval(() => { void flushResearch(); }, 120_000);
     // New objectives: Lumen mentions them once if the player allows prompts (GUIDE-001).
     for (const o of objs) {
       if (!this.seenObjectives.has(o.id)) {
@@ -1056,6 +1214,28 @@ export class UI implements UIApi {
         if (!o.complete && ctx.settings.guidePrompts) this.lumenSay(`New step: ${o.title}`);
       }
     }
+  }
+
+  private progressCount = -1;
+  private lastProgress = Date.now();
+  private helpOffered = false;
+  private offerSpent = false;
+  private offerTimer: number | null = null;
+  private researchTimer: number | null = null;
+
+  /** Decision X-011: after a long time with no progress, the lantern glows and Lumen offers. No hint until a click. */
+  private checkHelpOffer(): void {
+    const c = ctx.controller;
+    if (!c.state) return;
+    const offer = shouldOfferHelp({
+      enabled: ctx.settings.lumenOffers !== false, lastProgress: this.lastProgress, now: Date.now(),
+      busy: !!this.modal, offered: this.offerSpent, hasStep: !!c.engine.currentObjective(c.state),
+    });
+    if (!offer) return;
+    this.offerSpent = true;
+    this.helpOffered = true;
+    this.lumenSay(OFFER_LINE);
+    this.refreshHud();
   }
 
   private lumenSay(text: string): void {
@@ -1068,6 +1248,7 @@ export class UI implements UIApi {
   }
 
   private askLumen(): void {
+    if (this.helpOffered) { this.helpOffered = false; this.refreshHud(); }
     const c = ctx.controller;
     const cur = c.engine.currentObjective(c.state);
     if (!cur) { this.lumenSay('Nothing urgent. Explore, read your journal, or talk to people again.'); return; }
@@ -1082,15 +1263,39 @@ export class UI implements UIApi {
       h('p', { class: 'hint-text' }, hint.hint.text),
       ...(roleOf(c.state.flags) ? [h('p', { class: 'fine' }, h('strong', {}, `As a ${roleOf(c.state.flags)!.name}, ask: `), roleOf(c.state.flags)!.ask, ' ', h('em', {}, `Watch your blind spot: ${roleOf(c.state.flags)!.blind}`))] : []),
       h('p', { class: 'fine' }, 'Asking for help never lowers your XP or blocks an award.'),
+      this.thinkerAdvisor(),
       h('div', { class: 'row' },
         hint.hint.depth < 4 ? h('button', { onclick: () => this.askLumen() }, 'More help') : null,
         h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Thanks')));
     void box;
   }
 
+  /** Decision X-015: Lumen can call a thinker as an advisor. Their view is then tracked in the journal (X-012). */
+  private thinkerAdvisor(): HTMLElement {
+    const c = ctx.controller;
+    const out = h('div', { class: 'advisor-out', 'aria-live': 'polite' });
+    const pick = h('select', { 'aria-label': 'Choose a thinker' },
+      h('option', { value: '' }, 'Choose a thinker…'),
+      ...THINKERS.map((t) => h('option', { value: t.id }, `${t.name} (${t.views.map((v) => TOK_VIEWS.find((x) => x.id === v)?.name).join('; ')})`)));
+    pick.addEventListener('change', () => {
+      const t = THINKERS.find((x) => x.id === pick.value);
+      clear(out);
+      if (!t) return;
+      for (const flag of meetFlags(t)) c.dispatch({ type: 'SetFlag', flag, value: true });
+      this.sfx('sfx.page');
+      out.append(...t.views.map((v) => h('p', {}, h('strong', {}, `${TOK_VIEWS.find((x) => x.id === v)?.name}: `), t.advice[v])),
+        h('p', { class: 'fine' }, adviceLabel(t)));
+    });
+    return h('details', { class: 'advisor' }, h('summary', {}, 'Ask a thinker'),
+      h('p', { class: 'fine' }, 'Lumen can ask a thinker from history how they would look at this step. Each one has a named view.'), pick, out);
+  }
+
   // ------------------------------------------------------------ events
 
   private handleEvents(events: GameEvent[]): void {
+    // A single action can also earn currency, journal lines and objectives. Sound the trial once.
+    const result = events.map(trialSound).find(cue => cue !== undefined);
+    if (result) ctx.world?.playTrialSound(result);
     // One XP toast per action, not one per criterion.
     const xp = events.filter((e) => e.kind === 'xp').reduce((n, e) => n + (e as Extract<GameEvent, { kind: 'xp' }>).amount, 0);
     if (xp) events = [...events.filter((e) => e.kind !== 'xp'), { kind: 'xp', amount: xp }];
@@ -1103,6 +1308,10 @@ export class UI implements UIApi {
       this.toast(kind === 'keepsake' ? `${many.length} new keepsakes. See My quarters.` : `${many.length} lamps are lit on the Lamp Wall.`, 'award');
     }
     for (const e of events) {
+      // Research data (decision X-018): play events only, and only when the school has turned it on.
+      if (e.kind === 'objective') recordResearch('objective-done', e.id);
+      else if (e.kind === 'hint') recordResearch('hint', e.hint.objective, e.hint.depth);
+      else if (e.kind === 'fieldgame') recordResearch('field-game', e.game);
       switch (e.kind) {
         case 'card': { const card = c.pack.cards.find((x) => x.id === e.id); this.toast(`New evidence card: ${card?.title}`, 'card'); this.sfx('sfx.page'); break; }
         case 'item': { const it = c.pack.items.find((x) => x.id === e.id); this.toast(`${e.qty > 0 ? 'Received' : 'Gave'}: ${it?.name ?? e.id}`, 'item'); this.sfx('sfx.pickup'); break; }
@@ -1141,7 +1350,7 @@ export class UI implements UIApi {
         case 'portfolio': this.toast(`Added to your portfolio: ${e.title}`, 'info'); break;
         case 'fray': this.toast(`New in your Fray Bestiary: ${e.name} (${e.error.toLowerCase()}). See Journal, Fray Bestiary.`, 'info'); break;
         case 'reflection': { const m = e.misconception; this.whenFree(() => this.offerReflection(m.title, m.reflection)); break; }
-        case 'event-due': { const id = e.event; this.whenFree(() => this.showEvent(id)); break; }
+        case 'event-due': this.offerEvent(e.event); break;
         case 'trust': this.toast(`Trust grows. ${e.name}: you are now ${e.rank}. See Menu, Communities of Emberford.`, 'award'); this.sfx('sfx.award'); break;
         case 'approval': {
           const nm = (ctx.controller.pack.characters.find((x) => x.id === e.who)?.name ?? 'Your companion').split(' ')[0];
@@ -1178,6 +1387,14 @@ export class UI implements UIApi {
 
   // ------------------------------------------------- events and reflection
 
+  private offerEvent(id: string) {
+    if (ctx.settings.calmMode || ctx.settings.zenMode) {
+      const event=ctx.controller.pack.events.find(e=>e.id===id);
+      if (event) this.toast('Invitation · ' + event.title + '. Open it from the game menu when you like.', 'info');
+      this.refreshHud();
+    } else this.whenFree(() => this.showEvent(id));
+  }
+
   /** An event from the deck (spec 93). Calm mode warns first and lets the player delay it. */
   private showEvent(id: string): void {
     const c = ctx.controller;
@@ -1202,15 +1419,17 @@ export class UI implements UIApi {
   /** A reflection offer at the student threshold (spec 95.1). Never "wrong", always optional. */
   private offerReflection(title: string, question: string): void {
     const ta = h('textarea', { rows: '3', 'aria-label': 'Your reflection (optional)', placeholder: 'Write a few words, or leave it empty.' }) as HTMLTextAreaElement;
+    const finishDraft = sceneEditor(ta,'lumen/'+title,question);
     this.openModal('reflection', 'A question to think about', this.closeBtn(),
       h('div', { class: 'lumen-head' }, h('img', { src: artURL(lumenArt(ctx.settings)), alt: '', class: 'lumen-big' }), h('h2', {}, 'A question to think about')),
       h('p', { class: 'fine' }, `Lumen noticed a pattern in your play: ${title.toLowerCase()}. This is not a mark. It may even be wrong.`),
-      h('p', { class: 'hint-text' }, question), conceptEditor(ta),
+      h('p', { class: 'hint-text' }, question), writingNotice(), conceptEditor(ta),
       h('div', { class: 'row' },
         h('button', { class: 'primary', onclick: () => {
           if (ta.value.length) {
             const c = ctx.controller;
             if (c.dispatch({ type: 'AddNote', text: ta.value, kind: 'reflection' }).some(({ kind }) => kind === 'error')) return;
+            finishDraft();
             queueJournalWriting(c);
             flushJournalWriting(c);
           }
@@ -1236,6 +1455,7 @@ export class UI implements UIApi {
     else if (kind === 'forge') this.openForge();
     else if (kind === 'assay') this.openAssay('AE-ASSAY');
     else if (kind === 'lock') this.openLock(id);
+    else if (kind === 'fieldgame') this.openFieldGame(id);
     if (this.modal === previous) this.closeModal(false);
   }
 
@@ -1246,10 +1466,10 @@ export class UI implements UIApi {
     const node = c.engine.talkEntry(characterId, c.state);
     if (!node) return;
     this.sfx('sfx.open');
-    this.showNode(node);
+    this.showNode(node, true, characterId);
   }
 
-  private showNode(id: string, enter = true): void {
+  private showNode(id: string, enter = true, visiting?: string): void {
     const c = ctx.controller;
     const firstHearing = enter && c.state.flags[`node.${id}`] !== true;
     if (enter) {
@@ -1264,9 +1484,9 @@ export class UI implements UIApi {
     const portrait = n.speaker === 'lumen'
       ? h('img', { class: 'portrait lumen-portrait', src: artURL(lumenArt(ctx.settings)), alt: '' })
       : n.speaker === 'narrator' ? null
-      : String((speaker as any)?.sprite ?? '').startsWith('custom:')
-        ? h('span', { class: 'portrait custom', 'aria-hidden': 'true' }, previewLook((speaker as any).sprite, 3))
-        : h('span', { class: 'portrait', style: { backgroundImage: `url(assets/art/generated/characters/${(speaker as any)?.sprite}.png)` }, 'aria-hidden': 'true' });
+      : id.startsWith('ink.') && speaker && 'mode' in speaker && speaker.mode === 'historical'
+        ? h('img', { class: 'portrait ink-portrait', src: artURL('ink-post.bird'), alt: '' })
+      : characterPortrait(speaker?.sprite);
     const opts = c.engine.visibleOptions(id, c.state);
     const optionList = h('div', { class: 'options' });
     if (opts.length) {
@@ -1283,6 +1503,10 @@ export class UI implements UIApi {
     } else {
       optionList.append(h('button', { 'data-autofocus': true, onclick: () => { this.sfx('sfx.click'); if (n.next) this.showNode(n.next); else this.endDialogue(n.open); } }, n.next ? 'Continue ▸' : 'Close'));
     }
+    const visit = visiting && neighbourInvitation(visiting, c.state.flags);
+    if (visit) optionList.append(h('button', { onclick: () => this.showNode(visit.node) }, visit.text));
+    const roost = visiting && inkInvitation(visiting, c.state.mapId);
+    if (roost) optionList.append(h('button', { onclick: () => this.showNode(roost.node) }, roost.text));
     const cornerObjective = id.startsWith('corner.') && c.state.flags['corner.found'] && !c.state.objectivesDone.includes('corner.receive')
       ? c.state.objectivesDone.includes('corner.compare') ? 'corner.receive' : 'corner.compare'
       : undefined;
@@ -1290,12 +1514,14 @@ export class UI implements UIApi {
     const guideObjective = guidedCase
       ? c.engine.visibleObjectives(c.state).find((step) => !step.complete && step.id.startsWith(guidedCase))?.id
       : id === 'stage.call.stand' ? 'stage.call.audience' : cornerObjective;
-    const extra = id === 'sefa.free' ? this.freeQuestion() : null;
-    const earlier = conversationHistory(c.pack.dialogue, c.state.flags).filter((line) => line.id !== id).slice(0, 5);
+    const extra = ['emberford.tally', 'emberford.tally.loaves', 'emberford.tally.weight'].includes(id) ? bakeryPanel(c) : id === 'sefa.free' ? this.freeQuestion() : lamplightPanel(id, c, () => ctx.world?.refreshWorld(), (line) => this.speak(line), ctx.settings.sfxVolume)
+      ?? inkTrialDiagram(id, ctx.settings.sfxVolume);
+    const earlier = conversationHistory(c.engine.dialogueById, c.state.flags, { except: id, limit: 5 });
     const source = n.citationSource ? c.pack.sources.find((entry) => entry.id === n.citationSource) : undefined;
     const citation = source ? mlaCitation(source) : [];
     const spoken = `${speaker?.name ? `${speaker.name}: ` : ''}${n.text}${citation.length ? ` ${citation.map((part) => part.text).join('')}` : ''}`;
-    const encyclopedia = speaker && 'mode' in speaker ? encyclopediaForCharacter(speaker) : undefined;
+    const account = n.biographyCard && c.pack.cards.find(card => card.id === n.biographyCard);
+    const encyclopedia = account ? encyclopediaForBiography(account) : speaker && 'mode' in speaker ? encyclopediaForCharacter(speaker) : undefined;
     this.openModal('dialogue', speaker?.name ? `Conversation with ${speaker.name}` : 'Scene',
       speaker?.name ? h('div', { class: 'speaker' }, portrait, h('div', {}, h('strong', {}, speaker.name), h('small', {}, speaker.role ?? ''))) : '',
       this.glossLine(n.text),
@@ -1306,6 +1532,7 @@ export class UI implements UIApi {
       h('div', { class: 'chips' }, n.claimKind ? claimChip(n.claimKind) : null, n.historicalLabel ? histChip(n.historicalLabel) : null),
       extra ?? '', optionList,
       guideObjective ? localGuide(c, MAPS[c.state.mapId]?.world ?? '', guideObjective) : '',
+      speaker && 'mode' in speaker ? callingBook(c, line => this.dialogueMemory(line), speaker) : '',
       earlier.length ? h('details', { class: 'dialogue-recall' }, h('summary', {}, 'Earlier dialogue'),
         ...earlier.map((line) => this.dialogueMemory(line))) : '');
     if (n.motif && firstHearing) this.playStoryCue(n.motif);
@@ -1353,12 +1580,6 @@ export class UI implements UIApi {
     return h('div', {}, line, pop);
   }
 
-  private wordHistory(entry: GlossaryEntry): HTMLElement | null {
-    if (!entry.history) return null;
-    return h('details', { class: 'fine' }, h('summary', {}, 'Word history'),
-      h('p', {}, entry.history.note, ' ', h('a', { href: entry.history.url, target: '_blank', rel: 'noopener' }, 'Dictionary entry')));
-  }
-
   private glossaryExamples(entry: GlossaryEntry): HTMLElement | null {
     const c = ctx.controller;
     const [first, ...others] = examplesFor(entry, c.state, (condition) => c.check(condition));
@@ -1374,7 +1595,7 @@ export class UI implements UIApi {
     if (!g) return;
     clear(pop);
     pop.append(h('img', { src: artURL(lumenArt(ctx.settings)), alt: '', class: 'gloss-lumen' }),
-      h('div', {}, h('strong', {}, g.term), ' ', g.text, this.glossaryExamples(g), this.wordHistory(g)));
+      h('div', {}, h('strong', {}, g.term), ' ', g.text, this.glossaryExamples(g), wordHistory(g)));
     pop.style.display = '';
   }
 
@@ -1385,6 +1606,7 @@ export class UI implements UIApi {
   private freeQuestion(): HTMLElement {
     const input = h('input', { type: 'text', placeholder: 'Type a question…', 'aria-label': 'Your question', 'data-autofocus': true }) as HTMLInputElement;
     const out = h('div', { class: 'free-out', role: 'status', 'aria-live': 'polite' });
+    const finishDraft = sceneEditor(input,'sefa/question','Question for Sefa');
     const topics: [RegExp, string][] = [
       [/wootz|crucible|ingot/i, 'sefa.wootz'],
       [/example|museum|met\b|record|probabl/i, 'sefa.example'],
@@ -1394,11 +1616,12 @@ export class UI implements UIApi {
       if (!q.trim()) return;
       const hit = topics.find(([re]) => re.test(q));
       clear(out);
-      if (hit) { this.showNode(hit[1]); return; }
+      if (hit) { finishDraft(); this.showNode(hit[1]); return; }
       out.append(h('p', {}, 'Sefa: "I have no prepared answer for that. Choose one of my topics, or keep the question in your journal."'),
         h('button', { onclick: () => {
           const c = ctx.controller;
           if (c.dispatch({ type: 'AddNote', kind: 'question', text: `Question for Sefa: ${q}` }).some(({ kind }) => kind === 'error')) return;
+          finishDraft();
           queueJournalWriting(c);
           if (flushJournalWriting(c)) this.toast('Saved to your journal notes', 'info');
           input.value = '';
@@ -1407,8 +1630,8 @@ export class UI implements UIApi {
         } }, 'Keep it in my journal'));
     };
     input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.isComposing && e.keyCode !== 229) ask(); });
-    return h('div', { class: 'free' }, h('p', { class: 'fine' }, 'Sefa can answer prepared topics: wootz, crucible steel, ingots and the museum example. Other questions are kept in your journal. Nothing you type is sent anywhere.'),
-      h('div', { class: 'row' }, conceptEditor(input), h('button', { onclick: ask }, 'Ask')), out);
+    return h('div', { class: 'free' }, h('p', { class: 'fine' }, 'Sefa can answer questions about the museum example, wootz, crucible steel and ingots. You can keep another question in your journal.'),
+      writingNotice(), h('div', { class: 'row' }, conceptEditor(input), h('button', { onclick: ask }, 'Ask')), out);
   }
 
   // ----------------------------------------------------------- exhibit
@@ -1416,6 +1639,9 @@ export class UI implements UIApi {
   openExhibit(exhibitId: string): void {
     const c = ctx.controller;
     const ex = c.pack.exhibits.find((x) => x.id === exhibitId)!;
+    const note = noteForExhibit(exhibitId);
+    const view = recordView(exhibitId, c.state.flags);
+    if(note && view==='closed') { this.openRecordNote(note); return; }
     c.dispatch({ type: 'InspectExhibit', exhibit: exhibitId });
     this.sfx('sfx.book');
     const lensOut = h('div', { class: 'lens-out', role: 'status', 'aria-live': 'polite' });
@@ -1446,6 +1672,8 @@ export class UI implements UIApi {
         }
       };
       showClaim();
+      const nightWork = nightByExhibit.get(ex.id);
+      if (nightWork) stand.append(nightCase(c, nightWork, () => ctx.world?.refreshWorld(), showClaim));
       const key = ex.specimen.key;
       const reading = h('p', { class: 'fine', role: 'status' });
       const read = () => {
@@ -1465,7 +1693,7 @@ export class UI implements UIApi {
       stand.append(reading);
       read();
     }
-    if (pixel) void specimenArt(pixel).then((drawing) => {
+    if (pixel && view==='illustrated') void specimenArt(pixel).then((drawing) => {
       if (!image.isConnected) return;
       if (drawing) {
         image.src = drawing.toDataURL('image/png');
@@ -1477,9 +1705,11 @@ export class UI implements UIApi {
     });
     const box = this.openModal('exhibit', ex.name, this.closeBtn(),
       h('div', { class: 'exhibit-grid' },
-        h('figure', {}, image, artCredit),
+        view==='illustrated' ? h('figure', {}, image, artCredit) : h('p', {class:'source-cutline'}, 'Text view · '+ex.altText),
+
         h('div', {},
           h('h2', {}, ex.name),
+          note ? h('button', {type:'button',onclick:()=>this.openRecordNote(note)}, 'Choose text or illustration') : null,
           h('div', { class: 'chips' }, histChip(ex.historicalLabel)),
           h('p', { class: 'date' }, h('strong', {}, 'Date: '), ex.dateText),
           ex.specimen ? h('p', { class: 'fine' }, `${ex.specimen.institution} · ${ex.specimen.accession}`) : null,
@@ -1532,6 +1762,7 @@ export class UI implements UIApi {
   showSign(title: string, text: string, propId?: string): void {
     this.openModal('sign', title, this.closeBtn(), h('h2', {}, title), h('p', {}, text),
       ...(propId === 'record-book' ? this.rumourReplies('ledger') : []),
+      ...(propId === 'vault-index' ? vaultIndex(ctx.controller) : []),
       h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
   }
 
@@ -1699,6 +1930,17 @@ export class UI implements UIApi {
       this.sfx(r.ok ? 'sfx.sparkle' : 'sfx.page');
       render();
     };
+    const fieldDelivery = (job: Extract<PuzzleRecord, { handoffPrompt: string }>) => {
+      const selected = c.state.flags[`${F}.handoff`];
+      const receipt = typeof selected === 'number' ? job.handoffs[selected] : undefined;
+      return h('section', {}, h('h3', {}, job.handoffPrompt),
+        receipt ? h('p', {}, receipt.result + ' A reply is waiting on Emberford’s Lamp Wall.') : '',
+        h('div', { class: 'options' }, ...job.handoffs.map((delivery, i) =>
+          h('button', { type: 'button', 'aria-pressed': String(i === selected), 'data-delivery': i, onclick: () => {
+            take(c.dispatch({ type: 'PuzzleReport', puzzle: job.id, index: i }));
+            box.querySelector<HTMLButtonElement>(`[data-delivery="${i}"]`)?.focus();
+          } }, delivery.label))));
+    };
     const render = () => {
       const done = c.state.flags[`${F}.done`] === true;
       clear(box);
@@ -1769,12 +2011,10 @@ export class UI implements UIApi {
           const chart = h('div', { class: 'calib', role: 'img', 'aria-label': cal.map((g) => `When you said ${g.p}%, it rained on ${g.rain} of ${g.days} days`).join('. ') });
           chart.innerHTML = `<svg viewBox="0 0 220 140" aria-hidden="true"><rect width="220" height="140" rx="8" fill="#14202b"/><line x1="20" y1="120" x2="210" y2="120" stroke="#4a6a85"/><line x1="20" y1="120" x2="210" y2="20" stroke="#f6c453" stroke-dasharray="4 3"/>${cal.map((g) => { const x = 20 + (g.p / 100) * 190, hgt = (g.rain / g.days) * 100; return `<rect x="${x - 8}" y="${120 - hgt}" width="16" height="${hgt}" fill="#7cc4ff" opacity="0.9"/><text x="${x}" y="133" font-size="8" fill="#9fb3c8" text-anchor="middle">${g.p}%</text><text x="${x}" y="${116 - hgt}" font-size="8" fill="#e8efe8" text-anchor="middle">${g.rain}/${g.days}</text>`; }).join('')}</svg>`;
           box.append(h('h3', {}, 'How did the forecasts do?'),
-            h('p', { class: 'fine' }, 'The score is the average of (forecast − what happened)², so lower is better. 0 would mean certain and always right. It is not a mark: no score is a pass or a fail.'),
+            h('p', { class: 'fine' }, 'Noa keeps each forecast beside what happened. The score averages the squared differences over twelve mornings. A smaller number means the forecasts came closer to the weather the crew saw.'),
             h('div', { class: 'scores' }, bar('Your forecasts', you, 'you'), bar("Always '50%'", half, 'half'), bar('The almanac', alm, 'alm')),
             h('p', { class: 'fine' }, 'The bars show how often it rained when you said each chance. On a well-matched forecast, the bars reach the dashed line.'), chart,
-            h('h3', {}, done ? 'What you learned' : 'What does this tell you about being sure?'),
-            done ? h('p', { class: 'fair' }, rec.reflect.find((x) => x.honest)!.text)
-              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((x, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, x.text)))));
+            fieldDelivery(rec));
         }
         if (feedback) {
           const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
@@ -1821,9 +2061,7 @@ export class UI implements UIApi {
               : h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleListen', puzzle: rec.id, action: 'compare' })) }, `Compare step 0 with step ${rec.steps}`)));
         }
         if (compared) {
-          box.append(h('h3', {}, done ? 'What you learned' : '4. What do your ears and the glass tell you together?'),
-            done ? h('p', { class: 'fair' }, rec.reflect.find((x) => x.honest)!.text)
-              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((x, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, x.text)))));
+          box.append(fieldDelivery(rec));
         }
         if (feedback) {
           const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
@@ -1858,9 +2096,21 @@ export class UI implements UIApi {
         svg.addEventListener('pointermove', (ev) => { if (dragging) moveTo(ev); });
         const endDrag = () => { if (!dragging) return; dragging = false; feedback = null; this.sfx('sfx.click'); render(); };
         svg.addEventListener('pointerup', endDrag); svg.addEventListener('pointercancel', endDrag);
-        const nudge = (dx: number, dy: number) => { framePos.set(b.id, clamp(pos.x + dx, pos.y + dy)); feedback = null; render(); };
+        const nudgeButton = (direction: string, arrow: string, dx: number, dy: number) => {
+          const label = `Move the frame ${direction}`;
+          return h('button', { type: 'button', 'aria-label': label, onclick: (event: MouseEvent) => {
+            const keepFocus = document.activeElement === event.currentTarget;
+            framePos.set(b.id, clamp(pos.x + dx, pos.y + dy));
+            feedback = null;
+            render();
+            if (keepFocus) box.querySelector<HTMLButtonElement>(`.frame-nudge [aria-label="${label}"]`)?.focus({ preventScroll: true });
+          } }, arrow);
+        };
         box.append(h('div', { class: 'frame-body' }, h('div', {}, canvas,
-          h('div', { class: 'row frame-nudge', 'aria-label': 'Move the frame' }, h('button', { type: 'button', 'aria-label': 'Move the frame left', onclick: () => nudge(-1, 0) }, '←'), h('button', { type: 'button', 'aria-label': 'Move the frame up', onclick: () => nudge(0, -1) }, '↑'), h('button', { type: 'button', 'aria-label': 'Move the frame down', onclick: () => nudge(0, 1) }, '↓'), h('button', { type: 'button', 'aria-label': 'Move the frame right', onclick: () => nudge(1, 0) }, '→'), h('span', { class: 'fine' }, 'Drag on the picture, or use the arrows.'))),
+          h('div', { class: 'row frame-nudge', 'aria-label': 'Move the frame' },
+            nudgeButton('left', '←', -1, 0), nudgeButton('up', '↑', 0, -1),
+            nudgeButton('down', '↓', 0, 1), nudgeButton('right', '→', 1, 0),
+            h('span', { class: 'fine' }, 'Drag on the picture, or use the arrows.'))),
           h('div', { class: 'frame-side' }, h('p', { class: 'label' }, 'The poster'), poster,
             h('button', { class: 'primary', onclick: () => { const ev = c.dispatch({ type: 'PuzzleFrame', puzzle: rec.id, brief: b.id, x: pos.x, y: pos.y }); take(ev); if (doneB(b.id)) { this.sfx('sfx.sparkle'); const nx = rec.briefs.findIndex((q) => !doneB(q.id)); if (nx >= 0) frameB = nx; render(); } } }, `Give it to ${b.who.split(',')[0]}`))));
         if (rec.briefs.every((q) => doneB(q.id))) {
@@ -1869,9 +2119,7 @@ export class UI implements UIApi {
           all.innerHTML = `<svg viewBox="0 0 ${SW} ${SH}" aria-hidden="true">${inner}${rec.briefs.map((q, i) => { const [x, y] = String(c.state.flags[`${F}.b.${q.id}`]).split(',').map(Number); return `<rect x="${x * U + i * 2}" y="${y * U + i * 2}" width="${FW - i * 4}" height="${FH - i * 4}" fill="none" stroke="${COL[i % 4]}" stroke-width="2.5"/>`; }).join('')}</svg>`;
           box.append(h('h3', {}, 'All three posters, on the whole painting'), all,
             h('ul', { class: 'row wrap frame-key' }, ...rec.briefs.map((q, i) => h('li', {}, h('span', { class: 'dot', style: { background: COL[i % 4] } }), ` ${q.who}`))),
-            h('h3', {}, done ? 'What you learned' : 'Each poster is true. What do they teach you?'),
-            done ? h('p', { class: 'fair' }, rec.reflect.find((x) => x.honest)!.text)
-              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((x, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, x.text)))));
+            fieldDelivery(rec));
         }
         if (feedback) {
           const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
@@ -1909,9 +2157,7 @@ export class UI implements UIApi {
               h('ul', { class: 'tr-needs' }, ...rec.parts.map((n) => h('li', { class: lr.kept.includes(n.id) ? 'kept' : 'lost' }, `${lr.kept.includes(n.id) ? '✓' : '✕'} ${n.name}`)))));
         }
         if (sent) {
-          box.append(h('h3', {}, done ? 'What you learned' : '3. What did the translation teach you?'),
-            done ? h('p', { class: 'fair' }, rec.reflect.find((x) => x.honest)!.text)
-              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((x, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, x.text)))));
+          box.append(fieldDelivery(rec));
         }
         if (feedback) {
           const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
@@ -1938,17 +2184,22 @@ export class UI implements UIApi {
           })));
         }
         if (runs.length >= 2 || fairDone) {
-          box.append(h('h3', {}, done ? 'Your report to the council' : 'Write the report to the council'),
-            !fairDone && !done ? h('p', { class: 'fine' }, 'Before you report, try a plain question with a group from every part of town.') : '',
-            done ? h('p', { class: 'fair' }, rec.reflect.find((r) => r.honest)!.text)
-              : fairDone ? h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text)))) : '');
+          box.append(fairDone ? fieldDelivery(rec) : h('p', {class: 'fine'}, 'Try a plain question with a group from every part of town before Venn takes the results to the meeting.'));
         }
         if (feedback) {
           const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
           box.append(fb); requestAnimationFrame(() => fb.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
         }
       } else if (rec.type === 'echo') {
-        const echoes = readTimes(c.state.flags[`${F}.echo`]), reacts = readTimes(c.state.flags[`${F}.react`]);
+        const slip = c.state.flags[F + '.use-slip'] === true;
+        const {echoes, reacts} = echoReadings(rec, c.state.flags);
+        box.append(h('button', {type: 'button', 'data-echo-source': true, onclick: () => {
+          clearTimeout(echo.timer);
+          echo.mode = 'idle';
+          take(c.dispatch({type: 'SelectEchoRecord', puzzle: rec.id, source: slip ? 'personal' : 'slip'}));
+          box.querySelector<HTMLButtonElement>('[data-echo-source]')?.focus();
+        }}, slip ? 'Return to my own timing marks' : 'Open Idris’s timing slip'));
+        if (slip) box.append(h('blockquote', {}, rec.timingSlip.label + '. Returning claps in milliseconds: ' + echoes.join(', ') + '. Reactions to the light: ' + reacts.join(', ') + '.'));
         const es = timeStats(echoes), rs = timeStats(reacts);
         const now = () => (echo.audio ? (audioNow() ?? 0) * 1000 : performance.now());
         const record = (kind: 'echo' | 'react') => { const ms = now() - echo.t0; clearTimeout(echo.timer); echo.mode = 'idle'; take(c.dispatch({ type: 'PuzzleTime', puzzle: rec.id, kind, ms })); };
@@ -1956,7 +2207,7 @@ export class UI implements UIApi {
         const fmt = (ms: number) => `${(ms / 1000).toFixed(2)} s`;
         box.append(h('div', { class: 'echo-scene', 'aria-hidden': 'true' }, h('span', { class: 'wall' }), h('span', { class: `wave ${echo.mode === 'listen' ? 'go' : ''}` }), h('span', { class: 'you' }, '👏'), lantern));
         // Step 1: the echo.
-        box.append(h('h3', {}, `Step 1. Time the echo (${echoes.length} of ${rec.minTimes} or more)`),
+        if (!slip) box.append(h('h3', {}, `Time the echo (${echoes.length} of ${rec.minTimes} or more)`),
           h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: flashEcho, onchange: (e: Event) => { flashEcho = (e.target as HTMLInputElement).checked; render(); } }), ' Also show the echo as a flash (for no sound)'),
           h('div', { class: 'row' },
             echo.mode === 'listen'
@@ -1972,8 +2223,8 @@ export class UI implements UIApi {
               } }, 'Clap')),
           echoes.length ? h('p', {}, `Your times: ${echoes.map(fmt).join(', ')}. Mean ${fmt(es.mean)}, spread ${fmt(es.spread)}. Estimate: ${Math.round(echoDistance(es.mean, rec.speed))} m to the wall.`) : '');
         // Step 2: reaction time.
-        if (echoes.length >= rec.minTimes) {
-          box.append(h('h3', {}, `Step 2. How quickly do you react? (${reacts.length} of ${rec.minTimes} or more)`),
+        if (!slip && echoes.length >= rec.minTimes) {
+          box.append(h('h3', {}, `How quickly do you react? (${reacts.length} of ${rec.minTimes} or more)`),
             h('p', { class: 'fine' }, 'Press Start, then press again as soon as the lantern lights. Wait for it!'),
             h('div', { class: 'row' }, echo.mode === 'wait' || echo.mode === 'go'
               ? h('button', { class: 'primary big', 'data-autofocus': true, onclick: () => {
@@ -1992,12 +2243,11 @@ export class UI implements UIApi {
           const first = echoDistance(es.mean, rec.speed), fixed = echoDistance(Math.max(0, es.mean - rs.mean), rec.speed);
           const max = Math.max(first, fixed, rec.distance) * 1.1;
           const bar = (label: string, v: number, cls: string) => h('div', { class: 'echo-bar' }, h('span', {}, label), h('span', { class: `fill ${cls}`, style: { width: `${(v / max) * 100}%` } }), h('strong', {}, `${Math.round(v)} m`));
-          box.append(h('h3', {}, 'Step 3. Check'),
+          box.append(h('h3', {}, slip ? 'Idris’s marks beside his rope' : 'My marks beside Idris’s rope'),
             h('p', {}, `Idris and two friends walked a knotted rope to the wall: ${rec.distance} m.`),
-            h('div', { class: 'echo-bars' }, bar('Your first estimate', first, 'first'), bar('Echo time minus your reaction time', fixed, 'fixed'), bar('The rope', rec.distance, 'rope')),
+            h('div', { class: 'echo-bars' }, bar(slip ? 'Idris’s first estimate' : 'Your first estimate', first, 'first'), bar('Echo time minus reaction time', fixed, 'fixed'), bar('The rope', rec.distance, 'rope')),
             Math.abs(fixed - rec.distance) > 15 ? h('p', { class: 'fine' }, `Your corrected estimate is still ${Math.round(Math.abs(fixed - rec.distance))} m from the rope. That is real data too: listening for a sound is not quite the same as watching for a light, and a careful scientist says so. Try a few more of each if you like.`) : '',
-            done ? h('p', { class: 'fair' }, rec.reflect.find((r) => r.honest)!.text)
-              : h('div', {}, h('h3', {}, 'What does this show?'), h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text))))));
+            fieldDelivery(rec));
         }
         if (feedback) {
           const fb = h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text);
@@ -2016,8 +2266,12 @@ export class UI implements UIApi {
           if (sorterRun) {
             const r = sorterRun;
             box.append(h('p', {}, `${r.right} of ${r.total} sorted right. Good fruit set aside from: ${r.farmsHurt.map((x) => rec.farms[x]).join(', ') || 'nobody'}.`),
-              h('h3', {}, "Hana says: 'Why does it throw away my good apples?' What is the reason?"),
-              h('div', { class: 'options notice-options' }, ...rec.diagnose.map((d, i) => h('button', { type: 'button', onclick: () => { take(c.dispatch({ type: 'PuzzleDiagnose', puzzle: rec.id, index: i })); if (c.state.flags[`${F}.diagnosed`] === true) sorterRun = null; } }, h('span', { class: 'notice-text' }, d.text)))));
+              h('h3', {}, 'Hana holds the reject chute open. Where will you look?'),
+              h('div', { class: 'options' }, ...rec.inspections.map((item, i) => h('button', { type: 'button', onclick: () => {
+                sorterRun = null;
+                take(c.dispatch({ type: 'PuzzleDiagnose', puzzle: rec.id, index: i }));
+                box.querySelector<HTMLButtonElement>('.fruit-btn:not(:disabled)')?.focus();
+              } }, item.label))));
           }
         } else {
           if (trained && !examples.length) examples = String(c.state.flags[`${F}.trained`]).split(',');
@@ -2027,9 +2281,7 @@ export class UI implements UIApi {
             h('div', { class: 'row' }, h('button', { class: 'primary', disabled: !examples.length, onclick: () => { const ev = c.dispatch({ type: 'PuzzleTrain', puzzle: rec.id, examples: [...examples] }); runIt(examples); take(ev); } }, 'Teach the sorter and run the basket'),
               h('button', { onclick: () => { examples = []; sorterRun = null; feedback = null; render(); } }, 'Empty the example tray')));
           if (trained) {
-            box.append(h('h3', {}, done ? 'What you learned' : 'The sorter is fair to all three farms now. What did you learn?'),
-              done ? h('p', { class: 'fair' }, rec.reflect.find((r) => r.honest)!.text)
-                : h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text)))));
+            box.append(fieldDelivery(rec));
           }
         }
         if (feedback) {
@@ -2051,9 +2303,7 @@ export class UI implements UIApi {
             h('button', { class: 'primary', onclick: () => take(c.dispatch({ type: 'PuzzleMap', puzzle: rec.id, audience: a.id, layers: [...sheet] })) }, `Give this map to ${a.name.split(',')[0]}`))));
         if (feedback) box.append(h('div', { class: `alcove-feedback ${feedback.ok ? 'ok' : 'sphinx'}`, role: 'status', 'aria-live': 'polite' }, feedback.text));
         if (rec.audiences.every((x) => served(x.id))) {
-          box.append(h('h3', {}, done ? 'Your answer' : 'Four maps of one town. Which one is the true map of Emberford?'),
-            done ? h('p', { class: 'fair' }, rec.reflect.find((r) => r.honest)!.text)
-              : h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text)))));
+          box.append(fieldDelivery(rec));
           if (feedback && !feedback.ok) { const fb = box.querySelector('.alcove-feedback'); if (fb) box.append(fb); }
         }
       } else if (rec.type === 'conjecture') {
@@ -2067,12 +2317,11 @@ export class UI implements UIApi {
         if (n < rec.angles.length && !(n + 1 === rec.predictAt && !predicted)) {
           box.append(h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => { take(c.dispatch({ type: 'PuzzleAddPoint', puzzle: rec.id })); chime(ctx.settings.sfxVolume * 0.6); caption('amb.chime'); } }, n ? 'Add a point and join it with lead' : 'Put the first point on the circle')));
         } else if (n + 1 === rec.predictAt && !predicted) {
-          box.append(h('h3', {}, `Before you add point ${rec.predictAt}: what do you expect?`), h('p', { class: 'fine' }, 'Any answer is fine. This is your guess, not a test.'),
+          box.append(h('h3', {}, `Before you add point ${rec.predictAt}: what do you expect?`), h('p', { class: 'fine' }, 'Imre will set your estimate beside the pane count when the next cut is made.'),
             h('div', { class: 'options notice-options' }, ...rec.predictions.map((pr, i) => h('button', { type: 'button', onclick: () => take(c.dispatch({ type: 'PuzzlePredict', puzzle: rec.id, index: i })) }, h('span', { class: 'notice-text' }, pr.text)))));
         }
-        if (n >= rec.predictAt && !done) {
-          box.append(h('h3', {}, `${panes(rec.predictAt)} panes, not ${2 ** (rec.predictAt - 1)}. What does this show?`),
-            h('div', { class: 'options notice-options' }, ...rec.reflect.map((r, i) => h('button', { type: 'button', onclick: () => { const ev = c.dispatch({ type: 'PuzzleReport', puzzle: rec.id, index: i }); take(ev); if (c.state.flags[`${F}.done`] === true) this.sfx('sfx.complete'); } }, h('span', { class: 'notice-text' }, r.text)))));
+        if (n >= rec.predictAt) {
+          box.append(h('p', {}, 'At the sixth point the count reaches ' + panes(rec.predictAt) + '. Imre sets down her glass cutter.'), fieldDelivery(rec));
         }
         if (done) {
           const f = chordFigure(rec.angles.slice(0, n));
@@ -2272,7 +2521,7 @@ export class UI implements UIApi {
     if (!rec) return;
     const F = `lor.${rec.id}`;
     let watched: string | null = null;
-    if (sightingId && c.state.flags[`${F}.friend`] !== true) {
+    if (sightingId && (rec.id === 'glimmermoth' || c.state.flags[`${F}.friend`] !== true)) {
       const ev = c.dispatch({ type: 'LorelingWatch', loreling: rec.id, sighting: sightingId });
       const r = ev.find((e) => e.kind === 'loreling') as Extract<GameEvent, { kind: 'loreling' }> | undefined;
       if (r) { watched = sightingId; this.sfx('sfx.page'); }
@@ -2298,6 +2547,15 @@ export class UI implements UIApi {
             const got = seen.some((y) => y.id === x.id);
             return h('li', { class: `${got ? '' : 'unseen'} ${feedback?.recheck === x.id ? 'recheck' : ''}` }, got ? [h('strong', {}, `${x.place}: `), x.text] : `Not watched yet: ${x.place}.`);
           })));
+        if (rec.id==='glimmermoth') {
+          if(seen.length<rec.minSightings){
+            box.append(h('p',{},'Kip props a shutter on the reading table. Look for a second sighting before setting out a perch.'));
+          } else if (sightingId && Object.hasOwn(mothPerches, sightingId) && st.mapId === 'nexus.archive') {
+            const place=sightingId as Perch;
+            box.append(mothPerchPanel(c,place,text=>{feedback={ok:true,text};this.sfx('sfx.sparkle');ctx.world?.lumenBurst();render();}));
+          } else box.append(h('p', {}, 'The folding perch is at the archive hall. Visit the lamp, reading desk or glass cabinet to set it out.'));
+          return;
+        }
         if (seen.length < rec.minSightings) {
           box.append(h('p', { class: 'fair' }, `Watch it in ${rec.minSightings - seen.length} more place${rec.minSightings - seen.length === 1 ? '' : 's'} before you write your pattern note. One sighting can mislead.`));
           return;
@@ -2326,6 +2584,15 @@ export class UI implements UIApi {
       }
       // A friend: name, form and field.
       if (feedback?.ok) box.append(h('div', { class: 'alcove-feedback ok', role: 'status' }, feedback.text));
+      const home = st.flags['moth.perch.home'];
+      if (rec.id === 'glimmermoth' && typeof home === 'string' && Object.hasOwn(mothReturns, home)) {
+        const place=mothReturns[home as Perch];
+        box.append(h('p', {class:'clue-view'}, 'On your next walk together, look for '+place.label+' at '+place.location+'.'));
+      }
+      if (rec.id === 'glimmermoth' && sightingId && Object.hasOwn(mothPerches, sightingId) && seen.length >= rec.minSightings) {
+        box.append(h('details', {}, h('summary', {}, 'Try another resting place'),
+          mothPerchPanel(c, sightingId as Perch, text => { feedback = {ok: true, text}; render(); })));
+      }
       const g = lorelingForm(rec, c.pack, st.objectivesDone);
       const form = rec.forms[g.form - 1], next = rec.forms[g.form];
       box.append(h('p', {}, h('strong', {}, `Form ${g.form}: ${form.name}. `), form.power),
@@ -2559,17 +2826,28 @@ export class UI implements UIApi {
     // Touch screens cannot show hover titles, so move explanations start visible there (phone pass).
     let explain = (() => { try { return window.matchMedia('(pointer: coarse)').matches; } catch { return false; } })();
     const opp = c.pack.characters.find((x) => x.id === rec.opponent);
-    const move = (m: ShowdownMove) => { c.dispatch({ type: 'ShowdownMove', move: m }); this.sfx('sfx.click'); render(); };
-    const pick = (label: string, opts: { v: string; t: string }[], go: (v: string) => void) => {
+    const cardTitles = new Map(c.pack.cards.map(card => [card.id, card.title]));
+    const move = (m: ShowdownMove) => {
+      const control = document.activeElement as HTMLElement | null;
+      const label = control?.getAttribute('aria-label') ?? control?.getAttribute('title');
+      c.dispatch({ type: 'ShowdownMove', move: m });
+      this.sfx('sfx.click');
+      render();
+      const next = label && Array.from(box.querySelectorAll<HTMLElement>('select,button')).find(el =>
+        el.getAttribute('aria-label') === label || el.getAttribute('title') === label);
+      const target = next || box.querySelector<HTMLElement>('[data-autofocus],select');
+      target?.focus();
+    };
+    const pick = (label: string, opts: { v: string; t: string }[], go: (v: string) => void, clearChoice?: () => void) => {
       const sel = h('select', { 'aria-label': label }, h('option', { value: '' }, `${label}…`), ...opts.map((o) => h('option', { value: o.v }, o.t))) as HTMLSelectElement;
-      sel.addEventListener('change', () => { if (sel.value) go(sel.value); });
+      sel.addEventListener('change', () => { if (sel.value) go(sel.value); else clearChoice?.(); });
       return sel;
     };
     const render = () => {
       const sd = c.state.showdown as ShowdownState;
       clear(box);
       const myClaim = rec.playerClaims.find((x) => x.id === sd.claim);
-      const cards = c.state.cards.map((cid) => ({ v: cid, t: c.pack.cards.find((x) => x.id === cid)?.title ?? cid }));
+      const cards = c.state.cards.map((cid) => ({ v: cid, t: cardTitles.get(cid) ?? cid }));
       box.append(this.closeBtn(), h('h2', {}, rec.title), h('p', { class: 'fine' }, `${rec.place}. No timer. ${sd.relaxed ? 'Zen mode: the crowd waits as long as you like. ' : ''}Each move says why it worked or not.`),
         h('div', { class: 'crowd', role: 'img', 'aria-label': `Crowd trust: you ${sd.trust.player}, ${opp?.name} ${sd.trust.opponent}` },
           h('span', {}, 'You'), h('span', { class: 'bar' }, h('i', { style: { width: `${sd.trust.player}%` } })), h('span', {}, String(sd.trust.player)),
@@ -2608,9 +2886,12 @@ export class UI implements UIApi {
         pick('Support with a card', cards.filter((x) => !sd.used.includes(x.v)), (v) => move({ move: 'support', card: v })),
         h('span', { class: 'move-pair' },
           pick('Challenge a link', rec.opponentClaim.links.filter((l) => !sd.cracked.includes(l.id)).map((l) => ({ v: l.id, t: l.text })), (v) => {
-            const s2 = h('div', { class: 'row' }, h('span', {}, 'With which card?'), pick('Card', cards, (cv) => move({ move: 'challenge', link: v, card: cv })));
-            box.querySelector('.move-pair')!.append(s2);
-          })),
+            const pair = box.querySelector('.move-pair')!;
+            pair.querySelector('.row')?.remove();
+            const card = pick('Card', cards, (cv) => move({ move: 'challenge', link: v, card: cv }));
+            pair.append(h('div', { class: 'row' }, h('span', {}, 'With which card?'), card));
+            card.focus();
+          }, () => box.querySelector('.move-pair .row')?.remove())),
         pick('Counterexample', cards, (v) => move({ move: 'counter', card: v })),
         wit.length ? pick('Call a witness', wit.map((w) => ({ v: w.id, t: w.name })), (v) => move({ move: 'witness', witness: v })) : '',
         mv('qualify', 'Qualify my claim', { move: 'qualify' }),
@@ -2671,16 +2952,18 @@ export class UI implements UIApi {
       : ['What are you thinking about right now?'];
     const prompt = prompts[Number(c.state.flags['count.rests'] ?? 0) % prompts.length];
     const ta = h('textarea', { rows: '3', 'aria-label': `Campfire log (optional): ${prompt}`, placeholder: 'Optional. Write in your own words. Nobody grades this.' }) as HTMLTextAreaElement;
+    const finishDraft = sceneEditor(ta,'campfire/'+prompt,'Campfire log · '+prompt);
     const r = c.recap();
     this.openModal('waystone-panel', 'Waystone', this.closeBtn(),
       h('h2', {}, 'Waystone'),
       h('p', {}, 'The Waystone hums softly. Your progress is saved here. Resting is never required, and nothing is lost if you keep going.'),
       h('ul', {}, ...r.lines.slice(1).map((l) => h('li', {}, l))),
-      h('p', { class: 'hint-text' }, h('strong', {}, 'Campfire log: '), prompt), conceptEditor(ta),
+      h('p', { class: 'hint-text' }, h('strong', {}, 'Campfire log: '), prompt), writingNotice(), conceptEditor(ta),
       h('div', { class: 'row' },
         h('button', { class: 'primary', 'data-autofocus': true, onclick: () => {
           if (ta.value.length) {
             if (c.dispatch({ type: 'AddNote', kind: 'reflection', text: `Campfire log: ${prompt}\n${ta.value}` }).some(({ kind }) => kind === 'error')) return;
+            finishDraft();
             if (lastId) c.dispatch({ type: 'SetFlag', flag: `log.${lastId}`, value: true });
             queueJournalWriting(c);
             flushJournalWriting(c);
@@ -2728,7 +3011,7 @@ export class UI implements UIApi {
     };
     const shared = (data.portfolio as unknown[]).length;
     this.openModal('share wide', 'Share with my teacher', this.closeBtn(), h('h2', {}, 'Share with my teacher'),
-      h('p', {}, 'This makes a file on this device. Nothing is sent anywhere. You choose whether to give it to your teacher.'),
+      h('p', {}, 'Downloading a progress file creates a copy on this device. You choose whether to give that file to your teacher.'),
       h('ul', {},
         h('li', {}, 'In the file: your Guardian name, the steps and awards you finished, your concept XP, your learner-profile moments, which concepts, ATL skills and subjects you met, and any pattern that Lumen noticed.'),
         h('li', {}, `Portfolio entries you chose to share: ${shared}. Change this in the Portfolio tab.`),
@@ -2739,16 +3022,30 @@ export class UI implements UIApi {
 
   // --------------------------------------------------- journal & bag
 
-  openJournal(tab = 'diary'): void {
+  openJournal(tab = 'diary', focus?: 'shelf' | 'tab'): void {
     if (!ctx.controller.state) return;
     this.sfx('sfx.book');
     if (tab === 'letters') this.deliverCommunityLetters(false);
     const c = ctx.controller, s = c.state;
-    const tabs: Record<string, string> = { diary: 'Diary', notes: 'My notes', 'open-quests': 'Open quests', story: 'Story so far', conversations: 'Conversations', entries: 'Entries', cards: 'Evidence cards', moments: 'Moments', portfolio: 'Portfolio', atlas: 'Atlas', skills: 'Skill Atlas', lorelings: 'Lorelings', bestiary: 'Fray Bestiary', stones: 'Question Stones', lore: 'Lore', letters: 'Letters', crossings: 'Crossings', ...(s.flags['ending.council'] ? { afterwards: 'Afterwards' } : {}), glossary: 'Glossary', awards: 'Awards and XP', sources: 'Sources' };
-    const body = h('div', { class: 'tab-body' });
-    const nav = h('div', { class: 'tabs', role: 'tablist' }, ...Object.entries(tabs).map(([k, l]) => h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => this.openJournal(k) }, l)));
+    const body = h('div', { class: 'tab-body', role: 'tabpanel', id: 'journal-page', 'aria-labelledby': 'journal-tab-' + tab, tabindex: 0 });
+    const nav = journalNavigation(tab, Boolean(s.flags['ending.council']), focus, (id, nextFocus) => this.openJournal(id, nextFocus));
     if (tab === 'diary' || tab === 'notes' || tab === 'open-quests') {
       body.append(adventureJournalTab(tab, c, (page) => this.openJournal(page)));
+    } else if (tab === 'views') {
+      // Decision X-012: named views of truth and of ethics, and the thinkers the student has heard.
+      const met = viewsMet(s.flags);
+      body.append(h('p', { class: 'fine' }, met.length
+        ? `${met.length} of ${TOK_VIEWS.length} views met. Ask a thinker from Lumen's hint panel to meet more.`
+        : 'No views yet. When you are stuck, open Lumen\'s hint and choose "Ask a thinker".'),
+      ...(['truth', 'ethics'] as const).map((family) => h('section', {}, h('h3', {}, family === 'truth' ? 'Views of truth' : 'Views of ethics'),
+        ...TOK_VIEWS.filter((v) => v.family === family).map((v) => {
+          const known = met.includes(v);
+          const heard = thinkersFor(v.id).filter((x) => s.flags[thinkerFlag(x.id)] === true);
+          return h('div', { class: `lore-entry ${known ? '' : 'locked'}` }, h('h4', {}, known ? v.name : `${v.name} (not met yet)`),
+            known ? h('p', {}, v.plain) : '',
+            ...heard.map((x) => h('p', { class: 'fine' }, h('strong', {}, `${x.name}, ${x.life}, ${x.place}. `), x.summary, ' ',
+              x.source.url ? h('a', { href: x.source.url, target: '_blank', rel: 'noopener' }, x.source.title) : h('cite', {}, x.source.title))));
+        }))));
     } else if (tab === 'crossings') {
       // Conflicts met in the world, and how the player met them.
       const met = CROSSINGS.filter((x) => crossingWay(s.flags, x.id));
@@ -2762,7 +3059,8 @@ export class UI implements UIApi {
         h('h3', {}, 'The same bench'), h('p', {}, mirror(s)), h('h3', {}, 'Last words'), ...lingering(s).map((t) => h('p', {}, t)),
         h('button', { type: 'button', onclick: () => this.openCredits() }, 'Credits from your journey'));
     } else if (tab === 'conversations') {
-      const heard = conversationHistory(c.pack.dialogue, s.flags);
+      body.append(callingBook(c, line => this.dialogueMemory(line,true)));
+      const heard = conversationHistory(c.engine.dialogueById, s.flags);
       if (!heard.length) body.append(h('p', {}, 'No conversations yet.'));
       else {
         let shown = 0;
@@ -2808,7 +3106,7 @@ export class UI implements UIApi {
     } else if (tab === 'entries') {
       body.append(h('ol', { class: 'journal' }, ...s.journal.map((id) => {
         const j = c.pack.journal.find((x) => x.id === id)!;
-        return h('li', {}, j.claimKind ? claimChip(j.claimKind) : null, ' ', j.text);
+        return h('li', {}, j.claimKind ? claimChip(j.claimKind) : null, ' ', journalText(j, s));
       })));
       if (!s.journal.length) body.append(h('p', {}, 'No entries yet.'));
     } else if (tab === 'cards') {
@@ -2918,7 +3216,7 @@ export class UI implements UIApi {
     } else if (tab === 'glossary') {
       body.append(h('p', { class: 'fine' }, 'Lumen remembers where a word came up on your journey. Open a word history to follow it further.'),
         h('dl', { class: 'glossary' }, ...c.pack.glossary.flatMap((g) => [
-          h('dt', {}, g.term), h('dd', {}, g.text, this.glossaryExamples(g), this.wordHistory(g)),
+          h('dt', {}, g.term), h('dd', {}, g.text, this.glossaryExamples(g), wordHistory(g)),
         ])));
     } else if (tab === 'atlas') {
       // Concepts, ATL ribbons and subjects met (spec 91, 92). Counts of meetings, not grades.
@@ -2965,7 +3263,7 @@ export class UI implements UIApi {
       const inUse = active?.id === tool.id;
       const action = inUse ? `Put away ${tool.name}` : `Use ${tool.name}`;
       const specimen = c.pack.exhibits.filter(hasSpecimen).find((record) => record.specimen.key === specimenFromTool(tool.id));
-      return h('li', {}, specimen ? specimenThumbnail(specimen) : h('img', { src: artURL(tool.equip.art ?? 'icon.book'), alt: '' }),
+      return h('li', {}, specimen ? specimenThumbnail(specimen,c.state.flags) : h('img', { src: artURL(tool.equip.art ?? 'icon.book'), alt: '' }),
         h('div', {}, h('strong', {}, tool.name), inUse ? h('span', { class: 'chip' }, 'In use') : '',
           h('p', {}, tool.equip.method), h('small', {}, tool.equip.hint), h('br', {}),
           h('button', { type: 'button', onclick: () => equip(inUse ? null : tool.id) }, action)));
@@ -3028,6 +3326,12 @@ export class UI implements UIApi {
     (window as any).kgToTitle?.();
   }
 
+  /** The training gym (decision X-002): practice outside the story. */
+  private openGym(): void {
+    this.openModal('gym-panel wide', 'Training gym', this.closeBtn(), h('h2', {}, 'Training gym'),
+      gymPanel(ctx.controller, (key) => this.sfx(key)));
+  }
+
   private openMenu(): void {
     const c = ctx.controller;
     this.openModal('menu-panel', 'Menu', this.closeBtn(), h('h2', {}, 'Menu'),
@@ -3045,6 +3349,7 @@ export class UI implements UIApi {
         h('button', { onclick: () => this.openTalents() }, 'Insight tree'),
         h('button', { onclick: () => this.openRoles() }, 'Knower role'),
         h('button', { onclick: () => this.openLedger() }, "The Guardian's Ledger (progress)"),
+        h('button', { onclick: () => this.openGym(), title: 'Practice outside the story: word cards, exhibition practice, practice titles' }, 'Training gym (practice)'),
         h('button', { onclick: () => this.openSettings() }, 'Settings'),
         h('button', { onclick: () => this.openLeaderboard() }, 'Leaderboard'),
         h('button', { onclick: () => this.openShare() }, 'Share with my teacher'),
@@ -3055,7 +3360,7 @@ export class UI implements UIApi {
 
   private openLeaderboard(): void {
     this.openModal('leaderboard-panel wide', 'Leaderboard', this.closeBtn(),
-      h('h2', {}, 'Leaderboard'), leaderboardPanel(this.leaderboardFiles, ctx.controller));
+      h('h2', {}, 'Leaderboard'), leaderboardPanel(this.leaderboardFiles, ctx.controller, classroom ? {role:'student',account:classroom.who.id,classId:classroom.who.classId,className:classroom.who.className,teacher:classroom.who.teacherId}:undefined));
   }
 
   // ---------------------------------------------------------- photo mode
@@ -3186,11 +3491,15 @@ export class UI implements UIApi {
     box.append(this.closeBtn(), h('h2', {}, "The Guardian's Ledger"),
       h('p', { class: 'fine' }, 'Your own record, kept on this device. It is not a grade, and nobody ranks it. Time counts only while you are really playing.'),
       h('div', { class: 'ledger-tiles' }, tile('Today', L.today), tile('Last 7 days', L.week), tile('This month', L.month), tile('All time', L.total)),
-      h('div', { class: 'ledger-streak' },
+      !ctx.settings.showStreak ? '' : h('div', { class: 'ledger-streak' },
         h('span', { class: 'flame-big', 'aria-hidden': 'true' }),
         h('span', {}, h('strong', {}, `${L.streak}-day streak`), ` · best ${L.bestStreak} · `,
           h('span', { title: 'Every 7 active days in a row earn a shield. A missed day uses a shield, so a rest day keeps your streak.' }, `${'🛡'.repeat(L.shields)}${'·'.repeat(MAX_SHIELDS - L.shields)} freeze shields`)),
         h('span', { class: 'fine' }, ' A day counts after 5 active minutes or any XP. Rest days are good for learning too.')),
+      ctx.settings.showWeekStreak ? h('p', { class: 'ledger-streak' }, h('strong', {}, L.weekStreak + '-week streak'),
+        'One active day counts a week. A new week starts on Monday.') : '',
+      ctx.settings.showMonthStreak ? h('p', { class: 'ledger-streak' }, h('strong', {}, L.monthStreak + '-month streak'),
+        'One active day counts a calendar month.') : '',
       h('h3', {}, 'Activity, last 12 weeks'), cal,
       h('div', { class: 'ledger-split' },
         h('div', {}, h('h3', {}, 'Concept web'), webEl),
@@ -3244,7 +3553,7 @@ export class UI implements UIApi {
           : "Corvan: 'Everything here is the finest in Aethelgard! Ask anyone!' Read the labels carefully. What could he really know?"),
         h('p', { class: 'fine', role: 'status' }, `You have ${s.marks} marks. You earn marks when a lamp is lit (5) and when you find a secret (3). Things here are for your quarters only.`),
         ...(note ? [h('p', { class: 'fine', role: 'alert' }, note)] : []),
-        h('div', { class: 'shop-grid' }, ...WARES.map((w) => {
+        h('div', { class: 'shop-grid' }, ...WARES.filter(w => wareAvailable(s,w)).map((w) => {
           const have = owns(s, w), price = priceFor(w, s, c.pack), cm = (c.pack.communities ?? []).find((x) => x.id === w.community);
           return h('div', { class: `ware ${have ? 'owned' : ''}` },
             h('strong', {}, (({ wall: 'Walls', floor: 'Floor', rug: 'Rug', lamp: 'Lamp', view: 'Window', plant: 'Plant' }) as Record<string, string>)[w.part], ': ', this.wareName(w)),
@@ -3318,6 +3627,71 @@ export class UI implements UIApi {
   /** The Insight tree: spend Insight (one point per lamp lit) on small play helps named after TOK skills. */
   /** Field games from the TOK lessons: one entry point, one panel per game. */
   openFieldGame(id: string): void {
+    const tour = touringInstrument(id);
+    if (tour) {
+      const view = originInstrument(ctx.controller, tour.o, tour.away, key => this.sfx(key), () => ctx.settings.sfxVolume);
+      this.openModal('bench-panel wide', originScores[tour.o].title, this.closeBtn(), view.panel);
+      this.releasePanelActivity = view.dispose;
+      return;
+    }
+    this.openingFieldGame = id;
+    try { this.mountFieldGame(id); } finally { this.openingFieldGame = undefined; }
+  }
+
+  private mountFieldGame(id: string): void {
+    if(id==='courier-lift'||id==='courier-market'||id==='courier-theatre'){
+      const landing=id==='courier-lift'?'lift':id==='courier-market'?'market':'theatre';
+      this.openModal('bench-panel wide','The counterweight letters',this.closeBtn(),h('h2',{},landing==='lift'?'The counterweight letters':landing==='market'?'Bew’s counter':'Pella’s theatre bell'),courierLiftPanel(ctx.controller,landing,key=>this.sfx(key)));return;
+    }
+    const fixed = fieldGamePanels.get(id);
+    if (fixed) {
+      this.openModal('bench-panel wide', fixed.title, this.closeBtn(),
+        fixed.open(ctx.controller, key => this.sfx(key), () => this.finishField(id), () => this.closeModal()));
+      return;
+    }
+    const station = fieldStationPanel(id);
+    if (station) {
+      this.openModal('bench-panel wide', station.title, this.closeBtn(),
+        station.open(ctx.controller, station.station, key => this.sfx(key), () => ctx.world?.refreshWorld()));
+      return;
+    }
+    if(id==='whistle-watch'){
+      const site=whistlePlaces.find(p=>p.map===ctx.controller.state.mapId);if(!site)return;
+      const view=whistlePanel(ctx.controller,site.id,()=>ctx.settings.sfxVolume,()=>ctx.world?.refreshWorld());
+      this.openModal('bench-panel wide',site.title,this.closeBtn(),view.root);this.releasePanelActivity=view.dispose;return;
+    }
+    if(id==='weir-lamp'){
+      this.openModal('bench-panel wide','The red line on the flood sheet',this.closeBtn(),weirLampPanel(ctx.controller,()=>this.sfx('sfx.page')));return;
+    }
+    if (id === 'mill-shift') {
+      const site=millSite(ctx.controller.state);
+      if(site)this.openModal('bench-panel wide','The old mill shift',this.closeBtn(),millPanel(ctx.controller,site,()=>this.sfx(site==='yard'?'sfx.metal':'sfx.page')));
+      return;
+    }
+    if (id === 'shift-coat') {
+      const site = nightSites.find(s => s.room === ctx.controller.state.mapId);
+      if (!site) return;
+      const coat = coatPanel(ctx.controller, site.site, () => ctx.settings.sfxVolume, () => ctx.world?.refreshWorld());
+      this.openModal('bench-panel wide', coat.title, this.closeBtn(), coat.panel);
+      this.releasePanelActivity = coat.dispose;
+      return;
+    }
+    if (id === 'night-perch' || id === 'night-desk') {
+      const c = ctx.controller;
+      const site = nightSites.find(site => site.room === c.state.mapId);
+      if (!site) return;
+      const panel = id === 'night-perch' ? nightPerch : nightDesk;
+      this.openModal('bench-panel wide', site.title, this.closeBtn(), panel(c, site, () => ctx.world?.refreshWorld()));
+      return;
+    }
+    if (id === MOON_INSTRUMENT) {
+      const instrument = spareMoonMusicPanel(ctx.controller, () => ctx.settings.sfxVolume, () => ctx.world?.refreshWorld());
+      if (instrument) {
+        this.openModal('bench-panel', instrument.title, this.closeBtn(), h('h2', {}, instrument.title), instrument.panel);
+        this.releasePanelActivity = instrument.dispose;
+      }
+      return;
+    }
     if (id === COAST_COPY_DESK || id === COAST_COPY_READER || id === COAST_COPY_POCKET) {
       this.openModal('bench-panel wide', 'The Other Half of the Copy', this.closeBtn(),
         h('h2', {}, 'The Other Half of the Copy'),
@@ -3376,9 +3750,6 @@ export class UI implements UIApi {
     } else if (id.startsWith(CURTAIN_PREFIX)) {
       this.openModal('bench-panel wide', 'The Call behind the Curtain', this.closeBtn(), curtainCallPanel(
         ctx.controller, id.slice(CURTAIN_PREFIX.length), () => ctx.world?.refreshWorld(), () => this.sfx('sfx.click')));
-    } else if (id.startsWith(EARLIER_VIEWING)) {
-      this.openModal('bench-panel wide', 'A second view', this.closeBtn(), earlierViewingPanel(ctx.controller,
-        id.slice(EARLIER_VIEWING.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(BEATER_GAME)) {
       this.openModal('bench-panel wide', 'Both Faces at the Same Stop', this.closeBtn(), beaterProofPanel(ctx.controller,
         id.slice(BEATER_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
@@ -3387,12 +3758,6 @@ export class UI implements UIApi {
       this.openModal('bench-panel wide', 'The Two Supports', this.closeBtn(), joinedClothPanel(ctx.controller,
         id.slice(JOINED_CLOTH_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
         localGuide(ctx.controller, MAPS[ctx.controller.state.mapId]?.world ?? '', JOINED_CLOTH_OBJECTIVE));
-    } else if (id.startsWith(STAR_GAME)) {
-      this.openModal('bench-panel wide', 'Field methods', this.closeBtn(), starField(ctx.controller,
-        id.slice(STAR_GAME.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith('script-rail:')) {
-      this.openModal('bench-panel wide', 'The Script Cabinet', this.closeBtn(), scriptRailPanel(ctx.controller,
-        id.slice('script-rail:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === 'copies-two-calls') {
       const c = ctx.controller;
       const firstOpenCall = () => c.engine.visibleObjectives(c.state).find(({ id, complete }) =>
@@ -3400,12 +3765,6 @@ export class UI implements UIApi {
       this.openModal('bench-panel wide', 'Two Calls After Tuesday', this.closeBtn(),
         twoCallsPanel(c, () => ctx.world?.refreshWorld(), () => this.sfx('sfx.page')),
         localGuide(c, MAPS[c.state.mapId]?.world ?? '', firstOpenCall));
-    } else if (id.startsWith('work-schedule:')) {
-      this.openModal('bench-panel wide', 'The Working Cupboards', this.closeBtn(), workSchedulePanel(ctx.controller,
-        id.slice('work-schedule:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith('material-stores:')) {
-      this.openModal('bench-panel wide', 'The Material Stores', this.closeBtn(), materialStorePanel(ctx.controller,
-        id.slice('material-stores:'.length), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(GLASS_RACK_PREFIX)) {
       this.openModal('bench-panel wide', 'The Missing Face', this.closeBtn(),
         glassRackPanel(ctx.controller, id.slice(GLASS_RACK_PREFIX.length), () => ctx.world?.refreshWorld()));
@@ -3417,9 +3776,6 @@ export class UI implements UIApi {
       this.openModal('bench-panel wide', 'The Bend That Stayed', this.closeBtn(),
         stripBendPanel(c, site, (key) => this.sfx(key), () => ctx.world?.refreshWorld()),
         localGuide(c, MAPS[c.state.mapId]?.world ?? '', nextBendStep));
-    } else if (id.startsWith(`${WARM_TOOL}:`)) {
-      this.openModal('bench-panel wide', 'The Warm Side', this.closeBtn(), warmRoomPanel(ctx.controller,
-        id.slice(WARM_TOOL.length + 1), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === `${PORTER_TOOL}:emberford` || id === `${PORTER_TOOL}:water`) {
       const site = id.endsWith(':water') ? 'water' : 'emberford';
       this.openModal('bench-panel wide', site === 'emberford' ? 'Idris’s carry board' : 'Sena’s half-route board',
@@ -3442,26 +3798,12 @@ export class UI implements UIApi {
     } else if (id === DETECTOR_GAME) {
       this.openModal('bench-panel wide', 'Neri’s light reader', this.closeBtn(),
         coastDetectorPanel(ctx.controller, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith(`${PACKING_TOOL}:`)) {
-      this.openModal('bench-panel wide', 'A Name on the Load', this.closeBtn(), ferryPackingPanel(ctx.controller,
-        id.slice(PACKING_TOOL.length + 1), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(`${TIME_TOOL}:`)) {
       this.openModal('bench-panel wide', 'The Time Room', this.closeBtn(), timeRoomPanel(ctx.controller,
         id.slice(TIME_TOOL.length + 1), () => ctx.settings.sfxVolume, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith(`${MODEL_RECORD_GROUP}:`)) {
-      this.openModal('bench-panel wide', 'What the Model Keeps', this.closeBtn(),
-        modelRecordPanel(ctx.controller, id.slice(MODEL_RECORD_GROUP.length + 1), (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith('callboard:')) {
       const place = id.slice('callboard:'.length);
       this.openModal('bench-panel wide', 'The Callboard Turn', this.closeBtn(), callboardPanel(ctx.controller, place, () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith('object-use:')) {
-      const place = id.slice('object-use:'.length);
-      this.openModal('bench-panel wide', 'The workroom fixture', this.closeBtn(),
-        objectUsePanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith('timbuktu:')) {
-      const place = id.slice('timbuktu:'.length);
-      this.openModal('bench-panel wide', 'The season horizon', this.closeBtn(),
-        timbuktuHorizonPanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === 'specimen-vault') {
       this.openModal('bench-panel wide', 'Your collection', this.closeBtn(), specimenVault(ctx.controller, () => {
         this.refreshHud(); ctx.world?.refreshWorld();
@@ -3476,10 +3818,6 @@ export class UI implements UIApi {
     } else if (id.startsWith('parcel-ledger:')) {
       this.openModal('bench-panel wide', 'Two People for One Parcel', this.closeBtn(),
         parcelLedgerPanel(ctx.controller, id.slice('parcel-ledger:'.length), () => this.sfx('sfx.page')));
-    } else if (id.startsWith(`${NUMBER_LEAF_GROUP}:`)) {
-      const place = id.slice(NUMBER_LEAF_GROUP.length + 1);
-      this.openModal('bench-panel wide', 'The Ledger Room', this.closeBtn(),
-        numberLeavesPanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(`${STORY_FRAME_GROUP}:`)) {
       const place = id.slice(STORY_FRAME_GROUP.length + 1);
       this.openModal('bench-panel wide', 'The Story Archive caption frame', this.closeBtn(),
@@ -3488,21 +3826,9 @@ export class UI implements UIApi {
       const place = id.slice(DATE_REGISTER_GROUP.length + 1);
       this.openModal('bench-panel wide', 'The Beside Date', this.closeBtn(),
         dateRegisterPanel(ctx.controller, place, () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith(`${LANTERN_WEAVE}:`)) {
-      const place = id.slice(LANTERN_WEAVE.length + 1);
-      this.openModal('bench-panel wide', 'The Half-Light Room', this.closeBtn(),
-        lanternWeavePanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id === 'shutter-board') {
       this.openModal('bench-panel wide', 'The Two Shutter Room', this.closeBtn(),
         shutterBoardPanel(ctx.controller, () => ctx.world?.refreshWorld(), () => this.sfx('sfx.page')));
-    } else if (id.startsWith(`${IMPRINT_GROUP}:`)) {
-      const place = id.slice(IMPRINT_GROUP.length + 1);
-      this.openModal('bench-panel wide', 'The Second Imprint', this.closeBtn(),
-        copyImprint(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
-    } else if (id.startsWith(`${REFERENCE_PROOF}:`)) {
-      const place = id.slice(REFERENCE_PROOF.length + 1);
-      this.openModal('bench-panel wide', 'The checked record', this.closeBtn(),
-        referenceProofPanel(ctx.controller, place, (key) => this.sfx(key), () => ctx.world?.refreshWorld()));
     } else if (id.startsWith(`${MAKER_TOOL}:`)) {
       const place = id.slice(MAKER_TOOL.length + 1);
       this.openModal('bench-panel wide', 'A Turn at the Workbench', this.closeBtn(),
@@ -3577,6 +3903,7 @@ export class UI implements UIApi {
       const title = id === 'relief-routing' ? 'The weir’s relief bench' : 'The library’s lane board';
       this.openModal('bench-panel wide', title, this.closeBtn(), routingBoard(id, ctx.controller, (key) => this.sfx(key)));
     }
+    else if (id === 'proving') this.openProving();
     else if (id === 'doors') this.openDoors();
     else if (id === 'guests') this.openGuestBook();
     else if (id === 'slate') this.openSlate();
@@ -3809,13 +4136,90 @@ export class UI implements UIApi {
     render();
   }
 
+  /** A timed replay in progress (decision X-003): the game id, its start time and the clock element. */
+  private timedRun: { id: string; start: number; clock: HTMLElement; tick: number } | null = null;
+
+  /** Start a field game again with a clock that counts up. Offered only after the first untimed play. */
+  private startTimedReplay(id: string): void {
+    if (!canTimedReplay(ctx.controller.state.flags, id)) return;
+    this.stopTimedReplay();
+    this.openFieldGame(id);
+    const clock = h('div', { class: 'timed-clock', role: 'timer', 'aria-label': 'Timed replay clock' }, '⏱ 0 s');
+    const start = Date.now();
+    const tick = window.setInterval(() => { clock.textContent = `⏱ ${clockText(elapsedSeconds(start, Date.now()))}`; }, 1000);
+    this.timedRun = { id, start, clock, tick };
+    this.modal?.append(clock);
+  }
+
+  private stopTimedReplay(): void {
+    if (this.timedRun) window.clearInterval(this.timedRun.tick);
+    this.timedRun?.clock.remove();
+    this.timedRun = null;
+  }
+
+  private openRecordNote(note:ExhibitNote):void {
+    const c=ctx.controller;
+    const choose=(view:RecordView)=>{
+      c.dispatch({type:'SetFlag',flag:recordViewFlag(note.exhibit),value:view});
+      ctx.world?.refreshWorld();
+      this.openExhibit(note.exhibit);
+    };
+    const putAway=()=>{
+      if(recordView(note.exhibit,c.state.flags)!=='closed')c.dispatch({type:'SetFlag',flag:recordViewFlag(note.exhibit),value:false});
+      this.closeModal();ctx.world?.refreshWorld();
+    };
+    this.openModal('content-note',note.heading,this.closeBtn(),
+      h('h2',{},note.heading),h('p',{},note.text),
+      h('p',{},h('a',{href:note.url,target:'_blank',rel:'noopener noreferrer'},note.source)),
+      h('div',{class:'row wrap'},h('button',{type:'button','data-autofocus':true,onclick:putAway},'Leave the record closed'),
+        h('button',{type:'button',onclick:()=>choose('text')},'Read the text'),
+        h('button',{type:'button',onclick:()=>choose('illustrated')},'Open the illustrated record')));
+  }
+
+  /** A content note before a room with hard real history (C-014, X-005). Shows once; stepping back costs nothing. */
+  showContentNote(mapId: string): void {
+    const c = ctx.controller;
+    const note = contentNoteFor(mapId, c.state.flags);
+    if (!note) return;
+    const back = MAPS[note.stepBack.map];
+    this.openModal('bench-panel content-note', note.heading, this.closeBtn(),
+      h('h2', {}, note.heading),
+      h('p', {}, note.text),
+      h('p', { class: 'fine' }, 'To read more: ', ...note.sources.flatMap((src, i) => [i ? '; ' : '',
+        h('a', { href: src.url, target: '_blank', rel: 'noopener noreferrer' }, src.title)]), '.'),
+      h('div', { class: 'row' },
+        h('button', { type: 'button', onclick: () => {
+          this.stepBackFromNote=undefined;
+          c.dispatch({ type: 'SetFlag', flag: noteSeenFlag(note.id), value: true });
+          this.closeModal();
+        } }, 'Go in'),
+        back ? h('button', { type: 'button','data-autofocus':true,onclick:()=>this.closeModal() }, 'Step back to '+note.stepBack.label) : ''));
+    if(back)this.stepBackFromNote=()=>{
+      if(c.state.mapId===mapId)ctx.world?.changeMap(back.id,back.spawn.x,back.spawn.y,{route:{id:'content-note',label:note.stepBack.label}});
+    };
+  }
+
   /** Close a field game: first time gives marks and the idea in the Lore codex. */
   private finishField(id: string): HTMLElement {
     const g = FIELD_GAMES.find((x) => x.id === id)!;
-    const ev = ctx.controller.dispatch({ type: 'FinishFieldGame', game: id });
+    const c = ctx.controller;
+    const ev = c.dispatch({ type: 'FinishFieldGame', game: id });
     const first = ev.some((e) => e.kind === 'fieldgame' && e.first);
     if (first) this.sfx('sfx.award');
-    return h('p', { class: 'clue-view fresh', role: 'status' }, h('strong', {}, 'The idea: '), g.idea, first ? ' (+3 marks; it is in your Lore codex.)' : '');
+    let timed: HTMLElement | string = '';
+    if (this.timedRun?.id === id) {
+      const r = timedResult(c.state.flags, id, elapsedSeconds(this.timedRun.start, Date.now()));
+      if (r.isBest) c.dispatch({ type: 'SetFlag', flag: bestFlag(id), value: r.best });
+      recordResearch('timed-replay', id, r.seconds);
+      this.stopTimedReplay();
+      timed = h('p', { class: 'fine', role: 'status' }, resultText(r));
+    }
+    const replay = canTimedReplay(c.state.flags, id)
+      ? h('button', { type: 'button', class: 'mini', onclick: () => this.startTimedReplay(id),
+        title: 'Play this game again with a clock. There is no time limit and no fail.' }, 'Timed replay')
+      : '';
+    return h('div', {}, h('p', { class: 'clue-view fresh', role: 'status' }, h('strong', {}, 'The idea: '), g.idea, first ? ' (+3 marks; it is in your Lore codex.)' : ''),
+      timed, replay);
   }
 
   private barPair(rows: { label: string; n: number; of: number }[]): HTMLElement {
@@ -3823,6 +4227,49 @@ export class UI implements UIApi {
       h('span', {}, r.label),
       h('span', { class: 'track', role: 'img', 'aria-label': `${r.label}: ${r.n} of ${r.of}` }, h('span', { class: 'fill', style: `width:${r.of ? Math.round((100 * r.n) / r.of) : 0}%` })),
       h('span', { class: 'fine' }, `${r.n} of ${r.of} (${r.of ? Math.round((100 * r.n) / r.of) : 0}%)`))));
+  }
+
+  /** The Proving Floor (decision X-007): a trial where a wrong step restarts the section. Rules in provingFloor.ts. */
+  openProving(): void {
+    const c = ctx.controller;
+    const runs = Number(c.state.flags['field.proving.runs'] ?? 0);
+    c.dispatch({ type: 'SetFlag', flag: 'field.proving.runs', value: runs + 1 });
+    const seed = 41 + runs * 7;
+    let trial = startTrial(seed);
+    let note = '';
+    const box = this.openModal('bench-panel wide', 'The Proving Floor');
+    this.sfx('sfx.page');
+    const mark = { circle: '●', square: '■', triangle: '▲' } as const;
+    const tileView = (tile: Tile, onStep?: () => void) => h(onStep ? 'button' : 'span', {
+      type: onStep ? 'button' : undefined, class: `proving-tile ${tile.colour}`, 'aria-label': tileWords(tile), onclick: onStep,
+    }, h('span', { 'aria-hidden': 'true' }, mark[tile.shape].repeat(tile.count)), h('small', {}, tile.colour));
+    const render = () => {
+      const section = SECTIONS[trial.section];
+      if (!section) {
+        box.replaceChildren(this.closeBtn(), h('h2', {}, 'The Proving Floor'),
+          h('p', {}, `Orrin lifts his lamp. 'Across. ${trial.cracks ? `${trial.cracks} cracked tiles on the way, and that is how the floor teaches.` : 'Not one crack.'} The old guild tested every apprentice here.'`),
+          this.finishField('proving'),
+          h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
+        return;
+      }
+      box.replaceChildren(this.closeBtn(), h('h2', {}, `The Proving Floor: ${section.title}`),
+        trial.section === 0 && trial.row === 0 && !trial.cracks
+          ? h('p', { class: 'fine' }, "Guildmaster Orrin: 'The old guild built this floor to test apprentices. Each span has a rule. The tiles by each door follow it. Step wrong, and the span resets. Nobody gets hurt, and nothing is lost but the walk.'") : '',
+        h('p', {}, section.intro),
+        h('div', { class: 'proving-examples', 'aria-label': 'Example tiles' }, ...section.examples.map((t) => tileView(t))),
+        note ? h('p', { class: 'clue-view', role: 'status' }, note) : '',
+        h('p', { class: 'fine' }, `Row ${trial.row + 1} of ${ROWS}. Section ${trial.section + 1} of ${SECTIONS.length}.`),
+        h('div', { class: 'proving-row', role: 'group', 'aria-label': `Row ${trial.row + 1}` },
+          ...trial.floor[trial.row].map((tile, i) => tileView(tile, () => {
+            const out = step(trial, i, seed);
+            trial = out.state;
+            if (out.result === 'cracked') recordResearch('trial-crack', `proving.${section.id}`, trial.cracks);
+            note = out.result === 'cracked' ? section.crack : out.result === 'crossed' ? section.crossed : out.result === 'finished' ? section.crossed : '';
+            this.sfx(out.result === 'cracked' ? 'sfx.page' : out.result === 'held' ? 'sfx.click' : 'sfx.sparkle');
+            render();
+          }))));
+    };
+    render();
   }
 
   /** Dov's Three Doors: play by feel, then let the counting frame run 300 rounds, then change one assumption. */
@@ -3910,8 +4357,9 @@ export class UI implements UIApi {
       const slider = h('input', { type: 'range', min: '2', max: '200', value: '60', 'aria-label': 'Your guess: passengers before two share a birthday' }) as HTMLInputElement;
       const out = h('strong', {}, '60');
       slider.oninput = () => { out.textContent = slider.value; };
-      box.replaceChildren(...head(), h('p', {}, 'Tova unties the ferry book. Two passengers have marked the same day. “I remember the crowd. I can never remember how far down the page it happened.”'),
-        h('p', {}, 'Set a marker where you expect the first shared birthday, or open the book with the marker in your pocket. The ferry model uses 365 equally likely days.'),
+      box.replaceChildren(...head(), h('p', {}, 'Tova unties the ferry book. “Two names, same birthday. How far did my finger travel before I found them?”'),
+        h('p', {}, 'Slide a marker onto a passenger number, or open the book and look.'),
+        h('details', {}, h('summary', {}, 'How the model fills a boat'), h('p', {}, 'Each passenger draws independently from 365 equally likely birthdays. Leap day and seasonal differences are left out.')),
         ...this.rumourReplies('ferry'),
         ...(c.state.flags['parcel.reply'] === 'desk' ? [h('p', { class: 'clue-view' }, 'Tova leaves the bench beside the gangplank free. “Omrin said a second account was worth a little waiting. Listen from here. You can hear the people who never signed.”')]
           : c.state.flags['parcel.reply'] === 'token' ? [h('p', { class: 'clue-view' }, 'Two plain counters sit beside the book. Tova taps them. “The ledger runners sent those. Anyone who wants a second turn can take one quietly.”')] : []),
@@ -3942,7 +4390,9 @@ export class UI implements UIApi {
       const chart = h('div', {}); chart.innerHTML = svg;
       box.replaceChildren(...head(), chart,
         h('p', { role: 'status' }, `On ${within23} of 20 boats, two passengers shared a birthday by passenger 23. The middle boat needed about ${[...counts].sort((a, b) => a - b)[10]} passengers.${guess === null ? '' : ' Your marker is at passenger ' + guess + '.'}`),
-        h('p', {}, `Tova laughs. 'It feels like you need hundreds. But you are not waiting for someone to match you. Any two can match. Twenty-three people make 253 pairs.' The chance for 23 people is ${Math.round(shareChance(23) * 1000) / 10}%; for 50 people it is ${Math.round(shareChance(50) * 1000) / 10}%.`),
+        h('p', {}, '“Any two names!” Tova draws a loop between them. “I kept looking for my own birthday.”'),
+        h('details', {}, h('summary', {}, 'Turn over Tova’s counting slip'),
+          h('p', {}, `Twenty-three people make 253 distinct pairs. In this model the chance that any two share a birthday is ${Math.round(shareChance(23) * 1000) / 10}% for 23 people and ${Math.round(shareChance(50) * 1000) / 10}% for 50.`)),
         this.finishField('guests'),
         h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
     };
@@ -4175,73 +4625,24 @@ export class UI implements UIApi {
     } else choose();
   }
 
-  /** A fallacy seal in the Undercroft: it speaks a bad argument; name the flaw to open it. */
-  openSeal(id: string): void {
-    const c = ctx.controller;
-    const x = SEALS.find((y) => y.id === id);
-    if (!x) return;
-    const fray = (c.pack.fray ?? []).find((f) => f.id === x.fray);
-    const box = this.openModal('bench-panel wide', x.name);
-    this.sfx('sfx.page');
-    const render = (note?: { ok: boolean; why: string }) => {
-      box.replaceChildren(this.closeBtn(), h('h2', {}, x.name),
-        h('p', {}, 'Runes of gold and violet fill the corridor from wall to wall. As you come near, they speak:'),
-        h('p', { class: 'clue-view' }, x.says),
-        ...(note ? [h('p', { class: `clue-view ${note.ok ? 'fresh' : ''}`, role: 'status' }, note.why)] : []),
-        note?.ok
-          ? h('div', {}, h('p', {}, `The runes fade, and the way is open.${fray ? ` You name it: ${fray.name} (${fray.error.toLowerCase()}). See the Fray Bestiary.` : ''}`),
-            h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Go on')))
-          : h('div', {}, h('p', {}, h('strong', {}, 'What is wrong with this argument?')),
-            h('div', { class: 'notice-options' }, ...x.options.map((o, i) => h('button', { type: 'button', onclick: () => {
-              const ev = c.dispatch({ type: 'DisarmSeal', seal: x.id, choice: i });
-              const r = ev.find((e) => e.kind === 'seal') as Extract<GameEvent, { kind: 'seal' }> | undefined;
-              if (!r) return;
-              this.sfx(r.ok ? 'sfx.sparkle' : 'sfx.page');
-              render({ ok: r.ok, why: r.ok ? r.why : `${r.why} The runes hold. Try again.` });
-            } }, o.text)))));
-    };
-    render();
+  private workInVault(station:VaultStation):void {
+    const box=this.openModal('bench-panel wide boss-panel',vaultWork[station].title);
+    const refresh=()=>ctx.world?.refreshWorld();
+    box.append(this.closeBtn(),vaultPanel(ctx.controller,station,()=>{this.closeModal();refresh();},finished=>{
+      this.sfx(finished?'sfx.sparkle':'sfx.page');
+      if(finished){ refresh(); if(bossDone(ctx.controller.state.flags))ctx.world?.lumenBurst(); }
+    }));
   }
 
-  /** The Hollow Archivist: a Fray 'boss' in three phases. Each phase is a new argument; a wrong answer is explained, never punished. */
-  openBoss(): void {
-    const c = ctx.controller;
-    if (!allSealsOpen(c.state.flags)) { this.showSign(BOSS.name, 'The seals still block the way.'); return; }
-    const box = this.openModal('bench-panel wide boss-panel', BOSS.name);
-    this.sfx('sfx.page');
-    const art = h('img', { src: artURL('hollow-archivist'), alt: '', class: 'boss-art' });
-    const render = (note?: { ok: boolean; why: string; done: boolean }) => {
-      const f = c.state.flags;
-      const ph = bossPhase(f), hollow = Number(f[`boss.${BOSS.id}.hollow`] ?? 0);
-      const pips = h('div', { class: 'boss-phases', role: 'img', 'aria-label': `Phase ${Math.min(ph + 1, BOSS.phases.length)} of ${BOSS.phases.length}` },
-        ...BOSS.phases.map((_, i) => h('span', { class: i < ph ? 'on' : '' })));
-      if (bossDone(f)) {
-        box.replaceChildren(this.closeBtn(), h('h2', {}, BOSS.name), pips,
-          ...(note ? [h('p', { class: 'clue-view fresh' }, note.why)] : []),
-          h('p', {}, BOSS.end),
-          h('p', { class: 'fine', role: 'status' }, `+10 marks. Six Fray met in the Undercroft are in the Bestiary.${hollow ? ` The Archivist grew ${hollow} time${hollow === 1 ? '' : 's'}; each time, you tried again.` : ' You never fed it once.'}`),
-          h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
-        return;
-      }
-      const p = BOSS.phases[ph];
-      art.style.transform = `scale(${1 + Math.min(hollow, 6) * 0.06 - ph * 0.1})`;
-      box.replaceChildren(this.closeBtn(), h('h2', {}, BOSS.name), pips,
-        h('div', { class: 'boss-stage' }, art, h('div', {},
-          ph === 0 && !note ? h('p', {}, BOSS.intro) : null,
-          h('p', { class: 'clue-view' }, p.says),
-          ...(note ? [h('p', { class: `clue-view ${note.ok ? 'fresh' : ''}`, role: 'status' }, note.why)] : []))),
-        h('p', {}, h('strong', {}, 'Your move')),
-        h('div', { class: 'notice-options' }, ...p.options.map((o, i) => h('button', { type: 'button', onclick: () => {
-          const ev = c.dispatch({ type: 'BossMove', choice: i });
-          const r = ev.find((e) => e.kind === 'boss') as Extract<GameEvent, { kind: 'boss' }> | undefined;
-          if (!r) return;
-          this.sfx(r.ok ? (r.done ? 'sfx.award' : 'sfx.sparkle') : 'sfx.page');
-          if (r.done) ctx.world?.lumenBurst();
-          render({ ok: r.ok, why: r.why, done: r.done });
-        } }, o.text))),
-        h('p', { class: 'fine' }, 'A wrong move feeds the Archivist, but it never ends the fight. Read why, and try again.'));
-    };
-    render();
+  openSeal(id:string):void {
+    if(id==='many'||id==='twogates'||id==='chosen') this.workInVault(id);
+  }
+
+  openBoss():void{
+    const c=ctx.controller;
+    if(!allSealsOpen(c.state.flags)){this.showSign(BOSS.name,'A voice is still ringing from behind a grate.');return;}
+    if(bossDone(c.state.flags)){this.showSign(BOSS.name,typeof c.state.flags['vault-work.promise.receipt']==='string'?c.state.flags['vault-work.promise.receipt']:BOSS.end);return;}
+    this.workInVault(vaultPhaseStation(c.state));
   }
 
   /** Knower roles: one way of knowing, with a strength and a blind spot. First choice anywhere; change at a Waystone. */
@@ -4301,25 +4702,21 @@ export class UI implements UIApi {
     render();
   }
 
-  /**
-   * The Maker's bench: make measuring tools from gathered ore, clay and reeds. Each tool asks one
-   * calibration question. Any answer makes the tool; a checked tool is marked 'calibrated'.
-   */
+  /** Assemble once, then fit the measuring instrument against two physical references. */
   openWorkbench(): void {
     const c = ctx.controller;
     const box = this.openModal('bench-panel wide', "The Maker's bench");
     this.sfx('sfx.page');
-    const ask = (r: (typeof RECIPES)[number], mode: 'Craft' | 'Calibrate') => {
-      box.replaceChildren(this.closeBtn(), h('h2', {}, `${mode === 'Craft' ? 'Make' : 'Calibrate'}: ${r.name}`),
-        h('p', {}, 'Before a tool is used, it is checked. ', h('strong', {}, r.check.q)),
-        h('div', { class: 'notice-options' }, ...r.check.options.map((o, i) => h('button', { type: 'button', onclick: () => {
-          const ev = c.dispatch({ type: mode, recipe: r.id, choice: i });
-          const res = ev.find((e) => e.kind === 'craft') as Extract<GameEvent, { kind: 'craft' }> | undefined;
-          if (!res) return;
-          this.sfx(res.ok ? 'sfx.sparkle' : 'sfx.page');
-          render(`${res.ok ? 'Calibrated. ' : `${mode === 'Craft' ? 'The tool is made, but not calibrated. ' : 'Not calibrated yet. '}`}${res.why}`);
-        } }, o.text))),
-        h('div', { class: 'row' }, h('button', { onclick: () => render() }, 'Back')));
+    const inspect = (r: (typeof RECIPES)[number]) => {
+      if (!c.state.inventory[r.item]) {
+        const error=c.dispatch({type:'Craft',recipe:r.id}).find(e=>e.kind==='error');
+        if (error) {render(error.message);return;}
+      }
+      box.replaceChildren(this.closeBtn(),h('h2',{},r.name),makerBench(c,r.id,()=>{
+        render();
+        box.querySelector<HTMLElement>('[data-maker-tool="' + r.id + '"]')?.focus();
+      },()=>this.sfx('sfx.page')));
+      box.querySelector<HTMLElement>('[data-maker]')?.focus();
     };
     const render = (note?: string) => {
       const s = c.state;
@@ -4333,8 +4730,7 @@ export class UI implements UIApi {
             h('strong', {}, r.name), h('p', {}, r.use),
             h('p', { class: 'fine' }, `Needs: ${(Object.entries(r.cost) as [Resource, number][]).map(([k, n]) => `${n} ${k === 'reed' && n === 1 ? 'reed' : RESOURCES[k].toLowerCase()}`).join(', ')}`),
             have ? h('p', { class: 'fine' }, cal ? 'Made and calibrated.' : 'Made, not calibrated.') : null,
-            have ? (cal ? h('span', {}) : h('button', { type: 'button', onclick: () => ask(r, 'Calibrate') }, 'Calibrate'))
-              : h('button', { type: 'button', disabled: !!why, onclick: () => ask(r, 'Craft') }, why ?? 'Make it'));
+            h('button', { type:'button','data-maker-tool':r.id,disabled: !have && !!why,onclick:()=>inspect(r) },have?'Use the test stand':why ?? 'Make it'));
         })),
         h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
     };
@@ -4429,24 +4825,11 @@ export class UI implements UIApi {
         h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
       return;
     }
-    const done = Number(c.state.flags['count.readings'] ?? 0);
-    box.replaceChildren(...head,
-      h('p', {}, h('strong', {}, `Your ${t.name.toLowerCase()}: `), r.result),
-      h('p', {}, h('strong', {}, r.q)),
-      h('div', { class: 'notice-options' }, ...r.options.map((o, i) => h('button', { type: 'button', onclick: () => {
-        const ev = c.dispatch({ type: 'TakeReading', reading: id, choice: i });
-        const res = ev.find((e) => e.kind === 'reading') as Extract<GameEvent, { kind: 'reading' }> | undefined;
-        if (!res) return;
-        this.sfx(res.ok ? 'sfx.sparkle' : 'sfx.page');
-        const n = Number(c.state.flags['count.readings'] ?? 0);
-        box.replaceChildren(...head,
-          h('p', { class: 'clue-view fresh' }, res.why),
-          ...(res.first ? [h('p', { class: 'fine', role: 'status' }, `Reading recorded (+4 marks). Field readings: ${n} of ${READINGS.length}.`)] : []),
-          h('div', { class: 'row' },
-            res.ok ? null : h('button', { type: 'button', onclick: () => this.openReading(id) }, 'Think again'),
-            h('button', { class: 'primary', 'data-autofocus': true, onclick: () => this.closeModal() }, 'Close')));
-      } }, o.text))),
-      h('p', { class: 'fine' }, `Field readings taken: ${done} of ${READINGS.length}. A reading is evidence; what it shows is your call, and you explain it.`));
+    const trial = makerTrialForReading(id)!;
+    box.replaceChildren(this.closeBtn(), h('h2',{},r.place),makerField(c,trial,()=>this.sfx('sfx.page')),
+      h('button',{type:'button',onclick:()=>this.closeModal()},'Close'));
+    box.querySelector<HTMLElement>('[data-maker]')?.focus();
+
   }
 
   openTiles(daily = false): void {
@@ -4458,7 +4841,7 @@ export class UI implements UIApi {
       replay: (mode) => this.openTiles(mode),
       refresh: () => ctx.world?.refreshWorld(),
     });
-    this.releaseStitching = stitching.dispose;
+    this.releasePanelActivity = stitching.dispose;
     box.append(stitching.panel);
   }
 
@@ -4476,6 +4859,26 @@ export class UI implements UIApi {
         : 'Sixteen small lamps on an old board by the guild hall door. A brass plate says: ONE LAMP FOR EACH KNOT THE TOWN UNTIES. Most lamps are dark. Guildmaster Orrin may know why.'),
       h('p', { class: 'lamp-count', role: 'status' }, `${n} of ${knots.length} lamps lit. `,
         n >= 6 ? 'The cellar door beside the guild hall is open.' : `${6 - n} more, and the cellar door beside the guild hall opens.`),
+      ...makerTrials.flatMap(t=>{
+        const chosen=makerRecipient(c.state,t);
+        if (chosen===undefined) return [];
+        const title=t.gifts[chosen],text=fieldReceipt(c.state,t)!;
+        const note=h('details',{},h('summary',{},title),h('p',{},text));
+        note.addEventListener('toggle',()=>{if(note.open)c.dispatch({type:'ReadWorldSign',id:'maker-reply.'+t.reading+'.'+chosen,title,text});});
+        return [note];
+      }),
+      ...c.pack.puzzles.flatMap((job) => {
+        if (!('handoffs' in job)) return [];
+        const chosen = c.state.flags['puzzle.' + job.id + '.handoff'];
+        const reply = typeof chosen === 'number' ? job.handoffs[chosen] : undefined;
+        if (!reply) return [];
+        const title = job.title + ' · ' + reply.label;
+        const note = h('details', {}, h('summary', {}, title), h('p', {}, reply.reply));
+        note.addEventListener('toggle', () => {
+          if (note.open) c.dispatch({type: 'ReadWorldSign', id: 'field-reply.' + job.id + '.' + chosen, title, text: reply.reply});
+        });
+        return [note];
+      }),
       h('ol', { class: 'lamp-grid' }, ...knots.map((k) => {
         const on = c.state.flags[`lamp.${k.id}`] === true;
         return h('li', { class: `lamp ${on ? 'on' : ''}` },
@@ -4510,8 +4913,8 @@ export class UI implements UIApi {
           if (ev.some((e) => e.kind === 'error')) return;
           this.sfx('sfx.sparkle'); render(v.keepsake);
           ctx.world?.refreshWorld();
-        } }, `Use ${low(k?.name ?? v.keepsake)}`));
-        else box.append(h('p', { class: 'fine clue-missing' }, `Something here would mean more with a keepsake you have not found yet${k ? ` (${k.where.replace(/\.$/, '')})` : ''}.`));
+        } }, v.label ?? `Use ${low(k?.name ?? v.keepsake)}`));
+        else if (!cl.earnedViewsOnly) box.append(h('p', { class: 'fine clue-missing' }, `Something here would mean more with a keepsake you have not found yet${k ? ` (${k.where.replace(/\.$/, '')})` : ''}.`));
       }
       box.append(h('div', { class: 'row' }, h('button', { class: 'primary', 'data-autofocus': !fresh, onclick: () => this.closeModal() }, 'Close')));
     };
@@ -4601,16 +5004,23 @@ export class UI implements UIApi {
     const canvas = h('canvas', { class: 'room-canvas', width: ROOM_W, height: ROOM_H, role: 'img' }) as HTMLCanvasElement;
     const g = canvas.getContext('2d')!;
     const crest = decodeCrest(c.state.flags['crest']);
-    const paint = (t: number) => drawRoom(g, room, { rings: ringData, crest, lumen: glowHex, selected, t });
+    const drawGuests = paintHousehold(c);
+    const paint = (t: number) => {
+      drawRoom(g, room, { rings: ringData, crest, lumen: glowHex, selected, t });
+      drawGuests(g, ctx.settings.reducedEffects ? 0 : t);
+    };
     const describe = () => {
       const items = room.shelf.filter(Boolean).map((id) => owned.find((k) => k.id === id)?.name.toLowerCase()).join(', ');
-      canvas.setAttribute('aria-label', `Your quarters: ${WALLS[room.wall].name} walls, ${FLOORS[room.floor].name.toLowerCase()}, a ${LAMPS[room.lamp].name.toLowerCase()}, a window onto ${VIEWS[room.view].name.toLowerCase()}${room.pet && PETS[room.pet] ? `, and ${/^[aeiou]/i.test(PETS[room.pet]!.name) ? 'an' : 'a'} ${PETS[room.pet]!.name.toLowerCase()} on the rug` : ''}. Star Chart: ${stars} stars. Shelves: ${items || 'empty'}.`);
+      const residents = household(c.state).map(({seat,f,here}) => f.name + (here ? ' at ' + chairNames[seat].toLowerCase() : ' is travelling with you')).join('. ');
+      canvas.setAttribute('aria-label', `Your quarters: ${WALLS[room.wall].name} walls, ${FLOORS[room.floor].name.toLowerCase()}, a ${LAMPS[room.lamp].name.toLowerCase()}, a window onto ${VIEWS[room.view].name.toLowerCase()}${room.pet && PETS[room.pet] ? `, and ${/^[aeiou]/i.test(PETS[room.pet]!.name) ? 'an' : 'a'} ${PETS[room.pet]!.name.toLowerCase()} on the rug` : ''}. Star Chart: ${stars} stars. Shelves: ${items || 'empty'}. ${residents}`.trim());
     };
     const save = () => { c.dispatch({ type: 'SetFlag', flag: 'room', value: encodeRoom(room) }); describe(); };
     const loop = (t: number) => { if (!canvas.isConnected) return; paint(t); if (!ctx.settings.reducedEffects) requestAnimationFrame(loop); };
     const pick = (label: string, k: 'wall' | 'floor' | 'rug' | 'lamp' | 'view' | 'plant' | 'pet', opts: Record<string, { name: string } | null>) => h('label', { class: 'room-pick' }, h('span', {}, label),
       h('select', { onchange: (e: Event) => { room = { ...room, [k]: (e.target as HTMLSelectElement).value }; this.sfx('sfx.click'); save(); paint(performance.now()); } },
-        ...Object.entries(opts).map(([v, o]) => { const lk = lockedOption(c.state, k, v); return h('option', { value: v, selected: (room[k] ?? 'none') === v, disabled: !!lk }, `${o?.name ?? 'None'}${lk ? " (at Corvan's stall)" : ''}`); })));
+        ...Object.entries(opts).flatMap(([v, o]) => { const lk = lockedOption(c.state, k, v);
+          if (lk && !wareAvailable(c.state,lk)) return [];
+          return h('option', { value: v, selected: (room[k] ?? 'none') === v, disabled: !!lk }, `${o?.name ?? 'None'}${lk ? " (at Corvan's stall)" : ''}`); })));
     const shelfRow = h('div', { class: 'row wrap shelf-slots', role: 'group', 'aria-label': 'Shelf slots' });
     const ksList = h('div', { class: 'keepsakes' });
     const infoBox = h('p', { class: 'fine keepsake-info', 'aria-live': 'polite' });
@@ -4642,6 +5052,7 @@ export class UI implements UIApi {
       h('div', { class: 'room-wrap' }, canvas),
       h('p', { class: 'fine' }, `Star Chart: ${stars} of ${rings.length * 5} stars lit.`),
       h('div', { class: 'room-picks' }, pick('Walls', 'wall', WALLS), pick('Floor', 'floor', FLOORS), pick('Rug', 'rug', RUGS), pick('Lamp', 'lamp', LAMPS), pick('Window view', 'view', VIEWS), pick('Plant', 'plant', PLANTS), pick('Companion', 'pet', PETS)),
+      h('details', {}, h('summary', {}, 'Places for returning companions'), housePanel(c, key => this.sfx(key), 'roost', () => { describe(); paint(0); })),
       h('h3', {}, 'Shelves'), shelfRow, infoBox, h('h3', {}, 'Keepsakes'), ksList);
     describe(); renderLists(); paint(0);
     if (!ctx.settings.reducedEffects) requestAnimationFrame(loop);
@@ -5589,19 +6000,18 @@ export class UI implements UIApi {
     const range = (k: 'musicVolume' | 'sfxVolume', label: string) => h('label', { class: 'range' }, `${label} `,
       h('input', { type: 'range', min: '0', max: '1', step: '0.1', value: String(st[k]), onchange: (e: Event) => set(k, Number((e.target as HTMLInputElement).value)) }));
     this.openModal('settings', 'Settings', this.closeBtn(), h('h2', {}, 'Settings'),
-      h('label', { class: 'range' }, 'Text size ', h('select', { onchange: (e: Event) => set('textScale', Number((e.target as HTMLSelectElement).value)) },
-        ...[1, 1.25, 1.5, 1.75].map((v) => h('option', { value: String(v), selected: st.textScale === v }, `${Math.round(v * 100)}%`)))),
+      ...readingControls(st, () => { saveSettings(st); ctx.world?.applySettings(); }),
       h('label', { class: 'range' }, 'Interface colours ', h('select', { onchange: (e: Event) => set('theme', (e.target as HTMLSelectElement).value as any) },
         ...THEMES.map((t) => h('option', { value: t.id, selected: st.theme === t.id }, t.label)))),
       h('label', { class: 'range' }, "Lumen's glow ", h('select', { onchange: (e: Event) => set('lumenColour', (e.target as HTMLSelectElement).value as any) },
         ...Object.keys(LUMEN_COLOURS).map((k) => h('option', { value: k, selected: st.lumenColour === k }, k)))),
-      check('reducedMotion', 'Reduce motion (no camera fades, sway or flicker)'),
-      check('reducedEffects', 'Reduce visual effects (lighting, glow, particles)'),
-      check('highContrast', 'High-contrast interface'),
-      check('dyslexiaSpacing', 'Wider letter and line spacing'),
       check('guidePrompts', 'Lumen may show short prompts without being asked'),
-      check('calmMode', 'Calm mode: surprise events warn first, and you can choose "Later"'),
-      check('zenMode', 'Zen mode: no turn limit in Showdowns (the crowd waits), surprise events always ask first, and nothing can be failed'),
+      check('lumenOffers', 'When you seem stuck, the lantern glows and Lumen offers help. The hint shows only when you click'),
+      check('showStreak', 'Show my daily streak in the Ledger'),
+      check('showWeekStreak', 'Show my weekly streak in the Ledger'),
+      check('showMonthStreak', 'Show my monthly streak in the Ledger'),
+      check('calmMode', 'Calm mode: field invitations wait in the game menu until you open them'),
+      check('zenMode', 'Zen mode: no turn limit in Showdowns (the crowd waits), field invitations wait for you, and nothing can be failed'),
       check('glossary', 'Smart glossary: underline key words in conversations, so you can tap them for an explanation'),
       check('talkSounds', 'Talk sounds: short voice sounds while characters speak'),
       check('captions', 'Sound captions: a short text line for each sound (for example [Forge hammer rings])'),
@@ -5629,6 +6039,9 @@ export class UI implements UIApi {
         h('li', {}, 'Sound effects: Kenney, "51 UI sound effects" (CC0); rubberduck, "80 CC0 RPG SFX" (CC0); wobbleboxx, "Level up, power up, Coin get" (CC0); HaelDB, "Completion sound" (CC0). All from OpenGameArt.org.'),
         h('li', {}, 'Font: Lexend (SIL Open Font License), via @fontsource/lexend.'),
         h('li', {}, 'Game engine: Phaser 3 (MIT licence).')),
+      h('section', {}, h('h3', {}, 'Ideas behind the games'),
+        h('p', { class: 'fine' }, 'Many games grew from TOK lessons. Each one is retold for this world, not copied.'),
+        h('ul', {}, ...IDEA_CREDITS.map((credit) => h('li', {}, h('strong', {}, credit.game), `: ${credit.idea}. ${credit.source}`)))),
       s?.flags['ending.council'] ? this.collectionBibliography(specimenReferences(c.pack), 'Works cited for the collection') : '');
   }
 

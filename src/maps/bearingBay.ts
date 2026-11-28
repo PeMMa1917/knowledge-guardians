@@ -51,7 +51,7 @@ export const BEARING_ROOM = sightRoom(HALL, 'Observatory Coast: Bearing Room', [
 export const BEARING_RETURN_ROOM = sightRoom(BEARING_RETURN_MAP, 'Observatory Coast: Return Shutters', ['council-purple', 'council-gallery-runner'], [
   { id: 'bearing-return-back', kind: 'door', x: 22, y: 29, w: 1, h: 1, art: 'bearing.sight', label: 'the door to the Bearing Room', to: { map: HALL, x: 22, y: 5 } },
   { id: 'bearing-return-notice', kind: 'sign', x: 23, y: 27, w: 1, h: 1, walkThrough: true, art: 'preserved.slip', label: 'the card below the return shutters',
-    text: 'Equip one working copy from the Bag. Its shutter shows a missing or changed sight. The keeper has space to keep a matched pair at the next bell or to guide a reader from the third post now.' },
+    text: 'Equip a Headland object in the Bag. Its shutter shows a missing or changed sight. The keeper has space to keep a matched pair at the next bell or to guide a reader from the third post now.' },
   ...BEARING_CASES.map((record, index): Interactable => ({
     id: record.returnProp, kind: 'fieldgame', game: `${BEARING_GROUP}:return:${record.slug}`, x: 4 + 6 * (index % 7), y: 5 + 4 * Math.floor(index / 7), w: 1, h: 1,
     art: 'bearing.sight', label: `the return shutter for ${record.name}`, walkThrough: true, visibleIf: specimenEquipped(record.key),

@@ -1,0 +1,697 @@
+{
+  "dialogue": [
+    {
+      "id": "hatch.kip.nick",
+      "speaker": "kip-arden",
+      "historicalLabel": "fictional-world",
+      "text": "The cricket steps onto Kip’s cuff. He holds the paper still while you lift a ring and a nick in the same impression. “That buys us the where. I wish my name could buy us the who.”"
+    },
+    {
+      "id": "hatch.kip.hour",
+      "speaker": "kip-arden",
+      "historicalLabel": "fictional-world",
+      "text": "Kip signs inside the fold. He leaves a gap between the hour he saw the seal and the hour when somebody pressed it. A late caller slips a thumb into the bare nick. The cricket chirps through their glove."
+    },
+    {
+      "id": "hatch.ise.rail",
+      "speaker": "warden-ise",
+      "historicalLabel": "fictional-world",
+      "text": "Ise hangs the fold low enough to touch. A woman on the late shift feels the ring and leaves her own glove turned inside out on the sill. Kip has to wait until morning to hear what she meant by it."
+    },
+    {
+      "id": "hatch.ise.desk",
+      "speaker": "warden-ise",
+      "historicalLabel": "fictional-world",
+      "text": "Ise puts a second stool beside the desk. Kip sits on it with his feet hanging. A caller gets as far as “Was it you?” and a hand goes up on the far side of the hatch. The person on the late shift must come back in daylight."
+    },
+    {
+      "id": "hatch.ise.round",
+      "speaker": "warden-ise",
+      "historicalLabel": "fictional-world",
+      "text": "Ise offers her own coat for the round. It has one short sleeve. “I know.” She pulls it on. Outside, a caller shows Kip how to feel the nick with his mitten still on. Nobody is minding the desk."
+    },
+    {
+      "id": "hatch.nile.offer",
+      "speaker": "warden-ise",
+      "historicalLabel": "fictional-world",
+      "text": "Ise sets the little sleeve beside the packet. “In Emberford you could put a knuckle on the same board and try again. These readers have their own sources. Take them the slip and see which part of your test travels.”"
+    },
+    {
+      "id": "hatch.reply.rail.thread",
+      "speaker": "kip-arden",
+      "historicalLabel": "fictional-world",
+      "text": "A child runs a mitten over the new ridge. The caller takes her glove home. Kip still hopes she will meet him one day."
+    },
+    {
+      "id": "hatch.reply.rail.watch",
+      "speaker": "kip-arden",
+      "historicalLabel": "fictional-world",
+      "text": "The owner comes on the late shift. She draws Kip’s thumb along the seam herself. The child who passed on the early shift saw an empty strip."
+    },
+    {
+      "id": "hatch.reply.rail",
+      "speaker": "kip-arden",
+      "historicalLabel": "fictional-world",
+      "text": "Kip turns the glove over. Its thumb has a sewn ridge. “She left the part you can feel. The inside says who mended it for her. I think we get to keep one of those things.”",
+      "options": [
+        {
+          "text": "Sew the ridge onto a public strip. Return the glove.",
+          "next": "hatch.reply.rail.thread",
+          "effects": [
+            {
+              "setFlag": "hatch.answer.rail",
+              "value": "thread"
+            },
+            {
+              "journal": "j.hatch.reply.rail.thread"
+            }
+          ]
+        },
+        {
+          "text": "Keep the glove at the hatch until its owner can show Kip.",
+          "next": "hatch.reply.rail.watch",
+          "effects": [
+            {
+              "setFlag": "hatch.answer.rail",
+              "value": "watch"
+            },
+            {
+              "journal": "j.hatch.reply.rail.watch"
+            }
+          ]
+        },
+        {
+          "text": "Leave it here for now."
+        }
+      ]
+    },
+    {
+      "id": "hatch.reply.desk.tab",
+      "speaker": "warden-ise",
+      "historicalLabel": "fictional-world",
+      "text": "The woman takes the tab to Kip. A second caller gets a turn on the stool. No one helped the first woman read his tiny writing."
+    },
+    {
+      "id": "hatch.reply.desk.seat",
+      "speaker": "warden-ise",
+      "historicalLabel": "fictional-world",
+      "text": "Kip reads the time and admits he put the cross on the wrong side of noon first. The woman lets him finish. Outside, a caller gives up waiting for the stool."
+    },
+    {
+      "id": "hatch.reply.desk",
+      "speaker": "warden-ise",
+      "historicalLabel": "fictional-world",
+      "text": "One leg of Kip’s stool is shorter than the rest. Ise has been steadying it with her foot all morning. A tired woman wants to know who wrote the hour inside the fold. “I could give her the way to check. Or I could go and get the writer. Somebody has to hold the stool.”",
+      "options": [
+        {
+          "text": "Leave a folded appointment tab on the stool.",
+          "next": "hatch.reply.desk.tab",
+          "effects": [
+            {
+              "setFlag": "hatch.answer.desk",
+              "value": "tab"
+            },
+            {
+              "journal": "j.hatch.reply.desk.tab"
+            }
+          ]
+        },
+        {
+          "text": "Keep her seat while Ise fetches Kip.",
+          "next": "hatch.reply.desk.seat",
+          "effects": [
+            {
+              "setFlag": "hatch.answer.desk",
+              "value": "seat"
+            },
+            {
+              "journal": "j.hatch.reply.desk.seat"
+            }
+          ]
+        },
+        {
+          "text": "Leave it here for now."
+        }
+      ]
+    },
+    {
+      "id": "hatch.reply.round.walk",
+      "speaker": "smith-hesper",
+      "historicalLabel": "fictional-world",
+      "text": "The round reaches a young porter before she goes on duty. Hesper chalks the first caller’s step for tomorrow. Nobody has tested it yet."
+    },
+    {
+      "id": "hatch.reply.round.hold",
+      "speaker": "smith-hesper",
+      "historicalLabel": "fictional-world",
+      "text": "A second pair of hands feels the knock on the same rail. The young porter misses the round but finds a bent thumb on the chalk mark next morning."
+    },
+    {
+      "id": "hatch.reply.round",
+      "speaker": "smith-hesper",
+      "historicalLabel": "fictional-world",
+      "text": "Hesper has pinned Ise’s short sleeve to her own cuff. “She cut a strip off to splint my hand. Ten years and I never knew where she got it.” A caller wants the route to keep moving. Another can demonstrate the knock only from this step.",
+      "options": [
+        {
+          "text": "Keep walking and ask for the position of the next step.",
+          "next": "hatch.reply.round.walk",
+          "effects": [
+            {
+              "setFlag": "hatch.answer.round",
+              "value": "walk"
+            },
+            {
+              "journal": "j.hatch.reply.round.walk"
+            }
+          ]
+        },
+        {
+          "text": "Wait on this step for a second pair of hands.",
+          "next": "hatch.reply.round.hold",
+          "effects": [
+            {
+              "setFlag": "hatch.answer.round",
+              "value": "hold"
+            },
+            {
+              "journal": "j.hatch.reply.round.hold"
+            }
+          ]
+        },
+        {
+          "text": "Leave it here for now."
+        }
+      ]
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.hatch.nick",
+      "text": "I pressed the wrapper against the nick on Corvan’s discarded sign. The seal touched the board there. Who put it there is still an open question.",
+      "claimKind": "observation"
+    },
+    {
+      "id": "j.hatch.hour",
+      "text": "I kept the hour and Kip’s name with the loose seal. Kip could vouch for finding it after the market. We left the notch where an evening caller could still feel it.",
+      "claimKind": "observation"
+    },
+    {
+      "id": "j.hatch.rail",
+      "text": "I left the finding on the public rail with Kip’s name covered. A late caller could use it alone. We could not ask her what she meant until she came back.",
+      "claimKind": "observation"
+    },
+    {
+      "id": "j.hatch.desk",
+      "text": "I put the fold where a witness could answer for it. An evening caller came to the same hatch after the stool was empty.",
+      "claimKind": "observation"
+    },
+    {
+      "id": "j.hatch.round",
+      "text": "I took the finding out at the change of shift. One caller showed Kip what she could feel through a mitten. Someone else arrived at an empty desk.",
+      "claimKind": "observation"
+    },
+    {
+      "id": "j.hatch.reply.rail.thread",
+      "claimKind": "observation",
+      "text": "I went back to the inside-out glove at the public hatch. A child runs a mitten over the new ridge. The caller takes her glove home. Kip still hopes she will meet him one day."
+    },
+    {
+      "id": "j.hatch.reply.rail.watch",
+      "claimKind": "observation",
+      "text": "I went back to the inside-out glove at the public hatch. The owner comes on the late shift. She draws Kip’s thumb along the seam herself. The child who passed on the early shift saw an empty strip."
+    },
+    {
+      "id": "j.hatch.reply.desk.tab",
+      "claimKind": "observation",
+      "text": "I went back to the low stool at the witness desk. The woman takes the tab to Kip. A second caller gets a turn on the stool. No one helped the first woman read his tiny writing."
+    },
+    {
+      "id": "j.hatch.reply.desk.seat",
+      "claimKind": "observation",
+      "text": "I went back to the low stool at the witness desk. Kip reads the time and admits he put the cross on the wrong side of noon first. The woman lets him finish. Outside, a caller gives up waiting for the stool."
+    },
+    {
+      "id": "j.hatch.reply.round.walk",
+      "claimKind": "observation",
+      "text": "I went back to the short sleeve at the change of shift. The round reaches a young porter before she goes on duty. Hesper chalks the first caller’s step for tomorrow. Nobody has tested it yet."
+    },
+    {
+      "id": "j.hatch.reply.round.hold",
+      "claimKind": "observation",
+      "text": "I went back to the short sleeve at the change of shift. A second pair of hands feels the knock on the same rail. The young porter misses the round but finds a bent thumb on the chalk mark next morning."
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-HATCH-SLEEVE",
+      "world": "WORLD-02",
+      "title": "The cricket in the sleeve",
+      "knowledgeQuestion": "What can I say about a person who never answered a knock?",
+      "stake": "The guild has left a line for the name of someone who deserted a post. Both witnesses were there.",
+      "available": {
+        "flag": "study.letter",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "hatch.read",
+          "title": "Open the two folded edges of Elsbet’s letter sleeve.",
+          "done": {
+            "all": [
+              {
+                "flag": "hatch.read.elsbet",
+                "eq": true
+              },
+              {
+                "flag": "hatch.read.orrin",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "flag": "study.letter",
+            "eq": true
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "perspective",
+              "interpretation",
+              "power"
+            ],
+            "framework": [
+              "scope",
+              "perspectives",
+              "ethics"
+            ],
+            "aoks": [
+              "HIS",
+              "LAN"
+            ],
+            "subjects": [
+              "history",
+              "lang-langlit"
+            ],
+            "atl": [
+              "thinking",
+              "communication"
+            ],
+            "thinking": {
+              "dok": 2,
+              "bloom": "analyse",
+              "fink": "human",
+              "solo": "relational"
+            }
+          }
+        },
+        {
+          "id": "hatch.control",
+          "title": "Try the loose brass and the fitted brass from one listening place. Check the wood at the peg.",
+          "done": {
+            "all": [
+              {
+                "any": [
+                  {
+                    "all": [
+                      {
+                        "flag": "hatch.trial.brass.peg.out",
+                        "eq": true
+                      },
+                      {
+                        "flag": "hatch.trial.brass.peg.in",
+                        "eq": true
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "hatch.trial.brass.table.out",
+                        "eq": true
+                      },
+                      {
+                        "flag": "hatch.trial.brass.table.in",
+                        "eq": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "any": [
+                  {
+                    "flag": "hatch.trial.board.peg.out",
+                    "eq": true
+                  },
+                  {
+                    "flag": "hatch.trial.board.peg.in",
+                    "eq": true
+                  }
+                ]
+              }
+            ]
+          },
+          "visible": {
+            "flag": "study.letter",
+            "eq": true
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "certainty",
+              "explanation",
+              "objectivity"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools"
+            ],
+            "aoks": [
+              "NAT",
+              "TEC"
+            ],
+            "subjects": [
+              "physics",
+              "design-tech"
+            ],
+            "atl": [
+              "thinking",
+              "communication"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "analyse",
+              "fink": "application",
+              "solo": "relational"
+            }
+          }
+        },
+        {
+          "id": "hatch.issue",
+          "title": "Choose what will travel in the little sleeve.",
+          "done": {
+            "flagSet": "hatch.edition"
+          },
+          "visible": {
+            "flag": "study.letter",
+            "eq": true
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "responsibility",
+              "perspective",
+              "justification",
+              "interpretation",
+              "values"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "LAN",
+              "POL"
+            ],
+            "subjects": [
+              "history",
+              "physics",
+              "lang-langlit",
+              "global-politics"
+            ],
+            "atl": [
+              "thinking",
+              "communication"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "caring",
+              "solo": "relational"
+            }
+          }
+        },
+        {
+          "id": "hatch.absence",
+          "title": "Find out what a silent catch can tell Orrin from his seat.",
+          "done": {
+            "flag": "hatch.opened",
+            "eq": true
+          },
+          "visible": {
+            "flag": "study.letter",
+            "eq": true
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "evidence",
+              "certainty",
+              "justification",
+              "explanation"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools",
+              "perspectives"
+            ],
+            "aoks": [
+              "NAT",
+              "HIS",
+              "TEC"
+            ],
+            "subjects": [
+              "physics",
+              "history"
+            ],
+            "atl": [
+              "thinking",
+              "research"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "integration",
+              "solo": "relational"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH2-HATCH-READER",
+      "world": "WORLD-01",
+      "title": "A caller between rounds",
+      "knowledgeQuestion": "What can a new reader carry from our trial into an account we cannot repeat?",
+      "stake": "A caller who cannot stop for the whole experiment needs the sleeve too.",
+      "available": {
+        "all": [
+          {
+            "flag": "nile.returned",
+            "eq": true
+          },
+          {
+            "flagSet": "hatch.edition"
+          }
+        ]
+      },
+      "objectives": [
+        {
+          "id": "hatch.return",
+          "title": "Stay at the Nexus hatch for both people who come to read.",
+          "done": {
+            "any": [
+              {
+                "flag": "hatch.visitor.words",
+                "eq": true
+              },
+              {
+                "flag": "hatch.visitor.method",
+                "eq": true
+              },
+              {
+                "flag": "hatch.visitor.round",
+                "eq": true
+              }
+            ]
+          },
+          "visible": {
+            "all": [
+              {
+                "flag": "nile.returned",
+                "eq": true
+              },
+              {
+                "flagSet": "hatch.edition"
+              }
+            ]
+          },
+          "essential": false,
+          "weave": {
+            "concepts": [
+              "responsibility",
+              "perspective",
+              "justification",
+              "interpretation",
+              "values"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "perspectives",
+              "ethics"
+            ],
+            "aoks": [
+              "HIS",
+              "NAT",
+              "LAN",
+              "POL"
+            ],
+            "subjects": [
+              "history",
+              "physics",
+              "lang-langlit",
+              "global-politics"
+            ],
+            "atl": [
+              "thinking",
+              "communication"
+            ],
+            "thinking": {
+              "dok": 3,
+              "bloom": "evaluate",
+              "fink": "integration",
+              "solo": "extended"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.hatch.read.1",
+      "objective": "hatch.read",
+      "depth": 1,
+      "text": "The little cricket waits in Elsbet’s study."
+    },
+    {
+      "id": "h.hatch.read.2",
+      "objective": "hatch.read",
+      "depth": 2,
+      "text": "Find her letter and look for a wooden hatch on the rug."
+    },
+    {
+      "id": "h.hatch.read.3",
+      "objective": "hatch.read",
+      "depth": 3,
+      "text": "Each sleeve has a blue or pencilled edge."
+    },
+    {
+      "id": "h.hatch.read.4",
+      "objective": "hatch.read",
+      "depth": 4,
+      "text": "Lift both edges. Read where each writer stood."
+    },
+    {
+      "id": "h.hatch.control.1",
+      "objective": "hatch.control",
+      "depth": 1,
+      "text": "Orrin will listen if you put a hand to the hatch."
+    },
+    {
+      "id": "h.hatch.control.2",
+      "objective": "hatch.control",
+      "depth": 2,
+      "text": "A small tooth joins the brass plate to the wire. The board reaches a different listener."
+    },
+    {
+      "id": "h.hatch.control.3",
+      "objective": "hatch.control",
+      "depth": 3,
+      "text": "Leave Orrin in one place. Strike the brass with the tooth out and with it fitted."
+    },
+    {
+      "id": "h.hatch.control.4",
+      "objective": "hatch.control",
+      "depth": 4,
+      "text": "Choose the wooden board and the near peg. Knock again and watch the cricket’s feet."
+    },
+    {
+      "id": "h.hatch.issue.1",
+      "objective": "hatch.issue",
+      "depth": 1,
+      "text": "The empty sleeve can carry something to the next chapter."
+    },
+    {
+      "id": "h.hatch.issue.2",
+      "objective": "hatch.issue",
+      "depth": 2,
+      "text": "Open both writers’ folded words before you pack anything."
+    },
+    {
+      "id": "h.hatch.issue.3",
+      "objective": "hatch.issue",
+      "depth": 3,
+      "text": "Knock at the peg on the wood. Try the brass twice with only its tooth changed."
+    },
+    {
+      "id": "h.hatch.issue.4",
+      "objective": "hatch.issue",
+      "depth": 4,
+      "text": "Issue the two full lines, the test catch or a walking round. Each leaves a different caller waiting."
+    },
+    {
+      "id": "h.hatch.return.1",
+      "objective": "hatch.return",
+      "depth": 1,
+      "text": "Install the first Nile packet with Ise."
+    },
+    {
+      "id": "h.hatch.return.2",
+      "objective": "hatch.return",
+      "depth": 2,
+      "text": "Next to the returning records is a sleeve from Emberford."
+    },
+    {
+      "id": "h.hatch.return.3",
+      "objective": "hatch.return",
+      "depth": 3,
+      "text": "Unroll your issued edition with its first reader."
+    },
+    {
+      "id": "h.hatch.return.4",
+      "objective": "hatch.return",
+      "depth": 4,
+      "text": "Stay for the next caller and hear what the first arrangement cost them."
+    },
+    {
+      "id": "h.hatch.absence.1",
+      "objective": "hatch.absence",
+      "depth": 1,
+      "text": "Orrin tied two pockets over different catches."
+    },
+    {
+      "id": "h.hatch.absence.2",
+      "objective": "hatch.absence",
+      "depth": 2,
+      "text": "Use the brass at the kitchen table with the tooth fitted and with it out."
+    },
+    {
+      "id": "h.hatch.absence.3",
+      "objective": "hatch.absence",
+      "depth": 3,
+      "text": "Tap both covered catches. Listen or read what happened at the spoon."
+    },
+    {
+      "id": "h.hatch.absence.4",
+      "objective": "hatch.absence",
+      "depth": 4,
+      "text": "Lift both cloths. Compare what the quiet spoon tells you here with the old silence outside the hatch."
+    }
+  ]
+}

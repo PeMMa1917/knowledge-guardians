@@ -30,7 +30,23 @@ export const isActive = (d: DayActivity | undefined): boolean => !!d && (d.secs 
 
 export interface LedgerSums {
   today: DayActivity; week: DayActivity; month: DayActivity; total: DayActivity;
+  weekStreak: number; monthStreak: number;
   activeDays: number; streak: number; bestStreak: number; shields: number;
+}
+
+// The current period can still be played. Monday starts the local calendar
+// week. UTC ordinals represent local date labels, independent of DST.
+function periodIndexes(localDate: string) {
+  const [year, month, day] = localDate.split('-').map(Number);
+  const ordinal = Math.floor(Date.UTC(year, month - 1, day) / 86400000);
+  return { week: Math.floor((ordinal + 3) / 7), month: year * 12 + month - 1 };
+}
+
+function currentRun(periods: Set<number>, current: number): number {
+  let n = periods.has(current) ? current : current - 1;
+  let count = 0;
+  while (periods.has(n--)) count++;
+  return count;
 }
 
 export function ledgerSums(a: Activity | undefined, now: Date): LedgerSums {
@@ -39,14 +55,25 @@ export function ledgerSums(a: Activity | undefined, now: Date): LedgerSums {
   const add = (t: DayActivity, d: DayActivity) => { t.xp += d.xp; t.secs += d.secs; };
   const today = dayOf(now), monthKey = today.slice(0, 7);
   const weekKeys = new Set(Array.from({ length: 7 }, (_, i) => dayOf(addDays(now, -i))));
-  const s: LedgerSums = { today: z(), week: z(), month: z(), total: z(), activeDays: 0, streak: 0, bestStreak: 0, shields: 0 };
+  const s: LedgerSums = { today: z(), week: z(), month: z(), total: z(), weekStreak: 0, monthStreak: 0, activeDays: 0, streak: 0, bestStreak: 0, shields: 0 };
+  const weeks = new Set<number>(), months = new Set<number>();
   for (const [k, d] of Object.entries(act)) {
     add(s.total, d);
     if (k === today) add(s.today, d);
     if (weekKeys.has(k)) add(s.week, d);
     if (k.startsWith(monthKey)) add(s.month, d);
-    if (isActive(d)) s.activeDays++;
+    if (isActive(d)) {
+      s.activeDays++;
+      if (k <= today) {
+        const period = periodIndexes(k);
+        weeks.add(period.week);
+        months.add(period.month);
+      }
+    }
   }
+  const current = periodIndexes(today);
+  s.weekStreak = currentRun(weeks, current.week);
+  s.monthStreak = currentRun(months, current.month);
   // Walk each day from the first active day to today.
   const keys = Object.keys(act).filter((k) => isActive(act[k])).sort();
   if (keys.length) {

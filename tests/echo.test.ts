@@ -21,7 +21,7 @@ describe('The Echo Bridge (systematic error)', () => {
     expect(first).toBeGreaterThan(110);
     expect(Math.abs(fixed - 85)).toBeLessThan(5);
   });
-  it('keeps sensible times only, and the reflection opens after three of each', () => {
+  it('keeps sensible times only, and the delivery opens after three of each', () => {
     const d = new Driver();
     d.run({ type: 'PuzzleTime', puzzle: P, kind: 'echo', ms: 20 });
     expect(d.s.flags[`puzzle.${P}.echo`]).toBeUndefined();
@@ -29,8 +29,30 @@ describe('The Echo Bridge (systematic error)', () => {
     expect(() => d.run({ type: 'PuzzleReport', puzzle: P, index: 2 })).toThrow(/reaction/);
     for (const ms of [210, 200, 220]) d.run({ type: 'PuzzleTime', puzzle: P, kind: 'react', ms });
     if (rec.type !== 'echo') throw new Error('not echo');
-    d.run({ type: 'PuzzleReport', puzzle: P, index: rec.reflect.findIndex((r) => r.honest) });
+    d.run({ type: 'PuzzleReport', puzzle: P, index: 0 });
     expect(d.s.flags[`puzzle.${P}.done`]).toBe(true);
     expect(conceptXP(d.p, pack).certainty).toBeGreaterThan(0);
+  });
+});
+
+describe('the echo stone’s two timing records', () => {
+  it('keeps personal trials separate from Idris’s slip and lets every recipient inherit a completed run', () => {
+    const d = new Driver();
+    if (rec.type !== 'echo') throw new Error('not echo');
+    d.run({type: 'PuzzleTime', puzzle: P, kind: 'echo', ms: 580});
+    d.run({type: 'SelectEchoRecord', puzzle: P, source: 'slip'});
+    for (const [index, delivery] of rec.handoffs.entries()) {
+      d.run({type: 'PuzzleReport', puzzle: P, index});
+      expect(d.s.flags['puzzle.' + P + '.handoff']).toBe(index);
+      expect(d.s.adventureDiary.entries.map(e => e.text).join(' ')).toContain(delivery.result);
+    }
+    const xp = conceptXP(d.p, pack).certainty;
+    d.run({type: 'SelectEchoRecord', puzzle: P, source: 'personal'});
+    expect(d.s.flags['puzzle.' + P + '.echo']).toBe('580');
+    expect(() => d.run({type: 'PuzzleReport', puzzle: P, index: 0})).toThrow(/reaction/);
+    d.run({type: 'SelectEchoRecord', puzzle: P, source: 'slip'});
+    d.run({type: 'PuzzleReport', puzzle: P, index: 0});
+    expect(conceptXP(d.p, pack).certainty).toBe(xp);
+    expect(() => d.run({type: 'PuzzleReport', puzzle: P, index: 99})).toThrow(/delivery/);
   });
 });

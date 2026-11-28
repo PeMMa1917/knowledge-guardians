@@ -586,6 +586,7 @@
   },
   {
    "id": "echo.nile-iman.0",
+   "supersedes": "echo.nile-iman.1",
    "character": "nile-iman",
    "if": {
     "all": [

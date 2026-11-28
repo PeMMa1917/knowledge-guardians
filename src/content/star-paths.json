@@ -1,237 +1,694 @@
 [
   {
-    "id": "inquisitor", "name": "Inquisitor", "color": "gold", "focus": "Trace what makes a claim hold.",
+    "id": "inquisitor",
+    "name": "Inquisitor",
+    "color": "gold",
+    "focus": "Trace what makes a claim hold.",
     "skills": [
       {
-        "id": "evidence", "name": "Reading the evidence",
+        "id": "evidence",
+        "name": "Reading the evidence",
         "steps": [
-          {"action": "Separate the kinds of dates on two pens", "objectives": ["m01.o3.lens"]},
-          {"action": "Hold the pen or surface steady while comparing marks", "objectives": ["m01.o4.test"]},
-          {"action": "Distinguish an independent observer from a repeated slip", "objectives": ["water.counter.compare"]},
-          {"action": "Leave a reference another crew can check", "objectives": ["council.finish"]}
+          {
+            "action": "Separate the kinds of dates on two pens",
+            "objectives": [
+              "m01.o3.lens"
+            ]
+          },
+          {
+            "action": "Hold the pen or surface steady while comparing marks",
+            "objectives": [
+              "m01.o4.test"
+            ]
+          },
+          {
+            "action": "Distinguish an independent observer from a repeated slip",
+            "objectives": [
+              "water.counter.compare"
+            ]
+          },
+          {
+            "action": "Leave a reference another crew can check",
+            "objectives": [
+              "council.finish"
+            ]
+          }
         ],
         "task": "A blue label at the hall says a pen always makes a clean line. Two practice strips share a surface. A third comes from a different paper.",
         "choices": [
-          {"label": "Clip the two matching surfaces", "result": "Dace puts the matched strips in one sleeve. The next visitor can compare the pen marks while the surface stays steady.", "short": "Matched surfaces"},
-          {"label": "Raise the third strip on its own foot", "result": "Venn fits a separate mount. People can see where the extra paper is useful and keep its test conditions in view.", "short": "Separate comparison"}
+          {
+            "label": "Clip the two matching surfaces",
+            "result": "Dace puts the matched strips in one sleeve. The next visitor can compare the pen marks while the surface stays steady.",
+            "short": "Matched surfaces"
+          },
+          {
+            "label": "Raise the third strip on its own foot",
+            "result": "Venn fits a separate mount. People can see where the extra paper is useful and keep its test conditions in view.",
+            "short": "Separate comparison"
+          }
         ]
       },
       {
-        "id": "reason", "name": "Building a case",
+        "id": "reason",
+        "name": "Building a case",
         "steps": [
-          {"action": "Use a dated record to make the first exhibit label hold", "objectives": ["m01.o6.label"]},
-          {"action": "Follow a claim through a trader, a ledger and a workshop", "objectives": ["m02.o3.thread"]},
-          {"action": "Try both sides of a proposal before settling the next turn", "objectives": ["bench.debate.exchange"]},
-          {"action": "Publish the new rule with the waiting job still visible", "objectives": ["bench.debate.minute"]}
+          {
+            "action": "Use a dated record to make the first exhibit label hold",
+            "objectives": [
+              "m01.o6.label"
+            ]
+          },
+          {
+            "action": "Follow a claim through a trader, a ledger and a workshop",
+            "objectives": [
+              "m02.o3.thread"
+            ]
+          },
+          {
+            "action": "Try both sides of a proposal before settling the next turn",
+            "objectives": [
+              "bench.debate.exchange"
+            ]
+          },
+          {
+            "action": "Publish the new rule with the waiting job still visible",
+            "objectives": [
+              "bench.debate.minute"
+            ]
+          }
         ],
         "task": "The Guild repair line can reach the street. The old notice promises a new part. The bill of work records only a cleaned one.",
         "choices": [
-          {"label": "Put the work slip below the claim", "result": "Venn gives visitors the original wording and the slip together. A reader can narrow the promise to this repair.", "short": "Traceable claim"},
-          {"label": "Leave a hook for a second repair bill", "result": "Dace gives the waiting guild a place to bring a documented exception. The promise stays tied to the work already done.", "short": "Room for an exception"}
+          {
+            "label": "Put the work slip below the claim",
+            "result": "Venn gives visitors the original wording and the slip together. A reader can narrow the promise to this repair.",
+            "short": "Traceable claim"
+          },
+          {
+            "label": "Leave a hook for a second repair bill",
+            "result": "Dace gives the waiting guild a place to bring a documented exception. The promise stays tied to the work already done.",
+            "short": "Room for an exception"
+          }
         ]
       },
       {
-        "id": "bias", "name": "Finding a missing view",
+        "id": "bias",
+        "name": "Finding a missing view",
         "steps": [
-          {"action": "Track the reader the loan count leaves out", "objectives": ["nexus.rest.checked"]},
-          {"action": "Make both ends of the aisle usable from the same drawing", "objectives": ["nile.way.publish"]},
-          {"action": "Check what the dispatch tally misses from each route", "objectives": ["civic.compare"]},
-          {"action": "Give new library readers an actual way to get counted", "objectives": ["civic.finish"]}
+          {
+            "action": "Track the reader the loan count leaves out",
+            "objectives": [
+              "nexus.rest.checked"
+            ]
+          },
+          {
+            "action": "Make both ends of the aisle usable from the same drawing",
+            "objectives": [
+              "nile.way.publish"
+            ]
+          },
+          {
+            "action": "Check what the dispatch tally misses from each route",
+            "objectives": [
+              "civic.compare"
+            ]
+          },
+          {
+            "action": "Give new library readers an actual way to get counted",
+            "objectives": [
+              "civic.finish"
+            ]
+          }
         ],
         "task": "The case-room tally counts tickets from the entry desk. Wren’s late readers walk in by the far rail without passing it.",
         "choices": [
-          {"label": "Set a second tally at the far rail", "result": "The next round can show how many people come past each tally. Venn leaves the two collection places printed beside the counts.", "short": "Second observation point"},
-          {"label": "Ask the keepers to trace one complete round", "result": "Dace sends a keeper along both approaches with a clean tally. The old tickets remain available as a record of the first desk.", "short": "Complete walk"}
+          {
+            "label": "Set a second tally at the far rail",
+            "result": "The next round can show how many people come past each tally. Venn leaves the two collection places printed beside the counts.",
+            "short": "Second observation point"
+          },
+          {
+            "label": "Ask the keepers to trace one complete round",
+            "result": "Dace sends a keeper along both approaches with a clean tally. The old tickets remain available as a record of the first desk.",
+            "short": "Complete walk"
+          }
         ]
       }
-    ]
+    ],
+    "question": "What makes a claim hold up when someone tests it?"
   },
   {
-    "id": "oracle", "name": "Oracle", "color": "cyan", "focus": "Set the limits of an automatic tool.",
+    "id": "oracle",
+    "name": "Oracle",
+    "color": "cyan",
+    "focus": "Set the limits of an automatic tool.",
     "skills": [
       {
-        "id": "tools", "name": "Choosing and directing a tool",
+        "id": "tools",
+        "name": "Choosing and directing a tool",
         "steps": [
-          {"action": "Compare the whole page and the narrow viewer", "objectives": ["nexus.viewer.compared"]},
-          {"action": "Run the pattern bench with two differently selected sets", "objectives": ["oracle.examples"]},
-          {"action": "Test changed rule on the same combined library records", "objectives": ["civic.rules"]},
-          {"action": "Keep documented model conditions beside the result for its next reader", "objectives": ["model-record.theseus.handed", "island.finish"]}
+          {
+            "action": "Compare the whole page and the narrow viewer",
+            "objectives": [
+              "nexus.viewer.compared"
+            ]
+          },
+          {
+            "action": "Run the pattern bench with two differently selected sets",
+            "objectives": [
+              "oracle.examples"
+            ]
+          },
+          {
+            "action": "Test changed rule on the same combined library records",
+            "objectives": [
+              "civic.rules"
+            ]
+          },
+          {
+            "action": "Keep documented model conditions beside the result for its next reader",
+            "objectives": [
+              "model-record.theseus.handed",
+              "island.finish"
+            ]
+          }
         ],
         "task": "The Dispatch Clerk can tune a copy to fit a notice or carry it to a handover. The short copy fits the slot, but drops the start point.",
         "choices": [
-          {"label": "Keep the named start before shortening the copy", "result": "Lin can use the copying tool for the narrow public slot. The start remains legible beside the turn.", "short": "Short copy with start"},
-          {"label": "Send the full route and add a separate turn strip", "result": "Ade puts the full route on the wider review table. The tool drafts a strip for the turn while the source remains within reach.", "short": "Route and turn strip"}
+          {
+            "label": "Keep the named start before shortening the copy",
+            "result": "Lin can use the copying tool for the narrow public slot. The start remains legible beside the turn.",
+            "short": "Short copy with start"
+          },
+          {
+            "label": "Send the full route and add a separate turn strip",
+            "result": "Ade puts the full route on the wider review table. The tool drafts a strip for the turn while the source remains within reach.",
+            "short": "Route and turn strip"
+          }
         ]
       },
       {
-        "id": "evaluation", "name": "Auditing an automatic result",
+        "id": "evaluation",
+        "name": "Auditing an automatic result",
         "steps": [
-          {"action": "Keep missing requests in view when the count changes", "objectives": ["nexus.rest.checked"]},
-          {"action": "Compare two rules without switching their examples", "objectives": ["oracle.switch"]},
-          {"action": "Check the answer against a reserved case", "objectives": ["oracle.holdout"]},
-          {"action": "Test a proposed schedule after the load changes", "objectives": ["island.retest"]}
+          {
+            "action": "Keep missing requests in view when the count changes",
+            "objectives": [
+              "nexus.rest.checked"
+            ]
+          },
+          {
+            "action": "Compare two rules without switching their examples",
+            "objectives": [
+              "oracle.switch"
+            ]
+          },
+          {
+            "action": "Check the answer against a reserved case",
+            "objectives": [
+              "oracle.holdout"
+            ]
+          },
+          {
+            "action": "Test a proposed schedule after the load changes",
+            "objectives": [
+              "island.retest"
+            ]
+          }
         ],
         "task": "A route rule worked for daytime slips. Ade has one late carrier whose request was set aside before the rule was fitted.",
         "choices": [
-          {"label": "Run the unused slip on the old rule", "result": "Ade adds the outcome on its own slip. The crew can see the difference between the fitting examples and the late carrier’s check.", "short": "Saved case run"},
-          {"label": "Ask a second keeper to try the same rule", "result": "Lin records the second keeper’s result and the slips that went into it. The label keeps the test small enough to repeat.", "short": "Independent rerun"}
+          {
+            "label": "Run the unused slip on the old rule",
+            "result": "Ade adds the outcome on its own slip. The crew can see the difference between the fitting examples and the late carrier’s check.",
+            "short": "Saved case run"
+          },
+          {
+            "label": "Ask a second keeper to try the same rule",
+            "result": "Lin records the second keeper’s result and the slips that went into it. The label keeps the test small enough to repeat.",
+            "short": "Independent rerun"
+          }
         ]
       },
       {
-        "id": "limits", "name": "Setting limits with people",
+        "id": "limits",
+        "name": "Setting limits with people",
         "steps": [
-          {"action": "Keep the permission slip near the door decision", "objectives": ["fold.access.compare"]},
-          {"action": "Set the copying bench’s consent and source boundaries", "objectives": ["oracle.custody"]},
-          {"action": "Deliver only the approved extract for readers", "objectives": ["voices.quote"]},
-          {"action": "Use the checked bench result to make a public choice with limits", "objectives": ["oracle.publish"]}
+          {
+            "action": "Keep the permission slip near the door decision",
+            "objectives": [
+              "fold.access.compare"
+            ]
+          },
+          {
+            "action": "Set the copying bench’s consent and source boundaries",
+            "objectives": [
+              "oracle.custody"
+            ]
+          },
+          {
+            "action": "Deliver only the approved extract for readers",
+            "objectives": [
+              "voices.quote"
+            ]
+          },
+          {
+            "action": "Use the checked bench result to make a public choice with limits",
+            "objectives": [
+              "oracle.publish"
+            ]
+          }
         ],
         "task": "A box can copy a doorstep instruction from two older notes. The keepers have permission to share only the second note with the waiting queue.",
         "choices": [
-          {"label": "Feed in the approved line and credit its carrier", "result": "Lin gives the queue a short instruction with its source. The first note stays in the keeper’s closed case.", "short": "Approved short instruction"},
-          {"label": "Leave room for the carrier to speak", "result": "Ade marks a time for the carrier’s approved directions. The machine guide lists where listeners can ask about its scope.", "short": "Carrier’s directions"}
+          {
+            "label": "Feed in the approved line and credit its carrier",
+            "result": "Lin gives the queue a short instruction with its source. The first note stays in the keeper’s closed case.",
+            "short": "Approved short instruction"
+          },
+          {
+            "label": "Leave room for the carrier to speak",
+            "result": "Ade marks a time for the carrier’s approved directions. The machine guide lists where listeners can ask about its scope.",
+            "short": "Carrier’s directions"
+          }
         ]
       }
-    ]
+    ],
+    "question": "Where should an automatic tool stop, and a person decide?"
   },
   {
-    "id": "empath", "name": "Empath", "color": "rose", "focus": "Find how other people come to a view.",
+    "id": "empath",
+    "name": "Empath",
+    "color": "rose",
+    "focus": "Find how other people come to a view.",
     "skills": [
       {
-        "id": "perspectives", "name": "Seeing from another position",
+        "id": "perspectives",
+        "name": "Seeing from another position",
         "steps": [
-          {"action": "Help two people reach the same case from opposite approaches", "objectives": ["nexus.guide.helped"]},
-          {"action": "Use different observers’ lower and upper records", "objectives": ["water.observer.readings"]},
-          {"action": "Stand at the two approaches after reading a carrier’s reply", "objectives": ["voices.reader"]},
-          {"action": "Leave directions that begin where each reader arrives", "objectives": ["voices.finish"]}
+          {
+            "action": "Help two people reach the same case from opposite approaches",
+            "objectives": [
+              "nexus.guide.helped"
+            ]
+          },
+          {
+            "action": "Use different observers’ lower and upper records",
+            "objectives": [
+              "water.observer.readings"
+            ]
+          },
+          {
+            "action": "Stand at the two approaches after reading a carrier’s reply",
+            "objectives": [
+              "voices.reader"
+            ]
+          },
+          {
+            "action": "Leave directions that begin where each reader arrives",
+            "objectives": [
+              "voices.finish"
+            ]
+          }
         ],
         "task": "A carrier from the quay sees the lamp behind a railing. A reader from the stairs sees it above the welcome bench.",
         "choices": [
-          {"label": "Hang an approach card where each person arrives", "result": "Wren hangs separate approach cards. The top line on either card names its own place of arrival.", "short": "Two approach cards"},
-          {"label": "Mark the first landmark they can both see", "result": "Eren signals from a point both paths can reach. The copy sends each reader to the same named corner.", "short": "Shared landmark"}
+          {
+            "label": "Hang an approach card where each person arrives",
+            "result": "Wren hangs separate approach cards. The top line on either card names its own place of arrival.",
+            "short": "Two approach cards"
+          },
+          {
+            "label": "Mark the first landmark they can both see",
+            "result": "Eren signals from a point both paths can reach. The copy sends each reader to the same named corner.",
+            "short": "Shared landmark"
+          }
         ]
       },
       {
-        "id": "language", "name": "Carrying words between communities",
+        "id": "language",
+        "name": "Carrying words between communities",
         "steps": [
-          {"action": "Leave a route note someone at the ferry can trace", "objectives": ["nexus.ferry.published"]},
-          {"action": "Give a shore name its own place and crew", "objectives": ["sea.name.finish"]},
-          {"action": "Compare what each guide preserves about the local phrase", "objectives": ["voices.compare"]},
-          {"action": "Keep both dates in reach at the source chosen by its readers", "objectives": ["record.edge.voices.send"]}
+          {
+            "action": "Leave a route note someone at the ferry can trace",
+            "objectives": [
+              "nexus.ferry.published"
+            ]
+          },
+          {
+            "action": "Give a shore name its own place and crew",
+            "objectives": [
+              "sea.name.finish"
+            ]
+          },
+          {
+            "action": "Compare what each guide preserves about the local phrase",
+            "objectives": [
+              "voices.compare"
+            ]
+          },
+          {
+            "action": "Keep both dates in reach at the source chosen by its readers",
+            "objectives": [
+              "record.edge.voices.send"
+            ]
+          }
         ],
         "task": "Wren’s route word includes the custom of stopping to wait at a lamp. A visiting courier needs to know where to stop before unloading.",
         "choices": [
-          {"label": "Keep the word with a guide to the stop", "result": "Wren keeps the route word above the waiting place. The guide gives the courier an action without taking the word away from its users.", "short": "Local word and guide"},
-          {"label": "Lead with the delivery cue and link to Wren’s wording", "result": "Eren hangs the short action at the unloading point. The reader can follow the source back to the fuller wording.", "short": "Delivery cue and source"}
+          {
+            "label": "Keep the word with a guide to the stop",
+            "result": "Wren keeps the route word above the waiting place. The guide gives the courier an action without taking the word away from its users.",
+            "short": "Local word and guide"
+          },
+          {
+            "label": "Lead with the delivery cue and link to Wren’s wording",
+            "result": "Eren hangs the short action at the unloading point. The reader can follow the source back to the fuller wording.",
+            "short": "Delivery cue and source"
+          }
         ]
       },
       {
-        "id": "systems", "name": "Following consequences together",
+        "id": "systems",
+        "name": "Following consequences together",
         "steps": [
-          {"action": "Put the packed copy in the hands of a reader", "objectives": ["nexus.pack.checked"]},
-          {"action": "Follow people whose work depends on the other channel", "objectives": ["water.needs"]},
-          {"action": "Open one service and check who reaches it", "objectives": ["waterLoop.island.finish"]},
-          {"action": "Carry a public allocation with the waiting requests still attached", "objectives": ["boundary.water.deliver"]}
+          {
+            "action": "Put the packed copy in the hands of a reader",
+            "objectives": [
+              "nexus.pack.checked"
+            ]
+          },
+          {
+            "action": "Follow people whose work depends on the other channel",
+            "objectives": [
+              "water.needs"
+            ]
+          },
+          {
+            "action": "Open one service and check who reaches it",
+            "objectives": [
+              "waterLoop.island.finish"
+            ]
+          },
+          {
+            "action": "Carry a public allocation with the waiting requests still attached",
+            "objectives": [
+              "boundary.water.deliver"
+            ]
+          }
         ],
         "task": "Moving the public bench off the quay shields its readers from wind. The lamp mark can then disappear for people at the far stairs.",
         "choices": [
-          {"label": "Keep the bench and add a sheltered guide", "result": "Wren leaves the queue where the lamp can be seen. An extra route strip comes inside for readers who want shelter.", "short": "Outdoor queue with shelter cue"},
-          {"label": "Move the bench and keep a light on the landing", "result": "Eren opens the sheltered reading space. The quay light still shows the turn to carriers coming down the far stairs.", "short": "Indoor queue and quay light"}
+          {
+            "label": "Keep the bench and add a sheltered guide",
+            "result": "Wren leaves the queue where the lamp can be seen. An extra route strip comes inside for readers who want shelter.",
+            "short": "Outdoor queue with shelter cue"
+          },
+          {
+            "label": "Move the bench and keep a light on the landing",
+            "result": "Eren opens the sheltered reading space. The quay light still shows the turn to carriers coming down the far stairs.",
+            "short": "Indoor queue and quay light"
+          }
         ]
       }
-    ]
+    ],
+    "question": "How do other people come to see things the way they do?"
   },
   {
-    "id": "chronicler", "name": "Chronicler", "color": "mint", "focus": "Return to a decision with better information.",
+    "id": "chronicler",
+    "name": "Chronicler",
+    "color": "mint",
+    "focus": "Return to a decision with better information.",
     "skills": [
       {
-        "id": "reflection", "name": "Rechecking an earlier inference",
+        "id": "reflection",
+        "name": "Rechecking an earlier inference",
         "steps": [
-          {"action": "Open the note that leaves room for a second check", "objectives": ["nexus.arrival.checked"]},
-          {"action": "Change a date ribbon after a person tries it", "objectives": ["nexus.ribbon.checked"]},
-          {"action": "Revise after a reader misinterprets an empty square", "objectives": ["forest.gap.o.repair"]},
-          {"action": "Leave an independent reference for a new Guardian", "objectives": ["postgame.complete"]}
+          {
+            "action": "Open the note that leaves room for a second check",
+            "objectives": [
+              "nexus.arrival.checked"
+            ]
+          },
+          {
+            "action": "Change a date ribbon after a person tries it",
+            "objectives": [
+              "nexus.ribbon.checked"
+            ]
+          },
+          {
+            "action": "Revise after a reader misinterprets an empty square",
+            "objectives": [
+              "forest.gap.o.repair"
+            ]
+          },
+          {
+            "action": "Leave an independent reference for a new Guardian",
+            "objectives": [
+              "postgame.complete"
+            ]
+          }
         ],
         "task": "The Ferry yard’s first blue line looks like yesterday’s mark. Two pages nearby use a different starting edge.",
         "choices": [
-          {"label": "Lay tomorrow’s empty slip beside the first reading", "result": "Hesper keeps an open place for tomorrow and notes the edge the first reading used.", "short": "Another check open"},
-          {"label": "Set the two edges side by side", "result": "Kip can compare where the two measurements started before filing a correction.", "short": "Recorded starting edges"}
+          {
+            "label": "Lay tomorrow’s empty slip beside the first reading",
+            "result": "Hesper keeps an open place for tomorrow and notes the edge the first reading used.",
+            "short": "Another check open"
+          },
+          {
+            "label": "Set the two edges side by side",
+            "result": "Kip can compare where the two measurements started before filing a correction.",
+            "short": "Recorded starting edges"
+          }
         ]
       },
       {
-        "id": "strategy", "name": "Planning and adapting a search",
+        "id": "strategy",
+        "name": "Planning and adapting a search",
         "steps": [
-          {"action": "Put a found object on record with its owner line open", "objectives": ["lost.gauge.intake"]},
-          {"action": "Use the original place and a related record to follow the blade", "objectives": ["m02.o3.thread"]},
-          {"action": "Match the gauge to a jig and then check the gift record", "objectives": ["lost.gauge.traced"]},
-          {"action": "Finish a handover with room for another person’s verification", "objectives": ["lost.gauge.acknowledged", "council.team.post"]}
+          {
+            "action": "Put a found object on record with its owner line open",
+            "objectives": [
+              "lost.gauge.intake"
+            ]
+          },
+          {
+            "action": "Use the original place and a related record to follow the blade",
+            "objectives": [
+              "m02.o3.thread"
+            ]
+          },
+          {
+            "action": "Match the gauge to a jig and then check the gift record",
+            "objectives": [
+              "lost.gauge.traced"
+            ]
+          },
+          {
+            "action": "Finish a handover with room for another person’s verification",
+            "objectives": [
+              "lost.gauge.acknowledged",
+              "council.team.post"
+            ]
+          }
         ],
         "task": "Kip has time for a close look at one cabinet before a handoff. Hesper can do the other check when the case reaches the workshop.",
         "choices": [
-          {"label": "Put the match check first and carry the open question", "result": "Kip sets the gauge beside the matching slot. The case arrives with the outstanding date question attached.", "short": "Match before date"},
-          {"label": "Trace the loan number first and leave space for fit", "result": "Hesper gets the located loan slip and a place to add the fit check. The case has an assigned next keeper.", "short": "Date before match"}
+          {
+            "label": "Put the match check first and carry the open question",
+            "result": "Kip sets the gauge beside the matching slot. The case arrives with the outstanding date question attached.",
+            "short": "Match before date"
+          },
+          {
+            "label": "Trace the loan number first and leave space for fit",
+            "result": "Hesper gets the located loan slip and a place to add the fit check. The case has an assigned next keeper.",
+            "short": "Date before match"
+          }
         ]
       },
       {
-        "id": "revision", "name": "Learning from a changed result",
+        "id": "revision",
+        "name": "Learning from a changed result",
         "steps": [
-          {"action": "Try a new mounting after the ferry print slips", "objectives": ["nexus.print.checked"]},
-          {"action": "Repeat the rainfall check at the next bell", "objectives": ["coast.observe-again"]},
-          {"action": "Repeat a drought setting after the gate repair", "objectives": ["water.retest"]},
-          {"action": "Publish the old and new results with their separate conditions", "objectives": ["water.finish"]}
+          {
+            "action": "Try a new mounting after the ferry print slips",
+            "objectives": [
+              "nexus.print.checked"
+            ]
+          },
+          {
+            "action": "Repeat the rainfall check at the next bell",
+            "objectives": [
+              "coast.observe-again"
+            ]
+          },
+          {
+            "action": "Repeat a drought setting after the gate repair",
+            "objectives": [
+              "water.retest"
+            ]
+          },
+          {
+            "action": "Publish the old and new results with their separate conditions",
+            "objectives": [
+              "water.finish"
+            ]
+          }
         ],
         "task": "The repaired hook holds the same case higher. The old damage report still matters when another keeper asks when the scrape appeared.",
         "choices": [
-          {"label": "Hang both checks with their different hook settings", "result": "Hesper can find the older scrape and the new clearance on the same board, each beside its own setup.", "short": "Both hook settings"},
-          {"label": "Keep a live repair label, with the old report clipped behind", "result": "Kip uses the repaired route today. Pulling the clip brings back the earlier scrape and the hook it belonged to.", "short": "Live repair with earlier report"}
+          {
+            "label": "Hang both checks with their different hook settings",
+            "result": "Hesper can find the older scrape and the new clearance on the same board, each beside its own setup.",
+            "short": "Both hook settings"
+          },
+          {
+            "label": "Keep a live repair label, with the old report clipped behind",
+            "result": "Kip uses the repaired route today. Pulling the clip brings back the earlier scrape and the hook it belonged to.",
+            "short": "Live repair with earlier report"
+          }
         ]
       }
-    ]
+    ],
+    "question": "When better information arrives, how should we look again at a decision already made?"
   },
   {
-    "id": "weaver", "name": "Weaver", "color": "lavender", "focus": "Help other people use what they found.",
+    "id": "weaver",
+    "name": "Weaver",
+    "color": "lavender",
+    "focus": "Help other people use what they found.",
     "skills": [
       {
-        "id": "expression", "name": "Making a complex account usable",
+        "id": "expression",
+        "name": "Making a complex account usable",
         "steps": [
-          {"action": "Give a reader the patent detail and a path to the whole sheet", "objectives": ["nexus.viewer.finished"]},
-          {"action": "Build a strip that can lead a reader to its source", "objectives": ["citation.rail.nexus.found"]},
-          {"action": "Set a proof format for late readers at the theatre", "objectives": ["stage.frames.served"]},
-          {"action": "Give the trial loading limit and the route their own lines", "objectives": ["copies.revise"]}
+          {
+            "action": "Give a reader the patent detail and a path to the whole sheet",
+            "objectives": [
+              "nexus.viewer.finished"
+            ]
+          },
+          {
+            "action": "Build a strip that can lead a reader to its source",
+            "objectives": [
+              "citation.rail.nexus.found"
+            ]
+          },
+          {
+            "action": "Set a proof format for late readers at the theatre",
+            "objectives": [
+              "stage.frames.served"
+            ]
+          },
+          {
+            "action": "Give the trial loading limit and the route their own lines",
+            "objectives": [
+              "copies.revise"
+            ]
+          }
         ],
         "task": "Leila’s relief copy can fit one prominent phrase. A walker needs a turn, and a keeper needs the leaf behind the phrase.",
         "choices": [
-          {"label": "Put the turn in large type, with its leaf number", "result": "A walker can act on the large line. Leila gives the keeper the drawer number directly below.", "short": "Large cue and drawer"},
-          {"label": "Open the two-part proof at both lines", "result": "Marek sets the proof where a carrier can read from the bench. The short cue and full wording are both in reach.", "short": "Two-part proof"}
+          {
+            "label": "Put the turn in large type, with its leaf number",
+            "result": "A walker can act on the large line. Leila gives the keeper the drawer number directly below.",
+            "short": "Large cue and drawer"
+          },
+          {
+            "label": "Open the two-part proof at both lines",
+            "result": "Marek sets the proof where a carrier can read from the bench. The short cue and full wording are both in reach.",
+            "short": "Two-part proof"
+          }
         ]
       },
       {
-        "id": "dialogue", "name": "Keeping a conversation useful",
+        "id": "dialogue",
+        "name": "Keeping a conversation useful",
         "steps": [
-          {"action": "Hear both speakers before the practice Showdown", "objectives": ["m01.o5.practice"]},
-          {"action": "Ask two record keepers what ties an object to a scribe", "objectives": ["nile.name.voices"]},
-          {"action": "Check the full instruction with the person who uses the other approach", "objectives": ["vesper.line.quay.checked"]},
-          {"action": "Make the next notice with the listener’s reading in view", "objectives": ["bench.debate.civic.used"]}
+          {
+            "action": "Hear both speakers before the practice Showdown",
+            "objectives": [
+              "m01.o5.practice"
+            ]
+          },
+          {
+            "action": "Ask two record keepers what ties an object to a scribe",
+            "objectives": [
+              "nile.name.voices"
+            ]
+          },
+          {
+            "action": "Check the full instruction with the person who uses the other approach",
+            "objectives": [
+              "vesper.line.quay.checked"
+            ]
+          },
+          {
+            "action": "Make the next notice with the listener’s reading in view",
+            "objectives": [
+              "bench.debate.civic.used"
+            ]
+          }
         ],
         "task": "Leila says a door is closed while the peg is being checked. A new runner has heard the word as an order to leave.",
         "choices": [
-          {"label": "Have the runner say what they heard before posting", "result": "Leila asks the runner to show the next turn. They change the waiting line where it will affect the walk.", "short": "Runner’s readback"},
-          {"label": "Post the two requests with Leila’s brief explanation", "result": "The rail shows where to wait and where to go. Readers can raise another question with both readings in sight.", "short": "Two requests on the rail"}
+          {
+            "label": "Have the runner say what they heard before posting",
+            "result": "Leila asks the runner to show the next turn. They change the waiting line where it will affect the walk.",
+            "short": "Runner’s readback"
+          },
+          {
+            "label": "Post the two requests with Leila’s brief explanation",
+            "result": "The rail shows where to wait and where to go. Readers can raise another question with both readings in sight.",
+            "short": "Two requests on the rail"
+          }
         ]
       },
       {
-        "id": "collaboration", "name": "Joining different people’s work",
+        "id": "collaboration",
+        "name": "Joining different people’s work",
         "steps": [
-          {"action": "Try a case handle and see how it holds for a carrier", "objectives": ["nexus.handle.checked"]},
-          {"action": "Coordinate a proposed correction with another messenger", "objectives": ["copy.o.relay"]},
-          {"action": "Follow the calls and signed record through a crew handover", "objectives": ["council.team.trial"]},
-          {"action": "Set a joined handover where the next crew uses it", "objectives": ["council.team.post"]}
+          {
+            "action": "Try a case handle and see how it holds for a carrier",
+            "objectives": [
+              "nexus.handle.checked"
+            ]
+          },
+          {
+            "action": "Coordinate a proposed correction with another messenger",
+            "objectives": [
+              "copy.o.relay"
+            ]
+          },
+          {
+            "action": "Follow the calls and signed record through a crew handover",
+            "objectives": [
+              "council.team.trial"
+            ]
+          },
+          {
+            "action": "Set a joined handover where the next crew uses it",
+            "objectives": [
+              "council.team.post"
+            ]
+          }
         ],
         "task": "The archive runners can make their own route check. The person on the bench keeps better track of where a copy has gone.",
         "choices": [
-          {"label": "Send two slips with a shared arrival mark", "result": "Marek takes the route slip and Leila takes the copy receipt. Both can trace the handover by its marked arrival.", "short": "Separate slips, shared mark"},
-          {"label": "Clip the receiver’s copy to the runner’s check", "result": "Leila gives the next crew one linked pack. Separate signatures keep both people’s jobs readable.", "short": "Linked handover pack"}
+          {
+            "label": "Send two slips with a shared arrival mark",
+            "result": "Marek takes the route slip and Leila takes the copy receipt. Both can trace the handover by its marked arrival.",
+            "short": "Separate slips, shared mark"
+          },
+          {
+            "label": "Clip the receiver’s copy to the runner’s check",
+            "result": "Leila gives the next crew one linked pack. Separate signatures keep both people’s jobs readable.",
+            "short": "Linked handover pack"
+          }
         ]
       }
-    ]
+    ],
+    "question": "How can what one person found become useful to someone else?"
   }
 ]

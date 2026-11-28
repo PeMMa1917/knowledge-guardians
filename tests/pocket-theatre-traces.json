@@ -1,0 +1,686 @@
+[
+  {
+    "story": "brass-price",
+    "pane": 0,
+    "excerpt": "forty is generous",
+    "patterns": [
+      "bias:anchoring"
+    ],
+    "basis": "The chalked eighty shifts the perceived generosity of forty without a change in the light."
+  },
+  {
+    "story": "brass-price",
+    "pane": 2,
+    "excerpt": "last three people did",
+    "patterns": [
+      "bias:bandwagon"
+    ],
+    "basis": "The carrier adopts the price other carriers displayed without locating a sale."
+  },
+  {
+    "story": "brass-price",
+    "pane": 1,
+    "excerpt": "the two lamps each light five floor tiles",
+    "patterns": [
+      "bias:salience"
+    ],
+    "basis": "Covering an attention-catching price makes a functional property of the lamps easier to notice."
+  },
+  {
+    "story": "blue-fringe",
+    "pane": 0,
+    "excerpt": "everyone will spot her blue line",
+    "patterns": [
+      "bias:spotlight"
+    ],
+    "basis": "The stitcher overestimates how much of the audience will notice her repair."
+  },
+  {
+    "story": "blue-fringe",
+    "pane": 2,
+    "excerpt": "three evenings",
+    "patterns": [
+      "bias:ikea"
+    ],
+    "basis": "Her effort increases how much she values the seam; a separate trial checks whom it helps."
+  },
+  {
+    "story": "blue-fringe",
+    "pane": 0,
+    "excerpt": "famous donor bought the other sling",
+    "patterns": [
+      "bias:halo",
+      "fallacy:wealth"
+    ],
+    "basis": "A donor’s prestige spills into an unsupported judgment about how level the sling hangs."
+  },
+  {
+    "story": "empty-peg",
+    "pane": 0,
+    "excerpt": "She deserves to lose her turn",
+    "patterns": [
+      "bias:attribution",
+      "bias:just-world"
+    ],
+    "basis": "The attendant reads a missed ferry as a failing of character and imagines the loss of the shift deserved."
+  },
+  {
+    "story": "empty-peg",
+    "pane": 2,
+    "excerpt": "missing signature for proof",
+    "patterns": [
+      "fallacy:ignorance"
+    ],
+    "basis": "The file’s silence cannot establish that no one asked, especially when a dated request survives."
+  },
+  {
+    "story": "six-knots",
+    "pane": 0,
+    "excerpt": "clear air is due",
+    "patterns": [
+      "bias:clustering"
+    ],
+    "basis": "The runner treats a visually striking run on the cord as a sequence that predicts its own ending."
+  },
+  {
+    "story": "six-knots",
+    "pane": 0,
+    "excerpt": "one crossing she could hardly see",
+    "patterns": [
+      "bias:availability",
+      "bias:recency"
+    ],
+    "basis": "A vivid crossing and the short run of recent fog dominate until older knot conditions can be checked."
+  },
+  {
+    "story": "six-knots",
+    "pane": 2,
+    "excerpt": "one black bead and one white",
+    "patterns": [
+      "fallacy:gamblers"
+    ],
+    "basis": "Replacement preserves both chances after six draws, while fog has different generating conditions."
+  },
+  {
+    "story": "white-tail",
+    "pane": 2,
+    "excerpt": "sack of broken tips",
+    "patterns": [
+      "bias:survivorship"
+    ],
+    "basis": "Showing only specimens intact enough to pin excludes material that failed the display process."
+  },
+  {
+    "story": "white-tail",
+    "pane": 1,
+    "excerpt": "puts back a dark tip",
+    "patterns": [
+      "bias:selective-perception",
+      "bias:confirmation"
+    ],
+    "basis": "Looking on the dull path changes what the collector notices and shows her setting aside an unlike result."
+  },
+  {
+    "story": "white-tail",
+    "pane": 0,
+    "excerpt": "fill the forest just as thickly",
+    "patterns": [
+      "fallacy:hasty"
+    ],
+    "basis": "A claim about the forest outruns a cabinet filtered by its own selection and cleaning."
+  },
+  {
+    "story": "cooling-hook",
+    "pane": 0,
+    "excerpt": "written SAFE",
+    "patterns": [
+      "bias:outcome",
+      "bias:overconfidence"
+    ],
+    "basis": "A single successful lift makes the public assurance outrun what the crew tried."
+  },
+  {
+    "story": "cooling-hook",
+    "pane": 2,
+    "excerpt": "costly bronze trim",
+    "patterns": [
+      "bias:pro-innovation"
+    ],
+    "basis": "Looking at the exciting new arm beside the old one separates novelty from clearance at the joint."
+  },
+  {
+    "story": "cooling-hook",
+    "pane": 1,
+    "excerpt": "Every part passed its own test",
+    "patterns": [
+      "fallacy:composition"
+    ],
+    "basis": "A lid can catch during a combined swing despite each part working alone."
+  },
+  {
+    "story": "tuesday-fold",
+    "pane": 3,
+    "excerpt": "I want the opening to look unbroken",
+    "patterns": [
+      "deception:omission",
+      "deception:alteration"
+    ],
+    "basis": "The manager’s signed instruction explicitly orders a fold that hides a condition from readers."
+  },
+  {
+    "story": "tuesday-fold",
+    "pane": 2,
+    "excerpt": "boards only fool visitors",
+    "patterns": [
+      "bias:third-person"
+    ],
+    "basis": "The runner treats other readers as more susceptible and then finds his own Tuesday ticket."
+  },
+  {
+    "story": "lantern-drift",
+    "pane": 1,
+    "excerpt": "loop was drawn after",
+    "patterns": [
+      "fallacy:sharpshooter",
+      "bias:clustering"
+    ],
+    "basis": "Placing the ring after the lanterns returned selects a tidy-looking group and exempts the unmarked edges."
+  },
+  {
+    "story": "lantern-drift",
+    "pane": 2,
+    "excerpt": "Only east crews were asked",
+    "patterns": [
+      "bias:survivorship",
+      "fallacy:anecdotal"
+    ],
+    "basis": "Only some returning crews could put a mark on the keeper’s sheet; three happy returns cannot establish that this route always works."
+  },
+  {
+    "story": "paper-wings",
+    "pane": 2,
+    "excerpt": "notices the blue wing first",
+    "patterns": [
+      "bias:selective-perception",
+      "bias:expectancy"
+    ],
+    "basis": "The cue can alter what a watcher anticipates and notices under the same performance."
+  },
+  {
+    "story": "paper-wings",
+    "pane": 1,
+    "excerpt": "a drum takes up a thread",
+    "patterns": [
+      "fallacy:incredulity"
+    ],
+    "basis": "The critic’s inability to picture a mechanism is checked by watching the working drum."
+  },
+  {
+    "story": "paper-wings",
+    "pane": 3,
+    "excerpt": "Let them take the bird for a live one until the bow",
+    "patterns": [
+      "deception:staging"
+    ],
+    "basis": "The puppeteer’s signed cue and the scheduled reveal establish a deliberately staged impression."
+  },
+  {
+    "story": "two-coppers",
+    "pane": 0,
+    "excerpt": "Eight looks polite",
+    "patterns": [
+      "fallacy:middle-ground",
+      "bias:anchoring"
+    ],
+    "basis": "The first numbers frame a compromise before anyone checks what each number measures."
+  },
+  {
+    "story": "two-coppers",
+    "pane": 2,
+    "excerpt": "ten names fruit and wicker",
+    "patterns": [
+      "fallacy:equivocation"
+    ],
+    "basis": "Lifting the empty wicker separates two meanings of the same quoted basket weight."
+  },
+  {
+    "story": "dry-sleeve",
+    "pane": 0,
+    "excerpt": "box for a sketch",
+    "patterns": [
+      "fallacy:ignorance",
+      "fallacy:burden"
+    ],
+    "basis": "Demanding a drawing from the listener shifts support for the foreman’s assertion of soundness onto another worker."
+  },
+  {
+    "story": "dry-sleeve",
+    "pane": 2,
+    "excerpt": "A loose peg on a sound wheel can also knock",
+    "patterns": [
+      "bias:confirmation",
+      "fallacy:oversimplification"
+    ],
+    "basis": "The listening cup preserves a source of the sound that a search for a visible crack alone would miss."
+  },
+  {
+    "story": "no-queue",
+    "pane": 0,
+    "excerpt": "machine cannot lose a name",
+    "patterns": [
+      "bias:automation",
+      "fallacy:circular"
+    ],
+    "basis": "The green output is treated as proof of the system’s completeness although the rule starts by omitting unnumbered requests."
+  },
+  {
+    "story": "no-queue",
+    "pane": 1,
+    "excerpt": "without a machine number",
+    "patterns": [
+      "bias:survivorship"
+    ],
+    "basis": "People who reached the hand desk without a machine number could not survive into the machine’s success count."
+  },
+  {
+    "story": "no-queue",
+    "pane": 3,
+    "excerpt": "other two had that job",
+    "patterns": [
+      "bias:bystander"
+    ],
+    "basis": "Three waiting clerks each expect another person to meet the cart."
+  },
+  {
+    "story": "rolled-echo",
+    "pane": 1,
+    "excerpt": "During the quiet take, please",
+    "patterns": [
+      "fallacy:straw-man",
+      "bias:framing"
+    ],
+    "basis": "Restoring the boundary on a quiet take lets the steward answer the actual request for a closed door."
+  },
+  {
+    "story": "rolled-echo",
+    "pane": 2,
+    "excerpt": "card was copied from the sleeve",
+    "patterns": [
+      "fallacy:circular"
+    ],
+    "basis": "A cabinet card derived from this sleeve cannot independently authenticate that same sleeve."
+  },
+  {
+    "story": "crate-sky",
+    "pane": 0,
+    "excerpt": "already promised six loads",
+    "patterns": [
+      "bias:optimism",
+      "fallacy:wishful"
+    ],
+    "basis": "An orderly empty trial and the planner’s hope become a promise about loaded boats."
+  },
+  {
+    "story": "crate-sky",
+    "pane": 2,
+    "excerpt": "first axle dips",
+    "patterns": [
+      "bias:conservatism"
+    ],
+    "basis": "Compare the new loaded trial with the earlier promise before deciding whether to revise the public number."
+  },
+  {
+    "story": "cut-caveat",
+    "pane": 2,
+    "excerpt": "so the disputed count will read as settled",
+    "patterns": [
+      "deception:alteration",
+      "deception:omission"
+    ],
+    "basis": "The first work order establishes a deliberate cut meant to turn a limited finding into a settled public count."
+  },
+  {
+    "story": "cut-caveat",
+    "pane": 3,
+    "excerpt": "preserves the earlier wording on the back",
+    "patterns": [
+      "fallacy:false-equivalence",
+      "fallacy:moral-equivalence"
+    ],
+    "basis": "The repair and the original cut both change paper, yet their stated purposes and what readers can recover differ."
+  },
+  {
+    "story": "ten-stamps",
+    "pane": 0,
+    "excerpt": "folded ballot away",
+    "patterns": [
+      "bias:groupthink",
+      "bias:bandwagon",
+      "fallacy:popularity"
+    ],
+    "basis": "The chair treats votes as proof of musical quality, while a member withdraws an independent vote amid apparent agreement."
+  },
+  {
+    "story": "ten-stamps",
+    "pane": 3,
+    "excerpt": "I made nine more from my own",
+    "patterns": [
+      "deception:false-consensus",
+      "deception:fabrication"
+    ],
+    "basis": "The clerk admits making nine extra votes to create the appearance of ten independent neighbours."
+  },
+  {
+    "story": "reed-hand",
+    "pane": 0,
+    "excerpt": "settles the age of the reed",
+    "patterns": [
+      "fallacy:authority",
+      "fallacy:genetic"
+    ],
+    "basis": "One visitor trusts the borrowed title and another rejects an observation because of who made it."
+  },
+  {
+    "story": "reed-hand",
+    "pane": 3,
+    "excerpt": "I used her name so they would listen to my own test",
+    "patterns": [
+      "deception:impersonation",
+      "deception:misattribution"
+    ],
+    "basis": "The maker acknowledges using another person’s name to secure an audience for her own work."
+  },
+  {
+    "story": "reed-hand",
+    "pane": 3,
+    "excerpt": "repeat it under her name",
+    "patterns": [
+      "fallacy:fallacy-fallacy"
+    ],
+    "basis": "Discrediting a signature cannot by itself make the observable crossing of two cuts false."
+  },
+  {
+    "story": "mitten-sheet",
+    "pane": 1,
+    "excerpt": "same sentence",
+    "patterns": [
+      "bias:barnum",
+      "bias:confirmation"
+    ],
+    "basis": "Two different visitors can find a personally pleasing reading of the identical broadly applicable description."
+  },
+  {
+    "story": "mitten-sheet",
+    "pane": 2,
+    "excerpt": "so you must work steadily",
+    "patterns": [
+      "bias:belief"
+    ],
+    "basis": "The veteran accepts a plausible-sounding conclusion although rising early does not entail steady work."
+  },
+  {
+    "story": "varnish",
+    "pane": 0,
+    "excerpt": "Paint on fifth day, safe return on sixth",
+    "patterns": [
+      "fallacy:false-cause",
+      "fallacy:post-hoc"
+    ],
+    "basis": "The purchase precedes a safe return, while the paired voyage shows other boats and causes."
+  },
+  {
+    "story": "varnish",
+    "pane": 2,
+    "excerpt": "spent too much to change now",
+    "patterns": [
+      "bias:sunk-cost",
+      "fallacy:sunk-cost",
+      "bias:ostrich"
+    ],
+    "basis": "Covering a damp patch avoids troubling information and treats the price already paid as grounds for future commitment."
+  },
+  {
+    "story": "varnish",
+    "pane": 3,
+    "excerpt": "proud of the purchase",
+    "patterns": [
+      "bias:choice-supportive"
+    ],
+    "basis": "The captain recalls how favourably he felt about his purchase even when the trial exposes its limits."
+  },
+  {
+    "story": "red-stitch",
+    "pane": 0,
+    "excerpt": "green calls her own mistake",
+    "patterns": [
+      "bias:stereotyping",
+      "bias:in-group",
+      "bias:self-serving",
+      "bias:blind-spot",
+      "fallacy:ad-hominem"
+    ],
+    "basis": "The green crew excuses its own mistake, treats a badge as a trait and attacks a runner who supplied a checkable sketch."
+  },
+  {
+    "story": "red-stitch",
+    "pane": 2,
+    "excerpt": "could not have been a real member",
+    "patterns": [
+      "fallacy:no-true-member"
+    ],
+    "basis": "A membership definition shifts to exclude exactly the member whose behaviour challenged the generalisation."
+  },
+  {
+    "story": "ninth-tooth",
+    "pane": 3,
+    "excerpt": "predicts eight contacts and counts four",
+    "patterns": [
+      "bias:calibration",
+      "bias:overconfidence"
+    ],
+    "basis": "The maker compares her forecast with an unfamiliar gear; a second miss by the fitter keeps this about two observations, not a diagnosis."
+  },
+  {
+    "story": "ninth-tooth",
+    "pane": 2,
+    "excerpt": "No one had shown the maker which face",
+    "patterns": [
+      "bias:curse-of-knowledge"
+    ],
+    "basis": "The fitter knows which face is shy and mistakes her familiar cue for something a newcomer can already use."
+  },
+  {
+    "story": "yellow-ink",
+    "pane": 3,
+    "excerpt": "Half will read it as no charge",
+    "patterns": [
+      "deception:equivocation",
+      "fallacy:equivocation"
+    ],
+    "basis": "The seller explicitly keeps a second meaning of free because readers are likely to understand it differently."
+  },
+  {
+    "story": "yellow-ink",
+    "pane": 2,
+    "excerpt": "Keep them talking about the ink",
+    "patterns": [
+      "deception:diversion",
+      "fallacy:red-herring"
+    ],
+    "basis": "The seller’s order makes the prize for ink a deliberate diversion from the chair price."
+  },
+  {
+    "story": "two-routes",
+    "pane": 0,
+    "excerpt": "then all open",
+    "patterns": [
+      "fallacy:false-dilemma",
+      "fallacy:slippery-slope",
+      "bias:zero-risk"
+    ],
+    "basis": "The two-chart display hides a timed third option and treats one bounded opening as grounds for fearing all will open."
+  },
+  {
+    "story": "two-routes",
+    "pane": 2,
+    "excerpt": "always been used",
+    "patterns": [
+      "fallacy:tradition"
+    ],
+    "basis": "The old inscription credits customary use, while dated soundings offer a separate check in present conditions."
+  },
+  {
+    "story": "third-bell",
+    "pane": 0,
+    "excerpt": "cannot get the unfinished bell out of her head",
+    "patterns": [
+      "bias:unfinished",
+      "bias:negativity"
+    ],
+    "basis": "A lingering unfinished cue from this rehearsal overshadows two completed entrances."
+  },
+  {
+    "story": "third-bell",
+    "pane": 2,
+    "excerpt": "taken the committee an hour",
+    "patterns": [
+      "bias:triviality"
+    ],
+    "basis": "An easy colour decision draws attention away from whether the cord can be reached from the back."
+  },
+  {
+    "story": "ten-bowls",
+    "pane": 0,
+    "excerpt": "Both ladles came from the same pot",
+    "patterns": [
+      "bias:expectancy",
+      "fallacy:nature"
+    ],
+    "basis": "The wild label attracts a judgement of superior sweetness without an ingredient difference."
+  },
+  {
+    "story": "ten-bowls",
+    "pane": 2,
+    "excerpt": "once sold an untested spice too",
+    "patterns": [
+      "fallacy:tu-quoque",
+      "fallacy:ad-hominem"
+    ],
+    "basis": "A personal attack and a countercharge of inconsistency both leave the contents of the bowls to be checked."
+  },
+  {
+    "story": "dry-garden",
+    "pane": 0,
+    "excerpt": "grips the gate harder",
+    "patterns": [
+      "bias:backfire",
+      "bias:reactance"
+    ],
+    "basis": "One gardener resists a public correction under threat to his choice. Another engages, constraining the inference."
+  },
+  {
+    "story": "dry-garden",
+    "pane": 2,
+    "excerpt": "which beds still get water on Thursday",
+    "patterns": [
+      "bias:information",
+      "bias:ostrich"
+    ],
+    "basis": "Looking away avoids a worrying warning; piling up old weather adds information that cannot settle Thursday’s distribution."
+  },
+  {
+    "story": "green-window",
+    "pane": 1,
+    "excerpt": "small late lane disappeared inside the large total",
+    "patterns": [
+      "fallacy:division"
+    ],
+    "basis": "The measured whole met its target while a small lane within it waited."
+  },
+  {
+    "story": "green-window",
+    "pane": 2,
+    "excerpt": "Hang only green shifts in the window",
+    "patterns": [
+      "deception:selective-display"
+    ],
+    "basis": "The supervisor instructs the clerk to leave red shifts off the public display in order to make performance look steady."
+  },
+  {
+    "story": "green-window",
+    "pane": 3,
+    "excerpt": "her own morning be exempt",
+    "patterns": [
+      "fallacy:special-pleading",
+      "bias:self-serving"
+    ],
+    "basis": "The supervisor wants a personal exemption for a condition also faced by a shift she marked down."
+  },
+  {
+    "story": "old-singing",
+    "pane": 0,
+    "excerpt": "When did the children stop trying",
+    "patterns": [
+      "fallacy:loaded-question",
+      "bias:declinism",
+      "bias:negativity"
+    ],
+    "basis": "The visitor’s question presupposes a decline inferred from a curated old take and a rough new one."
+  },
+  {
+    "story": "old-singing",
+    "pane": 2,
+    "excerpt": "would never manage it",
+    "patterns": [
+      "bias:pessimism"
+    ],
+    "basis": "The visitor's expectation of continuing misses meets a clear high note from the same night."
+  },
+  {
+    "story": "blue-ribbon",
+    "pane": 0,
+    "excerpt": "an insult to them",
+    "patterns": [
+      "fallacy:emotion",
+      "bias:ikea"
+    ],
+    "basis": "Pride in the family’s work matters to retaining the model, but the family connection is offered in place of testing the turn."
+  },
+  {
+    "story": "blue-ribbon",
+    "pane": 2,
+    "excerpt": "lists of donors",
+    "patterns": [
+      "bias:information"
+    ],
+    "basis": "More true history of the harbour cannot supply the missing current at the model bend."
+  },
+  {
+    "story": "night-ledger",
+    "pane": 0,
+    "excerpt": "clean book feels enough",
+    "patterns": [
+      "bias:belief",
+      "fallacy:ignorance"
+    ],
+    "basis": "A plausible belief about fairness is used in reverse to infer fair access from a lack of complaints."
+  },
+  {
+    "story": "night-ledger",
+    "pane": 1,
+    "excerpt": "each expected the other",
+    "patterns": [
+      "bias:bystander"
+    ],
+    "basis": "Two neighbours both expected somebody else to bring the appeal chair."
+  },
+  {
+    "story": "night-ledger",
+    "pane": 2,
+    "excerpt": "disprove every entry first",
+    "patterns": [
+      "fallacy:burden"
+    ],
+    "basis": "The runner is asked to disprove unrelated entries before a claim of universal access will be reconsidered."
+  }
+]

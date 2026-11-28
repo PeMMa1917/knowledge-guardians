@@ -95,11 +95,11 @@ function jigWeave(entry: JigCase): Weave {
 
 function objectives(entry: JigCase): Objective[] {
   return [{
-    id: entry.checked, title: `Verify a support for ${entry.title}`, essential: false, visible: jigSeen(entry),
+    id: entry.checked, title: `Check that a holder fits ${entry.title}.`, essential: false, visible: jigSeen(entry),
     done: { all: [jigSeen(entry), { any: JIG_MODES.map((mode) => ({ flag: `${entry.flag}.used.${mode}`, eq: true })) }] },
     onComplete: [{ journal: `j.${entry.flag}.check` }], weave: jigWeave(entry),
   }, {
-    id: entry.returned, title: `Use ${entry.accession} at Hesper’s Emberford bench`, essential: false,
+    id: entry.returned, title: `Use “${entry.title}” at Hesper’s Emberford bench`, essential: false,
     visible: { objective: entry.checked },
     done: { all: [{ objective: entry.checked }, { flag: `${entry.flag}.used.return`, eq: true }] },
     onComplete: [{ journal: `j.${entry.flag}.return` }],

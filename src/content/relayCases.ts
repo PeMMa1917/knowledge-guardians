@@ -73,7 +73,7 @@ export const relayContent = {
       ...(record.source === JOINED_CLOTH_SOURCE ? {
         revisit: { map: JOINED_CLOTH_MAP, prop: JOINED_CLOTH_PROP,
           method: 'Compare a shared beam and independent supports under the same model packet.',
-          hint: 'Equip the working copy and find the two-panel test frame at the east end of Two-Tide Dock.' },
+          hint: 'Equip the joined cloth from Hawaiʻi and find the two-panel test frame at the east end of Two-Tide Dock.' },
       } : {}),
     },
   })),
@@ -98,7 +98,7 @@ export const relayContent = {
   }],
   journal: RELAY_CASES.map((record) => ({
     id: `j.${record.key}`, claimKind: 'observation',
-    text: `I tested a clear run and a gust before visiting the receiving table. I tied the detail back to ${record.institution} record ${record.accession}, ${record.name}.`,
+    text: record.creditClip?.journal ?? `I tested a clear run and a gust before visiting the receiving table. I tied the detail back to ${record.institution} record ${record.accession}, ${record.name}.`,
   })),
   hints: RELAY_CASES.flatMap((record) => [
     'The two clips give the receiver different ways to start.',

@@ -23,6 +23,31 @@ function mix(c1: number, c2: number, t: number): number {
   return (r << 16) | (g << 8) | b;
 }
 
+/** Light reflected by the materials of each setting, in the same pixel-art palette. */
+export const chapterLights: Readonly<Record<string, { material: string; tint: number }>> = {
+  'WORLD-01': { material: 'blue ink and beeswax', tint: 0xc6c1f4 },
+  'WORLD-02': { material: 'clay brick and forge sparks', tint: 0xf6ba93 },
+  'WORLD-03': { material: 'reed and pale river silt', tint: 0xeed59c },
+  'WORLD-04': { material: 'frost on the glass stores', tint: 0xb7dce6 },
+  'WORLD-05': { material: 'sea glass and copper roofs', tint: 0xa8d5d7 },
+  'WORLD-06': { material: 'fern backs and birch bark', tint: 0xb8d79e },
+  'WORLD-07': { material: 'warm brass over a banked forge', tint: 0xefb27d },
+  'WORLD-08': { material: 'printer’s rouge on buff paper', tint: 0xe8b7af },
+  'WORLD-09': { material: 'deep water and bleached sailcloth', tint: 0xa7bfdc },
+  'WORLD-10': { material: 'plum velvet and footlights', tint: 0xe2afd1 },
+  'WORLD-11': { material: 'quince peel in a canvas stall', tint: 0xe7d291 },
+  'WORLD-12': { material: 'willow leaves over green water', tint: 0xaed5bc },
+  'WORLD-13': { material: 'slate wheels and silvered tin', tint: 0xbec8dc },
+  'WORLD-14': { material: 'brown vellum and mulberry ink', tint: 0xd8bacb },
+  'WORLD-15': { material: 'linen charts and a chalk landing', tint: 0xc8dba9 },
+  'WORLD-16': { material: 'old gold in the hour dial', tint: 0xe8c09a },
+};
+
+export function chapterTint(world: string, base: number): number {
+  const light = chapterLights[world];
+  return light ? mix(base, light.tint, .32) : base;
+}
+
 /** The sky at a phase of the day (0 to 1): grade colour, light-pool strength, and how dark it is (0 day, 1 night). */
 export function skyAt(phase: number): { tint: number; light: number; night: number; name: string } {
   const p = ((phase % 1) + 1) % 1;

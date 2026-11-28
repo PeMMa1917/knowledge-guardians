@@ -20,7 +20,7 @@ export const FIELD_STORE_CASES = records.map((entry) => ({
     map: 'observatory.inland',
     prop: `field-store-fold-${entry.slug}`,
     method: entry.revisitAction,
-    hint: 'Take this working copy to the folded rain log at the south end of Marl Fold.',
+    hint: `Bring ${entry.title} to the folded rain log at the south end of Marl Fold.`,
   },
 }));
 export type FieldStoreCase = (typeof FIELD_STORE_CASES)[number];
@@ -111,7 +111,7 @@ function caseScenes(entry: FieldStoreCase): DialogueNode[] {
   notice('reply.place', `${exercise.place} The practice report keeps ${entry.anchor} next to the two marked positions.`),
   {
     id: `${entry.flag}.fold`, speaker: 'coast-fold-keeper', historicalLabel: 'fictional-world',
-    text: `The old Fold tallies can tell someone what our crews saw in the dry. Your working copy of ${entry.accession} gives the new sheet a reference we can find again.`,
+    text: `The old Fold tallies can tell someone what our crews saw in the dry. Put ${entry.accession} beside the rain log. Tomorrow’s crew can look up the same specimen.`,
     options: [{
       text: entry.revisitAction,
       if: { all: [specimenEquipped(entry.key), { not: fieldRevisited(entry) }] },
@@ -149,7 +149,7 @@ function benchScene(route: Route, first: boolean): DialogueNode {
 }
 
 const objectives: Objective[] = FIELD_STORE_CASES.map((entry) => ({
-  id: entry.objective, title: `Finish a practice comparison for ${entry.accession}.`,
+  id: entry.objective, title: `Finish a practice comparison for “${entry.title}”.`,
   visible: { card: entry.card }, essential: false,
   done: { all: [{ card: entry.card }, fieldFirst(entry), { any: FIELD_ROUTES.map((route) => fieldRead(entry, route)) }] },
   weave: { ...exercises[entry.kind].weave, atl: ['thinking', 'research', 'communication'],
@@ -193,7 +193,7 @@ export const fieldStoreContent = {
     'Keep one fixed reference while you change the other condition.',
     `Inspect ${entry.accession}. The reference station sits next to its case.`,
     'Take the left tray for a later bell at a fixed spot. On the right, visit both posts with the same bell slip.',
-    'Make the second view, return to claim the working copy and equip it in the bag. Its repeat check is at the south end of Marl Fold.',
+    'Make the second view, then claim the specimen at its stand and equip it in the bag. Its repeat check is at the south end of Marl Fold.',
   ].map((text, index) => ({ id: `h.${entry.flag}.${index + 1}`, objective: entry.objective, depth: (index + 1) as Hint['depth'], text }))),
   journal: FIELD_STORE_CASES.flatMap((entry) => [
     { id: `j.${entry.flag}.time`, claimKind: 'observation' as const,
@@ -201,6 +201,6 @@ export const fieldStoreContent = {
     { id: `j.${entry.flag}.place`, claimKind: 'observation' as const,
       text: `I held one model bell and checked two positions with the reference for ${entry.accession}.` },
     { id: `j.${entry.flag}.fold`, claimKind: 'observation' as const,
-      text: `I used the working copy for ${entry.accession} on the earlier Marl Fold board. ${entry.revisitReply}` },
+      text: `I set ${entry.title} (${entry.accession}) beside the older Marl Fold log. ${entry.revisitReply}` },
   ]),
 } satisfies Partial<ContentPack>;

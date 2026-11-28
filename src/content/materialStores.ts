@@ -138,7 +138,7 @@ export const materialStoreContent = {
     summary: [object.identity, object.origin, object.medium, object.dimensions].filter(Boolean).join(' · '),
     altText: object.alt, sources: [source], grantsCard: card,
     specimen: { key: object.key, accession: object.accession, institution: object.institution, source, objective, pixelAsset: object.asset,
-      revisit: { ...MATERIAL_REVISIT, method: returnAction, hint: 'Equip the working copy and take it to the marked shelf at Canal Walk.' } },
+      revisit: { ...MATERIAL_REVISIT, method: returnAction, hint: 'Bring the object to the marked shelf at Canal Walk and equip it there.' } },
   })),
   cards: MATERIAL_CASES.map(({ object, card, source }) => ({
     id: card, title: `${object.title} · ${object.accession}`, historicalLabel: 'documented', claimKind: 'observation',

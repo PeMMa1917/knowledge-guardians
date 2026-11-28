@@ -103,7 +103,7 @@ const objectives: Objective[] = DATE_REGISTER_CASES.map((record) => ({
 }));
 
 const civicObjectives: Objective[] = DATE_REGISTER_CASES.map((record) => ({
-  id: record.civicObjective, title: `Help the Civic librarian use the dated ${record.accession} receipt.`,
+  id: record.civicObjective, title: `Help the Civic librarian use the dated receipt for “${record.title}”.`,
   visible: { all: [{ objective: 'civic.arrival' }, registerFiled(record)] }, essential: false,
   done: { flagSet: `${record.flag}.copy` }, onComplete: [{ journal: `j.${record.civicObjective}` }],
   weave: {

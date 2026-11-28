@@ -1,4 +1,31 @@
+import { returnCoatAt, liningLanding } from './returnCoat';
+import { pocketTheatreAt } from './pocketTheatre';
+import {ovenLane, letterQuay, riverDoors} from './riverNames';
+import {groveNursery,groveStage,groveDoors} from './walkingOrchard';
+import {inkProps,inkPeople} from './secondInk';
+import {middleRoom,middleLanding,houseAt,houseVisitors} from './openHouse';
+import {quarterRoom,clockProps,clockGuests} from './tideClock';
+import {wireRoom,radioProps,radioVisitors} from './ferryRadio';
+import {stackProps,stackPeople,turningRoom} from './turningStacks';
+import {lensRoom,lensAt,lensVisitors} from './lensLoan';
+import {cupStreet,cupVisitors,firstCupRoom} from './firstCup';
+import {almanacAt,almanacRoom,almanacVisitors} from './streetAlmanac';
+import {courierAt,underWeight} from './courierLift';
+import {elbowAt,sleeveRoom} from './giantSleeve';
+import {petalHouse} from './petalHouse';
+import { withOriginVisitor } from './originTours';
+import { pictureFerryRoom } from './pictureFerry';
+import { plumLoft } from './plumLoft';
+import { SUPPER_MAP } from './supperRoom';
+import {fieldLoansAt} from './fieldLoans';
+import {foldingFlockAt} from './foldingFlock';
+import { withTownHearing } from './hearings';
+import {withWhistleWatch} from './whistleWatch';
+import { nightDoor, nightRooms } from './nightRegister';
 import type { MapDef } from './types';
+import { HINGED_PLANK } from './hingedPlank';
+import { UNDERPAN } from './underpan';
+import { BELL_LOFT, SPARE_MOON } from './spareMoon';
 import { NEXUS } from './nexus';
 import { HALF_LIGHT_ROOM } from './lanternWeave';
 import { TWO_SHUTTER_ROOM } from './shutterBoard';
@@ -28,6 +55,7 @@ import { NILE_MAKERS_ROOM } from './makerRoom';
 import { OBJECT_USE_WORKSHOPS } from './objectUse';
 import { REFERENCE_STATION } from './referenceStation';
 import { CIVIC_CALLBOARD } from './civicCallboard';
+import { QUIET_RECORDS } from './quietRecords';
 import { CUE_WORKSHOP } from './cueWorkshop';
 import { MODEL_RECORD_ROOM } from './modelRecords';
 import { SECOND_READING_STORE } from './secondReading';
@@ -43,7 +71,9 @@ import { FERRY_PACKING_ROOM } from './ferryPacking';
 import { WORK_SCHEDULE_MAPS } from './workSchedule';
 import { BEARING_ROOM, BEARING_RETURN_ROOM } from './bearingBay';
 import { JIG_SHOP_MAP } from './jigShop';
+import { inkPostAt } from './inkPost';
 import { earlierViewingAt } from './earlierViewing';
+import { publicationReturnsAt } from './publicationReturns';
 import { blueTailAt } from './blueTail';
 import { PRICE_DRAWERS_MAP } from './priceDrawers';
 import { WARM_ROOM } from './warmRoom';
@@ -74,8 +104,12 @@ import { WATER_CULVERT } from './catchment';
 import { SILL_BRIDGE, SILL_RECEIVING } from './sillBridge';
 
 const campaignMaps: Record<string, MapDef> = {
+  [HINGED_PLANK.id]: HINGED_PLANK,
   [WATER_CULVERT.id]: WATER_CULVERT,
   [NEXUS.id]: NEXUS,
+  [UNDERPAN.id]: UNDERPAN,
+  [BELL_LOFT.id]: BELL_LOFT,
+  [SPARE_MOON.id]: SPARE_MOON,
   [HALF_LIGHT_ROOM.id]: HALF_LIGHT_ROOM,
   [TWO_SHUTTER_ROOM.id]: TWO_SHUTTER_ROOM,
   [NUMBER_LEAF_ROOM.id]: NUMBER_LEAF_ROOM,
@@ -138,6 +172,7 @@ const campaignMaps: Record<string, MapDef> = {
   [COPIES_PROOF_ROOM.id]: COPIES_PROOF_ROOM,
   [COPIES_PRESS.id]: COPIES_PRESS,
   [COPIES_LANDING.id]: COPIES_LANDING,
+  [SUPPER_MAP.id]: SUPPER_MAP,
   [SEA_HARBOUR.id]: SEA_HARBOUR,
   [SEA_CHARTROOM.id]: SEA_CHARTROOM,
   [DATE_PEG_ROOM.id]: DATE_PEG_ROOM,
@@ -147,6 +182,10 @@ const campaignMaps: Record<string, MapDef> = {
   [SHOAL_PROOF_SHELTER.id]: SHOAL_PROOF_SHELTER,
   [SEA_SHOAL.id]: SEA_SHOAL,
   [SHORE_REPLY_SHED.id]: SHORE_REPLY_SHED,
+  [sleeveRoom.id]:sleeveRoom,
+  [petalHouse.id]:petalHouse,
+  [pictureFerryRoom.id]: pictureFerryRoom,
+  [plumLoft.id]: plumLoft,
   [STAGE_FOYER.id]: STAGE_FOYER,
   ...Object.fromEntries(SCRIPT_RAIL_MAPS.map((map) => [map.id, map])),
   [STAGE_REHEARSAL.id]: STAGE_REHEARSAL,
@@ -165,6 +204,7 @@ const campaignMaps: Record<string, MapDef> = {
   [WATER_SERVICE_LANE.id]: WATER_SERVICE_LANE,
   [CIVIC_DISPATCH.id]: CIVIC_DISPATCH,
   [CIVIC_CALLBOARD.id]: CIVIC_CALLBOARD,
+  [QUIET_RECORDS.id]: QUIET_RECORDS,
   [CIVIC_STEPS.id]: CIVIC_STEPS,
   [CIVIC_CANAL.id]: CIVIC_CANAL,
   [VOICES_LISTENING.id]: VOICES_LISTENING,
@@ -179,6 +219,17 @@ const campaignMaps: Record<string, MapDef> = {
   [ISLAND_MARGIN.id]: ISLAND_MARGIN,
   [COUNCIL_HALL.id]: COUNCIL_HALL,
   [SECOND_READING_STORE.id]: SECOND_READING_STORE,
+  [groveNursery.id]:groveNursery, [groveStage.id]:groveStage,
+  [ovenLane.id]:ovenLane, [letterQuay.id]:letterQuay,
+  [middleRoom.id]:middleRoom, [middleLanding.id]:middleLanding,
+  [quarterRoom.id]:quarterRoom,
+  [wireRoom.id]:wireRoom,
+  [lensRoom.id]:lensRoom,
+  [firstCupRoom.id]:firstCupRoom,
+  [turningRoom.id]:turningRoom,
+  [almanacRoom.id]:almanacRoom,
+  [underWeight.id]:underWeight,
+  [liningLanding.id]:liningLanding,
   [COUNCIL_GALLERY.id]: COUNCIL_GALLERY,
   [COUNCIL_LOADING_BAY.id]: COUNCIL_LOADING_BAY,
   [COUNCIL_LOAD_CHECK.id]: COUNCIL_LOAD_CHECK,
@@ -186,7 +237,14 @@ const campaignMaps: Record<string, MapDef> = {
   [BADGE_ANNEX.id]: BADGE_ANNEX,
 };
 
+for (const room of nightRooms) {
+  const door = room.interactables.find(prop => prop.id === room.id+'.back')!;
+  campaignMaps[room.id] = { ...room, music: campaignMaps[door.to!.map].music };
+}
+
 export const MAPS: Record<string, MapDef> = Object.fromEntries(Object.values(campaignMaps).map((map) => {
-  const returns = [...earlierViewingAt(map.id), ...blueTailAt(map.id)];
-  return [map.id, returns.length ? { ...map, interactables: [...map.interactables, ...returns] } : map];
+  const returns = [...returnCoatAt(map.id), ...pocketTheatreAt(map.id), ...riverDoors(map.id), ...inkProps(map.id), ...houseAt(map.id), ...groveDoors(map.id), ...clockProps(map.id), ...radioProps(map.id), ...lensAt(map.id), ...stackProps(map.id), ...cupStreet(map.id), ...almanacAt(map.id), ...elbowAt(map.id), ...courierAt(map.id), ...earlierViewingAt(map.id), ...blueTailAt(map.id), ...publicationReturnsAt(map.id), ...inkPostAt(map.id), ...nightDoor(map.id), ...foldingFlockAt(map.id), ...fieldLoansAt(map.id)];
+  const guests=[...inkPeople(map.id), ...houseVisitors(map.id), ...radioVisitors(map.id), ...clockGuests(map.id), ...lensVisitors(map.id), ...stackPeople(map.id),...cupVisitors(map.id),...almanacVisitors(map.id)];
+  const room = returns.length||guests.length ? {...map,interactables:[...map.interactables,...returns],npcs:[...map.npcs,...guests]} : map;
+  return [map.id, withOriginVisitor(withTownHearing(withWhistleWatch(room)))];
 }));

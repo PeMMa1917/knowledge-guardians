@@ -1,5 +1,16 @@
 {
   "people": [
+    {"wikidata":"Q474333","title":"Amos Tversky","characters":["cup-tversky"],"biographies":[]},
+    {"wikidata":"Q7636853","title":"William Bland","characters":["almanac-bland"],"biographies":[]},
+    {"wikidata":"Q2835292","title":"Alfred Lucas (chemist)","characters":["almanac-lucas"],"biographies":[]},
+    {"wikidata":"Q1505647","title":"William Wyatt Gill","characters":["almanac-gill"],"biographies":[]},
+    {"wikidata":"Q62530","title":"Maria Sibylla Merian","characters":["petal-merian"],"biographies":[]},
+    {
+      "wikidata": "Q93182",
+      "title": "Louis Braille",
+      "characters": ["orchard-louis-braille"],
+      "biographies": []
+    },
     {
       "wikidata": "Q313211",
       "title": "Alberto Santos-Dumont",
@@ -67,7 +78,9 @@
     {
       "wikidata": "Q11104",
       "title": "Ibn al-Haytham",
-      "characters": [],
+      "characters": [
+        "ibn-al-haytham"
+      ],
       "biographies": [
         "card.person.haytham"
       ]
@@ -107,7 +120,9 @@
     {
       "wikidata": "Q101638",
       "title": "Mary Wollstonecraft",
-      "characters": [],
+      "characters": [
+        "lantern-q101638"
+      ],
       "biographies": [
         "card.person.wollstonecraft"
       ]
@@ -168,9 +183,1989 @@
       "biographies": [
         "card.nile.treaty"
       ]
-    }
+    },
+    {
+      "wikidata": "Q2731767",
+      "title": "Gārgī Vāchaknavī",
+      "characters": [
+        "ink-q2731767"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q183144",
+      "title": "Epictetus",
+      "characters": [
+        "ink-q183144"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q2896591",
+      "title": "Zera Yacob (philosopher)",
+      "characters": [
+        "ink-q2896591"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q183074",
+      "title": "Juana Inés de la Cruz",
+      "characters": [
+        "ink-q183074"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q231690",
+      "title": "B. R. Ambedkar",
+      "characters": [
+        "ink-q231690"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q219368",
+      "title": "Judith Butler",
+      "characters": [
+        "ink-q219368"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q8750",
+      "title": "Michael Faraday",
+      "characters": [
+        "ink-q8750"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q296898",
+      "title": "George Washington Carver",
+      "characters": [
+        "ink-q296898"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q450317",
+      "title": "Chien-Shiung Wu",
+      "characters": [
+        "ink-q450317"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q462843",
+      "title": "Tu Youyou",
+      "characters": [
+        "ink-q462843"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7352852",
+      "title": "Robin Wall Kimmerer",
+      "characters": [
+        "ink-q7352852"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q816430",
+      "title": "Ben Barres",
+      "characters": [
+        "ink-q816430"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q202943",
+      "title": "Brahmagupta",
+      "characters": [
+        "ink-q202943"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q9038",
+      "title": "Al-Khwarizmi",
+      "characters": [
+        "ink-q9038"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7099",
+      "title": "Emmy Noether",
+      "characters": [
+        "ink-q7099"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q83163",
+      "title": "Srinivasa Ramanujan",
+      "characters": [
+        "ink-q83163"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q1771279",
+      "title": "Maryam Mirzakhani",
+      "characters": [
+        "ink-q1771279"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q60056205",
+      "title": "Autumn Kent",
+      "characters": [
+        "ink-q60056205"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q9372",
+      "title": "Sima Qian",
+      "characters": [
+        "ink-q9372"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q179284",
+      "title": "Anna Komnene",
+      "characters": [
+        "ink-q179284"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q521729",
+      "title": "Cheikh Anta Diop",
+      "characters": [
+        "ink-q521729"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7517038",
+      "title": "Silvia Rivera Cusicanqui",
+      "characters": [
+        "ink-q7517038"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7648438",
+      "title": "Susan Stryker",
+      "characters": [
+        "ink-q7648438"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q1396630",
+      "title": "Peter Buck (anthropologist)",
+      "characters": [
+        "ink-q1396630"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q1395135",
+      "title": "Julio C. Tello",
+      "characters": [
+        "ink-q1395135"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q220480",
+      "title": "Zora Neale Hurston",
+      "characters": [
+        "ink-q220480"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q238890",
+      "title": "Kathleen Kenyon",
+      "characters": [
+        "ink-q238890"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q231111",
+      "title": "Mary Leakey",
+      "characters": [
+        "ink-q231111"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q6450162",
+      "title": "Kwang-chih Chang",
+      "characters": [
+        "ink-q6450162"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q189725",
+      "title": "Pāṇini",
+      "characters": [
+        "ink-q189725"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q9294",
+      "title": "Ibn Khaldun",
+      "characters": [
+        "ibn-khaldun"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q158060",
+      "title": "W. E. B. Du Bois",
+      "characters": [
+        "ink-q158060"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q14900709",
+      "title": "Mamie Phipps Clark",
+      "characters": [
+        "ink-q14900709"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q153761",
+      "title": "Elinor Ostrom",
+      "characters": [
+        "ink-q153761"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q453592",
+      "title": "Raewyn Connell",
+      "characters": [
+        "ink-q453592"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q762",
+      "title": "Leonardo da Vinci",
+      "characters": [
+        "ink-q762"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q11621076",
+      "title": "Katsushika Ōi",
+      "characters": [
+        "ink-q11621076"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q219634",
+      "title": "Claude Cahun",
+      "characters": [
+        "ink-q219634"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q5588",
+      "title": "Frida Kahlo",
+      "characters": [
+        "ink-q5588"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q453890",
+      "title": "Emily Kame Kngwarreye",
+      "characters": [
+        "ink-q453890"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q1323876",
+      "title": "El Anatsui",
+      "characters": [
+        "ink-q1323876"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q272411",
+      "title": "Mozi",
+      "characters": [
+        "mozi"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q11903",
+      "title": "Hypatia",
+      "characters": [
+        "ink-q11903"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q39837",
+      "title": "Averroes",
+      "characters": [
+        "ink-q39837"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q595486",
+      "title": "Anton Wilhelm Amo",
+      "characters": [
+        "ink-q595486"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q164797",
+      "title": "Paulo Freire",
+      "characters": [
+        "ink-q164797"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q570103",
+      "title": "Kwasi Wiredu",
+      "characters": [
+        "ink-q570103"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q468609",
+      "title": "Paul B. Preciado",
+      "characters": [
+        "ink-q468609"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q270085",
+      "title": "Shen Kuo",
+      "characters": [
+        "ink-q270085"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q742233",
+      "title": "Carlos Finlay",
+      "characters": [
+        "ink-q742233"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q150526",
+      "title": "Santiago Ramón y Cajal",
+      "characters": [
+        "ink-q150526"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q4794782",
+      "title": "Janaki Ammal",
+      "characters": [
+        "ink-q4794782"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q100948",
+      "title": "Rachel Carson",
+      "characters": [
+        "ink-q100948"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q2925049",
+      "title": "Fe del Mundo",
+      "characters": [
+        "ink-q2925049"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q28189",
+      "title": "Abdus Salam",
+      "characters": [
+        "ink-q28189"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q11490",
+      "title": "Lynn Conway",
+      "characters": [
+        "ink-q11490"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q115590",
+      "title": "Madhava of Sangamagrama",
+      "characters": [
+        "ink-q115590"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7259",
+      "title": "Ada Lovelace",
+      "characters": [
+        "ink-q7259"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q184535",
+      "title": "Sofya Kovalevskaya",
+      "characters": [
+        "ink-q184535"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7251",
+      "title": "Alan Turing",
+      "characters": [
+        "ink-q7251"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q11740",
+      "title": "Katherine Johnson",
+      "characters": [
+        "ink-q11740"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q32538394",
+      "title": "June Huh",
+      "characters": [
+        "ink-q32538394"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q177081",
+      "title": "Ban Zhao",
+      "characters": [
+        "ink-q177081"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q11826",
+      "title": "Al-Biruni",
+      "characters": [
+        "ink-q11826"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q773828",
+      "title": "C. L. R. James",
+      "characters": [
+        "ink-q773828"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q696748",
+      "title": "Wang Gungwu",
+      "characters": [
+        "ink-q696748"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q6836249",
+      "title": "Michel-Rolph Trouillot",
+      "characters": [
+        "ink-q6836249"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q1339859",
+      "title": "Ennigaldi-Nanna",
+      "characters": [
+        "ink-q1339859"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7977193",
+      "title": "We'wha",
+      "characters": [
+        "ink-q7977193"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q780206",
+      "title": "Ella Cara Deloria",
+      "characters": [
+        "ink-q780206"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q275622",
+      "title": "Dorothy Garrod",
+      "characters": [
+        "ink-q275622"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q407741",
+      "title": "Yuri Knorozov",
+      "characters": [
+        "ink-q407741"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q1326832",
+      "title": "Epeli Hauʻofa",
+      "characters": [
+        "ink-q1326832"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q64597567",
+      "title": "Shadreck Chirikure",
+      "characters": [
+        "ink-q64597567"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q1808076",
+      "title": "Laurent Clerc",
+      "characters": [
+        "ink-q1808076"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q131117",
+      "title": "Maria Montessori",
+      "characters": [
+        "ink-q131117"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q180819",
+      "title": "Lev Vygotsky",
+      "characters": [
+        "ink-q180819"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q193670",
+      "title": "Frantz Fanon",
+      "characters": [
+        "ink-q193670"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q132489",
+      "title": "Amartya Sen",
+      "characters": [
+        "ink-q132489"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q682037",
+      "title": "Deirdre McCloskey",
+      "characters": [
+        "ink-q682037"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q232810",
+      "title": "Temple Grandin",
+      "characters": [
+        "ink-q232810"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q232505",
+      "title": "Enheduanna",
+      "characters": [
+        "ink-q232505"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q5600",
+      "title": "Mimar Sinan",
+      "characters": [
+        "ink-q5600"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q212657",
+      "title": "Artemisia Gentileschi",
+      "characters": [
+        "ink-q212657"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q231121",
+      "title": "Yayoi Kusama",
+      "characters": [
+        "ink-q231121"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q2662098",
+      "title": "Ibrahim El-Salahi",
+      "characters": [
+        "ink-q2662098"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q158056",
+      "title": "Nam June Paik",
+      "characters": [
+        "ink-q158056"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q47780",
+      "title": "Zaha Hadid",
+      "characters": [
+        "ink-q47780"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q6391838",
+      "title": "Kent Monkman",
+      "characters": [
+        "ink-q6391838"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q188903",
+      "title": "Mencius",
+      "characters": [
+        "ink-q188903"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q28959",
+      "title": "Han Fei",
+      "characters": [
+        "ink-q28959"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q9546",
+      "title": "Al-Ghazali",
+      "characters": [
+        "ink-q9546"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q132524",
+      "title": "Ayn Rand",
+      "characters": [
+        "ink-q132524"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q157309",
+      "title": "Simone Weil",
+      "characters": [
+        "ink-q157309"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q81244",
+      "title": "Karl Popper",
+      "characters": [
+        "ink-q81244"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q184980",
+      "title": "Thomas Kuhn",
+      "characters": [
+        "ink-q184980"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q3507232",
+      "title": "Sylvia Wynter",
+      "characters": [
+        "ink-q3507232"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q937",
+      "title": "Albert Einstein",
+      "characters": [
+        "ink-q937"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7085",
+      "title": "Niels Bohr",
+      "characters": [
+        "ink-q7085"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q199654",
+      "title": "Barbara McClintock",
+      "characters": [
+        "ink-q199654"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q234583",
+      "title": "Lynn Margulis",
+      "characters": [
+        "ink-q234583"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q44461",
+      "title": "Richard Dawkins",
+      "characters": [
+        "ink-q44461"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q535129",
+      "title": "Joan Roughgarden",
+      "characters": [
+        "ink-q535129"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q48472405",
+      "title": "Chanda Prescod-Weinstein",
+      "characters": [
+        "ink-q48472405"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q470531",
+      "title": "Seki Takakazu",
+      "characters": [
+        "ink-q470531"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7967775",
+      "title": "Wang Zhenyi",
+      "characters": [
+        "ink-q7967775"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q41585",
+      "title": "David Hilbert",
+      "characters": [
+        "ink-q41585"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q155887",
+      "title": "L. E. J. Brouwer",
+      "characters": [
+        "ink-q155887"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q41390",
+      "title": "Kurt Gödel",
+      "characters": [
+        "ink-q41390"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q452116",
+      "title": "Julia Robinson",
+      "characters": [
+        "ink-q452116"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q77141",
+      "title": "Alexander Grothendieck",
+      "characters": [
+        "ink-q77141"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q11099812",
+      "title": "Ron Eglash",
+      "characters": [
+        "ink-q11099812"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q26825",
+      "title": "Herodotus",
+      "characters": [
+        "ink-q26825"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q41683",
+      "title": "Thucydides",
+      "characters": [
+        "ink-q41683"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q34933",
+      "title": "Eric Hobsbawm",
+      "characters": [
+        "ink-q34933"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q85102",
+      "title": "Gerda Lerner",
+      "characters": [
+        "ink-q85102"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q16885749",
+      "title": "Linda Tuhiwai Smith",
+      "characters": [
+        "ink-q16885749"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q377638",
+      "title": "Niall Ferguson",
+      "characters": [
+        "ink-q377638"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q180099",
+      "title": "Margaret Mead",
+      "characters": [
+        "ink-q180099"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q352603",
+      "title": "Derek Freeman",
+      "characters": [
+        "ink-q352603"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q381783",
+      "title": "Lewis Binford",
+      "characters": [
+        "ink-q381783"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q140575",
+      "title": "Zahi Hawass",
+      "characters": [
+        "ink-q140575"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q556140",
+      "title": "Ian Hodder",
+      "characters": [
+        "ink-q556140"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q1174579",
+      "title": "David Graeber",
+      "characters": [
+        "ink-q1174579"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q1325",
+      "title": "Friedrich Hayek",
+      "characters": [
+        "ink-q1325"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q234793",
+      "title": "Joan Robinson",
+      "characters": [
+        "ink-q234793"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q213195",
+      "title": "B. F. Skinner",
+      "characters": [
+        "ink-q213195"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q9049",
+      "title": "Noam Chomsky",
+      "characters": [
+        "ink-q9049"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q666678",
+      "title": "Daniel Everett",
+      "characters": [
+        "ink-q666678"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q6409990",
+      "title": "Kimberlé Crenshaw",
+      "characters": [
+        "ink-q6409990"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q32729",
+      "title": "Ha-Joon Chang",
+      "characters": [
+        "ink-q32729"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q61064",
+      "title": "Wassily Kandinsky",
+      "characters": [
+        "ink-q61064"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q171128",
+      "title": "Diego Rivera",
+      "characters": [
+        "ink-q171128"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q273087",
+      "title": "Augusta Savage",
+      "characters": [
+        "ink-q273087"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q1791520",
+      "title": "Lygia Clark",
+      "characters": [
+        "ink-q1791520"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q314966",
+      "title": "Ousmane Sembène",
+      "characters": [
+        "ink-q314966"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q2900288",
+      "title": "Betye Saar",
+      "characters": [
+        "ink-q2900288"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q740036",
+      "title": "Genesis P-Orridge",
+      "characters": [
+        "ink-q740036"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q47739",
+      "title": "Zhuang Zhou",
+      "characters": [
+        "lantern-q47739"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q216072",
+      "title": "Xunzi (philosopher)",
+      "characters": [
+        "lantern-q216072"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q171195",
+      "title": "Nagarjuna",
+      "characters": [
+        "lantern-q171195"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q180967",
+      "title": "Adi Shankara",
+      "characters": [
+        "lantern-q180967"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q19587071",
+      "title": "Im Yunjidang",
+      "characters": [
+        "lantern-q19587071"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q165792",
+      "title": "Edmund Burke",
+      "characters": [
+        "lantern-q165792"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q740884",
+      "title": "Sandy Stone (artist)",
+      "characters": [
+        "lantern-q740884"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q171969",
+      "title": "Georges Cuvier",
+      "characters": [
+        "lantern-q171969"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q5333",
+      "title": "Charles Lyell",
+      "characters": [
+        "lantern-q5333"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q76432",
+      "title": "Rudolf Virchow",
+      "characters": [
+        "lantern-q76432"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q529",
+      "title": "Louis Pasteur",
+      "characters": [
+        "lantern-q529"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q148109",
+      "title": "Subrahmanyan Chandrasekhar",
+      "characters": [
+        "lantern-q148109"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q46795",
+      "title": "Wangarĩ Maathai",
+      "characters": [
+        "lantern-q46795"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q2540350",
+      "title": "Jessica Mink",
+      "characters": [
+        "lantern-q2540350"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q88608397",
+      "title": "Katalin Karikó",
+      "characters": [
+        "lantern-q88608397"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q316304",
+      "title": "Liu Hui",
+      "characters": [
+        "lantern-q316304"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7103",
+      "title": "Sophie Germain",
+      "characters": [
+        "lantern-q7103"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q379999",
+      "title": "Harold Jeffreys",
+      "characters": [
+        "lantern-q379999"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q539544",
+      "title": "Jerzy Neyman",
+      "characters": [
+        "lantern-q539544"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q525037",
+      "title": "David Blackwell",
+      "characters": [
+        "lantern-q525037"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q38636",
+      "title": "Karen Uhlenbeck",
+      "characters": [
+        "lantern-q38636"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q23721911",
+      "title": "Maryna Viazovska",
+      "characters": [
+        "lantern-q23721911"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q473217",
+      "title": "Felipe Guaman Poma de Ayala",
+      "characters": [
+        "lantern-q473217"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q185105",
+      "title": "Fernand Braudel",
+      "characters": [
+        "lantern-q185105"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q266185",
+      "title": "Natalie Zemon Davis",
+      "characters": [
+        "lantern-q266185"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q501880",
+      "title": "Bernard Lewis",
+      "characters": [
+        "lantern-q501880"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q201538",
+      "title": "Edward Said",
+      "characters": [
+        "lantern-q201538"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q2744161",
+      "title": "Romila Thapar",
+      "characters": [
+        "lantern-q2744161"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q929268",
+      "title": "Leslie Feinberg",
+      "characters": [
+        "lantern-q929268"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q276177",
+      "title": "Gertrude Caton Thompson",
+      "characters": [
+        "lantern-q276177"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q269002",
+      "title": "Tatiana Proskouriakoff",
+      "characters": [
+        "lantern-q269002"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q10501504",
+      "title": "Su Bingqi",
+      "characters": [
+        "lantern-q10501504"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q310956",
+      "title": "Clifford Geertz",
+      "characters": [
+        "lantern-q310956"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q334842",
+      "title": "Marvin Harris",
+      "characters": [
+        "lantern-q334842"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q4194733",
+      "title": "Siti Zuraina Abdul Majid",
+      "characters": [
+        "lantern-q4194733"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q132253334",
+      "title": "Sonya Atalay",
+      "characters": [
+        "lantern-q132253334"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q9215",
+      "title": "Sigmund Freud",
+      "characters": [
+        "lantern-q9215"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q154723",
+      "title": "Viktor Frankl",
+      "characters": [
+        "lantern-q154723"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q984416",
+      "title": "Celso Furtado",
+      "characters": [
+        "lantern-q984416"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q233950",
+      "title": "Daniel Kahneman",
+      "characters": [
+        "lantern-q233950"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q108184",
+      "title": "Gerd Gigerenzer",
+      "characters": [
+        "lantern-q108184"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q242376",
+      "title": "Fatema Mernissi",
+      "characters": [
+        "lantern-q242376"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q212730",
+      "title": "Steven Pinker",
+      "characters": [
+        "lantern-q212730"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q340234",
+      "title": "Achille Mbembe",
+      "characters": [
+        "lantern-q340234"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q24572747",
+      "title": "A. Revathi",
+      "characters": [
+        "lantern-q24572747"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q466627",
+      "title": "Tarsila do Amaral",
+      "characters": [
+        "lantern-q466627"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q4724",
+      "title": "Le Corbusier",
+      "characters": [
+        "lantern-q4724"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q560101",
+      "title": "Hassan Fathy",
+      "characters": [
+        "lantern-q560101"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q466654",
+      "title": "Pacita Abad",
+      "characters": [
+        "lantern-q466654"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q160115",
+      "title": "Ai Weiwei",
+      "characters": [
+        "lantern-q160115"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q146776",
+      "title": "Zanele Muholi",
+      "characters": [
+        "lantern-q146776"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q256506",
+      "title": "Rabia Basri",
+      "characters": [
+        "lantern-q256506"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q9397",
+      "title": "Zhu Xi",
+      "characters": [
+        "lantern-q9397"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q378462",
+      "title": "Wang Yangming",
+      "characters": [
+        "lantern-q378462"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q35802",
+      "title": "Baruch Spinoza",
+      "characters": [
+        "lantern-q35802"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7197",
+      "title": "Simone de Beauvoir",
+      "characters": [
+        "lantern-q7197"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q28918",
+      "title": "Luce Irigaray",
+      "characters": [
+        "lantern-q28918"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q43302497",
+      "title": "Sophie Oluwole",
+      "characters": [
+        "lantern-q43302497"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q60894584",
+      "title": "Viola Cordova",
+      "characters": [
+        "lantern-q60894584"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q712288",
+      "title": "Paulin J. Hountondji",
+      "characters": [
+        "lantern-q712288"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7765045",
+      "title": "Julia Serano",
+      "characters": [
+        "lantern-q7765045"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q39599",
+      "title": "Christiaan Huygens",
+      "characters": [
+        "lantern-q39599"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q935",
+      "title": "Isaac Newton",
+      "characters": [
+        "lantern-q935"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q185007",
+      "title": "Rita Levi-Montalcini",
+      "characters": [
+        "lantern-q185007"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q154824",
+      "title": "Norman Borlaug",
+      "characters": [
+        "lantern-q154824"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q234888",
+      "title": "Vera Rubin",
+      "characters": [
+        "lantern-q234888"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q1389108",
+      "title": "Mordehai Milgrom",
+      "characters": [
+        "lantern-q1389108"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q235451",
+      "title": "Vandana Shiva",
+      "characters": [
+        "lantern-q235451"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q6777103",
+      "title": "Martine Rothblatt",
+      "characters": [
+        "lantern-q6777103"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q35900",
+      "title": "Omar Khayyam",
+      "characters": [
+        "lantern-q35900"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7091",
+      "title": "Évariste Galois",
+      "characters": [
+        "lantern-q7091"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q76410",
+      "title": "Leopold Kronecker",
+      "characters": [
+        "lantern-q76410"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q76420",
+      "title": "Georg Cantor",
+      "characters": [
+        "lantern-q76420"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q11641",
+      "title": "Grace Hopper",
+      "characters": [
+        "lantern-q11641"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q101740",
+      "title": "Benoit Mandelbrot",
+      "characters": [
+        "lantern-q101740"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q92824",
+      "title": "Judea Pearl",
+      "characters": [
+        "lantern-q92824"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q92894",
+      "title": "Geoffrey Hinton",
+      "characters": [
+        "lantern-q92894"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q275604",
+      "title": "Ingrid Daubechies",
+      "characters": [
+        "lantern-q275604"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q192124",
+      "title": "al-Tabari",
+      "characters": [
+        "lantern-q192124"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q77184",
+      "title": "Leopold von Ranke",
+      "characters": [
+        "lantern-q77184"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q5047158",
+      "title": "Carter G. Woodson",
+      "characters": [
+        "lantern-q5047158"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q475026",
+      "title": "Ranajit Guha",
+      "characters": [
+        "lantern-q475026"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q434818",
+      "title": "Hayden White",
+      "characters": [
+        "lantern-q434818"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7399969",
+      "title": "Saidiya Hartman",
+      "characters": [
+        "lantern-q7399969"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q106288014",
+      "title": "Jules Gill-Peterson",
+      "characters": [
+        "lantern-q106288014"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q141037",
+      "title": "Edward Burnett Tylor",
+      "characters": [
+        "lantern-q141037"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q76857",
+      "title": "Franz Boas",
+      "characters": [
+        "lantern-q76857"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q128126",
+      "title": "Claude Lévi-Strauss",
+      "characters": [
+        "lantern-q128126"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q221084",
+      "title": "Marija Gimbutas",
+      "characters": [
+        "lantern-q221084"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q434391",
+      "title": "Niède Guidon",
+      "characters": [
+        "lantern-q434391"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q3048398",
+      "title": "Eduardo Viveiros de Castro",
+      "characters": [
+        "lantern-q3048398"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q27455889",
+      "title": "Theresa A. Singleton",
+      "characters": [
+        "lantern-q27455889"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q15948",
+      "title": "Émile Durkheim",
+      "characters": [
+        "lantern-q15948"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q9387",
+      "title": "Max Weber",
+      "characters": [
+        "lantern-q9387"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q9317",
+      "title": "John Maynard Keynes",
+      "characters": [
+        "lantern-q9317"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q982656",
+      "title": "Fei Xiaotong",
+      "characters": [
+        "lantern-q982656"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q47426",
+      "title": "Milton Friedman",
+      "characters": [
+        "lantern-q47426"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q7660347",
+      "title": "Syed Hussein Alatas",
+      "characters": [
+        "lantern-q7660347"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q284025",
+      "title": "Carol Gilligan",
+      "characters": [
+        "lantern-q284025"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q22279356",
+      "title": "Viviane Namaste",
+      "characters": [
+        "lantern-q22279356"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q305477",
+      "title": "Sen no Rikyū",
+      "characters": [
+        "lantern-q305477"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q42207",
+      "title": "Caravaggio",
+      "characters": [
+        "lantern-q42207"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q41554",
+      "title": "Nicolas Poussin",
+      "characters": [
+        "lantern-q41554"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q1111386",
+      "title": "Robert Moses",
+      "characters": [
+        "lantern-q1111386"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q465342",
+      "title": "Wifredo Lam",
+      "characters": [
+        "lantern-q465342"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q234335",
+      "title": "Jane Jacobs",
+      "characters": [
+        "lantern-q234335"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q16010963",
+      "title": "Ladi Kwali",
+      "characters": [
+        "lantern-q16010963"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q262413",
+      "title": "Shirin Neshat",
+      "characters": [
+        "lantern-q262413"
+      ],
+      "biographies": []
+    },
+    {
+      "wikidata": "Q17581477",
+      "title": "Wu Tsang",
+      "characters": [
+        "lantern-q17581477"
+      ],
+      "biographies": []
+    },
+    {"wikidata": "Q3878402", "title": "Nainoa Thompson", "characters": [], "biographies": ["card.birdside.memory"]},
+    {"wikidata": "Q6792168", "title": "Mau Piailug", "characters": [], "biographies": ["card.birdside.voyage"]}
   ],
   "exhibits": [
+    {"id":"OBJ-DEPOT-Z408A","kind":"related","title":"Optical microscope","wikidata":"Q912313","basis":"The article explains how an optical microscope forms a view. The Cambridge catalogue separately describes this Swift body and its single fitted objective."},
+    {"id":"OBJ-DEPOT-Z408J","kind":"related","title":"Scott Polar Research Institute","wikidata":"Q2747894","basis":"The institute is the holding collection for this reused case. Its own accession record provides the two serial numbers."},
     {
       "id": "OBJ-001-A",
       "title": "Ballpoint pen",
@@ -1427,6 +3422,25 @@
       "kind": "related",
       "wikidata": "Q234908",
       "basis": "The collection credits Nizami Ganjavi with this role: Author of the literary work. The article provides background on that role."
-    }
+    },
+    {"id": "OBJ-NIGHT-1201", "title": "The Mill (Rembrandt)", "kind": "article", "wikidata": "Q3224802", "basis": "The museum record identifies this work with the Wikidata item linked to the article."},
+    {"id": "OBJ-NIGHT-41637", "title": "Christ at the Sea of Galilee", "kind": "article", "wikidata": "Q9191534", "basis": "The museum record identifies this work with the Wikidata item linked to the article."},
+    {"id": "OBJ-NIGHT-46681", "title": "A Girl with a Watering Can", "kind": "article", "wikidata": "Q4657050", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-46437", "title": "A Lady Writing a Letter", "kind": "article", "wikidata": "Q914984", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-61371", "title": "Bulb Fields", "kind": "article", "wikidata": "Q4987244", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-46660", "title": "In the Dining Room", "kind": "article", "wikidata": "Q19973935", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-52279", "title": "Rotterdam Ferry-Boat", "kind": "article", "wikidata": "Q20185784", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-46569", "title": "The Boating Party", "kind": "article", "wikidata": "Q15876324", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-46114", "title": "The Emperor Napoleon in His Study at the Tuileries", "kind": "article", "wikidata": "Q1313605", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-52192", "title": "The Harbor at Lorient", "kind": "article", "wikidata": "Q3225805", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-166463", "title": "The House of Representatives", "kind": "article", "wikidata": "Q20184686", "basis": "The English article and the museum collection record identify the same Wikidata work."},
+    {"id": "OBJ-NIGHT-1211", "title": "Danseuse (Renoir)", "kind": "article", "wikidata": "Q17627753", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "fr"},
+    {"id": "OBJ-NIGHT-46480", "title": "Moe piluda, Trouville (trutca ke Boudin)", "kind": "article", "wikidata": "Q20189875", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "avk"},
+    {"id": "OBJ-NIGHT-52156", "title": "Piluda koe Trouville (3) (trutca ke Boudin)", "kind": "article", "wikidata": "Q20188645", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "avk"},
+    {"id": "OBJ-NIGHT-52161", "title": "Tcatesikya moe piluda ke Étretat (trutca ke Boudin)", "kind": "article", "wikidata": "Q20190455", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "avk"},
+    {"id": "OBJ-NIGHT-74", "title": "Porträtt av en äldre kvinna", "kind": "article", "wikidata": "Q17859670", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "sv"},
+    {"id": "OBJ-NIGHT-88615", "title": "A Szent Bertalan-templom szigete és hídjai", "kind": "article", "wikidata": "Q20185097", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "hu"},
+    {"id": "OBJ-NIGHT-97", "title": "Le Château de cartes (Chardin, Washington)", "kind": "article", "wikidata": "Q12859917", "basis": "The museum record and the encyclopedia article identify the same work.", "language": "fr"},
+    {"id": "OBJ-HOKULEA-1975", "kind": "article", "title": "Hōkūleʻa", "wikidata": "Q2728219", "basis": "This article describes the Polynesian Voyaging Society’s double-hulled canoe launched on Oʻahu in March 1975."}
   ]
 }

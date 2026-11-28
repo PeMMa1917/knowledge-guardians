@@ -95,8 +95,7 @@ export const EVENT_SPREAD = 300;
  */
 export function tickEvents(pack: ContentPack, s0: CampaignState, seconds: number): CampaignState {
   if (s0.events.pending || seconds <= 0) return s0;
-  let s = structuredClone(s0);
-  s.events.clock += seconds;
+  let s = { ...s0, events: { ...s0.events, clock: s0.events.clock + seconds } };
   if (s.events.clock < s.events.next) return s;
   const pool = eligibleEvents(pack, s);
   if (!pool.length) { s.events.clock = 0; return s; }
@@ -112,6 +111,11 @@ export function tickEvents(pack: ContentPack, s0: CampaignState, seconds: number
   s.events.clock = 0;
   s.events.next = EVENT_MIN + Math.floor(r * EVENT_SPREAD);
   return s;
+}
+
+/** A deferred encounter is still eligible when its people and setting are encountered again. */
+export function deferEvent(s: CampaignState): CampaignState {
+  return s.events.pending ? {...s, events:{...s.events, pending:null, clock:0, next:240}} : s;
 }
 
 export function eligibleEvents(pack: ContentPack, s: CampaignState): EventRecord[] {

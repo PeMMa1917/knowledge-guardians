@@ -10,6 +10,7 @@ import { starStations } from './starPaths';
 import { WORKMEN_CURTAIN_PROPS } from './curtainCall';
 import { NILE_SPARE_SEAT } from './spareSeat';
 import { NILE_BEND_BOARD } from './stripBend';
+import { NILE_LOWER_RAIL } from './lowerRail';
 
 const W = 25, H = 13;
 const room = (id: string, name: string, npcs: MapDef['npcs'], interactables: Interactable[], palette: number, stamps: MapDef['stamps']): MapDef => ({
@@ -74,6 +75,7 @@ export const NILE_HALL = room('nile.hall', 'Nile Archive: The Door Without a Nam
     { id: 'cross-borrowed', kind: 'fieldgame', game: 'cross-borrowed', x: 18, y: 5, w: 1, h: 1, label: 'Ambry\'s reading desk (a crossing)', art: 'catalogue' },
     { id: 'nile-old-label', kind: 'sign', x: 20, y: 4, w: 1, h: 1, label: 'an old Nexus label in a side case', art: 'old-sign', flag: 'clue.scraped-label',
       text: "An old Nexus label, older than any here, in the same style as the ones in the hall above. The main line is confident and clear. Under it, someone has scraped a second line away. Only the scratches are left. Lumen holds a little light close and gives up: 'Too faint for me. A gentler light might show it. My light is mostly enthusiasm.'" },
+    ...NILE_LOWER_RAIL,
     { id: 'nile-mark-tag', kind: 'exhibit', exhibit: 'OBJ-ARCHIVE-RECEIVING-TAG', x: 4, y: 5, w: 1, h: 1,
       label: 'Ketta’s receiving tag', art: 'nile.tablet' },
     { id: 'nile-mark-label', kind: 'label', kit: 'nile-borrowed-mark', x: 4, y: 8, w: 1, h: 1,
@@ -201,6 +203,9 @@ export const NILE_ROYAL = room('nile.royal', 'Nile Archive: Royal Records Room',
     door('royal-back', 12, 12, 'the passage back to Imani', 'nile.hall', 12, 4),
     exhibit('SALLIER', 6, 5, 'Papyrus Sallier III', 'scroll'),
     exhibit('TREATY', 18, 5, 'the peace treaty and its replica', 'tablet'),
+    // Chapter 2's first field game (audit fix C-004): pattern versus proof. Rules in src/domain/wordLadder.ts.
+    { id: 'field-ladder', kind: 'fieldgame', game: 'ladder', x: 16, y: 9, w: 1, h: 1, label: 'Nasir’s copy desk (The Copyists’ Ladder)', art: 'catalogue' },
+    { id: 'field-reassembly', kind: 'fieldgame', game: 'reassembly', x: 9, y: 5, w: 1, h: 1, label: 'the torn river notice board (The Reassembly Line)', art: 'catalogue' },
     { id: 'nile-label', kind: 'label', kit: 'nile-qadesh', x: 12, y: 5, w: 1, h: 1, label: 'the Qadesh label stand', art: 'label-stand' },
   ], 0x312432,
   [{ stamp: 'banners', x: 5, y: 2 }, { stamp: 'banners', x: 17, y: 2 }, { stamp: 'rug-green', x: 11, y: 8 }, { stamp: 'bench', x: 2, y: 9 }, { stamp: 'bench', x: 19, y: 9 }]);
@@ -303,8 +308,19 @@ export const NILE_WORKYARD = room('nile.workyard', 'Nile Archive: Workmen’s Ro
   [{ stamp: 'crates', x: 2, y: 4 }, { stamp: 'barrel', x: 7, y: 5 }, { stamp: 'long-table', x: 10, y: 3 }, { stamp: 'bookshelf', x: 18, y: 2 }]);
 
 export const NILE_ROUTE = room('nile.route', 'Nile Archive: Map Room',
-  [{ id: 'nile-marek', x: 16, y: 7, facing: 'left' }],
+  [{ id: 'nile-marek', x: 16, y: 7, facing: 'left' },
+    { id: 'ibn-khaldun', x: 21, y: 5, facing: 'left', visibleIf: { flagSet: 'nile.dispatch' } }],
   [
+    // Ibn Khaldun's tests of the chronicle (KG-CH2-T01, X-015). Content: src/content/thinker-khaldun.json.
+    { id: 'khaldun-test-grain', kind: 'sign', x: 15, y: 4, w: 1, h: 1, walkThrough: true, label: "the granary rolls", art: 'ledger',
+      flag: 'thinker.khaldun.test.grain', visibleIf: { flag: 'thinker.khaldun.quest', eq: true },
+      text: "The granary rolls for that year list every store in the province. Added together, the stores could feed about twenty thousand people for a month, and the farms still had to eat." },
+    { id: 'khaldun-test-road', kind: 'sign', x: 19, y: 4, w: 1, h: 1, walkThrough: true, label: "the desert road record", art: 'nile.slip',
+      flag: 'thinker.khaldun.test.road', visibleIf: { flag: 'thinker.khaldun.quest', eq: true },
+      text: "The road record lists the wells on the desert road south. Each well can water a few thousand people and their animals in a day before it runs low. Marching one behind another, three hundred thousand people would make a line longer than the road between two wells." },
+    { id: 'khaldun-test-chain', kind: 'sign', x: 22, y: 7, w: 1, h: 1, walkThrough: true, label: "the copy chain of the chronicle", art: 'preserved.folder',
+      flag: 'thinker.khaldun.test.chain', visibleIf: { flag: 'thinker.khaldun.quest', eq: true },
+      text: "Five copies of the chronicle hang in order, oldest first. The oldest says thirty thousand. The third copy says three hundred thousand. Between the two, one stroke was added to the number. Every later copy follows the third." },
     ...SHELF_NILE_CALLBACK,
     ...LEAVITT_NILE_REVISIT,
     ...ALIGN_RETURN,

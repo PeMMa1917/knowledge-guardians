@@ -6,6 +6,8 @@ import type { GameController } from './controller';
 import type { Settings } from './settings';
 
 export interface UIApi {
+  /** Show a content note before a room with hard real history, once (C-014). */
+  showContentNote(mapId: string): void;
   isModalOpen(): boolean;
   setCompass(deg: number | null, label: string): void;
   openDialogue(characterId: string): void;
@@ -73,6 +75,8 @@ export interface WorldApi {
   /** Lumen's form or glow changed: swap the picture and tint. */
   refreshLumen(): void;
   playSfx(key: string): void;
+  setTaskMusic(mode: import('../domain/taskScore').TaskMode): void;
+  playTrialSound(kind: import('../domain/taskScore').TrialSound): void;
   snapshotPosition(): void;
   /** Photo mode: camera zoom, a colour filter, and who is in the picture. */
   photoSet(o: { zoom: number; filter: string; lumen: boolean; pet: boolean } | null): boolean;

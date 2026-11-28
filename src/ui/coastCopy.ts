@@ -66,14 +66,14 @@ export function coastCopyPanel(game: string, controller: GameController, changed
     const children: HTMLElement[] = [];
 
     if (!atStation()) {
-      body.replaceChildren(h('p', {}, 'Equip Kunit’s working copy from the Bag to start. The Nexus collection room can move it back into your satchel.'));
+      body.replaceChildren(h('p', {}, 'Equip Kunit’s carved coast piece in the Bag. If it is on display, collect it at the Nexus satchel hooks.'));
       return;
     }
 
     if (desk) {
       children.push(h('p', {}, 'Wren has made a practice relief for copying. The historical exhibit stays at Lantern House. Try the paper outline and the separately filed account.'));
       if (!start) {
-        children.push(action('set-copy', 'Set the working copy beside the practice relief.', () => set('started'), 'Wren opens the two-leaf work tray.'));
+        children.push(action('set-copy', 'Set Kunit’s coast piece beside the practice relief.', () => set('started'), 'Wren opens the two-leaf work tray.'));
       } else {
         children.push(value('rubbing') ? rubbingLeaf() : action('lift-rubbing', 'Lift the rubbing from the practice relief.', () => set('rubbing'), 'The paper picked up the outline and lost the height of the wood.'));
         children.push(value('account') ? documentedLeaf() : action('lift-account', 'Lift the account leaf from its own slot.', () => set('account'), 'Kunit is credited as maker and teller. Holm is credited for the written report.'));

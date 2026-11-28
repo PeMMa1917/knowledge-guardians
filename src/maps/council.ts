@@ -1,3 +1,4 @@
+import { MOON_COUNCIL_SONG } from './spareMoon';
 /** Civic timekeeping takes place beside a separate historical reading gallery. */
 import type { Condition } from '../domain/types';
 import { LOADING_BAY_DOOR, loadingReceiver } from './loadingBay';
@@ -53,7 +54,8 @@ export const COUNCIL_HALL: MapDef = {
     { stamp: 'council-bench', x: 21, y: 13 }, { stamp: 'market-planter', x: 7, y: 14 },
   ],
   interactables: [
-    SECOND_READING_DOOR,
+    { id: 'field-mirror', kind: 'fieldgame', game: 'mirror', x: 6, y: 5, w: 1, h: 1, label: 'Elsbet’s covered mirror (The Time Mirror)', art: 'old-sign' },
+    SECOND_READING_DOOR, MOON_COUNCIL_SONG,
     loadingReceiver('bench', 24, 16),
     OPEN_PLACE_COUNCIL_INTAKE,
     door('council-gallery-path', 24, 9, 'the passage to the letters and bell rail', { map: 'council.gallery', x: 6, y: 14 }),

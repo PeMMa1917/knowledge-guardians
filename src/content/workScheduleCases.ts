@@ -117,7 +117,7 @@ const missions: Mission[] = SCHEDULE_ROOMS.map((room) => {
   const info = SCHEDULE_DETAILS[room];
   const entries = SCHEDULE_CASES.filter((record) => record.room === room);
   const objectives = entries.map((record): Mission['objectives'][number] => ({
-    id: record.objective, title: `Run both opening schedules for ${record.title.toLowerCase()} and use one at its receiving stand.`,
+    id: record.objective, title: `Try both opening times for ${record.title}. Choose one for the stand.`,
     visible: { card: record.card }, essential: false,
     done: { any: SCHEDULE_ROUTES.map((route) => ({ all: [scheduleDelivery(record, route), { flag: record.objective, eq: route }] })) },
     onComplete: [{ journal: `j.${record.flag}` }],
@@ -139,7 +139,7 @@ export const workScheduleContent = {
       altText: object.altText, sources: [record.source], grantsCard: record.card,
       specimen: { key: object.key, institution: object.institution, accession: object.accession,
         source: record.source, objective: record.objective, pixelAsset: object.pixelAsset,
-        revisit: { ...SCHEDULE_REVISIT, method: record.revisit[0], hint: 'Equip the working copy and take it to the late-proof shelf in the City of Copies Record Room.' } },
+        revisit: { ...SCHEDULE_REVISIT, method: record.revisit[0], hint: 'Equip the object and take it to the late-proof shelf in the City of Copies Record Room.' } },
     };
   }),
   cards: SCHEDULE_CASES.map(({ source, card, object }) => ({

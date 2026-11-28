@@ -1,3 +1,4 @@
+import { PLANK_DOOR } from './hingedPlank';
 /** A fictional island dock order investigated from a workshop and field paths. */
 import type { Condition } from '../domain/types';
 import type { Interactable, MapDef } from './types';
@@ -47,6 +48,7 @@ export const ISLAND_WORKSHOP: MapDef = {
     { stamp: 'market-planter', x: 20, y: 13 }, { stamp: 'voices-bench', x: 5, y: 14 },
   ],
   interactables: [
+    PLANK_DOOR,
     ...MODEL_RECORD_EXITS,
     ...ISLAND_INCENTIVE_WORKSHOP,
     ...ISLAND_MOVEMENT_WORKSHOP,
@@ -118,6 +120,7 @@ export const ISLAND_DOCK: MapDef = {
     { stamp: 'market-planter', x: 14, y: 3 }, { stamp: 'voices-bench', x: 4, y: 7 },
   ],
   interactables: [
+    { id: 'field-maze', kind: 'fieldgame', game: 'maze', x: 9, y: 4, w: 1, h: 1, label: 'the harbour office table (The Labyrinth Lens)', art: 'old-sign' },
     ...ISLAND_INCENTIVE_DOCK,
     ...ISLAND_MOVEMENT_DOCK,
     ...ISLAND_DOCK_FRAMES,

@@ -170,6 +170,11 @@ export function drawRoom(g: G, r: Room, x: RoomExtras): void {
   g.fillStyle = grad; g.fillRect(120, 46, 72, 82);
   R(g, '#3b2a1a', 169, 98, 2, 22); R(g, '#3b2a1a', 164, 119, 12, 2);
   if (r.lamp === 'lantern') { R(g, '#6b4f19', 164, 86, 12, 2); R(g, '#c9a24a', 165, 88, 10, 10); R(g, glow, 167, 90, 6, 6); R(g, '#6b4f19', 164, 98, 12, 1); }
+  if (r.lamp === 'moonshade') {
+    R(g, '#63556d', 164, 84, 12, 2); R(g, '#bb8793', 162, 86, 16, 9);
+    R(g, '#dfabb3', 164, 95, 12, 3); R(g, glow, 166, 87, 2, 6);
+    R(g, glow, 168, 92, 5, 2); R(g, glow, 173, 91, 1, 2);
+  }
   if (r.lamp === 'candle') { R(g, '#c9a24a', 165, 96, 10, 2); R(g, '#f3eee0', 168, 84, 4, 12); R(g, glow, 169, 80 + Math.round(Math.sin(x.t / 90)), 2, 4); }
   if (r.lamp === 'lumen') { R(g, '#cfe3ef', 164, 84, 12, 14); R(g, '#8a5a30', 165, 82, 10, 2); R(g, glow, 168 + Math.round(Math.sin(x.t / 400) * 2), 88 + Math.round(Math.cos(x.t / 330) * 2), 3, 3); }
   if (r.lamp === 'forge') { R(g, '#4a4d55', 162, 92, 16, 6); R(g, '#ff6a3a', 164, 90, 12, 3); R(g, '#ffd28a', 167 + Math.round(Math.sin(x.t / 120)), 88, 3, 2); }

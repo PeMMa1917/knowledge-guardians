@@ -38,6 +38,7 @@
   },
   {
    "id": "orrin.weigh.miss",
+   "supersedes": "orrin.weigh",
    "character": "guildmaster-orrin",
    "if": {
     "all": [
@@ -64,6 +65,7 @@
   },
   {
    "id": "ise.timeline.miss",
+   "supersedes": "ise.timeline",
    "character": "warden-ise",
    "if": {
     "all": [
@@ -138,7 +140,7 @@
     "flag": "well.shared",
     "eq": true
    },
-   "line": "Both streets count the same knots on the rope now. Fewer arguments at dawn."
+   "line": "Both streets can read the same notches on our sticks now. Yesterday a porter asked me to add the time beside his mark."
   },
   {
    "id": "kip.board",
@@ -169,6 +171,7 @@
   },
   {
    "id": "visitor.pen.revised",
+   "supersedes": "visitor.pen",
    "character": "villager-2",
    "if": {
     "all": [

@@ -275,10 +275,13 @@
        "checkpoint": "Recruitment complete"
       }
      ],
+     "kq": { "id": "KQ-ROUTE-15", "action": "arrival-notebook" },
      "weave": {
       "concepts": [
        "responsibility"
       ],
+      "framework": ["scope"],
+      "aoks": ["HIS"],
       "atl": [
        "self-management"
       ]
@@ -568,17 +571,17 @@
   },
   {
    "id": "OBJ-001-C",
-   "name": "Biro pen (record of Science Museum Group object 1949-174/2)",
+   "name": "Biro ballpoint pen, Science Museum Group 1949-174/2",
    "art": "exhibit.biro",
    "historicalLabel": "documented",
    "dateText": "Dated 1945–1948 (museum record)",
    "dateKind": "AN OBJECT DATE RANGE from a museum record: when this particular pen was made, given as a range of years. It is not the date of an idea or a patent.",
-   "summary": "The real pen is in the Science Museum Group collection. The Nexus shows a projection of its record. The record names László József Bíró and his brother Georg.",
+   "summary": "A ballpoint pen made in Britain in 1945–1948. Its Science Museum Group record names László József Bíró and his brother Georg. The date belongs to this pen. A different piece of paper dates the patent.",
    "sources": [
     "HIS-S13"
    ],
    "grantsCard": "card.biro-object",
-   "altText": "A slim pen with a dark body and a metal tip, shown as a soft glowing projection.",
+   "altText": "A slim, dark-bodied pen with a bright metal tip.",
    "specimen": {
     "key": "smg:1949-174/2",
     "institution": "Science Museum Group",
@@ -1153,7 +1156,7 @@
   },
   {
    "id": "j.m01.three",
-   "text": "The three exhibits are a patent drawing (1888), a modern workshop model, and the record of a Biro pen dated 1945–1948.",
+   "text": "The three exhibits are a patent drawing (1888), a modern workshop model, and the Biro pen dated 1945–1948.",
    "claimKind": "observation"
   },
   {
@@ -1193,7 +1196,7 @@
   },
   {
    "id": "j.m01.done",
-   "text": "Recruitment complete. Warden Ise gave me the Field Annotation Pen and the Provenance Thread. Next: a field mission in Aethelgard.",
+   "text": "Ise handed me the Provenance Thread. She wants the next keeper to see the last hand named in the record. Kip asked me to leave room for the hands nobody wrote down. I can carry both reasons to Emberford.",
    "claimKind": "observation"
   },
   {
@@ -1217,7 +1220,7 @@
    "id": "cold.open",
    "speaker": "narrator",
    "motif": "first-light",
-   "text": "A stone hall floats among the stars. By the entrance, an old label glows a sickly gold: THE FIRST BALLPOINT PEN.",
+   "text": "A stone hall floats among the stars. A brass fish hangs beside the stair at your feet. Twice it rings. Downstairs someone whispers, “Leave it. Let them answer.” Across the hall a label glows a sickly gold: THE FIRST BALLPOINT PEN.",
    "effects": [
     {
      "setFlag": "seen.coldopen",
@@ -1400,13 +1403,13 @@
   {
    "id": "ise.start4",
    "speaker": "lumen",
-   "text": "Hello! I'm Lumen. I help when you ask. Press H, or the lantern button, for a hint. I will not give you the 'right' opinion. I don't have one.",
+   "text": "Hello! I'm Lumen. I help when you ask. Press H, or the lantern button, for a hint. I can help you check facts. Judgements are yours, and I will not make one for you.",
    "next": "ise.start5"
   },
   {
    "id": "ise.start5",
    "speaker": "warden-ise",
-   "text": "One more thing. The Waystone by the west wall saves your place, and you can rest there. The east wing is the Hall of Firsts. Its plaques have the same problem. Help them if you like.",
+   "text": "The west Waystone saves your place. The east wing is the Hall of Firsts. And if that little fish rings again, the stair beside the entrance goes up to the Wicks. I used to sleep under their roof. You can tell them that.",
    "next": null
   },
   {
@@ -1724,28 +1727,101 @@
     {
      "text": "Goodbye.",
      "next": null
+    },
+    {
+     "text": "Give our older finding a place at the hatch today.",
+     "next": "ise.seal",
+     "if": {
+      "all": [
+       {
+        "flag": "chapter.done",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "hatch.custody"
+        }
+       }
+      ]
+     }
     }
    ]
   },
   {
    "id": "ise.seal",
    "speaker": "warden-ise",
-   "text": "Ise turns the small gold seal over in her fingers. She does not speak for a long moment. Then she puts it in her pocket. 'Later,' she says. 'Not today.'",
-   "effects": [
+   "text": "Ise turns the seal once in her palm. “We can say where you found it. Someone will see a name next to that ring and think we know who used it.” She reaches for her pocket, then opens her hand. “I used to do this part myself. Which caller should be able to use what you found?”",
+   "effects": [],
+   "options": [
     {
-     "setFlag": "ise.saw.seal",
-     "value": true
+     "text": "Hang the finding at the public hatch. Cover Kip’s name.",
+     "next": "hatch.ise.rail",
+     "effects": [
+      {
+       "setFlag": "ise.saw.seal",
+       "value": true
+      },
+      {
+       "setFlag": "hatch.custody",
+       "value": "rail"
+      },
+      {
+       "setFlag": "chapter.done",
+       "value": true
+      },
+      {
+       "journal": "j.hatch.rail"
+      }
+     ]
     },
     {
-     "setFlag": "chapter.done",
-     "value": true
+     "text": "Give the folded finding to a witness at the staffed desk.",
+     "next": "hatch.ise.desk",
+     "effects": [
+      {
+       "setFlag": "ise.saw.seal",
+       "value": true
+      },
+      {
+       "setFlag": "hatch.custody",
+       "value": "desk"
+      },
+      {
+       "setFlag": "chapter.done",
+       "value": true
+      },
+      {
+       "journal": "j.hatch.desk"
+      }
+     ]
+    },
+    {
+     "text": "Take the fold to the callers when the shift changes.",
+     "next": "hatch.ise.round",
+     "effects": [
+      {
+       "setFlag": "ise.saw.seal",
+       "value": true
+      },
+      {
+       "setFlag": "hatch.custody",
+       "value": "round"
+      },
+      {
+       "setFlag": "chapter.done",
+       "value": true
+      },
+      {
+       "journal": "j.hatch.round"
+      }
+     ]
     }
    ]
   },
   {
    "id": "dace.start",
    "speaker": "curator-dace",
-   "text": "Visitors read a label for about five seconds. If it says three things, they remember none of them.",
+   "text": "“Five seconds.” Dace watches a visitor hurry off. “She gets five seconds here before the ferry goes. I used to think a short label was a kindness. Then I heard my own words come back with a maker missing.”",
    "effects": [
     {
      "setFlag": "heard.dace",
@@ -2037,7 +2113,7 @@
   {
    "id": "venn.start",
    "speaker": "clerk-venn",
-   "text": "'First' should mean something you can check. Loud's patent was granted on 30 October 1888. That is a public, dated record.",
+   "text": "Venn rests his thumb under a date. “30 October 1888. The day Loud’s patent was granted. You could come back while I’m off duty and still check that. Mireille says you ought to be able to write with the thing. Frankly, I’d like to try.”",
    "effects": [
     {
      "setFlag": "heard.venn",
@@ -2171,7 +2247,7 @@
   {
    "id": "venn.after",
    "speaker": "clerk-venn",
-   "text": "We may not agree, but you can say why you think what you think. That is what I ask of a Guardian.",
+   "text": "“Mireille sent me a pen to try.” Venn shows you a thumb smudged blue. “I sent her a copy of the grant. We’re each keeping the other’s present. I still like my date.”",
    "options": [
     {
      "text": "See you in the hall.",
@@ -2211,7 +2287,7 @@
   {
    "id": "kip.start",
    "speaker": "kip-arden",
-   "text": "Hi, I'm Kip. I started yesterday. Can I tell you what I noticed? Everyone asks WHO was first. Nobody asks first AT WHAT.",
+   "text": "Kip has FIRST inked across one palm and WHAT on the other. “Yesterday I shook the Warden’s hand. She’s still got half my question. Look at the cases with me? Everyone keeps asking who was first. First at what?”",
    "options": [
     {
      "text": "Go on.",
@@ -2541,7 +2617,7 @@
   {
    "id": "ev.bell.end",
    "speaker": "narrator",
-   "text": "A cold draught from the portal moves the rope when the portal opens. That is one explanation that you can test: watch the rope the next time the portal glows."
+   "text": "A cold draught nudges the great rope when the portal opens. You can watch for it next time. Just as the rope falls still, the little brass fish by the entrance gives two answering knocks. There are stairs behind it."
   },
   {
    "id": "ev.tokens",
@@ -3709,7 +3785,7 @@
    "id": "h.m01.o2.inspect.2",
    "objective": "m01.o2.inspect",
    "depth": 2,
-   "text": "Look at what kind of thing each exhibit is: a document, a model or a record of a real object."
+   "text": "Check what each date belongs to. Who filed the drawing, who built the workshop model, and when was this pen made?"
   },
   {
    "id": "h.m01.o2.inspect.3",

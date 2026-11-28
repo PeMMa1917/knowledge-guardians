@@ -121,6 +121,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "objectivity",
@@ -159,6 +160,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "perspectives"],
       "concepts": [
        "perspective",
        "interpretation",
@@ -170,7 +172,8 @@
       ],
       "aoks": [
        "HUM",
-       "NAT"
+       "NAT",
+       "LAN"
       ],
       "subjects": [
        "anthropology",
@@ -193,6 +196,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "ethics"],
       "concepts": [
        "values",
        "power",
@@ -205,7 +209,8 @@
       ],
       "aoks": [
        "HUM",
-       "NAT"
+       "NAT",
+       "LAN"
       ],
       "subjects": [
        "ess",
@@ -253,6 +258,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "truth",
@@ -287,6 +293,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "ethics"],
       "concepts": [
        "truth",
        "interpretation",
@@ -299,7 +306,8 @@
       ],
       "aoks": [
        "NAT",
-       "HUM"
+       "HUM",
+       "LAN"
       ],
       "subjects": [
        "biology",

@@ -1,0 +1,35 @@
+{
+ "event": "The night the curtain stayed down. Two minutes before the opening, the performance was stopped and the audience was sent home.",
+ "lenses": [
+  { "id": "actor", "name": "Ilse, who was playing the lead" },
+  { "id": "box", "name": "the box office clerk" },
+  { "id": "stage", "name": "Bram, the stagehand on the last check" }
+ ],
+ "objects": [
+  { "id": "prompt", "name": "the prompt book, open at the first page" },
+  { "id": "ledger", "name": "the ticket ledger for that night" },
+  { "id": "rigging", "name": "the rigging log" }
+ ],
+ "lines": {
+  "actor.prompt": "Ilse reads the pencil note, 'HOLD — Bram, 7:58', and frowns: 'I was in my first costume. Nobody told us why.'",
+  "actor.ledger": "Ilse runs a finger down the refunds: 'Three hundred and twelve people came to see us, and we sent them home.'",
+  "actor.rigging": "Ilse reads 'second fly line frayed' and goes quiet. 'That line holds the bridge I stand on in act two.'",
+  "box.prompt": "The clerk notes the time, 7:58: 'Two minutes before curtain. Far too late to sell those seats to anyone else.'",
+  "box.ledger": "The clerk adds it up: 312 refunds, the biggest loss of the season, and two school groups that will not book again.",
+  "box.rigging": "The clerk reads the repair cost beside the refund total: 'A new rope costs less than one row of seats.'",
+  "stage.prompt": "It is Bram's own note. 'HOLD. I called it. I would call it again.'",
+  "stage.ledger": "Bram shrugs at the ledger. 'Refunds can be paid back next week. A fall cannot be paid back.'",
+  "stage.rigging": "Bram's log, in a quick hand: 'Second fly line frayed at the cleat. Found at 7:55 on the last check. Show held.'"
+ },
+ "missing": {
+  "stage": "Edda taps the table. 'Your account never says why the show stopped. Bram is sitting in the wings, and nobody asked him.'",
+  "rigging": "Hari looks at the cards. 'Nobody in your account has looked at the rope. We are arguing about a reason we have not seen.'",
+  "ledger": "Hari turns over a card. 'Nobody counted what it cost. Three hundred people went home, and the house has to answer for that too.'",
+  "actor": "Edda says quietly, 'And the company? Nobody asked the people who were dressed and waiting.'"
+ },
+ "titles": [
+  { "id": "safety", "text": "A safety call that worked", "reply": "Edda nods. 'True. And to Ilse that night, it felt like being left in the dark. A title that is true can still leave someone out.'" },
+  { "id": "loss", "text": "The most costly night of the season", "reply": "Hari sighs. 'Also true. But a reader who sees only that title will ask who to blame, and the answer will be wrong.'" },
+  { "id": "both", "text": "A night the house chose a rope over three hundred seats", "reply": "Edda and Hari read it twice. 'It names the choice,' says Hari. 'And it lets a reader argue with it,' says Edda."}
+ ]
+}

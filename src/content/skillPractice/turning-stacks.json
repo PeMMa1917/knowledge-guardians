@@ -1,0 +1,173 @@
+[
+  {
+    "number": 233,
+    "name": "Follow the words that make a public act binding",
+    "uses": [
+      {
+        "objective": "stacks.readPair.convention.fort",
+        "action": "Walk the September Article 5 and the intervening twenty-six days forward to the October convention. Turn both windows to see whose declaration the text actually records.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "spatial"
+        ],
+        "game": 115,
+        "story": 83
+      },
+      {
+        "objective": "stacks.signatures",
+        "action": "Equip the particular constitutional file, lift its date and then the three board signatures. The board certified the result. The signature lines cannot tell a reader how an individual voted.",
+        "styles": [
+          "collector",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "physical"
+        ],
+        "game": 267,
+        "story": 87
+      }
+    ]
+  },
+  {
+    "number": 452,
+    "name": "Change which history someone can read from a public space",
+    "uses": [
+      {
+        "objective": "stacks.readPair.absentee.marker",
+        "action": "Bind the state’s public marker beside the Tribe’s own account of its emblem. Face the boats or the bench and turn to the time of the remembered meetings and the later state inscription.",
+        "styles": [
+          "maker",
+          "performer"
+        ],
+        "modes": [
+          "spatial",
+          "social",
+          "reading"
+        ],
+        "game": 115,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 503,
+    "name": "Turn two readings of the same vote towards the landing",
+    "uses": [
+      {
+        "objective": "stacks.headlines",
+        "action": "Keep the 163 valid votes in the lamp. Lead with 115 for or 48 against. Turn the plate again and hear which part of the same result Opal and Tallis notice from the landing.",
+        "styles": [
+          "strategist",
+          "performer"
+        ],
+        "modes": [
+          "visual",
+          "analytical",
+          "social"
+        ],
+        "game": 234,
+        "story": 119
+      }
+    ]
+  },
+  {
+    "number": 764,
+    "name": "Identify the authority for one signed public instrument",
+    "uses": [
+      {
+        "objective": "stacks.signatures",
+        "action": "Use the Eastern Shawnee file at the little signature lamp. Read the board’s dated certification and distinguish the named certifiers from the 270 eligible members.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "physical",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 87
+      },
+      {
+        "objective": "stacks.readPair.convention.fort",
+        "action": "Carry the September article and the October convention as separate dated leaves. Turn both windows to identify who made the declaration and when it came into effect in the record.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "reading",
+          "analytical"
+        ],
+        "game": 115,
+        "story": 83
+      }
+    ]
+  },
+  {
+    "number": 956,
+    "name": "Let living Nations describe their own knowledge and governance",
+    "uses": [
+      {
+        "objective": "stacks.readPair.absentee.eastern",
+        "action": "Carry the Absentee Shawnee Tribe’s account of its logo alongside a particular Eastern Shawnee amendment record. Restore both credit lines and the dated relation. Each Nation speaks about its own work.",
+        "styles": [
+          "companion",
+          "maker"
+        ],
+        "modes": [
+          "linguistic",
+          "social",
+          "spatial"
+        ],
+        "game": 115,
+        "story": 114
+      },
+      {
+        "objective": "stacks.readPair.convention.peoria",
+        "action": "Bring a convention that names Wea representatives and the Peoria Tribe’s public account of a later confederation into the rotating display. Give the current publisher its own line and the two occasions their own dates.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "linguistic",
+          "reading",
+          "analytical"
+        ],
+        "game": 115,
+        "story": 83
+      }
+    ]
+  },
+  {
+    "number": 1009,
+    "name": "Choose the denominator on an election lamp",
+    "uses": [
+      {
+        "objective": "stacks.counts",
+        "action": "Follow the 115 votes for across all three rings. Choose the valid vote, the returned ballots including six spoiled, and separately the 270 members entitled to vote. Keep each percentage beside the relevant group.",
+        "styles": [
+          "strategist",
+          "maker"
+        ],
+        "modes": [
+          "analytical",
+          "physical",
+          "visual"
+        ],
+        "game": 267,
+        "story": 83
+      }
+    ]
+  }
+]

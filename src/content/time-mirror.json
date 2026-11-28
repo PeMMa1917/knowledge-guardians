@@ -1,0 +1,11 @@
+{
+ "rewrite": [
+  { "id": "keep", "text": "Keep it as it is. It was true for what I knew then.",
+    "reply": "The guardian in the mirror looks relieved. 'Thank you. I did my best with one lamp.' Then, quieter: 'But you would write it differently now, would you not?'" },
+  { "id": "add", "text": "Keep it, and add what I know now beside it, with the date.",
+    "reply": "The guardian in the mirror leans closer to read the new line. 'So I was not wrong. I was early.' The two lines sit together, each with its date." },
+  { "id": "ask", "text": "Add who else I should have asked, and did not.",
+    "reply": "The guardian in the mirror frowns, then nods slowly. 'I thought the record was the only voice. I did not know there were people to ask.' The face looks younger than you remember." }
+ ],
+ "question": "Before the glass clears, the guardian in the mirror asks you one thing: 'Will the guardian who comes after you read your entries the way you have read mine?'"
+}

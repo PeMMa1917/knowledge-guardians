@@ -1,0 +1,113 @@
+[
+  {
+    "number": 5,
+    "name": "Distinguish a witnessed event from belief and judgement",
+    "uses": [
+      {
+        "objective": "supper.witness",
+        "action": "Ask Kip where he stood and Otla who supplied the noun. The count, the inference and the later speaker occupy separate lines of the page.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "social",
+          "reading"
+        ],
+        "game": 21,
+        "story": 25
+      }
+    ]
+  },
+  {
+    "number": 16,
+    "name": "Keep investigating while a question is open",
+    "uses": [
+      {
+        "objective": "supper.impression",
+        "action": "Test the chip with two fresh impressions. Keep the physical correspondence and leave the note’s signatory open for another witness.",
+        "styles": [
+          "maker",
+          "challenger"
+        ],
+        "modes": [
+          "physical",
+          "visual"
+        ],
+        "game": 63,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 25,
+    "name": "Find a hidden assumption in a question",
+    "uses": [
+      {
+        "objective": "supper.trace",
+        "action": "Reconstruct the premise in the household rhyme. Two traced outlines fit one spoon and two lamps as well as two spoons and a middle lamp.",
+        "styles": [
+          "explorer"
+        ],
+        "modes": [
+          "spatial",
+          "analytical"
+        ],
+        "game": 188,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 45,
+    "name": "Check whether a claim fits what an observer can see",
+    "uses": [
+      {
+        "objective": "supper.walk",
+        "action": "Stand at the marked market corner. Follow the fold to the shaded hatch and mark where the line of sight to the hand breaks.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "physical"
+        ],
+        "game": 13,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 50,
+    "name": "Separate a supportable reading from an added claim",
+    "uses": [
+      {
+        "objective": "supper.pen",
+        "action": "Trace the two edges and lift the sheet to date the handwritten name by its crease. The name and the edges have different sources.",
+        "styles": [
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "linguistic"
+        ],
+        "game": 179,
+        "story": 77
+      },
+      {
+        "objective": "supper.light",
+        "action": "Compare the same edge positions under light and chalk. A claim about equal brightness can be tested only with the lit view.",
+        "styles": [
+          "explorer"
+        ],
+        "modes": [
+          "visual",
+          "analytical"
+        ],
+        "game": 188,
+        "story": 69
+      }
+    ]
+  }
+]

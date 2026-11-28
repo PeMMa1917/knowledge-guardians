@@ -1,5 +1,8 @@
 /** Dated aggregates for successful game actions. Input is the engine's actual before/after result. */
 import type { Command, GameEvent } from './engine';
+import { millAccounts } from '../content/millShift';
+import { millSite } from './millShift';
+import { lanternCase, lanternRef } from './lamplight';
 import { diveDepth } from './dive';
 import { mapChunkCount, mergeExploration } from './fog';
 import { dayOf } from './ledger';
@@ -69,6 +72,11 @@ export function startLeaderboard(index: LeaderboardIndex, saves: readonly Campai
       seen.add('friend:' + friend);
       seen.add('met:' + friend);
     }
+    for (const [key, value] of Object.entries(save.flags)) {
+      if (!key.startsWith('lamplight.met.') || value !== true) continue;
+      const character = key.slice('lamplight.met.'.length);
+      if (index.characters.has(character)) seen.add('met:' + character);
+    }
     // Older saves did not distinguish a physical greeting from hearing a line.
     // Preserve physical meetings only when dated events are captured going forward.
     for (const [id, area] of index.areas) {
@@ -114,6 +122,14 @@ export function recordLeaderboardMeeting(record: LeaderboardRecord, index: Leade
 export function recordLeaderboardAction(record: LeaderboardRecord, index: LeaderboardIndex, before: CampaignState,
   after: CampaignState, command: Command, events: readonly GameEvent[], now: Date): LeaderboardRecord {
   if (events.some(event => event.kind === 'error')) return record;
+  if (command.type === 'WorkWithLantern' && command.stage === 'meet') {
+    const guest = lanternCase(lanternRef(command.site, command.person));
+    if (guest) record = recordLeaderboardMeeting(record, index, guest.person.character, now);
+  } else if (command.type === 'WorkMillShift' && command.action === 'arrive') {
+    const site = millSite(after);
+    const guest = site && lanternCase(lanternRef(site, millAccounts[site].guest));
+    if (guest) record = recordLeaderboardMeeting(record, index, guest.person.character, now);
+  }
   const freshObjectives = events.flatMap(event => event.kind === 'objective' ? [event.id] : []);
   const loreling = events.find(event => event.kind === 'loreling' && event.ok);
   const relationMayHaveChanged = command.type === 'SetFlag' && command.flag.startsWith('loyalty.');

@@ -132,7 +132,7 @@ describe('The View from the Rope', () => {
       d.run({ type: 'CarrySpecimen', key: entry.key, carry: false });
     }
     expect(d.done('m02.o5.showdown')).toBe(false);
-  });
+  }, 20_000); // One persistent campaign completes and returns all 43 exhibits in this itinerary.
 
   it('sets an unfinished work back on the hook and restores the last installed screen', () => {
     const d = new Driver();

@@ -1,0 +1,173 @@
+[
+  {
+    "number": 1008,
+    "name": "Follow the accession, donor and transfer separately",
+    "uses": [
+      {
+        "objective": "almanac.shell.evening",
+        "action": "Open the Mangaia instrument leaf beside the 1876 gift slip and its unnamed-maker space. Choose which date the street announces. The accession and gift date follow the one shell.",
+        "styles": [
+          "collector",
+          "performer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 114,
+        "story": 83
+      },
+      {
+        "objective": "almanac.stone.evening",
+        "action": "Set the 1843 break, the 1919 return or the missing face at the head of the invitation. Take that edition to another room so the public occasion can be traced to its stated event.",
+        "styles": [
+          "collector",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "spatial",
+          "auditory"
+        ],
+        "game": 234,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 1016,
+    "name": "Keep a holding identifiable through its library or archive number",
+    "uses": [
+      {
+        "objective": "almanac.volume.evening",
+        "action": "Work from the individual Migel volume and carry its own invitation through the reading hall. Its call number and linked scan distinguish it from the separately earnable Perkins first edition.",
+        "styles": [
+          "collector",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "social"
+        ],
+        "game": 21,
+        "story": 83
+      },
+      {
+        "objective": "almanac.report.evening",
+        "action": "Open the leaf for the first page in Lucas’s report with its individual Griffith Institute reference and decide which event the printed date belongs to. The journal carries the same page identifier after the music.",
+        "styles": [
+          "collector",
+          "performer"
+        ],
+        "modes": [
+          "reading",
+          "auditory",
+          "reflective"
+        ],
+        "game": 114,
+        "story": 83
+      }
+    ]
+  },
+  {
+    "number": 1036,
+    "name": "Let cultural attribution change a public responsibility",
+    "uses": [
+      {
+        "objective": "almanac.shell.proof",
+        "action": "At the block, keep the unknown maker’s place open or give the named collector and donor separate jobs. Ask the returning guest to open that exact impression at a printer who has room for just one name.",
+        "styles": [
+          "helper",
+          "maker"
+        ],
+        "modes": [
+          "linguistic",
+          "reading",
+          "social"
+        ],
+        "game": 21,
+        "story": 119
+      }
+    ]
+  },
+  {
+    "number": 1130,
+    "name": "Distinguish an informed reconstruction from a new performance",
+    "uses": [
+      {
+        "objective": "almanac.shell.evening",
+        "action": "Hear the limits of the catalogue’s collector account, then compose an original street rhythm. The score can recall the shell’s transfer without pretending to recover the music played on Mangaia.",
+        "styles": [
+          "performer",
+          "maker"
+        ],
+        "modes": [
+          "auditory",
+          "visual",
+          "physical"
+        ],
+        "game": 234,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 1185,
+    "name": "Check what a distant reader can recognise in the reproduction",
+    "uses": [
+      {
+        "objective": "almanac.volume.proof",
+        "action": "Test what an ink heading on flat glass can communicate. With Braille, add a returning corner or a visible start mark to a practice strip. Trace the same mark to the young caller on the far side of the receiving window.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "visual",
+          "spatial",
+          "reading"
+        ],
+        "game": 194,
+        "story": 114
+      },
+      {
+        "objective": "almanac.report.proof",
+        "action": "Print the overwritten verbs in their working positions or place a clear reading beside Lucas’s original card. At the receiving window, follow what a reader could check from the layout you actually sent.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "visual",
+          "linguistic"
+        ],
+        "game": 194,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 1031,
+    "name": "Show a limit when explaining a historical event",
+    "uses": [
+      {
+        "objective": "almanac.report.evening",
+        "action": "Read the date of the report and the undated event it investigates. Put one of the three leaves over the score. A stagehand can turn the page when the drummer tries to turn the author’s date into the hour of the robbery.",
+        "styles": [
+          "helper",
+          "performer"
+        ],
+        "modes": [
+          "reading",
+          "social",
+          "auditory"
+        ],
+        "game": 114,
+        "story": 119
+      }
+    ]
+  }
+]

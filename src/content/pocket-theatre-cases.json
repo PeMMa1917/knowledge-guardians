@@ -1,0 +1,2488 @@
+[
+  {
+    "id": "brass-price",
+    "chapter": 1,
+    "title": "The price scratched under the tray",
+    "opening": "Corvan offers the first lantern for eighty brass bits. Sefa has twelve in her pocket and a promise to take her little cousin home before dark. The second seller is still setting up.",
+    "controls": [
+      [
+        "Read the price before the lamp",
+        "Cover the price until the lamps are lit"
+      ],
+      [
+        "Face the polished glass",
+        "Turn the tray towards the carriers"
+      ]
+    ],
+    "readings": [
+      "Eighty is cut deep in the brass. A board beside it says forty is generous. The two lamps throw identical pools of light on the stall.",
+      "Under a cloth the two lamps each light five floor tiles. When the cloth comes off, forty sounds very different to Sefa.",
+      "The carriers have rubbed eighty smooth with their sleeves. One says he used that figure because the last three people did. None remembers paying it.",
+      "Without prices showing, a carrier tries the lamp on the stair. It goes dark on the fourth step. Its twin still reaches the landing. The price never gave Sefa that distance."
+    ],
+    "editions": [
+      {
+        "label": "Hang one lamp over the level arcade",
+        "immediate": "Sefa walks her cousin home by the long, light road. The stair carriers keep a hand on the rail.",
+        "return": "The arcade has a place to wait. The stair is still a two-person job."
+      },
+      {
+        "label": "Lend both lamps to the stair crew",
+        "immediate": "Two carriers try the fourth step together. Sefa and her cousin wait in the doorway until the lamps come back.",
+        "return": "The stair crew leaves a chalk mark at the reach of each lamp. Sefa wants one left at the arcade next time."
+      }
+    ],
+    "questions": [
+      "Whose first figure would change what felt like a bargain?",
+      "Where could I cover a first estimate long enough to make my own?"
+    ],
+    "patterns": [
+      "bias:anchoring",
+      "bias:bandwagon",
+      "bias:salience"
+    ],
+    "peer": "two-coppers",
+    "deliveries": [
+      {
+        "label": "Hang the fruit-only stamp on Sefa’s lamp tray",
+        "reading": "Once the wicker is off the scale Sefa asks for a lamp-only quote too. The stallholder was including a whole night of carrying."
+      },
+      {
+        "label": "Clip the porter’s two weights to the stair rail",
+        "reading": "The stair carrier asks which price buys enough light and which buys someone to carry it. The vendor had given one figure for both."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "HUM",
+        "MAT",
+        "TEC"
+      ],
+      "subjects": [
+        "economics",
+        "psychology",
+        "math-ai"
+      ],
+      "concepts": [
+        "evidence",
+        "values",
+        "perspective"
+      ],
+      "framework": [
+        "perspectives",
+        "methods-and-tools"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "decision",
+    "margin": "The first price gave the second one something to lean on. People call that anchoring. Sefa could check a lamp’s reach before bargaining, and still consider what the carrier needs to earn."
+  },
+  {
+    "id": "ten-stamps",
+    "chapter": 1,
+    "title": "Ten voices on one stool",
+    "opening": "Kip is keeping a seat for a shy singer at the guild supper. Ten slips demand the chair for a celebrated fiddler. “Ten whole neighbours,” he says. “Nobody will miss one song.”",
+    "controls": [
+      [
+        "Lay the slips side by side",
+        "Lift the slips to the window"
+      ],
+      [
+        "Face the committee table",
+        "Turn the stool towards the passage"
+      ]
+    ],
+    "readings": [
+      "Ten signatures fill ten neat spaces. The chair calls it proof the fiddler is the better musician. A committee member quietly puts her own folded ballot away.",
+      "At the window every signature has the same nick in its first stroke. It could be one copyist entering real requests. Kip keeps the original question open.",
+      "A singer in the passage heard the committee agree before the doors opened. “I love him too. I thought everyone else had voted.” Three ballots are still folded.",
+      "In the lining a clerk wrote, “I made nine more from my own. They must think we are ten.” Nine votes were invented. The fiddler did not sign any of them."
+    ],
+    "editions": [
+      {
+        "label": "Keep the opening song for the waiting singer",
+        "immediate": "She takes the first verse. A family who came for the fiddler has to stay through supper to hear him.",
+        "return": "The singer offers him the refrain. He asks her to keep the chair for her sister next time."
+      },
+      {
+        "label": "Give each musician a short turn at the stool",
+        "immediate": "Both are heard. The shy singer had practised a long piece and must cut its last verse.",
+        "return": "Two families can now name what they heard. One asks for the missing verse."
+      }
+    ],
+    "questions": [
+      "How many independent requests could I actually trace?",
+      "What could make agreement a good reason to listen without making it proof of quality?"
+    ],
+    "patterns": [
+      "deception:false-consensus",
+      "deception:fabrication",
+      "bias:groupthink",
+      "fallacy:popularity",
+      "bias:bandwagon"
+    ],
+    "peer": "green-window",
+    "deliveries": [
+      {
+        "label": "Hang the two civic lane totals beside the supper vote",
+        "reading": "Ten slips turn out to represent two passage seats and one desk. Kip looks for the absent singers’ ballots before he gives away the chair."
+      },
+      {
+        "label": "Lend the supper singers the private ticket desk",
+        "reading": "A hesitant committee member brings her folded ballot in person. Counting it changes the total without telling the room how she voted."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "HUM",
+        "MAT",
+        "TEC"
+      ],
+      "subjects": [
+        "economics",
+        "psychology",
+        "math-ai"
+      ],
+      "concepts": [
+        "evidence",
+        "values",
+        "perspective"
+      ],
+      "framework": [
+        "perspectives",
+        "methods-and-tools"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "group",
+    "margin": "The crowd could have loved a fiddler without proving him the better musician. Here the clerk’s own slip establishes invented votes. A quiet committee member and the fiddler each have their own story."
+  },
+  {
+    "id": "blue-fringe",
+    "chapter": 2,
+    "title": "The blue fringe in the margins",
+    "opening": "At the Nile Archive a visiting stitcher has patched the display sling. One line of blue sticks out. She tucks her hands beneath the cloth when a guide brings the first family over.",
+    "controls": [
+      [
+        "Look along the blue seam",
+        "Look out through the visitor window"
+      ],
+      [
+        "Leave the maker’s name on the ticket",
+        "Turn every ticket face down"
+      ]
+    ],
+    "readings": [
+      "The stitcher is sure everyone will spot her blue line. A guide says a famous donor bought the other sling, so it must hang straighter.",
+      "At the window one child follows the fringe; the rest crane to see the lower corner of the label. Nobody at the back can read it.",
+      "With both names hidden the blue line makes the fold easy to find. The stitcher rubs it proudly. She spent three evenings putting it there.",
+      "From the back both slings sag at the same stitch. One visitor likes the fringe as a guide; another asks for a level label. Now the stitcher can see them too."
+    ],
+    "editions": [
+      {
+        "label": "Keep the fringe as a finger guide",
+        "immediate": "A visitor finds the fold without a guide. The bottom corner still needs someone to lift it.",
+        "return": "Small hands have worn the blue thread soft. Three visitors waited for the sagging corner."
+      },
+      {
+        "label": "Stretch the sling for the back row",
+        "immediate": "The last family can read the whole label. The stitcher keeps a blue offcut in her apron.",
+        "return": "A family draws the old fringe in the margin to show the next guide where the fold used to be."
+      }
+    ],
+    "questions": [
+      "Whose attention did I guess at?",
+      "How could I test what a distant audience actually saw?"
+    ],
+    "patterns": [
+      "bias:spotlight",
+      "bias:ikea",
+      "bias:halo",
+      "fallacy:wealth"
+    ],
+    "peer": "ninth-tooth",
+    "deliveries": [
+      {
+        "label": "Try the marked teaching ring through the sling",
+        "reading": "The ring’s mark is visible from the front and vanishes at the back. The stitcher draws its two faces on the label flap."
+      },
+      {
+        "label": "Let the apprentice fit a surprise fold",
+        "reading": "The proud seam fits the first hand the apprentice tries. His second hand is left-handed. The thread now marks which way to turn the cloth."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "ART",
+        "HIS",
+        "LAN"
+      ],
+      "subjects": [
+        "visual-arts",
+        "history",
+        "lang-langlit"
+      ],
+      "concepts": [
+        "interpretation",
+        "objectivity",
+        "culture"
+      ],
+      "framework": [
+        "perspectives",
+        "methods-and-tools"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "spotlight",
+    "margin": "The stitcher expected everyone to see the line she saw. The back-row trial gave her a second view. Loving a seam you made can be a good reason to keep it and a poor measurement of its height."
+  },
+  {
+    "id": "reed-hand",
+    "chapter": 2,
+    "title": "The hand that borrowed a seal",
+    "opening": "A visiting demonstrator at the Nile Archive writes a label in a conservator’s name. A small paper reed keeps slipping in her fingers. “It deserves to be heard from somebody important,” she says.",
+    "controls": [
+      [
+        "Read the impressive heading",
+        "Turn the heading under"
+      ],
+      [
+        "Look at the seal alone",
+        "Match the seal to the job book"
+      ]
+    ],
+    "readings": [
+      "The heading calls the writer chief conservator. A visitor thinks that settles the age of the reed. Another dismisses the scraping because the writer is a school helper.",
+      "With the heading hidden the scraping still shows a shallow line crossing a darker one. It can help order two marks. It gives no calendar date.",
+      "The job book names the helper for the demonstration. The conservator was speaking in the next room. She could still advise on material without having made this observation.",
+      "A note sewn into the helper’s apron reads “I used her name so they would listen to my own test.” She offers to repeat it under her name. A false signature does not establish that the observation was false."
+    ],
+    "editions": [
+      {
+        "label": "Repeat the scrape with the helper at the table",
+        "immediate": "Children see the mark made again. The conservator must explain the signed heading to visitors already waiting.",
+        "return": "A second line appears in the same order. The helper leaves the date space open."
+      },
+      {
+        "label": "Carry the original and its corrected credit to the cabinet",
+        "immediate": "The invented signature becomes visible beside the correction. Visitors have to come back for a live repeat.",
+        "return": "The conservator has written down exactly which part of the observation she can check."
+      }
+    ],
+    "questions": [
+      "Which work could someone repeat without trusting a title?",
+      "What should happen to a sound observation under a false name?"
+    ],
+    "patterns": [
+      "deception:impersonation",
+      "deception:misattribution",
+      "fallacy:authority",
+      "fallacy:genetic",
+      "fallacy:fallacy-fallacy"
+    ],
+    "peer": "red-stitch",
+    "deliveries": [
+      {
+        "label": "Let the two crews watch the repeat scraping",
+        "reading": "The green and red crews agree on which cut crossed the other. The helper can point to this result without borrowing a title."
+      },
+      {
+        "label": "Split reading the mark from holding the cord",
+        "reading": "One visitor signs the observation and another the scale. A grand name cannot quietly stand for both jobs."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "ART",
+        "HIS",
+        "LAN"
+      ],
+      "subjects": [
+        "visual-arts",
+        "history",
+        "lang-langlit"
+      ],
+      "concepts": [
+        "interpretation",
+        "objectivity",
+        "culture"
+      ],
+      "framework": [
+        "perspectives",
+        "methods-and-tools"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "fallacies",
+    "margin": "A false signature damages trust in a label. It does not date the reed. Repeating the scrape gives someone with a smaller title a way to check the narrower observation."
+  },
+  {
+    "id": "empty-peg",
+    "chapter": 3,
+    "title": "The peg that kept a name",
+    "opening": "Inside the Cold Store a lamp cleaner leaves a peg empty every fifth night. An attendant wants the cleaner taken off the rota. The cleaner has a folded piece of paper in her boot.",
+    "controls": [
+      [
+        "Hang the signed rota",
+        "Hang the ferry timetable beside it"
+      ],
+      [
+        "Read the clean pegs",
+        "Look beneath the empty peg"
+      ]
+    ],
+    "readings": [
+      "Four lamps shine. The fifth peg is bare. “She deserves to lose her turn,” the attendant says. “Anyone who cared would be here.”",
+      "Every fifth ferry leaves before the clean-up bell. The attendant missed one too, the night his own watch ran slow.",
+      "A crumpled chit lies beneath the peg. It asks for a different crossing. A visitor mistakes the missing signature for proof the cleaner never asked.",
+      "The chit carries a ferry-time stamp and a return address with no answer. A missed ferry could explain that night. It tells us little about the other nights, or about the cleaner’s character."
+    ],
+    "editions": [
+      {
+        "label": "Move the last cleaning round to daylight",
+        "immediate": "The cleaner gets the crossing. Someone on the evening shift now needs to look for soot.",
+        "return": "The daylight crew left the lamps ready. The last room has asked for a late check too."
+      },
+      {
+        "label": "Keep a paid evening exchange on the peg",
+        "immediate": "The cleaner can trade that shift with a neighbour. A neighbour must be free to take it.",
+        "return": "One exchange holds; the next peg is still empty. The cleaner asks to keep the crossing chit beside the rota."
+      }
+    ],
+    "questions": [
+      "Which detail changed how I read the empty peg?",
+      "What missing circumstance would I look for before judging a teammate?"
+    ],
+    "patterns": [
+      "bias:attribution",
+      "bias:just-world",
+      "fallacy:ignorance"
+    ],
+    "peer": "no-queue",
+    "deliveries": [
+      {
+        "label": "Borrow Lin’s stool for a missed shift",
+        "reading": "Seated at ferry height, a relief cleaner can see the departing boat while the roster clerk looks at a bare peg. They mark both times."
+      },
+      {
+        "label": "Give the ferry cleaner a lower register",
+        "reading": "She writes down her crossing before she can reach the peg. The book now has a request on a night the peg was empty."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "HIS",
+        "HUM",
+        "POL"
+      ],
+      "subjects": [
+        "history",
+        "psychology",
+        "global-politics"
+      ],
+      "concepts": [
+        "responsibility",
+        "explanation",
+        "justification"
+      ],
+      "framework": [
+        "ethics",
+        "perspectives"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "attribution",
+    "margin": "I nearly told a whole story about a cleaner from an empty peg. An attribution can overlook the crossing a worker has to make. That one timetable gives us a lead for one night."
+  },
+  {
+    "id": "mitten-sheet",
+    "chapter": 3,
+    "title": "The winter in the advice mitten",
+    "opening": "Visitors at the Cold Store receive a folded mitten with a prediction about how they will work. A veteran reads “You are steady until something you love is in danger” and puts it next to her family photo.",
+    "controls": [
+      [
+        "Unfold one mitten",
+        "Unfold the whole washing line"
+      ],
+      [
+        "Read the sentence alone",
+        "Hold it next to the shift book"
+      ]
+    ],
+    "readings": [
+      "The veteran recognises herself. So does the courier, who usually changes his mind twice before lunch.",
+      "Every mitten carries the same sentence. No one had to know a visitor to print it. The two visitors still have different reasons for liking it.",
+      "Someone argues, “People who work steadily can rise early. You rose early, so you must work steadily.” It sounds plausible to the veteran. It has evenings she was steady and mornings she called for help. A pleasing description can be broad enough to fit both.",
+      "From the washing line the veteran chooses one actual night she asked for relief. The courier remembers another. Both can use the mittens without making a test of personality from them."
+    ],
+    "editions": [
+      {
+        "label": "Hang one mitten beside a dated night",
+        "immediate": "A visitor gets a particular story with the familiar phrase. The veteran asks to leave the person who helped unnamed.",
+        "return": "A visitor asks what changed that night. The veteran brings the relief lamp."
+      },
+      {
+        "label": "Let visitors carry the mittens and open the shift book",
+        "immediate": "Two visitors keep the comforting phrase. Anyone who wants the night’s particulars has a place to look.",
+        "return": "The courier comes back for the date after the phrase stops feeling like a private message."
+      }
+    ],
+    "questions": [
+      "What made the phrase feel personal?",
+      "Which observation could distinguish between two descriptions that both fit?"
+    ],
+    "patterns": [
+      "bias:barnum",
+      "bias:confirmation",
+      "bias:belief"
+    ],
+    "peer": "old-singing",
+    "deliveries": [
+      {
+        "label": "Play two rough high notes by the mitten",
+        "reading": "The singer’s two rough takes sound different while the mitten reads exactly the same. The courier asks for one date he can check."
+      },
+      {
+        "label": "Set the final takes beside the washing line",
+        "reading": "Two good endings fit the same flattering message. The veteran opens her shift book to find where the singers got different help."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "HIS",
+        "HUM",
+        "POL"
+      ],
+      "subjects": [
+        "history",
+        "psychology",
+        "global-politics"
+      ],
+      "concepts": [
+        "responsibility",
+        "explanation",
+        "justification"
+      ],
+      "framework": [
+        "ethics",
+        "perspectives"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "barnum",
+    "margin": "A broad prediction can fit two very different people. A conclusion can also sound believable when its steps do not follow. The dated night let the veteran make a more particular claim about herself."
+  },
+  {
+    "id": "six-knots",
+    "chapter": 4,
+    "title": "Six knots before the bell",
+    "opening": "At the observatory harbour a runner ties a black knot after each fog bell. Six black knots in a row. The ferrier’s mother is on the far bank with a loaf going cold.",
+    "controls": [
+      [
+        "Start at this morning’s knot",
+        "Unroll the whole cord"
+      ],
+      [
+        "Look at the bell rope",
+        "Look at the separate fair draw bag"
+      ]
+    ],
+    "readings": [
+      "Six bells ran together. The runner says clear air is due. The ferrier remembers the one crossing she could hardly see.",
+      "The long cord shows ordinary gaps and tight runs. Older knots fade. The runner tied some mornings twice and left other mornings blank.",
+      "In a separate game a child returned the black bead to a bag with one black bead and one white after each of six draws. The seventh draw still has both beads available.",
+      "A fair bag has no memory. Fog can linger when wind and water stay alike. The cord and the bag cannot promise the same thing about the next turn."
+    ],
+    "editions": [
+      {
+        "label": "Set a lookout at the narrows",
+        "immediate": "The mother gets a signal if the view clears. The lookout gives up a warm seat on the boat.",
+        "return": "A clear patch lasted long enough for a loaf to cross. The lookout wants the wait counted too."
+      },
+      {
+        "label": "Delay the ferry and run the shore cart",
+        "immediate": "The cart collects the mother. Bakers on its usual road must carry their own trays.",
+        "return": "A baker has left flour on the cord. The next runner asks for both the wait and the journey time."
+      }
+    ],
+    "questions": [
+      "Which run was produced by a fair draw, and what set the weather?",
+      "When could an earlier result really change a later chance?"
+    ],
+    "patterns": [
+      "bias:clustering",
+      "bias:recency",
+      "bias:availability",
+      "fallacy:gamblers"
+    ],
+    "peer": "crate-sky",
+    "deliveries": [
+      {
+        "label": "Carry a four-early, two-late board to the fog rope",
+        "reading": "The ferrier’s mother sees two promised times. She asks to put the later skiff beside an actual tide reading before she trusts either."
+      },
+      {
+        "label": "Try a shared later bell at both banks",
+        "reading": "Two banks ring together. Fog on one side outlasts fog on the other. A match between bells gives no promise of clear air."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "NAT",
+        "MAT",
+        "TEC"
+      ],
+      "subjects": [
+        "physics",
+        "math-ai",
+        "geography"
+      ],
+      "concepts": [
+        "certainty",
+        "explanation",
+        "evidence"
+      ],
+      "framework": [
+        "scope",
+        "methods-and-tools"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "fallacies",
+    "margin": "The bead goes back into an unchanged bag. Fog can carry over from one morning to the next. Asking how the next event is produced matters more than how long the run looks."
+  },
+  {
+    "id": "varnish",
+    "chapter": 4,
+    "title": "The captain’s green varnish",
+    "opening": "A harbour captain has already bought three tins of a green boat varnish. “My boat came home after I painted it. Yours will too.” The tins are stacked around a damp patch on his deck.",
+    "controls": [
+      [
+        "Set the voyage dates in order",
+        "Pair boats from the same crossing"
+      ],
+      [
+        "Face the painted rail",
+        "Lift the mat over the damp patch"
+      ]
+    ],
+    "readings": [
+      "Paint on fifth day, safe return on sixth. The captain has a receipt with three tins still to use.",
+      "One unpainted boat came home alongside his. A painted boat turned back early. Their hulls, loads and skippers differed too.",
+      "The damp patch is small enough to cover. “Do it tomorrow,” the captain says. “We have spent too much to change now.” The receipt cannot dry the wood.",
+      "The paired log and damp patch give the next crew a repair to check, with or without the tins. The captain remembers being proud of the purchase. “I never thought the canvas cover was any good.” His old price sheet has a star beside that very cover."
+    ],
+    "editions": [
+      {
+        "label": "Use the varnish on a marked trial board",
+        "immediate": "The captain can watch what it does to one board. His boat waits for a separate hull check.",
+        "return": "The board stays dry one morning and blisters on another. The dates remain on its edge."
+      },
+      {
+        "label": "Move the boats to the dry inspection berth",
+        "immediate": "The crew can look underneath. The owner of the last boat loses a morning at the mooring.",
+        "return": "A split shows up beside an unpainted joint. Nobody can work out the cause from the purchase date alone."
+      }
+    ],
+    "questions": [
+      "What happened after the purchase and what connects it to the result?",
+      "Which future cost still matters once a tin is paid for?"
+    ],
+    "patterns": [
+      "fallacy:false-cause",
+      "fallacy:post-hoc",
+      "fallacy:sunk-cost",
+      "bias:sunk-cost",
+      "bias:choice-supportive",
+      "bias:ostrich"
+    ],
+    "peer": "cooling-hook",
+    "deliveries": [
+      {
+        "label": "Use the lidless crew’s trial rack for the captain’s boards",
+        "reading": "A painted and an unpainted board share one damp rack. The next result will cover this rack and this morning."
+      },
+      {
+        "label": "Lend the captain the old lift for inspection",
+        "reading": "The lift takes the boat’s weight long enough to reveal a loose joint. The three green tins are still sealed beside it."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "NAT",
+        "MAT",
+        "TEC"
+      ],
+      "subjects": [
+        "physics",
+        "math-ai",
+        "geography"
+      ],
+      "concepts": [
+        "certainty",
+        "explanation",
+        "evidence"
+      ],
+      "framework": [
+        "scope",
+        "methods-and-tools"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "sunk",
+    "margin": "The coating came first and the voyage ended well. A matched crossing gives us other possibilities. Money spent on the tins cannot tell a crew whether tomorrow’s hull needs a repair."
+  },
+  {
+    "id": "red-stitch",
+    "chapter": 5,
+    "title": "The badge on a marsh runner",
+    "opening": "A trail watcher has recorded a nesting bird on the far bank. At supper her red runner’s badge draws more comment than her sketch. “That crew always rushes. A proper watcher would have waited.”",
+    "controls": [
+      [
+        "Leave the badges on the accounts",
+        "Fold every badge behind the paper"
+      ],
+      [
+        "Show the favourite walking crew",
+        "Pair the two sketches at the reed bed"
+      ]
+    ],
+    "readings": [
+      "The red badge gets a laugh. A watcher in green calls her own mistake last week a trick of the light and calls the red runner careless.",
+      "With badges hidden both sketches agree on the bend of a reed. They disagree on the distance to the nest. Green ink and red ink can both go wrong there.",
+      "A green watcher says a green runner who rushed could not have been a real member. The red runner keeps her badge on and goes to fetch the measuring cord.",
+      "Both crews misplaced the nest when the cord stretched. The badge test cannot settle distance. The red runner knew where the bird entered the reeds and is willing to show the others."
+    ],
+    "editions": [
+      {
+        "label": "Take both crews on the cord walk",
+        "immediate": "The red runner gets to lead at the bend. The green watcher loses a morning of counting.",
+        "return": "The crews return with a common distance and two different sightings. They keep both signatures."
+      },
+      {
+        "label": "Give the runner the sketch and the green crew the cord",
+        "immediate": "They work from opposite banks. The watcher must trust a runner with the drawing she once dismissed.",
+        "return": "A wet cord mark makes both crews laugh. The next sketch has a space for water level."
+      }
+    ],
+    "questions": [
+      "Which claim changed when I hid the badge?",
+      "Would I give my own crew the exception I offered here?"
+    ],
+    "patterns": [
+      "bias:stereotyping",
+      "bias:in-group",
+      "bias:self-serving",
+      "bias:blind-spot",
+      "fallacy:ad-hominem",
+      "fallacy:no-true-member"
+    ],
+    "peer": "reed-hand",
+    "deliveries": [
+      {
+        "label": "Repeat the marked bend with the named helper",
+        "reading": "The helper and runner identify one reed from different banks. Their badges never enter the distance calculation."
+      },
+      {
+        "label": "Bring the corrected credit beside the two sketches",
+        "reading": "The two crews can return to the people who made the marks. The sketches that still disagree stay on the same hook."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "NAT",
+        "HUM",
+        "TEC"
+      ],
+      "subjects": [
+        "biology",
+        "geography",
+        "psychology"
+      ],
+      "concepts": [
+        "perspective",
+        "evidence",
+        "objectivity"
+      ],
+      "framework": [
+        "methods-and-tools",
+        "perspectives"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "attribution",
+    "margin": "A club can keep its reputation spotless by declaring every exception an outsider. Putting the badges aside lets both crews inspect what their stretched cord can measure."
+  },
+  {
+    "id": "white-tail",
+    "chapter": 5,
+    "title": "What the white tail leaves behind",
+    "opening": "At the Forest Trail a collector shows a cabinet of bright white tail feathers. Tomorrow the walking crew will decide which crossing to keep clear. A dark feather is wedged under the door.",
+    "controls": [
+      [
+        "Open the cabinet drawers",
+        "Walk the dull side of the path"
+      ],
+      [
+        "Count the feathers that remained",
+        "Lift the cleaning cloth"
+      ]
+    ],
+    "readings": [
+      "White fills all three drawers. The collector says the white-tailed birds must fill the forest just as thickly.",
+      "The path holds dark and pale tips. The collector reaches for the pale ones first. They show up well at dusk. She puts back a dark tip that would spoil her row.",
+      "The cleaner has a sack of broken tips from both colours. A feather too small to pin never entered a drawer.",
+      "The dull path and the cleaning sack tell different stories about how things get into a case. Neither counts the birds that kept their feathers."
+    ],
+    "editions": [
+      {
+        "label": "Rope off the crossing for one dawn watch",
+        "immediate": "The walkers get a quiet count for one dawn. The porters take the long path until the rope comes down.",
+        "return": "Two birds cross without dropping a feather. The return sheet leaves space for a morning with none."
+      },
+      {
+        "label": "Send observers with the porters",
+        "immediate": "The path stays open. Footsteps may change which birds cross while the porters are there.",
+        "return": "The porters bring back a crossing time as well as a colour. The cabinet keeper asks for the noise of the cart to go on the card."
+      }
+    ],
+    "questions": [
+      "Which feathers never had a chance to enter the drawer?",
+      "Where would my own way of collecting leave something out?"
+    ],
+    "patterns": [
+      "bias:survivorship",
+      "bias:selective-perception",
+      "bias:confirmation",
+      "fallacy:hasty"
+    ],
+    "peer": "lantern-drift",
+    "deliveries": [
+      {
+        "label": "Send the west-pier watcher to the dull path",
+        "reading": "The watcher comes back with a time when nothing crossed. There is no feather to pin, but the walk now has a beginning and an end."
+      },
+      {
+        "label": "Put a departure peg at both forest entrances",
+        "reading": "The path keeper can distinguish no birds seen from no watcher sent. A full peg still needs someone to make the walk."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "NAT",
+        "HUM",
+        "TEC"
+      ],
+      "subjects": [
+        "biology",
+        "geography",
+        "psychology"
+      ],
+      "concepts": [
+        "perspective",
+        "evidence",
+        "objectivity"
+      ],
+      "framework": [
+        "methods-and-tools",
+        "perspectives"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "decision",
+    "margin": "A cabinet has at least two filters: what someone noticed and what survived the cleaning cloth. A drawer can be an accurate record of its own contents and a very poor count of living birds."
+  },
+  {
+    "id": "cooling-hook",
+    "chapter": 6,
+    "title": "The hook that had never fallen",
+    "opening": "In the Metalworks a new lift holds a cold kettle on its first try. Hesper is the first to clap. The apprentice who carved its oak arm keeps his hands behind his back.",
+    "controls": [
+      [
+        "Hang the kettle alone",
+        "Hang the empty kettle and its lid apart"
+      ],
+      [
+        "Test the new lift",
+        "Set the old lift beside it"
+      ]
+    ],
+    "readings": [
+      "The new arm holds. Its maker grins. Someone has already written SAFE across the chalkboard.",
+      "Each part hangs steady on its own hook. Fit them together and the lid catches the arm as it swings. Every part passed its own test.",
+      "The old arm holds this kettle too. A costly bronze trim gleams on the new arm. “They only put bronze on the new kind. It must carry more,” a visitor says. The trim adds no support at the joint.",
+      "The old frame clears the lid. The new one rubs it. Either could slip under another load. The apprentice takes off his bronze trim to look at the wood."
+    ],
+    "editions": [
+      {
+        "label": "Lend the new lift to the lidless-pot crew",
+        "immediate": "The new arm gets a bounded job. The apprentice has to put a small pot in a cart by hand.",
+        "return": "The lidless crew returns the new arm with a rubbed patch marked for its maker."
+      },
+      {
+        "label": "Keep the old lift on the kettle round",
+        "immediate": "The familiar joint clears the swing. The new arm has to wait for a quieter trial.",
+        "return": "The old lift has earned another shift. Its crew still leave a hook free for an unfamiliar load."
+      }
+    ],
+    "questions": [
+      "Which test addressed the assembled lift?",
+      "What extra evidence would a lucky first success leave me wanting?"
+    ],
+    "patterns": [
+      "bias:pro-innovation",
+      "bias:outcome",
+      "bias:overconfidence",
+      "fallacy:composition"
+    ],
+    "peer": "varnish",
+    "deliveries": [
+      {
+        "label": "Bring the captain’s trial board under the lid",
+        "reading": "One painted patch catches the swinging edge. The maker finds a contact that a handsome surface had hidden."
+      },
+      {
+        "label": "Put the lift at the boat inspection berth",
+        "reading": "The inspectors see the same scrape on both lifts after a wet night. The new arm lost its private place as the only possible cause."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "NAT",
+        "MAT",
+        "TEC"
+      ],
+      "subjects": [
+        "physics",
+        "design-tech",
+        "math-aa"
+      ],
+      "concepts": [
+        "explanation",
+        "evidence",
+        "justification"
+      ],
+      "framework": [
+        "scope",
+        "methods-and-tools"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "fallacies",
+    "margin": "Composition mattered at the lid. A part can pass its own test and still catch another part as they move. One fortunate lift tells me little about the maker’s decision under other loads."
+  },
+  {
+    "id": "ninth-tooth",
+    "chapter": 6,
+    "title": "A gear with a proud ninth tooth",
+    "opening": "A maker with one successful fitting wants to teach the metal yard a quick way to fit every gear. The old fitter says an apprentice should understand “use the shy edge” without asking.",
+    "controls": [
+      [
+        "Try the familiar eight-tooth ring",
+        "Turn over the unseen nine-tooth ring"
+      ],
+      [
+        "Read the maker’s predicted fit",
+        "Press the fitted ring into clay"
+      ]
+    ],
+    "readings": [
+      "The first ring fits. The maker marks all eight teeth before trying the other ring. She expects as many clean marks again.",
+      "The ninth tooth falls between the pencilled marks. The maker has yet to see her clay impression. Her first fit taught one pattern very well.",
+      "The clay shows eight good contacts on the familiar ring. The fitter’s “shy edge” is the face away from the axle. No one had shown the maker which face that was.",
+      "On the unfamiliar ring the maker predicts eight contacts and counts four. She changes her next estimate. The fitter tries the unfamiliar jig too and misses one. The two trials can calibrate these estimates; they cannot rank all apprentices or experts."
+    ],
+    "editions": [
+      {
+        "label": "Mark the two faces on the teaching ring",
+        "immediate": "A newcomer can see what the fitter meant. Someone must keep the marks clear when the clay dries.",
+        "return": "A second apprentice names the shy edge without having to guess what the fitter knew."
+      },
+      {
+        "label": "Give the maker the surprise ring for a practice shift",
+        "immediate": "She can check where her prediction misses. The teaching ring goes back without its extra markings.",
+        "return": "She brings back a handprint and a smaller promise about her next fit. The fitter asks to try it again."
+      }
+    ],
+    "questions": [
+      "Where could a prediction meet a result that surprised its maker?",
+      "What did the teacher assume everybody could already see?"
+    ],
+    "patterns": [
+      "bias:calibration",
+      "bias:overconfidence",
+      "bias:curse-of-knowledge"
+    ],
+    "peer": "blue-fringe",
+    "deliveries": [
+      {
+        "label": "Use the blue fringe as the gear’s near-side mark",
+        "reading": "The maker runs a thumb along the fringe. She can find the shy edge without having heard the old fitter’s phrase."
+      },
+      {
+        "label": "Borrow a back-row sightline for the gear rack",
+        "reading": "The fitter crouches behind the last bench. Neither pencilled arrow is visible from there. He moves his demonstration clay under the lamp."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "NAT",
+        "MAT",
+        "TEC"
+      ],
+      "subjects": [
+        "physics",
+        "design-tech",
+        "math-aa"
+      ],
+      "concepts": [
+        "explanation",
+        "evidence",
+        "justification"
+      ],
+      "framework": [
+        "scope",
+        "methods-and-tools"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "calibration",
+    "margin": "The maker checked her estimates against contact marks. Studies of the Dunning–Kruger effect compare performance and self-assessment across people. Two trials can help this maker calibrate her next estimate; they cannot diagnose her or the fitter."
+  },
+  {
+    "id": "tuesday-fold",
+    "chapter": 7,
+    "title": "The lending day folded inside",
+    "opening": "The City of Copies has posted OPEN EVERY DAY. A child has come to borrow a book for Tuesday. The press runner looks at the child’s empty satchel and asks you to unfold the ticket.",
+    "controls": [
+      [
+        "Read the public face",
+        "Lift the glued fold"
+      ],
+      [
+        "Read the clerk’s words",
+        "Follow the runner’s delivery slip"
+      ]
+    ],
+    "readings": [
+      "The board promises every day. A clerk is warming the glue pot and the Tuesday books are still under a cloth.",
+      "Under the fold the clerk wrote “except Tuesday before the roof is mended”. The clerk’s copy has no glue.",
+      "The runner says the boards only fool visitors. His own empty book satchel still has last Tuesday’s ticket inside. He delivered two hundred boards at dawn. The slip says he carried the bundle tied. It gives no sign that he read or chose the fold.",
+      "A signed instruction matches the glue edge: “Put the Tuesday line inside. I want the opening to look unbroken.” The press manager wrote it. The runner’s signature only records delivery."
+    ],
+    "editions": [
+      {
+        "label": "Open the fold on every public board",
+        "immediate": "Families can see Tuesday at once. The press team must carry a bucket of warm water to every corner.",
+        "return": "The child finds the open fold. Two more corners are still waiting for their boards to dry."
+      },
+      {
+        "label": "Pin the signed correction to the book cart",
+        "immediate": "The correction travels with the books and carries its author’s name. Some families pass the old board first.",
+        "return": "A family follows the cart back to the manager to ask about next Tuesday. The smaller street still has the old board."
+      }
+    ],
+    "questions": [
+      "Which evidence supports a decision to hide the line?",
+      "Which person merely carried it?"
+    ],
+    "patterns": [
+      "deception:omission",
+      "deception:alteration",
+      "bias:third-person"
+    ],
+    "peer": "rolled-echo",
+    "deliveries": [
+      {
+        "label": "Let the listening room hear the whole Tuesday notice",
+        "reading": "The runner reads the folded words aloud. Someone hears the repair deadline for the first time and asks when it was written."
+      },
+      {
+        "label": "Place a timed reading beside the book cart",
+        "reading": "The cart reader can point to precisely where “except Tuesday” begins. A person seeing only the window still needs the address."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "HIS",
+        "HUM",
+        "LAN"
+      ],
+      "subjects": [
+        "lang-langlit",
+        "business",
+        "history"
+      ],
+      "concepts": [
+        "power",
+        "truth",
+        "responsibility"
+      ],
+      "framework": [
+        "ethics",
+        "perspectives"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "intent",
+    "margin": "The missing Tuesday could have begun as a torn edge. The signed direction about hiding it changes what the family can say about the manager. The delivery slip establishes a different, smaller fact about the runner."
+  },
+  {
+    "id": "yellow-ink",
+    "chapter": 7,
+    "title": "The yellow-ink stamp",
+    "opening": "A City of Copies bookseller advertises a “free Tuesday desk”. When a reader arrives she must pay for the chair. Beside the till hangs a lovely yellow-ink ribbon.",
+    "controls": [
+      [
+        "Read the stamped advertisement",
+        "Raise the price flap"
+      ],
+      [
+        "Ask about the yellow ribbon",
+        "Open the seller’s little print order"
+      ]
+    ],
+    "readings": [
+      "The word “free” is printed in the largest type. The reader has brought no coins. The seller starts describing how the yellow ink won a prize.",
+      "Under the flap “free” means unreserved. A chair still costs two bits. A reader who came for a free seat has made an understandable reading.",
+      "The order says “Keep them talking about the ink if they ask about the charge.” The ribbon really did win a prize. It gives the reader no chair.",
+      "The seller also wrote “Let ‘free’ stand. Half will read it as no charge.” The misleading sense and the diversion both have a traceable author. The printer who inked the word did not write the order."
+    ],
+    "editions": [
+      {
+        "label": "Put the two-bit mark on the public stamp",
+        "immediate": "The next visitor knows the price before walking. Someone with no coins still needs a place to sit.",
+        "return": "A family brings two bits and passes a second family standing outside."
+      },
+      {
+        "label": "Give out a seat token at the shop door",
+        "immediate": "The waiting reader gets a seat. Until the stamp changes, another family may set out with no coins.",
+        "return": "The keeper brings back the empty token bag. The yellow ribbon has not filled a single chair."
+      }
+    ],
+    "questions": [
+      "When did an ordinary ambiguous word become a deliberate choice?",
+      "Which question brought the conversation back to the seat?"
+    ],
+    "patterns": [
+      "deception:equivocation",
+      "deception:diversion",
+      "fallacy:red-herring",
+      "fallacy:equivocation"
+    ],
+    "peer": "night-ledger",
+    "deliveries": [
+      {
+        "label": "Try the late key on the supposedly free chair",
+        "reading": "The door opens after hours but the chair still needs two bits. The word “open” solved a different problem from the charge."
+      },
+      {
+        "label": "Put a chair keeper’s name on the print rota",
+        "reading": "The next reader can ask one person what free means here. A spoken answer still leaves tomorrow’s stamp to be changed."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "HIS",
+        "HUM",
+        "LAN"
+      ],
+      "subjects": [
+        "lang-langlit",
+        "business",
+        "history"
+      ],
+      "concepts": [
+        "power",
+        "truth",
+        "responsibility"
+      ],
+      "framework": [
+        "ethics",
+        "perspectives"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "intent",
+    "margin": "A word can have two fair readings. Here a written order shows the seller wanted buyers to take the other one. A real prize for ink could distract the reader without answering what a chair cost."
+  },
+  {
+    "id": "lantern-drift",
+    "chapter": 8,
+    "title": "Three lanterns on one shoal",
+    "opening": "At Seagrass Steps three volunteer skiffs return by the east channel. On the harbour map a bright ring has been drawn around their lantern marks. An empty skiff rocks at the west pier.",
+    "controls": [
+      [
+        "Look inside the red ring",
+        "Unroll the unmarked edges"
+      ],
+      [
+        "Put out the homecoming sheet",
+        "Put out the departure sheet"
+      ]
+    ],
+    "readings": [
+      "All three returning lanterns sit inside one bright loop. The sailmaker wants to call it a channel that always brings a crew home.",
+      "Outside the ring are two ordinary landings and a torn corner. The pencil crosses older lantern marks. The loop was drawn after the skiffs came home.",
+      "Five crews left, from two piers. Only east crews were asked to bring a lamp back to this keeper. A blank outside the ring can mean no one was asked.",
+      "The departure sheet reveals where five crews started. The return sheet records three finishes with lamps. The ring can guide another look; it cannot supply the two missing endings."
+    ],
+    "editions": [
+      {
+        "label": "Send a daylight skiff to the unmarked pier",
+        "immediate": "Someone will see what a crossing from the west is like. The east net-menders have to wait for canvas.",
+        "return": "A crew comes back with one daylight track from the west. Nobody knows what the torn corner once showed."
+      },
+      {
+        "label": "Keep a paired log at both piers",
+        "immediate": "Every departure can be matched to a return. Someone still needs to chase each late entry.",
+        "return": "At dusk the keeper can name a missing entry without calling its crew lost."
+      }
+    ],
+    "questions": [
+      "Who could leave a mark on that chart?",
+      "Would a fresh crossing test a boundary drawn after the first three?"
+    ],
+    "patterns": [
+      "fallacy:sharpshooter",
+      "bias:survivorship",
+      "bias:clustering",
+      "fallacy:anecdotal"
+    ],
+    "peer": "white-tail",
+    "deliveries": [
+      {
+        "label": "Keep one harbour watch as quiet as the roped path",
+        "reading": "A western crew arrives with its light turned down. The quiet lookout can enter a landing nobody at the bright stall saw."
+      },
+      {
+        "label": "Give the skiff crews the porters’ crossing log",
+        "reading": "Crews enter the start before they cast off. The keeper finds a returning lamp with no matching departure and asks who launched it."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "MAT",
+        "NAT",
+        "TEC"
+      ],
+      "subjects": [
+        "geography",
+        "math-ai",
+        "ess"
+      ],
+      "concepts": [
+        "certainty",
+        "evidence",
+        "explanation"
+      ],
+      "framework": [
+        "scope",
+        "methods-and-tools"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "fallacies",
+    "margin": "Drawing a boundary around the lanterns after they arrived makes a fine description of those arrivals. A new crossing lets the harbour try a prediction that had a chance to miss."
+  },
+  {
+    "id": "two-routes",
+    "chapter": 8,
+    "title": "The channel drawn as a fork",
+    "opening": "A surveyor at Seagrass Steps offers two charts: one paints the whole shore safe; the other closes it all. A skiff keeper has a tide pin in her sleeve and a child expecting her on the inner bank.",
+    "controls": [
+      [
+        "Pin the two large charts",
+        "Unfold the narrow tide strip"
+      ],
+      [
+        "Read the old route inscription",
+        "Read three dated sounding lines"
+      ]
+    ],
+    "readings": [
+      "“Open or shut,” says the pilot. “Open one channel, then all open, then a boat is bound to be lost.” The keeper asks which step would open the other channels. Closing all of them removes the risk from skiffs while families walk the crumbling bank.",
+      "The tide strip shows a third route during one hour. A shore drawn as two solid colours hid a moving boundary.",
+      "An inscription calls the old channel safe because it has always been used. The dated lines match two of its bends and miss a third.",
+      "At the tide pin the pilot can set one hour and one channel and leave the others shut. The dated lines do not cover tomorrow’s storm."
+    ],
+    "editions": [
+      {
+        "label": "Open the marked inner channel for one tide",
+        "immediate": "The keeper gets her child home. Someone needs to take up the pin at the falling tide.",
+        "return": "One family makes the crossing. A chart reader comes back asking for tomorrow’s permission too."
+      },
+      {
+        "label": "Keep a sounding skiff out and walk the bank",
+        "immediate": "The pilot gets another depth record. The child has to wait for a longer journey home.",
+        "return": "The new sounding is too shallow for the freight skiff and deep enough for the narrow boat."
+      }
+    ],
+    "questions": [
+      "Which extra route appeared when the map could move?",
+      "Which link in a feared chain would have to be established?"
+    ],
+    "patterns": [
+      "fallacy:false-dilemma",
+      "fallacy:slippery-slope",
+      "fallacy:tradition",
+      "bias:zero-risk"
+    ],
+    "peer": "blue-ribbon",
+    "deliveries": [
+      {
+        "label": "Float the family model on the tide strip",
+        "reading": "The tiny boat edges through one narrow setting. The skiff keeper asks for an actual sounding before she takes a family along it."
+      },
+      {
+        "label": "Set the model’s second landing beside the closed chart",
+        "reading": "A second model suggests where a third route might fit. It gives the pilot a question for the sounding skiff."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "MAT",
+        "NAT",
+        "TEC"
+      ],
+      "subjects": [
+        "geography",
+        "math-ai",
+        "ess"
+      ],
+      "concepts": [
+        "certainty",
+        "evidence",
+        "explanation"
+      ],
+      "framework": [
+        "scope",
+        "methods-and-tools"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "fallacies",
+    "margin": "The channel gained another option when time appeared on the chart. A frightening series of events needs a reason for each link. An old route can offer evidence when someone can trace how it worked."
+  },
+  {
+    "id": "paper-wings",
+    "chapter": 9,
+    "title": "The wings behind Pella’s curtain",
+    "opening": "A child says she saw a paper bird hover on stage. A critic says string could never hold a turn like that; Pella, the caller, asks where each of them sat.",
+    "controls": [
+      [
+        "Watch from the front slit",
+        "Watch from the wing"
+      ],
+      [
+        "Play the flight alone",
+        "Play the flight with the caller’s cue"
+      ]
+    ],
+    "readings": [
+      "From the front the wing hovers. Two families gasp at the same turn. They shared a row and a view.",
+      "At the wing a drum takes up a thread. The child really did see a bird hang in the air. Her view offered no look at the drum.",
+      "Before the cue Pella says, “Watch the blue bird rise.” One watcher notices the blue wing first. Another still follows the drumbeat.",
+      "From the wing a cue card signed by the puppeteer reads “Let them take the bird for a live one until the bow.” He steps out at the bow holding both paper wings. The planned illusion had an ending."
+    ],
+    "editions": [
+      {
+        "label": "Keep the thread reveal for the bow",
+        "immediate": "The child has time to wonder. A family that leaves early carries home a different account.",
+        "return": "One child comes back for the bow because the usher mentioned a second look."
+      },
+      {
+        "label": "Show the side view during the first flight",
+        "immediate": "The back row sees how a small hand makes the turn. The puppeteer loses the long gasp he practised for.",
+        "return": "The next audience asks how heavy the wing felt on the drum. The front row misses the first surprise."
+      }
+    ],
+    "questions": [
+      "What was the child in a position to see?",
+      "When does expecting an effect change what I notice?"
+    ],
+    "patterns": [
+      "bias:selective-perception",
+      "bias:expectancy",
+      "fallacy:incredulity",
+      "deception:staging"
+    ],
+    "peer": "ten-bowls",
+    "deliveries": [
+      {
+        "label": "Lay the shared recipe beside the wing diagram",
+        "reading": "Two spectators find where the painted feather and the paper frame came from. One still remembers seeing a bird breathe."
+      },
+      {
+        "label": "Seat an unwarned taster at the first flight",
+        "reading": "The taster hears the rustle first. When she sees the blue cue she starts watching the wing, and says which moment changed her attention."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "ART",
+        "HUM",
+        "LAN"
+      ],
+      "subjects": [
+        "theatre",
+        "psychology",
+        "film"
+      ],
+      "concepts": [
+        "interpretation",
+        "perspective",
+        "values"
+      ],
+      "framework": [
+        "perspectives",
+        "ethics"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "expectancy",
+    "margin": "Expecting a bird made one spectator attend to a wing before a thread. The card and the bow explain what the maker intended. Changes in attention during a show do not establish the medical effects of a treatment."
+  },
+  {
+    "id": "third-bell",
+    "chapter": 9,
+    "title": "The bell that would not leave the rehearsal",
+    "opening": "A rehearsal ends with one bell unfinished. The caller remembers it on the walk home and forgets two finished entrances. In the foyer a committee is still choosing the colour of her bell cord.",
+    "controls": [
+      [
+        "Lay out the unfinished cue",
+        "Lay out the whole running sheet"
+      ],
+      [
+        "Face the colour swatches",
+        "Pull the rope from the back row"
+      ]
+    ],
+    "readings": [
+      "The caller cannot get the unfinished bell out of her head tonight. “Every entrance must have been a muddle,” a visitor says.",
+      "The running sheet has two finished entrances with signed cues. Their quiet success was easy to lose in the recollection of the last one.",
+      "Coral or russet has taken the committee an hour. At the back a small child cannot see either colour. The bell rope nearly touches the ceiling.",
+      "The long sheet and high rope point to two different jobs. Making the bell reachable would change the next performance. Keeping the colour vote would let the children mark a rope they helped choose."
+    ],
+    "editions": [
+      {
+        "label": "Lower the rope for the next rehearsal",
+        "immediate": "The child can ring it. Two children who chose colours ask when their vote will be heard.",
+        "return": "The next cue sounds from a much lower hand. Nobody has settled the colour."
+      },
+      {
+        "label": "Keep the colour vote and assign a rope fitter",
+        "immediate": "The children see their colour on the cord. The fitter must miss a rehearsal to lower it.",
+        "return": "The fitter brings back the length of a child’s reach. The caller still remembers the unfinished bell."
+      }
+    ],
+    "questions": [
+      "What from an evening stuck in memory, and what else took place?",
+      "Was the easiest thing to debate where the committee could make the largest difference?"
+    ],
+    "patterns": [
+      "bias:unfinished",
+      "bias:triviality",
+      "bias:negativity"
+    ],
+    "peer": "dry-garden",
+    "deliveries": [
+      {
+        "label": "Try a reversible watering turn with the bell rope",
+        "reading": "One shift lowers the rope, rings, and puts it back. The child records the height before making a promise for next rehearsal."
+      },
+      {
+        "label": "Give each rehearsal group its own bell contact",
+        "reading": "The quiet child brings her question to the fitter. The proud caller asks to help measure a rope she had been defending."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "ART",
+        "HUM",
+        "LAN"
+      ],
+      "subjects": [
+        "theatre",
+        "psychology",
+        "film"
+      ],
+      "concepts": [
+        "interpretation",
+        "perspective",
+        "values"
+      ],
+      "framework": [
+        "perspectives",
+        "ethics"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "decision",
+    "margin": "One unfinished cue lingered in the caller’s memory that evening. Unfinished work is sometimes easier to recall. A complete running sheet can still be worth opening before judging a whole performance."
+  },
+  {
+    "id": "ten-bowls",
+    "chapter": 10,
+    "title": "The ten bowls with one promise",
+    "opening": "A stallholder’s notice says a wild herb makes every bowl taste sweeter. Her neighbour says only a fool would pay for that. His customers have begun shouting louder than hers.",
+    "controls": [
+      [
+        "Turn the leaf labels out",
+        "Turn both labels under"
+      ],
+      [
+        "Taste beside the cheering stall",
+        "Take both bowls to the quiet bench"
+      ]
+    ],
+    "readings": [
+      "At the stall a taster expects the bowl labelled wild to be sweet. She says it is. Both ladles came from the same pot this morning.",
+      "With the leaves hidden each taster still has a preference. A second taste can be different. A cheer cannot change the list of ingredients.",
+      "A neighbour calls the stallholder foolish. She points out he once sold an untested spice too. Neither remark tells the taster what is in either bowl.",
+      "At the quiet bench the stallholder opens the recipe. Both samples contain the same ingredients. Expectation can colour a report. One tasting establishes neither a benefit from herbs nor a claim about illness."
+    ],
+    "editions": [
+      {
+        "label": "Keep the leaves and print the shared recipe",
+        "immediate": "Tasters can enjoy a name and see what was in the bowl. The stallholder loses her secret.",
+        "return": "A child asks for the wild name because it sounds good. Her friend wants to read the recipe."
+      },
+      {
+        "label": "Offer an unlabelled tasting first",
+        "immediate": "The next taster has a moment to notice before hearing the stall. The stallholder wants a turn to tell her herb story afterwards.",
+        "return": "Two visitors disagree about their favourite identical bowl. Each still gets a seat."
+      }
+    ],
+    "questions": [
+      "How could a label change a report without changing the ingredients?",
+      "When is another person’s past mistake beside the point?"
+    ],
+    "patterns": [
+      "bias:expectancy",
+      "fallacy:nature",
+      "fallacy:tu-quoque",
+      "fallacy:ad-hominem"
+    ],
+    "peer": "paper-wings",
+    "deliveries": [
+      {
+        "label": "Keep the tasting reveal for the bow",
+        "reading": "Each taster speaks before the two bowls are poured back into the one pot. The surprise gives the recipe a question to answer."
+      },
+      {
+        "label": "Give one row a side view of the ladle",
+        "reading": "The side row sees the single pot. The front row has only the two labels. The keeper asks what each row could reasonably report."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "MAT",
+        "HUM",
+        "LAN"
+      ],
+      "subjects": [
+        "economics",
+        "math-aa",
+        "psychology"
+      ],
+      "concepts": [
+        "objectivity",
+        "values",
+        "interpretation"
+      ],
+      "framework": [
+        "scope",
+        "methods-and-tools"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "expectancy",
+    "margin": "The labels changed what tasters expected from one pot. A tasting can reveal a difference in reports. A clinical claim about placebo effects would need different evidence. An expectation can matter without making a person’s experience imaginary."
+  },
+  {
+    "id": "two-coppers",
+    "chapter": 10,
+    "title": "Two coppers for a crooked basket",
+    "opening": "At the Market of Measures two stallholders quote different weights for the same basket. The keeper offers to write the number halfway between them so they can both go home.",
+    "controls": [
+      [
+        "Set both prices beside the balance",
+        "Cover the prices"
+      ],
+      [
+        "Weigh the full basket",
+        "Weigh the empty wicker first"
+      ]
+    ],
+    "readings": [
+      "Six and ten stand on cards. Eight looks polite. The beam only knows the weight hanging from its hook.",
+      "Behind the cards the beam still hangs at ten. The stallholder who offered six says she never said she meant basket and all.",
+      "The empty wicker balances at four. Six names the fruit alone; ten names fruit and wicker. Averaging the claims would buy neither.",
+      "With the prices covered the keeper marks four for wicker and six for fruit. A promised midway price could still help two people trade. It would be a bargain they made."
+    ],
+    "editions": [
+      {
+        "label": "Stamp the fruit weight for buyers",
+        "immediate": "Families can compare fruit across stalls. The porter still needs to weigh the whole load.",
+        "return": "The fruit stamp travels with a basket whose wicker is heavier than yesterday’s."
+      },
+      {
+        "label": "Hang both weights on the porter’s cord",
+        "immediate": "The carrier gets a full load figure; buyers have to read the small fruit mark before paying.",
+        "return": "The porter makes room for both marks on the cord. A buyer asks which one sets the price."
+      }
+    ],
+    "questions": [
+      "What were the two numbers measuring?",
+      "When would meeting halfway make a fair agreement without settling a matter of fact?"
+    ],
+    "patterns": [
+      "fallacy:middle-ground",
+      "fallacy:equivocation",
+      "bias:anchoring"
+    ],
+    "peer": "brass-price",
+    "deliveries": [
+      {
+        "label": "Lead a buyer through Sefa’s level arcade",
+        "reading": "Without holding a lamp the shopper can steady the empty wicker herself. The fruit-only weight moves less than the propped-up basket suggested."
+      },
+      {
+        "label": "Bring the stair crew’s paired lamps to the scale",
+        "reading": "The second lamp shows a thread caught under the pan. The buyer asks for the fruit price after it comes free."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "MAT",
+        "HUM",
+        "LAN"
+      ],
+      "subjects": [
+        "economics",
+        "math-aa",
+        "psychology"
+      ],
+      "concepts": [
+        "objectivity",
+        "values",
+        "interpretation"
+      ],
+      "framework": [
+        "scope",
+        "methods-and-tools"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "fallacies",
+    "margin": "Halfway can be an agreement people choose. It does not have to be the weight of anything. Before averaging two readings, check that both include the wicker."
+  },
+  {
+    "id": "dry-garden",
+    "chapter": 11,
+    "title": "The garden behind the red gate",
+    "opening": "At the Water Commons a gardener reads a dry-year warning aloud. The next door gardener has turned the red notice to the wall. “Show them more figures,” says the clerk. “That always brings them round.”",
+    "controls": [
+      [
+        "Read the warning at the public gate",
+        "Take it to the two gardeners separately"
+      ],
+      [
+        "Stack another year of weather leaves",
+        "Open this week’s distribution book"
+      ]
+    ],
+    "readings": [
+      "At the public gate one gardener hears a neighbour call him careless. He grips the gate harder as the clerk corrects him. “I thought your warning might be right. Now I’m sure you’ve got it wrong.” The other gardener asks for the page.",
+      "In a quiet corner the first gardener asks who chose the cutoff. Hearing the same fact from the same clerk has had a different effect in this conversation.",
+      "Another ten years of weather fill the cupboard. The gardener’s urgent problem is which beds still get water on Thursday. Another stack cannot settle that part.",
+      "The distribution book changes Thursday’s answer. One gardener asks for a trial; the other keeps his own plan. Neither reaction establishes what all people do when corrected."
+    ],
+    "editions": [
+      {
+        "label": "Give both crews a reversible Thursday trial",
+        "immediate": "The gardeners can see where the water goes. The last beds bear the cost of a failed turn.",
+        "return": "One gardener now checks the warning in public. The other sends a private measurement."
+      },
+      {
+        "label": "Let each crew choose a contact for the warning",
+        "immediate": "The clerk loses an instant public answer. Both crews can name someone they will speak to.",
+        "return": "Two contacts return with different reasons for the same short watering turn."
+      }
+    ],
+    "questions": [
+      "Which fact could change Thursday’s decision?",
+      "When did the setting of a correction change who could hear it?"
+    ],
+    "patterns": [
+      "bias:backfire",
+      "bias:reactance",
+      "bias:information",
+      "bias:ostrich"
+    ],
+    "peer": "third-bell",
+    "deliveries": [
+      {
+        "label": "Lower the red-gate notice to a child’s reach",
+        "reading": "A child points out that the old warning is still underneath. The gardener asks the clerk to date the upper sheet."
+      },
+      {
+        "label": "Give the colour-vote fitter the gate measurements",
+        "reading": "The gatekeepers can choose their own paint while one person takes the width that will determine Thursday’s opening."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "NAT",
+        "HUM",
+        "POL"
+      ],
+      "subjects": [
+        "physics",
+        "ess",
+        "global-politics"
+      ],
+      "concepts": [
+        "evidence",
+        "responsibility",
+        "explanation"
+      ],
+      "framework": [
+        "methods-and-tools",
+        "ethics"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "backfire",
+    "margin": "The public correction made one gardener cling harder that time. The other asked to see the figures. Backfire is possible in a particular exchange; it is a poor rule for predicting what everyone does when corrected."
+  },
+  {
+    "id": "dry-sleeve",
+    "chapter": 11,
+    "title": "The dry sleeve at the gate",
+    "opening": "A wheel worker brings her wet sleeve to the gatehouse. The foreman wants an account he can file flat. “Unless you can show the crack,” he says, “the wheel must be sound.”",
+    "controls": [
+      [
+        "Set the lamp on the wheel",
+        "Send the lamp beneath the sill"
+      ],
+      [
+        "Hold up the clean form",
+        "Turn the listening cup towards the axle"
+      ]
+    ],
+    "readings": [
+      "The top of the wheel looks smooth. The form has a box for a sketch. The worker hears something below it.",
+      "Under the sill a wet patch catches the lamplight. Even there neither worker can see a crack.",
+      "The listening cup picks up three knocks. A loose peg on a sound wheel can also knock. The wheel worker wants her report entered as a sound.",
+      "A loose peg taps the cup at the same pace with the wheel stopped. That gives the crew a second cause to check. Nobody has established which part made the first sound."
+    ],
+    "editions": [
+      {
+        "label": "Keep a listening watch while the wheel runs",
+        "immediate": "People keep drawing water. A watcher stays after the shift to record when the sound returns.",
+        "return": "The watcher brings back a rhythm and a time, with the cause line still open."
+      },
+      {
+        "label": "Halt one turn to inspect the peg",
+        "immediate": "A crew can put a hand on the peg. The last allotment must wait until the wheel turns again.",
+        "return": "The peg moves beneath a thumb. The gatekeeper keeps the first listener’s report beside this new finding."
+      }
+    ],
+    "questions": [
+      "What could each kind of inspection actually rule out?",
+      "What would make me change a harmless-sounding explanation?"
+    ],
+    "patterns": [
+      "fallacy:ignorance",
+      "fallacy:burden",
+      "bias:confirmation",
+      "fallacy:oversimplification"
+    ],
+    "peer": "cut-caveat",
+    "deliveries": [
+      {
+        "label": "Light the hearing slips with the council lamp",
+        "reading": "An old routing stamp shows why the listening line went blank. It names the desk. It still does not name anyone who chose to suppress a sound."
+      },
+      {
+        "label": "Give the wheel worker a quiet first hearing",
+        "reading": "She knocks the rhythm twice without an audience. She asks the clerk to record only her own account until the peg is checked."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "NAT",
+        "HUM",
+        "POL"
+      ],
+      "subjects": [
+        "physics",
+        "ess",
+        "global-politics"
+      ],
+      "concepts": [
+        "evidence",
+        "responsibility",
+        "explanation"
+      ],
+      "framework": [
+        "methods-and-tools",
+        "ethics"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "fallacies",
+    "margin": "A blank sketch box can leave a question open. The stop test supplied a second possible source of the sound. Someone would need another observation to tell which source made the first three knocks."
+  },
+  {
+    "id": "green-window",
+    "chapter": 12,
+    "title": "The green window always wins",
+    "opening": "A civic clerk’s performance board glows green. A visitor asks why her district waited all night. In the corner a supervisor is sweeping three red tickets into a blue envelope.",
+    "controls": [
+      [
+        "Read the green totals",
+        "Slide the district tabs apart"
+      ],
+      [
+        "Hold the signed total to the light",
+        "Open the blue envelope at the desk"
+      ]
+    ],
+    "readings": [
+      "The district as a whole has met its target. A supervisor insists every household in it must have been served in time.",
+      "The district tabs separate two lanes. One cleared early. A small late lane disappeared inside the large total.",
+      "The supervisor’s slip reads “Hang only green shifts in the window. I need the board to look steady.” She kept red tickets in the book. The window and the book have different jobs now.",
+      "All three late requests are from the small lane. The supervisor asks that her own morning be exempt because the clerk was new. The same happened on a shift she marked down."
+    ],
+    "editions": [
+      {
+        "label": "Hang both lanes with the reason for each delay",
+        "immediate": "The late lane gets an explanation in public. It is small enough for neighbours to guess who waited.",
+        "return": "The small lane wants its wait visible and its names covered."
+      },
+      {
+        "label": "Give each lane a private appointment with its tickets",
+        "immediate": "Each family can see its own wait. The colourful board tells passers-by much less.",
+        "return": "A family asks to bring its own ticket to the next open meeting."
+      }
+    ],
+    "questions": [
+      "Who vanished inside the district total?",
+      "Which exception would I grant the next clerk on the same grounds?"
+    ],
+    "patterns": [
+      "fallacy:division",
+      "fallacy:special-pleading",
+      "deception:selective-display",
+      "bias:self-serving"
+    ],
+    "peer": "ten-stamps",
+    "deliveries": [
+      {
+        "label": "Reserve a green-window seat for the waiting singer",
+        "reading": "She brings one ticket bearing the same hand as two others. The clerk looks for separate households before calling the queue large or small."
+      },
+      {
+        "label": "Give callers two short turns at the public counter",
+        "reading": "Two voices can describe different delays before the board is signed. The first caller gives the second her spare stool."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "MAT",
+        "HUM",
+        "TEC"
+      ],
+      "subjects": [
+        "computer-science",
+        "global-politics",
+        "math-ai"
+      ],
+      "concepts": [
+        "power",
+        "objectivity",
+        "responsibility"
+      ],
+      "framework": [
+        "scope",
+        "ethics"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "fallacies",
+    "margin": "A district can meet its target while a small lane waits. That is a risk of division, an inference from the whole to each part. The signed display slip separately establishes the supervisor’s reason for choosing green shifts."
+  },
+  {
+    "id": "no-queue",
+    "chapter": 12,
+    "title": "The window with no queue",
+    "opening": "At the Civic Machine every request is marked SERVED. Ade likes the empty pavement. Lin is still carrying a folding stool that no one has sat on all morning.",
+    "controls": [
+      [
+        "Read the machine strip",
+        "Read the hand register"
+      ],
+      [
+        "Face the counter",
+        "Turn the folding stool towards the stairs"
+      ]
+    ],
+    "readings": [
+      "The strip is tidy. “The machine cannot lose a name,” says a supervisor who has never worked the stair.",
+      "On the hand register two people reached the counter without a machine number. One walked away before a clerk had a turn to help.",
+      "From the step there is no way to reach the counter with a low cart. The rule counted only requests that already had a number.",
+      "The hand register and the view from the stool show two different gaps. Lin asks who will meet the next cart at the turn. Three clerks thought the other two had that job."
+    ],
+    "editions": [
+      {
+        "label": "Seat a clerk at the turn",
+        "immediate": "One clerk meets the next cart in person. The counter crew has one fewer pair of hands.",
+        "return": "A cart reaches a hearing. The inside queue now runs to the second floor tile."
+      },
+      {
+        "label": "Carry a second register down the stairs",
+        "immediate": "People can leave a request before a clerk is free. A name on the sheet still needs someone to go back.",
+        "return": "Lin finds a request without a time and leaves a chair downstairs for the answer."
+      }
+    ],
+    "questions": [
+      "Who could appear as served in this count?",
+      "If everyone expected someone else to respond, whose job could we name?"
+    ],
+    "patterns": [
+      "bias:automation",
+      "bias:bystander",
+      "bias:survivorship",
+      "fallacy:circular"
+    ],
+    "peer": "empty-peg",
+    "deliveries": [
+      {
+        "label": "Run the counter round in daylight",
+        "reading": "The daylight queue reaches the stairs. Ade discovers a household that had always arrived after the windows dimmed."
+      },
+      {
+        "label": "Let a night worker exchange the counter turn",
+        "reading": "A second clerk takes the stool during the late crossing. The original empty green window gains a human shift."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "MAT",
+        "HUM",
+        "TEC"
+      ],
+      "subjects": [
+        "computer-science",
+        "global-politics",
+        "math-ai"
+      ],
+      "concepts": [
+        "power",
+        "objectivity",
+        "responsibility"
+      ],
+      "framework": [
+        "scope",
+        "ethics"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "group",
+    "margin": "Each clerk thought someone else had the stair. A machine can correctly count its numbered requests and miss a household altogether. Lin’s stool made an uncounted arrival visible."
+  },
+  {
+    "id": "old-singing",
+    "chapter": 13,
+    "title": "The song from the year everyone remembers",
+    "opening": "A visitor at the Archive of Voices says the old choir always sang in tune. “The new children have ruined it.” Wren lifts one old gold record and a stack of rough new rehearsal reeds.",
+    "controls": [
+      [
+        "Play the best old take",
+        "Play the old rehearsal before it"
+      ],
+      [
+        "Play the newest rough reed",
+        "Play two new takes from the same night"
+      ]
+    ],
+    "readings": [
+      "The old gold take is clear. A new voice catches on the high note. The visitor sighs, “When did the children stop trying?”",
+      "The old rehearsal has the same catch. The singer asks for a glass of water and tries the line again. The gold take was chosen afterwards.",
+      "Two new takes include a clear high note and a missed entry. The visitor had imagined the new choir would never manage it.",
+      "With rehearsal against rehearsal the singers differ in tempo and breath. Neither whole generation has lost the will to practise. The visitor offers the new singer the old glass."
+    ],
+    "editions": [
+      {
+        "label": "Play two rehearsals in the practice room",
+        "immediate": "The new singers hear an admired voice miss a note. Someone who came for the gold take waits outside.",
+        "return": "The new singer plays the missed note again and asks for the old singer’s next breath."
+      },
+      {
+        "label": "Make a listening seat for the final takes",
+        "immediate": "Families hear both choirs at their strongest. Someone must bring the practice reels for a question about learning.",
+        "return": "A grandparent recognises the high note and asks what happened in rehearsals."
+      }
+    ],
+    "questions": [
+      "What had already been selected before I heard either voice?",
+      "Which question smuggled in an unearned judgment about the children?"
+    ],
+    "patterns": [
+      "bias:declinism",
+      "bias:pessimism",
+      "bias:negativity",
+      "fallacy:loaded-question"
+    ],
+    "peer": "mitten-sheet",
+    "deliveries": [
+      {
+        "label": "Pin one dated winter night to the rehearsal",
+        "reading": "A singer who once froze before the high note names a night it happened. Another singer fits the mitten phrase but tells a different story."
+      },
+      {
+        "label": "Let the visitor carry a saying into the practice room",
+        "reading": "The old singer and the child both recognise its promise. The listening seat lets them try something more particular."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "ART",
+        "HIS",
+        "LAN"
+      ],
+      "subjects": [
+        "music",
+        "history",
+        "lit-perf"
+      ],
+      "concepts": [
+        "interpretation",
+        "culture",
+        "evidence"
+      ],
+      "framework": [
+        "methods-and-tools",
+        "perspectives"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "decision",
+    "margin": "A finished favourite and a newcomer’s roughest try make decline look easy to hear. Keeping the kind of recording steady makes for a fairer listen. An old take still has things to teach."
+  },
+  {
+    "id": "rolled-echo",
+    "chapter": 13,
+    "title": "A voice with the first word missing",
+    "opening": "A listening-room visitor hears Elsbet say “keep the door closed”. Outside, the archive steward Wren holds a key she promised to bring back. The reel begins halfway round its spool.",
+    "controls": [
+      [
+        "Play the marked excerpt",
+        "Wind back to the breath"
+      ],
+      [
+        "Read the cabinet card",
+        "Read the sleeve from the room"
+      ]
+    ],
+    "readings": [
+      "The excerpt begins with “keep the door closed”. A visitor concludes that Wren was asked to turn people away.",
+      "The breath before the mark is followed by “During the quiet take, please”. The reel does not say who may hear the finished recording.",
+      "The sleeve lists a quiet take and a public take. The card was copied from the sleeve. The clerk says the card proves the sleeve is reliable. The only authority on the card is that same sleeve.",
+      "The room sleeve names the listening session and its permitted audience. There is no signed direction to cut the first words. A missing phrase leaves the cutter’s intention open."
+    ],
+    "editions": [
+      {
+        "label": "Give Wren the whole take for the listening room",
+        "immediate": "The steward can answer a question about the first words. A visitor in the hall hears little until a place opens up.",
+        "return": "A listener returns the key with the opening words written out beside it."
+      },
+      {
+        "label": "Give the hall a timed excerpt and a route to Wren",
+        "immediate": "More visitors hear a short line. They need the listening room for what comes before and after.",
+        "return": "One visitor returns with a precise time and asks to hear the preceding breath."
+      }
+    ],
+    "questions": [
+      "What does restoring a sentence change about the claim?",
+      "What would it take to speak about the cutter’s intention?"
+    ],
+    "patterns": [
+      "fallacy:straw-man",
+      "bias:framing",
+      "fallacy:circular"
+    ],
+    "peer": "tuesday-fold",
+    "deliveries": [
+      {
+        "label": "Open the Tuesday fold beside the audio excerpt",
+        "reading": "At this desk a glued instruction actually names the person who chose a cut. Wren compares it with the unsigned cut on her own reel and leaves her cutter unnamed."
+      },
+      {
+        "label": "Send the listening excerpt on the correction cart",
+        "reading": "One family catches the cart and hears the breath before the warning. Another family asks for a time to visit Wren."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "ART",
+        "HIS",
+        "LAN"
+      ],
+      "subjects": [
+        "music",
+        "history",
+        "lit-perf"
+      ],
+      "concepts": [
+        "interpretation",
+        "culture",
+        "evidence"
+      ],
+      "framework": [
+        "methods-and-tools",
+        "perspectives"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "intent",
+    "margin": "The cut changes what the line sounds like. Restoring the first words helps the visitor check the account. Until the cutter or an instruction can be found, the reason for that cut stays open."
+  },
+  {
+    "id": "blue-ribbon",
+    "chapter": 14,
+    "title": "The blue ribbon on the toy quay",
+    "opening": "A plan keeper has tied a blue ribbon around a model harbour. A child’s small boat still misses the landing. Someone asks if the child has no love for the family who built it.",
+    "controls": [
+      [
+        "Show the family’s ribbon",
+        "Turn the model so the child can steer"
+      ],
+      [
+        "Count the flags on the quay",
+        "Set the boat against the marked current"
+      ]
+    ],
+    "readings": [
+      "The ribbon carries the builders’ family names. Their grandparents put years into the harbour. “I joined that model quay with my own hands.” A proud planner says doubting the turn is an insult to them.",
+      "At the tiller the child can reach the near bend but misses the far one. She still wants the family’s harbour to work.",
+      "There are flags from six festivals, records of three speeches and lists of donors. The child is looking for the water speed at the bend.",
+      "With the current marked the small boat reaches the quay on one setting. The flag list matters for the harbour’s history. It cannot set the current."
+    ],
+    "editions": [
+      {
+        "label": "Keep the ribbon and set an adjustable current",
+        "immediate": "The child gets another turn with the model. Someone has to explain why the old demonstration looked easier.",
+        "return": "A family member takes the tiller and asks the child to move the current pin."
+      },
+      {
+        "label": "Run a second landing beside the family model",
+        "immediate": "The old quay stands for visitors. The family worries that its new neighbour will become the only model people try.",
+        "return": "Two small boats now leave together. A flag keeper wants both trials dated."
+      }
+    ],
+    "questions": [
+      "Whose feelings mattered to the decision about keeping the model?",
+      "Which evidence could settle the narrower question of its turning boat?"
+    ],
+    "patterns": [
+      "fallacy:emotion",
+      "bias:information",
+      "bias:ikea"
+    ],
+    "peer": "two-routes",
+    "deliveries": [
+      {
+        "label": "Give the model one tide of the inner channel",
+        "reading": "The child can change the tide while leaving the family ribbon on. She can test the feared chain one link at a time."
+      },
+      {
+        "label": "Fit the sounding skiff beside the model quay",
+        "reading": "The skiff returns one depth that the model represented badly. The child asks the planner to let her keep both the ribbon and the correction."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "NAT",
+        "MAT",
+        "TEC"
+      ],
+      "subjects": [
+        "design-tech",
+        "physics",
+        "math-ai"
+      ],
+      "concepts": [
+        "certainty",
+        "explanation",
+        "justification"
+      ],
+      "framework": [
+        "scope",
+        "methods-and-tools"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "fallacies",
+    "margin": "The ribbon carries the builders’ history and deserves care. Affection for them cannot steer the toy through a current. Keeping the family model and testing the bend can both be part of a good decision."
+  },
+  {
+    "id": "crate-sky",
+    "chapter": 14,
+    "title": "The model with a painted sky",
+    "opening": "At the Island of Models the plan keeper has painted a clear sky over a model landing. Six crates fit across it. A skiff keeper has had to turn a seventh family away before.",
+    "controls": [
+      [
+        "Leave the painted sky in place",
+        "Slide a rain sheet under the wheels"
+      ],
+      [
+        "Count empty crates",
+        "Put one market load in each crate"
+      ]
+    ],
+    "readings": [
+      "Six empty crates stand in the sun. The planner has already promised six loads. She wants the fair to work as much as the families do.",
+      "Rain swells the rim of a wheel. Six empty crates can still stand, though the last two reach the landing after the bell.",
+      "With a load in every crate the first axle dips. “I’ll leave six on the board. Our old run is the one we know,” says the planner. She has yet to count the loaded boats at the bell.",
+      "Under rain and load the keeper can move four by the bell and two after it. A later bell or a lighter load would give another result."
+    ],
+    "editions": [
+      {
+        "label": "Announce four early places and two late ones",
+        "immediate": "Families can plan around the late boat. Two market baskets will miss the first sale.",
+        "return": "An early family offers to exchange with a late one. The model has no box for that kindness."
+      },
+      {
+        "label": "Hold two boats for one shared late bell",
+        "immediate": "All six families can come together. Both crews lose the first crossing home.",
+        "return": "The village waits for the shared bell. A crew member asks who can meet a child at the school steps."
+      }
+    ],
+    "questions": [
+      "Which part of the model changed my promise?",
+      "How would I put a favourite plan under an unwelcome condition?"
+    ],
+    "patterns": [
+      "bias:optimism",
+      "fallacy:wishful",
+      "bias:conservatism"
+    ],
+    "peer": "six-knots",
+    "deliveries": [
+      {
+        "label": "Send the lookout to the model narrows",
+        "reading": "She sights the low crate behind the high one. The quay planner adds a second view before promising when the last boat can land."
+      },
+      {
+        "label": "Pull the model shore cart along the quay",
+        "reading": "A cart can take the first two families while the boat is delayed. At the far end the driver finds the roof is too low for a tall crate."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "NAT",
+        "MAT",
+        "TEC"
+      ],
+      "subjects": [
+        "design-tech",
+        "physics",
+        "math-ai"
+      ],
+      "concepts": [
+        "certainty",
+        "explanation",
+        "justification"
+      ],
+      "framework": [
+        "scope",
+        "methods-and-tools"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "decision",
+    "margin": "The planner’s hope kept the family fair alive. It also made a blue sky feel like a promise. A model that can fail under rain gives the crew something more definite to test."
+  },
+  {
+    "id": "cut-caveat",
+    "chapter": 15,
+    "title": "The word behind the brass lamp",
+    "opening": "At the Council a careful repairer and the person who made the original cut are both standing by Ise’s lamp. Someone has proposed that both acts are equally dishonest because both changed a page.",
+    "controls": [
+      [
+        "Hold the old cut to the lamp",
+        "Hold the later repair to the lamp"
+      ],
+      [
+        "Lay the two pages alone",
+        "Lay them with their signed work orders"
+      ]
+    ],
+    "readings": [
+      "The old page has been pared at one edge. The lamp makes the scar plain. It cannot put a purpose inside the hand that cut it.",
+      "The later page has a thin patch with its date on the edge. An ordinary reader could mistake patch and scar on a quick glance.",
+      "The first order says to take off a caution so the disputed count will read as settled. The signer knew what a reader would lose.",
+      "The repair order names the first cut, dates the patch and preserves the earlier wording on the back. Both acts changed paper. Their purposes and the reader’s options differ."
+    ],
+    "editions": [
+      {
+        "label": "Hang the two dated sheets together",
+        "immediate": "Visitors can inspect the scar and the repair. The first family must tell its story again to a crowded room.",
+        "return": "A visitor has traced the cut and the patch separately. The family asks for a quiet seat next time."
+      },
+      {
+        "label": "Lend the family the original for a quiet hearing",
+        "immediate": "The family can speak with the old sheet in hand. The wall must show its dated copy until evening.",
+        "return": "The family returns the original with permission for a narrow quotation. The rest of the hearing stays with them."
+      }
+    ],
+    "questions": [
+      "Which marks establish an alteration and which words establish a purpose?",
+      "What could make a correction answerable to the people affected?"
+    ],
+    "patterns": [
+      "deception:alteration",
+      "deception:omission",
+      "fallacy:moral-equivalence",
+      "fallacy:false-equivalence"
+    ],
+    "peer": "dry-sleeve",
+    "deliveries": [
+      {
+        "label": "Bring the wheel watcher to the lamp",
+        "reading": "The watcher can date a sound from the board and an erasure from a leaf. She asks for the work orders before anyone gives the cuts a motive."
+      },
+      {
+        "label": "Open one turn for a close inspection",
+        "reading": "During the pause the repairer lifts the paper edge. It shows the later repair clearly while the signer of the first instruction stays on its own line."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "HIS",
+        "HUM",
+        "POL"
+      ],
+      "subjects": [
+        "history",
+        "philosophy",
+        "global-politics"
+      ],
+      "concepts": [
+        "power",
+        "responsibility",
+        "justification"
+      ],
+      "framework": [
+        "ethics",
+        "perspectives"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "intent",
+    "margin": "A patch and a cut both change a page. Look at what the reader can recover and what the work orders ask the makers to do. Calling both dishonest would conceal an important difference."
+  },
+  {
+    "id": "night-ledger",
+    "chapter": 15,
+    "title": "The council’s unbroken line",
+    "opening": "A council scribe brings a book said to record every late appeal. “If no cheat is written here, the old rule was fair.” Beside it a runner has a single claim that she could never get through the door.",
+    "controls": [
+      [
+        "Hold up the clean index",
+        "Follow the runner’s route"
+      ],
+      [
+        "Ask the scribe to defend every entry",
+        "Ask who could enter an appeal"
+      ]
+    ],
+    "readings": [
+      "The index is clean. The scribe believes a fair rule would make a clean book, and the clean book feels enough to prove this rule fair.",
+      "At the hearing door no one remembered to reserve a late chair. Two neighbours each expected the other to bring one. The runner could not enter her own appeal.",
+      "The scribe asks the runner to disprove every entry first. Her one missed appointment already matters to the promise that every request had a place.",
+      "In the chair register the last shift was blank. One missed appeal challenges a universal promise. It cannot give the rate across the town, and it tells us little about the scribe’s intent."
+    ],
+    "editions": [
+      {
+        "label": "Give a runner a late key for one week",
+        "immediate": "A late voice can test the door. The scribe has to trust a key outside the chamber.",
+        "return": "The book gets its first late signature. Someone asks what would happen on a night the runner is ill."
+      },
+      {
+        "label": "Leave the chair on the public rota",
+        "immediate": "The neighbourhood can see who takes the late duty. A named volunteer still needs to turn up.",
+        "return": "Two neighbours arrive for the same turn. This time someone is there to open the door."
+      }
+    ],
+    "questions": [
+      "What would one missing appeal establish?",
+      "Which bigger claim about the town would need a different set of records?"
+    ],
+    "patterns": [
+      "bias:belief",
+      "bias:bystander",
+      "fallacy:burden",
+      "fallacy:ignorance"
+    ],
+    "peer": "yellow-ink",
+    "deliveries": [
+      {
+        "label": "Put the two-bit price stamp beside the appeal book",
+        "reading": "A clerk who says the hearing is free sees that travel can still cost two bits. The late runner asks for a way to speak before paying for a crossing."
+      },
+      {
+        "label": "Give the runner a token for the council chair",
+        "reading": "The chair is really hers for the late turn. She can now test the promise of a hearing without first proving every earlier entry false."
+      }
+    ],
+    "weave": {
+      "aoks": [
+        "HIS",
+        "HUM",
+        "POL"
+      ],
+      "subjects": [
+        "history",
+        "philosophy",
+        "global-politics"
+      ],
+      "concepts": [
+        "power",
+        "responsibility",
+        "justification"
+      ],
+      "framework": [
+        "ethics",
+        "perspectives"
+      ],
+      "atl": [
+        "thinking",
+        "research",
+        "communication"
+      ]
+    },
+    "source": "fallacies",
+    "margin": "A single missed appeal can challenge a promise about every appeal. One missed appeal cannot measure the town’s usual waiting time. Both the scribe and the runner can have something important to record."
+  }
+]

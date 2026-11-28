@@ -1,14 +1,274 @@
 # Status and next steps
 
+A reviewer can bring a chapter’s edited spreadsheet back into the offline checklist. The import identifies the chapter, previews differences and preserves earlier evidence when a sheet leaves the note blank. [Workbook instructions](docs/audit/COMBINATION_ATLAS.md#work-in-a-spreadsheet)
+
+The curriculum review now follows 24 keepsakes from use at one coat rail to the reply each opens in another world. Each step has a separate cognitive cell and a reproducible test. The register also identifies a tested example of every key concept and each of the six reasoning modes. [Evidence by family](docs/audit/COMBINATION_REVIEW_STATUS.md#which-elements-have-a-documented-action)
+
+The combination atlas includes joint bundles, multiple members of one family, ordered actions, mission questions and the 24 Bloom × DOK cells. [Combination atlas](docs/audit/COMBINATION_ATLAS.md) · [Check off a combination](docs/audit/COMBINATION_CHECKLIST.html)
+
+## 28 November • Checking a skill in play
+
+The catalogue now names all 1,200 supplied micro-skills in public review language. The 466 formerly number-only entries gained descriptions. The 35 exhibition prompt families, Fink and SOLO, cast, exhibits, keepsakes and creature companions can each be selected independently. An object may appear as both an exhibit and an earned tool. Adding a name gives no gameplay credit.
+
+Reviewers can recover large collections of cell notes and checks in the same browser. The three-engine stress run recovered 28,800 fictitious review cells after reload. [Storage and grid verification](docs/BROWSER_CHECKS.md#curriculum-checklist)
+
+The combination checklist can pin an exact selection, browse additional elements by number and open a registered action directly in its Bloom and DOK cell. Its 15 chapters share a catalogue of 7,757 members in 29 families. Reviews, action IDs and notes remain separate for every chapter, sequence and cognitive cell. The register documents 173 observations across 135 distinct action IDs and 57 ordered journeys. [Reviewer instructions](docs/audit/COMBINATION_ATLAS.md) · [Editable chapter workbook](docs/audit/CHAPTER_REVIEW_GRIDS.xlsx) · [Criteria for all 24 cognitive cells](docs/audit/BLOOM_DOK_REVIEW_GUIDE.md)
+
+Kip’s duplicate coat can turn up in four places. The Guardian can try eight different checks, take one of twelve later shifts and use any of the 24 early keepsakes to earn a particular response from a person at another rail. The new quiet landing and the theatre exchange four-beat rain scores. The player can write two different parts that produce the same sound, then give the rain keeper a bow or her own demonstration. [Story and review routes](docs/audit/RETURN_COAT.md)
+
+## 28 November • Late-campaign checks
+
+Opening a scene can check objectives that a student finished many chapters ago. Mission conditions and guide lookups now share the live completion index during a turn. In the controlled 3,000-step fixture, the median CPU time per turn and guide lookup fell from 2.94 to 2.31 ms with identical events, credit and recovery state. [Timings and tests](docs/BROWSER_CHECKS.md#objective-conditions-on-a-travelled-save)
+
+## 28 November • The covered jug
+
+At the East Well a player can keep three dawn readings across ordinary forge shifts or take up Hesper’s offer to draw less. Efua’s watch and Hesper’s ladle tally produce different records. Orrin keeps an open line for the cause. The Guardian chooses whether the covered jug is waiting for the dawn kitchen or the late porters, and can move it after hearing who had to wait. [The four playable combinations](tests/side-quests.test.ts)
+
+## 28 November • Review checkpoint
+
+The game-content commit 9c2cb1f is preserved in draft PR #11. Its element audit covers all 438 numbered story and game elements. It records 614 supplied micro-skills with playable action links and two learning, design and world combinations with ten distinct action proofs. The 504-minute modeled story itinerary meets the 20- and 30-minute opportunity floor. Other routes still have gaps. [Checkpoint findings](docs/audit/ELEMENTS_CHECKPOINT.md) · [Individual element register](docs/audit/element-evidence.csv)
+
+## 28 November • The cricket in the sleeve
+
+Kip can take the impression of a found seal or sign the hour he found it. Ise can hang it at a public hatch, keep it at a staffed desk or carry it on a round. Each decision leads to a different caller. In Elsbet’s study the Guardian can open the two original accounts, test the brass catch and publish a sleeve for the readers of the installed Nile packet. An interrupted conversation with Kip now preserves the one seal.
+
+## 28 November • The oven with two addresses
+
+A letter comes back with a bite out of it. The Seagrass postman says the bakery burned down and its boat pilot says her sister still bakes there. Players can walk their rounds at two tides, mark a public address, teach an apprentice at a small foil press and meet the people who receive the edition at the Old Weir. Each walker can change or decline their own part of the map. Individual readings about place names, language work and co-learning enter the diary and its export when discovered.
+
+The campaign now has 873 missions, 4,070 objectives and 1,291 physical field-game stands across 163 rooms. [Tide routes, signatures and delivery checks](tests/river-names.test.ts) · [Learning evidence](docs/CROSS_WEAVE_AUDIT.md#whose-door-an-address-can-open)
+
+## 28 November • The moth with two tails
+
+Tritta brings fifteen unsigned notices to the Night Registers. One promises a pilot that someone will be at the lower stair. Another gives a child a permanent place on a public print. A Guardian can move a proof sheet, trace witnesses or open the same shutter at a different bell, then follow the notice to the people living with the decision. Agate remembers the instrument used in other towns. A signed slip kept in the moth’s pocket preserves the observations and the recipient of that edition. [Play through the registers](docs/BROWSER_CHECKS.md#tritta-and-the-moth-with-two-tails)
+
+The registered campaign now has 871 missions, 4,060 objectives and 1,281 field-game stands in 161 rooms. The three browsers each played a different instrument and itinerary. The rules checks covered each of the nine tool and publication combinations in every register. The teacher reporting build also completed with a local module loader. With the same content in both builds the teacher script, stylesheet and three HTML entry pages had identical bytes. [Action and learning evidence](docs/CROSS_WEAVE_AUDIT.md#what-the-moth-can-carry)
+
+## 28 November • Finding a person again
+
+The Conversations tab now keeps a page for each person the Guardian has met. A page shows what went up at each workshop, how its recipient answered, any unfinished tracing and the words the Guardian actually heard. Chromium recovered Vera Rubin’s pages, Firefox recovered Wangari Maathai’s and WebKit recovered Zaha Hadid’s. Each journey also met Ise and opened her page in a live conversation. The inventory on this revision contains 856 missions, 3,925 objectives and 161 rooms. [Calling book](tools/calling-book-journey.mjs)
+
+A student who brings a class adventure into the foreground during a pending write can now finish syncing their latest words. A conflict still lets the student choose the edition. Three engines completed the fictional student and teacher journeys. [Recovery and class access](docs/ACCOUNTS_AND_HOSTING.md)
+
+## 28 November • The inn under the mat
+
+A smaller door appeared under Neska’s front mat. A Guardian can give any of 240 earned creatures a place at home and come back to find which of them stayed. Loaded wheels, a flat shoe and a real lamp give three different readings of the same nine rooms. The supper cart goes to Emberford, the lamp goes to the harbour and the keys go to a meeting. Jane Jacobs and Zaha Hadid each return in a second place. The new landing keeps the actual cart stop, chosen lamp and one of nine evenings. The source-linked skill ledger now records 609 of 1,200 skills in playable actions. [The inn and its inhabitants](docs/STORY_BIBLE.md#the-inn-under-the-mat) · [Verified learning actions](docs/CROSS_WEAVE_AUDIT.md#a-house-that-changes-length)
+
+
+## 28 November • The quarter that comes back
+
+Matel sewed copper feet onto the moth Siv once drew on a wage envelope. At the island the creature can walk, listen and stamp an entire watch. Trials that leave one worker out can still run exactly as instructed. Two shifts can change where the dry bench goes. A player who keeps the early and late hearings can step behind the clock into the earlier ferry studio. [Matel and Lovelace](src/content/tideClock.ts) · [Six arrangements and two traced leaves](tests/tide-clock.test.ts)
+
+## 28 November • A kettle falls on two nights
+
+Oda promised her wife a summer away from the ferry microphone. Tavi catches the same kettle in two broadcasts. Players can tune six voices, try a leading word on the same listener, and see what happens to the headline when a different shift answers. At the island, the singer and the runner react to the programme that was actually sent. A private voice can change whom the boat visits next. [Studio and island](src/content/ferryRadio.ts) · [The counts, permissions and twelve editions](docs/audit/NIGHT_REGISTER.md#two-nights-on-the-ferry-wire)
+
+## 28 November • Following a choice back to its door
+
+The choice review traces every dialogue option in the curtain build to a map entrance. It replays 12,403 options, including the 6,876 whose availability changes with the player’s history. Each chapter report now shows how to inspect a particular choice, a speaker’s reply and a possible consequence from any of 84 stakeholder and play-style perspectives. The review distinguishes simulated inspections, engine checks and browser journeys. [Choice and station audit](docs/audit/CHOICE_REVIEW.md)
+
+## 28 November • The river in Mayle’s curtain
+
+Nim has one entrance to make before the house opens. In the Survey Depot loft, two of four borrowed fittings help a Guardian decide where the silver thread went. Nim can use the result at rehearsal, where a porter sees the same cloth from another angle. A second visit lets the player change the staging, leave a new trial for Huygens, or carry the two tracings back to Cajal. The selected fittings, two drawer presets, audience responses and the edition sent to the stage survive Continue. [Play and branch evidence](docs/audit/NIGHT_REGISTER.md#the-river-in-the-hem) · [Source records](docs/SOURCES.md)
+
+The campaign now contains 847 missions and 3,902 objectives across 155 rooms in 15 chapters. The evidence ledger links 601 of the 1,200 supplied micro-skills to 1,366 authored uses. Of those skills, 374 have links in more than one world. Fifty reviewed actions explicitly compare methods and limits in two areas of knowledge. The intersection audit still finds only two combinations at the ten-action target. A recorded opportunity measures what players can do. Learning gains and transfer require observation with students.
+
+## 27 November • A birthday with four dates
+
+Rix Pottle promised the street an anniversary parade. Jori remembers her workshop by more than the day it closed. Four earned holdings can open a music room and bring a historical visitor to the composing desk. A six-beat invitation can reach a listener on the stair, a watcher through glass, both or neither. A guest who returns to the City of Copies remembers the block that actually went to press, even if the Guardian changed the desk after dispatch. [The musicians’ instruments](src/domain/streetAlmanac.ts) · [The four source records](docs/SOURCES.md#the-street-musicians-invitations)
+
+## 27 November • The ring below the floorboards
+
+The Harvard Brooks and Michigan Bertrand volumes, two individually catalogued papyri and nine further holdings can travel from their original quests to the market and theatre. The address can travel ahead while the Guardian keeps the object. Bew and Pella sign the exact mark that arrived. A second receiving room opens the family stair where three freight charges turn out to have more than one cause. The source record, the reader’s contribution and the public consequences travel into the diary. [Playtest scope](docs/audit/NIGHT_REGISTER.md#the-counterweight-room)
+
+## 27 November • Opening a room and returning to class
+
+A new player now loads the field pictures needed in the Nexus as they enter it. A player typing in the diary uses a quieter rendering clock. Calm and Zen players can leave a field invitation waiting while they walk. The class-copy comparison shows both drafts, checks the latest server revision while the choice is on screen and saves the selected text before reopening the adventure. [Hosting and online saves](docs/ACCOUNTS_AND_HOSTING.md) · [Rendering checks](docs/audit/NIGHT_REGISTER.md#map-pictures-and-the-first-room)
+
+## 27 November • A ticket Hesper can read by touch
+
+A concert ticket that curls in Ren’s workshop can later help Hesper find a seat. Bela, Lio, Tamar and Teodora also have travelling instruments. The person at the receiving end changes what the two neighbours bring to the Council. Returning home reveals where the envelope, baton, ledger line, ticket or stool went. Each route has a third person whose next move depends on the Guardian’s choice. [Five homecomings](src/content/originHomecomings.ts) · [Chapter review](docs/audit/chapters/CH01.md#9-origin-side-quests)
+
+All 140 ordinary items and 32 keepsakes now have an action outside the rooms where they can be earned. The evidence register lists 1,304 playable uses for 589 of the 1,200 supplied micro-skills and 37 reviewed comparisons between areas of knowledge. [Collection check](tools/audit-collectible-use.mjs) · [Action evidence](tools/origin-action-evidence.mjs)
+
+## 27 November • The yellow dress with twenty-seven fingers
+
+Viri makes wire bees dance with the gestures she learned from her mother. A poster promises that live bees follow her painted arrows. The Guardian can print two flower crops through different panes, hit the detector’s ceiling, recover lost detail and compare two dated watches. A silk show gives a dancer control. An open garden lets visitors decide whether to appear. The next audience can check a prediction it pinned before a watch opened and use the same surprise to change a dance. The Cleveland Museum of Art’s 1771 *Poivre d’inde* impression brings Maria Sibylla Merian to two working benches. [The working glasshouse](src/maps/petalHouse.ts) · [The later watches](src/domain/petalWager.ts)
+
+Eight older tools now have work in the glasshouse. This brings the number of ordinary items and keepsakes with a use outside their observed acquisition room to 166 of 172. The skill audit connects 589 of 1,200 supplied skills to 1,296 observable uses. Thirty-five actions explicitly compare how two areas use or limit evidence. [Skill evidence](docs/TOK_MICRO_SKILLS.md) · [Collection audit](tools/audit-collectible-use.mjs)
+
+## 27 November • The night we had two moons
+
+Bo has punched two moons in his supper ticket. One window faces the deck. The other faces his bunk. A Guardian can turn the three-sided sleeve, walk between the windows and decide whether to ring the bell in time for a connection or tie up long enough for the passengers to see what was folded away. Each of 31 signed prints from the Civic Callboard has a passenger waiting for it and two possible replies ashore. Three different prints that have made the crossing can go on Hari’s evening bill. The cook or the child can open the show, and the last seat hears the three pages in the order the Guardian chose. [The wheel](src/ui/pictureFerry.ts) · [The passengers](src/content/ferryCommissions.ts) · [The programme](src/domain/ferryBill.ts)
+
+The collectible audit follows ordinary items and keepsakes from where a player earns them to where someone can actually use them. It found a use outside the observed acquisition rooms for 158 of 172. Fourteen still have only same-room evidence. [Collectible audit](tools/audit-collectible-use.mjs)
+
+## 27 November • A place for a moth
+
+Kip has lent the Guardian a shutter, a glass tile, a wool cuff and a well-worn piece of brass. A second sighting lets the Guardian try them where the Glimmermoth has landed. Choosing its resting place opens work together at a forest station, an archive or a rehearsal. At the theatre, a cue ribbon helps the understudy find her entrance. Waiting for her signal gives her control of the silence. The choice follows the two of them out of the rehearsal. [Three homes and six outcomes](src/content/mothPerchReturns.ts)
+
+Della can send six small loaves or three large ones to six hungry doors. The player can deliver and take them back, then weigh what remains. Across town, Hana’s four chalk marks trace back to one porter. A correction can travel to the kettle, the late shift or the ledger margin, where different people can use it. [Bake bench, witnesses and recovery checks](tests/first-chapter-perches.test.ts) · [Chapter 1 stakeholder review](docs/audit/chapters/CH01.md#18-chapter-1-polish-list-c-021)
+
+## 27 November • The Last Plum in the Orchestra
+
+Fen’s touring company needs a new way to move its stage. Tallowheel, the snail who used to pull it, has a child who can answer a drum through the floor. The player turns a six-sided chest to find two different scores, plays a bar on the rim or floorboard, then helps the company travel or grow roots. Four performances change what Fen says afterward. The actor in the Bridge Clearing can carry a translated song back into the earlier chapter. The earned 1829 Perkins volume opens a separate meeting with Louis Braille and a working stylus at Fen’s bench. The adventure journal records the impressions and the difference between the company’s work and the book. [Story](src/content/plumOrchard.ts) · [Working models](tests/plum-orchard.test.ts)
+
+The rotation checks covered all 24 orientations, two collar lengths, both catches and both opening orders. The drum checks exercised all 81 four-beat arrangements. The two seven-notch profiles were compared on fresh and worn wood under three pressures. The cross-world evidence inventory now records 580 of the 1,200 supplied micro-skills, 1,286 authored uses and 32 reviewed area-of-knowledge comparisons. [Learning evidence](docs/TOK_MICRO_SKILLS.md)
+
+## 27 November • Reading the opening screen on a school connection
+
+Students can change text size, contrast, spacing, motion and visual effects while the campaign downloads. The menu waits for a student who is still adjusting a control. The same choices carry into the game, including when storage is unavailable for that visit. The school and family guide is available from the first page. [First visit](src/arrival.ts) · [Shared controls](src/ui/readingControls.ts) · [Browser tests](tools/smoke-arrival.mjs)
+
+On a simulated 4 Mbit/s mobile connection, the first available reading controls appeared at a median 0.44 seconds, compared with 9.20 seconds for the earlier build’s Settings button. Chromium, Firefox and WebKit also kept the focused control accessible on a 320-pixel-wide screen with 175% text. [Test conditions](docs/audit/NIGHT_REGISTER.md)
+
+## 27 November • Supper for a Shadow
+
+In the City of Copies, a skipping rhyme has cost Otla’s brother his place at supper. A child drew two outlines and Otla added the word *people*. The Guardian can work the spoons, move the lamps and slide the bar to a second stop. Two arrangements fit the chalk at the first stop. The second stop separates them, but nobody recorded where Thursday’s bar was. What a visitor does with that uncertainty changes where the family eats, who hears the song and what Corvan puts on his shutter back in Emberford. Eight things already in the game have jobs here. A cup of tea can go to Kip or the porter. [Kitchen and witnesses](src/content/supperShadow.ts) · [Light and shadow](src/domain/supperShadow.ts) · [Branch and recovery tests](tests/supper-shadow.test.ts)
+
+The skill audit identifies 576 of 1,200 definitions across 1,281 authored links. Of those skills, 355 have links in multiple worlds. Otla’s Thursday account brings the number of reviewed comparisons of disciplinary methods to 30. Two world, learning-dimension and RPG-element intersections have ten reviewed actions, and 1,004 have one to nine. [Skill evidence](docs/TOK_MICRO_SKILLS.md) · [Comparison audit](docs/CROSS_WEAVE_AUDIT.md)
+
+The collectible audit now traces all 140 ordinary items and 32 keepsakes to named map actions. It records the place and action for each use. The separate specimen audit checks later uses for 2,039 identified real objects. [Ordinary items and keepsakes](tools/audit-collectible-use.mjs) · [Museum specimens](tools/audit-specimens.mjs)
+
+## 27 November • A print at the Taku forts
+
+A student can leave a historical record closed, read its description or open its illustration. Each stand remembers its own setting, including the separate Dhuwa and Yirritja bark petitions from Yirrkala. Reading the Taku photograph by text lets the Guardian crop the actual scene, compare it with the whole print and trace the claim about prisoners back to the catalogue title. The setting follows the earned photograph into the satchel and collection room. Backing out of an invitation to a room keeps that invitation for the next visit. [Five collection records](src/content/exhibit-notes.json) · [Reading choices](tests/content-notes.test.ts) · [Browser journey](tools/record-note-journey.mjs)
+
+The journal item, exported reflections and leaderboard score-file notice now use wording that also fits a class adventure. The writing editor identifies the assigned teacher. The score file contains only the selected play result and the fields needed to compare it.
+
+## 27 November • The objects that go out again
+
+The 295 objects that previously opened only the Nexus return arch now have work at two benches outside their home world. At Mina’s pocket press the player can put a qualified date at the left stop before pulling a short or folded impression. At Edda’s theatre they can advance a cue one beat at a time and see which seat receives it. Ade’s post has separate faces for a public caller and a private reply. Elian’s sleeve changes which part of an actual record can survive a wet crossing. Each choice opens a different route to a reader with a practical problem. Carry the same object to its second town and the first town’s decision changes the next instrument. The object stays unique. [Receiving benches](src/content/fieldLoans.ts) · [Record-by-record return tests](tests/field-loans.test.ts)
+
+## 27 November • Sora’s spare key
+
+At Seagrass Steps a learner’s recollection and a voyage history can each correct the other kind of account. The Guardian tests which end of a bird’s flight suggests land at two different hours, then takes Hōkūleʻa into the field. In the audience gallery, the same shadow can stand for two canoes. At the Two-Tide Dock the learner’s view from the lower pier changes the guide, opens one of two passages and changes Sora’s answer back home. The catalogue now identifies 2,039 real specimens. [The four itineraries](tests/folding-flock.test.ts)
+
+## 27 November • Music at the workbench
+
+A rehearsal leaves room for the whistle. Three notes mark a bench at work and two mark a hearing. Either ruling has the same handover bell. Players can follow captions and set music and effects separately. The field-game registry opens 18 individual games and 14 families of workstations across the map. Long-running saves can open an earlier conversation without rebuilding the whole scene catalogue.
+
+## 27 November • Who gets the hearing chair?
+
+A chair mender for the Gilded Seal has written a rule that leaves her own father outside a hearing. In the Cold Store, the Metalworks, the City of Copies and the Market, players can bring together two named witnesses who saw different things. A second visit lets the next town use an earlier decision. A returned milk token can change who gets a second hearing. Following two delivery tags can help a runner untangle two promises printed in the same sentence. [Four hearings](src/content/hearings/index.ts) · [Witness and cross-town repair checks](tests/town-hearings.test.ts)
+
+## 27 November • A visible path under every lamp
+
+On Firefox’s 2D renderer, a light wash could cover the entire floor, including the Guardian and other characters. The game now keeps the map visible when the renderer substitutes ordinary paint for a multiply blend. Slow frames also finish the arrival fade according to elapsed time. [Visual test](tools/chapter-lights-journey.mjs)
+
+## 27 November • In the margins of my diary
+
+The journal keeps its pages in four sections. Opening a word beside a played action can bring up an earlier entry from another place where the same idea mattered in a different discipline. A word history and dictionary are available in the margin. Each world also takes its light from a local material, from reed and river silt to velvet and footlights. The high-contrast and reduced-effects settings keep the floor colours clear of the wash. [Journal pages](src/ui/journalNavigation.ts) · [Earned comparisons](src/ui/diaryWords.ts) · [Chapter light](src/app/daylight.ts)
+
+## 27 November • Liri’s other shift
+
+Liri Pell wants the ferry watch and wants to get home before her sister falls asleep. On the mudbank, two people can vouch for different parts of a single print. In the rehearsal room the second warning beat disappears at one seat even when the listeners cover their names. On the island a chart that took a full shift to prepare can be called back when permission changes. Work alongside Liri and someone else gets a dry record, a place on the last boat or a visit with her sister. Each favour leaves something to talk about the next time you meet. [Three watches](src/content/whistleWatch.ts) · [The routes and their consequences](tests/whistle-watch.test.ts)
+
+## 27 November • The keeper who stayed
+
+In Elsbet’s vault a child, a binder and a gardener can each go through a different shutter. Three echoes lead to one bell. A missing flood night changes the odds of a dry crossing. At the last rail the Hollow Archivist wants to learn whether Elsbet trusted it. After the handover, its index preserves each decision. At the Old Weir the same lamp can expose where the inquiry clerk drew back across a fold. The Guardian’s chosen recipient changes what Vesper says at the Council. [Vault instruments](src/ui/vaultWork.ts) · [World and save tests](tests/vault-work.test.ts)
+
+
+## 27 November • A chapter map before class
+
+The teacher dashboard opens a printable map of all 15 chapters. Each chapter has a main-route decision, a consequence to look for and a discussion question. Additional activities can be filtered by subject, concept, area or theme, framework, DOK, Bloom, Fink and SOLO. Combined filters apply to one action. The map uses public game records and opens without signing in or loading student writing. Both titles link to a school and family guide to device saves, class recovery, diary audiences and separate portfolio sharing. [Chapter map](src/teacher/chapterMap.ts) · [School guide](public/schools.html)
+
+## 27 November • Six counters for three workers
+
+In the Nile pay room, the porter who kept the boards dry can finish the same shift with three counters or an empty bowl. At the Metalworks, the Guardian can try all four bells with the apprentice’s tooth and the porter’s help. In the City of Copies, the workers get to read what the Guardian put in print. Opening a public proof at the wheel uncovers the workers’ stair. Opening a folded letter in the pay room uncovers the letter chute. Each worker keeps the edition they opened, even if Bayette prints a different one tomorrow. [Three registers](src/content/millShift.ts) · [Playable routes](tests/mill-shift.test.ts)
+
+The skill review at the time of the mill release had 567 of 1,200 definitions linked to 1,262 authored actions or uses, including 352 skills in multiple worlds. The cross-world audit found 26 explicit comparisons of how two areas establish and limit the same claim. Of the 10,729,248 world, learning dimension and RPG element intersections, two meet the ten-action target and 840 have one to nine documented actions. [Skill evidence](docs/TOK_MICRO_SKILLS.md) · [Coverage audit](docs/CROSS_WEAVE_AUDIT.md)
+
+## 27 November • Opening the game on the school connection
+
+A readable title appears while the game menu downloads. Students can open Settings or class sign-in before the map renderer loads. Interrupting a required map download offers a retry and preserves the Guardian name already entered. On the simulated mobile connection the median interactive-menu time fell by 2.84 seconds in three cold runs per build. [Measured conditions and recovery tests](docs/audit/NIGHT_REGISTER.md#first-visit-on-a-slow-connection)
+
+## 27 November • The breakfast shelf, the tower button and Venn’s father
+
+Hesper has opened the test stand by the forge. Try both mounting faces on a rain gauge, a plumb line or a pen. Down at the bridge a decision about the rain record lets a child reach the breakfast cups or brings an upstream watch to its post. Maren can put a new ringer on duty or ask a stoneworker to check above the door. Venn can keep his father’s signed memory beside a worn date. Each handover comes back to the Lamp Wall. [Three workshops](src/content/makerTrials.ts) · [Route and recovery tests](tests/maker-field.test.ts)
+
+All 2,614 automated tests in 317 files passed at this checkpoint. Chromium, Firefox and WebKit each used the actual gather points, tested all three tools, handed every field record to both recipients and opened their replies at the Lamp Wall.
+
+Players can put both measurement limits on a field slip and see how wide the resulting claim becomes. The audit now verifies 552 of 1,200 skills and 1,243 skill-to-action links. Two of the 10,729,248 world, learning and RPG intersections meet the ten-action target and 679 have one to nine. [Skill evidence](src/content/microSkillsMakerField.json) · [Coverage audit](docs/CROSS_WEAVE_AUDIT.md)
+
+
+## 27 November • The Blue Shift Coat
+
+Ise's mother's button turns up on a coat with fifteen working pockets. At Ostel's peg, change the ruler on the ferry queue and choose which wait to put on the sign. At Wren's, let two people describe the same boat separately or after hearing each other. Every pocket goes to a particular second keeper, who can try the tool against the actual impression sewn inside. Three receiving keepers can sign either of two endings. Both remain playable. [Fifteen stories](src/content/pocketStories.ts) · [State and recovery checks](tests/pocket-coat.test.ts)
+
+A player can stitch a guest's actual tracing inside the coat. The next keeper sees what was chosen, can try the piece that was left out, and has two different ways to put the result to work. The domain tests cover all 250 guests at all 15 chapter lamps, both pins and both replies. Journal links and citations follow the guest who was actually met. [Guest return checks](tests/coat-tracing.test.ts)
+
+The 75 new optional objectives add 84 action links across 42 previously uncovered micro-skills. All 35 adapted exhibition question families appear in these workshops. The campaign total is 551 of 1,200 skills, with 350 linked in multiple worlds. Of 10,729,248 world, learning and RPG combinations, two have ten documented actions and 673 have one to nine. [Skill ledger](docs/TOK_MICRO_SKILLS.md) · [Action-level audit](docs/CROSS_WEAVE_AUDIT.md)
+
+The build passed 2,606 tests in 314 files. All 2,038 exact specimens passed the release check and all 1,880 assets passed the credits check. [Persona review and field route](docs/audit/NIGHT_REGISTER.md#the-blue-shift-coat)
+
+## 27 November • The Night Register
+
+Start beside Ise's lamp in the Archive. Her mother's key is back on the hook, still wet. At the perch, Button can scout for an unread frame or carry an edition that the Guardian may need again. To follow Button's own trail, try the left edge of Ruth M. Barnes's *Needle Book* and Dana Bartlett's *Water Barrel or Runlet* with Button. The two readings can then be opened together at any chapter perch. [Keeper stories](src/content/nightKeepers.ts) · [Trails for all 240 companions](src/content/night-trails.json)
+
+The collection now has 2,038 individually identified objects. The 1,020 additions each have a dated National Gallery of Art accession, an individual pixel image, a museum source, a local use and fourteen possible receiving chapters. Fifteen keepers have personal shifts and two different mornings. Their mystery has two signed endings. All 250 existing historical guests can leave a tracing that the keeper's desk remembers. [Playable route](tools/night-register-journey.mjs) · [Object sources](docs/SOURCES.md#the-night-register-collection)
+
+The supplied skill ledger records 1,157 playable links across 509 of the 1,200 definitions. Two new practices ask the player to recover an image's caption and compare three memories after a delivery. A separate test exercises 57,120 combinations of object, first recipient, receiving chapter and local use. The 73-perspective review records remaining concerns about curriculum coverage, cultural scope, managed devices and classroom transfer. [Review and disagreements](docs/audit/NIGHT_REGISTER.md) · [Evidence tests](tests/night-register.test.ts)
+
+The final build passed 2,601 tests in 313 files. Three browser engines completed Button's trail and the fictional two-device classroom journey. Movement checks covered 145 maps and 1,735 sampled paths. The production review records the versions, viewports, limitations and outcomes. Physical-device, classroom and community review remain outstanding. [QA results](docs/audit/NIGHT_REGISTER.md#what-the-production-build-exercised) · [Hosting design](docs/ACCOUNTS_AND_HOSTING.md)
+
+## 27 November • Who heard the bell?
+
+The bell mystery now runs from Maro’s tide steps to the Council in five chapters. Cut or restore a witness’s recording, try two runner routes in fog, walk Joss’s hinged footbridge in both directions and amend the chart. Let the families call a meeting or send the crew out at dawn. Either decision can open a second hearing. Students who enter the Council first can use clearly identified loan records. [Story and routes](docs/STORY_BIBLE.md#the-kitchen-bell-and-the-missing-houses-chapters-1115) · [Playable checks](tests/last-bell.test.ts)
+
+Nine field workshops now have 36 handovers. Players can change who gets the result and go to Emberford’s Lamp Wall to see what that person did. At the echo bridge, Idris lends his timing marks to players who want to compare measurements without timing a keypress. Across the modeled 504-minute story route, every rolling 30-minute window includes six concepts, two framework parts, an area and an optional theme. [Workshop journey](tools/emberford-shift-journey.mjs) · [Route measurements](docs/LEARNING_DESIGN.md#the-20--and-30-minute-opportunity-floor)
+
+All 250 historical guests can take their actual earlier tracing into a new chapter. The ordered pieces and the first keeper’s use survive. Students can test the piece they left out and deliver either arrangement. Each lamp can point back to unfinished work. The skill ledger now has 1,127 links for 507 of 1,200 definitions. Of these, 306 have evidence in multiple worlds. Evidence for 693 skills and the broader ten-per-world target is still outstanding. The production build passed along with 2,566 automated tests. Navigation stress checked 130 maps and 1,555 sampled paths. The work remains in draft PR 11 for review. [Tracing tests](tests/guest-return.test.ts) · [Updated review](docs/audit/LAMPLIGHT_AND_CLASS_WRITING.md)
+
+## 27 November • Class writing and the returning lights
+
+The draft adds an optional class adventure. Before writing, students see their class and the assigned teacher who can read their diary. They can recover notes, in-progress reflections and scene drafts on another device. The dashboard labels saved work and drafts separately. Separate portfolio entries still require the existing Share choice and progress-file handoff. The local adventure and device photo album have their own storage. [Hosting and review instructions](docs/ACCOUNTS_AND_HOSTING.md)
+
+All 250 supplied historical guests can meet the player at the post and receiving lamp in each of the 15 chapters. Each has their own three pieces of evidence, two choices and a home commission. Fifteen paired-guest stories and the two night watches add consequences for local people. The initial class-writing review accounted for all 1,200 supplied skill definitions and records 1,099 reachable links for 485 distinct skills. A further 715 need evidence. The four learning taxonomies and ten-per-world target still have gaps. [School and game review](docs/audit/LAMPLIGHT_AND_CLASS_WRITING.md) · [Skill evidence](docs/TOK_MICRO_SKILLS.md)
+
+## 27 November • The folded-wing post
+
+The Archive Hall paper bird beside Warden Ise opens a correspondence between 140 historical people and 15 chapter keepers. Each voice has two first decisions with different consequences in another chapter. The receiving keeper chooses what to do with the letter with the Guardian’s help. Seventy pairs of returned replies reveal a shared watermark. Try following Gārgī’s loose thread to the Nile, or find the two optics letters at the coast. [Chapter posts](src/content/ink-post-stations.json) · [Individual stories](src/content/ink-post-letters.json)
+
+At the Old Weir, Headland Station and the Nile Map Room, Mozi, Ibn al-Haytham and Ibn Khaldun also remember the returned fold after their in-person field quests. Four pocket experiments travel inside particular letters. Closing a pinhole, changing the view of an eclipse, carrying debt beside cash and shifting a four-beat recording each produce a result the other chapter can revisit. Each case has its own diary prompt. The diary and exports link to encountered people with MLA citations. Daily, weekly and monthly streak displays have separate opt-ins in settings. [Tests of both decisions and returned observations](tests/ink-post.test.ts) · [Streak boundaries](tests/ledger.test.ts)
+
+The release check passed 2,447 tests, the production build and the 860-file asset check. Three browser engines played through three paired endings. The production diary check downloaded a Word file with the player’s exact reflection and generated a PDF with the encountered source. Navigation stress visited 128 maps. Six new documented actions exercise the six reasoning forms. The current audit counts 359 of 803 supplied numbered skills with an authored action and two intersections at ten documented actions. Priorities for classroom review are locating a reply after a week away, transferring a method to a new problem, performance on a managed Chromebook and paid community-specific source review. [73-perspective review and disagreements](docs/audit/FOLDED_WING.md) · [Coverage](docs/CROSS_WEAVE_AUDIT.md)
+
+## 27 November playtest
+
+Thirty-two residents now have personal stories in sixteen pairs across Chapters 2–15. Visit either neighbour first, take either action, then call on the other to hear what made it across the street. Visiting later or leaving a conversation open keeps the ordinary chapter work available. The diary preserves the part of the exchange the player heard. In the Market of Measures these conversations also open the Underpan. Following the coin on the square opens a third way in. Fen can take her lamp upstairs or run a private reading room below. [Neighbour stories](src/content/neighbours.json) · [Underpan routes](tests/underpan.test.ts)
+
+The brass fish beside the starting tile opens the Bell Loft. Players can trace a creature, test the cords or play their own four beats. Ket’s overnight decision and the Wick siblings’ futures are independent. Noll takes a kitchen shift when the Guardian reaches Emberford. A guest reprises the tune after any Council ending. At the House of Performance, Edda and Hari remember a single clap differently. Either curtain call can become a place to play the tune. The original chapter gates and central endings still work. [The Spare Moon](tests/spare-moon.test.ts) · [The Seat That Clapped First](tests/first-clap.test.ts)
+
+Passing remarks now enter the adventure diary under the actual speaker and time. A more specific version can replace its generic fallback. Independent remarks from the same person stay available. Existing saves retain their previously heard flags. [Conversation diary checks](tests/adventure-journal.test.ts)
+
+The release suite passed 2,342 tests in 272 files. Desktop Chromium and Firefox and phone-sized Linux WebKit exercised all sixteen households between them and both outcomes of the Underpan. The Chromium navigation stress test checked 128 maps and 71,877 tiles, including an accelerated hour against the Archive wall. Physical device testing and facilitated student play remain open. The curriculum audit records 657 authored links across 352 of the 803 supplied numbered skill definitions. [Neighbour route permutations](tests/neighbours.test.ts) · [Coverage evidence](docs/CROSS_WEAVE_AUDIT.md)
+
+The inn’s paper lantern can be bought and hung in the Guardian’s room. Collected objects can change cases across display pages. A Guardian carrying three objects can exchange one at the case, with the outgoing object taking the exhibited object’s place. When only one Nile prerequisite has been earned, the doorframe gives a location for the other. [Collection routes](tests/specimen-gear.test.ts)
+
+The story and collection checks exercise alternative entries, delayed visits, the three overnight decisions, both siblings’ independent responses, both theatre bows, an 81-phrase instrument and retry-safe exchanges. Release evidence distinguishes automated play from engagement with students. The separate chapter audit and its training gym are in [PR #8](https://github.com/PeMMa1917/knowledge-guardians/pull/8).
+
+At Emberford’s east bridge, a driver returns with an empty cart after a warning changes hands. A folded sketch and a relayed call each let the Guardian find a different source of the misunderstanding. Four arrangements give the next crew different help and costs. A player can revisit the board, change the medium, and try another crossing. [Bridge routes](tests/bridge-message.test.ts)
+
 This file is for the next developer, human or AI. Read [AGENTS.md](AGENTS.md) first. **Update this file when you stop work.**
 
-Last update 26 November 2026 on `feat/tok-gameplay-weave`. The private master specification is version 3, expanded from version 2.10. See [the design summary](docs/DESIGN_SUMMARY.md).
+Last update 27 November 2026 on `feat/tok-gameplay-weave`. The private master specification is version 3, expanded from version 2.10. See [the design summary](docs/DESIGN_SUMMARY.md).
 
-## Accounts and hosting (planned, 26 November 2026)
+## Accounts and hosting decision of 26 November 2026
 
-Mika chose Cloudflare (Workers + D1) with our own login. Students use a username only, with no email. Teachers reset student passwords. Nothing is built yet. Read [docs/ACCOUNTS_AND_HOSTING.md](docs/ACCOUNTS_AND_HOSTING.md) before you add any login, online save or class feature.
+Mika chose Cloudflare (Workers + D1) with our own login. Students use a username only, with no email. Teacher-managed password recovery remains planned. The draft now implements provisioned accounts, approved class membership, class saves and the teacher writing dashboard. Read [docs/ACCOUNTS_AND_HOSTING.md](docs/ACCOUNTS_AND_HOSTING.md) before you add any login, online save or class feature.
+
+## Multi-persona audit (in progress)
+
+A critique of the whole game from more than seventy points of view is in [docs/audit/](docs/audit/README.md). Read the chapter file before you change an encounter. Agreed fixes are in [CONSENSUS.md](docs/audit/CONSENSUS.md). Items for Mika to decide are in [CONTESTED.md](docs/audit/CONTESTED.md); do not decide them yourself. Chapter 1 is done. Mika's decisions on the contested list are in [DECISIONS.md](docs/audit/DECISIONS.md), and what was built from them, with reasons, is in [CHANGES.md](docs/audit/CHANGES.md): the training gym, Lumen's help offer, timed replays, two replies after key choices, thinkers and named views, the Proving Floor trial, trust that returns, idea credits and research data (off by default). Chapters 2 to 15 are next. Run `node tools/audit-personas.mjs --md` after content changes.
 
 ## Playtest build
+
+The Guardian’s diary now records which guide or viewing aid actually reached its reader in The Third Landmark and Where the Two Sights Meet. Both the first installation and its later return remember the chosen outcome across 40 dated maps and 41 artworks. Players carry the named object from the satchel. A practice rubbing, copy of a chart or comparison strip has its own identity when the story uses one. [Map choices](tests/map-alignment.test.ts) · [Sightline choices](tests/bearing-bay.test.ts)
+
+The diary can retrieve 58 more completed tasks by the part of the knowledge framework a player actually used. Examples include changing a stage cue, tracking a panel’s custody and checking who a request desk missed. Fifty-three newly written optional reflections follow specific actions. The Skill Atlas also remembers why a particular cut helped its audience and why a museum record and a living interpreter have different roles. Seventeen carried-object returns now have individual field notes and clues for the station where a player actually uses the object. [Learning design](docs/LEARNING_DESIGN.md) · [Stage diary check](tests/performance-story.test.ts)
+The collected Bíró pen opens Hesper’s writing bench in Emberford. Players compare a flat rest with a rolled strap, then fit a working rest for Della’s stall or Idris’s rounds. At the Ferry, the equipped 1941 Green-Book opens Tova’s shelter inquiry. The visitor acts on a dated public notice or checks in with Enna, who decides which details she can share. [Both returns and their saved receivers](tests/publication-returns.test.ts)
+
+Twenty-nine collection accessions have new source-linked credits. At the Civic Callboard, Neris receives the roles for *The Hearth* with the image or at a later source stop. In the City of Copies, visitors can meet Kehar Singh’s artist line or the workers’ occupations first. On the coast and at the House of Performance, the Ènata fan and the hanging with a Mende, Vai, or Temne attribution keep a maker’s credit distinct from a measurement or purchase. [Exact records](src/content/historical-credit-people.json) · [Earning and receiving checks](tests/historical-credits.test.ts)
 
 Neris follows the signed Civic Callboard passage to the source desk during the same visit. The old bench becomes walkable. If the Guardian is standing where a character is due to arrive, the character waits for room. A click on a departing character drops the old walking target. Other encounters with conditional characters use the same movement rules. Tull now gives his first research question in dialogue and explains what it left out. [Browser regression](tools/smoke-navigation.mjs) · [Word histories](tests/glossary.test.ts)
 
@@ -604,3 +864,41 @@ The Skill Atlas records #744 after Kori uses the raised proof at the Landing or 
 ## Matching sources to particular objects
 
 An engine playthrough now reaches Confident for #791, matching evidence to its particular object and claim, after eight compatible uses. The Cold Store reader keeps the body and replacement lid’s dates separate, and a House of Performance reader keeps the surviving Usugumo leaf and the earlier tale on different lines. The stage describes practice recorded in the game. [Eight-use replay](tests/object-specific-skill.test.ts)
+
+## Moving the Painter’s Frame
+
+The arrow keeps keyboard focus after each nudge, so a player can move the frame several steps with consecutive presses. [Keyboard replay](tools/smoke-fieldgames.mjs)
+
+## The Lower Rail
+
+The old Nexus label in the Nile hall now leads to Leila’s practice window. Clear paper that holds a whole line makes a different trace from the old scrape. After opening the Harrowmere drawer, the Guardian helps Omi keep the watch limit in view and brings a full-width board or a working teaching hinge back to the hall. Both leave a physical result that Tessi and a visitor can use. [Branch, save and access checks](tests/lower-rail.test.ts) · [Story and stakes](docs/STORY_BIBLE.md#7-the-long-mystery-setup-and-payoff)
+
+The giant who borrowed my elbow joins the theatre loft, market lottery and rehearsal floor. Pip and Vee share one puppet, two movable joints, two possible first entrances and three ways to move the scenery. The initial statistical prediction stays visible on replay. An equipped museum object can give the giant a further gesture. The journal records the performed version and the sisters respond upstairs. [Story](src/content/giantSleeve.ts) · [Checks](tests/giant-sleeve.test.ts)
+
+The optional hosted leaderboard now lets an approved student post one displayed play result to the class under a chosen nickname. The assigned teacher and classmates can view posted scores. Withdrawal, roster changes and teacher reassignment remove results from the board. Static local play still supports score-file comparisons. [Hosting design](docs/ACCOUNTS_AND_HOSTING.md#optional-class-leaderboards)
+
+An optional illustrated journal ribbon marks a particular open step. Each chapter and the Nexus has its own pair of object and listener illustrations. A player’s mark follows their save, appears in the recap and guides the next suggested step while it is available. The journal records tying, turning and untying the ribbon with a choice of reflection. A quiet or completed branch can keep its ribbon. [Return tests](tests/trail-thread.test.ts)
+
+The adventure journal links 562 additional museum holdings to articles about their catalogued makers. A player who inspects Nathaniel Hurd’s Harvard bookplate sees Hurd’s artist credit beside the link. Earning the bookplate adds its own institutional citation. The journal and its exports keep these distinct. [Source checks](docs/SOURCES.md#artist-articles-in-the-adventure-journal)
+
+Cen Aster and Kit Oriel can take a four-scoop cocoa cart from Lantern Square into Water Commons or the Civic Machine. Their customers can see a price from a distance or fold an offer out of sight. A second journey changes who gets to approach the seller. Daniel Kahneman and Amos Tversky help with a six-tray street trial. The two individual testimonies and Kit’s adjustable thermometer change what the Guardian can put on the side of the cart. [The first cup](src/domain/firstCup.ts)
+
+A five-by-five travelling reading room opens on Canal Walk and at Lamp Quay. Opal, Tallis and two audiences give the same edition different lives. Every one of its fifteen source pairs has separate prose for the publishers and the dates. Earning the Eastern Shawnee constitutional file at the North Steps opens a further signature lamp and adds the dated election certificate to the player’s works cited. [Story and provenance](docs/SOURCES.md#two-leaves-at-lamp-quay) · [Branch and recovery checks](tests/turning-stacks.test.ts)
+
+## 28 November • A readable workshop on a narrow screen
+
+On a 320-pixel screen at 175% text, the clock, warm room, maker tools, object stands and stores give their controls space to wrap. A long cargo name on the skiff stays inside the dialog on WebKit. The night fiddle appears when the saved story names an evening it can actually play. [Browser checks](docs/BROWSER_CHECKS.md#station-controls-at-large-text-sizes)
+
+## 28 November • The orchard that got up
+
+At Fern Station, a lone bootprint follows twelve trees out of their beds. Try a bare tub and a living sapling on Gresa’s chalk lane. Reopen two springs on the same dates. At the little theatre, three growers lend different parts of a rota. One evening later, the Guardian’s coins buy shade, a road through the dance, or a second visit after frost. In the Civic square, a carter and a stage caller can hand the next turn to different people. All nine outcomes travel home. Wangari Maathai and Paulo Freire join both visits. [Story and playable rules](src/domain/walkingOrchard.ts) · [Branch and source checks](tests/walking-orchard.test.ts)
+
+### The bell for a quiet claim
+
+Efua can send a rule for the spare pot from Emberford to the Old Weir. Try it with a worker who heard three knocks and a worker who can leave a visible rubbing. The two clerks can sign different rules. Bringing the second rule home lets the late porter use it. The original covered jug keeps its reserved turn. All 36 pairings and both word histories have domain checks. Chromium, Firefox and WebKit each played both desks and brought a different channel back to the porter.
+
+### The travelling pocket theatre
+
+Two optional streets open in each of the fifteen chapters. Thirty linked stories have 120 fitted views and sixty public endings. Each ending sends a different playable action to its paired street, with a reply that can come home. Players may hold their first direction open, restage a public ending and read an optional sourced note. The pocket keeps the acts and replies in the adventure journal.
+
+The reasoning review traces 45 cognitive biases or related effects, 36 argument patterns and ten forms of deception in the supplied material and the authored stories. Seventy-one independently specified views test the route to particular evidence. A dated cut, a copied seal or a missing line alone supplies no basis for attributing intent. The cross-weave and Bloom/DOK review commands include these inventories.

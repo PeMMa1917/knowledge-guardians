@@ -1,7 +1,9 @@
+import {chapterMap} from './chapterMap';
+import {classWriting} from './classWriting';
 /**
  * Teacher view (teacher.html): a class dashboard and printable student
  * reports, built from progress files that students choose to share
- * (spec 94). No server and no account: files are read in this tab only.
+ * (spec 94). Progress files are read in this tab. The separate assigned-class panel authenticates to the Worker.
  */
 import '@fontsource/lexend/300.css';
 import '@fontsource/lexend/400.css';
@@ -15,6 +17,7 @@ import { STAGE_LABEL, type SkillStage } from '../domain/skills';
 import { latestPerStudent, readProgress, subjectCsv, summarise, type ProgressFile } from './report';
 
 const root = document.getElementById('teacher')!;
+let connectedWriting: ReturnType<typeof classWriting> | undefined;
 const leaderboard = h('details', { class: 'leaderboard-teacher panel no-print' },
   h('summary', {}, h('strong', {}, 'Leaderboard (optional score files)')), leaderboardPanel([]));
 let files: ProgressFile[] = [];
@@ -24,7 +27,7 @@ try { dismissed = JSON.parse(localStorage.getItem('kg.teacher.dismissed') ?? '[]
 
 const essentialByChapter = new Map<number, Set<string>>();
 for (const mission of pack.missions) {
-  const chapter = Number(/^KG-CH(\d+)-/.exec(mission.id)?.[1] ?? 1);
+  const chapter = mission.chapter;
   const ids = essentialByChapter.get(chapter) ?? new Set<string>();
   for (const objective of mission.objectives) if (objective.essential) ids.add(objective.id);
   if (ids.size) essentialByChapter.set(chapter, ids);
@@ -86,6 +89,10 @@ function dashboard(): void {
         files.length ? h('button', { onclick: () => download('subject-links.csv', subjectCsv(files), 'text/csv') }, 'Subject links (CSV)') : ''),
       h('p', { class: 'note no-print' }, 'Students save a progress file in the game (Menu, "Share with my teacher") and give it to you. The files stay in this browser tab. Nothing is uploaded or stored. Close the tab to remove them.'),
       problems.length ? h('ul', { class: 'problems', role: 'alert' }, ...problems.map((p) => h('li', {}, p))) : ''),
+    h('nav', {class:'row no-print','aria-label':'School guides'},
+      h('a',{href:'./teacher.html?view=chapters',target:'_blank',rel:'noopener'},'Open the chapter map'),
+      h('a',{href:'./schools.html',target:'_blank',rel:'noopener'},'Who can read a student’s writing?')),
+    connectedWriting ??= classWriting(),
     guide(),
     leaderboard,
   );
@@ -192,4 +199,7 @@ function download(name: string, text: string, type: string): void {
   document.body.append(a); a.click(); a.remove();
 }
 
-dashboard();
+if (new URLSearchParams(location.search).get('view') === 'chapters') {
+  document.title='Knowledge Guardians · Chapter map';
+  root.append(chapterMap(pack));
+} else dashboard();

@@ -1,0 +1,65 @@
+[
+  {
+    "number": 64,
+    "name": "Distinguish a request for a turn from a claim about the wheel",
+    "uses": [
+      {
+        "objective": "claimbell.weir.test",
+        "action": "Run the charter that admitted requests for the spare pot against two accounts of a damaged wheel. What qualified as a request for a turn does not by itself establish what damaged the boards.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "linguistic",
+          "social",
+          "analytical"
+        ],
+        "game": 22,
+        "story": 15
+      }
+    ]
+  },
+  {
+    "number": 759,
+    "name": "Try the limits of knowing as seeing",
+    "uses": [
+      {
+        "objective": "claimbell.sign",
+        "action": "Turn the sight-rooted word plate. Walk the wheel listener through the flat slot and through a late speaking window. Find out what is lost when the clerk can file a visible mark but the worker has heard a rhythm.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "linguistic",
+          "social",
+          "analytical"
+        ],
+        "game": 114,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 370,
+    "name": "Notice who can enter a public record",
+    "uses": [
+      {
+        "objective": "claimbell.issue",
+        "action": "Walk the kitchen and the late porter under a spoken, tally or proxy rule. Choose where the claim can enter and when the clerk opens the book. A missing entry can hide a missed shift.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "linguistic",
+          "social",
+          "analytical"
+        ],
+        "game": 114,
+        "story": 11
+      }
+    ]
+  }
+]

@@ -21,6 +21,7 @@ describe('Two Objects, One Number', () => {
     expect(new Set(records.map((record) => source(record.sources[0])?.url)).size).toBe(2);
     expect(records.map((record) => record.name)).toEqual(['Am.9941, a cotton khipu from Peru', 'Oc.9941, a shell trumpet from Mangaia']);
     expect(records[1].dateText).toContain('unstated');
+    expect(records[1].dateText).toContain('gift on 18 November 1876');
     for (const record of records) expect(artKeys()).toContain(BIG_ART[record.art]);
   });
 

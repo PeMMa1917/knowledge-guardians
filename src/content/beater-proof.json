@@ -36,7 +36,7 @@
     }
   ],
   "hints": [
-    { "id": "h.beater.proof.placed.1", "objective": "beater.proof.placed", "depth": 1, "text": "Equip the working copy of Cleveland 1971.152 and look for the plain block in the Reconstruction Workroom." },
+    { "id": "h.beater.proof.placed.1", "objective": "beater.proof.placed", "depth": 1, "text": "Equip the Hawaiian tapa cloth beater, Cleveland 1971.152. Look for the plain block in the Reconstruction Workroom." },
     { "id": "h.beater.proof.placed.2", "objective": "beater.proof.placed", "depth": 2, "text": "Keep the strip stock and marked stop the same when you turn the block." },
     { "id": "h.beater.proof.placed.3", "objective": "beater.proof.placed", "depth": 3, "text": "Make one proof with each face at Light or one with each face at Firm. Take that pair." },
     { "id": "h.beater.proof.placed.4", "objective": "beater.proof.placed", "depth": 4, "text": "Bring the matched pair through the workroom door to Aster’s fitting table. Try the new arrangement at the low rail or at the east bench." }

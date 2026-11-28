@@ -1,0 +1,77 @@
+[
+  {
+    "map": "aethelgard.emberford",
+    "x": 24,
+    "y": 21
+  },
+  {
+    "map": "nile.hall",
+    "x": 11,
+    "y": 8
+  },
+  {
+    "map": "preserved.archive",
+    "x": 13,
+    "y": 13
+  },
+  {
+    "map": "observatory.harbour",
+    "x": 11,
+    "y": 14
+  },
+  {
+    "map": "forest.station",
+    "x": 13,
+    "y": 11
+  },
+  {
+    "map": "metalworks.yard",
+    "x": 12,
+    "y": 9
+  },
+  {
+    "map": "copies.archive",
+    "x": 11,
+    "y": 10
+  },
+  {
+    "map": "sea.harbour",
+    "x": 13,
+    "y": 10
+  },
+  {
+    "map": "stage.foyer",
+    "x": 10,
+    "y": 12
+  },
+  {
+    "map": "market.square",
+    "x": 18,
+    "y": 17
+  },
+  {
+    "map": "water.gatehouse",
+    "x": 12,
+    "y": 9
+  },
+  {
+    "map": "civic.dispatch",
+    "x": 11,
+    "y": 9
+  },
+  {
+    "map": "voices.listening",
+    "x": 14,
+    "y": 12
+  },
+  {
+    "map": "island.workshop",
+    "x": 13,
+    "y": 11
+  },
+  {
+    "map": "council.hall",
+    "x": 10,
+    "y": 12
+  }
+]

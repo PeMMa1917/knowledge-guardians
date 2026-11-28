@@ -129,7 +129,7 @@ function shoreObjectives(entry: ShoreReplyCase): Objective[] {
     done: { all: [shoreOpen(entry), ...SHORE_STEPS.map((step) => shoreSeen(entry, step))] },
     onComplete: [{ journal: `j.${entry.flag}.check` }], weave: topics(entry),
   }, {
-    id: entry.received, title: `Use ${entry.accession} on a separate Slate Harbour delivery`, essential: false,
+    id: entry.received, title: `Use “${entry.title}” on a separate Slate Harbour delivery`, essential: false,
     visible: { objective: entry.check },
     done: { all: [{ objective: entry.check }, { flag: `${entry.flag}.landed`, eq: true }] },
     onComplete: [{ journal: `j.${entry.flag}.received` }],

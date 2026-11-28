@@ -30,7 +30,11 @@
         "label": "Keep the bridge mark large and leave the frame free to turn",
         "after": "The crew finds the familiar bridge on a quick pass. The keeper can rotate the work board within reach when someone comes from the other side."
       }
-    ]
+    ],
+    "question": "When the same landmarks are seen from two doors, whose left and right should a map use?",
+    "journal": "I turned the frame from the canal gate to the door. The landing changed sides on my sheet. The bridge kept both ends. I know which starting point to ask for next time someone says “left.”",
+    "firstHint": "The canal gate and the door give two people different places to start the same walk.",
+    "thirdHint": "Turn the frame at the door. Follow the bridge back both times."
   },
   {
     "id": "memory-board",
@@ -63,7 +67,11 @@
         "label": "Leave the public record first and put the exercise on the side bench",
         "after": "The visitor can begin at the Brooklyn accession. The practice board stays visibly separate beside the workroom guide’s table."
       }
-    ]
+    ],
+    "question": "What can a guide's board show, and what can only its keeper decide?",
+    "journal": "I could move every peg on the guide’s practice board. I still had to ask who had waited at the bench. The Brooklyn record gave me an accession to share. It could never give me a Mbudye interpreter’s part.",
+    "firstHint": "The guide knows who waited. A visitor looking only at the practice pegs has a different view.",
+    "thirdHint": "Hear what the workroom guide can tell from the local exercise. Open the museum record for what the public caption actually supports."
   },
   {
     "id": "deep-window",
@@ -96,7 +104,11 @@
         "label": "Pin the wider check directly beside the old slip",
         "after": "Both watch positions stay visible. The seam helps visitors tell which part was outside the original observer’s view."
       }
-    ]
+    ],
+    "question": "How does the width of a window change what we can claim crossed the water?",
+    "journal": "I saw one marker go by in the slot. When I opened the side frame there was another. I put the place I stood beside my report before anyone could take my narrow window for the whole harbour.",
+    "firstHint": "The sheltered watcher can see part of the harbour through a slot.",
+    "thirdHint": "Keep the first trace, open the side frame and look beyond the edge it hid."
   },
   {
     "id": "dhuwa-receipt",
@@ -129,7 +141,11 @@
         "label": "Give the review desk both leaves in date order",
         "after": "A second keeper can compare the two questions without reading the first date as a later acknowledgement."
       }
-    ]
+    ],
+    "question": "How can a record say that a petition was received without claiming to know how it ends?",
+    "journal": "I found 14 August 1963 on the Dhuwa petition’s presentation record. On the second leaf I looked for a decision. Receiving the petition let the House record an action. That date alone could never tell me how the claim was treated.",
+    "firstHint": "One leaf dates what happened in Parliament. The other leaves room for what followed.",
+    "thirdHint": "Lift the received-date leaf and the decision leaf separately before choosing how a visitor will follow them."
   },
   {
     "id": "yirritja-leaves",
@@ -162,7 +178,11 @@
         "label": "Hang a paired care note near the keeper’s index",
         "after": "The keeper leaves the original and the displayed paper on named lines so the next reader can follow each one."
       }
-    ]
+    ],
+    "question": "How can people see a record while the fragile original stays safe somewhere else?",
+    "journal": "I traced the Yirritja petition presented on 28 August to its own entry. The care record explained why the paper on display could differ from the earlier signed paper. I left a way to find that comparison.",
+    "firstHint": "The presentation and the later preservation decision have separate records.",
+    "thirdHint": "Use the Yirritja identifier first, then open the care record to see where the signed paper belongs."
   },
   {
     "id": "horizon-copy",
@@ -195,7 +215,11 @@
         "label": "Give the manuscript and the next observation separate leaves",
         "after": "The next keeper can follow the teacher’s record and repeat the local check without merging their dates."
       }
-    ]
+    ],
+    "question": "When is a copied guide enough for a new observer to repeat what someone saw?",
+    "journal": "I set a star mark against the low strip and watched it meet another edge from the second doorway. The Timbuktu record tells me about a surviving manuscript copied in 1733. The two readings in my hand came from our doorways.",
+    "firstHint": "A change of doorway can move the mark even while the practice sky stays still.",
+    "thirdHint": "Fit the low strip, then raise it at the clerk’s doorway. Keep the local position with each reading."
   },
   {
     "id": "red-leaf",
@@ -228,7 +252,11 @@
         "label": "Leave the two proofs under separate process slips",
         "after": "Lark opens the fuller tray for the next printer. The colour stays visible on both and each process has its own source line."
       }
-    ]
+    ],
+    "question": "When does one printed page stand for a whole printing, and when does it not?",
+    "journal": "I matched leaf [129b] to the reference for the Library of Congress copy. The other heading looked just as red under the press light. I needed the record to say what the colour could not tell me.",
+    "firstHint": "Two headings can share a colour and have different production histories.",
+    "thirdHint": "Fit the identified leaf under the proof before checking the hand-finished comparison."
   },
   {
     "id": "earliest-line",
@@ -261,7 +289,11 @@
         "label": "Set the catalogue description beside the lighting notes",
         "after": "The workroom keeps the object’s historical account within reach and labels the visible exercise as its own comparison."
       }
-    ]
+    ],
+    "question": "Where does a visible mark end and a reader's interpretation begin?",
+    "journal": "I followed the light across the practice sheet. I could draw the marks again. I had to turn over the keeper’s note to learn what connected the historical inscription to divination. I left the particular old reading open.",
+    "firstHint": "The workyard sketch and its supplied context can answer different requests.",
+    "thirdHint": "Trace the practice marks before turning the keeper’s note. Check where seeing ends and context begins."
   },
   {
     "id": "two-print-hands",
@@ -294,7 +326,11 @@
         "label": "Make a printer’s slip and include the shared record number",
         "after": "The workshop takes the roles it needs and can follow the same exact copy number to the compiler’s line."
       }
-    ]
+    ],
+    "question": "Who should get credit when a claim about a book's printing reaches a new reader?",
+    "journal": "I put Baegun’s compilation beside the work of Seokchan and Daldam on the surviving 1377 volume. If I had kept only the compiler’s line, there would have been no place left on the notice for the printers.",
+    "firstHint": "The work has a compiler and the surviving volume has printers.",
+    "thirdHint": "Open the compiler’s line and then the printing credit. Give the July 1377 volume room on its own line."
   },
   {
     "id": "portable-latitude",
@@ -327,7 +363,11 @@
         "label": "Pair the two readings under the signature reference",
         "after": "The keeper sets the plates side by side with their settings named. The signed date stays separate from both readings."
       }
-    ]
+    ],
+    "question": "What place can a measuring instrument describe, and where does its reading stop?",
+    "journal": "I watched the same sky mark cross a different part of the second plate. I kept the plate with its reading. I could refer a visitor to the dated Yemeni instrument without pretending that our practice marks were on it.",
+    "firstHint": "A reading changes when a different plate lies under the same mark.",
+    "thirdHint": "Try both plates and compare the crossings before a reader takes the result."
   },
   {
     "id": "horse-sequence",
@@ -360,7 +400,11 @@
         "label": "Put the whole sequence up along the rehearsal edge",
         "after": "The audience guide can compare the moments before and after the cue without guessing an unpictured transition."
       }
-    ]
+    ],
+    "question": "What can a single still image tell us about a movement, and what needs the whole sequence?",
+    "journal": "I stopped the strip with a hoof clear of the floor. Running the sequence gave me an order. I still had no interval written in the gap between those views.",
+    "firstHint": "A frame shows an instant and a sequence shows an order.",
+    "thirdHint": "Hold the marked frame still, then run the cut and look for a time interval the strip actually supplies."
   },
   {
     "id": "web-source",
@@ -393,7 +437,11 @@
         "label": "Leave the current and source sheets in a paired holder",
         "after": "Visitors can check the doorway instructions and source side by side, with both dates close enough to compare."
       }
-    ]
+    ],
+    "question": "How can a reader find the source of a notice that has been copied many times?",
+    "journal": "I opened one copy and followed its pointer back to the source sheet. The other carried every word and had lost that pointer. Both could travel. Only one showed me the way back.",
+    "firstHint": "Two copies can have the same words and give different access to their source.",
+    "thirdHint": "Follow the pointer on one copy, then inspect what travelled on the sheet without it."
   },
   {
     "id": "telescope-rim",
@@ -426,7 +474,11 @@
         "label": "Set both frames in reach for a paired check",
         "after": "The two readers keep the frame edges next to the corresponding positions. The sheet stays fixed while the frame is moved."
       }
-    ]
+    ],
+    "question": "What does a narrow view show clearly, and what does it hide?",
+    "journal": "I marked the point inside the narrow rim. A second point appeared in the next view. I left both positions for the person who wanted to repeat the check.",
+    "firstHint": "A point can fall outside one rim and inside the next.",
+    "thirdHint": "Mark the first view before widening it. Use that mark to locate the second point."
   },
   {
     "id": "lens-scale",
@@ -459,7 +511,11 @@
         "label": "Clip the two views together",
         "after": "The teaching sleeve leaves the wider context first and keeps the close detail one turn away."
       }
-    ]
+    ],
+    "question": "What does a detailed view add, and what does it leave outside the frame?",
+    "journal": "I could see the overlap at the join when I went close. Back at the ruler it was only a place on the left quarter. I kept its address so another pair of eyes could find it again.",
+    "firstHint": "Magnifying the join helps you inspect it. The ruler helps you get back there.",
+    "thirdHint": "Inspect the overlap close up and find its quarter on the wider workroom drawing."
   },
   {
     "id": "orbital-window",
@@ -492,7 +548,11 @@
         "label": "Use the receiving diagram at the station table",
         "after": "The table separates the named vehicle from the voyage stages. A reader can follow either date without treating one as the other."
       }
-    ]
+    ],
+    "question": "How can we keep an object's journey and its later display from being mixed up?",
+    "journal": "I traced Columbia through a particular part of the July 1969 flight, then back to the object in the museum. The day someone can visit the module and the date of its journey belong to different records.",
+    "firstHint": "A vehicle’s flight, return and museum record can have different dates.",
+    "thirdHint": "Follow the module’s flight role in one window and the surviving object in the other."
   },
   {
     "id": "sea-learning-notice",
@@ -525,7 +585,11 @@
         "label": "Put the live record on the harbour rail",
         "after": "The crew gets the next observation at its working place, with a pointer back to the shore lesson for people preparing."
       }
-    ]
+    ],
+    "question": "When does a learning aid help, and when do we need the live record instead?",
+    "journal": "I put the practice watcher’s bell and place beside the training-aid record. The accession’s repair note belongs with that object. It cannot date the water someone saw from this shore.",
+    "firstHint": "A teaching aid can prepare someone to observe. It is a different source from a dated observation.",
+    "thirdHint": "Compare the accession’s use note with the watcher’s bell slip before choosing where to leave them."
   },
   {
     "id": "repair-and-memory",
@@ -558,6 +622,10 @@
         "label": "Set the custody leaf behind the family line",
         "after": "Another reader can retrace where the piece went while keeping the family account visible at the front."
       }
-    ]
+    ],
+    "question": "How can an object's own testimony and a viewer's interpretation each keep their place?",
+    "journal": "I kept Shinichi Tetsutani’s name beside his tricycle and followed the museum’s account of the family’s later donation. I left space for a visitor’s own words. I couldn’t provide those for them.",
+    "firstHint": "The name, the object and its later custody each matter to the family’s public record.",
+    "thirdHint": "Read the personal connection first and then the account of the later donation. Give the next visitor room to respond."
   }
 ]

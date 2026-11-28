@@ -3,6 +3,7 @@ import { specimenEquipped } from '../domain/specimenGear';
 import type { Condition, ContentPack, DialogueNode, Effect, Hint, Objective } from '../domain/types';
 import { DATE_REGISTER_CASES } from './dateRegisterCases';
 import objects from './callboard-specimens.json';
+import historicalCredits from './historical-credit-people.json';
 
 export const CALLBOARD_GROUP = 'callboard';
 export const CALLBOARD_OPEN: Condition = { objective: 'civic.finish' };
@@ -11,6 +12,8 @@ export const CALLBOARD_SHORT: Condition = { flag: 'callboard.shortcut', eq: true
 export const QUETZALECATZIN = 'loc:g4701g.ct009133';
 export const GAGE = 'wam:03106';
 export const GAGE_ART = 'callboard.gage-mount';
+export const HEARTH = 'cma:1951.65.9';
+export const HEARTH_CREDITS = historicalCredits[HEARTH];
 
 const RETURN_LOC = { map: 'sea.chartroom', prop: 'callboard-return-claims', method: 'Separate genealogy from a current land claim',
   hint: 'Bring the Codex to the paired lines at Lantern House. Check the ancestor line and the public claim before clipping the guide.' };
@@ -18,10 +21,12 @@ const RETURN_GAGE = { map: 'metalworks.records', prop: 'callboard-return-maker',
   hint: 'Bring the mounted iron to the Metalworks name clips. Check the inscribed role and the later custody record separately.' };
 const RETURN_VIEW = { map: 'sea.chartroom', prop: 'callboard-return-view', method: 'Check what an inlet image shows and what its record supports',
   hint: 'Bring the piece to the spare evidence clip at Lantern House. Use both sources before mounting the worded line.' };
+const RETURN_HEARTH = { ...RETURN_VIEW, method: 'Set different headings for a print’s artist, printer and publisher',
+  hint: 'Equip The Hearth and take it to Renna’s spare clips at Lantern House. Use its picture and catalogue to fit a three-line credit guide.' };
 
 export const CALLBOARD_CASES = objects.map((item) => {
   const flag = `callboard.${item.slug}`;
-  const revisit = item.key === QUETZALECATZIN ? RETURN_LOC : item.key === GAGE ? RETURN_GAGE : RETURN_VIEW;
+  const revisit = item.key === QUETZALECATZIN ? RETURN_LOC : item.key === GAGE ? RETURN_GAGE : item.key === HEARTH ? RETURN_HEARTH : RETURN_VIEW;
   return {
     ...item, flag, revisit,
     source: `HIS-CALL-${item.slug}`, artifact: `OBJ-CALL-${item.slug}`, card: `card.${flag}`, item: `item.${flag}.print`,
@@ -63,12 +68,14 @@ function caseNodes(c: CallboardCase): DialogueNode[] {
   const returned: Condition = { all: [specimenEquipped(c.key), { not: callboardState(`${flag}.returned`) }] };
   const loc = c.key === QUETZALECATZIN;
   const gage = c.key === GAGE;
+  const hearth = c.key === HEARTH;
   return [
     { id: nodes.check, speaker: 'narrator', historicalLabel: 'fictional-world', text: 'Keep both parts of the guide with the object number.', options: [
       { text: 'Place the visible detail on the guide.', if: { card }, effects: [write(`${flag}.checked.view`), write(`${flag}.face`, 'view')] },
       { text: 'Clip the catalogue evidence beside it.', if: { card }, effects: [write(`${flag}.checked.record`), write(`${flag}.face`, 'record')] },
       ...CALLBOARD_LAYOUTS.map((route) => ({
-        text: route === 'bench' ? 'Send both parts to the first bench.' : 'Run a picture call and a later source call.',
+        text: route === 'bench' ? (hearth ? 'Send the image and all three credits to the first bench.' : 'Send both parts to the first bench.')
+          : (hearth ? 'Send the image now and keep the credits for the later call.' : 'Run a picture call and a later source call.'),
         if: proof, effects: [write(`${flag}.layout`, route), { giveItem: item } as Effect],
       })),
     ] },
@@ -86,7 +93,8 @@ function caseNodes(c: CallboardCase): DialogueNode[] {
         if: returned, effects: [write(`${flag}.return.view`)] },
       { text: loc ? 'Trace the separate land-claim caption.' : gage ? 'Open the later return record.' : 'Set the exact source slip in the other clip.',
         if: returned, effects: [write(`${flag}.return.record`)] },
-      { text: loc ? 'Clip both accounts with their own limits.' : gage ? 'Post the maker, inscribed name and custodian separately.' : 'Fix the supported label to the earlier stand.',
+      { text: loc ? 'Clip both accounts with their own limits.' : gage ? 'Post the maker, inscribed name and custodian separately.'
+        : hearth ? 'Leave room for each credit on the guide.' : 'Fix the supported label to the earlier stand.',
         if: { all: [returned, callboardState(`${flag}.return.view`), callboardState(`${flag}.return.record`)] }, effects: [write(`${flag}.returned`)] },
     ] },
   ];
@@ -102,12 +110,12 @@ function caseSources(c: CallboardCase): string[] {
 
 function caseSummary(c: CallboardCase): string {
   const details = [c.origin, c.material, c.dimension];
-  if (c.maker) details.push(`Collection credit names ${c.maker}`);
+  if (c.maker && c.key !== HEARTH) details.push(`Collection credit names ${c.maker}`);
   return [...details.map((line) => line.endsWith('.') ? line : `${line}.`), c.record].join(' ');
 }
 
 const objectives: Objective[] = CALLBOARD_CASES.map((c) => ({
-  id: c.objective, title: `Receive a signed reading for ${c.accession}.`, visible: { card: c.card }, essential: false,
+  id: c.objective, title: `Receive a signed reading for “${c.title}”.`, visible: { card: c.card }, essential: false,
   done: { flagSet: `${c.flag}.heard` }, onComplete: [{ journal: `j.${c.objective}` }],
   weave: { concepts: ['evidence', 'interpretation', 'perspective', 'responsibility'], framework: ['scope', 'perspectives', 'methods-and-tools', 'ethics'],
     thinking: { dok: 2, bloom: 'apply', fink: 'human', solo: 'relational' }, atl: ['research', 'communication', 'social'],
@@ -158,7 +166,9 @@ export const callboardContent = {
     objectives, caseVisits: objectives.map(({ id }) => [id]),
   }],
   journal: CALLBOARD_CASES.map((c) => ({ id: `j.${c.objective}`, claimKind: 'observation',
-    text: `I kept the pictured detail and its support together under ${c.accession}. Neris signed a reading receipt after seeing them.` })),
+    text: c.key === HEARTH
+      ? 'I sent the hearth image and the catalogue. By the time Neris signed, there was a line each for Vuillard’s image, Clot’s printing and Vollard’s publication.'
+      : `I kept the pictured detail and its support together under ${c.accession}. Neris signed a reading receipt after seeing them.` })),
   hints: CALLBOARD_CASES.flatMap((c) => [
     'Look for two parts of the guide that do different jobs.',
     'Inspect one collection case and find its matching clip stand behind the case.',

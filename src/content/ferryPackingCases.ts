@@ -17,7 +17,7 @@ export const FERRY_PACKING_CASES = data.map((record) => ({
 export type FerryPackingCase = (typeof FERRY_PACKING_CASES)[number];
 
 const objectives: Objective[] = FERRY_PACKING_CASES.map((record) => ({
-  id: record.objective, title: `Try both tag placements for ${record.accession} and collect the handoff receipt.`,
+  id: record.objective, title: `Try both tag placements for “${record.title}” and collect the handoff receipt.`,
   done: {
     all: [...PACKING_POSITIONS.map((position): Condition => ({ flagSet: tagFlag(record.stem, position) })),
       { flag: postedTag(record.stem), in: [...PACKING_POSITIONS] }, { flag: receiptTag(record.stem), eq: true }],

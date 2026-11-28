@@ -1,0 +1,202 @@
+[
+  {
+    "number": 287,
+    "name": "Trace how a starting figure enters an offer",
+    "uses": [
+      {
+        "objective": "cup.roll",
+        "action": "Turn over 2, 8 and a blank ticket from one crew. All nine tried the same reference drink. Choose which people the cart visits with the four scoops you made.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "analytical",
+          "reading"
+        ],
+        "game": 119,
+        "story": 119
+      },
+      {
+        "objective": "cup.serve.steps",
+        "action": "At the steps, give visitors a price they can see from a distance or let them fold an offer privately. The runner and the mason respond differently to which figure becomes public.",
+        "styles": [
+          "helper",
+          "maker"
+        ],
+        "modes": [
+          "social",
+          "reflective"
+        ],
+        "game": 119,
+        "story": 11
+      }
+    ]
+  },
+  {
+    "number": 306,
+    "name": "Test a group average against two individual reasons",
+    "uses": [
+      {
+        "objective": "cup.facing.steps",
+        "action": "Open the mill offer of eight under the low starting ticket and the offer of five under the high ticket. Compare the reasons the writers give before turning the cart at the North Steps.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "social"
+        ],
+        "game": 119,
+        "story": 114
+      },
+      {
+        "objective": "cup.facing.weir",
+        "action": "Take the mill’s two authorised notes to the weir. The crews have different average offers under the numbered tickets. Each actual writer supplies a different reason for one price.",
+        "styles": [
+          "strategist",
+          "companion"
+        ],
+        "modes": [
+          "analytical",
+          "reflective",
+          "social"
+        ],
+        "game": 119,
+        "story": 119
+      }
+    ]
+  },
+  {
+    "number": 311,
+    "name": "Follow the people missing from the receiving tray",
+    "uses": [
+      {
+        "objective": "cup.passers.mill",
+        "action": "Trace nine cup rings, then four additional invitations without an offer at the mill. Change which count the runner leaves in view. An empty place has no bid to enter as zero.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 119,
+        "story": 83
+      },
+      {
+        "objective": "cup.passers.steps",
+        "action": "Turn the step crew’s tray to see fifteen invitations behind nine offers. Six people declined. The average tab only counts the volunteers.",
+        "styles": [
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "spatial",
+          "analytical",
+          "reflective"
+        ],
+        "game": 119,
+        "story": 83
+      }
+    ]
+  },
+  {
+    "number": 318,
+    "name": "Compare a street impression with its fixed reference cup",
+    "uses": [
+      {
+        "objective": "cup.roll",
+        "action": "Open individual bids in both numbered ticket groups and the group who received a blank. Separate this shared reference drink from the next pot, which you can pour in a different ratio.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "physical",
+          "visual",
+          "analytical"
+        ],
+        "game": 152,
+        "story": 87
+      }
+    ]
+  },
+  {
+    "number": 371,
+    "name": "Find what a measuring device contributes to a reading",
+    "uses": [
+      {
+        "objective": "cup.facing.weir",
+        "action": "Read the travelling cup and the kitchen slip, put both instruments in the same shade, move the misaligned dial and carry the correction out to the weir-side audience.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "physical",
+          "analytical"
+        ],
+        "game": 170,
+        "story": 87
+      },
+      {
+        "objective": "cup.facing.steps",
+        "action": "Test the street dial beside the reference glass and move its ring. Decide whether the corrected gauge or the two individual explanations gets the outward-facing rail.",
+        "styles": [
+          "helper",
+          "performer"
+        ],
+        "modes": [
+          "physical",
+          "social",
+          "reflective"
+        ],
+        "game": 170,
+        "story": 119
+      }
+    ]
+  },
+  {
+    "number": 1107,
+    "name": "Give two meanings of bias different remedies",
+    "uses": [
+      {
+        "objective": "cup.facing.steps",
+        "action": "Move the thermometer back two degrees when the reference and dial observe the same shade. Compare the two mill offers and their written reasons. Turn one side of the cart outward, leaving the other available.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "analytical",
+          "reading",
+          "social"
+        ],
+        "game": 170,
+        "story": 119
+      },
+      {
+        "objective": "cup.facing.weir",
+        "action": "Separate a repeatable instrument offset on the cocoa route from the effect of a suggested starting number on a small group. Adjust the instrument; keep each individual offer and reason intact.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "physical",
+          "analytical",
+          "reflective"
+        ],
+        "game": 119,
+        "story": 114
+      }
+    ]
+  }
+]

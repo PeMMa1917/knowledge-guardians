@@ -5,6 +5,7 @@
  * East wing (x 26-38): the Hall of Firsts, an optional side quest with
  * plaques, each about one person shown with their own place and people, from many periods.
  */
+import { MOON_HALL_FIDDLER, MOON_HALL_SONG, MOON_LOFT_DOOR } from './spareMoon';
 import { NEXUS_FIELD_CUES } from './fieldBadges';
 import { BADGE_ANNEX_DOOR } from './badgeRoom';
 import { NEXUS_FACING_ACTOR, NEXUS_FACING_CUE } from './facingCue';
@@ -27,6 +28,7 @@ import { SPECIMEN_VAULT_DOOR } from './specimenVault';
 import { NUMBER_LEAF_RETURNS } from './numberLeaves';
 import { MODEL_RECORD_RETURNS } from './modelRecords';
 import { starStations } from './starPaths';
+import { NEXUS_PUBLIC_VOICES } from './publicVoices';
 
 const W = 40, H = 20;
 const strokeRequested: Condition = { flag: 'nexus.stroke.requested', eq: true };
@@ -142,6 +144,7 @@ export const NEXUS: MapDef = {
     [11, 3, 1, 2], [14, 3, 1, 2],      // portal posts
   ],
   npcs: [
+    MOON_HALL_FIDDLER,
     EARLY_CURTAIN_NPC,
     NEXUS_FACING_ACTOR,
     ...SHUTTER_VISITORS,
@@ -158,6 +161,7 @@ export const NEXUS: MapDef = {
     { id: 'translator-lio', x: 24, y: 13, facing: 'right', visibleIf: { origin: 'traveller' } },
   ],
   interactables: [
+    MOON_LOFT_DOOR, MOON_HALL_SONG,
     ...NEXUS_FIELD_CUES,
     ...NEXUS_FACING_CUE,
     ...NEXUS_FOURTH_CORNER,
@@ -287,6 +291,13 @@ export const NEXUS: MapDef = {
       x: 16, y: 14, w: 1, h: 1, label: 'the reading shelf', walkThrough: true, art,
       visibleIf: { all: [{ flag: 'nexus.ferry.started', eq: true }, condition] },
     })),
+    { id: 'hatch-rail-reply', kind: 'scene', node: 'hatch.reply.rail', x: 19, y: 15, w: 1, h: 1, walkThrough: true,
+      label: 'The inside-out glove on the public rail', art: 'hatch.sleeve', visibleIf: { flag: 'hatch.custody', eq: 'rail' } },
+    { id: 'hatch-desk-reply', kind: 'scene', node: 'hatch.reply.desk', x: 8, y: 10, w: 1, h: 1, walkThrough: true,
+      label: 'Kip’s low stool at the witness desk', art: 'hatch.sleeve', visibleIf: { flag: 'hatch.custody', eq: 'desk' } },
+    { id: 'hatch-readers', kind: 'fieldgame', game: 'hatch-readers', x: 33, y: 14, w: 1, h: 1, walkThrough: true,
+      art: 'hatch.sleeve', label: 'Elsbet’s sleeve beside the installed Nile packet',
+      visibleIf: { all: [{ flagSet: 'hatch.edition' }, { flag: 'nile.returned', eq: true }] } },
     { id: 'nile-stone-case', kind: 'exhibit', exhibit: 'OBJ-NILE-STONE', x: 31, y: 17, w: 1, h: 1, walkThrough: true, label: 'the Singapore Stone fragment', art: 'nile.stone', visibleIf: { flag: 'nile.returned', eq: true } },
     { id: 'nile-badang-case', kind: 'exhibit', exhibit: 'OBJ-NILE-BADANG', x: 34, y: 17, w: 1, h: 1, walkThrough: true, label: 'the Badang account', art: 'nile.scroll', visibleIf: { flag: 'nile.returned', eq: true } },
     { id: 'nile-stone-label', kind: 'label', kit: 'nile-stone', x: 36, y: 17, w: 1, h: 1, walkThrough: true, label: 'the river records label stand', art: 'label-stand', visibleIf: { flag: 'nile.returned', eq: true } },
@@ -301,6 +312,12 @@ export const NEXUS: MapDef = {
     ] as const).map(([choice, x, text]) => ({ id: 'nile-delivery-tag-' + choice, kind: 'sign' as const, x, y: 10, w: 1, h: 1, walkThrough: true, label: 'the tag from the model route', text, art: 'nile.slip',
       visibleIf: { all: [{ flag: 'nile.dispatch', eq: 'pair' }, { flag: 'nile.returned', eq: true }, { flag: 'nile.routeLead', eq: choice }] } })),
 
+    { id: 'door-waits-for-letter', kind: 'sign', x: 37, y: 2, w: 1, h: 1, label: 'the seam where a letter should fit',
+      art: 'fold.strip', walkThrough:true, text: 'Ise has turned her half of the latch. Nestled in the other half is a curl of blue sealing wax. “Elsbet kept that colour,” someone has scratched. “Six lamps open her old study beneath the Emberford guild hall. Look at her desk.”',
+      visibleIf: {all:[{objective:'m02.o8.ise'},{not:{flag:'study.letter',eq:true}}]} },
+    { id: 'door-waits-for-ise', kind: 'sign', x: 37, y: 2, w: 1, h: 1, label: 'the handprint beside the folded letter',
+      art: 'preserved.slip', walkThrough:true, text: 'The letter fits the narrow seam. A second handprint stays dark. Kip has pencilled a reminder underneath. “Take the Emberford seal to Warden Ise in this hall. She stayed to hear what happened.”',
+      visibleIf: {all:[{flag:'study.letter',eq:true},{not:{objective:'m02.o8.ise'}}]} },
     { id: 'door-without-a-name', kind: 'door', x: 37, y: 2, w: 1, h: 1, label: 'the Door Without a Name', art: 'nile.door',
       visibleIf: { all: [{ flag: 'study.letter', eq: true }, { objective: 'm02.o8.ise' }] }, flag: 'nile.arrived', to: { map: 'nile.hall', x: 12, y: 10 } },
     { id: 'preserved-door', kind: 'door', x: 38, y: 15, w: 1, h: 1, label: 'the door to the Cold Store', art: 'preserved.door',
@@ -451,17 +468,18 @@ export const NEXUS: MapDef = {
     ...EARLY_CURTAIN_PROPS,
     ...NEXUS_DISPATCH_STATS,
     ...NEXUS_CORRESPONDENCE,
+    ...NEXUS_PUBLIC_VOICES,
     { id: 'waystone', kind: 'waystone', place: 'Nexus archive hall', x: 2, y: 9, w: 1, h: 1, label: 'the Waystone (save and rest)', art: 'waystone' },
     ...([['OBJ-101', 'eratosthenes'], ['OBJ-102', 'haytham'], ['OBJ-103', 'bisheng'], ['OBJ-104', 'sikdar'], ['OBJ-105', 'santos'], ['OBJ-106', 'sheppard'], ['OBJ-107', 'wollstonecraft']] as const)
       .map(([ex, key], i) => ({ id: `plaque-${key}`, kind: 'exhibit' as const, exhibit: ex, kit: `first.${key}`, x: 27 + i * 2, y: 5, w: 1, h: 1, label: 'a plaque in the Hall of Firsts', art: 'plaque' })),
     { id: 'sign-hall', kind: 'sign', x: 26, y: 12, w: 1, h: 1, label: 'the Hall of Firsts sign', art: 'signpost',
       text: 'THE HALL OF FIRSTS. Every plaque here says "the first". First at what? Repair a plaque by choosing what kind of first it was, and what we do not know.' },
     { id: 'alcove-firsts', kind: 'alcove', alcove: 'firsts', x: 27, y: 14, w: 1, h: 1, label: 'the Alcove of Firsts (exhibition)', art: 'alcove', visibleIf: { objective: 'm01.o6.label' } },
-    { id: 'title-lock', kind: 'lock', lock: 'inventor', x: 37, y: 13, w: 1, h: 1, label: 'the Title Lock (EE practice)', art: 'title-lock', visibleIf: { objective: 'm01.o6.label' } },
+    { id: 'title-lock', kind: 'lock', lock: 'inventor', x: 37, y: 13, w: 1, h: 1, label: 'the Title Lock', art: 'title-lock', visibleIf: { objective: 'm01.o6.label' } },
     { id: 'claim-board', kind: 'label', kit: 'ee.inventor', x: 33, y: 16, w: 1, h: 1, label: "Tull's claim board", art: 'label-stand', visibleIf: { objective: 'ee1.o3.weigh' } },
-    // Lorelings (spec 36.1): three places to watch the Glimmermoth. They go when it is a friend.
+    // Lorelings (spec 36.1): three places to watch the Glimmermoth. Each stand can become its resting place, including on a return visit.
     ...([['lamp', 7, 8, 'the glimmer by the patent drawing'], ['desk', 4, 13, 'the glimmer at the reading table'], ['case', 22, 14, 'the glimmer by the glass cabinet']] as const)
-      .map(([sg, x, y, label]) => ({ id: `lor-${sg}`, kind: 'loreling' as const, loreling: 'glimmermoth', sighting: sg, x, y, w: 1, h: 1, label, visibleIf: { not: { flag: 'lor.glimmermoth.friend', eq: true } } })),
+      .map(([sg, x, y, label]) => ({ id: `lor-${sg}`, kind: 'loreling' as const, loreling: 'glimmermoth', sighting: sg, x, y, w: 1, h: 1, label })),
     // One knowledge-gated door (spec 12.23): it opens with the Date-Kind Lens and an understanding of date kinds.
     { id: 'timeline-door', kind: 'puzzle', puzzle: 'timeline-door', x: 5, y: 2, w: 1, h: 1, label: 'the Timeline Door', art: 'timeline-door',
       artOpen: { key: 'timeline-door.open', if: { flag: 'puzzle.timeline-door.done', eq: true } } },

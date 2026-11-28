@@ -79,7 +79,7 @@
   },
   {
    "id": "j.os.workshop",
-   "text": "One Quench Is Not a Test: one result has many causes. A fair test changes one thing, repeats, and still only gives a strong suspect.",
+   "text": "Ren showed me a ticket that curled loose. Both the damp and the fold could have mattered. Hesper had kept other tickets from the same sheet.",
    "claimKind": "interpretation"
   },
   {
@@ -252,7 +252,7 @@
   {
    "id": "os.archive.wait",
    "speaker": "cataloguer-bela",
-   "text": "Did you ask yet? I'll be here.",
+   "text": "Bela has laid one empty envelope in each of three drawers. Nobody has decided where the slip belongs.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world"
   },
@@ -365,7 +365,7 @@
   {
    "id": "os.traveller.wait",
    "speaker": "translator-lio",
-   "text": "Did you ask yet? I'll be here.",
+   "text": "Lio has drawn a pair of small shoes in the margin where the disputed word will go. One faces the gate. One faces the band.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world"
   },
@@ -478,7 +478,7 @@
   {
    "id": "os.harbour.wait",
    "speaker": "runner-tamar",
-   "text": "Did you ask yet? I'll be here.",
+   "text": "Tamar is picking apple leaves out of the river. An empty fruit box drifts back upstream on a turning eddy.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world"
   },
@@ -561,7 +561,7 @@
   {
    "id": "os.workshop.start",
    "speaker": "apprentice-ren",
-   "text": "You trained in a workshop? Good. I quenched one knife in rain water and it cracked. So rain water cracks knives. I want to tell everyone. Is that right?",
+   "text": "The third ticket curled right out of its clip. It was the only one that got rained on. Hesper says she wants that seat by the door. What do I tell the next person who books it?",
    "claimKind": "interpretation",
    "historicalLabel": "fictional-world",
    "effects": [
@@ -591,14 +591,14 @@
   {
    "id": "os.workshop.wait",
    "speaker": "apprentice-ren",
-   "text": "Did you ask yet? I'll be here.",
+   "text": "Ren holds the little ticket down with one finger. The other end is already lifting.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "os.workshop.other",
    "speaker": "smith-hesper",
-   "text": "One knife? It cracked for a dozen reasons. The heat, the steel, the shape. Tell Ren to make three the same, change only the water, and watch.",
+   "text": "I saw Ren fold the edge of that ticket to tuck it in. We have tickets from the same sheet. Compare dry and damp with the same edge. Then compare the edges. Keep all three from each packet.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world",
    "effects": [
@@ -611,12 +611,12 @@
   {
    "id": "os.workshop.reflect",
    "speaker": "apprentice-ren",
-   "text": "Three knives, same heat, same steel, only the water changes. And if the rain ones still crack?",
+   "text": "Same paper, same clip. One flat, one folded. We can check them dry and damp. Suppose the damp tickets still curl higher. What am I going to put on the door?",
    "claimKind": "interpretation",
    "historicalLabel": "fictional-world",
    "options": [
     {
-     "text": "Then rain water is a good suspect, and we test again.",
+     "text": "Put damp paper down as a suspect. Try another sheet.",
      "effects": [
       {
        "setFlag": "os.workshop.choice",
@@ -636,7 +636,7 @@
      "next": "os.workshop.done"
     },
     {
-     "text": "Then we ask other smiths if they saw the same.",
+     "text": "Ask the people who hung last season’s tickets.",
      "effects": [
       {
        "setFlag": "os.workshop.choice",
@@ -660,14 +660,14 @@
   {
    "id": "os.workshop.done",
    "speaker": "apprentice-ren",
-   "text": "Suspect, not proven. I like that word. I'll make the three knives tomorrow, and I'll tell people only what the knives show.",
+   "text": "Ren takes Hesper’s ticket off the damp sill and puts a ruler where it lay. There are little pencil notches already on the wall.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world"
   },
   {
    "id": "os.workshop.idle",
    "speaker": "apprentice-ren",
-   "text": "Hesper says watch the colour of the steel, not the clock.",
+   "text": "Hesper's seat ticket has a brass button on it. Ren is keeping it flat for her.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world"
   },
@@ -704,7 +704,7 @@
   {
    "id": "os.singer.wait",
    "speaker": "singer-teodora",
-   "text": "Did you ask yet? I'll be here.",
+   "text": "Teodora puts the fourth stool out, thinks about it, and sits on the floor beside it.",
    "claimKind": "observation",
    "historicalLabel": "fictional-world"
   },
@@ -1150,7 +1150,7 @@
   {
    "id": "KG-CH1-O-workshop",
    "world": "WORLD-02",
-   "title": "Side quest: One Quench Is Not a Test",
+   "title": "Side quest: The Tickets That Curled",
    "knowledgeQuestion": "When is one result enough to know something?",
    "available": {
     "origin": "workshop"
@@ -1196,7 +1196,7 @@
     },
     {
      "id": "os.workshop.o2",
-     "title": "Optional: Ask Hesper what she thinks of Ren's cracked knife.",
+     "title": "Optional: Ask Hesper what she thinks of Ren’s curled concert ticket.",
      "essential": false,
      "visible": {
       "objective": "os.workshop.o1"
@@ -1654,7 +1654,7 @@
    "id": "h.os.workshop.o2.3",
    "objective": "os.workshop.o2",
    "depth": 3,
-   "text": "Ask Hesper what she thinks of Ren's cracked knife."
+   "text": "Ask Hesper what she thinks of Ren’s curled concert ticket."
   },
   {
    "id": "h.os.workshop.o2.4",
@@ -1833,8 +1833,8 @@
   {
    "id": "pf.os.workshop",
    "kind": "reflection",
-   "title": "One Quench Is Not a Test",
-   "text": "In Emberford I helped plan a fair test for a cracked knife. A thing I believed after only one try:",
+   "title": "The Tickets That Curled",
+   "text": "I helped Ren plan a fair trial for the concert tickets. One other change that could lift an edge was …",
    "weave": {
     "concepts": [
      "evidence",

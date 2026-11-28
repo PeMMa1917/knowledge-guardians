@@ -1,5 +1,5 @@
 import type { Condition, ContentPack, DialogueNode, Hint, Objective, SourceRecord, Weave } from '../domain/types';
-import { specimenEquipped } from '../domain/specimenGear';
+import { PERKINS_VOLUME, specimenEquipped } from '../domain/specimenGear';
 import data from './reading-works.json';
 
 export const READING_WORKS_AVAILABLE: Condition = { objective: 'copies.arrival' };
@@ -7,11 +7,11 @@ export const READING_WORKS_RECEIVER = 'reading-works.receiver';
 export const READING_WORKS_LAST = 'reading-works.last-installed';
 const VARA = 'reading-works-vara';
 const KORI = 'reading-works-kori';
-export const PERKINS_KEY = 'perkins:procede-1829';
+export const PERKINS_KEY = PERKINS_VOLUME;
 export const PERKINS_REVISIT = {
   map: 'preserved.archive', prop: 'perkins-cold-impression',
   method: 'Fit a raised stop that lets a reader find the maker credit on the right record',
-  hint: 'Return to the Cold Store with the Perkins working copy equipped. Use the two author slips beside the east bench.',
+  hint: 'Return to the Cold Store with the 1829 Perkins volume of Braille’s Procédé equipped. Use the two author slips beside the east bench.',
 };
 
 export const READING_WORKS_CASES = data.map((entry) => ({
@@ -56,10 +56,11 @@ const checks: Record<string, SourceRecord> = {
     accessed: '2026-11-26',
   },
   next: {
-    id: 'HIS-READING-WORKS-CERN', title: 'CERN’s short history of the Web',
-    url: 'https://home.cern/science/computing/birth-web/short-history-web', locator: 'The note identifying the machine in the server photograph',
-    supports: 'CERN identifies Tim Berners-Lee’s NeXT machine as the first Web server.',
-    accessed: '2026-11-26',
+    id: 'HIS-READING-WORKS-CERN', title: 'A Little History of the World Wide Web',
+    url: 'https://www.w3.org/History.html', locator: 'September and October 1990 entries naming the NeXT cube and the first Web server',
+    supports: 'The W3C timeline records the purchase of a NeXT cube and the network name of the first Web server at CERN.',
+    accessed: '2026-11-27',
+    mla: {kind: 'page', title: 'A Little History of the World Wide Web', container: 'World Wide Web Consortium', showAccessDate: true},
   },
 };
 const idrisiHistory: SourceRecord = {
@@ -191,6 +192,9 @@ export const readingWorksContent = {
   sources: [...READING_WORKS_CASES.map((entry) => ({
     id: entry.sourceId, title: `${entry.institution}, ${entry.accession}`,
     url: entry.source, locator: entry.locator, supports: entry.observation, accessed: '2026-11-26',
+    ...(entry.key === PERKINS_KEY ? { mla: {
+      kind: 'page' as const, title: 'Braille’s Most Famous Book', container: 'Perkins School for the Blind', showAccessDate: true,
+    } } : {}),
   })), ...Object.values(checks), idrisiHistory, idrisiScribe],
   exhibits: READING_WORKS_CASES.map((entry) => ({
     id: entry.exhibit, name: entry.title, historicalLabel: 'documented', art: entry.art,
@@ -221,5 +225,5 @@ export const readingWorksContent = {
     id: `j.${entry.flag}.${route}`, claimKind: 'observation' as const,
     text: `After both checks, I chose “${entry.routes[index].action}”. I used the arrangement with the reader at the Landing and kept their reply.`,
   }))), { id: 'j.reading-works.perkins.cold', claimKind: 'observation',
-    text: 'I brought the Perkins working copy to the Cold Store and fitted the two raised stops. A reader can find the author and copyist slips independently.' }],
+    text: 'I brought Perkins’s 1829 volume of Braille’s Procédé to the Cold Store and fitted the two raised stops. A reader can find the author and copyist slips independently.' }],
 } satisfies Partial<ContentPack>;

@@ -147,7 +147,7 @@
     {
       "id": "KG-CH7-R27",
       "world": "WORLD-08",
-      "title": "Inscribed Shang oracle bone",
+      "title": "The Question on the Bone",
       "knowledgeQuestion": "When can a date on a collection label tell us how old the thing is?",
       "available": {
         "objective": "copies.revise"
@@ -205,7 +205,7 @@
     {
       "id": "KG-CH7-R28",
       "world": "WORLD-08",
-      "title": "Jikji, surviving second volume",
+      "title": "The Second Volume of Jikji",
       "knowledgeQuestion": "How does keeping an edition with its printing method change what we can claim?",
       "available": {
         "objective": "copies.revise"
@@ -263,7 +263,7 @@
     {
       "id": "KG-CH4-R24",
       "world": "WORLD-05",
-      "title": "Rasulid astrolabe of ‘Umar ibn Yusuf",
+      "title": "‘Umar’s Plates",
       "knowledgeQuestion": "What must move with a measurement when another person uses it somewhere else?",
       "available": {
         "objective": "coast.revise"

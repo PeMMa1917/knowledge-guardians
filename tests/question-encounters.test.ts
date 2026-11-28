@@ -8,12 +8,13 @@ describe('questions that emerge from play', () => {
   const pack = buildPack();
   const worldByObjective = new Map(pack.missions.flatMap((mission) => mission.objectives.map((step) => [step.id, mission.world])));
 
-  it('revisits 35 question families in three existing actions across the campaign', () => {
+  it('revisits 35 question families through at least three distinct played actions across the campaign', () => {
     expect(QUESTION_ROUTES).toHaveLength(35);
     const worlds = new Set<string>();
     for (const { question, encounters } of QUESTION_ROUTES) {
       expect(question.journalOnly).toBe(true);
-      expect(encounters).toHaveLength(3);
+      expect(encounters.length).toBeGreaterThanOrEqual(3);
+      expect(new Set(encounters.map(([id,action])=>id+'|'+action)).size).toBe(encounters.length);
       const distinctWorlds = new Set(encounters.map(([id]) => {
         const world = worldByObjective.get(id);
         expect(world, id).toBeDefined();

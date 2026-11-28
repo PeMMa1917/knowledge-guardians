@@ -68,5 +68,24 @@ export async function smokeFieldGames(browser, { button, press, until }) {
       await press(browser, 'Escape');
     }
     console.log('PASS two field games, readable headings, three crate results and both ferry charts at ' + width + 'px and 175% text');
+
+    await browser.evaluate(() => window.kg.ui.openPuzzle('painters-frame'));
+    await until(() => browser.evaluate(() => document.activeElement?.matches('.puzzle-panel .close')), 'frame dialog focus');
+    const left = '.frame-nudge button[aria-label="Move the frame left"]';
+    await browser.evaluate((selector) => document.querySelector(selector).focus(), left);
+    const frame = () => browser.evaluate((selector) => ({
+      x: Number(document.querySelector('.fr-rect').getAttribute('x')),
+      onArrow: document.activeElement.matches(selector),
+    }), left);
+    const original = await frame();
+    await press(browser, 'Enter');
+    const first = await frame();
+    await press(browser, ' ');
+    const second = await frame();
+    if (!first.onArrow || !second.onArrow || first.x !== original.x - 10 || second.x !== original.x - 20) {
+      throw new Error('Successive keyboard nudges lost focus or movement: ' + JSON.stringify({ original, first, second }));
+    }
+    await press(browser, 'Escape');
+    console.log('PASS The Painter’s Frame keeps focus across two keyboard nudges at ' + width + 'px and 175% text');
   }
 }

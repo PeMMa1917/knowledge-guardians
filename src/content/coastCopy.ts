@@ -61,7 +61,7 @@ export const coastCopyContent = {
   }],
   hints: [
     'See what survives the trip from Wren’s table to Eren’s bench.',
-    'Use Kunit’s earned working copy at the Listening Room’s rubbing table. Try the relief and the separate account leaf.',
+    'Bring Kunit’s carved coast piece to the Listening Room’s rubbing table. Try the relief and the separate account leaf.',
     'Send one leaf in the test sleeve. Read it at the copy bench on Glass Walk. Notice what the second reader cannot follow.',
     'Return to the rubbing table and pair both leaves in a sleeve or link two filing pockets under BR-17. Check the bench again. For linked pockets, follow BR-17 to the courier pocket farther along the walk.',
   ].map((text, index) => ({ id: `h.coast-copy.${index + 1}`, objective: COAST_COPY_OBJECTIVE, depth: (index + 1) as Hint['depth'], text })),

@@ -50,3 +50,13 @@ footer { margin-top: 2rem; font-size: 0.8rem; color: var(--dim); border-top: 1px
 .activities thead th:nth-child(1) { width: 28%; }
 .activities thead th:nth-child(2) { width: 32%; }
 .activities tbody th small { font-weight: 400; }
+
+.plan-filters { display:grid;grid-template-columns:repeat(auto-fit,minmax(min(13rem,100%),1fr));gap:.8rem;padding:1rem 0; }
+.plan-filters label { display:grid;gap:.25rem;font-weight:600; }
+.plan-filters select { min-width:0;width:100%;padding:.4rem;font:inherit;background:#fff;color:var(--ink);border:1px solid var(--dim);border-radius:4px; }
+.plan-filters .row { align-self:end;margin:0; }
+.plan-visit + .plan-visit,.plan-results li + li { margin-top:1rem;padding-top:.7rem;border-top:1px solid var(--line); }
+.plan-visit p,.plan-results p { margin:.3rem 0; }
+.plan-results { padding-inline-start:1.5rem; }
+.plan-visit,.plan-results li { break-inside:avoid; }
+@media print { .plan-filters {display:none} #teacher main .panel {break-inside:auto} }

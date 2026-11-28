@@ -1,6 +1,8 @@
 # Accounts, classes and hosting
 
-Status: **plan approved, not built.** The project owner (Mika) chose this design on 26 November 2026. Read this file before you add any login, online save or class feature.
+The review build includes opt-in class adventures, cross-device recovery and the assigned teacher’s writing dashboard. The game and the teacher page still run on a static host for local play. The service uses a same-origin Cloudflare Worker with D1. The reviewed configuration targets a separate preview database. Production enrolment and release require a later rollout.
+
+Students and families can reach the short reading-audiences guide from the game title and the teacher page. It opens as a static page, including on local-only installations. [School and family guide](../public/schools.html)
 
 ## 1. The decision
 
@@ -15,12 +17,12 @@ Options that we did not choose: Supabase, Firebase, PocketBase on a rented serve
 ## 2. Rules (in addition to AGENTS.md)
 
 1. **No runtime AI** (CORE-005). The service only stores and returns data.
-2. **Least data.** Store only: username, password hash, class membership, save packages, progress summary, assignments, shared portfolio entries. Usernames must not be real names. The game suggests Guardian-style names.
+2. **Least data.** The preview stores pseudonymous student logins, teacher logins, salted password verifiers, session digests, short-lived sign-in limits, accepted class assignments, recovery packages and the scoped diary projection. Progress summaries and assignments are planned separately. Usernames must not be real names. The game suggests Guardian-style names.
 3. **The teacher is the gate.** A student joins a class with a class code, and the teacher must accept the request.
-4. **Student password reset by the teacher.** The teacher presses Reset. The student gets a one-time code to set a new password.
+4. **Planned student password reset by the teacher.** The teacher presses Reset. The student gets a one-time code to set a new password.
 5. **No tracking.** No analytics, no ads, no third-party scripts, no data sale.
-6. **Private stays private.** Diary notes, portfolio writing and photos stay with the student unless the student shares them (TEACH-005, portfolio rule). The photo album never leaves the device.
-7. **Delete.** A teacher can delete one student or a whole class. Accounts with no sign-in for 18 months are deleted automatically. A student can download their own data.
+6. **Writing audiences.** In a class adventure the student and their currently assigned teacher can read saved diary notes, questions, reflections and unfinished diary writing. The student sees the teacher’s name and class before opening the adventure and a reminder at the editor. The teacher sees unfinished work labelled Draft. Separate portfolio entries reach the teacher through the existing per-entry Share choice and explicit progress-file handoff. A student's private recovery package can restore private portfolio writing for its owner. The photo album lives on the device. The optional progress-file export keeps its existing sharing controls.
+7. **Planned deletion and retention.** The production design calls for teacher deletion of a student or whole class and automatic deletion after 18 months of inactivity. A student can download their own data.
 8. **No student-to-student features.** No chat, no sharing of creations (NOMAKE-001).
 9. **Local-only mode stays.** The game must work with no account, as it does now.
 10. **Security.** Slow password hashes (never plain text), sign-in rate limits, HTTPS only, HttpOnly session cookies.
@@ -28,15 +30,17 @@ Options that we did not choose: Supabase, Firebase, PocketBase on a rented serve
 ## 3. Saves
 
 - Waystones, checkpoints, the two slots and the quiet backup do not change (section 24 of the spec, AGENTS.md rules 2 and 3).
-- `src/domain/saves.ts` uses a `KeyValueStore`. Add an online store that writes the local copy first, then sends the save to the service. If the device is offline, queue the save and send it later.
-- On sign-in, the game gets the newest save. If the local save and the online save differ, show both (place, time) and let the student choose. Use the `revision` number of the slot pair.
-- The service keeps the last 5 save packages for each student, so a bad release cannot lose work.
+- Local play uses the existing device saves. Class sign-in opens a separate adventure scoped to the account, accepted class and assigned teacher. An older local diary stays in local play. Class sign-in requires connectivity. A signed-in tab can continue writing offline.
+- A save first writes the two slots, permanent record and current scene drafts to a single local class record. The client uploads a compressed personal recovery package and a separate, small teacher projection in one revision. A journal entry already being typed is persisted after the editor autosave. On another device sign in, read the audience notice, and select Continue.
+- A pending revision survives closing the tab. Reconnection, refocus, sign-in and the retry control retry pending work. Concurrent edits stop automatic upload. Reopen the class at the title to compare the locations and saved times and select a copy. Before switching devices, look for “Synced to your class.” Closing a tab can interrupt transmission, especially for a large package. Its pending local copy retries the next time the account opens on that device. Only an acknowledged revision displays as synced. D1 retains the latest five revisions under the same account and assignment.
+- D1 checks accepted membership and the teacher’s assignment for requests. The class dashboard returns the latest writing projection and reads no recovery package. A changed assignment requires fresh disclosure and has a separate save namespace. The teacher can refresh writing to pick up new diary revisions. Separate portfolio entries are read from student-shared progress files. Classmates have no writing view. Local session and browser storage on a shared device require the school’s normal device protections.
+- A request larger than the preview service limit stays saved here and shows as pending. The pilot must measure actual long saves before selecting production storage limits or moving packages to R2.
 
 ## 4. Stable while the game changes
 
 The game is still in development. The service must not depend on game content.
 
-- **The service never reads a save.** It stores a sealed package: `{ schema, savedAt, revision, data }`. Only the game opens `data`.
+- **Recovery and dashboard have distinct payloads.** The Worker stores the versioned student package as an opaque compressed value. The dashboard projection accepts only a kind, title and text per entry. Photos and device storage keys are outside both payloads. The database stores application-readable data and requires restricted operator access.
 - **Every game release loads every older save.** Use `CAMPAIGN_SCHEMA` and `PERMANENT_SCHEMA` migrations, and add a test for each new version.
 - **Teacher data uses the progress summary** (`format: knowledge-guardians-progress`, `version: 1`, see `src/teacher/report.ts`). Change its version when you change its shape, and keep reading old versions.
 - **Two addresses.** Every branch gets a Cloudflare preview address for tests. Students use the stable address, which changes only when the project owner approves a release.
@@ -44,8 +48,9 @@ The game is still in development. The service must not depend on game content.
 
 ## 5. Teacher tools
 
-- Class list: accept, remove, reset password, delete data.
+- Planned class administration includes acceptance, removal, password reset and deletion. The preview uses provisioned, accepted memberships.
 - Assignments: choose skills, concepts or areas of knowledge from the content pack. In the game, an assignment arrives as a **Council commission** in the story. It is never a task list or a quiz, and it gives no extra XP (PLAY-001, OPEN-001).
+- Writing: sign in at `teacher.html`, select an assigned class, and refresh its writing. Drafts and saved entries have distinct labels. The progress-file view continues to show explicitly shared portfolio work.
 - Progress: the current `teacher.html` views with live data. Formative only, no ranking, class totals only for the learner profile (TEACH-001 to TEACH-005, PROFILE-001).
 
 ## 6. Privacy and law
@@ -65,3 +70,29 @@ Laws to check: COPPA (amended rule, compliance from 22 April 2026), FERPA and US
 7. Open sign-up for other TOK teachers after the lawyer review.
 
 The full comparison with costs is in the project owner's planning document (not in this repository).
+
+## Review the working build
+
+Run `npm ci`, `npm run build`, and `node tools/classroom-preview.mjs` with Node 24. Open `http://127.0.0.1:8787` in two separate browser profiles. The loopback preview uses an in-memory SQLite database and the same request handler as the Worker. Restarting it clears its fictional accounts’ work. The student usernames are `ash-moth` in North Lanterns and `moss-wren` in South Lanterns. Their teachers sign in at `/teacher.html` as `north@example.invalid` and `south@example.invalid`. For a secure loopback preview on WebKit run `node tools/classroom-preview.mjs --https` and trust the temporary localhost certificate for that review session. School hosting uses a trusted HTTPS certificate. The fixture password is `Lantern-Fiction-42`. The Worker has no fixture or public account-creation endpoint.
+
+Run `node --test tools/test-classroom.mjs` for the fictional access and version tests. The Worker configuration example and the D1 migration live in `server/`. A school deployment still needs account provisioning, confirmation/reset, deletion and retention jobs, operational limits, and a tested backup/restore process. Sign-up and production deployment remain pending.
+
+The service contract tests can run on the Cloudflare local runtime as well. Install Miniflare in a separate review directory, then set `KG_MINIFLARE_PACKAGE` to its absolute `package.json` path when running `node --test tools/test-classroom.mjs`. The browser check uses Playwright and a temporary loopback HTTPS certificate generated by OpenSSL. Set `KG_PLAYWRIGHT_PACKAGE` to the review installation’s `package.json` and run `node tools/smoke-classroom.mjs chromium`, `firefox` or `webkit`. Use `KG_CHROMIUM` for a system Chromium executable. All preview identities and writing are fictional.
+
+### When two devices have different writing
+
+A student can return to the title, open **Manage class adventure**, and choose **Review the two copies**. Each choice shows the location, save time and a short excerpt of the student’s unfinished diary where available. Choosing the device copy writes that edition to the class before play resumes. If someone saves on the other device while the student is looking, the latest online edition appears for a fresh decision. **Decide later** leaves both copies available. The assigned teacher sees the writing from the last accepted class revision.
+
+The fictional-account journey includes a second online edit made while the first two editions are on screen. It verifies that the student sees the new words, that the selected draft reaches the assigned teacher and that a teacher in the other class cannot fetch it. [Browser journey](../tools/smoke-classroom.mjs) · [Concurrent revision checks](../tests/class-recovery.test.ts)
+
+When a student returns to the game or reconnects while an earlier save is still waiting for a response, the client waits for that write and then retries with the latest words. An incompatible online revision opens the two-copy review. Small writes requested while leaving a page retain the browser’s background-delivery option. Larger drafts remain in local storage and retry when the student returns.
+
+### Optional class leaderboards
+
+A student in a class adventure can open **Menu → Leaderboard**, select one of 31 activities and choose today, this week, this month or year to date. Opening a board simply reads the current class’s posted results. Before writing a nickname or posting, the screen identifies the audience. The post button sends the displayed value for that activity and period. Changing the nickname on a subsequent post updates the nickname on all that student’s class scores. A higher or lower score can replace an earlier result. Equal results share a place. Counts of TOK practice describe activity and carry no assessment mark.
+
+An approved class member and the assigned teacher can read posted nicknames, values and through-dates for the selected board. The teacher’s class-writing and leaderboard panels have separate service responses. An unposted student has no public row. Optional score files, progress exports, portfolio sharing, writing sync and streak preferences each keep their own controls. Local adventures use the existing file comparison.
+
+Apply the versioned D1 migrations in order for hosted review. Migration 0002 stores at most one snapshot for each chosen activity and period per student and class assignment. A newer posting for that selection replaces its prior date range. Reading another student's row exposes the shared nickname. Account keys stay on the service. Withdrawal clears all score values and the nickname together and retains a revision counter to prevent an older device from putting them back accidentally. Withdrawing, losing approved membership, moving class, or a change of assigned teacher clears publication for that assignment. A current student with an incorrect device date can still withdraw. The preview uses disposable fictional accounts.
+
+[Service checks](../tools/test-classroom.mjs) · [Student and teacher browser journey](../tools/smoke-class-scores.mjs)

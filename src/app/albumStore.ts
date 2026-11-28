@@ -1,3 +1,4 @@
+import {classroom} from '../classroom/client';
 /**
  * The photo album lives only on this device (localStorage), like saved pictures.
  * Pictures are small JPEG thumbnails. Never sent anywhere, never in a progress file.
@@ -14,19 +15,19 @@ export interface AlbumPhoto {
   checked: boolean;
 }
 
-const KEY = 'kg.album';
+const albumKey = () => classroom?.albumKey ?? 'kg.album';
 export const ALBUM_MAX = 12;
 
 export function loadAlbum(): AlbumPhoto[] {
-  try { const a = JSON.parse(localStorage.getItem(KEY) ?? '[]'); return Array.isArray(a) ? a : []; } catch { return []; }
+  try { const a = JSON.parse(localStorage.getItem(albumKey()) ?? '[]'); return Array.isArray(a) ? a : []; } catch { return []; }
 }
 
 /** Saves the album; drops the oldest pictures if storage is full. Returns false if nothing could be saved. */
 export function saveAlbum(list: AlbumPhoto[]): boolean {
   let l = list.slice(-ALBUM_MAX);
   while (l.length) {
-    try { localStorage.setItem(KEY, JSON.stringify(l)); return true; } catch { l = l.slice(1); }
+    try { localStorage.setItem(albumKey(), JSON.stringify(l)); return true; } catch { l = l.slice(1); }
   }
-  try { localStorage.removeItem(KEY); } catch { /* storage blocked */ }
+  try { localStorage.removeItem(albumKey()); } catch { /* storage blocked */ }
   return false;
 }

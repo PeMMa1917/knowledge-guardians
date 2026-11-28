@@ -1,3 +1,6 @@
+import {trailThreadPanel} from './trailThread';
+import {classroom} from '../classroom/client';
+import {writingNotice,sceneEditor} from '../classroom/student';
 import type { GameController } from '../app/controller';
 import { adventureJournalView, type AdventureJournalView, type JournalNote, type JournalReflection } from '../domain/adventureJournal';
 import { CONCEPTS, type DiaryNoteKind } from '../domain/types';
@@ -11,6 +14,7 @@ import { printAdventureJournal } from './adventurePrint';
 import { adventureReferences } from './adventureReferences';
 import { adventureEncyclopedia, wikipediaLink } from './adventureEncyclopedia';
 import { clear, h } from './dom';
+import { diaryWords } from './diaryWords';
 import { conceptEditor } from './conceptEditor';
 import { bindJournalEditor, flushJournalWriting, queueJournalWriting } from './journalWriting';
 
@@ -27,7 +31,12 @@ function entryDetails(kind: string, at: string | null, mapId: string | null): HT
 }
 
 function journalView(controller: GameController): AdventureJournalView {
-  return adventureJournalView(controller.pack, controller.state, controller.engine.visibleObjectives(controller.state));
+  const view=adventureJournalView(controller.pack, controller.state, controller.engine.visibleObjectives(controller.state));
+  const drafts=Object.values(classroom?.drafts() ?? {});
+  for (const [i,draft] of drafts.entries()) view.notes.push({
+    index:-(i+2),kind:'note',resolved:false,draft:true,at:draft.at ?? null,mapId:draft.mapId ?? null,text:draft.title+'\n'+draft.text,
+  });
+  return view;
 }
 
 const frameworkNames: Record<FrameworkPart, string> = {
@@ -47,7 +56,7 @@ function topicOptions<T extends string>(title: string, values: readonly T[], lab
 function exportControls(controller: GameController, initialView: AdventureJournalView): HTMLElement {
   const include = h('input', { type: 'checkbox', checked: true });
   const untagged = h('input', { type: 'checkbox' });
-  const untaggedOption = h('label', { class: 'check', hidden: true }, untagged, ' Also include my private writing without TOK tags within this time range');
+  const untaggedOption = h('label', { class: 'check', hidden: true }, untagged, classroom ? ' Also include my writing without TOK tags within this time range' : ' Also include my private writing without TOK tags within this time range');
   const status = h('p', { role: 'status', class: 'fine' });
   const range = h('select', {},
     h('option', { value: 'all' }, 'All time'), h('option', { value: 'session' }, 'This session'),
@@ -141,7 +150,7 @@ function exportControls(controller: GameController, initialView: AdventureJourna
   } }, 'Print or save as PDF');
   return h('div', { class: 'diary-export' },
     filters, reset,
-    h('label', { class: 'check' }, include, ' Include my private writing in this export'),
+    h('label', { class: 'check' }, include, classroom ? ' Include my writing in this export' : ' Include my private writing in this export'),
     untaggedOption,
     h('div', { class: 'row' }, download, print), status);
 }
@@ -151,7 +160,7 @@ function diaryReflections(
 ): HTMLElement | null {
   if (!reflections?.length) return null;
   const status = h('p', { class: 'fine', role: 'status' });
-  const editors = reflections.map(({ id, prompt, response }) => {
+  const editors = reflections.map(({ id, prompt, response, earlier }) => {
     const fieldId = `reflection-${encodeURIComponent(entry)}-${encodeURIComponent(id)}`;
     const field = h('textarea', { id: fieldId, rows: 3 });
     field.value = response ?? '';
@@ -178,10 +187,11 @@ function diaryReflections(
       answer.hidden = edit.hidden = false;
       editor.hidden = true;
     });
-    return h('div', { class: 'diary-reflection' }, h('label', { for: fieldId }, prompt), answer, edit, editor);
+    const reflection = h('div', { class: 'diary-reflection' }, h('label', { for: fieldId }, prompt), answer, edit, editor);
+    return earlier ? h('details', {}, h('summary', {}, 'My earlier reflection'), reflection) : reflection;
   });
   return h('details', { class: 'diary-reflections' },
-    h('summary', {}, 'Optional reflections'), ...editors, status);
+    h('summary', {}, 'Optional reflections'), writingNotice(), ...editors, status);
 }
 
 function diaryFeed(view: AdventureJournalView, controller: GameController, refresh: (tab: DiaryTab) => void): HTMLElement {
@@ -201,6 +211,7 @@ function diaryFeed(view: AdventureJournalView, controller: GameController, refre
     list.append(...part.map((entry) => h('li', {}, h('h3', {}, entry.title),
       entryDetails(entryLabels[entry.kind], entry.at, entry.mapId), h('p', {}, entry.text),
       entry.encyclopedia ? h('p', { class: 'fine' }, wikipediaLink(entry.encyclopedia)) : null,
+      diaryWords(entry, view.entries, controller.pack.glossary),
       diaryReflections(entry.id, entry.reflections, controller))));
     shown += part.length;
     more.hidden = shown >= results.length;
@@ -223,6 +234,7 @@ function diaryFeed(view: AdventureJournalView, controller: GameController, refre
     h('label', { class: 'diary-filter' }, 'Show ', select), empty, list, more,
     h('details', { class: 'diary-source-list' }, h('summary', {}, 'Sources for my collected specimens'),
       view.references.length ? adventureReferences(view.references) : h('p', {}, 'Collected specimens will add their catalogue references here.')),
+    view.readings?.length ? h('details',{class:'diary-source-list'},h('summary',{},'Research behind my encounters'),adventureReferences(view.readings)) : null,
     adventureEncyclopedia(view.encyclopedia));
 }
 
@@ -232,6 +244,24 @@ function questionButton(note: JournalNote, controller: GameController, refresh: 
     const result = controller.dispatch({ type: 'SetDiaryQuestion', index: note.index, resolved: !note.resolved });
     if (!result.some((event) => event.kind === 'error')) refresh();
   } }, note.resolved ? 'Reopen question' : 'Mark question resolved');
+}
+
+function sceneDraftEditors(controller:GameController, refresh:()=>void) {
+  const drafts=Object.entries(classroom?.drafts() ?? {});
+  if(!drafts.length) return null;
+  return h('section',{},h('h4',{},'Unfinished writing from the road'),...drafts.map(([id,draft])=>{
+    const field=h('textarea',{rows:3,'aria-label':'Draft · '+draft.title});
+    const finish=sceneEditor(field,id,draft.title);
+    const status=h('p',{role:'status'});
+    return h('details',{},h('summary',{},'Draft · '+draft.title),writingNotice(),conceptEditor(field),
+      h('button',{type:'button',onclick:()=>{
+        if(!field.value.trim()) {refresh();return;}
+        const error=controller.dispatch({type:'AddNote',kind:'note',text:draft.title+'\n'+field.value}).find(e=>e.kind==='error');
+        if(error){status.textContent=error.message;return;}
+        queueJournalWriting(controller,status);
+        if(flushJournalWriting(controller)){finish();refresh();}
+      }},'Keep as a journal note'),status);
+  }));
 }
 
 function diaryNotes(view: AdventureJournalView, controller: GameController, refresh: () => void): HTMLElement {
@@ -265,19 +295,46 @@ function diaryNotes(view: AdventureJournalView, controller: GameController, refr
     h('label', { for: 'diary-note-text' }, 'Your note'), conceptEditor(text),
     h('button', { type: 'submit' }, 'Save note'), status);
   return h('section', { class: 'adventure-journal' }, h('h3', {}, 'My notes, reflections, and questions'),
-    h('p', { class: 'fine' }, 'Private entries saved with this adventure.'), form,
+    writingNotice(), form, sceneDraftEditors(controller,refresh),
     notes.length ? h('ol', { class: 'diary-feed diary-notes' }, ...[...notes].reverse().map((note) => h('li', {},
       entryDetails(note.kind === 'question' ? (note.resolved ? 'Resolved question' : 'Open question') : noteLabels[note.kind], note.at, note.mapId),
       h('p', {}, note.text), questionButton(note, controller, refresh),
       diaryReflections(`note:${note.index}`, note.reflections, controller)))) : h('p', {}, 'You have no personal entries yet.'));
 }
 
+/** Steps shown before the rest go into a drawer (C-010: long step lists are hard to scan). */
+const STEPS_SHOWN = 4;
+
+/** The place name of a chapter world, from its first map ("Cartographers’ Sea: Lantern House" gives "Cartographers’ Sea"). */
+function worldName(world: string): string {
+  const map = Object.values(MAPS).find((m) => m.world === world);
+  return map ? map.name.split(':')[0] : world;
+}
+
+function questItem(quest: AdventureJournalView['quests'][number]): HTMLElement {
+  const shown = quest.steps.slice(0, STEPS_SHOWN);
+  const rest = quest.steps.slice(STEPS_SHOWN);
+  return h('li', {}, h('h4', {}, quest.title),
+    quest.question ? h('p', {}, quest.question) : null,
+    h('p', { class: 'fine' }, `${quest.done} of ${quest.total} steps done.`),
+    h('ul', {}, ...shown.map((step) => h('li', {}, step))),
+    rest.length ? h('details', { class: 'quest-drawer' }, h('summary', {}, `${rest.length} more steps`),
+      h('ul', {}, ...rest.map((step) => h('li', {}, step)))) : null);
+}
+
 function openQuests(view: AdventureJournalView, controller: GameController, refresh: () => void): HTMLElement {
   const questions = view.notes.filter((note) => note.kind === 'question' && !note.resolved && !note.draft);
+  // C-010: group open quests into one pathway per place. No main path is marked (decision X-010).
+  const here = MAPS[controller.state.mapId]?.world;
+  const worlds = [...new Set(view.quests.map((q) => q.world))];
   return h('section', { class: 'adventure-journal' }, h('h3', {}, 'Open quests and questions'),
-    view.quests.length ? h('ol', { class: 'diary-feed' }, ...view.quests.map((quest) => h('li', {}, h('h3', {}, quest.title),
-      quest.question ? h('p', {}, quest.question) : null,
-      h('ul', {}, ...quest.steps.map((step) => h('li', {}, step)))))) : h('p', {}, 'You have no open quests.'),
+    h('p',{class:'fine'},'You can stop between steps. Your journal keeps your place.'), trailThreadPanel(controller,worldName),
+    view.quests.length ? h('div', { class: 'quest-pathways' }, ...worlds.map((world) => {
+      const qs = view.quests.filter((q) => q.world === world);
+      return h('details', { class: 'quest-pathway', open: world === here || worlds.length === 1 },
+        h('summary', {}, `${worldName(world)} (${qs.length} open)`),
+        h('ol', { class: 'diary-feed' }, ...qs.map(questItem)));
+    })) : h('p', {}, 'You have no open quests.'),
     h('h3', {}, 'My open questions'),
     questions.length ? h('ul', { class: 'diary-feed diary-notes' }, ...questions.map((note) => h('li', {},
       h('p', {}, note.text), questionButton(note, controller, refresh)))) : h('p', {}, 'You have no personal questions open.'));

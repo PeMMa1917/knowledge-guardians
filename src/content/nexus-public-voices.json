@@ -1,0 +1,542 @@
+{
+  "missions": [
+    {
+      "id": "KG-CH1-R27",
+      "world": "WORLD-01",
+      "title": "Two Ways Back to Yirrkala",
+      "knowledgeQuestion": "What can a place that holds a record tell us about the people who made it?",
+      "available": { "flag": "nexus.public-index.started", "eq": true },
+      "objectives": [
+        {
+          "id": "nexus.public-index.received",
+          "title": "Take the two public sources to the reader who can use them and check the handoff.",
+          "essential": false,
+          "done": { "flagSet": "nexus.public-index.done" },
+          "weave": {
+            "concepts": ["evidence", "culture", "perspective", "power", "responsibility"],
+            "framework": ["scope", "perspectives", "methods-and-tools", "ethics"],
+            "minutes": 4,
+            "thinking": { "dok": 3, "bloom": "analyse", "fink": "integration", "solo": "relational" },
+            "atl": ["research", "communication"],
+            "aoks": ["HIS", "IND"],
+            "subjects": ["history", "global-politics"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH1-R28",
+      "world": "WORLD-01",
+      "title": "One Clip for the Welcome",
+      "knowledgeQuestion": "When does a brief direction need the reasons behind it?",
+      "available": { "flag": "nexus.public-welcome.started", "eq": true },
+      "objectives": [
+        {
+          "id": "nexus.public-welcome.received",
+          "title": "Put the three public records where a visitor can use them and watch what the visitor finds.",
+          "essential": false,
+          "done": { "flagSet": "nexus.public-welcome.done" },
+          "weave": {
+            "concepts": ["culture", "perspective", "interpretation", "values", "responsibility"],
+            "framework": ["scope", "perspectives", "methods-and-tools", "ethics"],
+            "minutes": 4,
+            "thinking": { "dok": 3, "bloom": "evaluate", "fink": "human", "solo": "relational" },
+            "atl": ["research", "communication", "social"],
+            "aoks": ["REL"],
+            "subjects": ["world-religions"]
+          }
+        }
+      ]
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "nexus.public-index.invite",
+      "speaker": "clerk-venn",
+      "historicalLabel": "fictional-world",
+      "text": "Kip needs a way to return a reader’s question about the Yirrkala petitions. My file card lists the display. His slip says ‘made by Parliament’. I can file an exact pointer now. He can take the Centre’s public page to the reader instead. Two public records are here to check.",
+      "options": [
+        {
+          "text": "Open Venn’s two records.",
+          "if": { "not": {"flagSet": "nexus.public-index.started"} },
+          "effects": [
+            { "setFlag": "nexus.public-index.started", "value": true }
+          ]
+        },
+        { "text": "Leave the records with Venn." }
+      ]
+    },
+    {
+      "id": "nexus.public-index.parliament",
+      "speaker": "narrator",
+      "historicalLabel": "documented",
+      "text": "In 1963, Yolŋu at Yirrkala sent two petitions to Parliament about a decision on their land made without consulting them. The Parliamentary Education Office credits the painted surrounds to Dhuwa artists for the petition dated 14 August and Yirritja artists for the one dated 28 August.",
+      "claimKind": "observation",
+      "citationSource": "HIS-APH-YIRRKALA-CAPTION",
+      "options": [
+        {
+          "text": "Clip the two attributions under their separate dates.",
+          "if": {
+            "all": [
+              { "flag": "nexus.public-index.started", "eq": true },
+              { "not": {"flagSet": "nexus.public-index.plan"} },
+              { "not": {"flagSet": "nexus.public-index.parliament"} }
+            ]
+          },
+          "effects": [
+            { "setFlag": "nexus.public-index.parliament", "value": true }
+          ]
+        },
+        { "text": "Leave the record open." }
+      ]
+    },
+    {
+      "id": "nexus.public-index.centre",
+      "speaker": "narrator",
+      "historicalLabel": "documented",
+      "text": "The Buku-Larrŋgay Mulka Centre’s public history tells how Yolŋu artists established a community-controlled art centre at Yirrkala. It gives the community’s own account of its work. This page is a way to find that account.",
+      "claimKind": "observation",
+      "citationSource": "HIS-YIRRKALA-BUKU-HISTORY",
+      "options": [
+        {
+          "text": "Clip the Centre’s own name and public page.",
+          "if": {
+            "all": [
+              { "flag": "nexus.public-index.started", "eq": true },
+              { "not": {"flagSet": "nexus.public-index.plan"} },
+              { "not": {"flagSet": "nexus.public-index.centre"} }
+            ]
+          },
+          "effects": [
+            { "setFlag": "nexus.public-index.centre", "value": true }
+          ]
+        },
+        { "text": "Leave the record open." }
+      ]
+    },
+    {
+      "id": "nexus.public-index.board",
+      "speaker": "clerk-venn",
+      "historicalLabel": "fictional-world",
+      "text": "Put both sources on the slip. If I file it by date, a reader can find the right parliamentary record straight away. If Kip leads with the Centre, the reader can go directly to its public account. Which will you send?",
+      "options": [
+        {
+          "text": "Pin the dates and attributions first. Take the catalogue slip to Venn.",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  { "flag": "nexus.public-index.started", "eq": true },
+                  { "not": {"flagSet": "nexus.public-index.plan"} }
+                ]
+              },
+              { "flag": "nexus.public-index.parliament", "eq": true },
+              { "flag": "nexus.public-index.centre", "eq": true }
+            ]
+          },
+          "effects": [
+            { "setFlag": "nexus.public-index.plan", "value": "dates" },
+            { "giveItem": "nexus.public-index.slip" }
+          ],
+          "next": "nexus.public-index.dates.carry"
+        },
+        {
+          "text": "Put the Centre’s own account first. Take the reader’s slip to Kip.",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  { "flag": "nexus.public-index.started", "eq": true },
+                  { "not": {"flagSet": "nexus.public-index.plan"} }
+                ]
+              },
+              { "flag": "nexus.public-index.parliament", "eq": true },
+              { "flag": "nexus.public-index.centre", "eq": true }
+            ]
+          },
+          "effects": [
+            { "setFlag": "nexus.public-index.plan", "value": "centre" },
+            { "giveItem": "nexus.public-index.slip" }
+          ],
+          "next": "nexus.public-index.centre.carry"
+        },
+        { "text": "Leave the copies on the desk for now." }
+      ]
+    },
+    {
+      "id": "nexus.public-index.dates.carry",
+      "speaker": "clerk-venn",
+      "historicalLabel": "fictional-world",
+      "text": "Set it by my index tray. I’ll try the two date entries on the old card."
+    },
+    {
+      "id": "nexus.public-index.centre.carry",
+      "speaker": "clerk-venn",
+      "historicalLabel": "fictional-world",
+      "text": "Kip’s by the west bench. Give him the slip before he sets out."
+    },
+    {
+      "id": "nexus.public-index.dates.receive",
+      "speaker": "clerk-venn",
+      "historicalLabel": "fictional-world",
+      "text": "The index still has one card headed ‘made by Parliament’. I can open it out into two dated entries. Hold the slip against this line while I move the old marker.",
+      "options": [
+        {
+          "text": "Hold the new date entries against the old index card.",
+          "if": {
+            "all": [
+              { "flag": "nexus.public-index.plan", "eq": "dates" },
+              { "item": "nexus.public-index.slip" },
+              { "not": {"flagSet": "nexus.public-index.done"} }
+            ]
+          },
+          "effects": [
+            { "takeItem": "nexus.public-index.slip" },
+            { "setFlag": "nexus.public-index.done", "value": "dates" },
+            { "journal": "j.nexus.public-index.dates" }
+          ],
+          "next": "nexus.public-index.dates.used"
+        },
+        { "text": "Keep the slip for now." }
+      ]
+    },
+    {
+      "id": "nexus.public-index.dates.used",
+      "speaker": "clerk-venn",
+      "historicalLabel": "fictional-world",
+      "text": "There. For the painted surrounds, the reader can now find 14 August under Dhuwa and 28 August under Yirritja. Parliament goes under ‘public record’. I’ve left the Centre link on both entries in case the reader wants to follow it."
+    },
+    {
+      "id": "nexus.public-index.centre.receive",
+      "speaker": "kip-arden",
+      "historicalLabel": "fictional-world",
+      "text": "Is this what I give the reader? They asked where to hear how the Centre got started. I nearly set off with only a shelf number.",
+      "options": [
+        {
+          "text": "Turn the slip so Kip can use the Centre’s name as the first handoff.",
+          "if": {
+            "all": [
+              { "flag": "nexus.public-index.plan", "eq": "centre" },
+              { "item": "nexus.public-index.slip" },
+              { "not": {"flagSet": "nexus.public-index.done"} }
+            ]
+          },
+          "effects": [
+            { "takeItem": "nexus.public-index.slip" },
+            { "setFlag": "nexus.public-index.done", "value": "centre" },
+            { "journal": "j.nexus.public-index.centre" }
+          ],
+          "next": "nexus.public-index.centre.used"
+        },
+        { "text": "Keep the slip for now." }
+      ]
+    },
+    {
+      "id": "nexus.public-index.centre.used",
+      "speaker": "kip-arden",
+      "historicalLabel": "fictional-world",
+      "text": "I’ll move my delivery marker to the reading bench. Now I can point them straight to the Centre’s own history. I’ll keep Venn’s two dates in my pocket if they ask which petition they found."
+    },
+    {
+      "id": "nexus.public-welcome.invite",
+      "speaker": "facing-sella",
+      "historicalLabel": "fictional-world",
+      "text": "A visitor asked me for a route they can use alone. Dace has another visitor asking why the welcome matters. One clip is free. If I leave every page on it, I’ll still be giving directions after the visitor has found the door.",
+      "options": [
+        {
+          "text": "Open the three visitor records.",
+          "if": { "not": {"flagSet": "nexus.public-welcome.started"} },
+          "effects": [
+            { "setFlag": "nexus.public-welcome.started", "value": true }
+          ]
+        },
+        { "text": "Leave the clip free for now." }
+      ]
+    },
+    {
+      "id": "nexus.public-welcome.fremont",
+      "speaker": "narrator",
+      "historicalLabel": "documented",
+      "text": "The Pluralism Project describes the Sodhi family preparing langar at a Sikh gurdwara in Fremont, California. Visitors can share the communal meal there. The public account connects eating together with equality.",
+      "claimKind": "observation",
+      "citationSource": "REL-WELCOME-01",
+      "options": [
+        {
+          "text": "Clip the Fremont account beside its place name.",
+          "if": {
+            "all": [
+              { "flag": "nexus.public-welcome.started", "eq": true },
+              { "not": {"flagSet": "nexus.public-welcome.plan"} },
+              { "not": {"flagSet": "nexus.public-welcome.fremont"} }
+            ]
+          },
+          "effects": [
+            { "setFlag": "nexus.public-welcome.fremont", "value": true }
+          ]
+        },
+        { "text": "Leave the record open." }
+      ]
+    },
+    {
+      "id": "nexus.public-welcome.abbey",
+      "speaker": "narrator",
+      "historicalLabel": "documented",
+      "text": "Saint Meinrad Archabbey in Indiana explains its welcome in the Benedictine tradition. Its public visitor page says the community receives guests as Christ.",
+      "claimKind": "observation",
+      "citationSource": "REL-WELCOME-02",
+      "options": [
+        {
+          "text": "Clip Saint Meinrad’s own welcome beside its place name.",
+          "if": {
+            "all": [
+              { "flag": "nexus.public-welcome.started", "eq": true },
+              { "not": {"flagSet": "nexus.public-welcome.plan"} },
+              { "not": {"flagSet": "nexus.public-welcome.abbey"} }
+            ]
+          },
+          "effects": [
+            { "setFlag": "nexus.public-welcome.abbey", "value": true }
+          ]
+        },
+        { "text": "Leave the record open." }
+      ]
+    },
+    {
+      "id": "nexus.public-welcome.schedule",
+      "speaker": "narrator",
+      "historicalLabel": "documented",
+      "text": "Saint Meinrad publishes a route for a self-guided campus tour and a separate church prayer schedule. The site says the prayer schedule may change.",
+      "claimKind": "observation",
+      "citationSource": "REL-WELCOME-03",
+      "options": [
+        {
+          "text": "Keep the tour and prayer details on separate lines.",
+          "if": {
+            "all": [
+              { "flag": "nexus.public-welcome.started", "eq": true },
+              { "not": {"flagSet": "nexus.public-welcome.plan"} },
+              { "not": {"flagSet": "nexus.public-welcome.schedule"} }
+            ]
+          },
+          "effects": [
+            { "setFlag": "nexus.public-welcome.schedule", "value": true }
+          ]
+        },
+        { "text": "Leave the record open." }
+      ]
+    },
+    {
+      "id": "nexus.public-welcome.board",
+      "speaker": "facing-sella",
+      "historicalLabel": "fictional-world",
+      "text": "Give me a notice someone can use on their way out, or leave Dace the fuller copy for a conversation. Either way, keep the two places beside their own reasons. If a visitor reads just one line, what should it let them do?",
+      "options": [
+        {
+          "text": "Clip the self-guided route at the front. Take the visitor notice to Sella.",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  { "flag": "nexus.public-welcome.started", "eq": true },
+                  { "not": {"flagSet": "nexus.public-welcome.plan"} }
+                ]
+              },
+              { "flag": "nexus.public-welcome.fremont", "eq": true },
+              { "flag": "nexus.public-welcome.abbey", "eq": true },
+              { "flag": "nexus.public-welcome.schedule", "eq": true }
+            ]
+          },
+          "effects": [
+            { "setFlag": "nexus.public-welcome.plan", "value": "notice" },
+            { "giveItem": "nexus.public-welcome.slip" }
+          ],
+          "next": "nexus.public-welcome.notice.carry"
+        },
+        {
+          "text": "Keep the two accounts open beside each other. Take the source copy to Dace.",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  { "flag": "nexus.public-welcome.started", "eq": true },
+                  { "not": {"flagSet": "nexus.public-welcome.plan"} }
+                ]
+              },
+              { "flag": "nexus.public-welcome.fremont", "eq": true },
+              { "flag": "nexus.public-welcome.abbey", "eq": true },
+              { "flag": "nexus.public-welcome.schedule", "eq": true }
+            ]
+          },
+          "effects": [
+            { "setFlag": "nexus.public-welcome.plan", "value": "desk" },
+            { "giveItem": "nexus.public-welcome.slip" }
+          ],
+          "next": "nexus.public-welcome.desk.carry"
+        },
+        { "text": "Leave the copies on the desk for now." }
+      ]
+    },
+    {
+      "id": "nexus.public-welcome.notice.carry",
+      "speaker": "facing-sella",
+      "historicalLabel": "fictional-world",
+      "text": "I’ll try it from the hall-side clip. Let the visitor take the first step without me."
+    },
+    {
+      "id": "nexus.public-welcome.desk.carry",
+      "speaker": "facing-sella",
+      "historicalLabel": "fictional-world",
+      "text": "Dace is at the west case. Leave enough room for her to lift both source leaves."
+    },
+    {
+      "id": "nexus.public-welcome.notice.receive",
+      "speaker": "facing-sella",
+      "historicalLabel": "fictional-world",
+      "text": "The visitor wants to walk around Saint Meinrad without joining a service. I’ll hang the tour line at the front. Can they still lift both leaves for the reasons behind the welcomes?",
+      "options": [
+        {
+          "text": "Move the tour line to the front and leave both named accounts underneath.",
+          "if": {
+            "all": [
+              { "flag": "nexus.public-welcome.plan", "eq": "notice" },
+              { "item": "nexus.public-welcome.slip" },
+              { "not": {"flagSet": "nexus.public-welcome.done"} }
+            ]
+          },
+          "effects": [
+            { "takeItem": "nexus.public-welcome.slip" },
+            { "setFlag": "nexus.public-welcome.done", "value": "notice" },
+            { "journal": "j.nexus.public-welcome.notice" }
+          ],
+          "next": "nexus.public-welcome.notice.used"
+        },
+        { "text": "Keep the slip for now." }
+      ]
+    },
+    {
+      "id": "nexus.public-welcome.notice.used",
+      "speaker": "facing-sella",
+      "historicalLabel": "fictional-world",
+      "text": "The visitor finds the separate campus tour line and copies the place name. They lift the Fremont leaf and put it back. ‘That meal is at the gurdwara. I had the two places mixed up.’ Sella leaves the two leaves under the route."
+    },
+    {
+      "id": "nexus.public-welcome.desk.receive",
+      "speaker": "curator-dace",
+      "historicalLabel": "fictional-world",
+      "text": "Set those leaves on two clips. The visitor here wants to know what ‘welcome’ asks of each host. I can talk it through, but someone at the hall clip will still have to ask me for the tour directions.",
+      "options": [
+        {
+          "text": "Open both accounts at Dace’s case and let her pass each leaf to the visitor.",
+          "if": {
+            "all": [
+              { "flag": "nexus.public-welcome.plan", "eq": "desk" },
+              { "item": "nexus.public-welcome.slip" },
+              { "not": {"flagSet": "nexus.public-welcome.done"} }
+            ]
+          },
+          "effects": [
+            { "takeItem": "nexus.public-welcome.slip" },
+            { "setFlag": "nexus.public-welcome.done", "value": "desk" },
+            { "journal": "j.nexus.public-welcome.desk" }
+          ],
+          "next": "nexus.public-welcome.desk.used"
+        },
+        { "text": "Keep the slip for now." }
+      ]
+    },
+    {
+      "id": "nexus.public-welcome.desk.used",
+      "speaker": "curator-dace",
+      "historicalLabel": "fictional-world",
+      "text": "The visitor keeps each leaf at its own clip. ‘The Fremont account connects eating together with equality. Saint Meinrad gives a different reason for welcoming its guests.’ Dace keeps the tour slip on her desk for the next visitor to ask."
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.nexus.public-index.1",
+      "objective": "nexus.public-index.received",
+      "depth": 1,
+      "text": "Look for Venn’s narrow records board just west of Ise."
+    },
+    {
+      "id": "h.nexus.public-index.2",
+      "objective": "nexus.public-index.received",
+      "depth": 2,
+      "text": "Keep the public catalogue’s separate attributions and the Centre’s own account on the same slip."
+    },
+    {
+      "id": "h.nexus.public-index.3",
+      "objective": "nexus.public-index.received",
+      "depth": 3,
+      "text": "A reader needs either the two exact date entries in Venn’s tray or the Centre’s address first at Kip’s bench."
+    },
+    {
+      "id": "h.nexus.public-index.4",
+      "objective": "nexus.public-index.received",
+      "depth": 4,
+      "text": "Check both pages, turn back to Venn’s board, then use the selected slip at the index tray or west bench."
+    },
+    {
+      "id": "h.nexus.public-welcome.1",
+      "objective": "nexus.public-welcome.received",
+      "depth": 1,
+      "text": "Sella’s loose clip is just east of Ise’s rug."
+    },
+    {
+      "id": "h.nexus.public-welcome.2",
+      "objective": "nexus.public-welcome.received",
+      "depth": 2,
+      "text": "Keep the two places and their reasons separate. Saint Meinrad also gives visitors two distinct ways to plan a visit."
+    },
+    {
+      "id": "h.nexus.public-welcome.3",
+      "objective": "nexus.public-welcome.received",
+      "depth": 3,
+      "text": "One visitor needs a short notice they can use alone. The other wants room to compare both sources with Dace."
+    },
+    {
+      "id": "h.nexus.public-welcome.4",
+      "objective": "nexus.public-welcome.received",
+      "depth": 4,
+      "text": "Read the three leaves. Choose the front line at Sella’s board and use the slip at Sella’s clip or Dace’s case."
+    }
+  ],
+  "items": [
+    {
+      "id": "nexus.public-index.slip",
+      "name": "Two Ways Back to Yirrkala slip",
+      "description": "A carried copy of two clearly attributed public records for use in the Archive Hall.",
+      "historicalLabel": "fictional-world",
+      "art": "nile.slip"
+    },
+    {
+      "id": "nexus.public-welcome.slip",
+      "name": "One Clip for the Welcome slip",
+      "description": "A folded visitor notice and two attributed welcome leaves to hand to Sella or Dace.",
+      "historicalLabel": "fictional-world",
+      "art": "nile.slip"
+    }
+  ],
+  "journal": [
+    {
+      "id": "j.nexus.public-index.dates",
+      "claimKind": "observation",
+      "text": "Venn used our slip to replace one mistaken maker entry with two dated pointers. Both point on to the Centre’s public history."
+    },
+    {
+      "id": "j.nexus.public-index.centre",
+      "claimKind": "observation",
+      "text": "Kip changed his handoff to the reading bench so the reader could reach the Centre’s own account first. The date pointers stayed with the slip."
+    },
+    {
+      "id": "j.nexus.public-welcome.notice",
+      "claimKind": "observation",
+      "text": "Sella’s visitor could find the Saint Meinrad tour without a guide and used the Fremont leaf to distinguish the two destinations."
+    },
+    {
+      "id": "j.nexus.public-welcome.desk",
+      "claimKind": "observation",
+      "text": "Dace’s visitor traced two meanings of welcome to separate sources. The self-guided route stayed at the staffed case."
+    }
+  ]
+}

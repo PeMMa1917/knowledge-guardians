@@ -1,0 +1,65 @@
+[
+  {
+    "number": 15,
+    "name": "Find who can vouch for each part of a community record",
+    "uses": [
+      {
+        "objective": "whistle.fern.sent",
+        "action": "Compare the overlapping shapes. Ask the bank walker and the boot mender to sign only the part each has the means to check, before deciding where their slips may be read.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "spatial",
+          "nature",
+          "social"
+        ],
+        "game": 267,
+        "story": 29
+      }
+    ]
+  },
+  {
+    "number": 544,
+    "name": "Test how covering names changes a peer review",
+    "uses": [
+      {
+        "objective": "whistle.stage.sent",
+        "action": "Return reviews in open, single-anonymous and double-anonymous arrangements. Compare the warning heard at two seats while keeping one arrangement fixed, then decide who can follow up a signature.",
+        "styles": [
+          "performer",
+          "strategist"
+        ],
+        "modes": [
+          "auditory",
+          "analytical",
+          "social"
+        ],
+        "game": 234,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 825,
+    "name": "Practise community control of the use and recall of a record",
+    "uses": [
+      {
+        "objective": "whistle.island.recalled",
+        "action": "Try the public route by itself. Keep the local survey at the table, send only the permitted travelling sheet, then honour the walkers’ seasonal recall and reroute visitors to their table.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "spatial",
+          "nature",
+          "reflective"
+        ],
+        "game": 234,
+        "story": 15
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "name": "knowledge-guardians-class-review",
+  "main": "classroom.mjs",
+  "compatibility_date": "2026-01-01",
+  "assets": { "directory": "../dist", "binding": "ASSETS", "run_worker_first": ["/api/classroom/*"] },
+  "d1_databases": [{
+    "binding": "DB", "database_name": "knowledge-guardians-review",
+    "database_id": "<review-database-uuid>", "migrations_dir": "migrations"
+  }]
+}

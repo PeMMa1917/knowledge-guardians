@@ -1,8 +1,10 @@
+import {threadKey,threadRecap} from '../domain/trailThread';
 /**
  * GameController: the single owner of campaign state, permanent record and
  * saves. Scenes and UI call `dispatch`; nothing else writes state.
  */
 import { buildPack } from '../content';
+import { journalText } from '../domain/adventureJournal';
 import { Engine, newCampaign, type Command, type GameEvent } from '../domain/engine';
 import { checkAwards, restoreQuestionWays } from '../domain/permanent';
 import { restoreMicroSkillUses } from '../domain/skills';
@@ -19,6 +21,13 @@ import { MAPS } from '../maps';
 import { ctx } from './context';
 
 type Listener = (events: GameEvent[]) => void;
+
+// Only authored definitions and their lookup table are shared by accounts in the same page.
+function indexCampaign() {
+  const pack = buildPack();
+  return {pack, leaderboardRules:leaderboardIndex(pack, Object.values(MAPS))};
+}
+let publishedCampaign: ReturnType<typeof indexCampaign> | undefined;
 
 export class GameController {
   readonly pack: ContentPack;
@@ -37,12 +46,14 @@ export class GameController {
   private readonly leaderboardRules: ReturnType<typeof leaderboardIndex>;
   private permanentWriteFailed = false;
 
-  constructor() {
-    this.pack = buildPack();
-    this.leaderboardRules = leaderboardIndex(this.pack, Object.values(MAPS));
-    this.contentProblems = validateContent(this.pack);
+  constructor(store = browserStore()) {
+    const definitions = import.meta.env.PROD ? (publishedCampaign ??= indexCampaign()) : indexCampaign();
+    this.pack = definitions.pack;
+    this.leaderboardRules = definitions.leaderboardRules;
+    // The production build validates this exact assembled pack. Development checks live content here.
+    this.contentProblems = import.meta.env.PROD ? [] : validateContent(this.pack);
     this.engine = new Engine(this.pack);
-    this.saves = new SaveService(browserStore());
+    this.saves = new SaveService(store);
     this.permanent = this.saves.loadPermanent();
     const r = this.saves.load();
     if (r.ok) {
@@ -254,14 +265,18 @@ export class GameController {
   /** Text for the return recap (spec 29.1 "readable return recap"). */
   recap(): { title: string; lines: string[] } {
     const s = this.state;
-    const lastJournal = s.journal.slice(-2).map((id) => this.pack.journal.find((j) => j.id === id)?.text ?? '');
-    const cur = this.engine.currentObjective(s);
+    const lastJournal = s.journal.slice(-2).flatMap((id) => {
+      const note = this.pack.journal.find((entry) => entry.id === id);
+      return note ? [journalText(note, s)] : [];
+    });
+    const trail = s.flags[threadKey] ? threadRecap(this.pack,s,this.engine.visibleObjectives(s)) : [];
+    const cur = trail.length ? null : this.engine.currentObjective(s);
     return {
       title: `Welcome back, ${s.player.name}.`,
       lines: [
         `You are in ${MAPS[s.mapId]?.name ?? s.mapId}.`,
         ...lastJournal.filter(Boolean).map((t) => `Last time: ${t}`),
-        cur ? `Next step: ${cur.title}` : 'You have finished this chapter. You can explore, or start a new campaign.',
+        ...(trail.length ? trail : [cur ? `One open lead: ${cur.title}` : 'Your stopping place is saved. You can explore again whenever you like.']),
       ],
     };
   }

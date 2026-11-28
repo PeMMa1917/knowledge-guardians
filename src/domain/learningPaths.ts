@@ -65,7 +65,7 @@ export function objectiveMinutes(o: Objective): number {
 export const OPTIONAL_CHAPTER: Record<string, number> = {
   ...Object.fromEntries(CROSSINGS.map((c) => [`crossing:${c.id}`, c.chapter])),
   'hearth:essay': 1, 'hearth:bridge': 2, 'hearth:glow': 4, 'hearth:unfinished': 5, 'hearth:puns': 7, 'hearth:source': 10, 'hearth:harrowmere': 11, 'hearth:farewell': 15,
-  'field:doors': 1, 'field:guests': 1, 'field:slate': 1, 'field:word': 1, 'field:bones': 1, 'field:ballad': 1, 'field:trade': 1, 'field:dig': 5, 'field:stars': 4,
+  'field:proving': 1, 'field:doors': 1, 'field:guests': 1, 'field:slate': 1, 'field:word': 1, 'field:bones': 1, 'field:ballad': 1, 'field:trade': 1, 'field:dig': 5, 'field:stars': 4, 'field:ladder': 2, 'field:trees': 5, 'field:assay': 6, 'field:relay': 7, 'field:lens': 9, 'field:fair': 10, 'field:bats': 4, 'field:mirror': 15, 'field:survey': 12, 'field:maze': 14, 'field:river': 11, 'field:collage': 13, 'field:tokens': 3, 'field:fog': 8, 'field:festival': 11, 'field:reassembly': 2, 'field:primer': 9, 'field:pattern': 10,
   'loyalty:sefa': 1, 'loyalty:hesper': 1, 'loyalty:kip': 2, 'loyalty:rook': 10,
 };
 

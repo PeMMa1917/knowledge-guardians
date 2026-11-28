@@ -1,0 +1,176 @@
+[
+  {
+    "number": 287,
+    "name": "Compare an open invitation with a leading word",
+    "uses": [
+      {
+        "objective": "wire.leading",
+        "action": "Keep the two recordings from the same caller. The painter hears the suggested word before changing her account. Tavi keeps her original take too.",
+        "styles": [
+          "explorer",
+          "helper"
+        ],
+        "modes": [
+          "auditory",
+          "reading"
+        ],
+        "game": 173,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 310,
+    "name": "Use a background sound as evidence of how a recording was made",
+    "uses": [
+      {
+        "objective": "wire.voice",
+        "action": "Listen past the deliberate verse for the accidental kettle noise. Line up the two recordings to find evidence about their making.",
+        "styles": [
+          "explorer",
+          "performer"
+        ],
+        "modes": [
+          "auditory",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 1098,
+    "name": "Check whether two accounts share a recording",
+    "uses": [
+      {
+        "objective": "wire.voice",
+        "action": "Align two purported performances against the accidental tap. The same recording can account for both evenings without providing two independent performances.",
+        "styles": [
+          "strategist",
+          "explorer"
+        ],
+        "modes": [
+          "auditory",
+          "visual"
+        ],
+        "game": 267,
+        "story": 77
+      }
+    ]
+  },
+  {
+    "number": 307,
+    "name": "Unmix two audiences before interpreting a change",
+    "uses": [
+      {
+        "objective": "wire.crowd",
+        "action": "Build the mixed audience, pull it apart by stop, then fix the share from each stop across both nights. Let Tavi keep the two readings with their denominators.",
+        "styles": [
+          "strategist",
+          "maker"
+        ],
+        "modes": [
+          "analytical",
+          "visual"
+        ],
+        "game": 267,
+        "story": 87
+      }
+    ]
+  },
+  {
+    "number": 76,
+    "name": "Keep the conditions on a borrowed voice",
+    "uses": [
+      {
+        "objective": "wire.issue",
+        "action": "Hear a confidential reading, pick another voice for the horn and retain the different permissions when the edition crosses to the dock.",
+        "styles": [
+          "helper",
+          "companion"
+        ],
+        "modes": [
+          "social",
+          "reflective"
+        ],
+        "game": 271,
+        "story": 11
+      },
+      {
+        "objective": "wire.shift",
+        "action": "Give the shift a second hearing and carry the time on the invitation. Keep the private reading out of the broadcast and out of the copied diary wording.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "social",
+          "reading"
+        ],
+        "game": 282,
+        "story": 119
+      }
+    ]
+  },
+  {
+    "number": 617,
+    "name": "Relate an audience count to the experience of one listener",
+    "uses": [
+      {
+        "objective": "wire.return",
+        "action": "Play an edition with a chosen crowd frame, hear the singer and the runner respond and inspect the place where a new horn, an open rest or another song sheet changed the next crossing.",
+        "styles": [
+          "performer",
+          "companion"
+        ],
+        "modes": [
+          "social",
+          "auditory"
+        ],
+        "game": 22,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 755,
+    "name": "Hear the work an intentional rest can do",
+    "uses": [
+      {
+        "objective": "wire.return",
+        "action": "Give four beats to the absent shift and hear Oda make space for someone else to start the verse. Compare the four hooks at the dock with the stage directions for a full chorus.",
+        "styles": [
+          "performer",
+          "explorer"
+        ],
+        "modes": [
+          "auditory",
+          "visual"
+        ],
+        "game": 22,
+        "story": 114
+      }
+    ]
+  },
+  {
+    "number": 311,
+    "name": "Find the people left out by the time of a call",
+    "uses": [
+      {
+        "objective": "wire.shift",
+        "action": "Try the break and the late tying-up. In each case identify which crew was absent because it was still working or because its boat had left. File the time with the public edition.",
+        "styles": [
+          "helper",
+          "strategist"
+        ],
+        "modes": [
+          "social",
+          "analytical"
+        ],
+        "game": 282,
+        "story": 119
+      }
+    ]
+  }
+]

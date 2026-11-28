@@ -1,0 +1,83 @@
+.optics-panel {
+  max-width: 44rem;
+  margin-inline: auto;
+}
+.optics-panel > div > h3 {
+  margin-block: 0.4rem;
+}
+.optic-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.4rem;
+  margin-block: 0.6rem;
+}
+.optics-panel button {
+  max-width: 100%;
+  min-height: 2.65rem;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.optics-panel button[aria-pressed='true'] {
+  outline: 2px solid #f5d893;
+  outline-offset: -3px;
+}
+.optics-panel details {
+  margin-block: 0.65rem;
+  border-inline-start: 0.18rem solid #94794e;
+  padding-inline-start: 0.65rem;
+}
+.optics-panel summary {
+  cursor: pointer;
+  padding-block: 0.3rem;
+}
+.optic-picture {
+  float: inline-end;
+  width: 4rem;
+  max-width: 25%;
+  image-rendering: pixelated;
+  margin-inline-start: 1rem;
+}
+.optics-feedback {
+  border-inline-start: 0.18rem solid #b79e66;
+  padding-inline-start: 0.65rem;
+}
+.optics-feedback:empty {
+  display: none;
+}
+.optics-glass-sheet {
+  margin: 0.75rem 0;
+}
+.optic-glass {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  aspect-ratio: 1;
+  width: min(100%, 13.5rem);
+  background: #324652;
+  padding: 0.2rem;
+  border: 0.15rem solid #dac68d;
+}
+.optic-glass span {
+  display: grid;
+  place-items: center;
+  border: 1px solid #52636b;
+  background: #c7dccd;
+  color: #28333b;
+  line-height: 1;
+}
+.optic-glass [data-mark='edge'],
+.optic-glass [data-mark='both'] {
+  background: #443647;
+  color: #fff1c8;
+}
+.optic-glass [data-mark='score'] {
+  background: #f3dba1;
+}
+@media (forced-colors: active) {
+  .optics-panel button[aria-pressed='true'] {
+    outline-color: Highlight;
+  }
+  .optic-glass span {
+    border-color: CanvasText;
+  }
+}

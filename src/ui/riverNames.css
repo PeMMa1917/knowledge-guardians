@@ -1,0 +1,66 @@
+.river-post {
+  max-inline-size: 43rem;
+  min-inline-size: 0;
+}
+.river-post-art {
+  image-rendering: pixelated;
+  inline-size: 4rem;
+  block-size: auto;
+}
+.river-post-feedback {
+  min-block-size: 1.5em;
+  color: var(--cream, #f4dcb2);
+}
+.river-post-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-block: 0.5rem;
+}
+.river-post button {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+}
+.river-names-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.18rem;
+  max-inline-size: 34rem;
+  margin-block: 0.7rem;
+}
+.river-names-grid button {
+  padding: 0.2rem;
+  min-block-size: 3rem;
+  font-size: inherit;
+  line-height: 1.15;
+  border-radius: 0.2rem;
+}
+.river-cell-mark {
+  display: block;
+  min-block-size: 1em;
+  font-weight: bold;
+}
+.river-names-grid .river-threaded {
+  border: 2px solid #eba668;
+}
+.river-names-grid .river-thread-end {
+  outline: 2px dashed #7dd5c8;
+  outline-offset: -5px;
+}
+.river-post-route {
+  overflow-wrap: anywhere;
+}
+.river-post :focus-visible {
+  outline: 3px solid #f6df81;
+  outline-offset: 1px;
+}
+@media (max-width: 380px) {
+  .river-names-grid {
+    gap: 0.12rem;
+  }
+  .river-names-grid button {
+    padding: 0.1rem;
+  }
+}

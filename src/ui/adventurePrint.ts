@@ -2,7 +2,7 @@ import type { AdventureJournalView } from '../domain/adventureJournal';
 import { CONCEPT_COLOURS, splitConceptText } from '../domain/conceptText';
 import { adventureExportSnapshot, journalUtc, type AdventureExportOptions } from './adventureExport';
 import { h } from './dom';
-import { adventureReferences } from './adventureReferences';
+import { adventureReferences, citationLine } from './adventureReferences';
 import './adventurePrint.css';
 
 let closeActivePrint: (() => void) | undefined;
@@ -53,7 +53,7 @@ export function printAdventureJournal(
     references.length ? h('section', {}, h('h2', {}, 'Works Cited'), adventureReferences(references, printProse)) : null,
     encyclopedia.length ? h('section', {}, h('h2', {}, 'Wikipedia links from my adventure'),
       h('ul', { class: 'print-encyclopedia' }, encyclopedia.map((link) => h('li', {}, printProse(link.label), ' · ',
-        h('a', { href: link.url, target: '_blank', rel: 'noopener noreferrer' }, printProse(link.title)))))) : null);
+        link.citation ? citationLine(link.citation, printProse) : h('a', { href: link.url, target: '_blank', rel: 'noopener noreferrer' }, printProse(link.title)))))) : null);
 
   const root = document.documentElement;
   const oldTitle = document.title;

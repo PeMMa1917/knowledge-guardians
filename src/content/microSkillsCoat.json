@@ -1,0 +1,1529 @@
+[
+  {
+    "number": 193,
+    "name": "Edit a message to fit a physical word limit",
+    "uses": [
+      {
+        "objective": "field-loan.press.compared",
+        "action": "Move the left type stop to the title, date or accession. Compare the characters on a space-limited mitten-sized check with the complete folded slip. The first line of the miniature copy can change without changing the source.",
+        "styles": [
+          "maker",
+          "strategist"
+        ],
+        "modes": [
+          "linguistic",
+          "spatial"
+        ],
+        "game": 234,
+        "story": 29
+      },
+      {
+        "objective": "coat.archive.compared1",
+        "action": "Lift the prefatory type into the offcut tray and print against the eighteen-word edge. The complete instruction and discarded opening can be compared.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.press.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Lift the prefatory type into the offcut tray and print against the eighteen-word edge. The complete instruction and discarded opening can be compared.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 274,
+    "name": "Find how an archive of successes changes a trial average",
+    "uses": [
+      {
+        "objective": "coat.dispatch.compared0",
+        "action": "Open the silent slips alongside the two positive savings. Compare the visible mean with the mean after the zero and negative shifts reappear.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.council.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Open the silent slips alongside the two positive savings. Compare the visible mean with the mean after the zero and negative shifts reappear.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 276,
+    "name": "Read a spread of models alongside a single forecast",
+    "uses": [
+      {
+        "objective": "coat.coast.compared1",
+        "action": "Overlay the sheltered and open-water forecasts. Use the 49–55 cm span alongside observed marks that can lie outside the model spread.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.chart.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Overlay the sheltered and open-water forecasts. Use the 49–55 cm span alongside observed marks that can lie outside the model spread.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 284,
+    "name": "Trace a prediction that changes the behaviour it predicts",
+    "uses": [
+      {
+        "objective": "coat.island.compared1",
+        "action": "Announce the short lane and follow all six houses through the same layout. The sign changes the queue even though the lengths stay fixed.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.coast.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Announce the short lane and follow all six houses through the same layout. The sign changes the queue even though the lengths stay fixed.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 301,
+    "name": "Translate relative change into the difference per hundred",
+    "uses": [
+      {
+        "objective": "coat.gate.compared0",
+        "action": "Stamp the same 8 and 4 wet crossings as a halving or a four-per-hundred difference. Both stamps retain the underlying returned-card denominators.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.dispatch.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Stamp the same 8 and 4 wet crossings as a halving or a four-per-hundred difference. Both stamps retain the underlying returned-card denominators.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 302,
+    "name": "Look for people omitted by a surviving record",
+    "uses": [
+      {
+        "objective": "coat.nile.compared0",
+        "action": "Compare the paid drawer with the unpaid crossings. Two signed journeys disappear when the wage rule decides which papers survive.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.market.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Compare the paid drawer with the unpaid crossings. Two signed journeys disappear when the wage rule decides which papers survive.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 158,
+        "story": 74
+      },
+      {
+        "objective": "vault-work.chosen.left",
+        "action": "Compare the tabbed nights with an unselected run containing an overtopped board and a lost line. File a record that lets a new reader see which cases survived the old index.",
+        "styles": [
+          "explorer",
+          "strategist"
+        ],
+        "modes": [
+          "visual",
+          "reading",
+          "analytical"
+        ],
+        "game": 267,
+        "story": 91
+      }
+    ]
+  },
+  {
+    "number": 308,
+    "name": "Inspect how the origin of a chart changes its impression",
+    "uses": [
+      {
+        "objective": "coat.chart.compared0",
+        "action": "Begin the same five wait bars at zero and at eight minutes. Read the matched numerical waits against the apparent size of the differences.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.gate.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Begin the same five wait bars at zero and at eight minutes. Read the matched numerical waits against the apparent size of the differences.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 344,
+    "name": "Remove a ceremonial opening that buries the message",
+    "uses": [
+      {
+        "objective": "coat.archive.compared1",
+        "action": "Lift the prefatory type into the offcut tray and print against the eighteen-word edge. The complete instruction and discarded opening can be compared.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.press.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Lift the prefatory type into the offcut tray and print against the eighteen-word edge. The complete instruction and discarded opening can be compared.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 345,
+    "name": "Put the person back into an ambiguous sentence",
+    "uses": [
+      {
+        "objective": "coat.archive.compared0",
+        "action": "Substitute Ise and her mother for two identical pronouns, pull the cuff label, and inspect which action each woman now owns.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.press.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Substitute Ise and her mother for two identical pronouns, pull the cuff label, and inspect which action each woman now owns.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 357,
+    "name": "Choose sentence lengths a reader can follow",
+    "uses": [
+      {
+        "objective": "coat.press.compared0",
+        "action": "Split the curtain cue at its change of action. Compare the uninterrupted line with the break and leave the second action legible to the shifter.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.voices.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Split the curtain cue at its change of action. Compare the uninterrupted line with the break and leave the second action legible to the shifter.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 415,
+    "name": "Test which tracks a surface is likely to preserve",
+    "uses": [
+      {
+        "objective": "coat.fern.compared0",
+        "action": "Take casts from fine silt and hard ground for the same season. Compare the shallow and heavy prints that each bed retained.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.cold.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Take casts from fine silt and hard ground for the same season. Compare the shallow and heavy prints that each bed retained.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 422,
+    "name": "Check a simplified model of choice against a practical constraint",
+    "uses": [
+      {
+        "objective": "coat.market.compared1",
+        "action": "Move the ferry deadline and follow the change in purchases alongside wishes and prices. One buyer gains an option while another still lacks the money.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.nile.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Move the ferry deadline and follow the change in purchases alongside wishes and prices. One buyer gains an option while another still lacks the money.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 427,
+    "name": "Check how missing returns can change a comparison",
+    "uses": [
+      {
+        "objective": "coat.gate.compared1",
+        "action": "Unroll the twenty unreturned outcome cards. Compare the bounds with none or all of the blanks in the wet group before trusting the returned totals.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.dispatch.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Unroll the twenty unreturned outcome cards. Compare the bounds with none or all of the blanks in the wet group before trusting the returned totals.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 430,
+    "name": "Distinguish a stated wish from the purchase a buyer can make",
+    "uses": [
+      {
+        "objective": "coat.market.compared0",
+        "action": "Turn the same four orders from stated wishes to purchases. Inspect who changes sides under the displayed price and time constraints.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.nile.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Turn the same four orders from stated wishes to purchases. Inspect who changes sides under the displayed price and time constraints.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 432,
+    "name": "Compare the middle wait and the arithmetic average",
+    "uses": [
+      {
+        "objective": "coat.chart.compared1",
+        "action": "Move the sign between the third ordered wait and the sum divided among five boats. Inspect what the last boat does to each reading.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.gate.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Move the sign between the third ordered wait and the sum divided among five boats. Inspect what the last boat does to each reading.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 515,
+    "name": "Tell a preselected target from a pattern circled afterwards",
+    "uses": [
+      {
+        "objective": "coat.dispatch.compared1",
+        "action": "Pin the planned east trial before reading the slips, then circle the best route after opening them. The winning route needs another shift for an independent test.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.council.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Pin the planned east trial before reading the slips, then circle the best route after opening them. The winning route needs another shift for an independent test.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 560,
+    "name": "Identify a changing baseline across two generations",
+    "uses": [
+      {
+        "objective": "coat.fern.compared1",
+        "action": "Hold the track bed fixed and turn between the two first-spring notebooks. The newer lookout’s starting season follows decades of change.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.cold.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Hold the track bed fixed and turn between the two first-spring notebooks. The newer lookout’s starting season follows decades of change.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 569,
+    "name": "Recover the working opening of a sentence",
+    "uses": [
+      {
+        "objective": "coat.archive.compared1",
+        "action": "Lift the prefatory type into the offcut tray and print against the eighteen-word edge. The complete instruction and discarded opening can be compared.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.press.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Lift the prefatory type into the offcut tray and print against the eighteen-word edge. The complete instruction and discarded opening can be compared.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 602,
+    "name": "Compare an ideal geometric route with a passage that has friction",
+    "uses": [
+      {
+        "objective": "coat.island.compared0",
+        "action": "Fit the one-at-a-time hinge to the flat route. Compare the last arrival with the length-only prediction for the same group of households.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.coast.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Fit the one-at-a-time hinge to the flat route. Compare the last arrival with the length-only prediction for the same group of households.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 607,
+    "name": "Use a formal rule to generate a different musical response",
+    "uses": [
+      {
+        "objective": "coat.stage.compared1",
+        "action": "Swap a fixed entry for a response to the last sounded note. Try both lead cues and inspect which voice can answer on the third or fourth beat.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "auditory"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.archive.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Swap a fixed entry for a response to the last sounded note. Try both lead cues and inspect which voice can answer on the third or fourth beat.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "auditory"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 609,
+    "name": "Distinguish a reacting traveller from an unchanged physical route",
+    "uses": [
+      {
+        "objective": "coat.island.compared1",
+        "action": "Announce the short lane and follow all six houses through the same layout. The sign changes the queue even though the lengths stay fixed.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.coast.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Announce the short lane and follow all six houses through the same layout. The sign changes the queue even though the lengths stay fixed.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 632,
+    "name": "Connect a source maker’s purpose to what history can recover",
+    "uses": [
+      {
+        "objective": "coat.nile.compared1",
+        "action": "Turn the wage stamp over and compare it with the independent arrival tally. The clerk knew which wages cleared while the quay keeper counted landings.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.market.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Turn the wage stamp over and compare it with the independent arrival tally. The clerk knew which wages cleared while the quay keeper counted landings.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 742,
+    "name": "Locate an audible mechanical fault with a reference trace",
+    "uses": [
+      {
+        "objective": "coat.yard.compared0",
+        "action": "Move the pickup from the room to the bearing. Isolate the third tick of each revolution and compare it with peaks from the other tools.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual",
+          "auditory"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.stage.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Move the pickup from the room to the bearing. Isolate the third tick of each revolution and compare it with peaks from the other tools.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual",
+          "auditory"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 745,
+    "name": "Convert a measured pattern between sound and height",
+    "uses": [
+      {
+        "objective": "coat.yard.compared1",
+        "action": "Map the eight vibration heights to pitch. Compare the order of the high marks in the readable score or the sound with the vibration strip.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual",
+          "auditory"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.stage.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Map the eight vibration heights to pitch. Compare the order of the high marks in the readable score or the sound with the vibration strip.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual",
+          "auditory"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 752,
+    "name": "Follow how two performers create a cue together",
+    "uses": [
+      {
+        "objective": "coat.stage.compared1",
+        "action": "Swap a fixed entry for a response to the last sounded note. Try both lead cues and inspect which voice can answer on the third or fourth beat.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "auditory"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.archive.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Swap a fixed entry for a response to the last sounded note. Try both lead cues and inspect which voice can answer on the third or fourth beat.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "auditory"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 893,
+    "name": "Give an abstract account a named human agent",
+    "uses": [
+      {
+        "objective": "coat.archive.compared0",
+        "action": "Substitute Ise and her mother for two identical pronouns, pull the cuff label, and inspect which action each woman now owns.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.press.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Substitute Ise and her mother for two identical pronouns, pull the cuff label, and inspect which action each woman now owns.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 900,
+    "name": "Check how a pause changes the pace of a dense passage",
+    "uses": [
+      {
+        "objective": "coat.press.compared0",
+        "action": "Split the curtain cue at its change of action. Compare the uninterrupted line with the break and leave the second action legible to the shifter.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.voices.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Split the curtain cue at its change of action. Compare the uninterrupted line with the break and leave the second action legible to the shifter.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 902,
+    "name": "Separate a repeating signal from room noise",
+    "uses": [
+      {
+        "objective": "coat.yard.compared0",
+        "action": "Move the pickup from the room to the bearing. Isolate the third tick of each revolution and compare it with peaks from the other tools.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual",
+          "auditory"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.stage.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Move the pickup from the room to the bearing. Isolate the third tick of each revolution and compare it with peaks from the other tools.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual",
+          "auditory"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 904,
+    "name": "Follow calibration back to its last independent check",
+    "uses": [
+      {
+        "objective": "coat.cold.compared1",
+        "action": "Unfold the reference chain as far as the ice-point check and compare it with a copy that refers back to itself.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.yard.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Unfold the reference chain as far as the ice-point check and compare it with a copy that refers back to itself.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 909,
+    "name": "Compare a fixed gauge with observations across a shoreline",
+    "uses": [
+      {
+        "objective": "coat.coast.compared0",
+        "action": "Lay three cove marks beside the tower station. Compare the added coverage with the differences in rulers and local swell.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.chart.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Lay three cove marks beside the tower station. Compare the added coverage with the differences in rulers and local swell.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 913,
+    "name": "Distinguish a repeated reading from an independent reproduction",
+    "uses": [
+      {
+        "objective": "coat.cold.compared0",
+        "action": "Repeat three readings at the first bench, then move the same bath to the other instrument and inspect the disagreement.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.yard.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Repeat three readings at the first bench, then move the same bath to the other instrument and inspect the disagreement.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 922,
+    "name": "Check how a leading word changes later recollection",
+    "uses": [
+      {
+        "objective": "coat.voices.compared0",
+        "action": "Replay the open sound cue and the question that supplies a colour. Check both accounts against the girl’s dated slip about a splash and her cold hands.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.fern.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Replay the open sound cue and the question that supplies a colour. Check both accounts against the girl’s dated slip about a splash and her cold hands.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 923,
+    "name": "Separate a vivid sensation from accuracy about another detail",
+    "uses": [
+      {
+        "objective": "coat.voices.compared0",
+        "action": "Replay the open sound cue and the question that supplies a colour. Check both accounts against the girl’s dated slip about a splash and her cold hands.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.fern.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Replay the open sound cue and the question that supplies a colour. Check both accounts against the girl’s dated slip about a splash and her cold hands.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 924,
+    "name": "Test whether apparent agreement rests on independent memories",
+    "uses": [
+      {
+        "objective": "coat.voices.compared1",
+        "action": "Seal the accounts separately and compare them with the playback shared before the second interview. Follow the borrowed detail to its first speaker.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.fern.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Seal the accounts separately and compare them with the playback shared before the second interview. Follow the borrowed detail to its first speaker.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 931,
+    "name": "Trace how a filing decision shapes a later history",
+    "uses": [
+      {
+        "objective": "coat.nile.compared0",
+        "action": "Compare the paid drawer with the unpaid crossings. Two signed journeys disappear when the wage rule decides which papers survive.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.market.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Compare the paid drawer with the unpaid crossings. Two signed journeys disappear when the wage rule decides which papers survive.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 934,
+    "name": "Compare an open memory cue with a leading one",
+    "uses": [
+      {
+        "objective": "coat.voices.compared0",
+        "action": "Replay the open sound cue and the question that supplies a colour. Check both accounts against the girl’s dated slip about a splash and her cold hands.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.fern.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Replay the open sound cue and the question that supplies a colour. Check both accounts against the girl’s dated slip about a splash and her cold hands.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 946,
+    "name": "Reason conditionally about travel choices without assuming fixed behaviour",
+    "uses": [
+      {
+        "objective": "coat.island.compared1",
+        "action": "Announce the short lane and follow all six houses through the same layout. The sign changes the queue even though the lengths stay fixed.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.coast.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Announce the short lane and follow all six houses through the same layout. The sign changes the queue even though the lengths stay fixed.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "visual"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 959,
+    "name": "Test the limits of an original office record",
+    "uses": [
+      {
+        "objective": "coat.nile.compared1",
+        "action": "Turn the wage stamp over and compare it with the independent arrival tally. The clerk knew which wages cleared while the quay keeper counted landings.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.market.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Turn the wage stamp over and compare it with the independent arrival tally. The clerk knew which wages cleared while the quay keeper counted landings.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 979,
+    "name": "Make room in a discussion by giving up control of the next turn",
+    "uses": [
+      {
+        "objective": "coat.council.compared1",
+        "action": "Pass the pause bell to waiting chairs and compare the sequence of speakers with the first speaker keeping the bell.",
+        "styles": [
+          "strategist",
+          "helper"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.island.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Pass the pause bell to waiting chairs and compare the sequence of speakers with the first speaker keeping the bell.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 986,
+    "name": "Keep the cut wording available for reconsideration",
+    "uses": [
+      {
+        "objective": "coat.archive.compared1",
+        "action": "Lift the prefatory type into the offcut tray and print against the eighteen-word edge. The complete instruction and discarded opening can be compared.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.press.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Lift the prefatory type into the offcut tray and print against the eighteen-word edge. The complete instruction and discarded opening can be compared.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 1130,
+    "name": "Compare a surviving performance cue with a new interpretation",
+    "uses": [
+      {
+        "objective": "coat.stage.compared0",
+        "action": "Rehearse the surviving rest and a newly sounded A. Check which beats belong to the score and which the present performers supply.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "auditory"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.archive.counter0",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Rehearse the surviving rest and a newly sounded A. Check which beats belong to the score and which the present performers supply.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "auditory"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  },
+  {
+    "number": 1147,
+    "name": "Keep attribution legible without interrupting the thought",
+    "uses": [
+      {
+        "objective": "coat.press.compared1",
+        "action": "Move the signed slip into a keyed margin and pull a second proof. The cue reads continuously while its source remains retrievable.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 234,
+        "story": 91
+      },
+      {
+        "objective": "coat.voices.counter1",
+        "action": "Keep the sender’s edition in view and run the travelling tool with this fitting reversed. Move the signed slip into a keyed margin and pull a second proof. The cue reads continuously while its source remains retrievable.",
+        "styles": [
+          "helper",
+          "explorer"
+        ],
+        "modes": [
+          "reading",
+          "analytical",
+          "linguistic"
+        ],
+        "game": 158,
+        "story": 74
+      }
+    ]
+  }
+]

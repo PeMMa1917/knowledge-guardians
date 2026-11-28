@@ -1643,7 +1643,7 @@
   {
    "id": "nile.dispatch",
    "speaker": "nile-iman",
-   "text": "The door can carry one packet back first. We can send the others later. Pick where this one lands, and whose hands it reaches before the doors open.",
+   "text": "One packet fits the door before the hall opens. Imani sets down three address ties. “The street can read a short correction as it goes by. At the staffed table somebody can ask who wrote a slip. In the workshop somebody can try a load. I can open one of those places now. Who should get the morning?”",
    "historicalLabel": "fictional-world",
    "options": [
     {
@@ -1719,7 +1719,7 @@
   {
    "id": "nile.dispatch-print",
    "speaker": "nile-iman",
-   "text": "To the public case, then. The old title will stay visible underneath, crossed through. Visitors will see the correction, not just the new words.",
+   "text": "Imani keeps the old claim where an early visitor can read the crossed-out words. She puts the two dates beside it. “They can check what we changed before anyone arrives to explain why. I’ll have to tell the people waiting for the table.”",
    "historicalLabel": "fictional-world",
    "options": [],
    "effects": [],
@@ -1728,7 +1728,7 @@
   {
    "id": "nile.dispatch-read",
    "speaker": "nile-iman",
-   "text": "I’ll put seats by the reading table. The scribe’s name goes on both slips. Nobody will have to ask whose words they’re hearing.",
+   "text": "Imani takes two stools to the reading table. “They can hear which grain payment the scribe recorded, and ask who never got to speak. A visitor who has to keep walking will see an empty case.” She sets one stool low enough for a child.",
    "historicalLabel": "fictional-world",
    "options": [],
    "effects": [],
@@ -1737,7 +1737,7 @@
   {
    "id": "nile.dispatch-pair",
    "speaker": "nile-iman",
-   "text": "The workshop can make the trade-off visible. I’ll tie a card to the model: what we tried here, and what the ancient map never claimed.",
+   "text": "Imani has one hand on the model when the door starts to close. “The apprentice gets a morning to try the load. Put the ancient map beside it with its own date. The model can answer a question about weight. It cannot tell us who made that journey.” Behind her someone folds up the public reading stand.",
    "historicalLabel": "fictional-world",
    "options": [],
    "effects": [],
@@ -2212,6 +2212,13 @@
     },
     {
      "text": "I’ll come back."
+    },
+    {
+     "text": "Unfold our working slip beside this packet.",
+     "next": "hatch.nile.offer",
+     "if": {
+      "flagSet": "hatch.edition"
+     }
     }
    ],
    "effects": [],
@@ -5095,10 +5102,15 @@
      "weave": {
       "concepts": [
        "responsibility",
-       "power"
+       "power",
+       "perspective",
+       "values",
+       "justification",
+       "interpretation"
       ],
       "framework": [
        "perspectives",
+       "scope",
        "ethics"
       ],
       "atl": [
@@ -5107,11 +5119,21 @@
       ],
       "aoks": [
        "HIS",
-       "HUM"
+       "HUM",
+       "POL",
+       "LAN"
       ],
       "subjects": [
-       "history"
-      ]
+       "history",
+       "global-politics",
+       "lang-langlit"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "integration",
+       "solo": "relational"
+      }
      },
      "kq": {
       "id": "KQ-NILE-04",
@@ -6073,7 +6095,7 @@
    "objectives": [
     {
      "id": "nile.workers.proof",
-     "title": "Try both openings with Leila, then leave a proof visitors can check.",
+     "title": "Try both first lines with Leila, then leave a copy that visitors can check.",
      "done": {
       "flagSet": "nile.workers.window"
      },
@@ -6453,7 +6475,7 @@
     },
     {
      "id": "nile.lamp.file",
-     "title": "Put the light readings and the purpose of the marks where a reader can use them.",
+     "title": "Leave the light readings, and what the marks were for, where a reader can use them.",
      "done": {
       "flagSet": "nile.lamp.placement"
      },
@@ -6714,7 +6736,7 @@
     },
     {
      "id": "nile.handoff.send",
-     "title": "Settle what travels and inspect the docket before leaving.",
+     "title": "Decide what goes with the runner, and check the delivery note before it leaves.",
      "done": {
       "all": [
        {
@@ -6841,7 +6863,7 @@
     },
     {
      "id": "nile.witness.publish",
-     "title": "Set out the loose guide and check where the next reader finds it.",
+     "title": "Set out the loose guide, then see where the next reader finds it.",
      "done": {
       "all": [
        {

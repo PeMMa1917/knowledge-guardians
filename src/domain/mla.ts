@@ -9,7 +9,7 @@ export interface CitationPart {
 const MONTHS = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'];
 
 /** Format the MLA entries used by the press for a catalogue page or online artwork. */
-export function mlaCitation(source: SourceRecord): CitationPart[] {
+export function mlaCitation(source: Pick<SourceRecord, 'url' | 'mla'> & { accessed?: string }): CitationPart[] {
   const work = source.mla;
   if (!work) return [];
   const parts: CitationPart[] = [];
@@ -18,9 +18,14 @@ export function mlaCitation(source: SourceRecord): CitationPart[] {
   else parts.push({ text: work.title, cite: true }, { text: '. ' });
   if (work.workDate) parts.push({ text: `${work.workDate.trimEnd().replace(/\.$/, '')}. ` });
   if (work.repository) parts.push({ text: `${work.repository.trimEnd().replace(/\.$/, '')}. ` });
-  parts.push({ text: work.container, cite: true }, { text: ', ' },
-    { text: source.url.replace(/^https:\/\//, ''), href: source.url }, { text: '.' });
-  if (work.showAccessDate) {
+  parts.push({ text: work.container, cite: true }, { text: ', ' });
+  if (work.documentDate) parts.push({ text: work.documentDate + ', ' });
+  if (work.publication) {
+    const { volume, issue, year, pages } = work.publication;
+    parts.push({text: `vol. ${volume}, no. ${issue}, ${year}, pp. ${pages}, `});
+  }
+  parts.push({ text: source.url.replace(/^https:\/\//, ''), href: source.url }, { text: '.' });
+  if (work.showAccessDate && source.accessed) {
     const [year, month, day] = source.accessed.split('-').map(Number);
     parts.push({ text: ` Accessed ${day} ${MONTHS[month - 1]} ${year}.` });
   }

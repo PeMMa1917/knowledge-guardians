@@ -1,3 +1,4 @@
+import { lanternCase, lanternRef } from '../src/domain/lamplight';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { GameController } from '../src/app/controller';
 import { buildPack } from '../src/content';
@@ -98,6 +99,27 @@ describe('Local leaderboard dates and consent', () => {
 
 describe('Leaderboard counts from actual actions and saves', () => {
   afterEach(() => { vi.unstubAllGlobals(); vi.useRealTimers(); });
+
+  it('counts a real mill and lantern guest once across chapters, returns, earlier local saves and school score cards', () => {
+    const c = new GameController();
+    c.newGame('Fictional Finch', 'player-a');
+    const who='q153761', now=new Date();
+    const count=()=>periodHistory(c.permanent,'daily',now).values['npcs-met'];
+    c.dispatch({type:'WorkMillShift',action:'arrive'});
+    expect(count()).toBe(0);
+    c.state.mapId='night-register.nile';
+    c.dispatch({type:'WorkMillShift',action:'arrive'});
+    expect(count()).toBe(1);
+    const lamp = lanternCase(lanternRef('archive',who)) ?? lanternCase(lanternRef('nile',who))!;
+    c.state.mapId=lamp.site.map;
+    c.dispatch({type:'WorkWithLantern',site:lamp.site.id,person:who,stage:'meet'});
+    expect(count()).toBe(1);
+    const idx=leaderboardIndex(c.pack,[]);
+    const older=startLeaderboard(idx,[c.state],now);
+    expect(older.seen).toContain('met:'+lamp.person.character);
+    expect(older.days).toEqual({});
+    expect(c.permanent.leaderboard?.sharing?.alias).toBeFalsy();
+  });
 
   it('captures active time, unique physical greetings, explicit framework practice, and fog across rollback', () => {
     const store = new Map<string, string>();

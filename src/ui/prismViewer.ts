@@ -73,7 +73,7 @@ export function prismViewerPanel(place: string, controller: GameController, soun
     if (place === 'access') {
       body.append(h('h2', {}, 'The dim reading light'));
       if (!controller.check(specimenEquipped(PRISM_KEY))) {
-        body.append(h('p', {}, 'Use the Webb working copy from the Bag to unlock these supports.'));
+        body.append(h('p', {}, 'Use Webb’s Tarantula Nebula image from the Bag to unlock these supports.'));
         return;
       }
       const method = state.access ?? selectedAccess;
@@ -101,7 +101,7 @@ export function prismViewerPanel(place: string, controller: GameController, soun
         { kind: 'fit', lens }, task, !state.first || (state.first !== lens && !state.fitted.includes(state.first))));
       return;
     }
-    body.append(h('h2', {}, 'The three-band viewer'), h('p', {}, 'The Webb mosaic uses assigned colours for measurements outside human vision. This viewer has a paper exercise with its own readings. Nell needs its seam. Venn needs the three separate pinholes.'),
+    body.append(h('h2', {}, 'The three-band viewer'), h('p', {}, 'The Webb mosaic uses assigned colours for measurements outside human vision. The three filter strips on this bench have their own readings. Nell is holding the support together with her thumb. Venn can see three pinholes through it. Which holder will you fit first?'),
       h('div', { class: 'row wrap' }, ...PRISM_LENSES.map((lens) => control(`view-${lens}`, lens === 'seam' ? 'Turn up the long band in cyan' : 'Turn up the short band in amber',
         { kind: 'view', lens }, `${PRISM_RENDERINGS[lens].name}. The three source values stay fixed.`, selectedLens === lens))));
     if (selectedLens) body.append(h('section', { class: 'clue-view' }, h('h3', {}, PRISM_RENDERINGS[selectedLens].name), display(selectedLens)));

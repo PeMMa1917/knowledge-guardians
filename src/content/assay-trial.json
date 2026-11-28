@@ -1,0 +1,31 @@
+{
+ "margin": 0.2,
+ "samples": {
+  "gold": { "name": "gold", "look": "a heavy, soft yellow nugget with a warm shine", "streak": "golden yellow", "density": 19.3 },
+  "pyrite": { "name": "pyrite", "look": "a bright yellow nugget with a hard metal shine", "streak": "greenish black", "density": 5.0 },
+  "hematite": { "name": "hematite", "look": "a dark grey stone with a silver shine", "streak": "reddish brown", "density": 5.3 },
+  "magnetite": { "name": "magnetite", "look": "a dark grey stone with a dull metal shine", "streak": "black", "density": 5.2 },
+  "galena-fresh": { "name": "galena", "look": "a bright silver-grey block with flat, shining faces", "streak": "lead grey", "density": 7.6 },
+  "galena-dull": { "name": "galena", "look": "a dull, dark block, grey-brown on every face", "streak": "lead grey", "density": 7.6 },
+  "chalcopyrite": { "name": "chalcopyrite", "look": "a brassy yellow lump with a faint green tint", "streak": "greenish black", "density": 4.2 }
+ },
+ "rounds": [
+  { "a": "gold", "b": "pyrite", "speaker": "A trader",
+    "claim": "Two yellow nuggets, both gold. Same price for each.",
+    "wrong": { "same": "Corra puts the two nuggets on the scale pan. 'One is four times as heavy for its size. You judged by colour, and colour is what this trader is selling. Again.'" } },
+  { "a": "hematite", "b": "magnetite", "speaker": "A carter",
+    "claim": "Two grey stones from the same ore seam. Price them as one load.",
+    "wrong": { "same": "Corra rubs both stones on the white tile. One leaves a red-brown line, one leaves black. 'Their weights for their size are inside one margin of each other. A test that cannot tell two things apart does not show that they are the same. Again.'" } },
+  { "a": "galena-fresh", "b": "galena-dull", "speaker": "A seller",
+    "claim": "Two different metals. The dull one is the cheap kind.",
+    "wrong": { "different": "Corra scrapes the dull block with a knife. Under the brown skin it shines silver-grey, like the other. 'The outside has tarnished. The streak and the weight are the same. You trusted the look again, only this time in the other direction. Again.'" } },
+  { "a": "chalcopyrite", "b": "pyrite", "speaker": "A buyer",
+    "claim": "Both leave the same greenish-black streak, so they are the same stone.",
+    "wrong": { "same": "Corra lowers each lump into the water jar and reads the mark. 'Same streak, yes. But one is clearly lighter for its size. A test that two things pass together does not make them one thing. Again.'" } }
+ ],
+ "trust": [
+  { "id": "streak", "text": "The streak test. It saw what the eye missed.", "reply": "Corra nods. 'It did, twice. And twice it told me nothing. With the yellow lumps, it was the weight that spoke.'" },
+  { "id": "density", "text": "The density test. It gives a number.", "reply": "Corra taps the jar. 'A number, with a margin. Two grey stones sat inside that margin together. A number can look surer than it is.'" },
+  { "id": "both", "text": "Neither one alone. Each test misses things the other sees.", "reply": "Bea writes it on the inside of the sample box lid. 'Then every label in this yard says which tests the sample passed. Not just \"matched\".'" }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "intro": "Host Hari spreads out a proof page from the town's new children's primer. 'Page twelve: the opening of the Lantern Bridge, forty years ago. The printer has room for one picture and one caption, and every child in the town will learn the bridge from this page. Director Edda says it is a staging problem. I say it is a seating problem. You choose.'",
+ "pictures": [
+  { "id": "ribbon", "name": "The ribbon", "text": "The mayor cuts a ribbon at the middle of the bridge, with the council behind.", "subject": "mayor", "shows": "Edda: 'It shows who decided, and that the town was proud. Children like a ribbon.'", "hides": "Hari: 'It hides the four years of work, and the people who did it. A child will think the mayor built the bridge.'" },
+  { "id": "scaffold", "name": "The scaffold", "text": "Builders on the half-finished arch, roped together over the water.", "subject": "builders", "shows": "Edda: 'It shows the work and the danger. Two builders were hurt on that arch.'", "hides": "Hari: 'It hides why the bridge was built at all, and who paid. A child sees ropes, not a reason.'" },
+  { "id": "ferry", "name": "The ferry", "text": "The old ferry crew, tying up their boat for the last time, watching the crowd on the bridge.", "subject": "ferry", "shows": "Edda: 'It shows that a bridge ended something. Every new thing does.'", "hides": "Hari: 'It hides what the bridge gave: the market day, the doctor who could cross at night. A child may think the bridge was a loss.'" },
+  { "id": "crowd", "name": "The crowd", "text": "The first crowd walking across, families with carts and children on shoulders.", "subject": "town", "shows": "Edda: 'It shows who the bridge is for. That is the point of a bridge.'", "hides": "Hari: 'It hides that some people argued against it for years, and some of them were right about the cost.'" }
+ ],
+ "captions": [
+  { "id": "mayor", "text": "Mayor Halden opened the Lantern Bridge in the spring of the forty-first year.", "subject": "mayor" },
+  { "id": "builders", "text": "Two hundred builders worked four years to raise the Lantern Bridge.", "subject": "builders" },
+  { "id": "ferry", "text": "The Lantern Bridge ended three hundred years of the river ferry.", "subject": "ferry" },
+  { "id": "town", "text": "The Lantern Bridge joined the two halves of the town.", "subject": "town" }
+ ],
+ "match": "Hari reads picture and caption together. 'They agree. That makes the page strong, and it makes what they both leave out very quiet.'",
+ "mismatch": "Hari tilts the page. 'The picture says one thing and the caption says another. A child will ask why. That might be the best thing on the page, or it might just confuse them.'",
+ "child": "A girl from the school group has been reading over your shoulder. She points at the page and asks: '{q}'",
+ "questions": {
+  "ribbon": "Did the mayor make the bridge?",
+  "scaffold": "Did anybody fall?",
+  "ferry": "What happened to the boat people?",
+  "crowd": "Is that my gran?"
+ },
+ "answers": [
+  { "id": "tell", "text": "Answer her question yourself", "reply": "Edda watches you explain. 'So the page needs a person beside it. That is true of every page. The question is whether the page knows it.'" },
+  { "id": "note", "text": "Add a small note to the page for the next child", "reply": "Hari nods. 'A second line, in smaller type. The printer will complain. The child who asks will be glad.'" },
+  { "id": "ask", "text": "Ask her what she thinks", "reply": "The girl thinks hard. Then she gives an answer neither keeper expected. Hari laughs. 'There. The page did its job. It made her ask.'" }
+ ],
+ "close": "Edda signs the proof. 'One picture, one caption, a thousand children. Whatever we chose, someone's bridge is missing from this page. Put the other three pictures in the back of the book.'"
+}

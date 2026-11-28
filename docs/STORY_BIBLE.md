@@ -1,5 +1,28 @@
 # Story bible: the whole campaign (chapters 1 to 15)
 
+## Two coats for one fare
+
+Kip is still wearing his red coat when the lost-property hatch gives it back. On both coats the second button is a green pear with one bite missing. He laughs until he sees the fare taken from his purse. Ise remembers promising to cover a stranger’s crossing. Vesper remembers writing down two coats and letting somebody else enter two wearers. She needed the cloakroom to look busy enough to stay open. Kip would like the money back without becoming the boy everyone has to recognise at the ferry.
+
+The mystery has four entrances. A cuff makes its own duplicate in the Nexus. A wet coat buys a real ticket in Emberford. In the theatre, an understudy can catch rain only as long as somebody else stays at work. At the council, a chair turned sideways can settle a question that a standing witness answered quite honestly. An object from another adventure can give each of these people something new to try.
+
+The Guardian can put the next coat within reach behind a curtain, appoint a guarantor or pay the wardrobe through performances. The curtain makes a private fitting possible. Ise’s signature gets a fare refunded. Nim’s first paying audience keeps several people warm. Each solution gives someone a new job and leaves someone else waiting. Return to find out who took the next shift. [Four entrances and twelve later shifts](../src/content/return-coat-sites.json) · [Keepsakes and their recipients](audit/RETURN_COAT.md)
+
+## The house with six names
+
+Opal Fenn’s mother worked the ferry and never made it to the town exhibition before closing time. Opal built a room that could travel to her. When its brass heading knocked a contributor’s name off the wall, Opal hid the hinge pin. Her uncle Tallis kept taking the weight of the heading from behind the case. Each mistook the other’s silence for a request to keep the show going.
+
+A Guardian can enter through either door, set two shelves and bind their contents in walking order. Turning the lamp towards the ferry lets a child read the credits in passing. The woman at the bench then has to shade the fine print with her hand. Turning it in brings the reader at the bench closer to the date. The last boat is already leaving. A player can change either decision, hear both relatives separately and take another pair back to the quay. [Source leaves](../src/domain/turningStacks.ts) · [The two people carrying the room](../src/content/turningStacks.ts)
+
+## The river in the hem
+
+Mayle takes her father’s curtain to a company that has given Nim her first entrance. When Nim tugs a thread, a star winks on the opposite bank. Players can turn the study, lift its holder, change the field and see how much of that effect belongs to the cloth. Once the pair of tracings goes to the wings, Nim wants a cue that works tonight. Huygens wants the seat where tomorrow’s rehearsal might disprove his drawing. Either can get the chalk. Mayle gets a seat in the audience. At the end the dresser can call Nim’s entrance or leave two competing drawings hanging by the step. [The four voices](../src/content/lensLoan.ts) · [Receiving lamp](../src/domain/lensLoan.ts)
+
+
+## A winter in one thumb
+
+Viri touched her mother’s wire glove long before she understood how it worked. The theatre earns its first real crowd from a poster neither Viri nor Elian can defend. Players can still put on an excellent show. A repeatable trick gives the understudy a real job. An open garden gives a waiting child power over the last minute. The same landing that spoils a prediction can give the company a movement they never would have written. Merian’s later bench brings an older argument about simultaneous images and successive movements to either audience. [Curtains, watches and callbacks](../src/content/petalGlasshouse.ts)
+
 This file sets the story rules for the whole game. Every developer (human or AI) reads it before writing a scene, a character, a quest or a minigame. Mika asked for these rules on 2026-11-26: the game must feel like one coherent story in a real world, and player choices must matter everywhere.
 
 The design spec (private) defines the rival, the companions and the Echo rules. This file turns them into a plan for all 15 chapters. If this file and the spec disagree, follow the spec and fix this file.
@@ -99,6 +122,8 @@ Each chapter also has a **local guide** who joins for that chapter only. Local g
 
 **The Blue Tail.** Kip catches an old stair warning used again by tonight’s porter. Its torn dispatch strip and sewn margin prompt two workable leads. The opening help leaves either a low warning or a staffed fold. Leila, Nima and the watch crews show why a sending mark keeps a different time and role from a receiving mark. The shallow slot and the press proof reveal a repeatable way to lose a line. Rook can testify only to a practice they enforced. The same strip later fits B17 after the existing Harrowmere reveal. That separate case identifies the keeper’s instruction and keeps the runner’s arrival unresolved. The woman heard in the Archive of Voices permits the dusk instruction and keeps her identity private. At the Council, the original and approved words go on separate rails before the Guardian chooses who can use the next warning. Both routes return a visible result to Kip or Ise in the Nexus. The Blue Tail never gates a chapter or determines Harrowmere’s ending.
 
+**The Lower Rail.** Beside the scraped Nile label, Leila uses a reversible practice window to test why an apprentice’s complete line disappeared. Its smooth paper and the old scratches give the Guardian two different traces. After the Harrowmere drawer opens, Omi tests his current crossing notice in the same frame. The complete warning goes up at the weir. Its spare board gives Tessi a display a reader can use with both hands full. The spare hinge lets Tessi guide a visitor through recovering a hidden limit. The two displays keep the old card’s unexplained scrape in view.
+
 ## 8. Motifs and Chekhov's props
 
 - **Lamp light vs gold glow.** Warm amber means a shared check. Cold gold means flattering certainty. Use these colours consistently in art and lights.
@@ -178,7 +203,18 @@ The chapters exist in code (see STATUS.md). This table adds what each one needs 
 
 ## 15. Conflict map
 
+**The neighbours, Chapters 2–15.** Each pair shares an object or a place, and each person has unfinished business of their own. Either can go first. What they tell a neighbour afterwards may leave out the part the Guardian thought mattered. At the Cold Store, Aster brings her father’s chipped cup or his worn certificates to a portrait sitting. In the City of Copies an ink-stained pear changes hands as a present. At the Water Commons the knock that once meant supper also sounds at a working gate. Both halves of a pair stay available when the main chapter is over. Each of the thirty-two invitations, the resident’s two possible actions and the neighbour’s two possible replies are written for that household. [The sixteen stories](../src/content/neighbours.json)
+
+**The Underpan, Chapter 10.** Fen Clove used to weigh flour for Tellen. She gave back overcharges on prices she did not set. When a family blames her, something under the pan grows another hand. Tellen and Dagny can each open the way downstairs. A lone player can find Fen by the coin she flips against the grate. Moving the lamp separates some of the shadow’s fingers. Touching the receipt folds keeps customers’ names private and follows the flour through five hands. Neither route settles who took the money. If Fen demonstrates upstairs she loses the chance to read a frightened woman’s receipt. If she reads privately she has to live with the rumour. The old counting stair opens for the demonstration. The creature refuses to leave the sill when the shutters close.
+
+**The Spare Moon, Chapter 1 and the Council coda.** The brass fish at the archive entrance is a bell, an inn sign and a family joke. Night hosts tug a cord when they have room. The hall counted callers asking for a bed. Auda once put her own family on that list. Noll played over the knocks because he liked the tips. Ket keeps taking guests while the siblings try to untangle the count. The player can trace the worn latch, separate two ringing cords, still a shutter, or play four beats with room for an answer. Any one opens the night house. Public bell, private cord and open bed each help somebody and leave somebody waiting. Auda’s letter and Noll’s music have independent endings. After the Guardian reaches Emberford, Noll takes breakfast into the night house on his own. The flour by his empty peg makes another way downstairs. Ket’s paper crescent goes on sale at Corvan’s stall after her watch. One may hang in the Guardian’s quarters, and the two hosts can talk about whom a light is for. A guest remembers the tune at the Council after any central ending. The Wicks’ mother is alive and works upriver. The rumour of a haunting tells the player something about what her children miss.
+
+**The Seat That Clapped First, Chapter 9.** Edda thought her mother returned to hear her sing. Hari stayed in a gallery seat whose hinge clapped when he stood to see. Testing the board gives the player its sound. Only Hari can account for why he came back, and Edda chooses to hear him in private. Giving the bow to the house lights or to the wooden seat changes how a child enters the next performance. Either group of players can answer an earlier four-beat composition or make their first one here.
+
 In Emberford’s Tipped Cart, the driver needs names to follow up on a missing pot. Passing carters need an immediate warning about a loose stone. Sending the driver the full accounts leaves the stone without a public mark. Marking a public detour leaves the pot’s story at the clerk’s desk. The receipt on the lane rail changes when the Guardian redirects the report.
+
+In the Nexus, Venn needs a date index while Kip needs a source he can put straight into a reader’s hands. The player can amend the index or redirect Kip to the public history of the Buku-Larrŋgay Mulka Centre. Sella’s visitor needs directions they can use alone while Dace’s visitor wants time to trace two distinct accounts of hospitality. The player can place the tour details at the hall clip or leave both accounts open at the staffed case. Both jobs can wait.
+In the Travelling Tally, Della and Idris both need the one writing rest. Hesper has the Guardian compare the same writing on the rest and the rolled strap. Della can open a steady stall rail to several runners. Idris can brace the rest for remote stops and leave the stall with its old rail. At the ferry, Tova and Enna help callers use a dated shelter entry. A public copy supports independent arrivals at the confirmed bell. A staffed desk can serve an early caller. The next caller still depends on Enna’s availability. Players can leave both orders pending and return later.
 
 
 Mika asked for a wide variety of conflicts (2026-11-26): every type, every size, and different ways to end them. Conflicts must connect and build: each one moves the plot, a character's arc, or the theme forward. Misunderstandings, jokes and puns sit next to serious moments.
@@ -212,7 +248,7 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 1 | The Copy That Came Back | Society, Person | s | quiet | beside the tea table, trace the stall’s return citation, then check the limited signed sightline and prepare a runner slip or a dated source packet | Kip stages one parcel pending a fresh lookout. Venn keeps the first report, the copy and its return with a separate blank line for a new observation. |
 | 1 | Hesper’s visit | Person, Society | s | mixed | inspect the repair and arrival marks, then reserve one bell at the Nexus bench or send the drawer packet | The physical handover either uses Hesper’s demonstration or leaves the bench free and puts both records in the drawer. |
 | 1 | The Step Across the Line | Person, Society | s | mixed | run a fixed four-beat phrase from each facing, then hang one lamp-side cue or two entrance cards | A shared cue needs Sella’s lead-in and frees a hook. Paired cards let late runners enter alone. The House uses the slip beside a moved lamp. |
-| 1 | The Hollow Archivist (Undercroft) | Supernatural | M | serious | name each error | The brass lamp (ch 15) |
+| 1 | The Hollow Archivist (Undercroft) | Supernatural | M | serious | damp three echoing tubes, lift a shared link, run the flood drawer, roll a lamp over wax, peg a forecast and try both chairs | Elsbet’s lamp lights a later dispute at the Old Weir and gives Vesper a different person to answer at the Council |
 | 1 | The Lamb on the Ford Stone | Nature | s | mixed | face, around (pay marks), leave | The ballad |
 | 1 | The Prophecy over the Arch | Fate, Supernatural | m | mixed | face (source), around (a hope), leave (believe it) | Madame Quandary (ch 9) |
 | 1 | The Missing Word (toll notice) | Society, Person | s | mixed | three wordings; coin a word | Who chooses words has power |
@@ -224,7 +260,7 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 1 | At the Door Before the Bell | Person, Society | s | mixed | follow a porch picture and a separate permission slip, then combine them or serve both approaches | Suri finds the desk or has to ask another visitor. The fold changes a later lantern-house delivery. |
 | 1 and 4 | Three Cases at the Bell | Technology, Society | s | mixed | lift each possible drawer and choose a complete visiting copy or a quick checked dispatch at Marl Fold | The next weather crew sees all visits together or has a separate return date for missing checks. |
 | 1 and 2 | The Shelf That Became a Wall | Nature, Society | s | mixed | walk the current annex and a reconstruction, then reopen the west gap or keep a staffed desk | The repairer or the borrower walks farther. Marek uses the revision peg to separate his old cart practice from today's permission. |
-| 1 | Three Bands Through One Window | Technology, Person | s | quiet | keep the three practice readings fixed, try both renderings and choose who gets the first holder | Nell can follow the seam at the low drying rack. Venn can trace the pinholes at the window. The earned Webb working copy opens a choice of shape key or greyscale at the Study’s dim light. |
+| 1 | Three Bands Through One Window | Technology, Person | s | quiet | keep the three practice readings fixed, try both renderings and choose who gets the first holder | Nell can follow the seam at the low drying rack. Venn can trace the pinholes at the window. The earned Webb mosaic opens a choice of shape key or greyscale at the Study’s dim light. |
 | 1 | The Repair Queue | Person, Society | m | mixed | pay for paired tickets and open the yard, carry a relay tray across the market, return the slate and keep appointments | Kip follows the handoff to its end. The Council can recall what the public kept and what stayed private. |
 | 1 | The Cart Before the Bell | Person, Society | s | mixed | preserve either first view, open a closed witness slot and replay two checks, then post a direct pickup or send an escort | Edrin names where the reported stop came from. The next collector finds a crate through evidence they can use. |
 | 1 | The Last Turn | Person, Society | s | quiet | lift the slate after the Showdown, compare the two workplaces’ customs, and hold one public speaking turn or open a dated intake | The buyers wait to hear Derva or leave with a referral. The Study shows where her own account reached the record. |
@@ -242,6 +278,8 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 | 1 | The Two Shutter Room | Technology, Society | s | quiet | check two marks, open a hidden hatch, trace a stalled beam and confirm both corrected settings. Fit the spare pin for a tray rest or a quiet seat, or leave the room. | Tavin and Merra each give a reply. The waiting group keeps its request. The desk can be fitted again after both groups have been heard. |
 | 1 and 11 | The Pace of a Load | Person, Technology | s | quiet | carry four parcels under two pacing patterns with two recovery beats, then preserve the chosen pace for the Water Commons staffing trial | The first receipt earns a signed slip. Sena uses it to keep the local pace fixed and files a roster that either keeps the rinse worker or adds a half-route carrier. |
 | 1 and 15 | The Blue Tail | Person, Society, Technology | M | mixed | help a porter at the rail or at Ise’s desk, compare how two records lost their names, follow the matched counterfoil and permitted warning, then choose a new rail or staffed desk | The route grants the next porter a visible warning or the runner a checkable arrival stub. Kip or Ise keeps the result in the Nexus. The old arrival remains open. |
+| 1 | The Cart That Came Back | Person, Technology | s | mixed | follow a folded sketch or listen at both ends of an oral relay, then let another crew try one of four repairs | At the east bridge, each next crew gets a different way across or waits for a helper. Minta owns her part in the mix-up. |
+| 2 and 11 | The Lower Rail | Person, Technology | m | mixed | fit and lift a practice window, check a current crossing notice, take a full-width backing or a working hinge, or leave the decision for later | Omi keeps the whole notice visible. Back in the Nile hall an arms-full reader can read it through, or Tessi takes the next reader through a working window. The old scrape remains legible as a gap. |
 | 2 | The dispatch: a king's boast | Self, Society | M | serious | pair, print, read | Vesper is right that the case over-claims |
 | 2 | The Date Through the Door | Person, Technology | s | quiet | fit two slips to the same packet and choose the public clip or staffed pickup | Sol can see the public dates and their limits, or a waiting reader can get the signed pair from Tull. |
 | 2 | The Borrowed Translation | Person | s | funny | argue, go elsewhere, do without | Ambry's footnotes |
@@ -408,6 +446,26 @@ Scale: **M** major, **m** mid, **s** small. Tone: serious, mixed, funny. "Ends" 
 
 **Gaps to fill next:** Seal agents who remember the player in chapters 6 and 7, a weather or creature crossing in chapter 15, and a technology crossing that uses the Civic Machine itself.
 
+### The folded-wing post across Chapters 1–15
+
+Someone has pressed a bird’s footprint into Ise’s wax. Unfolding one wing allows a historical voice to ask for help. The playable moment belongs to the person who has to act. A child waits under Gārgī’s loose ceiling. A water user working between shifts needs another keeper to vouch for her when Elinor Ostrom’s repair seals arrive. A player can change the first fold before a receiving keeper handles it. At the receiving post the keeper can reconsider how they share what arrived. At home the reply and the other half of the watermark stay discoverable.
+
+The post links people through the Archive. Its pairings cross historical periods as part of the fantasy. For example, the lamp can make a tree appear inside Ibn al-Haytham's room and make the light disappear for one of Wang Zhenyi's observers. Keeping the separate testimonies unlocks their shared watermark. A narrow, sourced factual note is accessible under each seal, including on later visits. The historical conversations and their proposed meetings belong to the fictional plot. [Cases](../src/content/ink-post-letters.json) · [Pairs](../src/content/ink-post-watermarks.json)
+
+### Who gets the last dry frame?
+
+Oskar has four maps and one frame that will keep a sheet dry. Hang Efua’s well map there and two diggers can move tomorrow’s pegs. Give Kip the frame at his height and another child can add a step to the walk. At the sorter Hana puts aside fruit the machine rejected. Giving her the second-look basket buys a grower another hearing. Giving a grower the example tray gives them a say in how the next batch is judged. Each decision makes sense to someone who lives in town.
+
+The echo bridge, toll box, ferry slate, painter’s easel, bell stair, weather board and Imre’s round window also send word back to the Lamp Wall. Walk there to read a reply. The Guardian can change a handover after hearing what it cost, and the diary keeps the earlier visit. [Nine workshops and their replies](../src/content/puzzles.json) · [Journey through the town](../tools/emberford-shift-journey.mjs)
+
+### The kitchen bell and the missing houses, Chapters 11–15
+
+One sentence from a child has been chalked beneath the tower keeper’s portrait. She really did hear a bell. The missing words identify the little one by the stove. Maro cares about a father who needs sleep and a sister working on the flood steps. Ro knows what it costs to live in a house without a reply lamp. Wren wants people to hear the child, who wants a say in where her own voice travels. A listening sleeve gives the family control of the recording. An unsigned wording reaches the ferry crew together. Follow the sleeve, the model and the hearing invitation in either direction. Earlier choices travel with their makers. [Wax cuts and council exchanges](../src/domain/lastBell.ts)
+
+Joss can warn the kiln workers first or reach the sleeping boy above the sail loft. Walking the span beside her reveals why the wooden hill gets the crossing wrong in one direction. Both charts can be retested and amended. At the Council a witness can open the meeting, answer a runner or put a person back on the reply ledger. The families can call the next meeting or the crew can stage a public trial at dawn. A signed finding keeps its sources as the speakers saw them. Once the Guardian brings Maro’s clip, Ro’s ledger, Wren’s decision and Joss’s retested route together, the households can design a follow-up or run a comparable trial themselves. The original minute survives both addenda. [Routes and save checks](../tests/last-bell.test.ts)
+
+Each historical guest can also bring a tracing into another chapter. What was in the first two places and what was left out now matter. A student can try the omitted piece, listen to the new reading and choose to keep either arrangement. The earlier keeper holds on to the originating copy. [Guest return checks](../tests/guest-return.test.ts)
+
 ## 16. The 150 story elements
 
 Mika's list of 150 story elements is adapted to this game in [STORY_ELEMENTS.md](STORY_ELEMENTS.md), with a mark for each (in the game, partly, planned). Check it when you plan new content.
@@ -417,3 +475,153 @@ Mika's list of 150 story elements is adapted to this game in [STORY_ELEMENTS.md]
 A torn parcel wrapper comes under the Ledger Room door after its claim has closed. Lella opens an empty drawer on purpose. Omrin’s blind spring sometimes exposes the seal. Players pin a drawer and run both opening rules on the same six slips. A second work surface lets them thread Lella’s own tag to the queue, then run the thread between every pair. The two moon tags are grounds to reopen the claim. Neither identifies an owner.
 
 At the return slot, the Guardian can leave anonymous tokens or stay to hear both accounts. Lella and Omrin remember the arrangement in separate conversations. Both arrangements can be tried on the same save. The rack and roll give a civic use to the reasoning encountered at Dov’s lantern crates and Tova’s ferry.
+
+### The missing signature
+
+In the Archive, Ise has been leaving a key under a saucer so her mother can open the library for herself. Now the key is back and the hook is wet. A guardian can follow a loose picture to its drawer, keep watch with a creature, or take a shift at the register. The museum works are real. The people arguing over who gets to use the reading live in the game.
+
+Each of the fifteen rooms gives the receiving keeper an urgent task and a quieter reason to stay after closing. Ostel needs to plot a light his friend can see from the quay and that disappears offshore. Brannic discovers that the shifter uses the uneven clap she hated on her rehearsal reel. Hale wants the chair keeper to have a voice and chooses to sit by the wall. Bringing a reading from elsewhere lets the Guardian intervene. A later visitor can hear how the person acted the following morning.
+
+The carried edition remembers which tool exposed the detail, who helped and who received it first. When the home display changes, the first recipient can give a different account in good faith. After three receiving chapters the keepers discover what the blank signature means. The Guardian can leave a space for the earliest helper or pass the register on to its latest reader. Each ending keeps its original witnesses. A player may return to either decision. [Keepers, morning scenes and clues](../src/content/nightKeepers.ts) · [Playable handovers](../tests/night-register.test.ts)
+
+
+### The blue shift coat
+
+Ise recognises her mother's button on a coat that fits none of the keepers. The instruction in its cuff stops one word short. Take the formal greeting out of the label and the instruction fits. Keep the greeting and the offcut can still be read by someone willing to look inside. Bayette, who receives it at the press, has spent years stripping names out of copy to make room. She has her own idea of which word to keep.
+
+The fifteen working pockets put each keeper's worry in a second person's hands. Vellune takes casts on different ground to find out how two generations came to remember the same clearing so differently. Maro sees how differently her father and sister experience the same change in the night warning. Wren can keep two tellers apart long enough to see where a borrowed detail came from. Each second keeper can change one fitting on the travelling tool and keep the reading beside the one they received.
+
+Three opened pockets reveal the unsigned shift. Leave a whole coat on the empty chair for whoever comes next, or unpick the pockets so nobody has to take the whole job home. Each ending remembers the editions its witnesses actually opened when they signed it. The choice, the other ending and the finished coat's worktables remain available on return. [Fifteen keepers and their replies](../src/content/pocketStories.ts) · [Witness and handover rules](../src/domain/pocketCoat.ts)
+
+A tracing earned at the chapter lamp also fits the coat loop. Sew one part on top and fold the other underneath. The receiving keeper can bring the third, originally omitted piece to the table. In the Archive, Ise can set it beside her mother's cuff or leave a space for the person who actually held the key. At the gate, a borrowed method can help Maro plan a trial, while only a household can supply its missing card. The two slips change the job of the next reader. Both get a reply at home. [How each keeper uses the tracing](../src/content/coatMargins.ts)
+
+### The button in the plaster • Emberford
+
+Maren’s grandmother left a button beside the old tower measurement. Her granddaughter can keep the morning bell open without promising the whole building is safe. A stoneworker can take the rubbing instead and go somewhere the Guardian’s line never reached. At the bridge, the tea seller wants to know whether to bring the breakfast cups down. Noa’s water records give her neighbour grounds for a small decision and the bridge crew grounds to send a runner. A third dispute belongs to Venn. His father did record a flood. Only his son supplies the link to this particular post. His signed memory can travel on its own slip beside the visible marks. All three threads have a return at the Lamp Wall. [Field voices and returns](../src/content/makerTrials.ts)
+
+
+### The line that ate a worker • Nile, Metalworks and Copies
+
+Liri Pell wants her newly cut tooth to earn a place beside the master’s mark. Tessel Fen’s long path up from the boats kept her blanks dry. Foreperson Aven Dorr stamped three boards in her own name because the guild would otherwise reject them. None of them can correct the account alone. Elinor Ostrom opens the pay books with Imani. Judea Pearl keeps four bells fixed for Hesper’s rehearsal. Michel-Rolph Trouillot sits with Bayette while the Guardian lays the type. The public proof can bring strangers to the old wheel. The private edition lets the workers read their own wages before anyone else does. What appears at the workbench depends on the actual account returned there. [The three shifts](../src/content/millShift.ts) · [Printed consequences](../src/domain/millShift.ts)
+
+## A note from Liri’s sister
+
+The apprentice who cut the mill tooth wants the night ferry job. She brings a three-footed animal to her first watch and discovers an animal track crossed by a boot. Either signatory can turn the slip around rather than sign for what someone else saw. Four chapters later the same dread of being judged comes back when Liri gives the warning call. The loose panel at the rear has swallowed a beat. When a friend steadies the shift, a fiddle player can catch the last boat. On the island Liri’s sister is the first passenger to use the route she mapped. Now Liri has to tell her that the walkers have recalled it. A friend who keeps the visitors’ bench receives a chipped cup of ferry tea. [Watch scenes](../src/content/whistleWatch.ts)
+
+## Sora’s spare key
+
+Sora wants her apprentice to take the watch. She praises the figure at the helm until the apprentice hears something else: asking for company might disqualify her. Renna’s problem is personal too. She types a sweeping sentence about learning from memory, then remembers the figures her father kept on his cuff. A pencil, a voyage roster and two watches at one buoy each mend a different part of the story. On the lower pier the apprentice gets to correct an experienced harbourkeeper. A second hook or the chalk on Sora’s shoes tells the Guardian how that conversation ended.
+
+## Supper for a Shadow
+
+On Thursday Kip wrote “two.” Otla supplied the noun. By Friday the new word was in a skipping rhyme and her brother had taken his bowl outside. Everyone who saw two shadows told the truth about the cloth. Otla was stirring the bottom of the pot when the shadows crossed it. She has to decide whose place in the story she can sign for.
+
+The child at the public demonstration beats time with a spoon. The porter brings a stool to the private booth so a shorter visitor can reach the shutters. Behind the kitchen door, the brother invites the boy who heard him laugh. He can lend his spoon and keep the meal to himself. In Emberford, Corvan once made money from the rhyme. His shutter, envelope or stall changes after the Guardian brings back word from one of those visitors. [Scenes and returns](../src/content/supperShadow.ts)
+
+
+## The Last Plum in the Orchestra
+
+Fen inherited her mother’s ending, three taps and a rest. She thinks the space at the end is where her mother used to stand. Tallowheel, who pulled the orchard stage for twenty years, can feel another player answering through the floor. Her child has a different idea about the length of the rest. The Guardian can catch the moment by moving the same four beats from the suspended rim to a plank. Both scores are still in Fen’s six-sided trunk, each behind a catch that can open first.
+
+The company can pull its own handcart or take the old harness apart for seats. On tour someone must either give the cart its wheel or put the tree on their shoulder. In the forest a falling fruit cues one audience while a knock through the bench reaches another. Fen remembers which piece of work the Guardian chose to do. Pia keeps the part her brother played in her catch. Tallowheel gets to decide whether to buy a ticket. [The different performances](../src/content/plumOrchard.ts)
+
+
+On Tova’s picture ferry two moons belong to two family memories. Neris can hold a connection for the person already travelling or make room for the one left standing. The cook knows how the deck looked. Bo knows the bunk ceiling. The actual sleeve keeps the part the other window saw, even when the first passenger has already gone ashore. [The night we had two moons](../src/content/pictureFerry.ts)
+
+### The date above the door
+
+Rix can afford one heading for the parade. Jori remembers the newspaper dating her workshop by the day it closed. At the collection room the Guardian can make the street an invitation with a drum, a lantern, both or six beats of silence. One neighbour hears from the stair. Another sees through a window. The invitation changes who starts the music and which piece of a holding’s history the street agrees to remember. Four historical visitors bring editorial choices of their own. The block on the composing desk can change while its first impression is already in another person’s hands. [Composition and receiving rooms](../src/maps/streetAlmanac.ts)
+
+### The price you can read with your thumb
+
+The last owner took the picture above the stove. Cen bought the cart but kept the price she cut into it as a girl. Kit, a former theatre prompter who once missed the last step of the stage, can move the wheels and has trouble asking for help out loud. When the shop floor taps three times, Cen knows the cue. In the tenth chapter the Guardian can answer both women by making a pot for someone who is still outside.
+
+Rain makes the cart leave Lantern Square. The chapter eleven weir brings buyers who stand across the water. At the chapter twelve North Steps the buyer can see a sign before there is time to speak. A starting number offers certainty to one and a reason to turn back to another. A second visit can change the counter. The notes two mill workers send with their bids complicate what Kahneman’s groups and Tversky’s spoons made visible. The dent in the cup pays off when a stranger is allowed to explain why she stopped.
+
+**Conflict map** · Weather moves a seller, her old sign moves prospective customers, and a faulty street dial gives Kit an offset she can actually correct. Cen can face the written offers or the corrected dial towards the street. Her disagreement with Kit about what a passing stranger can know need never be settled.
+
+### The night the kettle rang twice
+
+A singer on leave has taken the dented kettle away with her. Her wife Oda keeps hearing it fall on the ferry wire. The Guardian can follow a paper moth to a quiet coil, go straight to the open rail or visit the painter under the roof. Oda has used an old take to fill a hole in the ferry show. Her friend Tavi has tried to settle the missing word by counting whoever could answer his call. Helping one means finding out what happened to the people the other never heard.
+
+When the programme crosses the water, the student chooses what the dock hears. Joss gets his shift home under any of the three editions. Oda gets to decide whether to wait through a rest, share a tune or leave the second horn to the other bank. The uncredited listener can stay out of the recording and still change the time of the next hearing. [Studio and ferry](../src/content/ferryRadio.ts) · [Twelve editions](../tests/ferry-radio.test.ts)
+
+
+## The quarter that comes back
+
+When a broadcast reaches Two-Tide Dock, Matel Mear has just sewn one copper foot backwards. The paper moth was once somebody’s drawing on her first wage envelope. Matel can repair a split sail with cold fingers and once swore she would always make time for anybody on her pier. Her clock gives her the same quarter over and over. The two people she promised to meet still never stop at the same hour.
+
+Siv gets one break at the slipway. Joss reads the time with one boot on the mooring. Ivo wants to keep a page out of the spray. Move a bench, a board and a horn, and the same plan changes all three journeys. Walk at two different hours to take each rubbing. In the kitchen upstairs Matel finds a teaspoon baked into her bread. Mara has been stirring the tea with bread crust. [Matel’s two rooms](../src/content/tideClock.ts) · [The six tide marks](../src/domain/tideClock.ts)
+
+## The orchard that got up
+
+The old shoes on Gresa Oker’s cart make it look as if a tree came home on its own. Once she hears her father laugh at the boots she cannot quite bear to clear up the story. The stage caller Pella hears a worse rumour. A light buyer means to take five of the nursery’s lamps away because the town appears to have lost five trees. The dates on the two pictures are different. A player can discover why the boots walk before knowing whether any tree lived.
+
+Gresa wants the sun off her father’s soup. Pella wants to pay for water through a winter of rehearsals. Pella’s sister Nemi, first met through the freight-stage story, left a pause long enough for the last person to enter. Gresa’s father brings his own chair and walks beside it. Either woman can lead the next visit. Each has a reason to give the cue away.
+
+**Conflict map** · A missing field visit leaves a factual uncertainty, an early photograph makes the parade look prosperous and a grower asks for control over the information they lend. Four chalk runs put the ghost story within reach. No experiment names the person who pulled the tub. Three fully supported readings and three public purposes can travel in any pairing. The purchase changes the physical installation, the witnesses’ observations and nine possible later handovers. Following the singers, chalk and heel across the early site pays off in a two-way cart passage once the Civic Machine is open. [The nursery and the square](../src/maps/walkingOrchard.ts) · [Gresa, Pella and the two visiting thinkers](../src/content/walkingOrchard.ts)
+
+## The inn under the mat
+
+Neska Vell once charged each guest a story for a bed. Now somebody too small to knock is trying to give her the key. Below her quarters is a nine-room floor that fits in one hand. Tover Heth, who once missed his father’s climb with the supper pot because he was singing, puts buttons in his kettle so he can hear the rough corners. Yilka An, who lights the harbour and keeps her own blind tied, asks who needs to see the door from the other side.
+
+Turn the rooms, follow a flat shoe and a cart, then fold the east seam out and measure the same trip again. The joins can stay fixed while the distance grows. In the Emberford yard a child waits with one clean spoon. Behind Tover’s actual wheels, a neighbour holding a door matters in a way the drawing misses. At the harbour the lamp can shine straight through an opening and lose the person who walks round a corner. Jane Jacobs and Zaha Hadid return at those two sites. Their dialogue uses original scenes. Their journal readings lead to Project for Public Spaces, the community-run Jane’s Walk and the Pritzker Prize account of Hadid’s work.
+
+A resident at the mat can send the cart a direction thread. A resident on the sill can suggest a reachable lamp hook. Beside the hearth a friend can keep a folded plan while the town works from a later one. Any of the 240 creatures the student has actually befriended can occupy any one of the three places. Travellers leave their place waiting. The listening table needs the stop the player reached and the lamp they actually tried. Supper, a song and solitude lead to nine endings according to what the inn originally promised. The landing that opens at home remembers who received the kettle and who could see the light.
+
+## The moth with two tails
+
+A gold moth has eaten the middle out of three notices. Tritta is paid by the word to repair them. Agate was the person who first persuaded these towns to buy a stamp and is finding out what they thought they had bought. Each chapter’s night keeper has an independent reason to get a notice out this evening. Vesper’s letters survive as old impressions that can still be read after the Council hearing.
+
+The hand in the returns slit turns up before the family bed, ferry horn, free bowl, missing singer and other disputed notices. A Guardian can give any town immediate practical help, a public account of its sources or custody of its sheet. Someone must then work the extra shift, carry the load or wait for a reply. Walking to the place that receives the notice reveals a consequence. A folded notice can travel to another city even if its town later changes its mind.
+
+Agate buys a place in Tritta’s cap for one tiny scrap of paper. The moth can recognize a familiar working method across chapters. Someone who signs with a sliding proof gets a change of face. A cord reader gets a third ancestor. A keeper of bells gets two shifts at the same bell. Agate has a reason to press each one and one final cost she cannot hand back to her clerk. At the Council she takes her bag off the spare chair.
+
+| Chapters | Conflict | Stakes | Ways through | Return |
+| --- | --- | --- | --- | --- |
+| 1–15, the local Night Registers | Guardian and Seal, keeper and customer, witness and institution | A hot meal, cue, warm place, safe landing or public promise can have a real cost tonight. | Trace the three cords, slide a marked sheet or work the bell shutters. Put up a notice, arrange a service or return custody. A challenge can be left, answered or taken up again in a different town. | A physical rail, tray or witness seat appears in a different aisle. A carried edition keeps its original observations, even after a different notice goes up at home. |
+
+[The fifteen commissions](../src/content/second-ink.json) · [The rival’s changing terms](../src/domain/secondInk.ts)
+
+## The oven with two addresses
+
+The Guardian gets a letter with a small bite out of it. A child has been posting letters to a bakery that burnt down nine winters ago. The bricks are warm. Emlet walks flour out at ebb and Rialla pilots the letter boat at flood. Each has been telling the truth about the same name. The missing oven has a rudder. Pendlow is still baking and would like her sister home for supper.
+
+| Conflict | What the Guardian can change | Who remembers |
+| --- | --- | --- |
+| Emlet’s confidence in his own round | Walk his street and use the thread to show him where the boat came up to meet him. At flood the street he used is wet. | He can sign his morning account even if Rialla declines to sign for the evening. |
+| A council wants to mark the bakery with one brass dot | Carry a shuttered address, offer a walk with a guide or publish a district. Try the public mark at both tides before deciding who can be recognised. | At the Old Weir a different caller receives each edition. Someone still has to eat, staff a guide’s stool or look for a bell. |
+| The people who drew the working map have never climbed the receiving stair | Give a neighbour the pencil at the other quay or invite a new working pair. The folded edition can return for another trial. | Pendlow receives the crumb that travelled with the first letter. The receiving walkers keep authority over their own landing. |
+
+The oven skate follows a current of warm air one dry square at a time. Its gift for finding a route does not tell it whom a house belongs to. The little foil press goes further. An apprentice and a first-time traveller can hold identical slips and arrive at different interpretations. [The kitchen and the weir](../src/content/riverNames.ts) · [Walking and stamping](../tests/river-names.test.ts)
+
+## The cricket in the sleeve
+
+Kip kneels beside Corvan’s discarded market board. A tiny wax cricket goes quiet when he lifts it. He can carry the impression of its ring and nick, or put his own name and the hour of discovery inside the wrapper. He would dearly like to have seen who pressed the seal. He was eating his supper at the time. Ise almost pockets the thing out of habit. What happens next is up to the Guardian.
+
+| Place | An arrangement the player can test | Who is still waiting |
+| --- | --- | --- |
+| Public rail | A late caller leaves an inside-out glove. Sew its ridge onto a strip or keep it for a demonstration by its owner. | Kip wants to meet the woman. The early shift wants a strip it can feel. |
+| Witness desk | Leave a folded appointment tab or hold the low stool steady while Ise fetches Kip. | A tired woman has trouble reading his writing. Someone else wants a turn. |
+| Change of shift | Follow the next caller or stay to test one knock with a second pair of hands. | Hesper recognises the sleeve Ise cut years ago to splint her hand. She can wait with the caller while a porter sets off. |
+
+Elsbet’s letter has two accounts folded inside. She heard no answer at the steps. Orrin was indoors filing the brass tooth of the catch. The guild copy leaves room for the name of a worker who deserted. A guardian willing to knock can find a silent spoon in a kitchen with a living man sitting at the table. A different test, with both reference settings known, makes silence a good clue to a missing tooth. The archive still lacks a working test for that particular night.
+
+The player can send the two uncut lines, the catch or an invitation to swap listening places. When any of the three Nile packets is installed, the first reader uses what travelled. The next caller lives with its cost. [The two chapter scenes](../src/content/hatch-margin.json) · [The catch and its two listeners](../src/domain/hatchSleeve.ts)
+
+
+## The pale H on the well cover
+
+Someone chalks Hesper’s name on the lid. The fruit seller owns the first letter. She saw steam over the smithy from the spot where she drew an empty bucket. Hesper can tell her which well filled the barrel, and Efua knows whose kettle missed its turn. Players can watch the usual shifts or accept a three-day change in Hesper’s draw. The watch catches the wells moving at different times. Rain arrives during the shorter-draw trial. Either record leaves Orrin with an honest line he can print.
+
+The council still has to put a jug somewhere. A dawn reservation gets soup out before the children arrive. A late reservation gives the returning porters water. At the east well, the player can hear what that decision cost and move the hook for tomorrow. The keeper accepts both turns. [The East Well](../src/content/side-quests.json)
+
+### Efua’s spare pot and the listening hatch
+
+The covered jug has an owner for this shift. A second pot brings a different question to the hook. The porter might call late, leave a tally, or need a neighbour he has never told about his wrist. Efua sends his rule to the Old Weir. The wheel listener can knock but cannot slip a sound through a slot. The chalk maker can post a rubbing but has lost its location. The rule the player signs there returns to a person already met in Emberford. An open hatch can still hear only part of a life.
+
+### The travelling pocket theatre
+
+A stitched pocket connects two folded streets. A guardian may rehearse an ending, keep their first judgement open, try the two slides in either order and send either public ending. The sheet lights a different working scene in a second town. Bringing a reply home gives the people affected by the first decision another turn. Nothing obliges the guardian to take up either street when opening the suitcase.
+
+The manager in the Tuesday street ordered the qualification folded under. At the listening-room reel an incomplete sentence can be restored, yet whoever cut it left no such instruction. The runner has a ticket of his own. Wren has a key to return. The stories allow honest error, an inviting illusion with a bow, and deliberate distortion with an accountable maker.

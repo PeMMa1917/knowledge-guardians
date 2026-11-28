@@ -2,7 +2,7 @@
  * Builds a player sheet at runtime from the base sheet and the player's look
  * (src/domain/appearance.ts). Ready-made looks use the sheets on disk.
  */
-import Phaser from 'phaser';
+import type Phaser from 'phaser';
 import { decodeLook, recolour } from '../domain/appearance';
 import { CHAR_FRAME } from './art';
 

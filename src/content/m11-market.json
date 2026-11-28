@@ -1010,6 +1010,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "truth",
        "evidence",
@@ -1051,6 +1052,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "perspectives"],
       "concepts": [
        "interpretation",
        "culture",
@@ -1086,6 +1088,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "ethics"],
       "concepts": [
        "values",
        "power",
@@ -1139,6 +1142,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "perspectives"],
       "concepts": [
        "evidence",
        "interpretation",
@@ -1149,7 +1153,8 @@
        "social"
       ],
       "aoks": [
-       "HUM"
+       "HUM",
+       "LAN"
       ],
       "subjects": [
        "economics"

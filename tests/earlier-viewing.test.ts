@@ -32,6 +32,8 @@ describe('Named collection returns', () => {
       expect(d.done(record.flag)).toBe(false);
       d.run({ type: 'SetFlag', flag: `${record.flag}.layout`, value: 'paired' });
       expect(d.done(record.flag)).toBe(true);
+      expect(d.s.adventureDiary.entries.find(e => e.id === 'quest:' + record.flag)?.text).toBe(record.journal);
+      if (record.id === 'memory-board') expect(d.p.skills['SK-MICRO-0939']).toContainEqual(expect.stringContaining(record.flag));
       d.s.mapId = SPECIMEN_BASE;
       d.run({ type: 'CarrySpecimen', key: record.key, carry: false });
       expect(check(fixture.visibleIf, d.s)).toBe(false);

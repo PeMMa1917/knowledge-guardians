@@ -1,0 +1,91 @@
+{
+ "story": [
+  "Flood night at Reed Ford, two years ago. The river was over the stepping stones, and Tamsin's small brother had a fever on the far bank. The fever bark was on this bank, in Tamsin's pocket.",
+  "Orrin the ferryman would cross on a flood night only for triple fare. Tamsin had a third of it. He said no.",
+  "Ravel had a small fishing boat at the ford. He would not lend it. He had promised the council: no small boats on flood water.",
+  "Pell, Tamsin's friend and the strongest rower in the village, said, 'Not my family, not my risk,' and went home.",
+  "The council made the flood rule after two people drowned the year before. It said nothing about anyone on the far bank who needed help.",
+  "So Tamsin untied Ravel's boat without asking. She reached her brother, and the fever broke by morning. On the way back the boat hit the rocks. Ravel lost the boat, and with it his fishing for the season."
+ ],
+ "people": [
+  {
+   "id": "tamsin",
+   "name": "Tamsin",
+   "did": "took Ravel's boat without asking"
+  },
+  {
+   "id": "orrin",
+   "name": "Orrin the ferryman",
+   "did": "asked triple fare"
+  },
+  {
+   "id": "ravel",
+   "name": "Ravel the fisher",
+   "did": "kept his promise and kept his boat"
+  },
+  {
+   "id": "pell",
+   "name": "Pell, Tamsin's friend",
+   "did": "went home"
+  },
+  {
+   "id": "council",
+   "name": "the council",
+   "did": "made the flood rule"
+  }
+ ],
+ "views": {
+  "tamsin": {
+   "who": "Old Hedda, who keeps the ford gate",
+   "line": "'She took a boat that was not hers. A good reason does not make taking right. If everyone took what they needed, nobody would own a boat by spring.'"
+  },
+  "orrin": {
+   "who": "Jory, who mends nets",
+   "line": "'Orrin saw a frightened girl and set a price on her. Every one of the others had a reason. Orrin had a chance to be decent, and he sold it.'"
+  },
+  "pell": {
+   "who": "Wen, who was Pell's teacher",
+   "line": "'A stranger can walk away. A friend cannot. Tamsin trusted Pell, and Pell went home. That is the one I cannot forgive.'"
+  },
+  "ravel": {
+   "who": "Doctor Ash, from the far bank",
+   "line": "'Count what each choice cost. A sick child on one side, a promise to an empty river on the other. Ravel could have rowed her himself.'"
+  },
+  "council": {
+   "who": "Marit, who lives on the far bank",
+   "line": "'The rule kept this bank safe and left my bank alone. Nobody from our side was asked when they made it. Everyone else did what that rule left them.'"
+  }
+ },
+ "keepers": [
+  {
+   "speaker": "Weirkeeper Omi",
+   "rank": [
+    "council",
+    "orrin",
+    "pell",
+    "ravel",
+    "tamsin"
+   ],
+   "why": "'I put the council first. A rule that gives people no good choice makes them choose badly. I sat on that council. I should have asked the far bank.'"
+  },
+  {
+   "speaker": "Clerk Sena",
+   "rank": [
+    "tamsin",
+    "pell",
+    "orrin",
+    "council",
+    "ravel"
+   ],
+   "why": "'I put Tamsin first, and I like her. Ravel lost a season of food. She had a reason, and so did he. Hers just had a happier ending.'"
+  }
+ ],
+ "fact": "Sena turns a page in the ford log. 'There is one more line. Ravel's own hand, the week before: \"Keel cracked at the stern. Do not take her out in fast water.\" He knew his boat could sink. He did not tell Tamsin why he said no.'",
+ "after": {
+  "moved": "Omi watches you move Ravel. 'You changed his place when you learned his reason. So for you, the reason matters, not only the act. Hedda would not move him. She would say a promise is a promise.'",
+  "kept": "Omi nods slowly. 'You kept your order. A reason he never said aloud did not help Tamsin that night. Doctor Ash would move him. You did not, and you can say why.'",
+  "changed": "Omi reads your new order. 'You changed the order, but not Ravel's place. So his reason did not change your view of him, but the night looks different to you now. Tell me what moved.'"
+ },
+ "close": "Sena closes the log. 'The village argued about this for a year. Nobody won. But everyone could say why they ranked as they did, and that is what changed the flood rule.'",
+ "rule": "The new flood rule, on the board: no small boats on flood water, except with the ford keeper, who rows any urgent crossing for no fare."
+}

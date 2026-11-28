@@ -35,7 +35,7 @@ function fixture(): AdventureJournalView {
     portfolioWriting: [
       { id: 'portfolio:1', title: 'Power on the shelf', text: `Portfolio shows responsibility.\n${long}`, at, mapId },
     ],
-    quests: [{ id: 'q1', title: 'An open explanation', question: 'Where does certainty belong?', steps: ['Consider objectivity.'] }],
+    quests: [{ id: 'q1', title: 'An open explanation', question: 'Where does certainty belong?', steps: ['Consider objectivity.'], world: 'WORLD-02', done: 0, total: 1 }],
     references: [
       { key: 'earned:1', label: 'Tested evidence', url: source, text: 'Title and source', runs: [
         { text: 'Evidence of a place', cite: true }, { text: ' Museum link', href: source },

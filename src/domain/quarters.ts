@@ -32,6 +32,7 @@ export const RUGS: Record<string, { name: string; a: string; b: string } | null>
 };
 export const LAMPS: Record<string, { name: string; glow: string }> = {
   lantern: { name: 'Brass lantern', glow: '#ffd28a' },
+  moonshade: { name: 'Spare Moon paper lantern', glow: '#ffdda3' },
   candle: { name: 'Tall candle', glow: '#ffe2a8' },
   lumen: { name: 'Lumen jar', glow: '#9fe8ff' },
   forge: { name: 'Ember bowl', glow: '#ff9a5a' },

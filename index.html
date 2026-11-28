@@ -3,13 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/src/ui/arrival.css" />
   <title>Knowledge Guardians</title>
   <meta name="description" content="Become a Knowledge Guardian in a fifteen-chapter pixel-art adventure. Investigate historical objects, compare witnesses and decide who gets to act on what you find." />
 </head>
 <body>
-  <noscript>Knowledge Guardians needs JavaScript to run.</noscript>
   <div id="game" aria-hidden="false" aria-label="Game world"></div>
-  <div id="ui"></div>
-  <script type="module" src="/src/main.ts"></script>
+  <div id="ui">
+    <main class="arrival">
+      <h1>Knowledge Guardians</h1>
+      <p id="arrival-status" role="status">Opening the game menu…</p>
+      <details id="arrival-reading" hidden>
+        <summary>Reading settings</summary>
+        <div id="arrival-controls"></div>
+      </details>
+      <a href="./schools.html">For schools and families</a>
+      <button id="arrival-retry" type="button" hidden>Reload the game</button>
+      <noscript>Enable JavaScript to enter the Archive.</noscript>
+    </main>
+  </div>
+  <script type="module" src="/src/arrival.ts"></script>
 </body>
 </html>

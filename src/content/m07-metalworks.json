@@ -42,6 +42,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "objectivity",
@@ -79,6 +80,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "interpretation",
        "perspective",
@@ -91,7 +93,8 @@
       ],
       "aoks": [
        "HIS",
-       "HUM"
+       "HUM",
+       "LAN"
       ],
       "subjects": [
        "history",
@@ -115,6 +118,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["perspectives", "ethics"],
       "concepts": [
        "values",
        "power",
@@ -168,6 +172,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "methods-and-tools"],
       "concepts": [
        "evidence",
        "truth",
@@ -203,6 +208,7 @@
      },
      "essential": true,
      "weave": {
+      "framework": ["scope", "ethics"],
       "concepts": [
        "truth",
        "justification",
@@ -214,7 +220,8 @@
       ],
       "aoks": [
        "HIS",
-       "HUM"
+       "HUM",
+       "LAN"
       ],
       "subjects": [
        "history",

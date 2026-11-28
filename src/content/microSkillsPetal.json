@@ -1,0 +1,65 @@
+[
+  {
+    "number": 754,
+    "name": "Compare human-readable records with another animal’s sensory access",
+    "uses": [
+      {
+        "objective": "petal.windows",
+        "action": "Keep the two daylight crops with the same yellow return. Fit the ultraviolet pane and count different low-return areas. Elian’s ink key and the two timed landing watches keep the detector pattern separate from an animal’s experience and its actions.",
+        "styles": [
+          "explorer",
+          "companion"
+        ],
+        "modes": [
+          "visual",
+          "nature",
+          "analytical"
+        ],
+        "game": 209,
+        "story": 95
+      }
+    ]
+  },
+  {
+    "number": 901,
+    "name": "Use names, ordered grades, elapsed differences and count ratios in their proper roles",
+    "uses": [
+      {
+        "objective": "petal.gears",
+        "action": "Fit four physical rollers, run both faces and watch what survives. A name selects a puppet, the grades guide its rise, the clock retains a sixty-minute interval, and the single-square and pair counters retain the same ratio.",
+        "styles": [
+          "maker",
+          "performer"
+        ],
+        "modes": [
+          "spatial",
+          "physical",
+          "analytical"
+        ],
+        "game": 194,
+        "story": 119
+      }
+    ]
+  },
+  {
+    "number": 1117,
+    "name": "Distinguish better predictions from a larger artistic repertoire",
+    "uses": [
+      {
+        "objective": "petal.ribbons",
+        "action": "Pin a prediction for each unopened watch or leave it blank. Check where a bee first landed at noon and dusk, then invent a stage response that can succeed even when the landing overturned the prediction. The ribbon and choreography have separate records.",
+        "styles": [
+          "strategist",
+          "performer"
+        ],
+        "modes": [
+          "nature",
+          "physical",
+          "reflective"
+        ],
+        "game": 22,
+        "story": 144
+      }
+    ]
+  }
+]

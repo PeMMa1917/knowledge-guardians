@@ -36,16 +36,23 @@
     "accession": "1987.162",
     "title": "Weaving and Spinning",
     "catalogueTitle": "Weaving and Spinning",
-    "context": "Attributed to Kehar Singh. Punjab, probably Amritsar or Lahore.",
+    "context": "The museum credits Kehar Singh. Punjab, probably Amritsar or Lahore.",
     "date": "c. 1860",
     "material": "Gum tempera and ink on paper",
     "dimensions": "Overall: 23.7 x 19 cm (9 5/16 x 7 1/2 in.)",
     "source": "https://clevelandart.org/art/1987.162",
     "asset": "specimens/imprint-1987.162.jpg",
     "alt": "Small figures use tools in two settings on one sheet of cream paper.",
-    "fact": "The page painted in gum tempera and ink shows weaving and spinning in two separate groups.",
-    "focus": "Compare the strokes around one group with the gap between the two groups.",
-    "limit": "The figures show what the artist depicted. The museum leaves this painting’s production place as probably Amritsar or Lahore."
+    "fact": "The page painted in gum tempera and ink shows weaving and spinning in two groups. The museum says the words above identify the artist and the workers’ occupations.",
+    "focus": "Compare the two groups, then look at the upper edge in both pulls. Keep the museum’s reading on its own slip even when dark marks survive.",
+    "limit": "The museum gives this painting’s place of making as probably Amritsar or Lahore. The words identify what work the people do. Their personal names remain open.",
+    "creditSlip": {
+      "artist": "The museum reads Kehar Singh as the artist’s name in the words above the scene.",
+      "work": "The same inscription also identifies the workers’ occupations. The catalogue gives the work as weaving and spinning.",
+      "counter": "The runner leaves the first line above the single proof for the queue. The second line rides underneath on the same slip.",
+      "drawer": "The keeper puts the lines beside the photograph and your two ink tests. Visitors can compare the upper edge and still read both lines on the separate slip.",
+      "journal": "I pulled two proofs and kept both readings of the inscription on the slip. The museum identifies Kehar Singh and the kinds of work. I could show which marks survived even where I could not read the words from my proof."
+    }
   },
   {
     "slug": "bengal-sitar",

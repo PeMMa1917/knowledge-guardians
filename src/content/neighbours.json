@@ -1,0 +1,690 @@
+[
+  {
+    "title": "A cat with two addresses",
+    "people": [
+      {
+        "id": "nile-iman",
+        "hook": "Follow the cat with the paper collar.",
+        "opening": "Imani is under the returns desk, calling a cat by its catalogue number. It comes out for Nasir. “I fed that animal through two floods. He's had her three mornings.” The collar has an address on either side.",
+        "choices": [
+          {
+            "id": "fold",
+            "action": "Fold the collar so both addresses show.",
+            "reply": "“Oh, that explains the two breakfasts.” Imani lets the cat wriggle free. Tonight she sets out half a fish and keeps the other half for herself.",
+            "neighbour": "“Both addresses. You'd think a creature with a permanent record could remember to wipe her feet on the way in.”"
+          },
+          {
+            "id": "unfasten",
+            "action": "Offer your thumb under the collar knot.",
+            "reply": "Imani works the knot loose herself. “She can go where she likes. Until supper, when she can go where she likes slightly closer to me.” She puts the little strip in her pocket.",
+            "neighbour": "“Found her asleep on the expensive paper. No collar. Didn't need one to tell me whose turn it was to feed her.”"
+          }
+        ]
+      },
+      {
+        "id": "nile-nasir",
+        "hook": "Look at the paw print in the wet copy.",
+        "opening": "Nasir has copied the same crooked paw onto three practice sheets. “When she goes home at night I miss the noise. Don't tell Imani. We're supposed to be having a custody dispute.”",
+        "choices": [
+          {
+            "id": "print",
+            "action": "Put a clean sheet under the next paw.",
+            "reply": "“There. Her first original work.” Nasir pins it at ankle height. The cat sniffs her own print and sits on his shoe.",
+            "neighbour": "“He has a picture of the cat. The cat has a picture of Nasir's supper. They're both delighted.”"
+          },
+          {
+            "id": "visit",
+            "action": "Pull the stool over to Imani’s desk.",
+            "reply": "He takes his pens across. “I thought we could share the cat.” Imani moves her stool and pours the second cup that was already on her desk.",
+            "neighbour": "“He brought his pens to tea. The cat never came. It was quite a good tea, actually.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "The missing wheel",
+    "people": [
+      {
+        "id": "nile-leila",
+        "hook": "Steady the chair Leila is mending.",
+        "opening": "One leg of Leila’s empty listening chair is short. Marek has lent her a wooden wheel. “He says it came off a broken cart. Both his little carts have started leaning.”",
+        "choices": [
+          {
+            "id": "wedge",
+            "action": "Slide a folded docket under the chair.",
+            "reply": "Leila takes her weight off the chair. It holds. She rolls the wheel back across the floor with her foot. “Now he can break his own toys in peace.”",
+            "neighbour": "“A wheel came rolling back through the door all on its own. Afraid my broken cart is miraculously well again.”"
+          },
+          {
+            "id": "roll",
+            "action": "Hold the axle while she fits the wheel.",
+            "reply": "Leila bolts it sideways. “Now the person who wants the chair can move it. Come try.” She makes its first trip herself and nearly takes down a shelf.",
+            "neighbour": "“The chair has one wheel. I was going to tell her vehicles generally want more. Then I watched her turn it in that narrow aisle.”"
+          }
+        ]
+      },
+      {
+        "id": "nile-marek",
+        "hook": "Pick up the little cart that runs in circles.",
+        "opening": "Marek’s model goes gloriously round and round. “I lent Leila the straight wheel. These were going to be road trials. The road will have to find something else to do.”",
+        "choices": [
+          {
+            "id": "race",
+            "action": "Make a chalk starting line for the crooked cart.",
+            "reply": "Two scribes put down their pens to bet on which side it will fall on. Marek crawls after it on his elbows. For once he forgets to write the time.",
+            "neighbour": "“He let people laugh at the cart. He was laughing hardest. I hadn't heard that sound in weeks.”"
+          },
+          {
+            "id": "sketch",
+            "action": "Kneel at floor level and draw its turning circle.",
+            "reply": "Marek follows your chalk with one finger. “I've never drawn where the cart actually went. Only where it should.” He hangs the circle above the workbench.",
+            "neighbour": "“That loop on his wall is where the cart went with a wheel missing. It still got somewhere.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "A place at the portrait sitting",
+    "people": [
+      {
+        "id": "preserved-registrar",
+        "hook": "Look under Aster’s wrapping paper.",
+        "opening": "Aster has agreed to sit for Odile's portrait. She has brought enough certificates to cover her knees. “She said bring something that looks like me. How was I supposed to know she meant a face?”",
+        "choices": [
+          {
+            "id": "cup",
+            "action": "Turn her chipped tea cup toward the light.",
+            "reply": "Aster wraps the certificates again. “My father tried to mend that chip with sugar.” For the sitting she holds the break between her thumb and finger.",
+            "neighbour": "“She brought the cup. Didn't expect her to laugh every time I tried to paint the solemn part.”"
+          },
+          {
+            "id": "papers",
+            "action": "Help fan out the worn certificates.",
+            "reply": "“Look at the corners.” Aster shows you the soft spot where her father used to hold them. She leaves her fist there for Odile to draw.",
+            "neighbour": "“I was going to paint all the lettering. Her hand covered the first line. I left it that way.”"
+          }
+        ]
+      },
+      {
+        "id": "preserved-royal-keeper",
+        "hook": "Look behind Odile’s unfinished portrait.",
+        "opening": "Odile has painted hundreds of dead rulers and one living friend. The rulers never complain. Aster has already asked if her ears really look like that.",
+        "choices": [
+          {
+            "id": "mirror",
+            "action": "Hold a mirror where Aster can look back.",
+            "reply": "Odile turns her easel too. The two women work in a silence broken only by Aster saying, very firmly, “The left ear is fine.”",
+            "neighbour": "“She turned the easel round. I got custody of one ear. We're negotiating over the other.”"
+          },
+          {
+            "id": "sit",
+            "action": "Take Odile’s empty seat for a minute.",
+            "reply": "Odile sits for Aster. By the time her portrait comes back both women are inked to the wrists. “Serves me right. Mine are worse.”",
+            "neighbour": "“I got to draw Odile. She hasn’t hung either picture yet. I think she likes having something that’s just ours.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Two bottles of sea air",
+    "people": [
+      {
+        "id": "preserved-coast-keeper",
+        "hook": "Examine the bottles in Luz’s coat.",
+        "opening": "Luz promised the child upstairs a present from the coast. She has two bottles of air, one gathered on the sea wall and one in the stairwell. Both corks fell out in her pocket.",
+        "choices": [
+          {
+            "id": "open",
+            "action": "Hold the bottles open at the window with her.",
+            "reply": "Luz catches a fresh gust in both. “There. Today, this window. It is still a present.” She scratches the date into the glass with her key.",
+            "neighbour": "“The kid uncorked the window air and ran to check whether it smelled the same today. It didn't. Back to the window we went.”"
+          },
+          {
+            "id": "tell",
+            "action": "Sit with Luz while she practises telling the journey.",
+            "reply": "By the third telling Luz has stopped trying to make the bottles sound different. She can still do the squeak of the gate. You hear it twice by special request.",
+            "neighbour": "“Luz did the gate noise. The child asked for it again. Never seen an audience that small call for an encore.”"
+          }
+        ]
+      },
+      {
+        "id": "preserved-inquiry-keeper",
+        "hook": "Put an ear to Pilar’s rattling drawer.",
+        "opening": "Pilar has saved a whole drawer of questions from visiting children. Today's is written on a cork. “Can you bring the sea home? I was about to write ‘no’. Felt awfully quick.”",
+        "choices": [
+          {
+            "id": "pool",
+            "action": "Float the cork in the washbasin.",
+            "reply": "Pilar and the child get their sleeves wet making waves. Pilar hangs a towel over the drawer. “On practical grounds I am suspending judgment.”",
+            "neighbour": "“She made a tide in a basin. What she brought back from the sea is apparently my entire towel supply.”"
+          },
+          {
+            "id": "pocket",
+            "action": "Turn the cork so the child can keep writing.",
+            "reply": "“They want to ask someone who’s left the coast.” Pilar gives the cork back. The drawer shuts on one fewer question than yesterday.",
+            "neighbour": "“A child brought me a question I could carry. Fit in my coat between two bottles. Exactly the right size.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "The sleeve in the wind",
+    "people": [
+      {
+        "id": "coast-signalkeeper",
+        "hook": "Untangle the red sleeve from Ruan’s flag line.",
+        "opening": "It is a coat sleeve, not a storm flag. Ruan's sister cut it off before she left the harbour. “Said I could wave goodbye any time I liked. Suppose a skipper sees me?”",
+        "choices": [
+          {
+            "id": "inside",
+            "action": "Find a hook inside the signal hut.",
+            "reply": "He puts it beside his bunk. For a moment he waves to it, in a room where no boat can see.",
+            "neighbour": "“I looked in on him before morning watch. Red sleeve by the bed. My flag stays on the outer line.”"
+          },
+          {
+            "id": "cuff",
+            "action": "Hold it steady while Ruan makes a wristband.",
+            "reply": "Ruan slips the cuff onto his bare wrist under the uniform. He salutes the harbour with it. Nobody needs to turn a boat around.",
+            "neighbour": "“That bit of red under his cuff shows when he lifts a mug. I didn't ask. He offered to tell me anyway.”"
+          }
+        ]
+      },
+      {
+        "id": "coast-forecaster",
+        "hook": "Watch Neri cross a name off the lookout rota.",
+        "opening": "Neri has taken her own morning off the rota. “Ruan's sister always sat with me for the dawn reading. I didn't know I minded until I tried to do it alone.”",
+        "choices": [
+          {
+            "id": "share",
+            "action": "Take the spare stool into the doorway.",
+            "reply": "Neri leaves it out with a blanket for whoever comes. The next fisher doesn't know a thing about pressure. They both stay for the whole dawn.",
+            "neighbour": "“Neri's sunrise stool has a queue. Somebody brought eggs. I liked it better when forecasting was a lonely science. I got more eggs.”"
+          },
+          {
+            "id": "solo",
+            "action": "Lend her the pocket timer for a solo watch.",
+            "reply": "She gives herself five minutes. At the bell she turns the timer over with her own hand. Nobody by the stair is counting.",
+            "neighbour": "“She did the dawn alone, then came downstairs to tell me about it. Said she wanted both halves of that morning.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "The boot that called a bird",
+    "people": [
+      {
+        "id": "forest-naturalist",
+        "hook": "Listen to Elian’s left boot.",
+        "opening": "Each step gives a squeak almost exactly like a nestling. Elian has spent three mornings chasing their own left foot. Ayla is trying very hard to look upset.",
+        "choices": [
+          {
+            "id": "oil",
+            "action": "Hold up the heel while Elian oils it.",
+            "reply": "The boot goes quiet. From the other bank comes the same thin squeak. Elian sits down in the mud to listen with both shoes off.",
+            "neighbour": "“The boot's quiet. Now when Elian stops all of a sudden, I stop too.”"
+          },
+          {
+            "id": "keep",
+            "action": "Tap the boot beside a real call.",
+            "reply": "Elian draws two little strokes in the mud for the noises. “My boot always squeaks on the downstroke. That one's hungry between steps.”",
+            "neighbour": "“Elian has a singing boot and written instructions for listening to it. Good. I know whose foot to follow in fog.”"
+          }
+        ]
+      },
+      {
+        "id": "forest-steward",
+        "hook": "Examine Ayla’s pair of mismatched bootlaces.",
+        "opening": "Ayla took a lace off her own boot to mark a listening place for Elian. The crew followed the bright lace straight to the quietest perch in the wood.",
+        "choices": [
+          {
+            "id": "knot",
+            "action": "Tie the marker below the rail.",
+            "reply": "Ayla works the knot out by touch. “I'll walk the first crew there. They can find it with a fingertip once I've shown them.”",
+            "neighbour": "“Her knot is under the rail. I found my station with my eyes shut this morning. Heard the creek the whole way.”"
+          },
+          {
+            "id": "wait",
+            "action": "Carry the crew’s bench back from the perch.",
+            "reply": "Ayla sits down first, in full sight of the crew. “Tell me when you hear it from here.” Someone with very good ears gets the first turn to lead.",
+            "neighbour": "“The people on the bench told me when they heard a bird. I had to move my little listening mark. Fair enough.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "The crooked spoon",
+    "people": [
+      {
+        "id": "metal-inspector",
+        "hook": "Balance the bent spoon on Corra’s finger.",
+        "opening": "The spoon tilts left. Corra’s father made it after his hand stiffened. Bea wants it for the workshop wall. “I still use that spoon,” Corra says. There is jam on it.",
+        "choices": [
+          {
+            "id": "cast",
+            "action": "Hold the clay while Corra makes an impression.",
+            "reply": "Corra presses just hard enough to leave the bend. She licks the spoon clean. “Let Bea have the dent. I want breakfast.”",
+            "neighbour": "“She sent me the shape in clay. Thumbprint on the edge. You can tell which end the inspector was hanging on to.”"
+          },
+          {
+            "id": "supper",
+            "action": "Set a second place at Corra’s workbench.",
+            "reply": "Corra rings for Bea and puts the spoon beside her bowl. For the price of half her jam she gets to watch someone discover how well the bend fits a hand.",
+            "neighbour": "“Had supper with that spoon. When Corra's father made it his hand had changed. His appetite hadn't.”"
+          }
+        ]
+      },
+      {
+        "id": "metal-steward",
+        "hook": "Catch the label that falls from Bea’s wall.",
+        "opening": "Bea wrote “faulty” on a sample hook three years ago. A visiting smith used the same bend to hang a kettle. Today someone has written “kettle” over “faulty” in jam.",
+        "choices": [
+          {
+            "id": "leave",
+            "action": "Shield the jam while the new lettering dries.",
+            "reply": "Bea varnishes neither word. “I'll tell tomorrow's crew to look quickly. This is the shortest exhibition I've ever put on.”",
+            "neighbour": "“Bea is exhibiting jam. Tomorrow it'll be ants. She already has a fresh bit of card ready.”"
+          },
+          {
+            "id": "hang",
+            "action": "Fetch the kettle for the hook.",
+            "reply": "Bea fills the kettle and hangs it in front of both words. You share the first cup. Nobody has to take her word for what the bend can bear.",
+            "neighbour": "“A cup turned up on my bench. Bea's hook holds, then. The tea's dreadful.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Ama’s pear",
+    "people": [
+      {
+        "id": "copies-presskeeper",
+        "hook": "Catch the pear rolling across Lark’s type.",
+        "opening": "The pear has picked up a backwards T. It's Ama's gift for Mina, who kept the lending room open in the rain. Lark has been trying to wipe it clean with an even inkier thumb.",
+        "choices": [
+          {
+            "id": "wrap",
+            "action": "Lay a sheet around the pear.",
+            "reply": "The T prints the right way round. Lark folds the paper back so Mina can find it. “The press has finally produced something ripe.”",
+            "neighbour": "“Ama's pear came wrapped in its own letter. I kept the paper. The pear was going soft.”"
+          },
+          {
+            "id": "carve",
+            "action": "Lend Lark the lunch knife.",
+            "reply": "Lark trims the inky skin, then cuts the pear into slices for the late shift. “Will you tell Mina it was hers? No, I'll tell her myself.”",
+            "neighbour": "“He admitted slicing my pear. Odd how much better it tasted once he'd come and sat down.”"
+          }
+        ]
+      },
+      {
+        "id": "copies-lendingkeeper",
+        "hook": "Read the little price on Mina’s bookmark.",
+        "opening": "Mina slipped the fare for Ama's wasted journey inside a book. Ama found it and slipped it back. The coin is now on its fourth loan.",
+        "choices": [
+          {
+            "id": "fare",
+            "action": "Help stitch a pocket inside the library umbrella.",
+            "reply": "Mina tucks the fare in. Anyone who borrows the umbrella may take it. The first day it comes back with two buttons and a short poem about rain.",
+            "neighbour": "“Someone paid for an umbrella with a poem. Mina's keeping accounts in a new currency.”"
+          },
+          {
+            "id": "visit",
+            "action": "Carry the book while Mina walks to Ama’s door.",
+            "reply": "On the doorstep Mina finally says she is sorry for the walk in the rain. Ama pockets the coin and sends her home with the book she herself meant to return.",
+            "neighbour": "“Mina went to Ama herself. Brought back an overdue book and a recipe. Only one went in the ledger.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "A coastline in the margin",
+    "people": [
+      {
+        "id": "sea-cartographer",
+        "hook": "Hold Renna’s rolled chart up to the light.",
+        "opening": "Through the paper a child's fish is swimming under a shoal. Renna's first paid chart is on one side. Her little brother's last drawing before he shipped out is on the other.",
+        "choices": [
+          {
+            "id": "hinge",
+            "action": "Hold a corner while Renna hangs the chart on a hinge.",
+            "reply": "Now it swings to show either face. Renna lets the wind turn it once. “He'll say I've put his fish on the wrong coast.”",
+            "neighbour": "“I came in to check a shoal and got a very fat fish. Flipped the board over myself. I rather liked being asked which I wanted.”"
+          },
+          {
+            "id": "copy",
+            "action": "Light the lamp while she traces the working face.",
+            "reply": "She sends the tracing to the jetty and folds the old chart into her sea chest. She can still find the little fish by the dent its pencil made.",
+            "neighbour": "“Renna sent a working chart down. She kept something at home. Good. We've a right to the shoal. We can ask about the rest.”"
+          }
+        ]
+      },
+      {
+        "id": "sea-harbourkeeper",
+        "hook": "Follow the gull cries coming from Sora’s empty mug.",
+        "opening": "Sora is trying to teach a new pilot the name Where-the-Gulls-Argue. The pilot gets seasick at the place and tongue-tied on the name. Both of them dread tomorrow's crossing.",
+        "choices": [
+          {
+            "id": "call",
+            "action": "Tap a rhythm on the mug for the two voices.",
+            "reply": "The pilot calls the rhythm across the water. Sora calls the name back. Together they get a crew to slow before the turn.",
+            "neighbour": "“Heard the two halves across the bay. My pencil can catch where they turned. Wish it could catch the timing.”"
+          },
+          {
+            "id": "sail",
+            "action": "Sit beside the pilot for one quiet approach.",
+            "reply": "Sora takes them round in silence. Back ashore the pilot can point to the turn with closed eyes. “The name can come tomorrow,” Sora says.",
+            "neighbour": "“The pilot traced the turn in spilled tea with one finger. Didn't have the name yet. Had the turn.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "A coat between acts",
+    "people": [
+      {
+        "id": "stage-director",
+        "hook": "Try the weight of Edda’s old understudy coat.",
+        "opening": "There are two sets of initials in the lining. Edda and Hari once shared the smallest role in the house. Edda still tries the coat on alone before opening night. It no longer buttons.",
+        "choices": [
+          {
+            "id": "wear",
+            "action": "Hold the collar while she wears it over her shoulders.",
+            "reply": "She walks one lap of the empty stage, a queen in a coat with no arms to speak of. At the wing she yields the floor to the next person waiting.",
+            "neighbour": "“I saw the coat sail past without any arms. Could tell who it was by the size of the entrance.”"
+          },
+          {
+            "id": "pass",
+            "action": "Find a hanger low enough for the new understudy.",
+            "reply": "Edda pins her first bad review inside a pocket. “The bit about the eyebrows is deserved.” Then she leaves the coat where a new pair of hands can reach it.",
+            "neighbour": "“Somebody little came to ask if the eyebrow review was real. I had to explain that Edda had two extremely ambitious eyebrows.”"
+          }
+        ]
+      },
+      {
+        "id": "stage-host",
+        "hook": "Hold the door while Hari paints a spare star.",
+        "opening": "Hari once had his name left off this door. He has been adding paper stars for the workers ever since. The star in his hand is his own. All the others are up.",
+        "choices": [
+          {
+            "id": "pin",
+            "action": "Keep the pin level while he chooses a spot.",
+            "reply": "Hari takes the space just below the cleaner's star. He has to crouch to sign it. When he gets up there is paste on his nose and Edda in the doorway.",
+            "neighbour": "“Found Hari's star this morning. It's exactly at the height of a kid waiting in the wings. He chose well.”"
+          },
+          {
+            "id": "back",
+            "action": "Turn the star over for a private dedication.",
+            "reply": "On the back he writes the name of the person who used to hold the door for him. The star stays inside the pocket of his coat. Hari holds the door for you on the way out.",
+            "neighbour": "“He had a whole speech about the door. Then a runner came through and he held it open instead. I think that was the speech.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "The price of a shadow",
+    "people": [
+      {
+        "id": "market-assayer",
+        "hook": "Slide your hand under the shadow on Tellen’s scale.",
+        "opening": "A black shape sits on the empty pan. Tellen lifts the pan. The shape stays in the air. “My apprentice gave back every coin we overcharged. Now the Fray keeps putting her shadow on trial.”",
+        "choices": [
+          {
+            "id": "curtain",
+            "action": "Draw the weighing curtain around the shape.",
+            "reply": "Behind the curtain Tellen moves the lamp. The shadow separates into two hands, one unmistakably his. “She never set the price.” He takes the first shift at the complaints table.",
+            "neighbour": "“Tellen has opened a second chair at the complaints table. He sat down before anyone could tell him what to say.”"
+          },
+          {
+            "id": "square",
+            "action": "Walk the empty pan through the square with him.",
+            "reply": "Tellen asks people to set their old receipts in the pan. The shadow gathers under all their hands. One vendor joins him. A second one locks her till.",
+            "neighbour": "“I watched him carry a pan of scraps past a row of closing shutters. That took something. So did being the first person to put a receipt in.”"
+          }
+        ]
+      },
+      {
+        "id": "market-clerk",
+        "hook": "Turn over the price card in Dagny’s sleeve.",
+        "opening": "There are two prices in Dagny’s hand. One is the price the mill charged. One is what her aunt could pay. The old traders’ oath permits a family discount. The people in the queue have families too.",
+        "choices": [
+          {
+            "id": "commons",
+            "action": "Help Dagny clear a line for a shared rate.",
+            "reply": "She opens the reduced price to everyone until today's purse is empty. Halfway along the queue she has to tell a neighbour, to his face, that it has run out.",
+            "neighbour": "“I saw who left with flour. I saw who came too late. Dagny's left the empty purse out for tomorrow's traders to see.”"
+          },
+          {
+            "id": "ledger",
+            "action": "Guard the till while she starts a private tab.",
+            "reply": "Dagny pays the difference herself. Her aunt says thank you. Then somebody behind her asks who you have to know to get a tab. Dagny leaves the question in the open ledger.",
+            "neighbour": "“She put her own marks down. I admire it. I couldn't tell a stranger how to get that same offer, though.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "The eighth knock",
+    "people": [
+      {
+        "id": "water-keeper",
+        "hook": "Put your palm against Omi’s gate.",
+        "opening": "Seven knocks mean open. A faint eighth comes up through the timber. Omi's mother made that extra knock when she brought his supper as a boy. Tonight the lower fields are waiting. He keeps listening.",
+        "choices": [
+          {
+            "id": "divert",
+            "action": "Stand at the spillway while Omi checks the side gate.",
+            "reply": "He opens the little return channel first. A loose plank knocks back against the post. Dinner, when it comes, is cold. Omi takes the plank home.",
+            "neighbour": "“He brought the board to the office to show me. Put his hand on it before he let me try. I can guess why.”"
+          },
+          {
+            "id": "signal",
+            "action": "Carry Sena his seven-knock signal.",
+            "reply": "Omi keeps one hand on the timber and sends the water through on the seventh knock. Below you, lamps swing into line. He stays behind to hear the eighth by himself.",
+            "neighbour": "“Seven was enough to get people to their posts. That last sound was his, I think. I shut my window.”"
+          }
+        ]
+      },
+      {
+        "id": "water-scribe",
+        "hook": "Unfold the dry leaf inside Sena’s rulebook.",
+        "opening": "A field child sent this leaf from the last dry week. Sena has to announce tonight’s water order. “I could put a number to these fields. I know one of the names. That makes the announcing harder.”",
+        "choices": [
+          {
+            "id": "name",
+            "action": "Take the lower field’s place beside her at the reading.",
+            "reply": "Sena asks the family first. They nod. When she reads their name they stand with her. The other side of the room stays sitting. She finishes the order anyway.",
+            "neighbour": "“My neighbours stood up. They weren't agreeing to lose the water. They wanted everyone to see who lived there.”"
+          },
+          {
+            "id": "leaf",
+            "action": "Hold the page while she fixes the leaf beside the order.",
+            "reply": "Sena leaves the family unnamed. People pass the leaf from palm to palm until a corner breaks away. Later she asks whether she may keep that last small piece.",
+            "neighbour": "“I knew what field the leaf came from. A stranger wouldn’t. Both could feel how dry it was.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "The undelivered birthday",
+    "people": [
+      {
+        "id": "civic-operator",
+        "hook": "Catch the envelope Ade’s machine keeps spitting out.",
+        "opening": "It is Ade's birthday card to Lin. The address is Canal Walk. He's been putting it through once a year, before dawn, and taking it out before anyone sees. There are four stamps on the corner.",
+        "choices": [
+          {
+            "id": "send",
+            "action": "Put on your coat for a delivery on foot.",
+            "reply": "Ade takes the card and walks it over himself. By the time he gets to Lin the joke inside is four years out of date. Lin laughs at the wrong part. Ade stays for lunch.",
+            "neighbour": "“He put four stamps on a card that walked here. I'm keeping every one. We had to explain the joke to each other.”"
+          },
+          {
+            "id": "queue",
+            "action": "Make room on the public shelf for the returned card.",
+            "reply": "Ade files his own letter among the others and asks Lin to come read it there. It costs him a birthday surprise. By lunch two families have brought old envelopes to the shelf.",
+            "neighbour": "“I found my birthday card at work. I'd rather have had tea with him. Bringing Mum's returned envelope tomorrow, though.”"
+          }
+        ]
+      },
+      {
+        "id": "civic-clerk",
+        "hook": "Follow the little red light under Lin’s desk.",
+        "opening": "Lin has been keeping a stopped route lamp lit with a pocket mirror. It bothers her to see the whole district go dark. The lamp looks so convincing that a new courier has gone to wait for a cart.",
+        "choices": [
+          {
+            "id": "turn",
+            "action": "Get the courier while Lin turns the mirror face down.",
+            "reply": "The glass goes dark. Lin draws the courier a route home on the back of her lunch wrapper. She doesn't promise what tomorrow's light will mean.",
+            "neighbour": "“Lin let the light go out. I had to answer why it was dark. I’d grown awfully good at answering why it was lit.”"
+          },
+          {
+            "id": "move",
+            "action": "Clear the window ledge for Lin’s mirror.",
+            "reply": "Lin takes the glow out of the route board and puts it in the window. People waiting for a cart can at least see her door is open. The courier comes in to sit.",
+            "neighbour": "“Her window is lit. First time I’ve seen two different meanings get two different lamps. Wish I'd built it that way.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "A lantern that mouths the words",
+    "people": [
+      {
+        "id": "voices-steward",
+        "hook": "Shade Wren’s unlit recording lantern.",
+        "opening": "Wren's own laugh comes out of a lantern labelled with Elsbet's name. For ten years Wren has been trimming the laugh from each public replay. “She said something funny. Why should an archive sound like she was always alone?”",
+        "choices": [
+          {
+            "id": "both",
+            "action": "Sit beside the lantern while Wren plays the whole moment.",
+            "reply": "Wren lets their short, ridiculous laugh run in the listening room. The next visitor asks who else was there. For once Wren pulls up the second chair.",
+            "neighbour": "“I listened this morning. There was somebody laughing. That's when I realised somebody had been listening the first time too.”"
+          },
+          {
+            "id": "quiet",
+            "action": "Close the listening room door for one private replay.",
+            "reply": "Wren plays it through to the end. Outside, the public stop moves back to its old mark. Wren adds a dated slip saying a second voice exists and has been kept private.",
+            "neighbour": "“We can tell there's a part we weren't invited to hear. I'm glad to know where the door is. I'm glad it can shut.”"
+          }
+        ]
+      },
+      {
+        "id": "voices-clerk",
+        "hook": "Catch the dancing spots from Eren’s punched card.",
+        "opening": "Eren punched one hole for each lantern on the walk. Light spills through onto the wall in the shape of a hill from childhood. One hole is in the wrong place for the survey. It is exactly where home used to be.",
+        "choices": [
+          {
+            "id": "overlay",
+            "action": "Hold a second card behind the first.",
+            "reply": "Eren sets the route against the hills of home. Slide one card a little and the two disagree in a new place. Eren invites the next walker to move them.",
+            "neighbour": "“I moved the cards and lost the house. Eren brought it back with one finger. We were both looking at the same wall.”"
+          },
+          {
+            "id": "home",
+            "action": "Cup your hands around the stray point of light.",
+            "reply": "Eren makes a little envelope for the private star and punches a fresh card for the public walk. The house goes home in an inside pocket.",
+            "neighbour": "“The walking card gets me to the last lantern. Eren let me know there was another light they chose to keep. I didn't ask to see it.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "The smuggler’s apples",
+    "people": [
+      {
+        "id": "island-planner",
+        "hook": "Count the apple seeds under Ivo’s blotter.",
+        "opening": "An extra crate reached the far landing with no mark in Ivo's book. It held the first apples of the season. His older sister used to run that crossing after dark. She taught him how easy it was to count the same boat twice.",
+        "choices": [
+          {
+            "id": "track",
+            "action": "Unroll the tide sheet across his desk.",
+            "reply": "Ivo finds a gap long enough for a second crossing. He reserves it for small deliveries. When asked for the pilot's name, he closes the sheet. “I can promise a tide. That's all.”",
+            "neighbour": "“Ivo found us a second crossing. The secret's smaller now. A different pilot could take the tide tomorrow.”"
+          },
+          {
+            "id": "market",
+            "action": "Take one of the apples down to the stall with him.",
+            "reply": "Ivo buys the same variety from three growers. Two say they'd have sent a spare crate if anyone had asked. The third takes the seed back without a word. He draws up a growers' rota.",
+            "neighbour": "“Got a rota for donated fruit this time. First person down for next week grows pears. There goes the name of the apple run.”"
+          }
+        ]
+      },
+      {
+        "id": "island-dockhand",
+        "hook": "Lift the false bottom in Joss’s apple crate.",
+        "opening": "The hidden space holds letters, not fruit. “Ferry carries goods. Hasn't carried post in years.” Joss has been taking letters on the apple run. Today the lid has come loose in front of the whole quay.",
+        "choices": [
+          {
+            "id": "seal",
+            "action": "Hold out the cord for a closed letter bag.",
+            "reply": "Joss ties the letters inside. “If they want to know whose handwriting it is they can ask at the far end.” She takes the bag aboard where everyone can see it.",
+            "neighbour": "“She carried a closed postbag through the queue. I could count it as space on the boat without counting a single person's letters.”"
+          },
+          {
+            "id": "wait",
+            "action": "Stand beside the crate as people reclaim their letters.",
+            "reply": "Joss waits while each sender chooses. Three letters sail. Two go home inside coats. One person stays beside her until the ropes come off.",
+            "neighbour": "“The load got lighter while the boat was tied up. Joss said everybody got a second thought. Might add time for that next trip.”"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "The minute that never rang",
+    "people": [
+      {
+        "id": "council-keeper",
+        "hook": "Catch the spring slipping from Hale’s sleeve.",
+        "opening": "There was once a minute when none of the Council clocks rang. Hale stopped them to sit with a friend who was dying. “They thanked me for repairing three clocks that day. Still have the certificate.”",
+        "choices": [
+          {
+            "id": "hang",
+            "action": "Hold the certificate while he turns it over on its hook.",
+            "reply": "On its back he writes where he spent that minute. He keeps his friend's name to himself. The first visitor reads it and offers him a seat. Hale takes it.",
+            "neighbour": "“The certificate has two faces now. The public record still says repair. Hale tells visitors what he did with the minute.”"
+          },
+          {
+            "id": "sit",
+            "action": "Spend the minute with Hale in the workshop.",
+            "reply": "He puts the spring on the bench and lets the clocks go on without him. You sit for a while. He doesn't tell you the friend's name. He does put out two cups.",
+            "neighbour": "“I used to think the workshop was empty in that minute. Hale says there was company. The rest can stay in there.”"
+          }
+        ]
+      },
+      {
+        "id": "council-reader",
+        "hook": "Try the blank space at the end of Essi’s bell score.",
+        "opening": "The score ends one beat early. Essi's teacher left a blank so a late arrival could ring the last note. Nobody came last year. Essi had to choose between an unfinished tune and pretending a stranger had turned up.",
+        "choices": [
+          {
+            "id": "open",
+            "action": "Prop open the outer door for the unfinished bar.",
+            "reply": "Essi lets the pause hang. Somebody in the passage coughs. A shy second cough answers it. She folds the score on that untidy chord.",
+            "neighbour": "“The bell left a space and the building answered. If Essi ever writes that bit down, I'd like to see how she spells a cough.”"
+          },
+          {
+            "id": "ring",
+            "action": "Stand in the empty place with Essi.",
+            "reply": "She names you both as the people who were actually there. Two fingertips on the hammer make one slightly lopsided note. The next watch tries to copy it.",
+            "neighbour": "“Heard two people getting one note almost together. I can fix a slow hammer. I wouldn't touch that one.”"
+          }
+        ]
+      }
+    ]
+  }
+]
