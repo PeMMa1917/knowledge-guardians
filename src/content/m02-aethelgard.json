@@ -292,11 +292,35 @@
      "weave": {
       "concepts": [
        "evidence",
-       "power"
+       "certainty",
+       "interpretation",
+       "justification",
+       "perspective"
       ],
       "atl": [
        "thinking"
-      ]
+      ],
+      "framework": [
+       "scope",
+       "methods-and-tools",
+       "perspectives"
+      ],
+      "aoks": [
+       "HIS",
+       "HUM",
+       "LAN"
+      ],
+      "subjects": [
+       "history",
+       "lang-langlit",
+       "design-tech"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "application",
+       "solo": "relational"
+      }
      },
      "kq": {
       "id": "KQ-NEW-005",
@@ -331,12 +355,38 @@
      ],
      "weave": {
       "concepts": [
-       "responsibility"
+       "evidence",
+       "power",
+       "responsibility",
+       "perspective",
+       "values",
+       "justification"
       ],
       "atl": [
        "self-management",
        "communication"
-      ]
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "aoks": [
+       "HIS",
+       "POL",
+       "LAN"
+      ],
+      "subjects": [
+       "global-politics",
+       "history",
+       "lang-langlit"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "evaluate",
+       "fink": "caring",
+       "solo": "relational"
+      }
      }
     }
    ]
@@ -1870,10 +1920,11 @@
   {
    "id": "kip.seal",
    "speaker": "kip-arden",
-   "text": "Look. Corvan threw his old sign board out here. Turn it over. There's a little gold seal pressed into the back. A ring with a mark I don't know.",
+   "text": "Kip is on his knees beside Corvan’s discarded sign. A tiny wax cricket sits in the thumb-sized nick. Every time he lifts the board it stops chirping. “Help me turn it. Look what was underneath.” A gold seal has stuck to the back.",
    "effects": [
     {
-     "giveItem": "item.gold-seal"
+     "giveItem": "item.gold-seal",
+     "ifMissing": true
     }
    ],
    "next": "kip.seal2"
@@ -1881,23 +1932,48 @@
   {
    "id": "kip.seal2",
    "speaker": "lumen",
-   "text": "I don't know this mark. I am not saying that to be mysterious. It is not in anything I was given.",
+   "text": "Lumen’s light follows a ring pressed into the wood. “The seal fits the ring. My archive has no name for the hand that pressed it.” The cricket puts its feet back on the board and starts up again.",
    "next": "kip.seal3"
   },
   {
    "id": "kip.seal3",
    "speaker": "kip-arden",
-   "text": "Same gold as Corvan's 'mark of quality'. Let's show Warden Ise. She has been in the Nexus for a very long time.",
-   "effects": [
-    {
-     "setFlag": "seal.found",
-     "value": true
-    }
-   ],
+   "text": "Kip has one wax wrapper. “We could carry the shape. Or I could put my name and the hour inside. I was here when we found it. I was at supper when it was put up.” He sounds disappointed with himself. The cricket settles in the nick.",
+   "effects": [],
    "options": [
     {
-     "text": "Let's take it to Ise.",
-     "next": null
+     "text": "Let's take it to Ise. Press the wrapper round the nick.",
+     "next": "hatch.kip.nick",
+     "effects": [
+      {
+       "setFlag": "hatch.wrapper",
+       "value": "nick"
+      },
+      {
+       "setFlag": "seal.found",
+       "value": true
+      },
+      {
+       "journal": "j.hatch.nick"
+      }
+     ]
+    },
+    {
+     "text": "Put the hour inside the fold. Let Kip sign where he found it.",
+     "next": "hatch.kip.hour",
+     "effects": [
+      {
+       "setFlag": "hatch.wrapper",
+       "value": "hour"
+      },
+      {
+       "setFlag": "seal.found",
+       "value": true
+      },
+      {
+       "journal": "j.hatch.hour"
+      }
+     ]
     },
     {
      "text": "It's just a tiny seal. Not worth showing Ise.",
@@ -1918,7 +1994,45 @@
   {
    "id": "kip.end",
    "speaker": "kip-arden",
-   "text": "Did you see Ise's face? I have never seen her lost for words. I wonder what the Nexus will send us next."
+   "text": "Kip keeps working the seal’s shape into the palm of his mitten. “Ise stopped halfway to her pocket. Did you see? She usually puts things there before anyone can ask.”",
+   "options": [
+    {
+     "text": "Show me the wrapper we pressed.",
+     "next": "hatch.kip.nick",
+     "if": {
+      "flag": "hatch.wrapper",
+      "eq": "nick"
+     }
+    },
+    {
+     "text": "Read me the hour again.",
+     "next": "hatch.kip.hour",
+     "if": {
+      "flag": "hatch.wrapper",
+      "eq": "hour"
+     }
+    },
+    {
+     "text": "Leave Kip with his mitten."
+    },
+    {
+     "text": "Take a first rubbing from the discarded sign today.",
+     "next": "kip.seal3",
+     "if": {
+      "all": [
+       {
+        "flag": "chapter.done",
+        "eq": true
+       },
+       {
+        "not": {
+         "flagSet": "hatch.wrapper"
+        }
+       }
+      ]
+     }
+    }
+   ]
   },
   {
    "id": "tea.start",
@@ -2329,7 +2443,43 @@
    "id": "kip.small",
    "speaker": "kip-arden",
    "claimKind": "interpretation",
-   "text": "Tiny? The blade was big and shiny, and it told us less than this. Small things keep secrets better. Come on."
+   "text": "“A thumb fits in there. Hesper says someone used to check whether the night hatch was open by touch. What if the board has had two jobs?” Kip waits. For once he has finished one question before starting the next.",
+   "options": [
+    {
+     "text": "Let's take it to Ise. Press the wrapper round the nick.",
+     "next": "hatch.kip.nick",
+     "effects": [
+      {
+       "setFlag": "hatch.wrapper",
+       "value": "nick"
+      },
+      {
+       "setFlag": "seal.found",
+       "value": true
+      },
+      {
+       "journal": "j.hatch.nick"
+      }
+     ]
+    },
+    {
+     "text": "Put the hour inside the fold. Let Kip sign where he found it.",
+     "next": "hatch.kip.hour",
+     "effects": [
+      {
+       "setFlag": "hatch.wrapper",
+       "value": "hour"
+      },
+      {
+       "setFlag": "seal.found",
+       "value": true
+      },
+      {
+       "journal": "j.hatch.hour"
+      }
+     ]
+    }
+   ]
   },
   {
    "id": "copy.start",

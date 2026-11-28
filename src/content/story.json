@@ -490,7 +490,7 @@
     "flag": "study.letter",
     "eq": true
    },
-   "text": "Her letter said the Fray is not only in Emberford. Something beyond the Nexus teaches people to stop asking 'how do we know?'. She went to find where it begins."
+   "text": "Elsbet has folded a little sheet inside her letter. In her hand, ‘I stood on the steps and heard no answer to my knock.’ In Orrin’s pencil, ‘I sat inside, filing the brass tooth for the catch.’ The copy in the guild book reads ‘No answer’. Someone has left a line for the name of the worker who deserted the hatch.\n\n‘To the next Guardian of Emberford. Something beyond the Nexus is teaching people to stop asking. I have gone to find where it begins. Will you keep my words with the place where I stood? When Ise thinks you are ready, ask her about the door with no name.’ She signs the letter Elsbet Varro. In the fold, something tiny taps back."
   },
   {
    "id": "entry",
@@ -727,7 +727,7 @@
   {
    "id": "journal",
    "name": "Elsbet's journal",
-   "text": "Elsbet Varro's journal: ten years of entries in neat ink, from her first day as Guardian to her last.",
+   "text": "Elsbet left a finger’s width of clean paper beside ten years of entries. A small sleeve hangs from the binding. On the flap someone has drawn the two sides of the guild hatch.",
    "views": [
     {
      "keepsake": "date-lens",
@@ -735,11 +735,15 @@
     },
     {
      "keepsake": "pen-tip",
-     "text": "You fit the spare ballpoint tip and write the first new entry in ten years: 'The lamps of Emberford are being lit again. I am the Guardian here now. I will always say how I know.'",
+     "text": "You start a fresh page with both positions. “Elsbet, outside, heard no answer. Orrin, inside, says he was working on the catch. Neither saw the other that night.” The empty space where the guild wanted a name becomes room for another caller’s account. A little sleeve on the binding can carry a working test to the next reader.",
      "effects": [
       {
        "setFlag": "study.entry",
        "value": true
+      },
+      {
+       "setFlag": "hatch.page",
+       "value": "paired"
       }
      ]
     }
@@ -984,7 +988,7 @@
    "id": "letter",
    "name": "Elsbet's letter",
    "study": true,
-   "text": "To the next Guardian of Emberford. If you are reading this, the lamps are lit again, so the town has remembered how to ask 'how do we know?'. I could not stay. The Fray is not only in Emberford. Something beyond the Nexus is teaching people to stop asking, and I have gone to find where it begins. Keep the lamps lit. Say how you know. Ask who is missing from the picture. And when Warden Ise thinks you are ready, ask her about the door with no name. Elsbet Varro, Guardian.",
+   "text": "Elsbet has folded a little sheet inside her letter. In her hand, ‘I stood on the steps and heard no answer to my knock.’ In Orrin’s pencil, ‘I sat inside, filing the brass tooth for the catch.’ The copy in the guild book reads ‘No answer’. Someone has left a line for the name of the worker who deserted the hatch.\n\n‘To the next Guardian of Emberford. Something beyond the Nexus is teaching people to stop asking. I have gone to find where it begins. Will you keep my words with the place where I stood? When Ise thinks you are ready, ask her about the door with no name.’ She signs the letter Elsbet Varro. In the fold, something tiny taps back.",
    "onRead": [
     {
      "setFlag": "study.letter",
@@ -1097,14 +1101,14 @@
   {
    "id": "lamps.orrin",
    "speaker": "guildmaster-orrin",
-   "text": "You are the new Guardian? Then look up at the hall. There are sixteen lamps on that wall. When Guardian Elsbet Varro kept this town, she lit one each time Emberford worked out a hard question together: a quarrel settled with evidence, a measure made fair. Ten years ago she left without a word. One by one the lamps went dark, and people stopped asking 'how do we know?'.",
+   "text": "Orrin puts his finger in the notch below a dark lamp. “Sixteen, when they all burn. Ten years since anyone saw Elsbet. I gave the guild the big switch. Neat idea. Only the guild got to say whose work lit a lamp.” He rubs a smear of soot from the little switch beside it. “Someone’s been coming here after me.”",
    "options": [
     {
-     "text": "What happened to her?",
+     "text": "What happened to her? Try the little switch.",
      "next": "lamps.orrin2"
     },
     {
-     "text": "Tell me about the guild ledger first.",
+     "text": "Tell me about the guild ledger first. Look up who can light a lamp.",
      "next": "orrin.start"
     }
    ],
@@ -1118,7 +1122,7 @@
   {
    "id": "lamps.orrin2",
    "speaker": "guildmaster-orrin",
-   "text": "Nobody knows. Her study is under the hall, and the cellar door has not opened since she left. The old saying is that it opens when the lamps are lit again. Corvan's sign is only the loudest knot in this town. There are others. Talk to people, help them, and watch the Lamp Wall by the hall door.",
+   "text": "The little switch turns from both sides. A child reaches through from the kitchen and turns it back. Orrin laughs into his collar. “We put the names in my ledger. The people doing the work kept lighting those lamps from the kitchen. I thought I was the one who’d stopped them.” Six lit lamps lift the bolt on Elsbet’s study. The blade is one way to begin.",
    "options": [
     {
      "text": "I'll start with Corvan's blade.",
@@ -1667,8 +1671,11 @@
      },
      "weave": {
       "concepts": [
+       "evidence",
+       "power",
        "responsibility",
-       "evidence"
+       "perspective",
+       "interpretation"
       ],
       "atl": [
        "social",
@@ -1676,12 +1683,26 @@
       ],
       "subjects": [
        "history",
-       "anthropology"
+       "anthropology",
+       "design-tech"
       ],
       "aoks": [
        "HIS",
-       "HUM"
-      ]
+       "HUM",
+       "POL",
+       "TEC"
+      ],
+      "framework": [
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "human",
+       "solo": "relational"
+      }
      },
      "skills": [
       "SK-THK-14",
@@ -1772,8 +1793,13 @@
      },
      "weave": {
       "concepts": [
+       "evidence",
+       "interpretation",
+       "perspective",
        "responsibility",
-       "evidence"
+       "power",
+       "certainty",
+       "justification"
       ],
       "atl": [
        "social",
@@ -1781,12 +1807,27 @@
       ],
       "subjects": [
        "history",
-       "anthropology"
+       "lang-langlit",
+       "global-politics"
       ],
       "aoks": [
        "HIS",
-       "HUM"
-      ]
+       "HUM",
+       "LAN",
+       "POL"
+      ],
+      "framework": [
+       "perspectives",
+       "scope",
+       "ethics",
+       "methods-and-tools"
+      ],
+      "thinking": {
+       "dok": 2,
+       "bloom": "analyse",
+       "fink": "human",
+       "solo": "relational"
+      }
      },
      "skills": [
       "SK-THK-14",
@@ -1812,8 +1853,12 @@
      },
      "weave": {
       "concepts": [
+       "evidence",
+       "interpretation",
+       "perspective",
        "responsibility",
-       "evidence"
+       "justification",
+       "certainty"
       ],
       "atl": [
        "social",
@@ -1821,12 +1866,24 @@
       ],
       "subjects": [
        "history",
-       "anthropology"
+       "lang-langlit"
       ],
       "aoks": [
        "HIS",
-       "HUM"
-      ]
+       "HUM",
+       "LAN"
+      ],
+      "framework": [
+       "scope",
+       "perspectives",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "caring",
+       "solo": "relational"
+      }
      },
      "skills": [
       "SK-THK-14",

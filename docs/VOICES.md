@@ -780,3 +780,5 @@ Neska used to earn her supper by getting a ballad out of every guest. She sincer
 - **Worries** Her sister will spend another night guiding strangers while her own floating bakery acquires a permanent mark on a stranger’s chart.
 - **Speaks** She describes a boat in the language of a kitchen. A skate sleeps in her apron and a crumb can carry news.
 - **Why** She bakes at two moorings. She can agree to the first walk and still need the receiving household to change the second.
+
+At the market post, Kip catches himself wishing he had witnessed the first stamping. Putting the hour beside his own name makes him admit that he was at supper. Hesper remembers what Ise did for a hurt hand from the piece that is still missing from her coat. Ise offers that coat for the round, steadies a short stool with her foot and learns to let a stranger return an answer in her own glove. Orrin uses a joke about a wax cricket to ask a painful question. He wants to know whether he could have been sitting at his post all night while Elsbet thought he had left. [The cricket in the sleeve](STORY_BIBLE.md#the-cricket-in-the-sleeve)

@@ -586,3 +586,17 @@ The Guardian gets a letter with a small bite out of it. A child has been posting
 | The people who drew the working map have never climbed the receiving stair | Give a neighbour the pencil at the other quay or invite a new working pair. The folded edition can return for another trial. | Pendlow receives the crumb that travelled with the first letter. The receiving walkers keep authority over their own landing. |
 
 The oven skate follows a current of warm air one dry square at a time. Its gift for finding a route does not tell it whom a house belongs to. The little foil press goes further. An apprentice and a first-time traveller can hold identical slips and arrive at different interpretations. [The kitchen and the weir](../src/content/riverNames.ts) · [Walking and stamping](../tests/river-names.test.ts)
+
+## The cricket in the sleeve
+
+Kip kneels beside Corvan’s discarded market board. A tiny wax cricket goes quiet when he lifts it. He can carry the impression of its ring and nick, or put his own name and the hour of discovery inside the wrapper. He would dearly like to have seen who pressed the seal. He was eating his supper at the time. Ise almost pockets the thing out of habit. What happens next is up to the Guardian.
+
+| Place | An arrangement the player can test | Who is still waiting |
+| --- | --- | --- |
+| Public rail | A late caller leaves an inside-out glove. Sew its ridge onto a strip or keep it for a demonstration by its owner. | Kip wants to meet the woman. The early shift wants a strip it can feel. |
+| Witness desk | Leave a folded appointment tab or hold the low stool steady while Ise fetches Kip. | A tired woman has trouble reading his writing. Someone else wants a turn. |
+| Change of shift | Follow the next caller or stay to test one knock with a second pair of hands. | Hesper recognises the sleeve Ise cut years ago to splint her hand. She can wait with the caller while a porter sets off. |
+
+Elsbet’s letter has two accounts folded inside. She heard no answer at the steps. Orrin was indoors filing the brass tooth of the catch. The guild copy leaves room for the name of a worker who deserted. A guardian willing to knock can find a silent spoon in a kitchen with a living man sitting at the table. A different test, with both reference settings known, makes silence a good clue to a missing tooth. The archive still lacks a working test for that particular night.
+
+The player can send the two uncut lines, the catch or an invitation to swap listening places. When any of the three Nile packets is installed, the first reader uses what travelled. The next caller lives with its cost. [The two chapter scenes](../src/content/hatch-margin.json) · [The catch and its two listeners](../src/domain/hatchSleeve.ts)

@@ -65,6 +65,7 @@ export function apply(effects: Effect[] | undefined, s: CampaignState, out: Effe
       if ('setFlag' in e) n.flags[e.setFlag] = e.value;
       else n.flags[e.addNum] = Number(n.flags[e.addNum] ?? 0) + e.by;
     } else if ('giveItem' in e || 'takeItem' in e) {
+      if ('giveItem' in e && e.ifMissing && (n.inventory[e.giveItem] ?? 0) > 0) continue;
       if (n.inventory === s.inventory) n.inventory = { ...s.inventory };
       const give = 'giveItem' in e, id = give ? e.giveItem : e.takeItem, qty = give ? e.qty ?? 1 : -(e.qty ?? 1);
       const amount = (n.inventory[id] ?? 0) + qty;

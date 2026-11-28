@@ -1,0 +1,44 @@
+[
+  {
+    "number": 519,
+    "name": "Make silence count only where a test could detect the thing",
+    "uses": [
+      {
+        "objective": "hatch.absence",
+        "action": "Hold the listening place and brass surface fixed. Check the spoon with the link fitted and removed, test the two covered catches and lift both cloths. A silent spoon gives information under those tested conditions. The old account cannot establish who was inside from silence alone.",
+        "styles": [
+          "explorer",
+          "maker"
+        ],
+        "modes": [
+          "auditory",
+          "visual",
+          "analytical"
+        ],
+        "game": 70,
+        "story": 85
+      }
+    ]
+  },
+  {
+    "number": 372,
+    "name": "Find whose choices have been built into a public map",
+    "uses": [
+      {
+        "objective": "maps.o1.make",
+        "action": "Produce four limited-layer maps of the same town and receive each reader’s response. Compare the guild’s named stall layer with a traveller’s landmarks and a well keeper’s surface evidence. Decide which document faces the street and where a caller must ask for another account.",
+        "styles": [
+          "maker",
+          "helper"
+        ],
+        "modes": [
+          "spatial",
+          "visual",
+          "social"
+        ],
+        "game": 122,
+        "story": 52
+      }
+    ]
+  }
+]

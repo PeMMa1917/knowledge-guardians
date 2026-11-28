@@ -111,6 +111,11 @@ const tallyReceivers: Interactable[] = [
     visibleIf: { all: [{ flag: 'emberford.tally', eq: 'weight' }, tallyPlaced('weight')] } },
 ];
 
+export const KIP_MARKET_POST = {
+  id: 'kip-arden', x: 21, y: 23, facing: 'left',
+  visibleIf: { flagSet: 'sd.corvan.outcome' },
+} as const;
+
 export const EMBERFORD: MapDef = {
   id: 'aethelgard.emberford',
   name: 'Aethelgard: Emberford market',
@@ -167,6 +172,7 @@ export const EMBERFORD: MapDef = {
   npcs: [
     MOON_EMBERFORD_CARRIER,
     ...CART_MEMORY_ACTORS,
+    KIP_MARKET_POST,
     { id: 'merchant-corvan', x: 25, y: 13, facing: 'down' },
     { id: 'smith-hesper', x: 7, y: 13, facing: 'right' },
     { id: 'guildmaster-orrin', x: 19, y: 7, facing: 'down' },
@@ -431,6 +437,8 @@ export const EMBERFORD: MapDef = {
       artOpen: { key: 'preserved.display-paired', if: { flag: 'well.records.guild', eq: true } } },
     // The story (Lamp Wall): each knot the town unties lights a lamp; six open the old Guardian's cellar.
     { id: 'lamp-wall', kind: 'lamps', x: 14, y: 5, w: 1, h: 1, label: 'the Lamp Wall', art: 'lamp-wall.0' },
+    { id: 'hatch-round-reply', kind: 'scene', node: 'hatch.reply.round', x: 16, y: 22, w: 1, h: 1, walkThrough: true,
+      label: 'Ise’s short sleeve at the change of shift', art: 'hatch.sleeve', visibleIf: { flag: 'hatch.custody', eq: 'round' } },
     { id: 'cellar-door', kind: 'door', x: 12, y: 6, w: 1, h: 1, label: 'the cellar door', art: 'cellar-door', flag: 'study.entered',
       artOpen: { key: 'cellar-door.open', if: { num: 'lamps.lit', gte: 6 } }, openIf: { num: 'lamps.lit', gte: 6 }, to: { map: 'aethelgard.study', x: 9, y: 11 },
       text: 'An old oak door in the ground, beside the guild hall. It has no lock and no handle. Under the moss, words are cut into the wood: WHEN SIX LAMPS BURN AGAIN.' },

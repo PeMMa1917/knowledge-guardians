@@ -700,7 +700,7 @@
    "id": "map-table",
    "type": "mapmaker",
    "title": "The Mapmaker's Table",
-   "intro": "Cartographer Oskar is ill, and four people are waiting for maps of Emberford. His note says: 'The guild paper is small. A sheet can hold three layers before it turns to mud. Ask each person what they need the map for.'",
+   "intro": "Oskar left one good sheet and a note in a shaky hand. “Three layers before the ink runs. Look under the frame. Its two hooks face different streets.” Four people are waiting for a map. Only one sheet can face the public steps tonight.",
    "skills": [
     "SK-KNO-14",
     "SK-THK-14"
@@ -709,21 +709,30 @@
     "concepts": [
      "values",
      "power",
-     "perspective"
+     "perspective",
+     "justification",
+     "responsibility",
+     "evidence"
     ],
     "atl": [
      "thinking",
      "communication"
     ],
     "subjects": [
-     "geography"
+     "geography",
+     "global-politics",
+     "design-tech"
     ],
     "aoks": [
-     "HUM"
+     "HUM",
+     "POL",
+     "TEC"
     ],
     "framework": [
      "scope",
-     "perspectives"
+     "perspectives",
+     "methods-and-tools",
+     "ethics"
     ]
    },
    "onComplete": [
@@ -776,23 +785,23 @@
     {
      "id": "efua",
      "name": "Efua, the well keeper",
-     "wants": "The town wants a third well. Water runs downhill under the ground too. I need to see the wells we have and where the land goes down.",
+     "wants": "The council has money to look for one more well. Give me the wells and the slopes. They help me pick a place to test. I have to tell the street what we still need to find out.",
      "need": [
       "wells",
       "slope"
      ],
-     "success": "Efua puts her finger on a low place between the two wells. 'There. We dig there first.'",
-     "lost": "Efua frowns. 'I cannot choose a place for a well from this.'"
+     "success": "Efua marks a low place between two wells. “Here is where to test first. Groundwater can run across a surface slope. A dot is a promise to look.”",
+     "lost": "Efua folds the sheet. “I can use it to meet the diggers. I still need the old wells and the slopes to pick a test place.”"
     },
     {
      "id": "clerk",
      "name": "The guild clerk",
-     "wants": "Every stall pays a small fee each season. I need each stall, who keeps it, and the name of the street it is on.",
+     "wants": "The guild collects a fee per stall. I need street names and the people actually trading there. A sleeping stall can have its old name up for a year.",
      "need": [
       "stalls",
       "names"
      ],
-     "success": "The clerk counts the stalls in a minute. 'Fair and quick. Nobody is missed, and nobody pays twice.'",
+     "success": "The clerk follows the names down to the stalls. A widow points to a sign that still carries her husband’s name. “I can check who trades here before I write a bill.”",
      "lost": "The clerk sighs. 'I still have to walk the whole market with my book.'"
     },
     {
@@ -2610,22 +2619,37 @@
       "concepts": [
        "values",
        "power",
-       "perspective"
+       "perspective",
+       "justification",
+       "responsibility",
+       "evidence"
       ],
       "atl": [
        "thinking",
        "communication"
       ],
       "subjects": [
-       "geography"
+       "geography",
+       "global-politics",
+       "design-tech"
       ],
       "aoks": [
-       "HUM"
+       "HUM",
+       "POL",
+       "TEC"
       ],
       "framework": [
        "scope",
-       "perspectives"
-      ]
+       "perspectives",
+       "methods-and-tools",
+       "ethics"
+      ],
+      "thinking": {
+       "dok": 3,
+       "bloom": "create",
+       "fink": "integration",
+       "solo": "relational"
+      }
      },
      "skills": [
       "SK-KNO-14",

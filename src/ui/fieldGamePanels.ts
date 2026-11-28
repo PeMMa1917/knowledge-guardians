@@ -1,5 +1,6 @@
 import {postmarkPanel} from './riverPostmark';
 import {riverBenches,ovenPanel,benchNames} from './riverNames';
+import { hatchPanel } from './hatchSleeve';
 import {grovePanel} from './walkingOrchard';
 import {beds,bedName} from '../domain/walkingOrchard';
 import {secondInkPanel} from './secondInk';
@@ -86,6 +87,8 @@ export const fieldGamePanels = new Map<string, Panel<GamePanel>>([
   ['river-postmark-out',{title:'The foil at the oven',open:(c,sound)=>postmarkPanel(c,sound,false)}],
   ['river-postmark-in',{title:'Three readers of the same postmark',open:(c,sound)=>postmarkPanel(c,sound,true)}],
   ...riverBenches.map((bench):[string,Panel<GamePanel>]=>['river-names-'+bench,{title:benchNames[bench],open:(c,sound)=>ovenPanel(c,sound,bench)}]),
+  ['hatch-cricket', { title: 'The cricket in the sleeve', open: (c,sound) => hatchPanel(c,sound) }],
+  ['hatch-readers', { title: 'The two-sided sleeve', open: (c,sound) => hatchPanel(c,sound,true) }],
   ['stacks-signature',{title:'The names under the count',open:signatureLamp}],
   ['turning-stacks',{title:'The house with six names',open:turningStacksPanel}],
   ...beds.map((bed):[string,{title:string;open:GamePanel}]=>['grove-bed-'+bed,{title:bedName[bed]+' nursery glass',open:(c,sound)=>grovePanel(c,sound,'nursery',bed)}]),

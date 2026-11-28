@@ -50,6 +50,11 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
     if(key.startsWith('walking-grove:track:'))return {tracks:'Which part of the night could this mark explain, and which part still needs a witness?'};
     return {date:'What changed when I brought the two springs up to the same date?',missing:'Which empty space in the book would I try to fill first, and why?'};
   }
+  if (key.startsWith('hatch-sleeve:')) {
+    if (key.includes(':test.')) return { control: 'What stayed in place between my knocks?', limit: 'Which part of that night would still need a witness?' };
+    if (key.includes(':words.')) return { voice: 'Whose position reappeared when I opened the edge of the slip?', change: 'How did knowing where they stood change what I could say?' };
+    return { use: 'Who could use the sleeve I left?', transfer: 'Which question did the next reader need a different source to answer?' };
+  }
   if(key.startsWith('secondink:')){
     const [,topic,id]=key.split(':'), local=inkCases.find(k=>k.site===id);
     if(local) return {

@@ -95,7 +95,7 @@ export type Condition =
 export type Effect =
   | { setFlag: string; value: FlagValue }
   | { addNum: string; by: number }
-  | { giveItem: string; qty?: number }
+  | { giveItem: string; qty?: number; ifMissing?: true }
   | { takeItem: string; qty?: number }
   | { addMarks: number }
   | { addCard: string }

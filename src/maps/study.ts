@@ -50,6 +50,8 @@ export const STUDY: MapDef = {
   npcs: [],
   interactables: [
     SHELF_ROOM_DOOR,
+    { id: 'hatch-cricket', kind: 'fieldgame', game: 'hatch-cricket', x: 9, y: 8, w: 1, h: 1, walkThrough: true,
+      art: 'hatch.cricket', label: 'The wax cricket on the little working catch', visibleIf: { flag: 'study.letter', eq: true } },
     ...LINKED_STUDY,
     PRISM_STUDY,
     TIME_ROOM_DOOR,

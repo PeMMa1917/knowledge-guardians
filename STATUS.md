@@ -1,5 +1,9 @@
 # Status and next steps
 
+## 28 November • The cricket in the sleeve
+
+Kip can take the impression of a found seal or sign the hour he found it. Ise can hang it at a public hatch, keep it at a staffed desk or carry it on a round. Each decision leads to a different caller. In Elsbet’s study the Guardian can open the two original accounts, test the brass catch and publish a sleeve for the readers of the installed Nile packet. An interrupted conversation with Kip now preserves the one seal.
+
 ## 28 November • The oven with two addresses
 
 A letter comes back with a bite out of it. The Seagrass postman says the bakery burned down and its boat pilot says her sister still bakes there. Players can walk their rounds at two tides, mark a public address, teach an apprentice at a small foil press and meet the people who receive the edition at the Old Weir. Each walker can change or decline their own part of the map. Individual readings about place names, language work and co-learning enter the diary and its export when discovered.

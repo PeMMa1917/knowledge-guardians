@@ -1,5 +1,6 @@
 import {noteForExhibit,recordView} from '../domain/contentNotes';
 import type { TaskMode, TrialSound } from '../domain/taskScore';
+import { KIP_MARKET_POST } from '../maps/emberford';
 import { vaultReturnSquare } from '../maps/undercroft';
 /**
  * WorldScene: draws a map, moves the player and characters, and turns player
@@ -277,13 +278,6 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
       this.npcs.push(a);
       block(n.x, n.y, 1, 1);
     }
-    // Kip waits at the portal stone once the market Showdown has ended.
-    if (m.id === 'aethelgard.emberford' && s.companion === 'kip-arden' && s.flags['sd.corvan.outcome'] !== undefined) {
-      const a = this.makeActor('kip-arden', 21, 23, 'left');
-      this.npcs.push(a);
-      block(21, 23, 1, 1);
-    }
-
     this.conditionalCast = m.npcs.flatMap((place, order) => place.visibleIf
       ? [{ place, order, floorBlocked: this.blocked[place.y][place.x] }] : []);
     this.syncConditionalCast(false);
@@ -408,7 +402,10 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     this.waitingForSpace = [];
     for (const member of this.conditionalCast) {
       const { place, actor } = member;
-      const present = place.id !== ctx.controller.state.companion && ctx.controller.check(place.visibleIf);
+      const marketPost = place === KIP_MARKET_POST;
+      // The current companion walks to his post once the conversation closes.
+      if (marketPost && this.follower?.id === place.id) continue;
+      const present = (marketPost || place.id !== ctx.controller.state.companion) && ctx.controller.check(place.visibleIf);
       if (present && !actor) {
         if (protectPlayer && this.playerOverlaps(place)) {
           this.waitingForSpace.push(place);
@@ -892,9 +889,14 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
     const s = ctx.controller.state;
     if (!f || this.map.id !== 'aethelgard.emberford' || f.id !== 'kip-arden' || s.flags['sd.corvan.outcome'] === undefined) return;
     if (ctx.ui.isModalOpen()) return; // wait until the conversation closes
+    const waiting = this.conditionalCast.find(member => member.place === KIP_MARKET_POST);
+    if (!waiting || waiting.actor || this.playerOverlaps(waiting.place)) return;
     this.follower = null;
+    waiting.actor = f;
+    f.mapOrder = waiting.order;
     this.npcs.push(f);
-    const tx = 21 * TILE + 8, ty = 23 * TILE + 12;
+    const { x, y } = waiting.place;
+    const tx = x * TILE + 8, ty = y * TILE + 12;
     f.facing = 'left';
     const dist = Math.hypot(tx - f.sprite.x, ty - f.sprite.y);
     if (ctx.settings.reducedMotion || dist < 1) {
@@ -905,7 +907,7 @@ export class WorldScene extends Phaser.Scene implements WorldApi {
         onUpdate: () => this.place(f),
         onComplete: () => { f.sprite.anims.stop(); f.sprite.setFrame(this.idleFrame('left')); this.place(f); } });
     }
-    if (this.blocked[23]?.[21] !== undefined) this.blocked[23][21] = true;
+    this.blocked[y][x] = true;
   }
 
   private updateFollower(moving: boolean): void {

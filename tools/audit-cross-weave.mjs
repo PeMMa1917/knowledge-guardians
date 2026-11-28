@@ -1,4 +1,5 @@
 import {riverNameProofs} from './river-name-evidence.mjs';
+import {hatchProofs} from './hatch-sleeve-evidence.mjs';
 import {secondInkProofs} from './second-ink-evidence.mjs';
 import {orchardProofs} from './walking-orchard-evidence.mjs';
 import { houseProofs } from './open-house-evidence.mjs';
@@ -160,7 +161,7 @@ const proofRows = [
   ...ferryRadioProofs,
   ...orchardProofs,
   ...tideClockProofs,
-  ...riverNameProofs, ...secondInkProofs,
+  ...hatchProofs, ...riverNameProofs, ...secondInkProofs,
   ...houseProofs,
   ...cupProofs,
   ...almanacProofs,
