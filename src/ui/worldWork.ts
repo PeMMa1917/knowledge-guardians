@@ -1,3 +1,4 @@
+import { dispatchFolder, travelFinding } from '../domain/dispatchFolders';
 import { receivingKeepers, receivedTrail, receivingChoice, receiptAccount } from '../domain/orderReceipts';
 import { supperParcels } from './supperTable';
 import type { GameController } from '../app/controller';
@@ -37,6 +38,8 @@ export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:
   }
   function launch(o:WorkOrder){
     const t=o.ticket,s=c.state,rule=ruleFor(o),shift=hallShift(o.chapter),key=ticketKey(o);
+    const folder=dispatchFolder(o);
+    const folderOpen=body.querySelector<HTMLDetailsElement>('[data-case-folder]')?.open??false;
     const wasMeasuring=body.querySelector<HTMLDetailsElement>('[data-measure]')?.open??false;
     const tool=workTool(o,s),done=!!s.flags[key+'.worked'];
     const lead=scenes.leads[(t[14]-1)%scenes.leads.length];
@@ -48,8 +51,21 @@ export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:
     }
     const control=(act:WorkCommand['action'],value:number,label:string)=>h('button',{type:'button',onclick:()=>take(act,value,label)},label);
     body.replaceChildren(invitation?h('button',{type:'button',onclick:()=>void open(1)},'See this keeper’s requests'):h('button',{type:'button',onclick:list},'Back to work orders'),h('h2',{},titles.get(t[0])!),
-      h('p',{},t[3]+' · '+t[5]),h('p',{},shiftReading(s,key,o.chapter)),h('p',{},scenes.beginnings[(t[13]-1)%scenes.beginnings.length]),h('p',{},lead[0]),
+      h('p',{},t[3]+' · '+t[5]),h('p',{},shiftReading(s,key,o.chapter)),h('p',{},folder?.opening??scenes.beginnings[(t[13]-1)%scenes.beginnings.length]),h('p',{},folder?.file.problem??lead[0]),
       h('h3',{tabindex:'-1','data-work-step':true},tool.title));
+    if(folder){
+      const notes=h('details',{'data-case-folder':true,open:folderOpen},h('summary',{},'Examine the dispatch folder'));
+      if(folder.clock)notes.append(h('p',{},folder.clock[s.flags[key+'.late']?1:0]));
+      folder.file.paths.forEach((path,i)=>{
+        notes.append(control('inspect-trace',i,path.action));
+        if(s.flags[key+'.trace.'+i]){
+          const send=control('carry-trace',i,'Pack this finding · '+path.action);
+          send.setAttribute('aria-pressed',String(s.flags[key+'.finding']===i));
+          notes.append(h('p',{},path.finding),send);
+        }
+      });
+      body.append(notes);
+    }
     const route=chosenRoute(o,s);
     if(route)body.append(h('p',{},route.action+'.'));
     if(!done){
@@ -72,7 +88,7 @@ export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:
     }
     if(s.flags[key+'.result'])body.append(h('p',{},String(s.flags[key+'.result'])));
     if(done){
-      body.append(h('p',{},lead[1]),h('button',{type:'button',onclick:()=>take('restart',0,'')},'Rehearse another way'));
+      body.append(h('p',{},folder?.turn??lead[1]),h('button',{type:'button',onclick:()=>take('restart',0,'')},'Rehearse another way'));
       const agent=rivalVoice(o,s);
       if(agent){
         body.append(h('p',{},agent.opening),control('hear',0,'Hear '+agent.name+' out'));
@@ -106,6 +122,7 @@ export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:
       const i=Number(issued(s,o));
       body.append(h('p',{},disposition(o,i).cost), h('blockquote',{},hallCost(o.chapter,i)), h('p',{},'Received by '+(s.flags[key+'.late']?shift.lateKeeper:shift.earlyKeeper)+'. '+scenes.keeps[(t[15]+i)%scenes.keeps.length]),
         h('details',{},h('summary',{},'At the end of the shift'),h('p',{},shift.quiet)));
+      const packed=travelFinding(s,o,key,true);if(packed)body.append(h('p',{},'Inside the issued folder · '+packed));
       const settled=chosenRoute(o,s,true);if(settled)body.append(h('blockquote',{},settled.returnLine));
       if(t[7].length)body.append(h('p',{},'The order is addressed to '+t[7].map(n=>PASSAGES[n-1].name).join(' · ')+'. Its keeper will take it under Incoming work.'));
       for(const dest of t[7])if(corridorOpen(s,dest))body.append(h('button',{onclick:()=>travel(dest)},'Carry the order to '+PASSAGES[dest-1].name));
@@ -168,7 +185,7 @@ export function workPanel(c:GameController,onTemple:(n:number)=>void, travel:(n:
               return;
             }
             const selected=receivingChoice(s,key,home,r),trail=receivedTrail(s,key,r,t[7]);
-            envelope.append(h('p',{},[disposition(o,edition).cost,chosenRoute(o,s,true)?.returnLine].filter(Boolean).join(' ')),h('p',{},local.arrival));
+            envelope.append(h('p',{},[disposition(o,edition).cost,chosenRoute(o,s,true)?.returnLine,travelFinding(s,o,key,true)].filter(Boolean).join(' ')),h('p',{},local.arrival));
             for(const [j,m] of local.routes.entries())envelope.append(h('button',{'aria-pressed':String(j===selected),onclick:()=>{
               if(action(o,'handoff',j)){showReceipt();envelope.querySelector<HTMLButtonElement>('[aria-pressed="true"]')?.focus();}
             }},m.action));
