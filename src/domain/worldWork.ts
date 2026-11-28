@@ -1,3 +1,4 @@
+import { leaveWithKeeper } from './orderReceipts';
 import { hallCost, hallShift } from './hallStories';
 import { sagaChapter } from './corridorSagas';
 import { benches,benchFor } from './workInstruments';
@@ -12,7 +13,7 @@ export type Ticket = [id:number, form:number, twist:number, keeper:string, objec
   destinations:number[], level:number, concepts:string, rival:string, gift:number, temple:number,
   hook:number, mystery:number, reveal:number, frameworkMask:number, areas:string, skill:number];
 export interface WorkOrder { chapter:number; group:number; ticket:Ticket }
-export type WorkCommand = {type:'WorldWork'; order:WorkOrder; action:'work'|'test'|'predict'|'issue'|'receive'|'gift'|'hear'|'restart'; value:number};
+export type WorkCommand = {type:'WorldWork'; order:WorkOrder; action:'work'|'test'|'predict'|'issue'|'receive'|'handoff'|'gift'|'hear'|'restart'; value:number};
 export const groupNames = ['Field games','Personal requests','Main quest routes','Crew missions','Story patterns'];
 export const ticketKey = (o:WorkOrder) => 'work.'+o.chapter+'.'+o.group+'.'+o.ticket[0];
 export const orderName = (o:WorkOrder) => o.ticket[4]+' · '+o.ticket[3];
@@ -65,6 +66,10 @@ export function workAction(s:CampaignState,cmd:WorkCommand):{effects:Effect[];ti
     t[0]>[300,300,200,400,864][o.group] || !benchFor(o.group,t[1]) || !site)throw Error('Use a work order from this shelf.');
   const rule=ruleFor(o),key=ticketKey(o),i=cmd.value;
   const flag=(id:string,value:number|boolean|string):Effect=>({setFlag:id,value});
+  if(cmd.action==='handoff'){
+    if(site===o.chapter || !isIssued(s,o))throw Error('Visit a receiving keeper with the issued order.');
+    return leaveWithKeeper(s,key,site,revision(s,o),t[7],i);
+  }
   if(cmd.action==='receive'){
     if(site===o.chapter || !t[7].includes(site) || !isIssued(s,o))throw Error('Carry an issued order to one of its other worlds.');
     const edition=Number(issued(s,o));

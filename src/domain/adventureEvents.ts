@@ -1,3 +1,4 @@
+import { supperMove } from './companionSupper';
 import {rivalMove} from './rivalPost';
 import {workTopicStamp} from './workTopics';
 import {workAction, ticketKey, orderName} from './worldWork';
@@ -81,6 +82,10 @@ export function commandDiaryEvent(pack: ContentPack, previous: CampaignState, ne
       return diaryEvent(key+cmd.setting,'tool',ref,desk.controls[cmd.setting],
         'I tried '+loan.record.name+' at '+desk.place+'. '+result.strips.map(row=>row.label+' · '+row.text).join(' / ')+'. '+result.observation,
         {sourceIds:[loan.record.specimen.source]},{fixedToolPrefix:key});
+    }
+    case 'CompanionSupper': {
+      const scene=supperMove(pack,pack.dialogue,previous,cmd);
+      return diaryEvent(['supper',cmd.scene,cmd.action,cmd.choice ?? next.flags['supper.pair.'+cmd.scene+'.packed']].join(':'),cmd.action==='listen'?'conversation':'choice',previous.mapId,scene.title,scene.text,{},'after-break');
     }
     case 'RivalPost': {
       const reply=rivalMove(previous,cmd);

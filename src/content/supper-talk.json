@@ -1,0 +1,188 @@
+[
+  {
+    "title": "The chipped cup",
+    "people": [
+      "kip-arden",
+      "smith-hesper"
+    ],
+    "chapter": 1,
+    "exchange": [
+      "Kip holds a broken cup by its good handle. “Ise glued this. She hid the crack on the side the guests see.”",
+      "Hesper sets a saucer under it. “It held her tea for ten years. How many cups do you need a family to buy?”",
+      "Kip touches the saucer. “Could we let the next person turn it first?”"
+    ],
+    "memories": [
+      "Kip slips Ise’s spare key back into her pocket before he puts the cup down.",
+      "Hesper puts the apprentice’s sound little rivet beside the old glue."
+    ],
+    "editions": [
+      {
+        "action": "Leave the cup on its saucer at Ise’s desk",
+        "reply": "A visitor uses the saucer to turn the cup. Seeing the seam, he asks Ise how she'd mend his."
+      },
+      {
+        "action": "Set up a repair stool at the market",
+        "reply": "The repair stool fills before the new cups sell. Corvan lends it his best lamp."
+      }
+    ],
+    "trusted": [
+      "“Ise gave me a key. I'm going to tell her in person what we're doing with her cup.”",
+      "“If the guild will try this repair in public, they can keep their stamp on it.”"
+    ]
+  },
+  {
+    "title": "Who owns the rest?",
+    "people": [
+      "kip-arden",
+      "scholar-sefa"
+    ],
+    "chapter": 5,
+    "exchange": [
+      "Kip has written down the forest tune, including four beats of silence. “That's exactly what we heard.”",
+      "Sefa sings it with him and comes in on beat three. “My neighbour was taking a breath. Do you want to make her do it that way for ever?”",
+      "“Then give her the first turn tomorrow.” Kip tears off the top line. “I kept the other three.”"
+    ],
+    "memories": [
+      "Kip grins at his plain name on the supper cup and offers Sefa the clean side of the paper.",
+      "Sefa lets the rest last as long as it took her neighbour to get through the door."
+    ],
+    "editions": [
+      {
+        "action": "Hang Kip’s four beats under the forest blind",
+        "reply": "The next watcher taps four beats. When a second bird calls early, she adds its time in pencil."
+      },
+      {
+        "action": "Lend the lead to the creek-blind singer",
+        "reply": "The creek singer speeds up the rest. A shy watcher uses the borrowed beat to join the count."
+      }
+    ],
+    "trusted": [
+      "“If the Wardens want a clean copy, they can keep my crossed-out line on it.”",
+      "“Elsbet's people kept the first tune. Perhaps they'll keep this neighbour's answer too.”"
+    ]
+  },
+  {
+    "title": "A date for the door",
+    "people": [
+      "kip-arden",
+      "rook-tamsin"
+    ],
+    "chapter": 3,
+    "exchange": [
+      "“There's your date.” Kip shows Rook the morning his mother got the key. Rook holds the metal against his palm until the teeth leave marks.",
+      "“I believe that's when she got it. What if we put the following morning on the family's nameplate by mistake?”",
+      "Kip snatches the key back, then lays it on the table between them. “Write what you can use it to open.”"
+    ],
+    "memories": [
+      "Kip tells Rook who saved him a chair on the day the key changed hands.",
+      "Rook leaves a space on the appointment slip for the witness who was late."
+    ],
+    "editions": [
+      {
+        "action": "Hang the household key beside the Cold Store slip",
+        "reply": "The family tries the key in its drawer. Their note names the hand that passed it on and leaves the date open."
+      },
+      {
+        "action": "Ask Rook to keep the dated envelope at the desk",
+        "reply": "A returning visitor finds two dates under the flap and can ask the family which day they remember."
+      }
+    ],
+    "trusted": [
+      "“The Wardens know how to keep a key. I wish they'd learnt earlier how to give one back.”",
+      "“Elsbet's friends have offered us a second witness. We'd better save the envelope for her.”"
+    ]
+  },
+  {
+    "title": "What a good tool sounds like",
+    "people": [
+      "smith-hesper",
+      "scholar-sefa"
+    ],
+    "chapter": 6,
+    "exchange": [
+      "Hesper raps a spoon and passes it to Sefa. “My old fitter gave a job to anyone who could hear that nick.”",
+      "“Even someone who couldn't hear it?” Sefa rests a thumbnail on the spoon. The buzz stops halfway along the stem.",
+      "Hesper tries the trick. “He'd have given me your job. I think I'd have taken it then.”"
+    ],
+    "memories": [
+      "Hesper gives the spare spoon to the apprentice who made the first blow.",
+      "Sefa hums the buzz low enough for Hesper to feel through the table."
+    ],
+    "editions": [
+      {
+        "action": "Take the ringing spoon to the Metalworks bench",
+        "reply": "A fitter with a musician's ear picks the nick out over the hum of the forge. The younger apprentices crowd in."
+      },
+      {
+        "action": "Give the apprentices Sefa’s thumb test",
+        "reply": "A learner finds the dead patch in silence and puts a chalk ring around it for the next shift."
+      }
+    ],
+    "trusted": [
+      "“They like my stamp in the guild book. I can use the space beside it to put your thumb mark in.”",
+      "“The circle keeps the sound. Could somebody also keep the chalk?”"
+    ]
+  },
+  {
+    "title": "The price of a shortcut",
+    "people": [
+      "smith-hesper",
+      "rook-tamsin"
+    ],
+    "chapter": 10,
+    "exchange": [
+      "“I made a weight everyone can use today.” Hesper sets it in the butter dish. Rook weighs dish and all. “So can I. What if the customer only sees the total?”",
+      "“The cart leaves now,” she says. “I can lose a morning's pay making another one.”",
+      "Rook wipes the butter off the brass. “Would a cloth do? We'll put the empty dish on it beside the full one.”"
+    ],
+    "memories": [
+      "The apprentice who tried Hesper’s iron has sent a square of clean linen for the weights.",
+      "Rook keeps yesterday’s weight on the table beside the one from the second hearing."
+    ],
+    "editions": [
+      {
+        "action": "Send the unwrapped shop weight with the cart",
+        "reply": "The market takes the brass before the stall opens. Every weaver hears Hesper explain what her stamp covers."
+      },
+      {
+        "action": "Send the empty dish and the weight on separate cloths",
+        "reply": "The cart leaves a basket behind to make room. A weaver checks the empty dish for herself before selling."
+      }
+    ],
+    "trusted": [
+      "“The Seal can lend us a morning if I put the trial under my own stamp.”",
+      "“When the circle opens both accounts, leave the repairer's lost morning on the page.”"
+    ]
+  },
+  {
+    "title": "Who gets the last word?",
+    "people": [
+      "scholar-sefa",
+      "rook-tamsin"
+    ],
+    "chapter": 13,
+    "exchange": [
+      "Sefa has a song she only sings in the kitchen. “You wrote the words down,” she tells Rook. “Did I say you could put dinner in a library?”",
+      "Rook stands up so quickly his chair goes over. “I wanted whoever comes later to hear you.”",
+      "“You can tell them I was singing,” Sefa says at last. “You can even tell them what was for supper.”"
+    ],
+    "memories": [
+      "Sefa offers Rook her neighbour’s answering rest. The next verse stays folded inside her sleeve.",
+      "Rook turns the paper over and makes the family’s return address the biggest line."
+    ],
+    "editions": [
+      {
+        "action": "Give Sefa the only written verse",
+        "reply": "A visitor in the Voices hall finds a way to ask Sefa herself. The file has a date and the name of the cook."
+      },
+      {
+        "action": "Leave a kitchen index without the verse",
+        "reply": "Two singers find each other by the index. They meet behind the listening room to decide what may be heard."
+      }
+    ],
+    "trusted": [
+      "“Our correspondents let a witness correct a song. I want the right to take one home as well.”",
+      "“Two people from the circle have asked about our index. I told them they may read the envelope.”"
+    ]
+  }
+]
