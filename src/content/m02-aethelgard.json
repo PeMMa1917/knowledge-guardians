@@ -26,10 +26,13 @@
        "checkpoint": "Arrived in Emberford"
       }
      ],
+     "kq": { "id": "KQ-ROUTE-20", "action": "arrival-notebook" },
      "weave": {
       "concepts": [
        "culture"
       ],
+      "framework": ["perspectives"],
+      "aoks": ["HIS"],
       "atl": [
        "self-management"
       ]
@@ -1058,7 +1061,7 @@
   { "id": "j.hesper.checked-drawer", "claimKind": "observation", "text": "In the Nexus drawer I found Hesper’s repair tab next to a separately dated receipt. Anyone at the counter could ask for the pair while the shop finished its work." },
   {
    "id": "j.m02.start",
-   "text": "Arrived in Emberford, a guild town in Aethelgard. Aethelgard is a game world: nothing here is a historical record unless it says 'Documented'.",
+   "text": "I stepped into Emberford between a price board and a workshop door. Corvan has a surface pattern buyers can see. Hesper keeps the maker’s records. Where I go first could change whose account I carry back to the square.",
    "claimKind": "observation"
   },
   {

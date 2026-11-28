@@ -1,3 +1,4 @@
+import { activityAnchors } from './tok-activity-anchors.mjs';
 import { pocketProofs } from './pocket-theatre-evidence.mjs';
 import { reasoningRepertoire } from './reasoning-repertoire.mjs';
 import { bellProofs } from './claim-bell-evidence.mjs';
@@ -1428,7 +1429,7 @@ function authoredLinks(objectives, micro, elements) {
   }));
 }
 
-export async function loadAudit() {
+export async function loadAudit({ activities = false } = {}) {
   const server = await createServer({
     root, configFile: false, optimizeDeps: { noDiscovery: true, include: [] },
     server: { middlewareMode: true, watch: null, hmr: false, ws: false },
@@ -1458,7 +1459,10 @@ export async function loadAudit() {
       [file, await readFile(resolve(root, file), 'utf8')])));
     const proofs = collectProofs({ objectives, maps: MAPS, elements, dimensions, rows: proofRows, sourceText, dialogue: pack.dialogue });
     const candidates = authoredLinks(objectives, MICRO_SKILLS, elements);
-    return { worlds, elements, dimensions, proofs, candidates, bloomLevels: levels.BLOOM };
+    return { worlds, elements, dimensions, proofs, candidates, bloomLevels: levels.BLOOM, ...(activities ? {
+      activities: activityAnchors(pack,levels,topics), questionNames: Object.fromEntries(pack.questions.map(q=>[q.id,q.text])),
+      glossary: Object.fromEntries(pack.glossary.map(g=>[g.id,{term:g.term,history:g.history??null}])),
+    } : {}) };
   } finally {
     await server.close();
   }

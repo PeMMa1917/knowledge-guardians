@@ -1,5 +1,7 @@
 # What a connection looks like in play
 
+The combination atlas extends this audit to multiple members of the same family and ordered routes. [Combination atlas](COMBINATION_ATLAS.md)
+
 At the well, a porter needs a pot he can lift one-handed. At the council, a listener needs three knocks entered in a record. The player can send a speech, token or messenger rule at either of two bells. The council tries the actual rule that arrived. Its successor changes the porter's next turn back in Emberford.
 
 The audit records the act, the demand it places on the player and a consequence that can be observed. The historical meaning of *evidence* earns a link when the player considers a rubbing alongside a sound and decides what the hatch will receive. Reading the word alone earns no credit for that decision.

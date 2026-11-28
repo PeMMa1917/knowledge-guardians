@@ -1,5 +1,7 @@
 # Multi-persona audit
 
+The combination atlas gives reviewers the full member index, TOK anchor rules and evidence for ordered play. [Combination atlas](COMBINATION_ATLAS.md) · [Check off a combination](COMBINATION_CHECKLIST.html)
+
 The 28 November element audit covers every numbered design element, the supplied micro-skills, all fifteen chapters, and the 84 simulated review profiles. [Checkpoint findings](ELEMENTS_CHECKPOINT.md) · [Individual element register](element-evidence.csv)
 
 An earlier follow-up reviews the historical guest workshops, the night watches and class writing across 73 perspectives. [Review and chapter cases](LAMPLIGHT_AND_CLASS_WRITING.md)

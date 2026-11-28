@@ -1,5 +1,7 @@
 # Knowledge Guardians element audit
 
+The combination atlas adds the full register of mission questions and same-action or ordered-route lookups. [Combination atlas](COMBINATION_ATLAS.md)
+
 **Review checkpoint 9c2cb1f, 28 November 2026.** The draft builds and the game contains fifteen playable chapters. A player can spend a first hour on the modeled story route encountering all twelve key concepts and all four framework parts. The wider promise of ten different actions for every learning and design element in every world remains open. The largest gaps concern practice across settings, variation in repeat visits, and evidence from students and communities. [Audited code](https://github.com/PeMMa1917/knowledge-guardians/tree/9c2cb1f9481bf83fc60558f5954c5e0f006fefc2) · [Draft pull request](https://github.com/PeMMa1917/knowledge-guardians/pull/11)
 
 ## What a reviewer can inspect

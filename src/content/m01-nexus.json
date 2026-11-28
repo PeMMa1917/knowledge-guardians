@@ -275,10 +275,13 @@
        "checkpoint": "Recruitment complete"
       }
      ],
+     "kq": { "id": "KQ-ROUTE-15", "action": "arrival-notebook" },
      "weave": {
       "concepts": [
        "responsibility"
       ],
+      "framework": ["scope"],
+      "aoks": ["HIS"],
       "atl": [
        "self-management"
       ]
@@ -1193,7 +1196,7 @@
   },
   {
    "id": "j.m01.done",
-   "text": "Recruitment complete. Warden Ise gave me the Field Annotation Pen and the Provenance Thread. Next: a field mission in Aethelgard.",
+   "text": "Ise handed me the Provenance Thread. She wants the next keeper to see the last hand named in the record. Kip asked me to leave room for the hands nobody wrote down. I can carry both reasons to Emberford.",
    "claimKind": "observation"
   },
   {

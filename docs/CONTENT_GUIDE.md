@@ -1,5 +1,7 @@
 # Content guide
 
+When adding a task, record a TOK concept, a framework part, an area or theme, the question that drives it and two perspectives with different consequences. [Combination atlas](audit/COMBINATION_ATLAS.md)
+
 This guide tells you how to add or change game content: missions, objectives, dialogue, exhibits, evidence cards, sources, hints, label kits, Showdowns, threads, events, moments, misconceptions, portfolio templates, items, awards and maps.
 
 **Rule:** after each change, run `npm test`. The content tests find broken references, missing sources and missing hints. Do not merge content that fails the tests.

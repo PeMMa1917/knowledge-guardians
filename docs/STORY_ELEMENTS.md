@@ -1,5 +1,7 @@
 # Story elements in Knowledge Guardians
 
+Use the combination atlas to look up several narrative elements alongside mechanics and TOK anchors. [Combination atlas](audit/COMBINATION_ATLAS.md)
+
 This tracker maps every numbered story element in the supplied *Universal RPG Blueprint* to the campaign. Each example is a place, action or consequence that can be found in the current build, or a stated gap linked to its nearest authored material. The [game systems and player preferences](GAME_ELEMENTS.md) have a separate tracker.
 
 | Status | Meaning | Story elements |

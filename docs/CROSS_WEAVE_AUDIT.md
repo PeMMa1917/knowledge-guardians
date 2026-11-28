@@ -1,5 +1,7 @@
 # Learning actions across worlds and RPG elements
 
+For arbitrary sets, permutations and mission-level knowledge questions, use the combination atlas. [Combination atlas](audit/COMBINATION_ATLAS.md)
+
 The ferry studio and the island horn bring the count of reviewed comparisons between areas to 52. Mathematically recombining the two nights can reverse the direction of a headline. Choosing whom the boats invited also determines whose testimony it can describe. A singer and a ferry runner then hear the same edition from different places. The build has 1,859 learning, world and design intersections with one to nine documented actions and two with ten. [Actions and their limits](../tools/ferry-radio-evidence.mjs)
 
 Viri’s glasshouse adds the thirty-fourth and thirty-fifth reviewed comparisons. Fractional area in the detector print can guide a costume decision, but it cannot establish the animal’s experience or make a landing happen. In the second room a keeper checks a pinned forecast while a dancer makes a new movement from the very same exception. The game records both uses of the observation. [The four crops](../src/domain/petalWindow.ts) · [The two unopened watches](../src/domain/petalWager.ts)

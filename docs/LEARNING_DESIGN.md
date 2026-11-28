@@ -1,5 +1,7 @@
 # Learning design: concepts, framework and levels of thinking
 
+For combinations of learning, story and game elements across each Bloom level and depth of knowledge, use the atlas. [Combination atlas](audit/COMBINATION_ATLAS.md)
+
 Mika's rule (2026-11-26): the 12 TOK key concepts and the four parts of the knowledge framework must show up very often, in varied ways, in every part of the game. The thinking each encounter asks for must vary: Webb's depth of knowledge (DOK), Bloom's levels, Fink's dimensions of significant learning, and SOLO levels. Students never see these tags, and nothing in the game is an exam. Developer tests are fine.
 
 ## Where the tags live

@@ -1,5 +1,7 @@
 # Game elements in Knowledge Guardians
 
+Use the combination atlas to look up several mechanics alongside narrative elements and TOK anchors. [Combination atlas](audit/COMBINATION_ATLAS.md)
+
 This tracker maps each numbered item in the supplied *Ultimate Universal RPG Compendium* to a playable example, an adaptation with a remaining gap, a planned feature or a design exclusion. The attachment supplies items 1–288 and nine player preference rows. Its headline and catalogue subtitle give higher counts than its enumeration.
 
 | Status | Meaning | Numbered items |
