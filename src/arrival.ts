@@ -29,6 +29,8 @@ let opening = false;
 function openApplication(action?: TitleAction) {
   if (opening) return;
   opening = true;
+  const actions = document.querySelector<HTMLElement>('.arrival-actions');
+  if (actions) actions.hidden = true;
   status.textContent = 'Opening the game menu…';
   void import('./main')
     .then(({ enterGame }) => {
@@ -72,6 +74,6 @@ else {
   );
   reading.before(menu);
   reading.addEventListener('toggle', () => {
-    menu.hidden = reading.open;
+    menu.hidden = opening || reading.open;
   });
 }

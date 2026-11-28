@@ -4,7 +4,7 @@
 
 Run `npm run build`, `npm run check:chapters` and `npm run preview`. The content check compares the released rooms with the authored map functions, including every tile, actor, stamp and exit. It also compares each full dialogue record, choice and authored guide hint with the canonical campaign.
 
-Run the following against the production preview. Both journeys accept `chromium`, `firefox` and `webkit`. The chapter journey uses a 1366 × 768 viewport and fictional local saves. It checks which files the browser requests, interrupts both a map and its artwork, retries, revisits a cached room, reopens a Nile save directly and enters the Council. Add `--all-rooms` to visit all published rooms and check their stamped artwork. The fictional player uses “Go in” at content notices.
+Run the following against the production preview. Both journeys accept `chromium`, `firefox` and `webkit`. The chapter journey uses a 1366 × 768 viewport and fictional local saves. It checks which files the browser requests, interrupts both a map and its artwork, retries, revisits a cached room, reopens a Nile save directly and enters the Council. Add `--all-rooms` to visit all published rooms and check their stamped artwork. The fictional player uses “Go in” at content notices. Chromium 156, Firefox 146 and WebKit 26 each rendered all 164 rooms in the release test. A separate Chromium journey completed both of Waheenee’s encounters in each of the fifteen chapters and recovered her work after reload.
 
 ```sh
 node tools/smoke-chapter-delivery.mjs chromium http://127.0.0.1:4173
