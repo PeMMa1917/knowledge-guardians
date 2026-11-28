@@ -1,4 +1,5 @@
 import { createServer, defineConfig, type Plugin } from 'vite';
+import { ModuleRunner, createNodeImportMeta } from 'vite/module-runner';
 
 function teacherContent(): Plugin {
   const id = 'virtual:kg-teacher-content';
@@ -26,18 +27,26 @@ function teacherContent(): Plugin {
       }
       // Evaluate the two pure modules at build time. The teacher page then needs
       // only the reporting data, and Vite can omit the full campaign download there.
-      const loader = await createServer({ root, configFile: false, optimizeDeps: { noDiscovery: true, include: [] }, server: { middlewareMode: true, watch: null, hmr: false } });
+      const loader = await createServer({ root, configFile: false, optimizeDeps: { noDiscovery: true, include: [] }, server: { middlewareMode: true, watch: null, hmr: false, ws: false } });
+      // This build and its content loader share one process. A remote transport's
+      // reply deadline can expire on a busy build host while a local transform is still running.
+      const environment = loader.environments.ssr;
+      const runner = new ModuleRunner({
+        hmr: false,
+        createImportMeta: createNodeImportMeta,
+        transport: { invoke: (payload) => environment.hot.handleInvoke(payload) },
+      });
       try {
-        const { buildPack } = await loader.ssrLoadModule(campaign);
-        const { teacherContentFrom } = await loader.ssrLoadModule(projection);
-        const { validateContent } = await loader.ssrLoadModule('/src/domain/validate.ts');
+        const { buildPack } = await runner.import(campaign);
+        const { teacherContentFrom } = await runner.import(projection);
+        const { validateContent } = await runner.import('/src/domain/validate.ts');
         const pack = buildPack();
         const problems = validateContent(pack);
         if (problems.length) this.error('The assembled campaign failed validation.\n' + problems.join('\n'));
         for (const file of loader.environments.ssr.moduleGraph.fileToModulesMap.keys()) this.addWatchFile(file);
         return `export const teacherContent = ${JSON.stringify(teacherContentFrom(pack))};`;
       } finally {
-        await loader.close();
+        try { await runner.close(); } finally { await loader.close(); }
       }
     },
   };
