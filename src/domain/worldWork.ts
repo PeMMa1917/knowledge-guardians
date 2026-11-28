@@ -1,3 +1,4 @@
+import { dispatchFolder, travelFinding } from './dispatchFolders';
 import { leaveWithKeeper } from './orderReceipts';
 import { hallCost, hallShift } from './hallStories';
 import { sagaChapter } from './corridorSagas';
@@ -11,9 +12,9 @@ import type { CampaignState, Effect } from './types';
 
 export type Ticket = [id:number, form:number, twist:number, keeper:string, object:string, place:string, correspondents:string[],
   destinations:number[], level:number, concepts:string, rival:string, gift:number, temple:number,
-  hook:number, mystery:number, reveal:number, frameworkMask:number, areas:string, skill:number];
+  hook:number, mystery:number, reveal:number, frameworkMask:number, areas:string, skill:number, clock?:number];
 export interface WorkOrder { chapter:number; group:number; ticket:Ticket }
-export type WorkCommand = {type:'WorldWork'; order:WorkOrder; action:'work'|'test'|'predict'|'issue'|'receive'|'handoff'|'gift'|'hear'|'restart'; value:number};
+export type WorkCommand = {type:'WorldWork'; order:WorkOrder; action:'work'|'test'|'predict'|'issue'|'receive'|'handoff'|'inspect-trace'|'carry-trace'|'gift'|'hear'|'restart'; value:number};
 export const groupNames = ['Field games','Personal requests','Main quest routes','Crew missions','Story patterns'];
 export const ticketKey = (o:WorkOrder) => 'work.'+o.chapter+'.'+o.group+'.'+o.ticket[0];
 export const orderName = (o:WorkOrder) => o.ticket[4]+' · '+o.ticket[3];
@@ -73,9 +74,17 @@ export function workAction(s:CampaignState,cmd:WorkCommand):{effects:Effect[];ti
   if(cmd.action==='receive'){
     if(site===o.chapter || !t[7].includes(site) || !isIssued(s,o))throw Error('Carry an issued order to one of its other worlds.');
     const edition=Number(issued(s,o));
-    return {effects:[flag(returnKey(o,site),revision(s,o))],title:'Received at the other bench',text:[disposition(o,edition).cost,chosenRoute(o,s,true)?.returnLine].filter(Boolean).join(' ')};
+    return {effects:[flag(returnKey(o,site),revision(s,o))],title:'Received at the other bench',text:[disposition(o,edition).cost,chosenRoute(o,s,true)?.returnLine,travelFinding(s,o,key,true)].filter(Boolean).join(' ')};
   }
   if(site!==o.chapter)throw Error('Return to the keeper who began this case.');
+  if(cmd.action==='inspect-trace'||cmd.action==='carry-trace'){
+    const file=dispatchFolder(o)?.file;
+    if(!file || (i!==0 && i!==1))throw Error('Choose a trace from this dispatch folder.');
+    const path=file.paths[i],read=key+'.trace.'+i;
+    if(cmd.action==='inspect-trace')return {effects:[flag(read,true)],title:path.action,text:path.finding};
+    if(!s.flags[read])throw Error('Inspect that trace before asking a witness to carry it.');
+    return {effects:[flag(key+'.finding',i)],title:'Entrust the finding',text:path.finding};
+  }
   if(cmd.action==='work')return performWork(o,s,i,key);
   if(cmd.action==='restart')return {effects:[flag(key+'.instrument',2),flag(key+'.route',-1),flag(key+'.position',0),flag(key+'.worked',false),flag(key+'.result', '')],title:'A fresh rehearsal',text:'The keeper has reset the apparatus. Any issued instructions still stand until you replace them.'};
   if(cmd.action==='hear'){
@@ -97,14 +106,15 @@ export function workAction(s:CampaignState,cmd:WorkCommand):{effects:Effect[];ti
     const seen=[0,1,2].filter(j=>s.flags[readingKey(o,j)]!==undefined);
     const late=seen.length>=2 && !seen.includes(i), value=reading(o,i);
     return {effects:[flag(readingKey(o,i),value),...(late?[flag(key+'.late',true)]:[])],title:rule.controls[i],
-      text:value+' '+rule.unit+'.'+(late?' '+hallShift(o.chapter).late:'')};
+      text:value+' '+rule.unit+'.'+(late?' '+[hallShift(o.chapter).late,dispatchFolder(o)?.clock?.[1]].filter(Boolean).join(' '):'')};
   }
   if(cmd.action!=='issue' || !canIssue(s,o) || (needsPrediction(o)&&s.flags[readingKey(o,1)]===undefined) ||
     (i===2 && !s.flags[key+'.heard-agent']))throw Error('Complete the rehearsal and its evidence before issuing that order.');
   const {label,cost}=disposition(o,i),shape=methodId(o,s);
   const route=Number(s.flags[key+'.route']??-1);
-  const changed=issued(s,o)!==i || Number(s.flags[key+'.posted-route']??-1)!==route;
+  const finding=Number(s.flags[key+'.finding']??-1);
+  const changed=issued(s,o)!==i || Number(s.flags[key+'.posted-route']??-1)!==route || Number(s.flags[key+'.posted-finding']??-1)!==finding;
   const answer=chosenRoute(o,s)?.returnLine;
   const recent=[shape,...String(s.flags['work.recent']??'').split(',').filter(value=>value&&value!==shape)].slice(0,3);
-  return {effects:[flag(key+'.edition',i),flag(key+'.posted-route',route),flag(key+'.revision',revision(s,o)+(changed?1:0)),flag('work.recent',recent.join(','))],title:label,text:[cost,hallCost(o.chapter,i),answer].filter(Boolean).join(' ')};
+  return {effects:[flag(key+'.edition',i),flag(key+'.posted-route',route),flag(key+'.posted-finding',finding),flag(key+'.revision',revision(s,o)+(changed?1:0)),flag('work.recent',recent.join(','))],title:label,text:[cost,hallCost(o.chapter,i),answer,travelFinding(s,o,key,false)].filter(Boolean).join(' ')};
 }

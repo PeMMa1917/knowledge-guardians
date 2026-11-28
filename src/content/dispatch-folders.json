@@ -1,0 +1,1288 @@
+{
+  "openings": [
+    "A second bowl is waiting at {place}. The spoon lies exactly as it did last night. The keeper puts the dispatch slip under the bowl to stop it rocking.",
+    "The red signature on the fee slip is still sharp. {keeper} had signed enough of those in one afternoon to forget the family waiting at this counter.",
+    "A young reader sounds out the notice for {object}, then slowly reads the little shipping tag. That tag didn't say “leaving” yesterday.",
+    "There's half a lullaby on the back of the loan card. {keeper} knows the first part by heart and keeps losing the very last note.",
+    "The case maker lets you see a crescent scar in the wood. Two hands went into that final polish. Only one has been allowed near it since.",
+    "A rumpled coat lies under the desk at {place}. Whoever moved the night crate did it while somebody was sleeping right there.",
+    "The morning tune stops when the keeper sees you. On the work docket the same three notes have been written where a date should go.",
+    "The sun touches the paper cradle. For less than a minute a white shape stands out as clearly as a cut keyhole.",
+    "A tiny ribbon in the drawer says Second Voice. One witness bursts out laughing. The person who won it sets the ribbon straight.",
+    "The wrapping is still tide-stained. The item marked {object} came back to the desk, but somebody has made a beautifully dry new label.",
+    "The children have drawn ears on the rain warning. Last night everyone heard the little hum. The roof has stayed dry.",
+    "Five sketches lie on the counter. In four the visitor has put a thumb in the margin. In the fifth you can see what the thumb covered.",
+    "The oldest pass at {place} was issued to just one member of a household. The family still keeps a fold open for the next visitor.",
+    "Two ribbons used to fit through the hole in the travel tag. One promise is in the file. The other person still wears the second ribbon round a wrist.",
+    "A mapper has left room for one name beside the river. Several children are waiting to see whether their address will finally fit.",
+    "The chair under the window is set out every year on opening day. Today its owner comes in, looks at the chair and stays standing.",
+    "An entire street once chalked those strokes on its doors. The latest clerk has dismissed them all with a single question mark.",
+    "An apprentice has brought two cups of tea for one visitor. Neither has been touched since the stranger asked for the dispatch book.",
+    "A darned scarf holds the loose papers. The wrapping costs more to the keeper than the new case and the shiny clasp together.",
+    "Someone drew an older doorway on the back of the room plan. It stands exactly where the crate is bolted down.",
+    "Two chalk arrows point opposite ways on the case. Overnight someone has written “up according to whom?” between them.",
+    "At the stall a child asks for a copy of the rumour. The seller would much rather the child took home a copy of the receipt.",
+    "Three smoke marks run up the travel box. Only one belongs to the fire everyone in the queue remembers.",
+    "On the paper underneath the nameplate, a second pen has nicked a letter into the wood. A relative recognises the height of the hand.",
+    "One of the earliest visitor cards contains a single word in a newcomer’s handwriting. Somebody has answered it in the margin.",
+    "A storyteller reaches the part that usually gets a cheer and takes a letter out instead. The letter has been in a pocket for two days.",
+    "On the child's usual receiving card, an adult has written the request this week. The keeper sets a chair in its familiar place.",
+    "The wall hook has been put back up crooked. Somebody is leaving room for a load they still expect to come home.",
+    "Two neighbours have stitched the same little case emblem into their fair banners. Both families brought children to watch the unveiling.",
+    "A familiar hand shakes over the fastening. The visitor waiting behind quietly puts down a parcel and takes the next shift at the door.",
+    "A neighbour likes the keeper to read the whole label out loud, including the little cross-reference nobody else bothers with.",
+    "There is a fresh chalk mark at each weighing. The porter can see a stair of disappearing weight before the bookkeeper begins adding.",
+    "The corner of the manifest is sticking out of a goat’s mouth. The goat shows a lively interest in the ink clerk’s lunch.",
+    "A letter lay unopened in the lining of a teacher’s old coat. The pupil who found it asks you to read the last line first.",
+    "People have been lining up since breakfast. The first visitor comes out laughing, the second in tears. Neither will tell the others what to expect.",
+    "A key worn smooth in a pocket fits a hole in the mount. The person carrying it has never seen the furniture it came from.",
+    "An old shop stamp carries the same name as the youngest keeper. It is the one question everyone at home answers by putting the kettle on.",
+    "A small laugh cut off the witness years ago. Today the very person who laughed has left a chair and a pencil by the door.",
+    "There is room on the classroom shelf for one working model. Nobody agrees on what it ought to be allowed to do in a child's hands.",
+    "One dusty apron came out when the old workshop closed. Look in the pocket and the shape of half a day's work is still there.",
+    "A hungry neighbour places a toll receipt beside the morning bread. “That little mark,” the neighbour says, and lets the rest of the sentence wait.",
+    "The local creatures are usually loud enough to interrupt the first visitor. Today the keeper can hear the front-door hinge all the way from the back.",
+    "At closing time somebody puts a little cup of water beside the travel list. At opening time somebody finds it empty.",
+    "A map in the package ends on unmarked ground. A person in the queue takes off a boot and knocks out sand the same colour as the drawing.",
+    "A visitor has started pinning the rejected captions in a row. The eleventh makes the whole counter laugh. The keeper rescues the first.",
+    "A crack appears under a newly polished frame. The apprentice has brought wages to pay for it and an old drawing that might let them keep them.",
+    "Two families coming up different stairs sing a word on the same note. Each stops in surprise when the other answers.",
+    "The pointing shadow has an appointment with the same door every day. The door, as the night porter gently observes, moves on wheels.",
+    "A parcel came addressed only to Home. Three households in the hall have quite sensible reasons for having opened it.",
+    "Inside the lid is the faint indentation of a matching piece. Somebody sold the other packing case to get through a hungry winter.",
+    "A grandchild has found calculations among a relative’s recipes. The butter on the page is real. Everything else still needs a careful reading.",
+    "The old visitor books give a different reason for each journey except this one. Here the person wrote the same friend's name year after year.",
+    "A crowd is admiring the display. Behind it the person who made its stand is silently holding the wobbling corner up with a knee.",
+    "Someone has drawn a chair up to the empty desk. In the keeper’s pocket book every sentence ends with a question and none with a signature.",
+    "A small creature sleeps in the gap between two crates. The dispatch runner holds the door as if there might yet be a way to move neither sleep nor deadline.",
+    "A rain-dark letter reached the child before the official reply. The child lays both on the floor, opens the wet one first and offers you the other.",
+    "Two slips say the same thing in different hands. On one of them the ink has been smeared by the thumb of a visitor who stayed after closing.",
+    "The newest chalk mark is where a person on the low bench can see it. The keeper has spent the morning standing too high to see what it points at.",
+    "The fair is an hour away. The carrier turns the hanging tag over, sees a family name and suddenly offers to take the long way.",
+    "One little screw is missing from the rack. A witness admits it has been under their pillow since the night everyone was told to go home.",
+    "The guidebook has a precise drawing of a place that no longer has a door. The people who used it still wait by the hinge.",
+    "A warm print appears where a visitor steadies the frame. Someone quietly asks whether anybody took a print of the other hand.",
+    "A note marked Later sits beneath a wrinkle in the music sheet. Everybody here remembers when Later meant “after the feast.”",
+    "A child holds up both hands, one clean and one inky. “I can show the bit you need. Which hand should I use?”",
+    "The youngest keeper on record has met an even younger reader. The child begins with an arrow the adults thought was only decoration.",
+    "The seal is real gold. The little round bruise on the paper shows the person who pressed it had an unsteady wrist.",
+    "A wedge has been replaced beneath the stand every night. Today there is a clean piece of timber and a bill made out to Nobody.",
+    "The turning stand has been set to face the wall. From its new angle the glass reflects a door the public usually walks past.",
+    "The bird on the sill gets the name almost right. By noon half the queue is asking for the bird's version.",
+    "A dusty travel folder has one crisp thumbprint. It lines up with a mark on a letter that has been under a mattress for years.",
+    "Four pieces of wrapping have arrived from four houses. They fit only if every household lets a neighbour hold one corner.",
+    "The path on the small sketch ends in the middle of {place}. It starts making sense when the porter tips it off the horizontal.",
+    "A small visitor's loan ticket is in a grown hand now. The lender comes back for the fair and finds the thank-you card addressed to an adult who wasn't there.",
+    "The first copy of the rumour has a little drawing in the corner to show it was a joke. Its copies have lost the drawing.",
+    "The donor brings the frame first and waits just outside with the folder. “Show me what you say about the loan,” someone calls through the door.",
+    "A parcel in a familiar hand has been kept back for years. The wording on its seal asks the next reader to decide when they know enough to open it.",
+    "A rescue plan framed in expensive wood still shows the charcoal dash where the planner's little finger tore the paper in the rain.",
+    "A neighbour repeats the official reassurance word for word, then falters at the one place where the handbill has a corner missing."
+  ],
+  "cases": [
+    {
+      "problem": "The dust stops just short of the feet of the stand.",
+      "paths": [
+        {
+          "action": "Lift the floor runner",
+          "finding": "A clean rectangle underneath is wide enough for the stand before it was moved."
+        },
+        {
+          "action": "Ask the dawn sweeper to retrace the round",
+          "finding": "The sweeper comes back by a little stair the night porter never watches."
+        }
+      ]
+    },
+    {
+      "problem": "The courier’s two weighings differ by a spoonful.",
+      "paths": [
+        {
+          "action": "Weigh the empty wrapping",
+          "finding": "The cloth picks up almost the whole difference when it is damp."
+        },
+        {
+          "action": "Look up the porter’s counterweight",
+          "finding": "There is a crescent missing from the old counterweight. Nobody dated the break."
+        }
+      ]
+    },
+    {
+      "problem": "All six copies leave the same white step in the paragraph.",
+      "paths": [
+        {
+          "action": "Stack the copies against a lamp",
+          "finding": "The transparent step begins at precisely the same letter on all six leaves."
+        },
+        {
+          "action": "Open the binder’s folded master",
+          "finding": "Ink is visible under the fold. The oldest sheet could once be read further."
+        }
+      ]
+    },
+    {
+      "problem": "A second name seems to vanish where the handle brushes the card.",
+      "paths": [
+        {
+          "action": "Sweep the card under side light",
+          "finding": "Two sets of letter strokes survive in the dents under the paper."
+        },
+        {
+          "action": "Try the keeper’s old canvas handle",
+          "finding": "The canvas wears a stripe in exactly that spot. A deliberate cut would leave a different edge."
+        }
+      ]
+    },
+    {
+      "problem": "The daybook places a parcel upstream before there was a road.",
+      "paths": [
+        {
+          "action": "Float the empty transport cradle",
+          "finding": "The cradle has two knots that let a boat tow it broadside."
+        },
+        {
+          "action": "Walk the packer’s borrowed map",
+          "finding": "A winter path runs across the summer waterline. The daybook never named the season."
+        }
+      ]
+    },
+    {
+      "problem": "One hand has dated the shipment a year after another hand.",
+      "paths": [
+        {
+          "action": "Set the festival wheel to its first day",
+          "finding": "The two calendars change years on different days of this very week."
+        },
+        {
+          "action": "Trace the dated pages back to their bindings",
+          "finding": "One date belongs to the volume it was pasted into. The leaf has a date of its own."
+        }
+      ]
+    },
+    {
+      "problem": "There is gold on the bill. The account names nobody who paid.",
+      "paths": [
+        {
+          "action": "Rub the carbon slip from the payer’s side",
+          "finding": "Someone erased the price but left the booth number impressed in the carbon."
+        },
+        {
+          "action": "Follow a coin to the receipt drawer",
+          "finding": "The coins went into a loan box. Its second signature belongs to a neighbour."
+        }
+      ]
+    },
+    {
+      "problem": "An old sketch seems to contain a case that had yet to be built.",
+      "paths": [
+        {
+          "action": "Lift the paper window on the sketch",
+          "finding": "The fresh corner overlaps the border of the older drawing."
+        },
+        {
+          "action": "Match the shadow on the tracing",
+          "finding": "The artist traced the frame from a later hanging. The scene beneath it may still be older."
+        }
+      ]
+    },
+    {
+      "problem": "The festival storyteller has stopped halfway through the familiar adventure.",
+      "paths": [
+        {
+          "action": "Unroll last year’s seating plan",
+          "finding": "A chair once labelled with a visitor's name now holds the storyteller's coat."
+        },
+        {
+          "action": "Sit quietly through the next rehearsal",
+          "finding": "The missing verse is somebody else's entrance. Their partner has been waiting for them to sing."
+        }
+      ]
+    },
+    {
+      "problem": "A small mark below the stand looks like three different letters.",
+      "paths": [
+        {
+          "action": "Turn the case maker’s sample upside down",
+          "finding": "The strokes meet like a joint diagram when the wood grain is upright."
+        },
+        {
+          "action": "Ask the delivery crew to mark a spare board",
+          "finding": "The crew leaves an almost identical mark wherever two people must lift together."
+        }
+      ]
+    },
+    {
+      "problem": "One reading room stays warm after the coal cart has passed it.",
+      "paths": [
+        {
+          "action": "Hang ribbons at the two vents",
+          "finding": "Warm air enters through the low vent from a room outside this hall."
+        },
+        {
+          "action": "Read the lamp keeper’s round",
+          "finding": "Someone lit the small lamp three hours early. Its light threw a patch on the recording dial."
+        }
+      ]
+    },
+    {
+      "problem": "Three unsigned letters bear three very different hands.",
+      "paths": [
+        {
+          "action": "Trace the margins on the loaned writing boards",
+          "finding": "The boards carry the same notch. Several writers could have used one public desk."
+        },
+        {
+          "action": "Match their return folds",
+          "finding": "One fold points the runner back to the kitchen, another to the quay. The letters may have travelled together."
+        }
+      ]
+    },
+    {
+      "problem": "The river song always ends differently across the water.",
+      "paths": [
+        {
+          "action": "Beat the last bar on the bridle rail",
+          "finding": "A ferryman's turn fits the local rest. The tune leaves room for a boat to answer."
+        },
+        {
+          "action": "Set two printed verses side by side",
+          "finding": "The printers used the same first verse. Both wrote the ending down while somebody sang it."
+        }
+      ]
+    },
+    {
+      "problem": "A second hand seems to have worked the mounting frame.",
+      "paths": [
+        {
+          "action": "Follow the two chisel tracks",
+          "finding": "One hand finished the joint the other began. Neither track identifies the teacher."
+        },
+        {
+          "action": "Lay out the apprentices’ practice offcuts",
+          "finding": "A small hand used the same join on the offcuts. The shop book calls the joint the master's."
+        }
+      ]
+    },
+    {
+      "problem": "The lost-property book says a parcel vanished halfway through its public display.",
+      "paths": [
+        {
+          "action": "Match the two display tickets",
+          "finding": "A ticket goes on the case and another on the removable mount. The numbers lose different suffixes."
+        },
+        {
+          "action": "Ask the borrowing clerk to close the loan",
+          "finding": "The clerk uses “lost” for a missing receipt, even with the borrowed thing still in sight."
+        }
+      ]
+    },
+    {
+      "problem": "One of Elsbet’s folded pages has come away from its stub.",
+      "paths": [
+        {
+          "action": "Lay her torn page against the fold",
+          "finding": "The two tears fit until the last corner. A smaller note once shared the fold."
+        },
+        {
+          "action": "Check the writer’s list of posted letters",
+          "finding": "Elsbet posted an enclosure that afternoon. The addressee took it home."
+        }
+      ]
+    },
+    {
+      "problem": "At noon two witnesses saw the same shadow fall in opposite directions.",
+      "paths": [
+        {
+          "action": "Cover the western pane",
+          "finding": "One of the two faint shadows disappears the moment the glass goes dark."
+        },
+        {
+          "action": "Put the observer’s stool back on its mark",
+          "finding": "From the low stool a reflected shape touches the arrow that the taller watcher points to."
+        }
+      ]
+    },
+    {
+      "problem": "Fresh flowers appear even on nights the room stays locked.",
+      "paths": [
+        {
+          "action": "Unroll a petal beside the lamp",
+          "finding": "The stem is living, the outer petal paper. Somebody renewed the paper in daylight."
+        },
+        {
+          "action": "Wait at the return hatch",
+          "finding": "A small child can pass a flower through the hatch without opening the door."
+        }
+      ]
+    },
+    {
+      "problem": "A file has carried a closed seal for most of a working life.",
+      "paths": [
+        {
+          "action": "Trace the dates of the reviews",
+          "finding": "A promise to return in one year was copied onto every later cover without a return signature."
+        },
+        {
+          "action": "Read the envelope the family kept",
+          "finding": "The family asked for time to tell one person. Their copy never asked the keeper to close it forever."
+        }
+      ]
+    },
+    {
+      "problem": "A numbered pocket is empty. Nobody agrees what belongs inside.",
+      "paths": [
+        {
+          "action": "Try the travel pins in the lining",
+          "finding": "The small pin fits the pocket and keeps the large hinge steady in transit."
+        },
+        {
+          "action": "Ask the last recipient to unfold the inventory",
+          "finding": "A loose name slip was the only item given its own pocket on the return ledger."
+        }
+      ]
+    },
+    {
+      "problem": "The hall creatures avoid a perfectly ordinary trolley.",
+      "paths": [
+        {
+          "action": "Wheel the trolley past without the case",
+          "finding": "The ward cat still gives it a wide berth. A wheel squeaks at a pitch near its ears."
+        },
+        {
+          "action": "Swap the floor mats at the turning",
+          "finding": "The creatures follow the dry path even when it leads past the trolley."
+        }
+      ]
+    },
+    {
+      "problem": "Two unrelated displays answer to the same number.",
+      "paths": [
+        {
+          "action": "Lift the last digit on the hanging tab",
+          "finding": "What looked like a numeral is a faded letter used for the second half of a pair."
+        },
+        {
+          "action": "Follow each line to its first register",
+          "finding": "The two ledgers both began at one. They belonged to different rooms before the move."
+        }
+      ]
+    },
+    {
+      "problem": "The reward was never collected. It is still tied in its little purse.",
+      "paths": [
+        {
+          "action": "Take the reward to the keeper’s old window",
+          "finding": "The purse would have covered one day's wages. Accepting it would have ended a still-open claim."
+        },
+        {
+          "action": "Ask the giver to read the offer aloud",
+          "finding": "They offered a prize for the first finder. Three people had brought the parcel in together."
+        }
+      ]
+    },
+    {
+      "problem": "A tale ends at a turn everyone knows except the person telling it.",
+      "paths": [
+        {
+          "action": "Find the page where the storyteller learned it",
+          "finding": "The teaching copy stopped at a page break. The missing words start a second booklet."
+        },
+        {
+          "action": "Play the old answering phrase",
+          "finding": "A second voice continues the story from the audience. The teacher had learnt only one part."
+        }
+      ]
+    },
+    {
+      "problem": "Two faces of the same loan case look a century apart.",
+      "paths": [
+        {
+          "action": "Loosen the frame round the older face",
+          "finding": "Only the exposed portion is dark. The wood under the frame matches the other side."
+        },
+        {
+          "action": "Open the shop’s repair sketch",
+          "finding": "The joiner dated a replacement panel. Its cut fits the lighter face."
+        }
+      ]
+    },
+    {
+      "problem": "Someone changed the public card after the hall closed.",
+      "paths": [
+        {
+          "action": "Lift the newer paste from the blank edge",
+          "finding": "The last word on the old strip survives behind the tack."
+        },
+        {
+          "action": "Compare the late shifts at the copy table",
+          "finding": "The night shift was given a different master from the morning one."
+        }
+      ]
+    },
+    {
+      "problem": "A Harrowmere ledger lists this shipment long before the current dispute.",
+      "paths": [
+        {
+          "action": "Align the river seal with the payment column",
+          "finding": "The seal authorises a boat fee. Nothing alongside it says who owned the cargo."
+        },
+        {
+          "action": "Turn the page to the returning boats",
+          "finding": "The return voyage carried a different load under the same docket."
+        }
+      ]
+    },
+    {
+      "problem": "Every witness gives the transport cloth a different colour.",
+      "paths": [
+        {
+          "action": "Pass the cloth through three doorways",
+          "finding": "Each glazed doorway colours the pale weave in a different way."
+        },
+        {
+          "action": "Cover the bright backing with grey paper",
+          "finding": "The same thread looks darker without the gold backing. Ask where each witness stood."
+        }
+      ]
+    },
+    {
+      "problem": "There is a hollow in the empty padding. It has two sharp corners.",
+      "paths": [
+        {
+          "action": "Lay the old fastenings in their recesses",
+          "finding": "The two corners held travel clamps. A missing tool could leave the hollow too."
+        },
+        {
+          "action": "Shine through the oil-stained lining",
+          "finding": "A small rectangular shadow moves under the cloth. Something lay below the clamps."
+        }
+      ]
+    },
+    {
+      "problem": "The buyer bid twice the asking price and then quietly withdrew.",
+      "paths": [
+        {
+          "action": "Unfold the bottom of the bid",
+          "finding": "The price included a second evening of public access. That line wasn't read at the sale."
+        },
+        {
+          "action": "Wait with the packer after bidding",
+          "finding": "The buyer measures the door and puts away the coins. The crate could not leave that way."
+        }
+      ]
+    },
+    {
+      "problem": "The stray key has two notches in almost the right place.",
+      "paths": [
+        {
+          "action": "Make an impression in the keeper’s wax",
+          "finding": "One notch is new. It matches the key of the divided return cupboard."
+        },
+        {
+          "action": "Turn the key in the travelling sleeve",
+          "finding": "The key holds a sleeve shut. It need never fit a door."
+        }
+      ]
+    },
+    {
+      "problem": "A line drawing was found under the cheap backing board.",
+      "paths": [
+        {
+          "action": "Rotate the frame on its hanging cord",
+          "finding": "From below, the drawing follows the frame maker's route around the clamps."
+        },
+        {
+          "action": "Trace the dotted line out to the door",
+          "finding": "A porter recognises her deliveries. She used a scrap of mapping paper to stiffen the frame."
+        }
+      ]
+    },
+    {
+      "problem": "Two older neighbours use a name no one can find in the catalogue.",
+      "paths": [
+        {
+          "action": "Ask them to point out the name on the walk",
+          "finding": "Both stop at the bend where the loaded cart changes hands. They name a task as well as a place."
+        },
+        {
+          "action": "Lift the index tab by its earlier spelling",
+          "finding": "A pencilled cross-reference sends a reader to the old ferry pronunciation."
+        }
+      ]
+    },
+    {
+      "problem": "The plinth rings hollow when the carpenter calls it solid.",
+      "paths": [
+        {
+          "action": "Tap the spare base on a cloth",
+          "finding": "The ring disappears without the sounding board beneath it."
+        },
+        {
+          "action": "Slide the base off its transit tray",
+          "finding": "A repair leaves a hand-wide cavity beneath the outer plank."
+        }
+      ]
+    },
+    {
+      "problem": "The warnings about bad luck started on a busy trading day.",
+      "paths": [
+        {
+          "action": "Set out the day’s stall receipts",
+          "finding": "The stall with the warning bought up the unsold stock. The numbers show who benefited."
+        },
+        {
+          "action": "Read the first warning at its full length",
+          "finding": "The writer warned of a loose bracket. A shortened copy turned that into an omen."
+        }
+      ]
+    },
+    {
+      "problem": "The date of arrival has been underlined in the night book.",
+      "paths": [
+        {
+          "action": "Lay the visitor register over the weather strip",
+          "finding": "A storm closed the front gate. Arrivals were signed in jointly at the kitchen."
+        },
+        {
+          "action": "Ask the musician which verse was being played",
+          "finding": "The band had begun the evening set twice. Witnesses may be dating two different arrivals."
+        }
+      ]
+    },
+    {
+      "problem": "One shipping mark looks like a drawing where a signature belongs.",
+      "paths": [
+        {
+          "action": "Try the seal left in the print tray",
+          "finding": "A sign made of tools comes out clearly on thick wrapping even when letters smudge."
+        },
+        {
+          "action": "Ask the crew to sign a joint lift",
+          "finding": "Three people add a stroke to the same mark. One symbol can name a whole working crew."
+        }
+      ]
+    },
+    {
+      "problem": "A docket shows the town once sent the case away and welcomed it home.",
+      "paths": [
+        {
+          "action": "Hold the outgoing fare against the return fare",
+          "finding": "The lower return fare was for an empty packing frame. The two entries can describe different things."
+        },
+        {
+          "action": "Turn the festival banner to its travel side",
+          "finding": "The banner lists a short summer loan. Someone stitched over the word for return."
+        }
+      ]
+    },
+    {
+      "problem": "There is pale sand in a case that came overland.",
+      "paths": [
+        {
+          "action": "Shake a spare mat from the packing room",
+          "finding": "Sand lines the floor where damp wrapping is dried. A river crossing isn't its only route inside."
+        },
+        {
+          "action": "Match a grain to two stops on the carrier’s route",
+          "finding": "Both stops used the same grit to keep carts from slipping at the ford."
+        }
+      ]
+    },
+    {
+      "problem": "The handover slip uses a word only the retired clerk recognises.",
+      "paths": [
+        {
+          "action": "Give the clerk the old job sheet",
+          "finding": "On this sheet the word meant the person who kept a door open during loading."
+        },
+        {
+          "action": "Open the next town’s pocket dictionary",
+          "finding": "The same term named a loose loop on another bank. A borrowed word can change at a crossing."
+        }
+      ]
+    },
+    {
+      "problem": "Someone erased an entry in the festival programme.",
+      "paths": [
+        {
+          "action": "Compare the printer’s counters with the surviving pages",
+          "finding": "The deletion made space for an emergency entrance cue. Nobody kept the name for the next run."
+        },
+        {
+          "action": "Look at the steward’s cast-off proof",
+          "finding": "The community had already pulled the entry before the first public programme went out."
+        }
+      ]
+    },
+    {
+      "problem": "A friend calls a shipment familiar before it comes out of its wrapping.",
+      "paths": [
+        {
+          "action": "Spread the strap across the sorting board",
+          "finding": "The keeper used to sew that twist into every strap going to the upper quay."
+        },
+        {
+          "action": "Offer the friend a second wrapped parcel",
+          "finding": "Both smell of the same wax. Recognition of the workshop can come before recognition of the parcel."
+        }
+      ]
+    },
+    {
+      "problem": "A line addressed to Vesper almost matches the dispatch label.",
+      "paths": [
+        {
+          "action": "Set the letter beside the maker’s carbon",
+          "finding": "One date is the postmark. The carbon came from a draft that was never sent."
+        },
+        {
+          "action": "Ask the printer for the rejected wording",
+          "finding": "The printer sold identical blanks to both correspondents. The common wording was already on the paper."
+        }
+      ]
+    },
+    {
+      "problem": "Two dates fit the hanger but only one fits the maker’s hands.",
+      "paths": [
+        {
+          "action": "Turn the sale receipt over",
+          "finding": "Below the price is the date the purchaser first saw the work. It gives a limit, not a birthday."
+        },
+        {
+          "action": "Examine the repairer's offcut",
+          "finding": "The repaired part is dated on its underside. Someone copied that date onto the whole case."
+        }
+      ]
+    },
+    {
+      "problem": "The clasp appears to have been closed from inside.",
+      "paths": [
+        {
+          "action": "Look through the empty hinge slot",
+          "finding": "A spring catches when the lid drops. Nobody needs to be inside for the tongue to fall."
+        },
+        {
+          "action": "Thread the packer's ribbon under the latch",
+          "finding": "A removable loop closes the case from outside. A few blue fibres still cling to the hinge."
+        }
+      ]
+    },
+    {
+      "problem": "In the small photograph a child holds something out of frame.",
+      "paths": [
+        {
+          "action": "Place the second exposure alongside the first",
+          "finding": "A thin edge appears beside the child's hand. It is the slate bearing the visitor’s height."
+        },
+        {
+          "action": "Take the picture to the coat-check desk",
+          "finding": "A stub caught in a cuff looks like a large key in the print. Only the stub number can be read."
+        }
+      ]
+    },
+    {
+      "problem": "The wrapping takes on an unexpected smell before rain.",
+      "paths": [
+        {
+          "action": "Leave a clean wrapper beside the damp sill",
+          "finding": "The clean paper picks up the smell from the pressed herbs laid beneath it."
+        },
+        {
+          "action": "Air the cedar drawer away from the case",
+          "finding": "The same smell appears in the empty drawer when it grows damp."
+        }
+      ]
+    },
+    {
+      "problem": "The discard list ends with the initials of two people who wanted different things.",
+      "paths": [
+        {
+          "action": "Find the small table below the discard entry",
+          "finding": "The keeper discarded a broken mount and asked for a new one on the same line."
+        },
+        {
+          "action": "Ask the night porter for the outstanding loan",
+          "finding": "The porter signed the case into a store room before seeing the discard list."
+        }
+      ]
+    },
+    {
+      "problem": "The ink stamps seem to run backwards through the week.",
+      "paths": [
+        {
+          "action": "Read the sheet through its folding window",
+          "finding": "The most recent stamp is on the exposed fold. Opened flat, the dates run the other way."
+        },
+        {
+          "action": "Line up the marks on both post bags",
+          "finding": "Two routes closed on different days. A midweek transfer received an earlier bag's mark."
+        }
+      ]
+    },
+    {
+      "problem": "Two halls appear to have displayed one case on the same afternoon.",
+      "paths": [
+        {
+          "action": "Read both exhibition notices from the back",
+          "finding": "One gives the opening date and the other the date a copy of the notice went up."
+        },
+        {
+          "action": "Stack the two loan drawings",
+          "finding": "A shallow nick is only on one mount. The cases shared a drawing and travelled separately."
+        }
+      ]
+    },
+    {
+      "problem": "The quietest runner received a payment immediately after the hearing.",
+      "paths": [
+        {
+          "action": "Open the wage book below the thumbmark",
+          "finding": "The sum was for two missed shifts. The signature says nothing about a promise of silence."
+        },
+        {
+          "action": "Ask to see the counterfoil for the same day",
+          "finding": "The counterfoil calls the payment travel home. The clerk had lumped expenses under wages."
+        }
+      ]
+    },
+    {
+      "problem": "The same creatures gather under the notice once each month.",
+      "paths": [
+        {
+          "action": "Move the notice while the shutters stay still",
+          "finding": "The creatures continue visiting the sliver of moonlight on the floor."
+        },
+        {
+          "action": "Wait for the night baker’s round",
+          "finding": "The baker spills cracked grain on each monthly late round. Small prints lead first to the grain."
+        }
+      ]
+    },
+    {
+      "problem": "A measuring instrument seems unequal to the unit painted on its stand.",
+      "paths": [
+        {
+          "action": "Repeat the reading with the empty cradle",
+          "finding": "The scale includes the support. Subtracting its weight changes the apparent unit."
+        },
+        {
+          "action": "Show the dial to two working crews",
+          "finding": "One counts turns; the other counts loads per turn. The visitor's label shortened both names."
+        }
+      ]
+    },
+    {
+      "problem": "The same transaction is called a loan in one drawer and a gift in the next.",
+      "paths": [
+        {
+          "action": "Turn up the two signature boxes",
+          "finding": "A gift of packing and a loan of contents landed on the same carrier’s receipt."
+        },
+        {
+          "action": "Follow the term through the return letters",
+          "finding": "The giver later offered permanent custody. Both entries could have been accurate on their dates."
+        }
+      ]
+    },
+    {
+      "problem": "A thumbprint is visible behind the glazing.",
+      "paths": [
+        {
+          "action": "Let the glazier lift a sample pane",
+          "finding": "The print transfers during fitting and ends up on the inside after the pane turns."
+        },
+        {
+          "action": "Ask the cleaner to trace the old access flap",
+          "finding": "A visitor once could touch the inside without opening the present lock."
+        }
+      ]
+    },
+    {
+      "problem": "The catalogue quotes a visitor who came long after the case left.",
+      "paths": [
+        {
+          "action": "Bring the visitor’s letter to the stand",
+          "finding": "The writer quotes a parent and has put the parent’s words inside their own."
+        },
+        {
+          "action": "Find the dotted outline on the reverse of the card",
+          "finding": "The visitor viewed a tracing at another hall. Their comment describes the tracing's edge."
+        }
+      ]
+    },
+    {
+      "problem": "Only one household ever put this loan into writing.",
+      "paths": [
+        {
+          "action": "Ask for the communal carrying song",
+          "finding": "The neighbours preserve each transfer in a changing chorus. A missing book has a living counterpart."
+        },
+        {
+          "action": "Follow the household docket to the storeroom",
+          "finding": "Other slips were stored with unclaimed wrapping and cleared each spring. This family kept theirs."
+        }
+      ]
+    },
+    {
+      "problem": "A curator finds an offer from the Hollow Archivist inside the outer folder.",
+      "paths": [
+        {
+          "action": "Lift the black wax edge beside the offer",
+          "finding": "The powerful seal was pressed into the flap only after the reply was folded."
+        },
+        {
+          "action": "Read which part of the collection the offer names",
+          "finding": "The buyer asked to keep the catalogue drawer. The cases themselves could still travel."
+        }
+      ]
+    },
+    {
+      "problem": "The evening pilot refuses the fare even after someone counts the coins twice.",
+      "paths": [
+        {
+          "action": "Lay the case on the loading outline",
+          "finding": "The box covers the small escape hatch on the stern. Extra coins cannot free that hatch."
+        },
+        {
+          "action": "Listen to the crew's return agreement",
+          "finding": "The crew promised an evening passenger that space for a chair. No name is on the freight receipt."
+        }
+      ]
+    },
+    {
+      "problem": "The guide shows the travelling stand from the back.",
+      "paths": [
+        {
+          "action": "Trace the artist’s sightline from the rail",
+          "finding": "The artist was admitted while the hall was being cleaned and drew through the service door."
+        },
+        {
+          "action": "Open the teaching copy of the guide",
+          "finding": "The back view locates the release catch. It was intended for the next assembler."
+        }
+      ]
+    },
+    {
+      "problem": "The stand in the morning is barely shorter than the stand everyone remembers.",
+      "paths": [
+        {
+          "action": "Slide the old foot pads back underneath",
+          "finding": "The pads account for the missing height. There is a fresh smear where one slipped."
+        },
+        {
+          "action": "Look through the understudy’s sighting window",
+          "finding": "From the lower rail the new stand clears a child's view. Somebody may have changed it on purpose."
+        }
+      ]
+    },
+    {
+      "problem": "A craft worker left town the morning the case was signed off.",
+      "paths": [
+        {
+          "action": "Compare the work rota with the ferry list",
+          "finding": "The worker had booked home passage weeks before the inspection."
+        },
+        {
+          "action": "Find the apprentice’s first independent shift",
+          "finding": "The maker stayed for the learner's last trial. Departure marked an ordinary handover."
+        }
+      ]
+    },
+    {
+      "problem": "A pointer on the transport drawing ends at a blank corner.",
+      "paths": [
+        {
+          "action": "Turn the drawing to the doorway",
+          "finding": "The arrow lines up with the accessible way in when the drawing faces the actual threshold."
+        },
+        {
+          "action": "Lift the transparent overlay",
+          "finding": "On the sheet underneath an answering arrow marks a place where a second worker stands."
+        }
+      ]
+    },
+    {
+      "problem": "The hall clock stops each time somebody shifts the gantry.",
+      "paths": [
+        {
+          "action": "Take the gantry’s weight off the shared floorboard",
+          "finding": "A warped board touches the pendulum case when the platform is loaded."
+        },
+        {
+          "action": "Compare the clock keeper’s stopping times",
+          "finding": "The keeper always stops the clock before lowering the load. The sound of moving gear follows."
+        }
+      ]
+    },
+    {
+      "problem": "Two living keepers recognise a nickname on the parcel and neither claims it.",
+      "paths": [
+        {
+          "action": "Give the named household the return card",
+          "finding": "The household asks that the old trade name be kept on the route and off the public dedication."
+        },
+        {
+          "action": "Find the carter’s map of named landings",
+          "finding": "The nickname first named a bend, then a house beside it. A dedication need not name a person."
+        }
+      ]
+    },
+    {
+      "problem": "A crack in the display stand runs as straight as a printed rule.",
+      "paths": [
+        {
+          "action": "Look along the seam from one end",
+          "finding": "The line opens only between two boards. A joint can imitate a fracture."
+        },
+        {
+          "action": "Lay a scrap of the packing band across the mark",
+          "finding": "A tight band scored the old varnish. The underlying wood remains whole."
+        }
+      ]
+    },
+    {
+      "problem": "Two files disappeared on the day of the river hearing.",
+      "paths": [
+        {
+          "action": "Unfold the common transfer notice",
+          "finding": "Both were among twenty files moved before the roof came down. Only one still lacks a return receipt."
+        },
+        {
+          "action": "Ask at the far end of the docket run",
+          "finding": "A family collected one copy in person. A clerk sent the other downriver the same morning."
+        }
+      ]
+    },
+    {
+      "problem": "Two communities have good reason to claim a place in the record.",
+      "paths": [
+        {
+          "action": "Unroll the making account from the upper bank",
+          "finding": "The makers name the neighbours who supplied the materials. The heading leaves both duties separate."
+        },
+        {
+          "action": "Unfold the lower bank’s custody record",
+          "finding": "One community kept the item through a difficult winter. Its receipt says safekeeping, with no line for manufacture."
+        }
+      ]
+    },
+    {
+      "problem": "A former keeper remembers only the first half of a promise.",
+      "paths": [
+        {
+          "action": "Match the two old invitation halves",
+          "finding": "The second half asks that the maker come back as a guest. It says nothing about keeping the case."
+        },
+        {
+          "action": "Clear the keeper’s supper seat",
+          "finding": "Someone kept a weekly place at table for the old lender. That is the part the household remembers."
+        }
+      ]
+    },
+    {
+      "problem": "The old catalogue picture looks unexpectedly new.",
+      "paths": [
+        {
+          "action": "Tilt the print past the lamp",
+          "finding": "The smooth patches were brushed into the printing plate. The picture dates the printing convention."
+        },
+        {
+          "action": "Find the trial drawing in the packing box",
+          "finding": "The artist used a freshly made scale model for the guide. Its edges had never been worn."
+        }
+      ]
+    },
+    {
+      "problem": "An extra piece fits so neatly into the mount that the visitors never point to it.",
+      "paths": [
+        {
+          "action": "Lift out the unpainted spare from the tool drawer",
+          "finding": "The spare lets a visitor understand the later fitting without taking the travelled joint apart."
+        },
+        {
+          "action": "Ask the repairer's household about the smooth edge",
+          "finding": "The family remembers sanding it to make the handle comfortable for a particular hand."
+        }
+      ]
+    },
+    {
+      "problem": "A measuring bowl on the travelling bench holds more than its chalk mark promises.",
+      "paths": [
+        {
+          "action": "Level the bench before pouring from the jug",
+          "finding": "On even boards the level meets the mark. The old floor tilted towards the receiving door."
+        },
+        {
+          "action": "Try the second measuring jug",
+          "finding": "The second jug has a bubble in its lining. The amount it delivers differs from the first jug."
+        }
+      ]
+    }
+  ],
+  "turns": [
+    "The person who rang the alarm brings the original label. The signature is their own. They ask to carry the correction to the family who paid for it.",
+    "The duplicate delivery number has a paper twin. Its picture shows a different packing frame and the missing half of a folded docket.",
+    "The supposed thief brings back the only sound cover for the crate. They spent the night keeping the rain off the file.",
+    "The type setter lays out a sample line. Press the last two words into place and the warning to the next crew slips off the edge.",
+    "The oldest witness turns the statement over. On the back, in tiny writing, are the directions to the neighbour who actually saw it.",
+    "A familiar hand opens the purse that paid for the gold. “I thought one stamp would get the porter a hearing.”",
+    "A nest of clean straw under the stairs fits the missing parcel. The person who protected it never found a way to tell the day shift where it went.",
+    "The ferry name on the old wrapping means a turn on a falling tide to the people who still use it. The printed arrow leaves out the tide.",
+    "A family member turns the apparent stray dash into a second stroke. It was a way of saying “let the next person finish this”.",
+    "The person who has been stacking cups all evening sets one upside down. “That's how I left it. I thought you'd ask me to leave if I said so.”",
+    "An apprentice takes a tool from the drawer by touch. Its little groove matches the trial piece in the frame. The submitted shop list stopped one name early.",
+    "The family recognises an extravagant line in the caption. The uncle who first said it had been giving a wedding toast.",
+    "Under a scrap of Elsbet’s writing lies her second measurement. She signed the correction a full month before the exhibit printer received her first draft.",
+    "Every full turn of the counter strikes the same letter a little too high. From a hundred paces, the error looks exactly like another word.",
+    "One household supplied the first side of the case. Another kept it intact on the longest crossing. Both can show you their part on the same hinge.",
+    "The name on the incident sheet belongs to the hand that caught the falling lid. It was the only hand still on the lid when the clerk looked up.",
+    "There's a dated letter inside the box made for the copy. That copy has travelled for longer than either of today's keepers has been alive.",
+    "At a child's height the third pin is visible all afternoon. The visitor's drawing has the only record of it before somebody moved the stool.",
+    "At the far hatch the carrier says “borrowed”. Three closed windows turn the beginning of that word into something the caller hears as “bought”.",
+    "A grocery counterfoil is folded inside the fare receipt. Somebody went without the week's flour money to get this package home.",
+    "The accusing keeper knows how the agent handles a seal because the agent once taught that keeper to make one. A practice impression fits both their hands.",
+    "Turn the trip slip a half circle. The column that looked like losses has a faint heading for returns.",
+    "Feather down lines the edge of the empty tray. Moving one little corner to the nesting ledge would have taken a creature, a long night and no key.",
+    "The sender has carried a reply envelope for years. Inside it is a request for somebody else to take the next watch.",
+    "The strongest date stamp comes from the sale counter. The workshop diary has a fainter, earlier entry for fitting a new cradle.",
+    "An old Warden kept the outer index open and put the inner page away. A child’s original address is still on that page.",
+    "The second name is in the teaching register. A learner asked for the teacher's hand on a practice piece that neither had planned to sell.",
+    "The person collecting the fee has six unpaid journeys on the back of the same account. They ask the clerk to read both columns aloud.",
+    "The hurried first call happens to land on the later measurement. Look at the early working and it assumes that the tide was moving the other way.",
+    "An odd pin seated in the old case fits a different shop's pattern. Two repair histories begin to make sense with the drawers side by side.",
+    "The photograph that sold the whole town on the display has four little chalk marks for the bearers' feet. They were asked to pose again after the crossing.",
+    "The witness corrected their account of the bell to protect the friend who missed it. The friend has brought the older account themselves.",
+    "The lost reference has spent all winter in the right drawer under the other workshop's spelling. Both keepers knew the place by sight.",
+    "A visitor recognises her own old maker's mark in the packing book. It was the name she used before moving her bench across the street.",
+    "The tally counted every trip out. A child has drawn the one empty trip home that explains the whole argument over seats.",
+    "A matching hinge from another quay can swing the first half open. The scribble beneath it only makes sense when a second keeper holds it steady.",
+    "Vesper's copy has the figure the receiving crew actually measured. The Nexus printed its office estimate. The two documents bear the same polite heading.",
+    "A change to the sung beat preserves the instant the load tipped. All the written versions agree on the date and skip that instant.",
+    "The porter everyone blames unpins the instruction from inside the gate. It was signed three winters ago. Nobody asked him whether the route had changed.",
+    "Two families bring halves of a wrapper that once went around one birthday gift. A dispute over storage came a generation later.",
+    "The line in the varnish stops at the same mark as a maker's signed practice board. The family kept that mark rather than polish away a memory.",
+    "The keeper who requested the check unbuttons a cuff. The original docket has been there all day. “I made the first mark. I wanted someone here when I told them.”",
+    "The spare measuring foot rocks on a perfectly even floor. A careful worker can repeat a reading and repeat the fault at the same time.",
+    "The moving slip has instructions to the lender's kitchen. A worker put it there to keep the case clear of a sale they had heard announced.",
+    "The answer shares a margin with the printed price of the guidebook. The people who read it only from borrowed copies never saw that margin.",
+    "The people who maintain the case call its frame a door. The register calls it a container. They use its opening for entirely different parts of the work.",
+    "An old festival ending names a family the mayor would rather forget. Someone squeezed the new, shorter ending into the same setting of type.",
+    "The older decision can be traced to a specific instruction on a signed dispatch. The person opening the file can now choose whether to renew the instruction.",
+    "The two rival signatures have long shared a return address. Neither writer has eaten at that family's table since the funeral.",
+    "The return slip is accurate down to the last bend. A second town upstream has the same name and one very different landing.",
+    "There's a bird inside the empty display backing. The small clicks stop when the hatch opens and begin again as soon as the bird is alone.",
+    "The translator's first draft uses a sharper verb than the recording. In the next copy the cautious version became a formal rule.",
+    "Two strands of rush in the packing came from different mats. The wrapping travelled through an extra pair of hands after the formal handover.",
+    "The visitor surrounded by notebooks calls over the apprentice. “I brought the notebooks. The experiments belong to her.”",
+    "The old rule keeps carts away from an open drain. The drain is now under stone. The longer walk is still on every job slip.",
+    "A composed messenger puts the receipt down. One whole edge has been folded and unfolded to pulp under the steady hand.",
+    "The same little drawer appears on an old drawing of the Nexus quarters. The loan clerk had been searching under the name of the room the drawer left.",
+    "A dark office stamp fits the counterfoil under the bright Seal impression. The Nexus issued the first order before an agent ever saw it.",
+    "The empty pocket once held a fitting that somebody gave the other keeper. Both keepers understood the missing piece as a promise to come back.",
+    "Ten neat returns contain the same blot with the same three tails. A clerk locates the single sheet from which all ten were taken.",
+    "A circle of coloured light leaves the case and travels up the wall when the pane tilts. A second observer can make the supposed apparition return.",
+    "The visiting child sings through the hard part of the account without pausing. One word in the tune is the little street the guide had lost.",
+    "The earliest writer worked behind a screen. A neighbour on the other side was calling the details as a queue filed past.",
+    "One old false entry has remained in public circulation longer than a whole drawer of subsequent corrections. The keeper asks which one the next visitor will meet.",
+    "An earlier tracing runs straight through the present gravel bank. The old river name is accurate on the old course.",
+    "The person replacing the paper flowers recognises a nickname on the reverse. It is a word still spoken in their own kitchen.",
+    "Both account pages end before the cancelled fee. A third receipt, sewn into the lining, records that the case was always meant to return.",
+    "A line was left open to a neighbour on purpose. Closing the apparent gap would take away the only place that neighbour could sign.",
+    "A clerk reads the two accounts to the same beat. The loud objection and the softly spoken caution ask for exactly the same change of route.",
+    "Somebody points to the blank a confident companion kept passing over. There is a hinge behind it. The companion is the first to ask for another look.",
+    "The dispatch from upriver carries the other half of a warning about a dry year. The little hinge can hold both windings of the river on one board.",
+    "The last letters survive at the shaded end of the strip. Daylight thinned the rest until nobody could remember there had been writing there."
+  ],
+  "clocks": [
+    [
+      "The tide line is climbing the low rung.",
+      "The tide floats the landing clear. The late pilot keeps the packet aboard for the ebb."
+    ],
+    [
+      "The ferryman is folding his day flag.",
+      "The ferry casts off. A deckhand leaves a lantern by the return hatch."
+    ],
+    [
+      "One lantern at the fair still needs its wick.",
+      "The lamps catch. The night crew takes the packet past the gathering crowd."
+    ],
+    [
+      "Three councillors are still outside the noon hearing.",
+      "The noon vote starts. Somebody saves the new note for the reading after lunch."
+    ],
+    [
+      "The faint letters at the fold are paling in the day window.",
+      "The palest corner fades. An early tracing and a late witness will have to answer together."
+    ],
+    [
+      "The Seal buyer is checking fares at the gate.",
+      "The buyer has arrived. The public can hear the buyer's reservations in person."
+    ],
+    [
+      "There is a feather of ice on the high turn.",
+      "The pass crusts over. The runner takes the valley path with the second shift."
+    ],
+    [
+      "The retired keeper has set aside this morning for a quiet telling.",
+      "The visitor keeps an earlier appointment. An apprentice brings a signed note back the next day."
+    ],
+    [
+      "The last flock is circling over the afternoon fields.",
+      "The birds move on. A watcher has kept the last call and its time."
+    ],
+    [
+      "One corner of the parcel cover is starting to spot.",
+      "The showers reach the crates. A porter loans the evening keeper a dry cover."
+    ],
+    [
+      "The bell has two strikes left before the change of watch.",
+      "The third stroke sounds. The relief keeper brings a different set of eyes to the bench."
+    ],
+    [
+      "A rival is measuring the last open patch of noticeboard.",
+      "The rival’s sheet goes up. A second sheet will have to face it from the return rail."
+    ],
+    [
+      "The bridge crew is stacking planks across one lane.",
+      "The old bridge shuts. A carrier with smaller wheels takes the long crossing."
+    ],
+    [
+      "A group of visitors is leaving their coats at the door.",
+      "The visitors arrive first. A guide keeps an empty bracket ready for the late note."
+    ],
+    [
+      "The first grain sacks are being hooked to the scales.",
+      "The weighing begins. A weaver offers an evening basket for another trial."
+    ],
+    [
+      "The oil in the desk lamp has just reached the lower band.",
+      "The wick falls dark. The night porter takes the comparison to the second lamp."
+    ],
+    [
+      "A witness is packing a coat for the evening boat.",
+      "The witness sails. Their marked envelope stays with the late keeper."
+    ],
+    [
+      "The record keeper is collecting unused cupboard keys.",
+      "The main cupboard closes. A night reader signs for the file at the small return window."
+    ],
+    [
+      "The winding handle now has only half a turn of play.",
+      "The tune winds down. The caller keeps its last note by humming."
+    ],
+    [
+      "Water is creeping towards the lowest dry flagstone.",
+      "The bottom step is under water. The receiving crew carries the file to the upper sill."
+    ],
+    [
+      "The latest stamp still smears at its edges.",
+      "The impression dries. An assistant saves a clean rubbing for the next comparison."
+    ],
+    [
+      "The sunlight is moving towards the edge of the worktable.",
+      "The patch of light slips away. The evening worker tries a different lamp."
+    ],
+    [
+      "The last seasonal cart is already loaded to its back rail.",
+      "The big cart leaves. The night crew finds space on a small return wagon."
+    ],
+    [
+      "Fresh sheets are stacked waist-high beside the press.",
+      "The sheets start to fall. A printer makes room for a correction in the next gathering."
+    ],
+    [
+      "The night guard has begun to button a coat.",
+      "The watch changes. The new guard reads the previous guard's line before adding their own."
+    ],
+    [
+      "A travelling friend is rolling up a blanket near the stairs.",
+      "The friend leaves a return address in the blanket strap. Their answer will come by post."
+    ],
+    [
+      "A letter for Vesper is waiting with the runner’s coat.",
+      "The letter leaves without the comparison. The keeper begins a signed follow-up slip."
+    ],
+    [
+      "The gate crew is hauling the river chain taut.",
+      "The gate opens. The watcher downstream can now see what the first crew predicted."
+    ],
+    [
+      "Two visitors are already telling the queue what must have happened.",
+      "The queue picks up a version. A keeper stands at the exit to hear who wants to revisit it."
+    ],
+    [
+      "The dye on the small sample is still taking a print.",
+      "The dye sets. The apprentice makes the next comparison on the spare strip."
+    ],
+    [
+      "Someone is putting the shutters up at the shop with the matching frame.",
+      "The twin frame is locked away. The evening keeper keeps the two shop slips together."
+    ],
+    [
+      "The judges are setting their cups beside the fair ribbon.",
+      "The judging starts. A steward holds back a working sample for the public trial."
+    ],
+    [
+      "The tower weight is down to its last notch.",
+      "The tower stops. A second watcher writes the next interval by hand."
+    ],
+    [
+      "Keys to the archive are due back before nightfall.",
+      "The rooms change hands. The departing keeper signs a receipt for the successor."
+    ],
+    [
+      "A storm line has begun to cover the seaward lamp.",
+      "The storm blots out the far lamp. The near crew keeps the ringing time instead."
+    ],
+    [
+      "The child is blowing up the last paper lantern for supper.",
+      "The party starts. Someone carries a chair and a sealed message to the child's door."
+    ],
+    [
+      "A Warden has taken a clean page from the inspection book.",
+      "The inspection begins with an open margin. The next reader can write the late result there."
+    ],
+    [
+      "The kiln keeper is testing the cooling band with the long gauge.",
+      "The kiln falls below the trial heat. The next shift keeps the untouched comparison piece."
+    ],
+    [
+      "The planter has opened the final seed row.",
+      "The row is covered. A gardener ties the changed advice to its two trial stakes."
+    ],
+    [
+      "The house caller has put one hand on the curtain rope.",
+      "The curtain goes up. The crew sends the late cue to the wings."
+    ],
+    [
+      "The census clerk is adding up the last row.",
+      "The register closes. The clerk takes the arriving family to the corrections table."
+    ],
+    [
+      "The singer has saved one song for the last watch.",
+      "The singer rests a tired voice. The next keeper works from a marked rest and a return appointment."
+    ],
+    [
+      "The map plate is waiting on the press bed.",
+      "The plate goes down. A pilot takes the correction as a separate loose overlay."
+    ],
+    [
+      "The widest crack has reached the ice marker.",
+      "The ice opens. The evening reader has a drawing of the mark taken from safe ground."
+    ],
+    [
+      "The first nest shell has a small star-shaped crack.",
+      "The nest is occupied. The watcher brings the evening record from outside the blind."
+    ],
+    [
+      "The builders have taken the coping off the old wall.",
+      "The wall comes down. A mason sets a marked brick aside at the return desk."
+    ],
+    [
+      "The ballot box is on its way to the counting table.",
+      "The count begins. A clerk keeps the late evidence for the open hearing afterwards."
+    ],
+    [
+      "The clerk is reaching for the next witness card.",
+      "The next witness takes the floor. A steward offers the late caller a seat at the second sitting."
+    ]
+  ]
+}
