@@ -95,3 +95,11 @@ it('offers fresh mechanisms, restores free choices inside an act and opens local
     expect(sagaChapter(d.s)).toBe(n);expect(d.s.flags[PASSAGES[n-1].arrived]).toBe(true);}
   expect(corridorOpen(d.s,15)).toBe(false);
 });
+
+it('finishes an older in-progress field rehearsal before starting the new instrument',()=>{
+  const o={chapter:1,group:0,ticket:rows(1,0).find(t=>t[1]===22)!},k=ticketKey(o);
+  let s=at(o);s.flags[k+'.position']=1;
+  expect(workTool(o,s).title).toBe('Keep a watch');
+  s=perform(s,o,'work',1);expect(s.flags[k+'.worked']).toBe(true);
+  s=perform(s,o,'restart');expect(workTool(o,s).title).toBe('Earn the small creature’s company');
+});

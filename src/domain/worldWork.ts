@@ -68,7 +68,7 @@ export function workAction(s:CampaignState,cmd:WorkCommand):{effects:Effect[];ti
   }
   if(site!==o.chapter)throw Error('Return to the keeper who began this case.');
   if(cmd.action==='work')return performWork(o,s,i,key);
-  if(cmd.action==='restart')return {effects:[flag(key+'.position',0),flag(key+'.worked',false),flag(key+'.result', '')],title:'A fresh rehearsal',text:'The keeper has reset the apparatus. Any issued instructions still stand until you replace them.'};
+  if(cmd.action==='restart')return {effects:[flag(key+'.instrument',1),flag(key+'.position',0),flag(key+'.worked',false),flag(key+'.result', '')],title:'A fresh rehearsal',text:'The keeper has reset the apparatus. Any issued instructions still stand until you replace them.'};
   if(cmd.action==='hear'){
     const agent=rivalVoice(o,s);
     if(!agent || !s.flags[key+'.worked'])throw Error('Finish the rehearsal and find the agent named on the ticket.');

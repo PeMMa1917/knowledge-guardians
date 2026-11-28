@@ -21,7 +21,8 @@ export function methodId(o:WorkOrder):string {
 export function workTool(o:WorkOrder,s:CampaignState):FieldTool {
   const t=o.ticket, seed=t[0]*11+o.chapter*7+t[2]*3, key='work.'+o.chapter+'.'+o.group+'.'+t[0];
   const progress=Number(s.flags[key+'.position']??0);
-  if(o.group===0)return fieldActivity(t[1],seed,progress);
+  const older=s.flags[key+'.position']!==undefined && !s.flags[key+'.instrument'];
+  if(o.group===0 && !older)return fieldActivity(t[1],seed,progress);
   const put=(next:number,done:boolean,text:string)=>({progress:next,done,text});
   switch(shapeOf(o)){
     case 'trim': {
@@ -85,6 +86,7 @@ export function performWork(o:WorkOrder,s:CampaignState,i:number,key:string):{ef
   if(s.flags[key+'.worked'])throw Error('This rehearsal is complete. Its result is already on the order.');
   const result=tool.move(i);
   return {title:tool.controls[i],text:result.text,effects:[
+    ...(s.flags[key+'.position']===undefined?[{setFlag:key+'.instrument',value:1}]:[]),
     {setFlag:key+'.position',value:result.progress},{setFlag:key+'.result',value:result.text},
     ...(result.done?[{setFlag:key+'.worked',value:true as const}]:[])]};
 }
