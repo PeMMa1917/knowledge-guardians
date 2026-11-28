@@ -466,6 +466,8 @@ export const EMBERFORD: MapDef = {
     { id: 'waystone', kind: 'waystone', place: 'Emberford market', x: 15, y: 14, w: 1, h: 1, label: 'the Waystone (save and rest)', art: 'waystone' },
     { id: 'old-sign', kind: 'sign', x: 22, y: 23, w: 1, h: 1, label: "Corvan's old sign board", art: 'old-sign', visibleIf: { flagSet: 'sd.corvan.outcome' },
       text: "Corvan's old sign board leans against the portal stone. Most of the words are scratched out. Kip says there is something on the back. In one corner of the front is a tiny gold stamp, no bigger than a thumbnail. Kip does not know the mark. Lumen does not like how it shines." },
+    { id: 'claim-bell-well', kind: 'fieldgame', game: 'claim-bell-well', x: 31, y: 20, w: 1, h: 1, walkThrough: true,
+      label: 'the spare pot with a cup scratched on its side', art: 'bell.spare', visibleIf: { flag: 'well.shared', eq: true } },
     { id: 'rope-east', kind: 'sign', x: 31, y: 18, w: 1, h: 1, label: 'the notched depth stick at the east well', flag: 'well.east.read',
       text: 'The east stick has a small sun cut beside its summer mark. Today at dawn the water lay four hand-widths below that cut. Efua dated the line.' },
     { id: 'rope-west', kind: 'sign', x: 8, y: 22, w: 1, h: 1, label: 'the notched depth stick at the west well', flag: 'well.west.read',

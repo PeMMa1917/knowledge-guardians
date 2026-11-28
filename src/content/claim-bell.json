@@ -1,0 +1,634 @@
+{
+  "sources": [
+    {
+      "id": "LEX-BELL-CLAIM",
+      "title": "Claim in the Merriam-Webster dictionary",
+      "url": "https://www.merriam-webster.com/dictionary/claim",
+      "locator": "Etymology and definitions",
+      "supports": "The older word family includes both calling and making a demand.",
+      "accessed": "2026-11-28",
+      "mla": {
+        "kind": "page",
+        "title": "Claim",
+        "container": "Merriam-Webster.com Dictionary",
+        "showAccessDate": true
+      }
+    },
+    {
+      "id": "LEX-BELL-EVIDENCE",
+      "title": "Evidence in the Merriam-Webster dictionary",
+      "url": "https://www.merriam-webster.com/dictionary/evidence",
+      "locator": "Etymology and definitions",
+      "supports": "The Latin word family is related to seeing.",
+      "accessed": "2026-11-28",
+      "mla": {
+        "kind": "page",
+        "title": "Evidence",
+        "container": "Merriam-Webster.com Dictionary",
+        "showAccessDate": true
+      }
+    }
+  ],
+  "missions": [
+    {
+      "id": "KG-CH1-S-CLAIM-BELL",
+      "world": "WORLD-02",
+      "title": "The bell for a quiet claim",
+      "knowledgeQuestion": "Who can make a claim when the way of asking is built into the window?",
+      "stake": "Efua can fill the spare pot and still mistake an absent voice for an empty street.",
+      "available": {
+        "flag": "well.shared",
+        "eq": true
+      },
+      "objectives": [
+        {
+          "id": "claimbell.well.word",
+          "title": "Read the face under the scratch on Efua’s spare pot.",
+          "essential": false,
+          "visible": {
+            "flag": "well.shared",
+            "eq": true
+          },
+          "done": {
+            "flag": "claimbell.well.turned",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "interpretation",
+              "power"
+            ],
+            "framework": [
+              "scope",
+              "perspectives"
+            ],
+            "aoks": [
+              "LAN",
+              "HUM"
+            ],
+            "subjects": [
+              "lang-langlit",
+              "global-politics"
+            ],
+            "atl": [
+              "thinking",
+              "communication"
+            ],
+            "thinking": {
+              "bloom": "understand",
+              "dok": 1,
+              "fink": "foundational",
+              "solo": "unistructural"
+            }
+          },
+          "kq": {
+            "id": "KQ-ROUTE-07",
+            "action": "old-word-plate"
+          }
+        },
+        {
+          "id": "claimbell.well.test",
+          "title": "Walk the soup cook and the porter through the little hatch.",
+          "essential": false,
+          "visible": {
+            "objective": "claimbell.well.word"
+          },
+          "done": {
+            "all": [
+              {
+                "flag": "claimbell.well.heard.first",
+                "eq": true
+              },
+              {
+                "flag": "claimbell.well.heard.second",
+                "eq": true
+              }
+            ]
+          },
+          "weave": {
+            "concepts": [
+              "values",
+              "evidence",
+              "perspective"
+            ],
+            "framework": [
+              "methods-and-tools",
+              "perspectives"
+            ],
+            "aoks": [
+              "HUM",
+              "LAN"
+            ],
+            "subjects": [
+              "global-politics",
+              "lang-langlit"
+            ],
+            "atl": [
+              "thinking",
+              "communication"
+            ],
+            "thinking": {
+              "bloom": "apply",
+              "dok": 2,
+              "fink": "human",
+              "solo": "multistructural"
+            }
+          },
+          "kq": {
+            "id": "KQ-ROUTE-12",
+            "action": "hear-the-empty-cup"
+          }
+        },
+        {
+          "id": "claimbell.issue",
+          "title": "Seal a way to ask for the spare pot and send it to the Old Weir.",
+          "essential": false,
+          "visible": {
+            "objective": "claimbell.well.test"
+          },
+          "done": {
+            "flagSet": "claimbell.issued"
+          },
+          "weave": {
+            "concepts": [
+              "power",
+              "justification",
+              "responsibility",
+              "values"
+            ],
+            "framework": [
+              "ethics",
+              "perspectives",
+              "methods-and-tools"
+            ],
+            "aoks": [
+              "HUM",
+              "POL",
+              "LAN"
+            ],
+            "subjects": [
+              "global-politics",
+              "lang-langlit"
+            ],
+            "atl": [
+              "thinking",
+              "communication"
+            ],
+            "thinking": {
+              "bloom": "create",
+              "dok": 3,
+              "fink": "integration",
+              "solo": "relational"
+            }
+          },
+          "kq": {
+            "id": "KQ-ROUTE-35",
+            "action": "choose-the-entrance"
+          }
+        },
+        {
+          "id": "claimbell.home",
+          "title": "Let the porter use the council’s rule back at the spare pot.",
+          "essential": false,
+          "visible": {
+            "objective": "claimbell.sign"
+          },
+          "done": {
+            "flagSet": "claimbell.home"
+          },
+          "weave": {
+            "concepts": [
+              "responsibility",
+              "explanation",
+              "values"
+            ],
+            "framework": [
+              "ethics",
+              "scope"
+            ],
+            "aoks": [
+              "HUM",
+              "POL"
+            ],
+            "subjects": [
+              "global-politics",
+              "philosophy"
+            ],
+            "atl": [
+              "thinking",
+              "communication"
+            ],
+            "thinking": {
+              "bloom": "evaluate",
+              "dok": 3,
+              "fink": "learning-to-learn",
+              "solo": "extended"
+            }
+          },
+          "kq": {
+            "id": "KQ-ROUTE-35",
+            "action": "return-a-revised-rule"
+          }
+        }
+      ]
+    },
+    {
+      "id": "KG-CH11-S-CLAIM-BELL",
+      "world": "WORLD-12",
+      "title": "The hand below the sill",
+      "knowledgeQuestion": "How does a rule for receiving an account change what can become evidence?",
+      "stake": "The wheel listener has heard something change. The clerk can close the hearing without ever hearing her.",
+      "available": {
+        "flagSet": "claimbell.issued"
+      },
+      "objectives": [
+        {
+          "id": "claimbell.receive",
+          "title": "Carry the sealed rule into the Council Yard.",
+          "essential": false,
+          "visible": {
+            "objective": "claimbell.issue"
+          },
+          "done": {
+            "flag": "claimbell.received",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "power",
+              "perspective"
+            ],
+            "framework": [
+              "scope",
+              "perspectives"
+            ],
+            "aoks": [
+              "HUM",
+              "LAN"
+            ],
+            "subjects": [
+              "lang-langlit",
+              "global-politics"
+            ],
+            "atl": [
+              "thinking",
+              "communication"
+            ],
+            "thinking": {
+              "bloom": "remember",
+              "dok": 1,
+              "fink": "foundational",
+              "solo": "unistructural"
+            }
+          },
+          "kq": {
+            "id": "KQ-NEW-006",
+            "action": "recover-an-earlier-rule"
+          }
+        },
+        {
+          "id": "claimbell.weir.word",
+          "title": "Turn the plate toward the hands below the council window.",
+          "essential": false,
+          "visible": {
+            "objective": "claimbell.issue"
+          },
+          "done": {
+            "flag": "claimbell.weir.turned",
+            "eq": true
+          },
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools"
+            ],
+            "aoks": [
+              "NAT",
+              "LAN"
+            ],
+            "subjects": [
+              "physics",
+              "lang-langlit"
+            ],
+            "atl": [
+              "thinking",
+              "communication"
+            ],
+            "thinking": {
+              "bloom": "understand",
+              "dok": 1,
+              "fink": "foundational",
+              "solo": "unistructural"
+            }
+          },
+          "kq": {
+            "id": "KQ-ROUTE-12",
+            "action": "read-the-worn-reverse"
+          }
+        },
+        {
+          "id": "claimbell.weir.test",
+          "title": "Try the original well rule with both workers at the wheel.",
+          "essential": false,
+          "visible": {
+            "objective": "claimbell.receive"
+          },
+          "done": {
+            "all": [
+              {
+                "flag": "claimbell.weir.original.first",
+                "eq": true
+              },
+              {
+                "flag": "claimbell.weir.original.second",
+                "eq": true
+              }
+            ]
+          },
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "certainty"
+            ],
+            "framework": [
+              "scope",
+              "methods-and-tools"
+            ],
+            "aoks": [
+              "NAT",
+              "HUM",
+              "LAN"
+            ],
+            "subjects": [
+              "physics",
+              "global-politics"
+            ],
+            "atl": [
+              "thinking",
+              "communication"
+            ],
+            "thinking": {
+              "bloom": "analyse",
+              "dok": 3,
+              "fink": "integration",
+              "solo": "relational"
+            }
+          },
+          "kq": {
+            "id": "KQ-ROUTE-12",
+            "action": "apply-the-old-entry"
+          }
+        },
+        {
+          "id": "claimbell.sign",
+          "title": "Make a rule for what the hearing can receive, then return it to Efua.",
+          "essential": false,
+          "visible": {
+            "objective": "claimbell.weir.test"
+          },
+          "done": {
+            "flagSet": "claimbell.signed"
+          },
+          "weave": {
+            "concepts": [
+              "evidence",
+              "interpretation",
+              "responsibility",
+              "power"
+            ],
+            "framework": [
+              "scope",
+              "perspectives",
+              "methods-and-tools",
+              "ethics"
+            ],
+            "aoks": [
+              "NAT",
+              "HUM",
+              "LAN",
+              "POL"
+            ],
+            "subjects": [
+              "physics",
+              "global-politics",
+              "lang-langlit"
+            ],
+            "atl": [
+              "thinking",
+              "communication"
+            ],
+            "thinking": {
+              "bloom": "create",
+              "dok": 4,
+              "fink": "integration",
+              "solo": "extended"
+            }
+          },
+          "kq": {
+            "id": "KQ-ROUTE-35",
+            "action": "design-after-the-hearing"
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.claimbell.well.word.1",
+      "objective": "claimbell.well.word",
+      "depth": 1,
+      "text": "Someone has drawn a cup beside the well."
+    },
+    {
+      "id": "h.claimbell.well.word.2",
+      "objective": "claimbell.well.word",
+      "depth": 2,
+      "text": "Efua has a second pot behind the reserved jug."
+    },
+    {
+      "id": "h.claimbell.well.word.3",
+      "objective": "claimbell.well.word",
+      "depth": 3,
+      "text": "Look for the brass plate near the east depth stick."
+    },
+    {
+      "id": "h.claimbell.well.word.4",
+      "objective": "claimbell.well.word",
+      "depth": 4,
+      "text": "At the spare pot, turn the brass word plate."
+    },
+    {
+      "id": "h.claimbell.well.test.1",
+      "objective": "claimbell.well.test",
+      "depth": 1,
+      "text": "The soup and the ridge cart come in at different bells."
+    },
+    {
+      "id": "h.claimbell.well.test.2",
+      "objective": "claimbell.well.test",
+      "depth": 2,
+      "text": "A request can arrive before its owner."
+    },
+    {
+      "id": "h.claimbell.well.test.3",
+      "objective": "claimbell.well.test",
+      "depth": 3,
+      "text": "Fit a voice, tally or neighbour to the hatch. Set the bell."
+    },
+    {
+      "id": "h.claimbell.well.test.4",
+      "objective": "claimbell.well.test",
+      "depth": 4,
+      "text": "Walk with each caller. Change the bell and see whose name arrives."
+    },
+    {
+      "id": "h.claimbell.issue.1",
+      "objective": "claimbell.issue",
+      "depth": 1,
+      "text": "What follows from counting only the voices we can hear?"
+    },
+    {
+      "id": "h.claimbell.issue.2",
+      "objective": "claimbell.issue",
+      "depth": 2,
+      "text": "Try two entrances. The porter wants to test the speaking window himself."
+    },
+    {
+      "id": "h.claimbell.issue.3",
+      "objective": "claimbell.issue",
+      "depth": 3,
+      "text": "Test both neighbours with the exact entrance and bell you plan to send."
+    },
+    {
+      "id": "h.claimbell.issue.4",
+      "objective": "claimbell.issue",
+      "depth": 4,
+      "text": "Walk the porter through the speaking window, try a second entrance and walk both callers with your final fittings. Seal the rule."
+    },
+    {
+      "id": "h.claimbell.home.1",
+      "objective": "claimbell.home",
+      "depth": 1,
+      "text": "An entrance that suited the weir can feel different on the ridge."
+    },
+    {
+      "id": "h.claimbell.home.2",
+      "objective": "claimbell.home",
+      "depth": 2,
+      "text": "The porter has kept his cup."
+    },
+    {
+      "id": "h.claimbell.home.3",
+      "objective": "claimbell.home",
+      "depth": 3,
+      "text": "Return to the spare pot near Efua’s depth stick after signing at the yard."
+    },
+    {
+      "id": "h.claimbell.home.4",
+      "objective": "claimbell.home",
+      "depth": 4,
+      "text": "At the spare pot give the returning porter the council rule. Read whose claim made it through."
+    },
+    {
+      "id": "h.claimbell.receive.1",
+      "objective": "claimbell.receive",
+      "depth": 1,
+      "text": "Look for a wet handprint on a desk."
+    },
+    {
+      "id": "h.claimbell.receive.2",
+      "objective": "claimbell.receive",
+      "depth": 2,
+      "text": "The crest on Efua’s seal belongs beside the weir."
+    },
+    {
+      "id": "h.claimbell.receive.3",
+      "objective": "claimbell.receive",
+      "depth": 3,
+      "text": "Find the wet handprint in the Council Yard, beyond the Old Weir."
+    },
+    {
+      "id": "h.claimbell.receive.4",
+      "objective": "claimbell.receive",
+      "depth": 4,
+      "text": "Break Efua’s paper seal and read the old entrance and bell."
+    },
+    {
+      "id": "h.claimbell.weir.word.1",
+      "objective": "claimbell.weir.word",
+      "depth": 1,
+      "text": "There’s a wet handprint below the sill."
+    },
+    {
+      "id": "h.claimbell.weir.word.2",
+      "objective": "claimbell.weir.word",
+      "depth": 2,
+      "text": "Can someone tell us about the wheel with their eyes shut?"
+    },
+    {
+      "id": "h.claimbell.weir.word.3",
+      "objective": "claimbell.weir.word",
+      "depth": 3,
+      "text": "The copper fitting on the yard desk has two faces."
+    },
+    {
+      "id": "h.claimbell.weir.word.4",
+      "objective": "claimbell.weir.word",
+      "depth": 4,
+      "text": "At the council hatch, turn the brass word plate."
+    },
+    {
+      "id": "h.claimbell.weir.test.1",
+      "objective": "claimbell.weir.test",
+      "depth": 1,
+      "text": "Which account even gets as far as the clerk?"
+    },
+    {
+      "id": "h.claimbell.weir.test.2",
+      "objective": "claimbell.weir.test",
+      "depth": 2,
+      "text": "The listener and the chalk maker finish at different times."
+    },
+    {
+      "id": "h.claimbell.weir.test.3",
+      "objective": "claimbell.weir.test",
+      "depth": 3,
+      "text": "The sealed rule at the bottom shows Efua’s fittings."
+    },
+    {
+      "id": "h.claimbell.weir.test.4",
+      "objective": "claimbell.weir.test",
+      "depth": 4,
+      "text": "Set the same entrance and bell as the sealed rule. Walk both workers through it."
+    },
+    {
+      "id": "h.claimbell.sign.1",
+      "objective": "claimbell.sign",
+      "depth": 1,
+      "text": "The empty slot and the three knocks tell different stories."
+    },
+    {
+      "id": "h.claimbell.sign.2",
+      "objective": "claimbell.sign",
+      "depth": 2,
+      "text": "Compare the wheel listener at the tally slot and at the speaking window after her shift."
+    },
+    {
+      "id": "h.claimbell.sign.3",
+      "objective": "claimbell.sign",
+      "depth": 3,
+      "text": "Try the original well rule with both workers. Choose how the council should receive their accounts."
+    },
+    {
+      "id": "h.claimbell.sign.4",
+      "objective": "claimbell.sign",
+      "depth": 4,
+      "text": "Walk the listener through the tally slot, then the closing speaking window. Test both workers with your chosen rule, sign it and take it home."
+    }
+  ]
+}

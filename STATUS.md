@@ -876,3 +876,7 @@ On a 320-pixel screen at 175% text, the clock, warm room, maker tools, object st
 ## 28 November • The orchard that got up
 
 At Fern Station, a lone bootprint follows twelve trees out of their beds. Try a bare tub and a living sapling on Gresa’s chalk lane. Reopen two springs on the same dates. At the little theatre, three growers lend different parts of a rota. One evening later, the Guardian’s coins buy shade, a road through the dance, or a second visit after frost. In the Civic square, a carter and a stage caller can hand the next turn to different people. All nine outcomes travel home. Wangari Maathai and Paulo Freire join both visits. [Story and playable rules](src/domain/walkingOrchard.ts) · [Branch and source checks](tests/walking-orchard.test.ts)
+
+### The bell for a quiet claim
+
+Efua can send a rule for the spare pot from Emberford to the Old Weir. Try it with a worker who heard three knocks and a worker who can leave a visible rubbing. The two clerks can sign different rules. Bringing the second rule home lets the late porter use it. The original covered jug keeps its reserved turn. All 36 pairings and both word histories have domain checks. Chromium, Firefox and WebKit each played both desks and brought a different channel back to the porter.

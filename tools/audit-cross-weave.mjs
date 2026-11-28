@@ -1,3 +1,5 @@
+import { reasoningRepertoire } from './reasoning-repertoire.mjs';
+import { bellProofs } from './claim-bell-evidence.mjs';
 import {riverNameProofs} from './river-name-evidence.mjs';
 import {hatchProofs} from './hatch-sleeve-evidence.mjs';
 import {secondInkProofs} from './second-ink-evidence.mjs';
@@ -154,6 +156,7 @@ const copiesEvidenceInvestigations = [
 // Each row identifies a complete action and the intersection its trace actually supports.
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
+  ...bellProofs,
   ...originActions,
   ...elbowProofs,
   ...stacksProofs,
@@ -1255,6 +1258,7 @@ function makeDimensions({ pack, curriculum, levels, topics, exhibition, micro, s
     ...questions,
     ...essayTitleInventory(titleSources),
     ...group('reasoning', [...reasoningModes]),
+    ...reasoningRepertoire,
     ...suppliedMicro.map((number) => ({
       id: listId('micro', number), kind: 'micro', name: microNames.get(number) ?? `#${number}`,
       supplied: supplied.has(number), skillId: microSkillId(number),
@@ -1418,7 +1422,7 @@ function authoredLinks(objectives, micro, elements) {
   }));
 }
 
-async function loadAudit() {
+export async function loadAudit() {
   const server = await createServer({
     root, configFile: false, optimizeDeps: { noDiscovery: true, include: [] },
     server: { middlewareMode: true, watch: null, hmr: false, ws: false },
@@ -1448,7 +1452,7 @@ async function loadAudit() {
       [file, await readFile(resolve(root, file), 'utf8')])));
     const proofs = collectProofs({ objectives, maps: MAPS, elements, dimensions, rows: proofRows, sourceText, dialogue: pack.dialogue });
     const candidates = authoredLinks(objectives, MICRO_SKILLS, elements);
-    return { worlds, elements, dimensions, proofs, candidates };
+    return { worlds, elements, dimensions, proofs, candidates, bloomLevels: levels.BLOOM };
   } finally {
     await server.close();
   }

@@ -607,3 +607,7 @@ The player can send the two uncut lines, the catch or an invitation to swap list
 Someone chalks Hesper’s name on the lid. The fruit seller owns the first letter. She saw steam over the smithy from the spot where she drew an empty bucket. Hesper can tell her which well filled the barrel, and Efua knows whose kettle missed its turn. Players can watch the usual shifts or accept a three-day change in Hesper’s draw. The watch catches the wells moving at different times. Rain arrives during the shorter-draw trial. Either record leaves Orrin with an honest line he can print.
 
 The council still has to put a jug somewhere. A dawn reservation gets soup out before the children arrive. A late reservation gives the returning porters water. At the east well, the player can hear what that decision cost and move the hook for tomorrow. The keeper accepts both turns. [The East Well](../src/content/side-quests.json)
+
+### Efua’s spare pot and the listening hatch
+
+The covered jug has an owner for this shift. A second pot brings a different question to the hook. The porter might call late, leave a tally, or need a neighbour he has never told about his wrist. Efua sends his rule to the Old Weir. The wheel listener can knock but cannot slip a sound through a slot. The chalk maker can post a rubbing but has lost its location. The rule the player signs there returns to a person already met in Emberford. An open hatch can still hear only part of a life.

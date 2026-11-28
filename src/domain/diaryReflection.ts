@@ -50,6 +50,13 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
     if(key.startsWith('walking-grove:track:'))return {tracks:'Which part of the night could this mark explain, and which part still needs a witness?'};
     return {date:'What changed when I brought the two springs up to the same date?',missing:'Which empty space in the book would I try to fill first, and why?'};
   }
+  if (key.startsWith('claim-bell:')) {
+    const [,site,act]=key.split(':');
+    if (act === 'turn') return {word: site === 'well' ? 'When did the old meaning of claim make me hear the porter differently?' : 'What might I miss if only something visible could count as evidence?'};
+    if (act === 'try') return {voice:'Whose account could get through this entrance?',limit:'What else would I need to check before acting on it?'};
+    if (act === 'home') return {transfer:'Where could a real club, rehearsal or lending desk miss someone in the same way?',test:'What could I observe, without naming anybody, that would make me change my rule?'};
+    return {rule:'Who did my rule give time to, and who had to do extra work?',revision:'What change would let me test my explanation?'};
+  }
   if (key.startsWith('hatch-sleeve:')) {
     if (key.includes(':test.')) return { control: 'What stayed in place between my knocks?', limit: 'Which part of that night would still need a witness?' };
     if (key.includes(':words.')) return { voice: 'Whose position reappeared when I opened the edge of the slip?', change: 'How did knowing where they stood change what I could say?' };

@@ -171,6 +171,8 @@ export const WATER_COUNCIL: MapDef = {
       visibleIf: observerPath, walkThrough: true, flag: 'water.observer.crossed' },
     observerScene('water-observer-board', 14, 9, 'Sena’s two-peg copy board', 'preserved.display-records',
       'water.observer.board', { all: [observerNotebook, { objective: 'water.observer.readings' }] }),
+    { id: 'claim-bell-weir', kind: 'fieldgame', game: 'claim-bell-weir', x: 13, y: 10, w: 1, h: 1,
+      walkThrough: true, label: 'the wet handprint under the council hatch', art: 'bell.hatch', visibleIf: { flagSet: 'claimbell.issued' } },
     { id: 'water-counter-bench', kind: 'fieldgame', game: 'water-counter', x: 5, y: 6, w: 1, h: 1,
       label: 'Sena’s three-messenger counter', art: 'water.split', walkThrough: true, visibleIf: counterReady },
     sign('water-counter-ledger', 7, 11, 'the crew’s source-and-runner docket', 'preserved.display-records',

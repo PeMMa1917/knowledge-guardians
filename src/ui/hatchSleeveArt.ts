@@ -8,7 +8,7 @@ const tones: Record<string, string> = {
   p: '#f2e4ba',
   d: '#595168',
 };
-function drawing(rows: string[]): Tile {
+export function drawing(rows: string[]): Tile {
   return [
     16,
     16,
