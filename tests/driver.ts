@@ -48,7 +48,10 @@ export class Driver {
       if (chapter === 8 || chapter === 9) previous = [2,3,5,6];
       if (chapter === 10) previous = [9];
       if (chapter === 12 || chapter === 13) previous = [11];
-      if (chapter === 14) previous = Array.from({length:13},(_,i)=>i+1);
+      if (chapter === 14) {
+        previous = Array.from({length:13},(_,i)=>i+1);
+        for (let i=1;i<=14;i++) this.s.flags['temple.gift.'+i]=true;
+      }
       for (const n of previous) done.add(PASSAGES[n-1].finish);
     }
     this.s.objectivesDone = [...done];

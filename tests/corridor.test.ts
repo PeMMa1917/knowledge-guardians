@@ -20,6 +20,7 @@ describe('the ribbon of doors', () => {
       if (n>2 && n<=8) expect(arrivalLine(n,d.s)).toContain(PASSAGES[routeOrder(d.s).at(-2)!-1].name);
       if (n>2) expect(d.e.activeMissions(d.s).some(m=>m.id==='KG-CH'+n+'-M01') || n===3).toBe(true);
       d.s.objectivesDone.push(p.finish);
+      if (n<=14) d.s.flags['temple.gift.'+n]=true;
       d.s.mapId='nexus.archive';
       d.run({type:'VisitPlace',name:'Nexus'});
       if (routeOrder(d.s).length<14) expect(corridorOpen(d.s,15)).toBe(false);
@@ -29,6 +30,7 @@ describe('the ribbon of doors', () => {
   });
   it('keeps Water shut after a single Act III finish and the Council shut for each missing finish',()=>{
     const d=new Driver();d.s.objectivesDone.push('market.finish');expect(corridorOpen(d.s,11)).toBe(false);
+    for (let i=1; i<=14; i++) d.s.flags['temple.gift.'+i]=true;
     for(const missing of PASSAGES.slice(0,14)){
       d.s.objectivesDone=PASSAGES.slice(0,14).filter(p=>p!==missing).map(p=>p.finish);
       expect(corridorOpen(d.s,15),missing.name).toBe(false);

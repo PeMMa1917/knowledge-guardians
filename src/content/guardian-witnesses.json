@@ -5,7 +5,7 @@
       "name": "Mabry Brassey",
       "role": "Gilded Seal",
       "mode": "fictional",
-      "sprite": "custom:deep.black.green.teal.scarf.gold",
+      "sprite": "custom:pale.black.teal.indigo.none.gold",
       "talk": [
         {
           "node": "temple.1.talk.agent"
@@ -17,7 +17,7 @@
       "name": "Brannoc the Lampwright",
       "role": "Guardian of Lantern Undercroft",
       "mode": "fictional",
-      "sprite": "custom:deep.black.green.teal.scarf.gold",
+      "sprite": "custom:olive.white.plum.brown.headband.red.curls.darkframes.none",
       "talk": [
         {
           "node": "temple.1.talk.guardian"
@@ -29,7 +29,7 @@
       "name": "Wystan Greer",
       "role": "Scrapers",
       "mode": "fictional",
-      "sprite": "custom:warm.brown.ochre.navy.scarf.cream",
+      "sprite": "custom:deep.brown.madder.charcoal.scarf.green.long.lightframes.none",
       "talk": [
         {
           "node": "temple.2.talk.agent"
@@ -41,7 +41,7 @@
       "name": "Marrow Reedfold",
       "role": "Guardian of Hall of Three Records",
       "mode": "fictional",
-      "sprite": "custom:warm.brown.ochre.navy.scarf.cream",
+      "sprite": "custom:light.black.violet.olive.both.white.covered.none.none",
       "talk": [
         {
           "node": "temple.2.talk.guardian"
@@ -53,7 +53,7 @@
       "name": "Osric Coldry",
       "role": "Scrapers",
       "mode": "fictional",
-      "sprite": "custom:warm.black.madder.indigo.scarf.gold",
+      "sprite": "custom:warm.grey.slate.wine.headband.cyan.short.darkframes.none",
       "talk": [
         {
           "node": "temple.3.talk.agent"
@@ -65,7 +65,7 @@
       "name": "Mossgrave",
       "role": "Guardian of Frost Vault",
       "mode": "fictional",
-      "sprite": "custom:warm.black.madder.indigo.scarf.gold",
+      "sprite": "custom:tan.auburn.slate.sand.none.rose.bun.none.none",
       "talk": [
         {
           "node": "temple.3.talk.guardian"
@@ -77,7 +77,7 @@
       "name": "Astor Quaile",
       "role": "Mirror Court",
       "mode": "fictional",
-      "sprite": "custom:deep.black.green.teal.scarf.gold",
+      "sprite": "custom:dark.brown.woad.wine.headband.cyan.short.none.cane",
       "talk": [
         {
           "node": "temple.4.talk.agent"
@@ -89,7 +89,7 @@
       "name": "Halcy Brightwater",
       "role": "Guardian of Tide Dome",
       "mode": "fictional",
-      "sprite": "custom:deep.black.green.teal.scarf.gold",
+      "sprite": "custom:warm.blonde.gold.indigo.scarf.gold.curls.darkframes.none",
       "talk": [
         {
           "node": "temple.4.talk.guardian"
@@ -101,7 +101,7 @@
       "name": "Gale Pryce",
       "role": "True Measure",
       "mode": "fictional",
-      "sprite": "custom:warm.brown.ochre.navy.scarf.cream",
+      "sprite": "custom:brown.grey.orange.brown.both.red.long.lightframes.none",
       "talk": [
         {
           "node": "temple.5.talk.agent"
@@ -113,7 +113,7 @@
       "name": "Ninefold",
       "role": "Guardian of Root Hall",
       "mode": "fictional",
-      "sprite": "custom:warm.brown.ochre.navy.scarf.cream",
+      "sprite": "custom:pale.grey.weld.charcoal.none.green.covered.none.none",
       "talk": [
         {
           "node": "temple.5.talk.guardian"
@@ -125,7 +125,7 @@
       "name": "Harl Tagg",
       "role": "True Measure",
       "mode": "fictional",
-      "sprite": "custom:warm.black.madder.indigo.scarf.gold",
+      "sprite": "custom:olive.black.green.olive.headband.white.bun.none.none",
       "talk": [
         {
           "node": "temple.6.talk.agent"
@@ -137,7 +137,7 @@
       "name": "Grisel Anvilsong",
       "role": "Guardian of Quench Forge",
       "mode": "fictional",
-      "sprite": "custom:warm.black.madder.indigo.scarf.gold",
+      "sprite": "custom:deep.white.red.sand.scarf.rose",
       "talk": [
         {
           "node": "temple.6.talk.guardian"
@@ -149,7 +149,7 @@
       "name": "Liesl Marrable",
       "role": "Gilded Seal",
       "mode": "fictional",
-      "sprite": "custom:deep.black.green.teal.scarf.gold",
+      "sprite": "custom:light.brown.walnut.wine.both.cyan.curls.darkframes.none",
       "talk": [
         {
           "node": "temple.7.talk.agent"
@@ -161,7 +161,7 @@
       "name": "Mirro and Orrim",
       "role": "Guardian of Press of Echoes",
       "mode": "fictional",
-      "sprite": "custom:deep.black.green.teal.scarf.gold",
+      "sprite": "custom:tan.black.blue.indigo.none.gold.long.lightframes.none",
       "talk": [
         {
           "node": "temple.7.talk.guardian"
@@ -173,7 +173,7 @@
       "name": "Penrose Abernathy",
       "role": "True Measure",
       "mode": "fictional",
-      "sprite": "custom:warm.brown.ochre.navy.scarf.cream",
+      "sprite": "custom:dark.auburn.cream.brown.headband.red.covered.none.none",
       "talk": [
         {
           "node": "temple.8.talk.agent"
@@ -185,7 +185,7 @@
       "name": "Old Saltmark",
       "role": "Guardian of Blank Lighthouse",
       "mode": "fictional",
-      "sprite": "custom:warm.brown.ochre.navy.scarf.cream",
+      "sprite": "custom:warm.brown.teal.charcoal.scarf.green.bun.none.none",
       "talk": [
         {
           "node": "temple.8.talk.guardian"
@@ -197,7 +197,7 @@
       "name": "Lucan Fairweather",
       "role": "Mirror Court",
       "mode": "fictional",
-      "sprite": "custom:warm.black.madder.indigo.scarf.gold",
+      "sprite": "custom:brown.blonde.plum.olive.both.white",
       "talk": [
         {
           "node": "temple.9.talk.agent"
@@ -209,7 +209,7 @@
       "name": "The Prompter",
       "role": "Guardian of Dark Stage",
       "mode": "fictional",
-      "sprite": "custom:warm.black.madder.indigo.scarf.gold",
+      "sprite": "custom:pale.grey.madder.sand.none.rose.curls.darkframes.none",
       "talk": [
         {
           "node": "temple.9.talk.guardian"
@@ -221,7 +221,7 @@
       "name": "Cass Mott",
       "role": "Gilded Seal",
       "mode": "fictional",
-      "sprite": "custom:deep.black.green.teal.scarf.gold",
+      "sprite": "custom:olive.grey.violet.wine.headband.cyan.long.lightframes.wheelchair",
       "talk": [
         {
           "node": "temple.10.talk.agent"
@@ -233,7 +233,7 @@
       "name": "Dame Quarta Evenhand",
       "role": "Guardian of Balance Hall",
       "mode": "fictional",
-      "sprite": "custom:deep.black.green.teal.scarf.gold",
+      "sprite": "custom:deep.black.slate.indigo.scarf.gold.covered.none.none",
       "talk": [
         {
           "node": "temple.10.talk.guardian"
@@ -245,7 +245,7 @@
       "name": "Dorran Sluys",
       "role": "Single Bell",
       "mode": "fictional",
-      "sprite": "custom:warm.brown.ochre.navy.scarf.cream",
+      "sprite": "custom:light.white.woad.brown.both.red.bun.none.none",
       "talk": [
         {
           "node": "temple.11.talk.agent"
@@ -254,10 +254,10 @@
     },
     {
       "id": "temple.11.guardian",
-      "name": "Lull",
+      "name": "Lull, Brisk and Swirl",
       "role": "Guardian of Spring Steps",
       "mode": "fictional",
-      "sprite": "custom:warm.brown.ochre.navy.scarf.cream",
+      "sprite": "custom:tan.brown.gold.charcoal.none.green",
       "talk": [
         {
           "node": "temple.11.talk.guardian"
@@ -269,7 +269,7 @@
       "name": "Nyle Ostry",
       "role": "Single Bell",
       "mode": "fictional",
-      "sprite": "custom:warm.black.madder.indigo.scarf.gold",
+      "sprite": "custom:dark.black.orange.olive.headband.white.curls.darkframes.none",
       "talk": [
         {
           "node": "temple.12.talk.agent"
@@ -281,7 +281,7 @@
       "name": "Ledgerlock",
       "role": "Guardian of Clockwork Hall",
       "mode": "fictional",
-      "sprite": "custom:warm.black.madder.indigo.scarf.gold",
+      "sprite": "custom:warm.auburn.weld.sand.scarf.rose.long.lightframes.none",
       "talk": [
         {
           "node": "temple.12.talk.guardian"
@@ -293,7 +293,7 @@
       "name": "Tolly Fadden",
       "role": "Scrapers",
       "mode": "fictional",
-      "sprite": "custom:deep.black.green.teal.scarf.gold",
+      "sprite": "custom:brown.brown.green.wine.both.cyan.covered.none.none",
       "talk": [
         {
           "node": "temple.13.talk.agent"
@@ -305,7 +305,7 @@
       "name": "Hollin Softvoice",
       "role": "Guardian of Listening Well",
       "mode": "fictional",
-      "sprite": "custom:deep.black.green.teal.scarf.gold",
+      "sprite": "custom:pale.blonde.red.indigo.none.gold.bun.none.none",
       "talk": [
         {
           "node": "temple.13.talk.guardian"
@@ -317,7 +317,7 @@
       "name": "Sabine Orrell",
       "role": "Mirror Court",
       "mode": "fictional",
-      "sprite": "custom:warm.brown.ochre.navy.scarf.cream",
+      "sprite": "custom:olive.grey.walnut.brown.headband.red",
       "talk": [
         {
           "node": "temple.14.talk.agent"
@@ -329,7 +329,7 @@
       "name": "Tansy Littlemore",
       "role": "Guardian of Model Garden",
       "mode": "fictional",
-      "sprite": "custom:warm.brown.ochre.navy.scarf.cream",
+      "sprite": "custom:deep.grey.blue.charcoal.scarf.green.curls.darkframes.cane",
       "talk": [
         {
           "node": "temple.14.talk.guardian"
@@ -1593,6 +1593,344 @@
           }
         }
       ]
+    }
+  ],
+  "hints": [
+    {
+      "id": "h.temple.1.kept.1",
+      "objective": "temple.1.kept",
+      "depth": 1,
+      "text": "A boy holds a gold stamp under the dead lamp. Mabry quietly puts the refund money back inside her sleeve."
+    },
+    {
+      "id": "h.temple.1.kept.2",
+      "objective": "temple.1.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Turn the stamped face to the wick."
+    },
+    {
+      "id": "h.temple.1.kept.3",
+      "objective": "temple.1.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Slide the stallholder’s dated receipt into the lamp."
+    },
+    {
+      "id": "h.temple.1.kept.4",
+      "objective": "temple.1.kept",
+      "depth": 4,
+      "text": "Bring both readings to Brannoc the Lampwright at the centre. Hang the receipt where buyers can lift it or choose another settlement."
+    },
+    {
+      "id": "h.temple.2.kept.1",
+      "objective": "temple.2.kept",
+      "depth": 1,
+      "text": "Marrow catches a loose reed in the door. Someone has rubbed a date from the paper where the fold hid it."
+    },
+    {
+      "id": "h.temple.2.kept.2",
+      "objective": "temple.2.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Unroll the storekeeper’s copy."
+    },
+    {
+      "id": "h.temple.2.kept.3",
+      "objective": "temple.2.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Hold the later delivery slip against the gap."
+    },
+    {
+      "id": "h.temple.2.kept.4",
+      "objective": "temple.2.kept",
+      "depth": 4,
+      "text": "Bring both readings to Marrow Reedfold at the centre. Leave both rolls on separate pins or choose another settlement."
+    },
+    {
+      "id": "h.temple.3.kept.1",
+      "objective": "temple.3.kept",
+      "depth": 1,
+      "text": "A warm thumbprint blooms over a blank name in the ice. Mossgrave tries to close the lid on Odile’s hand."
+    },
+    {
+      "id": "h.temple.3.kept.2",
+      "objective": "temple.3.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Catch the impression on the cold pane."
+    },
+    {
+      "id": "h.temple.3.kept.3",
+      "objective": "temple.3.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Warm the flap with the family seal."
+    },
+    {
+      "id": "h.temple.3.kept.4",
+      "objective": "temple.3.kept",
+      "depth": 4,
+      "text": "Bring both readings to Mossgrave at the centre. Mark the missing slip on the public file or choose another settlement."
+    },
+    {
+      "id": "h.temple.4.kept.1",
+      "objective": "temple.4.kept",
+      "depth": 1,
+      "text": "Halcy’s tide globe spills a second blue shadow across the harbour plan. Astor has painted only one line on the bell card."
+    },
+    {
+      "id": "h.temple.4.kept.2",
+      "objective": "temple.4.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Advance the tide wheel a notch."
+    },
+    {
+      "id": "h.temple.4.kept.3",
+      "objective": "temple.4.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Draw the wind vane across the same hour."
+    },
+    {
+      "id": "h.temple.4.kept.4",
+      "objective": "temple.4.kept",
+      "depth": 4,
+      "text": "Bring both readings to Halcy Brightwater at the centre. Call the earliest safe tide by bell or choose another settlement."
+    },
+    {
+      "id": "h.temple.5.kept.1",
+      "objective": "temple.5.kept",
+      "depth": 1,
+      "text": "Ninefold lands on the tally board in the shape of a question mark. Gale’s neat last column has no space for a call without a sighting."
+    },
+    {
+      "id": "h.temple.5.kept.2",
+      "objective": "temple.5.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Count shadows at dusk."
+    },
+    {
+      "id": "h.temple.5.kept.3",
+      "objective": "temple.5.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Turn the screen to the dawn reeds."
+    },
+    {
+      "id": "h.temple.5.kept.4",
+      "objective": "temple.5.kept",
+      "depth": 4,
+      "text": "Bring both readings to Ninefold at the centre. Add a column for heard-only calls or choose another settlement."
+    },
+    {
+      "id": "h.temple.6.kept.1",
+      "objective": "temple.6.kept",
+      "depth": 1,
+      "text": "A hot sample rolls under Grisel’s boot. Harl’s form lists a guild recipe. The smith who taught it worked outside the gate."
+    },
+    {
+      "id": "h.temple.6.kept.2",
+      "objective": "temple.6.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Quench twin slips with the same weight."
+    },
+    {
+      "id": "h.temple.6.kept.3",
+      "objective": "temple.6.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Repeat the cool bath in a different clamp."
+    },
+    {
+      "id": "h.temple.6.kept.4",
+      "objective": "temple.6.kept",
+      "depth": 4,
+      "text": "Bring both readings to Grisel Anvilsong at the centre. Leave room for the traveller’s account in the register or choose another settlement."
+    },
+    {
+      "id": "h.temple.7.kept.1",
+      "objective": "temple.7.kept",
+      "depth": 1,
+      "text": "The twin printers catch opposite ends of a falling proof. Each recognises their own coffee ring. Liesl has already sold the next edition."
+    },
+    {
+      "id": "h.temple.7.kept.2",
+      "objective": "temple.7.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Match the torn edge to the first forme."
+    },
+    {
+      "id": "h.temple.7.kept.3",
+      "objective": "temple.7.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Overlay the forgotten author’s correction."
+    },
+    {
+      "id": "h.temple.7.kept.4",
+      "objective": "temple.7.kept",
+      "depth": 4,
+      "text": "Bring both readings to Mirro and Orrim at the centre. Print the correction on the next run or choose another settlement."
+    },
+    {
+      "id": "h.temple.8.kept.1",
+      "objective": "temple.8.kept",
+      "depth": 1,
+      "text": "Old Saltmark sings a name beyond the edge of Penrose’s survey. An apprentice has already tied a mooring rope to the wrong blue peg."
+    },
+    {
+      "id": "h.temple.8.kept.2",
+      "objective": "temple.8.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Steer by the printed sounding."
+    },
+    {
+      "id": "h.temple.8.kept.3",
+      "objective": "temple.8.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Steer by the pilot’s sung turn."
+    },
+    {
+      "id": "h.temple.8.kept.4",
+      "objective": "temple.8.kept",
+      "depth": 4,
+      "text": "Bring both readings to Old Saltmark at the centre. Mark both names with the depth and date or choose another settlement."
+    },
+    {
+      "id": "h.temple.9.kept.1",
+      "objective": "temple.9.kept",
+      "depth": 1,
+      "text": "Lucan hands out a programme headed REFUSAL. From the last seat the empty chair looks like a deliberate insult."
+    },
+    {
+      "id": "h.temple.9.kept.2",
+      "objective": "temple.9.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Move the mask from prompt corner to balcony."
+    },
+    {
+      "id": "h.temple.9.kept.3",
+      "objective": "temple.9.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Light the aisle behind the empty chair."
+    },
+    {
+      "id": "h.temple.9.kept.4",
+      "objective": "temple.9.kept",
+      "depth": 4,
+      "text": "Bring both readings to The Prompter at the centre. Let the ushers print both sightlines or choose another settlement."
+    },
+    {
+      "id": "h.temple.10.kept.1",
+      "objective": "temple.10.kept",
+      "depth": 1,
+      "text": "Quarta sets three baskets on the brass hands. Cass puts a seal over the place where the wicker weight should go."
+    },
+    {
+      "id": "h.temple.10.kept.2",
+      "objective": "temple.10.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Weigh the empty nesting basket."
+    },
+    {
+      "id": "h.temple.10.kept.3",
+      "objective": "temple.10.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Swap wicker while keeping the grain."
+    },
+    {
+      "id": "h.temple.10.kept.4",
+      "objective": "temple.10.kept",
+      "depth": 4,
+      "text": "Bring both readings to Dame Quarta Evenhand at the centre. Settle today’s sale by the tare or choose another settlement."
+    },
+    {
+      "id": "h.temple.11.kept.1",
+      "objective": "temple.11.kept",
+      "depth": 1,
+      "text": "Brisk carries three cups through the spring and brings back two full. Dorran’s upstream and downstream crews signed on different days."
+    },
+    {
+      "id": "h.temple.11.kept.2",
+      "objective": "temple.11.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Split one turn equally at the head gate."
+    },
+    {
+      "id": "h.temple.11.kept.3",
+      "objective": "temple.11.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Let the last crew call the gate change."
+    },
+    {
+      "id": "h.temple.11.kept.4",
+      "objective": "temple.11.kept",
+      "depth": 4,
+      "text": "Bring both readings to Lull, Brisk and Swirl at the centre. Bring both crews to the wet bank or choose another settlement."
+    },
+    {
+      "id": "h.temple.12.kept.1",
+      "objective": "temple.12.kept",
+      "depth": 1,
+      "text": "Ledgerlock lifts a brass foot over the district line and stalls. Nyle’s rule has no square for a doorstep shared by two streets."
+    },
+    {
+      "id": "h.temple.12.kept.2",
+      "objective": "temple.12.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Run the rule from the east entrance."
+    },
+    {
+      "id": "h.temple.12.kept.3",
+      "objective": "temple.12.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Move the starting peg to the west entrance."
+    },
+    {
+      "id": "h.temple.12.kept.4",
+      "objective": "temple.12.kept",
+      "depth": 4,
+      "text": "Bring both readings to Ledgerlock at the centre. Keep both route names and one shared stop or choose another settlement."
+    },
+    {
+      "id": "h.temple.13.kept.1",
+      "objective": "temple.13.kept",
+      "depth": 1,
+      "text": "Hollin lifts a hand at a footstep nobody else picked out. Tolly has clipped a family voice to the public copy of a walk."
+    },
+    {
+      "id": "h.temple.13.kept.2",
+      "objective": "temple.13.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Listen from the bridge stair."
+    },
+    {
+      "id": "h.temple.13.kept.3",
+      "objective": "temple.13.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Follow the listener’s access slip."
+    },
+    {
+      "id": "h.temple.13.kept.4",
+      "objective": "temple.13.kept",
+      "depth": 4,
+      "text": "Bring both readings to Hollin Softvoice at the centre. Keep the voice in the family room or choose another settlement."
+    },
+    {
+      "id": "h.temple.14.kept.1",
+      "objective": "temple.14.kept",
+      "depth": 1,
+      "text": "Tansy fits the last paper tree into the garden. Sabine brings a ribbon from a famous visitor. The model harvest fails on the shaded side."
+    },
+    {
+      "id": "h.temple.14.kept.2",
+      "objective": "temple.14.kept",
+      "depth": 2,
+      "text": "Try the instrument to the left. Run the dry slope with the same rain."
+    },
+    {
+      "id": "h.temple.14.kept.3",
+      "objective": "temple.14.kept",
+      "depth": 3,
+      "text": "Cross to the instrument on the right. Add the narrow shade cloth and rerun."
+    },
+    {
+      "id": "h.temple.14.kept.4",
+      "objective": "temple.14.kept",
+      "depth": 4,
+      "text": "Bring both readings to Tansy Littlemore at the centre. Invite the gardener to demonstrate the shade or choose another settlement."
     }
   ]
 }
