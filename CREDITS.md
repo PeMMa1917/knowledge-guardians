@@ -142,3 +142,5 @@ The suitcase house, lamp, hinged floor and certificate drawings are original gam
 The felt loan drawer, two-hook stair, projector frame and silver-thread curtain are original pixel drawings for the Survey Depot and House of Performance. [Loan loft artwork](src/ui/lensLoanArt.ts)
 
 The inn’s turnable floor, kettle, patched chairs, shuttered lamp and spoon-handled door use five original pixel drawings. Returning residents use the campaign’s existing creature portraits. [Inn illustrations](src/ui/openHouseArt.ts)
+
+The school name filter uses Latin-lookalike mappings derived from the Unicode Consortium’s Unicode 16.0 confusables data. [Unicode source](https://www.unicode.org/Public/security/16.0.0/confusables.txt) · [Unicode License v3](public/licenses/unicode-data.txt)

@@ -22,3 +22,7 @@
 .leaderboard-teacher summary { cursor: pointer; }
 .leaderboard-teacher input, .leaderboard-teacher select { border: 1px solid var(--accent); border-radius: .35em; background: #fff; color: var(--ink); padding: .3em; }
 .leaderboard-teacher :is(input, select, summary):focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+.ranked-stitch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr)); gap: .4rem; }
+.ranked-stitch-grid button { min-height: 2.75rem; overflow-wrap: anywhere; }
+.ranked-stitch-grid button[aria-disabled="true"] { border-style: dashed; }

@@ -908,3 +908,7 @@ Efua can send a rule for the spare pot from Emberford to the Old Weir. Try it wi
 Two optional streets open in each of the fifteen chapters. Thirty linked stories have 120 fitted views and sixty public endings. Each ending sends a different playable action to its paired street, with a reply that can come home. Players may hold their first direction open, restage a public ending and read an optional sourced note. The pocket keeps the acts and replies in the adventure journal.
 
 The reasoning review traces 45 cognitive biases or related effects, 36 argument patterns and ten forms of deception in the supplied material and the authored stories. Seventy-one independently specified views test the route to particular evidence. A dated cut, a copied seal or a missing line alone supplies no basis for attributing intent. The cross-weave and Bloom/DOK review commands include these inventories.
+
+### Moderated names and verified class scores
+
+The assigned teacher can review flagged names, replace a username or class display name, and set, hide or release a class nickname. A rename preserves the account and saves. Teacher-issued replacement usernames pass the same filter used at sign-in. Device scores stay personal. The class board ranks only moves and time from completed online stitching rounds, calculated by the service. The migration removes earlier device-reported ranks. [School hosting and review](docs/ACCOUNTS_AND_HOSTING.md)

@@ -1,3 +1,6 @@
+import { stitchRound } from './stitchRound.mjs';
+import { studentName } from '../shared/studentNames.mjs';
+import { classNames } from './classNames.mjs';
 import { classScores } from './classScores.mjs';
 const enc = new TextEncoder();
 const hex = (buf) => Array.from(new Uint8Array(buf), (n) => n.toString(16).padStart(2, '0')).join('');
@@ -94,7 +97,8 @@ async function route(req, db, url) {
       b.password.length > 256
     )
       throw 400;
-    const name = b.login.trim().toLowerCase();
+    const spelling = b.login.trim().toLowerCase();
+    const name = role === 'student' ? spelling.normalize('NFC') : spelling;
     const ip = req.headers.get('CF-Connecting-IP') || 'preview';
     await db.prepare('DELETE FROM login_limits WHERE until_time<=?').bind(now).run();
     if (
@@ -102,13 +106,18 @@ async function route(req, db, url) {
       !(await underLimit(db, await digest(role + ':' + name), now, 20))
     )
       return reply(429, { error: 'Please wait before signing in again.' });
-    const user = await db.prepare('SELECT * FROM accounts WHERE role=? AND login=?').bind(role, name).first();
+    const user = await db
+      .prepare('SELECT * FROM accounts WHERE role=? AND login IN (?,?) ORDER BY login=? DESC LIMIT 1')
+      .bind(role, name, spelling, spelling).first();
     const candidate = await verifier(b.password, user?.salt || 'unknown-classroom-account');
     if (!user || user.verifier !== candidate) return reply(401, { error: 'Check your sign-in details.' });
     let identity = { id: user.id, display: user.display };
     if (role === 'student') {
       identity = await db.prepare(membership).bind(user.id).first();
       if (!identity) return deny();
+      if (!studentName(user.login, 'login'))
+        return reply(403, { error: 'Your class username needs review. Ask your assigned teacher for a replacement.' });
+      identity.display = studentName(identity.display, 'display') ?? 'Guardian';
     }
     const key = token();
     const old = (req.headers.get('Cookie') || '').match(
@@ -144,6 +153,8 @@ async function route(req, db, url) {
   }
   if (user.id !== url.searchParams.get('account')) return deny();
   const cls = url.searchParams.get('class');
+  if (action === 'stitch') return stitchRound({ db, req, role, account: user.id, cls, url, reply, deny, body });
+  if (action === 'names') return classNames({db,req,role,account:user.id,cls,body,reply,deny});
   if (action === 'scores') return classScores({db,req,url,role,account:user.id,cls,body,reply,deny});
   if (role === 'teacher' && read && action === 'classes') {
     const result = await db
@@ -167,7 +178,7 @@ async function route(req, db, url) {
     return reply(
       200,
       rows.results.map((r) => ({
-        student: r.display,
+        student: studentName(r.display,'display') ?? 'Guardian',
         updated: r.updated,
         entries: JSON.parse(r.writing || '[]'),
       })),

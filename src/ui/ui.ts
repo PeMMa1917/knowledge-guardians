@@ -30,6 +30,8 @@ import { nightByExhibit, nightSites } from '../domain/nightRegister';
 import { nightCase, nightDesk, nightPerch } from './nightRegister';
 import { GameController as ClassroomController } from '../app/controller';
 import {classroom} from '../classroom/client';
+import { rankedStitch } from '../classroom/rankedStitch';
+import { studentName } from '../../shared/studentNames.mjs';
 import {classPanel,writingNotice,sceneEditor} from '../classroom/student';
 import { lamplightPanel } from './lamplightPanel';
 import { inkInvitation } from '../domain/inkPost';
@@ -61,7 +63,6 @@ import { buildScoutBoard } from './scoutRoutes';
 import { journalText } from '../domain/adventureJournal';
 import { adventureJournalTab } from './adventureJournal';
 import { leaderboardPanel } from './leaderboard';
-import type { LeaderboardFile } from '../domain/leaderboard';
 import { bindJournalEditor, discardPendingJournalWriting, flushJournalWriting, queueJournalWriting } from './journalWriting';
 import { ROUTE_ACTIONS } from '../content/questionEncounters';
 /**
@@ -534,7 +535,6 @@ export class UI implements UIApi {
   private promptEl!: HTMLElement;
   private toastBox!: HTMLElement;
   private saveFeedback: HTMLElement | null = null;
-  private readonly leaderboardFiles: LeaderboardFile[] = [];
   private lumenBubble!: HTMLElement;
   private readonly prepareWorld: (mapId?: string) => Promise<void>;
   private readonly onStart: () => void;
@@ -935,7 +935,9 @@ export class UI implements UIApi {
         return b;
       }));
     const start = () => {
-      const n = name.value.trim() || 'Recruit';
+      const n = studentName(name.value.trim() || 'Recruit', 'display');
+      name.setCustomValidity(n ? '' : 'Choose another school-appropriate Guardian name.');
+      if (!n) { name.reportValidity(); name.focus(); return; }
       this.enterWhenReady(() => {
         discardPendingJournalWriting(ctx.controller);
         ctx.controller.newGame(n.slice(0, 24), lookPick.value(), { pronouns: pron.value(), origin });
@@ -3404,7 +3406,7 @@ export class UI implements UIApi {
 
   private openLeaderboard(): void {
     this.openModal('leaderboard-panel wide', 'Leaderboard', this.closeBtn(),
-      h('h2', {}, 'Leaderboard'), leaderboardPanel(this.leaderboardFiles, ctx.controller, classroom ? {role:'student',account:classroom.who.id,classId:classroom.who.classId,className:classroom.who.className,teacher:classroom.who.teacherId}:undefined));
+      h('h2', {}, 'Leaderboard'), leaderboardPanel(ctx.controller, classroom ? {role:'student',account:classroom.who.id,classId:classroom.who.classId,className:classroom.who.className,teacher:classroom.who.teacherId}:undefined));
   }
 
   // ---------------------------------------------------------- photo mode
@@ -4890,6 +4892,8 @@ export class UI implements UIApi {
     });
     this.releasePanelActivity = stitching.dispose;
     box.append(stitching.panel);
+    if (classroom) box.append(rankedStitch({role:'student',account:classroom.who.id,classId:classroom.who.classId,
+      className:classroom.who.className,teacher:classroom.who.teacherId}));
   }
 
   /** The Lamp Wall (storyline): one lamp for each knot the town unties. Six lamps open the old Guardian's cellar. */

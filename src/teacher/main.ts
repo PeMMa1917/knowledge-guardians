@@ -12,14 +12,12 @@ import './teacher.css';
 import { teacherContent as pack } from 'virtual:kg-teacher-content';
 import { AOK_NAMES, ATL_NAMES, CONCEPT_NAMES, PROFILE_NAMES, SUBJECTS } from '../domain/curriculum';
 import { clear, h } from '../ui/dom';
-import { leaderboardPanel } from '../ui/leaderboard';
 import { STAGE_LABEL, type SkillStage } from '../domain/skills';
 import { latestPerStudent, readProgress, subjectCsv, summarise, type ProgressFile } from './report';
 
 const root = document.getElementById('teacher')!;
 let connectedWriting: ReturnType<typeof classWriting> | undefined;
-const leaderboard = h('details', { class: 'leaderboard-teacher panel no-print' },
-  h('summary', {}, h('strong', {}, 'Leaderboard (optional score files)')), leaderboardPanel([]));
+
 let files: ProgressFile[] = [];
 const problems: string[] = [];
 let dismissed: string[] = [];
@@ -94,7 +92,6 @@ function dashboard(): void {
       h('a',{href:'./schools.html',target:'_blank',rel:'noopener'},'Who can read a student’s writing?')),
     connectedWriting ??= classWriting(),
     guide(),
-    leaderboard,
   );
   if (!students.length) { root.append(h('p', {}, 'No progress files yet.'), activities([])); return; }
 
