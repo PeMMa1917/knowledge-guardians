@@ -97,7 +97,7 @@ export function clockProps(map: string): Interactable[] {
         game: 'quarter-plan',
         visibleIf: signed,
       }),
-      prop('dock-fittings', 'Three fittings on the pier', 'sign', 'quarter.fittings', 10, 7, {
+      prop('dock-fittings', 'Three fittings on the pier', 'sign', 'quarter.fittings', 14, 10, {
         visibleIf: signed,
         text: 'The fittings match the plan behind the glass. The two shifts come down at different times to try them.',
       }),

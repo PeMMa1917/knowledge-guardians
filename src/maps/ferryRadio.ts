@@ -63,7 +63,7 @@ export const wireRoom: MapDef = {
     mark('line', 'door', 'Ride the programme ferry to the island', 17, 12, 'wire.horn', {
       walkThrough: true,
       visibleIf: islandGate,
-      to: { map: radioDock, x: 18, y: 8 },
+      to: { map: radioDock, x: 18, y: 9 },
     }),
     mark('timetable', 'sign', 'The island run', 17, 11, 'wire.reel', {
       visibleIf: { not: islandGate },

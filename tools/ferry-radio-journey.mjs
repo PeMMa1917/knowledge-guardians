@@ -101,6 +101,12 @@ export async function playFerryRadio({ page, engine, use, waitMap, close }) {
   await close();
   await use('wire-line');
   await waitMap('island.dock');
+  const landing = await page.evaluate(() => {
+    const { world } = window.kg;
+    const { x, y } = world.player.sprite;
+    return { tile: [Math.floor(x / 16), Math.floor(y / 16)], clear: !world.collides(x, y) };
+  });
+  assert.deepEqual(landing, { tile: [18, 9], clear: true });
   await use('wire-horn');
   await fold('edition');
   await act('receive');
