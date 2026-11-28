@@ -880,3 +880,9 @@ At Fern Station, a lone bootprint follows twelve trees out of their beds. Try a 
 ### The bell for a quiet claim
 
 Efua can send a rule for the spare pot from Emberford to the Old Weir. Try it with a worker who heard three knocks and a worker who can leave a visible rubbing. The two clerks can sign different rules. Bringing the second rule home lets the late porter use it. The original covered jug keeps its reserved turn. All 36 pairings and both word histories have domain checks. Chromium, Firefox and WebKit each played both desks and brought a different channel back to the porter.
+
+### The travelling pocket theatre
+
+Two optional streets open in each of the fifteen chapters. Thirty linked stories have 120 fitted views and sixty public endings. Each ending sends a different playable action to its paired street, with a reply that can come home. Players may hold their first direction open, restage a public ending and read an optional sourced note. The pocket keeps the acts and replies in the adventure journal.
+
+The reasoning review traces 45 cognitive biases or related effects, 36 argument patterns and ten forms of deception in the supplied material and the authored stories. Seventy-one independently specified views test the route to particular evidence. A dated cut, a copied seal or a missing line alone supplies no basis for attributing intent. The cross-weave and Bloom/DOK review commands include these inventories.

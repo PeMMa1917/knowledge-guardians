@@ -611,3 +611,9 @@ The council still has to put a jug somewhere. A dawn reservation gets soup out b
 ### Efua’s spare pot and the listening hatch
 
 The covered jug has an owner for this shift. A second pot brings a different question to the hook. The porter might call late, leave a tally, or need a neighbour he has never told about his wrist. Efua sends his rule to the Old Weir. The wheel listener can knock but cannot slip a sound through a slot. The chalk maker can post a rubbing but has lost its location. The rule the player signs there returns to a person already met in Emberford. An open hatch can still hear only part of a life.
+
+### The travelling pocket theatre
+
+A stitched pocket connects two folded streets. A guardian may rehearse an ending, keep their first judgement open, try the two slides in either order and send either public ending. The sheet lights a different working scene in a second town. Bringing a reply home gives the people affected by the first decision another turn. Nothing obliges the guardian to take up either street when opening the suitcase.
+
+The manager in the Tuesday street ordered the qualification folded under. At the listening-room reel an incomplete sentence can be restored, yet whoever cut it left no such instruction. The runner has a ticket of his own. Wren has a key to return. The stories allow honest error, an inviting illusion with a bow, and deliberate distortion with an accountable maker.

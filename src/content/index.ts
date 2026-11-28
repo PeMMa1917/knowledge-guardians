@@ -1,3 +1,4 @@
+import { installPocketTheatre } from './pocketTheatre';
 import {installWalkingOrchard} from './walkingOrchard';
 import {installRiverNames} from './riverNames';
 import {installSecondInk} from './secondInk';
@@ -286,6 +287,7 @@ export function buildPack(): ContentPack {
   installTurningStacks(content);
   installFerryRadio(content);
   installQuarterClock(content);
+  installPocketTheatre(content);
   installWalkingOrchard(content);
   installOpenHouse(content);
   installSecondInk(content);

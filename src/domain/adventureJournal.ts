@@ -1,6 +1,7 @@
 import {markDiary} from './riverPostmark';
 import {riverDiary,riverTopics} from './riverNames';
 import {orchardDiary,orchardTopics,type OrchardCommand} from './walkingOrchard';
+import { theatreDiary } from './pocketTheatre';
 import { bellDiary } from './claimBell';
 import { hatchDiary } from './hatchSleeve';
 import {inkDiary, inkWeave} from './secondInk';
@@ -176,6 +177,7 @@ function recordedDecision(cmd: Command, previous: CampaignState, next: CampaignS
   if (cmd.type === 'TendWalkingOrchard') return orchardDiary(next,cmd);
   if (cmd.type === 'FoldRiverPostmark') return markDiary(next,cmd);
   if (cmd.type === 'WalkRiverNames') return riverDiary(next,cmd);
+  if (cmd.type === 'WorkPocketTheatre') return theatreDiary(next,cmd);
   if (cmd.type === 'WorkClaimBell') return bellDiary(next,cmd);
   if (cmd.type === 'WorkHatchSleeve') return hatchDiary(next,cmd);
   if (cmd.type === 'WorkSecondInk') return inkDiary(next,cmd);
@@ -599,7 +601,7 @@ export function adventureJournalView(pack: ContentPack, state: CampaignState, ob
       const topic=event.key.split(':')[1];
       if(Object.hasOwn(riverTopics,topic)) return diaryTopics(riverTopics[topic as keyof typeof riverTopics]);
     }
-    if (family === 'hatch-sleeve' || family === 'claim-bell') {
+    if (family === 'hatch-sleeve' || family === 'claim-bell' || family === 'pocket') {
       const weave = objectivesById.get(event.ref)?.objective.weave;
       if (weave) return diaryTopics(weave);
     }

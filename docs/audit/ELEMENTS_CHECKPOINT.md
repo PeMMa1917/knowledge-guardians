@@ -145,3 +145,9 @@ node tools/audit-choice-paths.mjs --mode exercise --errors-only
 node tools/audit-choice-paths.mjs --mode matrix
 node tools/audit-choice-paths.mjs --mode collisions
 ```
+
+## Follow-up on the well and the pocket theatre
+
+The original 2,907 checks subsequently passed in a single-worker run with a 60-second scenario allowance. A later full run at `f1cde61` passed 2,910 of 2,911 checks under the default five seconds. One uninterrupted 43-object ferry itinerary reached the time limit. Its two itineraries passed in isolation. The suite now gives that multi-object test an explicit twenty seconds. The intervening well build replayed 12,802 dialogue options with zero failed staged destinations or effects.
+
+Efua's hearing rule supplies two playable word-history connections. The pocket theatre adds two original cases in each of the fifteen chapters. The stricter joint ledger distinguishes one curriculum element, a narrative element, a game element, a Bloom demand and a DOK demand supported by the same action. Commands, scope and interpretation appear in [the cognitive connections review](COGNITIVE_CONNECTIONS.md). The earlier checkpoint tables describe their original revision.

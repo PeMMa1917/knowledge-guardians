@@ -1,3 +1,4 @@
+import { pocketProofs } from './pocket-theatre-evidence.mjs';
 import { reasoningRepertoire } from './reasoning-repertoire.mjs';
 import { bellProofs } from './claim-bell-evidence.mjs';
 import {riverNameProofs} from './river-name-evidence.mjs';
@@ -156,7 +157,7 @@ const copiesEvidenceInvestigations = [
 // Each row identifies a complete action and the intersection its trace actually supports.
 // Routes count once per objective or separately observed outcome in one physical world.
 const proofRows = [
-  ...bellProofs,
+  ...pocketProofs, ...bellProofs,
   ...originActions,
   ...elbowProofs,
   ...stacksProofs,
@@ -1333,6 +1334,11 @@ export function collectProofs({ objectives, maps, elements, dimensions, rows, so
     for (const id of linked) {
       const dimension = dimensionById.get(id);
       if (!dimension || dimension.supplied === false) throw Error(`Unavailable dimension ${id} in proof for ${row.objective}.`);
+      if (['bias','fallacy','deception'].includes(dimension.kind)) {
+        const witness=row.patternPractice?.find(p=>p.id===id);
+        if (!witness || !witness.basis?.trim() || !witness.excerpt?.trim() || !trace.includes(witness.excerpt) || !witness.case)
+          throw Error('Unresolved reasoning pattern '+id+' in '+row.objective);
+      }
       if (dimension.kind === 'question') {
         const question = id.slice('question:'.length);
         if (![place.step.kq, ...(place.step.questionWays ?? [])].some((link) => link?.id === question)) {

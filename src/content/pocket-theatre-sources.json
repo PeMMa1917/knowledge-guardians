@@ -1,0 +1,142 @@
+[
+  {
+    "id": "fallacies",
+    "title": "Fallacies",
+    "url": "https://plato.stanford.edu/entries/fallacies/",
+    "container": "Stanford Encyclopedia of Philosophy",
+    "supports": "Logical relevance, argument patterns, their use in dialogue and the limits of naming a fallacy."
+  },
+  {
+    "id": "decision",
+    "title": "7.3 Problem Solving",
+    "url": "https://openstax.org/books/psychology-2e/pages/7-3-problem-solving",
+    "container": "Psychology 2e, OpenStax",
+    "supports": "Heuristics, anchoring, availability and other obstacles in problem solving."
+  },
+  {
+    "id": "attribution",
+    "title": "12.1 What Is Social Psychology?",
+    "url": "https://openstax.org/books/psychology-2e/pages/12-1-what-is-social-psychology",
+    "container": "Psychology 2e, OpenStax",
+    "supports": "Situational and dispositional attribution and common attribution errors."
+  },
+  {
+    "id": "group",
+    "title": "12.4 Conformity, Compliance, and Obedience",
+    "url": "https://openstax.org/books/psychology-2e/pages/12-4-conformity-compliance-and-obedience",
+    "container": "Psychology 2e, OpenStax",
+    "supports": "Social influence, conformity and group decision making."
+  },
+  {
+    "id": "expectancy",
+    "title": "Placebo Effect",
+    "url": "https://www.nccih.nih.gov/health/placebo-effect",
+    "container": "National Center for Complementary and Integrative Health",
+    "supports": "Expectations and context can affect health outcomes. A fictional tasting can illustrate expectations but cannot establish a clinical result."
+  },
+  {
+    "id": "intent",
+    "title": "The Definition of Lying and Deception",
+    "url": "https://plato.stanford.edu/entries/lying-definition/",
+    "container": "Stanford Encyclopedia of Philosophy",
+    "supports": "The role of belief, assertion, intention, and an audience in accounts of lying and deception."
+  },
+  {
+    "id": "calibration",
+    "title": "Unskilled and unaware of it: How difficulties in recognizing one's own incompetence lead to inflated self-assessments",
+    "url": "https://doi.org/10.1037/0022-3514.77.6.1121",
+    "container": "Journal of Personality and Social Psychology",
+    "author": "Kruger, Justin, and David Dunning",
+    "supports": "Testing the association between measured performance and accurate self-assessment in the original studies.",
+    "publication": {
+      "volume": "77",
+      "issue": "6",
+      "pages": "1121-1134",
+      "year": "1999"
+    }
+  },
+  {
+    "id": "sunk",
+    "title": "The psychology of sunk cost",
+    "url": "https://doi.org/10.1016/0749-5978(85)90049-4",
+    "container": "Organizational Behavior and Human Decision Processes",
+    "author": "Arkes, Hal R, and Catherine Blumer",
+    "supports": "Previously incurred costs and later decisions.",
+    "publication": {
+      "volume": "35",
+      "issue": "1",
+      "pages": "124-140",
+      "year": "1985"
+    }
+  },
+  {
+    "id": "spotlight",
+    "title": "The spotlight effect in social judgment: An egocentric bias in estimates of the salience of one's own actions and appearance",
+    "url": "https://doi.org/10.1037/0022-3514.78.2.211",
+    "container": "Journal of Personality and Social Psychology",
+    "author": "Gilovich, Thomas, et al.",
+    "supports": "Overestimates of how much other people notice our own appearance and actions.",
+    "publication": {
+      "volume": "78",
+      "issue": "2",
+      "pages": "211-222",
+      "year": "2000"
+    }
+  },
+  {
+    "id": "backfire",
+    "title": "Searching for the backfire effect: Measurement and design considerations",
+    "url": "https://doi.org/10.1016/j.jarmac.2020.06.006",
+    "container": "Journal of Applied Research in Memory and Cognition",
+    "author": "Swire-Thompson, Briony, et al.",
+    "supports": "Limits and measurement difficulties in research on corrections and backfire.",
+    "publication": {
+      "volume": "9",
+      "issue": "3",
+      "pages": "286-299",
+      "year": "2020"
+    }
+  },
+  {
+    "id": "third-person",
+    "title": "The Third-Person Effect in Communication",
+    "url": "https://doi.org/10.1086/268763",
+    "container": "Public Opinion Quarterly",
+    "author": "Davison, W. Phillips",
+    "supports": "Perceived media influence on oneself and on other people.",
+    "publication": {
+      "volume": "47",
+      "issue": "1",
+      "pages": "1",
+      "year": "1983"
+    }
+  },
+  {
+    "id": "barnum",
+    "title": "The fallacy of personal validation: a classroom demonstration of gullibility",
+    "url": "https://doi.org/10.1037/h0059240",
+    "container": "The Journal of Abnormal and Social Psychology",
+    "author": "Forer, Bertram R.",
+    "supports": "Personal endorsement of broadly applicable descriptions.",
+    "publication": {
+      "volume": "44",
+      "issue": "1",
+      "pages": "118-123",
+      "year": "1949"
+    }
+  },
+  {
+    "id": "decisions",
+    "title": "Choices, values, and frames",
+    "url": "https://doi.org/10.1037/0003-066x.39.4.341",
+    "container": "American Psychologist",
+    "author": "Kahneman, Daniel, and Amos Tversky",
+    "supports": "Framing choices and evaluating prospective outcomes.",
+    "publication": {
+      "volume": "39",
+      "issue": "4",
+      "pages": "341-350",
+      "year": "1984"
+    }
+  }
+]

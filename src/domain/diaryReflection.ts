@@ -1,3 +1,4 @@
+import { theatreById } from './pocketTheatre';
 import {inkCases} from './secondInk';
 import { courierCases } from './courierLift';
 import {whistlePlaces,whistleStories} from '../content/whistleWatch';
@@ -49,6 +50,10 @@ export function diaryQuestions(entry: ReflectionSource, saved?: Readonly<Record<
     if(/:(load|boot|roll|account):/.test(key))return {control:'Which one change brought the heel into both sets of prints?',limit:'What would it take to show who actually pulled the tubs that night?'};
     if(key.startsWith('walking-grove:track:'))return {tracks:'Which part of the night could this mark explain, and which part still needs a witness?'};
     return {date:'What changed when I brought the two springs up to the same date?',missing:'Which empty space in the book would I try to fill first, and why?'};
+  }
+  if (key.startsWith('pocket:')) {
+    const story=theatreById.get(key.split(':')[1]);
+    if(story) return {perspective:story.questions[0],transfer:story.questions[1]};
   }
   if (key.startsWith('claim-bell:')) {
     const [,site,act]=key.split(':');

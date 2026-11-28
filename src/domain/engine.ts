@@ -1,6 +1,7 @@
 import {markEffects,type MarkCommand} from './riverPostmark';
 import {riverEffects,type RiverCommand} from './riverNames';
 import {orchardEffects,type OrchardCommand} from './walkingOrchard';
+import { theatreEffects, type TheatreCommand } from './pocketTheatre';
 import { bellEffects, type BellCommand } from './claimBell';
 import { hatchEffects, type HatchCommand } from './hatchSleeve';
 import {inkEffects,type InkCommand} from './secondInk';
@@ -111,7 +112,7 @@ import { lanternReturnPractice, lanternEffects, pairEffects, type LanternCommand
 
 export type Command =
   | ChestCommand | BeatCommand | MouldCommand | PerchCommand | WelcomeCommand | BakeryCommand
-  | BellCommand | HatchCommand | MarkCommand | RiverCommand | ElbowCommand | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | CupCommand | InkCommand | HouseCommand | OrchardCommand | TideCommand | WireCommand | LensCommand | StackCommand | AlmanacCommand | CourierCommand | BillCommand | FerryCommand
+  | TheatreCommand | BellCommand | HatchCommand | MarkCommand | RiverCommand | ElbowCommand | WagerCommand | GearCommand | PetalCommand | InstrumentCommand | CupCommand | InkCommand | HouseCommand | OrchardCommand | TideCommand | WireCommand | LensCommand | StackCommand | AlmanacCommand | CourierCommand | BillCommand | FerryCommand
   | ShadowCommand
   | FieldLoanCommand
   | BirdCommand
@@ -676,6 +677,8 @@ export class Engine {
           s = apply(riverEffects(s,cmd),s,out); break;
         case 'TendWalkingOrchard':
           s = apply(orchardEffects(s,cmd),s,out); break;
+        case 'WorkPocketTheatre':
+          s = apply(theatreEffects(s,cmd),s,out); break;
         case 'WorkClaimBell':
           s = apply(bellEffects(s, cmd), s, out); break;
         case 'WorkHatchSleeve':

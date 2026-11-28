@@ -9,9 +9,9 @@ import './claimBell.css';
 
 export function claimBellPanel(c: GameController, sound: (key: string) => void, site: Site) {
   const well = site === 'well';
-  const shell = h('div', { class: 'claim-bell' });
+  const shell = h('div', { class: 'claim-bell', 'data-reading-bench': '' });
   const desk = h('div', {});
-  const feedback = h('p', { class: 'bell-feedback', role: 'status', 'aria-live': 'polite', 'aria-atomic': 'true' });
+  const feedback = h('p', { class: 'bell-feedback', role: 'status','data-work-feedback':'', 'aria-live': 'polite', 'aria-atomic': 'true' });
   function control(id: string, label: string, command: BellCommand, result: () => string, selected?: boolean) {
     return h('button', { type: 'button', 'data-bell': id, 'aria-pressed': selected === undefined ? undefined : String(selected), onclick: () => {
       const error = c.dispatch(command).find(e => e.kind === 'error');
