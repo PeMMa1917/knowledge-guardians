@@ -15,27 +15,195 @@ let draft = [],
   records = new Map(),
   editing = null,
   unusableStore = false;
-let lastBoardList = [];
-try {
-  const raw = localStorage.getItem(storeName);
-  if (raw) records = mergeLedger(atlas.members, records, JSON.parse(raw));
-} catch (e) {
-  unusableStore = true;
-  tell('Browser storage could not be read. Export your changes as JSON.');
+let lastBoardList = [],
+  historyPage = 0,
+  historyFilter = '';
+function storageNotice(message) {
+  const notice = get('storageNotice');
+  notice.hidden = false;
+  notice.textContent = message;
 }
-function persist() {
-  if (unusableStore) {
-    tell('This review is in memory. Export JSON before closing.');
+const archiveName = storeName + '-archive';
+const pendingPrefix = archiveName + '/pending/';
+const archiveMarker = archiveName + '/in-use';
+let db = null,
+  useArchive = false,
+  saving = false;
+let pending = new Map();
+let smallSnapshot,
+  knownArchive = false;
+function readSmall() {
+  const raw = localStorage.getItem(storeName);
+  if (raw && raw !== smallSnapshot) {
+    records = mergeLedger(atlas.members, records, JSON.parse(raw));
+    smallSnapshot = raw;
+  }
+}
+try {
+  knownArchive = localStorage.getItem(archiveMarker) === 'true';
+  readSmall();
+} catch {
+  unusableStore = true;
+}
+
+async function loadReviews() {
+  const main = document.querySelector('main');
+  main.inert = true;
+  main.setAttribute('aria-busy', 'true');
+  try {
+    db = await openReviewDatabase(archiveName);
+    const rows = await storedReviews(db);
+    if (knownArchive && !rows.length) {
+      storageNotice(
+        'The stored review collection is empty. Import checklist JSON to restore a backup.',
+      );
+    }
+    if (rows.length) {
+      records = mergeLedger(atlas.members, records, { version: 1, records: rows });
+      useArchive = true;
+    }
+    // Recover a cell which was still awaiting its database commit when a previous page closed.
+    const recovered = [];
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key?.startsWith(pendingPrefix))
+          recovered.push(JSON.parse(localStorage.getItem(key)));
+      }
+    } catch {}
+    if (recovered.length) {
+      records = mergeLedger(atlas.members, records, {
+        version: 1,
+        records: recovered,
+      });
+      useArchive = true;
+    }
+    if (useArchive && (recovered.length || smallSnapshot))
+      queueArchive([...records.values()]);
+    else if (unusableStore || records.size > 512) beginArchive();
+  } catch {
+    db = null;
+    if (knownArchive) {
+      unusableStore = true;
+      storageNotice(
+        'The browser could not open your saved reviews. Import a JSON backup to inspect them here. Export new edits before closing.',
+      );
+    } else if (unusableStore) {
+      storageNotice(
+        'This review is in memory. Export checklist JSON before closing.',
+      );
+    }
+  } finally {
+    main.inert = false;
+    main.removeAttribute('aria-busy');
+    document.documentElement.dataset.reviewReady = 'true';
+    grid();
+    listSaved();
+    renderMatrix();
+    memberOverview();
+    if (location.hash.startsWith('#review?')) openRef(location.hash);
+  }
+}
+function queueArchive(rows, patch, keepExisting = false) {
+  for (const row of rows) {
+    const key = cellKey(row.board, row.bloom, row.dok);
+    const previous = pending.get(key);
+    const changes = patch ? { ...previous?.patch, ...patch } : undefined;
+    pending.set(key, { record: row, patch: changes, keepExisting });
+  }
+  // In particular a quick close/reload after the most recent checkbox or note can be recovered synchronously.
+  if (rows.length === 1) {
+    const row = rows[0];
+    try {
+      localStorage.setItem(
+        pendingPrefix + cellKey(row.board, row.bloom, row.dok),
+        JSON.stringify(row),
+      );
+    } catch {}
+  }
+  void flushArchive();
+}
+function beginArchive(changed = [], patch, keepExisting = false) {
+  useArchive = true;
+  const newKeys = new Set(changed.map((r) => cellKey(r.board, r.bloom, r.dok)));
+  queueArchive(
+    [...records].filter(([key]) => !newKeys.has(key)).map(([, row]) => row),
+  );
+  if (changed.length) queueArchive(changed, patch, keepExisting);
+}
+async function flushArchive() {
+  if (saving || !db || !pending.size) return;
+  saving = true;
+  storageNotice(
+    'Saving review changes in this browser. You can also export checklist JSON.',
+  );
+  try {
+    while (pending.size) {
+      const batch = pending;
+      pending = new Map();
+      try {
+        const saved = await writeReviewChanges(db, atlas.members, batch);
+        for (const [key, row] of saved) {
+          if (!pending.has(key)) records.set(key, row);
+          try {
+            const walKey = pendingPrefix + key;
+            const raw = localStorage.getItem(walKey);
+            if (raw && JSON.parse(raw).updated <= row.updated)
+              localStorage.removeItem(walKey);
+          } catch {}
+        }
+      } catch (err) {
+        for (const [key, change] of batch)
+          if (!pending.has(key)) pending.set(key, change);
+        throw err;
+      }
+    }
+    try {
+      localStorage.setItem(archiveMarker, 'true');
+      if (smallSnapshot && localStorage.getItem(storeName) === smallSnapshot)
+        localStorage.removeItem(storeName);
+    } catch {}
+    smallSnapshot = undefined;
+    get('storageNotice').hidden = true;
+  } catch {
+    storageNotice(
+      'The browser could not save the latest edits. Export checklist JSON before closing.',
+    );
+  } finally {
+    saving = false;
+  }
+}
+function persist(rows, patch, keepExisting = false) {
+  if (useArchive) {
+    queueArchive(rows, patch, keepExisting);
     return;
   }
-  try {
-    const raw = localStorage.getItem(storeName);
-    if (raw) records = mergeLedger(atlas.members, records, JSON.parse(raw));
-    localStorage.setItem(storeName, JSON.stringify(saveLedger(records)));
-  } catch (e) {
-    unusableStore = true;
-    tell('Browser storage could not be updated. Export JSON before closing.');
+  if (!unusableStore) {
+    try {
+      if (records.size > 512 && db) {
+        beginArchive(rows, patch, keepExisting);
+        return;
+      }
+      readSmall();
+      const snapshot = JSON.stringify(saveLedger(records));
+      localStorage.setItem(storeName, snapshot);
+      smallSnapshot = snapshot;
+      return;
+    } catch {
+      unusableStore = true;
+    }
   }
+  if (db) beginArchive(rows, patch, keepExisting);
+  else
+    storageNotice(
+      'The browser could not save the latest edits. Export checklist JSON before closing.',
+    );
+}
+function persistImported(previous, keepExisting) {
+  const changed = [...records]
+    .filter(([key, row]) => previous.get(key) !== row)
+    .map(([, row]) => row);
+  if (changed.length) persist(changed, undefined, keepExisting);
 }
 function describe(id) {
   return memberMap.get(id)?.name ?? id;
@@ -189,6 +357,13 @@ for (const k of ['sequence', 'chapter', 'design'])
 get('steps').oninput = refreshBoard;
 function record(bloom, dok, changes, target = board) {
   if (!target) return;
+  if (!useArchive && !unusableStore) {
+    try {
+      readSmall();
+    } catch {
+      unusableStore = true;
+    }
+  }
   const key = cellKey(target, bloom, dok);
   const old = records.get(key);
   const now = Math.max(Date.now(), old ? Date.parse(old.updated) + 1 : 0);
@@ -202,7 +377,7 @@ function record(bloom, dok, changes, target = board) {
     ...changes,
     updated: new Date(now).toISOString(),
   });
-  persist();
+  persist([records.get(key)], changes);
   listSaved();
   memberOverview();
 }
@@ -517,17 +692,31 @@ get('example3').onclick = () => {
   show({ chapter: 2, ids: steps.flat(), steps });
 };
 function listSaved(filter) {
+  if (filter !== undefined && filter !== historyFilter) {
+    historyPage = 0;
+    historyFilter = filter;
+  }
   const boards = new Map();
   for (const r of records.values())
-    if (!filter || r.board.ids.includes(filter))
+    if (!historyFilter || r.board.ids.includes(historyFilter))
       boards.set(boardKey(r.board), r.board);
   lastBoardList = [...boards.values()].sort(
     (a, b) => a.chapter - b.chapter || a.ids.join().localeCompare(b.ids.join()),
   );
+  renderHistoryPage();
+}
+function renderHistoryPage() {
+  const size = 100;
+  historyPage = Math.min(
+    historyPage,
+    Math.max(0, Math.ceil(lastBoardList.length / size) - 1),
+  );
+  const start = historyPage * size;
+  const selected = lastBoardList.slice(start, start + size);
   get('savedBoards').replaceChildren(
-    ...lastBoardList.map((b, i) =>
+    ...selected.map((b, i) =>
       option(
-        i,
+        start + i,
         'Ch ' +
           b.chapter +
           ' · ' +
@@ -537,8 +726,21 @@ function listSaved(filter) {
       ),
     ),
   );
-  get('openSaved').disabled = !lastBoardList.length;
+  get('openSaved').disabled = !selected.length;
+  get('priorSaved').disabled = !start;
+  get('moreSaved').disabled = start + size >= lastBoardList.length;
+  get('savedRange').textContent = selected.length
+    ? start + 1 + '–' + (start + selected.length) + ' of ' + lastBoardList.length
+    : 'No saved boards.';
 }
+get('priorSaved').onclick = () => {
+  historyPage--;
+  renderHistoryPage();
+};
+get('moreSaved').onclick = () => {
+  historyPage++;
+  renderHistoryPage();
+};
 get('openSaved').onclick = () => {
   const b = lastBoardList[Number(get('savedBoards').value)];
   if (b) show(b);
@@ -604,6 +806,7 @@ function memberOverview() {
   const close = el('button', 'Close element overview');
   close.onclick = () => {
     focusedMember = '';
+    listSaved('');
     box.replaceChildren();
     get('focus').focus();
   };
@@ -709,9 +912,10 @@ function download(name, content, type) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 get('documented').onclick = () => {
+  const previous = records;
   const count = records.size;
   records = mergeLedger(atlas.members, records, reviewedLedger(atlas));
-  persist();
+  persistImported(previous, true);
   refreshBoard();
   memberOverview();
   tell(
@@ -777,14 +981,42 @@ get('csv').onclick = () => {
       }
   downloadCSV('knowledge-guardians-checklist.csv', rows);
 };
-get('print').onclick = () => window.print();
+function printableEvidence() {
+  const box = get('printEvidence');
+  box.replaceChildren();
+  if (!board) return;
+  const entries = levels
+    .flatMap((l) => depths.map((d) => records.get(cellKey(board, l, d))))
+    .filter((r) => r && (r.evidence || r.actions?.length));
+  if (!entries.length) return;
+  box.append(el('h3', 'Evidence recorded for this board'));
+  for (const r of entries) {
+    const run = el('article', '');
+    run.append(
+      el(
+        'h3',
+        r.bloom + ' · DOK ' + r.dok + ' · ' + (r.checked ? 'Reviewed' : 'Open'),
+      ),
+    );
+    if (r.evidence) run.append(el('p', r.evidence));
+    if (r.actions?.length)
+      run.append(el('p', 'Distinct actions · ' + r.actions.join(' / ')));
+    box.append(run);
+  }
+}
+window.addEventListener('beforeprint', printableEvidence);
+get('print').onclick = () => {
+  printableEvidence();
+  window.print();
+};
 get('load').onchange = async () => {
   try {
     const file = get('load').files[0];
     if (!file) return;
     const incoming = JSON.parse(await file.text());
+    const previous = records;
     records = mergeLedger(atlas.members, records, incoming);
-    persist();
+    persistImported(previous, incoming.kind === 'implementation-review');
     refreshBoard();
     memberOverview();
     tell('Checklist imported. ' + records.size + ' saved cells.');
@@ -1037,4 +1269,4 @@ get('useSet').onclick = () => openNumber(0n);
 
 search();
 get('example1').click();
-if (location.hash.startsWith('#review?')) openRef(location.hash);
+void loadReviews();

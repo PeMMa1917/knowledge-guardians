@@ -15,9 +15,11 @@ td input{width:1.2rem;height:1.2rem;vertical-align:middle;accent-color:var(--tea
 small,.muted{font-size:.88rem;color:#405950}details{margin:.7rem 0}summary{cursor:pointer;font-weight:600}output{display:block;margin:.5rem 0;overflow-wrap:anywhere}.result{border-left:3px solid var(--line);padding:.4rem .65rem;margin:.6rem 0}
 code{overflow-wrap:anywhere}.pad{margin-top:.65rem}[hidden]{display:none!important}
 @media(max-width:51rem){.cols{grid-template-columns:minmax(0,1fr);gap:0}main{padding:.7rem}section{padding:.8rem}}
-@media print{#builder,#navigator,#transfer,.edit,#editPanel,#inspect{display:none}body,main{background:white;margin:0;padding:0}.cols{display:block}section{break-inside:avoid}}
+.printOnly{display:none}
+@media print{@page{size:A4;margin:1.5cm}main>section,main>p,#builder,#boardAddress,.edit,#editPanel,#inspect{display:none}body,main{background:white;margin:0;padding:0}.cols{display:block}#reviewBoard{border:0;margin:0;padding:0}#printEvidence{display:block;margin-top:1rem}#printEvidence p{white-space:pre-wrap;overflow-wrap:anywhere}#grid tr,#printEvidence article{break-inside:avoid}h3{break-after:avoid}}
 </style>
 <main><header><h1>Combination checklist</h1><p>Knowledge Guardians · Curriculum and story review</p></header>
+<p id="storageNotice" role="status" hidden></p>
 <div class="cols">
 <section id="builder"><h2>Build a review</h2>
 <div class="row"><div><label for="chapter">Chapter</label><select id="chapter"></select></div><div><label for="design">Design scope</label><select id="design"><option value="joint">Narrative and gameplay</option><option value="any">Any TOK-anchored selection</option><option value="story-only">Narrative only</option><option value="game-only">Game only</option></select></div></div>
@@ -31,14 +33,14 @@ code{overflow-wrap:anywhere}.pad{margin-top:.65rem}[hidden]{display:none!importa
 <p id="valid" class="muted" aria-live="polite"></p>
 <details><summary>Open a worked example</summary><div class="row pad"><button id="example1">The stitcher’s sling</button><button id="example2">A hearing rule travels</button><button id="example3">Sling, then decision</button></div></details>
 </section>
-<section><h2 id="boardTitle">Review grid</h2><p id="boardDesc"></p><p id="boardProgress" class="muted" role="status"></p><div id="grid"></div>
+<section id="reviewBoard"><h2 id="boardTitle">Review grid</h2><p id="boardDesc"></p><p id="boardProgress" class="muted" role="status"></p><div id="grid"></div>
 <details id="boardAddress"><summary>Bookmark or open an exact review</summary>
 <p>The reference opens the same chapter, elements and order. Export checklist JSON to include your checks and notes.</p>
 <button id="makeReference">Get a reference to this review</button>
 <label for="reviewRef">Review reference</label><textarea id="reviewRef" rows="2"></textarea>
 <button id="openReference">Open reference</button> <a id="bookmark" hidden>Open or bookmark this board</a></details>
 <div id="editPanel" hidden><h3 id="cellTitle" class="pad"></h3><details id="criteria"><summary>What would count at this Bloom level and DOK?</summary><p id="criteriaTitle"></p><p id="criteriaDetail"></p></details><label for="note">Review evidence</label><small>Record the location, the player’s action, the knowledge question, the differing perspectives and what changed. Include a test or source when available.</small><textarea id="note" rows="4"></textarea><label for="actionIds">Distinct action IDs</label><small>One per line. Track progress toward ten different actions in this chapter.</small><textarea id="actionIds" rows="2"></textarea><button id="saveNote" class="primary">Save evidence</button> <button id="closeNote">Close editor</button></div>
-<div id="inspect"><h3 class="pad">Evidence from play</h3><div id="proof"></div></div></section>
+<div id="printEvidence" class="printOnly"></div><div id="inspect"><h3 class="pad">Evidence from play</h3><div id="proof"></div></div></section>
 </div>
 <section><details id="matrix"><summary>Check a whole family against these same elements</summary>
 <p>Keep the current chapter and combination fixed. Each row adds one member. Each checkbox records an independent review for that exact combination. Open a row to add evidence.</p>
@@ -50,7 +52,7 @@ code{overflow-wrap:anywhere}.pad{margin-top:.65rem}[hidden]{display:none!importa
 <button id="pin">Pin current selection</button><p id="baseDescription" class="muted"></p>
 <div class="row"><div><label for="pool">Element families to add</label><select id="pool" multiple size="5"></select><small>Leave empty to include all eligible families. Use Ctrl or Command to select several.</small></div><div><label for="extraCount">Number of additional elements</label><input id="extraCount" type="number" step="1" min="0" value="1"><label for="combinationNumber">Combination number (starts at 1)</label><input id="combinationNumber" type="text" inputmode="numeric" value="1"></div></div>
 <p id="spaceSize" aria-live="polite"></p><div class="row"><button id="previousSet">Previous combination</button><button id="useSet">Open this combination</button><button id="nextSet">Next combination</button></div></details></section>
-<section id="history"><h2>Saved reviews</h2><button id="documented">Include documented implementation checks</button><p class="muted">Each board has its own 24 cells. Checks stay with the exact combination, chapter and order you reviewed.</p><label for="savedBoards">Reopen a board</label><select id="savedBoards"></select> <button id="openSaved">Open board</button></section>
+<section id="history"><h2>Saved reviews</h2><button id="documented">Include documented implementation checks</button><p class="muted">Each board has its own 24 cells. Checks stay with the exact combination, chapter and order you reviewed.</p><label for="savedBoards">Reopen a board</label><select id="savedBoards"></select> <button id="openSaved">Open board</button> <button id="priorSaved">Previous boards</button> <button id="moreSaved">More boards</button> <span id="savedRange" aria-live="polite"></span></section>
 <section id="transfer"><h2>Take your checklist with you</h2><p>Edits are saved in this browser when storage is available. Export JSON to continue on another device or send a copy to a reviewer. CSV includes every cell on your saved boards.</p>
 <div class="row"><button id="json">Export JSON</button><button id="csv">Export CSV</button><button id="print">Print this board</button><label for="load">Import checklist JSON <input id="load" type="file" accept="application/json,.json"></label></div>
 <output id="message" role="status"></output></section></main>
@@ -521,6 +523,73 @@ function reviewedLedger(atlas) {
   return { ...saveLedger(records), kind: 'implementation-review' };
 }
 
+// Larger reviewer ledgers store one record per exact cell. The small legacy ledger remains readable.
+function openReviewDatabase(name) {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(name, 1);
+    request.onupgradeneeded = () => request.result.createObjectStore('cells');
+    request.onerror = () => reject(request.error);
+    request.onblocked = () =>
+      reject(Error('The review database is open in an older tab.'));
+    request.onsuccess = () => {
+      const db = request.result;
+      db.onversionchange = () => db.close();
+      resolve(db);
+    };
+  });
+}
+function storedReviews(db) {
+  return new Promise((resolve, reject) => {
+    const req = db.transaction('cells').objectStore('cells').getAll();
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+function writeReviewChanges(db, members, pending) {
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('cells', 'readwrite');
+    const store = tx.objectStore('cells'),
+      records = new Map();
+    let fault;
+    tx.oncomplete = () => resolve(records);
+    tx.onabort = () =>
+      reject(fault ?? tx.error ?? Error('Interrupted review save.'));
+    for (const [key, change] of pending) {
+      const read = store.get(key);
+      read.onsuccess = () => {
+        try {
+          const old = read.result;
+          let next = change.record;
+          if (old && change.keepExisting) next = old;
+          else if (old && change.patch) {
+            // Preserve fields last edited in another tab. A local click changes only its own fields.
+            const time = Math.max(
+              Date.parse(next.updated),
+              Date.parse(old.updated) + 1,
+            );
+            next = {
+              ...old,
+              ...change.patch,
+              updated: new Date(time).toISOString(),
+            };
+          } else if (old) {
+            const merged = mergeLedger(members, new Map([[key, old]]), {
+              version: 1,
+              records: [next],
+            });
+            next = merged.get(key);
+          }
+          if (next !== old) store.put(next, key);
+          records.set(key, next);
+        } catch (err) {
+          fault = err;
+          tx.abort();
+        }
+      };
+    }
+  });
+}
+
 // This runs as a bundled, offline script. No student account or network service is involved.
 const atlas = JSON.parse(document.querySelector('#atlasData').textContent);
 const memberMap = new Map(atlas.members.map((x) => [x.id, x]));
@@ -538,27 +607,195 @@ let draft = [],
   records = new Map(),
   editing = null,
   unusableStore = false;
-let lastBoardList = [];
-try {
-  const raw = localStorage.getItem(storeName);
-  if (raw) records = mergeLedger(atlas.members, records, JSON.parse(raw));
-} catch (e) {
-  unusableStore = true;
-  tell('Browser storage could not be read. Export your changes as JSON.');
+let lastBoardList = [],
+  historyPage = 0,
+  historyFilter = '';
+function storageNotice(message) {
+  const notice = get('storageNotice');
+  notice.hidden = false;
+  notice.textContent = message;
 }
-function persist() {
-  if (unusableStore) {
-    tell('This review is in memory. Export JSON before closing.');
+const archiveName = storeName + '-archive';
+const pendingPrefix = archiveName + '/pending/';
+const archiveMarker = archiveName + '/in-use';
+let db = null,
+  useArchive = false,
+  saving = false;
+let pending = new Map();
+let smallSnapshot,
+  knownArchive = false;
+function readSmall() {
+  const raw = localStorage.getItem(storeName);
+  if (raw && raw !== smallSnapshot) {
+    records = mergeLedger(atlas.members, records, JSON.parse(raw));
+    smallSnapshot = raw;
+  }
+}
+try {
+  knownArchive = localStorage.getItem(archiveMarker) === 'true';
+  readSmall();
+} catch {
+  unusableStore = true;
+}
+
+async function loadReviews() {
+  const main = document.querySelector('main');
+  main.inert = true;
+  main.setAttribute('aria-busy', 'true');
+  try {
+    db = await openReviewDatabase(archiveName);
+    const rows = await storedReviews(db);
+    if (knownArchive && !rows.length) {
+      storageNotice(
+        'The stored review collection is empty. Import checklist JSON to restore a backup.',
+      );
+    }
+    if (rows.length) {
+      records = mergeLedger(atlas.members, records, { version: 1, records: rows });
+      useArchive = true;
+    }
+    // Recover a cell which was still awaiting its database commit when a previous page closed.
+    const recovered = [];
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key?.startsWith(pendingPrefix))
+          recovered.push(JSON.parse(localStorage.getItem(key)));
+      }
+    } catch {}
+    if (recovered.length) {
+      records = mergeLedger(atlas.members, records, {
+        version: 1,
+        records: recovered,
+      });
+      useArchive = true;
+    }
+    if (useArchive && (recovered.length || smallSnapshot))
+      queueArchive([...records.values()]);
+    else if (unusableStore || records.size > 512) beginArchive();
+  } catch {
+    db = null;
+    if (knownArchive) {
+      unusableStore = true;
+      storageNotice(
+        'The browser could not open your saved reviews. Import a JSON backup to inspect them here. Export new edits before closing.',
+      );
+    } else if (unusableStore) {
+      storageNotice(
+        'This review is in memory. Export checklist JSON before closing.',
+      );
+    }
+  } finally {
+    main.inert = false;
+    main.removeAttribute('aria-busy');
+    document.documentElement.dataset.reviewReady = 'true';
+    grid();
+    listSaved();
+    renderMatrix();
+    memberOverview();
+    if (location.hash.startsWith('#review?')) openRef(location.hash);
+  }
+}
+function queueArchive(rows, patch, keepExisting = false) {
+  for (const row of rows) {
+    const key = cellKey(row.board, row.bloom, row.dok);
+    const previous = pending.get(key);
+    const changes = patch ? { ...previous?.patch, ...patch } : undefined;
+    pending.set(key, { record: row, patch: changes, keepExisting });
+  }
+  // In particular a quick close/reload after the most recent checkbox or note can be recovered synchronously.
+  if (rows.length === 1) {
+    const row = rows[0];
+    try {
+      localStorage.setItem(
+        pendingPrefix + cellKey(row.board, row.bloom, row.dok),
+        JSON.stringify(row),
+      );
+    } catch {}
+  }
+  void flushArchive();
+}
+function beginArchive(changed = [], patch, keepExisting = false) {
+  useArchive = true;
+  const newKeys = new Set(changed.map((r) => cellKey(r.board, r.bloom, r.dok)));
+  queueArchive(
+    [...records].filter(([key]) => !newKeys.has(key)).map(([, row]) => row),
+  );
+  if (changed.length) queueArchive(changed, patch, keepExisting);
+}
+async function flushArchive() {
+  if (saving || !db || !pending.size) return;
+  saving = true;
+  storageNotice(
+    'Saving review changes in this browser. You can also export checklist JSON.',
+  );
+  try {
+    while (pending.size) {
+      const batch = pending;
+      pending = new Map();
+      try {
+        const saved = await writeReviewChanges(db, atlas.members, batch);
+        for (const [key, row] of saved) {
+          if (!pending.has(key)) records.set(key, row);
+          try {
+            const walKey = pendingPrefix + key;
+            const raw = localStorage.getItem(walKey);
+            if (raw && JSON.parse(raw).updated <= row.updated)
+              localStorage.removeItem(walKey);
+          } catch {}
+        }
+      } catch (err) {
+        for (const [key, change] of batch)
+          if (!pending.has(key)) pending.set(key, change);
+        throw err;
+      }
+    }
+    try {
+      localStorage.setItem(archiveMarker, 'true');
+      if (smallSnapshot && localStorage.getItem(storeName) === smallSnapshot)
+        localStorage.removeItem(storeName);
+    } catch {}
+    smallSnapshot = undefined;
+    get('storageNotice').hidden = true;
+  } catch {
+    storageNotice(
+      'The browser could not save the latest edits. Export checklist JSON before closing.',
+    );
+  } finally {
+    saving = false;
+  }
+}
+function persist(rows, patch, keepExisting = false) {
+  if (useArchive) {
+    queueArchive(rows, patch, keepExisting);
     return;
   }
-  try {
-    const raw = localStorage.getItem(storeName);
-    if (raw) records = mergeLedger(atlas.members, records, JSON.parse(raw));
-    localStorage.setItem(storeName, JSON.stringify(saveLedger(records)));
-  } catch (e) {
-    unusableStore = true;
-    tell('Browser storage could not be updated. Export JSON before closing.');
+  if (!unusableStore) {
+    try {
+      if (records.size > 512 && db) {
+        beginArchive(rows, patch, keepExisting);
+        return;
+      }
+      readSmall();
+      const snapshot = JSON.stringify(saveLedger(records));
+      localStorage.setItem(storeName, snapshot);
+      smallSnapshot = snapshot;
+      return;
+    } catch {
+      unusableStore = true;
+    }
   }
+  if (db) beginArchive(rows, patch, keepExisting);
+  else
+    storageNotice(
+      'The browser could not save the latest edits. Export checklist JSON before closing.',
+    );
+}
+function persistImported(previous, keepExisting) {
+  const changed = [...records]
+    .filter(([key, row]) => previous.get(key) !== row)
+    .map(([, row]) => row);
+  if (changed.length) persist(changed, undefined, keepExisting);
 }
 function describe(id) {
   return memberMap.get(id)?.name ?? id;
@@ -712,6 +949,13 @@ for (const k of ['sequence', 'chapter', 'design'])
 get('steps').oninput = refreshBoard;
 function record(bloom, dok, changes, target = board) {
   if (!target) return;
+  if (!useArchive && !unusableStore) {
+    try {
+      readSmall();
+    } catch {
+      unusableStore = true;
+    }
+  }
   const key = cellKey(target, bloom, dok);
   const old = records.get(key);
   const now = Math.max(Date.now(), old ? Date.parse(old.updated) + 1 : 0);
@@ -725,7 +969,7 @@ function record(bloom, dok, changes, target = board) {
     ...changes,
     updated: new Date(now).toISOString(),
   });
-  persist();
+  persist([records.get(key)], changes);
   listSaved();
   memberOverview();
 }
@@ -1040,17 +1284,31 @@ get('example3').onclick = () => {
   show({ chapter: 2, ids: steps.flat(), steps });
 };
 function listSaved(filter) {
+  if (filter !== undefined && filter !== historyFilter) {
+    historyPage = 0;
+    historyFilter = filter;
+  }
   const boards = new Map();
   for (const r of records.values())
-    if (!filter || r.board.ids.includes(filter))
+    if (!historyFilter || r.board.ids.includes(historyFilter))
       boards.set(boardKey(r.board), r.board);
   lastBoardList = [...boards.values()].sort(
     (a, b) => a.chapter - b.chapter || a.ids.join().localeCompare(b.ids.join()),
   );
+  renderHistoryPage();
+}
+function renderHistoryPage() {
+  const size = 100;
+  historyPage = Math.min(
+    historyPage,
+    Math.max(0, Math.ceil(lastBoardList.length / size) - 1),
+  );
+  const start = historyPage * size;
+  const selected = lastBoardList.slice(start, start + size);
   get('savedBoards').replaceChildren(
-    ...lastBoardList.map((b, i) =>
+    ...selected.map((b, i) =>
       option(
-        i,
+        start + i,
         'Ch ' +
           b.chapter +
           ' · ' +
@@ -1060,8 +1318,21 @@ function listSaved(filter) {
       ),
     ),
   );
-  get('openSaved').disabled = !lastBoardList.length;
+  get('openSaved').disabled = !selected.length;
+  get('priorSaved').disabled = !start;
+  get('moreSaved').disabled = start + size >= lastBoardList.length;
+  get('savedRange').textContent = selected.length
+    ? start + 1 + '–' + (start + selected.length) + ' of ' + lastBoardList.length
+    : 'No saved boards.';
 }
+get('priorSaved').onclick = () => {
+  historyPage--;
+  renderHistoryPage();
+};
+get('moreSaved').onclick = () => {
+  historyPage++;
+  renderHistoryPage();
+};
 get('openSaved').onclick = () => {
   const b = lastBoardList[Number(get('savedBoards').value)];
   if (b) show(b);
@@ -1127,6 +1398,7 @@ function memberOverview() {
   const close = el('button', 'Close element overview');
   close.onclick = () => {
     focusedMember = '';
+    listSaved('');
     box.replaceChildren();
     get('focus').focus();
   };
@@ -1232,9 +1504,10 @@ function download(name, content, type) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 get('documented').onclick = () => {
+  const previous = records;
   const count = records.size;
   records = mergeLedger(atlas.members, records, reviewedLedger(atlas));
-  persist();
+  persistImported(previous, true);
   refreshBoard();
   memberOverview();
   tell(
@@ -1300,14 +1573,42 @@ get('csv').onclick = () => {
       }
   downloadCSV('knowledge-guardians-checklist.csv', rows);
 };
-get('print').onclick = () => window.print();
+function printableEvidence() {
+  const box = get('printEvidence');
+  box.replaceChildren();
+  if (!board) return;
+  const entries = levels
+    .flatMap((l) => depths.map((d) => records.get(cellKey(board, l, d))))
+    .filter((r) => r && (r.evidence || r.actions?.length));
+  if (!entries.length) return;
+  box.append(el('h3', 'Evidence recorded for this board'));
+  for (const r of entries) {
+    const run = el('article', '');
+    run.append(
+      el(
+        'h3',
+        r.bloom + ' · DOK ' + r.dok + ' · ' + (r.checked ? 'Reviewed' : 'Open'),
+      ),
+    );
+    if (r.evidence) run.append(el('p', r.evidence));
+    if (r.actions?.length)
+      run.append(el('p', 'Distinct actions · ' + r.actions.join(' / ')));
+    box.append(run);
+  }
+}
+window.addEventListener('beforeprint', printableEvidence);
+get('print').onclick = () => {
+  printableEvidence();
+  window.print();
+};
 get('load').onchange = async () => {
   try {
     const file = get('load').files[0];
     if (!file) return;
     const incoming = JSON.parse(await file.text());
+    const previous = records;
     records = mergeLedger(atlas.members, records, incoming);
-    persist();
+    persistImported(previous, incoming.kind === 'implementation-review');
     refreshBoard();
     memberOverview();
     tell('Checklist imported. ' + records.size + ' saved cells.');
@@ -1560,5 +1861,5 @@ get('useSet').onclick = () => openNumber(0n);
 
 search();
 get('example1').click();
-if (location.hash.startsWith('#review?')) openRef(location.hash);
+void loadReviews();
 </script></html>

@@ -28,6 +28,10 @@ const url = process.argv.includes('--file')
   ? file.href
   : 'http://127.0.0.1:' + server.address().port + '/checklist';
 try {
+  if (process.argv.includes('--stress')) {
+    const {exerciseReviewScale} = await import('./review-checklist-stress.mjs');
+    await exerciseReviewScale(browser, engine, url);
+  }
   const context = await browser.newContext({
     viewport:
       engine === 'webkit'
@@ -38,6 +42,7 @@ try {
     errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto(url);
+  await page.locator('html[data-review-ready="true"]').waitFor();
   const cell = page.getByRole('checkbox', {
     name: 'Reviewed analyse DOK 2',
     exact: true,
@@ -57,6 +62,7 @@ try {
     );
   await page.getByRole('button', { name: 'Save evidence' }).click();
   await page.reload();
+  await page.locator('html[data-review-ready="true"]').waitFor();
   assert(await cell.isChecked());
   assert.equal(await page.locator('input:checked').count(), 1);
   await page.getByLabel('Chapter', { exact: true }).selectOption('3');
@@ -74,6 +80,11 @@ try {
   const parsed = JSON.parse(content);
   assert.equal(parsed.records.length, 1);
   assert(parsed.records[0].evidence.includes('fringe'));
+  await page.emulateMedia({media:'print'});
+  await page.evaluate(()=>window.dispatchEvent(new Event('beforeprint')));
+  assert((await page.locator('#printEvidence').innerText()).includes('guide the visitor'));
+  assert(!await page.locator('#history').isVisible());
+  await page.emulateMedia({media:'screen'});
   const second = await browser.newContext(),
     p2 = await second.newPage();
   await p2.goto(url);

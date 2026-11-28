@@ -13,6 +13,18 @@ node tools/smoke-lamplight.mjs chromium http://127.0.0.1:4173 --return-coat
 node tools/smoke-combination-checklist.mjs firefox
 ```
 
+## Curriculum checklist
+
+The review document runs from a downloaded HTML file and from a local web server. Its stress run uses a temporary reviewer profile. It addresses the 24 Bloom and DOK positions for each catalogue member in all 15 chapters, recovers a large fictional review ledger after reload, edits the same cell in two tabs and exports when both browser storage systems are unavailable. The check counts exercise the documentation interface. Implementation evidence comes from the separate action register.
+
+In Chromium 156, Firefox 146 and WebKit 26, each run addressed 2,792,520 worksheet positions and restored 28,800 fictional checked cells. The 8,715,841-byte JSON included one note and action ID per cell. A second tab changed a checked status while preserving the first tab’s note. With both storage systems disabled, a one-cell review still exported to JSON.
+
+```sh
+node tools/smoke-combination-checklist.mjs chromium --stress
+node tools/smoke-combination-checklist.mjs firefox --file --stress
+node tools/smoke-combination-checklist.mjs webkit --file --stress
+```
+
 ## Run the map and access smoke
 
 Build and serve a single checkout, then run the smoke against that preview with Node 22 or newer and Chromium installed.

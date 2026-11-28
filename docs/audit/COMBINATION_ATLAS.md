@@ -22,6 +22,8 @@ For example, use **The stitcher’s sling**, then pin it and choose **Micro-skil
 
 Use **Bookmark or open an exact review** to save a link to a chapter, combination and order. If the evidence editor is open, the reference also selects its Bloom and DOK cell. A colleague with their own copy of the checklist can paste the reference into it. References identify the task. Use the separate JSON export to share notes and review decisions.
 
+**Print this board** includes the saved evidence and action IDs for its checked and open cells. Larger collections of reviews are saved in the browser’s IndexedDB. The offline file can also hold edits in memory when browser storage is unavailable. A visible message asks for a JSON export in that case. The JSON file can restore the review on a different device.
+
 ### Work in a spreadsheet
 
 [Download the chapter review workbook](CHAPTER_REVIEW_GRIDS.xlsx). To regenerate it from the repository, use Python and openpyxl. Each chapter has a row for every catalogue member and 24 independent review cells. The first rows contain the exact documented reviews with their sources and action IDs. The other rows supply an editable starting combination. Duplicate a reviewed row before changing its members. A local checklist with different display names can be selected with `--checklist`. A reviewer’s own exported decisions can be selected with `--ledger`.
